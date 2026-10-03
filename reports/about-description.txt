@@ -1,0 +1,1 @@
+🛠️ Whole-game completion: 0% (0/7 acceptance milestones). Partial Battlefield Vietnam client/server source reconstruction toward a fully editable standalone engine with original gameplay and multiplayer.

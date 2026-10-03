@@ -6,13 +6,22 @@ the goal.
 
 ## Progress
 
+![Whole-game completion](reports/progress.svg)
+
+**Whole-game completion: 0% — 0 of 7 acceptance milestones complete.**
+This covers the entire original client/server engine, including AI, gameplay,
+physics, multiplayer, a standalone source build and verified original behavior.
+Partial reconstruction is underway; this coarse milestone percentage does not
+estimate effort or count exported decompiler files as recovered source.
+See the [full-project tracker](docs/PROGRESS.md).
+
 - Reconstructed the native AI plan interpreter in C.
 - Reconstructed bailout logic and its numerical helpers in C.
 - Reconstructed AI collision handling, geometry helpers, events and vector insertion in C.
-- Reconstructed artillery driver rating selection, cached-target validation and history lookup in C.
+- Reconstructed artillery driver rating selection, cached-target validation, history lookup and the first candidate-pass filter in C.
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- Passed 24,578 comparisons and ABI checks across the two inspected binaries.
+- Passed 24,920 comparisons and ABI checks across the two inspected binaries.
 - Validated vector cleanup/rethrow in live Windows client and server processes.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.

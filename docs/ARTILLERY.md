@@ -154,6 +154,22 @@ uv run --with pefile --with unicorn python bfv-native-code/tools/verify_target_h
 
 ## Remaining work
 
+The first candidate-pass inline filter now compiles from `artillery_filter.c`.
+It replaces client `0099f6c3` / server `00749ea3` through a guarded seven-byte
+entry patch and resumes at the original accept/reject continuations. It resolves
+the generation handle, checks the candidate's returned identity against the
+excluded ID, checks component/flag gates and signed record state, then compares
+the history delta with the native 20.0 window. The meaning of that reference
+value is not yet established as elapsed seconds. Native unordered comparisons
+accept NaN; the C implementation preserves this behavior and x87 status.
+
+The bridge preserves the evaluator's live frame and register outputs. Controlled
+comparisons cover 171 cases per target, including callbacks changing frame state,
+null/stale handles, wrapped addresses, infinity, NaN, and x87 precision/rounding.
+This does not reconstruct the subsequent candidate scoring or the second pass.
+Run `verify_artillery_filter.py` with the same arguments as the history verifier;
+the default full verifier also includes these cases.
+
 Recover the large target evaluator's boundaries, arguments, candidate filtering,
 weapon ratings, cached target state, and subordinate helpers. Then recover the
 plans that turn selected targets into aiming and firing controls. Replace their

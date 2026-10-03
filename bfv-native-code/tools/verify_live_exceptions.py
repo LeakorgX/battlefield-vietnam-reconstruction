@@ -167,7 +167,7 @@ def verify(target,game_dir):
         assert bytes(live)==payload
         for patch in manifest['patches']:assert remote.u32(int(patch['vtable_slot'],16))==int(patch['replacement'],16)
         for patch in manifest.get('entry_patches',[]):
-            assert remote.read(int(patch['entry'],16),5)==bytes.fromhex(patch['patched'])
+            assert remote.read(int(patch['entry'],16),len(bytes.fromhex(patch['patched'])))==bytes.fromhex(patch['patched'])
         remote.suspend();suspended=True
         base=remote.allocate();data,probe=build_probe(target,base,work);remote.write(base,data)
         context=base+0x8000

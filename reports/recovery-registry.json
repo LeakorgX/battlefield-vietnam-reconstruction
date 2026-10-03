@@ -1,0 +1,200 @@
+[
+  {
+    "symbol": "bfv_interpret",
+    "source": "bfv-native-code/src/native_ai.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009be180",
+      "server": "00774ff0"
+    }
+  },
+  {
+    "symbol": "bfv_bailout",
+    "source": "bfv-native-code/src/native_ai.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00984c20",
+      "server": "0072eef0"
+    }
+  },
+  {
+    "symbol": "bfv_collision",
+    "source": "bfv-native-code/src/native_collision.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009d4ba0",
+      "server": "0078a500"
+    }
+  },
+  {
+    "symbol": "bfv_collision_notify",
+    "source": "bfv-native-code/src/native_collision.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009d4b60",
+      "server": "0078a4c0"
+    }
+  },
+  {
+    "symbol": "bfv_collision_dispatch",
+    "source": "bfv-native-code/src/native_collision.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009d48b0",
+      "server": "0078a210"
+    }
+  },
+  {
+    "symbol": "bfv_line_distance_squared",
+    "source": "bfv-native-code/src/collision_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009d4640",
+      "server": "00789fa0"
+    }
+  },
+  {
+    "symbol": "bfv_collision_distance",
+    "source": "bfv-native-code/src/collision_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009d46d0",
+      "server": "0078a030"
+    }
+  },
+  {
+    "symbol": "bfv_collision_construct",
+    "source": "bfv-native-code/src/collision_events.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009dc3b0",
+      "server": "007ae550"
+    }
+  },
+  {
+    "symbol": "bfv_object_lookup",
+    "source": "bfv-native-code/src/collision_events.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00926af0",
+      "server": "006e8930"
+    }
+  },
+  {
+    "symbol": "bfv_event_interface",
+    "source": "bfv-native-code/src/collision_events.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0092afb0",
+      "server": "006e88b0"
+    }
+  },
+  {
+    "symbol": "bfv_bailout_curve",
+    "source": "bfv-native-code/src/numeric_curves.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009d7200",
+      "server": "0078c5f0"
+    }
+  },
+  {
+    "symbol": "bfv_bailout_score",
+    "source": "bfv-native-code/src/numeric_curves.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009d6b90",
+      "server": "0078bf80"
+    }
+  },
+  {
+    "symbol": "bfv_vector_copy",
+    "source": "bfv-native-code/src/word_vector.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a6ad10",
+      "server": "0041fbd0"
+    }
+  },
+  {
+    "symbol": "bfv_vector_fill",
+    "source": "bfv-native-code/src/word_vector.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004ef090",
+      "server": "005f83e0"
+    }
+  },
+  {
+    "symbol": "bfv_vector_shift",
+    "source": "bfv-native-code/src/word_vector.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a03770",
+      "server": "007901d0"
+    }
+  },
+  {
+    "symbol": "bfv_vector_fill_range",
+    "source": "bfv-native-code/src/word_vector.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006f7000",
+      "server": "00705df0"
+    }
+  },
+  {
+    "symbol": "bfv_vector_insert",
+    "source": "bfv-native-code/src/word_vector.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00428200",
+      "server": "004297c0"
+    }
+  },
+  {
+    "symbol": "bfv_artillery",
+    "source": "bfv-native-code/src/artillery.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009a13a0",
+      "server": "0074bb80"
+    }
+  },
+  {
+    "symbol": "bfv_artillery_component_test",
+    "source": "bfv-native-code/src/artillery.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009d8100",
+      "server": "0078c670"
+    }
+  },
+  {
+    "symbol": "bfv_target_history",
+    "source": "bfv-native-code/src/target_history.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0099f040",
+      "server": "00749820"
+    }
+  },
+  {
+    "symbol": "bfv_artillery_evaluate",
+    "source": "bfv-native-code/src/artillery.c",
+    "status": "partial",
+    "addresses": {
+      "client": "0099f2a0",
+      "server": "00749a80"
+    },
+    "implemented_stages": [
+      "cached-target validation",
+      "first-pass candidate filtering"
+    ],
+    "remaining_stages": [
+      "remaining candidate search/scoring",
+      "second-pass filtering",
+      "complete target-state/lifecycle integration"
+    ]
+  }
+]
