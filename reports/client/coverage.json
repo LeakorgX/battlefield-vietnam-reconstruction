@@ -1,0 +1,12 @@
+{
+  "binary_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "database_functions": 38657,
+  "thunks": 154,
+  "external_functions": 0,
+  "initialized_executable_bytes": 7608320,
+  "instruction_bytes": 7040021,
+  "instruction_bytes_outside_functions": 132234,
+  "nonpadding_instruction_bytes_outside_functions": 131706,
+  "executable_bytes_without_instructions": 568299,
+  "scope": "Database coverage only. Unclassified executable bytes may include padding, tables or missed code; this is not source reconstruction coverage."
+}

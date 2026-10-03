@@ -82,3 +82,19 @@ are intentionally not copied into public documentation.
 These identify the inspected binaries. The existing runtime tests used an
 installation with modified assets and a custom map; pristine vanilla equivalence
 has not yet been validated.
+
+## Complete known-function export pipeline
+
+With `uv` on PATH and JDK 21 configured for Ghidra:
+
+```powershell
+.\analysis\Run-Analysis.ps1 -GameDirectory 'D:\Games\Battlefield Vietnam' `
+  -GhidraHome 'D:\Tools\ghidra_12.1.4_PUBLIC' `
+  -ReferenceDirectory 'D:\BFV-local-research'
+```
+
+The pipeline saves inferred function candidates in local Ghidra projects. It
+reuses existing exports; remove or relocate a local export before explicitly
+requesting a fresh decompilation of that function. It does not reconstruct a
+standalone engine or validate candidate signatures. See ANALYSIS.md for the
+current counts, failed entries and coverage gaps.

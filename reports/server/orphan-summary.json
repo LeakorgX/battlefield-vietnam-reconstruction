@@ -1,0 +1,7 @@
+{
+  "candidates": 27,
+  "created_candidates": 27,
+  "unresolved": 0,
+  "absorbed": 0,
+  "scope": "Aligned decoded prologue candidates following terminal flow or padding; boundaries remain inferred."
+}

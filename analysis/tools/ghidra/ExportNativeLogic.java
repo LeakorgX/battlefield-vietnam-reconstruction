@@ -50,12 +50,14 @@ public class ExportNativeLogic extends GhidraScript {
         LinkedHashMap<Function, String> expanded = new LinkedHashMap<>(selected);
         for (Function f : selected.keySet()) {
             for (Function callee : f.getCalledFunctions(monitor)) {
-                if (!callee.isExternal() && !callee.isThunk()) expanded.putIfAbsent(callee, "direct-callee");
+                if (!callee.isExternal()) expanded.putIfAbsent(callee, "direct-callee");
             }
         }
         if (args.length > 2 && args[2].equals("all")) {
             for (Function f : currentProgram.getFunctionManager().getFunctions(true)) {
-                if (!f.isExternal() && !f.isThunk()) expanded.putIfAbsent(f, "native");
+                if (!f.isExternal()) expanded.putIfAbsent(f,
+                    f.isThunk() ? "thunk" : f.getName().startsWith("PTR_CANDIDATE_") ? "pointer-candidate" :
+                    f.getName().startsWith("ORPHAN_CANDIDATE_") ? "orphan-candidate" : "native");
             }
         }
         DecompInterface decompiler = new DecompInterface();
@@ -76,7 +78,8 @@ public class ExportNativeLogic extends GhidraScript {
                 String filename = f.getEntryPoint()+"_"+f.getName().replaceAll("[^A-Za-z0-9_]", "_");
                 Path source = folder.resolve(filename+".c");
                 boolean cached = Files.exists(source);
-                DecompileResults result = cached ? null : decompiler.decompileFunction(f, 20, monitor);
+                int timeout = args.length > 3 ? Integer.parseInt(args[3]) : 60;
+                DecompileResults result = cached ? null : decompiler.decompileFunction(f, timeout, monitor);
                 boolean ok = cached || result != null && result.decompileCompleted() && result.getDecompiledFunction() != null;
                 if (ok && !cached) {
                     String header = "/* Local binary analysis: " + currentProgram.getExecutableSHA256() + "\nEntry: " + f.getEntryPoint()+"\nClass/slot labels are evidence-based leads, not restored original method names. */\n\n";
