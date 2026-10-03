@@ -7,7 +7,7 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   11,857 scoped checks per target, 23,714 in total. Earlier builds also executed
+   12,289 scoped checks per target, 24,578 in total. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
@@ -25,6 +25,11 @@
   evaluation. They check generation handles, pattern rejection/reset, cache and
   flag writes, callback/vtable mutations, preserved registers, x87 state and
   selected rounding/precision modes. Candidate search remains native.
+- 432 target-history comparisons per target execute the real original tree
+  search and the reconstructed helper through its guarded entry jump. They cover
+  unsigned key boundaries, missing/existing records, timestamp initialization,
+  output-pointer semantics and callback mutations with controlled heap/insertion
+  services. Tree balancing and candidate decisions remain native.
 - 32 cached-bailout comparisons per target checking exact float32 bits.
 - 554 recomputed-bailout comparisons per target checking float32 return/cache bits,
   pattern flags, call ordering, group argument and stack cleanup. They cover

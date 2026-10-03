@@ -5,6 +5,7 @@ import ghidra.app.decompiler.*;
 import ghidra.program.model.listing.*;
 import ghidra.program.model.data.*;
 import ghidra.program.model.symbol.SourceType;
+import ghidra.program.model.address.AddressSet;
 import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
 
@@ -57,6 +58,33 @@ public class InspectArtilleryEvaluator extends GhidraScript {
         release.updateFunction("__cdecl", new ReturnParameterImpl(VoidDataType.dataType, currentProgram),
             Function.FunctionUpdateType.DYNAMIC_STORAGE_ALL_PARAMS, true, SourceType.USER_DEFINED,
             arg("allocation", pointer));
+        // Earlier false no-return analysis excluded two release continuations.
+        // The inspected interval ends at RET 0x14 before the next native function.
+        long before = evaluator.getBody().getNumAddresses();
+        var end = evaluator.getBody().getMaxAddress();
+        var last = currentProgram.getListing().getInstructionContaining(end);
+        if (last == null || !last.getMnemonicString().equals("RET") ||
+            last.getNumOperands()!=1 || last.getScalar(0).getUnsignedValue()!=20)
+            throw new Exception("Unexpected evaluator endpoint");
+        for (long call : client ? new long[]{0x99f45b,0x9a0f84} : new long[]{0x749c3b,0x74b764}) {
+            var instruction = currentProgram.getListing().getInstructionAt(toAddr(call));
+            if (instruction == null || !instruction.getMnemonicString().equals("CALL") ||
+                instruction.getDefaultFlows().length!=1 ||
+                !instruction.getDefaultFlows()[0].equals(release.getEntryPoint()))
+                throw new Exception("Unexpected release continuation");
+            instruction.setFlowOverride(FlowOverride.NONE);
+            instruction.clearFallThroughOverride();
+            var continuation = instruction.getAddress().add(instruction.getLength());
+            Function owner = getFunctionContaining(continuation);
+            if (owner!=null && !owner.equals(evaluator)) throw new Exception("Conflicting continuation owner");
+            if (getInstructionAt(continuation)==null && !disassemble(continuation)) throw new Exception("Cannot decode release continuation");
+        }
+        evaluator.setBody(new AddressSet(evaluator.getEntryPoint(),end));
+        long after = evaluator.getBody().getNumAddresses();
+        if (after != 8269 || after-before != 31) throw new Exception("Unexpected repaired body extent");
+        Files.writeString(out.resolve("artillery-body-recovery.tsv"),
+            "entry\tbytes_before\tbytes_after\trestored_bytes\n" + evaluator.getEntryPoint()
+            + "\t" + before + "\t" + after + "\t" + (after-before) + "\n", StandardCharsets.UTF_8);
         StringBuilder abi = new StringBuilder("entry\tparameter\tstorage\ttype\n");
         for (Function f : new Function[]{driver, evaluator, allocate, release}) {
             for (Parameter p : f.getParameters())

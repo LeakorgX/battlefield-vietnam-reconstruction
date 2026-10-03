@@ -85,3 +85,20 @@ native exports remain unverified research; their bodies are not published.
 The final build passed 23,714 complete-suite checks across both binaries and
 16 real Windows vector/exception executions. Candidate-search gameplay and
 complete artillery lifecycle remain unreconstructed and unverified.
+
+## Candidate target-history recovery
+
+Reconstructed the unsigned-key timestamp lookup used by both candidate passes.
+Existing timestamps are reused; missing timestamps allocate four bytes initialized
+to -10000 before native map insertion. The allocation is returned even when the
+insertion result reports a duplicate. Added a hash/byte-guarded function-entry jump
+and live jump validation. Heap allocation, insertion/balancing and candidate scoring
+remain native. Focused tests passed 432 original/recompiled cases per target.
+
+The local Ghidra diagnostic now restores 31 omitted continuation bytes after
+returning heap-release calls. Both evaluator bodies span the verified 8,269-byte
+interval; regenerated decompilation now includes stale-history erasure and cleanup
+continuation. These exports remain local, unverified research rather than source.
+
+The final build passed 24,578 full-suite comparisons across client/server and
+16 real Windows vector/exception executions, including loaded entry-jump checks.

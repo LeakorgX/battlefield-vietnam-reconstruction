@@ -2,9 +2,9 @@
   "target": "client",
   "input_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
   "output": "BfVietnam-editable.exe",
-  "output_sha256": "44b43314bdf121c2f66fa184d0cca985879e96f15ec80d826884443d8f0d3acc",
+  "output_sha256": "a70deec34509f623371351ffbcca4de6a75e444723c52979ddfdb1fdc202477a",
   "payload_address": "00e26000",
-  "payload_bytes": 7813,
+  "payload_bytes": 8041,
   "symbols": {
     "bfv_interpret": "00e26000",
     "bfv_bailout": "00e26320",
@@ -25,22 +25,24 @@
     "bfv_collision": "00e271e0",
     "bfv_bailout_curve": "00e27760",
     "bfv_bailout_score": "00e277a0",
-    "bfv_vector_catch_rethrow": "00e27800",
-    "bfv_vector_catch_free": "00e27810",
-    "bfv_vector_copy": "00e27880",
-    "bfv_vector_fill": "00e278b0",
-    "bfv_vector_shift": "00e278f0",
-    "bfv_vector_fill_range": "00e27910",
-    "bfv_vector_insert_body": "00e27930",
-    "bfv_vector_handler": "00e27bd0",
-    "bfv_vector_insert": "00e27be0",
-    "bfv_vector_info": "00e27da0",
-    "bfv_vehicle_calls": "00e27e6c",
-    "bfv_bailout_calls": "00e27e70",
-    "bfv_interpreter_calls": "00e27e74",
-    "bfv_artillery_evaluate_calls": "00e27e78",
-    "bfv_artillery_calls": "00e27e7c",
-    "bfv_collision_calls": "00e27e80"
+    "bfv_target_history": "00e277f0",
+    "bfv_vector_catch_rethrow": "00e278c0",
+    "bfv_vector_catch_free": "00e278d0",
+    "bfv_vector_copy": "00e27940",
+    "bfv_vector_fill": "00e27970",
+    "bfv_vector_shift": "00e279b0",
+    "bfv_vector_fill_range": "00e279d0",
+    "bfv_vector_insert_body": "00e279f0",
+    "bfv_vector_handler": "00e27c90",
+    "bfv_vector_insert": "00e27ca0",
+    "bfv_vector_info": "00e27e80",
+    "bfv_vehicle_calls": "00e27f4c",
+    "bfv_bailout_calls": "00e27f50",
+    "bfv_interpreter_calls": "00e27f54",
+    "bfv_artillery_evaluate_calls": "00e27f58",
+    "bfv_artillery_calls": "00e27f5c",
+    "bfv_collision_calls": "00e27f60",
+    "bfv_target_history_calls": "00e27f64"
   },
   "patches": [
     {
@@ -74,5 +76,14 @@
       "source": "bfv_artillery"
     }
   ],
-  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; remaining engine code/services are retained from the original image"
+  "entry_patches": [
+    {
+      "entry": "0099f040",
+      "original": "83ec105657",
+      "patched": "e9ab874800",
+      "replacement": "00e277f0",
+      "source": "bfv_target_history"
+    }
+  ],
+  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation and target-history lookup; remaining engine code/services are retained from the original image"
 }
