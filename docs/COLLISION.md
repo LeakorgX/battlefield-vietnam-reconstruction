@@ -75,20 +75,48 @@ Position vectors are copied after the timestamp callback, retaining its mutation
 | Event interface lookup | `0092afb0` | `006e88b0` |
 | Allocation service | `00412ee0` | `00404290` |
 | Event constructor | `009dc3b0` | `007ae550` |
-| Notification helper | `009d4b60` | `0078a4c0` |
+| Downstream collision dispatcher | `009d48b0` | `0078a210` |
 
 Object virtual methods and registry/global initialization also remain native.
 `tools/build.py` records the version-specific addresses and handle field offset.
 
+## Reconstructed notification helper
+
+`bfv_collision_notify` replaces the callback's call to client `009d4b60` / server
+`0078a4c0` with compiled C. The original helper entries remain intact. The inspected
+call graph lists this callback as their only known direct caller; it does not prove
+the absence of indirect references.
+It reads the source interface at `+4c`, then a state word at client `+1ec` / server
+`+1c0`. A flag word retains the state's upper 24 bits and replaces its low byte
+with the result of comparing the entire state word to 1. For example, state
+`0x12345601` yields flag `0x12345600`, while state 1 yields flag 1.
+
+The helper obtains the source position from virtual method `+34` and passes the
+registry member, component, position result, selector and flag word to the native
+dispatcher. That dispatcher consumes five stack arguments (20 bytes). The helper
+itself consumes four arguments (16 bytes).
+
+The selector and flag are pushed before the getter in the native instructions,
+but remain on the stack as arguments for the later dispatcher. The getter consumes
+no arguments. Treating those pushes as getter arguments would shift the dispatcher
+arguments and break stack cleanup. The state/flag calculation also precedes the
+getter, so a state change during that callback must not alter the forwarded flag.
+
 ## Verification and limits
 
-`collision_oracle.py` and `verify_collision.py` compare 118 controlled cases per
-binary. Tests record exact call order, receiver pointers, argument bytes, vectors,
+`collision_oracle.py` and `verify_collision.py` compare 126 callback cases and
+64 direct notification-helper cases per binary. The callback reference now executes
+the real original notification helper; the rebuilt callback uses reconstructed C.
+Both runs stub the downstream dispatcher. Tests record exact call order, receiver pointers, argument bytes, vectors,
 timestamp arguments, event-allocation side effects and record-counter wraparound.
 They check stack cleanup and cover absent inputs/lookup results, low-byte state
 predicates, allocation failure and callback mutations of vectors/vtable pointers
 and slots. Distinct sentinel values in the two possible handle fields catch
 accidentally sharing the client layout with the server.
+Direct helper cases vary state words and selectors, preserve the upper flag bits,
+and check callback state mutations, a zero-argument position getter, all five
+dispatcher argument words and 16-byte helper argument cleanup. Distinct sentinels
+also distinguish the two state-field offsets.
 
 These services are controlled stubs in both runs. The tests establish callback
 control flow and its observed service ABI, not correctness of the native services,

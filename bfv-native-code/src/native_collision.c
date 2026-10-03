@@ -16,7 +16,7 @@ typedef void (TC *collision_event)(void *, uint32_t, void *, uint32_t);
 typedef long double (TC *clock_value)(void *);
 typedef void *(TC *allocate_event)(void *, uint32_t, uint32_t, uint32_t);
 typedef void *(TC *construct_event)(void *, vector_bits, vector_bits, void *, uint32_t, float, float, uint32_t);
-typedef void (TC *notify_collision)(void *, void *, void *, void *, uint32_t);
+typedef void (TC *dispatch_collision)(void *, void *, void *, uint32_t, uint32_t, uint32_t);
 
 volatile uint32_t bfv_collision_calls;
 
@@ -37,6 +37,19 @@ static vector_bits copy_vector(uintptr_t address)
 {
     vector_bits result = {read32(address), read32(address + 4), read32(address + 8)};
     return result;
+}
+
+/* Native notification helper, previously 009d4b60 / 0078a4c0. The position
+ * getter takes no arguments: selector/flag pushes prepare the later dispatcher.
+ * SETE DL changes only the flag word's low byte; retain the remaining bits. */
+void TC bfv_collision_notify(void *handler, void *member, void *component,
+                             void *source, uint32_t selector)
+{
+    uintptr_t interface = read32((uintptr_t)source + 0x4c);
+    uint32_t state = read32(interface + BFV_COLLISION_NOTIFY_STATE_FIELD);
+    uint32_t flag_word = (state & 0xffffff00u) | (state == 1);
+    uint32_t position = get(source, 0x34);
+    ((dispatch_collision)BFV_COLLISION_DISPATCH)(handler, member, component, position, selector, flag_word);
 }
 
 void TC bfv_collision(void *handler, void *source, void *other, uint32_t payload)
@@ -60,7 +73,7 @@ void TC bfv_collision(void *handler, void *source, void *other, uint32_t payload
     if (!source_component) return;
     uint32_t event_selector = 0xffffffffu;
     if (!other) {
-        ((notify_collision)BFV_COLLISION_NOTIFY)(handler, member, source_component, source, event_selector);
+        bfv_collision_notify(handler, member, source_component, source, event_selector);
         return;
     }
 
@@ -113,5 +126,5 @@ void TC bfv_collision(void *handler, void *source, void *other, uint32_t payload
         uint32_t field = read32((uintptr_t)source + 0x48);
         ((collision_event)method(source_actor, 0x148))(source_actor, field, other, payload);
     }
-    ((notify_collision)BFV_COLLISION_NOTIFY)(handler, member, source_component, source, event_selector);
+    bfv_collision_notify(handler, member, source_component, source, event_selector);
 }

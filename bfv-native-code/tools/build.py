@@ -26,6 +26,7 @@ TARGETS = {
         collision_pool_entry=0x926af0, collision_event_interface=0x92afb0,
         collision_allocate=0x412ee0, collision_allocator=0xe0f7c0, collision_alloc_source=0xb44284,
         collision_construct=0x9dc3b0, collision_notify=0x9d4b60,
+        collision_dispatch=0x9d48b0, collision_notify_state_field=0x1ec,
         patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle'),(0xbf8c64,0x9d4ba0,'bfv_collision')]),
     'server': dict(file='bfvietnam_w32ded.exe', output='bfvietnam_w32ded-editable.exe',
         sha='86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d',
@@ -41,6 +42,7 @@ TARGETS = {
         collision_pool_entry=0x6e8930, collision_event_interface=0x6e88b0,
         collision_allocate=0x404290, collision_allocator=0xc33388, collision_alloc_source=0x807375,
         collision_construct=0x7ae550, collision_notify=0x78a4c0,
+        collision_dispatch=0x78a210, collision_notify_state_field=0x1c0,
         patches=[(0x87681c,0x774ff0,'bfv_interpret'),(0x873d88,0x72eef0,'bfv_bailout'),(0x873e28,0x72f9e0,'bfv_vehicle'),(0x8775cc,0x78a500,'bfv_collision')]),
 }
 

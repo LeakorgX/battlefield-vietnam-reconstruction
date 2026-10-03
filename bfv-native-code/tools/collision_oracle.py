@@ -29,6 +29,8 @@ def run_collision(image, pe, entry, spec, case):
     w32(source+0x4c, source_iface); w32(other+0x4c, other_iface)
     w32(source+0x164, 0x76543210); w32(source+0x15c, 0x76543210)
     w32(source+spec['collision_handle_field'], 0x1234); w32(source+0x48, 0x11223344)
+    w32(source_iface+0x1ec,0x76543210); w32(source_iface+0x1c0,0x76543210)
+    w32(source_iface+spec['collision_notify_state_field'],case.get('notify_state',1))
     w32(source_view+0x5c, source_comp if case.get('source_component',True) else 0)
     w32(other_view+0x5c, other_comp if case.get('other_component',True) else 0)
     w32(spec['collision_interface_id'], 0x55667788)
@@ -76,15 +78,19 @@ def run_collision(image, pe, entry, spec, case):
     stub('event-interface',event_iface if case.get('event_interface',True) else 0,4,address=spec['collision_event_interface'])
     stub('allocate',buffer if case.get('allocate',True) else 0,12,address=spec['collision_allocate'])
     stub('construct',buffer,44,address=spec['collision_construct'])
-    stub('notify',0,16,address=spec['collision_notify'])
+    stub('dispatch',0,20,address=spec['collision_dispatch'])
     # Mutation cases distinguish saved vtable pointers from early method reads.
     alternate_source = stub('resolve-source-updated',0x4444,4)
     alternate_other = stub('resolve-other-updated',0x5555,4)
     alternate_time = stub('update-time-updated',0,4)
     m.mem_write(stop,b'\x90')
     esp = STACK+0x8000
-    m.mem_write(esp,struct.pack('<4I',stop,source if case.get('source',True) else 0,
-                              other if case.get('other',True) else 0,0x55aa77ff))
+    if case.get('notify_only',False):
+        frame=struct.pack('<5I',stop,member,source_comp,source,case['selector'])
+    else:
+        frame=struct.pack('<4I',stop,source if case.get('source',True) else 0,
+                          other if case.get('other',True) else 0,0x55aa77ff)
+    m.mem_write(esp,frame)
     m.reg_write(UC_X86_REG_ESP,esp); m.reg_write(UC_X86_REG_ECX,handler)
     returned, clock_calls = [], []
     def hook(uc,address,size,data):
@@ -102,6 +108,8 @@ def run_collision(image, pe, entry, spec, case):
             m.mem_write(float_cell,struct.pack('<f',0.125 if len(clock_calls)==1 else 0.375))
             if len(clock_calls)==2: w32(source_position,0xdeadbeef)
             if case.get('mutate',False): w32(vtables[pool_entry]+0xc,alternate_time)
+        if name == 'source-position' and case.get('notify_only',False) and case.get('mutate',False):
+            w32(source_iface+spec['collision_notify_state_field'],0x98765432)
         if case.get('mutate',False):
             if name == 'other-selector':
                 w32(vtables[source_comp]+0x5c,alternate_source)
@@ -118,10 +126,16 @@ def run_collision(image, pe, entry, spec, case):
             assert args[12:24] == bytes(m.mem_read(source_position,12))
             assert struct.unpack('<4I',args[28:]) == (1,0x3ec00000,0x3f800000,0)
             m.mem_write(buffer,b'\xa5'*0x38)
-        if name == 'notify': assert this == handler
+        if name == 'dispatch':
+            assert this == handler
+            state=case.get('notify_state',1)
+            member_arg,component_arg,position_arg,selector,flag_word=struct.unpack('<5I',args)
+            assert (member_arg,component_arg,position_arg)==(member,source_comp,source_position)
+            assert flag_word==(state & 0xffffff00)|(state==1)
+            if case.get('notify_only',False): assert selector==case['selector']
     m.hook_add(UC_HOOK_CODE,hook)
     m.emu_start(entry,stop+1,timeout=1_000_000,count=10000)
-    assert returned and m.reg_read(UC_X86_REG_ESP)==esp+16
+    assert returned and m.reg_read(UC_X86_REG_ESP)==esp+len(frame)
     return dict(trace=trace,counter=struct.unpack('<I',m.mem_read(record+0x30,4))[0],
                 event=bytes(m.mem_read(buffer,0x38)).hex())
 
@@ -140,3 +154,8 @@ def collision_cases():
                                other_component=other_component,record=record)
     for event_interface,allocate,mutate in itertools.product((False,True),repeat=3):
         yield dict(event_interface=event_interface,allocate=allocate,mutate=mutate)
+    for state in (0,1,2,255,256,257,0x12345601,0xffffffff):
+        yield {'other':False,'notify_state':state}
+    for state,selector,mutate in itertools.product((0,1,2,255,256,257,0x12345601,0xffffffff),
+                                                   (0,1,0x12345678,0xffffffff),(False,True)):
+        yield dict(notify_only=True,notify_state=state,selector=selector,mutate=mutate)

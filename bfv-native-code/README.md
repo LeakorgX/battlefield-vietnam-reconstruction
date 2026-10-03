@@ -25,7 +25,8 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   Bailout recomputation, cache writes and pattern flags are also implemented here;
   its two numerical helpers are in `src/numeric_curves.c`. See [the recovered interface](../docs/BAILOUT.md).
 - `src/native_collision.c`: AI collision-callback control flow, event argument
-  assembly, actor decisions and record-counter updates. Registry/event services
+  assembly, actor decisions, record-counter updates and notification argument
+  preparation. The downstream dispatcher and registry/event services
   remain native. See [the recovered interface](../docs/COLLISION.md).
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
@@ -52,7 +53,7 @@ source. It provides a working compile-and-run route for editing the listed logic
 Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases,
 554 bailout recomputation cases (including cache/flag pointer changes during callbacks),
 3,840 numerical-helper comparisons of the full 80-bit x87 return,
-118 collision-callback comparisons with controlled native services, and
+126 collision-callback and 64 notification-helper comparisons with controlled services, and
 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
 the vehicle wrapper tests forwarding and returned bits while native scoring remains
 intact. Reports are in `build/client/verification.json` and
