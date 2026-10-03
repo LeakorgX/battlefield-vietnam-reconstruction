@@ -2,9 +2,9 @@
   "target": "client",
   "input_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
   "output": "BfVietnam-editable.exe",
-  "output_sha256": "82142da463636f7a62b3b5f8b105075a62cd7f269ca36e07cd4680bcb097b46b",
+  "output_sha256": "90ae924fdc72aa0e4c4caab50c429238116f27c8032a916375aa6a910b755ba7",
   "payload_address": "00e26000",
-  "payload_bytes": 10349,
+  "payload_bytes": 21229,
   "symbols": {
     "bfv_interpret": "00e26000",
     "bfv_bailout": "00e26320",
@@ -25,35 +25,576 @@
     "bfv_collision_construct": "00e27030",
     "bfv_line_distance_squared": "00e27140",
     "bfv_collision_distance": "00e27230",
-    "bfv_collision_dispatch": "00e27470",
-    "bfv_collision_notify": "00e27840",
-    "bfv_collision": "00e278a0",
-    "bfv_bailout_curve": "00e27e20",
-    "bfv_bailout_score": "00e27e60",
-    "bfv_float_minimum": "00e27eb0",
-    "bfv_float_maximum": "00e27f00",
-    "bfv_float_clamp": "00e27f50",
-    "bfv_vector_length": "00e27fd0",
-    "bfv_vector_divide": "00e28010",
-    "bfv_target_history": "00e28040",
-    "bfv_vector_catch_rethrow": "00e28100",
-    "bfv_vector_catch_free": "00e28110",
-    "bfv_vector_copy": "00e28180",
-    "bfv_vector_fill": "00e281b0",
-    "bfv_vector_shift": "00e281f0",
-    "bfv_vector_fill_range": "00e28210",
-    "bfv_vector_insert_body": "00e28230",
-    "bfv_vector_handler": "00e284d0",
-    "bfv_vector_insert": "00e284e0",
-    "bfv_vector_info": "00e28780",
-    "bfv_vehicle_calls": "00e2884c",
-    "bfv_bailout_calls": "00e28850",
-    "bfv_interpreter_calls": "00e28854",
-    "bfv_artillery_evaluate_calls": "00e28858",
-    "bfv_artillery_calls": "00e2885c",
-    "bfv_artillery_filter_calls": "00e28860",
-    "bfv_collision_calls": "00e28864",
-    "bfv_target_history_calls": "00e28868"
+    "bfv_client_return_word_004236d0": "00e27470",
+    "bfv_client_return_word_00516fd0": "00e27480",
+    "bfv_client_return_word_005170a0": "00e27490",
+    "bfv_client_return_word_005172a0": "00e274a0",
+    "bfv_client_return_word_005172d0": "00e274b0",
+    "bfv_client_return_word_005230c0": "00e274c0",
+    "bfv_client_return_word_0052adb0": "00e274d0",
+    "bfv_client_return_word_0052ae20": "00e274e0",
+    "bfv_client_return_word_0052ae90": "00e274f0",
+    "bfv_client_return_word_0052afe0": "00e27500",
+    "bfv_client_return_word_0052b090": "00e27510",
+    "bfv_client_return_word_0052b100": "00e27520",
+    "bfv_client_return_word_0052b170": "00e27530",
+    "bfv_client_return_word_0052b1e0": "00e27540",
+    "bfv_client_return_word_0052b250": "00e27550",
+    "bfv_client_return_word_0052b2c0": "00e27560",
+    "bfv_client_return_word_0052b570": "00e27570",
+    "bfv_client_return_word_0052b5e0": "00e27580",
+    "bfv_client_return_word_0052b650": "00e27590",
+    "bfv_client_return_word_0052b6c0": "00e275a0",
+    "bfv_client_return_word_0052b730": "00e275b0",
+    "bfv_client_return_word_0052b7a0": "00e275c0",
+    "bfv_client_return_word_0052b810": "00e275d0",
+    "bfv_client_return_word_0052b880": "00e275e0",
+    "bfv_client_return_word_0052b8f0": "00e275f0",
+    "bfv_client_return_word_0052b960": "00e27600",
+    "bfv_client_return_word_0052b9d0": "00e27610",
+    "bfv_client_return_word_0052ba40": "00e27620",
+    "bfv_client_return_word_0052bab0": "00e27630",
+    "bfv_client_return_word_0052bb20": "00e27640",
+    "bfv_client_return_word_0052bb90": "00e27650",
+    "bfv_client_return_word_0052bc00": "00e27660",
+    "bfv_client_return_word_0052bc70": "00e27670",
+    "bfv_client_return_word_0052bce0": "00e27680",
+    "bfv_client_return_word_0052bd50": "00e27690",
+    "bfv_client_return_word_0052bdc0": "00e276a0",
+    "bfv_client_return_word_0052be90": "00e276b0",
+    "bfv_client_return_word_0052bf00": "00e276c0",
+    "bfv_client_return_word_0052bf80": "00e276d0",
+    "bfv_client_return_word_0052bf90": "00e276e0",
+    "bfv_client_return_word_0052bfa0": "00e276f0",
+    "bfv_client_return_word_0052c9f0": "00e27700",
+    "bfv_client_return_word_0052ca00": "00e27710",
+    "bfv_client_return_word_0052ca10": "00e27720",
+    "bfv_client_return_word_0052ca20": "00e27730",
+    "bfv_client_return_word_0052ca30": "00e27740",
+    "bfv_client_return_word_0052ca40": "00e27750",
+    "bfv_client_return_word_0052ca50": "00e27760",
+    "bfv_client_return_word_0052ca60": "00e27770",
+    "bfv_client_return_word_0052ca70": "00e27780",
+    "bfv_client_return_word_0052ca80": "00e27790",
+    "bfv_client_return_word_0052ca90": "00e277a0",
+    "bfv_client_return_word_0052caa0": "00e277b0",
+    "bfv_client_return_word_0052cab0": "00e277c0",
+    "bfv_client_return_word_0052cac0": "00e277d0",
+    "bfv_client_return_word_0052cad0": "00e277e0",
+    "bfv_client_return_word_0052cae0": "00e277f0",
+    "bfv_client_return_word_0052caf0": "00e27800",
+    "bfv_client_return_word_0052cb00": "00e27810",
+    "bfv_client_return_word_0052cb10": "00e27820",
+    "bfv_client_return_word_0052cb20": "00e27830",
+    "bfv_client_return_word_0052cb30": "00e27840",
+    "bfv_client_return_word_0052cb40": "00e27850",
+    "bfv_client_return_word_0052cb50": "00e27860",
+    "bfv_client_return_word_0052cb60": "00e27870",
+    "bfv_client_return_word_0052cb70": "00e27880",
+    "bfv_client_return_word_0052cb80": "00e27890",
+    "bfv_client_return_word_0052cb90": "00e278a0",
+    "bfv_client_return_word_0052cba0": "00e278b0",
+    "bfv_client_return_word_0052cbb0": "00e278c0",
+    "bfv_client_return_word_0052cbc0": "00e278d0",
+    "bfv_client_return_word_0052cbd0": "00e278e0",
+    "bfv_client_return_word_0052cbe0": "00e278f0",
+    "bfv_client_return_word_0052cbf0": "00e27900",
+    "bfv_client_return_word_0052cc00": "00e27910",
+    "bfv_client_return_word_0052cc10": "00e27920",
+    "bfv_client_return_word_0052cc20": "00e27930",
+    "bfv_client_return_word_0052cc30": "00e27940",
+    "bfv_client_return_word_0052cc40": "00e27950",
+    "bfv_client_return_word_0052cc50": "00e27960",
+    "bfv_client_return_word_0052cc60": "00e27970",
+    "bfv_client_return_word_0052cc70": "00e27980",
+    "bfv_client_return_word_0052cc80": "00e27990",
+    "bfv_client_return_word_0052cc90": "00e279a0",
+    "bfv_client_return_word_0052cca0": "00e279b0",
+    "bfv_client_return_word_0052ccb0": "00e279c0",
+    "bfv_client_return_word_0052ccc0": "00e279d0",
+    "bfv_client_return_word_0052ccd0": "00e279e0",
+    "bfv_client_return_word_0052cce0": "00e279f0",
+    "bfv_client_return_word_0052ccf0": "00e27a00",
+    "bfv_client_return_word_0052cd00": "00e27a10",
+    "bfv_client_return_word_0052cd10": "00e27a20",
+    "bfv_client_return_word_0052cd20": "00e27a30",
+    "bfv_client_return_word_0052cd30": "00e27a40",
+    "bfv_client_return_word_0052cd40": "00e27a50",
+    "bfv_client_return_word_0052cd50": "00e27a60",
+    "bfv_client_return_word_0052cd60": "00e27a70",
+    "bfv_client_return_word_0052cd70": "00e27a80",
+    "bfv_client_return_word_0052cd80": "00e27a90",
+    "bfv_client_return_word_0052cd90": "00e27aa0",
+    "bfv_client_return_word_0052cda0": "00e27ab0",
+    "bfv_client_return_word_0052cdb0": "00e27ac0",
+    "bfv_client_return_word_0052cdc0": "00e27ad0",
+    "bfv_client_return_word_0052cdd0": "00e27ae0",
+    "bfv_client_return_word_0052cde0": "00e27af0",
+    "bfv_client_return_word_0052cdf0": "00e27b00",
+    "bfv_client_return_word_0052ce00": "00e27b10",
+    "bfv_client_return_word_0052ce10": "00e27b20",
+    "bfv_client_return_word_0052d0a0": "00e27b30",
+    "bfv_client_return_word_0052d0e0": "00e27b40",
+    "bfv_client_return_word_0052d120": "00e27b50",
+    "bfv_client_return_word_0052d180": "00e27b60",
+    "bfv_client_return_word_0052d1c0": "00e27b70",
+    "bfv_client_return_word_0052d200": "00e27b80",
+    "bfv_client_return_word_0052d270": "00e27b90",
+    "bfv_client_return_word_0052d2b0": "00e27ba0",
+    "bfv_client_return_word_0052d4d0": "00e27bb0",
+    "bfv_client_return_word_0052d5a0": "00e27bc0",
+    "bfv_client_return_word_0052d5e0": "00e27bd0",
+    "bfv_client_return_word_0052d620": "00e27be0",
+    "bfv_client_return_word_0052d660": "00e27bf0",
+    "bfv_client_return_word_0052d6a0": "00e27c00",
+    "bfv_client_return_word_0052d6e0": "00e27c10",
+    "bfv_client_return_word_0052d720": "00e27c20",
+    "bfv_client_return_word_0052d760": "00e27c30",
+    "bfv_client_return_word_0052d800": "00e27c40",
+    "bfv_client_return_word_0052d870": "00e27c50",
+    "bfv_client_return_word_0052d8b0": "00e27c60",
+    "bfv_client_return_word_0052dc80": "00e27c70",
+    "bfv_client_return_word_0052dc90": "00e27c80",
+    "bfv_client_return_word_0052dd00": "00e27c90",
+    "bfv_client_return_word_0052dd10": "00e27ca0",
+    "bfv_client_return_word_0052dde0": "00e27cb0",
+    "bfv_client_return_word_0052de80": "00e27cc0",
+    "bfv_client_return_word_0052f180": "00e27cd0",
+    "bfv_client_return_word_0052f190": "00e27ce0",
+    "bfv_client_return_word_0052f260": "00e27cf0",
+    "bfv_client_return_word_0053e4f0": "00e27d00",
+    "bfv_client_return_word_0053e560": "00e27d10",
+    "bfv_client_return_word_0053e5d0": "00e27d20",
+    "bfv_client_return_word_0053e640": "00e27d30",
+    "bfv_client_return_word_0053e6b0": "00e27d40",
+    "bfv_client_return_word_0053e720": "00e27d50",
+    "bfv_client_return_word_0053e790": "00e27d60",
+    "bfv_client_return_word_0053e800": "00e27d70",
+    "bfv_client_return_word_0053e870": "00e27d80",
+    "bfv_client_return_word_0053e8b0": "00e27d90",
+    "bfv_client_return_word_0053e8f0": "00e27da0",
+    "bfv_client_return_word_0053e930": "00e27db0",
+    "bfv_client_return_word_0053e970": "00e27dc0",
+    "bfv_client_return_word_0053e9b0": "00e27dd0",
+    "bfv_client_return_word_0053e9f0": "00e27de0",
+    "bfv_client_return_word_0053eaa0": "00e27df0",
+    "bfv_client_return_word_0053ed90": "00e27e00",
+    "bfv_client_return_word_0053ee80": "00e27e10",
+    "bfv_client_return_word_00554080": "00e27e20",
+    "bfv_client_return_word_005567d0": "00e27e30",
+    "bfv_client_return_word_005576e0": "00e27e40",
+    "bfv_client_return_word_00559510": "00e27e50",
+    "bfv_client_return_word_00559950": "00e27e60",
+    "bfv_client_return_word_0055b750": "00e27e70",
+    "bfv_client_return_word_0055d750": "00e27e80",
+    "bfv_client_return_word_00560a90": "00e27e90",
+    "bfv_client_return_word_00560cf0": "00e27ea0",
+    "bfv_client_return_word_00560f30": "00e27eb0",
+    "bfv_client_return_word_005636f0": "00e27ec0",
+    "bfv_client_return_word_005651b0": "00e27ed0",
+    "bfv_client_return_word_005660f0": "00e27ee0",
+    "bfv_client_return_word_00566570": "00e27ef0",
+    "bfv_client_return_word_00568230": "00e27f00",
+    "bfv_client_return_word_005697f0": "00e27f10",
+    "bfv_client_return_word_0056fb40": "00e27f20",
+    "bfv_client_return_word_005922a0": "00e27f30",
+    "bfv_client_return_word_00592310": "00e27f40",
+    "bfv_client_return_word_00592380": "00e27f50",
+    "bfv_client_return_word_005923f0": "00e27f60",
+    "bfv_client_return_word_00592460": "00e27f70",
+    "bfv_client_return_word_005924d0": "00e27f80",
+    "bfv_client_return_word_00592540": "00e27f90",
+    "bfv_client_return_word_005925b0": "00e27fa0",
+    "bfv_client_return_word_00592620": "00e27fb0",
+    "bfv_client_return_word_00592690": "00e27fc0",
+    "bfv_client_return_word_005927a0": "00e27fd0",
+    "bfv_client_return_word_00592920": "00e27fe0",
+    "bfv_client_return_word_00592960": "00e27ff0",
+    "bfv_client_return_word_005929a0": "00e28000",
+    "bfv_client_return_word_005929e0": "00e28010",
+    "bfv_client_return_word_00592a20": "00e28020",
+    "bfv_client_return_word_00592a60": "00e28030",
+    "bfv_client_return_word_00592aa0": "00e28040",
+    "bfv_client_return_word_00592ae0": "00e28050",
+    "bfv_client_return_word_00592b20": "00e28060",
+    "bfv_client_return_word_00592b60": "00e28070",
+    "bfv_client_return_word_00592ba0": "00e28080",
+    "bfv_client_return_word_00592c80": "00e28090",
+    "bfv_client_return_word_00592c90": "00e280a0",
+    "bfv_client_return_word_00592d30": "00e280b0",
+    "bfv_client_return_word_00592d40": "00e280c0",
+    "bfv_client_return_word_005ac3f0": "00e280d0",
+    "bfv_client_return_word_005ac4c0": "00e280e0",
+    "bfv_client_return_word_005ac950": "00e280f0",
+    "bfv_client_return_word_005acf50": "00e28100",
+    "bfv_client_return_word_005ad5f0": "00e28110",
+    "bfv_client_return_word_005adb10": "00e28120",
+    "bfv_client_return_word_005adba0": "00e28130",
+    "bfv_client_return_word_005ae080": "00e28140",
+    "bfv_client_return_word_005ae190": "00e28150",
+    "bfv_client_return_word_005ae790": "00e28160",
+    "bfv_client_return_word_005d2e80": "00e28170",
+    "bfv_client_return_word_0069b8e0": "00e28180",
+    "bfv_client_return_word_0069b950": "00e28190",
+    "bfv_client_return_word_0069b9c0": "00e281a0",
+    "bfv_client_return_word_0069ba60": "00e281b0",
+    "bfv_client_return_word_0069baa0": "00e281c0",
+    "bfv_client_return_word_0069bae0": "00e281d0",
+    "bfv_client_return_word_006a9be0": "00e281e0",
+    "bfv_client_return_word_006a9c50": "00e281f0",
+    "bfv_client_return_word_006a9cc0": "00e28200",
+    "bfv_client_return_word_006a9d30": "00e28210",
+    "bfv_client_return_word_006a9da0": "00e28220",
+    "bfv_client_return_word_006aa050": "00e28230",
+    "bfv_client_return_word_006aa3d0": "00e28240",
+    "bfv_client_return_word_006aa3e0": "00e28250",
+    "bfv_client_return_word_006aa3f0": "00e28260",
+    "bfv_client_return_word_006aa400": "00e28270",
+    "bfv_client_return_word_006aa410": "00e28280",
+    "bfv_client_return_word_006aa420": "00e28290",
+    "bfv_client_return_word_006aa430": "00e282a0",
+    "bfv_client_return_word_006aa440": "00e282b0",
+    "bfv_client_return_word_006aa450": "00e282c0",
+    "bfv_client_return_word_006aa460": "00e282d0",
+    "bfv_client_return_word_006aa470": "00e282e0",
+    "bfv_client_return_word_006aa480": "00e282f0",
+    "bfv_client_return_word_006aa490": "00e28300",
+    "bfv_client_return_word_006aa4a0": "00e28310",
+    "bfv_client_return_word_006aa4b0": "00e28320",
+    "bfv_client_return_word_006aa4f0": "00e28330",
+    "bfv_client_return_word_006aa530": "00e28340",
+    "bfv_client_return_word_006aa570": "00e28350",
+    "bfv_client_return_word_006aa5b0": "00e28360",
+    "bfv_client_return_word_006aa5f0": "00e28370",
+    "bfv_client_return_word_006aa630": "00e28380",
+    "bfv_client_return_word_006aa670": "00e28390",
+    "bfv_client_return_word_006aa6b0": "00e283a0",
+    "bfv_client_return_word_006aa750": "00e283b0",
+    "bfv_client_return_word_006b5cb0": "00e283c0",
+    "bfv_client_return_word_006b5e40": "00e283d0",
+    "bfv_client_return_word_006b5eb0": "00e283e0",
+    "bfv_client_return_word_006b5f20": "00e283f0",
+    "bfv_client_return_word_006b5f90": "00e28400",
+    "bfv_client_return_word_006b6000": "00e28410",
+    "bfv_client_return_word_006b6160": "00e28420",
+    "bfv_client_return_word_006b6170": "00e28430",
+    "bfv_client_return_word_006b6180": "00e28440",
+    "bfv_client_return_word_006b6190": "00e28450",
+    "bfv_client_return_word_006b61a0": "00e28460",
+    "bfv_client_return_word_006b65b0": "00e28470",
+    "bfv_client_return_word_006b6690": "00e28480",
+    "bfv_client_return_word_006b6760": "00e28490",
+    "bfv_client_return_word_006b6b80": "00e284a0",
+    "bfv_client_return_word_006becf0": "00e284b0",
+    "bfv_client_return_word_006bed60": "00e284c0",
+    "bfv_client_return_word_006bedd0": "00e284d0",
+    "bfv_client_return_word_006bee40": "00e284e0",
+    "bfv_client_return_word_006beeb0": "00e284f0",
+    "bfv_client_return_word_006beff0": "00e28500",
+    "bfv_client_return_word_006bf000": "00e28510",
+    "bfv_client_return_word_006bf010": "00e28520",
+    "bfv_client_return_word_006bf020": "00e28530",
+    "bfv_client_return_word_006bf030": "00e28540",
+    "bfv_client_return_word_006c3270": "00e28550",
+    "bfv_client_return_word_006c5430": "00e28560",
+    "bfv_client_return_word_006c72d0": "00e28570",
+    "bfv_client_return_word_006d7460": "00e28580",
+    "bfv_client_return_word_006d74d0": "00e28590",
+    "bfv_client_return_word_006d7540": "00e285a0",
+    "bfv_client_return_word_006d75b0": "00e285b0",
+    "bfv_client_return_word_006d7620": "00e285c0",
+    "bfv_client_return_word_006d7690": "00e285d0",
+    "bfv_client_return_word_006d7840": "00e285e0",
+    "bfv_client_return_word_006d7880": "00e285f0",
+    "bfv_client_return_word_006d78c0": "00e28600",
+    "bfv_client_return_word_006d7900": "00e28610",
+    "bfv_client_return_word_006d7940": "00e28620",
+    "bfv_client_return_word_006d7980": "00e28630",
+    "bfv_client_return_word_006d7af0": "00e28640",
+    "bfv_client_return_word_006dc770": "00e28650",
+    "bfv_client_return_word_006dc840": "00e28660",
+    "bfv_client_return_word_006dc8b0": "00e28670",
+    "bfv_client_return_word_006dc920": "00e28680",
+    "bfv_client_return_word_006dc990": "00e28690",
+    "bfv_client_return_word_006dca00": "00e286a0",
+    "bfv_client_return_word_006dca70": "00e286b0",
+    "bfv_client_return_word_006dcae0": "00e286c0",
+    "bfv_client_return_word_006dcb50": "00e286d0",
+    "bfv_client_return_word_006dcbc0": "00e286e0",
+    "bfv_client_return_word_006dcc30": "00e286f0",
+    "bfv_client_return_word_006dcca0": "00e28700",
+    "bfv_client_return_word_006dcd10": "00e28710",
+    "bfv_client_return_word_006dd250": "00e28720",
+    "bfv_client_return_word_006dd260": "00e28730",
+    "bfv_client_return_word_006dd270": "00e28740",
+    "bfv_client_return_word_006dd280": "00e28750",
+    "bfv_client_return_word_006dd290": "00e28760",
+    "bfv_client_return_word_006dd2a0": "00e28770",
+    "bfv_client_return_word_006dd2c0": "00e28780",
+    "bfv_client_return_word_006dd300": "00e28790",
+    "bfv_client_return_word_006dd340": "00e287a0",
+    "bfv_client_return_word_006dd380": "00e287b0",
+    "bfv_client_return_word_006dd3c0": "00e287c0",
+    "bfv_client_return_word_006dd400": "00e287d0",
+    "bfv_client_return_word_006dd440": "00e287e0",
+    "bfv_client_return_word_006dd480": "00e287f0",
+    "bfv_client_return_word_006dd4c0": "00e28800",
+    "bfv_client_return_word_006dd500": "00e28810",
+    "bfv_client_return_word_006dd540": "00e28820",
+    "bfv_client_return_word_006dd580": "00e28830",
+    "bfv_client_return_word_006dd5c0": "00e28840",
+    "bfv_client_return_word_006dd600": "00e28850",
+    "bfv_client_return_word_006dd640": "00e28860",
+    "bfv_client_return_word_006dd680": "00e28870",
+    "bfv_client_return_word_006dd6c0": "00e28880",
+    "bfv_client_return_word_006dd700": "00e28890",
+    "bfv_client_return_word_006dd740": "00e288a0",
+    "bfv_client_return_word_006eab40": "00e288b0",
+    "bfv_client_return_word_00727110": "00e288c0",
+    "bfv_client_return_word_00727180": "00e288d0",
+    "bfv_client_return_word_007271f0": "00e288e0",
+    "bfv_client_return_word_00727260": "00e288f0",
+    "bfv_client_return_word_007272d0": "00e28900",
+    "bfv_client_return_word_007273d0": "00e28910",
+    "bfv_client_return_word_00727410": "00e28920",
+    "bfv_client_return_word_00727450": "00e28930",
+    "bfv_client_return_word_00727490": "00e28940",
+    "bfv_client_return_word_007274d0": "00e28950",
+    "bfv_client_return_word_00727600": "00e28960",
+    "bfv_client_return_word_00727610": "00e28970",
+    "bfv_client_return_word_0073b570": "00e28980",
+    "bfv_client_return_word_0073b5e0": "00e28990",
+    "bfv_client_return_word_0073b650": "00e289a0",
+    "bfv_client_return_word_0073b6c0": "00e289b0",
+    "bfv_client_return_word_0073b870": "00e289c0",
+    "bfv_client_return_word_0073b890": "00e289d0",
+    "bfv_client_return_word_0073b8d0": "00e289e0",
+    "bfv_client_return_word_0073b910": "00e289f0",
+    "bfv_client_return_word_0073b950": "00e28a00",
+    "bfv_client_return_word_0073b990": "00e28a10",
+    "bfv_client_return_word_0074ae90": "00e28a20",
+    "bfv_client_return_word_0074afc0": "00e28a30",
+    "bfv_client_return_word_0074afd0": "00e28a40",
+    "bfv_client_return_word_0074afe0": "00e28a50",
+    "bfv_client_return_word_0074aff0": "00e28a60",
+    "bfv_client_return_word_0074b040": "00e28a70",
+    "bfv_client_return_word_00750600": "00e28a80",
+    "bfv_client_return_word_007506b0": "00e28a90",
+    "bfv_client_return_word_0076b3e0": "00e28aa0",
+    "bfv_client_return_word_00779c90": "00e28ab0",
+    "bfv_client_return_word_00779d00": "00e28ac0",
+    "bfv_client_return_word_00779d70": "00e28ad0",
+    "bfv_client_return_word_00779e30": "00e28ae0",
+    "bfv_client_return_word_00779ee0": "00e28af0",
+    "bfv_client_return_word_00779f50": "00e28b00",
+    "bfv_client_return_word_00779fc0": "00e28b10",
+    "bfv_client_return_word_007816e0": "00e28b20",
+    "bfv_client_return_word_007816f0": "00e28b30",
+    "bfv_client_return_word_007817a0": "00e28b40",
+    "bfv_client_return_word_00781810": "00e28b50",
+    "bfv_client_return_word_00783180": "00e28b60",
+    "bfv_client_return_word_00783190": "00e28b70",
+    "bfv_client_return_word_0079f350": "00e28b80",
+    "bfv_client_return_word_007ae1b0": "00e28b90",
+    "bfv_client_return_word_007b2270": "00e28ba0",
+    "bfv_client_return_word_007b2280": "00e28bb0",
+    "bfv_client_return_word_007b2290": "00e28bc0",
+    "bfv_client_return_word_007b2420": "00e28bd0",
+    "bfv_client_return_word_007b2430": "00e28be0",
+    "bfv_client_return_word_007b33e0": "00e28bf0",
+    "bfv_client_return_word_007b33f0": "00e28c00",
+    "bfv_client_return_word_007b4820": "00e28c10",
+    "bfv_client_return_word_007b4830": "00e28c20",
+    "bfv_client_return_word_007b4840": "00e28c30",
+    "bfv_client_return_word_007b4850": "00e28c40",
+    "bfv_client_return_word_007b4860": "00e28c50",
+    "bfv_client_return_word_007b4cf0": "00e28c60",
+    "bfv_client_return_word_007b4d00": "00e28c70",
+    "bfv_client_return_word_007c66d0": "00e28c80",
+    "bfv_client_return_word_0081f410": "00e28c90",
+    "bfv_client_return_word_00868ca0": "00e28ca0",
+    "bfv_client_return_word_00869f60": "00e28cb0",
+    "bfv_client_return_word_00869fe0": "00e28cc0",
+    "bfv_client_return_word_0086e680": "00e28cd0",
+    "bfv_client_return_word_00874600": "00e28ce0",
+    "bfv_client_return_word_00875310": "00e28cf0",
+    "bfv_client_return_word_0087a120": "00e28d00",
+    "bfv_client_return_word_0087ba60": "00e28d10",
+    "bfv_client_return_word_00885170": "00e28d20",
+    "bfv_client_return_word_008851e0": "00e28d30",
+    "bfv_client_return_word_00885250": "00e28d40",
+    "bfv_client_return_word_00885330": "00e28d50",
+    "bfv_client_return_word_008853a0": "00e28d60",
+    "bfv_client_return_word_00885410": "00e28d70",
+    "bfv_client_return_word_00885480": "00e28d80",
+    "bfv_client_return_word_00885550": "00e28d90",
+    "bfv_client_return_word_00885670": "00e28da0",
+    "bfv_client_return_word_00885680": "00e28db0",
+    "bfv_client_return_word_00885690": "00e28dc0",
+    "bfv_client_return_word_008856a0": "00e28dd0",
+    "bfv_client_return_word_008856b0": "00e28de0",
+    "bfv_client_return_word_008856c0": "00e28df0",
+    "bfv_client_return_word_008856d0": "00e28e00",
+    "bfv_client_return_word_008856e0": "00e28e10",
+    "bfv_client_return_word_00885800": "00e28e20",
+    "bfv_client_return_word_00885810": "00e28e30",
+    "bfv_client_return_word_00885820": "00e28e40",
+    "bfv_client_return_word_00885860": "00e28e50",
+    "bfv_client_return_word_008858a0": "00e28e60",
+    "bfv_client_return_word_008858e0": "00e28e70",
+    "bfv_client_return_word_00885920": "00e28e80",
+    "bfv_client_return_word_00885960": "00e28e90",
+    "bfv_client_return_word_008859a0": "00e28ea0",
+    "bfv_client_return_word_00885e70": "00e28eb0",
+    "bfv_client_return_word_00885f10": "00e28ec0",
+    "bfv_client_return_word_00886140": "00e28ed0",
+    "bfv_client_return_word_00886490": "00e28ee0",
+    "bfv_client_return_word_008864a0": "00e28ef0",
+    "bfv_client_return_word_0088ba10": "00e28f00",
+    "bfv_client_return_word_0088c0f0": "00e28f10",
+    "bfv_client_return_word_0088cdd0": "00e28f20",
+    "bfv_client_return_word_0088d560": "00e28f30",
+    "bfv_client_return_word_0088dd40": "00e28f40",
+    "bfv_client_return_word_0088e4d0": "00e28f50",
+    "bfv_client_return_word_0088eca0": "00e28f60",
+    "bfv_client_return_word_008c0b70": "00e28f70",
+    "bfv_client_return_word_008d9bd0": "00e28f80",
+    "bfv_client_return_word_0094a5f0": "00e28f90",
+    "bfv_client_return_word_0094a660": "00e28fa0",
+    "bfv_client_return_word_0094a6d0": "00e28fb0",
+    "bfv_client_return_word_0094a740": "00e28fc0",
+    "bfv_client_return_word_0094a7b0": "00e28fd0",
+    "bfv_client_return_word_0094a820": "00e28fe0",
+    "bfv_client_return_word_0094a890": "00e28ff0",
+    "bfv_client_return_word_0094a900": "00e29000",
+    "bfv_client_return_word_0094a970": "00e29010",
+    "bfv_client_return_word_0094a9e0": "00e29020",
+    "bfv_client_return_word_0094aa50": "00e29030",
+    "bfv_client_return_word_0094aac0": "00e29040",
+    "bfv_client_return_word_0094ab30": "00e29050",
+    "bfv_client_return_word_0094aba0": "00e29060",
+    "bfv_client_return_word_0094ac10": "00e29070",
+    "bfv_client_return_word_0094ac80": "00e29080",
+    "bfv_client_return_word_0094acf0": "00e29090",
+    "bfv_client_return_word_0094b3a0": "00e290a0",
+    "bfv_client_return_word_0094b3e0": "00e290b0",
+    "bfv_client_return_word_0094b420": "00e290c0",
+    "bfv_client_return_word_0094b460": "00e290d0",
+    "bfv_client_return_word_0094b4a0": "00e290e0",
+    "bfv_client_return_word_0094b4e0": "00e290f0",
+    "bfv_client_return_word_0094b520": "00e29100",
+    "bfv_client_return_word_0094b560": "00e29110",
+    "bfv_client_return_word_0094b5a0": "00e29120",
+    "bfv_client_return_word_0094b5e0": "00e29130",
+    "bfv_client_return_word_0094b620": "00e29140",
+    "bfv_client_return_word_0094b660": "00e29150",
+    "bfv_client_return_word_0094b6a0": "00e29160",
+    "bfv_client_return_word_0094b6e0": "00e29170",
+    "bfv_client_return_word_0094b720": "00e29180",
+    "bfv_client_return_word_0094b760": "00e29190",
+    "bfv_client_return_word_0094b7a0": "00e291a0",
+    "bfv_client_return_word_00969890": "00e291b0",
+    "bfv_client_return_word_009842d0": "00e291c0",
+    "bfv_client_return_word_00984530": "00e291d0",
+    "bfv_client_return_word_00996f70": "00e291e0",
+    "bfv_client_return_word_009dc530": "00e291f0",
+    "bfv_client_return_word_009f20d0": "00e29200",
+    "bfv_client_return_word_009f2300": "00e29210",
+    "bfv_client_return_word_009f2890": "00e29220",
+    "bfv_client_return_word_009f2a10": "00e29230",
+    "bfv_client_return_word_009f2b30": "00e29240",
+    "bfv_client_return_word_009f2d00": "00e29250",
+    "bfv_client_return_word_009f2df0": "00e29260",
+    "bfv_client_return_word_009f37b0": "00e29270",
+    "bfv_client_return_word_009f3d70": "00e29280",
+    "bfv_client_return_word_009f53a0": "00e29290",
+    "bfv_client_return_word_009f5880": "00e292a0",
+    "bfv_client_return_word_009f6cf0": "00e292b0",
+    "bfv_client_return_word_009f6de0": "00e292c0",
+    "bfv_client_return_word_009f70b0": "00e292d0",
+    "bfv_client_return_word_009f7720": "00e292e0",
+    "bfv_client_return_word_009f7840": "00e292f0",
+    "bfv_client_return_word_009f78f0": "00e29300",
+    "bfv_client_return_word_009f7f00": "00e29310",
+    "bfv_client_return_word_009f8330": "00e29320",
+    "bfv_client_return_word_009f83e0": "00e29330",
+    "bfv_client_return_word_009f8590": "00e29340",
+    "bfv_client_return_word_009f87a0": "00e29350",
+    "bfv_client_return_word_009f9090": "00e29360",
+    "bfv_client_return_word_009f9290": "00e29370",
+    "bfv_client_return_word_009f9390": "00e29380",
+    "bfv_client_return_word_009f9660": "00e29390",
+    "bfv_client_return_word_009f9830": "00e293a0",
+    "bfv_client_return_word_009f9dc0": "00e293b0",
+    "bfv_client_return_word_009f9e30": "00e293c0",
+    "bfv_client_return_word_009fa060": "00e293d0",
+    "bfv_client_return_word_009fc8c0": "00e293e0",
+    "bfv_client_return_word_00a37870": "00e293f0",
+    "bfv_client_return_word_00a43ed0": "00e29400",
+    "bfv_client_return_word_00a43ef0": "00e29410",
+    "bfv_client_return_word_00a579a0": "00e29420",
+    "bfv_client_return_word_00a57a10": "00e29430",
+    "bfv_client_return_word_00a57a80": "00e29440",
+    "bfv_client_return_word_00a57af0": "00e29450",
+    "bfv_client_return_word_00a57b60": "00e29460",
+    "bfv_client_return_word_00a57bd0": "00e29470",
+    "bfv_client_return_word_00a57c40": "00e29480",
+    "bfv_client_return_word_00a57e00": "00e29490",
+    "bfv_client_return_word_00a57e40": "00e294a0",
+    "bfv_client_return_word_00a57e80": "00e294b0",
+    "bfv_client_return_word_00a57ec0": "00e294c0",
+    "bfv_client_return_word_00a57f00": "00e294d0",
+    "bfv_client_return_word_00a57f40": "00e294e0",
+    "bfv_client_return_word_00a57f80": "00e294f0",
+    "bfv_client_return_word_00a57ff0": "00e29500",
+    "bfv_client_return_word_00a58000": "00e29510",
+    "bfv_client_return_word_00a580a0": "00e29520",
+    "bfv_client_return_word_00a580b0": "00e29530",
+    "bfv_client_return_word_00a58150": "00e29540",
+    "bfv_client_return_word_00a58160": "00e29550",
+    "bfv_client_return_word_00a5c7a0": "00e29560",
+    "bfv_client_return_word_00a5c810": "00e29570",
+    "bfv_client_return_word_00a5c880": "00e29580",
+    "bfv_client_return_word_00a5c8f0": "00e29590",
+    "bfv_client_return_word_00a5c9c0": "00e295a0",
+    "bfv_client_return_word_00a5ca00": "00e295b0",
+    "bfv_client_return_word_00a5ca40": "00e295c0",
+    "bfv_client_return_word_00a5cb50": "00e295d0",
+    "bfv_client_return_word_00a7f170": "00e295e0",
+    "bfv_client_return_word_00a7f1a0": "00e295f0",
+    "bfv_client_return_word_00abe4f0": "00e29600",
+    "bfv_client_return_word_00ac2ac0": "00e29610",
+    "bfv_client_return_word_00ac3950": "00e29620",
+    "bfv_client_return_word_00ac4490": "00e29630",
+    "bfv_collision_dispatch": "00e29640",
+    "bfv_collision_notify": "00e29a10",
+    "bfv_collision": "00e29a70",
+    "bfv_bailout_curve": "00e29ff0",
+    "bfv_bailout_score": "00e2a030",
+    "bfv_float_minimum": "00e2a080",
+    "bfv_float_maximum": "00e2a0d0",
+    "bfv_float_clamp": "00e2a120",
+    "bfv_vector_length": "00e2a1a0",
+    "bfv_vector_divide": "00e2a1e0",
+    "bfv_target_history": "00e2a210",
+    "bfv_vector_catch_rethrow": "00e2a2e0",
+    "bfv_vector_catch_free": "00e2a2f0",
+    "bfv_vector_copy": "00e2a360",
+    "bfv_vector_fill": "00e2a390",
+    "bfv_vector_shift": "00e2a3d0",
+    "bfv_vector_fill_range": "00e2a3f0",
+    "bfv_vector_insert_body": "00e2a410",
+    "bfv_vector_handler": "00e2a6b0",
+    "bfv_vector_insert": "00e2a6c0",
+    "bfv_vector_info": "00e2b200",
+    "bfv_vehicle_calls": "00e2b2cc",
+    "bfv_bailout_calls": "00e2b2d0",
+    "bfv_interpreter_calls": "00e2b2d4",
+    "bfv_artillery_evaluate_calls": "00e2b2d8",
+    "bfv_artillery_calls": "00e2b2dc",
+    "bfv_artillery_filter_calls": "00e2b2e0",
+    "bfv_collision_calls": "00e2b2e4",
+    "bfv_target_history_calls": "00e2b2e8"
   },
   "patches": [
     {
@@ -77,7 +618,7 @@
     {
       "vtable_slot": "00bf8c64",
       "original": "009d4ba0",
-      "replacement": "00e278a0",
+      "replacement": "00e29a70",
       "source": "bfv_collision"
     },
     {
@@ -91,8 +632,8 @@
     {
       "entry": "0099f040",
       "original": "83ec105657",
-      "patched": "e9fb8f4800",
-      "replacement": "00e28040",
+      "patched": "e9cbb14800",
+      "replacement": "00e2a210",
       "source": "bfv_target_history"
     },
     {
@@ -105,29 +646,29 @@
     {
       "entry": "00422f30",
       "original": "d9442404d85c2408",
-      "patched": "e97b4fa000909090",
-      "replacement": "00e27eb0",
+      "patched": "e94b71a000909090",
+      "replacement": "00e2a080",
       "source": "bfv_float_minimum"
     },
     {
       "entry": "00422f90",
       "original": "d9442404d85c2408",
-      "patched": "e96b4fa000909090",
-      "replacement": "00e27f00",
+      "patched": "e93b71a000909090",
+      "replacement": "00e2a0d0",
       "source": "bfv_float_maximum"
     },
     {
       "entry": "004a94a0",
       "original": "d9442404d85c2408",
-      "patched": "e9abea9700909090",
-      "replacement": "00e27f50",
+      "patched": "e97b0c9800909090",
+      "replacement": "00e2a120",
       "source": "bfv_float_clamp"
     },
     {
       "entry": "0049aac0",
       "original": "d94108d94104",
-      "patched": "e90bd5980090",
-      "replacement": "00e27fd0",
+      "patched": "e9dbf6980090",
+      "replacement": "00e2a1a0",
       "source": "bfv_vector_length"
     },
     {
@@ -154,10 +695,3797 @@
     {
       "entry": "005184c0",
       "original": "d9056c45b400",
-      "patched": "e94bfb900090",
-      "replacement": "00e28010",
+      "patched": "e91b1d910090",
+      "replacement": "00e2a1e0",
       "source": "bfv_vector_divide"
+    },
+    {
+      "entry": "004236d0",
+      "original": "b803000000",
+      "patched": "e99b3da000",
+      "replacement": "00e27470",
+      "source": "bfv_client_return_word_004236d0"
+    },
+    {
+      "entry": "00516fd0",
+      "original": "b824000000",
+      "patched": "e9ab049100",
+      "replacement": "00e27480",
+      "source": "bfv_client_return_word_00516fd0"
+    },
+    {
+      "entry": "005170a0",
+      "original": "b838000000",
+      "patched": "e9eb039100",
+      "replacement": "00e27490",
+      "source": "bfv_client_return_word_005170a0"
+    },
+    {
+      "entry": "005172a0",
+      "original": "b82a000000",
+      "patched": "e9fb019100",
+      "replacement": "00e274a0",
+      "source": "bfv_client_return_word_005172a0"
+    },
+    {
+      "entry": "005172d0",
+      "original": "b83a000000",
+      "patched": "e9db019100",
+      "replacement": "00e274b0",
+      "source": "bfv_client_return_word_005172d0"
+    },
+    {
+      "entry": "005230c0",
+      "original": "b83e000000",
+      "patched": "e9fb439000",
+      "replacement": "00e274c0",
+      "source": "bfv_client_return_word_005230c0"
+    },
+    {
+      "entry": "0052adb0",
+      "original": "b82447cb00",
+      "patched": "e91bc78f00",
+      "replacement": "00e274d0",
+      "source": "bfv_client_return_word_0052adb0"
+    },
+    {
+      "entry": "0052ae20",
+      "original": "b818d1ca00",
+      "patched": "e9bbc68f00",
+      "replacement": "00e274e0",
+      "source": "bfv_client_return_word_0052ae20"
+    },
+    {
+      "entry": "0052ae90",
+      "original": "b8d021cb00",
+      "patched": "e95bc68f00",
+      "replacement": "00e274f0",
+      "source": "bfv_client_return_word_0052ae90"
+    },
+    {
+      "entry": "0052afe0",
+      "original": "b84448cb00",
+      "patched": "e91bc58f00",
+      "replacement": "00e27500",
+      "source": "bfv_client_return_word_0052afe0"
+    },
+    {
+      "entry": "0052b090",
+      "original": "b89048cb00",
+      "patched": "e97bc48f00",
+      "replacement": "00e27510",
+      "source": "bfv_client_return_word_0052b090"
+    },
+    {
+      "entry": "0052b100",
+      "original": "b8f848cb00",
+      "patched": "e91bc48f00",
+      "replacement": "00e27520",
+      "source": "bfv_client_return_word_0052b100"
+    },
+    {
+      "entry": "0052b170",
+      "original": "b85c49cb00",
+      "patched": "e9bbc38f00",
+      "replacement": "00e27530",
+      "source": "bfv_client_return_word_0052b170"
+    },
+    {
+      "entry": "0052b1e0",
+      "original": "b8c049cb00",
+      "patched": "e95bc38f00",
+      "replacement": "00e27540",
+      "source": "bfv_client_return_word_0052b1e0"
+    },
+    {
+      "entry": "0052b250",
+      "original": "b80c4acb00",
+      "patched": "e9fbc28f00",
+      "replacement": "00e27550",
+      "source": "bfv_client_return_word_0052b250"
+    },
+    {
+      "entry": "0052b2c0",
+      "original": "b8544acb00",
+      "patched": "e99bc28f00",
+      "replacement": "00e27560",
+      "source": "bfv_client_return_word_0052b2c0"
+    },
+    {
+      "entry": "0052b570",
+      "original": "b82c4dcb00",
+      "patched": "e9fbbf8f00",
+      "replacement": "00e27570",
+      "source": "bfv_client_return_word_0052b570"
+    },
+    {
+      "entry": "0052b5e0",
+      "original": "b8984dcb00",
+      "patched": "e99bbf8f00",
+      "replacement": "00e27580",
+      "source": "bfv_client_return_word_0052b5e0"
+    },
+    {
+      "entry": "0052b650",
+      "original": "b8fc4dcb00",
+      "patched": "e93bbf8f00",
+      "replacement": "00e27590",
+      "source": "bfv_client_return_word_0052b650"
+    },
+    {
+      "entry": "0052b6c0",
+      "original": "b8604ecb00",
+      "patched": "e9dbbe8f00",
+      "replacement": "00e275a0",
+      "source": "bfv_client_return_word_0052b6c0"
+    },
+    {
+      "entry": "0052b730",
+      "original": "b8c84ecb00",
+      "patched": "e97bbe8f00",
+      "replacement": "00e275b0",
+      "source": "bfv_client_return_word_0052b730"
+    },
+    {
+      "entry": "0052b7a0",
+      "original": "b8504fcb00",
+      "patched": "e91bbe8f00",
+      "replacement": "00e275c0",
+      "source": "bfv_client_return_word_0052b7a0"
+    },
+    {
+      "entry": "0052b810",
+      "original": "b8d04fcb00",
+      "patched": "e9bbbd8f00",
+      "replacement": "00e275d0",
+      "source": "bfv_client_return_word_0052b810"
+    },
+    {
+      "entry": "0052b880",
+      "original": "b83450cb00",
+      "patched": "e95bbd8f00",
+      "replacement": "00e275e0",
+      "source": "bfv_client_return_word_0052b880"
+    },
+    {
+      "entry": "0052b8f0",
+      "original": "b8a450cb00",
+      "patched": "e9fbbc8f00",
+      "replacement": "00e275f0",
+      "source": "bfv_client_return_word_0052b8f0"
+    },
+    {
+      "entry": "0052b960",
+      "original": "b81451cb00",
+      "patched": "e99bbc8f00",
+      "replacement": "00e27600",
+      "source": "bfv_client_return_word_0052b960"
+    },
+    {
+      "entry": "0052b9d0",
+      "original": "b87c51cb00",
+      "patched": "e93bbc8f00",
+      "replacement": "00e27610",
+      "source": "bfv_client_return_word_0052b9d0"
+    },
+    {
+      "entry": "0052ba40",
+      "original": "b82852cb00",
+      "patched": "e9dbbb8f00",
+      "replacement": "00e27620",
+      "source": "bfv_client_return_word_0052ba40"
+    },
+    {
+      "entry": "0052bab0",
+      "original": "b8d452cb00",
+      "patched": "e97bbb8f00",
+      "replacement": "00e27630",
+      "source": "bfv_client_return_word_0052bab0"
+    },
+    {
+      "entry": "0052bb20",
+      "original": "b84053cb00",
+      "patched": "e91bbb8f00",
+      "replacement": "00e27640",
+      "source": "bfv_client_return_word_0052bb20"
+    },
+    {
+      "entry": "0052bb90",
+      "original": "b8f053cb00",
+      "patched": "e9bbba8f00",
+      "replacement": "00e27650",
+      "source": "bfv_client_return_word_0052bb90"
+    },
+    {
+      "entry": "0052bc00",
+      "original": "b8d854cb00",
+      "patched": "e95bba8f00",
+      "replacement": "00e27660",
+      "source": "bfv_client_return_word_0052bc00"
+    },
+    {
+      "entry": "0052bc70",
+      "original": "b8c855cb00",
+      "patched": "e9fbb98f00",
+      "replacement": "00e27670",
+      "source": "bfv_client_return_word_0052bc70"
+    },
+    {
+      "entry": "0052bce0",
+      "original": "b87056cb00",
+      "patched": "e99bb98f00",
+      "replacement": "00e27680",
+      "source": "bfv_client_return_word_0052bce0"
+    },
+    {
+      "entry": "0052bd50",
+      "original": "b8d856cb00",
+      "patched": "e93bb98f00",
+      "replacement": "00e27690",
+      "source": "bfv_client_return_word_0052bd50"
+    },
+    {
+      "entry": "0052bdc0",
+      "original": "b83c57cb00",
+      "patched": "e9dbb88f00",
+      "replacement": "00e276a0",
+      "source": "bfv_client_return_word_0052bdc0"
+    },
+    {
+      "entry": "0052be90",
+      "original": "b80458cb00",
+      "patched": "e91bb88f00",
+      "replacement": "00e276b0",
+      "source": "bfv_client_return_word_0052be90"
+    },
+    {
+      "entry": "0052bf00",
+      "original": "b86058cb00",
+      "patched": "e9bbb78f00",
+      "replacement": "00e276c0",
+      "source": "bfv_client_return_word_0052bf00"
+    },
+    {
+      "entry": "0052bf80",
+      "original": "b84028b400",
+      "patched": "e94bb78f00",
+      "replacement": "00e276d0",
+      "source": "bfv_client_return_word_0052bf80"
+    },
+    {
+      "entry": "0052bf90",
+      "original": "b82c3acb00",
+      "patched": "e94bb78f00",
+      "replacement": "00e276e0",
+      "source": "bfv_client_return_word_0052bf90"
+    },
+    {
+      "entry": "0052bfa0",
+      "original": "b8a058cb00",
+      "patched": "e94bb78f00",
+      "replacement": "00e276f0",
+      "source": "bfv_client_return_word_0052bfa0"
+    },
+    {
+      "entry": "0052c9f0",
+      "original": "b8a05ccb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27700",
+      "source": "bfv_client_return_word_0052c9f0"
+    },
+    {
+      "entry": "0052ca00",
+      "original": "b8b04acb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27710",
+      "source": "bfv_client_return_word_0052ca00"
+    },
+    {
+      "entry": "0052ca10",
+      "original": "b8144bcb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27720",
+      "source": "bfv_client_return_word_0052ca10"
+    },
+    {
+      "entry": "0052ca20",
+      "original": "b8f858cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27730",
+      "source": "bfv_client_return_word_0052ca20"
+    },
+    {
+      "entry": "0052ca30",
+      "original": "b87c4bcb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27740",
+      "source": "bfv_client_return_word_0052ca30"
+    },
+    {
+      "entry": "0052ca40",
+      "original": "b82059cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27750",
+      "source": "bfv_client_return_word_0052ca40"
+    },
+    {
+      "entry": "0052ca50",
+      "original": "b8b862cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27760",
+      "source": "bfv_client_return_word_0052ca50"
+    },
+    {
+      "entry": "0052ca60",
+      "original": "b8f04bcb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27770",
+      "source": "bfv_client_return_word_0052ca60"
+    },
+    {
+      "entry": "0052ca70",
+      "original": "b84c59cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27780",
+      "source": "bfv_client_return_word_0052ca70"
+    },
+    {
+      "entry": "0052ca80",
+      "original": "b8644ccb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27790",
+      "source": "bfv_client_return_word_0052ca80"
+    },
+    {
+      "entry": "0052ca90",
+      "original": "b85c64cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e277a0",
+      "source": "bfv_client_return_word_0052ca90"
+    },
+    {
+      "entry": "0052caa0",
+      "original": "b8c84ccb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e277b0",
+      "source": "bfv_client_return_word_0052caa0"
+    },
+    {
+      "entry": "0052cab0",
+      "original": "b83474ca00",
+      "patched": "e90bad8f00",
+      "replacement": "00e277c0",
+      "source": "bfv_client_return_word_0052cab0"
+    },
+    {
+      "entry": "0052cac0",
+      "original": "b8288ccb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e277d0",
+      "source": "bfv_client_return_word_0052cac0"
+    },
+    {
+      "entry": "0052cad0",
+      "original": "b87c59cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e277e0",
+      "source": "bfv_client_return_word_0052cad0"
+    },
+    {
+      "entry": "0052cae0",
+      "original": "b864d1ca00",
+      "patched": "e90bad8f00",
+      "replacement": "00e277f0",
+      "source": "bfv_client_return_word_0052cae0"
+    },
+    {
+      "entry": "0052caf0",
+      "original": "b8a859cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27800",
+      "source": "bfv_client_return_word_0052caf0"
+    },
+    {
+      "entry": "0052cb00",
+      "original": "b8d059cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27810",
+      "source": "bfv_client_return_word_0052cb00"
+    },
+    {
+      "entry": "0052cb10",
+      "original": "b8a057cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27820",
+      "source": "bfv_client_return_word_0052cb10"
+    },
+    {
+      "entry": "0052cb20",
+      "original": "b87c68cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27830",
+      "source": "bfv_client_return_word_0052cb20"
+    },
+    {
+      "entry": "0052cb30",
+      "original": "b888d1ca00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27840",
+      "source": "bfv_client_return_word_0052cb30"
+    },
+    {
+      "entry": "0052cb40",
+      "original": "b8fc59cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27850",
+      "source": "bfv_client_return_word_0052cb40"
+    },
+    {
+      "entry": "0052cb50",
+      "original": "b8245acb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27860",
+      "source": "bfv_client_return_word_0052cb50"
+    },
+    {
+      "entry": "0052cb60",
+      "original": "b8108fcb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27870",
+      "source": "bfv_client_return_word_0052cb60"
+    },
+    {
+      "entry": "0052cb70",
+      "original": "b89c75cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27880",
+      "source": "bfv_client_return_word_0052cb70"
+    },
+    {
+      "entry": "0052cb80",
+      "original": "b8888fcb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27890",
+      "source": "bfv_client_return_word_0052cb80"
+    },
+    {
+      "entry": "0052cb90",
+      "original": "b87c76cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e278a0",
+      "source": "bfv_client_return_word_0052cb90"
+    },
+    {
+      "entry": "0052cba0",
+      "original": "b80890cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e278b0",
+      "source": "bfv_client_return_word_0052cba0"
+    },
+    {
+      "entry": "0052cbb0",
+      "original": "b86477cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e278c0",
+      "source": "bfv_client_return_word_0052cbb0"
+    },
+    {
+      "entry": "0052cbc0",
+      "original": "b87c90cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e278d0",
+      "source": "bfv_client_return_word_0052cbc0"
+    },
+    {
+      "entry": "0052cbd0",
+      "original": "b84078cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e278e0",
+      "source": "bfv_client_return_word_0052cbd0"
+    },
+    {
+      "entry": "0052cbe0",
+      "original": "b8ec90cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e278f0",
+      "source": "bfv_client_return_word_0052cbe0"
+    },
+    {
+      "entry": "0052cbf0",
+      "original": "b81879cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27900",
+      "source": "bfv_client_return_word_0052cbf0"
+    },
+    {
+      "entry": "0052cc00",
+      "original": "b86891cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27910",
+      "source": "bfv_client_return_word_0052cc00"
+    },
+    {
+      "entry": "0052cc10",
+      "original": "b8047acb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27920",
+      "source": "bfv_client_return_word_0052cc10"
+    },
+    {
+      "entry": "0052cc20",
+      "original": "b8e891cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27930",
+      "source": "bfv_client_return_word_0052cc20"
+    },
+    {
+      "entry": "0052cc30",
+      "original": "b8ec7acb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27940",
+      "source": "bfv_client_return_word_0052cc30"
+    },
+    {
+      "entry": "0052cc40",
+      "original": "b86492cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27950",
+      "source": "bfv_client_return_word_0052cc40"
+    },
+    {
+      "entry": "0052cc50",
+      "original": "b8c87bcb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27960",
+      "source": "bfv_client_return_word_0052cc50"
+    },
+    {
+      "entry": "0052cc60",
+      "original": "b8dc92cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27970",
+      "source": "bfv_client_return_word_0052cc60"
+    },
+    {
+      "entry": "0052cc70",
+      "original": "b8a87ccb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27980",
+      "source": "bfv_client_return_word_0052cc70"
+    },
+    {
+      "entry": "0052cc80",
+      "original": "b85493cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27990",
+      "source": "bfv_client_return_word_0052cc80"
+    },
+    {
+      "entry": "0052cc90",
+      "original": "b8807dcb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e279a0",
+      "source": "bfv_client_return_word_0052cc90"
+    },
+    {
+      "entry": "0052cca0",
+      "original": "b8c893cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e279b0",
+      "source": "bfv_client_return_word_0052cca0"
+    },
+    {
+      "entry": "0052ccb0",
+      "original": "b8547ecb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e279c0",
+      "source": "bfv_client_return_word_0052ccb0"
+    },
+    {
+      "entry": "0052ccc0",
+      "original": "b84094cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e279d0",
+      "source": "bfv_client_return_word_0052ccc0"
+    },
+    {
+      "entry": "0052ccd0",
+      "original": "b8347fcb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e279e0",
+      "source": "bfv_client_return_word_0052ccd0"
+    },
+    {
+      "entry": "0052cce0",
+      "original": "b8c094cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e279f0",
+      "source": "bfv_client_return_word_0052cce0"
+    },
+    {
+      "entry": "0052ccf0",
+      "original": "b81c80cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a00",
+      "source": "bfv_client_return_word_0052ccf0"
+    },
+    {
+      "entry": "0052cd00",
+      "original": "b83895cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a10",
+      "source": "bfv_client_return_word_0052cd00"
+    },
+    {
+      "entry": "0052cd10",
+      "original": "b8fc80cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a20",
+      "source": "bfv_client_return_word_0052cd10"
+    },
+    {
+      "entry": "0052cd20",
+      "original": "b8b095cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a30",
+      "source": "bfv_client_return_word_0052cd20"
+    },
+    {
+      "entry": "0052cd30",
+      "original": "b8dc81cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a40",
+      "source": "bfv_client_return_word_0052cd30"
+    },
+    {
+      "entry": "0052cd40",
+      "original": "b83896cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a50",
+      "source": "bfv_client_return_word_0052cd40"
+    },
+    {
+      "entry": "0052cd50",
+      "original": "b8d482cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a60",
+      "source": "bfv_client_return_word_0052cd50"
+    },
+    {
+      "entry": "0052cd60",
+      "original": "b8c896cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a70",
+      "source": "bfv_client_return_word_0052cd60"
+    },
+    {
+      "entry": "0052cd70",
+      "original": "b8d483cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a80",
+      "source": "bfv_client_return_word_0052cd70"
+    },
+    {
+      "entry": "0052cd80",
+      "original": "b84c97cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27a90",
+      "source": "bfv_client_return_word_0052cd80"
+    },
+    {
+      "entry": "0052cd90",
+      "original": "b8b884cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27aa0",
+      "source": "bfv_client_return_word_0052cd90"
+    },
+    {
+      "entry": "0052cda0",
+      "original": "b8c497cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27ab0",
+      "source": "bfv_client_return_word_0052cda0"
+    },
+    {
+      "entry": "0052cdb0",
+      "original": "b89885cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27ac0",
+      "source": "bfv_client_return_word_0052cdb0"
+    },
+    {
+      "entry": "0052cdc0",
+      "original": "b84098cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27ad0",
+      "source": "bfv_client_return_word_0052cdc0"
+    },
+    {
+      "entry": "0052cdd0",
+      "original": "b88486cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27ae0",
+      "source": "bfv_client_return_word_0052cdd0"
+    },
+    {
+      "entry": "0052cde0",
+      "original": "b8c098cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27af0",
+      "source": "bfv_client_return_word_0052cde0"
+    },
+    {
+      "entry": "0052cdf0",
+      "original": "b86c87cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27b00",
+      "source": "bfv_client_return_word_0052cdf0"
+    },
+    {
+      "entry": "0052ce00",
+      "original": "b83899cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27b10",
+      "source": "bfv_client_return_word_0052ce00"
+    },
+    {
+      "entry": "0052ce10",
+      "original": "b84488cb00",
+      "patched": "e90bad8f00",
+      "replacement": "00e27b20",
+      "source": "bfv_client_return_word_0052ce10"
+    },
+    {
+      "entry": "0052d0a0",
+      "original": "b82c42cb00",
+      "patched": "e98baa8f00",
+      "replacement": "00e27b30",
+      "source": "bfv_client_return_word_0052d0a0"
+    },
+    {
+      "entry": "0052d0e0",
+      "original": "b8f0d0ca00",
+      "patched": "e95baa8f00",
+      "replacement": "00e27b40",
+      "source": "bfv_client_return_word_0052d0e0"
+    },
+    {
+      "entry": "0052d120",
+      "original": "b81474ca00",
+      "patched": "e92baa8f00",
+      "replacement": "00e27b50",
+      "source": "bfv_client_return_word_0052d120"
+    },
+    {
+      "entry": "0052d180",
+      "original": "b8745dcb00",
+      "patched": "e9dba98f00",
+      "replacement": "00e27b60",
+      "source": "bfv_client_return_word_0052d180"
+    },
+    {
+      "entry": "0052d1c0",
+      "original": "b8485ecb00",
+      "patched": "e9aba98f00",
+      "replacement": "00e27b70",
+      "source": "bfv_client_return_word_0052d1c0"
+    },
+    {
+      "entry": "0052d200",
+      "original": "b8205fcb00",
+      "patched": "e97ba98f00",
+      "replacement": "00e27b80",
+      "source": "bfv_client_return_word_0052d200"
+    },
+    {
+      "entry": "0052d270",
+      "original": "b84489cb00",
+      "patched": "e91ba98f00",
+      "replacement": "00e27b90",
+      "source": "bfv_client_return_word_0052d270"
+    },
+    {
+      "entry": "0052d2b0",
+      "original": "b840d1ca00",
+      "patched": "e9eba88f00",
+      "replacement": "00e27ba0",
+      "source": "bfv_client_return_word_0052d2b0"
+    },
+    {
+      "entry": "0052d4d0",
+      "original": "b88867cb00",
+      "patched": "e9dba68f00",
+      "replacement": "00e27bb0",
+      "source": "bfv_client_return_word_0052d4d0"
+    },
+    {
+      "entry": "0052d5a0",
+      "original": "b8986bcb00",
+      "patched": "e91ba68f00",
+      "replacement": "00e27bc0",
+      "source": "bfv_client_return_word_0052d5a0"
+    },
+    {
+      "entry": "0052d5e0",
+      "original": "b8786ccb00",
+      "patched": "e9eba58f00",
+      "replacement": "00e27bd0",
+      "source": "bfv_client_return_word_0052d5e0"
+    },
+    {
+      "entry": "0052d620",
+      "original": "b8d86dcb00",
+      "patched": "e9bba58f00",
+      "replacement": "00e27be0",
+      "source": "bfv_client_return_word_0052d620"
+    },
+    {
+      "entry": "0052d660",
+      "original": "b8fc6ecb00",
+      "patched": "e98ba58f00",
+      "replacement": "00e27bf0",
+      "source": "bfv_client_return_word_0052d660"
+    },
+    {
+      "entry": "0052d6a0",
+      "original": "b8e46fcb00",
+      "patched": "e95ba58f00",
+      "replacement": "00e27c00",
+      "source": "bfv_client_return_word_0052d6a0"
+    },
+    {
+      "entry": "0052d6e0",
+      "original": "b84071cb00",
+      "patched": "e92ba58f00",
+      "replacement": "00e27c10",
+      "source": "bfv_client_return_word_0052d6e0"
+    },
+    {
+      "entry": "0052d720",
+      "original": "b8d872cb00",
+      "patched": "e9fba48f00",
+      "replacement": "00e27c20",
+      "source": "bfv_client_return_word_0052d720"
+    },
+    {
+      "entry": "0052d760",
+      "original": "b88074cb00",
+      "patched": "e9cba48f00",
+      "replacement": "00e27c30",
+      "source": "bfv_client_return_word_0052d760"
+    },
+    {
+      "entry": "0052d800",
+      "original": "b8c45bcb00",
+      "patched": "e93ba48f00",
+      "replacement": "00e27c40",
+      "source": "bfv_client_return_word_0052d800"
+    },
+    {
+      "entry": "0052d870",
+      "original": "b8bc6acb00",
+      "patched": "e9dba38f00",
+      "replacement": "00e27c50",
+      "source": "bfv_client_return_word_0052d870"
+    },
+    {
+      "entry": "0052d8b0",
+      "original": "b8f85acb00",
+      "patched": "e9aba38f00",
+      "replacement": "00e27c60",
+      "source": "bfv_client_return_word_0052d8b0"
+    },
+    {
+      "entry": "0052dc80",
+      "original": "b8e447cb00",
+      "patched": "e9eb9f8f00",
+      "replacement": "00e27c70",
+      "source": "bfv_client_return_word_0052dc80"
+    },
+    {
+      "entry": "0052dc90",
+      "original": "b8d4b0cb00",
+      "patched": "e9eb9f8f00",
+      "replacement": "00e27c80",
+      "source": "bfv_client_return_word_0052dc90"
+    },
+    {
+      "entry": "0052dd00",
+      "original": "b81448cb00",
+      "patched": "e98b9f8f00",
+      "replacement": "00e27c90",
+      "source": "bfv_client_return_word_0052dd00"
+    },
+    {
+      "entry": "0052dd10",
+      "original": "b82cb1cb00",
+      "patched": "e98b9f8f00",
+      "replacement": "00e27ca0",
+      "source": "bfv_client_return_word_0052dd10"
+    },
+    {
+      "entry": "0052dde0",
+      "original": "b880b1cb00",
+      "patched": "e9cb9e8f00",
+      "replacement": "00e27cb0",
+      "source": "bfv_client_return_word_0052dde0"
+    },
+    {
+      "entry": "0052de80",
+      "original": "b814b2cb00",
+      "patched": "e93b9e8f00",
+      "replacement": "00e27cc0",
+      "source": "bfv_client_return_word_0052de80"
+    },
+    {
+      "entry": "0052f180",
+      "original": "b848b0cb00",
+      "patched": "e94b8b8f00",
+      "replacement": "00e27cd0",
+      "source": "bfv_client_return_word_0052f180"
+    },
+    {
+      "entry": "0052f190",
+      "original": "b820b4cb00",
+      "patched": "e94b8b8f00",
+      "replacement": "00e27ce0",
+      "source": "bfv_client_return_word_0052f190"
+    },
+    {
+      "entry": "0052f260",
+      "original": "b890b5cb00",
+      "patched": "e98b8a8f00",
+      "replacement": "00e27cf0",
+      "source": "bfv_client_return_word_0052f260"
+    },
+    {
+      "entry": "0053e4f0",
+      "original": "b8bcf9cb00",
+      "patched": "e90b988e00",
+      "replacement": "00e27d00",
+      "source": "bfv_client_return_word_0053e4f0"
+    },
+    {
+      "entry": "0053e560",
+      "original": "b808facb00",
+      "patched": "e9ab978e00",
+      "replacement": "00e27d10",
+      "source": "bfv_client_return_word_0053e560"
+    },
+    {
+      "entry": "0053e5d0",
+      "original": "b86cfacb00",
+      "patched": "e94b978e00",
+      "replacement": "00e27d20",
+      "source": "bfv_client_return_word_0053e5d0"
+    },
+    {
+      "entry": "0053e640",
+      "original": "b8ccfacb00",
+      "patched": "e9eb968e00",
+      "replacement": "00e27d30",
+      "source": "bfv_client_return_word_0053e640"
+    },
+    {
+      "entry": "0053e6b0",
+      "original": "b830fbcb00",
+      "patched": "e98b968e00",
+      "replacement": "00e27d40",
+      "source": "bfv_client_return_word_0053e6b0"
+    },
+    {
+      "entry": "0053e720",
+      "original": "b8a8fbcb00",
+      "patched": "e92b968e00",
+      "replacement": "00e27d50",
+      "source": "bfv_client_return_word_0053e720"
+    },
+    {
+      "entry": "0053e790",
+      "original": "b814fccb00",
+      "patched": "e9cb958e00",
+      "replacement": "00e27d60",
+      "source": "bfv_client_return_word_0053e790"
+    },
+    {
+      "entry": "0053e800",
+      "original": "b86cfccb00",
+      "patched": "e96b958e00",
+      "replacement": "00e27d70",
+      "source": "bfv_client_return_word_0053e800"
+    },
+    {
+      "entry": "0053e870",
+      "original": "b8f4fccb00",
+      "patched": "e90b958e00",
+      "replacement": "00e27d80",
+      "source": "bfv_client_return_word_0053e870"
+    },
+    {
+      "entry": "0053e8b0",
+      "original": "b858fdcb00",
+      "patched": "e9db948e00",
+      "replacement": "00e27d90",
+      "source": "bfv_client_return_word_0053e8b0"
+    },
+    {
+      "entry": "0053e8f0",
+      "original": "b8b8fdcb00",
+      "patched": "e9ab948e00",
+      "replacement": "00e27da0",
+      "source": "bfv_client_return_word_0053e8f0"
+    },
+    {
+      "entry": "0053e930",
+      "original": "b818fecb00",
+      "patched": "e97b948e00",
+      "replacement": "00e27db0",
+      "source": "bfv_client_return_word_0053e930"
+    },
+    {
+      "entry": "0053e970",
+      "original": "b88cfecb00",
+      "patched": "e94b948e00",
+      "replacement": "00e27dc0",
+      "source": "bfv_client_return_word_0053e970"
+    },
+    {
+      "entry": "0053e9b0",
+      "original": "b8f4fecb00",
+      "patched": "e91b948e00",
+      "replacement": "00e27dd0",
+      "source": "bfv_client_return_word_0053e9b0"
+    },
+    {
+      "entry": "0053e9f0",
+      "original": "b80068ca00",
+      "patched": "e9eb938e00",
+      "replacement": "00e27de0",
+      "source": "bfv_client_return_word_0053e9f0"
+    },
+    {
+      "entry": "0053eaa0",
+      "original": "b8ccffcb00",
+      "patched": "e94b938e00",
+      "replacement": "00e27df0",
+      "source": "bfv_client_return_word_0053eaa0"
+    },
+    {
+      "entry": "0053ed90",
+      "original": "b8e000cc00",
+      "patched": "e96b908e00",
+      "replacement": "00e27e00",
+      "source": "bfv_client_return_word_0053ed90"
+    },
+    {
+      "entry": "0053ee80",
+      "original": "b89c01cc00",
+      "patched": "e98b8f8e00",
+      "replacement": "00e27e10",
+      "source": "bfv_client_return_word_0053ee80"
+    },
+    {
+      "entry": "00554080",
+      "original": "b8ac31d700",
+      "patched": "e99b3d8d00",
+      "replacement": "00e27e20",
+      "source": "bfv_client_return_word_00554080"
+    },
+    {
+      "entry": "005567d0",
+      "original": "b87c000000",
+      "patched": "e95b168d00",
+      "replacement": "00e27e30",
+      "source": "bfv_client_return_word_005567d0"
+    },
+    {
+      "entry": "005576e0",
+      "original": "b850000000",
+      "patched": "e95b078d00",
+      "replacement": "00e27e40",
+      "source": "bfv_client_return_word_005576e0"
+    },
+    {
+      "entry": "00559510",
+      "original": "b85c000000",
+      "patched": "e93be98c00",
+      "replacement": "00e27e50",
+      "source": "bfv_client_return_word_00559510"
+    },
+    {
+      "entry": "00559950",
+      "original": "b858000000",
+      "patched": "e90be58c00",
+      "replacement": "00e27e60",
+      "source": "bfv_client_return_word_00559950"
+    },
+    {
+      "entry": "0055b750",
+      "original": "b840000000",
+      "patched": "e91bc78c00",
+      "replacement": "00e27e70",
+      "source": "bfv_client_return_word_0055b750"
+    },
+    {
+      "entry": "0055d750",
+      "original": "b860000000",
+      "patched": "e92ba78c00",
+      "replacement": "00e27e80",
+      "source": "bfv_client_return_word_0055d750"
+    },
+    {
+      "entry": "00560a90",
+      "original": "b854000000",
+      "patched": "e9fb738c00",
+      "replacement": "00e27e90",
+      "source": "bfv_client_return_word_00560a90"
+    },
+    {
+      "entry": "00560cf0",
+      "original": "b86c000000",
+      "patched": "e9ab718c00",
+      "replacement": "00e27ea0",
+      "source": "bfv_client_return_word_00560cf0"
+    },
+    {
+      "entry": "00560f30",
+      "original": "b8ac000000",
+      "patched": "e97b6f8c00",
+      "replacement": "00e27eb0",
+      "source": "bfv_client_return_word_00560f30"
+    },
+    {
+      "entry": "005636f0",
+      "original": "b868000000",
+      "patched": "e9cb478c00",
+      "replacement": "00e27ec0",
+      "source": "bfv_client_return_word_005636f0"
+    },
+    {
+      "entry": "005651b0",
+      "original": "b82c000000",
+      "patched": "e91b2d8c00",
+      "replacement": "00e27ed0",
+      "source": "bfv_client_return_word_005651b0"
+    },
+    {
+      "entry": "005660f0",
+      "original": "b844000000",
+      "patched": "e9eb1d8c00",
+      "replacement": "00e27ee0",
+      "source": "bfv_client_return_word_005660f0"
+    },
+    {
+      "entry": "00566570",
+      "original": "b88c000000",
+      "patched": "e97b198c00",
+      "replacement": "00e27ef0",
+      "source": "bfv_client_return_word_00566570"
+    },
+    {
+      "entry": "00568230",
+      "original": "b84c000000",
+      "patched": "e9cbfc8b00",
+      "replacement": "00e27f00",
+      "source": "bfv_client_return_word_00568230"
+    },
+    {
+      "entry": "005697f0",
+      "original": "b8f4000000",
+      "patched": "e91be78b00",
+      "replacement": "00e27f10",
+      "source": "bfv_client_return_word_005697f0"
+    },
+    {
+      "entry": "0056fb40",
+      "original": "b874000000",
+      "patched": "e9db838b00",
+      "replacement": "00e27f20",
+      "source": "bfv_client_return_word_0056fb40"
+    },
+    {
+      "entry": "005922a0",
+      "original": "b8b44dcc00",
+      "patched": "e98b5c8900",
+      "replacement": "00e27f30",
+      "source": "bfv_client_return_word_005922a0"
+    },
+    {
+      "entry": "00592310",
+      "original": "b8184ecc00",
+      "patched": "e92b5c8900",
+      "replacement": "00e27f40",
+      "source": "bfv_client_return_word_00592310"
+    },
+    {
+      "entry": "00592380",
+      "original": "b8844ecc00",
+      "patched": "e9cb5b8900",
+      "replacement": "00e27f50",
+      "source": "bfv_client_return_word_00592380"
+    },
+    {
+      "entry": "005923f0",
+      "original": "b8f44ecc00",
+      "patched": "e96b5b8900",
+      "replacement": "00e27f60",
+      "source": "bfv_client_return_word_005923f0"
+    },
+    {
+      "entry": "00592460",
+      "original": "b8644fcc00",
+      "patched": "e90b5b8900",
+      "replacement": "00e27f70",
+      "source": "bfv_client_return_word_00592460"
+    },
+    {
+      "entry": "005924d0",
+      "original": "b8cc4fcc00",
+      "patched": "e9ab5a8900",
+      "replacement": "00e27f80",
+      "source": "bfv_client_return_word_005924d0"
+    },
+    {
+      "entry": "00592540",
+      "original": "b83850cc00",
+      "patched": "e94b5a8900",
+      "replacement": "00e27f90",
+      "source": "bfv_client_return_word_00592540"
+    },
+    {
+      "entry": "005925b0",
+      "original": "b8b050cc00",
+      "patched": "e9eb598900",
+      "replacement": "00e27fa0",
+      "source": "bfv_client_return_word_005925b0"
+    },
+    {
+      "entry": "00592620",
+      "original": "b83c51cc00",
+      "patched": "e98b598900",
+      "replacement": "00e27fb0",
+      "source": "bfv_client_return_word_00592620"
+    },
+    {
+      "entry": "00592690",
+      "original": "b8bc51cc00",
+      "patched": "e92b598900",
+      "replacement": "00e27fc0",
+      "source": "bfv_client_return_word_00592690"
+    },
+    {
+      "entry": "005927a0",
+      "original": "b85452cc00",
+      "patched": "e92b588900",
+      "replacement": "00e27fd0",
+      "source": "bfv_client_return_word_005927a0"
+    },
+    {
+      "entry": "00592920",
+      "original": "b84456cc00",
+      "patched": "e9bb568900",
+      "replacement": "00e27fe0",
+      "source": "bfv_client_return_word_00592920"
+    },
+    {
+      "entry": "00592960",
+      "original": "b8a856cc00",
+      "patched": "e98b568900",
+      "replacement": "00e27ff0",
+      "source": "bfv_client_return_word_00592960"
+    },
+    {
+      "entry": "005929a0",
+      "original": "b81057cc00",
+      "patched": "e95b568900",
+      "replacement": "00e28000",
+      "source": "bfv_client_return_word_005929a0"
+    },
+    {
+      "entry": "005929e0",
+      "original": "b82c28cb00",
+      "patched": "e92b568900",
+      "replacement": "00e28010",
+      "source": "bfv_client_return_word_005929e0"
+    },
+    {
+      "entry": "00592a20",
+      "original": "b8c057cc00",
+      "patched": "e9fb558900",
+      "replacement": "00e28020",
+      "source": "bfv_client_return_word_00592a20"
+    },
+    {
+      "entry": "00592a60",
+      "original": "b80828cb00",
+      "patched": "e9cb558900",
+      "replacement": "00e28030",
+      "source": "bfv_client_return_word_00592a60"
+    },
+    {
+      "entry": "00592aa0",
+      "original": "b86c58cc00",
+      "patched": "e99b558900",
+      "replacement": "00e28040",
+      "source": "bfv_client_return_word_00592aa0"
+    },
+    {
+      "entry": "00592ae0",
+      "original": "b8e458cc00",
+      "patched": "e96b558900",
+      "replacement": "00e28050",
+      "source": "bfv_client_return_word_00592ae0"
+    },
+    {
+      "entry": "00592b20",
+      "original": "b86859cc00",
+      "patched": "e93b558900",
+      "replacement": "00e28060",
+      "source": "bfv_client_return_word_00592b20"
+    },
+    {
+      "entry": "00592b60",
+      "original": "b8dc55cc00",
+      "patched": "e90b558900",
+      "replacement": "00e28070",
+      "source": "bfv_client_return_word_00592b60"
+    },
+    {
+      "entry": "00592ba0",
+      "original": "b8f454cc00",
+      "patched": "e9db548900",
+      "replacement": "00e28080",
+      "source": "bfv_client_return_word_00592ba0"
+    },
+    {
+      "entry": "00592c80",
+      "original": "b8d04ccc00",
+      "patched": "e90b548900",
+      "replacement": "00e28090",
+      "source": "bfv_client_return_word_00592c80"
+    },
+    {
+      "entry": "00592c90",
+      "original": "b8785bcc00",
+      "patched": "e90b548900",
+      "replacement": "00e280a0",
+      "source": "bfv_client_return_word_00592c90"
+    },
+    {
+      "entry": "00592d30",
+      "original": "b80c52cc00",
+      "patched": "e97b538900",
+      "replacement": "00e280b0",
+      "source": "bfv_client_return_word_00592d30"
+    },
+    {
+      "entry": "00592d40",
+      "original": "b8045ccc00",
+      "patched": "e97b538900",
+      "replacement": "00e280c0",
+      "source": "bfv_client_return_word_00592d40"
+    },
+    {
+      "entry": "005ac3f0",
+      "original": "b83c000000",
+      "patched": "e9dbbc8700",
+      "replacement": "00e280d0",
+      "source": "bfv_client_return_word_005ac3f0"
+    },
+    {
+      "entry": "005ac4c0",
+      "original": "b827000000",
+      "patched": "e91bbc8700",
+      "replacement": "00e280e0",
+      "source": "bfv_client_return_word_005ac4c0"
+    },
+    {
+      "entry": "005ac950",
+      "original": "b836000000",
+      "patched": "e99bb78700",
+      "replacement": "00e280f0",
+      "source": "bfv_client_return_word_005ac950"
+    },
+    {
+      "entry": "005acf50",
+      "original": "b82b000000",
+      "patched": "e9abb18700",
+      "replacement": "00e28100",
+      "source": "bfv_client_return_word_005acf50"
+    },
+    {
+      "entry": "005ad5f0",
+      "original": "b81f000000",
+      "patched": "e91bab8700",
+      "replacement": "00e28110",
+      "source": "bfv_client_return_word_005ad5f0"
+    },
+    {
+      "entry": "005adb10",
+      "original": "b82f000000",
+      "patched": "e90ba68700",
+      "replacement": "00e28120",
+      "source": "bfv_client_return_word_005adb10"
+    },
+    {
+      "entry": "005adba0",
+      "original": "b830000000",
+      "patched": "e98ba58700",
+      "replacement": "00e28130",
+      "source": "bfv_client_return_word_005adba0"
+    },
+    {
+      "entry": "005ae080",
+      "original": "b83b000000",
+      "patched": "e9bba08700",
+      "replacement": "00e28140",
+      "source": "bfv_client_return_word_005ae080"
+    },
+    {
+      "entry": "005ae190",
+      "original": "b83d000000",
+      "patched": "e9bb9f8700",
+      "replacement": "00e28150",
+      "source": "bfv_client_return_word_005ae190"
+    },
+    {
+      "entry": "005ae790",
+      "original": "b826000000",
+      "patched": "e9cb998700",
+      "replacement": "00e28160",
+      "source": "bfv_client_return_word_005ae790"
+    },
+    {
+      "entry": "005d2e80",
+      "original": "b8f8adcc00",
+      "patched": "e9eb528500",
+      "replacement": "00e28170",
+      "source": "bfv_client_return_word_005d2e80"
+    },
+    {
+      "entry": "0069b8e0",
+      "original": "b84492cd00",
+      "patched": "e99bc87800",
+      "replacement": "00e28180",
+      "source": "bfv_client_return_word_0069b8e0"
+    },
+    {
+      "entry": "0069b950",
+      "original": "b8b892cd00",
+      "patched": "e93bc87800",
+      "replacement": "00e28190",
+      "source": "bfv_client_return_word_0069b950"
+    },
+    {
+      "entry": "0069b9c0",
+      "original": "b82493cd00",
+      "patched": "e9dbc77800",
+      "replacement": "00e281a0",
+      "source": "bfv_client_return_word_0069b9c0"
+    },
+    {
+      "entry": "0069ba60",
+      "original": "b8a493cd00",
+      "patched": "e94bc77800",
+      "replacement": "00e281b0",
+      "source": "bfv_client_return_word_0069ba60"
+    },
+    {
+      "entry": "0069baa0",
+      "original": "b85474ca00",
+      "patched": "e91bc77800",
+      "replacement": "00e281c0",
+      "source": "bfv_client_return_word_0069baa0"
+    },
+    {
+      "entry": "0069bae0",
+      "original": "b8e0d3ca00",
+      "patched": "e9ebc67800",
+      "replacement": "00e281d0",
+      "source": "bfv_client_return_word_0069bae0"
+    },
+    {
+      "entry": "006a9be0",
+      "original": "b838b5cd00",
+      "patched": "e9fbe57700",
+      "replacement": "00e281e0",
+      "source": "bfv_client_return_word_006a9be0"
+    },
+    {
+      "entry": "006a9c50",
+      "original": "b8e0b5cd00",
+      "patched": "e99be57700",
+      "replacement": "00e281f0",
+      "source": "bfv_client_return_word_006a9c50"
+    },
+    {
+      "entry": "006a9cc0",
+      "original": "b874b6cd00",
+      "patched": "e93be57700",
+      "replacement": "00e28200",
+      "source": "bfv_client_return_word_006a9cc0"
+    },
+    {
+      "entry": "006a9d30",
+      "original": "b8fcb6cd00",
+      "patched": "e9dbe47700",
+      "replacement": "00e28210",
+      "source": "bfv_client_return_word_006a9d30"
+    },
+    {
+      "entry": "006a9da0",
+      "original": "b874b7cd00",
+      "patched": "e97be47700",
+      "replacement": "00e28220",
+      "source": "bfv_client_return_word_006a9da0"
+    },
+    {
+      "entry": "006aa050",
+      "original": "b808bbcd00",
+      "patched": "e9dbe17700",
+      "replacement": "00e28230",
+      "source": "bfv_client_return_word_006aa050"
+    },
+    {
+      "entry": "006aa3d0",
+      "original": "b8f4b7cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e28240",
+      "source": "bfv_client_return_word_006aa3d0"
+    },
+    {
+      "entry": "006aa3e0",
+      "original": "b880b8cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e28250",
+      "source": "bfv_client_return_word_006aa3e0"
+    },
+    {
+      "entry": "006aa3f0",
+      "original": "b804b9cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e28260",
+      "source": "bfv_client_return_word_006aa3f0"
+    },
+    {
+      "entry": "006aa400",
+      "original": "b888b9cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e28270",
+      "source": "bfv_client_return_word_006aa400"
+    },
+    {
+      "entry": "006aa410",
+      "original": "b890bbcd00",
+      "patched": "e96bde7700",
+      "replacement": "00e28280",
+      "source": "bfv_client_return_word_006aa410"
+    },
+    {
+      "entry": "006aa420",
+      "original": "b878b0cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e28290",
+      "source": "bfv_client_return_word_006aa420"
+    },
+    {
+      "entry": "006aa430",
+      "original": "b88cbacd00",
+      "patched": "e96bde7700",
+      "replacement": "00e282a0",
+      "source": "bfv_client_return_word_006aa430"
+    },
+    {
+      "entry": "006aa440",
+      "original": "b8b0b0cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e282b0",
+      "source": "bfv_client_return_word_006aa440"
+    },
+    {
+      "entry": "006aa450",
+      "original": "b864c8cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e282c0",
+      "source": "bfv_client_return_word_006aa450"
+    },
+    {
+      "entry": "006aa460",
+      "original": "b840c9cc00",
+      "patched": "e96bde7700",
+      "replacement": "00e282d0",
+      "source": "bfv_client_return_word_006aa460"
+    },
+    {
+      "entry": "006aa470",
+      "original": "b810bccd00",
+      "patched": "e96bde7700",
+      "replacement": "00e282e0",
+      "source": "bfv_client_return_word_006aa470"
+    },
+    {
+      "entry": "006aa480",
+      "original": "b870b1cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e282f0",
+      "source": "bfv_client_return_word_006aa480"
+    },
+    {
+      "entry": "006aa490",
+      "original": "b810bacd00",
+      "patched": "e96bde7700",
+      "replacement": "00e28300",
+      "source": "bfv_client_return_word_006aa490"
+    },
+    {
+      "entry": "006aa4a0",
+      "original": "b830b2cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e28310",
+      "source": "bfv_client_return_word_006aa4a0"
+    },
+    {
+      "entry": "006aa4b0",
+      "original": "b8a0c9cd00",
+      "patched": "e96bde7700",
+      "replacement": "00e28320",
+      "source": "bfv_client_return_word_006aa4b0"
+    },
+    {
+      "entry": "006aa4f0",
+      "original": "b840cacd00",
+      "patched": "e93bde7700",
+      "replacement": "00e28330",
+      "source": "bfv_client_return_word_006aa4f0"
+    },
+    {
+      "entry": "006aa530",
+      "original": "b8a8afcd00",
+      "patched": "e90bde7700",
+      "replacement": "00e28340",
+      "source": "bfv_client_return_word_006aa530"
+    },
+    {
+      "entry": "006aa570",
+      "original": "b8e0afcd00",
+      "patched": "e9dbdd7700",
+      "replacement": "00e28350",
+      "source": "bfv_client_return_word_006aa570"
+    },
+    {
+      "entry": "006aa5b0",
+      "original": "b86c75cc00",
+      "patched": "e9abdd7700",
+      "replacement": "00e28360",
+      "source": "bfv_client_return_word_006aa5b0"
+    },
+    {
+      "entry": "006aa5f0",
+      "original": "b89c75cc00",
+      "patched": "e97bdd7700",
+      "replacement": "00e28370",
+      "source": "bfv_client_return_word_006aa5f0"
+    },
+    {
+      "entry": "006aa630",
+      "original": "b86cc6cd00",
+      "patched": "e94bdd7700",
+      "replacement": "00e28380",
+      "source": "bfv_client_return_word_006aa630"
+    },
+    {
+      "entry": "006aa670",
+      "original": "b810c9cc00",
+      "patched": "e91bdd7700",
+      "replacement": "00e28390",
+      "source": "bfv_client_return_word_006aa670"
+    },
+    {
+      "entry": "006aa6b0",
+      "original": "b8b4accd00",
+      "patched": "e9ebdc7700",
+      "replacement": "00e283a0",
+      "source": "bfv_client_return_word_006aa6b0"
+    },
+    {
+      "entry": "006aa750",
+      "original": "b83875cc00",
+      "patched": "e95bdc7700",
+      "replacement": "00e283b0",
+      "source": "bfv_client_return_word_006aa750"
+    },
+    {
+      "entry": "006b5cb0",
+      "original": "b80c15ce00",
+      "patched": "e90b277700",
+      "replacement": "00e283c0",
+      "source": "bfv_client_return_word_006b5cb0"
+    },
+    {
+      "entry": "006b5e40",
+      "original": "b86c16ce00",
+      "patched": "e98b257700",
+      "replacement": "00e283d0",
+      "source": "bfv_client_return_word_006b5e40"
+    },
+    {
+      "entry": "006b5eb0",
+      "original": "b8f416ce00",
+      "patched": "e92b257700",
+      "replacement": "00e283e0",
+      "source": "bfv_client_return_word_006b5eb0"
+    },
+    {
+      "entry": "006b5f20",
+      "original": "b87017ce00",
+      "patched": "e9cb247700",
+      "replacement": "00e283f0",
+      "source": "bfv_client_return_word_006b5f20"
+    },
+    {
+      "entry": "006b5f90",
+      "original": "b8f017ce00",
+      "patched": "e96b247700",
+      "replacement": "00e28400",
+      "source": "bfv_client_return_word_006b5f90"
+    },
+    {
+      "entry": "006b6000",
+      "original": "b87418ce00",
+      "patched": "e90b247700",
+      "replacement": "00e28410",
+      "source": "bfv_client_return_word_006b6000"
+    },
+    {
+      "entry": "006b6160",
+      "original": "b8f0c6cc00",
+      "patched": "e9bb227700",
+      "replacement": "00e28420",
+      "source": "bfv_client_return_word_006b6160"
+    },
+    {
+      "entry": "006b6170",
+      "original": "b8a076cd00",
+      "patched": "e9bb227700",
+      "replacement": "00e28430",
+      "source": "bfv_client_return_word_006b6170"
+    },
+    {
+      "entry": "006b6180",
+      "original": "b820accd00",
+      "patched": "e9bb227700",
+      "replacement": "00e28440",
+      "source": "bfv_client_return_word_006b6180"
+    },
+    {
+      "entry": "006b6190",
+      "original": "b830adcd00",
+      "patched": "e9bb227700",
+      "replacement": "00e28450",
+      "source": "bfv_client_return_word_006b6190"
+    },
+    {
+      "entry": "006b61a0",
+      "original": "b8f0accd00",
+      "patched": "e9bb227700",
+      "replacement": "00e28460",
+      "source": "bfv_client_return_word_006b61a0"
+    },
+    {
+      "entry": "006b65b0",
+      "original": "b8f024ce00",
+      "patched": "e9bb1e7700",
+      "replacement": "00e28470",
+      "source": "bfv_client_return_word_006b65b0"
+    },
+    {
+      "entry": "006b6690",
+      "original": "b8a425ce00",
+      "patched": "e9eb1d7700",
+      "replacement": "00e28480",
+      "source": "bfv_client_return_word_006b6690"
+    },
+    {
+      "entry": "006b6760",
+      "original": "b84c26ce00",
+      "patched": "e92b1d7700",
+      "replacement": "00e28490",
+      "source": "bfv_client_return_word_006b6760"
+    },
+    {
+      "entry": "006b6b80",
+      "original": "b89c27ce00",
+      "patched": "e91b197700",
+      "replacement": "00e284a0",
+      "source": "bfv_client_return_word_006b6b80"
+    },
+    {
+      "entry": "006becf0",
+      "original": "b83c57ce00",
+      "patched": "e9bb977600",
+      "replacement": "00e284b0",
+      "source": "bfv_client_return_word_006becf0"
+    },
+    {
+      "entry": "006bed60",
+      "original": "b8bc57ce00",
+      "patched": "e95b977600",
+      "replacement": "00e284c0",
+      "source": "bfv_client_return_word_006bed60"
+    },
+    {
+      "entry": "006bedd0",
+      "original": "b83c58ce00",
+      "patched": "e9fb967600",
+      "replacement": "00e284d0",
+      "source": "bfv_client_return_word_006bedd0"
+    },
+    {
+      "entry": "006bee40",
+      "original": "b8ac58ce00",
+      "patched": "e99b967600",
+      "replacement": "00e284e0",
+      "source": "bfv_client_return_word_006bee40"
+    },
+    {
+      "entry": "006beeb0",
+      "original": "b82859ce00",
+      "patched": "e93b967600",
+      "replacement": "00e284f0",
+      "source": "bfv_client_return_word_006beeb0"
+    },
+    {
+      "entry": "006beff0",
+      "original": "b8808bcd00",
+      "patched": "e90b957600",
+      "replacement": "00e28500",
+      "source": "bfv_client_return_word_006beff0"
+    },
+    {
+      "entry": "006bf000",
+      "original": "b8d055ce00",
+      "patched": "e90b957600",
+      "replacement": "00e28510",
+      "source": "bfv_client_return_word_006bf000"
+    },
+    {
+      "entry": "006bf010",
+      "original": "b86855ce00",
+      "patched": "e90b957600",
+      "replacement": "00e28520",
+      "source": "bfv_client_return_word_006bf010"
+    },
+    {
+      "entry": "006bf020",
+      "original": "b89056ce00",
+      "patched": "e90b957600",
+      "replacement": "00e28530",
+      "source": "bfv_client_return_word_006bf020"
+    },
+    {
+      "entry": "006bf030",
+      "original": "b83056ce00",
+      "patched": "e90b957600",
+      "replacement": "00e28540",
+      "source": "bfv_client_return_word_006bf030"
+    },
+    {
+      "entry": "006c3270",
+      "original": "b893040000",
+      "patched": "e9db527600",
+      "replacement": "00e28550",
+      "source": "bfv_client_return_word_006c3270"
+    },
+    {
+      "entry": "006c5430",
+      "original": "b83f000000",
+      "patched": "e92b317600",
+      "replacement": "00e28560",
+      "source": "bfv_client_return_word_006c5430"
+    },
+    {
+      "entry": "006c72d0",
+      "original": "b8fd190000",
+      "patched": "e99b127600",
+      "replacement": "00e28570",
+      "source": "bfv_client_return_word_006c72d0"
+    },
+    {
+      "entry": "006d7460",
+      "original": "b8307bce00",
+      "patched": "e91b117500",
+      "replacement": "00e28580",
+      "source": "bfv_client_return_word_006d7460"
+    },
+    {
+      "entry": "006d74d0",
+      "original": "b8a87bce00",
+      "patched": "e9bb107500",
+      "replacement": "00e28590",
+      "source": "bfv_client_return_word_006d74d0"
+    },
+    {
+      "entry": "006d7540",
+      "original": "b8207cce00",
+      "patched": "e95b107500",
+      "replacement": "00e285a0",
+      "source": "bfv_client_return_word_006d7540"
+    },
+    {
+      "entry": "006d75b0",
+      "original": "b8a87cce00",
+      "patched": "e9fb0f7500",
+      "replacement": "00e285b0",
+      "source": "bfv_client_return_word_006d75b0"
+    },
+    {
+      "entry": "006d7620",
+      "original": "b8307dce00",
+      "patched": "e99b0f7500",
+      "replacement": "00e285c0",
+      "source": "bfv_client_return_word_006d7620"
+    },
+    {
+      "entry": "006d7690",
+      "original": "b8b07dce00",
+      "patched": "e93b0f7500",
+      "replacement": "00e285d0",
+      "source": "bfv_client_return_word_006d7690"
+    },
+    {
+      "entry": "006d7840",
+      "original": "b810d4ca00",
+      "patched": "e99b0d7500",
+      "replacement": "00e285e0",
+      "source": "bfv_client_return_word_006d7840"
+    },
+    {
+      "entry": "006d7880",
+      "original": "b82c9fcc00",
+      "patched": "e96b0d7500",
+      "replacement": "00e285f0",
+      "source": "bfv_client_return_word_006d7880"
+    },
+    {
+      "entry": "006d78c0",
+      "original": "b8c488cd00",
+      "patched": "e93b0d7500",
+      "replacement": "00e28600",
+      "source": "bfv_client_return_word_006d78c0"
+    },
+    {
+      "entry": "006d7900",
+      "original": "b8b08bcd00",
+      "patched": "e90b0d7500",
+      "replacement": "00e28610",
+      "source": "bfv_client_return_word_006d7900"
+    },
+    {
+      "entry": "006d7940",
+      "original": "b890d9ca00",
+      "patched": "e9db0c7500",
+      "replacement": "00e28620",
+      "source": "bfv_client_return_word_006d7940"
+    },
+    {
+      "entry": "006d7980",
+      "original": "b874d6ca00",
+      "patched": "e9ab0c7500",
+      "replacement": "00e28630",
+      "source": "bfv_client_return_word_006d7980"
+    },
+    {
+      "entry": "006d7af0",
+      "original": "b8d086ce00",
+      "patched": "e94b0b7500",
+      "replacement": "00e28640",
+      "source": "bfv_client_return_word_006d7af0"
+    },
+    {
+      "entry": "006dc770",
+      "original": "b818a4ce00",
+      "patched": "e9dbbe7400",
+      "replacement": "00e28650",
+      "source": "bfv_client_return_word_006dc770"
+    },
+    {
+      "entry": "006dc840",
+      "original": "b828a5ce00",
+      "patched": "e91bbe7400",
+      "replacement": "00e28660",
+      "source": "bfv_client_return_word_006dc840"
+    },
+    {
+      "entry": "006dc8b0",
+      "original": "b8a4a5ce00",
+      "patched": "e9bbbd7400",
+      "replacement": "00e28670",
+      "source": "bfv_client_return_word_006dc8b0"
+    },
+    {
+      "entry": "006dc920",
+      "original": "b81ca6ce00",
+      "patched": "e95bbd7400",
+      "replacement": "00e28680",
+      "source": "bfv_client_return_word_006dc920"
+    },
+    {
+      "entry": "006dc990",
+      "original": "b888a6ce00",
+      "patched": "e9fbbc7400",
+      "replacement": "00e28690",
+      "source": "bfv_client_return_word_006dc990"
+    },
+    {
+      "entry": "006dca00",
+      "original": "b800a7ce00",
+      "patched": "e99bbc7400",
+      "replacement": "00e286a0",
+      "source": "bfv_client_return_word_006dca00"
+    },
+    {
+      "entry": "006dca70",
+      "original": "b874a7ce00",
+      "patched": "e93bbc7400",
+      "replacement": "00e286b0",
+      "source": "bfv_client_return_word_006dca70"
+    },
+    {
+      "entry": "006dcae0",
+      "original": "b8e4a7ce00",
+      "patched": "e9dbbb7400",
+      "replacement": "00e286c0",
+      "source": "bfv_client_return_word_006dcae0"
+    },
+    {
+      "entry": "006dcb50",
+      "original": "b858a8ce00",
+      "patched": "e97bbb7400",
+      "replacement": "00e286d0",
+      "source": "bfv_client_return_word_006dcb50"
+    },
+    {
+      "entry": "006dcbc0",
+      "original": "b8d0a8ce00",
+      "patched": "e91bbb7400",
+      "replacement": "00e286e0",
+      "source": "bfv_client_return_word_006dcbc0"
+    },
+    {
+      "entry": "006dcc30",
+      "original": "b850a9ce00",
+      "patched": "e9bbba7400",
+      "replacement": "00e286f0",
+      "source": "bfv_client_return_word_006dcc30"
+    },
+    {
+      "entry": "006dcca0",
+      "original": "b8c4a9ce00",
+      "patched": "e95bba7400",
+      "replacement": "00e28700",
+      "source": "bfv_client_return_word_006dcca0"
+    },
+    {
+      "entry": "006dcd10",
+      "original": "b834aace00",
+      "patched": "e9fbb97400",
+      "replacement": "00e28710",
+      "source": "bfv_client_return_word_006dcd10"
+    },
+    {
+      "entry": "006dd250",
+      "original": "b89ca4ce00",
+      "patched": "e9cbb47400",
+      "replacement": "00e28720",
+      "source": "bfv_client_return_word_006dd250"
+    },
+    {
+      "entry": "006dd260",
+      "original": "b894a3ce00",
+      "patched": "e9cbb47400",
+      "replacement": "00e28730",
+      "source": "bfv_client_return_word_006dd260"
+    },
+    {
+      "entry": "006dd270",
+      "original": "b8c4abce00",
+      "patched": "e9cbb47400",
+      "replacement": "00e28740",
+      "source": "bfv_client_return_word_006dd270"
+    },
+    {
+      "entry": "006dd280",
+      "original": "b8b0aace00",
+      "patched": "e9cbb47400",
+      "replacement": "00e28750",
+      "source": "bfv_client_return_word_006dd280"
+    },
+    {
+      "entry": "006dd290",
+      "original": "b834abce00",
+      "patched": "e9cbb47400",
+      "replacement": "00e28760",
+      "source": "bfv_client_return_word_006dd290"
+    },
+    {
+      "entry": "006dd2a0",
+      "original": "b844acce00",
+      "patched": "e9cbb47400",
+      "replacement": "00e28770",
+      "source": "bfv_client_return_word_006dd2a0"
+    },
+    {
+      "entry": "006dd2c0",
+      "original": "b8ecacce00",
+      "patched": "e9bbb47400",
+      "replacement": "00e28780",
+      "source": "bfv_client_return_word_006dd2c0"
+    },
+    {
+      "entry": "006dd300",
+      "original": "b88803cc00",
+      "patched": "e98bb47400",
+      "replacement": "00e28790",
+      "source": "bfv_client_return_word_006dd300"
+    },
+    {
+      "entry": "006dd340",
+      "original": "b8acacce00",
+      "patched": "e95bb47400",
+      "replacement": "00e287a0",
+      "source": "bfv_client_return_word_006dd340"
+    },
+    {
+      "entry": "006dd380",
+      "original": "b854adce00",
+      "patched": "e92bb47400",
+      "replacement": "00e287b0",
+      "source": "bfv_client_return_word_006dd380"
+    },
+    {
+      "entry": "006dd3c0",
+      "original": "b878acce00",
+      "patched": "e9fbb37400",
+      "replacement": "00e287c0",
+      "source": "bfv_client_return_word_006dd3c0"
+    },
+    {
+      "entry": "006dd400",
+      "original": "b828adce00",
+      "patched": "e9cbb37400",
+      "replacement": "00e287d0",
+      "source": "bfv_client_return_word_006dd400"
+    },
+    {
+      "entry": "006dd440",
+      "original": "b87c74ca00",
+      "patched": "e99bb37400",
+      "replacement": "00e287e0",
+      "source": "bfv_client_return_word_006dd440"
+    },
+    {
+      "entry": "006dd480",
+      "original": "b868b7ce00",
+      "patched": "e96bb37400",
+      "replacement": "00e287f0",
+      "source": "bfv_client_return_word_006dd480"
+    },
+    {
+      "entry": "006dd4c0",
+      "original": "b8209bce00",
+      "patched": "e93bb37400",
+      "replacement": "00e28800",
+      "source": "bfv_client_return_word_006dd4c0"
+    },
+    {
+      "entry": "006dd500",
+      "original": "b8a09cce00",
+      "patched": "e90bb37400",
+      "replacement": "00e28810",
+      "source": "bfv_client_return_word_006dd500"
+    },
+    {
+      "entry": "006dd540",
+      "original": "b8cc9cce00",
+      "patched": "e9dbb27400",
+      "replacement": "00e28820",
+      "source": "bfv_client_return_word_006dd540"
+    },
+    {
+      "entry": "006dd580",
+      "original": "b8085ecd00",
+      "patched": "e9abb27400",
+      "replacement": "00e28830",
+      "source": "bfv_client_return_word_006dd580"
+    },
+    {
+      "entry": "006dd5c0",
+      "original": "b8309dce00",
+      "patched": "e97bb27400",
+      "replacement": "00e28840",
+      "source": "bfv_client_return_word_006dd5c0"
+    },
+    {
+      "entry": "006dd600",
+      "original": "b8c8b3ce00",
+      "patched": "e94bb27400",
+      "replacement": "00e28850",
+      "source": "bfv_client_return_word_006dd600"
+    },
+    {
+      "entry": "006dd640",
+      "original": "b8b4b4ce00",
+      "patched": "e91bb27400",
+      "replacement": "00e28860",
+      "source": "bfv_client_return_word_006dd640"
+    },
+    {
+      "entry": "006dd680",
+      "original": "b884adce00",
+      "patched": "e9ebb17400",
+      "replacement": "00e28870",
+      "source": "bfv_client_return_word_006dd680"
+    },
+    {
+      "entry": "006dd6c0",
+      "original": "b86cbace00",
+      "patched": "e9bbb17400",
+      "replacement": "00e28880",
+      "source": "bfv_client_return_word_006dd6c0"
+    },
+    {
+      "entry": "006dd700",
+      "original": "b8b4b5ce00",
+      "patched": "e98bb17400",
+      "replacement": "00e28890",
+      "source": "bfv_client_return_word_006dd700"
+    },
+    {
+      "entry": "006dd740",
+      "original": "b864b8ce00",
+      "patched": "e95bb17400",
+      "replacement": "00e288a0",
+      "source": "bfv_client_return_word_006dd740"
+    },
+    {
+      "entry": "006eab40",
+      "original": "b800004000",
+      "patched": "e96bdd7300",
+      "replacement": "00e288b0",
+      "source": "bfv_client_return_word_006eab40"
+    },
+    {
+      "entry": "00727110",
+      "original": "b8144acf00",
+      "patched": "e9ab177000",
+      "replacement": "00e288c0",
+      "source": "bfv_client_return_word_00727110"
+    },
+    {
+      "entry": "00727180",
+      "original": "b8804acf00",
+      "patched": "e94b177000",
+      "replacement": "00e288d0",
+      "source": "bfv_client_return_word_00727180"
+    },
+    {
+      "entry": "007271f0",
+      "original": "b8044bcf00",
+      "patched": "e9eb167000",
+      "replacement": "00e288e0",
+      "source": "bfv_client_return_word_007271f0"
+    },
+    {
+      "entry": "00727260",
+      "original": "b8784bcf00",
+      "patched": "e98b167000",
+      "replacement": "00e288f0",
+      "source": "bfv_client_return_word_00727260"
+    },
+    {
+      "entry": "007272d0",
+      "original": "b8ec4bcf00",
+      "patched": "e92b167000",
+      "replacement": "00e28900",
+      "source": "bfv_client_return_word_007272d0"
+    },
+    {
+      "entry": "007273d0",
+      "original": "b8344ecf00",
+      "patched": "e93b157000",
+      "replacement": "00e28910",
+      "source": "bfv_client_return_word_007273d0"
+    },
+    {
+      "entry": "00727410",
+      "original": "b89c4ecf00",
+      "patched": "e90b157000",
+      "replacement": "00e28920",
+      "source": "bfv_client_return_word_00727410"
+    },
+    {
+      "entry": "00727450",
+      "original": "b8681fcf00",
+      "patched": "e9db147000",
+      "replacement": "00e28930",
+      "source": "bfv_client_return_word_00727450"
+    },
+    {
+      "entry": "00727490",
+      "original": "b8880dcf00",
+      "patched": "e9ab147000",
+      "replacement": "00e28940",
+      "source": "bfv_client_return_word_00727490"
+    },
+    {
+      "entry": "007274d0",
+      "original": "b8a04fcf00",
+      "patched": "e97b147000",
+      "replacement": "00e28950",
+      "source": "bfv_client_return_word_007274d0"
+    },
+    {
+      "entry": "00727600",
+      "original": "b85c49cf00",
+      "patched": "e95b137000",
+      "replacement": "00e28960",
+      "source": "bfv_client_return_word_00727600"
+    },
+    {
+      "entry": "00727610",
+      "original": "b8bc50cf00",
+      "patched": "e95b137000",
+      "replacement": "00e28970",
+      "source": "bfv_client_return_word_00727610"
+    },
+    {
+      "entry": "0073b570",
+      "original": "b8d86fcf00",
+      "patched": "e90bd46e00",
+      "replacement": "00e28980",
+      "source": "bfv_client_return_word_0073b570"
+    },
+    {
+      "entry": "0073b5e0",
+      "original": "b85070cf00",
+      "patched": "e9abd36e00",
+      "replacement": "00e28990",
+      "source": "bfv_client_return_word_0073b5e0"
+    },
+    {
+      "entry": "0073b650",
+      "original": "b8c470cf00",
+      "patched": "e94bd36e00",
+      "replacement": "00e289a0",
+      "source": "bfv_client_return_word_0073b650"
+    },
+    {
+      "entry": "0073b6c0",
+      "original": "b83c71cf00",
+      "patched": "e9ebd26e00",
+      "replacement": "00e289b0",
+      "source": "bfv_client_return_word_0073b6c0"
+    },
+    {
+      "entry": "0073b870",
+      "original": "b8b871cf00",
+      "patched": "e94bd16e00",
+      "replacement": "00e289c0",
+      "source": "bfv_client_return_word_0073b870"
+    },
+    {
+      "entry": "0073b890",
+      "original": "b8f842cf00",
+      "patched": "e93bd16e00",
+      "replacement": "00e289d0",
+      "source": "bfv_client_return_word_0073b890"
+    },
+    {
+      "entry": "0073b8d0",
+      "original": "b86442cf00",
+      "patched": "e90bd16e00",
+      "replacement": "00e289e0",
+      "source": "bfv_client_return_word_0073b8d0"
+    },
+    {
+      "entry": "0073b910",
+      "original": "b83842cf00",
+      "patched": "e9dbd06e00",
+      "replacement": "00e289f0",
+      "source": "bfv_client_return_word_0073b910"
+    },
+    {
+      "entry": "0073b950",
+      "original": "b8e871cf00",
+      "patched": "e9abd06e00",
+      "replacement": "00e28a00",
+      "source": "bfv_client_return_word_0073b950"
+    },
+    {
+      "entry": "0073b990",
+      "original": "b8bc74cf00",
+      "patched": "e97bd06e00",
+      "replacement": "00e28a10",
+      "source": "bfv_client_return_word_0073b990"
+    },
+    {
+      "entry": "0074ae90",
+      "original": "b8008ecf00",
+      "patched": "e98bdb6d00",
+      "replacement": "00e28a20",
+      "source": "bfv_client_return_word_0074ae90"
+    },
+    {
+      "entry": "0074afc0",
+      "original": "b80095cf00",
+      "patched": "e96bda6d00",
+      "replacement": "00e28a30",
+      "source": "bfv_client_return_word_0074afc0"
+    },
+    {
+      "entry": "0074afd0",
+      "original": "b8b803cc00",
+      "patched": "e96bda6d00",
+      "replacement": "00e28a40",
+      "source": "bfv_client_return_word_0074afd0"
+    },
+    {
+      "entry": "0074afe0",
+      "original": "b89095cf00",
+      "patched": "e96bda6d00",
+      "replacement": "00e28a50",
+      "source": "bfv_client_return_word_0074afe0"
+    },
+    {
+      "entry": "0074aff0",
+      "original": "b81c26cf00",
+      "patched": "e96bda6d00",
+      "replacement": "00e28a60",
+      "source": "bfv_client_return_word_0074aff0"
+    },
+    {
+      "entry": "0074b040",
+      "original": "b83825cf00",
+      "patched": "e92bda6d00",
+      "replacement": "00e28a70",
+      "source": "bfv_client_return_word_0074b040"
+    },
+    {
+      "entry": "00750600",
+      "original": "b8089ecf00",
+      "patched": "e97b846d00",
+      "replacement": "00e28a80",
+      "source": "bfv_client_return_word_00750600"
+    },
+    {
+      "entry": "007506b0",
+      "original": "b8389ccf00",
+      "patched": "e9db836d00",
+      "replacement": "00e28a90",
+      "source": "bfv_client_return_word_007506b0"
+    },
+    {
+      "entry": "0076b3e0",
+      "original": "b801000000",
+      "patched": "e9bbd66b00",
+      "replacement": "00e28aa0",
+      "source": "bfv_client_return_word_0076b3e0"
+    },
+    {
+      "entry": "00779c90",
+      "original": "b8ecafcf00",
+      "patched": "e91bee6a00",
+      "replacement": "00e28ab0",
+      "source": "bfv_client_return_word_00779c90"
+    },
+    {
+      "entry": "00779d00",
+      "original": "b820b0cf00",
+      "patched": "e9bbed6a00",
+      "replacement": "00e28ac0",
+      "source": "bfv_client_return_word_00779d00"
+    },
+    {
+      "entry": "00779d70",
+      "original": "b850b0cf00",
+      "patched": "e95bed6a00",
+      "replacement": "00e28ad0",
+      "source": "bfv_client_return_word_00779d70"
+    },
+    {
+      "entry": "00779e30",
+      "original": "b880b0cf00",
+      "patched": "e9abec6a00",
+      "replacement": "00e28ae0",
+      "source": "bfv_client_return_word_00779e30"
+    },
+    {
+      "entry": "00779ee0",
+      "original": "b8b0b0cf00",
+      "patched": "e90bec6a00",
+      "replacement": "00e28af0",
+      "source": "bfv_client_return_word_00779ee0"
+    },
+    {
+      "entry": "00779f50",
+      "original": "b8e0b0cf00",
+      "patched": "e9abeb6a00",
+      "replacement": "00e28b00",
+      "source": "bfv_client_return_word_00779f50"
+    },
+    {
+      "entry": "00779fc0",
+      "original": "b810b1cf00",
+      "patched": "e94beb6a00",
+      "replacement": "00e28b10",
+      "source": "bfv_client_return_word_00779fc0"
+    },
+    {
+      "entry": "007816e0",
+      "original": "b848bccf00",
+      "patched": "e93b746a00",
+      "replacement": "00e28b20",
+      "source": "bfv_client_return_word_007816e0"
+    },
+    {
+      "entry": "007816f0",
+      "original": "b828bccf00",
+      "patched": "e93b746a00",
+      "replacement": "00e28b30",
+      "source": "bfv_client_return_word_007816f0"
+    },
+    {
+      "entry": "007817a0",
+      "original": "b888bccf00",
+      "patched": "e99b736a00",
+      "replacement": "00e28b40",
+      "source": "bfv_client_return_word_007817a0"
+    },
+    {
+      "entry": "00781810",
+      "original": "b8e4bccf00",
+      "patched": "e93b736a00",
+      "replacement": "00e28b50",
+      "source": "bfv_client_return_word_00781810"
+    },
+    {
+      "entry": "00783180",
+      "original": "b8a4bdcf00",
+      "patched": "e9db596a00",
+      "replacement": "00e28b60",
+      "source": "bfv_client_return_word_00783180"
+    },
+    {
+      "entry": "00783190",
+      "original": "b8c8bdcf00",
+      "patched": "e9db596a00",
+      "replacement": "00e28b70",
+      "source": "bfv_client_return_word_00783190"
+    },
+    {
+      "entry": "0079f350",
+      "original": "b869ad0300",
+      "patched": "e92b986800",
+      "replacement": "00e28b80",
+      "source": "bfv_client_return_word_0079f350"
+    },
+    {
+      "entry": "007ae1b0",
+      "original": "b8e000df00",
+      "patched": "e9dba96700",
+      "replacement": "00e28b90",
+      "source": "bfv_client_return_word_007ae1b0"
+    },
+    {
+      "entry": "007b2270",
+      "original": "b8b064bb00",
+      "patched": "e92b696700",
+      "replacement": "00e28ba0",
+      "source": "bfv_client_return_word_007b2270"
+    },
+    {
+      "entry": "007b2280",
+      "original": "b831000000",
+      "patched": "e92b696700",
+      "replacement": "00e28bb0",
+      "source": "bfv_client_return_word_007b2280"
+    },
+    {
+      "entry": "007b2290",
+      "original": "b83868bb00",
+      "patched": "e92b696700",
+      "replacement": "00e28bc0",
+      "source": "bfv_client_return_word_007b2290"
+    },
+    {
+      "entry": "007b2420",
+      "original": "b8a864bb00",
+      "patched": "e9ab676700",
+      "replacement": "00e28bd0",
+      "source": "bfv_client_return_word_007b2420"
+    },
+    {
+      "entry": "007b2430",
+      "original": "b833000000",
+      "patched": "e9ab676700",
+      "replacement": "00e28be0",
+      "source": "bfv_client_return_word_007b2430"
+    },
+    {
+      "entry": "007b33e0",
+      "original": "b8b864bb00",
+      "patched": "e90b586700",
+      "replacement": "00e28bf0",
+      "source": "bfv_client_return_word_007b33e0"
+    },
+    {
+      "entry": "007b33f0",
+      "original": "b832000000",
+      "patched": "e90b586700",
+      "replacement": "00e28c00",
+      "source": "bfv_client_return_word_007b33f0"
+    },
+    {
+      "entry": "007b4820",
+      "original": "b8dc69bb00",
+      "patched": "e9eb436700",
+      "replacement": "00e28c10",
+      "source": "bfv_client_return_word_007b4820"
+    },
+    {
+      "entry": "007b4830",
+      "original": "b839000000",
+      "patched": "e9eb436700",
+      "replacement": "00e28c20",
+      "source": "bfv_client_return_word_007b4830"
+    },
+    {
+      "entry": "007b4840",
+      "original": "b8146abb00",
+      "patched": "e9eb436700",
+      "replacement": "00e28c30",
+      "source": "bfv_client_return_word_007b4840"
+    },
+    {
+      "entry": "007b4850",
+      "original": "b84c6abb00",
+      "patched": "e9eb436700",
+      "replacement": "00e28c40",
+      "source": "bfv_client_return_word_007b4850"
+    },
+    {
+      "entry": "007b4860",
+      "original": "b837000000",
+      "patched": "e9eb436700",
+      "replacement": "00e28c50",
+      "source": "bfv_client_return_word_007b4860"
+    },
+    {
+      "entry": "007b4cf0",
+      "original": "b8146bbb00",
+      "patched": "e96b3f6700",
+      "replacement": "00e28c60",
+      "source": "bfv_client_return_word_007b4cf0"
+    },
+    {
+      "entry": "007b4d00",
+      "original": "b835000000",
+      "patched": "e96b3f6700",
+      "replacement": "00e28c70",
+      "source": "bfv_client_return_word_007b4d00"
+    },
+    {
+      "entry": "007c66d0",
+      "original": "b8242de200",
+      "patched": "e9ab256600",
+      "replacement": "00e28c80",
+      "source": "bfv_client_return_word_007c66d0"
+    },
+    {
+      "entry": "0081f410",
+      "original": "b840420f00",
+      "patched": "e97b986000",
+      "replacement": "00e28c90",
+      "source": "bfv_client_return_word_0081f410"
+    },
+    {
+      "entry": "00868ca0",
+      "original": "b870000000",
+      "patched": "e9fbff5b00",
+      "replacement": "00e28ca0",
+      "source": "bfv_client_return_word_00868ca0"
+    },
+    {
+      "entry": "00869f60",
+      "original": "b89c27bd00",
+      "patched": "e94bed5b00",
+      "replacement": "00e28cb0",
+      "source": "bfv_client_return_word_00869f60"
+    },
+    {
+      "entry": "00869fe0",
+      "original": "b8e427bd00",
+      "patched": "e9dbec5b00",
+      "replacement": "00e28cc0",
+      "source": "bfv_client_return_word_00869fe0"
+    },
+    {
+      "entry": "0086e680",
+      "original": "b848000000",
+      "patched": "e94ba65b00",
+      "replacement": "00e28cd0",
+      "source": "bfv_client_return_word_0086e680"
+    },
+    {
+      "entry": "00874600",
+      "original": "b801000000",
+      "patched": "e9db465b00",
+      "replacement": "00e28ce0",
+      "source": "bfv_client_return_word_00874600"
+    },
+    {
+      "entry": "00875310",
+      "original": "b8fc68df00",
+      "patched": "e9db395b00",
+      "replacement": "00e28cf0",
+      "source": "bfv_client_return_word_00875310"
+    },
+    {
+      "entry": "0087a120",
+      "original": "b814080000",
+      "patched": "e9dbeb5a00",
+      "replacement": "00e28d00",
+      "source": "bfv_client_return_word_0087a120"
+    },
+    {
+      "entry": "0087ba60",
+      "original": "b878040000",
+      "patched": "e9abd25a00",
+      "replacement": "00e28d10",
+      "source": "bfv_client_return_word_0087ba60"
+    },
+    {
+      "entry": "00885170",
+      "original": "b81cd7d000",
+      "patched": "e9ab3b5a00",
+      "replacement": "00e28d20",
+      "source": "bfv_client_return_word_00885170"
+    },
+    {
+      "entry": "008851e0",
+      "original": "b844d7d000",
+      "patched": "e94b3b5a00",
+      "replacement": "00e28d30",
+      "source": "bfv_client_return_word_008851e0"
+    },
+    {
+      "entry": "00885250",
+      "original": "b878d7d000",
+      "patched": "e9eb3a5a00",
+      "replacement": "00e28d40",
+      "source": "bfv_client_return_word_00885250"
+    },
+    {
+      "entry": "00885330",
+      "original": "b864dbd000",
+      "patched": "e91b3a5a00",
+      "replacement": "00e28d50",
+      "source": "bfv_client_return_word_00885330"
+    },
+    {
+      "entry": "008853a0",
+      "original": "b8c4dbd000",
+      "patched": "e9bb395a00",
+      "replacement": "00e28d60",
+      "source": "bfv_client_return_word_008853a0"
+    },
+    {
+      "entry": "00885410",
+      "original": "b824dcd000",
+      "patched": "e95b395a00",
+      "replacement": "00e28d70",
+      "source": "bfv_client_return_word_00885410"
+    },
+    {
+      "entry": "00885480",
+      "original": "b87cdcd000",
+      "patched": "e9fb385a00",
+      "replacement": "00e28d80",
+      "source": "bfv_client_return_word_00885480"
+    },
+    {
+      "entry": "00885550",
+      "original": "b83cddd000",
+      "patched": "e93b385a00",
+      "replacement": "00e28d90",
+      "source": "bfv_client_return_word_00885550"
+    },
+    {
+      "entry": "00885670",
+      "original": "b8f8afcb00",
+      "patched": "e92b375a00",
+      "replacement": "00e28da0",
+      "source": "bfv_client_return_word_00885670"
+    },
+    {
+      "entry": "00885680",
+      "original": "b8e085ce00",
+      "patched": "e92b375a00",
+      "replacement": "00e28db0",
+      "source": "bfv_client_return_word_00885680"
+    },
+    {
+      "entry": "00885690",
+      "original": "b848ffcb00",
+      "patched": "e92b375a00",
+      "replacement": "00e28dc0",
+      "source": "bfv_client_return_word_00885690"
+    },
+    {
+      "entry": "008856a0",
+      "original": "b868ffcb00",
+      "patched": "e92b375a00",
+      "replacement": "00e28dd0",
+      "source": "bfv_client_return_word_008856a0"
+    },
+    {
+      "entry": "008856b0",
+      "original": "b824e1d000",
+      "patched": "e92b375a00",
+      "replacement": "00e28de0",
+      "source": "bfv_client_return_word_008856b0"
+    },
+    {
+      "entry": "008856c0",
+      "original": "b8ec15ce00",
+      "patched": "e92b375a00",
+      "replacement": "00e28df0",
+      "source": "bfv_client_return_word_008856c0"
+    },
+    {
+      "entry": "008856d0",
+      "original": "b87c15ce00",
+      "patched": "e92b375a00",
+      "replacement": "00e28e00",
+      "source": "bfv_client_return_word_008856d0"
+    },
+    {
+      "entry": "008856e0",
+      "original": "b83024ce00",
+      "patched": "e92b375a00",
+      "replacement": "00e28e10",
+      "source": "bfv_client_return_word_008856e0"
+    },
+    {
+      "entry": "00885800",
+      "original": "b8dcdcd000",
+      "patched": "e91b365a00",
+      "replacement": "00e28e20",
+      "source": "bfv_client_return_word_00885800"
+    },
+    {
+      "entry": "00885810",
+      "original": "b8a4ddd000",
+      "patched": "e91b365a00",
+      "replacement": "00e28e30",
+      "source": "bfv_client_return_word_00885810"
+    },
+    {
+      "entry": "00885820",
+      "original": "b814e7d000",
+      "patched": "e91b365a00",
+      "replacement": "00e28e40",
+      "source": "bfv_client_return_word_00885820"
+    },
+    {
+      "entry": "00885860",
+      "original": "b874e7d000",
+      "patched": "e9eb355a00",
+      "replacement": "00e28e50",
+      "source": "bfv_client_return_word_00885860"
+    },
+    {
+      "entry": "008858a0",
+      "original": "b8d0e3d000",
+      "patched": "e9bb355a00",
+      "replacement": "00e28e60",
+      "source": "bfv_client_return_word_008858a0"
+    },
+    {
+      "entry": "008858e0",
+      "original": "b808e8d000",
+      "patched": "e98b355a00",
+      "replacement": "00e28e70",
+      "source": "bfv_client_return_word_008858e0"
+    },
+    {
+      "entry": "00885920",
+      "original": "b844e5d000",
+      "patched": "e95b355a00",
+      "replacement": "00e28e80",
+      "source": "bfv_client_return_word_00885920"
+    },
+    {
+      "entry": "00885960",
+      "original": "b89ce8d000",
+      "patched": "e92b355a00",
+      "replacement": "00e28e90",
+      "source": "bfv_client_return_word_00885960"
+    },
+    {
+      "entry": "008859a0",
+      "original": "b820e6d000",
+      "patched": "e9fb345a00",
+      "replacement": "00e28ea0",
+      "source": "bfv_client_return_word_008859a0"
+    },
+    {
+      "entry": "00885e70",
+      "original": "b890f1d000",
+      "patched": "e93b305a00",
+      "replacement": "00e28eb0",
+      "source": "bfv_client_return_word_00885e70"
+    },
+    {
+      "entry": "00885f10",
+      "original": "b860f2d000",
+      "patched": "e9ab2f5a00",
+      "replacement": "00e28ec0",
+      "source": "bfv_client_return_word_00885f10"
+    },
+    {
+      "entry": "00886140",
+      "original": "b8d0f3d000",
+      "patched": "e98b2d5a00",
+      "replacement": "00e28ed0",
+      "source": "bfv_client_return_word_00886140"
+    },
+    {
+      "entry": "00886490",
+      "original": "b814ded000",
+      "patched": "e94b2a5a00",
+      "replacement": "00e28ee0",
+      "source": "bfv_client_return_word_00886490"
+    },
+    {
+      "entry": "008864a0",
+      "original": "b8c0f6d000",
+      "patched": "e94b2a5a00",
+      "replacement": "00e28ef0",
+      "source": "bfv_client_return_word_008864a0"
+    },
+    {
+      "entry": "0088ba10",
+      "original": "b87c02d100",
+      "patched": "e9ebd45900",
+      "replacement": "00e28f00",
+      "source": "bfv_client_return_word_0088ba10"
+    },
+    {
+      "entry": "0088c0f0",
+      "original": "b800e9d000",
+      "patched": "e91bce5900",
+      "replacement": "00e28f10",
+      "source": "bfv_client_return_word_0088c0f0"
+    },
+    {
+      "entry": "0088cdd0",
+      "original": "b864ebd000",
+      "patched": "e94bc15900",
+      "replacement": "00e28f20",
+      "source": "bfv_client_return_word_0088cdd0"
+    },
+    {
+      "entry": "0088d560",
+      "original": "b8a4ebd000",
+      "patched": "e9cbb95900",
+      "replacement": "00e28f30",
+      "source": "bfv_client_return_word_0088d560"
+    },
+    {
+      "entry": "0088dd40",
+      "original": "b8e4ebd000",
+      "patched": "e9fbb15900",
+      "replacement": "00e28f40",
+      "source": "bfv_client_return_word_0088dd40"
+    },
+    {
+      "entry": "0088e4d0",
+      "original": "b828ecd000",
+      "patched": "e97baa5900",
+      "replacement": "00e28f50",
+      "source": "bfv_client_return_word_0088e4d0"
+    },
+    {
+      "entry": "0088eca0",
+      "original": "b878edd000",
+      "patched": "e9bba25900",
+      "replacement": "00e28f60",
+      "source": "bfv_client_return_word_0088eca0"
+    },
+    {
+      "entry": "008c0b70",
+      "original": "b8c0050000",
+      "patched": "e9fb835600",
+      "replacement": "00e28f70",
+      "source": "bfv_client_return_word_008c0b70"
+    },
+    {
+      "entry": "008d9bd0",
+      "original": "b809000000",
+      "patched": "e9abf35400",
+      "replacement": "00e28f80",
+      "source": "bfv_client_return_word_008d9bd0"
+    },
+    {
+      "entry": "0094a5f0",
+      "original": "b8e0b3d100",
+      "patched": "e99be94d00",
+      "replacement": "00e28f90",
+      "source": "bfv_client_return_word_0094a5f0"
+    },
+    {
+      "entry": "0094a660",
+      "original": "b844b4d100",
+      "patched": "e93be94d00",
+      "replacement": "00e28fa0",
+      "source": "bfv_client_return_word_0094a660"
+    },
+    {
+      "entry": "0094a6d0",
+      "original": "b8bcb4d100",
+      "patched": "e9dbe84d00",
+      "replacement": "00e28fb0",
+      "source": "bfv_client_return_word_0094a6d0"
+    },
+    {
+      "entry": "0094a740",
+      "original": "b838b5d100",
+      "patched": "e97be84d00",
+      "replacement": "00e28fc0",
+      "source": "bfv_client_return_word_0094a740"
+    },
+    {
+      "entry": "0094a7b0",
+      "original": "b8b4b5d100",
+      "patched": "e91be84d00",
+      "replacement": "00e28fd0",
+      "source": "bfv_client_return_word_0094a7b0"
+    },
+    {
+      "entry": "0094a820",
+      "original": "b82cb6d100",
+      "patched": "e9bbe74d00",
+      "replacement": "00e28fe0",
+      "source": "bfv_client_return_word_0094a820"
+    },
+    {
+      "entry": "0094a890",
+      "original": "b88cb6d100",
+      "patched": "e95be74d00",
+      "replacement": "00e28ff0",
+      "source": "bfv_client_return_word_0094a890"
+    },
+    {
+      "entry": "0094a900",
+      "original": "b8ecb6d100",
+      "patched": "e9fbe64d00",
+      "replacement": "00e29000",
+      "source": "bfv_client_return_word_0094a900"
+    },
+    {
+      "entry": "0094a970",
+      "original": "b850b7d100",
+      "patched": "e99be64d00",
+      "replacement": "00e29010",
+      "source": "bfv_client_return_word_0094a970"
+    },
+    {
+      "entry": "0094a9e0",
+      "original": "b8b8b7d100",
+      "patched": "e93be64d00",
+      "replacement": "00e29020",
+      "source": "bfv_client_return_word_0094a9e0"
+    },
+    {
+      "entry": "0094aa50",
+      "original": "b82cb8d100",
+      "patched": "e9dbe54d00",
+      "replacement": "00e29030",
+      "source": "bfv_client_return_word_0094aa50"
+    },
+    {
+      "entry": "0094aac0",
+      "original": "b898b8d100",
+      "patched": "e97be54d00",
+      "replacement": "00e29040",
+      "source": "bfv_client_return_word_0094aac0"
+    },
+    {
+      "entry": "0094ab30",
+      "original": "b800b9d100",
+      "patched": "e91be54d00",
+      "replacement": "00e29050",
+      "source": "bfv_client_return_word_0094ab30"
+    },
+    {
+      "entry": "0094aba0",
+      "original": "b870b9d100",
+      "patched": "e9bbe44d00",
+      "replacement": "00e29060",
+      "source": "bfv_client_return_word_0094aba0"
+    },
+    {
+      "entry": "0094ac10",
+      "original": "b8ecb9d100",
+      "patched": "e95be44d00",
+      "replacement": "00e29070",
+      "source": "bfv_client_return_word_0094ac10"
+    },
+    {
+      "entry": "0094ac80",
+      "original": "b858bad100",
+      "patched": "e9fbe34d00",
+      "replacement": "00e29080",
+      "source": "bfv_client_return_word_0094ac80"
+    },
+    {
+      "entry": "0094acf0",
+      "original": "b8bcbad100",
+      "patched": "e99be34d00",
+      "replacement": "00e29090",
+      "source": "bfv_client_return_word_0094acf0"
+    },
+    {
+      "entry": "0094b3a0",
+      "original": "b8c0e1d100",
+      "patched": "e9fbdc4d00",
+      "replacement": "00e290a0",
+      "source": "bfv_client_return_word_0094b3a0"
+    },
+    {
+      "entry": "0094b3e0",
+      "original": "b870a8d100",
+      "patched": "e9cbdc4d00",
+      "replacement": "00e290b0",
+      "source": "bfv_client_return_word_0094b3e0"
+    },
+    {
+      "entry": "0094b420",
+      "original": "b808a8d100",
+      "patched": "e99bdc4d00",
+      "replacement": "00e290c0",
+      "source": "bfv_client_return_word_0094b420"
+    },
+    {
+      "entry": "0094b460",
+      "original": "b8d8a7d100",
+      "patched": "e96bdc4d00",
+      "replacement": "00e290d0",
+      "source": "bfv_client_return_word_0094b460"
+    },
+    {
+      "entry": "0094b4a0",
+      "original": "b838a8d100",
+      "patched": "e93bdc4d00",
+      "replacement": "00e290e0",
+      "source": "bfv_client_return_word_0094b4a0"
+    },
+    {
+      "entry": "0094b4e0",
+      "original": "b8aca7d100",
+      "patched": "e90bdc4d00",
+      "replacement": "00e290f0",
+      "source": "bfv_client_return_word_0094b4e0"
+    },
+    {
+      "entry": "0094b520",
+      "original": "b88ca0d100",
+      "patched": "e9dbdb4d00",
+      "replacement": "00e29100",
+      "source": "bfv_client_return_word_0094b520"
+    },
+    {
+      "entry": "0094b560",
+      "original": "b8a4a1d100",
+      "patched": "e9abdb4d00",
+      "replacement": "00e29110",
+      "source": "bfv_client_return_word_0094b560"
+    },
+    {
+      "entry": "0094b5a0",
+      "original": "b87ca1d100",
+      "patched": "e97bdb4d00",
+      "replacement": "00e29120",
+      "source": "bfv_client_return_word_0094b5a0"
+    },
+    {
+      "entry": "0094b5e0",
+      "original": "b8cca1d100",
+      "patched": "e94bdb4d00",
+      "replacement": "00e29130",
+      "source": "bfv_client_return_word_0094b5e0"
+    },
+    {
+      "entry": "0094b620",
+      "original": "b824ccd100",
+      "patched": "e91bdb4d00",
+      "replacement": "00e29140",
+      "source": "bfv_client_return_word_0094b620"
+    },
+    {
+      "entry": "0094b660",
+      "original": "b8f8a1d100",
+      "patched": "e9ebda4d00",
+      "replacement": "00e29150",
+      "source": "bfv_client_return_word_0094b660"
+    },
+    {
+      "entry": "0094b6a0",
+      "original": "b820a2d100",
+      "patched": "e9bbda4d00",
+      "replacement": "00e29160",
+      "source": "bfv_client_return_word_0094b6a0"
+    },
+    {
+      "entry": "0094b6e0",
+      "original": "b898d8d100",
+      "patched": "e98bda4d00",
+      "replacement": "00e29170",
+      "source": "bfv_client_return_word_0094b6e0"
+    },
+    {
+      "entry": "0094b720",
+      "original": "b828a1d100",
+      "patched": "e95bda4d00",
+      "replacement": "00e29180",
+      "source": "bfv_client_return_word_0094b720"
+    },
+    {
+      "entry": "0094b760",
+      "original": "b854a1d100",
+      "patched": "e92bda4d00",
+      "replacement": "00e29190",
+      "source": "bfv_client_return_word_0094b760"
+    },
+    {
+      "entry": "0094b7a0",
+      "original": "b8d4a0d100",
+      "patched": "e9fbd94d00",
+      "replacement": "00e291a0",
+      "source": "bfv_client_return_word_0094b7a0"
+    },
+    {
+      "entry": "00969890",
+      "original": "b800000008",
+      "patched": "e91bf94b00",
+      "replacement": "00e291b0",
+      "source": "bfv_client_return_word_00969890"
+    },
+    {
+      "entry": "009842d0",
+      "original": "b803000000",
+      "patched": "e9eb4e4a00",
+      "replacement": "00e291c0",
+      "source": "bfv_client_return_word_009842d0"
+    },
+    {
+      "entry": "00984530",
+      "original": "b802000000",
+      "patched": "e99b4c4a00",
+      "replacement": "00e291d0",
+      "source": "bfv_client_return_word_00984530"
+    },
+    {
+      "entry": "00996f70",
+      "original": "b829000000",
+      "patched": "e96b224900",
+      "replacement": "00e291e0",
+      "source": "bfv_client_return_word_00996f70"
+    },
+    {
+      "entry": "009dc530",
+      "original": "b80a000000",
+      "patched": "e9bbcc4400",
+      "replacement": "00e291f0",
+      "source": "bfv_client_return_word_009dc530"
+    },
+    {
+      "entry": "009f20d0",
+      "original": "b80d000000",
+      "patched": "e92b714300",
+      "replacement": "00e29200",
+      "source": "bfv_client_return_word_009f20d0"
+    },
+    {
+      "entry": "009f2300",
+      "original": "b80e000000",
+      "patched": "e90b6f4300",
+      "replacement": "00e29210",
+      "source": "bfv_client_return_word_009f2300"
+    },
+    {
+      "entry": "009f2890",
+      "original": "b820000000",
+      "patched": "e98b694300",
+      "replacement": "00e29220",
+      "source": "bfv_client_return_word_009f2890"
+    },
+    {
+      "entry": "009f2a10",
+      "original": "b81c000000",
+      "patched": "e91b684300",
+      "replacement": "00e29230",
+      "source": "bfv_client_return_word_009f2a10"
+    },
+    {
+      "entry": "009f2b30",
+      "original": "b81a000000",
+      "patched": "e90b674300",
+      "replacement": "00e29240",
+      "source": "bfv_client_return_word_009f2b30"
+    },
+    {
+      "entry": "009f2d00",
+      "original": "b822000000",
+      "patched": "e94b654300",
+      "replacement": "00e29250",
+      "source": "bfv_client_return_word_009f2d00"
+    },
+    {
+      "entry": "009f2df0",
+      "original": "b823000000",
+      "patched": "e96b644300",
+      "replacement": "00e29260",
+      "source": "bfv_client_return_word_009f2df0"
+    },
+    {
+      "entry": "009f37b0",
+      "original": "b825000000",
+      "patched": "e9bb5a4300",
+      "replacement": "00e29270",
+      "source": "bfv_client_return_word_009f37b0"
+    },
+    {
+      "entry": "009f3d70",
+      "original": "b817000000",
+      "patched": "e90b554300",
+      "replacement": "00e29280",
+      "source": "bfv_client_return_word_009f3d70"
+    },
+    {
+      "entry": "009f53a0",
+      "original": "b805000000",
+      "patched": "e9eb3e4300",
+      "replacement": "00e29290",
+      "source": "bfv_client_return_word_009f53a0"
+    },
+    {
+      "entry": "009f5880",
+      "original": "b819000000",
+      "patched": "e91b3a4300",
+      "replacement": "00e292a0",
+      "source": "bfv_client_return_word_009f5880"
+    },
+    {
+      "entry": "009f6cf0",
+      "original": "b81e000000",
+      "patched": "e9bb254300",
+      "replacement": "00e292b0",
+      "source": "bfv_client_return_word_009f6cf0"
+    },
+    {
+      "entry": "009f6de0",
+      "original": "b80f000000",
+      "patched": "e9db244300",
+      "replacement": "00e292c0",
+      "source": "bfv_client_return_word_009f6de0"
+    },
+    {
+      "entry": "009f70b0",
+      "original": "b815000000",
+      "patched": "e91b224300",
+      "replacement": "00e292d0",
+      "source": "bfv_client_return_word_009f70b0"
+    },
+    {
+      "entry": "009f7720",
+      "original": "b81b000000",
+      "patched": "e9bb1b4300",
+      "replacement": "00e292e0",
+      "source": "bfv_client_return_word_009f7720"
+    },
+    {
+      "entry": "009f7840",
+      "original": "b828000000",
+      "patched": "e9ab1a4300",
+      "replacement": "00e292f0",
+      "source": "bfv_client_return_word_009f7840"
+    },
+    {
+      "entry": "009f78f0",
+      "original": "b821000000",
+      "patched": "e90b1a4300",
+      "replacement": "00e29300",
+      "source": "bfv_client_return_word_009f78f0"
+    },
+    {
+      "entry": "009f7f00",
+      "original": "b810000000",
+      "patched": "e90b144300",
+      "replacement": "00e29310",
+      "source": "bfv_client_return_word_009f7f00"
+    },
+    {
+      "entry": "009f8330",
+      "original": "b811000000",
+      "patched": "e9eb0f4300",
+      "replacement": "00e29320",
+      "source": "bfv_client_return_word_009f8330"
+    },
+    {
+      "entry": "009f83e0",
+      "original": "b812000000",
+      "patched": "e94b0f4300",
+      "replacement": "00e29330",
+      "source": "bfv_client_return_word_009f83e0"
+    },
+    {
+      "entry": "009f8590",
+      "original": "b80b000000",
+      "patched": "e9ab0d4300",
+      "replacement": "00e29340",
+      "source": "bfv_client_return_word_009f8590"
+    },
+    {
+      "entry": "009f87a0",
+      "original": "b80c000000",
+      "patched": "e9ab0b4300",
+      "replacement": "00e29350",
+      "source": "bfv_client_return_word_009f87a0"
+    },
+    {
+      "entry": "009f9090",
+      "original": "b813000000",
+      "patched": "e9cb024300",
+      "replacement": "00e29360",
+      "source": "bfv_client_return_word_009f9090"
+    },
+    {
+      "entry": "009f9290",
+      "original": "b809000000",
+      "patched": "e9db004300",
+      "replacement": "00e29370",
+      "source": "bfv_client_return_word_009f9290"
+    },
+    {
+      "entry": "009f9390",
+      "original": "b808000000",
+      "patched": "e9ebff4200",
+      "replacement": "00e29380",
+      "source": "bfv_client_return_word_009f9390"
+    },
+    {
+      "entry": "009f9660",
+      "original": "b806000000",
+      "patched": "e92bfd4200",
+      "replacement": "00e29390",
+      "source": "bfv_client_return_word_009f9660"
+    },
+    {
+      "entry": "009f9830",
+      "original": "b801000000",
+      "patched": "e96bfb4200",
+      "replacement": "00e293a0",
+      "source": "bfv_client_return_word_009f9830"
+    },
+    {
+      "entry": "009f9dc0",
+      "original": "b81d000000",
+      "patched": "e9ebf54200",
+      "replacement": "00e293b0",
+      "source": "bfv_client_return_word_009f9dc0"
+    },
+    {
+      "entry": "009f9e30",
+      "original": "b804000000",
+      "patched": "e98bf54200",
+      "replacement": "00e293c0",
+      "source": "bfv_client_return_word_009f9e30"
+    },
+    {
+      "entry": "009fa060",
+      "original": "b816000000",
+      "patched": "e96bf34200",
+      "replacement": "00e293d0",
+      "source": "bfv_client_return_word_009fa060"
+    },
+    {
+      "entry": "009fc8c0",
+      "original": "b807000000",
+      "patched": "e91bcb4200",
+      "replacement": "00e293e0",
+      "source": "bfv_client_return_word_009fc8c0"
+    },
+    {
+      "entry": "00a37870",
+      "original": "b8e873e100",
+      "patched": "e97b1b3f00",
+      "replacement": "00e293f0",
+      "source": "bfv_client_return_word_00a37870"
+    },
+    {
+      "entry": "00a43ed0",
+      "original": "b801000000",
+      "patched": "e92b553e00",
+      "replacement": "00e29400",
+      "source": "bfv_client_return_word_00a43ed0"
+    },
+    {
+      "entry": "00a43ef0",
+      "original": "b801000000",
+      "patched": "e91b553e00",
+      "replacement": "00e29410",
+      "source": "bfv_client_return_word_00a43ef0"
+    },
+    {
+      "entry": "00a579a0",
+      "original": "b858b2d200",
+      "patched": "e97b1a3d00",
+      "replacement": "00e29420",
+      "source": "bfv_client_return_word_00a579a0"
+    },
+    {
+      "entry": "00a57a10",
+      "original": "b8c8b2d200",
+      "patched": "e91b1a3d00",
+      "replacement": "00e29430",
+      "source": "bfv_client_return_word_00a57a10"
+    },
+    {
+      "entry": "00a57a80",
+      "original": "b844b3d200",
+      "patched": "e9bb193d00",
+      "replacement": "00e29440",
+      "source": "bfv_client_return_word_00a57a80"
+    },
+    {
+      "entry": "00a57af0",
+      "original": "b8c8b3d200",
+      "patched": "e95b193d00",
+      "replacement": "00e29450",
+      "source": "bfv_client_return_word_00a57af0"
+    },
+    {
+      "entry": "00a57b60",
+      "original": "b838b4d200",
+      "patched": "e9fb183d00",
+      "replacement": "00e29460",
+      "source": "bfv_client_return_word_00a57b60"
+    },
+    {
+      "entry": "00a57bd0",
+      "original": "b8a8b4d200",
+      "patched": "e99b183d00",
+      "replacement": "00e29470",
+      "source": "bfv_client_return_word_00a57bd0"
+    },
+    {
+      "entry": "00a57c40",
+      "original": "b824b5d200",
+      "patched": "e93b183d00",
+      "replacement": "00e29480",
+      "source": "bfv_client_return_word_00a57c40"
+    },
+    {
+      "entry": "00a57e00",
+      "original": "b860b6d200",
+      "patched": "e98b163d00",
+      "replacement": "00e29490",
+      "source": "bfv_client_return_word_00a57e00"
+    },
+    {
+      "entry": "00a57e40",
+      "original": "b88cb8d200",
+      "patched": "e95b163d00",
+      "replacement": "00e294a0",
+      "source": "bfv_client_return_word_00a57e40"
+    },
+    {
+      "entry": "00a57e80",
+      "original": "b808b9d200",
+      "patched": "e92b163d00",
+      "replacement": "00e294b0",
+      "source": "bfv_client_return_word_00a57e80"
+    },
+    {
+      "entry": "00a57ec0",
+      "original": "b888b9d200",
+      "patched": "e9fb153d00",
+      "replacement": "00e294c0",
+      "source": "bfv_client_return_word_00a57ec0"
+    },
+    {
+      "entry": "00a57f00",
+      "original": "b8a0a9d200",
+      "patched": "e9cb153d00",
+      "replacement": "00e294d0",
+      "source": "bfv_client_return_word_00a57f00"
+    },
+    {
+      "entry": "00a57f40",
+      "original": "b834dbca00",
+      "patched": "e99b153d00",
+      "replacement": "00e294e0",
+      "source": "bfv_client_return_word_00a57f40"
+    },
+    {
+      "entry": "00a57f80",
+      "original": "b804dbca00",
+      "patched": "e96b153d00",
+      "replacement": "00e294f0",
+      "source": "bfv_client_return_word_00a57f80"
+    },
+    {
+      "entry": "00a57ff0",
+      "original": "b868b0d200",
+      "patched": "e90b153d00",
+      "replacement": "00e29500",
+      "source": "bfv_client_return_word_00a57ff0"
+    },
+    {
+      "entry": "00a58000",
+      "original": "b838bcd200",
+      "patched": "e90b153d00",
+      "replacement": "00e29510",
+      "source": "bfv_client_return_word_00a58000"
+    },
+    {
+      "entry": "00a580a0",
+      "original": "b8d8afd200",
+      "patched": "e97b143d00",
+      "replacement": "00e29520",
+      "source": "bfv_client_return_word_00a580a0"
+    },
+    {
+      "entry": "00a580b0",
+      "original": "b820bdd200",
+      "patched": "e97b143d00",
+      "replacement": "00e29530",
+      "source": "bfv_client_return_word_00a580b0"
+    },
+    {
+      "entry": "00a58150",
+      "original": "b854afd200",
+      "patched": "e9eb133d00",
+      "replacement": "00e29540",
+      "source": "bfv_client_return_word_00a58150"
+    },
+    {
+      "entry": "00a58160",
+      "original": "b8ecbdd200",
+      "patched": "e9eb133d00",
+      "replacement": "00e29550",
+      "source": "bfv_client_return_word_00a58160"
+    },
+    {
+      "entry": "00a5c7a0",
+      "original": "b864d8d200",
+      "patched": "e9bbcd3c00",
+      "replacement": "00e29560",
+      "source": "bfv_client_return_word_00a5c7a0"
+    },
+    {
+      "entry": "00a5c810",
+      "original": "b8e8d8d200",
+      "patched": "e95bcd3c00",
+      "replacement": "00e29570",
+      "source": "bfv_client_return_word_00a5c810"
+    },
+    {
+      "entry": "00a5c880",
+      "original": "b864d9d200",
+      "patched": "e9fbcc3c00",
+      "replacement": "00e29580",
+      "source": "bfv_client_return_word_00a5c880"
+    },
+    {
+      "entry": "00a5c8f0",
+      "original": "b8dcd9d200",
+      "patched": "e99bcc3c00",
+      "replacement": "00e29590",
+      "source": "bfv_client_return_word_00a5c8f0"
+    },
+    {
+      "entry": "00a5c9c0",
+      "original": "b8fcdad200",
+      "patched": "e9dbcb3c00",
+      "replacement": "00e295a0",
+      "source": "bfv_client_return_word_00a5c9c0"
+    },
+    {
+      "entry": "00a5ca00",
+      "original": "b810a6d200",
+      "patched": "e9abcb3c00",
+      "replacement": "00e295b0",
+      "source": "bfv_client_return_word_00a5ca00"
+    },
+    {
+      "entry": "00a5ca40",
+      "original": "b858aad200",
+      "patched": "e97bcb3c00",
+      "replacement": "00e295c0",
+      "source": "bfv_client_return_word_00a5ca40"
+    },
+    {
+      "entry": "00a5cb50",
+      "original": "b8acdcd200",
+      "patched": "e97bca3c00",
+      "replacement": "00e295d0",
+      "source": "bfv_client_return_word_00a5cb50"
+    },
+    {
+      "entry": "00a7f170",
+      "original": "b800080000",
+      "patched": "e96ba43a00",
+      "replacement": "00e295e0",
+      "source": "bfv_client_return_word_00a7f170"
+    },
+    {
+      "entry": "00a7f1a0",
+      "original": "b800020000",
+      "patched": "e94ba43a00",
+      "replacement": "00e295f0",
+      "source": "bfv_client_return_word_00a7f1a0"
+    },
+    {
+      "entry": "00abe4f0",
+      "original": "b804000000",
+      "patched": "e90bb13600",
+      "replacement": "00e29600",
+      "source": "bfv_client_return_word_00abe4f0"
+    },
+    {
+      "entry": "00ac2ac0",
+      "original": "b834000000",
+      "patched": "e94b6b3600",
+      "replacement": "00e29610",
+      "source": "bfv_client_return_word_00ac2ac0"
+    },
+    {
+      "entry": "00ac3950",
+      "original": "b818000000",
+      "patched": "e9cb5c3600",
+      "replacement": "00e29620",
+      "source": "bfv_client_return_word_00ac3950"
+    },
+    {
+      "entry": "00ac4490",
+      "original": "b814000000",
+      "patched": "e99b513600",
+      "replacement": "00e29630",
+      "source": "bfv_client_return_word_00ac4490"
     }
   ],
-  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper; remaining engine code/services are retained from the original image; affine matrix composition also compiles from source, replacing a guarded native entry and called directly by reconstructed aiming"
+  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; remaining engine code/services are retained from the original image Audited constant-return entry bodies are compiled from individually editable C; returned original-image addresses retain native data dependencies."
 }

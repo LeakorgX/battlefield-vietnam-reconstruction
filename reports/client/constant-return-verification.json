@@ -1,0 +1,13 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "compiled_sha256": "90ae924fdc72aa0e4c4caab50c429238116f27c8032a916375aa6a910b755ba7",
+  "reconstructed_entries": 541,
+  "passed": 3246,
+  "scenarios_per_entry": 6,
+  "retained_depth_counts": {
+    "0": 2164,
+    "2": 1082
+  },
+  "scope": "Actual original/source entries compare exact EAX bits, stack cleanup, all non-result integer registers, CPU flags, complete x87 state and no memory writes. Original-image return addresses retain data dependencies. Static Ghidra body/reference audit does not exclude unknown computed entry references. No full-game parity claim."
+}

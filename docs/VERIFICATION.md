@@ -7,12 +7,19 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   21,925 scoped checks per target, 43,850 in total: 12,460 existing-suite
-   checks, 7,369 shared-math, 782 aiming and 1,314 affine-matrix checks per target. Earlier builds also executed
+   25,171 scoped client checks and 24,403 server checks, 49,574 in total. Each
+   target passed 12,460 existing-suite, 7,369 shared-math, 782 aiming and 1,314
+   affine-matrix checks; constant-return checks add 3,246 client and 2,478 server
+   cases. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
 
+- Constant-return checks execute every original/replacement entry in six flag/
+  caller-state scenarios: 3,246 client cases and 2,478 server cases. They check
+  exact EAX bits, stack cleanup, preserved registers, CPU flags, complete x87
+  state and no writes/delegated engine services. Static body/reference auditing
+  precedes guarded installation. See [CONSTANT-RETURNS.md](CONSTANT-RETURNS.md).
 - Affine matrix comparisons run actual original/source composition with no math
   mocks. They compare complete memory, overlapping input/output buffers, return
   pointer, stack cleanup, preserved registers and x87 status/control, including

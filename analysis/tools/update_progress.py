@@ -13,18 +13,20 @@ ROOT=Path(__file__).resolve().parents[2]
 
 def generate():
     registry=json.loads((ROOT/'reports/recovery-registry.json').read_text(encoding='utf-8'))
-    targets={};seen=set();total=0;recovered=0;partial=0
+    targets={};seen=set();total=0;recovered=0;partial=0;source_cache={}
     for target in ['client','server']:
         path=ROOT/'reports'/target/'all-functions.tsv'
         with path.open(encoding='utf-8') as f:inventory={row['address'] for row in csv.DictReader(f,delimiter='\t')}
         complete=set();incomplete=set()
         for entry in registry:
+            if target not in entry['addresses']:continue
             address=entry['addresses'][target]
             assert address in inventory,(target,address)
             assert (target,address) not in seen,('duplicate native function',target,address)
             seen.add((target,address))
             source=ROOT/entry['source'];assert source.is_file()
-            assert entry['symbol'] in source.read_text(encoding='utf-8')
+            if entry['source'] not in source_cache:source_cache[entry['source']]=source.read_text(encoding='utf-8')
+            assert entry['symbol'] in source_cache[entry['source']]
             assert entry['status'] in ['reconstructed','partial']
             (complete if entry['status']=='reconstructed' else incomplete).add(address)
         targets[target]=dict(indexed_functions=len(inventory),reconstructed_functions=len(complete),

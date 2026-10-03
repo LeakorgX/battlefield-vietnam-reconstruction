@@ -268,5 +268,7637 @@
       "client": "0049acd0",
       "server": "00438590"
     }
+  },
+  {
+    "symbol": "bfv_client_return_word_004236d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004236d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00516fd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00516fd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005170a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005170a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005172a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005172a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005172d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005172d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005230c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005230c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052adb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052adb0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ae20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ae20"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ae90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ae90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052afe0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052afe0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b090",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b090"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b100",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b100"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b170",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b170"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b1e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b1e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b250",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b250"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b2c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b2c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b570",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b570"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b5e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b5e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b650",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b650"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b6c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b6c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b730",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b730"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b7a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b7a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b810",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b810"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b880",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b880"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b8f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b8f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b960",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b960"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052b9d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052b9d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ba40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ba40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bab0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bab0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bb20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bb20"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bb90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bb90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bc00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bc00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bc70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bc70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bce0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bce0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bd50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bd50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bdc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bdc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052be90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052be90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bf00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bf00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bf80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bf80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bf90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bf90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052bfa0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052bfa0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052c9f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052c9f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca20"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ca90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ca90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052caa0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052caa0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cab0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cab0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cac0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cac0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cad0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cad0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cae0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cae0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052caf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052caf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb20"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cb90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cb90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cba0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cba0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cbb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cbb0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cbc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cbc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cbd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cbd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cbe0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cbe0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cbf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cbf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc20"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cc90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cc90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cca0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cca0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ccb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ccb0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ccc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ccc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ccd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ccd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cce0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cce0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ccf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ccf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd20"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cd90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cd90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cda0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cda0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cdb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cdb0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cdc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cdc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cdd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cdd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cde0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cde0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052cdf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052cdf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ce00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ce00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052ce10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052ce10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d0a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d0a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d0e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d0e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d120",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d120"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d180",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d180"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d1c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d1c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d200",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d200"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d270",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d270"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d2b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d2b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d4d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d4d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d5a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d5a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d5e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d5e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d620",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d620"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d660",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d660"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d6a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d6a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d6e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d6e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d720",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d720"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d760",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d760"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d800",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d800"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d870",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d870"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052d8b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052d8b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052dc80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052dc80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052dc90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052dc90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052dd00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052dd00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052dd10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052dd10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052dde0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052dde0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052de80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052de80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052f180",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052f180"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052f190",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052f190"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0052f260",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0052f260"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e4f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e4f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e560",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e560"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e5d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e5d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e640",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e640"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e6b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e6b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e720",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e720"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e790",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e790"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e800",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e800"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e870",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e870"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e8b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e8b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e8f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e8f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e930",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e930"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e970",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e970"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e9b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e9b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053e9f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053e9f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053eaa0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053eaa0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053ed90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053ed90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0053ee80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0053ee80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00554080",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00554080"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005567d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005567d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005576e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005576e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00559510",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00559510"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00559950",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00559950"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0055b750",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0055b750"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0055d750",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0055d750"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00560a90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00560a90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00560cf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00560cf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00560f30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00560f30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005636f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005636f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005651b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005651b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005660f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005660f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00566570",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00566570"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00568230",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00568230"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005697f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005697f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0056fb40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0056fb40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005922a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005922a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592310",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592310"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592380",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592380"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005923f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005923f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592460",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592460"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005924d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005924d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592540",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592540"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005925b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005925b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592620",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592620"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592690",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592690"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005927a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005927a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592920",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592920"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592960",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592960"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005929a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005929a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005929e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005929e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592a20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592a20"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592a60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592a60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592aa0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592aa0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592ae0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592ae0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592b20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592b20"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592b60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592b60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592ba0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592ba0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592c80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592c80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592c90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592c90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592d30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592d30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00592d40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00592d40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005ac3f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005ac3f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005ac4c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005ac4c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005ac950",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005ac950"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005acf50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005acf50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005ad5f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005ad5f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005adb10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005adb10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005adba0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005adba0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005ae080",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005ae080"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005ae190",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005ae190"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005ae790",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005ae790"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_005d2e80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005d2e80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0069b8e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0069b8e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0069b950",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0069b950"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0069b9c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0069b9c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0069ba60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0069ba60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0069baa0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0069baa0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0069bae0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0069bae0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006a9be0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a9be0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006a9c50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a9c50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006a9cc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a9cc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006a9d30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a9d30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006a9da0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a9da0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa050",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa050"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa3d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa3d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa3e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa3e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa3f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa3f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa400",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa400"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa410",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa410"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa420",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa420"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa430",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa430"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa440",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa440"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa450",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa450"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa460",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa460"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa470",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa470"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa480",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa480"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa490",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa490"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa4a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa4a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa4b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa4b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa4f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa4f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa530",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa530"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa570",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa570"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa5b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa5b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa5f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa5f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa630",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa630"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa670",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa670"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa6b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa6b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006aa750",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006aa750"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b5cb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b5cb0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b5e40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b5e40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b5eb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b5eb0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b5f20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b5f20"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b5f90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b5f90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b6000",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b6000"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b6160",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b6160"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b6170",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b6170"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b6180",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b6180"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b6190",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b6190"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b61a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b61a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b65b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b65b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b6690",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b6690"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b6760",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b6760"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006b6b80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b6b80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006becf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006becf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006bed60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bed60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006bedd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bedd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006bee40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bee40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006beeb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006beeb0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006beff0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006beff0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006bf000",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bf000"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006bf010",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bf010"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006bf020",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bf020"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006bf030",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bf030"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006c3270",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006c3270"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006c5430",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006c5430"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006c72d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006c72d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7460",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7460"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d74d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d74d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7540",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7540"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d75b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d75b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7620",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7620"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7690",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7690"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7840",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7840"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7880",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7880"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d78c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d78c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7900",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7900"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7940",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7940"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7980",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7980"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006d7af0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7af0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dc770",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dc770"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dc840",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dc840"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dc8b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dc8b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dc920",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dc920"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dc990",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dc990"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dca00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dca00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dca70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dca70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dcae0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dcae0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dcb50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dcb50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dcbc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dcbc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dcc30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dcc30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dcca0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dcca0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dcd10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dcd10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd250",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd250"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd260",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd260"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd270",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd270"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd280",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd280"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd290",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd290"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd2a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd2a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd2c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd2c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd300",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd300"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd340",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd340"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd380",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd380"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd3c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd3c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd400",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd400"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd440",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd440"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd480",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd480"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd4c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd4c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd500",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd500"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd540",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd540"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd580",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd580"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd5c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd5c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd600",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd600"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd640",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd640"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd680",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd680"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd6c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd6c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd700",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd700"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006dd740",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dd740"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_006eab40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006eab40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00727110",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00727110"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00727180",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00727180"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007271f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007271f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00727260",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00727260"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007272d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007272d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007273d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007273d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00727410",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00727410"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00727450",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00727450"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00727490",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00727490"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007274d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007274d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00727600",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00727600"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00727610",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00727610"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b570",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b570"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b5e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b5e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b650",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b650"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b6c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b6c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b870",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b870"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b890",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b890"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b8d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b8d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b910",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b910"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b950",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b950"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0073b990",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0073b990"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0074ae90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0074ae90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0074afc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0074afc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0074afd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0074afd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0074afe0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0074afe0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0074aff0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0074aff0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0074b040",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0074b040"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00750600",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00750600"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007506b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007506b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0076b3e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0076b3e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00779c90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00779c90"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00779d00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00779d00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00779d70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00779d70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00779e30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00779e30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00779ee0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00779ee0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00779f50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00779f50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00779fc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00779fc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007816e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007816e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007816f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007816f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007817a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007817a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00781810",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00781810"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00783180",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00783180"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00783190",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00783190"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0079f350",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0079f350"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007ae1b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007ae1b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b2270",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b2270"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b2280",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b2280"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b2290",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b2290"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b2420",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b2420"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b2430",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b2430"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b33e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b33e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b33f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b33f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b4820",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b4820"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b4830",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b4830"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b4840",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b4840"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b4850",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b4850"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b4860",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b4860"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b4cf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b4cf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007b4d00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007b4d00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_007c66d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007c66d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0081f410",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0081f410"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00868ca0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00868ca0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00869f60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00869f60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00869fe0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00869fe0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0086e680",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0086e680"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00874600",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00874600"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00875310",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00875310"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0087a120",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0087a120"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0087ba60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0087ba60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885170",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885170"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008851e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008851e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885250",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885250"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885330",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885330"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008853a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008853a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885410",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885410"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885480",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885480"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885550",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885550"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885670",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885670"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885680",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885680"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885690",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885690"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008856a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008856a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008856b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008856b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008856c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008856c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008856d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008856d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008856e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008856e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885800",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885800"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885810",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885810"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885820",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885820"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885860",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885860"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008858a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008858a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008858e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008858e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885920",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885920"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885960",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885960"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008859a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008859a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885e70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885e70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00885f10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00885f10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00886140",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00886140"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00886490",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00886490"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008864a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008864a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0088ba10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0088ba10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0088c0f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0088c0f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0088cdd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0088cdd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0088d560",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0088d560"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0088dd40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0088dd40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0088e4d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0088e4d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0088eca0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0088eca0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008c0b70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008c0b70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_008d9bd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008d9bd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a5f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a5f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a660",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a660"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a6d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a6d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a740",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a740"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a7b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a7b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a820",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a820"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a890",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a890"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a900",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a900"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a970",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a970"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094a9e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094a9e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094aa50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094aa50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094aac0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094aac0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094ab30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094ab30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094aba0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094aba0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094ac10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094ac10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094ac80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094ac80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094acf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094acf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b3a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b3a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b3e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b3e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b420",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b420"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b460",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b460"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b4a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b4a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b4e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b4e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b520",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b520"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b560",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b560"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b5a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b5a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b5e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b5e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b620",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b620"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b660",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b660"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b6a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b6a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b6e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b6e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b720",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b720"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b760",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b760"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_0094b7a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0094b7a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00969890",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00969890"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009842d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009842d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00984530",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00984530"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00996f70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00996f70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009dc530",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009dc530"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f20d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f20d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f2300",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f2300"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f2890",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f2890"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f2a10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f2a10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f2b30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f2b30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f2d00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f2d00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f2df0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f2df0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f37b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f37b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f3d70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f3d70"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f53a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f53a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f5880",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f5880"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f6cf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f6cf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f6de0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f6de0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f70b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f70b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f7720",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f7720"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f7840",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f7840"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f78f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f78f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f7f00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f7f00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f8330",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f8330"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f83e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f83e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f8590",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f8590"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f87a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f87a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f9090",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f9090"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f9290",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f9290"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f9390",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f9390"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f9660",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f9660"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f9830",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f9830"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f9dc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f9dc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009f9e30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009f9e30"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009fa060",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009fa060"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_009fc8c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009fc8c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a37870",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a37870"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a43ed0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a43ed0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a43ef0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a43ef0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a579a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a579a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57a10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57a10"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57a80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57a80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57af0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57af0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57b60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57b60"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57bd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57bd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57c40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57c40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57e00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57e00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57e40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57e40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57e80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57e80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57ec0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57ec0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57f00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57f00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57f40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57f40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57f80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57f80"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a57ff0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a57ff0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a58000",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a58000"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a580a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a580a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a580b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a580b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a58150",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a58150"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a58160",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a58160"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a5c7a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a5c7a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a5c810",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a5c810"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a5c880",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a5c880"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a5c8f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a5c8f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a5c9c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a5c9c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a5ca00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a5ca00"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a5ca40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a5ca40"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a5cb50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a5cb50"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a7f170",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a7f170"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00a7f1a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a7f1a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00abe4f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00abe4f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00ac2ac0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00ac2ac0"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00ac3950",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00ac3950"
+    }
+  },
+  {
+    "symbol": "bfv_client_return_word_00ac4490",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00ac4490"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00422af0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00422af0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0048b5e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0048b5e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0048b650",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0048b650"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0048b6c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0048b6c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0048b8f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0048b8f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0048b900",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0048b900"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0048b930",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0048b930"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498900",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498900"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498970",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498970"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004989e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004989e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498c30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498c30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498ca0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498ca0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498d10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498d10"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498d80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498d80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498df0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498df0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498e60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498e60"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498ed0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498ed0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498f40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498f40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00498fb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00498fb0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499020",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499020"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499090",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499090"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499100",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499100"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499170",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499170"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004991e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004991e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499250",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499250"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004992c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004992c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499330",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499330"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004993a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004993a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499410",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499410"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499480",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499480"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004994f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004994f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499560",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499560"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004995d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004995d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499640",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499640"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004996b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004996b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499720",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499720"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499790",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499790"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499800",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499800"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499870",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499870"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004998e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004998e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499950",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499950"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004999c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004999c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499a30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499a30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499aa0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499aa0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499b50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499b50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499b60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499b60"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00499b70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00499b70"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a5f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a5f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a640",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a640"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a650",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a650"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a660",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a660"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a670",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a670"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a680",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a680"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a690",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a690"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a6a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a6a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a6b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a6b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a6c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a6c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a6d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a6d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a6e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a6e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a6f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a6f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a700",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a700"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a710",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a710"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a720",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a720"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a730",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a730"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a740",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a740"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a750",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a750"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a760",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a760"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a770",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a770"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a780",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a780"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a790",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a790"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a7a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a7a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a7b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a7b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a7c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a7c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a7d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a7d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a7e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a7e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a7f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a7f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a800",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a800"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a810",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a810"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a820",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a820"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a830",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a830"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a840",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a840"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a850",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a850"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a860",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a860"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a870",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a870"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a880",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a880"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a890",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a890"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a8a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a8a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a8b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a8b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a8c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a8c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a8d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a8d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a8e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a8e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a8f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a8f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a900",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a900"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a910",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a910"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a920",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a920"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a930",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a930"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049a940",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049a940"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049abe0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049abe0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049ac20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049ac20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049acb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049acb0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049acf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049acf0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049ad30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049ad30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049ae90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049ae90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049aed0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049aed0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049af10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049af10"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049af50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049af50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049af90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049af90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049afd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049afd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b010",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b010"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b050",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b050"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b090",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b090"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b0d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b0d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b110",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b110"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b150",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b150"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b190",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b190"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b1d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b1d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b210",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b210"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b250",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b250"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b290",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b290"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b2d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b2d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b310",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b310"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b350",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b350"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b390",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b390"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b3d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b3d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b410",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b410"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b450",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b450"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b4b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b4b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b880",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b880"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b890",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b890"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b930",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b930"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b940",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b940"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b9e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b9e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049b9f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049b9f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049bac0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049bac0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049bad0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049bad0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049bb40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049bb40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049bc40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049bc40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049cdf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049cdf0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0049cec0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0049cec0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004bfbf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004bfbf0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004bfcb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004bfcb0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004bfcc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004bfcc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004bfd90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004bfd90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004bfdc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004bfdc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004bfe30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004bfe30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0020",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0020"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0350",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0350"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0440",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0440"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0600",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0600"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c06b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c06b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0730",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0730"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c07f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c07f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0860",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0860"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0b00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0b00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0ba0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0ba0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0c20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0c20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0e20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0e20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0f40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0f40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c0fd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c0fd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c10e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c10e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1170",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1170"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1200",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1200"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1290",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1290"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c13c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c13c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c14c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c14c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1550",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1550"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c15d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c15d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1650",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1650"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c16e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c16e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c17f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c17f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1890",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1890"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1a20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1a20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1ab0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1ab0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1bc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1bc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1cd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1cd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c1e00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c1e00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c20e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c20e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c21f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c21f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_004c24f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004c24f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057ec20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057ec20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057ec90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057ec90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057ed00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057ed00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057ee30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057ee30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057ee70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057ee70"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057eeb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057eeb0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057ef20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057ef20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057ef30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057ef30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057f050",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057f050"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0057f060",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057f060"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058a710",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058a710"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058a780",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058a780"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058a7f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058a7f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058a860",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058a860"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058a8d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058a8d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058a940",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058a940"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058a9b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058a9b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058aa20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058aa20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058aa90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058aa90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058ab00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058ab00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058ab70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058ab70"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058abe0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058abe0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058ac50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058ac50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058acc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058acc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058af90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058af90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058afa0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058afa0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058afb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058afb0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058afc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058afc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058afd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058afd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058afe0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058afe0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058aff0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058aff0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058b000",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058b000"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058b010",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058b010"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058b020",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058b020"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058b030",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058b030"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058b070",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058b070"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058b0b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058b0b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058b0f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058b0f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058b130",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058b130"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0058b4b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0058b4b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00596af0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00596af0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00596bd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00596bd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00596c80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00596c80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00596cf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00596cf0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00596d60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00596d60"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00596dd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00596dd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00596e40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00596e40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00596eb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00596eb0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00597010",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00597010"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00597020",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00597020"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00597030",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00597030"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00597040",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00597040"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00597050",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00597050"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00597480",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00597480"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00597560",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00597560"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00597600",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00597600"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005979d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005979d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00597ab0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00597ab0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059ecf0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059ecf0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059ed00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059ed00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059ed10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059ed10"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059ed20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059ed20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059ed30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059ed30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059ed40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059ed40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059ed80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059ed80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059edc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059edc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059ee00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059ee00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0059ee40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059ee40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005a3330",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005a3330"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005a59a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005a59a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005a7840",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005a7840"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b8c00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b8c00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b8c70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b8c70"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b8ce0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b8ce0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b8d60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b8d60"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b8dd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b8dd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b8e40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b8e40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b8ff0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b8ff0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b9030",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b9030"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b9070",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b9070"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b90b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b90b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b90f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b90f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b9130",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b9130"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b9260",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b9260"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005b9270",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b9270"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bd9b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bd9b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bda20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bda20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bda90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bda90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bdb00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bdb00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bdb70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bdb70"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bdbe0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bdbe0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bdc50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bdc50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bdcc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bdcc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bdd30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bdd30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bdda0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bdda0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bde10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bde10"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005bde80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005bde80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be120",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be120"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be130",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be130"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be170",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be170"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be1e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be1e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be220",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be220"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be260",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be260"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be2a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be2a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be2e0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be2e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be320",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be320"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be360",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be360"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be3b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be3b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005be3f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005be3f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_005c73b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005c73b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601c40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601c40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601cb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601cb0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601d20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601d20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601d90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601d90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601e00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601e00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601e90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601e90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601f00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601f00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601f40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601f40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601f80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601f80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00601fc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00601fc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00602000",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00602000"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00602070",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00602070"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00603f50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00603f50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00603fc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00603fc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00604030",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00604030"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_006040a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006040a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00604110",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00604110"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00604260",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00604260"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00604270",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00604270"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_006042b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006042b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_006042f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006042f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00604330",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00604330"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0060d820",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0060d820"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0060d950",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0060d950"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0060d960",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0060d960"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0060d980",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0060d980"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0060d990",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0060d990"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0060d9a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0060d9a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_006100b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006100b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00610160",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00610160"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_006239c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006239c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00623a30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00623a30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00623ae0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00623ae0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00623b60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00623b60"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00623bd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00623bd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00623c80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00623c80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00623d30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00623d30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0062b480",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0062b480"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0062b490",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0062b490"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0062b540",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0062b540"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0062b5b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0062b5b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0062d040",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0062d040"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0062d050",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0062d050"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653940",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653940"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_006539b0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006539b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653a20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653a20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653a90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653a90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653b60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653b60"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653e30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653e30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653e40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653e40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653e50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653e50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653e90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653e90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653ed0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653ed0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653f10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653f10"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653f50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653f50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653f90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653f90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00653fd0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00653fd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00654610",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00654610"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00654620",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00654620"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_006546c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006546c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_006546d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006546d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00654990",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00654990"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_006549a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006549a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00654aa0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00654aa0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00654ab0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00654ab0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00654b50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00654b50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00654d50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00654d50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00654df0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00654df0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00654f20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00654f20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0065a890",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0065a890"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0065a8a0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0065a8a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0065af80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0065af80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0065bc60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0065bc60"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0065c470",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0065c470"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0065cbe0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0065cbe0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0065d420",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0065d420"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0065db90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0065db90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_0068cd50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0068cd50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707920",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707920"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707990",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707990"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707a00",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707a00"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707a70",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707a70"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707ae0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707ae0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707b50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707b50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707bc0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707bc0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707c30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707c30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707ca0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707ca0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707d10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707d10"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707d80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707d80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707df0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707df0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707e60",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707e60"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707ed0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707ed0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707f40",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707f40"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00707fb0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00707fb0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708020",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708020"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007086d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007086d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708710",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708710"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708750",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708750"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708790",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708790"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007087d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007087d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708810",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708810"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708850",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708850"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708890",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708890"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007088d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007088d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708910",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708910"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708950",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708950"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708990",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708990"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007089d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007089d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708a10",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708a10"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708a50",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708a50"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708a90",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708a90"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00708ad0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00708ad0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007210c0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007210c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007416f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007416f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00774a30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00774a30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_00774c20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00774c20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007a2e80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007a2e80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007a4a30",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007a4a30"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007a6840",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007a6840"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007a69d0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007a69d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007a6e20",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007a6e20"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007a80f0",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007a80f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007abe80",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007abe80"
+    }
+  },
+  {
+    "symbol": "bfv_server_return_word_007ae670",
+    "source": "bfv-native-code/src/constant_returns.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007ae670"
+    }
   }
 ]
