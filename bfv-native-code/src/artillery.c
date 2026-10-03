@@ -12,7 +12,9 @@ typedef long double (TC *fallback_score)(void *, void *, uint32_t, float);
 typedef long double (TC *artillery_score)(void *, void *, uint32_t, float,
                                         void *, void *);
 typedef uint8_t (TC *test_bot)(void *, void *);
+typedef void (TC *set_word)(void *, uint32_t);
 volatile uint32_t bfv_artillery_calls;
+volatile uint32_t bfv_artillery_evaluate_calls;
 static uint32_t word(uintptr_t address)
 { return *(volatile uint32_t *)address; }
 static uintptr_t method(void *object, uint32_t offset)
@@ -26,6 +28,51 @@ static uintptr_t resolve(uint32_t handle)
     uintptr_t record = word(word(BFV_OBJECT_POOL)) + index * 8 - 8;
     if (*(volatile uint16_t *)(record + 6) != (uint16_t)(handle >> 16)) return 0;
     return word(record);
+}
+
+/* The evaluator's low recompute byte chooses between cache validation and a
+ * new candidate search. Candidate search remains native until its complete
+ * filtering, weapon calculations and target-state updates are recovered. */
+long double TC bfv_artillery_evaluate(void *behavior, void *bot,
+    uint32_t recompute, float scale, void *gun, void *driver_component)
+{
+    ++bfv_artillery_evaluate_calls;
+    if ((uint8_t)recompute)
+        return ((artillery_score)BFV_ARTILLERY_SCORE)
+            (behavior, bot, recompute, scale, gun, driver_component);
+
+    void *pattern = (void *)(uintptr_t)word((uintptr_t)behavior + 0x0c);
+    uint8_t allowed = ((test_bot)method(pattern, 4))(pattern, bot);
+    /* The original captures this table before the first index callback. */
+    uintptr_t bot_table = word((uintptr_t)bot);
+    uint32_t index = ((get_word)word(bot_table + 0xdc))(bot);
+    if (!allowed) {
+        *(volatile uint8_t *)(word((uintptr_t)behavior + 0x24) + index) = 0;
+        index = get(bot, 0xdc);
+        *(volatile uint32_t *)(word((uintptr_t)behavior + 0x1c) + index * 4) = 0;
+        return 0.0L;
+    }
+    uint32_t target = word(word((uintptr_t)behavior + 8) + index * 4);
+    if (resolve(target)) {
+        index = get(bot, 0xdc);
+        *(volatile uint8_t *)(word((uintptr_t)behavior + 0x24) + index) = 0;
+        /* This slot is fetched from the table captured before get_index,
+         * even if that callback replaces the bot's current table pointer. */
+        bot_table = word((uintptr_t)bot);
+        index = ((get_word)word(bot_table + 0xdc))(bot);
+        uint32_t cached_bits = word(word((uintptr_t)behavior + 0x1c) + index * 4);
+        ((set_word)word(bot_table + 0x160))(bot, cached_bits);
+        index = get(bot, 0xdc);
+        return *(volatile float *)(word((uintptr_t)behavior + 0x1c) + index * 4);
+    }
+    index = get(bot, 0xdc);
+    *(volatile uint8_t *)(word((uintptr_t)behavior + 0x24) + index) = 1;
+    ((set_word)method(bot, 0x78))(bot, UINT32_MAX);
+    pattern = (void *)(uintptr_t)word((uintptr_t)behavior + 0x0c);
+    ((test_bot)method(pattern, 8))(pattern, bot);
+    index = get(bot, 0xdc);
+    *(volatile uint32_t *)(word((uintptr_t)behavior + 0x1c) + index * 4) = 0;
+    return 0.0L;
 }
 
 /* The native notification returns the component used by the artillery test.
@@ -57,7 +104,7 @@ float TC bfv_artillery(void *behavior, void *bot, uint32_t recompute, float scal
         void *driver_component = (void *)(uintptr_t)(driver + 0x24 ? word(driver + 0x2c) : 0);
         void *scorer = (void *)(uintptr_t)word((uintptr_t)behavior + 0x34);
         /* Native ST0 is explicitly rounded to float before indexing the table. */
-        volatile float rating = (float)((artillery_score)BFV_ARTILLERY_SCORE)
+        volatile float rating = (float)bfv_artillery_evaluate
             (scorer, bot, recompute, scale, (void *)gun, driver_component);
         uint32_t index = get(bot, 0xdc);
         *(volatile float *)(word((uintptr_t)behavior + 0x1c) + index * 4) = rating;

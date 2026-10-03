@@ -3,7 +3,8 @@
 `bfv-native-code/src/artillery.c` reconstructs the rating stage of
 `BBFireArtilleryDriver`. The client method at `009a13a0` and server method at
 `0074bb80` are replaced in the generated EXEs. The underlying target evaluator
-still executes original machine code; this is not yet complete artillery AI.
+now has source-owned cached-target validation. Candidate search still executes
+original machine code; this is not yet complete artillery AI.
 
 ## Recovered behavior
 
@@ -50,7 +51,7 @@ requires valid components. No new null guards have been invented.
 | Rating stage | `009a13a0` | `0074bb80` | Reconstructed and patched |
 | Component predicate | `009d8100` | `0078c670` | Reconstructed within the rating stage |
 | Component-view conversion | `0049a980` | `00437e80` | Native |
-| Artillery target evaluator | `0099f2a0` | `00749a80` | Native |
+| Artillery target evaluator | `0099f2a0` | `00749a80` | Cached-target path reconstructed; candidate search native |
 | Artillery rating vtable slot | `00bf6378` | `00874778` | Guarded replacement |
 
 The component-view helper dynamically casts an `IObject` to
@@ -79,6 +80,42 @@ not target-selection quality, ballistic aiming, firing timing, complete gameplay
 or sustained multiplayer compatibility. Those systems still need recovered source
 and tests that execute their decisions. No artillery live-match claim is made.
 
+## Cached-target evaluator
+
+`bfv_artillery_evaluate` now handles the evaluator's non-search path. Only the
+low recompute byte selects a candidate search: `256` takes the cached path,
+while `257` selects the native search. Its full interface has five stack arguments
+(bot, recompute word, scale, gun, driver component), consumes 20 argument bytes,
+and returns an unrounded x87 value. The older decompiler prototype omitted scale
+and shifted later argument roles; it must not be used as a header.
+
+The cached path first calls the behavior pattern's eligibility slot. Rejection
+clears the bot flag and rating and returns zero. Otherwise it resolves the bot's
+cached target handle through the generation-checked pool. A live target clears
+the flag, submits the cached rating through bot slot `0x160`, and reads the rating
+again for its return. A missing or stale target sets the flag, sends `ffffffff`
+through bot slot `0x78`, calls the pattern reset slot, and clears the rating.
+
+Callbacks may change bot indices, table pointers, and even the bot's vtable. The
+original captures one vtable before the index callback and subsequently calls
+its `0x160` slot; the reconstructed code preserves that ordering rather than
+fetching the bot's replacement table. Float32 ratings are loaded into extended
+precision, and the native search's 80-bit result is forwarded without a float or
+double intermediate.
+
+The added verifier runs 700 evaluator cases per target and eight driver/evaluator
+integration cases. It covers valid/stale/empty/null pool entries, generation
+mismatches, low-byte predicates and recompute values, NaNs/infinity/signed zero,
+callback mutations, register preservation, stack cleanup, an empty x87 stack,
+and selected cases across all rounding directions and precision settings.
+Integration cases execute the real original/reconstructed cached evaluator from
+the driver; external bot/pattern/component services remain controlled fixtures.
+Candidate search is checked for argument and exact 80-bit result forwarding only.
+
+```powershell
+uv run --with pefile --with unicorn python bfv-native-code/tools/verify_artillery_cache.py --game-dir 'D:\Games\Battlefield Vietnam' --target both
+```
+
 ## Remaining work
 
 Recover the large target evaluator's boundaries, arguments, candidate filtering,
@@ -87,3 +124,26 @@ plans that turn selected targets into aiming and firing controls. Replace their
 native dependencies and validate complete artillery scenarios against the original
 engine. Object/component lifecycle, allocation and initialization also remain
 necessary for a standalone source build.
+
+## Continuing native analysis
+
+`analysis/tools/ghidra/InspectArtilleryEvaluator.java` applies verified driver and
+evaluator argument positions to a hash-matched Ghidra program in memory, corrects
+the allocator/release declarations, and exports an updated local native analysis.
+Run it with `-readOnly`; it does not save changes to the analysis project.
+
+The default Microsoft calling-convention model incorrectly assigns a hidden
+return pointer to a `float10` return. The script explicitly assigns ECX, the five
+stack arguments and ST0, then checks those storage positions before decompiling.
+The resulting storage metadata is published in `reports/*/artillery-abi.tsv`.
+Both inspected programs successfully decompiled with these corrections, but
+unresolved object layouts, callee types and stack aliases still produce unreliable
+expressions. A successful export is not verified reconstructed source.
+
+```powershell
+& "$env:GHIDRA_HOME/support/analyzeHeadless.bat" 'D:\Analysis\Projects' BFVBinary -process BfVietnam.exe -noanalysis -readOnly -scriptPath "$PWD/analysis/tools/ghidra" -postScript InspectArtilleryEvaluator.java 'D:\Analysis\Artillery'
+```
+
+For the server use the corresponding project and `bfvietnam_w32ded.exe`. Keep the
+exported native bodies local. Use instructions and differential/runtime evidence
+to reconstruct the remaining candidate search rather than compiling the export.

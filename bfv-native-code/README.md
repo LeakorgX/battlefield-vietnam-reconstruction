@@ -36,7 +36,8 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   growth arithmetic and x86 exception registration/catch bridges. See
   [algorithm and runtime limits](../docs/VECTORS.md).
 - `src/artillery.c`: artillery driver rating routing, component predicate and
-  per-bot cache/eligibility updates. Target evaluation remains native. See
+  per-bot cache/eligibility updates and cached-target validation. Candidate search
+  remains native. See
   [ARTILLERY.md](../docs/ARTILLERY.md).
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
@@ -65,7 +66,8 @@ Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases
 3,840 numerical-helper comparisons of the full 80-bit x87 return,
 129 collision-callback, 64 notification-helper and 148 actor-dispatcher comparisons,
 2,136 geometry comparisons, 251 event comparisons, 507 vector/exception-bridge comparisons, and
-1,536 artillery driver comparisons and 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
+1,536 artillery driver comparisons, 708 artillery evaluator/integration checks,
+and 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
 the vehicle wrapper tests forwarding and returned bits while native scoring remains
 intact. Reports are in `build/client/verification.json` and
 `build/server/verification.json`. Changes to behavior intentionally make the default
