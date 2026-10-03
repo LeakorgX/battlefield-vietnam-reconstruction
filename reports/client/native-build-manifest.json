@@ -1,0 +1,40 @@
+{
+  "target": "client",
+  "input_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "output": "BfVietnam-editable.exe",
+  "output_sha256": "e1c8471151e92dc335e60b228863aa001ce55cb6ce26cd6573068f8cd4670f74",
+  "payload_address": "00e26000",
+  "payload_bytes": 1141,
+  "symbols": {
+    "bfv_interpret": "00e26000",
+    "bfv_bailout": "00e26320",
+    "bfv_vehicle": "00e26390",
+    "bfv_plan_enabled": "00e263d0",
+    "bfv_bailout_rating": "00e263f0",
+    "bfv_vehicle_rating": "00e26400",
+    "bfv_vehicle_calls": "00e26468",
+    "bfv_bailout_calls": "00e2646c",
+    "bfv_interpreter_calls": "00e26470"
+  },
+  "patches": [
+    {
+      "vtable_slot": "00bf7e34",
+      "original": "009be180",
+      "replacement": "00e26000",
+      "source": "bfv_interpret"
+    },
+    {
+      "vtable_slot": "00bf5a18",
+      "original": "00984c20",
+      "replacement": "00e26320",
+      "source": "bfv_bailout"
+    },
+    {
+      "vtable_slot": "00bf5ab8",
+      "original": "009856f0",
+      "replacement": "00e26390",
+      "source": "bfv_vehicle"
+    }
+  ],
+  "scope": "Editable AI interpreter and rating rules; remaining engine code is retained from the original image"
+}

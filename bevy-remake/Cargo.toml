@@ -1,0 +1,22 @@
+[workspace]
+members = ["crates/shared", "crates/server", "crates/client"]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+license = "MIT"
+
+[workspace.dependencies]
+bfv-shared = { path = "crates/shared" }
+serde = { version = "1", features = ["derive"] }
+bincode = "1.3"
+bevy = { version = "0.19", default-features = false }
+
+[profile.dev]
+opt-level = 1
+debug = 0
+
+[profile.dev.package."*"]
+opt-level = 2
+
