@@ -21,7 +21,12 @@ TARGETS = {
         bailout_curve=0x9d7200, bailout_score=0x9d6b90,
         bailout_curve_table=0xe0f678, bailout_score_table=0xe0f674, bailout_pattern=0x983280,
         bailout_curve_initializer=0x9d6c20, bailout_score_initializer=0x9d65b0, curve_allocator=0x403610,
-        patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle')]),
+        collision=0x9d4ba0, collision_body_view=0x66b190, collision_interface_id=0xb77ee0, collision_handle_field=0x164,
+        collision_registry=0xd7d01c, collision_actors=0xdfa8c8, collision_clock=0xe0ef50,
+        collision_pool_entry=0x926af0, collision_event_interface=0x92afb0,
+        collision_allocate=0x412ee0, collision_allocator=0xe0f7c0, collision_alloc_source=0xb44284,
+        collision_construct=0x9dc3b0, collision_notify=0x9d4b60,
+        patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle'),(0xbf8c64,0x9d4ba0,'bfv_collision')]),
     'server': dict(file='bfvietnam_w32ded.exe', output='bfvietnam_w32ded-editable.exe',
         sha='86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d',
         pool=0xc2f7c0, trace_index=0xc1d380, trace_mask=0x934448, trace_files=0xc1d360,
@@ -31,7 +36,12 @@ TARGETS = {
         bailout_curve=0x78c5f0, bailout_score=0x78bf80,
         bailout_curve_table=0xc31c10, bailout_score_table=0xc31c0c, bailout_pattern=0x72e510,
         bailout_curve_initializer=0x78c010, bailout_score_initializer=0x78b9a0, curve_allocator=0x403d80,
-        patches=[(0x87681c,0x774ff0,'bfv_interpret'),(0x873d88,0x72eef0,'bfv_bailout'),(0x873e28,0x72f9e0,'bfv_vehicle')]),
+        collision=0x78a500, collision_body_view=0x564460, collision_interface_id=0x820798, collision_handle_field=0x15c,
+        collision_registry=0xbecc64, collision_actors=0xc1d334, collision_clock=0xc314b0,
+        collision_pool_entry=0x6e8930, collision_event_interface=0x6e88b0,
+        collision_allocate=0x404290, collision_allocator=0xc33388, collision_alloc_source=0x807375,
+        collision_construct=0x7ae550, collision_notify=0x78a4c0,
+        patches=[(0x87681c,0x774ff0,'bfv_interpret'),(0x873d88,0x72eef0,'bfv_bailout'),(0x873e28,0x72f9e0,'bfv_vehicle'),(0x8775cc,0x78a500,'bfv_collision')]),
 }
 
 
@@ -120,7 +130,7 @@ def build(target):
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
         payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,
-        scope='Editable AI interpreter and rating rules; remaining engine code is retained from the original image')
+        scope='Reconstructed AI interpreter, bailout logic/math and collision callback; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded replacements')
 

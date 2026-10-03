@@ -1,12 +1,13 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "d08a6d8cefac35627d9ce32929881004c78ff380ea6d949311ddf9a035b5e8ec",
+  "compiled_sha256": "c01ccf5621d54d1e6ef9778c1ab5f4c865270292d3b3a2f4b50fac36f8ebcc23",
   "interpreter_cases": 1920,
   "cached_bailout_cases": 32,
   "vehicle_wrapper_cases": 32,
   "bailout_recompute_cases": 554,
   "curve_cases": 3840,
-  "passed": 6378,
-  "scope": "Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curve helpers checked at 80-bit return precision across rounding/precision modes, synthetic and original-initialized tables. Table initialization and vehicle scoring remain native."
+  "collision_cases": 118,
+  "passed": 6496,
+  "scope": "Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curve helpers checked at 80-bit return precision across rounding/precision modes, synthetic and original-initialized tables. Collision callback compared with controlled registry/allocator/event services, exact call arguments, counter wrap and vtable/position mutations. Table initialization, collision services and vehicle scoring remain native."
 }
