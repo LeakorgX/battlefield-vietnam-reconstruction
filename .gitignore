@@ -1,0 +1,17 @@
+**/target/
+**/build/
+**/logs/
+**/__pycache__/
+*.pyc
+*.exe
+*.dll
+*.o
+*.obj
+*.pdb
+*.dmp
+*.rfa
+*.zip
+*.bin
+bfv-reference-local/
+.env
+.env.*
