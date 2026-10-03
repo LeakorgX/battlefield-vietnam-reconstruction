@@ -78,7 +78,8 @@ def run_dispatcher(image, pe, entry, spec, case, distance_entry=None, helpers=No
     construct_helper=helpers.get('construct',spec['collision_construct'])
     if real:
         services[construct_helper]=('construct',44)
-        event_data,event_storage,event_effect=install_event_fixture(m,spec,stub,services,buffer,event_iface,ARENA+0x9000,case['event_words'])
+        event_data,event_storage,event_effect=install_event_fixture(m,spec,stub,services,buffer,event_iface,ARENA+0x9000,case['event_words'],
+            insert_entry=helpers.get('insert'),real_vector=case.get('real_vector',False))
     else:
         event_data=0xabcdef01
         stub('construct',buffer,44,address=construct_helper)
@@ -132,7 +133,7 @@ def run_dispatcher(image, pe, entry, spec, case, distance_entry=None, helpers=No
     assert returned and m.reg_read(UC_X86_REG_ESP)==esp+24
     assert indices==list(range(len(indices)))
     return dict(trace=trace,event=bytes(m.mem_read(buffer,56)).hex(),
-                event_words=bytes(m.mem_read(event_storage,32)).hex() if real else None)
+                event_words=bytes(m.mem_read(struct.unpack('<I',m.mem_read(buffer+8,4))[0],32)).hex() if real and struct.unpack('<I',m.mem_read(buffer+8,4))[0] else None)
 
 
 def dispatcher_cases():
@@ -156,3 +157,5 @@ def dispatcher_cases():
 
     for words in (0,3):
         yield dict(real_events=True,event_words=words,real_geometry=True)
+
+    yield dict(real_events=True,event_words=3,real_vector=True,real_geometry=True)

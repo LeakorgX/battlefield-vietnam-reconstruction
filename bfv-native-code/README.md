@@ -30,8 +30,11 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   allocation services remain native. `src/collision_geometry.c` implements
   the planar distance calculation and its line-distance helper. See [the recovered interface](../docs/COLLISION.md).
 - `src/collision_events.c`: event construction, generation-checked object lookup
-  and indexed interface lookup. Vector growth/exception handling and allocation
-  remain native. See [event layout and dependencies](../docs/EVENTS.md).
+  and indexed interface lookup. Vector insertion is also reconstructed; heap and compiler exception
+  runtime services remain native. See [event layout and dependencies](../docs/EVENTS.md).
+- `src/word_vector.c`: word-vector insertion, overlap-safe copying, filling,
+  growth arithmetic and x86 exception registration/catch bridges. See
+  [algorithm and runtime limits](../docs/VECTORS.md).
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
   `return native_rating * 2.0f;` changes the rating returned to the actual engine.
@@ -57,8 +60,8 @@ source. It provides a working compile-and-run route for editing the listed logic
 Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases,
 554 bailout recomputation cases (including cache/flag pointer changes during callbacks),
 3,840 numerical-helper comparisons of the full 80-bit x87 return,
-128 collision-callback, 64 notification-helper and 147 actor-dispatcher comparisons,
-2,136 geometry comparisons, 243 event comparisons, and
+129 collision-callback, 64 notification-helper and 148 actor-dispatcher comparisons,
+2,136 geometry comparisons, 251 event comparisons, 507 vector/exception-bridge comparisons, and
 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
 the vehicle wrapper tests forwarding and returned bits while native scoring remains
 intact. Reports are in `build/client/verification.json` and
