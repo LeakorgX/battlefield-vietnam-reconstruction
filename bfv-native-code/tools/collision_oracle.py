@@ -8,9 +8,12 @@ import itertools
 from unicorn import UC_HOOK_CODE
 from unicorn.x86_const import UC_X86_REG_ECX, UC_X86_REG_ESP
 from native_oracle import load_machine, ARENA, STACK
+from event_oracle import install_event_fixture
 
 
-def run_collision(image, pe, entry, spec, case, dispatch_entry=None):
+def run_collision(image, pe, entry, spec, case, dispatch_entry=None, helpers=None):
+    helpers=helpers or {}
+    real=case.get("real_events",False)
     m = load_machine(image, pe)
     def a(offset): return ARENA+offset
     source, other, handler = a(0x100), a(0x400), a(0x700)
@@ -64,7 +67,7 @@ def run_collision(image, pe, entry, spec, case, dispatch_entry=None):
     method(other_actor,0xc4,'other-state',max(case.get('other_actor',0),0))
     method(source_actor,0xd4,'source-selector',0x20)
     method(other_actor,0xd4,'other-selector',0x30)
-    method(source_comp,0x5c,'resolve-source',0x4444,4)
+    method(source_comp,0x5c,'resolve-source',0x20002 if real else 0x4444,4)
     method(other_comp,0x5c,'resolve-other',0x5555,4)
     origin_stub=method(source_comp,0x18,'component-origin',member_position)
     w32(a(0x7a00)+0x18,origin_stub)
@@ -77,14 +80,27 @@ def run_collision(image, pe, entry, spec, case, dispatch_entry=None):
     method(source,0x34,'source-position',source_position)
     method(member_body,0x34,'member-position',member_position)
     stub('body-view',address=spec['collision_body_view'],dynamic=True)
-    stub('pool-entry',pool_entry,4,address=spec['collision_pool_entry'])
-    stub('event-interface',event_iface if case.get('event_interface',True) else 0,4,address=spec['collision_event_interface'])
+    pool_helper=helpers.get('pool',spec['collision_pool_entry'])
+    interface_helper=helpers.get('interface',spec['collision_event_interface'])
+    if real:
+        w32(a(0x3f80),a(0x9000));w32(a(0x9008),pool_entry)
+        m.mem_write(a(0x900e),struct.pack('<H',2));w32(pool_entry+0x30,event_iface)
+        services[pool_helper]=('pool-entry',4);services[interface_helper]=('event-interface',4)
+    else:
+        stub('pool-entry',pool_entry,4,address=pool_helper)
+        stub('event-interface',event_iface if case.get('event_interface',True) else 0,4,address=interface_helper)
     stub('allocate',buffer if case.get('allocate',True) else 0,12,address=spec['collision_allocate'])
-    stub('construct',buffer,44,address=spec['collision_construct'])
+    construct_helper=helpers.get('construct',spec['collision_construct'])
+    if real:
+        services[construct_helper]=('construct',44)
+        event_data,event_storage,event_effect=install_event_fixture(m,spec,stub,services,buffer,event_iface,a(0x9500),case['event_words'])
+    else:
+        event_data=0xabcdef01
+        stub('construct',buffer,44,address=construct_helper)
     # Execute the actual dispatcher with an empty actor list in integration cases.
     services[dispatch_entry or spec['collision_dispatch']]=('dispatch',20)
     # Mutation cases distinguish saved vtable pointers from early method reads.
-    alternate_source = stub('resolve-source-updated',0x4444,4)
+    alternate_source = stub('resolve-source-updated',0x20002 if real else 0x4444,4)
     alternate_other = stub('resolve-other-updated',0x5555,4)
     alternate_time = stub('update-time-updated',0,4)
     m.mem_write(stop,b'\x90')
@@ -125,11 +141,12 @@ def run_collision(image, pe, entry, spec, case, dispatch_entry=None):
             assert this == spec['collision_allocator']
             assert struct.unpack('<3I',args) == (0x38,spec['collision_alloc_source'],0)
         if name == 'construct':
-            assert this == buffer and struct.unpack('<I',args[24:28])[0] == 0xabcdef01, (hex(this),args.hex())
+            assert this == buffer and struct.unpack('<I',args[24:28])[0] == event_data, (hex(this),args.hex())
             assert args[:12] == bytes(m.mem_read(member_position,12))
             assert args[12:24] == bytes(m.mem_read(source_position,12))
             assert struct.unpack('<4I',args[28:]) == (1,0x3ec00000,0x3f800000,0)
-            m.mem_write(buffer,b'\xa5'*0x38)
+            if not real: m.mem_write(buffer,b'\xa5'*0x38)
+        if real: event_effect(name,this,args)
         if name == 'dispatch':
             assert this == handler
             state=case.get('notify_state',1)
@@ -141,7 +158,8 @@ def run_collision(image, pe, entry, spec, case, dispatch_entry=None):
     m.emu_start(entry,stop+1,timeout=1_000_000,count=10000)
     assert returned and m.reg_read(UC_X86_REG_ESP)==esp+len(frame)
     return dict(trace=trace,counter=struct.unpack('<I',m.mem_read(record+0x30,4))[0],
-                event=bytes(m.mem_read(buffer,0x38)).hex())
+                event=bytes(m.mem_read(buffer,0x38)).hex(),
+                event_words=bytes(m.mem_read(event_storage,32)).hex() if real else None)
 
 
 def collision_cases():
@@ -163,3 +181,6 @@ def collision_cases():
     for state,selector,mutate in itertools.product((0,1,2,255,256,257,0x12345601,0xffffffff),
                                                    (0,1,0x12345678,0xffffffff),(False,True)):
         yield dict(notify_only=True,notify_state=state,selector=selector,mutate=mutate)
+
+    for words in (0,3):
+        yield dict(real_events=True,event_words=words)

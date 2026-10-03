@@ -4,9 +4,12 @@ import itertools
 from unicorn import UC_HOOK_CODE
 from unicorn.x86_const import UC_X86_REG_ECX, UC_X86_REG_ESP
 from native_oracle import load_machine, ARENA, STACK
+from event_oracle import install_event_fixture
 
 
-def run_dispatcher(image, pe, entry, spec, case, distance_entry=None):
+def run_dispatcher(image, pe, entry, spec, case, distance_entry=None, helpers=None):
+    helpers=helpers or {}
+    real=case.get("real_events",False)
     m=load_machine(image,pe)
     objs={name:ARENA+0x100+i*0x300 for i,name in enumerate(
         ('member','component','manager','actor','entity','parent','body','pool_entry','clock'))}
@@ -47,7 +50,7 @@ def run_dispatcher(image, pe, entry, spec, case, distance_entry=None):
     def method(obj,offset,name,value=0,pop=0,**kw):
         a=stub(name,value,pop,**kw);w32(vts[obj]+offset,a);return a
     method('component',0x18,'origin',origin)
-    method('component',0x5c,'resolve',0x8888,4)
+    method('component',0x5c,'resolve',0x20002 if real else 0x8888,4)
     method('manager',4,'count',cell=count_cell)
     method('manager',0x14,'actor',0 if case.get('actor_null',False) else objs['actor'],4)
     method('member',0x44,'member-id',0x1111)
@@ -62,10 +65,23 @@ def run_dispatcher(image, pe, entry, spec, case, distance_entry=None):
     method('pool_entry',0xc,'time',0,4)
     if not case.get('real_geometry',False):
         stub('distance',pop=36,address=distance_entry or spec['collision_distance'],cell=distance_cell,floating=True)
-    stub('pool-entry',objs['pool_entry'],4,address=spec['collision_pool_entry'])
-    stub('event-interface',event_iface if case.get('interface',True) else 0,4,address=spec['collision_event_interface'])
+    pool_helper=helpers.get('pool',spec['collision_pool_entry'])
+    interface_helper=helpers.get('interface',spec['collision_event_interface'])
+    if real:
+        w32(records+8,objs['pool_entry']);m.mem_write(records+14,struct.pack('<H',2))
+        w32(objs['pool_entry']+0x30,event_iface)
+        services[pool_helper]=('pool-entry',4);services[interface_helper]=('event-interface',4)
+    else:
+        stub('pool-entry',objs['pool_entry'],4,address=pool_helper)
+        stub('event-interface',event_iface if case.get('interface',True) else 0,4,address=interface_helper)
     stub('allocate',buffer if case.get('allocate',True) else 0,12,address=spec['collision_allocate'])
-    stub('construct',buffer,44,address=spec['collision_construct'])
+    construct_helper=helpers.get('construct',spec['collision_construct'])
+    if real:
+        services[construct_helper]=('construct',44)
+        event_data,event_storage,event_effect=install_event_fixture(m,spec,stub,services,buffer,event_iface,ARENA+0x9000,case['event_words'])
+    else:
+        event_data=0xabcdef01
+        stub('construct',buffer,44,address=construct_helper)
     esp=STACK+0x8000
     flags=case.get('flags',1); selector=case.get('selector',0x2222)
     # Five dispatcher arguments after the return address (handler is in ECX).
@@ -103,8 +119,9 @@ def run_dispatcher(image, pe, entry, spec, case, distance_entry=None):
             assert this==buffer
             assert args[:12]==bytes(m.mem_read(origin,12)) and args[12:24]==bytes(m.mem_read(contact,12))
             strength=0x40800000 if flags &255 else 0x3f800000
-            assert struct.unpack('<5I',args[24:])==(0xabcdef01,0,0x3ec00000,strength,flags)
-            m.mem_write(buffer,b'\xa5'*0x38)
+            assert struct.unpack('<5I',args[24:])==(event_data,0,0x3ec00000,strength,flags)
+            if not real:m.mem_write(buffer,b'\xa5'*0x38)
+        if real:event_effect(name,this,args)
         if name=='attach':
             assert struct.unpack('<2I',args)==(buffer if case.get('allocate',True) else 0,0xffffffff)
     m.hook_add(UC_HOOK_CODE,hook)
@@ -114,7 +131,8 @@ def run_dispatcher(image, pe, entry, spec, case, distance_entry=None):
         raise RuntimeError((case, trace)) from error
     assert returned and m.reg_read(UC_X86_REG_ESP)==esp+24
     assert indices==list(range(len(indices)))
-    return dict(trace=trace,event=bytes(m.mem_read(buffer,56)).hex())
+    return dict(trace=trace,event=bytes(m.mem_read(buffer,56)).hex(),
+                event_words=bytes(m.mem_read(event_storage,32)).hex() if real else None)
 
 
 def dispatcher_cases():
@@ -135,3 +153,6 @@ def dispatcher_cases():
     for point_x,offset in itertools.product((-10,5,20),('below','equal','above')):
         yield dict(real_geometry=True,point_x=point_x,offset=offset)
     yield dict(real_geometry=True,count=3,mutate=True,flags=0x12345601)
+
+    for words in (0,3):
+        yield dict(real_events=True,event_words=words,real_geometry=True)

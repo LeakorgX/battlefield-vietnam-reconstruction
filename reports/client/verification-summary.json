@@ -1,16 +1,17 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "b0e33e8f6bbb6f52a2b5d246713ee89e9933b3eb1dc1348eabf62a96b135c5bf",
+  "compiled_sha256": "505e24608aad030e6880bf1fd191d881a7e13771b2aa0ac2ee95cac692b9ce41",
   "interpreter_cases": 1920,
   "cached_bailout_cases": 32,
   "vehicle_wrapper_cases": 32,
   "bailout_recompute_cases": 554,
   "curve_cases": 3840,
   "geometry_cases": 2136,
-  "collision_cases": 126,
+  "event_cases": 243,
+  "collision_cases": 128,
   "collision_notify_cases": 64,
-  "collision_dispatch_cases": 145,
-  "passed": 8849,
-  "scope": "Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Dispatcher actor filtering, generation checks, dynamic count, strict distance gates and event arguments compared with controlled event services and both controlled/real geometry. Geometry helpers compared at 80-bit precision across rounding/precision modes. Table initialization, event services and vehicle scoring remain native."
+  "collision_dispatch_cases": 147,
+  "passed": 9096,
+  "scope": "Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Dispatcher actor filtering, generation checks, dynamic count, strict distance gates and event arguments compared with controlled event services and both controlled/real geometry. Geometry helpers compared at 80-bit precision across rounding/precision modes. Event constructor, pool generation lookup and indexed interface lookup compared with controlled vector growth and manager methods; four collision/dispatcher cases execute real event construction/lookups. Table initialization, vector insertion/allocation, remaining event services and vehicle scoring remain native."
 }
