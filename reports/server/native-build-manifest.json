@@ -2,9 +2,9 @@
   "target": "server",
   "input_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
   "output": "bfvietnam_w32ded-editable.exe",
-  "output_sha256": "c01ccf5621d54d1e6ef9778c1ab5f4c865270292d3b3a2f4b50fac36f8ebcc23",
+  "output_sha256": "bd802ce265220ef07dc2ee2a5458f2cd1e59f58ed635a703fb679ec3b65efc6a",
   "payload_address": "00c37000",
-  "payload_bytes": 3081,
+  "payload_bytes": 3177,
   "symbols": {
     "bfv_interpret": "00c37000",
     "bfv_bailout": "00c37320",
@@ -12,13 +12,14 @@
     "bfv_plan_enabled": "00c374e0",
     "bfv_bailout_rating": "00c37500",
     "bfv_vehicle_rating": "00c37510",
-    "bfv_collision": "00c37520",
-    "bfv_bailout_curve": "00c37aa0",
-    "bfv_bailout_score": "00c37ae0",
-    "bfv_vehicle_calls": "00c37bf8",
-    "bfv_bailout_calls": "00c37bfc",
-    "bfv_interpreter_calls": "00c37c00",
-    "bfv_collision_calls": "00c37c04"
+    "bfv_collision_notify": "00c37520",
+    "bfv_collision": "00c37580",
+    "bfv_bailout_curve": "00c37b00",
+    "bfv_bailout_score": "00c37b40",
+    "bfv_vehicle_calls": "00c37c58",
+    "bfv_bailout_calls": "00c37c5c",
+    "bfv_interpreter_calls": "00c37c60",
+    "bfv_collision_calls": "00c37c64"
   },
   "patches": [
     {
@@ -42,7 +43,7 @@
     {
       "vtable_slot": "008775cc",
       "original": "0078a500",
-      "replacement": "00c37520",
+      "replacement": "00c37580",
       "source": "bfv_collision"
     }
   ],

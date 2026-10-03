@@ -11,8 +11,9 @@ from collision_oracle import run_collision, collision_cases
 def compare_collision(original, original_pe, edited, edited_pe, spec, symbols):
     results = []
     for case in collision_cases():
-        a = run_collision(original, original_pe, spec['collision'], spec, case)
-        b = run_collision(edited, edited_pe, symbols['bfv_collision'], spec, case)
+        key='collision_notify' if case.get('notify_only',False) else 'collision'
+        a = run_collision(original, original_pe, spec[key], spec, case)
+        b = run_collision(edited, edited_pe, symbols['bfv_'+key], spec, case)
         assert a == b, (case,a,b)
         results.append(dict(inputs=case,**a))
     return results
@@ -32,4 +33,5 @@ if __name__ == '__main__':
         results = compare_collision(original,pefile.PE(data=original),edited,pefile.PE(data=edited),
                                     spec,{k:int(v,16) for k,v in manifest['symbols'].items()})
         (work/'collision-verification.json').write_text(json.dumps(results,indent=2))
-        print(f'{target}: {len(results)} collision callback comparisons passed',flush=True)
+        n=sum(bool(x['inputs'].get('notify_only',False)) for x in results)
+        print(f'{target}: {len(results)-n} collision callback and {n} notification comparisons passed',flush=True)
