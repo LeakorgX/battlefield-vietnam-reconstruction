@@ -7,9 +7,9 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current fully regression-tested native build was compared against original instructions. It passed
-   34,457 client checks and 32,873 server checks, 67,330 in total. This includes
-   4,678 history-tree comparisons per target, alongside the previously recovered
-   logic and accessor checks. Earlier builds also executed replacement functions in the game, as
+   34,760 client checks and 33,176 server checks, 67,936 in total. This includes
+   4,678 history-tree and 303 first-pass weapon-selection comparisons per target,
+   alongside the previously recovered logic and accessor checks. Earlier builds also executed replacement functions in the game, as
    recorded below.
 
 ## Current controlled cases
@@ -75,7 +75,13 @@ reports, rejecting results from an older build. Full case data stays in the loca
   accept/reject continuations. They check identity exclusion, generation handles,
   component/flag gates, signed record state, callback mutations, history-window
   comparisons and x87 state including NaN, infinity and rounding/precision modes.
-  Candidate scoring, the second pass and complete AI lifecycle remain native.
+  Later candidate phases, the second pass and complete AI lifecycle remain native.
+- 303 first-pass weapon-selection comparisons per target execute rating arithmetic,
+  minimum-distance gating, dynamic vector traversal, best-weapon selection and
+  score padding. They compare full fixture/frame memory, callback order/arguments,
+  live registers and x87 state across numeric boundaries and callback mutations.
+  Inventory/category/availability methods are controlled; full target scoring and
+  firing behavior remain unverified. See [ARTILLERY.md](ARTILLERY.md).
 - 32 cached-bailout comparisons per target checking exact float32 bits.
 - 554 recomputed-bailout comparisons per target checking float32 return/cache bits,
   pattern flags, call ordering, group argument and stack cleanup. They cover

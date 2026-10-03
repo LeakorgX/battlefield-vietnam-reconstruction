@@ -14,6 +14,7 @@ COMPILERS = Path(os.environ.get('MINGW32_BIN', 'C:/msys64/mingw32/bin'))
 TARGETS = {
     'client': dict(file='BfVietnam.exe', output='BfVietnam-editable.exe',
         sha='79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5',
+        artillery_weapons=0x99f8d7, artillery_weapons_accept=0x99fa61, artillery_weapon_bias=0xb5b7e4,
         tree_previous=0x68ee10, tree_rotate_left=0x996f10, tree_rotate_right=0x66b6c0, tree_construct=0x517c10, history_insert_node=0x99ed10, tree_allocate_node=0x99ebe0, tree_string_assign=0x401ae0, tree_string_copy=0x4019f0, tree_exception_construct=0x7c2027, tree_logic_error_vtable=0xb427dc, tree_length_error_vtable=0xb427f4, tree_length_throw_info=0xc836a4, tree_length_message=0xb44270,
         aim_direction=0x99eae0, aim_within_limits=0x9be880, aim_compose=0x49acd0,
         aim_inverse_sine=0x516f80, aim_negative_one=0xb5456c, aim_pi=0xbf7e90,
@@ -39,6 +40,7 @@ TARGETS = {
         patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle'),(0xbf8c64,0x9d4ba0,'bfv_collision'),(0xbf6378,0x9a13a0,'bfv_artillery')]),
     'server': dict(file='bfvietnam_w32ded.exe', output='bfvietnam_w32ded-editable.exe',
         sha='86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d',
+        artillery_weapons=0x74a0b7, artillery_weapons_accept=0x74a241, artillery_weapon_bias=0x81fac4,
         tree_previous=0x73f240, tree_rotate_left=0x5c7460, tree_rotate_right=0x55c080, tree_construct=0x7686e0, history_insert_node=0x7494f0, tree_allocate_node=0x7493c0, tree_string_assign=0x402020, tree_string_copy=0x401e20, tree_exception_construct=0x63aa5e, tree_logic_error_vtable=0x80737c, tree_length_error_vtable=0x807388, tree_length_throw_info=0x8ce900, tree_length_message=0x808f70,
         aim_direction=0x7492c0, aim_within_limits=0x78e3d0, aim_compose=0x438590,
         aim_inverse_sine=0x48b570, aim_negative_one=0x817648, aim_pi=0x877770,
@@ -157,6 +159,7 @@ def build(target):
         (spec['tree_rotate_right'],bytes.fromhex('8b5424048b02'),'bfv_tree_rotate_right'),
         (spec['tree_construct'],bytes.fromhex('8b5424088bc1'),'bfv_tree_construct'),
         (spec['artillery_filter'],bytes.fromhex('8b4424408b4008'),'bfv_artillery_filter_bridge'),
+        (spec['artillery_weapons'],bytes.fromhex('8b4c24508b11'),'bfv_artillery_weapons_bridge'),
         *[(spec[key],bytes.fromhex('d9442404d85c2408'),'bfv_'+key)
           for key in ['float_minimum','float_maximum','float_clamp']],
         (spec['vector_length'],bytes.fromhex('d94108d94104'),'bfv_vector_length'),
@@ -182,7 +185,7 @@ def build(target):
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
         payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,entry_patches=entry_patches,
-        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup/insertion and red-black balancing, and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; audited constant-return functions and object-word getters; remaining engine code/services are retained from the original image')
+        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup/insertion and red-black balancing, and first-pass candidate filter/weapon selection; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; audited constant-return functions and object-word getters; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded vtable replacements and {len(entry_patches)} guarded function entries')
 

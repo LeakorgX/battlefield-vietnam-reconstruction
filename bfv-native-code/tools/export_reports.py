@@ -44,6 +44,16 @@ def prepare(target):
     def focused(filename, group, scope, **details):
         outputs[filename] = dict(identity, passed=len(full[group]), scope=scope, **details)
 
+    focused('artillery-weapons-verification.json', 'artillery_weapons',
+            'Original/source first-pass weapon scoring and selection at native continuations. '
+            'Exact frame/arena memory, callback order/arguments, live registers, x87 control/status '
+            'and retained values compared across boundary/nonfinite inputs, dynamic containers and '
+            'all supported precision/rounding modes. Inventory/category/availability methods remain '
+            'controlled services. The full artillery evaluator and live-match behavior remain unverified.',
+            accepted_cases=sum(c['accepted'] for c in full['artillery_weapons']),
+            rejected_cases=sum(not c['accepted'] for c in full['artillery_weapons']),
+            original_block_bytes=394, replacement_scope='partial_native_evaluator')
+
     focused('history-tree-verification.json', 'history_tree',
             'Actual original/source insertion, duplicate handling, predecessor traversal, rotations, '
             'node construction and timestamp integration through guarded entries. Complete arena memory, '

@@ -1,0 +1,11 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "compiled_sha256": "1d55f3664d1c21c8c5a8dc5e89a9aee4c58568a1531f0d43601e37d268b1da37",
+  "passed": 303,
+  "scope": "Original/source first-pass weapon scoring and selection at native continuations. Exact frame/arena memory, callback order/arguments, live registers, x87 control/status and retained values compared across boundary/nonfinite inputs, dynamic containers and all supported precision/rounding modes. Inventory/category/availability methods remain controlled services. The full artillery evaluator and live-match behavior remain unverified.",
+  "accepted_cases": 221,
+  "rejected_cases": 82,
+  "original_block_bytes": 394,
+  "replacement_scope": "partial_native_evaluator"
+}

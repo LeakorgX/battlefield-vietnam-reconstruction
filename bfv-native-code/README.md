@@ -45,6 +45,9 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
 - `src/history_tree.c`: target-history insertion, duplicate detection, predecessor
   traversal, node construction and red/black balancing. These six functions per
   binary compile from C; protected allocation and string/exception services remain native.
+- `src/artillery_weapons.c`: first-pass per-weapon ratings, minimum-distance gating,
+  best-weapon selection and score padding. The rest of candidate scoring and firing
+  remains incomplete. The default verifier includes 303 comparisons per target.
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
   `return native_rating * 2.0f;` changes the rating returned to the actual engine.
