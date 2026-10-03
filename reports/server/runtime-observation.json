@@ -1,0 +1,13 @@
+{
+  "target": "server",
+  "image": "bfvietnam_w32ded-editable.exe",
+  "checked_at": "2026-10-03T03:02:22.395928+00:00",
+  "alive": true,
+  "loaded_patch_slots": 3,
+  "compiled_body_bytes_verified": 1128,
+  "counters": {
+    "bfv_vehicle_calls": 48,
+    "bfv_bailout_calls": 0,
+    "bfv_interpreter_calls": 5553
+  }
+}

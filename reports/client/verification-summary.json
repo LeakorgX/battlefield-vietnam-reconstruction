@@ -1,0 +1,10 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "compiled_sha256": "e1c8471151e92dc335e60b228863aa001ce55cb6ce26cd6573068f8cd4670f74",
+  "interpreter_cases": 1920,
+  "cached_bailout_cases": 32,
+  "vehicle_wrapper_cases": 32,
+  "passed": 1984,
+  "scope": "Original and compiled interpreter instructions compared with controlled methods/context/event helpers. Cached bailout compared exactly. Vehicle wrapper forwarding/float bits tested with controlled native callee; full scoring remains native."
+}

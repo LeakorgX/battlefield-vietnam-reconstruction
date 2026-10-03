@@ -1,0 +1,14 @@
+{
+  "binary": "bfvietnam_w32ded.exe",
+  "sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "recovered_classes": 3924,
+  "ai_classes": 240,
+  "gameplay_classes": 127,
+  "function_seeds": 2032,
+  "ai_function_seeds": 1073,
+  "limitations": [
+    "Vtable slot boundaries and indirect targets require further verification",
+    "Names identify class membership, not fully recovered method semantics",
+    "This index is not reconstructed original source code"
+  ]
+}

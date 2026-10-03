@@ -9,5 +9,5 @@ the original executables, DLLs, archives, extracted assets, generated decompiler
 corpus or rebuilt outputs containing original engine code supplied locally.
 
 Local research and runtime observations use the inspected installation hashes
-recorded in the README. Generated executable copies and analysis corpus remain
+recorded in docs/SETUP.md. Generated executable copies and analysis corpus remain
 local and are regenerated from the user's installation.
