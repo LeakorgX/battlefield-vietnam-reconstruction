@@ -1,11 +1,12 @@
 /* Reconstructed x86 AI interfaces. Build against the inspected game image.
  * The interpreter and bailout control flow are implemented below. Bailout math
- * still uses two native table helpers; vehicle scoring remains native.
+ * is reconstructed in numeric_curves.c; vehicle scoring remains native.
  * Byte offsets are recovered ABI fields, not guessed original struct names.
  */
 #include <stdint.h>
 #include "target.h"
 #include "mod_rules.h"
+#include "numeric_curves.h"
 #define TC __attribute__((thiscall))
 
 typedef uint32_t (TC *get_u32)(void *);
@@ -20,7 +21,6 @@ typedef float (TC *native_rating)(void *, void *, uint32_t, float);
 /* Native x87 callees can return an unrounded ST0. Keep extended precision until
  * the original code's explicit float stores, including numeric-call arguments. */
 typedef long double (TC *get_metric)(void *);
-typedef long double (__attribute__((stdcall)) *table_curve)(float);
 typedef uint8_t (TC *test_group)(void *, uint32_t);
 
 volatile uint32_t bfv_interpreter_calls;
@@ -125,9 +125,9 @@ float TC bfv_bailout(void *behavior, void *object, uint32_t recompute, float sca
         void *component = (void *)(uintptr_t)(entity + 0x24 ? read32(entity + 0x24) : 0);
         long double metric = ((get_metric)method(component, 0x10))(component);
         volatile float deficit = 1.0L - metric;
-        long double shaped = ((table_curve)BFV_BAILOUT_CURVE)(deficit);
+        long double shaped = bfv_bailout_curve(deficit);
         volatile float curve_input = shaped * (long double)influence * 100.0L;
-        long double score = ((table_curve)BFV_BAILOUT_SCORE)(curve_input);
+        long double score = bfv_bailout_score(curve_input);
         volatile float stored = score * (long double)scale;
         uint32_t cache_selector = get(object, 0xdc);
         uintptr_t ratings = read32((uintptr_t)behavior + 0x1c);

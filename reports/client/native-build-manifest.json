@@ -2,9 +2,9 @@
   "target": "client",
   "input_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
   "output": "BfVietnam-editable.exe",
-  "output_sha256": "be3876cbef1d36085fc54318fb37a37ca6869acff9153f95fd091d80208cfab5",
+  "output_sha256": "c5460b6b5d49fe73205d0c01397d849c7fb6931549e48c7081fdf71c7836c068",
   "payload_address": "00e26000",
-  "payload_bytes": 1421,
+  "payload_bytes": 1881,
   "symbols": {
     "bfv_interpret": "00e26000",
     "bfv_bailout": "00e26320",
@@ -12,9 +12,11 @@
     "bfv_plan_enabled": "00e264e0",
     "bfv_bailout_rating": "00e26500",
     "bfv_vehicle_rating": "00e26510",
-    "bfv_vehicle_calls": "00e26580",
-    "bfv_bailout_calls": "00e26584",
-    "bfv_interpreter_calls": "00e26588"
+    "bfv_bailout_curve": "00e26620",
+    "bfv_bailout_score": "00e26660",
+    "bfv_vehicle_calls": "00e2674c",
+    "bfv_bailout_calls": "00e26750",
+    "bfv_interpreter_calls": "00e26754"
   },
   "patches": [
     {

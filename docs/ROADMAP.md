@@ -33,8 +33,8 @@ guessed stack cleanup, invented layouts or silently missing dependencies.
   strategic state, target selection, weapon use and vehicle control.
 - Recover artillery target selection, aiming, trajectory/drop handling, firing
   conditions and entry/exit behavior from actual code and traces.
-- Replace bailout numerical helpers and vehicle candidate evaluation with validated
-  source instead of delegation to the original engine.
+- Recover bailout table initialization and replace vehicle candidate evaluation
+  with validated source. Bailout numerical helpers now compile from reconstructed C.
 
 Acceptance: defined AI scenarios produce equivalent state transitions and decisions
 from reconstructed source, including edge cases and sustained runtime operation.

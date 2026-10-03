@@ -8,6 +8,7 @@ import pefile
 from build import PROJECT, GAME, TARGETS
 from native_oracle import run_case, run_dispatch
 from bailout_oracle import run_bailout
+from verify_curves import compare_curves
 
 
 def verify(target):
@@ -69,13 +70,15 @@ def verify(target):
         except Exception as error:
             raise RuntimeError(f'{target} bailout recomputation input {args}') from error
         recompute_cases.append(dict(inputs=args,**a))
+    curve_comparisons=compare_curves(original,original_pe,edited,edited_pe,spec,symbols)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
-        bailout_recompute_cases=len(recompute_cases),passed=len(cases)+len(rating_cases)+len(recompute_cases),
-        scope='Interpreter with controlled methods/context/event helpers. Bailout cached and recomputed float bits/cache/flags/call order compared; real native numeric helpers use fixture tables and object methods are controlled. Vehicle wrapper uses controlled native callee; vehicle scoring remains native.',
-        interpreter=cases,ratings=rating_cases,bailout_recomputation=recompute_cases)
+        bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),
+        passed=len(cases)+len(rating_cases)+len(recompute_cases)+len(curve_comparisons),
+        scope='Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curve helpers checked at 80-bit return precision across rounding/precision modes, synthetic and original-initialized tables. Table initialization and vehicle scoring remain native.',
+        interpreter=cases,ratings=rating_cases,bailout_recomputation=recompute_cases,curves=curve_comparisons)
     (work/'verification.json').write_text(json.dumps(report,indent=2))
-    print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout comparisons, 32 vehicle-wrapper ABI checks passed')
+    print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout, {len(curve_comparisons)} curve comparisons, 32 vehicle-wrapper ABI checks passed',flush=True)
 
 
 if __name__=='__main__':

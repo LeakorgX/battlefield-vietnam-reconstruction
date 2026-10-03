@@ -20,6 +20,7 @@ TARGETS = {
         native_vehicle=0x9856f0, interpreter=0x9be180,
         bailout_curve=0x9d7200, bailout_score=0x9d6b90,
         bailout_curve_table=0xe0f678, bailout_score_table=0xe0f674, bailout_pattern=0x983280,
+        bailout_curve_initializer=0x9d6c20, bailout_score_initializer=0x9d65b0, curve_allocator=0x403610,
         patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle')]),
     'server': dict(file='bfvietnam_w32ded.exe', output='bfvietnam_w32ded-editable.exe',
         sha='86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d',
@@ -29,6 +30,7 @@ TARGETS = {
         native_vehicle=0x72f9e0, interpreter=0x774ff0,
         bailout_curve=0x78c5f0, bailout_score=0x78bf80,
         bailout_curve_table=0xc31c10, bailout_score_table=0xc31c0c, bailout_pattern=0x72e510,
+        bailout_curve_initializer=0x78c010, bailout_score_initializer=0x78b9a0, curve_allocator=0x403d80,
         patches=[(0x87681c,0x774ff0,'bfv_interpret'),(0x873d88,0x72eef0,'bfv_bailout'),(0x873e28,0x72f9e0,'bfv_vehicle')]),
 }
 
@@ -63,7 +65,7 @@ def build(target):
     for source_path in sources:
         source = source_path.stem
         run([COMPILERS/'gcc.exe','-m32','-std=c11','-O2','-Wall','-Wextra','-Werror',
-             '-ffreestanding','-fno-builtin','-fno-stack-protector','-fno-asynchronous-unwind-tables',
+             '-ffreestanding','-fno-builtin','-frounding-math','-fno-stack-protector','-fno-asynchronous-unwind-tables',
              '-fno-unwind-tables','-I',work,'-c',source_path,'-o',work/f'{source}.o'], work)
         objects.append(work/f'{source}.o')
     rva = align(pe.OPTIONAL_HEADER.SizeOfImage, pe.OPTIONAL_HEADER.SectionAlignment)
@@ -78,7 +80,7 @@ def build(target):
     import re
     symbols = {}
     for line in (work/'payload.map').read_text().splitlines():
-        match = re.match(r'\s*(0x[0-9a-fA-F]+)\s+_?(bfv_[A-Za-z0-9_]+)\s*$',line)
+        match = re.match(r'\s*(0x[0-9a-fA-F]+)\s+_?(bfv_[A-Za-z0-9_]+)(?:@\d+)?\s*$',line)
         if match: symbols[match[2]] = int(match[1],16)
     payload = (work/'payload.bin').read_bytes()
     linked = pefile.PE(str(work/'payload.exe'))

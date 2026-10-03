@@ -7,7 +7,7 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   2,538 scoped checks per target, 5,076 in total. Earlier builds also executed
+   6,378 scoped checks per target, 12,756 in total. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
@@ -20,8 +20,16 @@
   pattern flags, call ordering, group argument and stack cleanup. They cover
   influence conditions, low-byte predicate results, metric boundaries, signed zero,
   scale factors, changing selectors and cache/flag pointers moved by callbacks.
-  Native numeric helpers execute with deterministic table fixtures; object methods
+  Reference helpers are native; rebuilt helpers execute reconstructed C with the
+  same deterministic table fixtures. Object methods
   are controlled. See [BAILOUT.md](BAILOUT.md) for the recovered interface.
+- 3,840 curve-helper comparisons per target checking the exact 80-bit x87 return,
+  stack cleanup, an empty x87 stack and control-word preservation. They cover
+  float32 neighbors, subnormals, infinities, NaN payloads, signed zeros, all four
+  rounding directions, three precision modes, synthetic tables and tables produced
+  by original initializers. The neighboring word past each 101-element allocation
+  is controlled, including NaN cases. Unmasked exceptions and other status flags
+  are not checked. These helper comparisons do not establish whole-game parity.
 - 32 vehicle-wrapper ABI cases per target with a controlled native callee checking
   argument forwarding and returned float bits. These do not evaluate the real
   vehicle-scoring algorithm on fabricated incomplete objects.
@@ -44,6 +52,13 @@ the same fixture. Flags/results/call sequences and stack cleanup are checked.
   executable-section membership before creating a function seed.
 
 These illustrate why a raw C-like export is not sufficient source reconstruction.
+
+Numerical comparisons also caught a directed-rounding error from replacing a
+negative multiplication with a sign change, and a coefficient promoted with more
+precision than its original float32 value. `-frounding-math` and an explicitly
+stored float32 coefficient preserve the inspected arithmetic. Emulated x87 state
+is initialized with an empty register stack; the helpers must leave it empty
+after their return value is captured.
 
 ## Runtime observations
 
