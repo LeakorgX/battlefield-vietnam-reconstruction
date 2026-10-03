@@ -1,0 +1,96 @@
+{
+  "scope": "Distinct direct caller functions from the published static callgraph index. Indirect calls and unindexed callers are not counted; this is not complete runtime coverage.",
+  "helpers": [
+    {
+      "source": "bfv_float_minimum",
+      "address": "005a3340",
+      "indexed_direct_callers": [
+        "007394b0",
+        "00744030",
+        "00747d70",
+        "00749a80",
+        "0074bee0",
+        "0074d890",
+        "007506f0",
+        "00766f4e",
+        "0078ec70",
+        "00796690",
+        "007b5150"
+      ]
+    },
+    {
+      "source": "bfv_float_maximum",
+      "address": "004ac530",
+      "indexed_direct_callers": [
+        "0072d8c0",
+        "007394b0",
+        "0073a5f0",
+        "0073b2d0",
+        "0073f9f0",
+        "00742d40",
+        "00747d70",
+        "00749a80",
+        "0074d890",
+        "007506f0",
+        "00751fe0",
+        "0075d640",
+        "00766f4e",
+        "00796690"
+      ]
+    },
+    {
+      "source": "bfv_float_clamp",
+      "address": "006f0470",
+      "indexed_direct_callers": [
+        "006f4df0",
+        "006f5700",
+        "0073f9f0",
+        "00749a80",
+        "0074d890",
+        "007a4bd0",
+        "007b1a80",
+        "007b5150"
+      ]
+    },
+    {
+      "source": "bfv_vector_length",
+      "address": "0048c2b0",
+      "indexed_direct_callers": [
+        "004ccdd0",
+        "004d3a30",
+        "004ef400",
+        "005607b0",
+        "0056bf30",
+        "0056fef0",
+        "00588a10",
+        "005b69a0",
+        "005d13c0",
+        "006ed740",
+        "0072d8c0",
+        "00734270",
+        "00734ff0",
+        "00736360",
+        "00736610",
+        "0073f9f0",
+        "00745810",
+        "00747d70",
+        "00749a80",
+        "0074d890",
+        "007a9270",
+        "007be880",
+        "007bea50"
+      ]
+    },
+    {
+      "source": "bfv_vector_divide",
+      "address": "0048caf0",
+      "indexed_direct_callers": [
+        "0073f9f0",
+        "00745810",
+        "00749a80",
+        "0074d890",
+        "007a9270"
+      ]
+    }
+  ]
+}

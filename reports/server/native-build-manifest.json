@@ -2,9 +2,9 @@
   "target": "server",
   "input_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
   "output": "bfvietnam_w32ded-editable.exe",
-  "output_sha256": "aacf2d2689f249f928774b45a2a5d0a0225866653a9b2d7e5ece1f8bc736d46e",
+  "output_sha256": "7265ec3bc28a897259d5a2d9e9256f105623ff208433443911947c22181f0796",
   "payload_address": "00c37000",
-  "payload_bytes": 8429,
+  "payload_bytes": 8877,
   "symbols": {
     "bfv_interpret": "00c37000",
     "bfv_bailout": "00c37320",
@@ -27,25 +27,30 @@
     "bfv_collision": "00c38330",
     "bfv_bailout_curve": "00c388b0",
     "bfv_bailout_score": "00c388f0",
-    "bfv_target_history": "00c38940",
-    "bfv_vector_catch_rethrow": "00c38a00",
-    "bfv_vector_catch_free": "00c38a10",
-    "bfv_vector_copy": "00c38a80",
-    "bfv_vector_fill": "00c38ab0",
-    "bfv_vector_shift": "00c38af0",
-    "bfv_vector_fill_range": "00c38b10",
-    "bfv_vector_insert_body": "00c38b30",
-    "bfv_vector_handler": "00c38dd0",
-    "bfv_vector_insert": "00c38de0",
-    "bfv_vector_info": "00c39000",
-    "bfv_vehicle_calls": "00c390cc",
-    "bfv_bailout_calls": "00c390d0",
-    "bfv_interpreter_calls": "00c390d4",
-    "bfv_artillery_evaluate_calls": "00c390d8",
-    "bfv_artillery_calls": "00c390dc",
-    "bfv_artillery_filter_calls": "00c390e0",
-    "bfv_collision_calls": "00c390e4",
-    "bfv_target_history_calls": "00c390e8"
+    "bfv_float_minimum": "00c38940",
+    "bfv_float_maximum": "00c38990",
+    "bfv_float_clamp": "00c389e0",
+    "bfv_vector_length": "00c38a60",
+    "bfv_vector_divide": "00c38aa0",
+    "bfv_target_history": "00c38ad0",
+    "bfv_vector_catch_rethrow": "00c38ba0",
+    "bfv_vector_catch_free": "00c38bb0",
+    "bfv_vector_copy": "00c38c20",
+    "bfv_vector_fill": "00c38c50",
+    "bfv_vector_shift": "00c38c90",
+    "bfv_vector_fill_range": "00c38cb0",
+    "bfv_vector_insert_body": "00c38cd0",
+    "bfv_vector_handler": "00c38f70",
+    "bfv_vector_insert": "00c38f80",
+    "bfv_vector_info": "00c391c0",
+    "bfv_vehicle_calls": "00c3928c",
+    "bfv_bailout_calls": "00c39290",
+    "bfv_interpreter_calls": "00c39294",
+    "bfv_artillery_evaluate_calls": "00c39298",
+    "bfv_artillery_calls": "00c3929c",
+    "bfv_artillery_filter_calls": "00c392a0",
+    "bfv_collision_calls": "00c392a4",
+    "bfv_target_history_calls": "00c392a8"
   },
   "patches": [
     {
@@ -83,8 +88,8 @@
     {
       "entry": "00749820",
       "original": "83ec105657",
-      "patched": "e91bf14e00",
-      "replacement": "00c38940",
+      "patched": "e9abf24e00",
+      "replacement": "00c38ad0",
       "source": "bfv_target_history"
     },
     {
@@ -93,7 +98,42 @@
       "patched": "e998db4e009090",
       "replacement": "00c37a40",
       "source": "bfv_artillery_filter_bridge"
+    },
+    {
+      "entry": "005a3340",
+      "original": "d9442404d85c2408",
+      "patched": "e9fb556900909090",
+      "replacement": "00c38940",
+      "source": "bfv_float_minimum"
+    },
+    {
+      "entry": "004ac530",
+      "original": "d9442404d85c2408",
+      "patched": "e95bc47800909090",
+      "replacement": "00c38990",
+      "source": "bfv_float_maximum"
+    },
+    {
+      "entry": "006f0470",
+      "original": "d9442404d85c2408",
+      "patched": "e96b855400909090",
+      "replacement": "00c389e0",
+      "source": "bfv_float_clamp"
+    },
+    {
+      "entry": "0048c2b0",
+      "original": "d94108d94104",
+      "patched": "e9abc77a0090",
+      "replacement": "00c38a60",
+      "source": "bfv_vector_length"
+    },
+    {
+      "entry": "0048caf0",
+      "original": "d90564928000",
+      "patched": "e9abbf7a0090",
+      "replacement": "00c38aa0",
+      "source": "bfv_vector_divide"
     }
   ],
-  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation and target-history lookup; remaining engine code/services are retained from the original image"
+  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation and target-history lookup; remaining engine code/services are retained from the original image; first-pass artillery candidate filter and five shared scalar/vector math helpers also compile from source and replace guarded native entries"
 }
