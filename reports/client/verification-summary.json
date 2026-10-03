@@ -1,11 +1,12 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "be3876cbef1d36085fc54318fb37a37ca6869acff9153f95fd091d80208cfab5",
+  "compiled_sha256": "c5460b6b5d49fe73205d0c01397d849c7fb6931549e48c7081fdf71c7836c068",
   "interpreter_cases": 1920,
   "cached_bailout_cases": 32,
   "vehicle_wrapper_cases": 32,
   "bailout_recompute_cases": 554,
-  "passed": 2538,
-  "scope": "Interpreter with controlled methods/context/event helpers. Bailout cached and recomputed float bits/cache/flags/call order compared; real native numeric helpers use fixture tables and object methods are controlled. Vehicle wrapper uses controlled native callee; vehicle scoring remains native."
+  "curve_cases": 3840,
+  "passed": 6378,
+  "scope": "Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curve helpers checked at 80-bit return precision across rounding/precision modes, synthetic and original-initialized tables. Table initialization and vehicle scoring remain native."
 }

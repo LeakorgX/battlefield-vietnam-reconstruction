@@ -14,7 +14,7 @@ import struct
 
 import pefile
 from unicorn import Uc, UC_ARCH_X86, UC_MODE_32, UC_HOOK_CODE
-from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_ECX, UC_X86_REG_EIP, UC_X86_REG_ESP, UC_X86_REG_FPCW
+from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_ECX, UC_X86_REG_EIP, UC_X86_REG_ESP, UC_X86_REG_FPCW, UC_X86_REG_FPTAG
 
 PROJECT = Path(__file__).resolve().parents[1]
 BINARIES = {
@@ -37,6 +37,10 @@ def load_machine(image: bytes, pe):
         machine.mem_write(base+section.VirtualAddress, section.get_data())
     machine.mem_map(ARENA, 0x10000)
     machine.mem_map(STACK, 0x10000)
+    # Unicorn defaults to zero-valued occupied x87 registers. Native calls need
+    # an empty stack, as after hardware initialization, to expose stack leaks.
+    machine.reg_write(UC_X86_REG_FPTAG, 0xffff)
+    machine.reg_write(UC_X86_REG_FPCW, 0x037f)
     return machine
 
 

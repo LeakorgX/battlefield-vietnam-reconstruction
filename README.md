@@ -7,10 +7,10 @@ the goal.
 ## Progress
 
 - Reconstructed the native AI plan interpreter in C.
-- Reconstructed bailout recomputation, cache writes and pattern flags in C.
+- Reconstructed bailout logic and its numerical helpers in C.
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- Passed 5,076 comparisons and ABI checks across the two inspected binaries.
+- Passed 12,756 comparisons and ABI checks across the two inspected binaries.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.
 
@@ -33,7 +33,7 @@ $env:BFV_GAME_DIR = 'D:\Games\Battlefield Vietnam'
 ```
 
 For the dedicated server, use `run-server.ps1`.
-Edit `bfv-native-code/src/native_ai.c` or `bfv-native-code/src/mod_rules.c`, then
+Edit `src/native_ai.c`, `src/numeric_curves.c` or `src/mod_rules.c` under `bfv-native-code`, then
 rebuild. Outputs are `BfVietnam-editable.exe` and `bfvietnam_w32ded-editable.exe`
 in your installation. The original EXEs are unchanged.
 
