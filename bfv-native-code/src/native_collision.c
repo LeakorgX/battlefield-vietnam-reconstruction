@@ -16,7 +16,7 @@ typedef void (TC *collision_event)(void *, uint32_t, void *, uint32_t);
 typedef long double (TC *clock_value)(void *);
 typedef void *(TC *allocate_event)(void *, uint32_t, uint32_t, uint32_t);
 typedef void *(TC *construct_event)(void *, vector_bits, vector_bits, void *, uint32_t, float, float, uint32_t);
-typedef void (TC *dispatch_collision)(void *, void *, void *, uint32_t, uint32_t, uint32_t);
+typedef long double (__attribute__((stdcall)) *collision_distance)(vector_bits, vector_bits, vector_bits);
 
 volatile uint32_t bfv_collision_calls;
 
@@ -39,6 +39,69 @@ static vector_bits copy_vector(uintptr_t address)
     return result;
 }
 
+/* Keep this boundary visible for ABI traces and debugger inspection. */
+void TC __attribute__((noinline)) bfv_collision_dispatch(void *handler, void *member,
+                          void *component, uint32_t position, uint32_t selector, uint32_t flags)
+{
+    (void)handler;
+    vector_bits origin = copy_vector(get(component, 0x18));
+    void *actors = global_object(BFV_COLLISION_ACTORS);
+    uint32_t index = 0;
+    if (!get(actors, 4)) return;
+    do {
+        void *actor = (void *)(uintptr_t)find(actors, 0x14, index);
+        if (actor) {
+            uint32_t member_id = get(member, 0x44);
+            if (member_id != get(actor, 0xa8) && selector != get(actor, 0xa8) &&
+                get(actor, 0xa8) != 0xffffffffu && !(uint8_t)get(actor, 0xc4)) {
+                uint32_t handle = get(actor, 0xcc);
+                uint32_t slot = handle & 0xffffu;
+                uintptr_t entity = 0;
+                if (slot) {
+                    uintptr_t record = read32(read32(BFV_OBJECT_POOL)) + slot * 8 - 8;
+                    if (*(volatile uint16_t *)(record + 6) == (uint16_t)(handle >> 16))
+                        entity = read32(record);
+                }
+                if (entity) {
+                    void *parent = (void *)(uintptr_t)read32(entity + 0x20);
+                    void *actor_object = (void *)(uintptr_t)get(parent, 0x14);
+                    uintptr_t actor_position = get(actor_object, 0x34);
+                    vector_bits contact = copy_vector(position);
+                    vector_bits candidate = copy_vector(actor_position);
+                    long double distance = ((collision_distance)BFV_COLLISION_DISTANCE)(candidate, origin, contact);
+                    if (distance < *(volatile float *)BFV_COLLISION_DISTANCE_LIMIT) {
+                        uintptr_t component_vtable = read32((uintptr_t)component);
+                        uint32_t actor_selector = get(actor, 0xd4);
+                        uint32_t resolved = ((lookup)read32(component_vtable + 0x5c))(component, actor_selector);
+                        void *pool_entry = (void *)(uintptr_t)((lookup)BFV_COLLISION_POOL_ENTRY)(global_object(BFV_OBJECT_POOL), resolved);
+                        void *clock = global_object(BFV_COLLISION_CLOCK);
+                        uintptr_t pool_vtable = read32((uintptr_t)pool_entry);
+                        volatile float time = ((clock_value)method(clock, 4))(clock);
+                        ((set_float)read32(pool_vtable + 0x0c))(pool_entry, time);
+                        void *event_interface = (void *)(uintptr_t)((lookup)BFV_COLLISION_EVENT_INTERFACE)(pool_entry, 3);
+                        if (event_interface) {
+                            void *buffer = ((allocate_event)BFV_COLLISION_ALLOCATE)((void *)BFV_COLLISION_ALLOCATOR, 0x38, BFV_COLLISION_ALLOC_SOURCE, 0);
+                            void *event = 0;
+                            if (buffer) {
+                                float strength = (uint8_t)flags ? 4.0f : 1.0f;
+                                clock = global_object(BFV_COLLISION_CLOCK);
+                                void *event_data = (void *)(uintptr_t)read32((uintptr_t)event_interface + 8);
+                                uintptr_t current_origin = get(component, 0x18);
+                                volatile float timestamp = ((clock_value)method(clock, 4))(clock);
+                                vector_bits contact_vector = copy_vector(position);
+                                vector_bits origin_vector = copy_vector(current_origin);
+                                event = ((construct_event)BFV_COLLISION_CONSTRUCT)(buffer, origin_vector, contact_vector, event_data, 0, timestamp, strength, flags);
+                            }
+                            ((attach_event)method(actor, 0x144))(actor, event, 0xffffffffu);
+                        }
+                    }
+                }
+            }
+        }
+        ++index;
+    } while (index < get(actors, 4));
+}
+
 /* Native notification helper, previously 009d4b60 / 0078a4c0. The position
  * getter takes no arguments: selector/flag pushes prepare the later dispatcher.
  * SETE DL changes only the flag word's low byte; retain the remaining bits. */
@@ -49,7 +112,7 @@ void TC bfv_collision_notify(void *handler, void *member, void *component,
     uint32_t state = read32(interface + BFV_COLLISION_NOTIFY_STATE_FIELD);
     uint32_t flag_word = (state & 0xffffff00u) | (state == 1);
     uint32_t position = get(source, 0x34);
-    ((dispatch_collision)BFV_COLLISION_DISPATCH)(handler, member, component, position, selector, flag_word);
+    bfv_collision_dispatch(handler, member, component, position, selector, flag_word);
 }
 
 void TC bfv_collision(void *handler, void *source, void *other, uint32_t payload)

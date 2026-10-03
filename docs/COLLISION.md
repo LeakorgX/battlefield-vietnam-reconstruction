@@ -75,7 +75,7 @@ Position vectors are copied after the timestamp callback, retaining its mutation
 | Event interface lookup | `0092afb0` | `006e88b0` |
 | Allocation service | `00412ee0` | `00404290` |
 | Event constructor | `009dc3b0` | `007ae550` |
-| Downstream collision dispatcher | `009d48b0` | `0078a210` |
+| Distance helper | `009d46d0` | `0078a030` |
 
 Object virtual methods and registry/global initialization also remain native.
 `tools/build.py` records the version-specific addresses and handle field offset.
@@ -92,7 +92,7 @@ with the result of comparing the entire state word to 1. For example, state
 `0x12345601` yields flag `0x12345600`, while state 1 yields flag 1.
 
 The helper obtains the source position from virtual method `+34` and passes the
-registry member, component, position result, selector and flag word to the native
+registry member, component, position result, selector and flag word to the reconstructed
 dispatcher. That dispatcher consumes five stack arguments (20 bytes). The helper
 itself consumes four arguments (16 bytes).
 
@@ -102,12 +102,36 @@ no arguments. Treating those pushes as getter arguments would shift the dispatch
 arguments and break stack cleanup. The state/flag calculation also precedes the
 getter, so a state change during that callback must not alter the forwarded flag.
 
+## Reconstructed actor dispatcher
+
+`bfv_collision_dispatch` recovers client `009d48b0` / server `0078a210`.
+It snapshots the component origin, scans the actor list, and rechecks its count
+at the end of each iteration. Actor selectors are read separately up to three
+times, preserving callback changes. Low-byte state predicates and generation
+checks reject ineligible or stale handles before resolving the actor position.
+
+The native distance helper receives three raw vectors by value and cleans up
+36 stack bytes. Only a distance strictly below the original threshold proceeds;
+equality and NaNs are rejected. Event creation preserves the observed callback
+order, snapshots of vtable pointers, timestamp storage and later vector reads.
+The constructor receives flag zero, strength 4 when the incoming flag's low byte
+is nonzero (otherwise 1), and the complete incoming flag word. Allocation failure
+still attaches a null event. This dispatcher is called by reconstructed C; its
+original entry remains intact for any other native callers.
+
+`dispatch_oracle.py` adds 135 direct comparisons per binary with controlled
+geometry and event services. Cases cover actor filtering, handle generations,
+missing entities, distance boundaries/NaNs, allocation/interface failures,
+changing list counts, flag words and vector mutations. They compare argument
+bytes, event effects and the dispatcher's 20-byte argument cleanup.
+
 ## Verification and limits
 
 `collision_oracle.py` and `verify_collision.py` compare 126 callback cases and
 64 direct notification-helper cases per binary. The callback reference now executes
 the real original notification helper; the rebuilt callback uses reconstructed C.
-Both runs stub the downstream dispatcher. Tests record exact call order, receiver pointers, argument bytes, vectors,
+Both runs execute their dispatcher with an empty actor list. Tests record exact
+call order, receiver pointers, argument bytes, vectors,
 timestamp arguments, event-allocation side effects and record-counter wraparound.
 They check stack cleanup and cover absent inputs/lookup results, low-byte state
 predicates, allocation failure and callback mutations of vectors/vtable pointers

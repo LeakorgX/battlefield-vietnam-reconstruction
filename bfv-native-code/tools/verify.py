@@ -9,7 +9,7 @@ from build import PROJECT, GAME, TARGETS
 from native_oracle import run_case, run_dispatch
 from bailout_oracle import run_bailout
 from verify_curves import compare_curves
-from verify_collision import compare_collision
+from verify_collision import compare_collision, compare_dispatcher
 
 
 def verify(target):
@@ -73,16 +73,17 @@ def verify(target):
         recompute_cases.append(dict(inputs=args,**a))
     curve_comparisons=compare_curves(original,original_pe,edited,edited_pe,spec,symbols)
     collision_comparisons=compare_collision(original,original_pe,edited,edited_pe,spec,symbols)
+    dispatch_comparisons=compare_dispatcher(original,original_pe,edited,edited_pe,spec,symbols)
     notify_count=sum(bool(x['inputs'].get('notify_only',False)) for x in collision_comparisons)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
         bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),
-        collision_cases=len(collision_comparisons)-notify_count,collision_notify_cases=notify_count,
-        passed=len(cases)+len(rating_cases)+len(recompute_cases)+len(curve_comparisons)+len(collision_comparisons),
-        scope='Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Table initialization, downstream collision dispatch/event services and vehicle scoring remain native.',
-        interpreter=cases,ratings=rating_cases,bailout_recomputation=recompute_cases,curves=curve_comparisons,collision=collision_comparisons)
+        collision_cases=len(collision_comparisons)-notify_count,collision_notify_cases=notify_count,collision_dispatch_cases=len(dispatch_comparisons),
+        passed=len(cases)+len(rating_cases)+len(recompute_cases)+len(curve_comparisons)+len(collision_comparisons)+len(dispatch_comparisons),
+        scope='Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Dispatcher actor filtering, generation checks, dynamic count, strict distance gates and event arguments compared with controlled geometry/event services. Table initialization, geometry/event services and vehicle scoring remain native.',
+        interpreter=cases,ratings=rating_cases,bailout_recomputation=recompute_cases,curves=curve_comparisons,collision=collision_comparisons,dispatch=dispatch_comparisons)
     (work/'verification.json').write_text(json.dumps(report,indent=2))
-    print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout, {len(curve_comparisons)} curve, {len(collision_comparisons)-notify_count} collision, {notify_count} notification comparisons, 32 vehicle-wrapper ABI checks passed',flush=True)
+    print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout, {len(curve_comparisons)} curve, {len(collision_comparisons)-notify_count} collision, {notify_count} notification and {len(dispatch_comparisons)} dispatcher comparisons, 32 vehicle-wrapper ABI checks passed',flush=True)
 
 
 if __name__=='__main__':

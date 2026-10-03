@@ -10,7 +10,7 @@ from unicorn.x86_const import UC_X86_REG_ECX, UC_X86_REG_ESP
 from native_oracle import load_machine, ARENA, STACK
 
 
-def run_collision(image, pe, entry, spec, case):
+def run_collision(image, pe, entry, spec, case, dispatch_entry=None):
     m = load_machine(image, pe)
     def a(offset): return ARENA+offset
     source, other, handler = a(0x100), a(0x400), a(0x700)
@@ -59,12 +59,15 @@ def run_collision(image, pe, entry, spec, case):
     method(member,0x38,'member-body',member_body if case.get('member_body',True) else 0)
     method(actors,0x1c,'source-actor',source_actor if case.get('source_actor',0)>=0 else 0,4)
     method(actors,0x10,'other-actor',other_actor if case.get('other_actor',0)>=0 else 0,4)
+    method(actors,4,'actor-count',0)
     method(source_actor,0xc4,'source-state',max(case.get('source_actor',0),0))
     method(other_actor,0xc4,'other-state',max(case.get('other_actor',0),0))
     method(source_actor,0xd4,'source-selector',0x20)
     method(other_actor,0xd4,'other-selector',0x30)
     method(source_comp,0x5c,'resolve-source',0x4444,4)
     method(other_comp,0x5c,'resolve-other',0x5555,4)
+    origin_stub=method(source_comp,0x18,'component-origin',member_position)
+    w32(a(0x7a00)+0x18,origin_stub)
     method(source_actor,0x88,'record',record if case.get('record',True) else 0,4)
     method(source_actor,0x148,'source-event',0,12)
     method(other_actor,0x144,'attach-event',0,8)
@@ -78,7 +81,8 @@ def run_collision(image, pe, entry, spec, case):
     stub('event-interface',event_iface if case.get('event_interface',True) else 0,4,address=spec['collision_event_interface'])
     stub('allocate',buffer if case.get('allocate',True) else 0,12,address=spec['collision_allocate'])
     stub('construct',buffer,44,address=spec['collision_construct'])
-    stub('dispatch',0,20,address=spec['collision_dispatch'])
+    # Execute the actual dispatcher with an empty actor list in integration cases.
+    services[dispatch_entry or spec['collision_dispatch']]=('dispatch',20)
     # Mutation cases distinguish saved vtable pointers from early method reads.
     alternate_source = stub('resolve-source-updated',0x4444,4)
     alternate_other = stub('resolve-other-updated',0x5555,4)

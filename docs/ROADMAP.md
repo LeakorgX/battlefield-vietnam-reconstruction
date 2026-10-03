@@ -4,7 +4,7 @@ The goal is readable source for the original engine and a standalone source buil
 that preserves original behavior. The native mod build is an intermediate tool.
 No estimated completion date or percentage is assigned.
 
-## Milestone 0 — establish the reference
+## Milestone 0 â€” establish the reference
 
 - Identify the exact vanilla client and dedicated-server release.
 - Obtain a user-owned, pristine version-matched installation for comparison.
@@ -15,7 +15,7 @@ No estimated completion date or percentage is assigned.
 Acceptance: someone else with the matching installation can reproduce the same
 reference traces and identify every tested binary/data dependency.
 
-## Milestone 1 — recover trustworthy interfaces
+## Milestone 1 â€” recover trustworthy interfaces
 
 - Audit native function boundaries and RTTI/vtable association.
 - Recover calling conventions, argument counts and return types from instructions.
@@ -26,7 +26,7 @@ reference traces and identify every tested binary/data dependency.
 Acceptance: new code can call and replace the relevant native methods without
 guessed stack cleanup, invented layouts or silently missing dependencies.
 
-## Milestone 2 — complete AI subsystem reconstruction
+## Milestone 2 â€” complete AI subsystem reconstruction
 
 - Broaden interpreter verification to real native callbacks and full lifecycle.
 - Reconstruct scheduling and behavior selection, plan implementations, pathfinding,
@@ -39,7 +39,7 @@ guessed stack cleanup, invented layouts or silently missing dependencies.
 Acceptance: defined AI scenarios produce equivalent state transitions and decisions
 from reconstructed source, including edge cases and sustained runtime operation.
 
-## Milestone 3 — reconstruct gameplay and physics
+## Milestone 3 â€” reconstruct gameplay and physics
 
 - Infantry movement and controller integration.
 - Weapon/projectile simulation, ammunition, damage and interactions.
@@ -50,7 +50,7 @@ from reconstructed source, including edge cases and sustained runtime operation.
 Acceptance: input/state traces match the reference at known tick rates and floating-
 point settings. Test interactions between subsystems, not only isolated methods.
 
-## Milestone 4 — reconstruct multiplayer
+## Milestone 4 â€” reconstruct multiplayer
 
 - Recover protocol/event IDs and serialization structures.
 - Trace state replication, ownership, ordering, reliability and timing.
@@ -62,7 +62,7 @@ point settings. Test interactions between subsystems, not only isolated methods.
 Acceptance: declared compatibility scenarios pass against controlled original
 client/server instances and replicated state matches recorded reference traces.
 
-## Milestone 5 — replace engine services and build from source
+## Milestone 5 â€” replace engine services and build from source
 
 - Startup, memory management, object registries and global state.
 - Rendering/UI/audio and filesystem/resource interfaces.
@@ -73,7 +73,7 @@ client/server instances and replicated state matches recorded reference traces.
 Acceptance: engine code compiles without copying original executable machine code
 into the output. User-provided game assets are a separate dependency.
 
-## Milestone 6 — establish 1:1 claims with evidence
+## Milestone 6 â€” establish 1:1 claims with evidence
 
 - Validate a pristine version-matched corpus.
 - Exercise weapons, movement, physics, AI, vehicles, maps, UI and audio.
@@ -86,6 +86,6 @@ evidence. Unresolved differences stay visible in documentation.
 ## Present position
 
 We have partial interface recovery, a compiled AI interpreter, bailout logic/math
-and collision-callback control flow, editable rating
+and collision callback/notification/dispatcher control flow, editable rating
 rules, a build mechanism retaining original engine bytes, controlled comparisons,
 and live execution observations. We have not completed any whole-engine milestone.
