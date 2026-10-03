@@ -75,7 +75,6 @@ Position vectors are copied after the timestamp callback, retaining its mutation
 | Event interface lookup | `0092afb0` | `006e88b0` |
 | Allocation service | `00412ee0` | `00404290` |
 | Event constructor | `009dc3b0` | `007ae550` |
-| Distance helper | `009d46d0` | `0078a030` |
 
 Object virtual methods and registry/global initialization also remain native.
 `tools/build.py` records the version-specific addresses and handle field offset.
@@ -110,7 +109,7 @@ at the end of each iteration. Actor selectors are read separately up to three
 times, preserving callback changes. Low-byte state predicates and generation
 checks reject ineligible or stale handles before resolving the actor position.
 
-The native distance helper receives three raw vectors by value and cleans up
+The reconstructed distance helper receives three raw vectors by value and cleans up
 36 stack bytes. Only a distance strictly below the original threshold proceeds;
 equality and NaNs are rejected. Event creation preserves the observed callback
 order, snapshots of vtable pointers, timestamp storage and later vector reads.
@@ -119,8 +118,9 @@ is nonzero (otherwise 1), and the complete incoming flag word. Allocation failur
 still attaches a null event. This dispatcher is called by reconstructed C; its
 original entry remains intact for any other native callers.
 
-`dispatch_oracle.py` adds 135 direct comparisons per binary with controlled
-geometry and event services. Cases cover actor filtering, handle generations,
+`dispatch_oracle.py` adds 145 direct comparisons per binary with controlled
+event services. Ten execute real geometry; the rest control the distance result. Cases cover actor filtering, handle
+generations,
 missing entities, distance boundaries/NaNs, allocation/interface failures,
 changing list counts, flag words and vector mutations. They compare argument
 bytes, event effects and the dispatcher's 20-byte argument cleanup.

@@ -26,8 +26,8 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   its two numerical helpers are in `src/numeric_curves.c`. See [the recovered interface](../docs/BAILOUT.md).
 - `src/native_collision.c`: AI collision-callback control flow, event argument
   assembly, actor decisions, record-counter updates and notification argument
-  preparation. The actor dispatcher is also reconstructed. Geometry and registry/event services
-  remain native. See [the recovered interface](../docs/COLLISION.md).
+  preparation. The actor dispatcher is also reconstructed. Registry/event services remain native; `src/collision_geometry.c` implements
+  the planar distance calculation and its line-distance helper. See [the recovered interface](../docs/COLLISION.md).
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
   `return native_rating * 2.0f;` changes the rating returned to the actual engine.
@@ -53,7 +53,7 @@ source. It provides a working compile-and-run route for editing the listed logic
 Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases,
 554 bailout recomputation cases (including cache/flag pointer changes during callbacks),
 3,840 numerical-helper comparisons of the full 80-bit x87 return,
-126 collision-callback, 64 notification-helper and 135 actor-dispatcher comparisons with controlled services, and
+126 collision-callback, 64 notification-helper and 145 actor-dispatcher comparisons with controlled event services, 2,136 geometry comparisons, and
 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
 the vehicle wrapper tests forwarding and returned bits while native scoring remains
 intact. Reports are in `build/client/verification.json` and

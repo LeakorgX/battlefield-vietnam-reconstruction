@@ -6,7 +6,7 @@ from unicorn.x86_const import UC_X86_REG_ECX, UC_X86_REG_ESP
 from native_oracle import load_machine, ARENA, STACK
 
 
-def run_dispatcher(image, pe, entry, spec, case):
+def run_dispatcher(image, pe, entry, spec, case, distance_entry=None):
     m=load_machine(image,pe)
     objs={name:ARENA+0x100+i*0x300 for i,name in enumerate(
         ('member','component','manager','actor','entity','parent','body','pool_entry','clock'))}
@@ -29,6 +29,12 @@ def run_dispatcher(image, pe, entry, spec, case):
     assert struct.unpack('<f',threshold)[0]>0
     raw={'below':raw-1,'equal':raw,'above':raw+1,'nan':0x7fc12345,'infinity':0x7f800000}[case.get('distance','below')]
     w32(distance_cell,raw)
+    if case.get('real_geometry',False):
+        limit=struct.unpack('<f',threshold)[0]
+        offset={'below':limit*0.5,'equal':limit,'above':limit*2}[case.get('offset','below')]
+        for address,values in ((origin,(0,50,0)),(contact,(10,90,0)),
+                               (candidate,(case.get('point_x',5),400,offset))):
+            m.mem_write(address,struct.pack('<3f',*values))
     cursor=ARENA+0x8000; services={}; trace=[]
     def stub(name,value=0,pop=0,address=None,cell=None,floating=False):
         nonlocal cursor
@@ -54,7 +60,8 @@ def run_dispatcher(image, pe, entry, spec, case):
     method('body',0x34,'position',candidate)
     method('clock',4,'clock',cell=time_cell,floating=True)
     method('pool_entry',0xc,'time',0,4)
-    stub('distance',pop=36,address=spec['collision_distance'],cell=distance_cell,floating=True)
+    if not case.get('real_geometry',False):
+        stub('distance',pop=36,address=distance_entry or spec['collision_distance'],cell=distance_cell,floating=True)
     stub('pool-entry',objs['pool_entry'],4,address=spec['collision_pool_entry'])
     stub('event-interface',event_iface if case.get('interface',True) else 0,4,address=spec['collision_event_interface'])
     stub('allocate',buffer if case.get('allocate',True) else 0,12,address=spec['collision_allocate'])
@@ -124,3 +131,7 @@ def dispatcher_cases():
     yield {'counts':(1,3,3,3)}
     yield {'counts':(3,0)}
     yield {'mutate':True}
+
+    for point_x,offset in itertools.product((-10,5,20),('below','equal','above')):
+        yield dict(real_geometry=True,point_x=point_x,offset=offset)
+    yield dict(real_geometry=True,count=3,mutate=True,flags=0x12345601)

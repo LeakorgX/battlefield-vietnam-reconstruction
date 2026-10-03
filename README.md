@@ -8,10 +8,10 @@ the goal.
 
 - Reconstructed the native AI plan interpreter in C.
 - Reconstructed bailout logic and its numerical helpers in C.
-- Reconstructed the AI collision callback, notification helper and actor dispatcher in C.
+- Reconstructed the AI collision callback, notification helper and actor dispatcher and distance helpers in C.
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- Passed 13,406 comparisons and ABI checks across the two inspected binaries.
+- Passed 17,698 comparisons and ABI checks across the two inspected binaries.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.
 
