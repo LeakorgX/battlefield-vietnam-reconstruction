@@ -189,7 +189,8 @@
     },
     "implemented_stages": [
       "cached-target validation",
-      "first-pass candidate filtering"
+      "first-pass candidate filtering",
+      "first-pass weapon scoring and selection"
     ],
     "remaining_stages": [
       "remaining candidate search/scoring",

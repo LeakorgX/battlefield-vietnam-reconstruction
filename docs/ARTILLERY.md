@@ -3,7 +3,7 @@
 `bfv-native-code/src/artillery.c` reconstructs the rating stage of
 `BBFireArtilleryDriver`. The client method at `009a13a0` and server method at
 `0074bb80` are replaced in the generated EXEs. The underlying target evaluator
-now has source-owned cached-target validation. Candidate search still executes
+now has source-owned cached-target validation. Much of candidate search still executes
 original machine code; this is not yet complete artillery AI.
 
 ## Recovered behavior
@@ -202,6 +202,62 @@ The default verifier includes these comparisons. Address audits are recorded in
 `reports/{client,server}/history-tree-audit.tsv`; hash-specific results are in
 `history-tree-verification.json` in the same folders.
 
+## First-pass weapon selection
+
+`src/artillery_weapons.c` replaces the 394-byte inline loop at client
+`0099f8d7..0099fa60` and server `0074a0b7..0074a240`. This is another stage of the
+partially reconstructed evaluator, not an additional complete native function.
+It scans the returned weapon vector, scores each non-null weapon and keeps the
+first weapon with the greatest positive score; equal scores retain the earlier
+selection. Rejected candidates do not receive the accepted-path score padding.
+
+The recovered arithmetic is:
+
+```text
+available = returned count, with 0xffffffff replaced by 65536
+score = class_rating / (1 + ((record_a - record_b) * 20 + 10) / available)
+```
+
+Other nonpositive signed counts produce zero. The signed integer class rating is
+rounded to float32 before the calculation. The two record arrays are at offsets
+`0x34` and `0x54`, indexed by weapon; their semantic meaning is still unresolved.
+The implementation preserves extended intermediates and the original float32
+stores with small x87 primitives. Modifying the formula is now possible in source.
+
+Weapon parameter `+0x28` is compared with the candidate distance: a distance below
+that threshold clears the score. Unordered distance comparisons retain the score;
+unordered score comparisons never replace the best score. Parameter `+0x2c` is
+tracked as a maximum across non-null weapons, including those with zero scores.
+Its broader meaning is not claimed here. Accepted candidates have unused score
+slots zeroed up to eight; the original scan itself has no added eight-weapon cap.
+
+Inventory retrieval uses owner slot `0x1c`, the rating-table index comes from
+target-component slot `0x3c`, and the availability word from weapon slot `0x24`.
+Those object methods remain dependencies. Container pointers/counts are reread
+after callbacks as in the native loop. The bridge reproduces its live frame and
+EBX updates, preserves ESI/EBP, and resumes at the native accept/reject continuation.
+
+The focused verifier passed **303 comparisons per target**, including empty/null
+entries, equal scores, one to eight weapons, count sentinels, signed integer
+boundaries, distance equality, NaN/infinity/signed zero, deterministic random
+inputs, callback mutations and all supported x87 precision/rounding modes with
+zero, two or six retained caller values. It compares the entire fixture arena
+and evaluator frame, callback ordering/arguments, live registers and x87 state.
+The three object methods are controlled services; arithmetic and loop decisions
+execute actual original/reconstructed instructions. This does not establish the
+remaining target evaluation, firing behavior or live-match equivalence.
+
+```powershell
+uv run --with pefile --with unicorn python bfv-native-code/tools/verify_artillery_weapons.py --game-dir 'D:\Games\Battlefield Vietnam' --target both
+```
+
+`AuditArtilleryWeapons.java` verifies both 98-instruction blocks, their owning
+functions, instruction boundaries, outgoing branches and absence of recorded
+external references into block interiors. The builder guards the original hash
+and six overwritten entry bytes. Static references cannot rule out every computed
+jump. Audit metadata is in `reports/*/artillery-weapons-audit.tsv`; the standard
+verification command includes the new comparisons.
+
 ## Remaining work
 
 The direction aiming-limit predicate and its event wrapper now compile from C.
@@ -221,11 +277,12 @@ accept NaN; the C implementation preserves this behavior and x87 status.
 The bridge preserves the evaluator's live frame and register outputs. Controlled
 comparisons cover 171 cases per target, including callbacks changing frame state,
 null/stale handles, wrapped addresses, infinity, NaN, and x87 precision/rounding.
-This does not reconstruct the subsequent candidate scoring or the second pass.
+The next weapon-selection stage is also reconstructed; later candidate scoring
+and the second pass still require recovery.
 Run `verify_artillery_filter.py` with the same arguments as the history verifier;
 the default full verifier also includes these cases.
 
-Recover the large target evaluator's boundaries, arguments, candidate filtering,
+Recover the remaining target evaluator boundaries, arguments, candidate filtering,
 weapon ratings, cached target state, and subordinate helpers. Then recover the
 plans that turn selected targets into aiming and firing controls. Replace their
 native dependencies and validate complete artillery scenarios against the original

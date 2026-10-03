@@ -20,7 +20,7 @@ See the [full-project tracker](docs/PROGRESS.md).
 - Reconstructed the native AI plan interpreter in C.
 - Reconstructed bailout logic and its numerical helpers in C.
 - Reconstructed AI collision handling, geometry helpers, events and vector insertion in C.
-- Reconstructed artillery driver rating selection, cached-target validation, history lookup/insertion, tree balancing and the first candidate-pass filter in C.
+- Reconstructed artillery driver rating selection, cached-target validation, history lookup/insertion, tree balancing, the first candidate-pass filter and its weapon-selection loop in C.
 - Reconstructed shared float min/max/clamp and vector length/division helpers; see [shared math](docs/SHARED-MATH.md).
 - Reconstructed the direction aiming-limit predicate and event wrapper; see [aiming limits](docs/AIM-LIMITS.md).
 - Reconstructed affine matrix composition, now called directly by the aiming source; see [matrix math](docs/AFFINE-MATRIX.md).
@@ -28,7 +28,7 @@ See the [full-project tracker](docs/PROGRESS.md).
 - Reconstructed 175 object-word accessors as editable C; [field offsets and verification](docs/WORD-GETTERS.md).
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- The current fully regression-tested build passed 67,330 comparisons and ABI checks across the two inspected binaries; reports identify its hashes.
+- The current fully regression-tested build passed 67,936 comparisons and ABI checks across the two inspected binaries; reports identify its hashes.
 - Validated vector cleanup/rethrow in live Windows client and server processes.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.

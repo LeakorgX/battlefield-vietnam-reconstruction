@@ -33,3 +33,8 @@ in each supported binary. Run it against an already analyzed project with
 `-noanalysis -readOnly`. It verifies the original hash, indexed function sizes,
 complete patch instructions and recorded references into those instructions.
 It writes metadata only; no native function bodies are included in the report.
+
+`AuditArtilleryWeapons.java OUTPUT_TSV`, also read-only, checks the inline
+first-pass weapon-selection block's ownership, instruction boundaries, branch
+exits and recorded incoming references. This block remains part of a partially
+reconstructed evaluator; it is not counted as a separate complete function.

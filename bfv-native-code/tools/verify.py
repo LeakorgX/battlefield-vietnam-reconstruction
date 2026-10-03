@@ -17,6 +17,7 @@ from verify_artillery_cache import compare_artillery_cache
 from verify_target_history import compare_target_history
 from verify_history_tree import compare_history_tree
 from verify_artillery_filter import compare_artillery_filter
+from verify_artillery_weapons import compare_artillery_weapons
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
 from verify_affine_matrix import compare_affine_matrix
@@ -108,6 +109,9 @@ def verify(target):
     print(f'{target}: {len(tree_comparisons)} history-tree comparisons passed',flush=True)
     print(f'{target}: checking inline artillery candidate filter',flush=True)
     filter_comparisons=compare_artillery_filter(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: checking artillery weapon selection',flush=True)
+    weapon_comparisons=compare_artillery_weapons(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(weapon_comparisons)} artillery weapon comparisons passed',flush=True)
     print(f'{target}: checking shared scalar/vector math',flush=True)
     math_comparisons=compare_scalar_vector_math(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(math_comparisons)} shared scalar/vector math comparisons passed',flush=True)
@@ -147,6 +151,10 @@ def verify(target):
     report['history_tree_cases']=len(tree_comparisons)
     report['history_tree']=tree_comparisons
     report['passed']+=len(tree_comparisons)
+    report['artillery_weapon_cases']=len(weapon_comparisons)
+    report['artillery_weapons']=weapon_comparisons
+    report['passed']+=len(weapon_comparisons)
+    report['scope']+=' First-pass artillery weapon scoring and selection compared at native continuations, including exact frame/arena memory, preserved live registers, x87 control/status and retained values. Inventory/category/availability callbacks are controlled; arithmetic, dynamic iteration, distance rejection, strict best-score selection and accepted-candidate padding execute. Other candidate phases and complete artillery behavior remain native or unverified.'
     report['scope']+=' Target-history insertion, duplicate handling, predecessor traversal, node construction and red-black rotations/balancing compared through guarded entries, including timestamp-helper integration. Normal insertion executes the retained protected node allocator with a controlled raw heap; capacity-error tests control native string/exception services and stop at the throw boundary. These checks do not establish real capacity-error unwinding, allocation failure, deletion, concurrent access or full artillery behavior.'
     report['scope']+=' Aiming event routing and angular-range predicate compared with controlled transform/trig services, callback mutations and x87 status; selected cases execute actual original/source matrix composition and retained inverse-sine runtime. Complete aiming/firing behavior remains unverified.'
     report['scope']+=' Affine matrix composition compared without math mocks, including full backing memory, partial/full buffer overlap, ABI, x87 status/control and retained caller values across all supported precision/rounding modes.'
