@@ -7,7 +7,7 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   8,849 scoped checks per target, 17,698 in total. Earlier builds also executed
+   9,096 scoped checks per target, 18,192 in total. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
@@ -33,8 +33,9 @@
 - 32 vehicle-wrapper ABI cases per target with a controlled native callee checking
   argument forwarding and returned float bits. These do not evaluate the real
   vehicle-scoring algorithm on fabricated incomplete objects.
-- 126 collision-callback comparisons per target with controlled registry,
-  allocator and constructor services. Exact receiver/argument bytes,
+- 128 collision-callback comparisons per target with controlled registry and
+  allocator services. Most control constructor behavior; two run real event
+  construction and lookups with controlled manager/vector growth. Exact receiver/argument bytes,
   call order, vector/timestamp mutations, record-counter wraparound, state predicates
   and vtable-pointer/slot mutations are checked. Client/server handle-field offsets
   are distinct. See [COLLISION.md](COLLISION.md); real collision-service behavior
@@ -45,19 +46,28 @@
   cleanup. Callback comparisons also execute the original notification helper in
   the reference run rather than replacing it with a stub. Both callback/helper
   runs execute their dispatcher with an empty actor list.
-- 145 direct dispatcher comparisons per target check repeated selector reads,
+- 147 direct dispatcher comparisons per target check repeated selector reads,
   low-byte state predicates, handle generations, absent entities, live count
   changes, distance threshold equality/NaNs, allocation failure, full flag words,
-  vector mutations, call order and 20-byte argument cleanup. Ten cases execute
+  vector mutations, call order and 20-byte argument cleanup. Twelve cases execute
   the original/reconstructed distance calculation, including a changing actor list
   and vector mutations; the remaining cases control the geometry result. Event
-  services remain controlled.
+  services are controlled except for two cases that execute real event construction
+  and lookup helpers, with controlled vector growth and manager methods.
 - 2,136 geometry comparisons per target check the full 80-bit result, 36-byte
   argument cleanup, empty x87 stack and preserved control word. Both line-distance
   squared and planar segment distance run under all four rounding directions and
   three precision modes. Inputs cover endpoints, interior projections, zero-length
   segments, random vectors, float32 extremes, subnormals, infinities, signed zeros
   and selected NaN payloads. See [GEOMETRY.md](GEOMETRY.md).
+- 243 event comparisons per target: 168 constructor, 45 pool lookup and 30 indexed
+  interface lookup cases. Constructor checks compare all 56 object bytes, copied
+  array words, callbacks, untouched padding, raw float/NaN bits, byte flags, signed
+  word counts and 44-byte argument cleanup. The insertion service is controlled,
+  including reserve/growth paths and input mutations. Lookup checks include
+  generation mismatch, zero handles/entries and wrapped interface-table addressing.
+  See [EVENTS.md](EVENTS.md). Two callback cases additionally execute these real
+  constructor/lookups; two dispatcher cases combine them with real geometry.
 
 External virtual methods, event receivers and context/list helper bodies use
 controlled fixtures. Original and reconstructed interpreter instructions receive

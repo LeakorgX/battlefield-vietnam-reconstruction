@@ -10,6 +10,7 @@ from native_oracle import run_case, run_dispatch
 from bailout_oracle import run_bailout
 from verify_curves import compare_curves
 from verify_geometry import compare_geometry
+from verify_events import compare_events
 from verify_collision import compare_collision, compare_dispatcher
 
 
@@ -76,21 +77,23 @@ def verify(target):
     geometry_comparisons=compare_geometry(original,original_pe,edited,edited_pe,spec,symbols)
     collision_comparisons=compare_collision(original,original_pe,edited,edited_pe,spec,symbols)
     dispatch_comparisons=compare_dispatcher(original,original_pe,edited,edited_pe,spec,symbols)
+    event_comparisons=compare_events(original,original_pe,edited,edited_pe,spec,symbols)
     notify_count=sum(bool(x['inputs'].get('notify_only',False)) for x in collision_comparisons)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
-        bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),geometry_cases=len(geometry_comparisons),
+        bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),geometry_cases=len(geometry_comparisons),event_cases=len(event_comparisons),
         collision_cases=len(collision_comparisons)-notify_count,collision_notify_cases=notify_count,collision_dispatch_cases=len(dispatch_comparisons),
-        passed=len(cases)+len(rating_cases)+len(recompute_cases)+len(curve_comparisons)+len(collision_comparisons)+len(dispatch_comparisons)+len(geometry_comparisons),
-        scope='Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Dispatcher actor filtering, generation checks, dynamic count, strict distance gates and event arguments compared with controlled event services and both controlled/real geometry. Geometry helpers compared at 80-bit precision across rounding/precision modes. Table initialization, event services and vehicle scoring remain native.',
-        interpreter=cases,ratings=rating_cases,bailout_recomputation=recompute_cases,curves=curve_comparisons,collision=collision_comparisons,dispatch=dispatch_comparisons,geometry=geometry_comparisons)
+        passed=len(cases)+len(rating_cases)+len(recompute_cases)+len(curve_comparisons)+len(collision_comparisons)+len(dispatch_comparisons)+len(geometry_comparisons)+len(event_comparisons),
+        scope='Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Dispatcher actor filtering, generation checks, dynamic count, strict distance gates and event arguments compared with controlled event services and both controlled/real geometry. Geometry helpers compared at 80-bit precision across rounding/precision modes. Event constructor, pool generation lookup and indexed interface lookup compared with controlled vector growth and manager methods; four collision/dispatcher cases execute real event construction/lookups. Table initialization, vector insertion/allocation, remaining event services and vehicle scoring remain native.',
+        interpreter=cases,ratings=rating_cases,bailout_recomputation=recompute_cases,curves=curve_comparisons,collision=collision_comparisons,dispatch=dispatch_comparisons,geometry=geometry_comparisons,events=event_comparisons)
     (work/'verification.json').write_text(json.dumps(report,indent=2))
-    print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout, {len(curve_comparisons)} curve, {len(geometry_comparisons)} geometry, {len(collision_comparisons)-notify_count} collision, {notify_count} notification and {len(dispatch_comparisons)} dispatcher comparisons, 32 vehicle-wrapper ABI checks passed',flush=True)
+    print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout, {len(curve_comparisons)} curve, {len(geometry_comparisons)} geometry, {len(collision_comparisons)-notify_count} collision, {notify_count} notification and {len(dispatch_comparisons)} dispatcher and {len(event_comparisons)} event comparisons, 32 vehicle-wrapper ABI checks passed',flush=True)
 
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--game-dir',type=Path,default=GAME)
+    parser.add_argument("--target",choices=("client","server","both"),default="both")
     args=parser.parse_args()
     GAME=args.game_dir.resolve()
-    for target in ('client','server'): verify(target)
+    for target in ('client','server') if args.target=='both' else (args.target,): verify(target)

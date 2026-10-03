@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include "target.h"
 #include "collision_geometry.h"
+#include "collision_events.h"
 #define TC __attribute__((thiscall))
 
 _Static_assert(sizeof(vector_bits) == 12, "Native vectors contain three words");
@@ -15,7 +16,6 @@ typedef void (TC *attach_event)(void *, void *, uint32_t);
 typedef void (TC *collision_event)(void *, uint32_t, void *, uint32_t);
 typedef long double (TC *clock_value)(void *);
 typedef void *(TC *allocate_event)(void *, uint32_t, uint32_t, uint32_t);
-typedef void *(TC *construct_event)(void *, vector_bits, vector_bits, void *, uint32_t, float, float, uint32_t);
 
 volatile uint32_t bfv_collision_calls;
 
@@ -72,12 +72,12 @@ void TC __attribute__((noinline)) bfv_collision_dispatch(void *handler, void *me
                         uintptr_t component_vtable = read32((uintptr_t)component);
                         uint32_t actor_selector = get(actor, 0xd4);
                         uint32_t resolved = ((lookup)read32(component_vtable + 0x5c))(component, actor_selector);
-                        void *pool_entry = (void *)(uintptr_t)((lookup)BFV_COLLISION_POOL_ENTRY)(global_object(BFV_OBJECT_POOL), resolved);
+                        void *pool_entry = (void *)(uintptr_t)bfv_object_lookup(global_object(BFV_OBJECT_POOL), resolved);
                         void *clock = global_object(BFV_COLLISION_CLOCK);
                         uintptr_t pool_vtable = read32((uintptr_t)pool_entry);
                         volatile float time = ((clock_value)method(clock, 4))(clock);
                         ((set_float)read32(pool_vtable + 0x0c))(pool_entry, time);
-                        void *event_interface = (void *)(uintptr_t)((lookup)BFV_COLLISION_EVENT_INTERFACE)(pool_entry, 3);
+                        void *event_interface = (void *)(uintptr_t)bfv_event_interface(pool_entry, 3);
                         if (event_interface) {
                             void *buffer = ((allocate_event)BFV_COLLISION_ALLOCATE)((void *)BFV_COLLISION_ALLOCATOR, 0x38, BFV_COLLISION_ALLOC_SOURCE, 0);
                             void *event = 0;
@@ -89,7 +89,7 @@ void TC __attribute__((noinline)) bfv_collision_dispatch(void *handler, void *me
                                 volatile float timestamp = ((clock_value)method(clock, 4))(clock);
                                 vector_bits contact_vector = copy_vector(position);
                                 vector_bits origin_vector = copy_vector(current_origin);
-                                event = ((construct_event)BFV_COLLISION_CONSTRUCT)(buffer, origin_vector, contact_vector, event_data, 0, timestamp, strength, flags);
+                                event = bfv_collision_construct(buffer, origin_vector, contact_vector, event_data, 0, timestamp, strength, flags);
                             }
                             ((attach_event)method(actor, 0x144))(actor, event, 0xffffffffu);
                         }
@@ -151,13 +151,13 @@ void TC bfv_collision(void *handler, void *source, void *other, uint32_t payload
             uint32_t actor_selector = get(other_actor, 0xd4);
             lookup resolve_source = (lookup)read32(source_vtable + 0x5c);
             uint32_t handle = resolve_source(source_component, actor_selector);
-            void *pool_entry = (void *)(uintptr_t)((lookup)BFV_COLLISION_POOL_ENTRY)(global_object(BFV_OBJECT_POOL), handle);
+            void *pool_entry = (void *)(uintptr_t)bfv_object_lookup(global_object(BFV_OBJECT_POOL), handle);
             void *clock = global_object(BFV_COLLISION_CLOCK);
             uintptr_t pool_vtable = read32((uintptr_t)pool_entry);
             volatile float time = ((clock_value)method(clock, 4))(clock);
             set_float update_time = (set_float)read32(pool_vtable + 0x0c);
             update_time(pool_entry, time);
-            void *event_interface = (void *)(uintptr_t)((lookup)BFV_COLLISION_EVENT_INTERFACE)(pool_entry, 3);
+            void *event_interface = (void *)(uintptr_t)bfv_event_interface(pool_entry, 3);
             if (event_interface) {
                 void *buffer = ((allocate_event)BFV_COLLISION_ALLOCATE)((void *)BFV_COLLISION_ALLOCATOR, 0x38, BFV_COLLISION_ALLOC_SOURCE, 0);
                 void *event = 0;
@@ -169,7 +169,7 @@ void TC bfv_collision(void *handler, void *source, void *other, uint32_t payload
                     volatile float timestamp = ((clock_value)method(clock, 4))(clock);
                     vector_bits source_vector = copy_vector(source_position);
                     vector_bits member_vector = copy_vector(member_position);
-                    event = ((construct_event)BFV_COLLISION_CONSTRUCT)(buffer, member_vector, source_vector, event_data, 1, timestamp, 1.0f, 0);
+                    event = bfv_collision_construct(buffer, member_vector, source_vector, event_data, 1, timestamp, 1.0f, 0);
                 }
                 ((attach_event)method(other_actor, 0x144))(other_actor, event, handle);
                 event_selector = get(other_actor, 0xa8);

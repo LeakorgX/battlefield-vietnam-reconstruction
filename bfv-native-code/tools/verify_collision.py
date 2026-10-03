@@ -15,7 +15,8 @@ def compare_collision(original, original_pe, edited, edited_pe, spec, symbols):
         key='collision_notify' if case.get('notify_only',False) else 'collision'
         a = run_collision(original, original_pe, spec[key], spec, case)
         b = run_collision(edited, edited_pe, symbols['bfv_'+key], spec, case,
-                          dispatch_entry=symbols['bfv_collision_dispatch'])
+                          dispatch_entry=symbols['bfv_collision_dispatch'],
+                          helpers=dict(pool=symbols['bfv_object_lookup'],interface=symbols['bfv_event_interface'],construct=symbols['bfv_collision_construct']))
         assert a == b, (case,a,b)
         results.append(dict(inputs=case,**a))
     return results
@@ -26,7 +27,8 @@ def compare_dispatcher(original, original_pe, edited, edited_pe, spec, symbols):
     for case in dispatcher_cases():
         a = run_dispatcher(original, original_pe, spec['collision_dispatch'], spec, case)
         b = run_dispatcher(edited, edited_pe, symbols['bfv_collision_dispatch'], spec, case,
-                           distance_entry=symbols['bfv_collision_distance'])
+                           distance_entry=symbols['bfv_collision_distance'],
+                           helpers=dict(pool=symbols['bfv_object_lookup'],interface=symbols['bfv_event_interface'],construct=symbols['bfv_collision_construct']))
         assert a == b, (case, a, b)
         results.append(dict(inputs=case, **a))
     return results

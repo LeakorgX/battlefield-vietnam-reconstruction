@@ -25,7 +25,7 @@ TARGETS = {
         collision_registry=0xd7d01c, collision_actors=0xdfa8c8, collision_clock=0xe0ef50,
         collision_pool_entry=0x926af0, collision_event_interface=0x92afb0,
         collision_allocate=0x412ee0, collision_allocator=0xe0f7c0, collision_alloc_source=0xb44284,
-        collision_construct=0x9dc3b0, collision_notify=0x9d4b60,
+        collision_event_manager=0xe0eb20, collision_vector_insert=0x428200, collision_construct=0x9dc3b0, collision_notify=0x9d4b60,
         collision_dispatch=0x9d48b0, collision_notify_state_field=0x1ec,
         collision_line_distance=0x9d4640, collision_distance=0x9d46d0, collision_distance_limit=0xb76560,
         patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle'),(0xbf8c64,0x9d4ba0,'bfv_collision')]),
@@ -42,7 +42,7 @@ TARGETS = {
         collision_registry=0xbecc64, collision_actors=0xc1d334, collision_clock=0xc314b0,
         collision_pool_entry=0x6e8930, collision_event_interface=0x6e88b0,
         collision_allocate=0x404290, collision_allocator=0xc33388, collision_alloc_source=0x807375,
-        collision_construct=0x7ae550, collision_notify=0x78a4c0,
+        collision_event_manager=0xc3117c, collision_vector_insert=0x4297c0, collision_construct=0x7ae550, collision_notify=0x78a4c0,
         collision_dispatch=0x78a210, collision_notify_state_field=0x1c0,
         collision_line_distance=0x789fa0, collision_distance=0x78a030, collision_distance_limit=0x81facc,
         patches=[(0x87681c,0x774ff0,'bfv_interpret'),(0x873d88,0x72eef0,'bfv_bailout'),(0x873e28,0x72f9e0,'bfv_vehicle'),(0x8775cc,0x78a500,'bfv_collision')]),
@@ -134,7 +134,7 @@ def build(target):
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
         payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,
-        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry; remaining engine code/services are retained from the original image')
+        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction and object/interface lookups; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded replacements')
 

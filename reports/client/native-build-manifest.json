@@ -2,9 +2,9 @@
   "target": "client",
   "input_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
   "output": "BfVietnam-editable.exe",
-  "output_sha256": "b0e33e8f6bbb6f52a2b5d246713ee89e9933b3eb1dc1348eabf62a96b135c5bf",
+  "output_sha256": "505e24608aad030e6880bf1fd191d881a7e13771b2aa0ac2ee95cac692b9ce41",
   "payload_address": "00e26000",
-  "payload_bytes": 5017,
+  "payload_bytes": 5429,
   "symbols": {
     "bfv_interpret": "00e26000",
     "bfv_bailout": "00e26320",
@@ -12,17 +12,20 @@
     "bfv_plan_enabled": "00e264e0",
     "bfv_bailout_rating": "00e26500",
     "bfv_vehicle_rating": "00e26510",
-    "bfv_line_distance_squared": "00e26520",
-    "bfv_collision_distance": "00e26610",
-    "bfv_collision_dispatch": "00e26850",
-    "bfv_collision_notify": "00e26c20",
-    "bfv_collision": "00e26c80",
-    "bfv_bailout_curve": "00e27200",
-    "bfv_bailout_score": "00e27240",
-    "bfv_vehicle_calls": "00e27388",
-    "bfv_bailout_calls": "00e2738c",
-    "bfv_interpreter_calls": "00e27390",
-    "bfv_collision_calls": "00e27394"
+    "bfv_object_lookup": "00e26520",
+    "bfv_event_interface": "00e26560",
+    "bfv_collision_construct": "00e26580",
+    "bfv_line_distance_squared": "00e26690",
+    "bfv_collision_distance": "00e26780",
+    "bfv_collision_dispatch": "00e269c0",
+    "bfv_collision_notify": "00e26d90",
+    "bfv_collision": "00e26df0",
+    "bfv_bailout_curve": "00e27370",
+    "bfv_bailout_score": "00e273b0",
+    "bfv_vehicle_calls": "00e27524",
+    "bfv_bailout_calls": "00e27528",
+    "bfv_interpreter_calls": "00e2752c",
+    "bfv_collision_calls": "00e27530"
   },
   "patches": [
     {
@@ -46,9 +49,9 @@
     {
       "vtable_slot": "00bf8c64",
       "original": "009d4ba0",
-      "replacement": "00e26c80",
+      "replacement": "00e26df0",
       "source": "bfv_collision"
     }
   ],
-  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry; remaining engine code/services are retained from the original image"
+  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction and object/interface lookups; remaining engine code/services are retained from the original image"
 }

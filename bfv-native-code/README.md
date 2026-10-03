@@ -26,8 +26,12 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   its two numerical helpers are in `src/numeric_curves.c`. See [the recovered interface](../docs/BAILOUT.md).
 - `src/native_collision.c`: AI collision-callback control flow, event argument
   assembly, actor decisions, record-counter updates and notification argument
-  preparation. The actor dispatcher is also reconstructed. Registry/event services remain native; `src/collision_geometry.c` implements
+  preparation. The actor dispatcher is also reconstructed. Remaining registry and
+  allocation services remain native. `src/collision_geometry.c` implements
   the planar distance calculation and its line-distance helper. See [the recovered interface](../docs/COLLISION.md).
+- `src/collision_events.c`: event construction, generation-checked object lookup
+  and indexed interface lookup. Vector growth/exception handling and allocation
+  remain native. See [event layout and dependencies](../docs/EVENTS.md).
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
   `return native_rating * 2.0f;` changes the rating returned to the actual engine.
@@ -42,7 +46,7 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
 
 This is a native mod build of the original engine. Interpreter, bailout logic/math and collision-callback control flow compile
 from reconstructed C; the remaining engine is retained as original machine code.
-Native table initialization, collision services, object management and full vehicle candidate evaluation
+Table initialization, collision detection/response, object lifecycle and full vehicle candidate evaluation
 are still supplied by the original engine. This project does not claim the
 decompiler exports have become reconstructed C or that the entire engine is open
 source. It provides a working compile-and-run route for editing the listed logic.
@@ -53,7 +57,8 @@ source. It provides a working compile-and-run route for editing the listed logic
 Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases,
 554 bailout recomputation cases (including cache/flag pointer changes during callbacks),
 3,840 numerical-helper comparisons of the full 80-bit x87 return,
-126 collision-callback, 64 notification-helper and 145 actor-dispatcher comparisons with controlled event services, 2,136 geometry comparisons, and
+128 collision-callback, 64 notification-helper and 147 actor-dispatcher comparisons,
+2,136 geometry comparisons, 243 event comparisons, and
 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
 the vehicle wrapper tests forwarding and returned bits while native scoring remains
 intact. Reports are in `build/client/verification.json` and
@@ -87,3 +92,7 @@ and `unicorn`. Outputs require the inspected user-owned original executables and
 game files. No originals, decompilation corpus or game assets should be published
 with this project.
 
+
+For one binary only, add `-Target client` or `-Target server` to `verify.ps1`.
+Focused event checks use `tools/verify_events.py` through `uv` with `pefile` and
+`unicorn`, passing `--game-dir`. The complete verification includes these checks.
