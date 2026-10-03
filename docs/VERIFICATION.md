@@ -7,7 +7,7 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   9,613 scoped checks per target, 19,226 in total. Earlier builds also executed
+   11,149 scoped checks per target, 22,298 in total. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
@@ -15,6 +15,11 @@
 - 1,920 interpreter comparisons per target, covering selected plan/object types,
   early return, disabled/allowed masks, fallback/override routing, returned flags,
   context callbacks, event components and cleanup decisions.
+- 1,536 artillery driver comparisons per target check scoring-path selection,
+  the notification-dependent component predicate, float32 cache/return bits,
+  eligibility low bytes, exact call arguments, stack cleanup and table/index
+  changes during callbacks. Evaluators and component conversion are controlled
+  native dependencies. See [ARTILLERY.md](ARTILLERY.md).
 - 32 cached-bailout comparisons per target checking exact float32 bits.
 - 554 recomputed-bailout comparisons per target checking float32 return/cache bits,
   pattern flags, call ordering, group argument and stack cleanup. They cover
@@ -129,7 +134,7 @@ stability, every AI plan's correctness or all-game compatibility.
 
 The current build additionally passed 16 live executions: original and reconstructed
 insertion, four scenarios each, across client and server. This is eight paired
-comparisons and is separate from the 19,226 emulator checks. Normal insertion,
+comparisons and is separate from the current emulator checks. Normal insertion,
 length errors, protected growth failure and protected in-place filling failure
 matched. Actual native C++ exceptions propagated to an outer frame, failed growth
 released the guard's exact allocation once, and FS linkage was restored.

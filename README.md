@@ -8,16 +8,17 @@ the goal.
 
 - Reconstructed the native AI plan interpreter in C.
 - Reconstructed bailout logic and its numerical helpers in C.
-- Reconstructed the AI collision callback, notification helper and actor dispatcher and distance helpers and event construction and vector insertion in C.
+- Reconstructed AI collision handling, geometry helpers, events and vector insertion in C.
+- Reconstructed artillery driver rating selection and cache/flag updates in C.
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- Passed 19,226 comparisons and ABI checks across the two inspected binaries.
+- Passed 22,298 comparisons and ABI checks across the two inspected binaries.
 - Validated vector cleanup/rethrow in live Windows client and server processes.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.
 
 **This is a partial reconstruction.** The current build still needs the original
-EXEs and retains most of their engine code. Full AI behavior, artillery logic,
+EXEs and retains most of their engine code. Full AI behavior, artillery target evaluation and firing,
 physics, gameplay systems and networking have not yet been reconstructed.
 
 ## Build and run

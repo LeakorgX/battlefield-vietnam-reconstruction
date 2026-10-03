@@ -35,6 +35,9 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
 - `src/word_vector.c`: word-vector insertion, overlap-safe copying, filling,
   growth arithmetic and x86 exception registration/catch bridges. See
   [algorithm and runtime limits](../docs/VECTORS.md).
+- `src/artillery.c`: artillery driver rating routing, component predicate and
+  per-bot cache/eligibility updates. Target evaluation remains native. See
+  [ARTILLERY.md](../docs/ARTILLERY.md).
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
   `return native_rating * 2.0f;` changes the rating returned to the actual engine.
@@ -47,7 +50,7 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   `replacement` symbol beginning with `bfv_` for the corresponding target. This
   supports replacing more engine methods as their C implementations are recovered.
 
-This is a native mod build of the original engine. Interpreter, bailout logic/math and collision-callback control flow compile
+This is a native mod build of the original engine. Interpreter, bailout logic/math, artillery driver routing and collision-callback control flow compile
 from reconstructed C; the remaining engine is retained as original machine code.
 Table initialization, collision detection/response, object lifecycle and full vehicle candidate evaluation
 are still supplied by the original engine. This project does not claim the
@@ -62,7 +65,7 @@ Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases
 3,840 numerical-helper comparisons of the full 80-bit x87 return,
 129 collision-callback, 64 notification-helper and 148 actor-dispatcher comparisons,
 2,136 geometry comparisons, 251 event comparisons, 507 vector/exception-bridge comparisons, and
-32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
+1,536 artillery driver comparisons and 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
 the vehicle wrapper tests forwarding and returned bits while native scoring remains
 intact. Reports are in `build/client/verification.json` and
 `build/server/verification.json`. Changes to behavior intentionally make the default

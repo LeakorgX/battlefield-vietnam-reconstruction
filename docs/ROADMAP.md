@@ -31,7 +31,8 @@ guessed stack cleanup, invented layouts or silently missing dependencies.
 - Broaden interpreter verification to real native callbacks and full lifecycle.
 - Reconstruct scheduling and behavior selection, plan implementations, pathfinding,
   strategic state, target selection, weapon use and vehicle control.
-- Recover artillery target selection, aiming, trajectory/drop handling, firing
+- Artillery driver rating routing and its component predicate now compile from C.
+  Recover artillery target selection, aiming, trajectory/drop handling, firing
   conditions and entry/exit behavior from actual code and traces.
 - Recover bailout table initialization and replace vehicle candidate evaluation
   with validated source. Bailout numerical helpers now compile from reconstructed C.
