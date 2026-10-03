@@ -24,6 +24,9 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   native object interfaces and exact x86 `thiscall` conventions.
   Bailout recomputation, cache writes and pattern flags are also implemented here;
   its two numerical helpers are in `src/numeric_curves.c`. See [the recovered interface](../docs/BAILOUT.md).
+- `src/native_collision.c`: AI collision-callback control flow, event argument
+  assembly, actor decisions and record-counter updates. Registry/event services
+  remain native. See [the recovered interface](../docs/COLLISION.md).
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
   `return native_rating * 2.0f;` changes the rating returned to the actual engine.
@@ -36,9 +39,9 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   `replacement` symbol beginning with `bfv_` for the corresponding target. This
   supports replacing more engine methods as their C implementations are recovered.
 
-This is a native mod build of the original engine. The interpreter and bailout logic/math compile
+This is a native mod build of the original engine. Interpreter, bailout logic/math and collision-callback control flow compile
 from reconstructed C; the remaining engine is retained as original machine code.
-Native table initialization, object management and full vehicle candidate evaluation
+Native table initialization, collision services, object management and full vehicle candidate evaluation
 are still supplied by the original engine. This project does not claim the
 decompiler exports have become reconstructed C or that the entire engine is open
 source. It provides a working compile-and-run route for editing the listed logic.
@@ -48,7 +51,8 @@ source. It provides a working compile-and-run route for editing the listed logic
 `verify.ps1` executes both original and newly compiled instructions under Unicorn.
 Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases,
 554 bailout recomputation cases (including cache/flag pointer changes during callbacks),
-3,840 numerical-helper comparisons of the full 80-bit x87 return, and
+3,840 numerical-helper comparisons of the full 80-bit x87 return,
+118 collision-callback comparisons with controlled native services, and
 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
 the vehicle wrapper tests forwarding and returned bits while native scoring remains
 intact. Reports are in `build/client/verification.json` and
@@ -70,6 +74,8 @@ controlled instruction-comparison evidence, but no retained live-match sample ye
 
 The dedicated-server startup check also verified all three loaded replacements,
 5,553 interpreter calls and 48 vehicle-rating wrapper calls in the running server.
+Those older live samples cover three loaded replacements; the new build adds
+the collision callback as a fourth replacement, without a retained live sample yet.
 That temporary server was stopped after verification. The user confirmed manually
 closing the last client test. The runtime reports establish that the compiled code
 executed; they do not establish full-match or whole-game behavioral parity. Launch

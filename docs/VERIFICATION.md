@@ -7,7 +7,7 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   6,378 scoped checks per target, 12,756 in total. Earlier builds also executed
+   6,496 scoped checks per target, 12,992 in total. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
@@ -33,6 +33,12 @@
 - 32 vehicle-wrapper ABI cases per target with a controlled native callee checking
   argument forwarding and returned float bits. These do not evaluate the real
   vehicle-scoring algorithm on fabricated incomplete objects.
+- 118 collision-callback comparisons per target with controlled registry,
+  allocator, constructor and notification services. Exact receiver/argument bytes,
+  call order, vector/timestamp mutations, record-counter wraparound, state predicates
+  and vtable-pointer/slot mutations are checked. Client/server handle-field offsets
+  are distinct. See [COLLISION.md](COLLISION.md); real collision-service behavior
+  and a live invocation of the new callback are not established by these fixtures.
 
 External virtual methods, event receivers and context/list helper bodies use
 controlled fixtures. Original and reconstructed interpreter instructions receive
