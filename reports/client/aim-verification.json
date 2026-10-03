@@ -1,0 +1,10 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "compiled_sha256": "6ec6badd68a13da77ac145cba06b43efce88b5c5ed5830f7827acd71773a3b86",
+  "passed": 782,
+  "controlled_dependency_cases": 698,
+  "real_inverse_sine_cases": 60,
+  "real_matrix_and_inverse_sine_cases": 24,
+  "scope": "Original/reconstructed event wrapper and aiming-limit predicate. Controlled matrix/trig services, callback mutations, exact float32 trig input and incoming-slot reuse, AL return, stack cleanup, preserved registers and full x87 status. Selected cases execute real retained matrix composition/inverse sine. Complete aiming, trajectory, firing, live-match and CRT exceptional-path equivalence remain unverified."
+}

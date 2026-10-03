@@ -241,5 +241,23 @@
       "client": "005184c0",
       "server": "0048caf0"
     }
+  },
+  {
+    "symbol": "bfv_aim_within_limits",
+    "source": "bfv-native-code/src/aim_limits.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009be880",
+      "server": "0078e3d0"
+    }
+  },
+  {
+    "symbol": "bfv_aim_direction",
+    "source": "bfv-native-code/src/aim_limits.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0099eae0",
+      "server": "007492c0"
+    }
   }
 ]

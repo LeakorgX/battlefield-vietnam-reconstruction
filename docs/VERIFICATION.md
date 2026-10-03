@@ -7,13 +7,17 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   19,829 scoped checks per target, 39,658 in total: 12,460 existing-suite
-   checks plus 7,369 shared-math comparisons per target, run against the same
-   compiled hashes. Earlier builds also executed
+   20,611 scoped checks per target, 41,222 in total: 12,460 existing-suite
+   checks, 7,369 shared-math and 782 aiming checks per target. Two notification
+   checks were run separately against the same compiled hashes. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
 
+- Aiming-limit checks execute the event wrapper and angular predicate, comparing
+  AL results, event/matrix/trig calls, float32 trig arguments, pointer-slot reuse,
+  callback mutations, preserved registers and full x87 status. Selected cases
+  execute real retained matrix composition/inverse sine. See [AIM-LIMITS.md](AIM-LIMITS.md).
 - Shared scalar/vector math checks run actual native/reconstructed min/max/clamp,
   vector length and vector division without mocked numeric services. They compare
   extended returns, rounded vector stores, stack cleanup, preserved registers and

@@ -1,0 +1,3 @@
+symbol	address	indexed_bytes	calling_convention	stack_arguments	return_storage	indexed_direct_callers
+bfv_aim_direction	007492c0	31	thiscall	direction_pointer:4bytes	AL:bool	00749a80
+bfv_aim_within_limits	0078e3d0	288	thiscall	direction_pointer:4bytes	AL:bool	007492c0,007a9690

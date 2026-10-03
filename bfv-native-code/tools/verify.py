@@ -17,6 +17,7 @@ from verify_artillery_cache import compare_artillery_cache
 from verify_target_history import compare_target_history
 from verify_artillery_filter import compare_artillery_filter
 from verify_scalar_vector_math import compare_scalar_vector_math
+from verify_aim_limits import compare_aim_limits
 from verify_collision import compare_collision, compare_dispatcher
 
 
@@ -103,6 +104,9 @@ def verify(target):
     print(f'{target}: checking shared scalar/vector math',flush=True)
     math_comparisons=compare_scalar_vector_math(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(math_comparisons)} shared scalar/vector math comparisons passed',flush=True)
+    print(f'{target}: checking aiming limits',flush=True)
+    aim_comparisons=compare_aim_limits(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(aim_comparisons)} aiming-limit comparisons passed',flush=True)
     notify_count=sum(bool(x['inputs'].get('notify_only',False)) for x in collision_comparisons)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         shared_math_cases=len(math_comparisons),artillery_filter_cases=len(filter_comparisons),target_history_cases=len(history_comparisons),artillery_cache_cases=len(artillery_cache_comparisons),artillery_cases=len(artillery_comparisons),interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
@@ -112,6 +116,10 @@ def verify(target):
         scope='Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Dispatcher actor filtering, generation checks, dynamic count, strict distance gates and event arguments compared with controlled event services and both controlled/real geometry. Geometry helpers compared at 80-bit precision across rounding/precision modes. Event constructor, pool generation lookup and indexed interface lookup compared with controlled vector growth and manager methods; six collision/dispatcher cases execute real event construction/lookups, with two using real vector insertion. Vector insertion, helper calls, native-compatible handler metadata and catch funclets compared with controlled allocation, memmove and simulated fault dispatch. Eight constructor cases execute real insertion. Table initialization, allocation/CRT exception runtime, remaining event services and vehicle scoring remain native. Artillery driver routing, notification-dependent predicate, call arguments, low-byte flags, float32 stores and callback table mutations compared; artillery target evaluation and component conversion are controlled native dependencies. Cached-target validation executes real original/reconstructed branches, including generation checks, pattern rejection/reset, flag/cache updates, captured vtables, callback mutations, register preservation and x87 rounding/precision modes. Eight driver cases execute real cached evaluation; candidate searches remain native and are checked only for ABI and 80-bit forwarding. Target-history exact unsigned lookup and default timestamp construction compared through guarded entry detours, with real original tree traversal and controlled allocation/insertion callbacks. First-pass inline candidate filter compared at original accept/reject continuations with controlled identity/metric/history services, exact live frame/nonvolatile outputs and full x87 status across selected precision/rounding modes. Remaining candidate/scoring phases stay native.',
         interpreter=cases,ratings=rating_cases,bailout_recomputation=recompute_cases,curves=curve_comparisons,collision=collision_comparisons,dispatch=dispatch_comparisons,geometry=geometry_comparisons,events=event_comparisons,vectors=vector_comparisons,artillery=artillery_comparisons,artillery_cache=artillery_cache_comparisons,history=history_comparisons,artillery_filter=filter_comparisons,shared_math=math_comparisons)
     report['scope'] += ' Shared scalar selectors and vector length/division execute actual original/reconstructed entries without numeric service mocks, comparing extended returns, memory, ABI and full x87 status with occupied caller registers across selected exceptional inputs and all supported precision/rounding modes.'
+    report['aim_cases']=len(aim_comparisons)
+    report['aim']=aim_comparisons
+    report['passed']+=len(aim_comparisons)
+    report['scope']+=' Aiming event routing and angular-range predicate compared with controlled transform/trig services, callback mutations and x87 status; selected cases execute actual retained matrix composition and inverse-sine runtime. Complete aiming/firing behavior remains unverified.'
     (work/'verification.json').write_text(json.dumps(report,indent=2))
     print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout, {len(curve_comparisons)} curve, {len(geometry_comparisons)} geometry, {len(collision_comparisons)-notify_count} collision, {notify_count} notification and {len(dispatch_comparisons)} dispatcher and {len(event_comparisons)} event and {len(vector_comparisons)} vector comparisons, {len(artillery_comparisons)} artillery driver comparisons, {len(artillery_cache_comparisons)} artillery evaluator/integration comparisons, {len(history_comparisons)} target-history comparisons, {len(filter_comparisons)} inline candidate-filter comparisons, 32 vehicle-wrapper ABI checks passed',flush=True)
 
