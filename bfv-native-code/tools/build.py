@@ -14,6 +14,8 @@ COMPILERS = Path(os.environ.get('MINGW32_BIN', 'C:/msys64/mingw32/bin'))
 TARGETS = {
     'client': dict(file='BfVietnam.exe', output='BfVietnam-editable.exe',
         sha='79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5',
+        float_minimum=0x422f30, float_maximum=0x422f90, float_clamp=0x4a94a0,
+        vector_length=0x49aac0, vector_divide=0x5184c0, math_one=0xb4456c,
         pool=0xe0cd58, trace_index=0xdfa918, trace_mask=0xd1a088, trace_files=0xdfa8f8,
         trace_lines=0xdfa8d8, trace_source=0xbf7e38, context_begin=0x9dce60,
         context_end=0x9dcc10, context_record=0xa64d40, native_bailout=0x984c20,
@@ -34,6 +36,8 @@ TARGETS = {
         patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle'),(0xbf8c64,0x9d4ba0,'bfv_collision'),(0xbf6378,0x9a13a0,'bfv_artillery')]),
     'server': dict(file='bfvietnam_w32ded.exe', output='bfvietnam_w32ded-editable.exe',
         sha='86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d',
+        float_minimum=0x5a3340, float_maximum=0x4ac530, float_clamp=0x6f0470,
+        vector_length=0x48c2b0, vector_divide=0x48caf0, math_one=0x809264,
         pool=0xc2f7c0, trace_index=0xc1d380, trace_mask=0x934448, trace_files=0xc1d360,
         trace_lines=0xc1d340, trace_source=0x876820, context_begin=0x7b6bd0,
         context_end=0x7b6980, context_record=0x69f0b0, native_bailout=0x72eef0,
@@ -133,7 +137,11 @@ def build(target):
     entry_patches=[]
     for location,expected,name in [
         (spec['target_history'],bytes.fromhex('83ec105657'),'bfv_target_history'),
-        (spec['artillery_filter'],bytes.fromhex('8b4424408b4008'),'bfv_artillery_filter_bridge')]:
+        (spec['artillery_filter'],bytes.fromhex('8b4424408b4008'),'bfv_artillery_filter_bridge'),
+        *[(spec[key],bytes.fromhex('d9442404d85c2408'),'bfv_'+key)
+          for key in ['float_minimum','float_maximum','float_clamp']],
+        (spec['vector_length'],bytes.fromhex('d94108d94104'),'bfv_vector_length'),
+        (spec['vector_divide'],b'\xd9\x05'+struct.pack('<I',spec['math_one']),'bfv_vector_divide')]:
         offset=pe.get_offset_from_rva(location-pe.OPTIONAL_HEADER.ImageBase)
         if original[offset:offset+len(expected)]!=expected:raise RuntimeError(f'Entry guard failed at {location:x}')
         replacement=symbols[name]
@@ -151,7 +159,7 @@ def build(target):
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
         payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,entry_patches=entry_patches,
-        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation and target-history lookup; remaining engine code/services are retained from the original image')
+        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded vtable replacements and {len(entry_patches)} guarded function entries')
 

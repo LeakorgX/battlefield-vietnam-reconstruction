@@ -7,11 +7,18 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   12,460 scoped checks per target, 24,920 in total. Earlier builds also executed
+   19,829 scoped checks per target, 39,658 in total: 12,460 existing-suite
+   checks plus 7,369 shared-math comparisons per target, run against the same
+   compiled hashes. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
 
+- Shared scalar/vector math checks run actual native/reconstructed min/max/clamp,
+  vector length and vector division without mocked numeric services. They compare
+  extended returns, rounded vector stores, stack cleanup, preserved registers and
+  full x87 status in all supported precision/rounding modes, including two retained
+  caller x87 values. See [SHARED-MATH.md](SHARED-MATH.md).
 - 1,920 interpreter comparisons per target, covering selected plan/object types,
   early return, disabled/allowed masks, fallback/override routing, returned flags,
   context callbacks, event components and cleanup decisions.

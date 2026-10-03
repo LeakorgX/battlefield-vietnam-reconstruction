@@ -1,0 +1,98 @@
+{
+  "scope": "Distinct direct caller functions from the published static callgraph index. Indirect calls and unindexed callers are not counted; this is not complete runtime coverage.",
+  "helpers": [
+    {
+      "source": "bfv_float_minimum",
+      "address": "00422f30",
+      "indexed_direct_callers": [
+        "0098efc0",
+        "00999880",
+        "0099d590",
+        "0099f2a0",
+        "009a1730",
+        "009a30e0",
+        "009a5f40",
+        "009d9820",
+        "009e2a30",
+        "00a00b20"
+      ]
+    },
+    {
+      "source": "bfv_float_maximum",
+      "address": "00422f90",
+      "indexed_direct_callers": [
+        "0049c9d0",
+        "009836f0",
+        "0098efc0",
+        "00990080",
+        "00990d60",
+        "00995210",
+        "00998590",
+        "0099d590",
+        "0099f2a0",
+        "009a30e0",
+        "009a5f40",
+        "009a7830",
+        "009b2fc0",
+        "009e2a30"
+      ]
+    },
+    {
+      "source": "bfv_float_clamp",
+      "address": "004a94a0",
+      "indexed_direct_callers": [
+        "004abb00",
+        "00936ea0",
+        "009377b0",
+        "00995210",
+        "0099f2a0",
+        "009a30e0",
+        "009f0a80",
+        "009fd310",
+        "00a00b20"
+      ]
+    },
+    {
+      "source": "bfv_vector_length",
+      "address": "0049aac0",
+      "indexed_direct_callers": [
+        "004c7d90",
+        "005b9480",
+        "005c0160",
+        "005f14a0",
+        "00670170",
+        "0068f540",
+        "00697090",
+        "006a70f0",
+        "006d5f00",
+        "006f2f10",
+        "007761d0",
+        "0092f8d0",
+        "009836f0",
+        "00989f80",
+        "0098ad00",
+        "0098bef0",
+        "0098c1a0",
+        "00995210",
+        "0099b060",
+        "0099d590",
+        "0099f2a0",
+        "009a30e0",
+        "009f5140",
+        "00a09b40",
+        "00a09d10"
+      ]
+    },
+    {
+      "source": "bfv_vector_divide",
+      "address": "005184c0",
+      "indexed_direct_callers": [
+        "00995210",
+        "0099b060",
+        "0099f2a0",
+        "009a30e0",
+        "009f5140"
+      ]
+    }
+  ]
+}

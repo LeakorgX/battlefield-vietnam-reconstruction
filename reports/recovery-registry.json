@@ -196,5 +196,50 @@
       "second-pass filtering",
       "complete target-state/lifecycle integration"
     ]
+  },
+  {
+    "symbol": "bfv_float_minimum",
+    "source": "bfv-native-code/src/scalar_vector_math.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00422f30",
+      "server": "005a3340"
+    }
+  },
+  {
+    "symbol": "bfv_float_maximum",
+    "source": "bfv-native-code/src/scalar_vector_math.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00422f90",
+      "server": "004ac530"
+    }
+  },
+  {
+    "symbol": "bfv_float_clamp",
+    "source": "bfv-native-code/src/scalar_vector_math.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004a94a0",
+      "server": "006f0470"
+    }
+  },
+  {
+    "symbol": "bfv_vector_length",
+    "source": "bfv-native-code/src/scalar_vector_math.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0049aac0",
+      "server": "0048c2b0"
+    }
+  },
+  {
+    "symbol": "bfv_vector_divide",
+    "source": "bfv-native-code/src/scalar_vector_math.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005184c0",
+      "server": "0048caf0"
+    }
   }
 ]
