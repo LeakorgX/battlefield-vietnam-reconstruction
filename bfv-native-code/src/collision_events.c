@@ -1,11 +1,11 @@
-/* Recovered event construction and object lookups. The vector growth service
- * retains its native allocation/exception machinery pending reconstruction. */
+/* Recovered event construction and object lookups. Vector insertion executes
+ * reconstructed C with a bridge to the retained compiler exception runtime. */
 #include <stdint.h>
 #include "target.h"
 #include "collision_events.h"
+#include "word_vector.h"
 #define TC __attribute__((thiscall))
 typedef int32_t (TC *word_count)(void *);
-typedef void (TC *vector_insert)(void *, uint32_t, uint32_t, const void *);
 static uint32_t read32(uintptr_t p) { return *(volatile uint32_t *)p; }
 static void write32(uintptr_t p, uint32_t value) { *(volatile uint32_t *)p = value; }
 static uint32_t float_bits(float value)
@@ -49,7 +49,7 @@ void *TC __attribute__((noinline)) bfv_collision_construct(void *buffer, vector_
                 write32(end, read32(source));
                 write32(p + 12, end + 4);
             } else {
-                ((vector_insert)BFV_COLLISION_VECTOR_INSERT)((void *)(p + 4), (uint32_t)end, 1, (void *)source);
+                bfv_vector_insert((void *)(p + 4), (uint32_t)end, 1, (void *)source);
             }
             source += 4;
         } while (--count);

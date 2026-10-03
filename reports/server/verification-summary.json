@@ -1,17 +1,18 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "98508fc7e43406bc8ede2bbe7986fddb9359664cfab6a7ad097133b7a454d068",
+  "compiled_sha256": "7d0e2dcbb930a400b5a34b01ef9cfd2a8531fc9e1a61fa9fb9d44ae7f34d127e",
   "interpreter_cases": 1920,
   "cached_bailout_cases": 32,
   "vehicle_wrapper_cases": 32,
   "bailout_recompute_cases": 554,
   "curve_cases": 3840,
   "geometry_cases": 2136,
-  "event_cases": 243,
-  "collision_cases": 128,
+  "event_cases": 251,
+  "vector_cases": 507,
+  "collision_cases": 129,
   "collision_notify_cases": 64,
-  "collision_dispatch_cases": 147,
-  "passed": 9096,
-  "scope": "Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Dispatcher actor filtering, generation checks, dynamic count, strict distance gates and event arguments compared with controlled event services and both controlled/real geometry. Geometry helpers compared at 80-bit precision across rounding/precision modes. Event constructor, pool generation lookup and indexed interface lookup compared with controlled vector growth and manager methods; four collision/dispatcher cases execute real event construction/lookups. Table initialization, vector insertion/allocation, remaining event services and vehicle scoring remain native."
+  "collision_dispatch_cases": 148,
+  "passed": 9613,
+  "scope": "Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Dispatcher actor filtering, generation checks, dynamic count, strict distance gates and event arguments compared with controlled event services and both controlled/real geometry. Geometry helpers compared at 80-bit precision across rounding/precision modes. Event constructor, pool generation lookup and indexed interface lookup compared with controlled vector growth and manager methods; six collision/dispatcher cases execute real event construction/lookups, with two using real vector insertion. Vector insertion, helper calls, native-compatible handler metadata and catch funclets compared with controlled allocation, memmove and simulated fault dispatch. Eight constructor cases execute real insertion. Table initialization, allocation/CRT exception runtime, remaining event services and vehicle scoring remain native."
 }

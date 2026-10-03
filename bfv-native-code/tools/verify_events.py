@@ -12,7 +12,8 @@ def compare_events(original, original_pe, edited, edited_pe, spec, symbols):
     results=[]
     for case in constructor_cases():
         a=run_constructor(original,original_pe,spec['collision_construct'],spec,case)
-        b=run_constructor(edited,edited_pe,symbols['bfv_collision_construct'],spec,case)
+        b=run_constructor(edited,edited_pe,symbols['bfv_collision_construct'],spec,case,
+                          insert_entry=symbols['bfv_vector_insert'])
         assert a==b,(case,a,b)
         results.append(dict(kind='constructor',inputs=case,**a))
     for kind,case in lookup_cases():

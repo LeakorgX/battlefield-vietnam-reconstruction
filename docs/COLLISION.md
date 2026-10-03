@@ -75,7 +75,6 @@ Position vectors are copied after the timestamp callback, retaining its mutation
 | --- | --- | --- |
 | Body view conversion | `0066b190` | `00564460` |
 | Allocation service | `00412ee0` | `00404290` |
-| Event vector insertion | `00428200` | `004297c0` |
 
 Object virtual methods and registry/global initialization also remain native.
 `tools/build.py` records the version-specific addresses and handle field offset.
@@ -119,8 +118,8 @@ is nonzero (otherwise 1), and the complete incoming flag word. Allocation failur
 still attaches a null event. This dispatcher is called by reconstructed C; its
 original entry remains intact for any other native callers.
 
-`dispatch_oracle.py` adds 147 direct comparisons per binary with controlled
-event services. Twelve execute real geometry; the rest control the distance result. Cases cover actor filtering, handle
+`dispatch_oracle.py` adds 148 direct comparisons per binary with controlled
+event services. Thirteen execute real geometry; the rest control the distance result. Cases cover actor filtering, handle
 generations,
 missing entities, distance boundaries/NaNs, allocation/interface failures,
 changing list counts, flag words and vector mutations. They compare argument
@@ -128,7 +127,7 @@ bytes, event effects and the dispatcher's 20-byte argument cleanup.
 
 ## Verification and limits
 
-`collision_oracle.py` and `verify_collision.py` compare 128 callback cases and
+`collision_oracle.py` and `verify_collision.py` compare 129 callback cases and
 64 direct notification-helper cases per binary. The callback reference now executes
 the real original notification helper; the rebuilt callback uses reconstructed C.
 Both runs execute their dispatcher with an empty actor list. Tests record exact
@@ -143,9 +142,10 @@ and check callback state mutations, a zero-argument position getter, all five
 dispatcher argument words and 16-byte helper argument cleanup. Distinct sentinels
 also distinguish the two state-field offsets.
 
-Most service cases use controlled stubs in both runs. Two callback and two
+Most service cases use controlled stubs in both runs. Three callback and three
 dispatcher cases execute original/reconstructed event construction and lookups
-with controlled manager and vector growth methods. The tests establish callback
+with controlled manager methods. One of each also runs real vector insertion
+with controlled allocation/memmove. The tests establish callback
 control flow and its observed service ABI, not correctness of the native services,
 real collision responses, sustained-match behavior or every invalid-pointer path.
 When both source and other are null, the original dereferences the source; the C

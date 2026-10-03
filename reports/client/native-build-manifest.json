@@ -2,9 +2,9 @@
   "target": "client",
   "input_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
   "output": "BfVietnam-editable.exe",
-  "output_sha256": "505e24608aad030e6880bf1fd191d881a7e13771b2aa0ac2ee95cac692b9ce41",
+  "output_sha256": "c003b6a0e5ac87f6d68414533682512b37b0a98bf47a9dac4ea949aebe6ab936",
   "payload_address": "00e26000",
-  "payload_bytes": 5429,
+  "payload_bytes": 6749,
   "symbols": {
     "bfv_interpret": "00e26000",
     "bfv_bailout": "00e26320",
@@ -22,10 +22,20 @@
     "bfv_collision": "00e26df0",
     "bfv_bailout_curve": "00e27370",
     "bfv_bailout_score": "00e273b0",
-    "bfv_vehicle_calls": "00e27524",
-    "bfv_bailout_calls": "00e27528",
-    "bfv_interpreter_calls": "00e2752c",
-    "bfv_collision_calls": "00e27530"
+    "bfv_vector_catch_rethrow": "00e27400",
+    "bfv_vector_catch_free": "00e27410",
+    "bfv_vector_copy": "00e27480",
+    "bfv_vector_fill": "00e274b0",
+    "bfv_vector_shift": "00e274f0",
+    "bfv_vector_fill_range": "00e27510",
+    "bfv_vector_insert_body": "00e27530",
+    "bfv_vector_handler": "00e277d0",
+    "bfv_vector_insert": "00e277e0",
+    "bfv_vector_info": "00e27980",
+    "bfv_vehicle_calls": "00e27a4c",
+    "bfv_bailout_calls": "00e27a50",
+    "bfv_interpreter_calls": "00e27a54",
+    "bfv_collision_calls": "00e27a58"
   },
   "patches": [
     {
@@ -53,5 +63,5 @@
       "source": "bfv_collision"
     }
   ],
-  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction and object/interface lookups; remaining engine code/services are retained from the original image"
+  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; remaining engine code/services are retained from the original image"
 }

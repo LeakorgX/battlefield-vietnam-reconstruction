@@ -40,7 +40,7 @@ re-read the count after each insertion. Each word is read when appended, retaini
 mutations made by callbacks. The vector state is also read after callbacks.
 
 If capacity is available, it stores the word and advances the end pointer.
-Otherwise it calls the retained generic insertion helper on the vector at object
+Otherwise it calls the reconstructed generic insertion helper on the vector at object
 `+04`, with its current end, count 1 and a pointer to the next input word.
 
 ## Lookup behavior
@@ -57,22 +57,24 @@ the original invalid access rather than becoming a newly accepted input.
 
 ## Remaining services and verification
 
-The insertion helper at client `00428200` / server `004297c0` still supplies
-capacity growth, allocation, copy/move operations and Windows exception/unwind
-handling. Instruction inspection shows it installs an FS exception record and
-uses cleanup states during allocation/copying. It has not been reconstructed or
-proven correct by a controlled insertion fixture. Manager methods, event lifetime,
-destruction and allocator services also remain native dependencies.
+The insertion helper at client `00428200` / server `004297c0` now executes
+reconstructed C and an authored x86 exception bridge. Its heap services, length
+error and C++ exception runtime remain native. See [VECTORS.md](VECTORS.md) for
+algorithm, ABI, exception metadata and verification limits. Manager methods,
+event lifetime, destruction and allocator services also remain native dependencies.
 
-`event_oracle.py` and `verify_events.py` compare 243 cases per binary: 168
+`event_oracle.py` and `verify_events.py` compare 251 cases per binary: 176
 constructor, 45 generation lookup and 30 indexed lookup cases. They check raw
 object bytes and array words, return values and argument cleanup, untouched
 padding, count signs, byte flags, float/NaN words, reserve/growth branches and
-callback mutations. Controlled insertion updates vector state; these checks do
-not establish generic container allocation or exception equivalence.
+callback mutations. Most cases control insertion; eight enable the actual helper
+with controlled heap services. These checks do not establish heap internals or
+real Windows exception equivalence.
 
-Two callback and two dispatcher cases additionally execute real constructor and
-lookup code with controlled manager/growth services. The dispatcher cases also
+Three callback and three dispatcher cases additionally execute real constructor and
+lookup code with controlled manager services. One of each also executes actual
+vector insertion with controlled heap/memmove services. Eight direct constructor
+cases enable insertion as well. The dispatcher cases also
 execute real geometry. Their traces and event effects must match the original.
 Live event lifetime and sustained-match behavior are not established by these
 fixtures; full engine reconstruction remains incomplete.

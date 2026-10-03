@@ -25,6 +25,9 @@ TARGETS = {
         collision_registry=0xd7d01c, collision_actors=0xdfa8c8, collision_clock=0xe0ef50,
         collision_pool_entry=0x926af0, collision_event_interface=0x92afb0,
         collision_allocate=0x412ee0, collision_allocator=0xe0f7c0, collision_alloc_source=0xb44284,
+        vector_allocator=0x403610, vector_free=0x403680, vector_length_error=0xa894e0,
+        vector_copy=0xa6ad10, vector_fill=0x4ef090, vector_shift=0xa03770, vector_fill_range=0x6f7000,
+        vector_memmove=0x7c16f0, vector_frame_handler=0x7c1b6e, vector_throw=0x7c1fae, vector_original_handler=0xac4a20,
         collision_event_manager=0xe0eb20, collision_vector_insert=0x428200, collision_construct=0x9dc3b0, collision_notify=0x9d4b60,
         collision_dispatch=0x9d48b0, collision_notify_state_field=0x1ec,
         collision_line_distance=0x9d4640, collision_distance=0x9d46d0, collision_distance_limit=0xb76560,
@@ -42,6 +45,9 @@ TARGETS = {
         collision_registry=0xbecc64, collision_actors=0xc1d334, collision_clock=0xc314b0,
         collision_pool_entry=0x6e8930, collision_event_interface=0x6e88b0,
         collision_allocate=0x404290, collision_allocator=0xc33388, collision_alloc_source=0x807375,
+        vector_allocator=0x403d80, vector_free=0x403df0, vector_length_error=0x48e690,
+        vector_copy=0x41fbd0, vector_fill=0x5f83e0, vector_shift=0x7901d0, vector_fill_range=0x705df0,
+        vector_memmove=0x63a0d0, vector_frame_handler=0x63a54e, vector_throw=0x63a98e, vector_original_handler=0x7e1080,
         collision_event_manager=0xc3117c, collision_vector_insert=0x4297c0, collision_construct=0x7ae550, collision_notify=0x78a4c0,
         collision_dispatch=0x78a210, collision_notify_state_field=0x1c0,
         collision_line_distance=0x789fa0, collision_distance=0x78a030, collision_distance_limit=0x81facc,
@@ -94,7 +100,7 @@ def build(target):
     import re
     symbols = {}
     for line in (work/'payload.map').read_text().splitlines():
-        match = re.match(r'\s*(0x[0-9a-fA-F]+)\s+_?(bfv_[A-Za-z0-9_]+)(?:@\d+)?\s*$',line)
+        match = re.match(r'\s*(0x[0-9a-fA-F]+)\s+[_@]?(bfv_[A-Za-z0-9_]+)(?:@\d+)?\s*$',line)
         if match: symbols[match[2]] = int(match[1],16)
     payload = (work/'payload.bin').read_bytes()
     linked = pefile.PE(str(work/'payload.exe'))
@@ -134,7 +140,7 @@ def build(target):
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
         payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,
-        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction and object/interface lookups; remaining engine code/services are retained from the original image')
+        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded replacements')
 

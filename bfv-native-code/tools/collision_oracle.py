@@ -93,7 +93,8 @@ def run_collision(image, pe, entry, spec, case, dispatch_entry=None, helpers=Non
     construct_helper=helpers.get('construct',spec['collision_construct'])
     if real:
         services[construct_helper]=('construct',44)
-        event_data,event_storage,event_effect=install_event_fixture(m,spec,stub,services,buffer,event_iface,a(0x9500),case['event_words'])
+        event_data,event_storage,event_effect=install_event_fixture(m,spec,stub,services,buffer,event_iface,a(0x9500),case['event_words'],
+            insert_entry=helpers.get('insert'),real_vector=case.get('real_vector',False))
     else:
         event_data=0xabcdef01
         stub('construct',buffer,44,address=construct_helper)
@@ -159,7 +160,7 @@ def run_collision(image, pe, entry, spec, case, dispatch_entry=None, helpers=Non
     assert returned and m.reg_read(UC_X86_REG_ESP)==esp+len(frame)
     return dict(trace=trace,counter=struct.unpack('<I',m.mem_read(record+0x30,4))[0],
                 event=bytes(m.mem_read(buffer,0x38)).hex(),
-                event_words=bytes(m.mem_read(event_storage,32)).hex() if real else None)
+                event_words=bytes(m.mem_read(struct.unpack('<I',m.mem_read(buffer+8,4))[0],32)).hex() if real and struct.unpack('<I',m.mem_read(buffer+8,4))[0] else None)
 
 
 def collision_cases():
@@ -184,3 +185,5 @@ def collision_cases():
 
     for words in (0,3):
         yield dict(real_events=True,event_words=words)
+
+    yield dict(real_events=True,event_words=3,real_vector=True)
