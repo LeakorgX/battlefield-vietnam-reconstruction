@@ -1,5 +1,5 @@
-/* Artillery evaluator's handle -> timestamp map. Red/black insertion and
- * balancing remain native; unsigned lookup and timestamp construction are C. */
+/* Artillery evaluator's handle -> timestamp map. Insertion and balancing are
+ * reconstructed in history_tree.c, reached through the guarded original entry. */
 #include <stdint.h>
 #include "target.h"
 #define TC __attribute__((thiscall))

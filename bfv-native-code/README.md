@@ -41,7 +41,10 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   [ARTILLERY.md](../docs/ARTILLERY.md).
 - `src/target_history.c`: unsigned target-history map lookup and initialization of
   new timestamps. A guarded native function-entry jump connects both candidate
-  passes to this code. Allocation and red/black insertion remain native.
+  passes to this code. Raw allocation remains native.
+- `src/history_tree.c`: target-history insertion, duplicate detection, predecessor
+  traversal, node construction and red/black balancing. These six functions per
+  binary compile from C; protected allocation and string/exception services remain native.
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
   `return native_rating * 2.0f;` changes the rating returned to the actual engine.
@@ -70,7 +73,7 @@ Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases
 129 collision-callback, 64 notification-helper and 148 actor-dispatcher comparisons,
 2,136 geometry comparisons, 251 event comparisons, 507 vector/exception-bridge comparisons, and
 1,536 artillery driver comparisons, 708 artillery evaluator/integration checks,
-432 target-history comparisons and 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
+432 target-history lookup comparisons, 4,678 history-tree comparisons and 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
 the vehicle wrapper tests forwarding and returned bits while native scoring remains
 intact. Reports are in `build/client/verification.json` and
 `build/server/verification.json`. Changes to behavior intentionally make the default

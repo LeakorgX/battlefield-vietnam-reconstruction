@@ -1,10 +1,10 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "029aaab71947f55ae1f58808138e601eedc9f45322141d8a8a803a78b29b7381",
+  "compiled_sha256": "abf290a628baf8350fab6ed1f53c88449c33f7a0f29f000bc006ea951f9be966",
   "passed": 782,
+  "scope": "Original/source event wrapper and aiming-limit predicate with controlled services and callback mutations. Selected cases execute original/source matrix composition and retained native inverse-sine runtime. Complete aiming/firing and live-match equivalence remain unverified.",
   "controlled_dependency_cases": 698,
   "real_inverse_sine_cases": 60,
-  "real_matrix_and_inverse_sine_cases": 24,
-  "scope": "Original/source event wrapper and aiming-limit predicate with controlled services and callback mutations. Selected cases execute original/source matrix composition and retained native inverse-sine runtime; the source predicate calls source matrix composition directly. Complete aiming/firing and live-match equivalence remain unverified."
+  "real_matrix_and_inverse_sine_cases": 24
 }

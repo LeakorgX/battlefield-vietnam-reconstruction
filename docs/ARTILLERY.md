@@ -121,16 +121,16 @@ uv run --with pefile --with unicorn python bfv-native-code/tools/verify_artiller
 `src/target_history.c` reconstructs the timestamp lookup used by both candidate
 passes. It searches the existing red/black map with unsigned handle comparisons.
 An exact match returns the stored float pointer. A missing key allocates four
-bytes, initializes the float to -10000, and passes the handle/pointer pair to native
-insertion. The helper returns its allocation even if insertion reports a duplicate;
+bytes, initializes the float to -10000, and passes the handle/pointer pair to
+insertion, now reconstructed in `src/history_tree.c`. The helper returns its allocation even if insertion reports a duplicate;
 substituting the existing value or silently freeing the allocation would change
 original behavior.
 
 The map is embedded at behavior offset `0x38`, with its header pointer at `0x3c`.
 Node links are left/parent/right at offsets `0/4/8`, key at `12`, float pointer at
 `16`, and sentinel flag at `21`. The native helper addresses are `0099f040` for
-client and `00749820` for server. Native insertion remains at `0099ef80` and
-`00749760`, respectively. The map must already be initialized by native lifecycle
+client and `00749820` for server. Insertion entries at `0099ef80` and
+`00749760` now redirect to compiled C. The map must already be initialized by native lifecycle
 code; this reconstruction does not add new null guards.
 
 The builder now supports the required nonvirtual replacement: a guarded five-byte
@@ -145,12 +145,62 @@ control flow remains native. Live validation checks that this jump is loaded.
 new helper through that jump. Inputs include empty, balanced and skewed trees,
 unsigned handle boundaries, duplicate keys, existing timestamps, and callback
 changes to the header/timestamp and insertion-result flag. Allocation and insertion
-are controlled services; balancing, allocation failure, concurrent map access and
-complete candidate-search decisions are not established by these tests.
+are controlled services in these lookup-only tests; the separate tree tests below
+execute actual insertion and balancing. Allocation failure, concurrent map access
+and complete candidate-search decisions are not established by these tests.
 
 ```powershell
 uv run --with pefile --with unicorn python bfv-native-code/tools/verify_target_history.py --game-dir 'D:\Games\Battlefield Vietnam' --target both
 ```
+
+## History insertion and balancing
+
+`src/history_tree.c` reconstructs six complete functions per binary. Insertion
+orders handles as unsigned 32-bit values. It preserves existing values when a key
+is duplicated, reports whether a node was inserted, and updates the map's count,
+root, minimum and maximum. Red/black rotations and recoloring preserve balanced
+search paths. Node construction copies the handle/value pair and preserves padding.
+
+| Function | Client | Server | Stack argument bytes |
+| --- | --- | --- | --- |
+| Unique insertion | `0099ef80` | `00749760` | 8 |
+| Node insertion and balancing | `0099ed10` | `007494f0` | 16 |
+| Predecessor iterator | `0068ee10` | `0073f240` | 0 |
+| Left rotation | `00996f10` | `005c7460` | 4 |
+| Right rotation | `0066b6c0` | `0055c080` | 4 |
+| Node constructor | `00517c10` | `007686e0` | 20 |
+
+All use x86 `thiscall`. The map's header pointer is at `+4` and count at `+8`.
+Node color is at `+20` (zero red, one black); the sentinel flag is at `+21`.
+The constructor returns its receiver; insertion functions return their output
+pointer. Iterator and rotation functions have no source-level return value.
+These are shared native helper entries, so other callers also reach their C
+replacements. Static audits verify complete indexed bodies, instruction-aligned
+patches and no recorded incoming references into overwritten entry instructions;
+they cannot prove absence of every computed jump.
+
+The focused verifier passed **4,678 original/source comparisons per binary**.
+It covers all permutations of five boundary keys, ascending/descending sequences,
+random trees, repeated duplicates, every node's predecessor and the sentinel,
+constructor aliasing, and timestamp lookup with real insertion. Each insertion
+compares arena memory and allocations and checks ordering, parent links, count,
+extremes, red-child constraints and equal black heights. ABI and x87 state are
+checked on normal returns. The retained protected node allocator executes with
+controlled raw heap allocation.
+
+Five capacity-error cases per target verify the unsigned limit `0x1ffffffe`,
+native string/exception call arguments and the throw object. Those services are
+controlled in this test; real capacity-error unwinding is not established. Node
+allocation protection, string/exception runtime, map initialization/deletion and
+concurrent access remain native dependencies or unverified behavior.
+
+```powershell
+uv run --with pefile --with unicorn python bfv-native-code/tools/verify_history_tree.py --game-dir 'D:\Games\Battlefield Vietnam' --target both
+```
+
+The default verifier includes these comparisons. Address audits are recorded in
+`reports/{client,server}/history-tree-audit.tsv`; hash-specific results are in
+`history-tree-verification.json` in the same folders.
 
 ## Remaining work
 

@@ -27,3 +27,9 @@ source tree, and it does not become a buildable engine just by exporting it. Str
 layouts, indirect calls, ownership, signatures and runtime behavior still need
 recovery before the code can be ported faithfully. Class/slot labels identify
 membership; they do not claim the original method name was recovered.
+
+`AuditHistoryTree.java OUTPUT_TSV` checks the six history-tree replacement entries
+in each supported binary. Run it against an already analyzed project with
+`-noanalysis -readOnly`. It verifies the original hash, indexed function sizes,
+complete patch instructions and recorded references into those instructions.
+It writes metadata only; no native function bodies are included in the report.
