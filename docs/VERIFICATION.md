@@ -7,13 +7,17 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   20,611 scoped checks per target, 41,222 in total: 12,460 existing-suite
-   checks, 7,369 shared-math and 782 aiming checks per target. Two notification
-   checks were run separately against the same compiled hashes. Earlier builds also executed
+   21,925 scoped checks per target, 43,850 in total: 12,460 existing-suite
+   checks, 7,369 shared-math, 782 aiming and 1,314 affine-matrix checks per target. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
 
+- Affine matrix comparisons run actual original/source composition with no math
+  mocks. They compare complete memory, overlapping input/output buffers, return
+  pointer, stack cleanup, preserved registers and x87 status/control, including
+  retained caller values and all supported precision/rounding modes. Aiming
+  integration cases execute the source-owned composition. See [AFFINE-MATRIX.md](AFFINE-MATRIX.md).
 - Aiming-limit checks execute the event wrapper and angular predicate, comparing
   AL results, event/matrix/trig calls, float32 trig arguments, pointer-slot reuse,
   callback mutations, preserved registers and full x87 status. Selected cases

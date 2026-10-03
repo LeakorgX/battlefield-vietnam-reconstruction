@@ -147,6 +147,7 @@ def build(target):
         (spec['vector_length'],bytes.fromhex('d94108d94104'),'bfv_vector_length'),
         (spec['aim_direction'],bytes.fromhex('8b41048b542404'),'bfv_aim_direction'),
         (spec['aim_within_limits'],bytes.fromhex('83ec405657'),'bfv_aim_within_limits'),
+        (spec['aim_compose'],bytes.fromhex('8b54240856'),'bfv_affine_compose'),
         (spec['vector_divide'],b'\xd9\x05'+struct.pack('<I',spec['math_one']),'bfv_vector_divide')]:
         offset=pe.get_offset_from_rva(location-pe.OPTIONAL_HEADER.ImageBase)
         if original[offset:offset+len(expected)]!=expected:raise RuntimeError(f'Entry guard failed at {location:x}')
@@ -165,7 +166,7 @@ def build(target):
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
         payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,entry_patches=entry_patches,
-        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper; remaining engine code/services are retained from the original image')
+        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded vtable replacements and {len(entry_patches)} guarded function entries')
 

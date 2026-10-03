@@ -18,6 +18,7 @@ from verify_target_history import compare_target_history
 from verify_artillery_filter import compare_artillery_filter
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
+from verify_affine_matrix import compare_affine_matrix
 from verify_collision import compare_collision, compare_dispatcher
 
 
@@ -107,6 +108,9 @@ def verify(target):
     print(f'{target}: checking aiming limits',flush=True)
     aim_comparisons=compare_aim_limits(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(aim_comparisons)} aiming-limit comparisons passed',flush=True)
+    print(f'{target}: checking affine matrix composition',flush=True)
+    matrix_comparisons=compare_affine_matrix(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(matrix_comparisons)} affine matrix comparisons passed',flush=True)
     notify_count=sum(bool(x['inputs'].get('notify_only',False)) for x in collision_comparisons)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         shared_math_cases=len(math_comparisons),artillery_filter_cases=len(filter_comparisons),target_history_cases=len(history_comparisons),artillery_cache_cases=len(artillery_cache_comparisons),artillery_cases=len(artillery_comparisons),interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
@@ -119,7 +123,11 @@ def verify(target):
     report['aim_cases']=len(aim_comparisons)
     report['aim']=aim_comparisons
     report['passed']+=len(aim_comparisons)
-    report['scope']+=' Aiming event routing and angular-range predicate compared with controlled transform/trig services, callback mutations and x87 status; selected cases execute actual retained matrix composition and inverse-sine runtime. Complete aiming/firing behavior remains unverified.'
+    report['matrix_cases']=len(matrix_comparisons)
+    report['matrix']=matrix_comparisons
+    report['passed']+=len(matrix_comparisons)
+    report['scope']+=' Aiming event routing and angular-range predicate compared with controlled transform/trig services, callback mutations and x87 status; selected cases execute actual original/source matrix composition and retained inverse-sine runtime. Complete aiming/firing behavior remains unverified.'
+    report['scope']+=' Affine matrix composition compared without math mocks, including full backing memory, partial/full buffer overlap, ABI, x87 status/control and retained caller values across all supported precision/rounding modes.'
     (work/'verification.json').write_text(json.dumps(report,indent=2))
     print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout, {len(curve_comparisons)} curve, {len(geometry_comparisons)} geometry, {len(collision_comparisons)-notify_count} collision, {notify_count} notification and {len(dispatch_comparisons)} dispatcher and {len(event_comparisons)} event and {len(vector_comparisons)} vector comparisons, {len(artillery_comparisons)} artillery driver comparisons, {len(artillery_cache_comparisons)} artillery evaluator/integration comparisons, {len(history_comparisons)} target-history comparisons, {len(filter_comparisons)} inline candidate-filter comparisons, 32 vehicle-wrapper ABI checks passed',flush=True)
 

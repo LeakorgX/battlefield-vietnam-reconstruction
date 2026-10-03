@@ -1,0 +1,23 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "compiled_sha256": "82142da463636f7a62b3b5f8b105075a62cd7f269ca36e07cd4680bcb097b46b",
+  "passed": 1314,
+  "buffer_layout_counts": {
+    "separate": 722,
+    "output_left": 17,
+    "output_right": 17,
+    "inputs_same": 17,
+    "all_same": 17,
+    "partial_left": 17,
+    "partial_right": 17,
+    "partial_inputs": 17,
+    "partial_all": 473
+  },
+  "retained_depth_counts": {
+    "0": 402,
+    "2": 456,
+    "6": 456
+  },
+  "scope": "Original/source guarded matrix composition entries, no numeric service mocks. Complete backing memory includes partial/full input/output overlap; EAX destination return, stack cleanup, preserved registers, x87 status/control and retained caller values checked across finite/nonfinite inputs, deterministic random bit patterns and all supported precision/rounding modes. Unmasked exceptions, invalid pointer behavior and full engine runtime equivalence remain unverified."
+}

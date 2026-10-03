@@ -32,13 +32,14 @@ It also preserves the incoming pointer slot's reuse as a temporary while keeping
 the direction pointer needed by the second projection.
 
 The control logic is editable C; small x87 primitives preserve operation order
-and status flags. Matrix composition, inverse sine and the original runtime are
-still dependencies. This is not the full artillery aiming controller, trajectory
+and status flags. Matrix composition now calls [reconstructed C](AFFINE-MATRIX.md)
+directly; inverse sine and the original runtime remain dependencies.
+This is not the full artillery aiming controller, trajectory
 solver or firing behavior.
 
-| Retained dependency | Client | Server | Recovered interface |
+| Math helper | Client | Server | Recovered interface |
 | --- | --- | --- | --- |
-| Affine matrix composition | `0049acd0` | `00438590` | thiscall destination, two 16-float matrix pointers, RET 8 |
+| Source-owned affine composition | `0049acd0` | `00438590` | thiscall destination, two 16-float matrix pointers, RET 8 |
 | Clamped inverse-sine wrapper | `00516f80` | `0048b570` | stdcall float32 input, ST0 return, RET 4 |
 
 The composition produces the 3×3 basis and translation row, then writes the
@@ -51,7 +52,7 @@ body sizes and indexed direct callers.
 event dispatch and stack cleanup. It covers endpoints, reversed/full/NaN bounds,
 zero and nonfinite projections, opposite half-planes, callback pointer/limit
 mutations, x87 status and retained caller values. Selected cases execute the
-actual native matrix composition and inverse-sine runtime. Controlled trig cases
+actual original/source matrix composition and native inverse-sine runtime. Controlled trig cases
 cover unusual return values without claiming CRT exceptional-path equivalence.
 
 ```powershell
