@@ -1,11 +1,11 @@
 /* Direction-to-mount aiming limit predicate used by artillery target scoring.
- * Matrix composition and the inverse-sine runtime remain native dependencies. */
+ * Matrix composition is source-owned; inverse sine remains a native dependency. */
 #include <stdint.h>
 #include "target.h"
+#include "affine_matrix.h"
 #define TC __attribute__((thiscall))
 #define SC __attribute__((stdcall))
 typedef void *(TC *get_matrix)(void *);
-typedef void *(TC *compose_matrix)(void *, const void *, const void *);
 typedef long double (SC *inverse_sine)(float);
 typedef void *(TC *notify_event)(void *, uint32_t);
 static uint32_t word(uintptr_t address)
@@ -54,7 +54,7 @@ uint8_t TC bfv_aim_within_limits(void *view, const float *volatile direction)
     uintptr_t mount = word((uintptr_t)view + 8);
     float matrix[16];
     void *world = ((get_matrix)method(owner, 0x1c))((void *)owner);
-    ((compose_matrix)BFV_AIM_COMPOSE)(matrix, (void *)(mount + 0x80), world);
+    bfv_affine_compose(matrix, (const float *)(mount + 0x80), world);
     /* Native tests exact float bits, and still composes the matrix first. */
     if (word(mount + 0x68) == 0xc0490fdb && word(mount + 0x74) == 0x40490fdb) return 1;
 

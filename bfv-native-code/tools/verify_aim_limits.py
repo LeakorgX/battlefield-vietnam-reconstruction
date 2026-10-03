@@ -1,7 +1,7 @@
 """Original/reconstructed aim predicates with controlled transform/trig services.
 
-Execute the real wrapper and angular predicate. Matrix composition and inverse
-sine are controlled calls, not claims of reconstructed math dependencies.
+Execute the real wrapper and angular predicate. Matrix/trig services are controlled
+except cases selecting actual original/source composition and native inverse sine.
 """
 import argparse
 import hashlib
@@ -71,7 +71,8 @@ def run_aim(image,pe,spec,symbols,case):
     m.mem_write(owner_stub,b'\xb8'+struct.pack('<I',world)+b'\xc3')
     returned_view=alternate_view if case.get('mutation')=='notify_view' else view
     m.mem_write(notify_stub,b'\xb8'+struct.pack('<I',returned_view)+b'\xc2\x04\x00')
-    if not case.get('real_compose'):m.mem_write(spec['aim_compose'],b'\x8b\xc1\xc2\x08\x00')
+    compose_entry=symbols.get('bfv_affine_compose',spec['aim_compose'])
+    if not case.get('real_compose'):m.mem_write(compose_entry,b'\x8b\xc1\xc2\x08\x00')
     if not case.get('real_trig'):
         m.mem_write(spec['aim_inverse_sine'],b'\xd9\x05'+struct.pack('<I',angle_storage)+b'\xc2\x04\x00')
     depth=case.get('depth',0);m.mem_write(seed,struct.pack('<2I',0x3f812345,0xbf654321))
@@ -99,7 +100,7 @@ def run_aim(image,pe,spec,symbols,case):
         if address==owner_stub:
             assert ecx==owner;calls.append(['world'])
             if case.get('mutation')=='owner_mount':w32(view+8,alternate_mount)
-        if address==spec['aim_compose']:
+        if address==compose_entry:
             expected_mount=alternate_mount if case.get('mutation')=='notify_view' else mount
             assert r32(current_sp+4)==expected_mount+0x80 and r32(current_sp+8)==world
             matrix=[0]*16;matrix[0]=case.get('projection',0x3f000000);matrix[8]=case.get('side',0x3f800000)

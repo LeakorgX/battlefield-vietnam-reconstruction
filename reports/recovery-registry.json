@@ -259,5 +259,14 @@
       "client": "0099eae0",
       "server": "007492c0"
     }
+  },
+  {
+    "symbol": "bfv_affine_compose",
+    "source": "bfv-native-code/src/affine_matrix.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0049acd0",
+      "server": "00438590"
+    }
   }
 ]
