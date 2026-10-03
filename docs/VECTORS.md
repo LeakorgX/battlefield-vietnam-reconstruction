@@ -90,3 +90,47 @@ callback/one dispatcher case executes it with controlled heap/memmove services. 
 geometry. Event lifetime, destruction, heap internals and full-game equivalence
 remain outside this verification scope. Reconstructing and validating those paths
 is still required for the full-engine goal.
+
+## Live Windows exception propagation
+
+The opt-in `tools/verify_live_exceptions.py` probe now validates four scenarios
+against original and reconstructed insertion in each inspected binary: 16 live
+executions, or eight original/reconstructed case pairs across client and server.
+The existing emulator comparison count remains separate.
+
+| Scenario | Observed result in both implementations |
+| --- | --- |
+| Normal insertion | Matching vector words and capacity, normal return |
+| Excessive length | Native C++ exception caught by an outer frame |
+| Failure during growth copying | New allocation released exactly once, then rethrow/catch |
+| Failure during in-place filling | Rethrow/catch without releasing the existing vector |
+
+These are actual Windows exceptions (`0xe06d7363`) from the game's native length-
+error service, dispatched through its C++ runtime. The growth check compares the
+freed pointer with the allocation saved in the insertion guard. All cases restore
+the thread's FS exception chain. Source for the independent outer frame is in
+`tools/native-probe/exception_probe.c`; it is linked separately from the game build.
+
+The tool starts only its own temporary hash-verified child, waits for startup,
+verifies native insertion bytes, the added payload (excluding invocation counters),
+and redirected slots, then pauses the other game threads. It temporarily redirects
+selected copy/fill calls inside insertion to the native throw service and logs the
+cleanup call. Patches are restored and the temporary process is stopped afterward.
+The configured server must have internet registration disabled. The client check
+can run after GUI startup without requiring a loaded world.
+
+Sanitized results are in `reports/client/live-exceptions.json` and the server
+counterpart. They establish these synchronous C++ exception paths with the real
+runtime, including unwinding through the C implementation to an outer frame.
+They do not establish every exception type, asynchronous access violations,
+unmasked floating-point exceptions, actual allocator exhaustion, heap internals,
+sustained matches or event destruction/lifetime.
+
+Run after building the supported binaries:
+
+```powershell
+uv run --with pefile --with capstone python bfv-native-code/tools/verify_live_exceptions.py --game-dir 'D:\Games\Battlefield Vietnam' --target both
+```
+
+Use `--target server` or `--target client` for one binary. Local logs and probe
+binaries stay under the ignored build directory; no original code/data is exported.
