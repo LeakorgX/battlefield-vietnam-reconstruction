@@ -9,6 +9,8 @@ the goal.
 ![Whole-game completion](reports/progress.svg)
 
 **Whole-game completion: 0% — 0 of 7 acceptance milestones complete.**
+**100% means the entire original client and server are reconstructed as readable,
+editable source that builds without copying code from the original EXEs.**
 This covers the entire original client/server engine, including AI, gameplay,
 physics, multiplayer, a standalone source build and verified original behavior.
 Partial reconstruction is underway; this coarse milestone percentage does not
@@ -22,9 +24,10 @@ See the [full-project tracker](docs/PROGRESS.md).
 - Reconstructed shared float min/max/clamp and vector length/division helpers; see [shared math](docs/SHARED-MATH.md).
 - Reconstructed the direction aiming-limit predicate and event wrapper; see [aiming limits](docs/AIM-LIMITS.md).
 - Reconstructed affine matrix composition, now called directly by the aiming source; see [matrix math](docs/AFFINE-MATRIX.md).
+- Recovered 954 individually editable constant-return functions across both binaries; [scope and evidence](docs/CONSTANT-RETURNS.md).
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- Passed 43,850 comparisons and ABI checks across the two inspected binaries.
+- Passed 49,574 comparisons and ABI checks across the two inspected binaries.
 - Validated vector cleanup/rethrow in live Windows client and server processes.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.

@@ -2,9 +2,9 @@
   "target": "server",
   "input_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
   "output": "bfvietnam_w32ded-editable.exe",
-  "output_sha256": "6efed8531a139fdf2bc8233bd824af88e31d6d7f32538d6b55ecf5675a585e83",
+  "output_sha256": "f0280f6e5b7ee513a326ff841b6072bb09e063f60f9895db6de678768a1a1fff",
   "payload_address": "00c37000",
-  "payload_bytes": 10349,
+  "payload_bytes": 18669,
   "symbols": {
     "bfv_interpret": "00c37000",
     "bfv_bailout": "00c37320",
@@ -25,35 +25,448 @@
     "bfv_collision_construct": "00c38030",
     "bfv_line_distance_squared": "00c38140",
     "bfv_collision_distance": "00c38230",
-    "bfv_collision_dispatch": "00c38470",
-    "bfv_collision_notify": "00c38840",
-    "bfv_collision": "00c388a0",
-    "bfv_bailout_curve": "00c38e20",
-    "bfv_bailout_score": "00c38e60",
-    "bfv_float_minimum": "00c38eb0",
-    "bfv_float_maximum": "00c38f00",
-    "bfv_float_clamp": "00c38f50",
-    "bfv_vector_length": "00c38fd0",
-    "bfv_vector_divide": "00c39010",
-    "bfv_target_history": "00c39040",
-    "bfv_vector_catch_rethrow": "00c39100",
-    "bfv_vector_catch_free": "00c39110",
-    "bfv_vector_copy": "00c39180",
-    "bfv_vector_fill": "00c391b0",
-    "bfv_vector_shift": "00c391f0",
-    "bfv_vector_fill_range": "00c39210",
-    "bfv_vector_insert_body": "00c39230",
-    "bfv_vector_handler": "00c394d0",
-    "bfv_vector_insert": "00c394e0",
-    "bfv_vector_info": "00c39780",
-    "bfv_vehicle_calls": "00c3984c",
-    "bfv_bailout_calls": "00c39850",
-    "bfv_interpreter_calls": "00c39854",
-    "bfv_artillery_evaluate_calls": "00c39858",
-    "bfv_artillery_calls": "00c3985c",
-    "bfv_artillery_filter_calls": "00c39860",
-    "bfv_collision_calls": "00c39864",
-    "bfv_target_history_calls": "00c39868"
+    "bfv_server_return_word_00422af0": "00c38470",
+    "bfv_server_return_word_0048b5e0": "00c38480",
+    "bfv_server_return_word_0048b650": "00c38490",
+    "bfv_server_return_word_0048b6c0": "00c384a0",
+    "bfv_server_return_word_0048b8f0": "00c384b0",
+    "bfv_server_return_word_0048b900": "00c384c0",
+    "bfv_server_return_word_0048b930": "00c384d0",
+    "bfv_server_return_word_00498900": "00c384e0",
+    "bfv_server_return_word_00498970": "00c384f0",
+    "bfv_server_return_word_004989e0": "00c38500",
+    "bfv_server_return_word_00498c30": "00c38510",
+    "bfv_server_return_word_00498ca0": "00c38520",
+    "bfv_server_return_word_00498d10": "00c38530",
+    "bfv_server_return_word_00498d80": "00c38540",
+    "bfv_server_return_word_00498df0": "00c38550",
+    "bfv_server_return_word_00498e60": "00c38560",
+    "bfv_server_return_word_00498ed0": "00c38570",
+    "bfv_server_return_word_00498f40": "00c38580",
+    "bfv_server_return_word_00498fb0": "00c38590",
+    "bfv_server_return_word_00499020": "00c385a0",
+    "bfv_server_return_word_00499090": "00c385b0",
+    "bfv_server_return_word_00499100": "00c385c0",
+    "bfv_server_return_word_00499170": "00c385d0",
+    "bfv_server_return_word_004991e0": "00c385e0",
+    "bfv_server_return_word_00499250": "00c385f0",
+    "bfv_server_return_word_004992c0": "00c38600",
+    "bfv_server_return_word_00499330": "00c38610",
+    "bfv_server_return_word_004993a0": "00c38620",
+    "bfv_server_return_word_00499410": "00c38630",
+    "bfv_server_return_word_00499480": "00c38640",
+    "bfv_server_return_word_004994f0": "00c38650",
+    "bfv_server_return_word_00499560": "00c38660",
+    "bfv_server_return_word_004995d0": "00c38670",
+    "bfv_server_return_word_00499640": "00c38680",
+    "bfv_server_return_word_004996b0": "00c38690",
+    "bfv_server_return_word_00499720": "00c386a0",
+    "bfv_server_return_word_00499790": "00c386b0",
+    "bfv_server_return_word_00499800": "00c386c0",
+    "bfv_server_return_word_00499870": "00c386d0",
+    "bfv_server_return_word_004998e0": "00c386e0",
+    "bfv_server_return_word_00499950": "00c386f0",
+    "bfv_server_return_word_004999c0": "00c38700",
+    "bfv_server_return_word_00499a30": "00c38710",
+    "bfv_server_return_word_00499aa0": "00c38720",
+    "bfv_server_return_word_00499b50": "00c38730",
+    "bfv_server_return_word_00499b60": "00c38740",
+    "bfv_server_return_word_00499b70": "00c38750",
+    "bfv_server_return_word_0049a5f0": "00c38760",
+    "bfv_server_return_word_0049a640": "00c38770",
+    "bfv_server_return_word_0049a650": "00c38780",
+    "bfv_server_return_word_0049a660": "00c38790",
+    "bfv_server_return_word_0049a670": "00c387a0",
+    "bfv_server_return_word_0049a680": "00c387b0",
+    "bfv_server_return_word_0049a690": "00c387c0",
+    "bfv_server_return_word_0049a6a0": "00c387d0",
+    "bfv_server_return_word_0049a6b0": "00c387e0",
+    "bfv_server_return_word_0049a6c0": "00c387f0",
+    "bfv_server_return_word_0049a6d0": "00c38800",
+    "bfv_server_return_word_0049a6e0": "00c38810",
+    "bfv_server_return_word_0049a6f0": "00c38820",
+    "bfv_server_return_word_0049a700": "00c38830",
+    "bfv_server_return_word_0049a710": "00c38840",
+    "bfv_server_return_word_0049a720": "00c38850",
+    "bfv_server_return_word_0049a730": "00c38860",
+    "bfv_server_return_word_0049a740": "00c38870",
+    "bfv_server_return_word_0049a750": "00c38880",
+    "bfv_server_return_word_0049a760": "00c38890",
+    "bfv_server_return_word_0049a770": "00c388a0",
+    "bfv_server_return_word_0049a780": "00c388b0",
+    "bfv_server_return_word_0049a790": "00c388c0",
+    "bfv_server_return_word_0049a7a0": "00c388d0",
+    "bfv_server_return_word_0049a7b0": "00c388e0",
+    "bfv_server_return_word_0049a7c0": "00c388f0",
+    "bfv_server_return_word_0049a7d0": "00c38900",
+    "bfv_server_return_word_0049a7e0": "00c38910",
+    "bfv_server_return_word_0049a7f0": "00c38920",
+    "bfv_server_return_word_0049a800": "00c38930",
+    "bfv_server_return_word_0049a810": "00c38940",
+    "bfv_server_return_word_0049a820": "00c38950",
+    "bfv_server_return_word_0049a830": "00c38960",
+    "bfv_server_return_word_0049a840": "00c38970",
+    "bfv_server_return_word_0049a850": "00c38980",
+    "bfv_server_return_word_0049a860": "00c38990",
+    "bfv_server_return_word_0049a870": "00c389a0",
+    "bfv_server_return_word_0049a880": "00c389b0",
+    "bfv_server_return_word_0049a890": "00c389c0",
+    "bfv_server_return_word_0049a8a0": "00c389d0",
+    "bfv_server_return_word_0049a8b0": "00c389e0",
+    "bfv_server_return_word_0049a8c0": "00c389f0",
+    "bfv_server_return_word_0049a8d0": "00c38a00",
+    "bfv_server_return_word_0049a8e0": "00c38a10",
+    "bfv_server_return_word_0049a8f0": "00c38a20",
+    "bfv_server_return_word_0049a900": "00c38a30",
+    "bfv_server_return_word_0049a910": "00c38a40",
+    "bfv_server_return_word_0049a920": "00c38a50",
+    "bfv_server_return_word_0049a930": "00c38a60",
+    "bfv_server_return_word_0049a940": "00c38a70",
+    "bfv_server_return_word_0049abe0": "00c38a80",
+    "bfv_server_return_word_0049ac20": "00c38a90",
+    "bfv_server_return_word_0049acb0": "00c38aa0",
+    "bfv_server_return_word_0049acf0": "00c38ab0",
+    "bfv_server_return_word_0049ad30": "00c38ac0",
+    "bfv_server_return_word_0049ae90": "00c38ad0",
+    "bfv_server_return_word_0049aed0": "00c38ae0",
+    "bfv_server_return_word_0049af10": "00c38af0",
+    "bfv_server_return_word_0049af50": "00c38b00",
+    "bfv_server_return_word_0049af90": "00c38b10",
+    "bfv_server_return_word_0049afd0": "00c38b20",
+    "bfv_server_return_word_0049b010": "00c38b30",
+    "bfv_server_return_word_0049b050": "00c38b40",
+    "bfv_server_return_word_0049b090": "00c38b50",
+    "bfv_server_return_word_0049b0d0": "00c38b60",
+    "bfv_server_return_word_0049b110": "00c38b70",
+    "bfv_server_return_word_0049b150": "00c38b80",
+    "bfv_server_return_word_0049b190": "00c38b90",
+    "bfv_server_return_word_0049b1d0": "00c38ba0",
+    "bfv_server_return_word_0049b210": "00c38bb0",
+    "bfv_server_return_word_0049b250": "00c38bc0",
+    "bfv_server_return_word_0049b290": "00c38bd0",
+    "bfv_server_return_word_0049b2d0": "00c38be0",
+    "bfv_server_return_word_0049b310": "00c38bf0",
+    "bfv_server_return_word_0049b350": "00c38c00",
+    "bfv_server_return_word_0049b390": "00c38c10",
+    "bfv_server_return_word_0049b3d0": "00c38c20",
+    "bfv_server_return_word_0049b410": "00c38c30",
+    "bfv_server_return_word_0049b450": "00c38c40",
+    "bfv_server_return_word_0049b4b0": "00c38c50",
+    "bfv_server_return_word_0049b880": "00c38c60",
+    "bfv_server_return_word_0049b890": "00c38c70",
+    "bfv_server_return_word_0049b930": "00c38c80",
+    "bfv_server_return_word_0049b940": "00c38c90",
+    "bfv_server_return_word_0049b9e0": "00c38ca0",
+    "bfv_server_return_word_0049b9f0": "00c38cb0",
+    "bfv_server_return_word_0049bac0": "00c38cc0",
+    "bfv_server_return_word_0049bad0": "00c38cd0",
+    "bfv_server_return_word_0049bb40": "00c38ce0",
+    "bfv_server_return_word_0049bc40": "00c38cf0",
+    "bfv_server_return_word_0049cdf0": "00c38d00",
+    "bfv_server_return_word_0049cec0": "00c38d10",
+    "bfv_server_return_word_004bfbf0": "00c38d20",
+    "bfv_server_return_word_004bfcb0": "00c38d30",
+    "bfv_server_return_word_004bfcc0": "00c38d40",
+    "bfv_server_return_word_004bfd90": "00c38d50",
+    "bfv_server_return_word_004bfdc0": "00c38d60",
+    "bfv_server_return_word_004bfe30": "00c38d70",
+    "bfv_server_return_word_004c0020": "00c38d80",
+    "bfv_server_return_word_004c0350": "00c38d90",
+    "bfv_server_return_word_004c0440": "00c38da0",
+    "bfv_server_return_word_004c0600": "00c38db0",
+    "bfv_server_return_word_004c06b0": "00c38dc0",
+    "bfv_server_return_word_004c0730": "00c38dd0",
+    "bfv_server_return_word_004c07f0": "00c38de0",
+    "bfv_server_return_word_004c0860": "00c38df0",
+    "bfv_server_return_word_004c0b00": "00c38e00",
+    "bfv_server_return_word_004c0ba0": "00c38e10",
+    "bfv_server_return_word_004c0c20": "00c38e20",
+    "bfv_server_return_word_004c0e20": "00c38e30",
+    "bfv_server_return_word_004c0f40": "00c38e40",
+    "bfv_server_return_word_004c0fd0": "00c38e50",
+    "bfv_server_return_word_004c10e0": "00c38e60",
+    "bfv_server_return_word_004c1170": "00c38e70",
+    "bfv_server_return_word_004c1200": "00c38e80",
+    "bfv_server_return_word_004c1290": "00c38e90",
+    "bfv_server_return_word_004c13c0": "00c38ea0",
+    "bfv_server_return_word_004c14c0": "00c38eb0",
+    "bfv_server_return_word_004c1550": "00c38ec0",
+    "bfv_server_return_word_004c15d0": "00c38ed0",
+    "bfv_server_return_word_004c1650": "00c38ee0",
+    "bfv_server_return_word_004c16e0": "00c38ef0",
+    "bfv_server_return_word_004c17f0": "00c38f00",
+    "bfv_server_return_word_004c1890": "00c38f10",
+    "bfv_server_return_word_004c1a20": "00c38f20",
+    "bfv_server_return_word_004c1ab0": "00c38f30",
+    "bfv_server_return_word_004c1bc0": "00c38f40",
+    "bfv_server_return_word_004c1cd0": "00c38f50",
+    "bfv_server_return_word_004c1e00": "00c38f60",
+    "bfv_server_return_word_004c20e0": "00c38f70",
+    "bfv_server_return_word_004c21f0": "00c38f80",
+    "bfv_server_return_word_004c24f0": "00c38f90",
+    "bfv_server_return_word_0057ec20": "00c38fa0",
+    "bfv_server_return_word_0057ec90": "00c38fb0",
+    "bfv_server_return_word_0057ed00": "00c38fc0",
+    "bfv_server_return_word_0057ee30": "00c38fd0",
+    "bfv_server_return_word_0057ee70": "00c38fe0",
+    "bfv_server_return_word_0057eeb0": "00c38ff0",
+    "bfv_server_return_word_0057ef20": "00c39000",
+    "bfv_server_return_word_0057ef30": "00c39010",
+    "bfv_server_return_word_0057f050": "00c39020",
+    "bfv_server_return_word_0057f060": "00c39030",
+    "bfv_server_return_word_0058a710": "00c39040",
+    "bfv_server_return_word_0058a780": "00c39050",
+    "bfv_server_return_word_0058a7f0": "00c39060",
+    "bfv_server_return_word_0058a860": "00c39070",
+    "bfv_server_return_word_0058a8d0": "00c39080",
+    "bfv_server_return_word_0058a940": "00c39090",
+    "bfv_server_return_word_0058a9b0": "00c390a0",
+    "bfv_server_return_word_0058aa20": "00c390b0",
+    "bfv_server_return_word_0058aa90": "00c390c0",
+    "bfv_server_return_word_0058ab00": "00c390d0",
+    "bfv_server_return_word_0058ab70": "00c390e0",
+    "bfv_server_return_word_0058abe0": "00c390f0",
+    "bfv_server_return_word_0058ac50": "00c39100",
+    "bfv_server_return_word_0058acc0": "00c39110",
+    "bfv_server_return_word_0058af90": "00c39120",
+    "bfv_server_return_word_0058afa0": "00c39130",
+    "bfv_server_return_word_0058afb0": "00c39140",
+    "bfv_server_return_word_0058afc0": "00c39150",
+    "bfv_server_return_word_0058afd0": "00c39160",
+    "bfv_server_return_word_0058afe0": "00c39170",
+    "bfv_server_return_word_0058aff0": "00c39180",
+    "bfv_server_return_word_0058b000": "00c39190",
+    "bfv_server_return_word_0058b010": "00c391a0",
+    "bfv_server_return_word_0058b020": "00c391b0",
+    "bfv_server_return_word_0058b030": "00c391c0",
+    "bfv_server_return_word_0058b070": "00c391d0",
+    "bfv_server_return_word_0058b0b0": "00c391e0",
+    "bfv_server_return_word_0058b0f0": "00c391f0",
+    "bfv_server_return_word_0058b130": "00c39200",
+    "bfv_server_return_word_0058b4b0": "00c39210",
+    "bfv_server_return_word_00596af0": "00c39220",
+    "bfv_server_return_word_00596bd0": "00c39230",
+    "bfv_server_return_word_00596c80": "00c39240",
+    "bfv_server_return_word_00596cf0": "00c39250",
+    "bfv_server_return_word_00596d60": "00c39260",
+    "bfv_server_return_word_00596dd0": "00c39270",
+    "bfv_server_return_word_00596e40": "00c39280",
+    "bfv_server_return_word_00596eb0": "00c39290",
+    "bfv_server_return_word_00597010": "00c392a0",
+    "bfv_server_return_word_00597020": "00c392b0",
+    "bfv_server_return_word_00597030": "00c392c0",
+    "bfv_server_return_word_00597040": "00c392d0",
+    "bfv_server_return_word_00597050": "00c392e0",
+    "bfv_server_return_word_00597480": "00c392f0",
+    "bfv_server_return_word_00597560": "00c39300",
+    "bfv_server_return_word_00597600": "00c39310",
+    "bfv_server_return_word_005979d0": "00c39320",
+    "bfv_server_return_word_00597ab0": "00c39330",
+    "bfv_server_return_word_0059ecf0": "00c39340",
+    "bfv_server_return_word_0059ed00": "00c39350",
+    "bfv_server_return_word_0059ed10": "00c39360",
+    "bfv_server_return_word_0059ed20": "00c39370",
+    "bfv_server_return_word_0059ed30": "00c39380",
+    "bfv_server_return_word_0059ed40": "00c39390",
+    "bfv_server_return_word_0059ed80": "00c393a0",
+    "bfv_server_return_word_0059edc0": "00c393b0",
+    "bfv_server_return_word_0059ee00": "00c393c0",
+    "bfv_server_return_word_0059ee40": "00c393d0",
+    "bfv_server_return_word_005a3330": "00c393e0",
+    "bfv_server_return_word_005a59a0": "00c393f0",
+    "bfv_server_return_word_005a7840": "00c39400",
+    "bfv_server_return_word_005b8c00": "00c39410",
+    "bfv_server_return_word_005b8c70": "00c39420",
+    "bfv_server_return_word_005b8ce0": "00c39430",
+    "bfv_server_return_word_005b8d60": "00c39440",
+    "bfv_server_return_word_005b8dd0": "00c39450",
+    "bfv_server_return_word_005b8e40": "00c39460",
+    "bfv_server_return_word_005b8ff0": "00c39470",
+    "bfv_server_return_word_005b9030": "00c39480",
+    "bfv_server_return_word_005b9070": "00c39490",
+    "bfv_server_return_word_005b90b0": "00c394a0",
+    "bfv_server_return_word_005b90f0": "00c394b0",
+    "bfv_server_return_word_005b9130": "00c394c0",
+    "bfv_server_return_word_005b9260": "00c394d0",
+    "bfv_server_return_word_005b9270": "00c394e0",
+    "bfv_server_return_word_005bd9b0": "00c394f0",
+    "bfv_server_return_word_005bda20": "00c39500",
+    "bfv_server_return_word_005bda90": "00c39510",
+    "bfv_server_return_word_005bdb00": "00c39520",
+    "bfv_server_return_word_005bdb70": "00c39530",
+    "bfv_server_return_word_005bdbe0": "00c39540",
+    "bfv_server_return_word_005bdc50": "00c39550",
+    "bfv_server_return_word_005bdcc0": "00c39560",
+    "bfv_server_return_word_005bdd30": "00c39570",
+    "bfv_server_return_word_005bdda0": "00c39580",
+    "bfv_server_return_word_005bde10": "00c39590",
+    "bfv_server_return_word_005bde80": "00c395a0",
+    "bfv_server_return_word_005be120": "00c395b0",
+    "bfv_server_return_word_005be130": "00c395c0",
+    "bfv_server_return_word_005be170": "00c395d0",
+    "bfv_server_return_word_005be1e0": "00c395e0",
+    "bfv_server_return_word_005be220": "00c395f0",
+    "bfv_server_return_word_005be260": "00c39600",
+    "bfv_server_return_word_005be2a0": "00c39610",
+    "bfv_server_return_word_005be2e0": "00c39620",
+    "bfv_server_return_word_005be320": "00c39630",
+    "bfv_server_return_word_005be360": "00c39640",
+    "bfv_server_return_word_005be3b0": "00c39650",
+    "bfv_server_return_word_005be3f0": "00c39660",
+    "bfv_server_return_word_005c73b0": "00c39670",
+    "bfv_server_return_word_00601c40": "00c39680",
+    "bfv_server_return_word_00601cb0": "00c39690",
+    "bfv_server_return_word_00601d20": "00c396a0",
+    "bfv_server_return_word_00601d90": "00c396b0",
+    "bfv_server_return_word_00601e00": "00c396c0",
+    "bfv_server_return_word_00601e90": "00c396d0",
+    "bfv_server_return_word_00601f00": "00c396e0",
+    "bfv_server_return_word_00601f40": "00c396f0",
+    "bfv_server_return_word_00601f80": "00c39700",
+    "bfv_server_return_word_00601fc0": "00c39710",
+    "bfv_server_return_word_00602000": "00c39720",
+    "bfv_server_return_word_00602070": "00c39730",
+    "bfv_server_return_word_00603f50": "00c39740",
+    "bfv_server_return_word_00603fc0": "00c39750",
+    "bfv_server_return_word_00604030": "00c39760",
+    "bfv_server_return_word_006040a0": "00c39770",
+    "bfv_server_return_word_00604110": "00c39780",
+    "bfv_server_return_word_00604260": "00c39790",
+    "bfv_server_return_word_00604270": "00c397a0",
+    "bfv_server_return_word_006042b0": "00c397b0",
+    "bfv_server_return_word_006042f0": "00c397c0",
+    "bfv_server_return_word_00604330": "00c397d0",
+    "bfv_server_return_word_0060d820": "00c397e0",
+    "bfv_server_return_word_0060d950": "00c397f0",
+    "bfv_server_return_word_0060d960": "00c39800",
+    "bfv_server_return_word_0060d980": "00c39810",
+    "bfv_server_return_word_0060d990": "00c39820",
+    "bfv_server_return_word_0060d9a0": "00c39830",
+    "bfv_server_return_word_006100b0": "00c39840",
+    "bfv_server_return_word_00610160": "00c39850",
+    "bfv_server_return_word_006239c0": "00c39860",
+    "bfv_server_return_word_00623a30": "00c39870",
+    "bfv_server_return_word_00623ae0": "00c39880",
+    "bfv_server_return_word_00623b60": "00c39890",
+    "bfv_server_return_word_00623bd0": "00c398a0",
+    "bfv_server_return_word_00623c80": "00c398b0",
+    "bfv_server_return_word_00623d30": "00c398c0",
+    "bfv_server_return_word_0062b480": "00c398d0",
+    "bfv_server_return_word_0062b490": "00c398e0",
+    "bfv_server_return_word_0062b540": "00c398f0",
+    "bfv_server_return_word_0062b5b0": "00c39900",
+    "bfv_server_return_word_0062d040": "00c39910",
+    "bfv_server_return_word_0062d050": "00c39920",
+    "bfv_server_return_word_00653940": "00c39930",
+    "bfv_server_return_word_006539b0": "00c39940",
+    "bfv_server_return_word_00653a20": "00c39950",
+    "bfv_server_return_word_00653a90": "00c39960",
+    "bfv_server_return_word_00653b60": "00c39970",
+    "bfv_server_return_word_00653e30": "00c39980",
+    "bfv_server_return_word_00653e40": "00c39990",
+    "bfv_server_return_word_00653e50": "00c399a0",
+    "bfv_server_return_word_00653e90": "00c399b0",
+    "bfv_server_return_word_00653ed0": "00c399c0",
+    "bfv_server_return_word_00653f10": "00c399d0",
+    "bfv_server_return_word_00653f50": "00c399e0",
+    "bfv_server_return_word_00653f90": "00c399f0",
+    "bfv_server_return_word_00653fd0": "00c39a00",
+    "bfv_server_return_word_00654610": "00c39a10",
+    "bfv_server_return_word_00654620": "00c39a20",
+    "bfv_server_return_word_006546c0": "00c39a30",
+    "bfv_server_return_word_006546d0": "00c39a40",
+    "bfv_server_return_word_00654990": "00c39a50",
+    "bfv_server_return_word_006549a0": "00c39a60",
+    "bfv_server_return_word_00654aa0": "00c39a70",
+    "bfv_server_return_word_00654ab0": "00c39a80",
+    "bfv_server_return_word_00654b50": "00c39a90",
+    "bfv_server_return_word_00654d50": "00c39aa0",
+    "bfv_server_return_word_00654df0": "00c39ab0",
+    "bfv_server_return_word_00654f20": "00c39ac0",
+    "bfv_server_return_word_0065a890": "00c39ad0",
+    "bfv_server_return_word_0065a8a0": "00c39ae0",
+    "bfv_server_return_word_0065af80": "00c39af0",
+    "bfv_server_return_word_0065bc60": "00c39b00",
+    "bfv_server_return_word_0065c470": "00c39b10",
+    "bfv_server_return_word_0065cbe0": "00c39b20",
+    "bfv_server_return_word_0065d420": "00c39b30",
+    "bfv_server_return_word_0065db90": "00c39b40",
+    "bfv_server_return_word_0068cd50": "00c39b50",
+    "bfv_server_return_word_00707920": "00c39b60",
+    "bfv_server_return_word_00707990": "00c39b70",
+    "bfv_server_return_word_00707a00": "00c39b80",
+    "bfv_server_return_word_00707a70": "00c39b90",
+    "bfv_server_return_word_00707ae0": "00c39ba0",
+    "bfv_server_return_word_00707b50": "00c39bb0",
+    "bfv_server_return_word_00707bc0": "00c39bc0",
+    "bfv_server_return_word_00707c30": "00c39bd0",
+    "bfv_server_return_word_00707ca0": "00c39be0",
+    "bfv_server_return_word_00707d10": "00c39bf0",
+    "bfv_server_return_word_00707d80": "00c39c00",
+    "bfv_server_return_word_00707df0": "00c39c10",
+    "bfv_server_return_word_00707e60": "00c39c20",
+    "bfv_server_return_word_00707ed0": "00c39c30",
+    "bfv_server_return_word_00707f40": "00c39c40",
+    "bfv_server_return_word_00707fb0": "00c39c50",
+    "bfv_server_return_word_00708020": "00c39c60",
+    "bfv_server_return_word_007086d0": "00c39c70",
+    "bfv_server_return_word_00708710": "00c39c80",
+    "bfv_server_return_word_00708750": "00c39c90",
+    "bfv_server_return_word_00708790": "00c39ca0",
+    "bfv_server_return_word_007087d0": "00c39cb0",
+    "bfv_server_return_word_00708810": "00c39cc0",
+    "bfv_server_return_word_00708850": "00c39cd0",
+    "bfv_server_return_word_00708890": "00c39ce0",
+    "bfv_server_return_word_007088d0": "00c39cf0",
+    "bfv_server_return_word_00708910": "00c39d00",
+    "bfv_server_return_word_00708950": "00c39d10",
+    "bfv_server_return_word_00708990": "00c39d20",
+    "bfv_server_return_word_007089d0": "00c39d30",
+    "bfv_server_return_word_00708a10": "00c39d40",
+    "bfv_server_return_word_00708a50": "00c39d50",
+    "bfv_server_return_word_00708a90": "00c39d60",
+    "bfv_server_return_word_00708ad0": "00c39d70",
+    "bfv_server_return_word_007210c0": "00c39d80",
+    "bfv_server_return_word_007416f0": "00c39d90",
+    "bfv_server_return_word_00774a30": "00c39da0",
+    "bfv_server_return_word_00774c20": "00c39db0",
+    "bfv_server_return_word_007a2e80": "00c39dc0",
+    "bfv_server_return_word_007a4a30": "00c39dd0",
+    "bfv_server_return_word_007a6840": "00c39de0",
+    "bfv_server_return_word_007a69d0": "00c39df0",
+    "bfv_server_return_word_007a6e20": "00c39e00",
+    "bfv_server_return_word_007a80f0": "00c39e10",
+    "bfv_server_return_word_007abe80": "00c39e20",
+    "bfv_server_return_word_007ae670": "00c39e30",
+    "bfv_collision_dispatch": "00c39e40",
+    "bfv_collision_notify": "00c3a210",
+    "bfv_collision": "00c3a270",
+    "bfv_bailout_curve": "00c3a7f0",
+    "bfv_bailout_score": "00c3a830",
+    "bfv_float_minimum": "00c3a880",
+    "bfv_float_maximum": "00c3a8d0",
+    "bfv_float_clamp": "00c3a920",
+    "bfv_vector_length": "00c3a9a0",
+    "bfv_vector_divide": "00c3a9e0",
+    "bfv_target_history": "00c3aa10",
+    "bfv_vector_catch_rethrow": "00c3aae0",
+    "bfv_vector_catch_free": "00c3aaf0",
+    "bfv_vector_copy": "00c3ab60",
+    "bfv_vector_fill": "00c3ab90",
+    "bfv_vector_shift": "00c3abd0",
+    "bfv_vector_fill_range": "00c3abf0",
+    "bfv_vector_insert_body": "00c3ac10",
+    "bfv_vector_handler": "00c3aeb0",
+    "bfv_vector_insert": "00c3aec0",
+    "bfv_vector_info": "00c3b800",
+    "bfv_vehicle_calls": "00c3b8cc",
+    "bfv_bailout_calls": "00c3b8d0",
+    "bfv_interpreter_calls": "00c3b8d4",
+    "bfv_artillery_evaluate_calls": "00c3b8d8",
+    "bfv_artillery_calls": "00c3b8dc",
+    "bfv_artillery_filter_calls": "00c3b8e0",
+    "bfv_collision_calls": "00c3b8e4",
+    "bfv_target_history_calls": "00c3b8e8"
   },
   "patches": [
     {
@@ -77,7 +490,7 @@
     {
       "vtable_slot": "008775cc",
       "original": "0078a500",
-      "replacement": "00c388a0",
+      "replacement": "00c3a270",
       "source": "bfv_collision"
     },
     {
@@ -91,8 +504,8 @@
     {
       "entry": "00749820",
       "original": "83ec105657",
-      "patched": "e91bf84e00",
-      "replacement": "00c39040",
+      "patched": "e9eb114f00",
+      "replacement": "00c3aa10",
       "source": "bfv_target_history"
     },
     {
@@ -105,29 +518,29 @@
     {
       "entry": "005a3340",
       "original": "d9442404d85c2408",
-      "patched": "e96b5b6900909090",
-      "replacement": "00c38eb0",
+      "patched": "e93b756900909090",
+      "replacement": "00c3a880",
       "source": "bfv_float_minimum"
     },
     {
       "entry": "004ac530",
       "original": "d9442404d85c2408",
-      "patched": "e9cbc97800909090",
-      "replacement": "00c38f00",
+      "patched": "e99be37800909090",
+      "replacement": "00c3a8d0",
       "source": "bfv_float_maximum"
     },
     {
       "entry": "006f0470",
       "original": "d9442404d85c2408",
-      "patched": "e9db8a5400909090",
-      "replacement": "00c38f50",
+      "patched": "e9aba45400909090",
+      "replacement": "00c3a920",
       "source": "bfv_float_clamp"
     },
     {
       "entry": "0048c2b0",
       "original": "d94108d94104",
-      "patched": "e91bcd7a0090",
-      "replacement": "00c38fd0",
+      "patched": "e9ebe67a0090",
+      "replacement": "00c3a9a0",
       "source": "bfv_vector_length"
     },
     {
@@ -154,10 +567,2901 @@
     {
       "entry": "0048caf0",
       "original": "d90564928000",
-      "patched": "e91bc57a0090",
-      "replacement": "00c39010",
+      "patched": "e9ebde7a0090",
+      "replacement": "00c3a9e0",
       "source": "bfv_vector_divide"
+    },
+    {
+      "entry": "00422af0",
+      "original": "b803000000",
+      "patched": "e97b598100",
+      "replacement": "00c38470",
+      "source": "bfv_server_return_word_00422af0"
+    },
+    {
+      "entry": "0048b5e0",
+      "original": "b824000000",
+      "patched": "e99bce7a00",
+      "replacement": "00c38480",
+      "source": "bfv_server_return_word_0048b5e0"
+    },
+    {
+      "entry": "0048b650",
+      "original": "b839000000",
+      "patched": "e93bce7a00",
+      "replacement": "00c38490",
+      "source": "bfv_server_return_word_0048b650"
+    },
+    {
+      "entry": "0048b6c0",
+      "original": "b838000000",
+      "patched": "e9dbcd7a00",
+      "replacement": "00c384a0",
+      "source": "bfv_server_return_word_0048b6c0"
+    },
+    {
+      "entry": "0048b8f0",
+      "original": "b82a000000",
+      "patched": "e9bbcb7a00",
+      "replacement": "00c384b0",
+      "source": "bfv_server_return_word_0048b8f0"
+    },
+    {
+      "entry": "0048b900",
+      "original": "b834000000",
+      "patched": "e9bbcb7a00",
+      "replacement": "00c384c0",
+      "source": "bfv_server_return_word_0048b900"
+    },
+    {
+      "entry": "0048b930",
+      "original": "b83a000000",
+      "patched": "e99bcb7a00",
+      "replacement": "00c384d0",
+      "source": "bfv_server_return_word_0048b930"
+    },
+    {
+      "entry": "00498900",
+      "original": "b824d18e00",
+      "patched": "e9dbfb7900",
+      "replacement": "00c384e0",
+      "source": "bfv_server_return_word_00498900"
+    },
+    {
+      "entry": "00498970",
+      "original": "b818a98e00",
+      "patched": "e97bfb7900",
+      "replacement": "00c384f0",
+      "source": "bfv_server_return_word_00498970"
+    },
+    {
+      "entry": "004989e0",
+      "original": "b838be8e00",
+      "patched": "e91bfb7900",
+      "replacement": "00c38500",
+      "source": "bfv_server_return_word_004989e0"
+    },
+    {
+      "entry": "00498c30",
+      "original": "b8f8d28e00",
+      "patched": "e9dbf87900",
+      "replacement": "00c38510",
+      "source": "bfv_server_return_word_00498c30"
+    },
+    {
+      "entry": "00498ca0",
+      "original": "b85cd38e00",
+      "patched": "e97bf87900",
+      "replacement": "00c38520",
+      "source": "bfv_server_return_word_00498ca0"
+    },
+    {
+      "entry": "00498d10",
+      "original": "b8c0d38e00",
+      "patched": "e91bf87900",
+      "replacement": "00c38530",
+      "source": "bfv_server_return_word_00498d10"
+    },
+    {
+      "entry": "00498d80",
+      "original": "b80cd48e00",
+      "patched": "e9bbf77900",
+      "replacement": "00c38540",
+      "source": "bfv_server_return_word_00498d80"
+    },
+    {
+      "entry": "00498df0",
+      "original": "b854d48e00",
+      "patched": "e95bf77900",
+      "replacement": "00c38550",
+      "source": "bfv_server_return_word_00498df0"
+    },
+    {
+      "entry": "00498e60",
+      "original": "b8b0d48e00",
+      "patched": "e9fbf67900",
+      "replacement": "00c38560",
+      "source": "bfv_server_return_word_00498e60"
+    },
+    {
+      "entry": "00498ed0",
+      "original": "b814d58e00",
+      "patched": "e99bf67900",
+      "replacement": "00c38570",
+      "source": "bfv_server_return_word_00498ed0"
+    },
+    {
+      "entry": "00498f40",
+      "original": "b87cd58e00",
+      "patched": "e93bf67900",
+      "replacement": "00c38580",
+      "source": "bfv_server_return_word_00498f40"
+    },
+    {
+      "entry": "00498fb0",
+      "original": "b8f0d58e00",
+      "patched": "e9dbf57900",
+      "replacement": "00c38590",
+      "source": "bfv_server_return_word_00498fb0"
+    },
+    {
+      "entry": "00499020",
+      "original": "b864d68e00",
+      "patched": "e97bf57900",
+      "replacement": "00c385a0",
+      "source": "bfv_server_return_word_00499020"
+    },
+    {
+      "entry": "00499090",
+      "original": "b8c8d68e00",
+      "patched": "e91bf57900",
+      "replacement": "00c385b0",
+      "source": "bfv_server_return_word_00499090"
+    },
+    {
+      "entry": "00499100",
+      "original": "b82cd78e00",
+      "patched": "e9bbf47900",
+      "replacement": "00c385c0",
+      "source": "bfv_server_return_word_00499100"
+    },
+    {
+      "entry": "00499170",
+      "original": "b898d78e00",
+      "patched": "e95bf47900",
+      "replacement": "00c385d0",
+      "source": "bfv_server_return_word_00499170"
+    },
+    {
+      "entry": "004991e0",
+      "original": "b8fcd78e00",
+      "patched": "e9fbf37900",
+      "replacement": "00c385e0",
+      "source": "bfv_server_return_word_004991e0"
+    },
+    {
+      "entry": "00499250",
+      "original": "b860d88e00",
+      "patched": "e99bf37900",
+      "replacement": "00c385f0",
+      "source": "bfv_server_return_word_00499250"
+    },
+    {
+      "entry": "004992c0",
+      "original": "b8c8d88e00",
+      "patched": "e93bf37900",
+      "replacement": "00c38600",
+      "source": "bfv_server_return_word_004992c0"
+    },
+    {
+      "entry": "00499330",
+      "original": "b850d98e00",
+      "patched": "e9dbf27900",
+      "replacement": "00c38610",
+      "source": "bfv_server_return_word_00499330"
+    },
+    {
+      "entry": "004993a0",
+      "original": "b8d0d98e00",
+      "patched": "e97bf27900",
+      "replacement": "00c38620",
+      "source": "bfv_server_return_word_004993a0"
+    },
+    {
+      "entry": "00499410",
+      "original": "b834da8e00",
+      "patched": "e91bf27900",
+      "replacement": "00c38630",
+      "source": "bfv_server_return_word_00499410"
+    },
+    {
+      "entry": "00499480",
+      "original": "b8a4da8e00",
+      "patched": "e9bbf17900",
+      "replacement": "00c38640",
+      "source": "bfv_server_return_word_00499480"
+    },
+    {
+      "entry": "004994f0",
+      "original": "b814db8e00",
+      "patched": "e95bf17900",
+      "replacement": "00c38650",
+      "source": "bfv_server_return_word_004994f0"
+    },
+    {
+      "entry": "00499560",
+      "original": "b87cdb8e00",
+      "patched": "e9fbf07900",
+      "replacement": "00c38660",
+      "source": "bfv_server_return_word_00499560"
+    },
+    {
+      "entry": "004995d0",
+      "original": "b828dc8e00",
+      "patched": "e99bf07900",
+      "replacement": "00c38670",
+      "source": "bfv_server_return_word_004995d0"
+    },
+    {
+      "entry": "00499640",
+      "original": "b8d4dc8e00",
+      "patched": "e93bf07900",
+      "replacement": "00c38680",
+      "source": "bfv_server_return_word_00499640"
+    },
+    {
+      "entry": "004996b0",
+      "original": "b840dd8e00",
+      "patched": "e9dbef7900",
+      "replacement": "00c38690",
+      "source": "bfv_server_return_word_004996b0"
+    },
+    {
+      "entry": "00499720",
+      "original": "b8f0dd8e00",
+      "patched": "e97bef7900",
+      "replacement": "00c386a0",
+      "source": "bfv_server_return_word_00499720"
+    },
+    {
+      "entry": "00499790",
+      "original": "b8d8de8e00",
+      "patched": "e91bef7900",
+      "replacement": "00c386b0",
+      "source": "bfv_server_return_word_00499790"
+    },
+    {
+      "entry": "00499800",
+      "original": "b8c8df8e00",
+      "patched": "e9bbee7900",
+      "replacement": "00c386c0",
+      "source": "bfv_server_return_word_00499800"
+    },
+    {
+      "entry": "00499870",
+      "original": "b870e08e00",
+      "patched": "e95bee7900",
+      "replacement": "00c386d0",
+      "source": "bfv_server_return_word_00499870"
+    },
+    {
+      "entry": "004998e0",
+      "original": "b8d8e08e00",
+      "patched": "e9fbed7900",
+      "replacement": "00c386e0",
+      "source": "bfv_server_return_word_004998e0"
+    },
+    {
+      "entry": "00499950",
+      "original": "b83ce18e00",
+      "patched": "e99bed7900",
+      "replacement": "00c386f0",
+      "source": "bfv_server_return_word_00499950"
+    },
+    {
+      "entry": "004999c0",
+      "original": "b8a0e18e00",
+      "patched": "e93bed7900",
+      "replacement": "00c38700",
+      "source": "bfv_server_return_word_004999c0"
+    },
+    {
+      "entry": "00499a30",
+      "original": "b804e28e00",
+      "patched": "e9dbec7900",
+      "replacement": "00c38710",
+      "source": "bfv_server_return_word_00499a30"
+    },
+    {
+      "entry": "00499aa0",
+      "original": "b860e28e00",
+      "patched": "e97bec7900",
+      "replacement": "00c38720",
+      "source": "bfv_server_return_word_00499aa0"
+    },
+    {
+      "entry": "00499b50",
+      "original": "b82c758000",
+      "patched": "e9dbeb7900",
+      "replacement": "00c38730",
+      "source": "bfv_server_return_word_00499b50"
+    },
+    {
+      "entry": "00499b60",
+      "original": "b82cc48e00",
+      "patched": "e9dbeb7900",
+      "replacement": "00c38740",
+      "source": "bfv_server_return_word_00499b60"
+    },
+    {
+      "entry": "00499b70",
+      "original": "b8a0e28e00",
+      "patched": "e9dbeb7900",
+      "replacement": "00c38750",
+      "source": "bfv_server_return_word_00499b70"
+    },
+    {
+      "entry": "0049a5f0",
+      "original": "b844138f00",
+      "patched": "e96be17900",
+      "replacement": "00c38760",
+      "source": "bfv_server_return_word_0049a5f0"
+    },
+    {
+      "entry": "0049a640",
+      "original": "b8dc6e8e00",
+      "patched": "e92be17900",
+      "replacement": "00c38770",
+      "source": "bfv_server_return_word_0049a640"
+    },
+    {
+      "entry": "0049a650",
+      "original": "b870708e00",
+      "patched": "e92be17900",
+      "replacement": "00c38780",
+      "source": "bfv_server_return_word_0049a650"
+    },
+    {
+      "entry": "0049a660",
+      "original": "b8f8e28e00",
+      "patched": "e92be17900",
+      "replacement": "00c38790",
+      "source": "bfv_server_return_word_0049a660"
+    },
+    {
+      "entry": "0049a670",
+      "original": "b820e38e00",
+      "patched": "e92be17900",
+      "replacement": "00c387a0",
+      "source": "bfv_server_return_word_0049a670"
+    },
+    {
+      "entry": "0049a680",
+      "original": "b84ce38e00",
+      "patched": "e92be17900",
+      "replacement": "00c387b0",
+      "source": "bfv_server_return_word_0049a680"
+    },
+    {
+      "entry": "0049a690",
+      "original": "b810198f00",
+      "patched": "e92be17900",
+      "replacement": "00c387c0",
+      "source": "bfv_server_return_word_0049a690"
+    },
+    {
+      "entry": "0049a6a0",
+      "original": "b89cff8e00",
+      "patched": "e92be17900",
+      "replacement": "00c387d0",
+      "source": "bfv_server_return_word_0049a6a0"
+    },
+    {
+      "entry": "0049a6b0",
+      "original": "b888198f00",
+      "patched": "e92be17900",
+      "replacement": "00c387e0",
+      "source": "bfv_server_return_word_0049a6b0"
+    },
+    {
+      "entry": "0049a6c0",
+      "original": "b87c008f00",
+      "patched": "e92be17900",
+      "replacement": "00c387f0",
+      "source": "bfv_server_return_word_0049a6c0"
+    },
+    {
+      "entry": "0049a6d0",
+      "original": "b8081a8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38800",
+      "source": "bfv_server_return_word_0049a6d0"
+    },
+    {
+      "entry": "0049a6e0",
+      "original": "b864018f00",
+      "patched": "e92be17900",
+      "replacement": "00c38810",
+      "source": "bfv_server_return_word_0049a6e0"
+    },
+    {
+      "entry": "0049a6f0",
+      "original": "b87c1a8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38820",
+      "source": "bfv_server_return_word_0049a6f0"
+    },
+    {
+      "entry": "0049a700",
+      "original": "b840028f00",
+      "patched": "e92be17900",
+      "replacement": "00c38830",
+      "source": "bfv_server_return_word_0049a700"
+    },
+    {
+      "entry": "0049a710",
+      "original": "b8ec1a8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38840",
+      "source": "bfv_server_return_word_0049a710"
+    },
+    {
+      "entry": "0049a720",
+      "original": "b818038f00",
+      "patched": "e92be17900",
+      "replacement": "00c38850",
+      "source": "bfv_server_return_word_0049a720"
+    },
+    {
+      "entry": "0049a730",
+      "original": "b8681b8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38860",
+      "source": "bfv_server_return_word_0049a730"
+    },
+    {
+      "entry": "0049a740",
+      "original": "b804048f00",
+      "patched": "e92be17900",
+      "replacement": "00c38870",
+      "source": "bfv_server_return_word_0049a740"
+    },
+    {
+      "entry": "0049a750",
+      "original": "b8e81b8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38880",
+      "source": "bfv_server_return_word_0049a750"
+    },
+    {
+      "entry": "0049a760",
+      "original": "b8ec048f00",
+      "patched": "e92be17900",
+      "replacement": "00c38890",
+      "source": "bfv_server_return_word_0049a760"
+    },
+    {
+      "entry": "0049a770",
+      "original": "b8641c8f00",
+      "patched": "e92be17900",
+      "replacement": "00c388a0",
+      "source": "bfv_server_return_word_0049a770"
+    },
+    {
+      "entry": "0049a780",
+      "original": "b8c8058f00",
+      "patched": "e92be17900",
+      "replacement": "00c388b0",
+      "source": "bfv_server_return_word_0049a780"
+    },
+    {
+      "entry": "0049a790",
+      "original": "b8dc1c8f00",
+      "patched": "e92be17900",
+      "replacement": "00c388c0",
+      "source": "bfv_server_return_word_0049a790"
+    },
+    {
+      "entry": "0049a7a0",
+      "original": "b8a8068f00",
+      "patched": "e92be17900",
+      "replacement": "00c388d0",
+      "source": "bfv_server_return_word_0049a7a0"
+    },
+    {
+      "entry": "0049a7b0",
+      "original": "b8541d8f00",
+      "patched": "e92be17900",
+      "replacement": "00c388e0",
+      "source": "bfv_server_return_word_0049a7b0"
+    },
+    {
+      "entry": "0049a7c0",
+      "original": "b880078f00",
+      "patched": "e92be17900",
+      "replacement": "00c388f0",
+      "source": "bfv_server_return_word_0049a7c0"
+    },
+    {
+      "entry": "0049a7d0",
+      "original": "b8c81d8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38900",
+      "source": "bfv_server_return_word_0049a7d0"
+    },
+    {
+      "entry": "0049a7e0",
+      "original": "b854088f00",
+      "patched": "e92be17900",
+      "replacement": "00c38910",
+      "source": "bfv_server_return_word_0049a7e0"
+    },
+    {
+      "entry": "0049a7f0",
+      "original": "b8401e8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38920",
+      "source": "bfv_server_return_word_0049a7f0"
+    },
+    {
+      "entry": "0049a800",
+      "original": "b834098f00",
+      "patched": "e92be17900",
+      "replacement": "00c38930",
+      "source": "bfv_server_return_word_0049a800"
+    },
+    {
+      "entry": "0049a810",
+      "original": "b8c01e8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38940",
+      "source": "bfv_server_return_word_0049a810"
+    },
+    {
+      "entry": "0049a820",
+      "original": "b81c0a8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38950",
+      "source": "bfv_server_return_word_0049a820"
+    },
+    {
+      "entry": "0049a830",
+      "original": "b8381f8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38960",
+      "source": "bfv_server_return_word_0049a830"
+    },
+    {
+      "entry": "0049a840",
+      "original": "b8fc0a8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38970",
+      "source": "bfv_server_return_word_0049a840"
+    },
+    {
+      "entry": "0049a850",
+      "original": "b8b01f8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38980",
+      "source": "bfv_server_return_word_0049a850"
+    },
+    {
+      "entry": "0049a860",
+      "original": "b8dc0b8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38990",
+      "source": "bfv_server_return_word_0049a860"
+    },
+    {
+      "entry": "0049a870",
+      "original": "b838208f00",
+      "patched": "e92be17900",
+      "replacement": "00c389a0",
+      "source": "bfv_server_return_word_0049a870"
+    },
+    {
+      "entry": "0049a880",
+      "original": "b8d40c8f00",
+      "patched": "e92be17900",
+      "replacement": "00c389b0",
+      "source": "bfv_server_return_word_0049a880"
+    },
+    {
+      "entry": "0049a890",
+      "original": "b8c8208f00",
+      "patched": "e92be17900",
+      "replacement": "00c389c0",
+      "source": "bfv_server_return_word_0049a890"
+    },
+    {
+      "entry": "0049a8a0",
+      "original": "b8d40d8f00",
+      "patched": "e92be17900",
+      "replacement": "00c389d0",
+      "source": "bfv_server_return_word_0049a8a0"
+    },
+    {
+      "entry": "0049a8b0",
+      "original": "b84c218f00",
+      "patched": "e92be17900",
+      "replacement": "00c389e0",
+      "source": "bfv_server_return_word_0049a8b0"
+    },
+    {
+      "entry": "0049a8c0",
+      "original": "b8b80e8f00",
+      "patched": "e92be17900",
+      "replacement": "00c389f0",
+      "source": "bfv_server_return_word_0049a8c0"
+    },
+    {
+      "entry": "0049a8d0",
+      "original": "b8c4218f00",
+      "patched": "e92be17900",
+      "replacement": "00c38a00",
+      "source": "bfv_server_return_word_0049a8d0"
+    },
+    {
+      "entry": "0049a8e0",
+      "original": "b8980f8f00",
+      "patched": "e92be17900",
+      "replacement": "00c38a10",
+      "source": "bfv_server_return_word_0049a8e0"
+    },
+    {
+      "entry": "0049a8f0",
+      "original": "b840228f00",
+      "patched": "e92be17900",
+      "replacement": "00c38a20",
+      "source": "bfv_server_return_word_0049a8f0"
+    },
+    {
+      "entry": "0049a900",
+      "original": "b884108f00",
+      "patched": "e92be17900",
+      "replacement": "00c38a30",
+      "source": "bfv_server_return_word_0049a900"
+    },
+    {
+      "entry": "0049a910",
+      "original": "b8c0228f00",
+      "patched": "e92be17900",
+      "replacement": "00c38a40",
+      "source": "bfv_server_return_word_0049a910"
+    },
+    {
+      "entry": "0049a920",
+      "original": "b86c118f00",
+      "patched": "e92be17900",
+      "replacement": "00c38a50",
+      "source": "bfv_server_return_word_0049a920"
+    },
+    {
+      "entry": "0049a930",
+      "original": "b838238f00",
+      "patched": "e92be17900",
+      "replacement": "00c38a60",
+      "source": "bfv_server_return_word_0049a930"
+    },
+    {
+      "entry": "0049a940",
+      "original": "b844128f00",
+      "patched": "e92be17900",
+      "replacement": "00c38a70",
+      "source": "bfv_server_return_word_0049a940"
+    },
+    {
+      "entry": "0049abe0",
+      "original": "b82ccc8e00",
+      "patched": "e99bde7900",
+      "replacement": "00c38a80",
+      "source": "bfv_server_return_word_0049abe0"
+    },
+    {
+      "entry": "0049ac20",
+      "original": "b8f0a88e00",
+      "patched": "e96bde7900",
+      "replacement": "00c38a90",
+      "source": "bfv_server_return_word_0049ac20"
+    },
+    {
+      "entry": "0049acb0",
+      "original": "b874e78e00",
+      "patched": "e9ebdd7900",
+      "replacement": "00c38aa0",
+      "source": "bfv_server_return_word_0049acb0"
+    },
+    {
+      "entry": "0049acf0",
+      "original": "b848e88e00",
+      "patched": "e9bbdd7900",
+      "replacement": "00c38ab0",
+      "source": "bfv_server_return_word_0049acf0"
+    },
+    {
+      "entry": "0049ad30",
+      "original": "b820e98e00",
+      "patched": "e98bdd7900",
+      "replacement": "00c38ac0",
+      "source": "bfv_server_return_word_0049ad30"
+    },
+    {
+      "entry": "0049ae90",
+      "original": "b85cee8e00",
+      "patched": "e93bdc7900",
+      "replacement": "00c38ad0",
+      "source": "bfv_server_return_word_0049ae90"
+    },
+    {
+      "entry": "0049aed0",
+      "original": "b8fc6e8e00",
+      "patched": "e90bdc7900",
+      "replacement": "00c38ae0",
+      "source": "bfv_server_return_word_0049aed0"
+    },
+    {
+      "entry": "0049af10",
+      "original": "b828168f00",
+      "patched": "e9dbdb7900",
+      "replacement": "00c38af0",
+      "source": "bfv_server_return_word_0049af10"
+    },
+    {
+      "entry": "0049af50",
+      "original": "b87ce38e00",
+      "patched": "e9abdb7900",
+      "replacement": "00c38b00",
+      "source": "bfv_server_return_word_0049af50"
+    },
+    {
+      "entry": "0049af90",
+      "original": "b840a98e00",
+      "patched": "e97bdb7900",
+      "replacement": "00c38b10",
+      "source": "bfv_server_return_word_0049af90"
+    },
+    {
+      "entry": "0049afd0",
+      "original": "b8d0e38e00",
+      "patched": "e94bdb7900",
+      "replacement": "00c38b20",
+      "source": "bfv_server_return_word_0049afd0"
+    },
+    {
+      "entry": "0049b010",
+      "original": "b8a8e38e00",
+      "patched": "e91bdb7900",
+      "replacement": "00c38b30",
+      "source": "bfv_server_return_word_0049b010"
+    },
+    {
+      "entry": "0049b050",
+      "original": "b888f18e00",
+      "patched": "e9ebda7900",
+      "replacement": "00c38b40",
+      "source": "bfv_server_return_word_0049b050"
+    },
+    {
+      "entry": "0049b090",
+      "original": "b864a98e00",
+      "patched": "e9bbda7900",
+      "replacement": "00c38b50",
+      "source": "bfv_server_return_word_0049b090"
+    },
+    {
+      "entry": "0049b0d0",
+      "original": "b8fce38e00",
+      "patched": "e98bda7900",
+      "replacement": "00c38b60",
+      "source": "bfv_server_return_word_0049b0d0"
+    },
+    {
+      "entry": "0049b110",
+      "original": "b824e48e00",
+      "patched": "e95bda7900",
+      "replacement": "00c38b70",
+      "source": "bfv_server_return_word_0049b110"
+    },
+    {
+      "entry": "0049b150",
+      "original": "b898f58e00",
+      "patched": "e92bda7900",
+      "replacement": "00c38b80",
+      "source": "bfv_server_return_word_0049b150"
+    },
+    {
+      "entry": "0049b190",
+      "original": "b878f68e00",
+      "patched": "e9fbd97900",
+      "replacement": "00c38b90",
+      "source": "bfv_server_return_word_0049b190"
+    },
+    {
+      "entry": "0049b1d0",
+      "original": "b8d8f78e00",
+      "patched": "e9cbd97900",
+      "replacement": "00c38ba0",
+      "source": "bfv_server_return_word_0049b1d0"
+    },
+    {
+      "entry": "0049b210",
+      "original": "b8fcf88e00",
+      "patched": "e99bd97900",
+      "replacement": "00c38bb0",
+      "source": "bfv_server_return_word_0049b210"
+    },
+    {
+      "entry": "0049b250",
+      "original": "b8e4f98e00",
+      "patched": "e96bd97900",
+      "replacement": "00c38bc0",
+      "source": "bfv_server_return_word_0049b250"
+    },
+    {
+      "entry": "0049b290",
+      "original": "b840fb8e00",
+      "patched": "e93bd97900",
+      "replacement": "00c38bd0",
+      "source": "bfv_server_return_word_0049b290"
+    },
+    {
+      "entry": "0049b2d0",
+      "original": "b8d8fc8e00",
+      "patched": "e90bd97900",
+      "replacement": "00c38be0",
+      "source": "bfv_server_return_word_0049b2d0"
+    },
+    {
+      "entry": "0049b310",
+      "original": "b880fe8e00",
+      "patched": "e9dbd87900",
+      "replacement": "00c38bf0",
+      "source": "bfv_server_return_word_0049b310"
+    },
+    {
+      "entry": "0049b350",
+      "original": "b8a0e68e00",
+      "patched": "e9abd87900",
+      "replacement": "00c38c00",
+      "source": "bfv_server_return_word_0049b350"
+    },
+    {
+      "entry": "0049b390",
+      "original": "b8b8ec8e00",
+      "patched": "e97bd87900",
+      "replacement": "00c38c10",
+      "source": "bfv_server_return_word_0049b390"
+    },
+    {
+      "entry": "0049b3d0",
+      "original": "b8c4e58e00",
+      "patched": "e94bd87900",
+      "replacement": "00c38c20",
+      "source": "bfv_server_return_word_0049b3d0"
+    },
+    {
+      "entry": "0049b410",
+      "original": "b87cf28e00",
+      "patched": "e91bd87900",
+      "replacement": "00c38c30",
+      "source": "bfv_server_return_word_0049b410"
+    },
+    {
+      "entry": "0049b450",
+      "original": "b8bcf48e00",
+      "patched": "e9ebd77900",
+      "replacement": "00c38c40",
+      "source": "bfv_server_return_word_0049b450"
+    },
+    {
+      "entry": "0049b4b0",
+      "original": "b8f8e48e00",
+      "patched": "e99bd77900",
+      "replacement": "00c38c50",
+      "source": "bfv_server_return_word_0049b4b0"
+    },
+    {
+      "entry": "0049b880",
+      "original": "b8e4d18e00",
+      "patched": "e9dbd37900",
+      "replacement": "00c38c60",
+      "source": "bfv_server_return_word_0049b880"
+    },
+    {
+      "entry": "0049b890",
+      "original": "b8d43a8f00",
+      "patched": "e9dbd37900",
+      "replacement": "00c38c70",
+      "source": "bfv_server_return_word_0049b890"
+    },
+    {
+      "entry": "0049b930",
+      "original": "b814d28e00",
+      "patched": "e94bd37900",
+      "replacement": "00c38c80",
+      "source": "bfv_server_return_word_0049b930"
+    },
+    {
+      "entry": "0049b940",
+      "original": "b82c3b8f00",
+      "patched": "e94bd37900",
+      "replacement": "00c38c90",
+      "source": "bfv_server_return_word_0049b940"
+    },
+    {
+      "entry": "0049b9e0",
+      "original": "b844d28e00",
+      "patched": "e9bbd27900",
+      "replacement": "00c38ca0",
+      "source": "bfv_server_return_word_0049b9e0"
+    },
+    {
+      "entry": "0049b9f0",
+      "original": "b8803b8f00",
+      "patched": "e9bbd27900",
+      "replacement": "00c38cb0",
+      "source": "bfv_server_return_word_0049b9f0"
+    },
+    {
+      "entry": "0049bac0",
+      "original": "b890d28e00",
+      "patched": "e9fbd17900",
+      "replacement": "00c38cc0",
+      "source": "bfv_server_return_word_0049bac0"
+    },
+    {
+      "entry": "0049bad0",
+      "original": "b8143c8f00",
+      "patched": "e9fbd17900",
+      "replacement": "00c38cd0",
+      "source": "bfv_server_return_word_0049bad0"
+    },
+    {
+      "entry": "0049bb40",
+      "original": "b8483a8f00",
+      "patched": "e99bd17900",
+      "replacement": "00c38ce0",
+      "source": "bfv_server_return_word_0049bb40"
+    },
+    {
+      "entry": "0049bc40",
+      "original": "b8f8398f00",
+      "patched": "e9abd07900",
+      "replacement": "00c38cf0",
+      "source": "bfv_server_return_word_0049bc40"
+    },
+    {
+      "entry": "0049cdf0",
+      "original": "b8203e8f00",
+      "patched": "e90bbf7900",
+      "replacement": "00c38d00",
+      "source": "bfv_server_return_word_0049cdf0"
+    },
+    {
+      "entry": "0049cec0",
+      "original": "b8903f8f00",
+      "patched": "e94bbe7900",
+      "replacement": "00c38d10",
+      "source": "bfv_server_return_word_0049cec0"
+    },
+    {
+      "entry": "004bfbf0",
+      "original": "b808000000",
+      "patched": "e92b917700",
+      "replacement": "00c38d20",
+      "source": "bfv_server_return_word_004bfbf0"
+    },
+    {
+      "entry": "004bfcb0",
+      "original": "b83c000000",
+      "patched": "e97b907700",
+      "replacement": "00c38d30",
+      "source": "bfv_server_return_word_004bfcb0"
+    },
+    {
+      "entry": "004bfcc0",
+      "original": "b815000000",
+      "patched": "e97b907700",
+      "replacement": "00c38d40",
+      "source": "bfv_server_return_word_004bfcc0"
+    },
+    {
+      "entry": "004bfd90",
+      "original": "b827000000",
+      "patched": "e9bb8f7700",
+      "replacement": "00c38d50",
+      "source": "bfv_server_return_word_004bfd90"
+    },
+    {
+      "entry": "004bfdc0",
+      "original": "b80e000000",
+      "patched": "e99b8f7700",
+      "replacement": "00c38d60",
+      "source": "bfv_server_return_word_004bfdc0"
+    },
+    {
+      "entry": "004bfe30",
+      "original": "b80d000000",
+      "patched": "e93b8f7700",
+      "replacement": "00c38d70",
+      "source": "bfv_server_return_word_004bfe30"
+    },
+    {
+      "entry": "004c0020",
+      "original": "b817000000",
+      "patched": "e95b8d7700",
+      "replacement": "00c38d80",
+      "source": "bfv_server_return_word_004c0020"
+    },
+    {
+      "entry": "004c0350",
+      "original": "b813000000",
+      "patched": "e93b8a7700",
+      "replacement": "00c38d90",
+      "source": "bfv_server_return_word_004c0350"
+    },
+    {
+      "entry": "004c0440",
+      "original": "b814000000",
+      "patched": "e95b897700",
+      "replacement": "00c38da0",
+      "source": "bfv_server_return_word_004c0440"
+    },
+    {
+      "entry": "004c0600",
+      "original": "b81a000000",
+      "patched": "e9ab877700",
+      "replacement": "00c38db0",
+      "source": "bfv_server_return_word_004c0600"
+    },
+    {
+      "entry": "004c06b0",
+      "original": "b81b000000",
+      "patched": "e90b877700",
+      "replacement": "00c38dc0",
+      "source": "bfv_server_return_word_004c06b0"
+    },
+    {
+      "entry": "004c0730",
+      "original": "b828000000",
+      "patched": "e99b867700",
+      "replacement": "00c38dd0",
+      "source": "bfv_server_return_word_004c0730"
+    },
+    {
+      "entry": "004c07f0",
+      "original": "b81d000000",
+      "patched": "e9eb857700",
+      "replacement": "00c38de0",
+      "source": "bfv_server_return_word_004c07f0"
+    },
+    {
+      "entry": "004c0860",
+      "original": "b82b000000",
+      "patched": "e98b857700",
+      "replacement": "00c38df0",
+      "source": "bfv_server_return_word_004c0860"
+    },
+    {
+      "entry": "004c0b00",
+      "original": "b806000000",
+      "patched": "e9fb827700",
+      "replacement": "00c38e00",
+      "source": "bfv_server_return_word_004c0b00"
+    },
+    {
+      "entry": "004c0ba0",
+      "original": "b807000000",
+      "patched": "e96b827700",
+      "replacement": "00c38e10",
+      "source": "bfv_server_return_word_004c0ba0"
+    },
+    {
+      "entry": "004c0c20",
+      "original": "b805000000",
+      "patched": "e9fb817700",
+      "replacement": "00c38e20",
+      "source": "bfv_server_return_word_004c0c20"
+    },
+    {
+      "entry": "004c0e20",
+      "original": "b80b000000",
+      "patched": "e90b807700",
+      "replacement": "00c38e30",
+      "source": "bfv_server_return_word_004c0e20"
+    },
+    {
+      "entry": "004c0f40",
+      "original": "b81f000000",
+      "patched": "e9fb7e7700",
+      "replacement": "00c38e40",
+      "source": "bfv_server_return_word_004c0f40"
+    },
+    {
+      "entry": "004c0fd0",
+      "original": "b80c000000",
+      "patched": "e97b7e7700",
+      "replacement": "00c38e50",
+      "source": "bfv_server_return_word_004c0fd0"
+    },
+    {
+      "entry": "004c10e0",
+      "original": "b80f000000",
+      "patched": "e97b7d7700",
+      "replacement": "00c38e60",
+      "source": "bfv_server_return_word_004c10e0"
+    },
+    {
+      "entry": "004c1170",
+      "original": "b811000000",
+      "patched": "e9fb7c7700",
+      "replacement": "00c38e70",
+      "source": "bfv_server_return_word_004c1170"
+    },
+    {
+      "entry": "004c1200",
+      "original": "b81e000000",
+      "patched": "e97b7c7700",
+      "replacement": "00c38e80",
+      "source": "bfv_server_return_word_004c1200"
+    },
+    {
+      "entry": "004c1290",
+      "original": "b823000000",
+      "patched": "e9fb7b7700",
+      "replacement": "00c38e90",
+      "source": "bfv_server_return_word_004c1290"
+    },
+    {
+      "entry": "004c13c0",
+      "original": "b825000000",
+      "patched": "e9db7a7700",
+      "replacement": "00c38ea0",
+      "source": "bfv_server_return_word_004c13c0"
+    },
+    {
+      "entry": "004c14c0",
+      "original": "b82f000000",
+      "patched": "e9eb797700",
+      "replacement": "00c38eb0",
+      "source": "bfv_server_return_word_004c14c0"
+    },
+    {
+      "entry": "004c1550",
+      "original": "b830000000",
+      "patched": "e96b797700",
+      "replacement": "00c38ec0",
+      "source": "bfv_server_return_word_004c1550"
+    },
+    {
+      "entry": "004c15d0",
+      "original": "b831000000",
+      "patched": "e9fb787700",
+      "replacement": "00c38ed0",
+      "source": "bfv_server_return_word_004c15d0"
+    },
+    {
+      "entry": "004c1650",
+      "original": "b832000000",
+      "patched": "e98b787700",
+      "replacement": "00c38ee0",
+      "source": "bfv_server_return_word_004c1650"
+    },
+    {
+      "entry": "004c16e0",
+      "original": "b833000000",
+      "patched": "e90b787700",
+      "replacement": "00c38ef0",
+      "source": "bfv_server_return_word_004c16e0"
+    },
+    {
+      "entry": "004c17f0",
+      "original": "b835000000",
+      "patched": "e90b777700",
+      "replacement": "00c38f00",
+      "source": "bfv_server_return_word_004c17f0"
+    },
+    {
+      "entry": "004c1890",
+      "original": "b836000000",
+      "patched": "e97b767700",
+      "replacement": "00c38f10",
+      "source": "bfv_server_return_word_004c1890"
+    },
+    {
+      "entry": "004c1a20",
+      "original": "b837000000",
+      "patched": "e9fb747700",
+      "replacement": "00c38f20",
+      "source": "bfv_server_return_word_004c1a20"
+    },
+    {
+      "entry": "004c1ab0",
+      "original": "b83b000000",
+      "patched": "e97b747700",
+      "replacement": "00c38f30",
+      "source": "bfv_server_return_word_004c1ab0"
+    },
+    {
+      "entry": "004c1bc0",
+      "original": "b83d000000",
+      "patched": "e97b737700",
+      "replacement": "00c38f40",
+      "source": "bfv_server_return_word_004c1bc0"
+    },
+    {
+      "entry": "004c1cd0",
+      "original": "b812000000",
+      "patched": "e97b727700",
+      "replacement": "00c38f50",
+      "source": "bfv_server_return_word_004c1cd0"
+    },
+    {
+      "entry": "004c1e00",
+      "original": "b83e000000",
+      "patched": "e95b717700",
+      "replacement": "00c38f60",
+      "source": "bfv_server_return_word_004c1e00"
+    },
+    {
+      "entry": "004c20e0",
+      "original": "b818000000",
+      "patched": "e98b6e7700",
+      "replacement": "00c38f70",
+      "source": "bfv_server_return_word_004c20e0"
+    },
+    {
+      "entry": "004c21f0",
+      "original": "b826000000",
+      "patched": "e98b6d7700",
+      "replacement": "00c38f80",
+      "source": "bfv_server_return_word_004c21f0"
+    },
+    {
+      "entry": "004c24f0",
+      "original": "b81c000000",
+      "patched": "e99b6a7700",
+      "replacement": "00c38f90",
+      "source": "bfv_server_return_word_004c24f0"
+    },
+    {
+      "entry": "0057ec20",
+      "original": "b824709000",
+      "patched": "e97ba36b00",
+      "replacement": "00c38fa0",
+      "source": "bfv_server_return_word_0057ec20"
+    },
+    {
+      "entry": "0057ec90",
+      "original": "b898709000",
+      "patched": "e91ba36b00",
+      "replacement": "00c38fb0",
+      "source": "bfv_server_return_word_0057ec90"
+    },
+    {
+      "entry": "0057ed00",
+      "original": "b804719000",
+      "patched": "e9bba26b00",
+      "replacement": "00c38fc0",
+      "source": "bfv_server_return_word_0057ed00"
+    },
+    {
+      "entry": "0057ee30",
+      "original": "b8b4719000",
+      "patched": "e99ba16b00",
+      "replacement": "00c38fd0",
+      "source": "bfv_server_return_word_0057ee30"
+    },
+    {
+      "entry": "0057ee70",
+      "original": "b8cc6f8e00",
+      "patched": "e96ba16b00",
+      "replacement": "00c38fe0",
+      "source": "bfv_server_return_word_0057ee70"
+    },
+    {
+      "entry": "0057eeb0",
+      "original": "b834aa8e00",
+      "patched": "e93ba16b00",
+      "replacement": "00c38ff0",
+      "source": "bfv_server_return_word_0057eeb0"
+    },
+    {
+      "entry": "0057ef20",
+      "original": "b858719000",
+      "patched": "e9dba06b00",
+      "replacement": "00c39000",
+      "source": "bfv_server_return_word_0057ef20"
+    },
+    {
+      "entry": "0057ef30",
+      "original": "b8f8729000",
+      "patched": "e9dba06b00",
+      "replacement": "00c39010",
+      "source": "bfv_server_return_word_0057ef30"
+    },
+    {
+      "entry": "0057f050",
+      "original": "b894729000",
+      "patched": "e9cb9f6b00",
+      "replacement": "00c39020",
+      "source": "bfv_server_return_word_0057f050"
+    },
+    {
+      "entry": "0057f060",
+      "original": "b8d8739000",
+      "patched": "e9cb9f6b00",
+      "replacement": "00c39030",
+      "source": "bfv_server_return_word_0057f060"
+    },
+    {
+      "entry": "0058a710",
+      "original": "b8d0949000",
+      "patched": "e92be96a00",
+      "replacement": "00c39040",
+      "source": "bfv_server_return_word_0058a710"
+    },
+    {
+      "entry": "0058a780",
+      "original": "b878959000",
+      "patched": "e9cbe86a00",
+      "replacement": "00c39050",
+      "source": "bfv_server_return_word_0058a780"
+    },
+    {
+      "entry": "0058a7f0",
+      "original": "b80c969000",
+      "patched": "e96be86a00",
+      "replacement": "00c39060",
+      "source": "bfv_server_return_word_0058a7f0"
+    },
+    {
+      "entry": "0058a860",
+      "original": "b868969000",
+      "patched": "e90be86a00",
+      "replacement": "00c39070",
+      "source": "bfv_server_return_word_0058a860"
+    },
+    {
+      "entry": "0058a8d0",
+      "original": "b8c4969000",
+      "patched": "e9abe76a00",
+      "replacement": "00c39080",
+      "source": "bfv_server_return_word_0058a8d0"
+    },
+    {
+      "entry": "0058a940",
+      "original": "b83c979000",
+      "patched": "e94be76a00",
+      "replacement": "00c39090",
+      "source": "bfv_server_return_word_0058a940"
+    },
+    {
+      "entry": "0058a9b0",
+      "original": "b8bc979000",
+      "patched": "e9ebe66a00",
+      "replacement": "00c390a0",
+      "source": "bfv_server_return_word_0058a9b0"
+    },
+    {
+      "entry": "0058aa20",
+      "original": "b848989000",
+      "patched": "e98be66a00",
+      "replacement": "00c390b0",
+      "source": "bfv_server_return_word_0058aa20"
+    },
+    {
+      "entry": "0058aa90",
+      "original": "b8cc989000",
+      "patched": "e92be66a00",
+      "replacement": "00c390c0",
+      "source": "bfv_server_return_word_0058aa90"
+    },
+    {
+      "entry": "0058ab00",
+      "original": "b850999000",
+      "patched": "e9cbe56a00",
+      "replacement": "00c390d0",
+      "source": "bfv_server_return_word_0058ab00"
+    },
+    {
+      "entry": "0058ab70",
+      "original": "b8d8999000",
+      "patched": "e96be56a00",
+      "replacement": "00c390e0",
+      "source": "bfv_server_return_word_0058ab70"
+    },
+    {
+      "entry": "0058abe0",
+      "original": "b8549a9000",
+      "patched": "e90be56a00",
+      "replacement": "00c390f0",
+      "source": "bfv_server_return_word_0058abe0"
+    },
+    {
+      "entry": "0058ac50",
+      "original": "b8d89a9000",
+      "patched": "e9abe46a00",
+      "replacement": "00c39100",
+      "source": "bfv_server_return_word_0058ac50"
+    },
+    {
+      "entry": "0058acc0",
+      "original": "b8589b9000",
+      "patched": "e94be46a00",
+      "replacement": "00c39110",
+      "source": "bfv_server_return_word_0058acc0"
+    },
+    {
+      "entry": "0058af90",
+      "original": "b8588d8f00",
+      "patched": "e98be16a00",
+      "replacement": "00c39120",
+      "source": "bfv_server_return_word_0058af90"
+    },
+    {
+      "entry": "0058afa0",
+      "original": "b8b4a59000",
+      "patched": "e98be16a00",
+      "replacement": "00c39130",
+      "source": "bfv_server_return_word_0058afa0"
+    },
+    {
+      "entry": "0058afb0",
+      "original": "b808be8f00",
+      "patched": "e98be16a00",
+      "replacement": "00c39140",
+      "source": "bfv_server_return_word_0058afb0"
+    },
+    {
+      "entry": "0058afc0",
+      "original": "b84c8c9000",
+      "patched": "e98be16a00",
+      "replacement": "00c39150",
+      "source": "bfv_server_return_word_0058afc0"
+    },
+    {
+      "entry": "0058afd0",
+      "original": "b810909000",
+      "patched": "e98be16a00",
+      "replacement": "00c39160",
+      "source": "bfv_server_return_word_0058afd0"
+    },
+    {
+      "entry": "0058afe0",
+      "original": "b848909000",
+      "patched": "e98be16a00",
+      "replacement": "00c39170",
+      "source": "bfv_server_return_word_0058afe0"
+    },
+    {
+      "entry": "0058aff0",
+      "original": "b8aca79000",
+      "patched": "e98be16a00",
+      "replacement": "00c39180",
+      "source": "bfv_server_return_word_0058aff0"
+    },
+    {
+      "entry": "0058b000",
+      "original": "b838be8f00",
+      "patched": "e98be16a00",
+      "replacement": "00c39190",
+      "source": "bfv_server_return_word_0058b000"
+    },
+    {
+      "entry": "0058b010",
+      "original": "b808919000",
+      "patched": "e98be16a00",
+      "replacement": "00c391a0",
+      "source": "bfv_server_return_word_0058b010"
+    },
+    {
+      "entry": "0058b020",
+      "original": "b8c8919000",
+      "patched": "e98be16a00",
+      "replacement": "00c391b0",
+      "source": "bfv_server_return_word_0058b020"
+    },
+    {
+      "entry": "0058b030",
+      "original": "b8e8a89000",
+      "patched": "e98be16a00",
+      "replacement": "00c391c0",
+      "source": "bfv_server_return_word_0058b030"
+    },
+    {
+      "entry": "0058b070",
+      "original": "b888a99000",
+      "patched": "e95be16a00",
+      "replacement": "00c391d0",
+      "source": "bfv_server_return_word_0058b070"
+    },
+    {
+      "entry": "0058b0b0",
+      "original": "b8408f9000",
+      "patched": "e92be16a00",
+      "replacement": "00c391e0",
+      "source": "bfv_server_return_word_0058b0b0"
+    },
+    {
+      "entry": "0058b0f0",
+      "original": "b8788f9000",
+      "patched": "e9fbe06a00",
+      "replacement": "00c391f0",
+      "source": "bfv_server_return_word_0058b0f0"
+    },
+    {
+      "entry": "0058b130",
+      "original": "b8288d8f00",
+      "patched": "e9cbe06a00",
+      "replacement": "00c39200",
+      "source": "bfv_server_return_word_0058b130"
+    },
+    {
+      "entry": "0058b4b0",
+      "original": "b85cb09000",
+      "patched": "e95bdd6a00",
+      "replacement": "00c39210",
+      "source": "bfv_server_return_word_0058b4b0"
+    },
+    {
+      "entry": "00596af0",
+      "original": "b814f49000",
+      "patched": "e92b276a00",
+      "replacement": "00c39220",
+      "source": "bfv_server_return_word_00596af0"
+    },
+    {
+      "entry": "00596bd0",
+      "original": "b884f49000",
+      "patched": "e95b266a00",
+      "replacement": "00c39230",
+      "source": "bfv_server_return_word_00596bd0"
+    },
+    {
+      "entry": "00596c80",
+      "original": "b8f4f49000",
+      "patched": "e9bb256a00",
+      "replacement": "00c39240",
+      "source": "bfv_server_return_word_00596c80"
+    },
+    {
+      "entry": "00596cf0",
+      "original": "b874f59000",
+      "patched": "e95b256a00",
+      "replacement": "00c39250",
+      "source": "bfv_server_return_word_00596cf0"
+    },
+    {
+      "entry": "00596d60",
+      "original": "b8fcf59000",
+      "patched": "e9fb246a00",
+      "replacement": "00c39260",
+      "source": "bfv_server_return_word_00596d60"
+    },
+    {
+      "entry": "00596dd0",
+      "original": "b878f69000",
+      "patched": "e99b246a00",
+      "replacement": "00c39270",
+      "source": "bfv_server_return_word_00596dd0"
+    },
+    {
+      "entry": "00596e40",
+      "original": "b8f8f69000",
+      "patched": "e93b246a00",
+      "replacement": "00c39280",
+      "source": "bfv_server_return_word_00596e40"
+    },
+    {
+      "entry": "00596eb0",
+      "original": "b87cf79000",
+      "patched": "e9db236a00",
+      "replacement": "00c39290",
+      "source": "bfv_server_return_word_00596eb0"
+    },
+    {
+      "entry": "00597010",
+      "original": "b890bb8f00",
+      "patched": "e98b226a00",
+      "replacement": "00c392a0",
+      "source": "bfv_server_return_word_00597010"
+    },
+    {
+      "entry": "00597020",
+      "original": "b8d8f19000",
+      "patched": "e98b226a00",
+      "replacement": "00c392b0",
+      "source": "bfv_server_return_word_00597020"
+    },
+    {
+      "entry": "00597030",
+      "original": "b8b88b9000",
+      "patched": "e98b226a00",
+      "replacement": "00c392c0",
+      "source": "bfv_server_return_word_00597030"
+    },
+    {
+      "entry": "00597040",
+      "original": "b8c88c9000",
+      "patched": "e98b226a00",
+      "replacement": "00c392d0",
+      "source": "bfv_server_return_word_00597040"
+    },
+    {
+      "entry": "00597050",
+      "original": "b8888c9000",
+      "patched": "e98b226a00",
+      "replacement": "00c392e0",
+      "source": "bfv_server_return_word_00597050"
+    },
+    {
+      "entry": "00597480",
+      "original": "b8f8039100",
+      "patched": "e96b1e6a00",
+      "replacement": "00c392f0",
+      "source": "bfv_server_return_word_00597480"
+    },
+    {
+      "entry": "00597560",
+      "original": "b8ac049100",
+      "patched": "e99b1d6a00",
+      "replacement": "00c39300",
+      "source": "bfv_server_return_word_00597560"
+    },
+    {
+      "entry": "00597600",
+      "original": "b854059100",
+      "patched": "e90b1d6a00",
+      "replacement": "00c39310",
+      "source": "bfv_server_return_word_00597600"
+    },
+    {
+      "entry": "005979d0",
+      "original": "b838039100",
+      "patched": "e94b196a00",
+      "replacement": "00c39320",
+      "source": "bfv_server_return_word_005979d0"
+    },
+    {
+      "entry": "00597ab0",
+      "original": "b8a4069100",
+      "patched": "e97b186a00",
+      "replacement": "00c39330",
+      "source": "bfv_server_return_word_00597ab0"
+    },
+    {
+      "entry": "0059ecf0",
+      "original": "b86c369100",
+      "patched": "e94ba66900",
+      "replacement": "00c39340",
+      "source": "bfv_server_return_word_0059ecf0"
+    },
+    {
+      "entry": "0059ed00",
+      "original": "b8dc379100",
+      "patched": "e94ba66900",
+      "replacement": "00c39350",
+      "source": "bfv_server_return_word_0059ed00"
+    },
+    {
+      "entry": "0059ed10",
+      "original": "b8ec369100",
+      "patched": "e94ba66900",
+      "replacement": "00c39360",
+      "source": "bfv_server_return_word_0059ed10"
+    },
+    {
+      "entry": "0059ed20",
+      "original": "b858389100",
+      "patched": "e94ba66900",
+      "replacement": "00c39370",
+      "source": "bfv_server_return_word_0059ed20"
+    },
+    {
+      "entry": "0059ed30",
+      "original": "b86c379100",
+      "patched": "e94ba66900",
+      "replacement": "00c39380",
+      "source": "bfv_server_return_word_0059ed30"
+    },
+    {
+      "entry": "0059ed40",
+      "original": "b88c599000",
+      "patched": "e94ba66900",
+      "replacement": "00c39390",
+      "source": "bfv_server_return_word_0059ed40"
+    },
+    {
+      "entry": "0059ed80",
+      "original": "b898349100",
+      "patched": "e91ba66900",
+      "replacement": "00c393a0",
+      "source": "bfv_server_return_word_0059ed80"
+    },
+    {
+      "entry": "0059edc0",
+      "original": "b860359100",
+      "patched": "e9eba56900",
+      "replacement": "00c393b0",
+      "source": "bfv_server_return_word_0059edc0"
+    },
+    {
+      "entry": "0059ee00",
+      "original": "b800359100",
+      "patched": "e9bba56900",
+      "replacement": "00c393c0",
+      "source": "bfv_server_return_word_0059ee00"
+    },
+    {
+      "entry": "0059ee40",
+      "original": "b8c0359100",
+      "patched": "e98ba56900",
+      "replacement": "00c393d0",
+      "source": "bfv_server_return_word_0059ee40"
+    },
+    {
+      "entry": "005a3330",
+      "original": "b893040000",
+      "patched": "e9ab606900",
+      "replacement": "00c393e0",
+      "source": "bfv_server_return_word_005a3330"
+    },
+    {
+      "entry": "005a59a0",
+      "original": "b83f000000",
+      "patched": "e94b3a6900",
+      "replacement": "00c393f0",
+      "source": "bfv_server_return_word_005a59a0"
+    },
+    {
+      "entry": "005a7840",
+      "original": "b8fd190000",
+      "patched": "e9bb1b6900",
+      "replacement": "00c39400",
+      "source": "bfv_server_return_word_005a7840"
+    },
+    {
+      "entry": "005b8c00",
+      "original": "b8705b9100",
+      "patched": "e90b086800",
+      "replacement": "00c39410",
+      "source": "bfv_server_return_word_005b8c00"
+    },
+    {
+      "entry": "005b8c70",
+      "original": "b8e85b9100",
+      "patched": "e9ab076800",
+      "replacement": "00c39420",
+      "source": "bfv_server_return_word_005b8c70"
+    },
+    {
+      "entry": "005b8ce0",
+      "original": "b8605c9100",
+      "patched": "e94b076800",
+      "replacement": "00c39430",
+      "source": "bfv_server_return_word_005b8ce0"
+    },
+    {
+      "entry": "005b8d60",
+      "original": "b8e85c9100",
+      "patched": "e9db066800",
+      "replacement": "00c39440",
+      "source": "bfv_server_return_word_005b8d60"
+    },
+    {
+      "entry": "005b8dd0",
+      "original": "b8705d9100",
+      "patched": "e97b066800",
+      "replacement": "00c39450",
+      "source": "bfv_server_return_word_005b8dd0"
+    },
+    {
+      "entry": "005b8e40",
+      "original": "b8f05d9100",
+      "patched": "e91b066800",
+      "replacement": "00c39460",
+      "source": "bfv_server_return_word_005b8e40"
+    },
+    {
+      "entry": "005b8ff0",
+      "original": "b8c8569000",
+      "patched": "e97b046800",
+      "replacement": "00c39470",
+      "source": "bfv_server_return_word_005b8ff0"
+    },
+    {
+      "entry": "005b9030",
+      "original": "b80ca88f00",
+      "patched": "e94b046800",
+      "replacement": "00c39480",
+      "source": "bfv_server_return_word_005b9030"
+    },
+    {
+      "entry": "005b9070",
+      "original": "b828599000",
+      "patched": "e91b046800",
+      "replacement": "00c39490",
+      "source": "bfv_server_return_word_005b9070"
+    },
+    {
+      "entry": "005b90b0",
+      "original": "b8bc599000",
+      "patched": "e9eb036800",
+      "replacement": "00c394a0",
+      "source": "bfv_server_return_word_005b90b0"
+    },
+    {
+      "entry": "005b90f0",
+      "original": "b8cca98f00",
+      "patched": "e9bb036800",
+      "replacement": "00c394b0",
+      "source": "bfv_server_return_word_005b90f0"
+    },
+    {
+      "entry": "005b9130",
+      "original": "b864aa8e00",
+      "patched": "e98b036800",
+      "replacement": "00c394c0",
+      "source": "bfv_server_return_word_005b9130"
+    },
+    {
+      "entry": "005b9260",
+      "original": "b820669100",
+      "patched": "e96b026800",
+      "replacement": "00c394d0",
+      "source": "bfv_server_return_word_005b9260"
+    },
+    {
+      "entry": "005b9270",
+      "original": "b810679100",
+      "patched": "e96b026800",
+      "replacement": "00c394e0",
+      "source": "bfv_server_return_word_005b9270"
+    },
+    {
+      "entry": "005bd9b0",
+      "original": "b83c819100",
+      "patched": "e93bbb6700",
+      "replacement": "00c394f0",
+      "source": "bfv_server_return_word_005bd9b0"
+    },
+    {
+      "entry": "005bda20",
+      "original": "b8c0819100",
+      "patched": "e9dbba6700",
+      "replacement": "00c39500",
+      "source": "bfv_server_return_word_005bda20"
+    },
+    {
+      "entry": "005bda90",
+      "original": "b844829100",
+      "patched": "e97bba6700",
+      "replacement": "00c39510",
+      "source": "bfv_server_return_word_005bda90"
+    },
+    {
+      "entry": "005bdb00",
+      "original": "b8d4829100",
+      "patched": "e91bba6700",
+      "replacement": "00c39520",
+      "source": "bfv_server_return_word_005bdb00"
+    },
+    {
+      "entry": "005bdb70",
+      "original": "b84c839100",
+      "patched": "e9bbb96700",
+      "replacement": "00c39530",
+      "source": "bfv_server_return_word_005bdb70"
+    },
+    {
+      "entry": "005bdbe0",
+      "original": "b8b8839100",
+      "patched": "e95bb96700",
+      "replacement": "00c39540",
+      "source": "bfv_server_return_word_005bdbe0"
+    },
+    {
+      "entry": "005bdc50",
+      "original": "b82c849100",
+      "patched": "e9fbb86700",
+      "replacement": "00c39550",
+      "source": "bfv_server_return_word_005bdc50"
+    },
+    {
+      "entry": "005bdcc0",
+      "original": "b89c849100",
+      "patched": "e99bb86700",
+      "replacement": "00c39560",
+      "source": "bfv_server_return_word_005bdcc0"
+    },
+    {
+      "entry": "005bdd30",
+      "original": "b810859100",
+      "patched": "e93bb86700",
+      "replacement": "00c39570",
+      "source": "bfv_server_return_word_005bdd30"
+    },
+    {
+      "entry": "005bdda0",
+      "original": "b888859100",
+      "patched": "e9dbb76700",
+      "replacement": "00c39580",
+      "source": "bfv_server_return_word_005bdda0"
+    },
+    {
+      "entry": "005bde10",
+      "original": "b808869100",
+      "patched": "e97bb76700",
+      "replacement": "00c39590",
+      "source": "bfv_server_return_word_005bde10"
+    },
+    {
+      "entry": "005bde80",
+      "original": "b87c869100",
+      "patched": "e91bb76700",
+      "replacement": "00c395a0",
+      "source": "bfv_server_return_word_005bde80"
+    },
+    {
+      "entry": "005be120",
+      "original": "b8dc869100",
+      "patched": "e98bb46700",
+      "replacement": "00c395b0",
+      "source": "bfv_server_return_word_005be120"
+    },
+    {
+      "entry": "005be130",
+      "original": "b81c879100",
+      "patched": "e98bb46700",
+      "replacement": "00c395c0",
+      "source": "bfv_server_return_word_005be130"
+    },
+    {
+      "entry": "005be170",
+      "original": "b81c8f9100",
+      "patched": "e95bb46700",
+      "replacement": "00c395d0",
+      "source": "bfv_server_return_word_005be170"
+    },
+    {
+      "entry": "005be1e0",
+      "original": "b8a8869100",
+      "patched": "e9fbb36700",
+      "replacement": "00c395e0",
+      "source": "bfv_server_return_word_005be1e0"
+    },
+    {
+      "entry": "005be220",
+      "original": "b858879100",
+      "patched": "e9cbb36700",
+      "replacement": "00c395f0",
+      "source": "bfv_server_return_word_005be220"
+    },
+    {
+      "entry": "005be260",
+      "original": "b8e4c38e00",
+      "patched": "e99bb36700",
+      "replacement": "00c39600",
+      "source": "bfv_server_return_word_005be260"
+    },
+    {
+      "entry": "005be2a0",
+      "original": "b8607b9100",
+      "patched": "e96bb36700",
+      "replacement": "00c39610",
+      "source": "bfv_server_return_word_005be2a0"
+    },
+    {
+      "entry": "005be2e0",
+      "original": "b8c07b9100",
+      "patched": "e93bb36700",
+      "replacement": "00c39620",
+      "source": "bfv_server_return_word_005be2e0"
+    },
+    {
+      "entry": "005be320",
+      "original": "b8207c9100",
+      "patched": "e90bb36700",
+      "replacement": "00c39630",
+      "source": "bfv_server_return_word_005be320"
+    },
+    {
+      "entry": "005be360",
+      "original": "b8304c9000",
+      "patched": "e9dbb26700",
+      "replacement": "00c39640",
+      "source": "bfv_server_return_word_005be360"
+    },
+    {
+      "entry": "005be3b0",
+      "original": "b8807c9100",
+      "patched": "e99bb26700",
+      "replacement": "00c39650",
+      "source": "bfv_server_return_word_005be3b0"
+    },
+    {
+      "entry": "005be3f0",
+      "original": "b8988d9100",
+      "patched": "e96bb26700",
+      "replacement": "00c39660",
+      "source": "bfv_server_return_word_005be3f0"
+    },
+    {
+      "entry": "005c73b0",
+      "original": "b800004000",
+      "patched": "e9bb226700",
+      "replacement": "00c39670",
+      "source": "bfv_server_return_word_005c73b0"
+    },
+    {
+      "entry": "00601c40",
+      "original": "b844039200",
+      "patched": "e93b7a6300",
+      "replacement": "00c39680",
+      "source": "bfv_server_return_word_00601c40"
+    },
+    {
+      "entry": "00601cb0",
+      "original": "b8b0039200",
+      "patched": "e9db796300",
+      "replacement": "00c39690",
+      "source": "bfv_server_return_word_00601cb0"
+    },
+    {
+      "entry": "00601d20",
+      "original": "b834049200",
+      "patched": "e97b796300",
+      "replacement": "00c396a0",
+      "source": "bfv_server_return_word_00601d20"
+    },
+    {
+      "entry": "00601d90",
+      "original": "b8a8049200",
+      "patched": "e91b796300",
+      "replacement": "00c396b0",
+      "source": "bfv_server_return_word_00601d90"
+    },
+    {
+      "entry": "00601e00",
+      "original": "b81c059200",
+      "patched": "e9bb786300",
+      "replacement": "00c396c0",
+      "source": "bfv_server_return_word_00601e00"
+    },
+    {
+      "entry": "00601e90",
+      "original": "b88c029200",
+      "patched": "e93b786300",
+      "replacement": "00c396d0",
+      "source": "bfv_server_return_word_00601e90"
+    },
+    {
+      "entry": "00601f00",
+      "original": "b864079200",
+      "patched": "e9db776300",
+      "replacement": "00c396e0",
+      "source": "bfv_server_return_word_00601f00"
+    },
+    {
+      "entry": "00601f40",
+      "original": "b8cc079200",
+      "patched": "e9ab776300",
+      "replacement": "00c396f0",
+      "source": "bfv_server_return_word_00601f40"
+    },
+    {
+      "entry": "00601f80",
+      "original": "b8c0de9100",
+      "patched": "e97b776300",
+      "replacement": "00c39700",
+      "source": "bfv_server_return_word_00601f80"
+    },
+    {
+      "entry": "00601fc0",
+      "original": "b898ce9100",
+      "patched": "e94b776300",
+      "replacement": "00c39710",
+      "source": "bfv_server_return_word_00601fc0"
+    },
+    {
+      "entry": "00602000",
+      "original": "b8acff9100",
+      "patched": "e91b776300",
+      "replacement": "00c39720",
+      "source": "bfv_server_return_word_00602000"
+    },
+    {
+      "entry": "00602070",
+      "original": "b8b4099200",
+      "patched": "e9bb766300",
+      "replacement": "00c39730",
+      "source": "bfv_server_return_word_00602070"
+    },
+    {
+      "entry": "00603f50",
+      "original": "b8f81e9200",
+      "patched": "e9eb576300",
+      "replacement": "00c39740",
+      "source": "bfv_server_return_word_00603f50"
+    },
+    {
+      "entry": "00603fc0",
+      "original": "b8701f9200",
+      "patched": "e98b576300",
+      "replacement": "00c39750",
+      "source": "bfv_server_return_word_00603fc0"
+    },
+    {
+      "entry": "00604030",
+      "original": "b8e41f9200",
+      "patched": "e92b576300",
+      "replacement": "00c39760",
+      "source": "bfv_server_return_word_00604030"
+    },
+    {
+      "entry": "006040a0",
+      "original": "b85c209200",
+      "patched": "e9cb566300",
+      "replacement": "00c39770",
+      "source": "bfv_server_return_word_006040a0"
+    },
+    {
+      "entry": "00604110",
+      "original": "b8d8209200",
+      "patched": "e96b566300",
+      "replacement": "00c39780",
+      "source": "bfv_server_return_word_00604110"
+    },
+    {
+      "entry": "00604260",
+      "original": "b8dc239200",
+      "patched": "e92b556300",
+      "replacement": "00c39790",
+      "source": "bfv_server_return_word_00604260"
+    },
+    {
+      "entry": "00604270",
+      "original": "b870fa9100",
+      "patched": "e92b556300",
+      "replacement": "00c397a0",
+      "source": "bfv_server_return_word_00604270"
+    },
+    {
+      "entry": "006042b0",
+      "original": "b8e4f99100",
+      "patched": "e9fb546300",
+      "replacement": "00c397b0",
+      "source": "bfv_server_return_word_006042b0"
+    },
+    {
+      "entry": "006042f0",
+      "original": "b8b8f99100",
+      "patched": "e9cb546300",
+      "replacement": "00c397c0",
+      "source": "bfv_server_return_word_006042f0"
+    },
+    {
+      "entry": "00604330",
+      "original": "b808219200",
+      "patched": "e99b546300",
+      "replacement": "00c397d0",
+      "source": "bfv_server_return_word_00604330"
+    },
+    {
+      "entry": "0060d820",
+      "original": "b8083a9200",
+      "patched": "e9bbbf6200",
+      "replacement": "00c397e0",
+      "source": "bfv_server_return_word_0060d820"
+    },
+    {
+      "entry": "0060d950",
+      "original": "b808419200",
+      "patched": "e99bbe6200",
+      "replacement": "00c397f0",
+      "source": "bfv_server_return_word_0060d950"
+    },
+    {
+      "entry": "0060d960",
+      "original": "b83ce39100",
+      "patched": "e99bbe6200",
+      "replacement": "00c39800",
+      "source": "bfv_server_return_word_0060d960"
+    },
+    {
+      "entry": "0060d980",
+      "original": "b898419200",
+      "patched": "e98bbe6200",
+      "replacement": "00c39810",
+      "source": "bfv_server_return_word_0060d980"
+    },
+    {
+      "entry": "0060d990",
+      "original": "b888019200",
+      "patched": "e98bbe6200",
+      "replacement": "00c39820",
+      "source": "bfv_server_return_word_0060d990"
+    },
+    {
+      "entry": "0060d9a0",
+      "original": "b8b0e29100",
+      "patched": "e98bbe6200",
+      "replacement": "00c39830",
+      "source": "bfv_server_return_word_0060d9a0"
+    },
+    {
+      "entry": "006100b0",
+      "original": "b8f0489200",
+      "patched": "e98b976200",
+      "replacement": "00c39840",
+      "source": "bfv_server_return_word_006100b0"
+    },
+    {
+      "entry": "00610160",
+      "original": "b840489200",
+      "patched": "e9eb966200",
+      "replacement": "00c39850",
+      "source": "bfv_server_return_word_00610160"
+    },
+    {
+      "entry": "006239c0",
+      "original": "b834539200",
+      "patched": "e99b5e6100",
+      "replacement": "00c39860",
+      "source": "bfv_server_return_word_006239c0"
+    },
+    {
+      "entry": "00623a30",
+      "original": "b868539200",
+      "patched": "e93b5e6100",
+      "replacement": "00c39870",
+      "source": "bfv_server_return_word_00623a30"
+    },
+    {
+      "entry": "00623ae0",
+      "original": "b898539200",
+      "patched": "e99b5d6100",
+      "replacement": "00c39880",
+      "source": "bfv_server_return_word_00623ae0"
+    },
+    {
+      "entry": "00623b60",
+      "original": "b8c8539200",
+      "patched": "e92b5d6100",
+      "replacement": "00c39890",
+      "source": "bfv_server_return_word_00623b60"
+    },
+    {
+      "entry": "00623bd0",
+      "original": "b8f8539200",
+      "patched": "e9cb5c6100",
+      "replacement": "00c398a0",
+      "source": "bfv_server_return_word_00623bd0"
+    },
+    {
+      "entry": "00623c80",
+      "original": "b828549200",
+      "patched": "e92b5c6100",
+      "replacement": "00c398b0",
+      "source": "bfv_server_return_word_00623c80"
+    },
+    {
+      "entry": "00623d30",
+      "original": "b858549200",
+      "patched": "e98b5b6100",
+      "replacement": "00c398c0",
+      "source": "bfv_server_return_word_00623d30"
+    },
+    {
+      "entry": "0062b480",
+      "original": "b8c05f9200",
+      "patched": "e94be46000",
+      "replacement": "00c398d0",
+      "source": "bfv_server_return_word_0062b480"
+    },
+    {
+      "entry": "0062b490",
+      "original": "b8a05f9200",
+      "patched": "e94be46000",
+      "replacement": "00c398e0",
+      "source": "bfv_server_return_word_0062b490"
+    },
+    {
+      "entry": "0062b540",
+      "original": "b800609200",
+      "patched": "e9abe36000",
+      "replacement": "00c398f0",
+      "source": "bfv_server_return_word_0062b540"
+    },
+    {
+      "entry": "0062b5b0",
+      "original": "b85c609200",
+      "patched": "e94be36000",
+      "replacement": "00c39900",
+      "source": "bfv_server_return_word_0062b5b0"
+    },
+    {
+      "entry": "0062d040",
+      "original": "b81c619200",
+      "patched": "e9cbc86000",
+      "replacement": "00c39910",
+      "source": "bfv_server_return_word_0062d040"
+    },
+    {
+      "entry": "0062d050",
+      "original": "b840619200",
+      "patched": "e9cbc86000",
+      "replacement": "00c39920",
+      "source": "bfv_server_return_word_0062d050"
+    },
+    {
+      "entry": "00653940",
+      "original": "b8ac869200",
+      "patched": "e9eb5f5e00",
+      "replacement": "00c39930",
+      "source": "bfv_server_return_word_00653940"
+    },
+    {
+      "entry": "006539b0",
+      "original": "b80c879200",
+      "patched": "e98b5f5e00",
+      "replacement": "00c39940",
+      "source": "bfv_server_return_word_006539b0"
+    },
+    {
+      "entry": "00653a20",
+      "original": "b86c879200",
+      "patched": "e92b5f5e00",
+      "replacement": "00c39950",
+      "source": "bfv_server_return_word_00653a20"
+    },
+    {
+      "entry": "00653a90",
+      "original": "b8c4879200",
+      "patched": "e9cb5e5e00",
+      "replacement": "00c39960",
+      "source": "bfv_server_return_word_00653a90"
+    },
+    {
+      "entry": "00653b60",
+      "original": "b884889200",
+      "patched": "e90b5e5e00",
+      "replacement": "00c39970",
+      "source": "bfv_server_return_word_00653b60"
+    },
+    {
+      "entry": "00653e30",
+      "original": "b824889200",
+      "patched": "e94b5b5e00",
+      "replacement": "00c39980",
+      "source": "bfv_server_return_word_00653e30"
+    },
+    {
+      "entry": "00653e40",
+      "original": "b8ec889200",
+      "patched": "e94b5b5e00",
+      "replacement": "00c39990",
+      "source": "bfv_server_return_word_00653e40"
+    },
+    {
+      "entry": "00653e50",
+      "original": "b87c929200",
+      "patched": "e94b5b5e00",
+      "replacement": "00c399a0",
+      "source": "bfv_server_return_word_00653e50"
+    },
+    {
+      "entry": "00653e90",
+      "original": "b8dc929200",
+      "patched": "e91b5b5e00",
+      "replacement": "00c399b0",
+      "source": "bfv_server_return_word_00653e90"
+    },
+    {
+      "entry": "00653ed0",
+      "original": "b8388f9200",
+      "patched": "e9eb5a5e00",
+      "replacement": "00c399c0",
+      "source": "bfv_server_return_word_00653ed0"
+    },
+    {
+      "entry": "00653f10",
+      "original": "b870939200",
+      "patched": "e9bb5a5e00",
+      "replacement": "00c399d0",
+      "source": "bfv_server_return_word_00653f10"
+    },
+    {
+      "entry": "00653f50",
+      "original": "b8ac909200",
+      "patched": "e98b5a5e00",
+      "replacement": "00c399e0",
+      "source": "bfv_server_return_word_00653f50"
+    },
+    {
+      "entry": "00653f90",
+      "original": "b804949200",
+      "patched": "e95b5a5e00",
+      "replacement": "00c399f0",
+      "source": "bfv_server_return_word_00653f90"
+    },
+    {
+      "entry": "00653fd0",
+      "original": "b888919200",
+      "patched": "e92b5a5e00",
+      "replacement": "00c39a00",
+      "source": "bfv_server_return_word_00653fd0"
+    },
+    {
+      "entry": "00654610",
+      "original": "b85c829200",
+      "patched": "e9fb535e00",
+      "replacement": "00c39a10",
+      "source": "bfv_server_return_word_00654610"
+    },
+    {
+      "entry": "00654620",
+      "original": "b8f89c9200",
+      "patched": "e9fb535e00",
+      "replacement": "00c39a20",
+      "source": "bfv_server_return_word_00654620"
+    },
+    {
+      "entry": "006546c0",
+      "original": "b890829200",
+      "patched": "e96b535e00",
+      "replacement": "00c39a30",
+      "source": "bfv_server_return_word_006546c0"
+    },
+    {
+      "entry": "006546d0",
+      "original": "b8c89d9200",
+      "patched": "e96b535e00",
+      "replacement": "00c39a40",
+      "source": "bfv_server_return_word_006546d0"
+    },
+    {
+      "entry": "00654990",
+      "original": "b88c8c9200",
+      "patched": "e9bb505e00",
+      "replacement": "00c39a50",
+      "source": "bfv_server_return_word_00654990"
+    },
+    {
+      "entry": "006549a0",
+      "original": "b86c9f9200",
+      "patched": "e9bb505e00",
+      "replacement": "00c39a60",
+      "source": "bfv_server_return_word_006549a0"
+    },
+    {
+      "entry": "00654aa0",
+      "original": "b82c8c9200",
+      "patched": "e9cb4f5e00",
+      "replacement": "00c39a70",
+      "source": "bfv_server_return_word_00654aa0"
+    },
+    {
+      "entry": "00654ab0",
+      "original": "b828a09200",
+      "patched": "e9cb4f5e00",
+      "replacement": "00c39a80",
+      "source": "bfv_server_return_word_00654ab0"
+    },
+    {
+      "entry": "00654b50",
+      "original": "b804000000",
+      "patched": "e93b4f5e00",
+      "replacement": "00c39a90",
+      "source": "bfv_server_return_word_00654b50"
+    },
+    {
+      "entry": "00654d50",
+      "original": "b85c899200",
+      "patched": "e94b4d5e00",
+      "replacement": "00c39aa0",
+      "source": "bfv_server_return_word_00654d50"
+    },
+    {
+      "entry": "00654df0",
+      "original": "b818a39200",
+      "patched": "e9bb4c5e00",
+      "replacement": "00c39ab0",
+      "source": "bfv_server_return_word_00654df0"
+    },
+    {
+      "entry": "00654f20",
+      "original": "b802000000",
+      "patched": "e99b4b5e00",
+      "replacement": "00c39ac0",
+      "source": "bfv_server_return_word_00654f20"
+    },
+    {
+      "entry": "0065a890",
+      "original": "b834829200",
+      "patched": "e93bf25d00",
+      "replacement": "00c39ad0",
+      "source": "bfv_server_return_word_0065a890"
+    },
+    {
+      "entry": "0065a8a0",
+      "original": "b834af9200",
+      "patched": "e93bf25d00",
+      "replacement": "00c39ae0",
+      "source": "bfv_server_return_word_0065a8a0"
+    },
+    {
+      "entry": "0065af80",
+      "original": "b868949200",
+      "patched": "e96beb5d00",
+      "replacement": "00c39af0",
+      "source": "bfv_server_return_word_0065af80"
+    },
+    {
+      "entry": "0065bc60",
+      "original": "b8cc969200",
+      "patched": "e99bde5d00",
+      "replacement": "00c39b00",
+      "source": "bfv_server_return_word_0065bc60"
+    },
+    {
+      "entry": "0065c470",
+      "original": "b80c979200",
+      "patched": "e99bd65d00",
+      "replacement": "00c39b10",
+      "source": "bfv_server_return_word_0065c470"
+    },
+    {
+      "entry": "0065cbe0",
+      "original": "b84c979200",
+      "patched": "e93bcf5d00",
+      "replacement": "00c39b20",
+      "source": "bfv_server_return_word_0065cbe0"
+    },
+    {
+      "entry": "0065d420",
+      "original": "b890979200",
+      "patched": "e90bc75d00",
+      "replacement": "00c39b30",
+      "source": "bfv_server_return_word_0065d420"
+    },
+    {
+      "entry": "0065db90",
+      "original": "b8e0989200",
+      "patched": "e9abbf5d00",
+      "replacement": "00c39b40",
+      "source": "bfv_server_return_word_0065db90"
+    },
+    {
+      "entry": "0068cd50",
+      "original": "b8c0050000",
+      "patched": "e9fbcd5a00",
+      "replacement": "00c39b50",
+      "source": "bfv_server_return_word_0068cd50"
+    },
+    {
+      "entry": "00707920",
+      "original": "b818579300",
+      "patched": "e93b225300",
+      "replacement": "00c39b60",
+      "source": "bfv_server_return_word_00707920"
+    },
+    {
+      "entry": "00707990",
+      "original": "b87c579300",
+      "patched": "e9db215300",
+      "replacement": "00c39b70",
+      "source": "bfv_server_return_word_00707990"
+    },
+    {
+      "entry": "00707a00",
+      "original": "b8f4579300",
+      "patched": "e97b215300",
+      "replacement": "00c39b80",
+      "source": "bfv_server_return_word_00707a00"
+    },
+    {
+      "entry": "00707a70",
+      "original": "b870589300",
+      "patched": "e91b215300",
+      "replacement": "00c39b90",
+      "source": "bfv_server_return_word_00707a70"
+    },
+    {
+      "entry": "00707ae0",
+      "original": "b8ec589300",
+      "patched": "e9bb205300",
+      "replacement": "00c39ba0",
+      "source": "bfv_server_return_word_00707ae0"
+    },
+    {
+      "entry": "00707b50",
+      "original": "b864599300",
+      "patched": "e95b205300",
+      "replacement": "00c39bb0",
+      "source": "bfv_server_return_word_00707b50"
+    },
+    {
+      "entry": "00707bc0",
+      "original": "b8c4599300",
+      "patched": "e9fb1f5300",
+      "replacement": "00c39bc0",
+      "source": "bfv_server_return_word_00707bc0"
+    },
+    {
+      "entry": "00707c30",
+      "original": "b8245a9300",
+      "patched": "e99b1f5300",
+      "replacement": "00c39bd0",
+      "source": "bfv_server_return_word_00707c30"
+    },
+    {
+      "entry": "00707ca0",
+      "original": "b8885a9300",
+      "patched": "e93b1f5300",
+      "replacement": "00c39be0",
+      "source": "bfv_server_return_word_00707ca0"
+    },
+    {
+      "entry": "00707d10",
+      "original": "b8f05a9300",
+      "patched": "e9db1e5300",
+      "replacement": "00c39bf0",
+      "source": "bfv_server_return_word_00707d10"
+    },
+    {
+      "entry": "00707d80",
+      "original": "b8645b9300",
+      "patched": "e97b1e5300",
+      "replacement": "00c39c00",
+      "source": "bfv_server_return_word_00707d80"
+    },
+    {
+      "entry": "00707df0",
+      "original": "b8d05b9300",
+      "patched": "e91b1e5300",
+      "replacement": "00c39c10",
+      "source": "bfv_server_return_word_00707df0"
+    },
+    {
+      "entry": "00707e60",
+      "original": "b8385c9300",
+      "patched": "e9bb1d5300",
+      "replacement": "00c39c20",
+      "source": "bfv_server_return_word_00707e60"
+    },
+    {
+      "entry": "00707ed0",
+      "original": "b8a85c9300",
+      "patched": "e95b1d5300",
+      "replacement": "00c39c30",
+      "source": "bfv_server_return_word_00707ed0"
+    },
+    {
+      "entry": "00707f40",
+      "original": "b8245d9300",
+      "patched": "e9fb1c5300",
+      "replacement": "00c39c40",
+      "source": "bfv_server_return_word_00707f40"
+    },
+    {
+      "entry": "00707fb0",
+      "original": "b8905d9300",
+      "patched": "e99b1c5300",
+      "replacement": "00c39c50",
+      "source": "bfv_server_return_word_00707fb0"
+    },
+    {
+      "entry": "00708020",
+      "original": "b8f45d9300",
+      "patched": "e93b1c5300",
+      "replacement": "00c39c60",
+      "source": "bfv_server_return_word_00708020"
+    },
+    {
+      "entry": "007086d0",
+      "original": "b8f8849300",
+      "patched": "e99b155300",
+      "replacement": "00c39c70",
+      "source": "bfv_server_return_word_007086d0"
+    },
+    {
+      "entry": "00708710",
+      "original": "b8304c9300",
+      "patched": "e96b155300",
+      "replacement": "00c39c80",
+      "source": "bfv_server_return_word_00708710"
+    },
+    {
+      "entry": "00708750",
+      "original": "b8c84b9300",
+      "patched": "e93b155300",
+      "replacement": "00c39c90",
+      "source": "bfv_server_return_word_00708750"
+    },
+    {
+      "entry": "00708790",
+      "original": "b8984b9300",
+      "patched": "e90b155300",
+      "replacement": "00c39ca0",
+      "source": "bfv_server_return_word_00708790"
+    },
+    {
+      "entry": "007087d0",
+      "original": "b8f84b9300",
+      "patched": "e9db145300",
+      "replacement": "00c39cb0",
+      "source": "bfv_server_return_word_007087d0"
+    },
+    {
+      "entry": "00708810",
+      "original": "b86c4b9300",
+      "patched": "e9ab145300",
+      "replacement": "00c39cc0",
+      "source": "bfv_server_return_word_00708810"
+    },
+    {
+      "entry": "00708850",
+      "original": "b84c449300",
+      "patched": "e97b145300",
+      "replacement": "00c39cd0",
+      "source": "bfv_server_return_word_00708850"
+    },
+    {
+      "entry": "00708890",
+      "original": "b864459300",
+      "patched": "e94b145300",
+      "replacement": "00c39ce0",
+      "source": "bfv_server_return_word_00708890"
+    },
+    {
+      "entry": "007088d0",
+      "original": "b83c459300",
+      "patched": "e91b145300",
+      "replacement": "00c39cf0",
+      "source": "bfv_server_return_word_007088d0"
+    },
+    {
+      "entry": "00708910",
+      "original": "b88c459300",
+      "patched": "e9eb135300",
+      "replacement": "00c39d00",
+      "source": "bfv_server_return_word_00708910"
+    },
+    {
+      "entry": "00708950",
+      "original": "b85c6f9300",
+      "patched": "e9bb135300",
+      "replacement": "00c39d10",
+      "source": "bfv_server_return_word_00708950"
+    },
+    {
+      "entry": "00708990",
+      "original": "b8b8459300",
+      "patched": "e98b135300",
+      "replacement": "00c39d20",
+      "source": "bfv_server_return_word_00708990"
+    },
+    {
+      "entry": "007089d0",
+      "original": "b8e0459300",
+      "patched": "e95b135300",
+      "replacement": "00c39d30",
+      "source": "bfv_server_return_word_007089d0"
+    },
+    {
+      "entry": "00708a10",
+      "original": "b8d07b9300",
+      "patched": "e92b135300",
+      "replacement": "00c39d40",
+      "source": "bfv_server_return_word_00708a10"
+    },
+    {
+      "entry": "00708a50",
+      "original": "b8e8449300",
+      "patched": "e9fb125300",
+      "replacement": "00c39d50",
+      "source": "bfv_server_return_word_00708a50"
+    },
+    {
+      "entry": "00708a90",
+      "original": "b814459300",
+      "patched": "e9cb125300",
+      "replacement": "00c39d60",
+      "source": "bfv_server_return_word_00708a90"
+    },
+    {
+      "entry": "00708ad0",
+      "original": "b894449300",
+      "patched": "e99b125300",
+      "replacement": "00c39d70",
+      "source": "bfv_server_return_word_00708ad0"
+    },
+    {
+      "entry": "007210c0",
+      "original": "b800000008",
+      "patched": "e9bb8c5100",
+      "replacement": "00c39d80",
+      "source": "bfv_server_return_word_007210c0"
+    },
+    {
+      "entry": "007416f0",
+      "original": "b829000000",
+      "patched": "e99b864f00",
+      "replacement": "00c39d90",
+      "source": "bfv_server_return_word_007416f0"
+    },
+    {
+      "entry": "00774a30",
+      "original": "b803000000",
+      "patched": "e96b534c00",
+      "replacement": "00c39da0",
+      "source": "bfv_server_return_word_00774a30"
+    },
+    {
+      "entry": "00774c20",
+      "original": "b801000000",
+      "patched": "e98b514c00",
+      "replacement": "00c39db0",
+      "source": "bfv_server_return_word_00774c20"
+    },
+    {
+      "entry": "007a2e80",
+      "original": "b80a000000",
+      "patched": "e93b6f4900",
+      "replacement": "00c39dc0",
+      "source": "bfv_server_return_word_007a2e80"
+    },
+    {
+      "entry": "007a4a30",
+      "original": "b809000000",
+      "patched": "e99b534900",
+      "replacement": "00c39dd0",
+      "source": "bfv_server_return_word_007a4a30"
+    },
+    {
+      "entry": "007a6840",
+      "original": "b810000000",
+      "patched": "e99b354900",
+      "replacement": "00c39de0",
+      "source": "bfv_server_return_word_007a6840"
+    },
+    {
+      "entry": "007a69d0",
+      "original": "b820000000",
+      "patched": "e91b344900",
+      "replacement": "00c39df0",
+      "source": "bfv_server_return_word_007a69d0"
+    },
+    {
+      "entry": "007a6e20",
+      "original": "b822000000",
+      "patched": "e9db2f4900",
+      "replacement": "00c39e00",
+      "source": "bfv_server_return_word_007a6e20"
+    },
+    {
+      "entry": "007a80f0",
+      "original": "b819000000",
+      "patched": "e91b1d4900",
+      "replacement": "00c39e10",
+      "source": "bfv_server_return_word_007a80f0"
+    },
+    {
+      "entry": "007abe80",
+      "original": "b821000000",
+      "patched": "e99bdf4800",
+      "replacement": "00c39e20",
+      "source": "bfv_server_return_word_007abe80"
+    },
+    {
+      "entry": "007ae670",
+      "original": "b816000000",
+      "patched": "e9bbb74800",
+      "replacement": "00c39e30",
+      "source": "bfv_server_return_word_007ae670"
     }
   ],
-  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper; remaining engine code/services are retained from the original image; affine matrix composition also compiles from source, replacing a guarded native entry and called directly by reconstructed aiming"
+  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; remaining engine code/services are retained from the original image Audited constant-return entry bodies are compiled from individually editable C; returned original-image addresses retain native data dependencies."
 }
