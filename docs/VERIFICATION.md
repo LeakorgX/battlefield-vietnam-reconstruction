@@ -77,7 +77,8 @@
   callee-preserved registers and FS registration restoration. Simulated faults
   compare handler tables and execute the actual catch funclets, checking release
   and rethrow arguments. Handler thunks forward to a controlled CRT handler.
-  These checks do not establish real Windows exception search/unwind behavior.
+  These emulator checks do not establish real Windows exception search/unwind
+  behavior; the separate live check below validates selected synchronous paths.
   See [VECTORS.md](VECTORS.md).
 
 External virtual methods, event receivers and context/list helper bodies use
@@ -123,6 +124,23 @@ Sanitized observations are in `reports/*/runtime-observation.json`.
 The tested installation contains modified archives and a custom map. This runtime
 sample is not proof of vanilla content equivalence, sustained complete-match
 stability, every AI plan's correctness or all-game compatibility.
+
+## Live Windows vector/exception checks
+
+The current build additionally passed 16 live executions: original and reconstructed
+insertion, four scenarios each, across client and server. This is eight paired
+comparisons and is separate from the 19,226 emulator checks. Normal insertion,
+length errors, protected growth failure and protected in-place filling failure
+matched. Actual native C++ exceptions propagated to an outer frame, failed growth
+released the guard's exact allocation once, and FS linkage was restored.
+
+`verify_live_exceptions.py` uses its own temporary processes with game threads paused
+and controlled fault calls. The actual game heap and C++ runtime execute. It checks
+file hashes, native insertion bytes, immutable payload bytes and patched slots;
+restores temporary call patches; and stops its child afterward. Published reports
+contain no profile data or process logs. See [VECTORS.md](VECTORS.md) for reproduction
+and limits. These checks do not prove sustained matches, asynchronous faults,
+allocator exhaustion, all exception types, vanilla data parity or event lifetime.
 
 ## Decompiler failures
 

@@ -1,0 +1,160 @@
+{
+  "target": "client",
+  "compiled_sha256": "c003b6a0e5ac87f6d68414533682512b37b0a98bf47a9dac4ea949aebe6ab936",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "passed": 8,
+  "scope": "Temporary private Windows process with other game threads paused. Real game C++ runtime, allocation/deallocation, exception dispatch, catch/rethrow and FS restoration. Fault calls redirected only inside the tested insertion function. This does not verify every exception type, asynchronous fault, heap internals or live-match event lifetime.",
+  "cases": [
+    {
+      "implementation": "original",
+      "case": "normal",
+      "thread_exit": "00000001",
+      "status": 1,
+      "caught": false,
+      "exception_code": "00000000",
+      "handler_calls": 0,
+      "phase": 3,
+      "fs_restored": true,
+      "cleanup_calls": 0,
+      "released_new_allocation": false,
+      "size": 4,
+      "capacity": 4,
+      "words": [
+        "00000100",
+        "feedbeef",
+        "feedbeef",
+        "00000101"
+      ]
+    },
+    {
+      "implementation": "original",
+      "case": "length",
+      "thread_exit": "00000002",
+      "status": 2,
+      "caught": true,
+      "exception_code": "e06d7363",
+      "handler_calls": 1,
+      "phase": 1,
+      "fs_restored": true,
+      "cleanup_calls": 0,
+      "released_new_allocation": false,
+      "size": 0,
+      "capacity": 0,
+      "words": []
+    },
+    {
+      "implementation": "original",
+      "case": "growth-fault",
+      "thread_exit": "00000002",
+      "status": 2,
+      "caught": true,
+      "exception_code": "e06d7363",
+      "handler_calls": 1,
+      "phase": 2,
+      "fs_restored": true,
+      "cleanup_calls": 1,
+      "released_new_allocation": true,
+      "size": 2,
+      "capacity": 2,
+      "words": [
+        "00000100",
+        "00000101"
+      ]
+    },
+    {
+      "implementation": "original",
+      "case": "inplace-fault",
+      "thread_exit": "00000002",
+      "status": 2,
+      "caught": true,
+      "exception_code": "e06d7363",
+      "handler_calls": 1,
+      "phase": 2,
+      "fs_restored": true,
+      "cleanup_calls": 0,
+      "released_new_allocation": false,
+      "size": 2,
+      "capacity": 8,
+      "words": [
+        "00000100",
+        "00000101"
+      ]
+    },
+    {
+      "implementation": "reconstructed",
+      "case": "normal",
+      "thread_exit": "00000001",
+      "status": 1,
+      "caught": false,
+      "exception_code": "00000000",
+      "handler_calls": 0,
+      "phase": 3,
+      "fs_restored": true,
+      "cleanup_calls": 0,
+      "released_new_allocation": false,
+      "size": 4,
+      "capacity": 4,
+      "words": [
+        "00000100",
+        "feedbeef",
+        "feedbeef",
+        "00000101"
+      ]
+    },
+    {
+      "implementation": "reconstructed",
+      "case": "length",
+      "thread_exit": "00000002",
+      "status": 2,
+      "caught": true,
+      "exception_code": "e06d7363",
+      "handler_calls": 1,
+      "phase": 1,
+      "fs_restored": true,
+      "cleanup_calls": 0,
+      "released_new_allocation": false,
+      "size": 0,
+      "capacity": 0,
+      "words": []
+    },
+    {
+      "implementation": "reconstructed",
+      "case": "growth-fault",
+      "thread_exit": "00000002",
+      "status": 2,
+      "caught": true,
+      "exception_code": "e06d7363",
+      "handler_calls": 1,
+      "phase": 2,
+      "fs_restored": true,
+      "cleanup_calls": 1,
+      "released_new_allocation": true,
+      "size": 2,
+      "capacity": 2,
+      "words": [
+        "00000100",
+        "00000101"
+      ]
+    },
+    {
+      "implementation": "reconstructed",
+      "case": "inplace-fault",
+      "thread_exit": "00000002",
+      "status": 2,
+      "caught": true,
+      "exception_code": "e06d7363",
+      "handler_calls": 1,
+      "phase": 2,
+      "fs_restored": true,
+      "cleanup_calls": 0,
+      "released_new_allocation": false,
+      "size": 2,
+      "capacity": 8,
+      "words": [
+        "00000100",
+        "00000101"
+      ]
+    }
+  ],
+  "case_pairs": 4
+}

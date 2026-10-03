@@ -69,7 +69,8 @@ object bytes and array words, return values and argument cleanup, untouched
 padding, count signs, byte flags, float/NaN words, reserve/growth branches and
 callback mutations. Most cases control insertion; eight enable the actual helper
 with controlled heap services. These checks do not establish heap internals or
-real Windows exception equivalence.
+all Windows exception paths. The separate live vector probe validates selected
+synchronous C++ cleanup/rethrow paths, as documented in VECTORS.md.
 
 Three callback and three dispatcher cases additionally execute real constructor and
 lookup code with controlled manager services. One of each also executes actual

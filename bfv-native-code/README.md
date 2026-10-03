@@ -99,3 +99,8 @@ with this project.
 For one binary only, add `-Target client` or `-Target server` to `verify.ps1`.
 Focused event checks use `tools/verify_events.py` through `uv` with `pefile` and
 `unicorn`, passing `--game-dir`. The complete verification includes these checks.
+
+The opt-in `tools/verify_live_exceptions.py` check runs original/reconstructed vector
+cases inside temporary Windows client/server processes. It passed 16 live executions
+with actual C++ exception dispatch, cleanup/rethrow and restored FS linkage. See
+[the probe and its limits](../docs/VECTORS.md#live-windows-exception-propagation).
