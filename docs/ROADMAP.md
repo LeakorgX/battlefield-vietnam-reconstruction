@@ -2,7 +2,8 @@
 
 The goal is readable source for the original engine and a standalone source build
 that preserves original behavior. The native mod build is an intermediate tool.
-No estimated completion date or percentage is assigned.
+The [whole-project tracker](PROGRESS.md) counts completed acceptance milestones.
+It does not estimate completion dates or remaining effort.
 
 ## Milestone 0 — establish the reference
 

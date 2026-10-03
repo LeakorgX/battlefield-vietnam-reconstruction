@@ -1,0 +1,9 @@
+[
+  {"id":0,"name":"Original unmodified reference","status":"in_progress","evidence":"Client/server binary hashes recorded; pristine version-matched assets and reproducible full-game reference traces remain unverified."},
+  {"id":1,"name":"Trustworthy interfaces and object layouts","status":"in_progress","evidence":"Function indexes, vtables and selected calling conventions recovered; full engine interfaces, field ownership, globals and indirect calls remain incomplete."},
+  {"id":2,"name":"Complete AI reconstruction","status":"in_progress","evidence":"Selected interpreter, bailout, collision and artillery routines compile from C and pass focused comparisons; scheduling, pathfinding, full target selection, aiming and lifecycle remain native."},
+  {"id":3,"name":"Complete gameplay and physics reconstruction","status":"not_started","evidence":"No complete source-owned gameplay or physics subsystem has been validated against the original."},
+  {"id":4,"name":"Complete multiplayer reconstruction","status":"not_started","evidence":"Original networking remains in the partial builds; source-owned protocol, replication and client/server compatibility are not established."},
+  {"id":5,"name":"Source-owned engine and standalone build","status":"in_progress","evidence":"Replacement C payload builds and executes in original executable copies; startup, rendering, audio, resources and most engine services still require original executable code."},
+  {"id":6,"name":"Verified original-game parity","status":"in_progress","evidence":"Focused original/reconstructed comparisons and live vector exception checks pass; complete vanilla gameplay, physics, AI, rendering, audio and network parity remain unverified."}
+]

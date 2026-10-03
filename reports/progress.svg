@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="366" height="64" role="img" aria-label="Whole-game completion: 0%, 0 of 7 acceptance milestones complete; partial reconstruction underway">
+<rect width="366" height="64" rx="10" fill="#111827"/>
+<text x="16" y="25" fill="#d1d5db" font-family="Arial,sans-serif" font-size="14">WHOLE-GAME COMPLETION</text>
+<text x="350" y="25" text-anchor="end" fill="#34d399" font-family="Arial,sans-serif" font-size="17" font-weight="bold">0%</text>
+<text x="16" y="48" fill="#9ca3af" font-family="Arial,sans-serif" font-size="12">0 / 7 acceptance milestones complete</text>
+<text x="350" y="48" text-anchor="end" fill="#fbbf24" font-family="Arial,sans-serif" font-size="12">IN PROGRESS</text>
+</svg>

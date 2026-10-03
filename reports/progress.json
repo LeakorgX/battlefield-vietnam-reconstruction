@@ -1,0 +1,74 @@
+{
+  "metric": "whole_game_completed_acceptance_milestones",
+  "percent": 0.0,
+  "display_percent": "0%",
+  "completed_milestones": 0,
+  "total_milestones": 7,
+  "milestones": [
+    {
+      "id": 0,
+      "name": "Original unmodified reference",
+      "status": "in_progress",
+      "evidence": "Client/server binary hashes recorded; pristine version-matched assets and reproducible full-game reference traces remain unverified."
+    },
+    {
+      "id": 1,
+      "name": "Trustworthy interfaces and object layouts",
+      "status": "in_progress",
+      "evidence": "Function indexes, vtables and selected calling conventions recovered; full engine interfaces, field ownership, globals and indirect calls remain incomplete."
+    },
+    {
+      "id": 2,
+      "name": "Complete AI reconstruction",
+      "status": "in_progress",
+      "evidence": "Selected interpreter, bailout, collision and artillery routines compile from C and pass focused comparisons; scheduling, pathfinding, full target selection, aiming and lifecycle remain native."
+    },
+    {
+      "id": 3,
+      "name": "Complete gameplay and physics reconstruction",
+      "status": "not_started",
+      "evidence": "No complete source-owned gameplay or physics subsystem has been validated against the original."
+    },
+    {
+      "id": 4,
+      "name": "Complete multiplayer reconstruction",
+      "status": "not_started",
+      "evidence": "Original networking remains in the partial builds; source-owned protocol, replication and client/server compatibility are not established."
+    },
+    {
+      "id": 5,
+      "name": "Source-owned engine and standalone build",
+      "status": "in_progress",
+      "evidence": "Replacement C payload builds and executes in original executable copies; startup, rendering, audio, resources and most engine services still require original executable code."
+    },
+    {
+      "id": 6,
+      "name": "Verified original-game parity",
+      "status": "in_progress",
+      "evidence": "Focused original/reconstructed comparisons and live vector exception checks pass; complete vanilla gameplay, physics, AI, rendering, audio and network parity remain unverified."
+    }
+  ],
+  "definition_of_100_percent": "All seven ROADMAP acceptance milestones complete: trustworthy original reference and interfaces, fully reconstructed AI, gameplay/physics and multiplayer, source-owned engine services and standalone build, and documented original-game parity.",
+  "counting_rule": "Each full-project acceptance milestone counts equally and only when all of its acceptance requirements are met. Partial work is recorded but does not count as a completed milestone.",
+  "limitations": "This is a coarse whole-project acceptance tracker, not an estimate of work already performed or remaining effort. Zero completed milestones does not mean no source has been recovered. Milestones differ in size; partial work cannot support a defensible precise whole-game decompilation percentage.",
+  "source_inventory": {
+    "indexed_functions": 62643,
+    "reconstructed_functions": 40,
+    "partial_functions_excluded": 2,
+    "targets": {
+      "client": {
+        "indexed_functions": 38657,
+        "reconstructed_functions": 20,
+        "partial_functions": 1,
+        "inventory_sha256": "b8d726b10b71f81f486750511420d493bf7f3347bd09f56d5db032a89abd185f"
+      },
+      "server": {
+        "indexed_functions": 23986,
+        "reconstructed_functions": 20,
+        "partial_functions": 1,
+        "inventory_sha256": "ed30f127ac89eb91017c793b6fb0b8dc1960a66356322945074a896a0c274bed"
+      }
+    },
+    "limitations": "Secondary inventory statistics only, not whole-project progress. Native functions differ in complexity, boundaries remain disputed, and original service dependencies remain."
+  }
+}

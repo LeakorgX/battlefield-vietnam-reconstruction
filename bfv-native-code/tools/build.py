@@ -17,7 +17,7 @@ TARGETS = {
         pool=0xe0cd58, trace_index=0xdfa918, trace_mask=0xd1a088, trace_files=0xdfa8f8,
         trace_lines=0xdfa8d8, trace_source=0xbf7e38, context_begin=0x9dce60,
         context_end=0x9dcc10, context_record=0xa64d40, native_bailout=0x984c20,
-        native_vehicle=0x9856f0, artillery=0x9a13a0, artillery_score=0x99f2a0, target_history=0x99f040, target_history_insert=0x99ef80, artillery_component_view=0x49a980, interpreter=0x9be180,
+        native_vehicle=0x9856f0, artillery=0x9a13a0, artillery_score=0x99f2a0, target_history=0x99f040, target_history_insert=0x99ef80, artillery_filter=0x99f6c3, artillery_filter_accept=0x99f7ab, artillery_filter_reject=0x9a0476, artillery_filter_zero=0xb44444, artillery_filter_history_limit=0xbf62e8, artillery_component_view=0x49a980, interpreter=0x9be180,
         bailout_curve=0x9d7200, bailout_score=0x9d6b90,
         bailout_curve_table=0xe0f678, bailout_score_table=0xe0f674, bailout_pattern=0x983280,
         bailout_curve_initializer=0x9d6c20, bailout_score_initializer=0x9d65b0, curve_allocator=0x403610,
@@ -37,7 +37,7 @@ TARGETS = {
         pool=0xc2f7c0, trace_index=0xc1d380, trace_mask=0x934448, trace_files=0xc1d360,
         trace_lines=0xc1d340, trace_source=0x876820, context_begin=0x7b6bd0,
         context_end=0x7b6980, context_record=0x69f0b0, native_bailout=0x72eef0,
-        native_vehicle=0x72f9e0, artillery=0x74bb80, artillery_score=0x749a80, target_history=0x749820, target_history_insert=0x749760, artillery_component_view=0x437e80, interpreter=0x774ff0,
+        native_vehicle=0x72f9e0, artillery=0x74bb80, artillery_score=0x749a80, target_history=0x749820, target_history_insert=0x749760, artillery_filter=0x749ea3, artillery_filter_accept=0x749f8b, artillery_filter_reject=0x74ac56, artillery_filter_zero=0x851bcc, artillery_filter_history_limit=0x8746e8, artillery_component_view=0x437e80, interpreter=0x774ff0,
         bailout_curve=0x78c5f0, bailout_score=0x78bf80,
         bailout_curve_table=0xc31c10, bailout_score_table=0xc31c0c, bailout_pattern=0x72e510,
         bailout_curve_initializer=0x78c010, bailout_score_initializer=0x78b9a0, curve_allocator=0x403d80,
@@ -131,14 +131,16 @@ def build(target):
         struct.pack_into('<I',output,offset,symbols[name])
         patches.append(dict(vtable_slot=f'{location:08x}',original=f'{expected:08x}',replacement=f'{symbols[name]:08x}',source=name))
     entry_patches=[]
-    location=spec['target_history']; offset=pe.get_offset_from_rva(location-pe.OPTIONAL_HEADER.ImageBase)
-    expected=bytes.fromhex('83ec105657')
-    if original[offset:offset+5]!=expected:raise RuntimeError('Target-history entry guard failed')
-    replacement=symbols['bfv_target_history']
-    jump=b'\xe9'+struct.pack('<I',(replacement-location-5)&0xffffffff)
-    output[offset:offset+5]=jump
-    entry_patches.append(dict(entry=f'{location:08x}',original=expected.hex(),patched=jump.hex(),
-                              replacement=f'{replacement:08x}',source='bfv_target_history'))
+    for location,expected,name in [
+        (spec['target_history'],bytes.fromhex('83ec105657'),'bfv_target_history'),
+        (spec['artillery_filter'],bytes.fromhex('8b4424408b4008'),'bfv_artillery_filter_bridge')]:
+        offset=pe.get_offset_from_rva(location-pe.OPTIONAL_HEADER.ImageBase)
+        if original[offset:offset+len(expected)]!=expected:raise RuntimeError(f'Entry guard failed at {location:x}')
+        replacement=symbols[name]
+        jump=b'\xe9'+struct.pack('<I',(replacement-location-5)&0xffffffff)+b'\x90'*(len(expected)-5)
+        output[offset:offset+len(expected)]=jump
+        entry_patches.append(dict(entry=f'{location:08x}',original=expected.hex(),patched=jump.hex(),
+                                  replacement=f'{replacement:08x}',source=name))
     new_pe = pefile.PE(data=bytes(output))
     struct.pack_into('<I',output,pe.OPTIONAL_HEADER.get_field_absolute_offset('CheckSum'),new_pe.generate_checksum())
     destination=GAME/spec['output']
