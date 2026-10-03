@@ -1,14 +1,14 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "029aaab71947f55ae1f58808138e601eedc9f45322141d8a8a803a78b29b7381",
+  "compiled_sha256": "abf290a628baf8350fab6ed1f53c88449c33f7a0f29f000bc006ea951f9be966",
   "passed": 7369,
+  "scope": "Actual original/source scalar/vector math entries without numeric service mocks. Extended returns, memory, ABI, x87 status and retained caller registers across selected exceptional inputs and all supported precision/rounding modes. Unmasked exceptions and complete runtime engine behavior remain unverified.",
   "operation_counts": {
     "float_minimum": 1197,
     "float_maximum": 1197,
     "float_clamp": 399,
     "vector_length": 286,
     "vector_divide": 4290
-  },
-  "scope": "Actual original/source scalar/vector math entries without numeric service mocks. Extended returns, memory, ABI, x87 status and retained caller registers across selected exceptional inputs and all supported precision/rounding modes. Unmasked exceptions and complete runtime engine behavior remain unverified."
+  }
 }

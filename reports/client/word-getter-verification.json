@@ -1,15 +1,15 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "1c3a8ffdc8e1b954a44b8dad8b7a4e3e301f83578c49a3ad39ed3dc0e9ded59b",
+  "compiled_sha256": "220a697a5e2f2bef36989f578000505ce23bc73a40c1b7c3e82ba43de194924e",
   "passed": 4608,
+  "scope": "Original/source getter comparisons cover eight word patterns, six flag/x87 scenarios, four receiver alignments, EAX, stack, preserved integer registers, CPU flags, complete x87 state and exactly one field read without writes or delegated execution. The verifier checks that all compiled getter bodies are byte-identical to the original MOV/RET bodies. The full regression suite passed for this same executable hash.",
   "reconstructed_entries": 96,
   "scenarios_per_entry": 48,
   "compiled_bodies_byte_identical": true,
-  "payload_bytes": 22797,
-  "guarded_entry_replacements": 647,
+  "payload_bytes": 24301,
+  "guarded_entry_replacements": 653,
   "guarded_vtable_replacements": 5,
-  "scope": "Focused original/source getter comparisons: eight word patterns, six flag/x87 scenarios, four receiver alignments, EAX, stack, non-result integer registers, CPU flags, complete x87 state, no writes and no delegated native execution. Separate inspection confirms all source-compiled seven-byte getter bodies are byte-identical to original MOV/RET bodies. The full regression suite completed for this same executable hash; verification-summary.json records its passing totals.",
-  "full_regression_cases": 29779,
+  "full_regression_cases": 34457,
   "full_regression_passed": true
 }

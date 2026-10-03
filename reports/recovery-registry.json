@@ -9300,5 +9300,59 @@
     "addresses": {
       "server": "007a8f10"
     }
+  },
+  {
+    "symbol": "bfv_history_insert",
+    "source": "bfv-native-code/src/history_tree.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0099ef80",
+      "server": "00749760"
+    }
+  },
+  {
+    "symbol": "bfv_history_insert_node",
+    "source": "bfv-native-code/src/history_tree.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0099ed10",
+      "server": "007494f0"
+    }
+  },
+  {
+    "symbol": "bfv_tree_previous",
+    "source": "bfv-native-code/src/history_tree.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0068ee10",
+      "server": "0073f240"
+    }
+  },
+  {
+    "symbol": "bfv_tree_rotate_left",
+    "source": "bfv-native-code/src/history_tree.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00996f10",
+      "server": "005c7460"
+    }
+  },
+  {
+    "symbol": "bfv_tree_rotate_right",
+    "source": "bfv-native-code/src/history_tree.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0066b6c0",
+      "server": "0055c080"
+    }
+  },
+  {
+    "symbol": "bfv_tree_construct",
+    "source": "bfv-native-code/src/history_tree.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00517c10",
+      "server": "007686e0"
+    }
   }
 ]

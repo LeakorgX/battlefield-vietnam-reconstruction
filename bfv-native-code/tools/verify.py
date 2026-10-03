@@ -15,6 +15,7 @@ from verify_vectors import compare_vectors
 from verify_artillery import compare_artillery
 from verify_artillery_cache import compare_artillery_cache
 from verify_target_history import compare_target_history
+from verify_history_tree import compare_history_tree
 from verify_artillery_filter import compare_artillery_filter
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
@@ -102,6 +103,9 @@ def verify(target):
     artillery_cache_comparisons=compare_artillery_cache(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: checking target history',flush=True)
     history_comparisons=compare_target_history(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: checking target-history insertion and balancing',flush=True)
+    tree_comparisons=compare_history_tree(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(tree_comparisons)} history-tree comparisons passed',flush=True)
     print(f'{target}: checking inline artillery candidate filter',flush=True)
     filter_comparisons=compare_artillery_filter(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: checking shared scalar/vector math',flush=True)
@@ -140,6 +144,10 @@ def verify(target):
     report['word_getter_cases']=len(getter_comparisons)
     report['word_getters']=getter_comparisons
     report['passed']+=len(getter_comparisons)
+    report['history_tree_cases']=len(tree_comparisons)
+    report['history_tree']=tree_comparisons
+    report['passed']+=len(tree_comparisons)
+    report['scope']+=' Target-history insertion, duplicate handling, predecessor traversal, node construction and red-black rotations/balancing compared through guarded entries, including timestamp-helper integration. Normal insertion executes the retained protected node allocator with a controlled raw heap; capacity-error tests control native string/exception services and stop at the throw boundary. These checks do not establish real capacity-error unwinding, allocation failure, deletion, concurrent access or full artillery behavior.'
     report['scope']+=' Aiming event routing and angular-range predicate compared with controlled transform/trig services, callback mutations and x87 status; selected cases execute actual original/source matrix composition and retained inverse-sine runtime. Complete aiming/firing behavior remains unverified.'
     report['scope']+=' Affine matrix composition compared without math mocks, including full backing memory, partial/full buffer overlap, ABI, x87 status/control and retained caller values across all supported precision/rounding modes.'
     report['scope']+=' Audited complete constant-return bodies execute actual original/source entries, comparing EAX bits, stack cleanup, all non-result integer registers, CPU flags, complete x87 state and no writes; original-image return values retain data dependencies.'

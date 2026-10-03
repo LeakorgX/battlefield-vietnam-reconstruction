@@ -7,12 +7,18 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current fully regression-tested native build was compared against original instructions. It passed
-   29,779 client checks and 28,195 server checks, 57,974 in total. Each target
-   passed the existing 25,171/24,403 checks plus 4,608/3,792 object-word getter
-   checks. Earlier builds also executed replacement functions in the game, as
+   34,457 client checks and 32,873 server checks, 67,330 in total. This includes
+   4,678 history-tree comparisons per target, alongside the previously recovered
+   logic and accessor checks. Earlier builds also executed replacement functions in the game, as
    recorded below.
 
 ## Current controlled cases
+
+After running the full verifier and `verify_live_exceptions.py` for both targets,
+run `python bfv-native-code/tools/export_reports.py` to refresh the compact public
+reports. It checks executable hashes and totals before writing either target's
+reports, rejecting results from an older build. Full case data stays in the local
+`bfv-native-code/build` folder.
 
 - Object-word getter checks cover 175 entries, eight stored bit patterns, receiver
   alignment and six flag/x87 scenarios (8,400 comparisons total). Compiled getter
@@ -56,7 +62,14 @@
   search and the reconstructed helper through its guarded entry jump. They cover
   unsigned key boundaries, missing/existing records, timestamp initialization,
   output-pointer semantics and callback mutations with controlled heap/insertion
-  services. Tree balancing and candidate decisions remain native.
+  services. Separate tree comparisons execute balancing; candidate decisions remain native.
+- 4,678 history-tree comparisons per target execute insertion, duplicate detection,
+  predecessor traversal, rotations and node construction. They compare complete
+  arena memory and allocations, check red/black invariants, and cover constructor
+  aliasing and timestamp integration. Normal paths run the retained protected
+  allocator with controlled raw heap allocation; capacity-error cases control
+  string/exception services and stop at the throw boundary. Actual capacity-error
+  unwinding, allocation failures and map deletion are not established.
 - 171 first-pass artillery filter comparisons per target execute the original
   inline instructions or the compiled replacement bridge through the same native
   accept/reject continuations. They check identity exclusion, generation handles,
