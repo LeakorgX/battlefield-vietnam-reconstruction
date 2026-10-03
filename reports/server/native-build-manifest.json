@@ -2,9 +2,9 @@
   "target": "server",
   "input_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
   "output": "bfvietnam_w32ded-editable.exe",
-  "output_sha256": "08d8bc845a492d8c64eaf9e33e52387917127c21694c80f988b570a2624ee4da",
+  "output_sha256": "37c530a26ca0d3ba9453bee1c67401689fbc9a9b29708208c6b7191d188413d7",
   "payload_address": "00c37000",
-  "payload_bytes": 4173,
+  "payload_bytes": 5017,
   "symbols": {
     "bfv_interpret": "00c37000",
     "bfv_bailout": "00c37320",
@@ -12,15 +12,17 @@
     "bfv_plan_enabled": "00c374e0",
     "bfv_bailout_rating": "00c37500",
     "bfv_vehicle_rating": "00c37510",
-    "bfv_collision_dispatch": "00c37520",
-    "bfv_collision_notify": "00c37900",
-    "bfv_collision": "00c37960",
-    "bfv_bailout_curve": "00c37ee0",
-    "bfv_bailout_score": "00c37f20",
-    "bfv_vehicle_calls": "00c3803c",
-    "bfv_bailout_calls": "00c38040",
-    "bfv_interpreter_calls": "00c38044",
-    "bfv_collision_calls": "00c38048"
+    "bfv_line_distance_squared": "00c37520",
+    "bfv_collision_distance": "00c37610",
+    "bfv_collision_dispatch": "00c37850",
+    "bfv_collision_notify": "00c37c20",
+    "bfv_collision": "00c37c80",
+    "bfv_bailout_curve": "00c38200",
+    "bfv_bailout_score": "00c38240",
+    "bfv_vehicle_calls": "00c38388",
+    "bfv_bailout_calls": "00c3838c",
+    "bfv_interpreter_calls": "00c38390",
+    "bfv_collision_calls": "00c38394"
   },
   "patches": [
     {
@@ -44,9 +46,9 @@
     {
       "vtable_slot": "008775cc",
       "original": "0078a500",
-      "replacement": "00c37960",
+      "replacement": "00c37c80",
       "source": "bfv_collision"
     }
   ],
-  "scope": "Reconstructed AI interpreter, bailout logic/math and collision callback; remaining engine code/services are retained from the original image"
+  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry; remaining engine code/services are retained from the original image"
 }

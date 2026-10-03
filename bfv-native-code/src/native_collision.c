@@ -4,9 +4,9 @@
  */
 #include <stdint.h>
 #include "target.h"
+#include "collision_geometry.h"
 #define TC __attribute__((thiscall))
 
-typedef struct { uint32_t x, y, z; } vector_bits;
 _Static_assert(sizeof(vector_bits) == 12, "Native vectors contain three words");
 typedef uint32_t (TC *getter)(void *);
 typedef uint32_t (TC *lookup)(void *, uint32_t);
@@ -16,7 +16,6 @@ typedef void (TC *collision_event)(void *, uint32_t, void *, uint32_t);
 typedef long double (TC *clock_value)(void *);
 typedef void *(TC *allocate_event)(void *, uint32_t, uint32_t, uint32_t);
 typedef void *(TC *construct_event)(void *, vector_bits, vector_bits, void *, uint32_t, float, float, uint32_t);
-typedef long double (__attribute__((stdcall)) *collision_distance)(vector_bits, vector_bits, vector_bits);
 
 volatile uint32_t bfv_collision_calls;
 
@@ -68,7 +67,7 @@ void TC __attribute__((noinline)) bfv_collision_dispatch(void *handler, void *me
                     uintptr_t actor_position = get(actor_object, 0x34);
                     vector_bits contact = copy_vector(position);
                     vector_bits candidate = copy_vector(actor_position);
-                    long double distance = ((collision_distance)BFV_COLLISION_DISTANCE)(candidate, origin, contact);
+                    long double distance = bfv_collision_distance(candidate, origin, contact);
                     if (distance < *(volatile float *)BFV_COLLISION_DISTANCE_LIMIT) {
                         uintptr_t component_vtable = read32((uintptr_t)component);
                         uint32_t actor_selector = get(actor, 0xd4);

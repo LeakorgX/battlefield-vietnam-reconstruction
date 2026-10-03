@@ -27,7 +27,7 @@ TARGETS = {
         collision_allocate=0x412ee0, collision_allocator=0xe0f7c0, collision_alloc_source=0xb44284,
         collision_construct=0x9dc3b0, collision_notify=0x9d4b60,
         collision_dispatch=0x9d48b0, collision_notify_state_field=0x1ec,
-        collision_distance=0x9d46d0, collision_distance_limit=0xb76560,
+        collision_line_distance=0x9d4640, collision_distance=0x9d46d0, collision_distance_limit=0xb76560,
         patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle'),(0xbf8c64,0x9d4ba0,'bfv_collision')]),
     'server': dict(file='bfvietnam_w32ded.exe', output='bfvietnam_w32ded-editable.exe',
         sha='86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d',
@@ -44,7 +44,7 @@ TARGETS = {
         collision_allocate=0x404290, collision_allocator=0xc33388, collision_alloc_source=0x807375,
         collision_construct=0x7ae550, collision_notify=0x78a4c0,
         collision_dispatch=0x78a210, collision_notify_state_field=0x1c0,
-        collision_distance=0x78a030, collision_distance_limit=0x81facc,
+        collision_line_distance=0x789fa0, collision_distance=0x78a030, collision_distance_limit=0x81facc,
         patches=[(0x87681c,0x774ff0,'bfv_interpret'),(0x873d88,0x72eef0,'bfv_bailout'),(0x873e28,0x72f9e0,'bfv_vehicle'),(0x8775cc,0x78a500,'bfv_collision')]),
 }
 
@@ -134,7 +134,7 @@ def build(target):
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
         payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,
-        scope='Reconstructed AI interpreter, bailout logic/math and collision callback; remaining engine code/services are retained from the original image')
+        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded replacements')
 

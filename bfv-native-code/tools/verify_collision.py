@@ -25,7 +25,8 @@ def compare_dispatcher(original, original_pe, edited, edited_pe, spec, symbols):
     results = []
     for case in dispatcher_cases():
         a = run_dispatcher(original, original_pe, spec['collision_dispatch'], spec, case)
-        b = run_dispatcher(edited, edited_pe, symbols['bfv_collision_dispatch'], spec, case)
+        b = run_dispatcher(edited, edited_pe, symbols['bfv_collision_dispatch'], spec, case,
+                           distance_entry=symbols['bfv_collision_distance'])
         assert a == b, (case, a, b)
         results.append(dict(inputs=case, **a))
     return results

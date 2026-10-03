@@ -7,7 +7,7 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   6,703 scoped checks per target, 13,406 in total. Earlier builds also executed
+   8,849 scoped checks per target, 17,698 in total. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
@@ -45,11 +45,19 @@
   cleanup. Callback comparisons also execute the original notification helper in
   the reference run rather than replacing it with a stub. Both callback/helper
   runs execute their dispatcher with an empty actor list.
-- 135 direct dispatcher comparisons per target check repeated selector reads,
+- 145 direct dispatcher comparisons per target check repeated selector reads,
   low-byte state predicates, handle generations, absent entities, live count
   changes, distance threshold equality/NaNs, allocation failure, full flag words,
-  vector mutations, call order and 20-byte argument cleanup. Geometry and event
-  services are controlled; the distance algorithm itself remains native.
+  vector mutations, call order and 20-byte argument cleanup. Ten cases execute
+  the original/reconstructed distance calculation, including a changing actor list
+  and vector mutations; the remaining cases control the geometry result. Event
+  services remain controlled.
+- 2,136 geometry comparisons per target check the full 80-bit result, 36-byte
+  argument cleanup, empty x87 stack and preserved control word. Both line-distance
+  squared and planar segment distance run under all four rounding directions and
+  three precision modes. Inputs cover endpoints, interior projections, zero-length
+  segments, random vectors, float32 extremes, subnormals, infinities, signed zeros
+  and selected NaN payloads. See [GEOMETRY.md](GEOMETRY.md).
 
 External virtual methods, event receivers and context/list helper bodies use
 controlled fixtures. Original and reconstructed interpreter instructions receive
