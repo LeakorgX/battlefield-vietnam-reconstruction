@@ -116,6 +116,42 @@ Candidate search is checked for argument and exact 80-bit result forwarding only
 uv run --with pefile --with unicorn python bfv-native-code/tools/verify_artillery_cache.py --game-dir 'D:\Games\Battlefield Vietnam' --target both
 ```
 
+## Target history
+
+`src/target_history.c` reconstructs the timestamp lookup used by both candidate
+passes. It searches the existing red/black map with unsigned handle comparisons.
+An exact match returns the stored float pointer. A missing key allocates four
+bytes, initializes the float to -10000, and passes the handle/pointer pair to native
+insertion. The helper returns its allocation even if insertion reports a duplicate;
+substituting the existing value or silently freeing the allocation would change
+original behavior.
+
+The map is embedded at behavior offset `0x38`, with its header pointer at `0x3c`.
+Node links are left/parent/right at offsets `0/4/8`, key at `12`, float pointer at
+`16`, and sentinel flag at `21`. The native helper addresses are `0099f040` for
+client and `00749820` for server. Native insertion remains at `0099ef80` and
+`00749760`, respectively. The map must already be initialized by native lifecycle
+code; this reconstruction does not add new null guards.
+
+The builder now supports the required nonvirtual replacement: a guarded five-byte
+jump at the original helper entry. It checks the complete original binary hash and
+entry bytes, and records the exact jump and target in `entry_patches` in the build
+manifest. Original instructions are skipped; compiled C consumes the same four
+argument bytes and returns a pointer through EAX. Both native candidate passes
+therefore use this source-owned helper, while their broader filtering/scoring
+control flow remains native. Live validation checks that this jump is loaded.
+
+432 focused comparisons per target execute the original tree traversal and the
+new helper through that jump. Inputs include empty, balanced and skewed trees,
+unsigned handle boundaries, duplicate keys, existing timestamps, and callback
+changes to the header/timestamp and insertion-result flag. Allocation and insertion
+are controlled services; balancing, allocation failure, concurrent map access and
+complete candidate-search decisions are not established by these tests.
+
+```powershell
+uv run --with pefile --with unicorn python bfv-native-code/tools/verify_target_history.py --game-dir 'D:\Games\Battlefield Vietnam' --target both
+```
+
 ## Remaining work
 
 Recover the large target evaluator's boundaries, arguments, candidate filtering,
@@ -147,3 +183,11 @@ expressions. A successful export is not verified reconstructed source.
 For the server use the corresponding project and `bfvietnam_w32ded.exe`. Keep the
 exported native bodies local. Use instructions and differential/runtime evidence
 to reconstruct the remaining candidate search rather than compiling the export.
+
+The diagnostic additionally repairs two missing continuations after heap release.
+The original function body excluded 31 executable bytes and falsely exited during
+stale-target cleanup or candidate-buffer release. The script checks the release
+calls and final `RET 0x14`, clears their erroneous flow overrides, disassembles the
+continuations, and restores the verified 8,269-byte interval. Both binaries passed
+these guards and decompiled successfully. Counts are published in
+`reports/*/artillery-body-recovery.tsv`; the native bodies remain local research.
