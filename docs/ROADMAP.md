@@ -31,7 +31,8 @@ guessed stack cleanup, invented layouts or silently missing dependencies.
 - Broaden interpreter verification to real native callbacks and full lifecycle.
 - Reconstruct scheduling and behavior selection, plan implementations, pathfinding,
   strategic state, target selection, weapon use and vehicle control.
-- Artillery driver rating routing and its component predicate now compile from C.
+- Artillery driver rating routing, its component predicate and cached-target
+  validation now compile from C.
   Recover artillery target selection, aiming, trajectory/drop handling, firing
   conditions and entry/exit behavior from actual code and traces.
 - Recover bailout table initialization and replace vehicle candidate evaluation

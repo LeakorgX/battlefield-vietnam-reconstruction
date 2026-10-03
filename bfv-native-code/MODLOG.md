@@ -66,3 +66,22 @@ The final five-replacement build passed all 22,298 emulator checks across both
 targets and the 16 real Windows vector/exception executions. Verification tools
 now print each subsystem as it starts, so long comparisons show their current
 stage. No artillery live-match behavior has been claimed.
+
+## Artillery cached-target evaluation
+
+The driver now calls source-owned cached-target validation before delegating only
+nonzero low-byte recomputation to the native candidate search. Pattern rejection,
+target generation checks, missing-target reset, cache/flag writes and cached-rating
+submission are reconstructed. The selected vtable is retained across the index
+callback exactly as in the original. The native search's x87 result is not rounded
+through a float/double intermediate.
+
+Focused tests passed 700 evaluator cases plus eight driver/evaluator integrations
+per target. Driver-only tests continue to control their evaluator interface.
+A Ghidra diagnostic corrects the verified argument locations, ST0 return storage,
+and false allocator/release no-return declarations for local analysis. Updated
+native exports remain unverified research; their bodies are not published.
+
+The final build passed 23,714 complete-suite checks across both binaries and
+16 real Windows vector/exception executions. Candidate-search gameplay and
+complete artillery lifecycle remain unreconstructed and unverified.

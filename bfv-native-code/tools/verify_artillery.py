@@ -17,7 +17,7 @@ from native_oracle import load_machine, ARENA, STACK
 
 
 def run_artillery(image, pe, entry, spec, predicate, eligible, recompute,
-                  scale_bits, score, changing, relocate):
+                  scale_bits, score, changing, relocate, scorer_entry=None, real_cache=None):
     m = load_machine(image, pe)
     names = ['bot','bot_vt','behavior','driver','driver_body','driver_vt',
              'entries','entries_vt','gun','component','owner','receiver',
@@ -66,7 +66,21 @@ def run_artillery(image, pe, entry, spec, predicate, eligible, recompute,
     method('view_vt',0x18,'predicate',predicate)
     method('scorer_vt',0x10,'eligible',eligible,4)
     method('fallback_vt',0x24,'fallback',0,12,True)
-    stub('score',0,20,True,spec['artillery_score'])
+    if real_cache is None:
+        stub('score',0,20,True,scorer_entry or spec['artillery_score'])
+    else:
+        assert not changing and not relocate and not (recompute&255)
+        a.update(cache_pattern=ARENA+0x7000,cache_vt=ARENA+0x7100,
+                 cache_ratings=ARENA+0x7200,cache_flags=ARENA+0x7300,cache_targets=ARENA+0x7400)
+        field('cache_pattern',0,'cache_vt');field('scorer',12,'cache_pattern')
+        field('scorer',8,'cache_targets');field('scorer',0x1c,'cache_ratings');field('scorer',0x24,'cache_flags')
+        m.mem_write(a['cache_ratings'],struct.pack('<4f',-11,-22,-33,-44))
+        m.mem_write(a['cache_flags'],b'\x95'*4)
+        w32(a['cache_targets'],real_cache['handle'])
+        method('cache_vt',4,'cache_allowed',real_cache['allowed'],4)
+        method('cache_vt',8,'cache_reset',0,4)
+        method('bot_vt',0x78,'clear_target',0,4)
+        method('bot_vt',0x160,'submit_rating',0,4)
     stop=ARENA+0x6106; result=ARENA+0x6200; trampoline=stop-6
     m.mem_write(trampoline,b'\xd9\x1d'+struct.pack('<I',result)+b'\x90')
     sp=STACK+0x8000
@@ -84,7 +98,9 @@ def run_artillery(image, pe, entry, spec, predicate, eligible, recompute,
         owner={'driver_handle':'bot','entry_id':'bot','selector':'bot',
                'entry_view':'driver_body','gun_handle':'entries','notify':'receiver',
                'base':'notify_owner','convert':'base','predicate':'view',
-               'eligible':'scorer','score':'scorer','fallback':'fallback'}[name]
+               'eligible':'scorer','score':'scorer','fallback':'fallback',
+               'cache_allowed':'cache_pattern','cache_reset':'cache_pattern',
+               'clear_target':'bot','submit_rating':'bot'}[name]
         assert ecx==a[owner],(name,hex(ecx),owner)
         if name=='entry_view':
             output=struct.unpack('<I',uc.mem_read(esp+4,4))[0]
@@ -93,7 +109,7 @@ def run_artillery(image, pe, entry, spec, predicate, eligible, recompute,
             assert struct.unpack('<I',uc.mem_read(output,4))[0]==a['bot']
             uc.mem_write(output,struct.pack('<I',0x13579bdf))
         else:
-            count={'gun_handle':1,'notify':1,'eligible':1,'score':5,'fallback':3}.get(name,0)
+            count={'gun_handle':1,'notify':1,'eligible':1,'score':5,'fallback':3,'cache_allowed':1,'cache_reset':1,'clear_target':1,'submit_rating':1}.get(name,0)
             args=list(struct.unpack('<'+'I'*count,uc.mem_read(esp+4,count*4))) if count else []
         if name=='selector':
             index=selected if changing else 0
@@ -108,14 +124,18 @@ def run_artillery(image, pe, entry, spec, predicate, eligible, recompute,
     assert ['notify',[3]] in calls
     expected=[a['bot'],recompute,scale_bits]
     if predicate & 255:
-        assert ['score',expected+[a['gun'],a['component']]] in calls
+        if real_cache is None:
+            assert ['score',expected+[a['gun'],a['component']]] in calls
+        else:
+            assert ['cache_allowed',[a['bot']]] in calls
         assert ['eligible',[a['bot']]] in calls
         assert not any(x[0]=='fallback' for x in calls)
     else:
         assert ['fallback',expected] in calls
         assert not any(x[0]=='score' for x in calls)
-    assert selected==3
-    return dict(calls=calls,result_bits=bytes(m.mem_read(result,4)).hex(),
+    assert selected==(3 if real_cache is None else 3+(2 if not real_cache['allowed'] else 4 if real_cache['handle']==0x20002 else 3))
+    cache_result={} if real_cache is None else {name:bytes(m.mem_read(a[name],16 if name=='cache_ratings' else 4)).hex() for name in ['cache_ratings','cache_flags']}
+    return dict(**cache_result,calls=calls,result_bits=bytes(m.mem_read(result,4)).hex(),
                 **{name:bytes(m.mem_read(a[name],16 if 'ratings' in name else 4)).hex()
                    for name in ['ratings','flags','alt_ratings','alt_flags']})
 
@@ -127,7 +147,7 @@ def compare_artillery(original, original_pe, edited, edited_pe, spec, symbols):
              (-0.0,1.0000000596046448),(False,True),(False,True)):
         try:
             old=run_artillery(original,original_pe,spec['artillery'],spec,*args)
-            new=run_artillery(edited,edited_pe,symbols['bfv_artillery'],spec,*args)
+            new=run_artillery(edited,edited_pe,symbols['bfv_artillery'],spec,*args,scorer_entry=symbols['bfv_artillery_evaluate'])
             assert old==new,(args,old,new)
         except Exception as error: raise RuntimeError(f'artillery input {args}') from error
         cases.append(dict(inputs=args,**old))

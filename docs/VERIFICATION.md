@@ -7,7 +7,7 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   11,149 scoped checks per target, 22,298 in total. Earlier builds also executed
+   11,857 scoped checks per target, 23,714 in total. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
@@ -20,6 +20,11 @@
   eligibility low bytes, exact call arguments, stack cleanup and table/index
   changes during callbacks. Evaluators and component conversion are controlled
   native dependencies. See [ARTILLERY.md](ARTILLERY.md).
+- 708 artillery evaluator/integration checks per target: 700 cached-target and
+  native-search forwarding cases, plus eight driver cases executing real cached
+  evaluation. They check generation handles, pattern rejection/reset, cache and
+  flag writes, callback/vtable mutations, preserved registers, x87 state and
+  selected rounding/precision modes. Candidate search remains native.
 - 32 cached-bailout comparisons per target checking exact float32 bits.
 - 554 recomputed-bailout comparisons per target checking float32 return/cache bits,
   pattern flags, call ordering, group argument and stack cleanup. They cover

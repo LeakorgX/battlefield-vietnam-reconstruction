@@ -1,0 +1,17 @@
+entry	parameter	storage	type
+0074bb80	this	ECX:4 (auto)	void *
+0074bb80	bot	Stack[0x4]:4	void *
+0074bb80	recompute	Stack[0x8]:4	uint
+0074bb80	scale	Stack[0xc]:4	float
+0074bb80	RETURN	ST0:10	float
+00749a80	behavior	ECX:4	void *
+00749a80	bot	Stack[0x4]:4	void *
+00749a80	recompute	Stack[0x8]:4	uint
+00749a80	scale	Stack[0xc]:4	float
+00749a80	gun	Stack[0x10]:4	void *
+00749a80	driver_component	Stack[0x14]:4	void *
+00749a80	RETURN	ST0:10	float10
+00403d80	bytes	Stack[0x4]:4	uint
+00403d80	RETURN	EAX:4	void *
+00403df0	allocation	Stack[0x4]:4	void *
+00403df0	RETURN	<VOID>	void
