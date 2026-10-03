@@ -7,7 +7,7 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The current native build was compared against original instructions. It passed
-   6,568 scoped checks per target, 13,136 in total. Earlier builds also executed
+   6,703 scoped checks per target, 13,406 in total. Earlier builds also executed
    replacement functions in the game, as recorded below.
 
 ## Current controlled cases
@@ -34,7 +34,7 @@
   argument forwarding and returned float bits. These do not evaluate the real
   vehicle-scoring algorithm on fabricated incomplete objects.
 - 126 collision-callback comparisons per target with controlled registry,
-  allocator, constructor and notification services. Exact receiver/argument bytes,
+  allocator and constructor services. Exact receiver/argument bytes,
   call order, vector/timestamp mutations, record-counter wraparound, state predicates
   and vtable-pointer/slot mutations are checked. Client/server handle-field offsets
   are distinct. See [COLLISION.md](COLLISION.md); real collision-service behavior
@@ -43,7 +43,13 @@
   comparison, upper flag-bit preservation, selectors, callback state mutations,
   the zero-argument position getter, five dispatcher argument words and stack
   cleanup. Callback comparisons also execute the original notification helper in
-  the reference run rather than replacing it with a stub.
+  the reference run rather than replacing it with a stub. Both callback/helper
+  runs execute their dispatcher with an empty actor list.
+- 135 direct dispatcher comparisons per target check repeated selector reads,
+  low-byte state predicates, handle generations, absent entities, live count
+  changes, distance threshold equality/NaNs, allocation failure, full flag words,
+  vector mutations, call order and 20-byte argument cleanup. Geometry and event
+  services are controlled; the distance algorithm itself remains native.
 
 External virtual methods, event receivers and context/list helper bodies use
 controlled fixtures. Original and reconstructed interpreter instructions receive

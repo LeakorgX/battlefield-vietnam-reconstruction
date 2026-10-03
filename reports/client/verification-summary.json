@@ -1,7 +1,7 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "859300edadd2f40d69674ff9cd524d6cef5c551dfef6a23720a84d61590d1130",
+  "compiled_sha256": "fd607044a8c42f64b7d2e16e4cf4b9bef9ba3f2cfadbdd8e3fb6f6c1cd991885",
   "interpreter_cases": 1920,
   "cached_bailout_cases": 32,
   "vehicle_wrapper_cases": 32,
@@ -9,6 +9,7 @@
   "curve_cases": 3840,
   "collision_cases": 126,
   "collision_notify_cases": 64,
-  "passed": 6568,
-  "scope": "Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Table initialization, downstream collision dispatch/event services and vehicle scoring remain native."
+  "collision_dispatch_cases": 135,
+  "passed": 6703,
+  "scope": "Interpreter with controlled methods/context/event helpers. Bailout control flow and reconstructed math compared; object methods controlled. Curves checked at 80-bit precision across rounding/precision modes and synthetic/original-initialized tables. Collision callback and notification helper compared with controlled services, exact call arguments, flag-word preservation, counter wrap and callback mutations. Dispatcher actor filtering, generation checks, dynamic count, strict distance gates and event arguments compared with controlled geometry/event services. Table initialization, geometry/event services and vehicle scoring remain native."
 }

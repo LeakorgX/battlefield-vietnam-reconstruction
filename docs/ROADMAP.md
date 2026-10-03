@@ -86,6 +86,6 @@ evidence. Unresolved differences stay visible in documentation.
 ## Present position
 
 We have partial interface recovery, a compiled AI interpreter, bailout logic/math
-and collision-callback control flow, editable rating
+and collision callback/notification/dispatcher control flow, editable rating
 rules, a build mechanism retaining original engine bytes, controlled comparisons,
 and live execution observations. We have not completed any whole-engine milestone.
