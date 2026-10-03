@@ -17,7 +17,7 @@ TARGETS = {
         pool=0xe0cd58, trace_index=0xdfa918, trace_mask=0xd1a088, trace_files=0xdfa8f8,
         trace_lines=0xdfa8d8, trace_source=0xbf7e38, context_begin=0x9dce60,
         context_end=0x9dcc10, context_record=0xa64d40, native_bailout=0x984c20,
-        native_vehicle=0x9856f0, interpreter=0x9be180,
+        native_vehicle=0x9856f0, artillery=0x9a13a0, artillery_score=0x99f2a0, artillery_component_view=0x49a980, interpreter=0x9be180,
         bailout_curve=0x9d7200, bailout_score=0x9d6b90,
         bailout_curve_table=0xe0f678, bailout_score_table=0xe0f674, bailout_pattern=0x983280,
         bailout_curve_initializer=0x9d6c20, bailout_score_initializer=0x9d65b0, curve_allocator=0x403610,
@@ -31,13 +31,13 @@ TARGETS = {
         collision_event_manager=0xe0eb20, collision_vector_insert=0x428200, collision_construct=0x9dc3b0, collision_notify=0x9d4b60,
         collision_dispatch=0x9d48b0, collision_notify_state_field=0x1ec,
         collision_line_distance=0x9d4640, collision_distance=0x9d46d0, collision_distance_limit=0xb76560,
-        patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle'),(0xbf8c64,0x9d4ba0,'bfv_collision')]),
+        patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle'),(0xbf8c64,0x9d4ba0,'bfv_collision'),(0xbf6378,0x9a13a0,'bfv_artillery')]),
     'server': dict(file='bfvietnam_w32ded.exe', output='bfvietnam_w32ded-editable.exe',
         sha='86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d',
         pool=0xc2f7c0, trace_index=0xc1d380, trace_mask=0x934448, trace_files=0xc1d360,
         trace_lines=0xc1d340, trace_source=0x876820, context_begin=0x7b6bd0,
         context_end=0x7b6980, context_record=0x69f0b0, native_bailout=0x72eef0,
-        native_vehicle=0x72f9e0, interpreter=0x774ff0,
+        native_vehicle=0x72f9e0, artillery=0x74bb80, artillery_score=0x749a80, artillery_component_view=0x437e80, interpreter=0x774ff0,
         bailout_curve=0x78c5f0, bailout_score=0x78bf80,
         bailout_curve_table=0xc31c10, bailout_score_table=0xc31c0c, bailout_pattern=0x72e510,
         bailout_curve_initializer=0x78c010, bailout_score_initializer=0x78b9a0, curve_allocator=0x403d80,
@@ -51,7 +51,7 @@ TARGETS = {
         collision_event_manager=0xc3117c, collision_vector_insert=0x4297c0, collision_construct=0x7ae550, collision_notify=0x78a4c0,
         collision_dispatch=0x78a210, collision_notify_state_field=0x1c0,
         collision_line_distance=0x789fa0, collision_distance=0x78a030, collision_distance_limit=0x81facc,
-        patches=[(0x87681c,0x774ff0,'bfv_interpret'),(0x873d88,0x72eef0,'bfv_bailout'),(0x873e28,0x72f9e0,'bfv_vehicle'),(0x8775cc,0x78a500,'bfv_collision')]),
+        patches=[(0x87681c,0x774ff0,'bfv_interpret'),(0x873d88,0x72eef0,'bfv_bailout'),(0x873e28,0x72f9e0,'bfv_vehicle'),(0x8775cc,0x78a500,'bfv_collision'),(0x874778,0x74bb80,'bfv_artillery')]),
 }
 
 

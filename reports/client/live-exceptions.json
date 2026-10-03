@@ -1,6 +1,6 @@
 {
   "target": "client",
-  "compiled_sha256": "c003b6a0e5ac87f6d68414533682512b37b0a98bf47a9dac4ea949aebe6ab936",
+  "compiled_sha256": "38136dfb13f8993209f2e014ebab3eb65ac4c78a1dfecf21cc3d109062c10e40",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
   "passed": 8,
   "scope": "Temporary private Windows process with other game threads paused. Real game C++ runtime, allocation/deallocation, exception dispatch, catch/rethrow and FS restoration. Fault calls redirected only inside the tested insertion function. This does not verify every exception type, asynchronous fault, heap internals or live-match event lifetime.",
@@ -155,6 +155,5 @@
         "00000101"
       ]
     }
-  ],
-  "case_pairs": 4
+  ]
 }

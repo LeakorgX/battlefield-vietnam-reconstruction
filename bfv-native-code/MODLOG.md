@@ -48,3 +48,21 @@ Remaining full-source work: reconstruct native numerical helpers, initialization
 object ownership/layouts, vehicle evaluation, physics, weapons, networking and the
 rest of the engine. This working native-mod build does not mean that reconstruction
 is complete or that the complete engine has been open-sourced.
+
+## Artillery driver reconstruction
+
+Recovered the actual three-stack-argument rating ABI of BBFireArtilleryDriver,
+replacing its client/server slot 9 with authored C. The driver resolves the gun,
+sends its notification, evaluates the returned component, routes artillery versus
+fallback scoring, and writes the bot rating/eligibility tables. The component
+predicate is also source-owned; component conversion and the large target
+evaluator remain native. This does not reconstruct all artillery behavior.
+
+Focused verification passed 1,536 paired cases per binary, including callback
+index/table changes, low-byte conditions, argument bits and rating rounding.
+See docs/ARTILLERY.md for the recovered interface and outstanding dependencies.
+
+The final five-replacement build passed all 22,298 emulator checks across both
+targets and the 16 real Windows vector/exception executions. Verification tools
+now print each subsystem as it starts, so long comparisons show their current
+stage. No artillery live-match behavior has been claimed.
