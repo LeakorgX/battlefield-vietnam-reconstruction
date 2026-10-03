@@ -1,0 +1,2 @@
+address	pointer_location	status	incoming_reference	conflicting_instruction_start	note
+0074696b	00813c5c	disputed	DATA only	0074696a	Candidate starts one byte into the linear decode after 00746966; decompiler failure is not yet evidence of a valid function. Preserve definition pending control-flow and vtable review.

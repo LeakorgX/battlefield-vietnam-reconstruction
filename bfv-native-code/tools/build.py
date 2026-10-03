@@ -18,6 +18,8 @@ TARGETS = {
         trace_lines=0xdfa8d8, trace_source=0xbf7e38, context_begin=0x9dce60,
         context_end=0x9dcc10, context_record=0xa64d40, native_bailout=0x984c20,
         native_vehicle=0x9856f0, interpreter=0x9be180,
+        bailout_curve=0x9d7200, bailout_score=0x9d6b90,
+        bailout_curve_table=0xe0f678, bailout_score_table=0xe0f674, bailout_pattern=0x983280,
         patches=[(0xbf7e34,0x9be180,'bfv_interpret'),(0xbf5a18,0x984c20,'bfv_bailout'),(0xbf5ab8,0x9856f0,'bfv_vehicle')]),
     'server': dict(file='bfvietnam_w32ded.exe', output='bfvietnam_w32ded-editable.exe',
         sha='86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d',
@@ -25,6 +27,8 @@ TARGETS = {
         trace_lines=0xc1d340, trace_source=0x876820, context_begin=0x7b6bd0,
         context_end=0x7b6980, context_record=0x69f0b0, native_bailout=0x72eef0,
         native_vehicle=0x72f9e0, interpreter=0x774ff0,
+        bailout_curve=0x78c5f0, bailout_score=0x78bf80,
+        bailout_curve_table=0xc31c10, bailout_score_table=0xc31c0c, bailout_pattern=0x72e510,
         patches=[(0x87681c,0x774ff0,'bfv_interpret'),(0x873d88,0x72eef0,'bfv_bailout'),(0x873e28,0x72f9e0,'bfv_vehicle')]),
 }
 

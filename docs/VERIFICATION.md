@@ -6,8 +6,9 @@
    compilation or runtime correctness test.
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
-3. The current native build was compared against original instructions and tested
-   in the game. It passed 1,984 scoped checks per target, 3,968 in total.
+3. The current native build was compared against original instructions. It passed
+   2,538 scoped checks per target, 5,076 in total. Earlier builds also executed
+   replacement functions in the game, as recorded below.
 
 ## Current controlled cases
 
@@ -15,6 +16,12 @@
   early return, disabled/allowed masks, fallback/override routing, returned flags,
   context callbacks, event components and cleanup decisions.
 - 32 cached-bailout comparisons per target checking exact float32 bits.
+- 554 recomputed-bailout comparisons per target checking float32 return/cache bits,
+  pattern flags, call ordering, group argument and stack cleanup. They cover
+  influence conditions, low-byte predicate results, metric boundaries, signed zero,
+  scale factors, changing selectors and cache/flag pointers moved by callbacks.
+  Native numeric helpers execute with deterministic table fixtures; object methods
+  are controlled. See [BAILOUT.md](BAILOUT.md) for the recovered interface.
 - 32 vehicle-wrapper ABI cases per target with a controlled native callee checking
   argument forwarding and returned float bits. These do not evaluate the real
   vehicle-scoring algorithm on fabricated incomplete objects.
@@ -40,12 +47,13 @@ These illustrate why a raw C-like export is not sufficient source reconstruction
 
 ## Runtime observations
 
-Both generated executables started and executed replacement functions. Read-only
+An earlier build of both generated executables started and executed replacement functions. Read-only
 process inspection checked the executable identity, all three patched slots and
 1,128 immutable compiled payload bytes. Client counters reached 545,378 interpreter
 calls and 3,523 vehicle-wrapper calls; server counters reached 5,553 and 48.
 The cached/recomputed bailout wrapper was not observed executing in the retained
-runtime samples; its counter was zero.
+runtime samples; its counter was zero. These observations predate the C bailout
+recomputation implementation and do not establish live execution of that new path.
 
 The user confirmed manually closing the latest client. The temporary server was
 stopped after verification. Raw logs and local profile data are not published.
@@ -59,11 +67,13 @@ stability, every AI plan's correctness or all-game compatibility.
 
 - Client AI collision handler at `009d4ba0`: address-range error.
 - Server counterpart at `0078a500`: the same address-range error.
-- Client function at `008099fd`: decompiler timeout.
+- Client function at `008099fd`: recovered after raising the timeout to 180 seconds.
+- Server candidate at `0074696b`: input-varnode error; boundary is disputed.
 
 Instruction listings exist in the local research corpus. A retry without read-only
 constant-pointer assumptions did not repair the server collision-handler failure.
-The failures remain explicit in the exported status manifests.
+The remaining failures and the boundary dispute remain explicit in the exported
+status manifests and `reports/server/boundary-review.tsv`.
 
 ## Reproducing and extending tests
 

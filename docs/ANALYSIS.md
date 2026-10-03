@@ -27,7 +27,12 @@ percentages.
   with an address-space range error. Three simplification/constant-inference
   profiles and an isolated calling-convention experiment did not resolve it.
 - Server `0074696b`: fails with an input-varnode adjustment error under all three
-  retry profiles. Its instruction evidence is preserved locally.
+  retry profiles. Boundary review found a data reference at `00813c5c` and a
+  conflicting linear decode: code after `00746966` reaches an instruction starting
+  at `0074696a`, one byte before the candidate. This entry is **disputed**, pending
+  control-flow/vtable review; it must not count as a validated original function.
+  Its database definition and failure record are retained, rather than hiding the
+  failure by deleting it. See `reports/server/boundary-review.tsv`.
 
 No failed function is replaced by fabricated C or marked as successful.
 `reports/*/decompilation.tsv` is the export manifest; recovery reports record
@@ -44,6 +49,11 @@ all known functions. Outputs stay outside the source repository.
 writes diagnostic XML. `InspectCollisionABI.java OUTPUT_DIR ADDRESS` is an
 experimental prototype diagnostic and must be run with Ghidra `-readOnly`; its
 inferred prototypes are not validated game interfaces.
+
+`InspectEntryBoundary.java OUTPUT_DIR ADDRESS...` records incoming references and
+the surrounding Ghidra instruction listing without changing the program. Run it
+with `-readOnly`. Independently decode the original bytes when listings conflict;
+the script reports evidence and does not automatically accept or reject entries.
 
 Raw C-like outputs, diagnostic XML and instruction listings remain local. The
 repository includes the tools and metadata needed to regenerate them from the

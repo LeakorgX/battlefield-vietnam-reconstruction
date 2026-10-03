@@ -7,9 +7,10 @@ the goal.
 ## Progress
 
 - Reconstructed the native AI plan interpreter in C.
+- Reconstructed bailout recomputation, cache writes and pattern flags in C.
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- Passed 3,968 comparisons and ABI checks across the two inspected binaries.
+- Passed 5,076 comparisons and ABI checks across the two inspected binaries.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.
 
