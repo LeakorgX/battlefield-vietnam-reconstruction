@@ -143,6 +143,9 @@ def build(target):
     constant_catalog=json.loads((PROJECT/'constant-returns.json').read_text())['targets'][target]
     if constant_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Constant catalog hash differs from the ABI target')
     constant_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in constant_catalog['entries']]
+    getter_catalog=json.loads((PROJECT/'word-getters.json').read_text())['targets'][target]
+    if getter_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Getter catalog hash differs from the ABI target')
+    getter_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in getter_catalog['entries']]
     for location,expected,name in [
         (spec['target_history'],bytes.fromhex('83ec105657'),'bfv_target_history'),
         (spec['artillery_filter'],bytes.fromhex('8b4424408b4008'),'bfv_artillery_filter_bridge'),
@@ -153,7 +156,7 @@ def build(target):
         (spec['aim_within_limits'],bytes.fromhex('83ec405657'),'bfv_aim_within_limits'),
         (spec['aim_compose'],bytes.fromhex('8b54240856'),'bfv_affine_compose'),
         (spec['vector_divide'],b'\xd9\x05'+struct.pack('<I',spec['math_one']),'bfv_vector_divide'),
-        *constant_entries]:
+        *constant_entries,*getter_entries]:
         offset=pe.get_offset_from_rva(location-pe.OPTIONAL_HEADER.ImageBase)
         if original[offset:offset+len(expected)]!=expected:raise RuntimeError(f'Entry guard failed at {location:x}')
         replacement=symbols[name]
@@ -171,7 +174,7 @@ def build(target):
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
         payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,entry_patches=entry_patches,
-        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; audited constant-return functions; remaining engine code/services are retained from the original image')
+        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; audited constant-return functions and object-word getters; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded vtable replacements and {len(entry_patches)} guarded function entries')
 

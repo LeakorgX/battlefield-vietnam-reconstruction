@@ -1,0 +1,1417 @@
+{
+  "scope": "Complete thiscall EAX-word field getters. Object ownership and semantic field types remain unresolved.",
+  "targets": {
+    "client": {
+      "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+      "audit_sha256": "c3466624aa9d1cc3a6f93501ba81ca34aa47456b681c0041bee7d15ae2b04858",
+      "entries": [
+        {
+          "address": "00422d80",
+          "symbol": "bfv_client_read_word_00422d80",
+          "field_offset": 1384,
+          "guarded_prefix": "8b81680500",
+          "native_body": "8b8168050000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00422d90",
+          "symbol": "bfv_client_read_word_00422d90",
+          "field_offset": 2484,
+          "guarded_prefix": "8b81b40900",
+          "native_body": "8b81b4090000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "004ca770",
+          "symbol": "bfv_client_read_word_004ca770",
+          "field_offset": 7516,
+          "guarded_prefix": "8b815c1d00",
+          "native_body": "8b815c1d0000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "004ca780",
+          "symbol": "bfv_client_read_word_004ca780",
+          "field_offset": 7520,
+          "guarded_prefix": "8b81601d00",
+          "native_body": "8b81601d0000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "004ca790",
+          "symbol": "bfv_client_read_word_004ca790",
+          "field_offset": 7524,
+          "guarded_prefix": "8b81641d00",
+          "native_body": "8b81641d0000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "004ca830",
+          "symbol": "bfv_client_read_word_004ca830",
+          "field_offset": 7592,
+          "guarded_prefix": "8b81a81d00",
+          "native_body": "8b81a81d0000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "004fee40",
+          "symbol": "bfv_client_read_word_004fee40",
+          "field_offset": 276,
+          "guarded_prefix": "8b81140100",
+          "native_body": "8b8114010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "004fef60",
+          "symbol": "bfv_client_read_word_004fef60",
+          "field_offset": 416,
+          "guarded_prefix": "8b81a00100",
+          "native_body": "8b81a0010000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "005171c0",
+          "symbol": "bfv_client_read_word_005171c0",
+          "field_offset": 1144,
+          "guarded_prefix": "8b81780400",
+          "native_body": "8b8178040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "005171d0",
+          "symbol": "bfv_client_read_word_005171d0",
+          "field_offset": 1288,
+          "guarded_prefix": "8b81080500",
+          "native_body": "8b8108050000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "005206a0",
+          "symbol": "bfv_client_read_word_005206a0",
+          "field_offset": 312,
+          "guarded_prefix": "8b81380100",
+          "native_body": "8b8138010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00520910",
+          "symbol": "bfv_client_read_word_00520910",
+          "field_offset": 688,
+          "guarded_prefix": "8b81b00200",
+          "native_body": "8b81b0020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00520930",
+          "symbol": "bfv_client_read_word_00520930",
+          "field_offset": 696,
+          "guarded_prefix": "8b81b80200",
+          "native_body": "8b81b8020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00520950",
+          "symbol": "bfv_client_read_word_00520950",
+          "field_offset": 700,
+          "guarded_prefix": "8b81bc0200",
+          "native_body": "8b81bc020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00520a50",
+          "symbol": "bfv_client_read_word_00520a50",
+          "field_offset": 1140,
+          "guarded_prefix": "8b81740400",
+          "native_body": "8b8174040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00520a80",
+          "symbol": "bfv_client_read_word_00520a80",
+          "field_offset": 440,
+          "guarded_prefix": "8b81b80100",
+          "native_body": "8b81b8010000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "00520b60",
+          "symbol": "bfv_client_read_word_00520b60",
+          "field_offset": 244,
+          "guarded_prefix": "8b81f40000",
+          "native_body": "8b81f4000000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "005501f0",
+          "symbol": "bfv_client_read_word_005501f0",
+          "field_offset": 296,
+          "guarded_prefix": "8b81280100",
+          "native_body": "8b8128010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "00598eb0",
+          "symbol": "bfv_client_read_word_00598eb0",
+          "field_offset": 252,
+          "guarded_prefix": "8b81fc0000",
+          "native_body": "8b81fc000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0059b4f0",
+          "symbol": "bfv_client_read_word_0059b4f0",
+          "field_offset": 204,
+          "guarded_prefix": "8b81cc0000",
+          "native_body": "8b81cc000000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "005c3050",
+          "symbol": "bfv_client_read_word_005c3050",
+          "field_offset": 1128,
+          "guarded_prefix": "8b81680400",
+          "native_body": "8b8168040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "005f4be0",
+          "symbol": "bfv_client_read_word_005f4be0",
+          "field_offset": 180,
+          "guarded_prefix": "8b81b40000",
+          "native_body": "8b81b4000000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "006656e0",
+          "symbol": "bfv_client_read_word_006656e0",
+          "field_offset": 660,
+          "guarded_prefix": "8b81940200",
+          "native_body": "8b8194020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "006656f0",
+          "symbol": "bfv_client_read_word_006656f0",
+          "field_offset": 724,
+          "guarded_prefix": "8b81d40200",
+          "native_body": "8b81d4020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00665740",
+          "symbol": "bfv_client_read_word_00665740",
+          "field_offset": 1136,
+          "guarded_prefix": "8b81700400",
+          "native_body": "8b8170040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00665750",
+          "symbol": "bfv_client_read_word_00665750",
+          "field_offset": 1032,
+          "guarded_prefix": "8b81080400",
+          "native_body": "8b8108040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00665790",
+          "symbol": "bfv_client_read_word_00665790",
+          "field_offset": 1104,
+          "guarded_prefix": "8b81500400",
+          "native_body": "8b8150040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00667190",
+          "symbol": "bfv_client_read_word_00667190",
+          "field_offset": 428,
+          "guarded_prefix": "8b81ac0100",
+          "native_body": "8b81ac010000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "006671b0",
+          "symbol": "bfv_client_read_word_006671b0",
+          "field_offset": 904,
+          "guarded_prefix": "8b81880300",
+          "native_body": "8b8188030000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0067bb80",
+          "symbol": "bfv_client_read_word_0067bb80",
+          "field_offset": 524,
+          "guarded_prefix": "8b810c0200",
+          "native_body": "8b810c020000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "0067bb90",
+          "symbol": "bfv_client_read_word_0067bb90",
+          "field_offset": 528,
+          "guarded_prefix": "8b81100200",
+          "native_body": "8b8110020000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00684320",
+          "symbol": "bfv_client_read_word_00684320",
+          "field_offset": 256,
+          "guarded_prefix": "8b81000100",
+          "native_body": "8b8100010000c3",
+          "entry_references": 51
+        },
+        {
+          "address": "0068ce50",
+          "symbol": "bfv_client_read_word_0068ce50",
+          "field_offset": 372,
+          "guarded_prefix": "8b81740100",
+          "native_body": "8b8174010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0068eda0",
+          "symbol": "bfv_client_read_word_0068eda0",
+          "field_offset": 380,
+          "guarded_prefix": "8b817c0100",
+          "native_body": "8b817c010000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "006964f0",
+          "symbol": "bfv_client_read_word_006964f0",
+          "field_offset": 500,
+          "guarded_prefix": "8b81f40100",
+          "native_body": "8b81f4010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "00699cf0",
+          "symbol": "bfv_client_read_word_00699cf0",
+          "field_offset": 160,
+          "guarded_prefix": "8b81a00000",
+          "native_body": "8b81a0000000c3",
+          "entry_references": 8
+        },
+        {
+          "address": "00699d20",
+          "symbol": "bfv_client_read_word_00699d20",
+          "field_offset": 164,
+          "guarded_prefix": "8b81a40000",
+          "native_body": "8b81a4000000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "00699d30",
+          "symbol": "bfv_client_read_word_00699d30",
+          "field_offset": 172,
+          "guarded_prefix": "8b81ac0000",
+          "native_body": "8b81ac000000c3",
+          "entry_references": 6
+        },
+        {
+          "address": "00699d90",
+          "symbol": "bfv_client_read_word_00699d90",
+          "field_offset": 176,
+          "guarded_prefix": "8b81b00000",
+          "native_body": "8b81b0000000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "00699db0",
+          "symbol": "bfv_client_read_word_00699db0",
+          "field_offset": 208,
+          "guarded_prefix": "8b81d00000",
+          "native_body": "8b81d0000000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "00699dd0",
+          "symbol": "bfv_client_read_word_00699dd0",
+          "field_offset": 240,
+          "guarded_prefix": "8b81f00000",
+          "native_body": "8b81f0000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "00699e40",
+          "symbol": "bfv_client_read_word_00699e40",
+          "field_offset": 248,
+          "guarded_prefix": "8b81f80000",
+          "native_body": "8b81f8000000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00699e60",
+          "symbol": "bfv_client_read_word_00699e60",
+          "field_offset": 316,
+          "guarded_prefix": "8b813c0100",
+          "native_body": "8b813c010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00699e70",
+          "symbol": "bfv_client_read_word_00699e70",
+          "field_offset": 320,
+          "guarded_prefix": "8b81400100",
+          "native_body": "8b8140010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00699e90",
+          "symbol": "bfv_client_read_word_00699e90",
+          "field_offset": 356,
+          "guarded_prefix": "8b81640100",
+          "native_body": "8b8164010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0069a0b0",
+          "symbol": "bfv_client_read_word_0069a0b0",
+          "field_offset": 448,
+          "guarded_prefix": "8b81c00100",
+          "native_body": "8b81c0010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0069a100",
+          "symbol": "bfv_client_read_word_0069a100",
+          "field_offset": 472,
+          "guarded_prefix": "8b81d80100",
+          "native_body": "8b81d8010000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "006a6ad0",
+          "symbol": "bfv_client_read_word_006a6ad0",
+          "field_offset": 280,
+          "guarded_prefix": "8b81180100",
+          "native_body": "8b8118010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "006a7f20",
+          "symbol": "bfv_client_read_word_006a7f20",
+          "field_offset": 360,
+          "guarded_prefix": "8b81680100",
+          "native_body": "8b8168010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "006a81b0",
+          "symbol": "bfv_client_read_word_006a81b0",
+          "field_offset": 544,
+          "guarded_prefix": "8b81200200",
+          "native_body": "8b8120020000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "006a81c0",
+          "symbol": "bfv_client_read_word_006a81c0",
+          "field_offset": 548,
+          "guarded_prefix": "8b81240200",
+          "native_body": "8b8124020000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "006a81d0",
+          "symbol": "bfv_client_read_word_006a81d0",
+          "field_offset": 552,
+          "guarded_prefix": "8b81280200",
+          "native_body": "8b8128020000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "006a9260",
+          "symbol": "bfv_client_read_word_006a9260",
+          "field_offset": 284,
+          "guarded_prefix": "8b811c0100",
+          "native_body": "8b811c010000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "006b6a80",
+          "symbol": "bfv_client_read_word_006b6a80",
+          "field_offset": 1700,
+          "guarded_prefix": "8b81a40600",
+          "native_body": "8b81a4060000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "006bd060",
+          "symbol": "bfv_client_read_word_006bd060",
+          "field_offset": 884,
+          "guarded_prefix": "8b81740300",
+          "native_body": "8b8174030000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "006bd0a0",
+          "symbol": "bfv_client_read_word_006bd0a0",
+          "field_offset": 1000,
+          "guarded_prefix": "8b81e80300",
+          "native_body": "8b81e8030000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "006bd430",
+          "symbol": "bfv_client_read_word_006bd430",
+          "field_offset": 888,
+          "guarded_prefix": "8b81780300",
+          "native_body": "8b8178030000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "006d7180",
+          "symbol": "bfv_client_read_word_006d7180",
+          "field_offset": 476,
+          "guarded_prefix": "8b81dc0100",
+          "native_body": "8b81dc010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "006dc0a0",
+          "symbol": "bfv_client_read_word_006dc0a0",
+          "field_offset": 492,
+          "guarded_prefix": "8b81ec0100",
+          "native_body": "8b81ec010000c3",
+          "entry_references": 7
+        },
+        {
+          "address": "006ed430",
+          "symbol": "bfv_client_read_word_006ed430",
+          "field_offset": 468,
+          "guarded_prefix": "8b81d40100",
+          "native_body": "8b81d4010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "006ed8c0",
+          "symbol": "bfv_client_read_word_006ed8c0",
+          "field_offset": 444,
+          "guarded_prefix": "8b81bc0100",
+          "native_body": "8b81bc010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "006f69b0",
+          "symbol": "bfv_client_read_word_006f69b0",
+          "field_offset": 376,
+          "guarded_prefix": "8b81780100",
+          "native_body": "8b8178010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0071e2e0",
+          "symbol": "bfv_client_read_word_0071e2e0",
+          "field_offset": 388,
+          "guarded_prefix": "8b81840100",
+          "native_body": "8b8184010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0071e2f0",
+          "symbol": "bfv_client_read_word_0071e2f0",
+          "field_offset": 392,
+          "guarded_prefix": "8b81880100",
+          "native_body": "8b8188010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0071e300",
+          "symbol": "bfv_client_read_word_0071e300",
+          "field_offset": 384,
+          "guarded_prefix": "8b81800100",
+          "native_body": "8b8180010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "007215b0",
+          "symbol": "bfv_client_read_word_007215b0",
+          "field_offset": 260,
+          "guarded_prefix": "8b81040100",
+          "native_body": "8b8104010000c3",
+          "entry_references": 51
+        },
+        {
+          "address": "00729a00",
+          "symbol": "bfv_client_read_word_00729a00",
+          "field_offset": 1436,
+          "guarded_prefix": "8b819c0500",
+          "native_body": "8b819c050000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "0074d2f0",
+          "symbol": "bfv_client_read_word_0074d2f0",
+          "field_offset": 268,
+          "guarded_prefix": "8b810c0100",
+          "native_body": "8b810c010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0074dde0",
+          "symbol": "bfv_client_read_word_0074dde0",
+          "field_offset": 540,
+          "guarded_prefix": "8b811c0200",
+          "native_body": "8b811c020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00753230",
+          "symbol": "bfv_client_read_word_00753230",
+          "field_offset": 184,
+          "guarded_prefix": "8b81b80000",
+          "native_body": "8b81b8000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "00770030",
+          "symbol": "bfv_client_read_word_00770030",
+          "field_offset": 292,
+          "guarded_prefix": "8b81240100",
+          "native_body": "8b8124010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00770750",
+          "symbol": "bfv_client_read_word_00770750",
+          "field_offset": 332,
+          "guarded_prefix": "8b814c0100",
+          "native_body": "8b814c010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "007ae2e0",
+          "symbol": "bfv_client_read_word_007ae2e0",
+          "field_offset": 636,
+          "guarded_prefix": "8b817c0200",
+          "native_body": "8b817c020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "008a25a0",
+          "symbol": "bfv_client_read_word_008a25a0",
+          "field_offset": 676,
+          "guarded_prefix": "8b81a40200",
+          "native_body": "8b81a4020000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "008a84c0",
+          "symbol": "bfv_client_read_word_008a84c0",
+          "field_offset": 348,
+          "guarded_prefix": "8b815c0100",
+          "native_body": "8b815c010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "008a8520",
+          "symbol": "bfv_client_read_word_008a8520",
+          "field_offset": 484,
+          "guarded_prefix": "8b81e40100",
+          "native_body": "8b81e4010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00970720",
+          "symbol": "bfv_client_read_word_00970720",
+          "field_offset": 128,
+          "guarded_prefix": "8b81800000",
+          "native_body": "8b8180000000c3",
+          "entry_references": 6
+        },
+        {
+          "address": "009707f0",
+          "symbol": "bfv_client_read_word_009707f0",
+          "field_offset": 168,
+          "guarded_prefix": "8b81a80000",
+          "native_body": "8b81a8000000c3",
+          "entry_references": 19
+        },
+        {
+          "address": "00970ab0",
+          "symbol": "bfv_client_read_word_00970ab0",
+          "field_offset": 288,
+          "guarded_prefix": "8b81200100",
+          "native_body": "8b8120010000c3",
+          "entry_references": 11
+        },
+        {
+          "address": "00970cc0",
+          "symbol": "bfv_client_read_word_00970cc0",
+          "field_offset": 536,
+          "guarded_prefix": "8b81180200",
+          "native_body": "8b8118020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00970e60",
+          "symbol": "bfv_client_read_word_00970e60",
+          "field_offset": 592,
+          "guarded_prefix": "8b81500200",
+          "native_body": "8b8150020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0097bfd0",
+          "symbol": "bfv_client_read_word_0097bfd0",
+          "field_offset": 396,
+          "guarded_prefix": "8b818c0100",
+          "native_body": "8b818c010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "009bef00",
+          "symbol": "bfv_client_read_word_009bef00",
+          "field_offset": 212,
+          "guarded_prefix": "8b81d40000",
+          "native_body": "8b81d4000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "009bef10",
+          "symbol": "bfv_client_read_word_009bef10",
+          "field_offset": 216,
+          "guarded_prefix": "8b81d80000",
+          "native_body": "8b81d8000000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "009bef20",
+          "symbol": "bfv_client_read_word_009bef20",
+          "field_offset": 220,
+          "guarded_prefix": "8b81dc0000",
+          "native_body": "8b81dc000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "009bef30",
+          "symbol": "bfv_client_read_word_009bef30",
+          "field_offset": 140,
+          "guarded_prefix": "8b818c0000",
+          "native_body": "8b818c000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "009bef40",
+          "symbol": "bfv_client_read_word_009bef40",
+          "field_offset": 144,
+          "guarded_prefix": "8b81900000",
+          "native_body": "8b8190000000c3",
+          "entry_references": 6
+        },
+        {
+          "address": "009bef50",
+          "symbol": "bfv_client_read_word_009bef50",
+          "field_offset": 148,
+          "guarded_prefix": "8b81940000",
+          "native_body": "8b8194000000c3",
+          "entry_references": 8
+        },
+        {
+          "address": "009befc0",
+          "symbol": "bfv_client_read_word_009befc0",
+          "field_offset": 152,
+          "guarded_prefix": "8b81980000",
+          "native_body": "8b8198000000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "009befd0",
+          "symbol": "bfv_client_read_word_009befd0",
+          "field_offset": 156,
+          "guarded_prefix": "8b819c0000",
+          "native_body": "8b819c000000c3",
+          "entry_references": 8
+        },
+        {
+          "address": "009bf190",
+          "symbol": "bfv_client_read_word_009bf190",
+          "field_offset": 324,
+          "guarded_prefix": "8b81440100",
+          "native_body": "8b8144010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00a62060",
+          "symbol": "bfv_client_read_word_00a62060",
+          "field_offset": 264,
+          "guarded_prefix": "8b81080100",
+          "native_body": "8b8108010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "00a6a000",
+          "symbol": "bfv_client_read_word_00a6a000",
+          "field_offset": 3096,
+          "guarded_prefix": "8b81180c00",
+          "native_body": "8b81180c0000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00a7edf0",
+          "symbol": "bfv_client_read_word_00a7edf0",
+          "field_offset": 132,
+          "guarded_prefix": "8b81840000",
+          "native_body": "8b8184000000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00a82460",
+          "symbol": "bfv_client_read_word_00a82460",
+          "field_offset": 224,
+          "guarded_prefix": "8b81e00000",
+          "native_body": "8b81e0000000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00a82470",
+          "symbol": "bfv_client_read_word_00a82470",
+          "field_offset": 228,
+          "guarded_prefix": "8b81e40000",
+          "native_body": "8b81e4000000c3",
+          "entry_references": 1
+        }
+      ]
+    },
+    "server": {
+      "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+      "audit_sha256": "342a886ff01fdee7fc2a8aa5b99364c20d0cd08be01fbb481509f91408734d11",
+      "entries": [
+        {
+          "address": "004224e0",
+          "symbol": "bfv_server_read_word_004224e0",
+          "field_offset": 2428,
+          "guarded_prefix": "8b817c0900",
+          "native_body": "8b817c090000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "004225a0",
+          "symbol": "bfv_server_read_word_004225a0",
+          "field_offset": 1268,
+          "guarded_prefix": "8b81f40400",
+          "native_body": "8b81f4040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00422600",
+          "symbol": "bfv_server_read_word_00422600",
+          "field_offset": 2392,
+          "guarded_prefix": "8b81580900",
+          "native_body": "8b8158090000c3",
+          "entry_references": 16
+        },
+        {
+          "address": "0043e3f0",
+          "symbol": "bfv_server_read_word_0043e3f0",
+          "field_offset": 216,
+          "guarded_prefix": "8b81d80000",
+          "native_body": "8b81d8000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0043e420",
+          "symbol": "bfv_server_read_word_0043e420",
+          "field_offset": 276,
+          "guarded_prefix": "8b81140100",
+          "native_body": "8b8114010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "0043e550",
+          "symbol": "bfv_server_read_word_0043e550",
+          "field_offset": 416,
+          "guarded_prefix": "8b81a00100",
+          "native_body": "8b81a0010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "0048b820",
+          "symbol": "bfv_server_read_word_0048b820",
+          "field_offset": 1144,
+          "guarded_prefix": "8b81780400",
+          "native_body": "8b8178040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0048b830",
+          "symbol": "bfv_server_read_word_0048b830",
+          "field_offset": 1288,
+          "guarded_prefix": "8b81080500",
+          "native_body": "8b8108050000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00494cd0",
+          "symbol": "bfv_server_read_word_00494cd0",
+          "field_offset": 312,
+          "guarded_prefix": "8b81380100",
+          "native_body": "8b8138010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00494ee0",
+          "symbol": "bfv_server_read_word_00494ee0",
+          "field_offset": 676,
+          "guarded_prefix": "8b81a40200",
+          "native_body": "8b81a4020000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00494f50",
+          "symbol": "bfv_server_read_word_00494f50",
+          "field_offset": 688,
+          "guarded_prefix": "8b81b00200",
+          "native_body": "8b81b0020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00494f70",
+          "symbol": "bfv_server_read_word_00494f70",
+          "field_offset": 696,
+          "guarded_prefix": "8b81b80200",
+          "native_body": "8b81b8020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00494f90",
+          "symbol": "bfv_server_read_word_00494f90",
+          "field_offset": 700,
+          "guarded_prefix": "8b81bc0200",
+          "native_body": "8b81bc020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00495090",
+          "symbol": "bfv_server_read_word_00495090",
+          "field_offset": 1140,
+          "guarded_prefix": "8b81740400",
+          "native_body": "8b8174040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "004b05f0",
+          "symbol": "bfv_server_read_word_004b05f0",
+          "field_offset": 212,
+          "guarded_prefix": "8b81d40000",
+          "native_body": "8b81d4000000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "004ba830",
+          "symbol": "bfv_server_read_word_004ba830",
+          "field_offset": 204,
+          "guarded_prefix": "8b81cc0000",
+          "native_body": "8b81cc000000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "004d6c30",
+          "symbol": "bfv_server_read_word_004d6c30",
+          "field_offset": 1128,
+          "guarded_prefix": "8b81680400",
+          "native_body": "8b8168040000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "004df0d0",
+          "symbol": "bfv_server_read_word_004df0d0",
+          "field_offset": 152,
+          "guarded_prefix": "8b81980000",
+          "native_body": "8b8198000000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "004e18e0",
+          "symbol": "bfv_server_read_word_004e18e0",
+          "field_offset": 408,
+          "guarded_prefix": "8b81980100",
+          "native_body": "8b8198010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00559a80",
+          "symbol": "bfv_server_read_word_00559a80",
+          "field_offset": 660,
+          "guarded_prefix": "8b81940200",
+          "native_body": "8b8194020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00559a90",
+          "symbol": "bfv_server_read_word_00559a90",
+          "field_offset": 724,
+          "guarded_prefix": "8b81d40200",
+          "native_body": "8b81d4020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00559b00",
+          "symbol": "bfv_server_read_word_00559b00",
+          "field_offset": 1024,
+          "guarded_prefix": "8b81000400",
+          "native_body": "8b8100040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00559b30",
+          "symbol": "bfv_server_read_word_00559b30",
+          "field_offset": 1100,
+          "guarded_prefix": "8b814c0400",
+          "native_body": "8b814c040000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0055b210",
+          "symbol": "bfv_server_read_word_0055b210",
+          "field_offset": 860,
+          "guarded_prefix": "8b815c0300",
+          "native_body": "8b815c030000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0056b350",
+          "symbol": "bfv_server_read_word_0056b350",
+          "field_offset": 444,
+          "guarded_prefix": "8b81bc0100",
+          "native_body": "8b81bc010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0056b360",
+          "symbol": "bfv_server_read_word_0056b360",
+          "field_offset": 448,
+          "guarded_prefix": "8b81c00100",
+          "native_body": "8b81c0010000c3",
+          "entry_references": 8
+        },
+        {
+          "address": "0056def0",
+          "symbol": "bfv_server_read_word_0056def0",
+          "field_offset": 164,
+          "guarded_prefix": "8b81a40000",
+          "native_body": "8b81a4000000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "0056df00",
+          "symbol": "bfv_server_read_word_0056df00",
+          "field_offset": 172,
+          "guarded_prefix": "8b81ac0000",
+          "native_body": "8b81ac000000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "0056df50",
+          "symbol": "bfv_server_read_word_0056df50",
+          "field_offset": 176,
+          "guarded_prefix": "8b81b00000",
+          "native_body": "8b81b0000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0056df70",
+          "symbol": "bfv_server_read_word_0056df70",
+          "field_offset": 208,
+          "guarded_prefix": "8b81d00000",
+          "native_body": "8b81d0000000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0056dfe0",
+          "symbol": "bfv_server_read_word_0056dfe0",
+          "field_offset": 316,
+          "guarded_prefix": "8b813c0100",
+          "native_body": "8b813c010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0056dff0",
+          "symbol": "bfv_server_read_word_0056dff0",
+          "field_offset": 320,
+          "guarded_prefix": "8b81400100",
+          "native_body": "8b8140010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0056e000",
+          "symbol": "bfv_server_read_word_0056e000",
+          "field_offset": 324,
+          "guarded_prefix": "8b81440100",
+          "native_body": "8b8144010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "0056e010",
+          "symbol": "bfv_server_read_word_0056e010",
+          "field_offset": 356,
+          "guarded_prefix": "8b81640100",
+          "native_body": "8b8164010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0056e240",
+          "symbol": "bfv_server_read_word_0056e240",
+          "field_offset": 472,
+          "guarded_prefix": "8b81d80100",
+          "native_body": "8b81d8010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0056f320",
+          "symbol": "bfv_server_read_word_0056f320",
+          "field_offset": 372,
+          "guarded_prefix": "8b81740100",
+          "native_body": "8b8174010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00573b60",
+          "symbol": "bfv_server_read_word_00573b60",
+          "field_offset": 516,
+          "guarded_prefix": "8b81040200",
+          "native_body": "8b8104020000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00573b70",
+          "symbol": "bfv_server_read_word_00573b70",
+          "field_offset": 520,
+          "guarded_prefix": "8b81080200",
+          "native_body": "8b8108020000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "0057dd90",
+          "symbol": "bfv_server_read_word_0057dd90",
+          "field_offset": 220,
+          "guarded_prefix": "8b81dc0000",
+          "native_body": "8b81dc000000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "00588860",
+          "symbol": "bfv_server_read_word_00588860",
+          "field_offset": 280,
+          "guarded_prefix": "8b81180100",
+          "native_body": "8b8118010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00589820",
+          "symbol": "bfv_server_read_word_00589820",
+          "field_offset": 352,
+          "guarded_prefix": "8b81600100",
+          "native_body": "8b8160010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00589930",
+          "symbol": "bfv_server_read_word_00589930",
+          "field_offset": 500,
+          "guarded_prefix": "8b81f40100",
+          "native_body": "8b81f4010000c3",
+          "entry_references": 6
+        },
+        {
+          "address": "00589940",
+          "symbol": "bfv_server_read_word_00589940",
+          "field_offset": 504,
+          "guarded_prefix": "8b81f80100",
+          "native_body": "8b81f8010000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "00589950",
+          "symbol": "bfv_server_read_word_00589950",
+          "field_offset": 508,
+          "guarded_prefix": "8b81fc0100",
+          "native_body": "8b81fc010000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "00596ba0",
+          "symbol": "bfv_server_read_word_00596ba0",
+          "field_offset": 428,
+          "guarded_prefix": "8b81ac0100",
+          "native_body": "8b81ac010000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "005979a0",
+          "symbol": "bfv_server_read_word_005979a0",
+          "field_offset": 1700,
+          "guarded_prefix": "8b81a40600",
+          "native_body": "8b81a4060000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0059de20",
+          "symbol": "bfv_server_read_word_0059de20",
+          "field_offset": 884,
+          "guarded_prefix": "8b81740300",
+          "native_body": "8b8174030000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0059de60",
+          "symbol": "bfv_server_read_word_0059de60",
+          "field_offset": 956,
+          "guarded_prefix": "8b81bc0300",
+          "native_body": "8b81bc030000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "0059e1d0",
+          "symbol": "bfv_server_read_word_0059e1d0",
+          "field_offset": 888,
+          "guarded_prefix": "8b81780300",
+          "native_body": "8b8178030000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0059e9a0",
+          "symbol": "bfv_server_read_word_0059e9a0",
+          "field_offset": 1436,
+          "guarded_prefix": "8b819c0500",
+          "native_body": "8b819c050000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "005b0c50",
+          "symbol": "bfv_server_read_word_005b0c50",
+          "field_offset": 364,
+          "guarded_prefix": "8b816c0100",
+          "native_body": "8b816c010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "005b7820",
+          "symbol": "bfv_server_read_word_005b7820",
+          "field_offset": 432,
+          "guarded_prefix": "8b81b00100",
+          "native_body": "8b81b0010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "005c9d70",
+          "symbol": "bfv_server_read_word_005c9d70",
+          "field_offset": 156,
+          "guarded_prefix": "8b819c0000",
+          "native_body": "8b819c000000c3",
+          "entry_references": 7
+        },
+        {
+          "address": "005c9da0",
+          "symbol": "bfv_server_read_word_005c9da0",
+          "field_offset": 160,
+          "guarded_prefix": "8b81a00000",
+          "native_body": "8b81a0000000c3",
+          "entry_references": 8
+        },
+        {
+          "address": "005c9de0",
+          "symbol": "bfv_server_read_word_005c9de0",
+          "field_offset": 148,
+          "guarded_prefix": "8b81940000",
+          "native_body": "8b8194000000c3",
+          "entry_references": 7
+        },
+        {
+          "address": "005cb900",
+          "symbol": "bfv_server_read_word_005cb900",
+          "field_offset": 468,
+          "guarded_prefix": "8b81d40100",
+          "native_body": "8b81d4010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "005cb920",
+          "symbol": "bfv_server_read_word_005cb920",
+          "field_offset": 284,
+          "guarded_prefix": "8b811c0100",
+          "native_body": "8b811c010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "005cbdf0",
+          "symbol": "bfv_server_read_word_005cbdf0",
+          "field_offset": 440,
+          "guarded_prefix": "8b81b80100",
+          "native_body": "8b81b8010000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "005d0b70",
+          "symbol": "bfv_server_read_word_005d0b70",
+          "field_offset": 296,
+          "guarded_prefix": "8b81280100",
+          "native_body": "8b8128010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "005d0d50",
+          "symbol": "bfv_server_read_word_005d0d50",
+          "field_offset": 288,
+          "guarded_prefix": "8b81200100",
+          "native_body": "8b8120010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "005d1220",
+          "symbol": "bfv_server_read_word_005d1220",
+          "field_offset": 292,
+          "guarded_prefix": "8b81240100",
+          "native_body": "8b8124010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "005d4c10",
+          "symbol": "bfv_server_read_word_005d4c10",
+          "field_offset": 368,
+          "guarded_prefix": "8b81700100",
+          "native_body": "8b8170010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "0060fbd0",
+          "symbol": "bfv_server_read_word_0060fbd0",
+          "field_offset": 168,
+          "guarded_prefix": "8b81a80000",
+          "native_body": "8b81a8000000c3",
+          "entry_references": 10
+        },
+        {
+          "address": "00610080",
+          "symbol": "bfv_server_read_word_00610080",
+          "field_offset": 248,
+          "guarded_prefix": "8b81f80000",
+          "native_body": "8b81f8000000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00610090",
+          "symbol": "bfv_server_read_word_00610090",
+          "field_offset": 252,
+          "guarded_prefix": "8b81fc0000",
+          "native_body": "8b81fc000000c3",
+          "entry_references": 50
+        },
+        {
+          "address": "006100a0",
+          "symbol": "bfv_server_read_word_006100a0",
+          "field_offset": 256,
+          "guarded_prefix": "8b81000100",
+          "native_body": "8b8100010000c3",
+          "entry_references": 49
+        },
+        {
+          "address": "006774c0",
+          "symbol": "bfv_server_read_word_006774c0",
+          "field_offset": 484,
+          "guarded_prefix": "8b81e40100",
+          "native_body": "8b81e4010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "006888e0",
+          "symbol": "bfv_server_read_word_006888e0",
+          "field_offset": 144,
+          "guarded_prefix": "8b81900000",
+          "native_body": "8b8190000000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "007188f0",
+          "symbol": "bfv_server_read_word_007188f0",
+          "field_offset": 184,
+          "guarded_prefix": "8b81b80000",
+          "native_body": "8b81b8000000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00718ac0",
+          "symbol": "bfv_server_read_word_00718ac0",
+          "field_offset": 224,
+          "guarded_prefix": "8b81e00000",
+          "native_body": "8b81e0000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "0071f890",
+          "symbol": "bfv_server_read_word_0071f890",
+          "field_offset": 348,
+          "guarded_prefix": "8b815c0100",
+          "native_body": "8b815c010000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "00720a30",
+          "symbol": "bfv_server_read_word_00720a30",
+          "field_offset": 240,
+          "guarded_prefix": "8b81f00000",
+          "native_body": "8b81f0000000c3",
+          "entry_references": 4
+        },
+        {
+          "address": "00720aa0",
+          "symbol": "bfv_server_read_word_00720aa0",
+          "field_offset": 244,
+          "guarded_prefix": "8b81f40000",
+          "native_body": "8b81f4000000c3",
+          "entry_references": 2
+        },
+        {
+          "address": "007680b0",
+          "symbol": "bfv_server_read_word_007680b0",
+          "field_offset": 180,
+          "guarded_prefix": "8b81b40000",
+          "native_body": "8b81b4000000c3",
+          "entry_references": 3
+        },
+        {
+          "address": "00768520",
+          "symbol": "bfv_server_read_word_00768520",
+          "field_offset": 536,
+          "guarded_prefix": "8b81180200",
+          "native_body": "8b8118020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "007686b0",
+          "symbol": "bfv_server_read_word_007686b0",
+          "field_offset": 592,
+          "guarded_prefix": "8b81500200",
+          "native_body": "8b8150020000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00773910",
+          "symbol": "bfv_server_read_word_00773910",
+          "field_offset": 396,
+          "guarded_prefix": "8b818c0100",
+          "native_body": "8b818c010000c3",
+          "entry_references": 1
+        },
+        {
+          "address": "00788590",
+          "symbol": "bfv_server_read_word_00788590",
+          "field_offset": 128,
+          "guarded_prefix": "8b81800000",
+          "native_body": "8b8180000000c3",
+          "entry_references": 5
+        },
+        {
+          "address": "007a8f10",
+          "symbol": "bfv_server_read_word_007a8f10",
+          "field_offset": 140,
+          "guarded_prefix": "8b818c0000",
+          "native_body": "8b818c000000c3",
+          "entry_references": 3
+        }
+      ]
+    }
+  }
+}

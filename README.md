@@ -25,9 +25,10 @@ See the [full-project tracker](docs/PROGRESS.md).
 - Reconstructed the direction aiming-limit predicate and event wrapper; see [aiming limits](docs/AIM-LIMITS.md).
 - Reconstructed affine matrix composition, now called directly by the aiming source; see [matrix math](docs/AFFINE-MATRIX.md).
 - Recovered 954 individually editable constant-return functions across both binaries; [scope and evidence](docs/CONSTANT-RETURNS.md).
+- Reconstructed 175 object-word accessors as editable C; [field offsets and verification](docs/WORD-GETTERS.md).
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- Passed 49,574 comparisons and ABI checks across the two inspected binaries.
+- The current fully regression-tested build passed 57,974 comparisons and ABI checks across the two inspected binaries; reports identify its hashes.
 - Validated vector cleanup/rethrow in live Windows client and server processes.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.
