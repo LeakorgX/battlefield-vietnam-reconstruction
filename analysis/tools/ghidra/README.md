@@ -1,9 +1,9 @@
 # Native executable recovery
 
 This workflow reads the executable; it does not process game data archives.
-Output belongs in `bfv-reference-local`, outside the Bevy source project.
+Output belongs in `bfv-reference-local`, outside this source repository.
 
-1. Run `tools/binary_logic.py` with `capstone` and `pefile`. It records the executable
+1. Run `analysis/tools/binary_logic.py` with `capstone` and `pefile`. It records the executable
    hash and finds MSVC x86 type descriptors, complete-object locators and vtables.
 2. Import the executable into a separate Ghidra project and run native analysis.
 3. Run `ExportNativeLogic.java OUTPUT_DIR FUNCTION_SEEDS_TSV` as a post-script.
@@ -13,7 +13,7 @@ Output belongs in `bfv-reference-local`, outside the Bevy source project.
    Existing exports are reused; each failure remains visible in the manifest.
 4. `InspectNativeFunctions.java OUTPUT_DIR ADDRESS...` exports instruction listings
    and inferred signatures for functions requiring ABI review or decompiler repair.
-5. Run `tools/native_oracle.py` with `pefile` and `unicorn` to execute controlled
+5. Run `analysis/tools/native_oracle.py` with `pefile` and `unicorn` to execute controlled
    native AI paths. Use `--exe bfvietnam_w32ded.exe` for the dedicated-server image.
 
 `rtti-vtables.json` preserves class/vtable/slot evidence and alias names.

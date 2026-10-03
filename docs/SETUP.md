@@ -3,7 +3,7 @@
 ## Current native build
 
 Windows is required for launching and inspecting the native game. Supply your own
-installation with the inspected client/server hashes listed in the root README.
+installation with the inspected client/server hashes listed below.
 
 Required tools:
 
@@ -41,9 +41,9 @@ Example RTTI/function-seed regeneration:
 ```powershell
 $game='D:\Games\Battlefield Vietnam'
 $reference='D:\BFV-local-research'
-uv run --with capstone --with pefile python .\bevy-remake\tools\binary_logic.py `
+uv run --with capstone --with pefile python .\analysis\tools\binary_logic.py `
   --exe "$game\BfVietnam.exe" --output "$reference\client"
-uv run --with capstone --with pefile python .\bevy-remake\tools\binary_logic.py `
+uv run --with capstone --with pefile python .\analysis\tools\binary_logic.py `
   --exe "$game\bfvietnam_w32ded.exe" --output "$reference\server"
 ```
 
@@ -57,7 +57,7 @@ and inferred signatures for review. `RetryNativeDecompile.java` makes one target
 retry without read-only constant-pointer assumptions. A failed retry remains a
 failure; it is not treated as recovered source.
 
-See `bevy-remake/tools/ghidra/README.md` for the workflow. Run Ghidra's headless
+See `analysis/tools/ghidra/README.md` for the workflow. Run Ghidra's headless
 launcher from your installed Ghidra directory, passing your project directory,
 executable path, script path and reference output explicitly. The original engine
 code is not modified by those read-only analysis/export tools.
@@ -65,31 +65,20 @@ code is not modified by those read-only analysis/export tools.
 ## Reference oracles and reports
 
 `bfv-native-code/tools/native_oracle.py` supplies the controlled fixtures used by
-the compiled-code comparison. `bevy-remake/tools/native_oracle.py` is the earlier
+the compiled-code comparison. `analysis/tools/native_oracle.py` is the earlier
 original-instruction-only oracle. Their scopes differ; do not conflate the counts.
 
-`bevy-remake/tools/native_report.py --root ...` creates a local navigation index
+`analysis/tools/native_report.py --root ...` creates a local navigation index
 linking recovered classes to generated function exports. Its local absolute links
 are intentionally not copied into public documentation.
 
-## Historical archive audit
+## Supported executables
 
-`bevy-remake/tools/reference_audit.py` is retained for completeness. It inventories
-archives/PE metadata and can extract local reference data. Some compressed archive
-entries depend on the earlier local universal-modder BGA tooling, which is not
-bundled in this repository. This is not the active binary-reconstruction route.
-Never store extracted game assets in a Git checkout intended for publication.
+| Executable | SHA256 |
+| --- | --- |
+| BfVietnam.exe | `79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5` |
+| bfvietnam_w32ded.exe | `86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d` |
 
-## Earlier Bevy prototype
-
-Rust stable plus the Windows C++ linker/SDK were used to build the Bevy workspace.
-From `bevy-remake`:
-
-```powershell
-cargo test --locked --workspace
-.\Start-Game.ps1
-```
-
-It is a separate procedural prototype, with placeholder geometry and its own
-network protocol. It does not load or replace the original engine. Its successful
-tests do not establish Battlefield Vietnam behavior equivalence.
+These identify the inspected binaries. The existing runtime tests used an
+installation with modified assets and a custom map; pristine vanilla equivalence
+has not yet been validated.

@@ -16,7 +16,7 @@ import pefile
 from unicorn import Uc, UC_ARCH_X86, UC_MODE_32, UC_HOOK_CODE
 from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_ECX, UC_X86_REG_ESP, UC_X86_REG_FPCW
 
-PROJECT = Path(__file__).resolve().parents[1]
+PROJECT = Path(__file__).resolve().parents[2]
 BINARIES = {
     '79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5':
         dict(bailout=0x984c20, interpreter=0x9be180, pool=0xe0cd58),

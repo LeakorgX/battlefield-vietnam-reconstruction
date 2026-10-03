@@ -1,7 +1,7 @@
 """Recover MSVC x86 RTTI/vtable seeds for native game-logic decompilation.
 
 This does not read or extract any game archives. The executable is read-only.
-Run using uv run --with capstone --with pefile python tools/binary_logic.py.
+Run using uv run --with capstone --with pefile python analysis/tools/binary_logic.py.
 """
 import argparse
 from collections import defaultdict
@@ -14,7 +14,7 @@ import struct
 import capstone
 import pefile
 
-PROJECT = Path(__file__).resolve().parents[1]
+PROJECT = Path(__file__).resolve().parents[2]
 
 
 def main():
@@ -140,4 +140,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
