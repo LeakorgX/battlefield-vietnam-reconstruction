@@ -37,7 +37,7 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
 This is a native mod build of the original engine. The AI interpreter compiles
 from reconstructed C; the remaining engine is retained as original machine code.
 Native numerical helpers, object management and full vehicle candidate evaluation
-are still supplied by the original engine. This project does not claim all 41,591
+are still supplied by the original engine. This project does not claim the
 decompiler exports have become reconstructed C or that the entire engine is open
 source. It provides a working compile-and-run route for editing the listed logic.
 

@@ -1,0 +1,8 @@
+{
+  "binary_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "pointer_candidates": 13037,
+  "created_candidates": 12927,
+  "unresolved": 0,
+  "absorbed": 110,
+  "scope": "Pointer-supported candidates in decoded code, not validated original functions."
+}

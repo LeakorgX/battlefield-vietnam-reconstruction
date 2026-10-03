@@ -10,6 +10,7 @@ the goal.
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
 - Passed 3,968 comparisons and ABI checks across the two inspected binaries.
+- Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.
 
 **This is a partial reconstruction.** The current build still needs the original
@@ -43,6 +44,7 @@ in your installation. The original EXEs are unchanged.
 | [analysis](analysis/) | Binary-analysis and Ghidra export/inspection tools |
 | [reports](reports/) | Client/server analysis indexes and verification summaries |
 | [docs/SETUP.md](docs/SETUP.md) | Toolchain setup, supported binary hashes and analysis instructions |
+| [docs/ANALYSIS.md](docs/ANALYSIS.md) | Current export results and remaining coverage gaps |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Remaining work toward a full source build |
 | [docs/VERIFICATION.md](docs/VERIFICATION.md) | Test coverage and its limits |
 
