@@ -20,9 +20,10 @@ See the [full-project tracker](docs/PROGRESS.md).
 - Reconstructed AI collision handling, geometry helpers, events and vector insertion in C.
 - Reconstructed artillery driver rating selection, cached-target validation, history lookup and the first candidate-pass filter in C.
 - Reconstructed shared float min/max/clamp and vector length/division helpers; see [shared math](docs/SHARED-MATH.md).
+- Reconstructed the direction aiming-limit predicate and event wrapper; see [aiming limits](docs/AIM-LIMITS.md).
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- Passed 39,658 comparisons and ABI checks across the two inspected binaries.
+- Passed 41,222 comparisons and ABI checks across the two inspected binaries.
 - Validated vector cleanup/rethrow in live Windows client and server processes.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.

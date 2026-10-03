@@ -154,6 +154,11 @@ uv run --with pefile --with unicorn python bfv-native-code/tools/verify_target_h
 
 ## Remaining work
 
+The direction aiming-limit predicate and its event wrapper now compile from C.
+See [AIM-LIMITS.md](AIM-LIMITS.md) for recovered fields, boundaries and native
+dependencies. Candidate scoring calls the replacement through guarded entries.
+The full aiming controller and firing decisions remain incomplete.
+
 The first candidate-pass inline filter now compiles from `artillery_filter.c`.
 It replaces client `0099f6c3` / server `00749ea3` through a guarded seven-byte
 entry patch and resumes at the original accept/reject continuations. It resolves

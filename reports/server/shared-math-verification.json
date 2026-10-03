@@ -1,7 +1,7 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "7265ec3bc28a897259d5a2d9e9256f105623ff208433443911947c22181f0796",
+  "compiled_sha256": "544f02c4d5a66d8ce7f32fea00d42abb22f61823ae4154b5424f8d15519c228e",
   "passed": 7369,
   "operation_counts": {
     "float_minimum": 1197,
@@ -10,5 +10,5 @@
     "vector_length": 286,
     "vector_divide": 4290
   },
-  "scope": "Actual original/reconstructed guarded entries, no mocked numeric services. Extended returns, vector memory, ABI and full x87 status across signed zero, subnormals, finite extremes, infinity, quiet/signaling NaN, reversed clamp bounds and supported precision/rounding modes; selected cases preserve two occupied caller x87 registers. Unmasked exceptions and complete runtime engine behavior are not verified."
+  "scope": "Actual original/reconstructed scalar/vector math entries without numeric service mocks. Extended returns, memory, ABI, x87 status and retained caller registers across selected exceptional inputs and all supported precision/rounding modes. Unmasked exceptions and complete runtime engine behavior remain unverified."
 }
