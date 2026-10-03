@@ -1,0 +1,15 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "029aaab71947f55ae1f58808138e601eedc9f45322141d8a8a803a78b29b7381",
+  "passed": 3792,
+  "reconstructed_entries": 79,
+  "scenarios_per_entry": 48,
+  "compiled_bodies_byte_identical": true,
+  "payload_bytes": 19949,
+  "guarded_entry_replacements": 502,
+  "guarded_vtable_replacements": 5,
+  "scope": "Focused original/source getter comparisons: eight word patterns, six flag/x87 scenarios, four receiver alignments, EAX, stack, non-result integer registers, CPU flags, complete x87 state, no writes and no delegated native execution. Separate inspection confirms all source-compiled seven-byte getter bodies are byte-identical to original MOV/RET bodies. The full regression suite completed for this same executable hash; verification-summary.json records its passing totals.",
+  "full_regression_cases": 28195,
+  "full_regression_passed": true
+}

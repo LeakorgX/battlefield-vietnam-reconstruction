@@ -6,14 +6,19 @@
    compilation or runtime correctness test.
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
-3. The current native build was compared against original instructions. It passed
-   25,171 scoped client checks and 24,403 server checks, 49,574 in total. Each
-   target passed 12,460 existing-suite, 7,369 shared-math, 782 aiming and 1,314
-   affine-matrix checks; constant-return checks add 3,246 client and 2,478 server
-   cases. Earlier builds also executed
-   replacement functions in the game, as recorded below.
+3. The current fully regression-tested native build was compared against original instructions. It passed
+   29,779 client checks and 28,195 server checks, 57,974 in total. Each target
+   passed the existing 25,171/24,403 checks plus 4,608/3,792 object-word getter
+   checks. Earlier builds also executed replacement functions in the game, as
+   recorded below.
 
 ## Current controlled cases
+
+- Object-word getter checks cover 175 entries, eight stored bit patterns, receiver
+  alignment and six flag/x87 scenarios (8,400 comparisons total). Compiled getter
+  body bytes match the original MOV/RET instructions. See [WORD-GETTERS.md](WORD-GETTERS.md)
+  and the hash-specific getter reports. The full regression run for this build passed; hash-specific reports record the
+  executable and case totals.
 
 - Constant-return checks execute every original/replacement entry in six flag/
   caller-state scenarios: 3,246 client cases and 2,478 server cases. They check

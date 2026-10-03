@@ -7900,5 +7900,1405 @@
     "addresses": {
       "server": "007ae670"
     }
+  },
+  {
+    "symbol": "bfv_client_read_word_00422d80",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00422d80"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00422d90",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00422d90"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_004ca770",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004ca770"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_004ca780",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004ca780"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_004ca790",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004ca790"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_004ca830",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004ca830"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_004fee40",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004fee40"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_004fef60",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004fef60"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_005171c0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005171c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_005171d0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005171d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_005206a0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005206a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00520910",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00520910"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00520930",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00520930"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00520950",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00520950"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00520a50",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00520a50"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00520a80",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00520a80"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00520b60",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00520b60"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_005501f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005501f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00598eb0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00598eb0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0059b4f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0059b4f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_005c3050",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005c3050"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_005f4be0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "005f4be0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006656e0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006656e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006656f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006656f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00665740",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00665740"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00665750",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00665750"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00665790",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00665790"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00667190",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00667190"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006671b0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006671b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0067bb80",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0067bb80"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0067bb90",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0067bb90"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00684320",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00684320"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0068ce50",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0068ce50"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0068eda0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0068eda0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006964f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006964f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699cf0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699cf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699d20",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699d20"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699d30",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699d30"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699d90",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699d90"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699db0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699db0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699dd0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699dd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699e40",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699e40"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699e60",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699e60"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699e70",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699e70"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00699e90",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00699e90"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0069a0b0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0069a0b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0069a100",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0069a100"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006a6ad0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a6ad0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006a7f20",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a7f20"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006a81b0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a81b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006a81c0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a81c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006a81d0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a81d0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006a9260",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006a9260"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006b6a80",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006b6a80"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006bd060",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bd060"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006bd0a0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bd0a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006bd430",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006bd430"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006d7180",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006d7180"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006dc0a0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006dc0a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006ed430",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006ed430"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006ed8c0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006ed8c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_006f69b0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006f69b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0071e2e0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0071e2e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0071e2f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0071e2f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0071e300",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0071e300"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_007215b0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007215b0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00729a00",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00729a00"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0074d2f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0074d2f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0074dde0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0074dde0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00753230",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00753230"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00770030",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00770030"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00770750",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00770750"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_007ae2e0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "007ae2e0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_008a25a0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008a25a0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_008a84c0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008a84c0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_008a8520",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "008a8520"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00970720",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00970720"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009707f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009707f0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00970ab0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00970ab0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00970cc0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00970cc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00970e60",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00970e60"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_0097bfd0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0097bfd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009bef00",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009bef00"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009bef10",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009bef10"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009bef20",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009bef20"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009bef30",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009bef30"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009bef40",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009bef40"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009bef50",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009bef50"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009befc0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009befc0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009befd0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009befd0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_009bf190",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009bf190"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00a62060",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a62060"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00a6a000",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a6a000"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00a7edf0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a7edf0"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00a82460",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a82460"
+    }
+  },
+  {
+    "symbol": "bfv_client_read_word_00a82470",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00a82470"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_004224e0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004224e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_004225a0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004225a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00422600",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00422600"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0043e3f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0043e3f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0043e420",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0043e420"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0043e550",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0043e550"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0048b820",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0048b820"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0048b830",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0048b830"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00494cd0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00494cd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00494ee0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00494ee0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00494f50",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00494f50"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00494f70",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00494f70"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00494f90",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00494f90"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00495090",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00495090"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_004b05f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004b05f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_004ba830",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004ba830"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_004d6c30",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004d6c30"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_004df0d0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004df0d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_004e18e0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "004e18e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00559a80",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00559a80"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00559a90",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00559a90"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00559b00",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00559b00"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00559b30",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00559b30"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0055b210",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0055b210"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056b350",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056b350"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056b360",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056b360"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056def0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056def0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056df00",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056df00"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056df50",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056df50"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056df70",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056df70"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056dfe0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056dfe0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056dff0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056dff0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056e000",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056e000"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056e010",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056e010"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056e240",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056e240"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0056f320",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0056f320"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00573b60",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00573b60"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00573b70",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00573b70"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0057dd90",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0057dd90"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00588860",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00588860"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00589820",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00589820"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00589930",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00589930"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00589940",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00589940"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00589950",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00589950"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00596ba0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00596ba0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005979a0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005979a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0059de20",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059de20"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0059de60",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059de60"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0059e1d0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059e1d0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0059e9a0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0059e9a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005b0c50",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b0c50"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005b7820",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005b7820"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005c9d70",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005c9d70"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005c9da0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005c9da0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005c9de0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005c9de0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005cb900",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005cb900"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005cb920",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005cb920"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005cbdf0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005cbdf0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005d0b70",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005d0b70"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005d0d50",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005d0d50"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005d1220",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005d1220"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_005d4c10",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "005d4c10"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0060fbd0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0060fbd0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00610080",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00610080"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00610090",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00610090"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_006100a0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006100a0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_006774c0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006774c0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_006888e0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "006888e0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_007188f0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007188f0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00718ac0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00718ac0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_0071f890",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "0071f890"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00720a30",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00720a30"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00720aa0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00720aa0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_007680b0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007680b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00768520",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00768520"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_007686b0",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007686b0"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00773910",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00773910"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_00788590",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "00788590"
+    }
+  },
+  {
+    "symbol": "bfv_server_read_word_007a8f10",
+    "source": "bfv-native-code/src/word_getters.c",
+    "status": "reconstructed",
+    "addresses": {
+      "server": "007a8f10"
+    }
   }
 ]

@@ -20,6 +20,7 @@ from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
 from verify_affine_matrix import compare_affine_matrix
 from verify_constant_returns import compare_constant_returns
+from verify_word_getters import compare_word_getters
 from verify_collision import compare_collision, compare_dispatcher
 
 
@@ -115,6 +116,9 @@ def verify(target):
     print(f'{target}: checking constant-return entries',flush=True)
     constant_comparisons=compare_constant_returns(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(constant_comparisons)} constant-return comparisons passed',flush=True)
+    print(f'{target}: checking object-word getter entries',flush=True)
+    getter_comparisons=compare_word_getters(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(getter_comparisons)} object-word getter comparisons passed',flush=True)
     notify_count=sum(bool(x['inputs'].get('notify_only',False)) for x in collision_comparisons)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         shared_math_cases=len(math_comparisons),artillery_filter_cases=len(filter_comparisons),target_history_cases=len(history_comparisons),artillery_cache_cases=len(artillery_cache_comparisons),artillery_cases=len(artillery_comparisons),interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
@@ -133,9 +137,13 @@ def verify(target):
     report['constant_return_cases']=len(constant_comparisons)
     report['constant_returns']=constant_comparisons
     report['passed']+=len(constant_comparisons)
+    report['word_getter_cases']=len(getter_comparisons)
+    report['word_getters']=getter_comparisons
+    report['passed']+=len(getter_comparisons)
     report['scope']+=' Aiming event routing and angular-range predicate compared with controlled transform/trig services, callback mutations and x87 status; selected cases execute actual original/source matrix composition and retained inverse-sine runtime. Complete aiming/firing behavior remains unverified.'
     report['scope']+=' Affine matrix composition compared without math mocks, including full backing memory, partial/full buffer overlap, ABI, x87 status/control and retained caller values across all supported precision/rounding modes.'
     report['scope']+=' Audited complete constant-return bodies execute actual original/source entries, comparing EAX bits, stack cleanup, all non-result integer registers, CPU flags, complete x87 state and no writes; original-image return values retain data dependencies.'
+    report['scope']+=' Audited complete ECX word getters compare exact field loads, unaligned objects, returned EAX bits, stack, all preserved integer registers, CPU flags, full x87 state and exactly one field read with no writes; object ownership and semantic field types remain unresolved.'
     (work/'verification.json').write_text(json.dumps(report,indent=2))
     print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout, {len(curve_comparisons)} curve, {len(geometry_comparisons)} geometry, {len(collision_comparisons)-notify_count} collision, {notify_count} notification and {len(dispatch_comparisons)} dispatcher and {len(event_comparisons)} event and {len(vector_comparisons)} vector comparisons, {len(artillery_comparisons)} artillery driver comparisons, {len(artillery_cache_comparisons)} artillery evaluator/integration comparisons, {len(history_comparisons)} target-history comparisons, {len(filter_comparisons)} inline candidate-filter comparisons, 32 vehicle-wrapper ABI checks passed',flush=True)
 

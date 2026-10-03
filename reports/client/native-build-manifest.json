@@ -2,9 +2,9 @@
   "target": "client",
   "input_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
   "output": "BfVietnam-editable.exe",
-  "output_sha256": "90ae924fdc72aa0e4c4caab50c429238116f27c8032a916375aa6a910b755ba7",
+  "output_sha256": "1c3a8ffdc8e1b954a44b8dad8b7a4e3e301f83578c49a3ad39ed3dc0e9ded59b",
   "payload_address": "00e26000",
-  "payload_bytes": 21229,
+  "payload_bytes": 22797,
   "symbols": {
     "bfv_interpret": "00e26000",
     "bfv_bailout": "00e26320",
@@ -577,24 +577,120 @@
     "bfv_vector_length": "00e2a1a0",
     "bfv_vector_divide": "00e2a1e0",
     "bfv_target_history": "00e2a210",
-    "bfv_vector_catch_rethrow": "00e2a2e0",
-    "bfv_vector_catch_free": "00e2a2f0",
-    "bfv_vector_copy": "00e2a360",
-    "bfv_vector_fill": "00e2a390",
-    "bfv_vector_shift": "00e2a3d0",
-    "bfv_vector_fill_range": "00e2a3f0",
-    "bfv_vector_insert_body": "00e2a410",
-    "bfv_vector_handler": "00e2a6b0",
-    "bfv_vector_insert": "00e2a6c0",
-    "bfv_vector_info": "00e2b200",
-    "bfv_vehicle_calls": "00e2b2cc",
-    "bfv_bailout_calls": "00e2b2d0",
-    "bfv_interpreter_calls": "00e2b2d4",
-    "bfv_artillery_evaluate_calls": "00e2b2d8",
-    "bfv_artillery_calls": "00e2b2dc",
-    "bfv_artillery_filter_calls": "00e2b2e0",
-    "bfv_collision_calls": "00e2b2e4",
-    "bfv_target_history_calls": "00e2b2e8"
+    "bfv_client_read_word_00422d80": "00e2a2d0",
+    "bfv_client_read_word_00422d90": "00e2a2e0",
+    "bfv_client_read_word_004ca770": "00e2a2f0",
+    "bfv_client_read_word_004ca780": "00e2a300",
+    "bfv_client_read_word_004ca790": "00e2a310",
+    "bfv_client_read_word_004ca830": "00e2a320",
+    "bfv_client_read_word_004fee40": "00e2a330",
+    "bfv_client_read_word_004fef60": "00e2a340",
+    "bfv_client_read_word_005171c0": "00e2a350",
+    "bfv_client_read_word_005171d0": "00e2a360",
+    "bfv_client_read_word_005206a0": "00e2a370",
+    "bfv_client_read_word_00520910": "00e2a380",
+    "bfv_client_read_word_00520930": "00e2a390",
+    "bfv_client_read_word_00520950": "00e2a3a0",
+    "bfv_client_read_word_00520a50": "00e2a3b0",
+    "bfv_client_read_word_00520a80": "00e2a3c0",
+    "bfv_client_read_word_00520b60": "00e2a3d0",
+    "bfv_client_read_word_005501f0": "00e2a3e0",
+    "bfv_client_read_word_00598eb0": "00e2a3f0",
+    "bfv_client_read_word_0059b4f0": "00e2a400",
+    "bfv_client_read_word_005c3050": "00e2a410",
+    "bfv_client_read_word_005f4be0": "00e2a420",
+    "bfv_client_read_word_006656e0": "00e2a430",
+    "bfv_client_read_word_006656f0": "00e2a440",
+    "bfv_client_read_word_00665740": "00e2a450",
+    "bfv_client_read_word_00665750": "00e2a460",
+    "bfv_client_read_word_00665790": "00e2a470",
+    "bfv_client_read_word_00667190": "00e2a480",
+    "bfv_client_read_word_006671b0": "00e2a490",
+    "bfv_client_read_word_0067bb80": "00e2a4a0",
+    "bfv_client_read_word_0067bb90": "00e2a4b0",
+    "bfv_client_read_word_00684320": "00e2a4c0",
+    "bfv_client_read_word_0068ce50": "00e2a4d0",
+    "bfv_client_read_word_0068eda0": "00e2a4e0",
+    "bfv_client_read_word_006964f0": "00e2a4f0",
+    "bfv_client_read_word_00699cf0": "00e2a500",
+    "bfv_client_read_word_00699d20": "00e2a510",
+    "bfv_client_read_word_00699d30": "00e2a520",
+    "bfv_client_read_word_00699d90": "00e2a530",
+    "bfv_client_read_word_00699db0": "00e2a540",
+    "bfv_client_read_word_00699dd0": "00e2a550",
+    "bfv_client_read_word_00699e40": "00e2a560",
+    "bfv_client_read_word_00699e60": "00e2a570",
+    "bfv_client_read_word_00699e70": "00e2a580",
+    "bfv_client_read_word_00699e90": "00e2a590",
+    "bfv_client_read_word_0069a0b0": "00e2a5a0",
+    "bfv_client_read_word_0069a100": "00e2a5b0",
+    "bfv_client_read_word_006a6ad0": "00e2a5c0",
+    "bfv_client_read_word_006a7f20": "00e2a5d0",
+    "bfv_client_read_word_006a81b0": "00e2a5e0",
+    "bfv_client_read_word_006a81c0": "00e2a5f0",
+    "bfv_client_read_word_006a81d0": "00e2a600",
+    "bfv_client_read_word_006a9260": "00e2a610",
+    "bfv_client_read_word_006b6a80": "00e2a620",
+    "bfv_client_read_word_006bd060": "00e2a630",
+    "bfv_client_read_word_006bd0a0": "00e2a640",
+    "bfv_client_read_word_006bd430": "00e2a650",
+    "bfv_client_read_word_006d7180": "00e2a660",
+    "bfv_client_read_word_006dc0a0": "00e2a670",
+    "bfv_client_read_word_006ed430": "00e2a680",
+    "bfv_client_read_word_006ed8c0": "00e2a690",
+    "bfv_client_read_word_006f69b0": "00e2a6a0",
+    "bfv_client_read_word_0071e2e0": "00e2a6b0",
+    "bfv_client_read_word_0071e2f0": "00e2a6c0",
+    "bfv_client_read_word_0071e300": "00e2a6d0",
+    "bfv_client_read_word_007215b0": "00e2a6e0",
+    "bfv_client_read_word_00729a00": "00e2a6f0",
+    "bfv_client_read_word_0074d2f0": "00e2a700",
+    "bfv_client_read_word_0074dde0": "00e2a710",
+    "bfv_client_read_word_00753230": "00e2a720",
+    "bfv_client_read_word_00770030": "00e2a730",
+    "bfv_client_read_word_00770750": "00e2a740",
+    "bfv_client_read_word_007ae2e0": "00e2a750",
+    "bfv_client_read_word_008a25a0": "00e2a760",
+    "bfv_client_read_word_008a84c0": "00e2a770",
+    "bfv_client_read_word_008a8520": "00e2a780",
+    "bfv_client_read_word_00970720": "00e2a790",
+    "bfv_client_read_word_009707f0": "00e2a7a0",
+    "bfv_client_read_word_00970ab0": "00e2a7b0",
+    "bfv_client_read_word_00970cc0": "00e2a7c0",
+    "bfv_client_read_word_00970e60": "00e2a7d0",
+    "bfv_client_read_word_0097bfd0": "00e2a7e0",
+    "bfv_client_read_word_009bef00": "00e2a7f0",
+    "bfv_client_read_word_009bef10": "00e2a800",
+    "bfv_client_read_word_009bef20": "00e2a810",
+    "bfv_client_read_word_009bef30": "00e2a820",
+    "bfv_client_read_word_009bef40": "00e2a830",
+    "bfv_client_read_word_009bef50": "00e2a840",
+    "bfv_client_read_word_009befc0": "00e2a850",
+    "bfv_client_read_word_009befd0": "00e2a860",
+    "bfv_client_read_word_009bf190": "00e2a870",
+    "bfv_client_read_word_00a62060": "00e2a880",
+    "bfv_client_read_word_00a6a000": "00e2a890",
+    "bfv_client_read_word_00a7edf0": "00e2a8a0",
+    "bfv_client_read_word_00a82460": "00e2a8b0",
+    "bfv_client_read_word_00a82470": "00e2a8c0",
+    "bfv_vector_catch_rethrow": "00e2a8e0",
+    "bfv_vector_catch_free": "00e2a8f0",
+    "bfv_vector_copy": "00e2a960",
+    "bfv_vector_fill": "00e2a990",
+    "bfv_vector_shift": "00e2a9d0",
+    "bfv_vector_fill_range": "00e2a9f0",
+    "bfv_vector_insert_body": "00e2aa10",
+    "bfv_vector_handler": "00e2acb0",
+    "bfv_vector_insert": "00e2acc0",
+    "bfv_vector_info": "00e2b820",
+    "bfv_vehicle_calls": "00e2b8ec",
+    "bfv_bailout_calls": "00e2b8f0",
+    "bfv_interpreter_calls": "00e2b8f4",
+    "bfv_artillery_evaluate_calls": "00e2b8f8",
+    "bfv_artillery_calls": "00e2b8fc",
+    "bfv_artillery_filter_calls": "00e2b900",
+    "bfv_collision_calls": "00e2b904",
+    "bfv_target_history_calls": "00e2b908"
   },
   "patches": [
     {
@@ -4485,7 +4581,679 @@
       "patched": "e99b513600",
       "replacement": "00e29630",
       "source": "bfv_client_return_word_00ac4490"
+    },
+    {
+      "entry": "00422d80",
+      "original": "8b81680500",
+      "patched": "e94b75a000",
+      "replacement": "00e2a2d0",
+      "source": "bfv_client_read_word_00422d80"
+    },
+    {
+      "entry": "00422d90",
+      "original": "8b81b40900",
+      "patched": "e94b75a000",
+      "replacement": "00e2a2e0",
+      "source": "bfv_client_read_word_00422d90"
+    },
+    {
+      "entry": "004ca770",
+      "original": "8b815c1d00",
+      "patched": "e97bfb9500",
+      "replacement": "00e2a2f0",
+      "source": "bfv_client_read_word_004ca770"
+    },
+    {
+      "entry": "004ca780",
+      "original": "8b81601d00",
+      "patched": "e97bfb9500",
+      "replacement": "00e2a300",
+      "source": "bfv_client_read_word_004ca780"
+    },
+    {
+      "entry": "004ca790",
+      "original": "8b81641d00",
+      "patched": "e97bfb9500",
+      "replacement": "00e2a310",
+      "source": "bfv_client_read_word_004ca790"
+    },
+    {
+      "entry": "004ca830",
+      "original": "8b81a81d00",
+      "patched": "e9ebfa9500",
+      "replacement": "00e2a320",
+      "source": "bfv_client_read_word_004ca830"
+    },
+    {
+      "entry": "004fee40",
+      "original": "8b81140100",
+      "patched": "e9ebb49200",
+      "replacement": "00e2a330",
+      "source": "bfv_client_read_word_004fee40"
+    },
+    {
+      "entry": "004fef60",
+      "original": "8b81a00100",
+      "patched": "e9dbb39200",
+      "replacement": "00e2a340",
+      "source": "bfv_client_read_word_004fef60"
+    },
+    {
+      "entry": "005171c0",
+      "original": "8b81780400",
+      "patched": "e98b319100",
+      "replacement": "00e2a350",
+      "source": "bfv_client_read_word_005171c0"
+    },
+    {
+      "entry": "005171d0",
+      "original": "8b81080500",
+      "patched": "e98b319100",
+      "replacement": "00e2a360",
+      "source": "bfv_client_read_word_005171d0"
+    },
+    {
+      "entry": "005206a0",
+      "original": "8b81380100",
+      "patched": "e9cb9c9000",
+      "replacement": "00e2a370",
+      "source": "bfv_client_read_word_005206a0"
+    },
+    {
+      "entry": "00520910",
+      "original": "8b81b00200",
+      "patched": "e96b9a9000",
+      "replacement": "00e2a380",
+      "source": "bfv_client_read_word_00520910"
+    },
+    {
+      "entry": "00520930",
+      "original": "8b81b80200",
+      "patched": "e95b9a9000",
+      "replacement": "00e2a390",
+      "source": "bfv_client_read_word_00520930"
+    },
+    {
+      "entry": "00520950",
+      "original": "8b81bc0200",
+      "patched": "e94b9a9000",
+      "replacement": "00e2a3a0",
+      "source": "bfv_client_read_word_00520950"
+    },
+    {
+      "entry": "00520a50",
+      "original": "8b81740400",
+      "patched": "e95b999000",
+      "replacement": "00e2a3b0",
+      "source": "bfv_client_read_word_00520a50"
+    },
+    {
+      "entry": "00520a80",
+      "original": "8b81b80100",
+      "patched": "e93b999000",
+      "replacement": "00e2a3c0",
+      "source": "bfv_client_read_word_00520a80"
+    },
+    {
+      "entry": "00520b60",
+      "original": "8b81f40000",
+      "patched": "e96b989000",
+      "replacement": "00e2a3d0",
+      "source": "bfv_client_read_word_00520b60"
+    },
+    {
+      "entry": "005501f0",
+      "original": "8b81280100",
+      "patched": "e9eba18d00",
+      "replacement": "00e2a3e0",
+      "source": "bfv_client_read_word_005501f0"
+    },
+    {
+      "entry": "00598eb0",
+      "original": "8b81fc0000",
+      "patched": "e93b158900",
+      "replacement": "00e2a3f0",
+      "source": "bfv_client_read_word_00598eb0"
+    },
+    {
+      "entry": "0059b4f0",
+      "original": "8b81cc0000",
+      "patched": "e90bef8800",
+      "replacement": "00e2a400",
+      "source": "bfv_client_read_word_0059b4f0"
+    },
+    {
+      "entry": "005c3050",
+      "original": "8b81680400",
+      "patched": "e9bb738600",
+      "replacement": "00e2a410",
+      "source": "bfv_client_read_word_005c3050"
+    },
+    {
+      "entry": "005f4be0",
+      "original": "8b81b40000",
+      "patched": "e93b588300",
+      "replacement": "00e2a420",
+      "source": "bfv_client_read_word_005f4be0"
+    },
+    {
+      "entry": "006656e0",
+      "original": "8b81940200",
+      "patched": "e94b4d7c00",
+      "replacement": "00e2a430",
+      "source": "bfv_client_read_word_006656e0"
+    },
+    {
+      "entry": "006656f0",
+      "original": "8b81d40200",
+      "patched": "e94b4d7c00",
+      "replacement": "00e2a440",
+      "source": "bfv_client_read_word_006656f0"
+    },
+    {
+      "entry": "00665740",
+      "original": "8b81700400",
+      "patched": "e90b4d7c00",
+      "replacement": "00e2a450",
+      "source": "bfv_client_read_word_00665740"
+    },
+    {
+      "entry": "00665750",
+      "original": "8b81080400",
+      "patched": "e90b4d7c00",
+      "replacement": "00e2a460",
+      "source": "bfv_client_read_word_00665750"
+    },
+    {
+      "entry": "00665790",
+      "original": "8b81500400",
+      "patched": "e9db4c7c00",
+      "replacement": "00e2a470",
+      "source": "bfv_client_read_word_00665790"
+    },
+    {
+      "entry": "00667190",
+      "original": "8b81ac0100",
+      "patched": "e9eb327c00",
+      "replacement": "00e2a480",
+      "source": "bfv_client_read_word_00667190"
+    },
+    {
+      "entry": "006671b0",
+      "original": "8b81880300",
+      "patched": "e9db327c00",
+      "replacement": "00e2a490",
+      "source": "bfv_client_read_word_006671b0"
+    },
+    {
+      "entry": "0067bb80",
+      "original": "8b810c0200",
+      "patched": "e91be97a00",
+      "replacement": "00e2a4a0",
+      "source": "bfv_client_read_word_0067bb80"
+    },
+    {
+      "entry": "0067bb90",
+      "original": "8b81100200",
+      "patched": "e91be97a00",
+      "replacement": "00e2a4b0",
+      "source": "bfv_client_read_word_0067bb90"
+    },
+    {
+      "entry": "00684320",
+      "original": "8b81000100",
+      "patched": "e99b617a00",
+      "replacement": "00e2a4c0",
+      "source": "bfv_client_read_word_00684320"
+    },
+    {
+      "entry": "0068ce50",
+      "original": "8b81740100",
+      "patched": "e97bd67900",
+      "replacement": "00e2a4d0",
+      "source": "bfv_client_read_word_0068ce50"
+    },
+    {
+      "entry": "0068eda0",
+      "original": "8b817c0100",
+      "patched": "e93bb77900",
+      "replacement": "00e2a4e0",
+      "source": "bfv_client_read_word_0068eda0"
+    },
+    {
+      "entry": "006964f0",
+      "original": "8b81f40100",
+      "patched": "e9fb3f7900",
+      "replacement": "00e2a4f0",
+      "source": "bfv_client_read_word_006964f0"
+    },
+    {
+      "entry": "00699cf0",
+      "original": "8b81a00000",
+      "patched": "e90b087900",
+      "replacement": "00e2a500",
+      "source": "bfv_client_read_word_00699cf0"
+    },
+    {
+      "entry": "00699d20",
+      "original": "8b81a40000",
+      "patched": "e9eb077900",
+      "replacement": "00e2a510",
+      "source": "bfv_client_read_word_00699d20"
+    },
+    {
+      "entry": "00699d30",
+      "original": "8b81ac0000",
+      "patched": "e9eb077900",
+      "replacement": "00e2a520",
+      "source": "bfv_client_read_word_00699d30"
+    },
+    {
+      "entry": "00699d90",
+      "original": "8b81b00000",
+      "patched": "e99b077900",
+      "replacement": "00e2a530",
+      "source": "bfv_client_read_word_00699d90"
+    },
+    {
+      "entry": "00699db0",
+      "original": "8b81d00000",
+      "patched": "e98b077900",
+      "replacement": "00e2a540",
+      "source": "bfv_client_read_word_00699db0"
+    },
+    {
+      "entry": "00699dd0",
+      "original": "8b81f00000",
+      "patched": "e97b077900",
+      "replacement": "00e2a550",
+      "source": "bfv_client_read_word_00699dd0"
+    },
+    {
+      "entry": "00699e40",
+      "original": "8b81f80000",
+      "patched": "e91b077900",
+      "replacement": "00e2a560",
+      "source": "bfv_client_read_word_00699e40"
+    },
+    {
+      "entry": "00699e60",
+      "original": "8b813c0100",
+      "patched": "e90b077900",
+      "replacement": "00e2a570",
+      "source": "bfv_client_read_word_00699e60"
+    },
+    {
+      "entry": "00699e70",
+      "original": "8b81400100",
+      "patched": "e90b077900",
+      "replacement": "00e2a580",
+      "source": "bfv_client_read_word_00699e70"
+    },
+    {
+      "entry": "00699e90",
+      "original": "8b81640100",
+      "patched": "e9fb067900",
+      "replacement": "00e2a590",
+      "source": "bfv_client_read_word_00699e90"
+    },
+    {
+      "entry": "0069a0b0",
+      "original": "8b81c00100",
+      "patched": "e9eb047900",
+      "replacement": "00e2a5a0",
+      "source": "bfv_client_read_word_0069a0b0"
+    },
+    {
+      "entry": "0069a100",
+      "original": "8b81d80100",
+      "patched": "e9ab047900",
+      "replacement": "00e2a5b0",
+      "source": "bfv_client_read_word_0069a100"
+    },
+    {
+      "entry": "006a6ad0",
+      "original": "8b81180100",
+      "patched": "e9eb3a7800",
+      "replacement": "00e2a5c0",
+      "source": "bfv_client_read_word_006a6ad0"
+    },
+    {
+      "entry": "006a7f20",
+      "original": "8b81680100",
+      "patched": "e9ab267800",
+      "replacement": "00e2a5d0",
+      "source": "bfv_client_read_word_006a7f20"
+    },
+    {
+      "entry": "006a81b0",
+      "original": "8b81200200",
+      "patched": "e92b247800",
+      "replacement": "00e2a5e0",
+      "source": "bfv_client_read_word_006a81b0"
+    },
+    {
+      "entry": "006a81c0",
+      "original": "8b81240200",
+      "patched": "e92b247800",
+      "replacement": "00e2a5f0",
+      "source": "bfv_client_read_word_006a81c0"
+    },
+    {
+      "entry": "006a81d0",
+      "original": "8b81280200",
+      "patched": "e92b247800",
+      "replacement": "00e2a600",
+      "source": "bfv_client_read_word_006a81d0"
+    },
+    {
+      "entry": "006a9260",
+      "original": "8b811c0100",
+      "patched": "e9ab137800",
+      "replacement": "00e2a610",
+      "source": "bfv_client_read_word_006a9260"
+    },
+    {
+      "entry": "006b6a80",
+      "original": "8b81a40600",
+      "patched": "e99b3b7700",
+      "replacement": "00e2a620",
+      "source": "bfv_client_read_word_006b6a80"
+    },
+    {
+      "entry": "006bd060",
+      "original": "8b81740300",
+      "patched": "e9cbd57600",
+      "replacement": "00e2a630",
+      "source": "bfv_client_read_word_006bd060"
+    },
+    {
+      "entry": "006bd0a0",
+      "original": "8b81e80300",
+      "patched": "e99bd57600",
+      "replacement": "00e2a640",
+      "source": "bfv_client_read_word_006bd0a0"
+    },
+    {
+      "entry": "006bd430",
+      "original": "8b81780300",
+      "patched": "e91bd27600",
+      "replacement": "00e2a650",
+      "source": "bfv_client_read_word_006bd430"
+    },
+    {
+      "entry": "006d7180",
+      "original": "8b81dc0100",
+      "patched": "e9db347500",
+      "replacement": "00e2a660",
+      "source": "bfv_client_read_word_006d7180"
+    },
+    {
+      "entry": "006dc0a0",
+      "original": "8b81ec0100",
+      "patched": "e9cbe57400",
+      "replacement": "00e2a670",
+      "source": "bfv_client_read_word_006dc0a0"
+    },
+    {
+      "entry": "006ed430",
+      "original": "8b81d40100",
+      "patched": "e94bd27300",
+      "replacement": "00e2a680",
+      "source": "bfv_client_read_word_006ed430"
+    },
+    {
+      "entry": "006ed8c0",
+      "original": "8b81bc0100",
+      "patched": "e9cbcd7300",
+      "replacement": "00e2a690",
+      "source": "bfv_client_read_word_006ed8c0"
+    },
+    {
+      "entry": "006f69b0",
+      "original": "8b81780100",
+      "patched": "e9eb3c7300",
+      "replacement": "00e2a6a0",
+      "source": "bfv_client_read_word_006f69b0"
+    },
+    {
+      "entry": "0071e2e0",
+      "original": "8b81840100",
+      "patched": "e9cbc37000",
+      "replacement": "00e2a6b0",
+      "source": "bfv_client_read_word_0071e2e0"
+    },
+    {
+      "entry": "0071e2f0",
+      "original": "8b81880100",
+      "patched": "e9cbc37000",
+      "replacement": "00e2a6c0",
+      "source": "bfv_client_read_word_0071e2f0"
+    },
+    {
+      "entry": "0071e300",
+      "original": "8b81800100",
+      "patched": "e9cbc37000",
+      "replacement": "00e2a6d0",
+      "source": "bfv_client_read_word_0071e300"
+    },
+    {
+      "entry": "007215b0",
+      "original": "8b81040100",
+      "patched": "e92b917000",
+      "replacement": "00e2a6e0",
+      "source": "bfv_client_read_word_007215b0"
+    },
+    {
+      "entry": "00729a00",
+      "original": "8b819c0500",
+      "patched": "e9eb0c7000",
+      "replacement": "00e2a6f0",
+      "source": "bfv_client_read_word_00729a00"
+    },
+    {
+      "entry": "0074d2f0",
+      "original": "8b810c0100",
+      "patched": "e90bd46d00",
+      "replacement": "00e2a700",
+      "source": "bfv_client_read_word_0074d2f0"
+    },
+    {
+      "entry": "0074dde0",
+      "original": "8b811c0200",
+      "patched": "e92bc96d00",
+      "replacement": "00e2a710",
+      "source": "bfv_client_read_word_0074dde0"
+    },
+    {
+      "entry": "00753230",
+      "original": "8b81b80000",
+      "patched": "e9eb746d00",
+      "replacement": "00e2a720",
+      "source": "bfv_client_read_word_00753230"
+    },
+    {
+      "entry": "00770030",
+      "original": "8b81240100",
+      "patched": "e9fba66b00",
+      "replacement": "00e2a730",
+      "source": "bfv_client_read_word_00770030"
+    },
+    {
+      "entry": "00770750",
+      "original": "8b814c0100",
+      "patched": "e9eb9f6b00",
+      "replacement": "00e2a740",
+      "source": "bfv_client_read_word_00770750"
+    },
+    {
+      "entry": "007ae2e0",
+      "original": "8b817c0200",
+      "patched": "e96bc46700",
+      "replacement": "00e2a750",
+      "source": "bfv_client_read_word_007ae2e0"
+    },
+    {
+      "entry": "008a25a0",
+      "original": "8b81a40200",
+      "patched": "e9bb815800",
+      "replacement": "00e2a760",
+      "source": "bfv_client_read_word_008a25a0"
+    },
+    {
+      "entry": "008a84c0",
+      "original": "8b815c0100",
+      "patched": "e9ab225800",
+      "replacement": "00e2a770",
+      "source": "bfv_client_read_word_008a84c0"
+    },
+    {
+      "entry": "008a8520",
+      "original": "8b81e40100",
+      "patched": "e95b225800",
+      "replacement": "00e2a780",
+      "source": "bfv_client_read_word_008a8520"
+    },
+    {
+      "entry": "00970720",
+      "original": "8b81800000",
+      "patched": "e96ba04b00",
+      "replacement": "00e2a790",
+      "source": "bfv_client_read_word_00970720"
+    },
+    {
+      "entry": "009707f0",
+      "original": "8b81a80000",
+      "patched": "e9ab9f4b00",
+      "replacement": "00e2a7a0",
+      "source": "bfv_client_read_word_009707f0"
+    },
+    {
+      "entry": "00970ab0",
+      "original": "8b81200100",
+      "patched": "e9fb9c4b00",
+      "replacement": "00e2a7b0",
+      "source": "bfv_client_read_word_00970ab0"
+    },
+    {
+      "entry": "00970cc0",
+      "original": "8b81180200",
+      "patched": "e9fb9a4b00",
+      "replacement": "00e2a7c0",
+      "source": "bfv_client_read_word_00970cc0"
+    },
+    {
+      "entry": "00970e60",
+      "original": "8b81500200",
+      "patched": "e96b994b00",
+      "replacement": "00e2a7d0",
+      "source": "bfv_client_read_word_00970e60"
+    },
+    {
+      "entry": "0097bfd0",
+      "original": "8b818c0100",
+      "patched": "e90be84a00",
+      "replacement": "00e2a7e0",
+      "source": "bfv_client_read_word_0097bfd0"
+    },
+    {
+      "entry": "009bef00",
+      "original": "8b81d40000",
+      "patched": "e9ebb84600",
+      "replacement": "00e2a7f0",
+      "source": "bfv_client_read_word_009bef00"
+    },
+    {
+      "entry": "009bef10",
+      "original": "8b81d80000",
+      "patched": "e9ebb84600",
+      "replacement": "00e2a800",
+      "source": "bfv_client_read_word_009bef10"
+    },
+    {
+      "entry": "009bef20",
+      "original": "8b81dc0000",
+      "patched": "e9ebb84600",
+      "replacement": "00e2a810",
+      "source": "bfv_client_read_word_009bef20"
+    },
+    {
+      "entry": "009bef30",
+      "original": "8b818c0000",
+      "patched": "e9ebb84600",
+      "replacement": "00e2a820",
+      "source": "bfv_client_read_word_009bef30"
+    },
+    {
+      "entry": "009bef40",
+      "original": "8b81900000",
+      "patched": "e9ebb84600",
+      "replacement": "00e2a830",
+      "source": "bfv_client_read_word_009bef40"
+    },
+    {
+      "entry": "009bef50",
+      "original": "8b81940000",
+      "patched": "e9ebb84600",
+      "replacement": "00e2a840",
+      "source": "bfv_client_read_word_009bef50"
+    },
+    {
+      "entry": "009befc0",
+      "original": "8b81980000",
+      "patched": "e98bb84600",
+      "replacement": "00e2a850",
+      "source": "bfv_client_read_word_009befc0"
+    },
+    {
+      "entry": "009befd0",
+      "original": "8b819c0000",
+      "patched": "e98bb84600",
+      "replacement": "00e2a860",
+      "source": "bfv_client_read_word_009befd0"
+    },
+    {
+      "entry": "009bf190",
+      "original": "8b81440100",
+      "patched": "e9dbb64600",
+      "replacement": "00e2a870",
+      "source": "bfv_client_read_word_009bf190"
+    },
+    {
+      "entry": "00a62060",
+      "original": "8b81080100",
+      "patched": "e91b883c00",
+      "replacement": "00e2a880",
+      "source": "bfv_client_read_word_00a62060"
+    },
+    {
+      "entry": "00a6a000",
+      "original": "8b81180c00",
+      "patched": "e98b083c00",
+      "replacement": "00e2a890",
+      "source": "bfv_client_read_word_00a6a000"
+    },
+    {
+      "entry": "00a7edf0",
+      "original": "8b81840000",
+      "patched": "e9abba3a00",
+      "replacement": "00e2a8a0",
+      "source": "bfv_client_read_word_00a7edf0"
+    },
+    {
+      "entry": "00a82460",
+      "original": "8b81e00000",
+      "patched": "e94b843a00",
+      "replacement": "00e2a8b0",
+      "source": "bfv_client_read_word_00a82460"
+    },
+    {
+      "entry": "00a82470",
+      "original": "8b81e40000",
+      "patched": "e94b843a00",
+      "replacement": "00e2a8c0",
+      "source": "bfv_client_read_word_00a82470"
     }
   ],
-  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; remaining engine code/services are retained from the original image Audited constant-return entry bodies are compiled from individually editable C; returned original-image addresses retain native data dependencies."
+  "scope": "Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup and first-pass candidate filter; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; audited constant-return functions and object-word getters; remaining engine code/services are retained from the original image"
 }
