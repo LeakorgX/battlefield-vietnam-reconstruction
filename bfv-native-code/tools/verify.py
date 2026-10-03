@@ -7,6 +7,7 @@ from pathlib import Path
 import pefile
 from build import PROJECT, GAME, TARGETS
 from native_oracle import run_case, run_dispatch
+from bailout_oracle import run_bailout
 
 
 def verify(target):
@@ -46,12 +47,35 @@ def verify(target):
                 b=run_case(edited,edited_pe,symbols['bfv_'+kind],index,ratings,delegated=spec['native_'+kind])
             assert a==b,(kind,index,a,b)
             rating_cases.append(dict(kind=kind,**a))
+    recompute_cases=[]
+    metrics=(-1.0,0.0,0.001,0.5,0.999,1.0,2.0)
+    scales=(-2.0,0.0,0.3333333,1.0,100.0)
+    # Exercise numeric combinations where influence is used, then guard paths,
+    # low-byte predicates and callback mutations without redundant cross products.
+    inputs=[(metric,influence,scale,1,1,changing,False)
+            for metric,influence,scale,changing in itertools.product(
+                metrics,(-0.0,0.01,0.125,1.0,1.3333333),scales,(False,True))]
+    inputs += [(metric,1.3333333,scale,group,special,changing,False)
+               for metric,scale,(group,special),changing in itertools.product(
+                   metrics,scales,((0,1),(1,0)),(False,True))]
+    inputs += [(0.3333333,0.125,1.3333333,group,special,changing,relocate)
+               for group,special,changing,relocate in itertools.product(
+                   (0,1,256,257),(0,1,256,257),(False,True),(False,True))]
+    for args in inputs:
+        try:
+            a=run_bailout(original,original_pe,spec['native_bailout'],spec,*args)
+            b=run_bailout(edited,edited_pe,symbols['bfv_bailout'],spec,*args)
+            assert a==b,(args,a,b)
+        except Exception as error:
+            raise RuntimeError(f'{target} bailout recomputation input {args}') from error
+        recompute_cases.append(dict(inputs=args,**a))
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
-        interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,passed=len(cases)+len(rating_cases),
-        scope='Original and compiled interpreter instructions compared with controlled methods/context/event helpers. Cached bailout compared exactly. Vehicle wrapper forwarding/float bits tested with controlled native callee; full scoring remains native.',
-        interpreter=cases,ratings=rating_cases)
+        interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
+        bailout_recompute_cases=len(recompute_cases),passed=len(cases)+len(rating_cases)+len(recompute_cases),
+        scope='Interpreter with controlled methods/context/event helpers. Bailout cached and recomputed float bits/cache/flags/call order compared; real native numeric helpers use fixture tables and object methods are controlled. Vehicle wrapper uses controlled native callee; vehicle scoring remains native.',
+        interpreter=cases,ratings=rating_cases,bailout_recomputation=recompute_cases)
     (work/'verification.json').write_text(json.dumps(report,indent=2))
-    print(f'{target}: {len(cases)} interpreter comparisons, 32 cached-bailout comparisons, 32 vehicle-wrapper ABI checks passed')
+    print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout comparisons, 32 vehicle-wrapper ABI checks passed')
 
 
 if __name__=='__main__':

@@ -22,6 +22,8 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   dispatch, object-type masks, fallback/override selection, context notifications,
   disabled-plan events, output flags and cleanup decisions. It uses the recovered
   native object interfaces and exact x86 `thiscall` conventions.
+  Bailout recomputation, cache writes and pattern flags are also implemented here;
+  its two numerical curve helpers remain native. See [the recovered interface](../docs/BAILOUT.md).
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
   `return native_rating * 2.0f;` changes the rating returned to the actual engine.
@@ -34,7 +36,7 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
   `replacement` symbol beginning with `bfv_` for the corresponding target. This
   supports replacing more engine methods as their C implementations are recovered.
 
-This is a native mod build of the original engine. The AI interpreter compiles
+This is a native mod build of the original engine. The interpreter and bailout control flow compile
 from reconstructed C; the remaining engine is retained as original machine code.
 Native numerical helpers, object management and full vehicle candidate evaluation
 are still supplied by the original engine. This project does not claim the
@@ -44,19 +46,22 @@ source. It provides a working compile-and-run route for editing the listed logic
 ## Verification
 
 `verify.ps1` executes both original and newly compiled instructions under Unicorn.
-Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases and
+Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases,
+554 bailout recomputation cases (including cache/flag pointer changes during callbacks) and
 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
 the vehicle wrapper tests forwarding and returned bits while native scoring remains
 intact. Reports are in `build/client/verification.json` and
 `build/server/verification.json`. Changes to behavior intentionally make the default
 parity comparison fail; add the expected changed-behavior cases when modding.
 
-The compiled client was launched and remained responsive with the replacement
+An earlier compiled client was launched and remained responsive with the replacement
 interpreter executing over 491,000 times and the vehicle-rating wrapper over
 3,800 times. `startup-smoke.json` records the executable path, loaded patch slots,
 compiled bytes and observed invocation counters. This establishes live execution
 of the replacements, not whole-game behavioral parity. Test offline or on a
 private server you control.
+Those live observations predate the C bailout recomputation; the new routine has
+controlled instruction-comparison evidence, but no retained live-match sample yet.
 
 The dedicated-server startup check also verified all three loaded replacements,
 5,553 interpreter calls and 48 vehicle-rating wrapper calls in the running server.

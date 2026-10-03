@@ -1,6 +1,6 @@
 /* Reconstructed x86 AI interfaces. Build against the inspected game image.
- * The interpreter is implemented below. Scoring recomputation delegates to the
- * intact native routines; the editable rules apply to both cached/new ratings.
+ * The interpreter and bailout control flow are implemented below. Bailout math
+ * still uses two native table helpers; vehicle scoring remains native.
  * Byte offsets are recovered ABI fields, not guessed original struct names.
  */
 #include <stdint.h>
@@ -17,6 +17,11 @@ typedef uint8_t (TC *special_plan)(void *, void *, void *, uint8_t *, uint8_t *)
 typedef void *(TC *context_record)(void *);
 typedef void (TC *context_notify)(void *, void *, void *, uint32_t, uint32_t);
 typedef float (TC *native_rating)(void *, void *, uint32_t, float);
+/* Native x87 callees can return an unrounded ST0. Keep extended precision until
+ * the original code's explicit float stores, including numeric-call arguments. */
+typedef long double (TC *get_metric)(void *);
+typedef long double (__attribute__((stdcall)) *table_curve)(float);
+typedef uint8_t (TC *test_group)(void *, uint32_t);
 
 volatile uint32_t bfv_interpreter_calls;
 volatile uint32_t bfv_bailout_calls;
@@ -105,11 +110,36 @@ uint8_t TC bfv_interpret(void *interpreter, void *plan, void *object,
 float TC bfv_bailout(void *behavior, void *object, uint32_t recompute, float scale)
 {
     ++bfv_bailout_calls;
-    float rating;
-    if ((uint8_t)recompute)
-        rating = ((native_rating)BFV_NATIVE_BAILOUT)(behavior, object, recompute, scale);
-    else
-        rating = *(float *)(read32((uintptr_t)behavior + 0x1c) + get(object, 0xdc) * 4);
+    if ((uint8_t)recompute) {
+        uintptr_t entity = resolve_handle(get(object, 0xcc));
+        float influence = 1.0f;
+        uint32_t group = *(volatile uint8_t *)((uintptr_t)behavior + 4);
+        if (((test_group)method(object, 0x70))(object, group) &&
+            (uint8_t)get(object, 0x6c)) {
+            uintptr_t record = get(object, 0xe0);
+            influence = *(volatile float *)(record + 8);
+        }
+        /* Preserve the inspected routine's component lookup, including its
+         * exceptional address-wrap branch. Null/invalid handles are not fixed
+         * here: doing so would change original behavior. */
+        void *component = (void *)(uintptr_t)(entity + 0x24 ? read32(entity + 0x24) : 0);
+        long double metric = ((get_metric)method(component, 0x10))(component);
+        volatile float deficit = 1.0L - metric;
+        long double shaped = ((table_curve)BFV_BAILOUT_CURVE)(deficit);
+        volatile float curve_input = shaped * (long double)influence * 100.0L;
+        long double score = ((table_curve)BFV_BAILOUT_SCORE)(curve_input);
+        volatile float stored = score * (long double)scale;
+        uint32_t cache_selector = get(object, 0xdc);
+        uintptr_t ratings = read32((uintptr_t)behavior + 0x1c);
+        *(volatile float *)(ratings + cache_selector * 4) = stored;
+        /* BBPPattern slot 3 sets its selector flag after storing the rating.
+         * Query the selector again, as the native routine does. */
+        uintptr_t pattern = read32((uintptr_t)behavior + 0x0c);
+        uint32_t selector = get(object, 0xdc);
+        *(volatile uint8_t *)(read32(pattern + 4) + selector) = 1;
+    }
+    uint32_t return_selector = get(object, 0xdc);
+    float rating = *(volatile float *)(read32((uintptr_t)behavior + 0x1c) + return_selector * 4);
     return bfv_bailout_rating(rating);
 }
 
