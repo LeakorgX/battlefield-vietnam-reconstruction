@@ -1,0 +1,23 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "base_compiled_sha256": "594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82",
+  "staged_payload_sha256": "a15b0ab59542e4cc30f49c8816e92d0ad6464fcc5a04891f44e98beca5388bb9",
+  "source_sha256": {
+    "artillery_second_movement_score.c": "e001e711dda383e55b14aa8c364304b465704c747043e21d8b122968af0e96f9",
+    "movement_geometry.c": "435c451e052d0b85d360ccc3771d9bf87d8e7a468401de05f03b248696f08a0a",
+    "artillery_second_movement_gate.c": "c94caa646238beb1481dad0394712347caaa1be3c77febb88afb61dc5595d2f6"
+  },
+  "passed": 439,
+  "installed": false,
+  "replacement_scope": "partial_native_evaluator",
+  "verification_kind": "private_staged_payload_differential",
+  "full_regression_passed": false,
+  "scope": "Original versus separately compiled source at retained native continuations. Full fixture memory, callback order, live registers, routes and x87 state compare; vector/event methods are controlled. Actual scalar/cross/length math executes. Eight cases execute the newly compiled preceding gate and score together. This does not verify an installed replacement or full evaluator/game behavior.",
+  "route_counts_relative_to_entry": {
+    "584": 293,
+    "569": 37,
+    "577": 109
+  },
+  "integrated_gate_and_score_cases": 8
+}

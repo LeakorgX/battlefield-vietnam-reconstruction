@@ -1,7 +1,7 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
+  "compiled_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
   "passed": 839,
   "scope": "Original/source artillery position transforms, vector differences, world/component position helpers and post-weapon aiming gate. Full fixture memory, callback order, dynamic pointer rereads, ABI, aliasing and x87 state are compared across boundary and nonfinite values. Object methods and selected aim-direction services remain controlled; complete trajectory and firing behavior remain unverified.",
   "geometry_cases": 631,

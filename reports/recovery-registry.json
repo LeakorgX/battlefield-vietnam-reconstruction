@@ -9513,5 +9513,14 @@
       "client": "00963a20",
       "server": "0071b110"
     }
+  },
+  {
+    "symbol": "bfv_vector_normalize",
+    "source": "bfv-native-code/src/vector_normalize.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "004a2a10",
+      "server": "00438d30"
+    }
   }
 ]

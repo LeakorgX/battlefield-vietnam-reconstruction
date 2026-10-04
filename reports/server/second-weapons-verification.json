@@ -1,0 +1,9 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
+  "passed": 294,
+  "scope": "Original/source second-pass weapon scan, signed counts, class rating, rounded score, table/descriptor aliases, dynamic container reads, strict selection and accepted padding. Full fixture memory, EBP/EBX and x87 state compare with controlled inventory/category/availability methods. Later movement/scoring/firing remains unverified.",
+  "original_block_bytes": 298,
+  "replacement_scope": "partial_native_evaluator"
+}

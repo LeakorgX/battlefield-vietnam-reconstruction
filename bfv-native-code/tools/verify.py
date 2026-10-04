@@ -31,6 +31,13 @@ from verify_alternate_finish import compare_alternate_finish
 from verify_target_traversal import compare_target_traversal
 from verify_next_candidate import compare_next_candidate
 from verify_second_setup import compare_second_setup
+from verify_second_filter import compare_second_filter
+from verify_second_weight import compare_second_weight
+from verify_vector_normalize import compare_vector_normalize
+from verify_second_aim import compare_second_aim
+from verify_second_position import compare_second_position
+from verify_second_distance import compare_second_distance
+from verify_second_weapons import compare_second_weapons
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
 from verify_aim_geometry import compare_aim_geometry
@@ -176,6 +183,19 @@ def verify(target):
     next_comparisons=compare_next_candidate(original,original_pe,edited,edited_pe,spec,symbols)
     setup_comparisons=compare_second_setup(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(next_comparisons)} node advance and {len(setup_comparisons)} second setup comparisons passed',flush=True)
+    print(f'{target}: checking second-pass candidate filter',flush=True)
+    second_filter_comparisons=compare_second_filter(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(second_filter_comparisons)} second filter comparisons passed',flush=True)
+    print(f'{target}: checking second-pass weight, normalization and aim gate',flush=True)
+    weight_comparisons=compare_second_weight(original,original_pe,edited,edited_pe,spec,symbols)
+    normalize_comparisons=compare_vector_normalize(original,original_pe,edited,edited_pe,spec,symbols)
+    second_aim_comparisons=compare_second_aim(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(weight_comparisons)} weight, {len(normalize_comparisons)} normalization and {len(second_aim_comparisons)} second aim comparisons passed',flush=True)
+    print(f'{target}: checking second-pass position, distance and weapon scan',flush=True)
+    second_position_comparisons=compare_second_position(original,original_pe,edited,edited_pe,spec,symbols)
+    second_distance_comparisons=compare_second_distance(original,original_pe,edited,edited_pe,spec,symbols)
+    second_weapons_comparisons=compare_second_weapons(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(second_position_comparisons)} position, {len(second_distance_comparisons)} distance and {len(second_weapons_comparisons)} weapon comparisons passed',flush=True)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         shared_math_cases=len(math_comparisons),artillery_filter_cases=len(filter_comparisons),target_history_cases=len(history_comparisons),artillery_cache_cases=len(artillery_cache_comparisons),artillery_cases=len(artillery_comparisons),interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
         bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),geometry_cases=len(geometry_comparisons),event_cases=len(event_comparisons),vector_cases=len(vector_comparisons),
@@ -240,8 +260,28 @@ def verify(target):
     report['next_candidate']=next_comparisons
     report['second_setup_cases']=len(setup_comparisons)
     report['second_setup']=setup_comparisons
+    report['second_filter_cases']=len(second_filter_comparisons)
+    report['second_filter']=second_filter_comparisons
+    report['second_weight_cases']=len(weight_comparisons)
+    report['second_weight']=weight_comparisons
+    report['vector_normalize_cases']=len(normalize_comparisons)
+    report['vector_normalize']=normalize_comparisons
+    report['second_aim_cases']=len(second_aim_comparisons)
+    report['second_aim']=second_aim_comparisons
+    report['second_position_cases']=len(second_position_comparisons)
+    report['second_position']=second_position_comparisons
+    report['second_distance_cases']=len(second_distance_comparisons)
+    report['second_distance']=second_distance_comparisons
+    report['second_weapons_cases']=len(second_weapons_comparisons)
+    report['second_weapons']=second_weapons_comparisons
+    report['passed']+=len(second_position_comparisons)+len(second_distance_comparisons)+len(second_weapons_comparisons)
+    report['scope']+=' Second-pass position retrieval executes the reconstructed event-interface helper with controlled virtual methods, preserving sequential fallback copies and captured EDI. Distance arithmetic executes actual length, maximum and division helpers with native rounded/intervening stores, aliases, exceptional values and occupied x87 state. Second-pass weapon scan compares actual signed rating arithmetic, dynamic vector reads, callback/table captures, strict best selection, scan count, accepted padding, frame memory and x87 state with controlled inventory/category/availability. Later movement, complete target evaluation and firing remain native or unverified.'
+    report['passed']+=len(weight_comparisons)+len(normalize_comparisons)+len(second_aim_comparisons)
+    report['scope']+=' Second-pass timestamp weight executes actual clamp arithmetic with controlled timestamp lookup. Complete normalization compares rounded squared length, tolerance gates, reciprocal square root, EAX and ECX outputs, aliasing, exceptional inputs and occupied x87 states. The second-pass aiming gate executes actual position, difference and normalization helpers, comparing callback rereads, captured component, full fixture memory and continuations with controlled object methods and final aiming predicate. Later movement, target scores, cleanup and firing remain unverified.'
+    report['passed']+=len(second_filter_comparisons)
+    report['scope']+=' Second-pass candidate filter executes pool/generation checks, frame rereads after callbacks, flag gates and actual x87 metric/history comparisons across precision/rounding modes and occupied stacks; identity, metric and history services remain controlled. Later scoring and vector cleanup remain native.'
     report['passed']+=len(next_comparisons)+len(setup_comparisons)
-    report['scope']+=' First-pass node advance and second-pass query routing/initialization compare original/source instructions with controlled object methods. Full fixture memory, callback order, captured table/node, frame aliases, low-byte flags, raw query arguments, native continuations, live EAX allocation pointer, preserved nonvolatile registers and x87 state compare across pointer patterns and precision/rounding modes. Query allocation/unwinding, cleanup, subsequent filtering and complete evaluator behavior remain unverified.'
+    report['scope']+=' First-pass node advance and second-pass query routing/initialization compare original/source instructions with controlled object methods. Full fixture memory, callback order, captured table/node, frame aliases, low-byte flags, raw query arguments, native continuations, live EAX allocation pointer, preserved nonvolatile registers and x87 state compare across pointer patterns and precision/rounding modes. Query allocation/unwinding, cleanup, later second-pass scoring and complete evaluator behavior remain unverified.'
     report['scope']+=' Final alternate score scaling and rounded best-target selection execute actual float selectors and the original-equivalent single setting field read. The complete traversal wrapper compares returned handles, stack cleanup, full fixture memory, callback captures, scratch/argument aliasing, nonvolatile registers and x87 state. No numeric service is mocked; virtual object methods remain controlled. Remaining evaluator phases and live-match behavior are unverified.'
     report['scope']+=' Alternate flag gate and linked-object score execute real original/source eligibility, component predicate, interface lookup, list search, traversal wrapper and x87 arithmetic. Pool lookup remains native and executes without mocks; virtual methods and component conversion are controlled. Full frame/arena memory, callback order, argument captures, descriptor aliasing, raw fields, loop exit, live nonvolatile registers and x87 state compare across linked targets, generation misses and precision/rounding modes. Later evaluator phases and live-match behavior remain unverified.'
     report['scope']+=' Alternate first-pass target eligibility and its event-3 predicate execute actual original/source handle lookup, generation checks, callback rereads, nested traversal and component conversion. Full fixture memory, low-byte returns, callback order, scratch aliasing, preserved nonvolatile registers and x87 state are compared across invalid handles, nested misses and precision/rounding modes. Object methods and component conversion remain controlled; later target-state scoring, second pass and firing remain unverified.'

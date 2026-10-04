@@ -1,364 +1,84 @@
 {
   "snapshot_date": "2026-10-04",
   "timezone": "Asia/Baghdad",
-  "purpose": "Local handoff snapshot; recheck files and processes before resuming. Not a completion or public verification report.",
+  "purpose": "Local handoff snapshot, not a completion claim; recheck current files/processes.",
   "instructions": {
     "commit": true,
     "push": true,
     "preserve_uncommitted_work": true
   },
-  "local_head": "7311997374f5d15fbb5df1eaeec6a46fab627e13",
-  "last_fetched_origin_main": "019145a6119489bc125b36268c27fe5b7493b276",
-  "remote_ref_is_live_check": false,
+  "local_head": "f34ae00e5bddf2ea16d23e8692d1ad26396e43a0",
+  "last_verified_remote_main": "f34ae00e5bddf2ea16d23e8692d1ad26396e43a0",
+  "active_goal": "Finish the whole original client/server reconstruction and verify every whole-game milestone.",
   "whole_game": {
     "completed_milestones": 0,
-    "total_milestones": 7,
-    "percent": 0
+    "total_milestones": 7
   },
+  "source_inventory_reconstructed_functions": 1233,
   "process_observation": {
-    "client_session": 25051,
-    "server_session": 13088,
-    "client_python_pid": null,
-    "server_python_pid": null,
+    "client_session": 51149,
+    "server_session": 75419,
+    "client_exit_code": 0,
+    "server_exit_code": 0,
     "observed_running": false,
-    "generated_game_processes_found": false,
     "recheck_before_launching": true
   },
   "targets": {
     "client": {
       "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
       "executable": "X:\\Battlefield Vietnam - Copy\\BfVietnam-editable.exe",
-      "actual_sha256": "c24ed0b4dcc139f73003beffb29e81f763dedf886806217093bf2bc825760457",
-      "manifest_sha256": "c24ed0b4dcc139f73003beffb29e81f763dedf886806217093bf2bc825760457",
-      "payload_bytes": 31885,
-      "entry_patches": 682,
+      "actual_sha256": "594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82",
+      "manifest_sha256": "594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82",
+      "payload_bytes": 34061,
+      "entry_patches": 689,
       "vtable_patches": 5,
-      "reports": {
-        "aim_geometry": {
-          "path": "bfv-native-code/build/client/aim-geometry-verification.json",
-          "passed": 839,
-          "compiled_sha256": "ae35f796f9d84e073f566ad6b7af10f7dedcc47b118f424001c3eb88e195502f",
-          "matches_current_executable": false
-        },
-        "movement": {
-          "path": "bfv-native-code/build/client/artillery-movement-verification.json",
-          "passed": 521,
-          "compiled_sha256": "c4e964f4bdd173e7da7051d2dbca611f83546a76436d6e2029e4748dc5c0b418",
-          "matches_current_executable": false
-        },
-        "movement_score": {
-          "path": "bfv-native-code/build/client/movement-score-verification.json",
-          "passed": 645,
-          "compiled_sha256": "11d8d15d77844b970f5736e63bd421be51cd4ffc118859a6c8713077d6e11fa4",
-          "matches_current_executable": false
-        },
-        "full": {
-          "path": "bfv-native-code/build/client/verification.json",
-          "passed": 41148,
-          "compiled_sha256": "c24ed0b4dcc139f73003beffb29e81f763dedf886806217093bf2bc825760457",
-          "matches_current_executable": true
-        },
-        "live": {
-          "path": "bfv-native-code/build/client/live-exceptions/verification.json",
-          "passed": 8,
-          "compiled_sha256": "c24ed0b4dcc139f73003beffb29e81f763dedf886806217093bf2bc825760457",
-          "matches_current_executable": true
-        },
-        "query": {
-          "path": "bfv-native-code/build/client/artillery-query-verification.json",
-          "passed": 731,
-          "compiled_sha256": "c43b135f2bcad96941f6299386e584670255501066059c3408ec1c55fb255bbe",
-          "matches_current_executable": false
-        },
-        "region": {
-          "path": "bfv-native-code/build/client/region-geometry-verification.json",
-          "passed": 1067,
-          "compiled_sha256": "53acb7fb890e4e7632a83e81eae368a3c0bd7c237a20d7cc576d7e6c361aa6f7",
-          "matches_current_executable": false
-        },
-        "region_score": {
-          "path": "bfv-native-code/build/client/artillery-region-score-verification.json",
-          "passed": 592,
-          "compiled_sha256": "53acb7fb890e4e7632a83e81eae368a3c0bd7c237a20d7cc576d7e6c361aa6f7",
-          "matches_current_executable": false
-        },
-        "category_score": {
-          "path": "bfv-native-code/build/client/category-score-verification.json",
-          "passed": 611,
-          "compiled_sha256": "6b743dfa7c75ff18cd26602c7f828e9258384d3bbd933f30472e61731a7ab002",
-          "matches_current_executable": false
-        },
-        "target_eligibility": {
-          "path": "bfv-native-code/build/client/target-eligibility-verification.json",
-          "passed": 176,
-          "compiled_sha256": "3fec14ed2819eeff74f43877266fb85b4d41c71793a3243d773a45bdeaa94cc6",
-          "matches_current_executable": false
-        },
-        "alternate_gate": {
-          "path": "bfv-native-code/build/client/alternate-gate-verification.json",
-          "passed": 164,
-          "compiled_sha256": "4c7379fe33a4a1075ac73ec4b7e585c8a49b77c82d18c061a348d84bfaff15fc",
-          "matches_current_executable": false
-        },
-        "nested_score": {
-          "path": "bfv-native-code/build/client/nested-score-verification.json",
-          "passed": 242,
-          "compiled_sha256": "4c7379fe33a4a1075ac73ec4b7e585c8a49b77c82d18c061a348d84bfaff15fc",
-          "matches_current_executable": false
-        },
-        "alternate_finish": {
-          "path": "bfv-native-code/build/client/alternate-finish-verification.json",
-          "passed": 329,
-          "compiled_sha256": "4c7379fe33a4a1075ac73ec4b7e585c8a49b77c82d18c061a348d84bfaff15fc",
-          "matches_current_executable": false
-        },
-        "target_traversal": {
-          "path": "bfv-native-code/build/client/target-traversal-verification.json",
-          "passed": 154,
-          "compiled_sha256": "4c7379fe33a4a1075ac73ec4b7e585c8a49b77c82d18c061a348d84bfaff15fc",
-          "matches_current_executable": false
-        },
-        "next_candidate": {
-          "path": "bfv-native-code/build/client/next-candidate-verification.json",
-          "passed": 157,
-          "compiled_sha256": "c24ed0b4dcc139f73003beffb29e81f763dedf886806217093bf2bc825760457",
-          "matches_current_executable": true
-        },
-        "second_setup": {
-          "path": "bfv-native-code/build/client/second-setup-verification.json",
-          "passed": 160,
-          "compiled_sha256": "c24ed0b4dcc139f73003beffb29e81f763dedf886806217093bf2bc825760457",
-          "matches_current_executable": true
-        }
-      },
-      "full_verifier_status": "completed; terminal exit code 0",
-      "expected_full_cases_if_passed": 41148,
-      "verified_prior_checkpoint": {
-        "path": "bfv-reference-local/checkpoints/2026-10-04-alternate-finish/client",
-        "passed": 40831,
-        "live_passed": 8,
-        "compiled_sha256": "4c7379fe33a4a1075ac73ec4b7e585c8a49b77c82d18c061a348d84bfaff15fc"
-      },
-      "verified_current_checkpoint": {
-        "path": "bfv-reference-local/checkpoints/2026-10-04-second-setup/client",
-        "passed": 41148,
-        "live_passed": 8,
-        "compiled_sha256": "c24ed0b4dcc139f73003beffb29e81f763dedf886806217093bf2bc825760457"
-      }
+      "live_passed": 8,
+      "full_report_passed": 43480,
+      "full_report_sha256": "594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82",
+      "full_report_matches_current_executable": true,
+      "full_verifier_state": "completed; terminal exit code 0"
     },
     "server": {
       "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
       "executable": "X:\\Battlefield Vietnam - Copy\\bfvietnam_w32ded-editable.exe",
-      "actual_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
-      "manifest_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
-      "payload_bytes": 29037,
-      "entry_patches": 537,
+      "actual_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
+      "manifest_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
+      "payload_bytes": 31245,
+      "entry_patches": 544,
       "vtable_patches": 5,
-      "reports": {
-        "aim_geometry": {
-          "path": "bfv-native-code/build/server/aim-geometry-verification.json",
-          "passed": 839,
-          "compiled_sha256": "48d961a4a5b13be7f8e13226889dc2ba8928e1ef57ba5f3c8aa63acc1a2912b1",
-          "matches_current_executable": false
-        },
-        "movement": {
-          "path": "bfv-native-code/build/server/artillery-movement-verification.json",
-          "passed": 521,
-          "compiled_sha256": "a17721faef947a5f815e318d5579128932bbe2bec4f61db7ab929fde9ab74091",
-          "matches_current_executable": false
-        },
-        "movement_score": {
-          "path": "bfv-native-code/build/server/movement-score-verification.json",
-          "passed": 645,
-          "compiled_sha256": "13ca93ab3ed37947aa9a5d25903797acc9d8ea503cb1d1df29a43cf62758d2dc",
-          "matches_current_executable": false
-        },
-        "full": {
-          "path": "bfv-native-code/build/server/verification.json",
-          "passed": 39564,
-          "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
-          "matches_current_executable": true
-        },
-        "live": {
-          "path": "bfv-native-code/build/server/live-exceptions/verification.json",
-          "passed": 8,
-          "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
-          "matches_current_executable": true
-        },
-        "query": {
-          "path": "bfv-native-code/build/server/artillery-query-verification.json",
-          "passed": 731,
-          "compiled_sha256": "1ce4d38fdba0fd733445d6a466d06cd499f630fcce1cde65e8ff271bd6baf03d",
-          "matches_current_executable": false
-        },
-        "region": {
-          "path": "bfv-native-code/build/server/region-geometry-verification.json",
-          "passed": 1067,
-          "compiled_sha256": "969162cd3e143bf4bda613829a336e24385874d91d42215201cd97211c269b2b",
-          "matches_current_executable": false
-        },
-        "region_score": {
-          "path": "bfv-native-code/build/server/artillery-region-score-verification.json",
-          "passed": 592,
-          "compiled_sha256": "969162cd3e143bf4bda613829a336e24385874d91d42215201cd97211c269b2b",
-          "matches_current_executable": false
-        },
-        "category_score": {
-          "path": "bfv-native-code/build/server/category-score-verification.json",
-          "passed": 611,
-          "compiled_sha256": "6fa289d4e826162e7a4ec107056b190529b06e4df34187e57eaee51409aa7546",
-          "matches_current_executable": false
-        },
-        "target_eligibility": {
-          "path": "bfv-native-code/build/server/target-eligibility-verification.json",
-          "passed": 176,
-          "compiled_sha256": "8fdfb24c0ec0639745c1b8610a6c2aed8bcaba7612bd183a9590920748ca1fbe",
-          "matches_current_executable": false
-        },
-        "alternate_gate": {
-          "path": "bfv-native-code/build/server/alternate-gate-verification.json",
-          "passed": 164,
-          "compiled_sha256": "edceaa533e07bd5e3103e05d7c38fb889b0693cc6bf482ed1759d5bec772f2ed",
-          "matches_current_executable": false
-        },
-        "nested_score": {
-          "path": "bfv-native-code/build/server/nested-score-verification.json",
-          "passed": 242,
-          "compiled_sha256": "edceaa533e07bd5e3103e05d7c38fb889b0693cc6bf482ed1759d5bec772f2ed",
-          "matches_current_executable": false
-        },
-        "alternate_finish": {
-          "path": "bfv-native-code/build/server/alternate-finish-verification.json",
-          "passed": 329,
-          "compiled_sha256": "edceaa533e07bd5e3103e05d7c38fb889b0693cc6bf482ed1759d5bec772f2ed",
-          "matches_current_executable": false
-        },
-        "target_traversal": {
-          "path": "bfv-native-code/build/server/target-traversal-verification.json",
-          "passed": 154,
-          "compiled_sha256": "edceaa533e07bd5e3103e05d7c38fb889b0693cc6bf482ed1759d5bec772f2ed",
-          "matches_current_executable": false
-        },
-        "next_candidate": {
-          "path": "bfv-native-code/build/server/next-candidate-verification.json",
-          "passed": 157,
-          "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
-          "matches_current_executable": true
-        },
-        "second_setup": {
-          "path": "bfv-native-code/build/server/second-setup-verification.json",
-          "passed": 160,
-          "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
-          "matches_current_executable": true
-        }
-      },
-      "full_verifier_status": "completed; terminal exit code 0",
-      "expected_full_cases_if_passed": 39564,
-      "verified_prior_checkpoint": {
-        "path": "bfv-reference-local/checkpoints/2026-10-04-alternate-finish/server",
-        "passed": 39247,
-        "live_passed": 8,
-        "compiled_sha256": "edceaa533e07bd5e3103e05d7c38fb889b0693cc6bf482ed1759d5bec772f2ed"
-      },
-      "verified_current_checkpoint": {
-        "path": "bfv-reference-local/checkpoints/2026-10-04-second-setup/server",
-        "passed": 39564,
-        "live_passed": 8,
-        "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7"
-      }
+      "live_passed": 8,
+      "full_report_passed": 41896,
+      "full_report_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
+      "full_report_matches_current_executable": true,
+      "full_verifier_state": "completed; terminal exit code 0"
     }
   },
-  "next_steps": [
-    "Commit and publish verified source and compact reports to GitHub; exclude original binaries, assets, raw bodies and private analysis.",
-    "Full client/server runs completed.",
-    "Continue second-pass filter at 009a04f0/0074acd0 after publication. Whole engine reconstruction remains incomplete."
-  ],
-  "source_inventory_reconstructed_functions": 1231,
-  "pending_complete_inventory_entries": {
-    "client": [],
-    "server": []
+  "verified_previous_checkpoint": {
+    "name": "2026-10-04-second-aim",
+    "full_passed": 83936,
+    "live_passed": 16
   },
   "staged_pending_work": {
-    "category_score": {
-      "installed": true,
-      "search_cases_per_target": 136,
-      "score_cases_per_target": 475,
-      "focused_cases_per_target": 611,
-      "full_verification": "complete",
-      "live_cases_per_target": 8,
-      "checkpoint": "bfv-reference-local/checkpoints/2026-10-04-category-score"
+    "second-movement": {
+      "installed": false,
+      "passed_per_target": 522,
+      "original_block_bytes": 201,
+      "structural_audit": "eligible; both targets",
+      "private_artifacts": "bfv-reference-local/second-movement/staged/{client,server}"
     },
-    "target_eligibility": {
-      "installed": true,
-      "client_entry": "0097ede0",
-      "server_entry": "00728c90",
-      "event3_client": "009d8100",
-      "event3_server": "0078c670",
-      "staged_cases_per_target": 176,
-      "structural_audit": "passed; one helper per target; component predicate already registered",
-      "focused_cases_per_target": 176,
-      "full_verification": "complete"
-    },
-    "alternate_gate": {
-      "installed": true,
-      "client_entry": "009a01f9",
-      "server_entry": "0074a9d9",
-      "block_bytes": 107,
-      "staged_cases_per_target": 164,
-      "structural_audit": "passed",
-      "private_artifacts": "bfv-reference-local/alternate-gate/staged",
-      "full_verification": "complete"
-    },
-    "nested_score": {
-      "installed": true,
-      "client_entry": "009a0264",
-      "server_entry": "0074aa44",
-      "block_bytes": 360,
-      "focused_cases_per_target": 242,
-      "structural_audit": "passed",
-      "private_artifacts": "bfv-reference-local/nested-score/staged",
-      "full_verification": "complete"
-    },
-    "alternate_finish": {
-      "installed": true,
-      "client_entry": "009a03cc",
-      "server_entry": "0074abac",
-      "block_bytes": 170,
-      "staged_cases_per_target": 329,
-      "structural_audit": "passed",
-      "private_artifacts": "bfv-reference-local/alternate-finish/staged",
-      "full_verification": "complete"
-    },
-    "target_traversal": {
-      "installed": true,
-      "client_entry": "00963a20",
-      "server_entry": "0071b110",
-      "function_bytes": 41,
-      "staged_cases_per_target": 154,
-      "structural_audit": "passed",
-      "private_artifacts": "bfv-reference-local/target-traversal/staged",
-      "full_verification": "complete"
-    },
-    "next_candidate": {
-      "installed": true,
-      "client_entry": "009a0476",
-      "server_entry": "0074ac56",
-      "block_bytes": 29,
-      "staged_cases_per_target": 157,
-      "structural_audit": "passed",
-      "private_artifacts": "bfv-reference-local/next-candidate/staged",
-      "full_verification": "complete"
-    },
-    "second_setup": {
-      "installed": true,
-      "client_entry": "009a0493",
-      "server_entry": "0074ac73",
-      "block_bytes": 93,
-      "staged_cases_per_target": 160,
-      "structural_audit": "passed",
-      "private_artifacts": "bfv-reference-local/second-setup/staged",
-      "live_eax_preserved": true,
-      "full_verification": "complete"
+    "second-movement-score": {
+      "installed": false,
+      "passed_per_target": 439,
+      "original_block_bytes": 569,
+      "structural_audit": "eligible; both targets",
+      "private_artifacts": "bfv-reference-local/second-movement-score/staged/{client,server}"
     }
+  },
+  "next_action": "Publish verified source/reports, then run prepared private install-second-movement.py once to integrate staged gate and score. Rebuild both targets; run installed focused/full/live checks and export/checkpoint only after matching evidence. Continue second-pass predicate at 009a0bc9/0074b3a9.",
+  "latest_observed_full_progress": "Both installed full regressions completed with exit code 0; matching compact reports exported and private second-weapons checkpoint preserved.",
+  "verified_current_checkpoint": {
+    "name": "2026-10-04-second-weapons",
+    "full_passed": 85376,
+    "live_passed": 16
   }
 }

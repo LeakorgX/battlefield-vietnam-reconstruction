@@ -1,0 +1,15 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "base_compiled_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
+  "staged_payload_sha256": "76aa691d00668853a115d0dde80c9c46f99c374b54461e0631595abe133c38b3",
+  "source_sha256": {
+    "artillery_second_movement_gate.c": "c94caa646238beb1481dad0394712347caaa1be3c77febb88afb61dc5595d2f6"
+  },
+  "passed": 522,
+  "installed": false,
+  "replacement_scope": "partial_native_evaluator",
+  "verification_kind": "private_staged_payload_differential",
+  "full_regression_passed": false,
+  "scope": "Original versus separately compiled source movement gate at three native continuations. Full fixture memory, callbacks, flags, aliases, EDI and x87 states compare. Vector and pattern methods are controlled. This does not verify an installed replacement or full evaluator/game behavior."
+}

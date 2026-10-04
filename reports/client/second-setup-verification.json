@@ -1,9 +1,9 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "c24ed0b4dcc139f73003beffb29e81f763dedf886806217093bf2bc825760457",
+  "compiled_sha256": "594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82",
   "passed": 160,
-  "scope": "Original/source second-pass pattern routing and query-vector initialization. Full fixture memory, low-byte flags, callback order, raw query arguments, pointer patterns, live EAX allocation pointer, nonvolatile registers and x87 state compare with controlled object methods. Actual query allocation/unwinding, buffer cleanup, later filtering and full evaluator behavior remain unverified.",
+  "scope": "Original/source second-pass pattern routing and query-vector initialization. Full fixture memory, low-byte flags, callback order, raw query arguments, pointer patterns, live EAX allocation pointer, nonvolatile registers and x87 state compare with controlled object methods. Actual query allocation/unwinding, buffer cleanup, later scoring and full evaluator behavior remain unverified.",
   "original_block_bytes": 93,
   "replacement_scope": "partial_native_evaluator"
 }

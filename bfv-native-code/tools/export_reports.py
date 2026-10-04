@@ -138,7 +138,14 @@ def prepare(target):
                                  ('artillery-alternate-finish-audit.tsv','bfv_artillery_alternate_finish_bridge',170),
                                  ('target-traversal-audit.tsv','bfv_next_target_handle',41),
                                  ('artillery-next-candidate-audit.tsv','bfv_artillery_next_candidate_bridge',29),
-                                 ('artillery-second-setup-audit.tsv','bfv_artillery_second_setup_bridge',93)]:
+                                 ('artillery-second-setup-audit.tsv','bfv_artillery_second_setup_bridge',93),
+                                 ('artillery-second-filter-audit.tsv','bfv_artillery_second_filter_bridge',229),
+                                 ('artillery-second-weight-audit.tsv','bfv_artillery_second_weight_bridge',88),
+                                 ('vector-normalize-audit.tsv','bfv_vector_normalize',128),
+                                 ('artillery-second-aim-audit.tsv','bfv_artillery_second_aim_bridge',127),
+                                 ('artillery-second-position-audit.tsv','bfv_artillery_second_position_bridge',74),
+                                 ('artillery-second-distance-audit.tsv','bfv_artillery_second_distance_bridge',152),
+                                 ('artillery-second-weapons-audit.tsv','bfv_artillery_second_weapons_bridge',298)]:
         with (REPORTS / target / filename).open(encoding='utf-8') as f:
             rows=list(csv.DictReader(f,delimiter='\t'))
         assert len(rows)==1
@@ -148,6 +155,7 @@ def prepare(target):
         assert int(row['patch_bytes'])*2==len(patch['original']) and int(row['bytes'])==size
         assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
         if symbol=='bfv_next_target_handle':assert int(row['ret_cleanup'])==8
+        if symbol=='bfv_vector_normalize':assert int(row['ret_cleanup'])==0
 
     identity = {key: full[key] for key in ('target', 'original_sha256', 'compiled_sha256')}
     summary = {key: value for key, value in full.items() if not isinstance(value, list)}
@@ -168,12 +176,37 @@ def prepare(target):
             'EDI, nonvolatile registers and x87 state compare with controlled list methods. '
             'Complete evaluator and live-match behavior remain unverified.',
             original_block_bytes=29,replacement_scope='partial_native_evaluator')
+    focused('second-position-verification.json','second_position',
+            'Original/source position retrieval through actual event-interface lookup, captured candidate and sequential fallback stores. Full memory, aliases, callback frame changes, EDI and x87 state compare; virtual position methods remain controlled.',
+            original_block_bytes=74,replacement_scope='partial_native_evaluator')
+    focused('second-distance-verification.json','second_distance',
+            'Original/source position difference, intervening rounded/word stores, float32 distance floor and direction division. Actual math helpers execute across random/nonfinite inputs and occupied x87 states. Full evaluator behavior remains unverified.',
+            original_block_bytes=152,replacement_scope='partial_native_evaluator')
+    focused('second-weapons-verification.json','second_weapons',
+            'Original/source second-pass weapon scan, signed counts, class rating, rounded score, table/descriptor aliases, dynamic container reads, strict selection and accepted padding. Full fixture memory, EBP/EBX and x87 state compare with controlled inventory/category/availability methods. Later movement/scoring/firing remains unverified.',
+            original_block_bytes=298,replacement_scope='partial_native_evaluator')
+    focused('second-weight-verification.json','second_weight',
+            'Original/source timestamp weight with actual clamp, rounded intermediate, callback rereads, low-byte predicate, aliasing, nonfinite inputs and x87 state. Timestamp lookup remains controlled; later scoring is unverified.',
+            original_block_bytes=88,replacement_scope='partial_native_evaluator')
+    focused('vector-normalize-verification.json','vector_normalize',
+            'Complete original/source normalization helper: rounded squared length, tolerance tests, tiny-vector return, extended reciprocal square root, EAX/ECX outputs, aliases, nonfinite inputs and occupied x87 states. Unmasked faults and overflowing caller stacks are excluded.',
+            original_function_bytes=128,replacement_scope='complete_function')
+    focused('second-aim-verification.json','second_aim',
+            'Original/source second-pass aiming gate executes actual position, difference and normalization helpers. Full memory, captured component, callback rereads, continuations and x87 state compare. Object methods and final aiming predicate remain controlled; firing and later scoring are unverified.',
+            original_block_bytes=127,replacement_scope='partial_native_evaluator')
+    focused('second-filter-verification.json','second_filter',
+            'Original/source second-pass candidate filter, pool generations, callback-dependent '
+            'candidate/iterator/history receiver rereads, flags and x87 metric/history comparisons. '
+            'Full fixture memory, continuations, nonvolatile registers and occupied x87 stack state '
+            'compare with controlled identity/metric/history services. Later scoring, cleanup and '
+            'complete evaluator behavior remain unverified.',
+            original_block_bytes=229,replacement_scope='partial_native_evaluator')
     focused('second-setup-verification.json','second_setup',
             'Original/source second-pass pattern routing and query-vector initialization. '
             'Full fixture memory, low-byte flags, callback order, raw query arguments, pointer '
             'patterns, live EAX allocation pointer, nonvolatile registers and x87 state compare '
             'with controlled object methods. Actual query allocation/unwinding, buffer cleanup, '
-            'later filtering and full evaluator behavior remain unverified.',
+            'later scoring and full evaluator behavior remain unverified.',
             original_block_bytes=93,replacement_scope='partial_native_evaluator')
 
     focused('alternate-gate-verification.json','alternate_gate',

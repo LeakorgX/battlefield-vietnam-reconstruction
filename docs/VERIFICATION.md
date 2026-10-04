@@ -7,17 +7,27 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The latest exported full-regression native build was compared against original instructions. It passed
-   41,148 client checks and 39,564 server checks, 80,712 in total. This includes
+   43,480 client checks and 41,896 server checks, 85,376 in total. This includes
    4,678 history-tree and 303 first-pass weapon-selection comparisons per target,
    alongside the previously recovered logic and accessor checks. Earlier builds also executed replacement functions in the game, as
    recorded below.
 
 The second-setup checkpoint and generated EXEs are preserved privately at
 `bfv-reference-local/checkpoints/2026-10-04-second-setup`. It passed 164 + 242 +
-329 + 154 + 157 + 160 focused gate/loop/finish/traversal/iterator/setup comparisons per target, the full totals above and 16
+329 + 154 + 157 + 160 focused gate/loop/finish/traversal/iterator/setup comparisons per target, 80,712 full comparisons and 16
 matching-hash live executions. Those live checks exercise vector/exception
 behavior, not target scoring in a match. See [HANDOFF.md](HANDOFF.md) for
 current hashes, controlled dependencies and remaining evidence gates.
+
+The later second-filter checkpoint passed 81,422 full comparisons and 16
+matching-hash live executions, preserved privately at
+`bfv-reference-local/checkpoints/2026-10-04-second-filter`. Subsequent second-pass
+weight, normalization and aim source are installed and passed 364 + 687 + 206
+focused comparisons per target plus current-hash live checks. Their full runs passed the latest totals above; the second-aim checkpoint is
+preserved privately. Position/distance/weapon source is installed and passed 85,376 full comparisons
+and 16 matching-hash live checks. The second-weapons checkpoint is preserved
+privately and compact reports match its hashes. Subsequent movement gate and
+score are staged only; their focused checks do not establish installed/full evidence.
 
 ## Current controlled cases
 

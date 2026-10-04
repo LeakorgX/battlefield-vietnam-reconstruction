@@ -5,6 +5,165 @@ The user's latest direction is **resume existing work, commit and publish to Git
 This supersedes the earlier local-only restriction. Preserve source and reports;
 exclude original binaries, assets, raw bodies and private analysis from publication.
 
+## Active continuation: second-pass weapons
+
+The whole-project goal is active and incomplete. Main was fetched and verified
+as `f34ae00e5bddf2ea16d23e8692d1ad26396e43a0`; local HEAD matched it before
+publication of the current work. Original EXE hashes remain unchanged.
+
+The second-aim checkpoint passed **42,760 client + 41,176 server = 83,936**
+full comparisons and 16 matching-hash live vector executions. Sessions 13052 and
+78626 exited 0. Compact reports are exported and EXEs/full/live evidence are
+preserved under `bfv-reference-local/checkpoints/2026-10-04-second-aim`.
+The complete normalization helper is registered after installed full evidence
+passed. Inventory is **1,233** (689 client + 544 server); whole-game milestones
+remain **0/7**. Earlier second-filter checkpoint passed 81,422 and is preserved.
+
+Second-pass position/distance/weapon stages are now **installed**. Both targets
+passed 164 + 262 + 294 staged and installed focused comparisons and all three
+structural audits. Installed focused session 60471 and live session 65469 exited
+0; current-hash live checks passed 8 executions per target. Full sessions **51149 client / 75419 server** exited 0, with
+**43,480 + 41,896 = 85,376** comparisons. Compact reports were exported through
+the guarded exporter and the matching EXEs/full/live evidence are preserved at
+`bfv-reference-local/checkpoints/2026-10-04-second-weapons`. These sessions are
+terminal; there is no current full verifier to reuse. Publication is pending.
+No unrelated original game processes were terminated.
+
+Current installed EXE hashes:
+- client `594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82`
+- server `b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773`
+
+Payload sizes 34,061 / 31,245 bytes, guarded entry patches 689 / 544, five vtable
+patches each. Entry-patch counts and complete inventory are separate metrics.
+
+Installed source stages and evidence:
+- Filter: 229 bytes at 009a04f0/0074acd0, 355 cases/target; callback-dependent
+  candidate, component, iterator and history-receiver reads and x87 comparisons.
+- Weight: 88 bytes at 009a05d5/0074adb5, 364 cases/target. Slot1a4 writes timestamp
+  frame10c; low byte controls weight. Float rounding precedes actual clamp math.
+- Normalization: complete 128-byte helper at 004a2a10/00438d30, 687 cases/target.
+  Squared length rounds before tolerance checks. Tiny vectors zero with EAX
+  ffffb1df; near-unit vectors stay unchanged. ECX returns squared-length bits
+  because native scratch overwrites its saved ECX slot. Registered after full.
+- Aim: 127 bytes at 009a062d/0074ae0d, 206 cases/target. Actual source position,
+  difference and normalization helpers execute with controlled final predicate.
+- Position: 74 bytes at 009a06ac/0074ae8c, 164 cases/target. Actual event-interface
+  helper, captured candidate/EDI, slot2c writes position or sequential fallback
+  copies from slot18, preserving overlap and callback frame changes.
+- Distance: 152 bytes at 009a06f6/0074aed6, 262 cases/target. Native rounded z/x/y
+  and intervening word stores, actual length/maximum(length,0.5)/division helpers.
+- Weapons: 298 bytes at 009a078e/0074af6e, 294 cases/target. Rating uses signed
+  availability, with -1 converted to 65536; no first-pass history/distance term.
+  Weapon table capture precedes rounded class store, method read follows it.
+  Strict best score/index selection, dynamic captured-vector reads and accepted
+  padding preserve EBP/vector and EBX/scan count. Tests include frame aliases,
+  counts through ten, callbacks, exceptional parameters and occupied x87 stacks.
+
+All inline stages remain partial evaluator work and add no complete inventory
+entries. Object methods are controlled where stated; sustained match, full target
+selection and firing behavior remain unverified. Unmasked faults/overflowing x87
+caller stacks are excluded from helper claims. See ARTILLERY.md for detail.
+
+Private staged artifacts are under second-filter, second-weight, vector-normalize,
+second-aim, second-position, second-distance and second-weapons, each with
+staged/{client,server}. Use private stage-inline.py with the matching name.
+It links actual helper sources or resolves calls to the hash-matched installed
+source helper; raw native evidence remains outside the repository. Private
+install-second-aim.py and install-second-weapons.py have already been executed;
+do NOT rerun their one-time mutations. All current groups are integrated into
+verify.py and guarded compact export.
+
+**Next:** publish verified source/reports, then integrate the staged movement gate
+and score. The private one-time `install-second-movement.py` integration script
+is prepared but has NOT been executed. Rebuild both targets and run installed
+focused/full/live checks before exporting new installed evidence.
+Movement gate
+009a08b8/0074b098 through 009a0981/0074b161 (201 bytes). It captures frame24 in
+EDI, initializes velocity frame64/68/6c, optionally calls slot14 and captures
+all three words before stores. Source flag bit1 at word(frame1f8)+4 and target
+flag bit1 at word(frame18)+4 gate pattern slot28. Low-byte false multiplies
+frame20 by movement scale and compares with frame28: ordered-less writes
+frame34=0 and routes 009a0bc2/0074b3a2. Otherwise magnitude evaluates
+x*x + z*z + y*y (different first-pass order); compare mask4100 nonzero resumes
+0981/b161, other outcome zeroes score. Low-byte true uses alternate scale:
+strict ordered greater routes unit score 009a0bba/0074b39a, other outcomes
+continue 0981/b161. Preserve captured EDI and callback rereads. Later heavy
+movement/score, vector cleanup, target-state, firing and most engine work remain
+native. Use complete private current-artillery listings, not older truncated ones.
+
+## Staged continuation: second-pass movement
+
+`artillery_second_movement_gate.c` and `verify_second_movement.py` now reconstruct
+the 201-byte movement gate, **staged only**. Both targets passed 522 comparisons
+and read-only `AuditArtillerySecondMovement.java` audits (six-byte entry boundary,
+three continuations, no interior references). Fixtures cover callback replacement
+of frame18's target pointer, captured movement/EDI, zero initialization, overlapping
+vector copies, flags, low-byte predicates, exceptional inputs and occupied x87
+states at depths 0/2/5 in all twelve control modes. This is not installed: entry,
+full verifier and compact export integration remain pending. Private artifacts
+are second-movement/staged/{client,server}; rerun stage-inline.py second-movement.
+The private stage driver now also overrides a fixture module's own load_machine
+when present, so this suite compares real native versus privately compiled code.
+
+The staged score was reconstructed separately from first-pass movement score.
+An auditable interval is 009a0981..009a0bba / 0074b161..0074b39a (569 bytes),
+ending before native unit-score entry. It needs three continuations: unit bba/b39a,
+reciprocal/reload bc2/b3a2, and heavy-score bc9/b3a9. Do not include externally
+entered unit/reload blocks in a no-interior-entry interval. Initial TEST EDI and
+JZ unit occupy eight bytes; expected guard 85ff0f8431020000. Verify from originals.
+
+Semantics from the complete private listing:
+- Null incoming movement routes unit. Distance frame28 versus parameter frame20
+  mask4100 nonzero uses freshly read frame24's slot14 and reciprocal length,
+  storing frame34, then native reload bc2.
+- Heavy path captures driver frame1fc in EDI. The event-2 scalar callback can
+  change the frame driver pointer, but the following slot14 call still uses
+  captured EDI; unlike the first-pass source, do not reread the driver pointer.
+- Driverless path zeroes scratch frame110/114/118 and scalar framec0. After driver
+  callbacks, capture movement freshly from frame24 in EBX BEFORE driver copies
+  to frame88/8c/90. Preserve EDI/driver and EBX/movement on heavy continuation.
+- Scalar delta against framec0 uses actual component_event2_scalar. Mask4100
+  nonzero stores quarter at frame34 and jumps bc9/b3a9.
+- Cross scratch is frame150/154/158 (0,1,0), crossed with basis frame78/7c/80.
+  Capture result to frameb0/b4/b8, then slot14 on captured EBX returns movement
+  vector. Actual source cross/scalar helpers already exist in movement_geometry.c.
+- Four dot products retain native operand/addition order: A=driverX*crossX +
+  crossZ*driverZ + crossY*driverY; B=crossY*moveY + crossX*moveX + crossZ*moveZ;
+  C=basisY*moveY + basisX*moveX + basisZ*moveZ;
+  D=driverX*basisX + driverZ*basisZ + driverY*basisY.
+- FSUBP then rounded/clamped frame24; FSUBRP then rounded/clamped frame3c.
+  GNU x87 syntax used by existing source is fsubrp for native FSUBP, and fsubp
+  for native FSUBRP. Verify differential cases rather than assuming mnemonics.
+  The returned movement vector may alias projection stores; keep subsequent
+  length read timing. Final quarter/(length*scale + 2*(frame3c+frame24) + 1)
+  rounds to frame34 and jumps heavy continuation bc9, bypassing native EDI reload.
+
+Use source helpers and explicit live register packets. Compare callback captures,
+frame aliases, both projection clamps, NaNs, x87 states and all three routes.
+Later query, region/category, target selection and engine subsystems remain native.
+
+
+## Staged continuation: second-pass movement score
+
+`artillery_second_movement_score.c` reconstructs the 569-byte interval at
+009a0981..009a0bba / 0074b161..0074b39a. It is staged only, alongside the
+previous movement gate; neither new movement stage is installed yet. Both
+read-only structural audits passed: 123 instructions, an eight-byte guarded
+entry and no external or overwritten interior references. Both targets passed 439
+staged comparisons, including eight cases executing compiled gate and score together.
+Native unit-score,
+driver-reload and heavy-score continuations remain separate.
+
+The source captures the driver across its event callback, captures movement
+from frame24 after driver callbacks, retains EDI/EBX on heavy continuation,
+and executes actual event-scalar, cross-product and length helpers. It retains
+second-pass dot-product order, rounded projection stores at frame24/frame3c,
+ordered-negative clamps and the subsequent aliased vector read. Staged fixtures
+compare full frame/arena memory, callback order, routes, live registers and x87
+state. Object vector/event methods are controlled; complete evaluation and firing
+remain unverified. Private source/payload hash evidence is in
+`bfv-reference-local/second-movement-score/staged/{client,server}`.
+
 ## Current resume checkpoint
 
 The second-setup checkpoint passed **41,148 client + 39,564 server = 80,712

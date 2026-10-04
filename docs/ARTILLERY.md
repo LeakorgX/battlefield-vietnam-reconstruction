@@ -607,8 +607,90 @@ uses a low-byte pattern predicate, initializes three vector fields and routes
 by begin/end equality. It preserves the allocation pointer in EAX at the empty
 cleanup continuation. Object methods are controlled; allocation, exception
 unwinding, cleanup and subsequent filtering remain native or unverified. The
-current checkpoint passed 80,712 full comparisons and 16 matching-hash live
+iterator/setup checkpoint passed 80,712 full comparisons and 16 matching-hash live
 checks. Compact reports identify the verified EXE hashes.
+
+The following 229-byte second-pass candidate filter is installed in
+`artillery_second_filter.c`, at client `009a04f0` / server `0074acd0`, ending at
+`009a05d5` / `0074adb5`. Both read-only structural audits passed; the six-byte
+entry boundary has no interior references. Installed focused checks passed
+355 comparisons per target. Its checkpoint passed 81,422 full comparisons and 16 matching-hash live checks.
+
+The handle comes from the query iterator at frame+0x1c. Generation mismatches
+and zero low indices reject without writing the candidate frame slot; a null
+pool object does write zero. Identity callbacks can replace frame+0x18 before
+the component and flag reads. Metric callbacks can replace the query iterator
+and history receiver at frame+0xa4. History callbacks can change the reference
+and timestamp before their x87 comparison. The masked FCOMP status rules retain
+unordered behavior, precision, rounding and stack occupancy. Fixtures include
+all twelve control modes and caller stack depths 0, 2 and 5. Identity, metric and
+history services are controlled; history lookup has separate complete-function
+coverage. These checks stop at accept/reject continuations and do not establish
+later scoring, query cleanup or behavior in a match. This partial stage adds no
+complete inventory entries.
+
+The following 88-byte timestamp-weight stage is reconstructed in
+`artillery_second_weight.c` and is installed. Both structural audits and 364
+staged and installed comparisons per target passed. It captures the query iterator and bot
+table, calls slot+0x1a4 with output frame+0x10c, and uses only the return's low
+byte. A false result stores exactly 1 at frame+0x2c. A true result rounds the
+scaled difference to float before clamp(0,value,1), then scales and subtracts
+with an extended intermediate before the final float store. The tests execute
+actual original/source clamp math; timestamp lookup is controlled. They cover
+callback mutations, exceptional values, raw return bits, output/iterator alias,
+rounding/precision modes and occupied stacks. The second-aim checkpoint passed 83,936 full comparisons and 16 live checks.
+Partial stages do not add complete inventory entries.
+
+The next aiming path uses the complete 128-byte normalization helper at client
+`004a2a10` / server `00438d30`. `vector_normalize.c` is installed and passed
+687 staged and installed comparisons per target plus both structural audits. It rounds squared
+length before its tolerance tests, leaves near-unit vectors untouched, zeros
+tiny vectors with EAX `ffffb1df`, and otherwise applies an extended reciprocal
+square root. Unordered values reach arithmetic. The original overwrites its
+saved ECX scratch slot, so ECX returns squared-length bits. Tests compare those
+bits, EAX, rounded vector stores, nonvolatile registers, x87 flags/values and
+constant-alias behavior. Full/live checks passed in the second-aim checkpoint; the helper is registered. Unmasked faults and overflowing caller x87 stacks are not covered.
+
+The following 127-byte second-pass aiming gate is installed in
+`artillery_second_aim.c`, ending at client `009a06ac` / server `0074ae8c`.
+It passed 206 staged and installed comparisons per target and both structural
+audits. Position, vector difference and normalization execute actual source
+helpers. Tests compare full memory, captured component, callback-dependent
+candidate reads, low-byte aiming result, bypass/accept/reject routes and x87
+state. Object methods and final aiming predicate remain controlled. Its checkpoint
+passed 83,936 full comparisons and 16 matching-hash live vector checks. These checks do not
+establish target scoring or firing in a match.
+
+The next 74-byte position retrieval and 152-byte distance/direction stages are
+now installed. They passed 164 + 262 staged comparisons per target and
+both structural audits. Position retrieval calls the actual source event-interface
+helper, preserves the captured candidate and copies fallback coordinates in
+sequence, including overlapping buffers. Distance arithmetic consumes the old
+origin before overwriting a field, retains native store/rounding order and executes
+actual length, maximum(length,0.5) and division helpers. Tests include callback
+mutations, aliases, nonfinite/random inputs and x87 modes/occupied states.
+Installed focused and current-hash live checks passed; full regression is pending; the following weapon
+selection is also installed, while later scoring remains native. Neither partial stage adds complete inventory entries.
+
+The following 298-byte second-pass weapon scan is now installed. Both structural audits and 294 comparisons per target passed. It uses
+class_rating/(1 + 10/signed_available), converting -1 availability to 65536 and
+zeroing nonpositive signed counts. It omits the first-pass history and distance
+gates. Table capture precedes the rounded rating store, while method lookup
+follows it. Best selection is strict; accepted padding leaves EBX at the actual
+scan count. Tests cover callback-dependent container reads, table/vector/frame
+aliases, exceptional float parameters and occupied x87 states. Inventory,
+classification and availability methods are controlled; installed focused and
+current-hash live checks passed, while full verification is pending and later scoring remains native.
+
+The following 201-byte second-pass movement gate is reconstructed but staged
+only. Both structural audits and 522 comparisons per target passed. It retains
+captured movement/EDI, initializes and captures the velocity vector before
+stores, rereads callback-dependent target/source fields, applies low-byte pattern
+routing and evaluates magnitude as x*x + z*z + y*y. Tests cover aliases,
+callback mutations, flags, nonfinite inputs and occupied x87 states across
+rounding/precision modes. Object methods remain controlled; installed/full/live
+checks are pending. The following movement score has distinct captured-driver
+and live-register behavior and remains unreconstructed.
 
 ## Continuing native analysis
 
@@ -640,3 +722,25 @@ calls and final `RET 0x14`, clears their erroneous flow overrides, disassembles 
 continuations, and restores the verified 8,269-byte interval. Both binaries passed
 these guards and decompiled successfully. Counts are published in
 `reports/*/artillery-body-recovery.tsv`; the native bodies remain local research.
+
+
+## Staged continuation: second-pass movement score
+
+`artillery_second_movement_score.c` reconstructs the 569-byte interval at
+009a0981..009a0bba / 0074b161..0074b39a. It is staged only, alongside the
+previous movement gate; neither new movement stage is installed yet. Both
+read-only structural audits passed: 123 instructions, an eight-byte guarded
+entry and no external or overwritten interior references. Both targets passed 439
+staged comparisons, including eight cases executing compiled gate and score together.
+Native unit-score,
+driver-reload and heavy-score continuations remain separate.
+
+The source captures the driver across its event callback, captures movement
+from frame24 after driver callbacks, retains EDI/EBX on heavy continuation,
+and executes actual event-scalar, cross-product and length helpers. It retains
+second-pass dot-product order, rounded projection stores at frame24/frame3c,
+ordered-negative clamps and the subsequent aliased vector read. Staged fixtures
+compare full frame/arena memory, callback order, routes, live registers and x87
+state. Object vector/event methods are controlled; complete evaluation and firing
+remain unverified. Private source/payload hash evidence is in
+`bfv-reference-local/second-movement-score/staged/{client,server}`.

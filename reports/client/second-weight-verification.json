@@ -1,0 +1,9 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "compiled_sha256": "594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82",
+  "passed": 364,
+  "scope": "Original/source timestamp weight with actual clamp, rounded intermediate, callback rereads, low-byte predicate, aliasing, nonfinite inputs and x87 state. Timestamp lookup remains controlled; later scoring is unverified.",
+  "original_block_bytes": 88,
+  "replacement_scope": "partial_native_evaluator"
+}

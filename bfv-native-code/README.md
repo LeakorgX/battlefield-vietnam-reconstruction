@@ -150,6 +150,22 @@ see [the handoff](../docs/HANDOFF.md). Final alternate scaling and the traversal
 helper are now installed; 329 + 154 focused comparisons per target passed.
 Their combined checkpoint passed 80,078 full comparisons and 16 live checks.
 The following iterator/query setup is installed and passed 157 + 160 focused
-comparisons per target. The current checkpoint passed 80,712 full comparisons
+comparisons per target. The iterator/setup checkpoint passed 80,712 full comparisons
 and 16 matching-hash live checks. Later evaluator
 phases remain native.
+
+The second-pass filter checkpoint passed 81,422 full comparisons and 16 live
+checks. Subsequent timestamp weight, complete normalization and the second-pass
+aiming gate are installed and passed 364 + 687 + 206 focused checks per target.
+Their full regressions passed in the second-aim checkpoint; see the handoff for hashes.
+
+The subsequent second-aim checkpoint passed 83,936 full comparisons and 16 live
+checks; normalization is registered after complete-function evidence passed.
+Second-pass position/distance/weapon stages are now installed. Current checks
+and EXE hashes are tracked in the handoff. Their checkpoint passed 85,376 full
+comparisons and 16 matching-hash live checks; compact reports were exported.
+
+The following second-pass movement gate and score are staged separately: 522 +
+439 comparisons per target and structural audits passed. The score preserves
+driver/movement captures, second-pass dot products and three native continuations.
+They are not installed yet; see the compact staged reports and handoff.

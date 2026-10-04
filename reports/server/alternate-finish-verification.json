@@ -1,7 +1,7 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
+  "compiled_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
   "passed": 329,
   "scope": "Original/source final alternate score scaling, signed setting comparison and rounded best-target selection. Actual float selectors execute without numeric mocks; complete fixture memory, field aliases, nonvolatile registers and x87 state compare across nonfinite inputs, precision/rounding modes and exact ties. Remaining evaluator phases and live-match behavior are unverified.",
   "original_block_bytes": 170,

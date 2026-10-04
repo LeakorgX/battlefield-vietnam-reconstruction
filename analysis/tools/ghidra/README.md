@@ -81,3 +81,33 @@ advance, its six-byte entry boundary and filter/post-pass continuations. Run wit
 `AuditArtillerySecondSetup.java OUTPUT_TSV` checks the 93-byte routing/query
 setup, six-byte entry boundary and filter/empty/skip continuations. Run with
 `-noanalysis -readOnly`. The source must carry live EAX into empty-query cleanup.
+
+`AuditArtillerySecondFilter.java OUTPUT_TSV` checks the 229-byte second-pass
+candidate filter, six-byte entry boundary, eleven rejection branches and accept
+fallthrough. Run with `-noanalysis -readOnly`; metadata contains no native bodies.
+
+`AuditArtillerySecondWeight.java OUTPUT_TSV` checks the 88-byte second-pass
+weight stage, six-byte entry boundary, internal branch and continue boundary.
+Run with `-noanalysis -readOnly`; only structural metadata is exported.
+
+`AuditVectorNormalize.java OUTPUT_TSV` checks the complete 128-byte helper,
+seven-byte entry boundary and both RET 0 exits. Run with `-noanalysis -readOnly`.
+
+`AuditArtillerySecondAim.java OUTPUT_TSV` checks the 127-byte second-pass aiming
+gate, seven-byte entry boundary, bypass/rejection branches and accept fallthrough.
+Run with `-noanalysis -readOnly`; only structural metadata is exported.
+
+`AuditArtillerySecondPosition.java OUTPUT_TSV` checks the 74-byte position stage,
+six-byte entry boundary, fallback branch and next-stage boundary.
+`AuditArtillerySecondDistance.java OUTPUT_TSV` checks the 152-byte distance stage,
+seven-byte entry boundary and fallthrough. Both use `-noanalysis -readOnly`.
+
+`AuditArtillerySecondWeapons.java OUTPUT_TSV` checks the 298-byte second-pass
+weapon scan, six-byte entry boundary, internal scan/padding flow, reject branch
+and accept boundary. Run with `-noanalysis -readOnly`.
+
+`AuditArtillerySecondMovement.java OUTPUT_TSV` checks the 201-byte second-pass
+movement gate, six-byte prefix and continue/zero-score/unit-score routes. Run
+with `-noanalysis -readOnly`; only structural metadata is exported.
+
+`AuditArtillerySecondMovementScore.java` audits the partial second-pass movement-score interval (569 bytes, eight-byte entry) and its three retained native continuations. Audit eligibility is structural evidence; installed/full/live checks are separate gates.
