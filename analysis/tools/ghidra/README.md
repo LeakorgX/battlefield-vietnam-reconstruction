@@ -111,3 +111,5 @@ movement gate, six-byte prefix and continue/zero-score/unit-score routes. Run
 with `-noanalysis -readOnly`; only structural metadata is exported.
 
 `AuditArtillerySecondMovementScore.java` audits the partial second-pass movement-score interval (569 bytes, eight-byte entry) and its three retained native continuations. Audit eligibility is structural evidence; installed/full/live checks are separate gates.
+
+`AuditArtillerySecondDriver.java` audits the partial 111-byte second-pass driver predicate, ten-byte entry guard and accept/reject continuations. Installed/full/runtime evidence remains a separate gate.

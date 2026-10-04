@@ -7,8 +7,8 @@
     "push": true,
     "preserve_uncommitted_work": true
   },
-  "local_head": "f34ae00e5bddf2ea16d23e8692d1ad26396e43a0",
-  "last_verified_remote_main": "f34ae00e5bddf2ea16d23e8692d1ad26396e43a0",
+  "local_head": "42827f75858de793248c17ecdd4c37e3ea274366",
+  "last_verified_remote_main": "42827f75858de793248c17ecdd4c37e3ea274366",
   "active_goal": "Finish the whole original client/server reconstruction and verify every whole-game milestone.",
   "whole_game": {
     "completed_milestones": 0,
@@ -16,41 +16,42 @@
   },
   "source_inventory_reconstructed_functions": 1233,
   "process_observation": {
-    "client_session": 51149,
-    "server_session": 75419,
-    "client_exit_code": 0,
-    "server_exit_code": 0,
+    "previous_client_session": 42034,
+    "previous_server_session": 37476,
+    "session_handles_missing": true,
     "observed_running": false,
+    "matching_full_reports_finalized": true,
+    "terminal_exit_output_recovered": false,
     "recheck_before_launching": true
   },
   "targets": {
     "client": {
       "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
       "executable": "X:\\Battlefield Vietnam - Copy\\BfVietnam-editable.exe",
-      "actual_sha256": "594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82",
-      "manifest_sha256": "594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82",
-      "payload_bytes": 34061,
-      "entry_patches": 689,
+      "actual_sha256": "722af5af9be654c0360d6bf640b641618984d6800f370456183e982603a87eb2",
+      "manifest_sha256": "722af5af9be654c0360d6bf640b641618984d6800f370456183e982603a87eb2",
+      "payload_bytes": 35149,
+      "entry_patches": 691,
       "vtable_patches": 5,
       "live_passed": 8,
-      "full_report_passed": 43480,
-      "full_report_sha256": "594bd509e82f141b6835340537d5a6ee085b005723065309cce9cce0718bca82",
+      "full_report_passed": 44441,
+      "full_report_sha256": "722af5af9be654c0360d6bf640b641618984d6800f370456183e982603a87eb2",
       "full_report_matches_current_executable": true,
-      "full_verifier_state": "completed; terminal exit code 0"
+      "full_verifier_state": "finalized matching report; process absent"
     },
     "server": {
       "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
       "executable": "X:\\Battlefield Vietnam - Copy\\bfvietnam_w32ded-editable.exe",
-      "actual_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
-      "manifest_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
-      "payload_bytes": 31245,
-      "entry_patches": 544,
+      "actual_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
+      "manifest_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
+      "payload_bytes": 32333,
+      "entry_patches": 546,
       "vtable_patches": 5,
       "live_passed": 8,
-      "full_report_passed": 41896,
-      "full_report_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
+      "full_report_passed": 42857,
+      "full_report_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
       "full_report_matches_current_executable": true,
-      "full_verifier_state": "completed; terminal exit code 0"
+      "full_verifier_state": "finalized matching report; process absent"
     }
   },
   "verified_previous_checkpoint": {
@@ -60,25 +61,49 @@
   },
   "staged_pending_work": {
     "second-movement": {
-      "installed": false,
+      "installed": true,
       "passed_per_target": 522,
       "original_block_bytes": 201,
       "structural_audit": "eligible; both targets",
-      "private_artifacts": "bfv-reference-local/second-movement/staged/{client,server}"
+      "private_artifacts": "bfv-reference-local/second-movement/staged/{client,server}",
+      "installed_full_verification": "pending",
+      "installed_live_verification": "passed; 8 executions per target",
+      "installed_focused_verification": "passed"
     },
     "second-movement-score": {
-      "installed": false,
+      "installed": true,
       "passed_per_target": 439,
       "original_block_bytes": 569,
       "structural_audit": "eligible; both targets",
-      "private_artifacts": "bfv-reference-local/second-movement-score/staged/{client,server}"
+      "private_artifacts": "bfv-reference-local/second-movement-score/staged/{client,server}",
+      "installed_full_verification": "pending",
+      "installed_live_verification": "passed; 8 executions per target",
+      "installed_focused_verification": "passed"
+    },
+    "second-driver": {
+      "installed": false,
+      "passed_per_target": 338,
+      "original_block_bytes": 111,
+      "structural_audit": "eligible; both targets",
+      "private_artifacts": "bfv-reference-local/second-driver/staged/{client,server}"
     }
   },
-  "next_action": "Publish verified source/reports, then run prepared private install-second-movement.py once to integrate staged gate and score. Rebuild both targets; run installed focused/full/live checks and export/checkpoint only after matching evidence. Continue second-pass predicate at 009a0bc9/0074b3a9.",
-  "latest_observed_full_progress": "Both installed full regressions completed with exit code 0; matching compact reports exported and private second-weapons checkpoint preserved.",
+  "next_action": "Publish verified movement checkpoint and staged driver source/reports; execute prepared install-second-driver.py once, rebuild and verify installed focused/full/live. Then continue region modifier at009a0c38/0074b418.",
+  "latest_observed_full_progress": "Fresh current-hash full runs are confirmed live. Current focused gate/score session65041 and live session61113 exited 0.",
   "verified_current_checkpoint": {
-    "name": "2026-10-04-second-weapons",
-    "full_passed": 85376,
+    "name": "2026-10-04-second-movement",
+    "full_passed": 87298,
     "live_passed": 16
+  },
+  "focused_session": {
+    "id": 65041,
+    "exit_code": 0,
+    "gate_passed_per_target": 522,
+    "score_passed_per_target": 439
+  },
+  "live_session": {
+    "id": 61113,
+    "exit_code": 0,
+    "passed_per_target": 8
   }
 }

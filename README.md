@@ -29,7 +29,7 @@ See the [full-project tracker](docs/PROGRESS.md).
 - Reconstructed 175 object-word accessors as editable C; [field offsets and verification](docs/WORD-GETTERS.md).
 - Added editable plan eligibility, bailout-rating and vehicle-rating rules.
 - Built client and server EXE copies that execute the compiled replacement code.
-- The latest exported full-regression build passed 85,376 comparisons and ABI checks across the two inspected binaries; reports identify its hashes. New local work is tracked in the handoff guide.
+- The latest exported full-regression build passed 87,298 comparisons and ABI checks across the two inspected binaries; reports identify its hashes. New local work is tracked in the handoff guide.
 - Validated vector cleanup/rethrow in live Windows client and server processes.
 - Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
 - Added binary-analysis tools, function indexes, class/vtable maps and call graphs.

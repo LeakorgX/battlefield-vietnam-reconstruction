@@ -5,6 +5,61 @@ The user's latest direction is **resume existing work, commit and publish to Git
 This supersedes the earlier local-only restriction. Preserve source and reports;
 exclude original binaries, assets, raw bodies and private analysis from publication.
 
+## Latest verified checkpoint and staged driver predicate
+
+Installed second-pass movement passed **44,441 client + 42,857 server = 87,298**
+full comparisons and 16 matching-hash live executions. The former session handles
+42034/37476 are missing; no verifier processes remain. Matching finalized reports
+prove completion of both suites; terminal exit output was not recovered. Guarded
+export succeeded and private checkpoint `2026-10-04-second-movement` is preserved.
+Current installed hashes remain 722af5af... / 882a5f0c... as listed below.
+
+The following `artillery_second_driver_gate.c` interval is staged only. Both
+targets passed **338** comparisons and read-only structural audits (111 bytes,
+31 instructions, ten-byte entry guard, no interior references). Tests cover
+captured target/driver/receiver/table, method rereads, point conversions/aliases,
+callback mutations, all twelve x87 control modes, depths 0/2/5 and raw inputs.
+Actual hash-matched event-word source executes; object methods are controlled.
+Private evidence is `second-driver/staged/{client,server}`. Whole-game progress
+remains 0/7; complete function inventory remains 1,233.
+
+Next: publish this verified checkpoint/source. Then execute prepared private
+`install-second-driver.py` ONCE (not yet executed), rebuild and run installed
+focused/full/live checks. Export only after matching results. Continue region
+modifier at 009a0c38/0074b418 and later category/target-state phases. The older
+sections below describe historical states and session handles.
+
+## Active continuation: installed second-pass movement
+
+The verified second-weapons checkpoint was published to GitHub main as
+`42827f75858de793248c17ecdd4c37e3ea274366`; remote main was checked and matched.
+It passed 85,376 full comparisons and 16 live checks and is preserved privately.
+Public compact installed reports still describe that checkpoint.
+
+The subsequent movement gate and score are now installed locally. Both original
+hashes were checked before publication. Movement gate focused checks passed 522
+per target; score focused checks passed 439 per target; session **65041** exited 0. The privately
+compiled composite passed 439 score cases per target, including eight with the
+compiled gate, and structural audits passed for both intervals. Current-hash live session **61113** exited 0, passing 8 executions per target.
+Full sessions **42034 client / 37476 server** are running; Python PIDs
+**43736 / 40648** were confirmed live. Reuse these sessions; do not relabel old
+full reports with the new hashes.
+
+Current installed hashes:
+- client `722af5af9be654c0360d6bf640b641618984d6800f370456183e982603a87eb2`
+- server `882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68`
+
+Payloads are 35,149 / 32,333 bytes, with 691 / 546 guarded entry patches and five
+vtable patches per target. Inventory stays 1,233 complete functions; these are
+partial inline stages, and whole-game milestones stay 0/7. Private one-time
+`install-second-movement.py` HAS been executed; do not rerun it. Build, full
+verifier and guarded compact exporter now integrate both movement stages.
+
+Next: re-poll full sessions42034/client and37476/server, then
+export/preserve/publish only after matching results. Continue second-pass driver
+predicate at 009a0bc9/0074b3a9 afterward. Earlier checkpoint history follows; its older resume commands describe historical
+builds. The active section above is authoritative for the latest installed state.
+
 ## Active continuation: second-pass weapons
 
 The whole-project goal is active and incomplete. Main was fetched and verified
@@ -506,3 +561,23 @@ in-memory tool stores may not survive transfer to another agent.
 > checkpoint is preserved. Inspect Git history for publication status.
 > Preserve live EAX for empty-query cleanup. Use complete repaired private listings
 > in current-artillery/{client,server}/bodies. Continue filter at 009a04f0/0074acd0.
+
+## Following second-pass driver predicate: instruction evidence
+
+Next interval is 009a0bc9..009a0c38 / 0074b3a9..0074b418 (111 bytes).
+It does not implement the first pass's wider spatial query. It scales parameter
+frame20 and compares distance frame28; AH mask05 parity-even skips to acceptance.
+The other path rejects if captured EDI/driver is null, then captures frame18's
+target in EBP and calls slot18 twice on that captured target (rereading its table
+before the second call). First point remains captured across the second callback.
+Both float inputs load before their stores: first point z and second point x.
+After those callbacks but before stores, capture receiver framef8 in EBX and its
+table in EBP. Store second x to frame138 and first z to frame13c, using x87
+conversion. Actual component_event2_word executes on captured EDI, followed by
+captured-table slot84(receiver, event word, frame138 point). Do not reread driver,
+receiver or table after the helper callback. Low-byte true rejects at second_reject
+009a0f5e/0074b73e; false accepts at c38/b418. EDI remains captured; EBP/EBX outputs
+are path-dependent. Native region/category stages follow acceptance. Guard begins
+four-byte FLD frame20 plus six-byte FMUL query-scale; verify the ten bytes and
+incoming interior references from originals before detouring. The new staged source and fixtures implement this interval; installed/full
+evidence remains pending.

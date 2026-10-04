@@ -38,6 +38,8 @@ from verify_second_aim import compare_second_aim
 from verify_second_position import compare_second_position
 from verify_second_distance import compare_second_distance
 from verify_second_weapons import compare_second_weapons
+from verify_second_movement import compare_second_movement
+from verify_second_movement_score import compare_second_movement_score
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
 from verify_aim_geometry import compare_aim_geometry
@@ -196,6 +198,10 @@ def verify(target):
     second_distance_comparisons=compare_second_distance(original,original_pe,edited,edited_pe,spec,symbols)
     second_weapons_comparisons=compare_second_weapons(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(second_position_comparisons)} position, {len(second_distance_comparisons)} distance and {len(second_weapons_comparisons)} weapon comparisons passed',flush=True)
+    print(f'{target}: checking second-pass movement gate and score',flush=True)
+    second_movement_comparisons=compare_second_movement(original,original_pe,edited,edited_pe,spec,symbols)
+    second_movement_score_comparisons=compare_second_movement_score(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(second_movement_comparisons)} movement gate and {len(second_movement_score_comparisons)} movement score comparisons passed',flush=True)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         shared_math_cases=len(math_comparisons),artillery_filter_cases=len(filter_comparisons),target_history_cases=len(history_comparisons),artillery_cache_cases=len(artillery_cache_comparisons),artillery_cases=len(artillery_comparisons),interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
         bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),geometry_cases=len(geometry_comparisons),event_cases=len(event_comparisons),vector_cases=len(vector_comparisons),
@@ -274,6 +280,12 @@ def verify(target):
     report['second_distance']=second_distance_comparisons
     report['second_weapons_cases']=len(second_weapons_comparisons)
     report['second_weapons']=second_weapons_comparisons
+    report['second_movement_cases']=len(second_movement_comparisons)
+    report['second_movement']=second_movement_comparisons
+    report['second_movement_score_cases']=len(second_movement_score_comparisons)
+    report['second_movement_score']=second_movement_score_comparisons
+    report['passed']+=len(second_movement_comparisons)+len(second_movement_score_comparisons)
+    report['scope']+=' Second-pass movement gate and distinct movement score execute actual source scalar, cross-product and length math with controlled vector/event methods. Full fixture memory, callback captures, EDI/EBX, three routes, aliases, exceptional values and x87 states compare; eight cases execute the source gate and score together. Unit-score and driver-reload entries remain native. Later evaluation, firing and complete live-game behavior remain unverified.'
     report['passed']+=len(second_position_comparisons)+len(second_distance_comparisons)+len(second_weapons_comparisons)
     report['scope']+=' Second-pass position retrieval executes the reconstructed event-interface helper with controlled virtual methods, preserving sequential fallback copies and captured EDI. Distance arithmetic executes actual length, maximum and division helpers with native rounded/intervening stores, aliases, exceptional values and occupied x87 state. Second-pass weapon scan compares actual signed rating arithmetic, dynamic vector reads, callback/table captures, strict best selection, scan count, accepted padding, frame memory and x87 state with controlled inventory/category/availability. Later movement, complete target evaluation and firing remain native or unverified.'
     report['passed']+=len(weight_comparisons)+len(normalize_comparisons)+len(second_aim_comparisons)

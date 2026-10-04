@@ -744,3 +744,16 @@ compare full frame/arena memory, callback order, routes, live registers and x87
 state. Object vector/event methods are controlled; complete evaluation and firing
 remain unverified. Private source/payload hash evidence is in
 `bfv-reference-local/second-movement-score/staged/{client,server}`.
+
+The second movement gate and score were subsequently installed. Installed focused
+checks passed 522 + 439 per target and matching-hash live vector checks passed
+16 executions total. New full regression remains pending; public installed
+reports describe the preserved second-weapons checkpoint. See the current
+handoff for sessions/hashes. These inline stages do not add complete functions.
+
+Second-pass movement checkpoint subsequently passed 87,298 full comparisons
+and 16 matching-hash live checks. The following second-pass driver predicate
+is staged separately: 111 bytes, 338 comparisons per target and structural
+audits. It preserves two target position calls, captured driver/receiver/table,
+x87 coordinate stores and low-byte predicate result with actual event-word
+helper. Object callbacks are controlled; full evaluator behavior is unverified.

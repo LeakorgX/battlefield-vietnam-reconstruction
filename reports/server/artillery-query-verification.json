@@ -1,7 +1,7 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
+  "compiled_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
   "passed": 731,
   "scope": "Original/source first-pass distance/driver/query gate and four complete helpers. Complete frame/arena memory, ABI, callback sequence, captured tables versus receiver rereads, overlap, raw versus rounded coordinate copies, low-byte predicates and x87 control/status/retained values compared across boundary/nonfinite inputs and precision/rounding modes. Actual point transforms execute. Object methods, protected vector growth and raw free are controlled; both query outcomes perform one vector cleanup. Full evaluator exception unwinding, live query behavior and complete artillery equivalence remain unverified.",
   "group_counts": {

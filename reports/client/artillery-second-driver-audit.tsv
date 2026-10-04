@@ -1,0 +1,2 @@
+address	symbol	end_exclusive	owner	bytes	instructions	patch_bytes	patch_hex	external_interior_references	overwritten_interior_references	status	original_sha256
+009a0bc9	bfv_artillery_second_driver_gate_bridge	009a0c38	0099f2a0	111	31	10	d9442420d80d2863bf00	0	0	eligible	79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5

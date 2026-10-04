@@ -7,7 +7,7 @@
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
 3. The latest exported full-regression native build was compared against original instructions. It passed
-   43,480 client checks and 41,896 server checks, 85,376 in total. This includes
+   44,441 client checks and 42,857 server checks, 87,298 in total. This includes
    4,678 history-tree and 303 first-pass weapon-selection comparisons per target,
    alongside the previously recovered logic and accessor checks. Earlier builds also executed replacement functions in the game, as
    recorded below.
@@ -266,3 +266,8 @@ behavior comparisons for code intended to remain equivalent.
 New systems need native reference traces, boundary cases, lifecycle cases and
 interaction checks. Passing existing interpreter tests says nothing by itself
 about a new artillery/physics/networking implementation.
+
+The second-movement checkpoint passed 87,298 matching-hash full comparisons
+and 16 live executions; compact reports were exported and private EXEs/evidence
+preserved. The following 111-byte driver predicate is staged only and passed
+338 cases per target plus structural audits; it is not installed evidence.

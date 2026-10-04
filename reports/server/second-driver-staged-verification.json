@@ -1,0 +1,15 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "base_compiled_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
+  "staged_payload_sha256": "950681a10d2f3ab5623384439557ccf193afbf95b73071d9a9e109c89e70aa0d",
+  "source_sha256": {
+    "artillery_second_driver_gate.c": "1c009c35a601bad5965e06003fc7f3809447055bdae2861037ecb8285500fa5e"
+  },
+  "passed": 338,
+  "installed": false,
+  "verification_kind": "private_staged_payload_differential",
+  "replacement_scope": "partial_native_evaluator",
+  "full_regression_passed": false,
+  "scope": "Original versus separately compiled second-pass driver predicate at accept/reject continuations, executing the current hash-matched source event-word helper. Controlled position/event/predicate methods; full frame/arena memory, callbacks, captures, low-byte results, live registers, aliases and x87 state compare. This is not installed/full-game evidence."
+}

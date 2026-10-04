@@ -145,7 +145,9 @@ def prepare(target):
                                  ('artillery-second-aim-audit.tsv','bfv_artillery_second_aim_bridge',127),
                                  ('artillery-second-position-audit.tsv','bfv_artillery_second_position_bridge',74),
                                  ('artillery-second-distance-audit.tsv','bfv_artillery_second_distance_bridge',152),
-                                 ('artillery-second-weapons-audit.tsv','bfv_artillery_second_weapons_bridge',298)]:
+                                 ('artillery-second-weapons-audit.tsv','bfv_artillery_second_weapons_bridge',298),
+                                 ('artillery-second-movement-audit.tsv','bfv_artillery_second_movement_gate_bridge',201),
+                                 ('artillery-second-movement-score-audit.tsv','bfv_artillery_second_movement_score_bridge',569)]:
         with (REPORTS / target / filename).open(encoding='utf-8') as f:
             rows=list(csv.DictReader(f,delimiter='\t'))
         assert len(rows)==1
@@ -176,6 +178,12 @@ def prepare(target):
             'EDI, nonvolatile registers and x87 state compare with controlled list methods. '
             'Complete evaluator and live-match behavior remain unverified.',
             original_block_bytes=29,replacement_scope='partial_native_evaluator')
+    focused('second-movement-verification.json','second_movement',
+            'Original/source second-pass movement gate at three native continuations, including callbacks, flags, overlapping vectors, frame memory, captured EDI and x87 states. Virtual methods remain controlled; full evaluator/game behavior remains unverified.',
+            original_block_bytes=201,replacement_scope='partial_native_evaluator')
+    focused('second-movement-score-verification.json','second_movement_score',
+            'Original/source distinct second-pass movement score with actual scalar/cross/length helpers, driver/movement captures, native dot-product order, projection stores/clamps, aliases, EDI/EBX and three routes. Eight cases execute source gate and score together; object methods are controlled. Later evaluation and firing remain unverified.',
+            original_block_bytes=569,replacement_scope='partial_native_evaluator')
     focused('second-position-verification.json','second_position',
             'Original/source position retrieval through actual event-interface lookup, captured candidate and sequential fallback stores. Full memory, aliases, callback frame changes, EDI and x87 state compare; virtual position methods remain controlled.',
             original_block_bytes=74,replacement_scope='partial_native_evaluator')

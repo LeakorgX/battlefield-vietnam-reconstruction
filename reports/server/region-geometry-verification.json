@@ -1,7 +1,7 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
+  "compiled_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
   "passed": 1067,
   "scope": "Actual original/source x/z projection, symmetric bounds and 2D/3D region predicates without numeric mocks. Complete memory, raw projection overlap, extended x versus rounded y reflection, inclusive/unordered bounds, strict radial limit, ABI and x87 state compared across finite/nonfinite inputs and precision/rounding modes. Boolean returns compare AL as required by the native callers. Region ownership/lifecycle, unmasked exceptions and live-match behavior remain unverified.",
   "operation_counts": {

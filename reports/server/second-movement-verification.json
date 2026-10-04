@@ -1,0 +1,9 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
+  "passed": 522,
+  "scope": "Original/source second-pass movement gate at three native continuations, including callbacks, flags, overlapping vectors, frame memory, captured EDI and x87 states. Virtual methods remain controlled; full evaluator/game behavior remains unverified.",
+  "original_block_bytes": 201,
+  "replacement_scope": "partial_native_evaluator"
+}

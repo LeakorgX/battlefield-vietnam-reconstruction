@@ -1,7 +1,7 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "b3edbbf838361e97c2115ec656031ac8af861c80285714a0b44a16e4c43f8773",
+  "compiled_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
   "passed": 4678,
   "scope": "Actual original/source insertion, duplicate handling, predecessor traversal, rotations, node construction and timestamp integration through guarded entries. Complete arena memory, allocation requests, ABI, x87 state and red-black invariants checked. Normal paths execute the retained protected node allocator with a controlled raw heap. Capacity-error tests control native string/exception services and stop at the throw boundary; real unwinding, allocation failure, deletion, concurrent access and complete artillery behavior remain unverified.",
   "reconstructed_entries": 6,
@@ -13,7 +13,7 @@
     "constructor": 42,
     "capacity_error": 5
   },
-  "payload_bytes": 31245,
-  "guarded_entry_replacements": 544,
+  "payload_bytes": 32333,
+  "guarded_entry_replacements": 546,
   "guarded_vtable_replacements": 5
 }
