@@ -1,0 +1,5 @@
+address	symbol	end_exclusive	bytes	instructions	patch_bytes	patch_hex	entry_references	external_interior_references	overwritten_interior_references	ret_cleanup	status	original_sha256
+00728f20	bfv_point_xz	00728f2d	13	6	6	8bc28b118910	100	0	0	0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
+0078cd10	bfv_point_in_symmetric_bounds	0078cd69	89	34	5	d90183ec08	2	0	0	4	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
+0071c280	bfv_region_contains_point2	0071c310	144	42	6	8a81c4010000	4	0	0	4	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
+0071c330	bfv_region_contains_point3	0071c352	34	12	6	83ec08568bf1	12	0	0	4	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d

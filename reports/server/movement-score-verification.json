@@ -1,0 +1,19 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
+  "passed": 645,
+  "scope": "Original/source following movement score and complete cross-product/event-2 scalar helpers. Full fixture memory, ABI, callback ordering/pointer rereads, vector overlap, rounded projection stores, ordered-negative/unordered branches and full x87 state compared across boundary/nonfinite inputs and precision/rounding modes. Vector-length math executes the actual recovered helper; object methods are controlled. Eight cases execute the previous gate and score together. The earlier gate retains its native score=1 alternate entry. Complete target scoring, firing and live-match equivalence remain unverified.",
+  "group_counts": {
+    "helper": 212,
+    "score": 433
+  },
+  "helper_counts": {
+    "vector_cross_assign": 162,
+    "component_event2_scalar": 50
+  },
+  "integrated_cases": 8,
+  "reconstructed_entries": 2,
+  "original_scoring_block_bytes": 570,
+  "replacement_scope": "partial_native_evaluator_with_two_complete_helpers"
+}

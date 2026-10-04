@@ -190,7 +190,12 @@
     "implemented_stages": [
       "cached-target validation",
       "first-pass candidate filtering",
-      "first-pass weapon scoring and selection"
+      "first-pass weapon scoring and selection",
+      "post-weapon candidate weight and aiming gate",
+      "initial movement-vector, flag and distance gates",
+      "following first-pass movement scoring",
+      "following distance, driver and candidate query gate",
+      "following first-pass region score modifier"
     ],
     "remaining_stages": [
       "remaining candidate search/scoring",
@@ -9354,6 +9359,159 @@
     "addresses": {
       "client": "00517c10",
       "server": "007686e0"
+    }
+  },
+  {
+    "symbol": "bfv_transform_point",
+    "source": "bfv-native-code/src/aim_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0049b340",
+      "server": "005b25f0"
+    }
+  },
+  {
+    "symbol": "bfv_vector_difference",
+    "source": "bfv-native-code/src/aim_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0049b490",
+      "server": "0048d160"
+    }
+  },
+  {
+    "symbol": "bfv_aim_world_position",
+    "source": "bfv-native-code/src/aim_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009be440",
+      "server": "0078df90"
+    }
+  },
+  {
+    "symbol": "bfv_component_position",
+    "source": "bfv-native-code/src/aim_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00994a80",
+      "server": "0073f1e0"
+    }
+  },
+  {
+    "symbol": "bfv_vector_cross_assign",
+    "source": "bfv-native-code/src/movement_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "006eb030",
+      "server": "00611430"
+    }
+  },
+  {
+    "symbol": "bfv_component_event2_scalar",
+    "source": "bfv-native-code/src/movement_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00970550",
+      "server": "0072e7d0"
+    }
+  },
+  {
+    "symbol": "bfv_component_event2_word",
+    "source": "bfv-native-code/src/artillery_query_helpers.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0092db30",
+      "server": "006eb4b0"
+    }
+  },
+  {
+    "symbol": "bfv_component_query_data",
+    "source": "bfv-native-code/src/artillery_query_helpers.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00970440",
+      "server": "00727d50"
+    }
+  },
+  {
+    "symbol": "bfv_query_vector_append",
+    "source": "bfv-native-code/src/artillery_query_helpers.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00975ab0",
+      "server": "0072d870"
+    }
+  },
+  {
+    "symbol": "bfv_query_vector_destroy",
+    "source": "bfv-native-code/src/artillery_query_helpers.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00490610",
+      "server": "006ff4f0"
+    }
+  },
+  {
+    "symbol": "bfv_point_xz",
+    "source": "bfv-native-code/src/region_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0097f070",
+      "server": "00728f20"
+    }
+  },
+  {
+    "symbol": "bfv_point_in_symmetric_bounds",
+    "source": "bfv-native-code/src/region_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009d5cc0",
+      "server": "0078cd10"
+    }
+  },
+  {
+    "symbol": "bfv_region_contains_point2",
+    "source": "bfv-native-code/src/region_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00964ac0",
+      "server": "0071c280"
+    }
+  },
+  {
+    "symbol": "bfv_region_contains_point3",
+    "source": "bfv-native-code/src/region_geometry.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00964b70",
+      "server": "0071c330"
+    }
+  },
+  {
+    "symbol": "bfv_find_word_in_nodes",
+    "source": "bfv-native-code/src/list_search.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "009bf7c0",
+      "server": "00775bf0"
+    }
+  },
+  {
+    "symbol": "bfv_target_handle_eligible",
+    "source": "bfv-native-code/src/artillery_target_eligibility.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "0097ede0",
+      "server": "00728c90"
+    }
+  },
+  {
+    "symbol": "bfv_next_target_handle",
+    "source": "bfv-native-code/src/target_traversal.c",
+    "status": "reconstructed",
+    "addresses": {
+      "client": "00963a20",
+      "server": "0071b110"
     }
   }
 ]

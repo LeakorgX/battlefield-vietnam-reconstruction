@@ -1,0 +1,3 @@
+address	symbol	end_exclusive	owner	bytes	instructions	patch_bytes	patch_hex	external_interior_references	overwritten_interior_references	ret_cleanup	status	original_sha256
+009bf7c0	bfv_find_word_in_nodes	009bf7e8	009bf7c0	40	18	5	568b742408	0	0	8	eligible	79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5
+009a007a	bfv_artillery_category_score_bridge	009a01f9	0099f2a0	383	115	10	f64507010f8475010000	0	0	0	eligible	79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5

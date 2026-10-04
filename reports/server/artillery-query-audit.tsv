@@ -1,0 +1,6 @@
+address	symbol	end_exclusive	owner	bytes	instructions	patch_bytes	patch_hex	entry_references	external_interior_references	overwritten_interior_references	ret_cleanup	repaired_body_bytes	indirect_tail_exits	status	original_sha256
+006eb4b0	bfv_component_event2_word	006eb4c7	006eb4b0	23	8	6	8b41048b4820	26	0	0	0	0	0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
+00727d50	bfv_component_query_data	00727d76	00727d50	38	15	7	8b098b01ff5034	13	0	0	0	0	1	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
+0072d870	bfv_query_vector_append	0072d8bd	0072d870	77	32	6	568b710485f6	26	0	0	4	0	0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
+006ff4f0	bfv_query_vector_destroy	006ff51a	006ff4f0	42	13	6	568bf18b4604	62	0	0	0	3	0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
+0074a61b	bfv_artillery_query_gate_bridge	0074a811	00749a80	502	128	10	d944241cd80d28478700	4	0	0	0	0	0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d

@@ -1,0 +1,2 @@
+start	end_exclusive	score	unit_score	owner	bytes	instructions	patch_bytes	patch_hex	entry_references	external_interior_references	overwritten_interior_references	status	original_sha256
+0099fb31	0099fc01	0099fe3b	0099fe33	0099f2a0	208	55	6	8b7c243085ff	2	0	0	eligible	79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5

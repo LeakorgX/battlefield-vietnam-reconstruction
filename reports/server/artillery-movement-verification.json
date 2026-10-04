@@ -1,0 +1,14 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
+  "passed": 521,
+  "scope": "Original/source first-pass movement-vector retrieval and flag/distance gates at all three native continuations. Full frame/arena memory, callback order, live EDI receiver, aliasing, low-byte predicates and x87 status/control/retained values compared across boundaries, nonfinite inputs, callback mutations and precision/rounding modes. Object methods are controlled services; later velocity arithmetic, complete candidate scoring and live-match behavior remain unverified.",
+  "exit_counts": {
+    "continue": 337,
+    "unit_score": 68,
+    "score": 116
+  },
+  "original_block_bytes": 208,
+  "replacement_scope": "partial_native_evaluator"
+}

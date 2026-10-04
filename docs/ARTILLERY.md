@@ -258,6 +258,268 @@ and six overwritten entry bytes. Static references cannot rule out every compute
 jump. Audit metadata is in `reports/*/artillery-weapons-audit.tsv`; the standard
 verification command includes the new comparisons.
 
+## Position helpers and post-weapon aiming gate
+
+`aim_geometry.c` reconstructs four complete helpers per binary:
+
+| Helper | Client | Server | Bytes / stack cleanup |
+| --- | --- | --- | --- |
+| `bfv_transform_point` | `0049b340` | `005b25f0` | 90 / 8 |
+| `bfv_vector_difference` | `0049b490` | `0048d160` | 37 / 8 |
+| `bfv_aim_world_position` | `009be440` | `0078df90` | 113 / 4 |
+| `bfv_component_position` | `00994a80` | `0073f1e0` | 31 / 4 |
+
+All use x86 `thiscall`. The transform and difference return the output pointer;
+the two position wrappers write a vector and return the world-matrix pointer.
+The transform reads all inputs before output stores, computing z, y, then x.
+The world-position helper stores x immediately before evaluating y, then z.
+Those orders and the distinct product/addition sequences are preserved through
+small x87 primitives in the readable C implementation. Overlapping buffers can
+therefore affect the helpers differently.
+
+`artillery_aim_gate.c` replaces the 208-byte inline stage at client `0099fa61`
+/ server `0074a241`. A nonzero record byte at `+0x14` sets frame `+0x74` to
+`1 / (1 + (frame[+0x58] - record[+0x18]) * 0.05)` and accepts the gate.
+The original does not clamp this result; field units remain unresolved.
+Otherwise the weight is 1 and a nonzero driver at frame `+0x1fc` skips aiming.
+The remaining path obtains component and target positions, transforms the record
+point, subtracts the selected weapon's origin, and calls the recovered direction
+predicate. Its accept/reject continuations are `0099fb31` / `009a0476` and
+`0074a311` / `0074ac56`. The selected weapon is frame `+0xec`, the difference
+output is `+0x1c4`, and the copied direction is `+0x1a4`. The component at `+0xf4`
+is captured across callbacks; other pointers are reread at the native stages.
+
+The focused suite contains 839 comparisons per target covering full fixture
+memory, math/aliasing, callback ordering and mutations, ABI, and x87 state across
+precision/rounding modes. Object methods and selected direction services remain
+controlled dependencies. It does not establish complete trajectory or firing
+behavior. Full-build evidence must match the hashes in the verification reports.
+
+`AuditAimGeometry.java` passed on both supported originals: complete helper
+intervals, exact overwritten instruction bytes, RET cleanup, owning evaluator,
+51-instruction gate, and its accept/reject exits. It found no recorded references
+into either the overwritten bytes or the block/function interiors from outside.
+Audit metadata is in `reports/*/aim-geometry-audit.tsv`. Computed references and
+live-match behavior are beyond this static audit.
+
+## Initial movement and distance gates
+
+`artillery_movement_gate.c` replaces the following 208-byte, 55-instruction
+inline stage, client `0099fb31` / server `0074a311`. It captures frame `+0x30`
+in live EDI, clears the vector at `+0x78`, and, if the receiver exists, copies
+its slot-`0x14` vector after reading all three words. The receiver remains
+captured even if a callback changes frame `+0x30`.
+
+The special distance tests run only when source frame `+0x1f8` flags have bit 1
+clear and target EBP flags have bit 1 set. The owner at frame `+0x50`, slot
+`0x28`, supplies a low-byte predicate. With a zero low byte, the code compares
+`frame[+0x1c] * 0.5` against distance `+0x28`, and, when required, compares
+`sqrt(z*z + y*y + x*x)` with 15.0. One outcome writes score `+0x20` as zero.
+With a nonzero low byte, it compares the parameter times the original float32
+0.9 constant against distance; one outcome resumes the native score=1 store.
+Unordered comparisons follow the original AH/parity masks, not ordinary C
+relational operators. These fields' physical units remain unestablished.
+
+| Continuation | Client | Server |
+| --- | --- | --- |
+| Later movement scoring | `0099fc01` | `0074a3e1` |
+| Score already zero; remaining gates | `0099fe3b` | `0074a61b` |
+| Native score=1 store | `0099fe33` | `0074a613` |
+
+`AuditArtilleryMovement.java` passed on both originals, checking ownership,
+the complete six-byte entry patch, all three continuations, instruction alignment
+and recorded interior references. Metadata is in
+`reports/*/artillery-movement-audit.tsv`. The differential suite has 521 cases
+per target: vector overlap, callbacks mutating frame/object fields, predicate
+low-byte boundaries, flag combinations, distance/vector boundaries, nonfinite
+values, all supported x87 precision/rounding modes and retained caller values.
+It compares full frame/arena memory, callback order, live registers and x87 state.
+Movement-vector and predicate methods are controlled. Staged and current-EXE
+focused comparisons passed, as did 16 current-hash live vector executions. The
+movement-gate checkpoint subsequently passed its full suites and was exported.
+The following scoring build passed full regressions on its own hashes.
+
+## Following movement score
+
+`artillery_movement_score.c` reconstructs the 570-byte, 123-instruction stage
+at client `0099fc01` / server `0074a3e1`, ending at `0099fe3b` / `0074a61b`.
+It consumes the movement receiver captured in EDI. A null receiver writes
+score 1. When distance `+0x28` compares smaller/equal/unordered against parameter
+`+0x1c`, the score is `1 / (1 + vector_length * 0.5)` using the receiver's
+slot-`0x14` vector and the recovered vector-length helper.
+
+The other path retrieves an event-2 scalar for driver `+0x1fc`, rounds it to
+float32 at `+0xc0`, then rereads the driver pointer for its slot-`0x14` vector.
+With no driver, the native temporary vector at `+0x11c` and scalar are cleared.
+The vector is copied to `+0x88`. The captured movement receiver's event-2 scalar
+minus `+0xc0` is compared with 5.0; smaller/equal/unordered results score 0.25.
+The event/scalar units remain unestablished.
+
+For the remaining path, the source computes `(0,1,0) cross frame[+0x64]` at
+`+0x180`, copies it to `+0xb0`, then retrieves the captured receiver's vector.
+Four dot products retain the original product/addition order on the x87 stack.
+Their two differences are stored to float32 at `+0x38` and `+0x54`; the original
+ordered-negative branches clear them to zero. Unordered results keep their
+stored bits. The final score uses 0.25 divided by one plus half the vector length
+plus twice the sum of those rounded projections. A returned vector may overlap
+projection fields, so it is reread by the length helper after the stores/clamps.
+
+`movement_geometry.c` also reconstructs two complete helpers per binary:
+
+| Helper | Client | Server | Bytes / ABI |
+| --- | --- | --- | --- |
+| `bfv_vector_cross_assign` | `006eb030` | `00611430` | 86; ECX left, right stack arg, RET 4, EAX left |
+| `bfv_component_event2_scalar` | `00970550` | `0072e7d0` | 23; ECX component, RET, ST0 scalar |
+
+The in-place cross product snapshots the left vector, then stores x/y/z
+immediately while rereading the right vector. Full/partial overlap therefore
+affects later coordinates. The scalar wrapper captures component `+4` owner,
+owner `+0x20` receiver, invokes receiver slot `0xa0` with event ID 2, then loads
+returned event `+0x14` pointer's float at `+8`. Those loads and ABI are established;
+the full event service remains a native dependency.
+
+`AuditMovementScore.java` passed both originals, including complete helper bodies,
+stack cleanup, patched instruction alignment, owning evaluator and exits.
+The earlier movement gate has one recorded incoming branch to the score=1 store
+at `0099fe33` / `0074a613`. That eight-byte native store remains an explicitly
+retained alternate entry; the audit requires this exact instruction/reference.
+There are no other recorded external interior references or references into the
+overwritten entry bytes. Metadata is in `reports/*/movement-score-audit.tsv`.
+
+Staged and installed-EXE payloads passed 645 comparisons per binary: 212 helper
+and 433 scoring cases, including eight cases executing the previous gate and
+this score together. Full fixture memory, callbacks, aliases, live registers and
+x87 state are compared across exceptional inputs and precision/rounding modes.
+Object methods are controlled; these results do not establish live-match parity.
+This stage is now installed in both generated EXEs and passed 16 current-hash
+live vector executions. Its full suites passed 36,765 client and 35,181 server checks. Hash-specific compact reports were exported. These live checks do not execute the movement
+score in an actual match.
+
+## Following distance, driver and query gate
+
+`artillery_query_gate.c` reconstructs the 502-byte, 128-instruction stage at
+client `0099fe3b` / server `0074a61b`, ending at `009a0031` / `0074a811`.
+It compares parameter `frame+0x1c` times the native scale (about 0.89) against
+distance `+0x28`, preserving x87 ordering and unordered branches. An ordered
+smaller product takes the driver path: absent driver rejects; otherwise two
+position callbacks supply x/z, event 2 supplies a raw word and slot 0x84 returns
+a low-byte predicate. It captures the method table before coordinate stores and
+rereads the receiver after the event callback.
+
+The other path accepts immediately when the driver is present. With no driver,
+it retrieves query data through the bot's component/interface methods, prepares
+an origin and a vector of source/target handles, transforms the record point and
+optionally adds predicted-minus-actual movement. The native x/y differences retain
+extended precision; z is rounded before addition. Origin x is copied as raw bits,
+while y/z pass through FLD/FSTP, including signaling-NaN conversion.
+
+Slot 0x2c is a zero-argument identity getter. The original pushes two query
+arguments before calling it; they belong to the following slot-0x50 query, whose
+ABI has **ten stack arguments**. Its method table is captured before the identity
+callback, while the receiver is reread afterward. Query results use AL alone.
+Both query outcomes destroy the ignored-handle vector exactly once. Neither the
+query-service semantics nor names/units of unknown fields are inferred here.
+
+| Complete helper | Client | Server | Original bytes / cleanup |
+| --- | --- | --- | --- |
+| `bfv_component_event2_word` | `0092db30` | `006eb4b0` | 23 / RET |
+| `bfv_component_query_data` | `00970440` | `00727d50` | 38 / RET or indirect tail jump |
+| `bfv_query_vector_append` | `00975ab0` | `0072d870` | 77 / RET 4 |
+| `bfv_query_vector_destroy` | `00490610` | `006ff4f0` | 42 / RET |
+
+The event wrapper returns raw `event->data+4` bits. Query data uses object slot
+0x34, interface conversion slot 0x0c and converted slot 0x3c; a null initial object
+returns the native global fallback pointer, with no invented later null guard.
+Append uses signed shifts followed by an unsigned size/capacity comparison and
+retains the protected native insertion dependency on growth. Destroy frees the
+captured begin pointer, then zeros begin/end/capacity even if the free callback
+mutates them.
+
+`AuditArtilleryQuery.java` passed both originals. It checks full intervals,
+guarded entry bytes, ownership, branch exits, cleanup and recorded references.
+The destructor has three executable ADD ESP,4 bytes omitted from Ghidra's indexed
+body because its free routine is incorrectly marked no-return. The audit repairs
+that listing/body in memory and discards project changes. Structural metadata is
+in `reports/*/artillery-query-audit.tsv`; native bodies stay private.
+
+Staged and installed EXEs passed **731 comparisons per binary**: 269 helper and
+462 gate cases. These compare complete fixture memory, callbacks, aliases, ABI,
+EDI and x87 control/status/retained values across finite/nonfinite boundaries and
+precision/rounding modes. The point transform executes actual original/source
+math; virtual services, protected growth and raw free are controlled. Current
+hashes also passed 16 live vector executions, which do not execute this query in
+an actual match. Full current-build regressions passed 37,496 client and 35,912 server checks;
+matching compact reports were exported and a private checkpoint preserved.
+
+The retained query insertion at `00972940` / `0072d640` matches the earlier vector
+insertion's arithmetic/calls after address normalization, but omits four WAIT
+instructions. That is a lead for shared source with distinct exception timing,
+not permission to reuse the prior implementation unchanged. Reference listings
+are private under `bfv-reference-local/artillery-query/bodies`.
+
+## Following region helpers and score modifier
+
+`region_geometry.c` implements raw x/z projection, symmetric-bound testing and
+2D/3D region predicates. Projection stores x before loading z, so overlapping
+buffers can change the second source word. Radial mode compares the native
+four-register squared-distance/square-root sequence strictly against radius.
+Symmetric bounds reject ordered less at the first two boundaries, retain the
+reflected x boundary in extended precision, round reflected y to float32, then
+compare x/y boundaries with the native unordered decisions. The 2D region uses
+fields 0x114/0x118 as its first bound and 0x84/0x88 as the reflection center; these
+labels describe the arithmetic, not recovered object ownership or world units.
+
+| Helper | Client | Server | Bytes / ABI |
+| --- | --- | --- | --- |
+| `bfv_point_xz` | `0097f070` | `00728f20` | 13 / fastcall ECX point, EDX output, RET |
+| `bfv_point_in_symmetric_bounds` | `009d5cc0` | `0078cd10` | 89 / fastcall ECX point, EDX bound, center stack, RET 4 |
+| `bfv_region_contains_point2` | `00964ac0` | `0071c280` | 144 / thiscall region, point stack, RET 4 |
+| `bfv_region_contains_point3` | `00964b70` | `0071c330` | 34 / thiscall region, point stack, RET 4 |
+
+`artillery_region_score.c` implements the following 73-byte stage at
+`009a0031` / `0074a811`, ending at `009a007a` / `0074a85a`. It copies score bits
+from frame+0x9c to +0x98. When the driver and region exist and the actual region
+predicate's AL is false, it rereads the source score and stores score times 0.75,
+with native x87 rounding and no clamp. Both helpers and modifier execute actual
+source/native arithmetic without numeric mocks.
+
+Staged and installed EXEs passed 1,067 helper and 592 modifier comparisons per
+binary, including projection overlap, signaling/nonfinite values, region/frame
+aliases and all supported precision/rounding modes. The structural audits passed
+complete bodies, instruction/patch boundaries, ABI cleanup and recorded incoming
+references. Metadata is in `reports/*/region-geometry-audit.tsv` and
+`artillery-region-score-audit.tsv`. The region build passed 76,726 full comparisons. Matching
+hashes passed 16 live vector executions; actual-match region scoring, unmasked
+exceptions and full region ownership/lifecycle remain unverified.
+
+## Following category-list scoring stage
+
+`list_search.c` and `artillery_category_score.c` translate the 40-byte iterator
+helper at `009bf7c0` / `00775bf0` and following 383-byte score stage at
+`009a007a` / `0074a85a`. The alternate target-flag path begins at `009a01f9` /
+`0074a9d9` and remains native. The search captures the key once only for a
+nonempty range, follows node+0 links and compares node+8 words, then stores the
+returned iterator. An empty range does not dereference the key.
+
+The stage captures the second category-list sentinel in EDI, obtains the start
+node from the third retrieval and the comparison sentinel from the fourth.
+It rereads the descriptor byte before each list call. Callback replacements can
+therefore produce different sentinels. It increments the native frame index only
+on the matching comparison path, capturing the bot's method table before that
+store and rereading score/factor fields after the callback.
+
+Distance/parameter is scaled and rounded before the existing maximum selector;
+its result is rounded before the minimum selector. The attenuation remains in
+ST0 while class, weapon, target and candidate factors are combined. The candidate
+score is stored as float32 without popping ST0, then its extended value is
+compared against the best score. Selection is strict; equality and unordered
+reject. The winning identity is read after the best-score store, preserving alias
+behavior. Object category/list/factor methods remain controlled in the tests.
+The source is installed with two guarded patches per target; 611 focused
+comparisons per target, 77,948 full comparisons and 16 current-hash live checks
+passed. The complete iterator helper is registered; the 383-byte stage remains a
+partial evaluator. `AuditCategoryScore.java` passed both originals.
+
 ## Remaining work
 
 The direction aiming-limit predicate and its event wrapper now compile from C.
@@ -288,6 +550,65 @@ plans that turn selected targets into aiming and firing controls. Replace their
 native dependencies and validate complete artillery scenarios against the original
 engine. Object/component lifecycle, allocation and initialization also remain
 necessary for a standalone source build.
+
+## Alternate first-pass target path
+
+`artillery_target_eligibility.c` reconstructs the complete 399-byte handle helper
+at client `0097ede0` / server `00728c90`. It preserves generation checks, low-byte
+virtual predicates, callback-dependent receiver rereads and linked traversal.
+The event-3 component predicate was already reconstructed and is reused. Native
+failed lookups can still fault on their following dereference; no new null guard
+is inferred. The nine-byte entry guard ends at an instruction boundary. Both
+structural audits and 176 focused comparisons per binary passed; its preserved
+checkpoint passed 78,300 full comparisons and 16 matching-hash vector checks.
+
+`artillery_alternate_gate.c` reconstructs the following 107-byte inline gate.
+It tests flag bit 3, calls actual eligibility, rereads the current record, captures
+the owner receiver/table, and initializes the nested score, metric and class.
+The metric result is stored at frame+0x70: native PUSH shifts the apparent store
+offset. It passed 164 staged and installed comparisons per target.
+
+`artillery_nested_score.c` reconstructs the following 360-byte linked-object
+loop. Component ratings accumulate at frame+0x5c; category/class/weapon factors
+accumulate the candidate score at +0x14. Four list calls can return distinct
+containers. Search uses the current handle at +0x54, and native traversal writes
+its scratch output at +0x70 before the next generation lookup. The first category
+and table are captured before the rounded sum store, including when the descriptor
+aliases that store. Its 242 staged and installed comparisons per target cover
+changing callbacks, linked targets, stale generations, exceptional float values and
+all supported x87 precision/rounding modes. Both stage guards passed structural audits.
+
+Object methods and component conversion remain controlled; pool lookup executes
+retained native instructions. The combined gate/loop checkpoint passed 79,112 full comparisons
+and 16 matching-hash live checks; consult the handoff and hash-specific reports.
+Live vector checks do not establish artillery
+behavior in a match.
+
+The following 170-byte alternate scaling/selection and the complete 41-byte
+traversal helper are now installed. They passed 329 + 154 staged and installed
+comparisons per target and both structural audits. Scaling compares a signed
+setting against the accumulated rating, skips the additional factor on unordered,
+and selects only when the reloaded float32 score is strictly greater than the best.
+Exact ties do not select in any of the twelve supported x87 control modes.
+The setting field is read directly at bot+0x2c after scaling, including aliases.
+
+The loop now calls `bfv_next_target_handle` directly. Its second stack argument is
+volatile because native traversal reads it after the first callback; a supplied
+scratch pointer can alias that argument. The wrapper preserves this read timing,
+the captured receiver and both RET 8 paths. The combined checkpoint passed 80,078
+full comparisons and 16 live checks; the helper is registered. The 170-byte finish is a partial stage,
+not a complete inventory entry.
+
+The following 29-byte iterator continuation and 93-byte second-pass setup are
+installed. Their 157 + 160 focused comparisons per target and structural audits
+passed. Node advance captures the next node and bot table before the frame store,
+then compares against the list boundary returned by the callback. Query setup
+uses a low-byte pattern predicate, initializes three vector fields and routes
+by begin/end equality. It preserves the allocation pointer in EAX at the empty
+cleanup continuation. Object methods are controlled; allocation, exception
+unwinding, cleanup and subsequent filtering remain native or unverified. The
+current checkpoint passed 80,712 full comparisons and 16 matching-hash live
+checks. Compact reports identify the verified EXE hashes.
 
 ## Continuing native analysis
 

@@ -1,0 +1,2 @@
+address	symbol	end_exclusive	bytes	instructions	patch_bytes	patch_hex	external_interior_references	overwritten_interior_references	ret_cleanup	status	original_sha256
+0071b110	bfv_next_target_handle	0071b139	41	15	7	8b49208b542404	0	0	8	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d

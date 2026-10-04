@@ -1,0 +1,2 @@
+start	end_exclusive	score	unit_score	owner	bytes	instructions	patch_bytes	patch_hex	entry_references	external_interior_references	overwritten_interior_references	status	original_sha256
+0074a311	0074a3e1	0074a61b	0074a613	00749a80	208	55	6	8b7c243085ff	2	0	0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d

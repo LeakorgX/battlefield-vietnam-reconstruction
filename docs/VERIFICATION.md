@@ -6,11 +6,18 @@
    compilation or runtime correctness test.
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
-3. The current fully regression-tested native build was compared against original instructions. It passed
-   34,760 client checks and 33,176 server checks, 67,936 in total. This includes
+3. The latest exported full-regression native build was compared against original instructions. It passed
+   41,148 client checks and 39,564 server checks, 80,712 in total. This includes
    4,678 history-tree and 303 first-pass weapon-selection comparisons per target,
    alongside the previously recovered logic and accessor checks. Earlier builds also executed replacement functions in the game, as
    recorded below.
+
+The second-setup checkpoint and generated EXEs are preserved privately at
+`bfv-reference-local/checkpoints/2026-10-04-second-setup`. It passed 164 + 242 +
+329 + 154 + 157 + 160 focused gate/loop/finish/traversal/iterator/setup comparisons per target, the full totals above and 16
+matching-hash live executions. Those live checks exercise vector/exception
+behavior, not target scoring in a match. See [HANDOFF.md](HANDOFF.md) for
+current hashes, controlled dependencies and remaining evidence gates.
 
 ## Current controlled cases
 
@@ -82,6 +89,24 @@ reports, rejecting results from an older build. Full case data stays in the loca
   live registers and x87 state across numeric boundaries and callback mutations.
   Inventory/category/availability methods are controlled; full target scoring and
   firing behavior remain unverified. See [ARTILLERY.md](ARTILLERY.md).
+- 839 artillery position/aiming-gate comparisons per target execute the four
+  position/vector helpers and the post-weapon candidate gate. They compare full
+  fixture memory, buffer overlap, pointer rereads, callback order/mutations, ABI,
+  x87 state and precision/rounding modes. Object methods and selected aiming
+  services are controlled; complete trajectory and firing remain unverified.
+- 521 initial movement-gate comparisons per target compare all three native
+  continuations, full frame/arena memory, live EDI, low-byte predicates, vector
+  overlap, callback mutations and unordered floating-point branches across
+  precision/rounding modes with retained x87 values. Movement/predicate methods
+  are controlled; later velocity arithmetic and scoring remain native. Current
+  full-build pass claims require matching hashes in the exported reports.
+- The following movement-score suite has 212 helper and 433 scoring cases per
+  target, including eight gate/score integration cases. It compares actual
+  cross-product/event-scalar helpers, field loads, rounded driver scalar, dynamic
+  driver/vector pointers, projection stores/clamps, vector-length integration,
+  full fixture memory, preserved registers and x87 state. Object methods remain
+  controlled. Staged results have passed; installed full/live evidence is required
+  for current-build totals. See [ARTILLERY.md](ARTILLERY.md).
 - 32 cached-bailout comparisons per target checking exact float32 bits.
 - 554 recomputed-bailout comparisons per target checking float32 return/cache bits,
   pattern flags, call ordering, group argument and stack cleanup. They cover

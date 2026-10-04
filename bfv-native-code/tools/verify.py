@@ -18,8 +18,22 @@ from verify_target_history import compare_target_history
 from verify_history_tree import compare_history_tree
 from verify_artillery_filter import compare_artillery_filter
 from verify_artillery_weapons import compare_artillery_weapons
+from verify_artillery_movement import compare_artillery_movement
+from verify_movement_score import compare_movement_score
+from verify_artillery_query import compare_artillery_query
+from verify_region_geometry import compare_region_geometry
+from verify_artillery_region_score import compare_artillery_region_score
+from verify_category_score import compare_category_score
+from verify_target_eligibility import compare_target_eligibility
+from verify_alternate_gate import compare_alternate_gate
+from verify_nested_score import compare_nested_score
+from verify_alternate_finish import compare_alternate_finish
+from verify_target_traversal import compare_target_traversal
+from verify_next_candidate import compare_next_candidate
+from verify_second_setup import compare_second_setup
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
+from verify_aim_geometry import compare_aim_geometry
 from verify_affine_matrix import compare_affine_matrix
 from verify_constant_returns import compare_constant_returns
 from verify_word_getters import compare_word_getters
@@ -117,6 +131,9 @@ def verify(target):
     print(f'{target}: {len(math_comparisons)} shared scalar/vector math comparisons passed',flush=True)
     print(f'{target}: checking aiming limits',flush=True)
     aim_comparisons=compare_aim_limits(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: checking artillery aiming geometry and candidate gate',flush=True)
+    aim_geometry_comparisons=compare_aim_geometry(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(aim_geometry_comparisons)} aiming geometry/gate comparisons passed',flush=True)
     print(f'{target}: {len(aim_comparisons)} aiming-limit comparisons passed',flush=True)
     print(f'{target}: checking affine matrix composition',flush=True)
     matrix_comparisons=compare_affine_matrix(original,original_pe,edited,edited_pe,spec,symbols)
@@ -128,6 +145,37 @@ def verify(target):
     getter_comparisons=compare_word_getters(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(getter_comparisons)} object-word getter comparisons passed',flush=True)
     notify_count=sum(bool(x['inputs'].get('notify_only',False)) for x in collision_comparisons)
+    print(f'{target}: checking artillery movement gates',flush=True)
+    movement_comparisons=compare_artillery_movement(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(movement_comparisons)} artillery movement comparisons passed',flush=True)
+    print(f'{target}: checking movement score and helpers',flush=True)
+    movement_score_comparisons=compare_movement_score(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(movement_score_comparisons)} movement score/helper comparisons passed',flush=True)
+    print(f'{target}: checking artillery query gate and helpers',flush=True)
+    query_comparisons=compare_artillery_query(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(query_comparisons)} artillery query gate/helper comparisons passed',flush=True)
+    print(f'{target}: checking region geometry and artillery region score',flush=True)
+    region_comparisons=compare_region_geometry(original,original_pe,edited,edited_pe,spec,symbols)
+    region_score_comparisons=compare_artillery_region_score(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(region_comparisons)} region geometry and {len(region_score_comparisons)} region score comparisons passed',flush=True)
+    print(f'{target}: checking category score and node search',flush=True)
+    category_comparisons=compare_category_score(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(category_comparisons)} category score/search comparisons passed',flush=True)
+    print(f'{target}: checking alternate target eligibility and event-3 predicate',flush=True)
+    eligibility_comparisons=compare_target_eligibility(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(eligibility_comparisons)} target eligibility comparisons passed',flush=True)
+    print(f'{target}: checking alternate gate and linked-object score',flush=True)
+    alternate_comparisons=compare_alternate_gate(original,original_pe,edited,edited_pe,spec,symbols)
+    nested_comparisons=compare_nested_score(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(alternate_comparisons)} alternate gate and {len(nested_comparisons)} nested score comparisons passed',flush=True)
+    print(f'{target}: checking alternate score finish and target traversal',flush=True)
+    finish_comparisons=compare_alternate_finish(original,original_pe,edited,edited_pe,spec,symbols)
+    traversal_comparisons=compare_target_traversal(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(finish_comparisons)} alternate finish and {len(traversal_comparisons)} traversal comparisons passed',flush=True)
+    print(f'{target}: checking first-pass advance and second-pass query setup',flush=True)
+    next_comparisons=compare_next_candidate(original,original_pe,edited,edited_pe,spec,symbols)
+    setup_comparisons=compare_second_setup(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(next_comparisons)} node advance and {len(setup_comparisons)} second setup comparisons passed',flush=True)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         shared_math_cases=len(math_comparisons),artillery_filter_cases=len(filter_comparisons),target_history_cases=len(history_comparisons),artillery_cache_cases=len(artillery_cache_comparisons),artillery_cases=len(artillery_comparisons),interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
         bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),geometry_cases=len(geometry_comparisons),event_cases=len(event_comparisons),vector_cases=len(vector_comparisons),
@@ -139,6 +187,10 @@ def verify(target):
     report['aim_cases']=len(aim_comparisons)
     report['aim']=aim_comparisons
     report['passed']+=len(aim_comparisons)
+    report['aim_geometry_cases']=len(aim_geometry_comparisons)
+    report['aim_geometry']=aim_geometry_comparisons
+    report['passed']+=len(aim_geometry_comparisons)
+    report['scope']+=' Artillery position transforms, vector differences, world/component position helpers and the post-weapon aiming gate compared through original continuations. Math, aliasing, callback order, dynamic pointers, x87 state and gate branches execute; object methods and selected aim-direction services remain controlled dependencies. Complete trajectory and firing behavior remain unverified.'
     report['matrix_cases']=len(matrix_comparisons)
     report['matrix']=matrix_comparisons
     report['passed']+=len(matrix_comparisons)
@@ -154,6 +206,50 @@ def verify(target):
     report['artillery_weapon_cases']=len(weapon_comparisons)
     report['artillery_weapons']=weapon_comparisons
     report['passed']+=len(weapon_comparisons)
+    report['artillery_movement_cases']=len(movement_comparisons)
+    report['artillery_movement']=movement_comparisons
+    report['passed']+=len(movement_comparisons)
+    report['movement_score_cases']=len(movement_score_comparisons)
+    report['movement_score']=movement_score_comparisons
+    report['passed']+=len(movement_score_comparisons)
+    report['artillery_query_cases']=len(query_comparisons)
+    report['artillery_query']=query_comparisons
+    report['passed']+=len(query_comparisons)
+    report['region_geometry_cases']=len(region_comparisons)
+    report['region_geometry']=region_comparisons
+    report['artillery_region_score_cases']=len(region_score_comparisons)
+    report['artillery_region_score']=region_score_comparisons
+    report['passed']+=len(region_comparisons)+len(region_score_comparisons)
+    report['category_score_cases']=len(category_comparisons)
+    report['category_score']=category_comparisons
+    report['passed']+=len(category_comparisons)
+    report['target_eligibility_cases']=len(eligibility_comparisons)
+    report['target_eligibility']=eligibility_comparisons
+    report['passed']+=len(eligibility_comparisons)
+    report['alternate_gate_cases']=len(alternate_comparisons)
+    report['alternate_gate']=alternate_comparisons
+    report['nested_score_cases']=len(nested_comparisons)
+    report['nested_score']=nested_comparisons
+    report['passed']+=len(alternate_comparisons)+len(nested_comparisons)
+    report['alternate_finish_cases']=len(finish_comparisons)
+    report['alternate_finish']=finish_comparisons
+    report['target_traversal_cases']=len(traversal_comparisons)
+    report['target_traversal']=traversal_comparisons
+    report['passed']+=len(finish_comparisons)+len(traversal_comparisons)
+    report['next_candidate_cases']=len(next_comparisons)
+    report['next_candidate']=next_comparisons
+    report['second_setup_cases']=len(setup_comparisons)
+    report['second_setup']=setup_comparisons
+    report['passed']+=len(next_comparisons)+len(setup_comparisons)
+    report['scope']+=' First-pass node advance and second-pass query routing/initialization compare original/source instructions with controlled object methods. Full fixture memory, callback order, captured table/node, frame aliases, low-byte flags, raw query arguments, native continuations, live EAX allocation pointer, preserved nonvolatile registers and x87 state compare across pointer patterns and precision/rounding modes. Query allocation/unwinding, cleanup, subsequent filtering and complete evaluator behavior remain unverified.'
+    report['scope']+=' Final alternate score scaling and rounded best-target selection execute actual float selectors and the original-equivalent single setting field read. The complete traversal wrapper compares returned handles, stack cleanup, full fixture memory, callback captures, scratch/argument aliasing, nonvolatile registers and x87 state. No numeric service is mocked; virtual object methods remain controlled. Remaining evaluator phases and live-match behavior are unverified.'
+    report['scope']+=' Alternate flag gate and linked-object score execute real original/source eligibility, component predicate, interface lookup, list search, traversal wrapper and x87 arithmetic. Pool lookup remains native and executes without mocks; virtual methods and component conversion are controlled. Full frame/arena memory, callback order, argument captures, descriptor aliasing, raw fields, loop exit, live nonvolatile registers and x87 state compare across linked targets, generation misses and precision/rounding modes. Later evaluator phases and live-match behavior remain unverified.'
+    report['scope']+=' Alternate first-pass target eligibility and its event-3 predicate execute actual original/source handle lookup, generation checks, callback rereads, nested traversal and component conversion. Full fixture memory, low-byte returns, callback order, scratch aliasing, preserved nonvolatile registers and x87 state are compared across invalid handles, nested misses and precision/rounding modes. Object methods and component conversion remain controlled; later target-state scoring, second pass and firing remain unverified.'
+    report['scope']+=' First-pass category score and node search execute actual original/source interface lookup, list traversal and scalar selectors. Full frame/arena memory, callback rereads, aliasing, low-byte predicates, unsigned list bounds, retained extended score comparison, best-target stores, live registers and x87 state compared across nonfinite values and precision/rounding modes. Virtual object methods are controlled; alternate target flags, remaining evaluator phases and live-match behavior remain unverified.'
+    report['scope']+=' Region/projection helpers and following first-pass score modifier execute actual original/source math without numeric mocks. Complete memory, partial projection overlap, raw and rounded stores, unordered/inclusive/strict comparisons, ABI and x87 state compared across nonfinite inputs and precision/rounding modes. Full region ownership/lifecycle, unmasked exceptions and live-match behavior remain unverified.'
+    report['scope']+=' First-pass distance/driver/query gate and four helpers compare complete fixture memory, ABI, callback order, captured tables versus receiver rereads, buffer overlap, low-byte predicates and x87 state. Actual point transforms execute; object methods, protected vector growth and raw free are controlled. Both query outcomes destroy the ignored-handle vector exactly once. Full evaluator unwinding, live queries and complete artillery behavior remain unverified.'
+    report['scope']+=' Following first-pass movement scoring, in-place cross product and component event-2 scalar wrapper compared through guarded entries, including callback-dependent driver rereads, vector overlap, rounded projection stores and native negative/unordered gates, actual vector-length integration, live registers and x87 state. Eight cases execute the previous gate and score together. Object methods remain controlled, the earlier gate retains its native score=1 alternate entry, and complete candidate scoring/firing remains unverified.'
+    report['scope']+=' First-pass movement-vector, flag and distance gates compared at all three native continuations, including full frame/arena memory, callback order, live movement receiver, vector aliasing, low-byte predicates, unordered comparisons, x87 status/control and retained values. Movement-vector and owner-predicate methods are controlled; later velocity arithmetic and scoring remain native.'
     report['scope']+=' First-pass artillery weapon scoring and selection compared at native continuations, including exact frame/arena memory, preserved live registers, x87 control/status and retained values. Inventory/category/availability callbacks are controlled; arithmetic, dynamic iteration, distance rejection, strict best-score selection and accepted-candidate padding execute. Other candidate phases and complete artillery behavior remain native or unverified.'
     report['scope']+=' Target-history insertion, duplicate handling, predecessor traversal, node construction and red-black rotations/balancing compared through guarded entries, including timestamp-helper integration. Normal insertion executes the retained protected node allocator with a controlled raw heap; capacity-error tests control native string/exception services and stop at the throw boundary. These checks do not establish real capacity-error unwinding, allocation failure, deletion, concurrent access or full artillery behavior.'
     report['scope']+=' Aiming event routing and angular-range predicate compared with controlled transform/trig services, callback mutations and x87 status; selected cases execute actual original/source matrix composition and retained inverse-sine runtime. Complete aiming/firing behavior remains unverified.'

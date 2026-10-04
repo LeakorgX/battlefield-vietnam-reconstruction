@@ -1,0 +1,4 @@
+address	symbol	end_exclusive	owner	bytes	instructions	patch_bytes	patch_hex	entry_references	external_interior_references	overwritten_interior_references	ret_cleanup	retained_unit_entry	retained_unit_references	status	original_sha256
+00611430	bfv_vector_cross_assign	00611486	00611430	86	29	5	83ec0c8bc1	6	0	0	4		0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
+0072e7d0	bfv_component_event2_scalar	0072e7e7	0072e7d0	23	8	6	8b41048b4820	89	0	0	0		0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
+0074a3e1	bfv_artillery_movement_score_bridge	0074a61b	00749a80	570	123	8	85ff0f842a020000	3	0	0	0	0074a613	1	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d

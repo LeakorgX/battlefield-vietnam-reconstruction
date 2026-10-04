@@ -1,0 +1,2 @@
+address	symbol	end_exclusive	owner	bytes	instructions	patch_bytes	patch_hex	external_interior_references	overwritten_interior_references	status	original_sha256
+0074abac	bfv_artillery_alternate_finish_bridge	0074ac56	00749a80	170	46	5	d944242851	0	0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d

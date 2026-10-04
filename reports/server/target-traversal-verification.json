@@ -1,0 +1,9 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
+  "passed": 154,
+  "scope": "Original/source complete traversal wrapper; object methods controlled. Returned handle, full fixture memory, stack cleanup, callback captures, scratch/argument aliasing, nonvolatile registers and x87 state compare across null results and precision/rounding modes. Full object ownership and live traversal are unverified.",
+  "reconstructed_entries": 1,
+  "original_function_bytes": 41
+}

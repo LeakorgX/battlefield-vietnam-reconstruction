@@ -1,0 +1,9 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "b8bbecfbcbff474c8bac8044512b37ad9175c18a107aa1d5e41e881f755d4cb7",
+  "passed": 592,
+  "scope": "Actual original/source following first-pass region score modifier and region math without numeric mocks. Complete frame/arena memory, raw score copies, rounded 0.75 multiplication, low-byte predicate, guarded region retrieval, aliases, preserved live registers and x87 state compared across nonfinite values and precision/rounding modes. Later flag/category scoring and complete artillery/live-match behavior remain unverified.",
+  "original_block_bytes": 73,
+  "replacement_scope": "partial_native_evaluator"
+}

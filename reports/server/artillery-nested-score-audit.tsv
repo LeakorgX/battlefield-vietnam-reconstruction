@@ -1,0 +1,2 @@
+address	symbol	end_exclusive	owner	bytes	instructions	patch_bytes	patch_hex	external_interior_references	overwritten_interior_references	status	original_sha256
+0074aa44	bfv_artillery_nested_score_bridge	0074abac	00749a80	360	108	5	8d472485c0	0	0	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d
