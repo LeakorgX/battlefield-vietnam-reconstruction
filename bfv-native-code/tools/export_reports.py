@@ -148,7 +148,8 @@ def prepare(target):
                                  ('artillery-second-weapons-audit.tsv','bfv_artillery_second_weapons_bridge',298),
                                  ('artillery-second-movement-audit.tsv','bfv_artillery_second_movement_gate_bridge',201),
                                  ('artillery-second-movement-score-audit.tsv','bfv_artillery_second_movement_score_bridge',569),
-                                 ('artillery-second-driver-audit.tsv','bfv_artillery_second_driver_gate_bridge',111)]:
+                                 ('artillery-second-driver-audit.tsv','bfv_artillery_second_driver_gate_bridge',111),
+                                 ('artillery-second-region-audit.tsv','bfv_artillery_second_region_modifier_bridge',70)]:
         with (REPORTS / target / filename).open(encoding='utf-8') as f:
             rows=list(csv.DictReader(f,delimiter='\t'))
         assert len(rows)==1
@@ -179,6 +180,9 @@ def prepare(target):
             'EDI, nonvolatile registers and x87 state compare with controlled list methods. '
             'Complete evaluator and live-match behavior remain unverified.',
             original_block_bytes=29,replacement_scope='partial_native_evaluator')
+    focused('second-region-verification.json','second_region',
+            'Original/source second-pass region modifier with actual region containment helper, score refresh, captured EBX, aliases, nonfinite inputs and x87 state. The surrounding category/target evaluator remains native.',
+            original_block_bytes=70,replacement_scope='partial_native_evaluator')
     focused('second-driver-verification.json','second_driver',
             'Original/source second-pass distance/driver predicate with actual event-word helper and controlled position/event/predicate methods. Capture timing, table method rereads, full fixture memory, live registers, low-byte result, aliases and x87 state compare. Complete evaluation/firing remains unverified.',
             original_block_bytes=111,replacement_scope='partial_native_evaluator')

@@ -287,6 +287,7 @@ def build(target):
         (spec['artillery_second_weapons_accept'],bytes.fromhex('8b7c242485ff'),'bfv_artillery_second_movement_gate_bridge'),
         (spec['artillery_second_movement_continue'],bytes.fromhex('85ff0f8431020000'),'bfv_artillery_second_movement_score_bridge'),
         (spec['artillery_second_driver_gate'],bytes.fromhex('d9442420d80d')+struct.pack('<I',spec['artillery_query_scale']),'bfv_artillery_second_driver_gate_bridge'),
+        (spec['artillery_second_region'],bytes.fromhex('85ff8b8c249c0000008b'),'bfv_artillery_second_region_modifier_bridge'),
         (spec['artillery_query_gate'],b'\xd9\x44\x24\x1c\xd8\x0d'+struct.pack('<I',spec['artillery_query_scale']),'bfv_artillery_query_gate_bridge'),
         (spec['component_event2_word'],bytes.fromhex('8b41048b4820'),'bfv_component_event2_word'),
         (spec['component_query_data'],bytes.fromhex('8b098b01ff5034'),'bfv_component_query_data'),

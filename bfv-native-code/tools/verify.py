@@ -41,6 +41,7 @@ from verify_second_weapons import compare_second_weapons
 from verify_second_movement import compare_second_movement
 from verify_second_movement_score import compare_second_movement_score
 from verify_second_driver import compare_second_driver
+from verify_second_region import compare_second_region
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
 from verify_aim_geometry import compare_aim_geometry
@@ -206,6 +207,9 @@ def verify(target):
     print(f'{target}: checking second-pass driver predicate',flush=True)
     second_driver_comparisons=compare_second_driver(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(second_driver_comparisons)} driver predicate comparisons passed',flush=True)
+    print(f'{target}: checking second-pass region modifier',flush=True)
+    second_region_comparisons=compare_second_region(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(second_region_comparisons)} second-pass region comparisons passed',flush=True)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         shared_math_cases=len(math_comparisons),artillery_filter_cases=len(filter_comparisons),target_history_cases=len(history_comparisons),artillery_cache_cases=len(artillery_cache_comparisons),artillery_cases=len(artillery_comparisons),interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
         bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),geometry_cases=len(geometry_comparisons),event_cases=len(event_comparisons),vector_cases=len(vector_comparisons),
@@ -290,6 +294,10 @@ def verify(target):
     report['second_movement_score']=second_movement_score_comparisons
     report['second_driver_cases']=len(second_driver_comparisons)
     report['second_driver']=second_driver_comparisons
+    report['second_region_cases']=len(second_region_comparisons)
+    report['second_region']=second_region_comparisons
+    report['passed']+=len(second_region_comparisons)
+    report['scope']+=' Second-pass region modifier compares score refresh, captured EBX/driver, actual region containment helper, aliases, nonfinite values and x87 state. The surrounding iterator/category and complete target evaluation remain native or unverified.'
     report['passed']+=len(second_driver_comparisons)
     report['scope']+=' Second-pass driver predicate compares actual event-word helper, captured target/driver/receiver/table, two position calls, x87 point conversion, callback mutations, EDI/EBP/EBX, memory and accept/reject routes. Virtual methods are controlled. Subsequent region/category stages and complete target selection/firing remain unverified.'
     report['passed']+=len(second_movement_comparisons)+len(second_movement_score_comparisons)

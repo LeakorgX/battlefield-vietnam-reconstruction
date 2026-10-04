@@ -71,10 +71,10 @@ def second_region_cases():
 
 def compare_second_region(original,original_pe,edited,edited_pe,spec,symbols):
     entry=spec['artillery_second_region'];jump=edited_pe.get_data(entry-0x400000,5)
-    assert jump[0]==0xe9 and entry+5+struct.unpack('<i',jump[1:])[0]==symbols['bfv_artillery_region_score_bridge']
+    assert jump[0]==0xe9 and entry+5+struct.unpack('<i',jump[1:])[0]==symbols['bfv_artillery_second_region_modifier_bridge']
     results=[]
-    for i,case in enumerate(score_cases()):
-        old=run_score(original,original_pe,spec,case);new=run_score(edited,edited_pe,spec,case)
+    for i,case in enumerate(second_region_cases()):
+        old=run_second_region(original,original_pe,spec,case);new=run_second_region(edited,edited_pe,spec,case)
         assert old==new,(i,case,{k:(old[k],new[k]) for k in old if old[k]!=new[k]})
         results.append(dict(inputs=case,score=old['score']))
     return results
