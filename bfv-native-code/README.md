@@ -48,6 +48,16 @@ read-only inputs; builds check their SHA256 and the original vtable entries.
 - `src/artillery_weapons.c`: first-pass per-weapon ratings, minimum-distance gating,
   best-weapon selection and score padding. The rest of candidate scoring and firing
   remains incomplete. The default verifier includes 303 comparisons per target.
+- `src/aim_geometry.c` and `src/artillery_aim_gate.c`: artillery position/vector
+  helpers and the post-weapon aiming gate. The default verifier includes 839
+  original/source comparisons per target; trajectory and firing remain incomplete.
+- `src/artillery_movement_gate.c`: first-pass movement-vector retrieval and initial
+  flag/distance gates. The default verifier includes 521 comparisons per target;
+  later velocity arithmetic and candidate scoring remain native.
+- `src/movement_geometry.c` and `src/artillery_movement_score.c`: in-place cross
+  product, event-2 scalar wrapper and following candidate movement score. The installed
+  movement-score checkpoint passed full regressions; newer build evidence is in
+  [the handoff](../docs/HANDOFF.md).
 - `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
   For example, changing `return native_rating;` in `bfv_bailout_rating` to
   `return native_rating * 2.0f;` changes the rating returned to the actual engine.
@@ -118,3 +128,28 @@ The opt-in `tools/verify_live_exceptions.py` check runs original/reconstructed v
 cases inside temporary Windows client/server processes. It passed 16 live executions
 with actual C++ exception dispatch, cleanup/rethrow and restored FS linkage. See
 [the probe and its limits](../docs/VECTORS.md#live-windows-exception-propagation).
+
+The following `src/artillery_query_gate.c` and `src/artillery_query_helpers.c`
+implement distance/driver/query gates, event-word/interface wrappers and vector
+append/cleanup. Current focused checks passed 731 comparisons per binary. Full
+current-build status and remaining native dependencies are in the handoff.
+
+`src/region_geometry.c` and `src/artillery_region_score.c` supply actual region
+math and the following first-pass modifier. Installed focused checks passed
+1,067 + 592 comparisons per binary; the category-score checkpoint passed 77,948
+full comparisons and 16 current-hash live checks. Category-list scoring and
+iterator search are installed; 611 focused comparisons per target passed.
+
+`src/artillery_target_eligibility.c` supplies generation-checked handle lookup,
+component event predicates and linked-target eligibility, reusing the existing
+component predicate. Its checkpoint passed 78,300 full comparisons and 16 live
+checks. The following alternate gate and linked-object score loop are installed;
+164 + 242 focused comparisons per binary and structural audits passed. Its
+checkpoint passed 79,112 full comparisons and 16 live checks;
+see [the handoff](../docs/HANDOFF.md). Final alternate scaling and the traversal
+helper are now installed; 329 + 154 focused comparisons per target passed.
+Their combined checkpoint passed 80,078 full comparisons and 16 live checks.
+The following iterator/query setup is installed and passed 157 + 160 focused
+comparisons per target. The current checkpoint passed 80,712 full comparisons
+and 16 matching-hash live checks. Later evaluator
+phases remain native.
