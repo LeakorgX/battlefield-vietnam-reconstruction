@@ -7,12 +7,10 @@ exclude original binaries, assets, raw bodies and private analysis from publicat
 
 ## Latest verified checkpoint and staged driver predicate
 
-Installed second-pass movement passed **44,441 client + 42,857 server = 87,298**
-full comparisons and 16 matching-hash live executions. The former session handles
-42034/37476 are missing; no verifier processes remain. Matching finalized reports
-prove completion of both suites; terminal exit output was not recovered. Guarded
-export succeeded and private checkpoint `2026-10-04-second-movement` is preserved.
-Current installed hashes remain 722af5af... / 882a5f0c... as listed below.
+Installed second-pass movement and driver predicate passed **44,779 client + 43,195 server = 87,974**
+full comparisons and 16 matching-hash live executions. Fresh current-hash sessions completed with exit code 0; no verifier processes remain.
+Guarded export succeeded and private checkpoint `2026-10-04-second-driver` is preserved.
+Current installed hashes are client `552a688f4563a833e0c2dc5b826d48a4b75613bda7abc8b5e7cd16f6c9ff99f5` and server `2ca1bef720716a1eb9c03500f80dc0b8206f104217a62bf2987e6c27e11efdfd`.
 
 The following `artillery_second_driver_gate.c` interval is staged only. Both
 targets passed **338** comparisons and read-only structural audits (111 bytes,
@@ -23,10 +21,9 @@ Actual hash-matched event-word source executes; object methods are controlled.
 Private evidence is `second-driver/staged/{client,server}`. Whole-game progress
 remains 0/7; complete function inventory remains 1,233.
 
-Next: publish this verified checkpoint/source. Then execute prepared private
-`install-second-driver.py` ONCE (not yet executed), rebuild and run installed
-focused/full/live checks. Export only after matching results. Continue region
-modifier at 009a0c38/0074b418 and later category/target-state phases. The older
+This checkpoint is now exported and preserved. The driver source/checks are published.
+Continue the staged region modifier at 009a0c38/0074b418; it has 593 staged
+comparisons per target but is not installed. Later category/target-state phases remain. The older
 sections below describe historical states and session handles.
 
 ## Active continuation: installed second-pass movement

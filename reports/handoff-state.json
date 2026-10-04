@@ -16,42 +16,40 @@
   },
   "source_inventory_reconstructed_functions": 1233,
   "process_observation": {
-    "previous_client_session": 42034,
-    "previous_server_session": 37476,
-    "session_handles_missing": true,
+    "client_session": 86430,
+    "server_session": 54251,
     "observed_running": false,
-    "matching_full_reports_finalized": true,
-    "terminal_exit_output_recovered": false,
+    "terminal_exit_code": 0,
     "recheck_before_launching": true
   },
   "targets": {
     "client": {
       "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
       "executable": "X:\\Battlefield Vietnam - Copy\\BfVietnam-editable.exe",
-      "actual_sha256": "722af5af9be654c0360d6bf640b641618984d6800f370456183e982603a87eb2",
-      "manifest_sha256": "722af5af9be654c0360d6bf640b641618984d6800f370456183e982603a87eb2",
-      "payload_bytes": 35149,
-      "entry_patches": 691,
+      "actual_sha256": "552a688f4563a833e0c2dc5b826d48a4b75613bda7abc8b5e7cd16f6c9ff99f5",
+      "manifest_sha256": "552a688f4563a833e0c2dc5b826d48a4b75613bda7abc8b5e7cd16f6c9ff99f5",
+      "payload_bytes": 35405,
+      "entry_patches": 692,
       "vtable_patches": 5,
       "live_passed": 8,
-      "full_report_passed": 44441,
-      "full_report_sha256": "722af5af9be654c0360d6bf640b641618984d6800f370456183e982603a87eb2",
+      "full_report_passed": 44779,
+      "full_report_sha256": "552a688f4563a833e0c2dc5b826d48a4b75613bda7abc8b5e7cd16f6c9ff99f5",
       "full_report_matches_current_executable": true,
-      "full_verifier_state": "finalized matching report; process absent"
+      "full_verifier_state": "completed; exit code 0"
     },
     "server": {
       "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
       "executable": "X:\\Battlefield Vietnam - Copy\\bfvietnam_w32ded-editable.exe",
-      "actual_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
-      "manifest_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
-      "payload_bytes": 32333,
-      "entry_patches": 546,
+      "actual_sha256": "2ca1bef720716a1eb9c03500f80dc0b8206f104217a62bf2987e6c27e11efdfd",
+      "manifest_sha256": "2ca1bef720716a1eb9c03500f80dc0b8206f104217a62bf2987e6c27e11efdfd",
+      "payload_bytes": 32589,
+      "entry_patches": 547,
       "vtable_patches": 5,
       "live_passed": 8,
-      "full_report_passed": 42857,
-      "full_report_sha256": "882a5f0c347a7f6a76f904fe58f50fd68c56ec1b998ffcefc82b55c1f9db6a68",
+      "full_report_passed": 43195,
+      "full_report_sha256": "2ca1bef720716a1eb9c03500f80dc0b8206f104217a62bf2987e6c27e11efdfd",
       "full_report_matches_current_executable": true,
-      "full_verifier_state": "finalized matching report; process absent"
+      "full_verifier_state": "completed; exit code 0"
     }
   },
   "verified_previous_checkpoint": {
@@ -88,11 +86,11 @@
       "private_artifacts": "bfv-reference-local/second-driver/staged/{client,server}"
     }
   },
-  "next_action": "Publish verified movement checkpoint and staged driver source/reports; execute prepared install-second-driver.py once, rebuild and verify installed focused/full/live. Then continue region modifier at009a0c38/0074b418.",
-  "latest_observed_full_progress": "Fresh current-hash full runs are confirmed live. Current focused gate/score session65041 and live session61113 exited 0.",
+  "next_action": "Continue staged second-pass region modifier at009a0c38/0074b418 (593 cases/target), then install only after focused/full/live evidence gates. Later category, target-state, firing, networking, engine and whole-game milestones remain.",
+  "latest_observed_full_progress": "Fresh current-hash client/server full verifiers exited 0; compact reports exported and second-driver checkpoint preserved.",
   "verified_current_checkpoint": {
-    "name": "2026-10-04-second-movement",
-    "full_passed": 87298,
+    "name": "2026-10-04-second-driver",
+    "full_passed": 87974,
     "live_passed": 16
   },
   "focused_session": {

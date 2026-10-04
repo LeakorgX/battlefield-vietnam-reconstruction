@@ -1,7 +1,7 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "722af5af9be654c0360d6bf640b641618984d6800f370456183e982603a87eb2",
+  "compiled_sha256": "552a688f4563a833e0c2dc5b826d48a4b75613bda7abc8b5e7cd16f6c9ff99f5",
   "passed": 3246,
   "scope": "Actual original/source constant-return entries compare exact EAX bits, stack cleanup, preserved integer registers, CPU flags, complete x87 state and no writes. Original-image return addresses retain data dependencies.",
   "reconstructed_entries": 541,

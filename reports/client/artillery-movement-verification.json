@@ -1,7 +1,7 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "722af5af9be654c0360d6bf640b641618984d6800f370456183e982603a87eb2",
+  "compiled_sha256": "552a688f4563a833e0c2dc5b826d48a4b75613bda7abc8b5e7cd16f6c9ff99f5",
   "passed": 521,
   "scope": "Original/source first-pass movement-vector retrieval and flag/distance gates at all three native continuations. Full frame/arena memory, callback order, live EDI receiver, aliasing, low-byte predicates and x87 status/control/retained values compared across boundaries, nonfinite inputs, callback mutations and precision/rounding modes. Object methods are controlled services; later velocity arithmetic, complete candidate scoring and live-match behavior remain unverified.",
   "exit_counts": {
