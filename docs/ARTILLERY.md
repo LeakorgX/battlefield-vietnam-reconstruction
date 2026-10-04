@@ -757,3 +757,8 @@ is staged separately: 111 bytes, 338 comparisons per target and structural
 audits. It preserves two target position calls, captured driver/receiver/table,
 x87 coordinate stores and low-byte predicate result with actual event-word
 helper. Object callbacks are controlled; full evaluator behavior is unverified.
+
+The second-pass region modifier is now installed. It passed 593 focused comparisons
+per target and the region checkpoint passed 89,160 full comparisons across both
+binaries with matching live checks. The surrounding category and target-state
+phases remain native or unverified.

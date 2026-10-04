@@ -1,7 +1,7 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "2ca1bef720716a1eb9c03500f80dc0b8206f104217a62bf2987e6c27e11efdfd",
+  "compiled_sha256": "d971d94cbe743d641c0689652b71c2a93fcb39d778be617530d9b044f95cb3e2",
   "passed": 611,
   "scope": "Actual original/source first-pass category-list factor, candidate score and iterator search through guarded entries. Interface lookup, list search and scalar selectors execute; virtual methods are controlled. Complete frame/arena memory, callback mutation/rereads, unsigned bounds, aliased output, retained extended score versus rounded best, strict selection, live registers and x87 state compared across nonfinite inputs and all supported precision/rounding modes. Alternate target flags, remaining phases and live-match behavior remain unverified.",
   "operation_counts": {

@@ -7,10 +7,10 @@ exclude original binaries, assets, raw bodies and private analysis from publicat
 
 ## Latest verified checkpoint and staged driver predicate
 
-Installed second-pass movement and driver predicate passed **44,779 client + 43,195 server = 87,974**
+Installed second-pass movement, driver predicate and region modifier passed **45,372 client + 43,788 server = 89,160**
 full comparisons and 16 matching-hash live executions. Fresh current-hash sessions completed with exit code 0; no verifier processes remain.
-Guarded export succeeded and private checkpoint `2026-10-04-second-driver` is preserved.
-Current installed hashes are client `552a688f4563a833e0c2dc5b826d48a4b75613bda7abc8b5e7cd16f6c9ff99f5` and server `2ca1bef720716a1eb9c03500f80dc0b8206f104217a62bf2987e6c27e11efdfd`.
+Guarded export succeeded and private checkpoint `2026-10-04-second-region` is preserved.
+Current installed hashes are recorded in the current manifests and compact reports; region is now included in the verified build.
 
 The following `artillery_second_driver_gate.c` interval is staged only. Both
 targets passed **338** comparisons and read-only structural audits (111 bytes,
@@ -22,8 +22,7 @@ Private evidence is `second-driver/staged/{client,server}`. Whole-game progress
 remains 0/7; complete function inventory remains 1,233.
 
 This checkpoint is now exported and preserved. The driver source/checks are published.
-Continue the staged region modifier at 009a0c38/0074b418; it has 593 staged
-comparisons per target but is not installed. Later category/target-state phases remain. The older
+The region modifier is installed and passed 593 focused comparisons per target. Continue later category/target-state phases; region containment remains a controlled native dependency where documented. The older
 sections below describe historical states and session handles.
 
 ## Active continuation: installed second-pass movement

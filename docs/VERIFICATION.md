@@ -267,7 +267,7 @@ New systems need native reference traces, boundary cases, lifecycle cases and
 interaction checks. Passing existing interpreter tests says nothing by itself
 about a new artillery/physics/networking implementation.
 
-The second-movement and driver checkpoint passed 87,974 matching-hash full comparisons
+The second-movement, driver and region checkpoint passed 89,160 matching-hash full comparisons
 and 16 live executions; compact reports were exported and private EXEs/evidence
 preserved. The following 111-byte driver predicate is staged only and passed
 338 cases per target plus structural audits; it is not installed evidence.

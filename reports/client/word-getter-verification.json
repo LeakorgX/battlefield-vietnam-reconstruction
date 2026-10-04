@@ -1,15 +1,15 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "552a688f4563a833e0c2dc5b826d48a4b75613bda7abc8b5e7cd16f6c9ff99f5",
+  "compiled_sha256": "8b8ea803877ba56f708b3aabdf257a0c2484f673c4cb3ed8a652c72b8b6e032a",
   "passed": 4608,
   "scope": "Original/source getter comparisons cover eight word patterns, six flag/x87 scenarios, four receiver alignments, EAX, stack, preserved integer registers, CPU flags, complete x87 state and exactly one field read without writes or delegated execution. The verifier checks that all compiled getter bodies are byte-identical to the original MOV/RET bodies. The full regression suite passed for this same executable hash.",
   "reconstructed_entries": 96,
   "scenarios_per_entry": 48,
   "compiled_bodies_byte_identical": true,
-  "payload_bytes": 35405,
-  "guarded_entry_replacements": 692,
+  "payload_bytes": 35597,
+  "guarded_entry_replacements": 693,
   "guarded_vtable_replacements": 5,
-  "full_regression_cases": 44779,
+  "full_regression_cases": 45372,
   "full_regression_passed": true
 }
