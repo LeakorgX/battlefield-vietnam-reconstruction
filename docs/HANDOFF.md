@@ -1,29 +1,99 @@
 # Reconstruction handoff
 
-Updated **2026-10-04, Asia/Baghdad**. Start here when resuming in another agent.
-The user's latest direction is **resume existing work, commit and publish to GitHub**.
-This supersedes the earlier local-only restriction. Preserve source and reports;
-exclude original binaries, assets, raw bodies and private analysis from publication.
+Updated **2026-10-05, Asia/Baghdad**. Start here when resuming in another agent.
+The user authorizes **committing and publishing to GitHub**, then continuing the
+full reconstruction. Preserve source and reports; exclude original binaries,
+assets, raw bodies and private analysis. Use an authenticated CLI or connector.
 
-## Latest verified checkpoint and staged driver predicate
+## Current checkpoint: installed second-pass category scorer
 
-Installed second-pass movement, driver predicate and region modifier passed **45,372 client + 43,788 server = 89,160**
-full comparisons and 16 matching-hash live executions. Fresh current-hash sessions completed with exit code 0; no verifier processes remain.
-Guarded export succeeded and private checkpoint `2026-10-04-second-region` is preserved.
-Current installed hashes are recorded in the current manifests and compact reports; region is now included in the verified build.
+The current installed EXEs passed **46,160 client + 44,576 server = 90,736**
+full comparisons and **8 live vector exception checks per target**. The guarded
+exporter verified both EXE hashes and refreshed compact reports. There is no
+remaining verification process to wait on for this checkpoint.
 
-The following `artillery_second_driver_gate.c` interval is staged only. Both
-targets passed **338** comparisons and read-only structural audits (111 bytes,
-31 instructions, ten-byte entry guard, no interior references). Tests cover
-captured target/driver/receiver/table, method rereads, point conversions/aliases,
-callback mutations, all twelve x87 control modes, depths 0/2/5 and raw inputs.
-Actual hash-matched event-word source executes; object methods are controlled.
-Private evidence is `second-driver/staged/{client,server}`. Whole-game progress
-remains 0/7; complete function inventory remains 1,233.
+| Target | Installed SHA-256 | Payload bytes | Entry patches | Vtable patches |
+| --- | --- | ---: | ---: | ---: |
+| Client | `872573710aef446c1ad5828462c8f7f88e74380d75831fe64e087b61b7ef9cc1` | 37,133 | 697 | 5 |
+| Server | `eeea0961906021b3b618a5a81b389b1b938d3aa9b404d0011a417b3b29fb3a81` | 34,317 | 552 | 5 |
 
-This checkpoint is now exported and preserved. The driver source/checks are published.
-The region modifier is installed and passed 593 focused comparisons per target. Continue later category/target-state phases; region containment remains a controlled native dependency where documented. The older
-sections below describe historical states and session handles.
+`artillery_second_category_score.c` owns the 420-byte, 110-instruction interval
+at client `009a0dba..009a0f5e` / server `0074b59a..0074b73e`. It reconstructs
+category accumulation, generation-handle resolution, score scaling, best-record
+selection and the loop back to the reconstructed factor. Both structural audits
+passed. The full suite includes **262 scorer comparisons per target**, covering
+callback mutations, output memory, exceptional floats, precision/rounding modes,
+retained x87 registers and continuation state.
+
+Object methods remain controlled in these focused comparisons; EDX/CPU flags,
+the complete evaluator and live artillery matches are not verified by that suite.
+The live checks cover vector insertion exception handling, not artillery play.
+The gate and split prefix/factor stages are also installed and verified.
+Complete-function inventory remains **1,233**; these partial inline stages do not
+add complete function entries. Whole-game acceptance remains **0/7**.
+
+Remote history was fetched before publication: local HEAD and origin/main both
+matched `9ba1f1b`. Verify the published commit with Git before resuming. Next
+recover the iterator/cleanup continuation at client **`009a0f5e`** / server
+**`0074b73e`**, then finish target-state/firing and the remaining whole-game work.
+
+The following checkpoint descriptions are retained as **historical evidence**.
+Their older hashes, sessions and authorization statements are superseded by the
+current section above and the current resume checklist below.
+
+## Latest verified checkpoint: split second-pass category factor
+
+The installed split category prefix/factor passed **45,898 client + 44,314
+server = 90,212 full comparisons** and 16 matching-hash live vector executions.
+Both full client/server sessions completed with exit code 0; the guarded exporter
+completed, so `reports/{client,server}` match the current manifests. Whole-game
+milestones remain **0/7** and the complete-function inventory remains **1,233**;
+these inline replacements do not add a complete function entry.
+
+`artillery_second_category_gate.c` reconstructs the 40-byte interval at client
+`009a0c7e..009a0ca6` and server `0074b45e..0074b486`. It preserves the
+candidate category-bit test, captured descriptor/argument, fastcall eligibility
+call, EDI continuation value and full EAX helper result. Structural audit reports
+ten instructions, an eight-byte guarded entry and no exterior/interior overwrite
+references. `verify_second_category.py` supplied **262** comparisons per target,
+including raw flags/results, callback mutations, register/continuation state and
+x87 precision/rounding variants. Eligibility remains a controlled dependency in
+that focused suite; retained category scanning and target lifecycle remain native.
+
+The prior 276-byte candidate crossed a loop re-entry, so it is now safely split:
+`artillery_second_category_prefix.c` covers 74 bytes at client
+`009a0ca6..009a0cf0` / server `0074b486..0074b4d0`; the re-enterable
+`artillery_second_category_factor.c` covers 202 bytes at client
+`009a0cf0..009a0dba` / server `0074b4d0..0074b59a`. The factor boundary is the
+native loop re-entry from client `009a0e5f` / server `0074b63f`. The code
+preserves target-service capture, category-class accumulation, callback-dependent
+list reads, iterator search, EDI/EBP/EBX continuation state and the live x87
+factor. `verify_second_category_factor.py` passed **264** comparisons per target.
+The structural audit confirms both guarded boundaries; the factor's only external
+exit is its intended native continuation.
+
+Current installed hashes are `97edae268f828aa090c85223fffe7255364a9a1a1ac5c93d18cdbeab3f71f8a9`
+(client) and `f06cff89850907283c6495e3c51776127595ccf4152a367c9216a404817242b5`
+(server). Payload sizes are 36,365 / 33,549 bytes, with 696 / 551 guarded entry
+patches and five vtable patches per target. Continue after the factor at client
+`009a0dba` / server `0074b59a`, then recover target-state, firing, networking
+and the remaining engine work. No commit or push is authorized now. Older
+sections below are historical.
+
+### Read-only boundary inspection: second-pass category scorer
+
+The next native interval is client `009a0dba..009a0f5e` and server
+`0074b59a..0074b73e`, 420 bytes and 110 instructions in each target. The
+read-only Ghidra inspection is recorded in
+`reports/{client,server}/artillery-second-category-score-inspection.tsv`.
+Both targets have the same shape: the factor's internal continuation enters the
+interval at its first instruction; the interval has one loop exit back to the
+already reconstructed factor (`009a0e5f -> 009a0cf0` / `0074b63f -> 0074b4d0`),
+then three exits to the native iterator continuation (`009a0f5e` /
+`0074b73e`). This makes a combined scorer bridge structurally possible, but it
+must preserve the factor re-entry and the live x87 factor. No scorer source has
+been installed; the prior trial was removed after its differential test exposed
+an x87/field-layout mismatch. Rebuild from the hashes above before continuing.
 
 ## Active continuation: installed second-pass movement
 
@@ -480,12 +550,13 @@ match the current hashes; EXEs and full evidence are preserved privately.
 ## Resume checklist
 
 1. Current full runs completed; no verifier needs restarting. Preserve the
-   verified second-setup checkpoint before installing further source stages.
-2. Full/live checks passed and compact reports were exported. The current request
-   authorizes committing and pushing source/reports. Keep original inputs/private
-   analysis outside the repository; inspect Git history for publication status.
-3. Continue second-pass filtering at `009a04f0` / `0074acd0`. Later history, second
-   pass, target-state updates and aiming/firing remain unreconstructed.
+   verified category-scorer checkpoint before installing further source stages.
+2. Full/live checks passed and compact reports were exported for the current
+   hashes. Commit and publication are authorized; inspect remote history first. Keep
+   original inputs and private analysis outside the repository.
+3. Continue after the second-pass scorer at `009a0f5e` / `0074b73e`.
+   Later target-state updates, firing, history, networking and engine work remain
+   unreconstructed.
 4. Full physics, gameplay, networking and the independently source-owned engine
    remain incomplete. Inline stages do not count as complete evaluators.
 
@@ -546,17 +617,12 @@ in-memory tool stores may not survive transfer to another agent.
 
 ## Prompt to give the next agent
 
-> Read AGENTS.md and docs/HANDOFF.md. Resume and publish verified changes to GitHub.
-> Second-setup checkpoint passed 80,712 comparisons and 16 live checks and is private.
-> Inventory is 1,231; eligibility reuses the existing component predicate.
-> Gate/loop/final scaling/traversal are installed, with 164 + 242 + 329 + 154
-> focused checks per target, structural audits and 16 live checks passed.
-> Full sessions 25051/client and 13088/server completed with exit code 0.
-> Iterator/setup are installed and passed 157 + 160 focused checks per target,
-> audits, full regression and 16 live checks. Reports are exported and the
-> checkpoint is preserved. Inspect Git history for publication status.
-> Preserve live EAX for empty-query cleanup. Use complete repaired private listings
-> in current-artillery/{client,server}/bodies. Continue filter at 009a04f0/0074acd0.
+> Read AGENTS.md and docs/HANDOFF.md. Commit and GitHub publication are authorized;
+> verify current remote history. The installed category scorer passed 46,160 client
+> + 44,576 server full comparisons and 16 live vector checks. Its focused suite has
+> 262 cases per target and structural audits passed. Inventory is 1,233 and
+> whole-game acceptance remains 0/7. Continue at client 009a0f5e / server
+> 0074b73e. Preserve original inputs and raw native listings outside the repo.
 
 ## Following second-pass driver predicate: instruction evidence
 

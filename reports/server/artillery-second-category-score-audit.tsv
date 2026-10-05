@@ -1,0 +1,2 @@
+address	symbol	end_exclusive	owner	bytes	instructions	patch_bytes	patch_hex	external_interior_references	overwritten_interior_references	external_exits	status	original_sha256
+0074b59a	bfv_artillery_second_category_score_bridge	0074b73e	00749a80	420	110	14	8b8c24d80000008b51088b44243c	0	0	4	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d

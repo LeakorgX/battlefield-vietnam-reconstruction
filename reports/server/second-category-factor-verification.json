@@ -1,0 +1,9 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "eeea0961906021b3b618a5a81b389b1b938d3aa9b404d0011a417b3b29fb3a81",
+  "passed": 264,
+  "scope": "Original/source split second-pass category prefix and re-enterable factor path with target-service capture, class accumulation, callback-dependent list reads, node search, continuation registers and live x87 factor. The retained scorer and complete target lifecycle remain unverified.",
+  "original_block_bytes": 276,
+  "replacement_scope": "partial_native_evaluator"
+}

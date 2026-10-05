@@ -9,10 +9,10 @@ Treat the current filesystem and process state as authoritative when resuming.
 - Reconstruct the original unmodified Battlefield Vietnam client and dedicated
   server into readable, editable source with original behavior, including AI,
   physics, gameplay and multiplayer. The native replacement build is intermediate.
-- **Current instruction: resume existing work, commit and publish to GitHub.**
-  This supersedes the earlier local-only restriction. Verify the installed build,
-  inspect remote history and exclude original binaries/private analysis before publishing.
-- No browser for GitHub. If publishing is later authorized, use an available
+- **Current instruction: commit and publish to GitHub, then continue reconstruction.**
+  Preserve all verified source, reports and uncommitted work. Verify installed
+  builds and inspect remote history before publication; exclude original binaries/private analysis.
+- No browser for GitHub. Use an available
   connector or authenticated CLI; inspect remote state before updating it.
 - Keep the README concise and focused on reconstruction; no Bevy experiment history.
 - Whole-project progress uses `reports/project-milestones.json`: 0 of 7 complete

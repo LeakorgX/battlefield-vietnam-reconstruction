@@ -1,23 +1,20 @@
 {
-  "snapshot_date": "2026-10-04",
+  "snapshot_date": "2026-10-05",
   "timezone": "Asia/Baghdad",
-  "purpose": "Local handoff snapshot, not a completion claim; recheck current files/processes.",
+  "purpose": "Local handoff snapshot, not a completion claim; recheck files and processes before resuming.",
   "instructions": {
     "commit": true,
     "push": true,
     "preserve_uncommitted_work": true
   },
-  "local_head": "42827f75858de793248c17ecdd4c37e3ea274366",
-  "last_verified_remote_main": "42827f75858de793248c17ecdd4c37e3ea274366",
   "active_goal": "Finish the whole original client/server reconstruction and verify every whole-game milestone.",
   "whole_game": {
     "completed_milestones": 0,
-    "total_milestones": 7
+    "total_milestones": 7,
+    "percent": 0
   },
   "source_inventory_reconstructed_functions": 1233,
   "process_observation": {
-    "client_session": 51153,
-    "server_session": 59049,
     "observed_running": false,
     "terminal_exit_code": 0,
     "recheck_before_launching": true
@@ -26,82 +23,50 @@
     "client": {
       "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
       "executable": "X:\\Battlefield Vietnam - Copy\\BfVietnam-editable.exe",
-      "actual_sha256": "8b8ea803877ba56f708b3aabdf257a0c2484f673c4cb3ed8a652c72b8b6e032a",
-      "manifest_sha256": "8b8ea803877ba56f708b3aabdf257a0c2484f673c4cb3ed8a652c72b8b6e032a",
-      "payload_bytes": 35597,
-      "entry_patches": 693,
+      "actual_sha256": "872573710aef446c1ad5828462c8f7f88e74380d75831fe64e087b61b7ef9cc1",
+      "manifest_sha256": "872573710aef446c1ad5828462c8f7f88e74380d75831fe64e087b61b7ef9cc1",
+      "payload_bytes": 37133,
+      "entry_patches": 697,
       "vtable_patches": 5,
-      "live_passed": 8,
-      "full_report_passed": 45372,
-      "full_report_sha256": "8b8ea803877ba56f708b3aabdf257a0c2484f673c4cb3ed8a652c72b8b6e032a",
+      "full_report_passed": 46160,
       "full_report_matches_current_executable": true,
-      "full_verifier_state": "completed; exit code 0"
+      "live_passed": 8,
+      "second_category_cases": 262,
+      "second_category_factor_cases": 264,
+      "second_category_score_cases": 262
     },
     "server": {
       "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
       "executable": "X:\\Battlefield Vietnam - Copy\\bfvietnam_w32ded-editable.exe",
-      "actual_sha256": "d971d94cbe743d641c0689652b71c2a93fcb39d778be617530d9b044f95cb3e2",
-      "manifest_sha256": "d971d94cbe743d641c0689652b71c2a93fcb39d778be617530d9b044f95cb3e2",
-      "payload_bytes": 32781,
-      "entry_patches": 548,
+      "actual_sha256": "eeea0961906021b3b618a5a81b389b1b938d3aa9b404d0011a417b3b29fb3a81",
+      "manifest_sha256": "eeea0961906021b3b618a5a81b389b1b938d3aa9b404d0011a417b3b29fb3a81",
+      "payload_bytes": 34317,
+      "entry_patches": 552,
       "vtable_patches": 5,
-      "live_passed": 8,
-      "full_report_passed": 43788,
-      "full_report_sha256": "d971d94cbe743d641c0689652b71c2a93fcb39d778be617530d9b044f95cb3e2",
+      "full_report_passed": 44576,
       "full_report_matches_current_executable": true,
-      "full_verifier_state": "completed; exit code 0"
+      "live_passed": 8,
+      "second_category_cases": 262,
+      "second_category_factor_cases": 264,
+      "second_category_score_cases": 262
     }
   },
-  "verified_previous_checkpoint": {
-    "name": "2026-10-04-second-aim",
-    "full_passed": 83936,
-    "live_passed": 16
+  "installed_stage": {
+    "name": "second-pass category scorer",
+    "source": "bfv-native-code/src/artillery_second_category_score.c",
+    "client_interval": "009a0dba..009a0f5e",
+    "server_interval": "0074b59a..0074b73e",
+    "original_block_bytes": 420,
+    "instructions": 110,
+    "client_loop_exit": "009a0e5f->009a0cf0",
+    "server_loop_exit": "0074b63f->0074b4d0",
+    "structural_audit": "eligible for both targets; no external interior/overwrite references",
+    "focused_cases_per_target": 262,
+    "full_verification": "complete",
+    "live_validation": "8 vector exception executions per target",
+    "limitations": "Controlled object callbacks; EDX and CPU flags not compared; complete evaluator and live artillery matches unverified. Live checks cover vector exceptions."
   },
-  "staged_pending_work": {
-    "second-movement": {
-      "installed": true,
-      "passed_per_target": 522,
-      "original_block_bytes": 201,
-      "structural_audit": "eligible; both targets",
-      "private_artifacts": "bfv-reference-local/second-movement/staged/{client,server}",
-      "installed_full_verification": "pending",
-      "installed_live_verification": "passed; 8 executions per target",
-      "installed_focused_verification": "passed"
-    },
-    "second-movement-score": {
-      "installed": true,
-      "passed_per_target": 439,
-      "original_block_bytes": 569,
-      "structural_audit": "eligible; both targets",
-      "private_artifacts": "bfv-reference-local/second-movement-score/staged/{client,server}",
-      "installed_full_verification": "pending",
-      "installed_live_verification": "passed; 8 executions per target",
-      "installed_focused_verification": "passed"
-    },
-    "second-driver": {
-      "installed": false,
-      "passed_per_target": 338,
-      "original_block_bytes": 111,
-      "structural_audit": "eligible; both targets",
-      "private_artifacts": "bfv-reference-local/second-driver/staged/{client,server}"
-    }
-  },
-  "next_action": "Continue later second-pass category, target-state, firing, networking, engine and whole-game milestone reconstruction. Region modifier is installed and verified.",
-  "latest_observed_full_progress": "Fresh current-hash region-build client/server full verifiers exited 0; compact reports exported and second-region checkpoint preserved.",
-  "verified_current_checkpoint": {
-    "name": "2026-10-04-second-region",
-    "full_passed": 89160,
-    "live_passed": 16
-  },
-  "focused_session": {
-    "id": 65041,
-    "exit_code": 0,
-    "gate_passed_per_target": 522,
-    "score_passed_per_target": 439
-  },
-  "live_session": {
-    "id": 61113,
-    "exit_code": 0,
-    "passed_per_target": 8
-  }
+  "next_action": "Recover iterator/cleanup at client 009a0f5e / server 0074b73e; continue target-state, firing, networking and the full source-owned engine.",
+  "publication_base": "9ba1f1b",
+  "remote_base_verified": "9ba1f1b"
 }

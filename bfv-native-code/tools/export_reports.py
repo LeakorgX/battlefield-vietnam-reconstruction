@@ -149,7 +149,8 @@ def prepare(target):
                                  ('artillery-second-movement-audit.tsv','bfv_artillery_second_movement_gate_bridge',201),
                                  ('artillery-second-movement-score-audit.tsv','bfv_artillery_second_movement_score_bridge',569),
                                  ('artillery-second-driver-audit.tsv','bfv_artillery_second_driver_gate_bridge',111),
-                                 ('artillery-second-region-audit.tsv','bfv_artillery_second_region_modifier_bridge',70)]:
+                                 ('artillery-second-region-audit.tsv','bfv_artillery_second_region_modifier_bridge',70),
+                                 ('artillery-second-category-audit.tsv','bfv_artillery_second_category_gate_bridge',40)]:
         with (REPORTS / target / filename).open(encoding='utf-8') as f:
             rows=list(csv.DictReader(f,delimiter='\t'))
         assert len(rows)==1
@@ -160,6 +161,28 @@ def prepare(target):
         assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
         if symbol=='bfv_next_target_handle':assert int(row['ret_cleanup'])==8
         if symbol=='bfv_vector_normalize':assert int(row['ret_cleanup'])==0
+
+    with (REPORTS / target / 'artillery-second-category-factor-audit.tsv').open(encoding='utf-8') as f:
+        factor_audit=list(csv.DictReader(f,delimiter='\t'))
+    expected_factor={'bfv_artillery_second_category_prefix_bridge':74,
+                     'bfv_artillery_second_category_factor_bridge':202}
+    assert len(factor_audit)==2 and {row['symbol'] for row in factor_audit}==set(expected_factor)
+    for row in factor_audit:
+        patch=patches[row['symbol']]
+        assert row['original_sha256']==manifest['input_sha256'] and row['status']=='eligible'
+        assert row['address']==patch['entry'] and row['patch_hex']==patch['original']
+        assert int(row['patch_bytes'])*2==len(patch['original']) and int(row['bytes'])==expected_factor[row['symbol']]
+        assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
+
+    with (REPORTS / target / 'artillery-second-category-score-audit.tsv').open(encoding='utf-8') as f:
+        score_audit=list(csv.DictReader(f,delimiter='\t'))
+    assert len(score_audit)==1
+    row=score_audit[0]; patch=patches['bfv_artillery_second_category_score_bridge']
+    assert row['original_sha256']==manifest['input_sha256'] and row['status']=='eligible'
+    assert row['address']==patch['entry'] and row['patch_hex']==patch['original']
+    assert int(row['patch_bytes'])*2==len(patch['original']) and int(row['bytes'])==420
+    assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
+    assert int(row['external_exits'])==4
 
     identity = {key: full[key] for key in ('target', 'original_sha256', 'compiled_sha256')}
     summary = {key: value for key, value in full.items() if not isinstance(value, list)}
@@ -186,6 +209,15 @@ def prepare(target):
     focused('second-driver-verification.json','second_driver',
             'Original/source second-pass distance/driver predicate with actual event-word helper and controlled position/event/predicate methods. Capture timing, table method rereads, full fixture memory, live registers, low-byte result, aliases and x87 state compare. Complete evaluation/firing remains unverified.',
             original_block_bytes=111,replacement_scope='partial_native_evaluator')
+    focused('second-category-verification.json','second_category',
+            'Original/source second-pass category eligibility gate with candidate flags, descriptor and fastcall argument captures, controlled eligibility result, callback mutations, live registers, continuations and x87 state. The retained category scan and complete target evaluation remain unverified.',
+            original_block_bytes=40,replacement_scope='partial_native_evaluator')
+    focused('second-category-factor-verification.json','second_category_factor',
+            'Original/source split second-pass category prefix and re-enterable factor path with target-service capture, class accumulation, callback-dependent list reads, node search, continuation registers and live x87 factor. The retained scorer and complete target lifecycle remain unverified.',
+            original_block_bytes=276,replacement_scope='partial_native_evaluator')
+    focused('second-category-score-verification.json','second_category_score',
+            'Original/source second-pass category scorer with instruction-equivalent x87 selector bodies, score scaling, limit/best selection, iterator state, output-table writes, factor-loop re-entry and native continuation registers. Exceptional inputs, precision/rounding modes and occupied x87 stacks compare; object methods and pool resolution remain controlled, while complete target selection, firing and live-match behavior remain unverified.',
+            original_block_bytes=420,replacement_scope='partial_native_evaluator')
     focused('second-movement-verification.json','second_movement',
             'Original/source second-pass movement gate at three native continuations, including callbacks, flags, overlapping vectors, frame memory, captured EDI and x87 states. Virtual methods remain controlled; full evaluator/game behavior remains unverified.',
             original_block_bytes=201,replacement_scope='partial_native_evaluator')
