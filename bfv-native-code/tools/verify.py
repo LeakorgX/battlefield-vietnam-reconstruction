@@ -45,6 +45,7 @@ from verify_second_region import compare_second_region
 from verify_second_category import compare_second_category
 from verify_second_category_factor import compare_second_category_factor
 from verify_second_category_score import compare as compare_second_category_score
+from verify_final_weights import compare as compare_final_weights
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
 from verify_aim_geometry import compare_aim_geometry
@@ -222,6 +223,8 @@ def verify(target):
     print(f'{target}: checking second-pass category scorer',flush=True)
     second_category_score_comparisons=compare_second_category_score(original,edited,spec)
     print(f'{target}: {len(second_category_score_comparisons)} second-pass category-score comparisons passed',flush=True)
+    final_weights_comparisons=compare_final_weights(original,edited,spec,symbols=symbols)
+    print(f'{target}: {len(final_weights_comparisons)} final weights/iterator comparisons passed',flush=True)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         shared_math_cases=len(math_comparisons),artillery_filter_cases=len(filter_comparisons),target_history_cases=len(history_comparisons),artillery_cache_cases=len(artillery_cache_comparisons),artillery_cases=len(artillery_comparisons),interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
         bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),geometry_cases=len(geometry_comparisons),event_cases=len(event_comparisons),vector_cases=len(vector_comparisons),
@@ -314,6 +317,10 @@ def verify(target):
     report['second_category_factor']=second_category_factor_comparisons
     report['second_category_score_cases']=len(second_category_score_comparisons)
     report['second_category_score']=second_category_score_comparisons
+    report['final_weights_cases']=len(final_weights_comparisons)
+    report['final_weights']=final_weights_comparisons
+    report['passed']+=len(final_weights_comparisons)
+    report['scope']+=' Final weights and second-pass iterator compare actual parameter table loads, callback captures/mutations, raw memory, integer registers, stack pop and complete x87 state across exceptional inputs and precision/rounding modes. Index methods are controlled; flags are excluded and complete final selection/firing remains unverified.'
     report['passed']+=len(second_region_comparisons)
     report['scope']+=' Second-pass region modifier compares score refresh, captured EBX/driver, actual region containment helper, aliases, nonfinite values and x87 state. The surrounding iterator/category and complete target evaluation remain native or unverified.'
     report['passed']+=len(second_category_comparisons)

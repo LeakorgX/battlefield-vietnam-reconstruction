@@ -1,7 +1,7 @@
 {
   "target": "server",
   "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
-  "compiled_sha256": "eeea0961906021b3b618a5a81b389b1b938d3aa9b404d0011a417b3b29fb3a81",
+  "compiled_sha256": "e16fcc56f22fd0a6ba96727940354357624bb74910cf8de0b9de99c8b6f7278c",
   "passed": 176,
   "scope": "Actual original/source alternate first-pass target eligibility and event-3 predicate. Generation-handle lookup, callback rereads, nested traversal and component conversion execute; object methods and conversion remain controlled. Full fixture memory, low-byte returns, scratch aliasing, live registers and x87 state compare across invalid handles, nested misses and supported precision/rounding modes. Later target-state scoring, second pass, firing and live-match behavior remain unverified.",
   "reconstructed_entries": 1

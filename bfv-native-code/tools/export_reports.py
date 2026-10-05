@@ -184,6 +184,17 @@ def prepare(target):
     assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
     assert int(row['external_exits'])==4
 
+    with (REPORTS / target / 'artillery-final-weights-audit.tsv').open(encoding='utf-8') as f:
+        final_audits=list(csv.DictReader(f,delimiter='\t'))
+    expected_final={'bfv_artillery_second_iterator_bridge':26,'bfv_artillery_final_weights_bridge':117}
+    assert len(final_audits)==2 and {r['symbol'] for r in final_audits}==set(expected_final)
+    for row in final_audits:
+        patch=patches[row['symbol']]
+        assert row['original_sha256']==manifest['input_sha256'] and row['status']=='eligible'
+        assert row['address']==patch['entry'] and row['patch_hex']==patch['original']
+        assert int(row['patch_bytes'])*2==len(patch['original']) and int(row['bytes'])==expected_final[row['symbol']]
+        assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
+
     identity = {key: full[key] for key in ('target', 'original_sha256', 'compiled_sha256')}
     summary = {key: value for key, value in full.items() if not isinstance(value, list)}
     summary['constant_return_entries'] = len({c['address'] for c in full['constant_returns']})
@@ -196,6 +207,10 @@ def prepare(target):
 
     def focused(filename, group, scope, **details):
         outputs[filename] = dict(identity, passed=len(full[group]), scope=scope, **details)
+
+    focused('final-weights-verification.json','final_weights',
+            'Original/source post-query parameter weights and second-pass iterator. Actual parameter table loads and x87 operations execute, with controlled index callbacks, global/table/row/score mutations, integer registers, saved EBP pop, full frame/arena memory and x87 state compared across nonfinite values and precision/rounding modes. CPU flags are excluded; complete final selection, firing and live-match behavior remain unverified.',
+            original_block_bytes=143,replacement_scope='partial_native_evaluator')
 
     focused('next-candidate-verification.json','next_candidate',
             'Original/source first-pass node advance, captured node/table, callback-dependent '

@@ -1,0 +1,15 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "installed_sha256": "80c760975a0406f780f09d5cbe759389d1b240f33d15cb6fd7bcb7681a6d751f",
+  "source_sha256": "990d43065ee9f34e5eb74e72e785dce474f19463310e6756009fbc0ac9381f4e",
+  "staged_payload_sha256": "337a1e2379f14b611292042b3c469067086cd4e53e8bbfe4c54baa91f8aa6c8d",
+  "passed": 272,
+  "staged": true,
+  "installed": false,
+  "controlled_curve_cases": 200,
+  "native_curve_cases": 72,
+  "original_block_bytes": 748,
+  "returns": 3,
+  "scope": "Entire final-selection tail with all three returns, array writes, remembered/alternate selection, target notifications and clearing. Full fixture memory, callback order/arguments, stack and nonvolatile return ABI and complete physical x87 state compare. Object callbacks and curve tables controlled; 72 cases execute actual native curve/conversion code. Caller-scratch registers, CPU flags, unmasked exceptions and whole evaluator/live matches excluded."
+}

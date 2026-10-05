@@ -5,7 +5,56 @@ The user authorizes **committing and publishing to GitHub**, then continuing the
 full reconstruction. Preserve source and reports; exclude original binaries,
 assets, raw bodies and private analysis. Use an authenticated CLI or connector.
 
-## Current checkpoint: installed second-pass category scorer
+## Latest verified checkpoint: installed iterator and final weights
+
+Published commit **`925faa7ef9b17b2f3218c69e92668496dbc5ef8d`** was pushed and
+remote main verified. Subsequent `artillery_final_weights.c` is installed locally:
+the 26-byte second-pass iterator and 117-byte post-query weight block. Both
+structural audits passed, as did **184 installed comparisons per target**, including
+six cases traversing the iterator, retained cleanup and weighting together.
+The index callbacks and allocator are controlled in those integration fixtures.
+Arithmetic and parameter-row reads execute directly from fixture memory.
+The source preserves global/table captures before callbacks and score spills,
+the raw `0x53`, `0x57`, `0x54` parameter ids, x87 rounding and saved EBP pop.
+
+Current installed hashes (full regression **complete**):
+- client `80c760975a0406f780f09d5cbe759389d1b240f33d15cb6fd7bcb7681a6d751f`
+  — 37,517-byte payload, 699 entry patches, 5 vtable patches.
+- server `e16fcc56f22fd0a6ba96727940354357624bb74910cf8de0b9de99c8b6f7278c`
+  — 34,701-byte payload, 554 entry patches, 5 vtable patches.
+
+Current-hash live vector checks passed 8 per target; session **71906** exited 0.
+Full sessions **5323/client** and **76380/server** exited 0: **46,344 + 44,760
+= 91,104 comparisons**. The guarded exporter completed for both current hashes.
+Compact installed reports now describe this iterator/weight checkpoint. Do not
+restart those terminal sessions. Preserve the current EXEs/full/live evidence
+before installing the following staged final-selection block.
+
+The next complete final-selection tail is client **`009a1001..009a12ed`** /
+server **`0074b7e1..0074bacd`**: **748 bytes, 232 instructions, three returns,
+zero external interior references and zero external jump exits**. The read-only
+inspection is `reports/{client,server}/artillery-final-selection-inspection.tsv`.
+`artillery_final_selection.c` now reconstructs this whole tail as a **staged**
+replacement, not yet installed. Both guarded structural audits passed. Both
+targets passed **272 staged comparisons**: 200 controlled-curve cases plus 72
+cases executing the actual retained native curve/conversion code with fixture
+lookup tables. Tests cover all three returns, target notifications/clear, array
+writes, remembered-target choice, callback captures/mutations, stack/nonvolatile
+return ABI and full physical x87 state across precision/rounding modes. Caller
+scratch registers, CPU flags, unmasked exceptions and full matches are excluded.
+The first staged trial exposed an extra compiler x87 pop; the corrected inline
+assembly constraints passed the full focused suite in both targets.
+
+Source/test paths are `bfv-native-code/src/artillery_final_selection.c` and
+`bfv-native-code/tools/verify_final_selection.py`. Private focused evidence is
+`bfv-native-code/build/{client,server}/final-selection-staged/verification.json`.
+The iterator/weight full runs have finished and compact evidence was exported.
+Preserve/publish that checkpoint, then add
+the guarded final-selection entry to the installer/full verifier/exporter and
+validate its installed behavior. The retained curve initializer, object services,
+evaluator prefix and other engine work still require reconstruction.
+
+## Last fully verified and published checkpoint: second-pass category scorer
 
 The current installed EXEs passed **46,160 client + 44,576 server = 90,736**
 full comparisons and **8 live vector exception checks per target**. The guarded
@@ -549,12 +598,12 @@ match the current hashes; EXEs and full evidence are preserved privately.
 
 ## Resume checklist
 
-1. Current full runs completed; no verifier needs restarting. Preserve the
-   verified category-scorer checkpoint before installing further source stages.
-2. Full/live checks passed and compact reports were exported for the current
-   hashes. Commit and publication are authorized; inspect remote history first. Keep
+1. Full sessions 5323/client and 76380/server are terminal with exit code 0.
+   Preserve the verified iterator/weight checkpoint before installing more code.
+2. Focused/full/live checks passed and compact evidence was exported for current hashes.
+   Commit and publication are authorized; inspect remote history first. Keep
    original inputs and private analysis outside the repository.
-3. Continue after the second-pass scorer at `009a0f5e` / `0074b73e`.
+3. Continue final selection at `009a1001` / `0074b7e1`.
    Later target-state updates, firing, history, networking and engine work remain
    unreconstructed.
 4. Full physics, gameplay, networking and the independently source-owned engine
@@ -618,11 +667,12 @@ in-memory tool stores may not survive transfer to another agent.
 ## Prompt to give the next agent
 
 > Read AGENTS.md and docs/HANDOFF.md. Commit and GitHub publication are authorized;
-> verify current remote history. The installed category scorer passed 46,160 client
-> + 44,576 server full comparisons and 16 live vector checks. Its focused suite has
-> 262 cases per target and structural audits passed. Inventory is 1,233 and
-> whole-game acceptance remains 0/7. Continue at client 009a0f5e / server
-> 0074b73e. Preserve original inputs and raw native listings outside the repo.
+> verify current remote history. Commit 925faa7 was published. New iterator/final
+> weights are installed and passed 184 focused cases per target and 16 live vector
+> checks. Full sessions 5323/client and 76380/server exited 0 with 91,104 comparisons;
+> compact reports were exported. Preserve/publish, then integrate the staged
+> 748-byte final selection (272 cases per target) at client 009a1001 / server 0074b7e1. Inventory is
+> 1,233 and whole-game acceptance remains 0/7. Preserve reference inputs privately.
 
 ## Following second-pass driver predicate: instruction evidence
 

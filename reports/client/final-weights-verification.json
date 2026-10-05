@@ -1,0 +1,9 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "compiled_sha256": "80c760975a0406f780f09d5cbe759389d1b240f33d15cb6fd7bcb7681a6d751f",
+  "passed": 184,
+  "scope": "Original/source post-query parameter weights and second-pass iterator. Actual parameter table loads and x87 operations execute, with controlled index callbacks, global/table/row/score mutations, integer registers, saved EBP pop, full frame/arena memory and x87 state compared across nonfinite values and precision/rounding modes. CPU flags are excluded; complete final selection, firing and live-match behavior remain unverified.",
+  "original_block_bytes": 143,
+  "replacement_scope": "partial_native_evaluator"
+}

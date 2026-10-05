@@ -1,0 +1,2 @@
+address	symbol	end_exclusive	owner	bytes	instructions	patch_bytes	patch_hex	external_interior_references	overwritten_interior_references	external_exits	returns	status	original_sha256
+0074b7e1	bfv_artillery_final_selection_bridge	0074bacd	00749a80	748	232	7	d9842480000000	0	0	0	3	eligible	86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d

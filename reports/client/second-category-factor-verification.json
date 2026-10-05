@@ -1,7 +1,7 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "872573710aef446c1ad5828462c8f7f88e74380d75831fe64e087b61b7ef9cc1",
+  "compiled_sha256": "80c760975a0406f780f09d5cbe759389d1b240f33d15cb6fd7bcb7681a6d751f",
   "passed": 264,
   "scope": "Original/source split second-pass category prefix and re-enterable factor path with target-service capture, class accumulation, callback-dependent list reads, node search, continuation registers and live x87 factor. The retained scorer and complete target lifecycle remain unverified.",
   "original_block_bytes": 276,

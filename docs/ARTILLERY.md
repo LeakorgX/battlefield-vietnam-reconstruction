@@ -762,3 +762,41 @@ The second-pass region modifier is now installed. It passed 593 focused comparis
 per target and the region checkpoint passed 89,160 full comparisons across both
 binaries with matching live checks. The surrounding category and target-state
 phases remain native or unverified.
+
+## Post-query weights and second-pass iterator
+
+The category gate, split prefix/factor and category scorer were subsequently
+installed and published in commit `925faa7`; that checkpoint passed 90,736 full
+comparisons and 16 live vector exception checks. These are partial evaluator
+stages, not evidence of complete artillery behavior.
+
+`artillery_final_weights.c` adds the second-pass iterator (26 bytes) and the
+post-query parameter weighting block (117 bytes). Parameters `0x53`, `0x57` and
+`0x54` are read from the manager's per-index row. The resulting factor uses
+rounded intermediate products `(1 + p53) * (1 + p57) * (1 - p54)` in the original
+x87 order. Each index callback can change the global manager, bot table, row
+pointers and score spill; capture timing and rereads are preserved. Gameplay
+names for these parameter ids are not established.
+
+Both installed binaries passed 184 focused comparisons, including callback
+mutations, exceptional floats, precision/rounding modes, full fixture memory,
+integer registers, saved EBP restoration and x87 state. Six cases execute the
+iterator, retained vector cleanup and weighting together with a controlled
+allocator. CPU flags are excluded, and real heap behavior and complete final
+selection remain unverified. Full regression for these hashes passed 91,104
+comparisons with 16 current-hash live checks; compact evidence was exported.
+
+The next final-selection tail has 748 bytes and 232 instructions with three
+returns and no external interior references in either binary. Its read-only
+boundary inspection is recorded separately from implementation evidence.
+
+`artillery_final_selection.c` reconstructs that entire tail in staged source:
+best/remembered and alternate target transfer, notifications, rating publication,
+mode-dependent multipliers, target clearing and all three native returns. Both
+structural audits and 272 staged comparisons per target passed. Seventy-two cases
+execute the original curve lookup and conversion code with fixture tables; the
+other 200 control the curve result. Object callbacks remain controlled. Full
+fixture memory, callback order/arguments, callee-preserved registers, stack cleanup
+and physical x87 state compare; caller-scratch registers and CPU flags are excluded.
+This stage is not installed yet, and it does not establish a complete evaluator
+or live gameplay parity. The handoff records the prerequisite running checks.
