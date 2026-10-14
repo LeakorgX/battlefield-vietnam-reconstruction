@@ -46,12 +46,22 @@ from verify_second_category import compare_second_category
 from verify_second_category_factor import compare_second_category_factor
 from verify_second_category_score import compare as compare_second_category_score
 from verify_final_weights import compare as compare_final_weights
+from verify_final_selection import compare as compare_final_selection
+from verify_search_prefix import compare as compare_search_prefix
+from verify_artillery_continuations import compare as compare_artillery_continuations
+from verify_candidate_setup import compare as compare_candidate_setup
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
 from verify_aim_geometry import compare_aim_geometry
 from verify_affine_matrix import compare_affine_matrix
 from verify_constant_returns import compare_constant_returns
 from verify_word_getters import compare_word_getters
+from verify_field_accessors import compare_field_accessors
+from verify_static_initializers import compare_static_initializers,compare_constructor_calls
+from verify_deleting_destructors import compare_deleting_destructors
+from verify_dynamic_casts import compare_dynamic_casts
+from verify_clones import compare_clones
+from verify_global_stores import compare_global_stores
 from verify_collision import compare_collision, compare_dispatcher
 
 
@@ -159,6 +169,27 @@ def verify(target):
     print(f'{target}: checking object-word getter entries',flush=True)
     getter_comparisons=compare_word_getters(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(getter_comparisons)} object-word getter comparisons passed',flush=True)
+    print(f'{target}: checking field/global accessor entries',flush=True)
+    accessor_comparisons=compare_field_accessors(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(accessor_comparisons)} field/global accessor comparisons passed',flush=True)
+    print(f'{target}: checking static-object initializer entries',flush=True)
+    initializer_comparisons=compare_static_initializers(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(initializer_comparisons)} static-object initializer comparisons passed',flush=True)
+    print(f'{target}: checking constructor-call initializer entries',flush=True)
+    construct_comparisons=compare_constructor_calls(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(construct_comparisons)} constructor-call initializer comparisons passed',flush=True)
+    print(f'{target}: checking scalar deleting destructor entries',flush=True)
+    deleting_comparisons=compare_deleting_destructors(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(deleting_comparisons)} scalar deleting destructor comparisons passed',flush=True)
+    print(f'{target}: checking dynamic_cast wrapper entries',flush=True)
+    cast_comparisons=compare_dynamic_casts(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(cast_comparisons)} dynamic_cast wrapper comparisons passed',flush=True)
+    print(f'{target}: checking virtual clone entries',flush=True)
+    clone_comparisons=compare_clones(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(clone_comparisons)} virtual clone comparisons passed',flush=True)
+    print(f'{target}: checking constant global-store entries',flush=True)
+    store_comparisons=compare_global_stores(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(store_comparisons)} global-store comparisons passed',flush=True)
     notify_count=sum(bool(x['inputs'].get('notify_only',False)) for x in collision_comparisons)
     print(f'{target}: checking artillery movement gates',flush=True)
     movement_comparisons=compare_artillery_movement(original,original_pe,edited,edited_pe,spec,symbols)
@@ -225,6 +256,14 @@ def verify(target):
     print(f'{target}: {len(second_category_score_comparisons)} second-pass category-score comparisons passed',flush=True)
     final_weights_comparisons=compare_final_weights(original,edited,spec,symbols=symbols)
     print(f'{target}: {len(final_weights_comparisons)} final weights/iterator comparisons passed',flush=True)
+    final_selection_comparisons=compare_final_selection(original,edited,spec,symbols=symbols)
+    print(f'{target}: {len(final_selection_comparisons)} entire final-selection tail comparisons passed',flush=True)
+    search_prefix_comparisons=compare_search_prefix(original,edited,spec,symbols=symbols)
+    print(f'{target}: {len(search_prefix_comparisons)} fresh-search prefix comparisons passed',flush=True)
+    continuation_comparisons=compare_artillery_continuations(original,edited,spec,symbols=symbols)
+    print(f'{target}: {len(continuation_comparisons)} evaluator continuation comparisons passed',flush=True)
+    candidate_setup_comparisons=compare_candidate_setup(original,edited,spec,symbols=symbols)
+    print(f'{target}: {len(candidate_setup_comparisons)} candidate setup comparisons passed',flush=True)
     report=dict(target=target,original_sha256=spec['sha'],compiled_sha256=manifest['output_sha256'],
         shared_math_cases=len(math_comparisons),artillery_filter_cases=len(filter_comparisons),target_history_cases=len(history_comparisons),artillery_cache_cases=len(artillery_cache_comparisons),artillery_cases=len(artillery_comparisons),interpreter_cases=len(cases),cached_bailout_cases=32,vehicle_wrapper_cases=32,
         bailout_recompute_cases=len(recompute_cases),curve_cases=len(curve_comparisons),geometry_cases=len(geometry_comparisons),event_cases=len(event_comparisons),vector_cases=len(vector_comparisons),
@@ -248,7 +287,22 @@ def verify(target):
     report['passed']+=len(constant_comparisons)
     report['word_getter_cases']=len(getter_comparisons)
     report['word_getters']=getter_comparisons
-    report['passed']+=len(getter_comparisons)
+    report['field_accessor_cases']=len(accessor_comparisons)
+    report['field_accessors']=accessor_comparisons
+    report['static_initializer_cases']=len(initializer_comparisons)
+    report['static_initializers']=initializer_comparisons
+    report['constructor_call_cases']=len(construct_comparisons)
+    report['constructor_calls']=construct_comparisons
+    report['deleting_destructor_cases']=len(deleting_comparisons)
+    report['deleting_destructors']=deleting_comparisons
+    report['dynamic_cast_cases']=len(cast_comparisons)
+    report['dynamic_casts']=cast_comparisons
+    report['clone_cases']=len(clone_comparisons)
+    report['clones']=clone_comparisons
+    report['global_store_cases']=len(store_comparisons)
+    report['global_stores']=store_comparisons
+    report['passed']+=len(getter_comparisons)+len(accessor_comparisons)+len(initializer_comparisons)+len(construct_comparisons)
+    report['passed']+=len(deleting_comparisons)+len(cast_comparisons)+len(clone_comparisons)+len(store_comparisons)
     report['history_tree_cases']=len(tree_comparisons)
     report['history_tree']=tree_comparisons
     report['passed']+=len(tree_comparisons)
@@ -319,6 +373,19 @@ def verify(target):
     report['second_category_score']=second_category_score_comparisons
     report['final_weights_cases']=len(final_weights_comparisons)
     report['final_weights']=final_weights_comparisons
+    report['final_selection_cases']=len(final_selection_comparisons)
+    report['final_selection']=final_selection_comparisons
+    report['search_prefix_cases']=len(search_prefix_comparisons)
+    report['search_prefix']=search_prefix_comparisons
+    report['artillery_continuations_cases']=len(continuation_comparisons)
+    report['artillery_continuations']=continuation_comparisons
+    report['passed']+=len(search_prefix_comparisons)+len(continuation_comparisons)
+    report['candidate_setup_cases']=len(candidate_setup_comparisons)
+    report['candidate_setup']=candidate_setup_comparisons
+    report['passed']+=len(candidate_setup_comparisons)
+    report['scope']+=' Fresh-search prefix compares history refresh, real generation handles, source tree advance and region bounds/lookup, gun/driver/iterator capture, saved EBP layout, full fixture memory, preserved live registers and physical x87 state. Object callbacks, tree erase, release and containment are controlled. Four short continuations compare unit/driver and allocation/cleanup combinations with controlled release; scratch results after release and flags excluded. Candidate setup compares timestamp weighting, event position/fallback copies, displacement, distance floor, normalization, callback rereads, live registers and x87 state. Object callbacks are controlled; trajectory, weapons and full evaluator/game parity remain unverified.'
+    report['passed']+=len(final_selection_comparisons)
+    report['scope']+=' Entire final-selection tail compares remembered/best/alternate transfer, array writes, notifications, rating publication, target clear and all three return paths. Full fixture memory, callback order/arguments, nonvolatile return ABI, stack cleanup and complete physical x87 state compare. Seventy-two cases execute native curve/conversion code with fixture tables; object callbacks and other curve cases are controlled. Scratch registers, flags, unmasked exceptions and complete evaluator/live matches are excluded.'
     report['passed']+=len(final_weights_comparisons)
     report['scope']+=' Final weights and second-pass iterator compare actual parameter table loads, callback captures/mutations, raw memory, integer registers, stack pop and complete x87 state across exceptional inputs and precision/rounding modes. Index methods are controlled; flags are excluded and complete final selection/firing remains unverified.'
     report['passed']+=len(second_region_comparisons)
@@ -355,6 +422,12 @@ def verify(target):
     report['scope']+=' Affine matrix composition compared without math mocks, including full backing memory, partial/full buffer overlap, ABI, x87 status/control and retained caller values across all supported precision/rounding modes.'
     report['scope']+=' Audited complete constant-return bodies execute actual original/source entries, comparing EAX bits, stack cleanup, all non-result integer registers, CPU flags, complete x87 state and no writes; original-image return values retain data dependencies.'
     report['scope']+=' Audited complete ECX word getters compare exact field loads, unaligned objects, returned EAX bits, stack, all preserved integer registers, CPU flags, full x87 state and exactly one field read with no writes; object ownership and semantic field types remain unresolved.'
+    report['scope']+=' Audited complete field setters, float/double getters, member-address helpers, byte-set helpers and global reads compile byte-identically to their native bodies and execute side by side, comparing EAX, preserved registers, flags, stack cleanup, x87 state and exact data reads/writes; field meanings remain unresolved.'
+    report['scope']+=' Audited C++ static-object initializers, including those passing immediate constructor arguments, make the same constructor and atexit calls with identical receiver/arguments and return value, balance the stack, preserve nonvolatile registers and x87 state and write only their own frame; constructors and destructors are controlled, and scratch registers and flags are excluded.'
+    report['scope']+=' Audited scalar deleting destructors produce the same ordered vtable store, destructor call and conditional deallocation for six flag arguments, return the object, pop the argument, preserve nonvolatile registers and x87 state and write nothing else outside their frame; destructors and the deallocator are controlled.'
+    report['scope']+=' Audited dynamic_cast wrappers perform the same holder/handle reads and runtime-cast calls (all five arguments) across empty, unflagged and flagged inputs and null/non-null cast results, returning the same EAX with the same stack cleanup, preserved registers and x87 state; the runtime cast is controlled.'
+    report['scope']+=' Audited virtual clones perform the same allocation request, field reads and ordered copy/vtable writes with values for successful and null allocations, return the same EAX, preserve nonvolatile registers and x87 state and write nothing else; the allocation routine is controlled.'
+    report['scope']+=' Audited constant global stores perform exactly the catalogued stores (address, width, value) in native order with no other reads or writes outside their frame, a balanced stack, preserved nonvolatile registers and x87 state.'
     (work/'verification.json').write_text(json.dumps(report,indent=2))
     print(f'{target}: {len(cases)} interpreter, 32 cached-bailout, {len(recompute_cases)} recomputed-bailout, {len(curve_comparisons)} curve, {len(geometry_comparisons)} geometry, {len(collision_comparisons)-notify_count} collision, {notify_count} notification and {len(dispatch_comparisons)} dispatcher and {len(event_comparisons)} event and {len(vector_comparisons)} vector comparisons, {len(artillery_comparisons)} artillery driver comparisons, {len(artillery_cache_comparisons)} artillery evaluator/integration comparisons, {len(history_comparisons)} target-history comparisons, {len(filter_comparisons)} inline candidate-filter comparisons, 32 vehicle-wrapper ABI checks passed',flush=True)
 

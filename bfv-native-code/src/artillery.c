@@ -15,6 +15,20 @@ typedef uint8_t (TC *test_bot)(void *, void *);
 typedef void (TC *set_word)(void *, uint32_t);
 volatile uint32_t bfv_artillery_calls;
 volatile uint32_t bfv_artillery_evaluate_calls;
+long double TC bfv_artillery_evaluate(void *,void *,uint32_t,float,void *,void *);
+/* The original evaluator's entry prologue establishes a 0x1d8-byte frame
+ * before jumping into the native candidate search when recompute is nonzero.
+ * This gateway reproduces that ABI so the editable cache branch can own the
+ * entry while the still-native search receives the exact frame it expects. */
+__attribute__((naked,noinline)) long double TC bfv_artillery_entry_bridge(void)
+{
+    __asm__ volatile(
+        "mov 8(%%esp),%%al; test %%al,%%al; jne 1f;"
+        "jmp _bfv_artillery_evaluate;"
+        "1: sub $0x1d8,%%esp; push %%ebx; push %%esi; push %%edi;"
+        "mov %%ecx,%%ebx; mov %%ebx,0xa0(%%esp); jmp %c0;"
+        : : "i"(BFV_ARTILLERY_SEARCH_PREFIX) : "memory");
+}
 static uint32_t word(uintptr_t address)
 { return *(volatile uint32_t *)address; }
 static uintptr_t method(void *object, uint32_t offset)

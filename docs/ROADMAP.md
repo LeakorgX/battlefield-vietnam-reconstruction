@@ -1,9 +1,24 @@
 # Full-engine reconstruction roadmap
 
 The goal is readable source for the original engine and a standalone source build
-that preserves original behavior. The native mod build is an intermediate tool.
+that preserves original behavior. The static recompilation is the build path: assembly
+for original code plus reconstructed C, gated on byte identity.
 The [whole-project tracker](PROGRESS.md) counts completed acceptance milestones.
 It does not estimate completion dates or remaining effort.
+
+## Static recompilation track
+
+Done: whole-image rebuild from symbolic assembly plus the C payload,
+byte-identical for client and server ([STATIC-RECOMP](STATIC-RECOMP.md)).
+
+Next, in order:
+
+1. Symbolize absolute code and data references (immediates, displacements,
+   jump tables, vtables, pointers in data) and emit labelled data sections.
+2. Allow size-changing edits; relink and re-verify identity for unchanged source.
+3. Generate PE headers and imports from source instead of the original image.
+4. Progressively replace assembly with readable C, subsystem by subsystem,
+   using the evidence rules in AGENTS.md. This is what the milestones below measure.
 
 ## Milestone 0 — establish the reference
 

@@ -53,19 +53,29 @@
   "limitations": "This is a coarse whole-project acceptance tracker, not an estimate of work already performed or remaining effort. Zero completed milestones does not mean no source has been recovered. Milestones differ in size; partial work cannot support a defensible precise whole-game decompilation percentage.",
   "source_inventory": {
     "indexed_functions": 62643,
-    "reconstructed_functions": 1233,
+    "reconstructed_functions": 8386,
     "partial_functions_excluded": 2,
     "targets": {
       "client": {
         "indexed_functions": 38657,
-        "reconstructed_functions": 689,
+        "reconstructed_functions": 4890,
+        "lifted_functions": 33267,
+        "running_c_functions": 38157,
+        "running_c_bytes": 6685680,
         "partial_functions": 1,
+        "indexed_bytes": 6907787,
+        "reconstructed_bytes": 105486,
         "inventory_sha256": "b8d726b10b71f81f486750511420d493bf7f3347bd09f56d5db032a89abd185f"
       },
       "server": {
         "indexed_functions": 23986,
-        "reconstructed_functions": 544,
+        "reconstructed_functions": 3496,
+        "lifted_functions": 20259,
+        "running_c_functions": 23755,
+        "running_c_bytes": 3664618,
         "partial_functions": 1,
+        "indexed_bytes": 3776931,
+        "reconstructed_bytes": 80554,
         "inventory_sha256": "ed30f127ac89eb91017c793b6fb0b8dc1960a66356322945074a896a0c274bed"
       }
     },

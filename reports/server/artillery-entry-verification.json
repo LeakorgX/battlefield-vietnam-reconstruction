@@ -1,0 +1,10 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "239dc330eda6d7838196aa931c06c439ba32e5c2cccf9402cbab592bceee179d",
+  "passed": 1404,
+  "scope": "Source-owned evaluator entry/cache routing. The 303-byte cache branch is audited as a 93-instruction boundary with three native returns; the bridge routes recompute-zero calls to editable cache logic and reconstructs the original 0x1d8-byte frame before native candidate search for recompute-nonzero calls. Cache behavior is covered by the artillery evaluator comparison suite; candidate search and complete live evaluator parity remain unverified.",
+  "original_block_bytes": 303,
+  "returns": 3,
+  "replacement_scope": "partial_native_evaluator"
+}

@@ -1,0 +1,2 @@
+address	symbol	end_exclusive	owner	bytes	instructions	patch_bytes	patch_hex	external_interior_references	overwritten_interior_references	external_exits	saved_ebp	repaired_release_call	status	original_sha256
+0099f3cf	bfv_artillery_search_prefix_bridge	0099f6c3	0099f2a0	756	204	6	8b0d50efe000	0	0	1	1	0099f45b	eligible	79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5

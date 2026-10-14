@@ -1,0 +1,10 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "compiled_sha256": "8cad8af2580d8f823a0ed0b0c476f939c4f483d33728a15b530975d8bc914689",
+  "passed": 240,
+  "scope": "Four short evaluator entries and unit/driver plus allocation/cleanup combinations. Full fixture memory, callee-preserved registers, live reload results and physical x87 state compare. Release is controlled and disturbs an inactive physical FP slot. Scratch results after release, flags and real heap failures excluded.",
+  "original_block_bytes": 35,
+  "reconstructed_inline_entries": 4,
+  "replacement_scope": "partial_native_evaluator"
+}

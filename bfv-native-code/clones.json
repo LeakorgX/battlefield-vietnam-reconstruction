@@ -1,0 +1,5017 @@
+{
+  "scope": "Virtual clone functions: allocate, copy data words, store vtable. The allocation routine and class identities remain native.",
+  "targets": {
+    "client": {
+      "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+      "allocate": "00403610",
+      "rejected": {},
+      "entries": [
+        {
+          "address": "0052d0b0",
+          "symbol": "bfv_client_clone_0052d0b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6326c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85665edff83c40485c0740e8b4e08894808c7006c32b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d0f0",
+          "symbol": "bfv_client_clone_0052d0f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b632ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81665edff83c40485c0740e8b4e08894808c700ac32b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d130",
+          "symbol": "bfv_client_clone_0052d130",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b632ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d664edff83c40485c0740e8b4e08894808c700ec32b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d190",
+          "symbol": "bfv_client_clone_0052d190",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6342c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e87664edff83c40485c0740e8b4e08894808c7002c34b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d1d0",
+          "symbol": "bfv_client_clone_0052d1d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6346c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83664edff83c40485c0740e8b4e08894808c7006c34b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d210",
+          "symbol": "bfv_client_clone_0052d210",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b634ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f663edff83c40485c0740e8b4e08894808c700ac34b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d240",
+          "symbol": "bfv_client_clone_0052d240",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b634ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c663edff83c40485c0740e8b4e08894808c700ec34b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d280",
+          "symbol": "bfv_client_clone_0052d280",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6352c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e88663edff83c40485c0740e8b4e08894808c7002c35b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d2c0",
+          "symbol": "bfv_client_clone_0052d2c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6356c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e84663edff83c40485c0740e8b4e08894808c7006c35b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d2f0",
+          "symbol": "bfv_client_clone_0052d2f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b635ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81663edff83c40485c0740e8b4e08894808c700ac35b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d320",
+          "symbol": "bfv_client_clone_0052d320",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b635ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e662edff83c40485c0740e8b4e08894808c700ec35b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d350",
+          "symbol": "bfv_client_clone_0052d350",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6362c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b662edff83c40485c0740e8b4e08894808c7002c36b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d380",
+          "symbol": "bfv_client_clone_0052d380",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6366c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e88662edff83c40485c0740e8b4e08894808c7006c36b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d3b0",
+          "symbol": "bfv_client_clone_0052d3b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b636ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85662edff83c40485c0740e8b4e08894808c700ac36b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d3e0",
+          "symbol": "bfv_client_clone_0052d3e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b636ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e82662edff83c40485c0740e8b4e08894808c700ec36b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d410",
+          "symbol": "bfv_client_clone_0052d410",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6372c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f661edff83c40485c0740e8b4e08894808c7002c37b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d440",
+          "symbol": "bfv_client_clone_0052d440",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6376c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c661edff83c40485c0740e8b4e08894808c7006c37b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d470",
+          "symbol": "bfv_client_clone_0052d470",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b637ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e89661edff83c40485c0740e8b4e08894808c700ac37b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d4a0",
+          "symbol": "bfv_client_clone_0052d4a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b637ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e86661edff83c40485c0740e8b4e08894808c700ec37b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d4e0",
+          "symbol": "bfv_client_clone_0052d4e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6382c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e82661edff83c40485c0740e8b4e08894808c7002c38b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d510",
+          "symbol": "bfv_client_clone_0052d510",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6386c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f660edff83c40485c0740e8b4e08894808c7006c38b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d540",
+          "symbol": "bfv_client_clone_0052d540",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b638ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c660edff83c40485c0740e8b4e08894808c700ac38b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d570",
+          "symbol": "bfv_client_clone_0052d570",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b638ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e89660edff83c40485c0740e8b4e08894808c700ec38b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d5b0",
+          "symbol": "bfv_client_clone_0052d5b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6392c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85660edff83c40485c0740e8b4e08894808c7002c39b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d5f0",
+          "symbol": "bfv_client_clone_0052d5f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6396c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81660edff83c40485c0740e8b4e08894808c7006c39b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d630",
+          "symbol": "bfv_client_clone_0052d630",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b639ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d65fedff83c40485c0740e8b4e08894808c700ac39b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d670",
+          "symbol": "bfv_client_clone_0052d670",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b639ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8965fedff83c40485c0740e8b4e08894808c700ec39b6005ec333c05ec3"
+        },
+        {
+          "address": "0052d6b0",
+          "symbol": "bfv_client_clone_0052d6b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63a2c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8565fedff83c40485c0740e8b4e08894808c7002c3ab6005ec333c05ec3"
+        },
+        {
+          "address": "0052d6f0",
+          "symbol": "bfv_client_clone_0052d6f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63a6c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8165fedff83c40485c0740e8b4e08894808c7006c3ab6005ec333c05ec3"
+        },
+        {
+          "address": "0052d730",
+          "symbol": "bfv_client_clone_0052d730",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63aac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d65eedff83c40485c0740e8b4e08894808c700ac3ab6005ec333c05ec3"
+        },
+        {
+          "address": "0052d770",
+          "symbol": "bfv_client_clone_0052d770",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63aec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8965eedff83c40485c0740e8b4e08894808c700ec3ab6005ec333c05ec3"
+        },
+        {
+          "address": "0052d7a0",
+          "symbol": "bfv_client_clone_0052d7a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63b2c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8665eedff83c40485c0740e8b4e08894808c7002c3bb6005ec333c05ec3"
+        },
+        {
+          "address": "0052d7d0",
+          "symbol": "bfv_client_clone_0052d7d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63b6c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8365eedff83c40485c0740e8b4e08894808c7006c3bb6005ec333c05ec3"
+        },
+        {
+          "address": "0052d810",
+          "symbol": "bfv_client_clone_0052d810",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63bac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f65dedff83c40485c0740e8b4e08894808c700ac3bb6005ec333c05ec3"
+        },
+        {
+          "address": "0052d840",
+          "symbol": "bfv_client_clone_0052d840",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63bec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c65dedff83c40485c0740e8b4e08894808c700ec3bb6005ec333c05ec3"
+        },
+        {
+          "address": "0052d880",
+          "symbol": "bfv_client_clone_0052d880",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63c2c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8865dedff83c40485c0740e8b4e08894808c7002c3cb6005ec333c05ec3"
+        },
+        {
+          "address": "0052d8c0",
+          "symbol": "bfv_client_clone_0052d8c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b63c6c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8465dedff83c40485c0740e8b4e08894808c7006c3cb6005ec333c05ec3"
+        },
+        {
+          "address": "0052dc50",
+          "symbol": "bfv_client_clone_0052dc50",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b64924",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b659edff83c40485c0740e8b4e08894808c7002449b6005ec333c05ec3"
+        },
+        {
+          "address": "0052dd80",
+          "symbol": "bfv_client_clone_0052dd80",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b64964",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e88658edff83c40485c0740e8b4e08894808c7006449b6005ec333c05ec3"
+        },
+        {
+          "address": "0052ddb0",
+          "symbol": "bfv_client_clone_0052ddb0",
+          "size": 12,
+          "fields": [
+            [
+              16,
+              8
+            ]
+          ],
+          "vtable": "00b649a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85658edff83c40485c0740e8b4e10894808c700a449b6005ec333c05ec3"
+        },
+        {
+          "address": "0052de50",
+          "symbol": "bfv_client_clone_0052de50",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b649a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b657edff83c40485c0740e8b4e08894808c700a449b6005ec333c05ec3"
+        },
+        {
+          "address": "0052def0",
+          "symbol": "bfv_client_clone_0052def0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b649e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81657edff83c40485c0740e8b4e08894808c700e449b6005ec333c05ec3"
+        },
+        {
+          "address": "0052f150",
+          "symbol": "bfv_client_clone_0052f150",
+          "size": 12,
+          "fields": [
+            [
+              12,
+              8
+            ]
+          ],
+          "vtable": "00b64a64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b644edff83c40485c0740e8b4e0c894808c700644ab6005ec333c05ec3"
+        },
+        {
+          "address": "0052f200",
+          "symbol": "bfv_client_clone_0052f200",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b64a64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e80644edff83c40485c0740e8b4e08894808c700644ab6005ec333c05ec3"
+        },
+        {
+          "address": "0052f230",
+          "symbol": "bfv_client_clone_0052f230",
+          "size": 12,
+          "fields": [
+            [
+              32,
+              8
+            ]
+          ],
+          "vtable": "00b64ae4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d643edff83c40485c0740e8b4e20894808c700e44ab6005ec333c05ec3"
+        },
+        {
+          "address": "0052f2d0",
+          "symbol": "bfv_client_clone_0052f2d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b64ae4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83643edff83c40485c0740e8b4e08894808c700e44ab6005ec333c05ec3"
+        },
+        {
+          "address": "0053e880",
+          "symbol": "bfv_client_clone_0053e880",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b67d4c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8864decff83c40485c0740e8b4e08894808c7004c7db6005ec333c05ec3"
+        },
+        {
+          "address": "0053e8c0",
+          "symbol": "bfv_client_clone_0053e8c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b67d8c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8464decff83c40485c0740e8b4e08894808c7008c7db6005ec333c05ec3"
+        },
+        {
+          "address": "0053e900",
+          "symbol": "bfv_client_clone_0053e900",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b67dcc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8064decff83c40485c0740e8b4e08894808c700cc7db6005ec333c05ec3"
+        },
+        {
+          "address": "0053e940",
+          "symbol": "bfv_client_clone_0053e940",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b67e0c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c64cecff83c40485c0740e8b4e08894808c7000c7eb6005ec333c05ec3"
+        },
+        {
+          "address": "0053e980",
+          "symbol": "bfv_client_clone_0053e980",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b67e4c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8864cecff83c40485c0740e8b4e08894808c7004c7eb6005ec333c05ec3"
+        },
+        {
+          "address": "0053e9c0",
+          "symbol": "bfv_client_clone_0053e9c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b67e8c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8464cecff83c40485c0740e8b4e08894808c7008c7eb6005ec333c05ec3"
+        },
+        {
+          "address": "0053ea00",
+          "symbol": "bfv_client_clone_0053ea00",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b67ecc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8064cecff83c40485c0740e8b4e08894808c700cc7eb6005ec333c05ec3"
+        },
+        {
+          "address": "0053ea70",
+          "symbol": "bfv_client_clone_0053ea70",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b67f0c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8964becff83c40485c0740e8b4e08894808c7000c7fb6005ec333c05ec3"
+        },
+        {
+          "address": "0053ed60",
+          "symbol": "bfv_client_clone_0053ed60",
+          "size": 12,
+          "fields": [
+            [
+              16,
+              8
+            ]
+          ],
+          "vtable": "00b67f8c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a648ecff83c40485c0740e8b4e10894808c7008c7fb6005ec333c05ec3"
+        },
+        {
+          "address": "0053ee00",
+          "symbol": "bfv_client_clone_0053ee00",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b67f8c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e80648ecff83c40485c0740e8b4e08894808c7008c7fb6005ec333c05ec3"
+        },
+        {
+          "address": "0053ee50",
+          "symbol": "bfv_client_clone_0053ee50",
+          "size": 12,
+          "fields": [
+            [
+              20,
+              8
+            ]
+          ],
+          "vtable": "00b6800c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b647ecff83c40485c0740e8b4e14894808c7000c80b6005ec333c05ec3"
+        },
+        {
+          "address": "0053eef0",
+          "symbol": "bfv_client_clone_0053eef0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b6800c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81647ecff83c40485c0740e8b4e08894808c7000c80b6005ec333c05ec3"
+        },
+        {
+          "address": "00592930",
+          "symbol": "bfv_client_clone_00592930",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b715f4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d60ce7ff83c40485c0740e8b4e08894808c700f415b7005ec333c05ec3"
+        },
+        {
+          "address": "00592970",
+          "symbol": "bfv_client_clone_00592970",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b71634",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8960ce7ff83c40485c0740e8b4e08894808c7003416b7005ec333c05ec3"
+        },
+        {
+          "address": "005929b0",
+          "symbol": "bfv_client_clone_005929b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b71674",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8560ce7ff83c40485c0740e8b4e08894808c7007416b7005ec333c05ec3"
+        },
+        {
+          "address": "005929f0",
+          "symbol": "bfv_client_clone_005929f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b716b4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8160ce7ff83c40485c0740e8b4e08894808c700b416b7005ec333c05ec3"
+        },
+        {
+          "address": "00592a30",
+          "symbol": "bfv_client_clone_00592a30",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b716f4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d60be7ff83c40485c0740e8b4e08894808c700f416b7005ec333c05ec3"
+        },
+        {
+          "address": "00592a70",
+          "symbol": "bfv_client_clone_00592a70",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b71734",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8960be7ff83c40485c0740e8b4e08894808c7003417b7005ec333c05ec3"
+        },
+        {
+          "address": "00592ab0",
+          "symbol": "bfv_client_clone_00592ab0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b71774",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8560be7ff83c40485c0740e8b4e08894808c7007417b7005ec333c05ec3"
+        },
+        {
+          "address": "00592af0",
+          "symbol": "bfv_client_clone_00592af0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b717b4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8160be7ff83c40485c0740e8b4e08894808c700b417b7005ec333c05ec3"
+        },
+        {
+          "address": "00592b30",
+          "symbol": "bfv_client_clone_00592b30",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b717f4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d60ae7ff83c40485c0740e8b4e08894808c700f417b7005ec333c05ec3"
+        },
+        {
+          "address": "00592b70",
+          "symbol": "bfv_client_clone_00592b70",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b71834",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8960ae7ff83c40485c0740e8b4e08894808c7003418b7005ec333c05ec3"
+        },
+        {
+          "address": "00592bb0",
+          "symbol": "bfv_client_clone_00592bb0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b718b4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8560ae7ff83c40485c0740e8b4e08894808c700b418b7005ec333c05ec3"
+        },
+        {
+          "address": "00592d00",
+          "symbol": "bfv_client_clone_00592d00",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b718f4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e80609e7ff83c40485c0740e8b4e08894808c700f418b7005ec333c05ec3"
+        },
+        {
+          "address": "00592db0",
+          "symbol": "bfv_client_clone_00592db0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b71934",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85608e7ff83c40485c0740e8b4e08894808c7003419b7005ec333c05ec3"
+        },
+        {
+          "address": "0069ba70",
+          "symbol": "bfv_client_clone_0069ba70",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b93e6c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8967bd6ff83c40485c0740e8b4e08894808c7006c3eb9005ec333c05ec3"
+        },
+        {
+          "address": "0069bab0",
+          "symbol": "bfv_client_clone_0069bab0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b93eac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8567bd6ff83c40485c0740e8b4e08894808c700ac3eb9005ec333c05ec3"
+        },
+        {
+          "address": "0069baf0",
+          "symbol": "bfv_client_clone_0069baf0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b93eec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8167bd6ff83c40485c0740e8b4e08894808c700ec3eb9005ec333c05ec3"
+        },
+        {
+          "address": "006aa4c0",
+          "symbol": "bfv_client_clone_006aa4c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96384",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e84691d5ff83c40485c0740e8b4e08894808c7008463b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa500",
+          "symbol": "bfv_client_clone_006aa500",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b963c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e80691d5ff83c40485c0740e8b4e08894808c700c463b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa540",
+          "symbol": "bfv_client_clone_006aa540",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96404",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c690d5ff83c40485c0740e8b4e08894808c7000464b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa580",
+          "symbol": "bfv_client_clone_006aa580",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96444",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e88690d5ff83c40485c0740e8b4e08894808c7004464b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa5c0",
+          "symbol": "bfv_client_clone_006aa5c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96484",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e84690d5ff83c40485c0740e8b4e08894808c7008464b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa600",
+          "symbol": "bfv_client_clone_006aa600",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b964c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e80690d5ff83c40485c0740e8b4e08894808c700c464b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa640",
+          "symbol": "bfv_client_clone_006aa640",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96504",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c68fd5ff83c40485c0740e8b4e08894808c7000465b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa680",
+          "symbol": "bfv_client_clone_006aa680",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96544",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8868fd5ff83c40485c0740e8b4e08894808c7004465b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa6c0",
+          "symbol": "bfv_client_clone_006aa6c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96584",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8468fd5ff83c40485c0740e8b4e08894808c7008465b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa6f0",
+          "symbol": "bfv_client_clone_006aa6f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b965c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8168fd5ff83c40485c0740e8b4e08894808c700c465b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa720",
+          "symbol": "bfv_client_clone_006aa720",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96604",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e68ed5ff83c40485c0740e8b4e08894808c7000466b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa760",
+          "symbol": "bfv_client_clone_006aa760",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96644",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a68ed5ff83c40485c0740e8b4e08894808c7004466b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa790",
+          "symbol": "bfv_client_clone_006aa790",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b96684",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8768ed5ff83c40485c0740e8b4e08894808c7008466b9005ec333c05ec3"
+        },
+        {
+          "address": "006aa7c0",
+          "symbol": "bfv_client_clone_006aa7c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b966c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8468ed5ff83c40485c0740e8b4e08894808c700c466b9005ec333c05ec3"
+        },
+        {
+          "address": "006b6070",
+          "symbol": "bfv_client_clone_006b6070",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b99544",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896d5d4ff83c40485c0740e8b4e08894808c7004495b9005ec333c05ec3"
+        },
+        {
+          "address": "006b6230",
+          "symbol": "bfv_client_clone_006b6230",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b99634",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6d3d4ff83c40485c0740e8b4e08894808c7003496b9005ec333c05ec3"
+        },
+        {
+          "address": "006b6260",
+          "symbol": "bfv_client_clone_006b6260",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b99674",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a6d3d4ff83c40485c0740e8b4e08894808c7007496b9005ec333c05ec3"
+        },
+        {
+          "address": "006b6290",
+          "symbol": "bfv_client_clone_006b6290",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b996b4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876d3d4ff83c40485c0740e8b4e08894808c700b496b9005ec333c05ec3"
+        },
+        {
+          "address": "006b62c0",
+          "symbol": "bfv_client_clone_006b62c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b996f4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e846d3d4ff83c40485c0740e8b4e08894808c700f496b9005ec333c05ec3"
+        },
+        {
+          "address": "006b62f0",
+          "symbol": "bfv_client_clone_006b62f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b99734",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816d3d4ff83c40485c0740e8b4e08894808c7003497b9005ec333c05ec3"
+        },
+        {
+          "address": "006b6620",
+          "symbol": "bfv_client_clone_006b6620",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9993c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e6cfd4ff83c40485c0740e8b4e08894808c7003c99b9005ec333c05ec3"
+        },
+        {
+          "address": "006b6650",
+          "symbol": "bfv_client_clone_006b6650",
+          "size": 12,
+          "fields": [
+            [
+              20,
+              8
+            ]
+          ],
+          "vtable": "00b9997c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b6cfd4ff83c40485c0740e8b4e14894808c7007c99b9005ec333c05ec3"
+        },
+        {
+          "address": "006b6700",
+          "symbol": "bfv_client_clone_006b6700",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9997c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e806cfd4ff83c40485c0740e8b4e08894808c7007c99b9005ec333c05ec3"
+        },
+        {
+          "address": "006b6730",
+          "symbol": "bfv_client_clone_006b6730",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b999bc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6ced4ff83c40485c0740e8b4e08894808c700bc99b9005ec333c05ec3"
+        },
+        {
+          "address": "006b6bf0",
+          "symbol": "bfv_client_clone_006b6bf0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b99a7c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816cad4ff83c40485c0740e8b4e08894808c7007c9ab9005ec333c05ec3"
+        },
+        {
+          "address": "006bf040",
+          "symbol": "bfv_client_clone_006bf040",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9bc9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c645d4ff83c40485c0740e8b4e08894808c7009cbcb9005ec333c05ec3"
+        },
+        {
+          "address": "006bf070",
+          "symbol": "bfv_client_clone_006bf070",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9bcdc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e89645d4ff83c40485c0740e8b4e08894808c700dcbcb9005ec333c05ec3"
+        },
+        {
+          "address": "006bf0a0",
+          "symbol": "bfv_client_clone_006bf0a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9bd1c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e86645d4ff83c40485c0740e8b4e08894808c7001cbdb9005ec333c05ec3"
+        },
+        {
+          "address": "006bf0d0",
+          "symbol": "bfv_client_clone_006bf0d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9bd5c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83645d4ff83c40485c0740e8b4e08894808c7005cbdb9005ec333c05ec3"
+        },
+        {
+          "address": "006bf100",
+          "symbol": "bfv_client_clone_006bf100",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9bd9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e80645d4ff83c40485c0740e8b4e08894808c7009cbdb9005ec333c05ec3"
+        },
+        {
+          "address": "006d7850",
+          "symbol": "bfv_client_clone_006d7850",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9ea94",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b6bdd2ff83c40485c0740e8b4e08894808c70094eab9005ec333c05ec3"
+        },
+        {
+          "address": "006d7890",
+          "symbol": "bfv_client_clone_006d7890",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9ead4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876bdd2ff83c40485c0740e8b4e08894808c700d4eab9005ec333c05ec3"
+        },
+        {
+          "address": "006d78d0",
+          "symbol": "bfv_client_clone_006d78d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9eb14",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e836bdd2ff83c40485c0740e8b4e08894808c70014ebb9005ec333c05ec3"
+        },
+        {
+          "address": "006d7910",
+          "symbol": "bfv_client_clone_006d7910",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9eb54",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f6bcd2ff83c40485c0740e8b4e08894808c70054ebb9005ec333c05ec3"
+        },
+        {
+          "address": "006d7950",
+          "symbol": "bfv_client_clone_006d7950",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9eb94",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b6bcd2ff83c40485c0740e8b4e08894808c70094ebb9005ec333c05ec3"
+        },
+        {
+          "address": "006d7990",
+          "symbol": "bfv_client_clone_006d7990",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9ebd4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876bcd2ff83c40485c0740e8b4e08894808c700d4ebb9005ec333c05ec3"
+        },
+        {
+          "address": "006d7ac0",
+          "symbol": "bfv_client_clone_006d7ac0",
+          "size": 12,
+          "fields": [
+            [
+              12,
+              8
+            ]
+          ],
+          "vtable": "00b9ec54",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e846bbd2ff83c40485c0740e8b4e0c894808c70054ecb9005ec333c05ec3"
+        },
+        {
+          "address": "006d7b60",
+          "symbol": "bfv_client_clone_006d7b60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00b9ec54",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a6bad2ff83c40485c0740e8b4e08894808c70054ecb9005ec333c05ec3"
+        },
+        {
+          "address": "006dd2d0",
+          "symbol": "bfv_client_clone_006dd2d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba079c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83663d2ff83c40485c0740e8b4e08894808c7009c07ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd310",
+          "symbol": "bfv_client_clone_006dd310",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba07dc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f662d2ff83c40485c0740e8b4e08894808c700dc07ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd350",
+          "symbol": "bfv_client_clone_006dd350",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba081c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b662d2ff83c40485c0740e8b4e08894808c7001c08ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd390",
+          "symbol": "bfv_client_clone_006dd390",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba085c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e87662d2ff83c40485c0740e8b4e08894808c7005c08ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd3d0",
+          "symbol": "bfv_client_clone_006dd3d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba089c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83662d2ff83c40485c0740e8b4e08894808c7009c08ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd410",
+          "symbol": "bfv_client_clone_006dd410",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba08dc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f661d2ff83c40485c0740e8b4e08894808c700dc08ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd450",
+          "symbol": "bfv_client_clone_006dd450",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba091c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b661d2ff83c40485c0740e8b4e08894808c7001c09ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd490",
+          "symbol": "bfv_client_clone_006dd490",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba095c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e87661d2ff83c40485c0740e8b4e08894808c7005c09ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd4d0",
+          "symbol": "bfv_client_clone_006dd4d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba099c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83661d2ff83c40485c0740e8b4e08894808c7009c09ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd510",
+          "symbol": "bfv_client_clone_006dd510",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba09dc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f660d2ff83c40485c0740e8b4e08894808c700dc09ba005ec333c05ec3"
+        },
+        {
+          "address": "006dd550",
+          "symbol": "bfv_client_clone_006dd550",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba0a1c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b660d2ff83c40485c0740e8b4e08894808c7001c0aba005ec333c05ec3"
+        },
+        {
+          "address": "006dd590",
+          "symbol": "bfv_client_clone_006dd590",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba0a5c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e87660d2ff83c40485c0740e8b4e08894808c7005c0aba005ec333c05ec3"
+        },
+        {
+          "address": "006dd5d0",
+          "symbol": "bfv_client_clone_006dd5d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba0a9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83660d2ff83c40485c0740e8b4e08894808c7009c0aba005ec333c05ec3"
+        },
+        {
+          "address": "006dd610",
+          "symbol": "bfv_client_clone_006dd610",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba0adc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f65fd2ff83c40485c0740e8b4e08894808c700dc0aba005ec333c05ec3"
+        },
+        {
+          "address": "006dd650",
+          "symbol": "bfv_client_clone_006dd650",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba0b1c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b65fd2ff83c40485c0740e8b4e08894808c7001c0bba005ec333c05ec3"
+        },
+        {
+          "address": "006dd690",
+          "symbol": "bfv_client_clone_006dd690",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba0b5c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8765fd2ff83c40485c0740e8b4e08894808c7005c0bba005ec333c05ec3"
+        },
+        {
+          "address": "006dd6d0",
+          "symbol": "bfv_client_clone_006dd6d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba0b9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8365fd2ff83c40485c0740e8b4e08894808c7009c0bba005ec333c05ec3"
+        },
+        {
+          "address": "006dd710",
+          "symbol": "bfv_client_clone_006dd710",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba0bdc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f65ed2ff83c40485c0740e8b4e08894808c700dc0bba005ec333c05ec3"
+        },
+        {
+          "address": "006dd750",
+          "symbol": "bfv_client_clone_006dd750",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00ba0c1c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b65ed2ff83c40485c0740e8b4e08894808c7001c0cba005ec333c05ec3"
+        },
+        {
+          "address": "007273e0",
+          "symbol": "bfv_client_clone_007273e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00baa6ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e826c2cdff83c40485c0740e8b4e08894808c700aca6ba005ec333c05ec3"
+        },
+        {
+          "address": "00727420",
+          "symbol": "bfv_client_clone_00727420",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00baa6ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e6c1cdff83c40485c0740e8b4e08894808c700eca6ba005ec333c05ec3"
+        },
+        {
+          "address": "00727460",
+          "symbol": "bfv_client_clone_00727460",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00baa72c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a6c1cdff83c40485c0740e8b4e08894808c7002ca7ba005ec333c05ec3"
+        },
+        {
+          "address": "007274a0",
+          "symbol": "bfv_client_clone_007274a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00baa76c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e866c1cdff83c40485c0740e8b4e08894808c7006ca7ba005ec333c05ec3"
+        },
+        {
+          "address": "007274e0",
+          "symbol": "bfv_client_clone_007274e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00baa7ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e826c1cdff83c40485c0740e8b4e08894808c700aca7ba005ec333c05ec3"
+        },
+        {
+          "address": "007275d0",
+          "symbol": "bfv_client_clone_007275d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00baa7ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e836c0cdff83c40485c0740e8b4e08894808c700eca7ba005ec333c05ec3"
+        },
+        {
+          "address": "0073b8a0",
+          "symbol": "bfv_client_clone_0073b8a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00babf9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8667dccff83c40485c0740e8b4e08894808c7009cbfba005ec333c05ec3"
+        },
+        {
+          "address": "0073b8e0",
+          "symbol": "bfv_client_clone_0073b8e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00babfdc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8267dccff83c40485c0740e8b4e08894808c700dcbfba005ec333c05ec3"
+        },
+        {
+          "address": "0073b920",
+          "symbol": "bfv_client_clone_0073b920",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bac01c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e67cccff83c40485c0740e8b4e08894808c7001cc0ba005ec333c05ec3"
+        },
+        {
+          "address": "0073b960",
+          "symbol": "bfv_client_clone_0073b960",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bac05c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a67cccff83c40485c0740e8b4e08894808c7005cc0ba005ec333c05ec3"
+        },
+        {
+          "address": "0073b9a0",
+          "symbol": "bfv_client_clone_0073b9a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bac09c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8667cccff83c40485c0740e8b4e08894808c7009cc0ba005ec333c05ec3"
+        },
+        {
+          "address": "0074b050",
+          "symbol": "bfv_client_clone_0074b050",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bad9cc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b685cbff83c40485c0740e8b4e08894808c700ccd9ba005ec333c05ec3"
+        },
+        {
+          "address": "007506c0",
+          "symbol": "bfv_client_clone_007506c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bae384",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8462fcbff83c40485c0740e8b4e08894808c70084e3ba005ec333c05ec3"
+        },
+        {
+          "address": "0077a0d0",
+          "symbol": "bfv_client_clone_0077a0d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bafc1c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83695c8ff83c40485c0740e8b4e08894808c7001cfcba005ec333c05ec3"
+        },
+        {
+          "address": "0077a100",
+          "symbol": "bfv_client_clone_0077a100",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bafc5c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e80695c8ff83c40485c0740e8b4e08894808c7005cfcba005ec333c05ec3"
+        },
+        {
+          "address": "0077a130",
+          "symbol": "bfv_client_clone_0077a130",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bafc9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d694c8ff83c40485c0740e8b4e08894808c7009cfcba005ec333c05ec3"
+        },
+        {
+          "address": "0077a170",
+          "symbol": "bfv_client_clone_0077a170",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bafcdc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e89694c8ff83c40485c0740e8b4e08894808c700dcfcba005ec333c05ec3"
+        },
+        {
+          "address": "0077a1a0",
+          "symbol": "bfv_client_clone_0077a1a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bafd1c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e86694c8ff83c40485c0740e8b4e08894808c7001cfdba005ec333c05ec3"
+        },
+        {
+          "address": "0077a1d0",
+          "symbol": "bfv_client_clone_0077a1d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bafd5c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83694c8ff83c40485c0740e8b4e08894808c7005cfdba005ec333c05ec3"
+        },
+        {
+          "address": "0077a200",
+          "symbol": "bfv_client_clone_0077a200",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bafd9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e80694c8ff83c40485c0740e8b4e08894808c7009cfdba005ec333c05ec3"
+        },
+        {
+          "address": "0077a230",
+          "symbol": "bfv_client_clone_0077a230",
+          "size": 24,
+          "fields": [
+            [
+              16,
+              16
+            ]
+          ],
+          "vtable": "00bafddc",
+          "guarded_prefix": "566a188bf1",
+          "native_body": "566a188bf1e8d693c8ff83c40485c0740e8b4e10894810c700dcfdba005ec333c05ec3"
+        },
+        {
+          "address": "0077a270",
+          "symbol": "bfv_client_clone_0077a270",
+          "size": 24,
+          "fields": [
+            [
+              16,
+              16
+            ]
+          ],
+          "vtable": "00bafe1c",
+          "guarded_prefix": "566a188bf1",
+          "native_body": "566a188bf1e89693c8ff83c40485c0740e8b4e10894810c7001cfeba005ec333c05ec3"
+        },
+        {
+          "address": "00781820",
+          "symbol": "bfv_client_clone_00781820",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bb05fc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e61dc8ff83c40485c0740e8b4e08894808c700fc05bb005ec333c05ec3"
+        },
+        {
+          "address": "00885830",
+          "symbol": "bfv_client_clone_00885830",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd8b14",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6ddb7ff83c40485c0740e8b4e08894808c700148bbd005ec333c05ec3"
+        },
+        {
+          "address": "00885870",
+          "symbol": "bfv_client_clone_00885870",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd8b54",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896ddb7ff83c40485c0740e8b4e08894808c700548bbd005ec333c05ec3"
+        },
+        {
+          "address": "008858b0",
+          "symbol": "bfv_client_clone_008858b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd8b94",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856ddb7ff83c40485c0740e8b4e08894808c700948bbd005ec333c05ec3"
+        },
+        {
+          "address": "008858f0",
+          "symbol": "bfv_client_clone_008858f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd8bd4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816ddb7ff83c40485c0740e8b4e08894808c700d48bbd005ec333c05ec3"
+        },
+        {
+          "address": "00885930",
+          "symbol": "bfv_client_clone_00885930",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd8c14",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6dcb7ff83c40485c0740e8b4e08894808c700148cbd005ec333c05ec3"
+        },
+        {
+          "address": "00885970",
+          "symbol": "bfv_client_clone_00885970",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd8c54",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896dcb7ff83c40485c0740e8b4e08894808c700548cbd005ec333c05ec3"
+        },
+        {
+          "address": "008859b0",
+          "symbol": "bfv_client_clone_008859b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd8c94",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856dcb7ff83c40485c0740e8b4e08894808c700948cbd005ec333c05ec3"
+        },
+        {
+          "address": "00885e40",
+          "symbol": "bfv_client_clone_00885e40",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd951c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c6d7b7ff83c40485c0740e8b4e08894808c7001c95bd005ec333c05ec3"
+        },
+        {
+          "address": "00885ee0",
+          "symbol": "bfv_client_clone_00885ee0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd955c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e826d7b7ff83c40485c0740e8b4e08894808c7005c95bd005ec333c05ec3"
+        },
+        {
+          "address": "00886110",
+          "symbol": "bfv_client_clone_00886110",
+          "size": 12,
+          "fields": [
+            [
+              20,
+              8
+            ]
+          ],
+          "vtable": "00bd95dc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f6d4b7ff83c40485c0740e8b4e14894808c700dc95bd005ec333c05ec3"
+        },
+        {
+          "address": "008861b0",
+          "symbol": "bfv_client_clone_008861b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd95dc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856d4b7ff83c40485c0740e8b4e08894808c700dc95bd005ec333c05ec3"
+        },
+        {
+          "address": "00886460",
+          "symbol": "bfv_client_clone_00886460",
+          "size": 12,
+          "fields": [
+            [
+              60,
+              8
+            ]
+          ],
+          "vtable": "00bd96fc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a6d1b7ff83c40485c0740e8b4e3c894808c700fc96bd005ec333c05ec3"
+        },
+        {
+          "address": "00886510",
+          "symbol": "bfv_client_clone_00886510",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bd96fc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f6d0b7ff83c40485c0740e8b4e08894808c700fc96bd005ec333c05ec3"
+        },
+        {
+          "address": "0088ba80",
+          "symbol": "bfv_client_clone_0088ba80",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bda08c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8867bb7ff83c40485c0740e8b4e08894808c7008ca0bd005ec333c05ec3"
+        },
+        {
+          "address": "0094b3b0",
+          "symbol": "bfv_client_clone_0094b3b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0604",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85682abff83c40485c0740e8b4e08894808c7000406bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b3f0",
+          "symbol": "bfv_client_clone_0094b3f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0644",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81682abff83c40485c0740e8b4e08894808c7004406bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b430",
+          "symbol": "bfv_client_clone_0094b430",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0684",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d681abff83c40485c0740e8b4e08894808c7008406bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b470",
+          "symbol": "bfv_client_clone_0094b470",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf06c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e89681abff83c40485c0740e8b4e08894808c700c406bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b4b0",
+          "symbol": "bfv_client_clone_0094b4b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0704",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85681abff83c40485c0740e8b4e08894808c7000407bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b4f0",
+          "symbol": "bfv_client_clone_0094b4f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0744",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81681abff83c40485c0740e8b4e08894808c7004407bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b530",
+          "symbol": "bfv_client_clone_0094b530",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0784",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d680abff83c40485c0740e8b4e08894808c7008407bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b570",
+          "symbol": "bfv_client_clone_0094b570",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf07c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e89680abff83c40485c0740e8b4e08894808c700c407bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b5b0",
+          "symbol": "bfv_client_clone_0094b5b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0804",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85680abff83c40485c0740e8b4e08894808c7000408bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b5f0",
+          "symbol": "bfv_client_clone_0094b5f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0844",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81680abff83c40485c0740e8b4e08894808c7004408bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b630",
+          "symbol": "bfv_client_clone_0094b630",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0884",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d67fabff83c40485c0740e8b4e08894808c7008408bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b670",
+          "symbol": "bfv_client_clone_0094b670",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf08c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8967fabff83c40485c0740e8b4e08894808c700c408bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b6b0",
+          "symbol": "bfv_client_clone_0094b6b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0904",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8567fabff83c40485c0740e8b4e08894808c7000409bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b6f0",
+          "symbol": "bfv_client_clone_0094b6f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0944",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8167fabff83c40485c0740e8b4e08894808c7004409bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b730",
+          "symbol": "bfv_client_clone_0094b730",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0984",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d67eabff83c40485c0740e8b4e08894808c7008409bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b770",
+          "symbol": "bfv_client_clone_0094b770",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf09c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8967eabff83c40485c0740e8b4e08894808c700c409bf005ec333c05ec3"
+        },
+        {
+          "address": "0094b7b0",
+          "symbol": "bfv_client_clone_0094b7b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00bf0a04",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8567eabff83c40485c0740e8b4e08894808c700040abf005ec333c05ec3"
+        },
+        {
+          "address": "00a57e10",
+          "symbol": "bfv_client_clone_00a57e10",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c031b4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f6b79aff83c40485c0740e8b4e08894808c700b431c0005ec333c05ec3"
+        },
+        {
+          "address": "00a57e50",
+          "symbol": "bfv_client_clone_00a57e50",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c031f4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b6b79aff83c40485c0740e8b4e08894808c700f431c0005ec333c05ec3"
+        },
+        {
+          "address": "00a57e90",
+          "symbol": "bfv_client_clone_00a57e90",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c03234",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876b79aff83c40485c0740e8b4e08894808c7003432c0005ec333c05ec3"
+        },
+        {
+          "address": "00a57ed0",
+          "symbol": "bfv_client_clone_00a57ed0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c03274",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e836b79aff83c40485c0740e8b4e08894808c7007432c0005ec333c05ec3"
+        },
+        {
+          "address": "00a57f10",
+          "symbol": "bfv_client_clone_00a57f10",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c032b4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f6b69aff83c40485c0740e8b4e08894808c700b432c0005ec333c05ec3"
+        },
+        {
+          "address": "00a57f50",
+          "symbol": "bfv_client_clone_00a57f50",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c032f4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b6b69aff83c40485c0740e8b4e08894808c700f432c0005ec333c05ec3"
+        },
+        {
+          "address": "00a57f90",
+          "symbol": "bfv_client_clone_00a57f90",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c03334",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876b69aff83c40485c0740e8b4e08894808c7003433c0005ec333c05ec3"
+        },
+        {
+          "address": "00a57fc0",
+          "symbol": "bfv_client_clone_00a57fc0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c03374",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e846b69aff83c40485c0740e8b4e08894808c7007433c0005ec333c05ec3"
+        },
+        {
+          "address": "00a58070",
+          "symbol": "bfv_client_clone_00a58070",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c033b4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896b59aff83c40485c0740e8b4e08894808c700b433c0005ec333c05ec3"
+        },
+        {
+          "address": "00a58120",
+          "symbol": "bfv_client_clone_00a58120",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c033f4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e6b49aff83c40485c0740e8b4e08894808c700f433c0005ec333c05ec3"
+        },
+        {
+          "address": "00a5c9d0",
+          "symbol": "bfv_client_clone_00a5c9d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c0476c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8366c9aff83c40485c0740e8b4e08894808c7006c47c0005ec333c05ec3"
+        },
+        {
+          "address": "00a5ca10",
+          "symbol": "bfv_client_clone_00a5ca10",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c047ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f66b9aff83c40485c0740e8b4e08894808c700ac47c0005ec333c05ec3"
+        },
+        {
+          "address": "00a5ca50",
+          "symbol": "bfv_client_clone_00a5ca50",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c047ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b66b9aff83c40485c0740e8b4e08894808c700ec47c0005ec333c05ec3"
+        },
+        {
+          "address": "00a5cb00",
+          "symbol": "bfv_client_clone_00a5cb00",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00c0482c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8066b9aff83c40485c0740e8b4e08894808c7002c48c0005ec333c05ec3"
+        }
+      ]
+    },
+    "server": {
+      "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+      "allocate": "00403d80",
+      "rejected": {},
+      "entries": [
+        {
+          "address": "0049abf0",
+          "symbol": "bfv_server_clone_0049abf0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008193a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e88691f6ff83c40485c0740e8b4e08894808c700a49381005ec333c05ec3"
+        },
+        {
+          "address": "0049ac30",
+          "symbol": "bfv_server_clone_0049ac30",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008193e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e84691f6ff83c40485c0740e8b4e08894808c700e49381005ec333c05ec3"
+        },
+        {
+          "address": "0049ac60",
+          "symbol": "bfv_server_clone_0049ac60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819424",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81691f6ff83c40485c0740e8b4e08894808c700249481005ec333c05ec3"
+        },
+        {
+          "address": "0049acc0",
+          "symbol": "bfv_server_clone_0049acc0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819564",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b690f6ff83c40485c0740e8b4e08894808c700649581005ec333c05ec3"
+        },
+        {
+          "address": "0049ad00",
+          "symbol": "bfv_server_clone_0049ad00",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008195a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e87690f6ff83c40485c0740e8b4e08894808c700a49581005ec333c05ec3"
+        },
+        {
+          "address": "0049ad40",
+          "symbol": "bfv_server_clone_0049ad40",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008195e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e83690f6ff83c40485c0740e8b4e08894808c700e49581005ec333c05ec3"
+        },
+        {
+          "address": "0049ad70",
+          "symbol": "bfv_server_clone_0049ad70",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819624",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e80690f6ff83c40485c0740e8b4e08894808c700249681005ec333c05ec3"
+        },
+        {
+          "address": "0049ada0",
+          "symbol": "bfv_server_clone_0049ada0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819664",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d68ff6ff83c40485c0740e8b4e08894808c700649681005ec333c05ec3"
+        },
+        {
+          "address": "0049add0",
+          "symbol": "bfv_server_clone_0049add0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008196a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a68ff6ff83c40485c0740e8b4e08894808c700a49681005ec333c05ec3"
+        },
+        {
+          "address": "0049ae00",
+          "symbol": "bfv_server_clone_0049ae00",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008196e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8768ff6ff83c40485c0740e8b4e08894808c700e49681005ec333c05ec3"
+        },
+        {
+          "address": "0049ae30",
+          "symbol": "bfv_server_clone_0049ae30",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819724",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8468ff6ff83c40485c0740e8b4e08894808c700249781005ec333c05ec3"
+        },
+        {
+          "address": "0049ae60",
+          "symbol": "bfv_server_clone_0049ae60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819764",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8168ff6ff83c40485c0740e8b4e08894808c700649781005ec333c05ec3"
+        },
+        {
+          "address": "0049aea0",
+          "symbol": "bfv_server_clone_0049aea0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008197a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d68ef6ff83c40485c0740e8b4e08894808c700a49781005ec333c05ec3"
+        },
+        {
+          "address": "0049aee0",
+          "symbol": "bfv_server_clone_0049aee0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008197e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8968ef6ff83c40485c0740e8b4e08894808c700e49781005ec333c05ec3"
+        },
+        {
+          "address": "0049af20",
+          "symbol": "bfv_server_clone_0049af20",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819824",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8568ef6ff83c40485c0740e8b4e08894808c700249881005ec333c05ec3"
+        },
+        {
+          "address": "0049af60",
+          "symbol": "bfv_server_clone_0049af60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819864",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8168ef6ff83c40485c0740e8b4e08894808c700649881005ec333c05ec3"
+        },
+        {
+          "address": "0049afa0",
+          "symbol": "bfv_server_clone_0049afa0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008198a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d68df6ff83c40485c0740e8b4e08894808c700a49881005ec333c05ec3"
+        },
+        {
+          "address": "0049afe0",
+          "symbol": "bfv_server_clone_0049afe0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008198e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8968df6ff83c40485c0740e8b4e08894808c700e49881005ec333c05ec3"
+        },
+        {
+          "address": "0049b020",
+          "symbol": "bfv_server_clone_0049b020",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819924",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8568df6ff83c40485c0740e8b4e08894808c700249981005ec333c05ec3"
+        },
+        {
+          "address": "0049b060",
+          "symbol": "bfv_server_clone_0049b060",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819964",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8168df6ff83c40485c0740e8b4e08894808c700649981005ec333c05ec3"
+        },
+        {
+          "address": "0049b0a0",
+          "symbol": "bfv_server_clone_0049b0a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008199a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d68cf6ff83c40485c0740e8b4e08894808c700a49981005ec333c05ec3"
+        },
+        {
+          "address": "0049b0e0",
+          "symbol": "bfv_server_clone_0049b0e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008199e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8968cf6ff83c40485c0740e8b4e08894808c700e49981005ec333c05ec3"
+        },
+        {
+          "address": "0049b120",
+          "symbol": "bfv_server_clone_0049b120",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819a24",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8568cf6ff83c40485c0740e8b4e08894808c700249a81005ec333c05ec3"
+        },
+        {
+          "address": "0049b160",
+          "symbol": "bfv_server_clone_0049b160",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819a64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8168cf6ff83c40485c0740e8b4e08894808c700649a81005ec333c05ec3"
+        },
+        {
+          "address": "0049b1a0",
+          "symbol": "bfv_server_clone_0049b1a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819aa4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d68bf6ff83c40485c0740e8b4e08894808c700a49a81005ec333c05ec3"
+        },
+        {
+          "address": "0049b1e0",
+          "symbol": "bfv_server_clone_0049b1e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819ae4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8968bf6ff83c40485c0740e8b4e08894808c700e49a81005ec333c05ec3"
+        },
+        {
+          "address": "0049b220",
+          "symbol": "bfv_server_clone_0049b220",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819b24",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8568bf6ff83c40485c0740e8b4e08894808c700249b81005ec333c05ec3"
+        },
+        {
+          "address": "0049b260",
+          "symbol": "bfv_server_clone_0049b260",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819b64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8168bf6ff83c40485c0740e8b4e08894808c700649b81005ec333c05ec3"
+        },
+        {
+          "address": "0049b2a0",
+          "symbol": "bfv_server_clone_0049b2a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819ba4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d68af6ff83c40485c0740e8b4e08894808c700a49b81005ec333c05ec3"
+        },
+        {
+          "address": "0049b2e0",
+          "symbol": "bfv_server_clone_0049b2e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819be4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8968af6ff83c40485c0740e8b4e08894808c700e49b81005ec333c05ec3"
+        },
+        {
+          "address": "0049b320",
+          "symbol": "bfv_server_clone_0049b320",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819c24",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8568af6ff83c40485c0740e8b4e08894808c700249c81005ec333c05ec3"
+        },
+        {
+          "address": "0049b360",
+          "symbol": "bfv_server_clone_0049b360",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819c64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8168af6ff83c40485c0740e8b4e08894808c700649c81005ec333c05ec3"
+        },
+        {
+          "address": "0049b3a0",
+          "symbol": "bfv_server_clone_0049b3a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819ca4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d689f6ff83c40485c0740e8b4e08894808c700a49c81005ec333c05ec3"
+        },
+        {
+          "address": "0049b3e0",
+          "symbol": "bfv_server_clone_0049b3e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819ce4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e89689f6ff83c40485c0740e8b4e08894808c700e49c81005ec333c05ec3"
+        },
+        {
+          "address": "0049b420",
+          "symbol": "bfv_server_clone_0049b420",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819d24",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85689f6ff83c40485c0740e8b4e08894808c700249d81005ec333c05ec3"
+        },
+        {
+          "address": "0049b460",
+          "symbol": "bfv_server_clone_0049b460",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819d64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81689f6ff83c40485c0740e8b4e08894808c700649d81005ec333c05ec3"
+        },
+        {
+          "address": "0049b4c0",
+          "symbol": "bfv_server_clone_0049b4c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00819da4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b688f6ff83c40485c0740e8b4e08894808c700a49d81005ec333c05ec3"
+        },
+        {
+          "address": "0049b850",
+          "symbol": "bfv_server_clone_0049b850",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0081aa5c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e82685f6ff83c40485c0740e8b4e08894808c7005caa81005ec333c05ec3"
+        },
+        {
+          "address": "0049b900",
+          "symbol": "bfv_server_clone_0049b900",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0081aa9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e87684f6ff83c40485c0740e8b4e08894808c7009caa81005ec333c05ec3"
+        },
+        {
+          "address": "0049b9b0",
+          "symbol": "bfv_server_clone_0049b9b0",
+          "size": 12,
+          "fields": [
+            [
+              16,
+              8
+            ]
+          ],
+          "vtable": "0081aadc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c683f6ff83c40485c0740e8b4e10894808c700dcaa81005ec333c05ec3"
+        },
+        {
+          "address": "0049ba60",
+          "symbol": "bfv_server_clone_0049ba60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0081aadc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81683f6ff83c40485c0740e8b4e08894808c700dcaa81005ec333c05ec3"
+        },
+        {
+          "address": "0049ba90",
+          "symbol": "bfv_server_clone_0049ba90",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0081ab1c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e682f6ff83c40485c0740e8b4e08894808c7001cab81005ec333c05ec3"
+        },
+        {
+          "address": "0049cdc0",
+          "symbol": "bfv_server_clone_0049cdc0",
+          "size": 12,
+          "fields": [
+            [
+              12,
+              8
+            ]
+          ],
+          "vtable": "0081ab9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b66ff6ff83c40485c0740e8b4e0c894808c7009cab81005ec333c05ec3"
+        },
+        {
+          "address": "0049ce60",
+          "symbol": "bfv_server_clone_0049ce60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0081ab9c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8166ff6ff83c40485c0740e8b4e08894808c7009cab81005ec333c05ec3"
+        },
+        {
+          "address": "0049ce90",
+          "symbol": "bfv_server_clone_0049ce90",
+          "size": 12,
+          "fields": [
+            [
+              32,
+              8
+            ]
+          ],
+          "vtable": "0081ac1c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e66ef6ff83c40485c0740e8b4e20894808c7001cac81005ec333c05ec3"
+        },
+        {
+          "address": "0049cf30",
+          "symbol": "bfv_server_clone_0049cf30",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0081ac1c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8466ef6ff83c40485c0740e8b4e08894808c7001cac81005ec333c05ec3"
+        },
+        {
+          "address": "0057ee40",
+          "symbol": "bfv_server_clone_0057ee40",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083868c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8364fe8ff83c40485c0740e8b4e08894808c7008c8683005ec333c05ec3"
+        },
+        {
+          "address": "0057ee80",
+          "symbol": "bfv_server_clone_0057ee80",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008386cc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f64ee8ff83c40485c0740e8b4e08894808c700cc8683005ec333c05ec3"
+        },
+        {
+          "address": "0057eec0",
+          "symbol": "bfv_server_clone_0057eec0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083870c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b64ee8ff83c40485c0740e8b4e08894808c7000c8783005ec333c05ec3"
+        },
+        {
+          "address": "0057eef0",
+          "symbol": "bfv_server_clone_0057eef0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083878c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8864ee8ff83c40485c0740e8b4e08894808c7008c8783005ec333c05ec3"
+        },
+        {
+          "address": "0057f020",
+          "symbol": "bfv_server_clone_0057f020",
+          "size": 12,
+          "fields": [
+            [
+              16,
+              8
+            ]
+          ],
+          "vtable": "0083880c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8564de8ff83c40485c0740e8b4e10894808c7000c8883005ec333c05ec3"
+        },
+        {
+          "address": "0057f0d0",
+          "symbol": "bfv_server_clone_0057f0d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083880c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a64ce8ff83c40485c0740e8b4e08894808c7000c8883005ec333c05ec3"
+        },
+        {
+          "address": "0058b040",
+          "symbol": "bfv_server_clone_0058b040",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a5a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8368de7ff83c40485c0740e8b4e08894808c700a4a583005ec333c05ec3"
+        },
+        {
+          "address": "0058b080",
+          "symbol": "bfv_server_clone_0058b080",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a5e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f68ce7ff83c40485c0740e8b4e08894808c700e4a583005ec333c05ec3"
+        },
+        {
+          "address": "0058b0c0",
+          "symbol": "bfv_server_clone_0058b0c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a624",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b68ce7ff83c40485c0740e8b4e08894808c70024a683005ec333c05ec3"
+        },
+        {
+          "address": "0058b100",
+          "symbol": "bfv_server_clone_0058b100",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a6a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8768ce7ff83c40485c0740e8b4e08894808c700a4a683005ec333c05ec3"
+        },
+        {
+          "address": "0058b140",
+          "symbol": "bfv_server_clone_0058b140",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a6e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8368ce7ff83c40485c0740e8b4e08894808c700e4a683005ec333c05ec3"
+        },
+        {
+          "address": "0058b170",
+          "symbol": "bfv_server_clone_0058b170",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a724",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8068ce7ff83c40485c0740e8b4e08894808c70024a783005ec333c05ec3"
+        },
+        {
+          "address": "0058b1a0",
+          "symbol": "bfv_server_clone_0058b1a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a764",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d68be7ff83c40485c0740e8b4e08894808c70064a783005ec333c05ec3"
+        },
+        {
+          "address": "0058b1d0",
+          "symbol": "bfv_server_clone_0058b1d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a7a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a68be7ff83c40485c0740e8b4e08894808c700a4a783005ec333c05ec3"
+        },
+        {
+          "address": "0058b200",
+          "symbol": "bfv_server_clone_0058b200",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a7e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8768be7ff83c40485c0740e8b4e08894808c700e4a783005ec333c05ec3"
+        },
+        {
+          "address": "0058b230",
+          "symbol": "bfv_server_clone_0058b230",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a824",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8468be7ff83c40485c0740e8b4e08894808c70024a883005ec333c05ec3"
+        },
+        {
+          "address": "0058b260",
+          "symbol": "bfv_server_clone_0058b260",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a864",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8168be7ff83c40485c0740e8b4e08894808c70064a883005ec333c05ec3"
+        },
+        {
+          "address": "0058b290",
+          "symbol": "bfv_server_clone_0058b290",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a8a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e68ae7ff83c40485c0740e8b4e08894808c700a4a883005ec333c05ec3"
+        },
+        {
+          "address": "0058b2c0",
+          "symbol": "bfv_server_clone_0058b2c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083a8e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b68ae7ff83c40485c0740e8b4e08894808c700e4a883005ec333c05ec3"
+        },
+        {
+          "address": "0058b520",
+          "symbol": "bfv_server_clone_0058b520",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083abd4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e85688e7ff83c40485c0740e8b4e08894808c700d4ab83005ec333c05ec3"
+        },
+        {
+          "address": "00596f20",
+          "symbol": "bfv_server_clone_00596f20",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083d79c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856cee6ff83c40485c0740e8b4e08894808c7009cd783005ec333c05ec3"
+        },
+        {
+          "address": "005970e0",
+          "symbol": "bfv_server_clone_005970e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083d88c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896cce6ff83c40485c0740e8b4e08894808c7008cd883005ec333c05ec3"
+        },
+        {
+          "address": "00597110",
+          "symbol": "bfv_server_clone_00597110",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083d8cc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e866cce6ff83c40485c0740e8b4e08894808c700ccd883005ec333c05ec3"
+        },
+        {
+          "address": "00597140",
+          "symbol": "bfv_server_clone_00597140",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083d90c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e836cce6ff83c40485c0740e8b4e08894808c7000cd983005ec333c05ec3"
+        },
+        {
+          "address": "00597170",
+          "symbol": "bfv_server_clone_00597170",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083d94c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e806cce6ff83c40485c0740e8b4e08894808c7004cd983005ec333c05ec3"
+        },
+        {
+          "address": "005971a0",
+          "symbol": "bfv_server_clone_005971a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083d98c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6cbe6ff83c40485c0740e8b4e08894808c7008cd983005ec333c05ec3"
+        },
+        {
+          "address": "005974f0",
+          "symbol": "bfv_server_clone_005974f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083db94",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e886c8e6ff83c40485c0740e8b4e08894808c70094db83005ec333c05ec3"
+        },
+        {
+          "address": "00597520",
+          "symbol": "bfv_server_clone_00597520",
+          "size": 12,
+          "fields": [
+            [
+              20,
+              8
+            ]
+          ],
+          "vtable": "0083dbd4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856c8e6ff83c40485c0740e8b4e14894808c700d4db83005ec333c05ec3"
+        },
+        {
+          "address": "005975d0",
+          "symbol": "bfv_server_clone_005975d0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083dbd4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a6c7e6ff83c40485c0740e8b4e08894808c700d4db83005ec333c05ec3"
+        },
+        {
+          "address": "00597670",
+          "symbol": "bfv_server_clone_00597670",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083dc14",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e806c7e6ff83c40485c0740e8b4e08894808c70014dc83005ec333c05ec3"
+        },
+        {
+          "address": "00597b20",
+          "symbol": "bfv_server_clone_00597b20",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083dcd4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856c2e6ff83c40485c0740e8b4e08894808c700d4dc83005ec333c05ec3"
+        },
+        {
+          "address": "0059ed50",
+          "symbol": "bfv_server_clone_0059ed50",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083fa94",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e82650e6ff83c40485c0740e8b4e08894808c70094fa83005ec333c05ec3"
+        },
+        {
+          "address": "0059ed90",
+          "symbol": "bfv_server_clone_0059ed90",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083fad4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e64fe6ff83c40485c0740e8b4e08894808c700d4fa83005ec333c05ec3"
+        },
+        {
+          "address": "0059edd0",
+          "symbol": "bfv_server_clone_0059edd0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083fb14",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a64fe6ff83c40485c0740e8b4e08894808c70014fb83005ec333c05ec3"
+        },
+        {
+          "address": "0059ee10",
+          "symbol": "bfv_server_clone_0059ee10",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083fb54",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8664fe6ff83c40485c0740e8b4e08894808c70054fb83005ec333c05ec3"
+        },
+        {
+          "address": "0059ee50",
+          "symbol": "bfv_server_clone_0059ee50",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0083fb94",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8264fe6ff83c40485c0740e8b4e08894808c70094fb83005ec333c05ec3"
+        },
+        {
+          "address": "005b9000",
+          "symbol": "bfv_server_clone_005b9000",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00842a74",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876ade4ff83c40485c0740e8b4e08894808c700742a84005ec333c05ec3"
+        },
+        {
+          "address": "005b9040",
+          "symbol": "bfv_server_clone_005b9040",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00842ab4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e836ade4ff83c40485c0740e8b4e08894808c700b42a84005ec333c05ec3"
+        },
+        {
+          "address": "005b9080",
+          "symbol": "bfv_server_clone_005b9080",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00842af4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f6ace4ff83c40485c0740e8b4e08894808c700f42a84005ec333c05ec3"
+        },
+        {
+          "address": "005b90c0",
+          "symbol": "bfv_server_clone_005b90c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00842b34",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b6ace4ff83c40485c0740e8b4e08894808c700342b84005ec333c05ec3"
+        },
+        {
+          "address": "005b9100",
+          "symbol": "bfv_server_clone_005b9100",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00842b74",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876ace4ff83c40485c0740e8b4e08894808c700742b84005ec333c05ec3"
+        },
+        {
+          "address": "005b9140",
+          "symbol": "bfv_server_clone_005b9140",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00842bb4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e836ace4ff83c40485c0740e8b4e08894808c700b42b84005ec333c05ec3"
+        },
+        {
+          "address": "005b9230",
+          "symbol": "bfv_server_clone_005b9230",
+          "size": 12,
+          "fields": [
+            [
+              12,
+              8
+            ]
+          ],
+          "vtable": "00842c34",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e846abe4ff83c40485c0740e8b4e0c894808c700342c84005ec333c05ec3"
+        },
+        {
+          "address": "005b92e0",
+          "symbol": "bfv_server_clone_005b92e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00842c34",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896aae4ff83c40485c0740e8b4e08894808c700342c84005ec333c05ec3"
+        },
+        {
+          "address": "005be140",
+          "symbol": "bfv_server_clone_005be140",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00844564",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8365ce4ff83c40485c0740e8b4e08894808c700644584005ec333c05ec3"
+        },
+        {
+          "address": "005be180",
+          "symbol": "bfv_server_clone_005be180",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008445a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f65be4ff83c40485c0740e8b4e08894808c700a44584005ec333c05ec3"
+        },
+        {
+          "address": "005be1b0",
+          "symbol": "bfv_server_clone_005be1b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008445e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c65be4ff83c40485c0740e8b4e08894808c700e44584005ec333c05ec3"
+        },
+        {
+          "address": "005be1f0",
+          "symbol": "bfv_server_clone_005be1f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00844624",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8865be4ff83c40485c0740e8b4e08894808c700244684005ec333c05ec3"
+        },
+        {
+          "address": "005be230",
+          "symbol": "bfv_server_clone_005be230",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00844664",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8465be4ff83c40485c0740e8b4e08894808c700644684005ec333c05ec3"
+        },
+        {
+          "address": "005be270",
+          "symbol": "bfv_server_clone_005be270",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008446a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8065be4ff83c40485c0740e8b4e08894808c700a44684005ec333c05ec3"
+        },
+        {
+          "address": "005be2b0",
+          "symbol": "bfv_server_clone_005be2b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008446e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c65ae4ff83c40485c0740e8b4e08894808c700e44684005ec333c05ec3"
+        },
+        {
+          "address": "005be2f0",
+          "symbol": "bfv_server_clone_005be2f0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00844724",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8865ae4ff83c40485c0740e8b4e08894808c700244784005ec333c05ec3"
+        },
+        {
+          "address": "005be330",
+          "symbol": "bfv_server_clone_005be330",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00844764",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8465ae4ff83c40485c0740e8b4e08894808c700644784005ec333c05ec3"
+        },
+        {
+          "address": "005be380",
+          "symbol": "bfv_server_clone_005be380",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008447a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f659e4ff83c40485c0740e8b4e08894808c700a44784005ec333c05ec3"
+        },
+        {
+          "address": "005be3c0",
+          "symbol": "bfv_server_clone_005be3c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008447e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b659e4ff83c40485c0740e8b4e08894808c700e44784005ec333c05ec3"
+        },
+        {
+          "address": "005be400",
+          "symbol": "bfv_server_clone_005be400",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00844824",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e87659e4ff83c40485c0740e8b4e08894808c700244884005ec333c05ec3"
+        },
+        {
+          "address": "00601f10",
+          "symbol": "bfv_server_clone_00601f10",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084c92c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8661ee0ff83c40485c0740e8b4e08894808c7002cc984005ec333c05ec3"
+        },
+        {
+          "address": "00601f50",
+          "symbol": "bfv_server_clone_00601f50",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084c96c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8261ee0ff83c40485c0740e8b4e08894808c7006cc984005ec333c05ec3"
+        },
+        {
+          "address": "00601f90",
+          "symbol": "bfv_server_clone_00601f90",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084c9ac",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e61de0ff83c40485c0740e8b4e08894808c700acc984005ec333c05ec3"
+        },
+        {
+          "address": "00601fd0",
+          "symbol": "bfv_server_clone_00601fd0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084c9ec",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a61de0ff83c40485c0740e8b4e08894808c700ecc984005ec333c05ec3"
+        },
+        {
+          "address": "00602010",
+          "symbol": "bfv_server_clone_00602010",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084ca2c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8661de0ff83c40485c0740e8b4e08894808c7002cca84005ec333c05ec3"
+        },
+        {
+          "address": "00602040",
+          "symbol": "bfv_server_clone_00602040",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084ca6c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8361de0ff83c40485c0740e8b4e08894808c7006cca84005ec333c05ec3"
+        },
+        {
+          "address": "00604280",
+          "symbol": "bfv_server_clone_00604280",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084d69c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8f6fadfff83c40485c0740e8b4e08894808c7009cd684005ec333c05ec3"
+        },
+        {
+          "address": "006042c0",
+          "symbol": "bfv_server_clone_006042c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084d6dc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b6fadfff83c40485c0740e8b4e08894808c700dcd684005ec333c05ec3"
+        },
+        {
+          "address": "00604300",
+          "symbol": "bfv_server_clone_00604300",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084d71c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876fadfff83c40485c0740e8b4e08894808c7001cd784005ec333c05ec3"
+        },
+        {
+          "address": "00604340",
+          "symbol": "bfv_server_clone_00604340",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084d75c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e836fadfff83c40485c0740e8b4e08894808c7005cd784005ec333c05ec3"
+        },
+        {
+          "address": "00604370",
+          "symbol": "bfv_server_clone_00604370",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084d79c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e806fadfff83c40485c0740e8b4e08894808c7009cd784005ec333c05ec3"
+        },
+        {
+          "address": "0060d9b0",
+          "symbol": "bfv_server_clone_0060d9b0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084eb64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8c663dfff83c40485c0740e8b4e08894808c70064eb84005ec333c05ec3"
+        },
+        {
+          "address": "00610170",
+          "symbol": "bfv_server_clone_00610170",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084ef84",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8063cdfff83c40485c0740e8b4e08894808c70084ef84005ec333c05ec3"
+        },
+        {
+          "address": "00623e00",
+          "symbol": "bfv_server_clone_00623e00",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084f824",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876ffddff83c40485c0740e8b4e08894808c70024f884005ec333c05ec3"
+        },
+        {
+          "address": "00623e30",
+          "symbol": "bfv_server_clone_00623e30",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084f864",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e846ffddff83c40485c0740e8b4e08894808c70064f884005ec333c05ec3"
+        },
+        {
+          "address": "00623e60",
+          "symbol": "bfv_server_clone_00623e60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084f8a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816ffddff83c40485c0740e8b4e08894808c700a4f884005ec333c05ec3"
+        },
+        {
+          "address": "00623e90",
+          "symbol": "bfv_server_clone_00623e90",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084f8e4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e6feddff83c40485c0740e8b4e08894808c700e4f884005ec333c05ec3"
+        },
+        {
+          "address": "00623ed0",
+          "symbol": "bfv_server_clone_00623ed0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084f924",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8a6feddff83c40485c0740e8b4e08894808c70024f984005ec333c05ec3"
+        },
+        {
+          "address": "00623f00",
+          "symbol": "bfv_server_clone_00623f00",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084f964",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e876feddff83c40485c0740e8b4e08894808c70064f984005ec333c05ec3"
+        },
+        {
+          "address": "00623f30",
+          "symbol": "bfv_server_clone_00623f30",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0084f9a4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e846feddff83c40485c0740e8b4e08894808c700a4f984005ec333c05ec3"
+        },
+        {
+          "address": "00623f60",
+          "symbol": "bfv_server_clone_00623f60",
+          "size": 24,
+          "fields": [
+            [
+              16,
+              16
+            ]
+          ],
+          "vtable": "0084f9e4",
+          "guarded_prefix": "566a188bf1",
+          "native_body": "566a188bf1e816feddff83c40485c0740e8b4e10894810c700e4f984005ec333c05ec3"
+        },
+        {
+          "address": "00623fa0",
+          "symbol": "bfv_server_clone_00623fa0",
+          "size": 24,
+          "fields": [
+            [
+              16,
+              16
+            ]
+          ],
+          "vtable": "0084fa24",
+          "guarded_prefix": "566a188bf1",
+          "native_body": "566a188bf1e8d6fdddff83c40485c0740e8b4e10894810c70024fa84005ec333c05ec3"
+        },
+        {
+          "address": "0062b5c0",
+          "symbol": "bfv_server_clone_0062b5c0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00850204",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b687ddff83c40485c0740e8b4e08894808c700040285005ec333c05ec3"
+        },
+        {
+          "address": "00653e60",
+          "symbol": "bfv_server_clone_00653e60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0085801c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816ffdaff83c40485c0740e8b4e08894808c7001c8085005ec333c05ec3"
+        },
+        {
+          "address": "00653ea0",
+          "symbol": "bfv_server_clone_00653ea0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0085805c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6fedaff83c40485c0740e8b4e08894808c7005c8085005ec333c05ec3"
+        },
+        {
+          "address": "00653ee0",
+          "symbol": "bfv_server_clone_00653ee0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0085809c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896fedaff83c40485c0740e8b4e08894808c7009c8085005ec333c05ec3"
+        },
+        {
+          "address": "00653f20",
+          "symbol": "bfv_server_clone_00653f20",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "008580dc",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856fedaff83c40485c0740e8b4e08894808c700dc8085005ec333c05ec3"
+        },
+        {
+          "address": "00653f60",
+          "symbol": "bfv_server_clone_00653f60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0085811c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816fedaff83c40485c0740e8b4e08894808c7001c8185005ec333c05ec3"
+        },
+        {
+          "address": "00653fa0",
+          "symbol": "bfv_server_clone_00653fa0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0085815c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6fddaff83c40485c0740e8b4e08894808c7005c8185005ec333c05ec3"
+        },
+        {
+          "address": "00653fe0",
+          "symbol": "bfv_server_clone_00653fe0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0085819c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896fddaff83c40485c0740e8b4e08894808c7009c8185005ec333c05ec3"
+        },
+        {
+          "address": "006545e0",
+          "symbol": "bfv_server_clone_006545e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00858a24",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896f7daff83c40485c0740e8b4e08894808c700248a85005ec333c05ec3"
+        },
+        {
+          "address": "00654690",
+          "symbol": "bfv_server_clone_00654690",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00858a64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8e6f6daff83c40485c0740e8b4e08894808c700648a85005ec333c05ec3"
+        },
+        {
+          "address": "00654960",
+          "symbol": "bfv_server_clone_00654960",
+          "size": 12,
+          "fields": [
+            [
+              20,
+              8
+            ]
+          ],
+          "vtable": "00858ae4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816f4daff83c40485c0740e8b4e14894808c700e48a85005ec333c05ec3"
+        },
+        {
+          "address": "00654a10",
+          "symbol": "bfv_server_clone_00654a10",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00858ae4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e866f3daff83c40485c0740e8b4e08894808c700e48a85005ec333c05ec3"
+        },
+        {
+          "address": "00654a70",
+          "symbol": "bfv_server_clone_00654a70",
+          "size": 12,
+          "fields": [
+            [
+              20,
+              8
+            ]
+          ],
+          "vtable": "00858b64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e806f3daff83c40485c0740e8b4e14894808c700648b85005ec333c05ec3"
+        },
+        {
+          "address": "00654b20",
+          "symbol": "bfv_server_clone_00654b20",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00858b64",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856f2daff83c40485c0740e8b4e08894808c700648b85005ec333c05ec3"
+        },
+        {
+          "address": "00654dc0",
+          "symbol": "bfv_server_clone_00654dc0",
+          "size": 12,
+          "fields": [
+            [
+              60,
+              8
+            ]
+          ],
+          "vtable": "00858c84",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8b6efdaff83c40485c0740e8b4e3c894808c700848c85005ec333c05ec3"
+        },
+        {
+          "address": "00654e60",
+          "symbol": "bfv_server_clone_00654e60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "00858c84",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816efdaff83c40485c0740e8b4e08894808c700848c85005ec333c05ec3"
+        },
+        {
+          "address": "0065a860",
+          "symbol": "bfv_server_clone_0065a860",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0085969c",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e81695daff83c40485c0740e8b4e08894808c7009c9685005ec333c05ec3"
+        },
+        {
+          "address": "007086e0",
+          "symbol": "bfv_server_clone_007086e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f144",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896b6cfff83c40485c0740e8b4e08894808c70044f186005ec333c05ec3"
+        },
+        {
+          "address": "00708720",
+          "symbol": "bfv_server_clone_00708720",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f184",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856b6cfff83c40485c0740e8b4e08894808c70084f186005ec333c05ec3"
+        },
+        {
+          "address": "00708760",
+          "symbol": "bfv_server_clone_00708760",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f1c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816b6cfff83c40485c0740e8b4e08894808c700c4f186005ec333c05ec3"
+        },
+        {
+          "address": "007087a0",
+          "symbol": "bfv_server_clone_007087a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f204",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6b5cfff83c40485c0740e8b4e08894808c70004f286005ec333c05ec3"
+        },
+        {
+          "address": "007087e0",
+          "symbol": "bfv_server_clone_007087e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f244",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896b5cfff83c40485c0740e8b4e08894808c70044f286005ec333c05ec3"
+        },
+        {
+          "address": "00708820",
+          "symbol": "bfv_server_clone_00708820",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f284",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856b5cfff83c40485c0740e8b4e08894808c70084f286005ec333c05ec3"
+        },
+        {
+          "address": "00708860",
+          "symbol": "bfv_server_clone_00708860",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f2c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816b5cfff83c40485c0740e8b4e08894808c700c4f286005ec333c05ec3"
+        },
+        {
+          "address": "007088a0",
+          "symbol": "bfv_server_clone_007088a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f304",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6b4cfff83c40485c0740e8b4e08894808c70004f386005ec333c05ec3"
+        },
+        {
+          "address": "007088e0",
+          "symbol": "bfv_server_clone_007088e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f344",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896b4cfff83c40485c0740e8b4e08894808c70044f386005ec333c05ec3"
+        },
+        {
+          "address": "00708920",
+          "symbol": "bfv_server_clone_00708920",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f384",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856b4cfff83c40485c0740e8b4e08894808c70084f386005ec333c05ec3"
+        },
+        {
+          "address": "00708960",
+          "symbol": "bfv_server_clone_00708960",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f3c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816b4cfff83c40485c0740e8b4e08894808c700c4f386005ec333c05ec3"
+        },
+        {
+          "address": "007089a0",
+          "symbol": "bfv_server_clone_007089a0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f404",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6b3cfff83c40485c0740e8b4e08894808c70004f486005ec333c05ec3"
+        },
+        {
+          "address": "007089e0",
+          "symbol": "bfv_server_clone_007089e0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f444",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896b3cfff83c40485c0740e8b4e08894808c70044f486005ec333c05ec3"
+        },
+        {
+          "address": "00708a20",
+          "symbol": "bfv_server_clone_00708a20",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f484",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e856b3cfff83c40485c0740e8b4e08894808c70084f486005ec333c05ec3"
+        },
+        {
+          "address": "00708a60",
+          "symbol": "bfv_server_clone_00708a60",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f4c4",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e816b3cfff83c40485c0740e8b4e08894808c700c4f486005ec333c05ec3"
+        },
+        {
+          "address": "00708aa0",
+          "symbol": "bfv_server_clone_00708aa0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f504",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e8d6b2cfff83c40485c0740e8b4e08894808c70004f586005ec333c05ec3"
+        },
+        {
+          "address": "00708ae0",
+          "symbol": "bfv_server_clone_00708ae0",
+          "size": 12,
+          "fields": [
+            [
+              8,
+              8
+            ]
+          ],
+          "vtable": "0086f544",
+          "guarded_prefix": "566a0c8bf1",
+          "native_body": "566a0c8bf1e896b2cfff83c40485c0740e8b4e08894808c70044f586005ec333c05ec3"
+        }
+      ]
+    }
+  }
+}

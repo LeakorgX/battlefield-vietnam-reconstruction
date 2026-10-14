@@ -1,10 +1,10 @@
 {
-  "snapshot_date": "2026-10-05",
+  "snapshot_date": "2026-10-10",
   "timezone": "Asia/Baghdad",
-  "purpose": "Local handoff snapshot, not a completion claim; recheck files and processes before resuming.",
+  "purpose": "Local continuation checkpoint; do not commit or push. Not whole-project completion; recheck files and processes when resuming.",
   "instructions": {
-    "commit": true,
-    "push": true,
+    "commit": false,
+    "push": false,
     "preserve_uncommitted_work": true
   },
   "active_goal": "Finish the whole original client/server reconstruction and verify every whole-game milestone.",
@@ -16,85 +16,73 @@
   "source_inventory_reconstructed_functions": 1233,
   "process_observation": {
     "observed_running": false,
-    "client_session": 5323,
-    "server_session": 76380,
+    "full_session": "background task exec_47222302 exited 0 for both targets",
     "terminal_exit_code": 0,
-    "live_session": 71906,
+    "live_session": "verify_live_exceptions exited 0 for both targets",
     "live_terminal_exit_code": 0,
+    "phase": "entry bridge full regression/export complete",
     "recheck_before_launching": true
   },
   "targets": {
     "client": {
       "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
       "executable": "X:\\Battlefield Vietnam - Copy\\BfVietnam-editable.exe",
-      "actual_sha256": "80c760975a0406f780f09d5cbe759389d1b240f33d15cb6fd7bcb7681a6d751f",
-      "manifest_sha256": "80c760975a0406f780f09d5cbe759389d1b240f33d15cb6fd7bcb7681a6d751f",
-      "payload_bytes": 37517,
-      "entry_patches": 699,
+      "actual_sha256": "37c8f75e034426ee6dabc2b865818253c72e54be4cc2394a0efaa302e8ecb358",
+      "manifest_sha256": "37c8f75e034426ee6dabc2b865818253c72e54be4cc2394a0efaa302e8ecb358",
+      "payload_bytes": 40685,
+      "entry_patches": 707,
       "vtable_patches": 5,
-      "full_report_passed": 46344,
+      "full_report_passed": 48056,
       "full_report_matches_current_executable": true,
       "live_passed": 8,
       "second_category_cases": 262,
       "second_category_factor_cases": 264,
       "second_category_score_cases": 262,
       "full_verification": "complete",
-      "final_weights_cases": 184
+      "final_weights_cases": 184,
+      "final_selection_cases": 272,
+      "search_prefix_cases": 172,
+      "artillery_continuations_cases": 240,
+      "candidate_setup_cases": 332,
+      "artillery_cache_cases": 1404
     },
     "server": {
       "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
       "executable": "X:\\Battlefield Vietnam - Copy\\bfvietnam_w32ded-editable.exe",
-      "actual_sha256": "e16fcc56f22fd0a6ba96727940354357624bb74910cf8de0b9de99c8b6f7278c",
-      "manifest_sha256": "e16fcc56f22fd0a6ba96727940354357624bb74910cf8de0b9de99c8b6f7278c",
-      "payload_bytes": 34701,
-      "entry_patches": 554,
+      "actual_sha256": "ee4bced0350ed138665b7ab6e0383788d2ed0000c7ea2456943e5e9802588cee",
+      "manifest_sha256": "ee4bced0350ed138665b7ab6e0383788d2ed0000c7ea2456943e5e9802588cee",
+      "payload_bytes": 37869,
+      "entry_patches": 562,
       "vtable_patches": 5,
-      "full_report_passed": 44760,
+      "full_report_passed": 46472,
       "full_report_matches_current_executable": true,
       "live_passed": 8,
       "second_category_cases": 262,
       "second_category_factor_cases": 264,
       "second_category_score_cases": 262,
       "full_verification": "complete",
-      "final_weights_cases": 184
+      "final_weights_cases": 184,
+      "final_selection_cases": 272,
+      "search_prefix_cases": 172,
+      "artillery_continuations_cases": 240,
+      "candidate_setup_cases": 332,
+      "artillery_cache_cases": 1404
     }
   },
   "installed_stage": {
-    "name": "second-pass iterator and post-query final weights",
-    "source": "bfv-native-code/src/artillery_final_weights.c",
-    "client_intervals": [
-      "009a0f5e..009a0f78",
-      "009a0f8c..009a1001"
+    "name": "evaluator entry/cache routing gateway",
+    "sources": [
+      "bfv-native-code/src/artillery.c (bfv_artillery_entry_bridge)"
     ],
-    "server_intervals": [
-      "0074b73e..0074b758",
-      "0074b76c..0074b7e1"
-    ],
-    "original_block_bytes": 143,
-    "focused_cases_per_target": 184,
-    "structural_audit": "both guarded boundaries eligible in both targets",
-    "full_verification": "complete; 91,104 total comparisons",
-    "live_validation": "8 current-hash vector exception executions per target",
-    "limitations": "Index callbacks and cleanup allocator controlled; CPU flags excluded; complete final selection/firing unverified."
+    "client_interval": "0099f2a0..0099f3cf",
+    "server_interval": "00749a80..00749baf",
+    "original_bytes_per_target": 303,
+    "focused_cases_per_target": 1404,
+    "full_verification": "complete; 94,528 total comparisons (48,056 client + 46,472 server)",
+    "limitations": "Cache branch is source-owned; candidate search executes the reconstructed search prefix and remains partially native. Unmasked exceptions, curve initialization, engine callbacks and live-match parity remain unverified."
   },
-  "next_action": "Preserve/publish verified iterator/weight checkpoint, then integrate staged entire final-selection tail into installed build/full verifier/exporter and validate it. Continue evaluator prefix, curve initializer, object services and remaining whole-engine reconstruction.",
+  "next_action": "Recover the remaining native candidate-search body (client 0099f3d5..0099f6c3 interior of the reconstructed search prefix, then the 394-byte inline weapons interval 0099f8d7..0099fa61 and downstream native gaps), verify complete evaluator integration, then engine callbacks and curve initialization. Preserve the current checkpoint; do not commit or push.",
   "publication_base": "9ba1f1b",
-  "remote_base_verified": "925faa7ef9b17b2f3218c69e92668496dbc5ef8d",
-  "published_commit": "925faa7ef9b17b2f3218c69e92668496dbc5ef8d",
-  "staged_next_work": {
-    "name": "entire final-selection tail",
-    "source": "bfv-native-code/src/artillery_final_selection.c",
-    "test": "bfv-native-code/tools/verify_final_selection.py",
-    "client_interval": "009a1001..009a12ed",
-    "server_interval": "0074b7e1..0074bacd",
-    "original_block_bytes": 748,
-    "instructions": 232,
-    "returns": 3,
-    "structural_audit": "both eligible; 0 external interior/overwrite references and external jump exits",
-    "source_installed": false,
-    "focused_passed_per_target": 272,
-    "controlled_curve_cases_per_target": 200,
-    "native_curve_cases_per_target": 72,
-    "limitations": "Object callbacks and native-curve fixture tables controlled; scratch registers, flags, unmasked exceptions and complete evaluator/live matches excluded."
-  }
+  "remote_base_verified": "e7ed1d9941c3c4382822c8447f5cf7254f208126",
+  "published_commit": "e7ed1d9941c3c4382822c8447f5cf7254f208126"
 }

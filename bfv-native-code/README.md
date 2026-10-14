@@ -1,171 +1,63 @@
-# Editable native Battlefield Vietnam build
+# bfv-native-code
 
-Close the generated game before rebuilding. Edit `src/mod_rules.c` or
-`src/native_ai.c`, then compile:
+The static recompiler, the reconstructed C, and the build, run and verify
+scripts. Commands assume the repository root and `$env:BFV_GAME_DIR` pointing at
+your game installation. Close the game before rebuilding.
 
-```powershell
-.\bfv-native-code\build.ps1 -GameDirectory 'D:\Games\Battlefield Vietnam'
-.\bfv-native-code\verify.ps1 -GameDirectory 'D:\Games\Battlefield Vietnam'
-.\bfv-native-code\run.ps1 -GameDirectory 'D:\Games\Battlefield Vietnam'
-```
+## Scripts
 
-For the dedicated server, use `run-server.ps1`. It uses the installed game's
-server settings in `Mods/BfVietnam/settings/ServerSettings.con` and its map list.
+| Script | What it does |
+| --- | --- |
+| `build.ps1` | Compiles `src/*.c` into the payload and writes `BfVietnam-editable.exe` / `bfvietnam_w32ded-editable.exe` into the game folder (`tools/build.py`) |
+| `recomp.ps1` | Static recompilation from assembly source, with a byte-identity check (`tools/static_recomp.py`). `-AssembleOnly` keeps hand edits, `-Install` writes the result to the game folder |
+| `verify.ps1` | Runs original and reconstructed instructions side by side under Unicorn (`tools/verify.py`) |
+| `run.ps1` / `run-server.ps1` | Launch the editable client / dedicated server |
 
-The build writes `BfVietnam-editable.exe` and `bfvietnam_w32ded-editable.exe` beside
-your installed game. Both launch with the existing game data. The originals are
-read-only inputs; builds check their SHA256 and the original vtable entries.
+All scripts take `-Target client|server|both` (`run*.ps1` excepted) and
+`-GameDirectory`. See [docs/STATIC-RECOMP.md](../docs/STATIC-RECOMP.md) for
+the recompiler and the edit workflow.
 
-## Editable logic
+## Reconstructed C (`src/`)
 
-- `src/native_ai.c`: the reconstructed AI plan interpreter. You can edit plan
-  dispatch, object-type masks, fallback/override selection, context notifications,
-  disabled-plan events, output flags and cleanup decisions. It uses the recovered
-  native object interfaces and exact x86 `thiscall` conventions.
-  Bailout recomputation, cache writes and pattern flags are also implemented here;
-  its two numerical helpers are in `src/numeric_curves.c`. See [the recovered interface](../docs/BAILOUT.md).
-- `src/native_collision.c`: AI collision-callback control flow, event argument
-  assembly, actor decisions, record-counter updates and notification argument
-  preparation. The actor dispatcher is also reconstructed. Remaining registry and
-  allocation services remain native. `src/collision_geometry.c` implements
-  the planar distance calculation and its line-distance helper. See [the recovered interface](../docs/COLLISION.md).
-- `src/collision_events.c`: event construction, generation-checked object lookup
-  and indexed interface lookup. Vector insertion is also reconstructed; heap and compiler exception
-  runtime services remain native. See [event layout and dependencies](../docs/EVENTS.md).
-- `src/word_vector.c`: word-vector insertion, overlap-safe copying, filling,
-  growth arithmetic and x86 exception registration/catch bridges. See
-  [algorithm and runtime limits](../docs/VECTORS.md).
-- `src/artillery.c`: artillery driver rating routing, component predicate and
-  per-bot cache/eligibility updates and cached-target validation. Candidate search
-  remains native. See
-  [ARTILLERY.md](../docs/ARTILLERY.md).
-- `src/target_history.c`: unsigned target-history map lookup and initialization of
-  new timestamps. A guarded native function-entry jump connects both candidate
-  passes to this code. Raw allocation remains native.
-- `src/history_tree.c`: target-history insertion, duplicate detection, predecessor
-  traversal, node construction and red/black balancing. These six functions per
-  binary compile from C; protected allocation and string/exception services remain native.
-- `src/artillery_weapons.c`: first-pass per-weapon ratings, minimum-distance gating,
-  best-weapon selection and score padding. The rest of candidate scoring and firing
-  remains incomplete. The default verifier includes 303 comparisons per target.
-- `src/aim_geometry.c` and `src/artillery_aim_gate.c`: artillery position/vector
-  helpers and the post-weapon aiming gate. The default verifier includes 839
-  original/source comparisons per target; trajectory and firing remain incomplete.
-- `src/artillery_movement_gate.c`: first-pass movement-vector retrieval and initial
-  flag/distance gates. The default verifier includes 521 comparisons per target;
-  later velocity arithmetic and candidate scoring remain native.
-- `src/movement_geometry.c` and `src/artillery_movement_score.c`: in-place cross
-  product, event-2 scalar wrapper and following candidate movement score. The installed
-  movement-score checkpoint passed full regressions; newer build evidence is in
-  [the handoff](../docs/HANDOFF.md).
-- `src/mod_rules.c`: plan eligibility, bailout ratings and vehicle-change ratings.
-  For example, changing `return native_rating;` in `bfv_bailout_rating` to
-  `return native_rating * 2.0f;` changes the rating returned to the actual engine.
-  Default rules preserve native behavior.
-- `tools/build.py`: verified addresses, section linking and function-table
-  replacements for the client and dedicated server. Adding a reconstructed native
-  function requires its verified ABI, original slot, replacement symbol and tests.
-  Every `.c` file in `src` is compiled. Additional replacements can be registered
-  in `extra-patches.json`, with hex `vtable_slot`, hex `expected_function` and a
-  `replacement` symbol beginning with `bfv_` for the corresponding target. This
-  supports replacing more engine methods as their C implementations are recovered.
+Every `.c` file in `src/` is compiled into the payload. Original functions
+detour to these routines; see `build/<target>/manifest.json` for the exact
+addresses.
 
-This is a native mod build of the original engine. Interpreter, bailout logic/math, artillery driver routing and collision-callback control flow compile
-from reconstructed C; the remaining engine is retained as original machine code.
-Table initialization, collision detection/response, object lifecycle and full vehicle candidate evaluation
-are still supplied by the original engine. This project does not claim the
-decompiler exports have become reconstructed C or that the entire engine is open
-source. It provides a working compile-and-run route for editing the listed logic.
+| Area | Files | Notes |
+| --- | --- | --- |
+| AI plan interpreter | `native_ai.c`, `numeric_curves.c` | Interpreter, bailout recomputation and numeric helpers ([bailout](../docs/modules/BAILOUT.md)) |
+| Editable rules | `mod_rules.c` | Plan eligibility, bailout and vehicle ratings. Defaults preserve native behavior |
+| Collision | `native_collision.c`, `collision_geometry.c` | Callback control flow, actor dispatcher, planar distance ([collision](../docs/modules/COLLISION.md)) |
+| Events and vectors | `collision_events.c`, `word_vector.c` | Event construction, lookups, vector insertion, exception bridges ([events](../docs/modules/EVENTS.md), [vectors](../docs/modules/VECTORS.md)) |
+| Target history | `target_history.c`, `history_tree.c`, `list_search.c`, `target_traversal.c` | History map lookup, red/black tree insertion and balancing |
+| Artillery evaluator | `artillery.c`, `artillery_*.c` | Driver rating, entry/cache gateway, first and second candidate passes, scoring and final selection ([artillery](../docs/modules/ARTILLERY.md)) |
+| Geometry and math | `aim_geometry.c`, `aim_limits.c`, `affine_matrix.c`, `movement_geometry.c`, `region_geometry.c`, `scalar_vector_math.c`, `vector_normalize.c` | Position, aiming-limit, matrix and vector helpers ([math](../docs/modules/SHARED-MATH.md), [aim limits](../docs/modules/AIM-LIMITS.md), [matrix](../docs/modules/AFFINE-MATRIX.md), [geometry](../docs/modules/GEOMETRY.md)) |
+| Catalogues | `constant_returns.c`, `word_getters.c` | 954 constant-return stubs and 175 field getters, generated from `constant-returns.json` / `word-getters.json` ([constants](../docs/modules/CONSTANT-RETURNS.md), [getters](../docs/modules/WORD-GETTERS.md)) |
+| Catalogues | `field_accessors.c`, `static_initializers.c` | 889 field/global accessors and 3,947 C++ static-object initializers, generated from `field-accessors.json` / `static-initializers.json` ([accessors](../docs/modules/FIELD-ACCESSORS.md), [initializers](../docs/modules/STATIC-INITIALIZERS.md)) |
+| Catalogues | `constructor_calls.c`, `deleting_destructors.c`, `dynamic_casts.c`, `clones.c` | 460 initializers with constructor arguments, 691 scalar deleting destructors, 544 `dynamic_cast` wrappers and 357 virtual clones, generated from the matching `.json` catalogues ([initializers](../docs/modules/STATIC-INITIALIZERS.md), [destructors](../docs/modules/DELETING-DESTRUCTORS.md), [casts](../docs/modules/DYNAMIC-CASTS.md), [clones](../docs/modules/CLONES.md)) |
 
-## Verification
+Example rule change: in `mod_rules.c`, changing `return native_rating;` in
+`bfv_bailout_rating` to `return native_rating * 2.0f;` doubles the rating the
+engine receives. Behavior changes intentionally make the parity verifier fail,
+so add expected-behavior cases for them.
 
-`verify.ps1` executes both original and newly compiled instructions under Unicorn.
-Per target, it compares 1,920 interpreter cases, 32 cached-bailout float32 cases,
-554 bailout recomputation cases (including cache/flag pointer changes during callbacks),
-3,840 numerical-helper comparisons of the full 80-bit x87 return,
-129 collision-callback, 64 notification-helper and 148 actor-dispatcher comparisons,
-2,136 geometry comparisons, 251 event comparisons, 507 vector/exception-bridge comparisons, and
-1,536 artillery driver comparisons, 708 artillery evaluator/integration checks,
-432 target-history lookup comparisons, 4,678 history-tree comparisons and 32 vehicle-wrapper ABI cases. Context/event methods are controlled test objects;
-the vehicle wrapper tests forwarding and returned bits while native scoring remains
-intact. Reports are in `build/client/verification.json` and
-`build/server/verification.json`. Changes to behavior intentionally make the default
-parity comparison fail; add the expected changed-behavior cases when modding.
+To register an extra vtable replacement, add an entry to `extra-patches.json`
+with hex `vtable_slot`, hex `expected_function` and a `replacement` symbol
+starting with `bfv_`.
 
-For focused numerical tests, run `tools/verify_curves.py` through `uv` with
-`pefile` and `unicorn`, passing `--game-dir` and optionally `--target client` or
-`--target server`. The full `verify.ps1` includes these comparisons.
+## Tools (`tools/`)
 
-An earlier compiled client was launched and remained responsive with the replacement
-interpreter executing over 491,000 times and the vehicle-rating wrapper over
-3,800 times. `startup-smoke.json` records the executable path, loaded patch slots,
-compiled bytes and observed invocation counters. This establishes live execution
-of the replacements, not whole-game behavioral parity. Test offline or on a
-private server you control.
-Those live observations predate the C bailout recomputation; the new routine has
-controlled instruction-comparison evidence, but no retained live-match sample yet.
+| File | Purpose |
+| --- | --- |
+| `build.py` | Payload compile/link, entry detours, vtable patches, manifests |
+| `static_recomp.py` | Static recompiler |
+| `verify.py` | Full regression: runs every focused verifier |
+| `verify_*.py` | Focused original-vs-C comparisons, one per reconstructed stage |
+| `verify_live_exceptions.py` | Opt-in live check inside temporary Windows client/server processes |
+| `*_oracle.py` | Reference models used by the verifiers |
+| `export_reports.py` | Exports compact verification reports to `../reports` (requires current full and live results) |
+| `smoke.py`, `native-probe/` | Startup smoke test and live probe helpers |
 
-The dedicated-server startup check also verified all three loaded replacements,
-5,553 interpreter calls and 48 vehicle-rating wrapper calls in the running server.
-Those older live samples cover three loaded replacements; the new build adds
-the collision callback as a fourth replacement, without a retained live sample yet.
-That temporary server was stopped after verification. The user confirmed manually
-closing the last client test. The runtime reports establish that the compiled code
-executed; they do not establish full-match or whole-game behavioral parity. Launch
-your desired offline match with `run.ps1` to test your changes.
-
-Toolchain: installed `C:/msys64/mingw32/bin` GCC/binutils and `uv` with `pefile`
-and `unicorn`. Outputs require the inspected user-owned original executables and
-game files. No originals, decompilation corpus or game assets should be published
-with this project.
-
-
-For one binary only, add `-Target client` or `-Target server` to `verify.ps1`.
-Focused event checks use `tools/verify_events.py` through `uv` with `pefile` and
-`unicorn`, passing `--game-dir`. The complete verification includes these checks.
-
-The opt-in `tools/verify_live_exceptions.py` check runs original/reconstructed vector
-cases inside temporary Windows client/server processes. It passed 16 live executions
-with actual C++ exception dispatch, cleanup/rethrow and restored FS linkage. See
-[the probe and its limits](../docs/VECTORS.md#live-windows-exception-propagation).
-
-The following `src/artillery_query_gate.c` and `src/artillery_query_helpers.c`
-implement distance/driver/query gates, event-word/interface wrappers and vector
-append/cleanup. Current focused checks passed 731 comparisons per binary. Full
-current-build status and remaining native dependencies are in the handoff.
-
-`src/region_geometry.c` and `src/artillery_region_score.c` supply actual region
-math and the following first-pass modifier. Installed focused checks passed
-1,067 + 592 comparisons per binary; the category-score checkpoint passed 77,948
-full comparisons and 16 current-hash live checks. Category-list scoring and
-iterator search are installed; 611 focused comparisons per target passed.
-
-`src/artillery_target_eligibility.c` supplies generation-checked handle lookup,
-component event predicates and linked-target eligibility, reusing the existing
-component predicate. Its checkpoint passed 78,300 full comparisons and 16 live
-checks. The following alternate gate and linked-object score loop are installed;
-164 + 242 focused comparisons per binary and structural audits passed. Its
-checkpoint passed 79,112 full comparisons and 16 live checks;
-see [the handoff](../docs/HANDOFF.md). Final alternate scaling and the traversal
-helper are now installed; 329 + 154 focused comparisons per target passed.
-Their combined checkpoint passed 80,078 full comparisons and 16 live checks.
-The following iterator/query setup is installed and passed 157 + 160 focused
-comparisons per target. The iterator/setup checkpoint passed 80,712 full comparisons
-and 16 matching-hash live checks. Later evaluator
-phases remain native.
-
-The second-pass filter checkpoint passed 81,422 full comparisons and 16 live
-checks. Subsequent timestamp weight, complete normalization and the second-pass
-aiming gate are installed and passed 364 + 687 + 206 focused checks per target.
-Their full regressions passed in the second-aim checkpoint; see the handoff for hashes.
-
-The subsequent second-aim checkpoint passed 83,936 full comparisons and 16 live
-checks; normalization is registered after complete-function evidence passed.
-Second-pass position/distance/weapon stages are now installed. Current checks
-and EXE hashes are tracked in the handoff. Their checkpoint passed 85,376 full
-comparisons and 16 matching-hash live checks; compact reports were exported.
-
-The following second-pass movement gate and score are staged separately: 522 +
-439 comparisons per target and structural audits passed. The score preserves
-driver/movement captures, second-pass dot products and three native continuations.
-They are not installed yet; see the compact staged reports and handoff.
+Toolchain: MinGW GCC/binutils at `C:\msys64\mingw32\bin` and `uv`, which
+supplies `pefile`, `capstone` and `unicorn`. Outputs need your own matching
+original EXEs. Never publish originals, assets or `build/`.

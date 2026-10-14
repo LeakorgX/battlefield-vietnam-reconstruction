@@ -1,0 +1,9 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "239dc330eda6d7838196aa931c06c439ba32e5c2cccf9402cbab592bceee179d",
+  "passed": 332,
+  "scope": "Original/source first-pass candidate timestamp weight, event position/fallback copies, displacement, distance floor and normalization. Callback rereads, aliases, full fixture memory, live registers and occupied x87 state compare across exceptional inputs and precision/rounding modes. Object callbacks remain controlled; weapons, trajectory, complete evaluator and live-match behavior remain unverified.",
+  "original_block_bytes": 300,
+  "replacement_scope": "partial_native_evaluator"
+}

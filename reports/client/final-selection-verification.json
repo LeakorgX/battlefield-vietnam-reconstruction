@@ -1,0 +1,12 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "compiled_sha256": "8cad8af2580d8f823a0ed0b0c476f939c4f483d33728a15b530975d8bc914689",
+  "passed": 272,
+  "scope": "Entire original/source final-selection tail: remembered/best/alternate transfer, notifications, array writes, rating publication, target clearing and all three return paths. Full fixture memory, callback order/arguments, nonvolatile return ABI, stack cleanup and complete physical x87 state compare. Object callbacks and 200 curve results are controlled; 72 cases execute actual native curve/conversion with fixture tables. Caller-scratch registers, flags, unmasked exceptions and complete evaluator/live matches are excluded.",
+  "original_block_bytes": 748,
+  "returns": 3,
+  "native_curve_cases": 72,
+  "controlled_curve_cases": 200,
+  "replacement_scope": "partial_native_evaluator"
+}

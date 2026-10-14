@@ -60,7 +60,7 @@ evaluator remain native. This does not reconstruct all artillery behavior.
 
 Focused verification passed 1,536 paired cases per binary, including callback
 index/table changes, low-byte conditions, argument bits and rating rounding.
-See docs/ARTILLERY.md for the recovered interface and outstanding dependencies.
+See docs/modules/ARTILLERY.md for the recovered interface and outstanding dependencies.
 
 The final five-replacement build passed all 22,298 emulator checks across both
 targets and the 16 real Windows vector/exception executions. Verification tools

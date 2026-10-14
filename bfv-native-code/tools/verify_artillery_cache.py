@@ -11,10 +11,34 @@ import struct
 from pathlib import Path
 import pefile
 from unicorn import UC_HOOK_CODE
-from unicorn.x86_const import (UC_X86_REG_ECX, UC_X86_REG_ESP, UC_X86_REG_FPCW,
+from unicorn.x86_const import (UC_X86_REG_EAX, UC_X86_REG_EDX, UC_X86_REG_ECX, UC_X86_REG_ESP, UC_X86_REG_FPCW,
     UC_X86_REG_FPTAG, UC_X86_REG_EBX, UC_X86_REG_ESI, UC_X86_REG_EDI, UC_X86_REG_EBP)
 from build import PROJECT, GAME, TARGETS
 from native_oracle import load_machine, ARENA, STACK
+from verify_constant_returns import FLOAT_STATE
+
+
+def run_search_entry(image,pe,spec,recompute,cw,depth):
+    """Stop before any search callbacks; compare the actual prologue layout."""
+    m=load_machine(image,pe);sp=STACK+0x8000;start=ARENA+0x7000;seed=ARENA+0x7200
+    m.mem_write(sp-0x300,b'\xa5'*0x340)
+    m.mem_write(sp,struct.pack('<6I',ARENA+0x7400,ARENA+0x100,recompute,
+        0x7fc55555,ARENA+0x200,ARENA+0x300))
+    registers=[UC_X86_REG_EAX,UC_X86_REG_EBX,UC_X86_REG_ECX,UC_X86_REG_EDX,
+        UC_X86_REG_ESI,UC_X86_REG_EDI,UC_X86_REG_EBP,UC_X86_REG_ESP]
+    values=[0xabcdef12,0x12345678,ARENA+0x400,0x23456789,0x34567890,0x45678901,0x56789012,sp]
+    for reg,value in zip(registers,values):m.reg_write(reg,value)
+    m.reg_write(UC_X86_REG_FPCW,cw)
+    m.mem_write(seed,struct.pack('<2I',0x3f812345,0xbf654321))
+    preload=b''.join(b'\xd9\x05'+struct.pack('<I',seed+4*i) for i in range(depth))
+    m.mem_write(start,preload+b'\xe9'+struct.pack('<I',(spec['artillery_score']-start-len(preload)-5)&0xffffffff))
+    reached=[]
+    def hook(uc,address,size,data):
+        if address==spec['artillery_search_prefix']:reached.append(True);uc.emu_stop()
+    m.hook_add(UC_HOOK_CODE,hook);m.emu_start(start,0,timeout=1_000_000,count=1000)
+    assert reached and m.reg_read(UC_X86_REG_ESP)==sp-0x1e4
+    return dict(frame=bytes(m.mem_read(sp-0x1e4,0x200)).hex(),
+        registers=[m.reg_read(reg) for reg in registers],fpu=[m.reg_read(reg) for reg in FLOAT_STATE])
 
 
 def run_cache(image, pe, entry, spec, allowed, target_state, recompute,
@@ -103,6 +127,11 @@ def run_cache(image, pe, entry, spec, allowed, target_state, recompute,
 
 
 def compare_artillery_cache(original, original_pe, edited, edited_pe, spec, symbols):
+    entry=spec['artillery_score'];guard=bytes.fromhex('81ecd8010000')
+    assert original_pe.get_data(entry-original_pe.OPTIONAL_HEADER.ImageBase,len(guard))==guard
+    patch=edited_pe.get_data(entry-edited_pe.OPTIONAL_HEADER.ImageBase,len(guard))
+    assert patch[0]==0xe9 and patch[5]==0x90
+    assert entry+5+struct.unpack('<i',patch[1:5])[0]==symbols['bfv_artillery_entry_bridge']
     inputs=[(*args,0x37f,False) for args in itertools.product((0,1,256,257),
         ('valid','stale','empty','null','invalid'),(0,256),
         (0,0x80000000,0x7f812345,0x7f800000),(False,True),(False,True))]
@@ -118,6 +147,18 @@ def compare_artillery_cache(original, original_pe, edited, edited_pe, spec, symb
             assert old==new,(args,old,new)
         except Exception as error:raise RuntimeError(f'artillery evaluator inputs {args}') from error
         cases.append(dict(inputs=args,**old))
+    bridge_inputs=[args for args in inputs if not args[-1]]
+    for args in bridge_inputs:
+        old=run_cache(original,original_pe,spec['artillery_score'],spec,*args)
+        new=run_cache(edited,edited_pe,spec['artillery_score'],spec,*args)
+        assert old==new,("entry bridge",args,old,new)
+        cases.append(dict(entry_bridge=True,inputs=args,**old))
+    for recompute,cw,depth in itertools.product([1,257,0xffffffff,0x80000001],
+        [0x37f,0x7f,0x67f,0xf7f],[0,2]):
+        old=run_search_entry(original,original_pe,spec,recompute,cw,depth)
+        new=run_search_entry(edited,edited_pe,spec,recompute,cw,depth)
+        assert old==new,('search entry frame',recompute,cw,depth)
+        cases.append(dict(search_entry=True,inputs=[recompute,cw,depth],registers=old['registers']))
     from verify_artillery import run_artillery
     for allowed,handle,eligible in itertools.product((0,1),(0x20002,0),(0,1)):
         args=(1,eligible,0,0x3eaaaaab,0.0,False,False)

@@ -1,45 +1,41 @@
 # Agent instructions
 
-Read [docs/HANDOFF.md](docs/HANDOFF.md) first. It records the current implementation,
-hash-specific evidence, unfinished work, commands and local reference locations.
-Treat the current filesystem and process state as authoritative when resuming.
+Read [docs/HANDOFF.md](docs/HANDOFF.md) and [docs/STATIC-RECOMP.md](docs/STATIC-RECOMP.md)
+first. Treat the current filesystem and process state as authoritative.
 
 ## User requirements
 
-- Reconstruct the original unmodified Battlefield Vietnam client and dedicated
-  server into readable, editable source with original behavior, including AI,
-  physics, gameplay and multiplayer. The native replacement build is intermediate.
-- **Current instruction: commit and publish to GitHub, then continue reconstruction.**
-  Preserve all verified source, reports and uncommitted work. Verify installed
-  builds and inspect remote history before publication; exclude original binaries/private analysis.
-- No browser for GitHub. Use an available
-  connector or authenticated CLI; inspect remote state before updating it.
-- Keep the README concise and focused on reconstruction; no Bevy experiment history.
-- Whole-project progress uses `reports/project-milestones.json`: 0 of 7 complete
-  at handoff. Do not substitute function counts or decompiler exports for a
-  whole-game percentage. Never infer complete behavior from narrow tests.
+- Goal: the original unmodified Battlefield Vietnam client and dedicated server
+  as readable, editable, independently buildable source with original behavior,
+  including AI, physics, gameplay and multiplayer.
+- Approach: static recompilation. The executables are rebuilt from emitted
+  assembly plus reconstructed C, and every build is gated on byte identity
+  (or differences only at intended edits).
+- Commit and push only when the owner asks. Preserve all verified source,
+  reports and uncommitted work.
+- Keep the README concise and focused on the static recompilation. No Bevy
+  prototype history.
+- Whole-project progress uses `reports/project-milestones.json` (0 of 7). Do not
+  substitute instruction, function or byte counts for a whole-game percentage.
 
-## Implementation and evidence
+## Evidence rules
 
-- Preserve uncommitted work. Do not reset the repository or overwrite original EXEs.
-- Use instruction evidence to establish ABI, field layout, evaluation order,
-  callback rereads, aliasing, floating-point behavior and native dependencies.
-- Retain native behavior by default; do not invent guards or clamp values without
-  evidence. Clearly separate partial inline stages from complete functions.
-- Build only against the supported hashes. Keep proprietary reference bodies,
-  original binaries and assets outside this repository.
-- Compare original and replacement instructions. Record test limitations and hashes.
-  A report from an older EXE is not evidence for the current one.
-- `bfv-native-code/tools/export_reports.py` requires current full and live results for both targets;
-  do not bypass its stale-report assertions. See the handoff for remaining gates.
-- Reuse a confirmed running verifier. Re-poll after an observation timeout; restart
-  only after it is terminal/missing and current process state confirms it stopped.
-- Do not terminate unrelated game processes. The live verifier manages its own
-  temporary children. No new subagents unless explicitly requested by the user.
+- Never commit original binaries, assets, generated `.s`/`.o` files, raw
+  disassembly or decompiler bodies. The L1 lifted C in `bfv-native-code/lifted/`
+  is committed by the owner's decision (2026-10-14). `build/` and `bfv-reference-local/` stay local.
+- Use instruction evidence for ABI, layouts, evaluation order, callback rereads,
+  aliasing, x87 behavior and native dependencies. Retain native behavior by
+  default; no invented guards or clamps.
+- Build only against the supported hashes. A report from an older EXE is not
+  evidence for the current one.
+- `export_reports.py` requires current full and live results for both targets;
+  do not bypass its stale-report assertions.
+- Reuse a confirmed running verifier; restart only after it is terminal or missing.
+- Do not terminate unrelated game processes. No subagents unless the user asks.
 
 ## Environment
 
-Commands run from the repository in PowerShell. If tool shell defaults fail, use
+PowerShell from the repository root. If the shell default fails, use
 `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe` with `login:false`.
-Use `uv run --with pefile --with unicorn python ...` for instruction comparisons.
+Use `uv run --with pefile --with capstone --with unicorn python ...`.
 32-bit MinGW is at `C:\msys64\mingw32\bin`; plain Python is `C:\Python314\python.exe`.

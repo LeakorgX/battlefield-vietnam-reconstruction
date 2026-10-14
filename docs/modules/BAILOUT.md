@@ -4,7 +4,7 @@
 of the inspected `BBBailOut` slot-9 method in C. Its numerical helpers are now
 implemented in `src/numeric_curves.c`; it no longer calls the original bailout
 routine or the original two curve helpers. The client entry is `00984c20`; the server entry is
-`0072eef0`. Supported binary hashes are in [SETUP.md](SETUP.md).
+`0072eef0`. Supported binary hashes are in [SETUP.md](../SETUP.md).
 
 ## Recovered behavior
 

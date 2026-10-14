@@ -1,83 +1,110 @@
-# Battlefield Vietnam engine reconstruction
+# Battlefield Vietnam static recompilation
 
-Recovering the original game's client and dedicated-server logic into readable,
-editable C/C++ source, with original gameplay and multiplayer compatibility as
-the goal.
+A static recompilation of the original Battlefield Vietnam client
+(`BfVietnam.exe`) and dedicated server (`bfvietnam_w32ded.exe`). Each executable
+is rebuilt from assembler source plus hand-reconstructed C. The output is
+byte-identical to the verified build, so any part of the game can be edited and
+rebuilt.
 
-## Progress
+![Code converted to C](reports/c-progress.svg)
+
+The bar is the share of the original code (bytes of every function Ghidra
+indexed) that now comes from verified C. Run
+`python analysis/tools/update_progress.py` to refresh it.
 
 ![Whole-game completion](reports/progress.svg)
 
-**Whole-game completion: 0% — 0 of 7 acceptance milestones complete.**
-**100% means the entire original client and server are reconstructed as readable,
-editable source that builds without copying code from the original EXEs.**
-This covers the entire original client/server engine, including AI, gameplay,
-physics, multiplayer, a standalone source build and verified original behavior.
-Partial reconstruction is underway; this coarse milestone percentage does not
-estimate effort or count exported decompiler files as recovered source.
-See the [full-project tracker](docs/PROGRESS.md).
+**Whole-game completion: 0% (0 of 7 acceptance milestones).** 100% means the
+entire original client and server are readable, editable source that builds
+without copying code from the original EXEs. See [PROGRESS](docs/PROGRESS.md).
 
-- Reconstructed the native AI plan interpreter in C.
-- Reconstructed bailout logic and its numerical helpers in C.
-- Reconstructed AI collision handling, geometry helpers, events and vector insertion in C.
-- Reconstructed artillery driver rating selection, cached-target validation, history lookup/insertion, tree balancing, the first candidate-pass filter and its weapon-selection loop in C.
-- Reconstructed subsequent artillery aiming, movement, query, region/category scoring, linked-target eligibility/traversal, alternate scoring and second-pass query setup; [scope and evidence](docs/ARTILLERY.md).
-- Reconstructed shared float min/max/clamp and vector length/division helpers; see [shared math](docs/SHARED-MATH.md).
-- Reconstructed the direction aiming-limit predicate and event wrapper; see [aiming limits](docs/AIM-LIMITS.md).
-- Reconstructed affine matrix composition, now called directly by the aiming source; see [matrix math](docs/AFFINE-MATRIX.md).
-- Recovered 954 individually editable constant-return functions across both binaries; [scope and evidence](docs/CONSTANT-RETURNS.md).
-- Reconstructed 175 object-word accessors as editable C; [field offsets and verification](docs/WORD-GETTERS.md).
-- Added editable plan eligibility, bailout-rating and vehicle-rating rules.
-- Built client and server EXE copies that execute the compiled replacement code.
-- The latest exported full-regression build passed 91,104 comparisons across the two inspected binaries; reports identify its hashes and coverage limits. Current work is tracked in the handoff guide.
-- Validated vector cleanup/rethrow in live Windows client and server processes.
-- Exported 62,640 C-like function outputs across client/server; full coverage is still unverified.
-- Added binary-analysis tools, function indexes, class/vtable maps and call graphs.
+## How it works
 
-**This is a partial reconstruction.** The current build still needs the original
-EXEs and retains most of their engine code. Full AI behavior, artillery target evaluation and firing,
-physics, gameplay systems and networking have not yet been reconstructed.
+```
+original EXE ──► static_recomp.py ──► build/<target>-recomp/text.s, data.s, rdata.s, ...
+                                                 │ (editable assembly)
+src/*.c ──► build.py ──► payload.bin ────────────┤ (reconstructed C, linked in)
+                                                 ▼
+                                    GNU as ──► BfVietnam-editable.exe
+                                               bfvietnam_w32ded-editable.exe
+```
+
+- **Assembly layer.** The whole `.text` section is emitted as GNU as
+  Intel-syntax source with symbolic control flow: `sub_XXXXXXXX` function
+  labels, `loc_XXXXXXXX` branch targets, and calls into reconstructed C by name.
+  The output reassembles byte-exact.
+- **C layer.** 8,121 routines (client plus server) are reconstructed as readable C in
+  [`bfv-native-code/src`](bfv-native-code/src), including 4,407 C++ static-object
+  initializers, 954 constant-return stubs, 889 field/global accessors, 691
+  scalar deleting destructors, 544 `dynamic_cast` wrappers, 357 virtual clones
+  and 175 field getters. The rest cover the AI plan interpreter, bailout,
+  collision, events and large parts of the artillery evaluator.
+  Each is verified side by side against the original under emulation. The
+  originals jump into this code through guarded detours.
+- **L1 lifted C.** A mechanical translator turns the remaining functions into
+  C (not yet readable). Each lifted function is checked against the original
+  under emulation, and only verified ones are switched on. Today about 73% of
+  client and 80% of server functions run as C. See
+  [docs/LIFTED-C.md](docs/LIFTED-C.md).
+- **Gate.** Every build must be byte-identical to the verified editable EXE
+  (or differ only where you edited it).
+
+| Target | Instructions | Symbolic branches | C detours | Raw `.byte` lines |
+| --- | ---: | ---: | ---: | ---: |
+| Client | 2,240,682 | 359,407 | 4,691 | 986 |
+| Server | 1,275,735 | 194,095 | 3,466 | 448 |
+
+Details and limits: [docs/STATIC-RECOMP.md](docs/STATIC-RECOMP.md).
 
 ## Build and run
 
-Requires Windows, PowerShell, `uv`, 32-bit MinGW GCC/binutils, and your own matching
-Battlefield Vietnam installation. Close generated game processes before rebuilding.
+Requires Windows, PowerShell, [`uv`](https://docs.astral.sh/uv/), 32-bit MinGW
+GCC/binutils (`C:\msys64\mingw32\bin`) and your own Battlefield Vietnam
+installation matching the hashes in [SETUP](docs/SETUP.md). Close the game
+before rebuilding.
 
 ```powershell
-git clone https://github.com/LeakorgX/battlefield-vietnam-reconstruction.git
 cd battlefield-vietnam-reconstruction
-$env:BFV_GAME_DIR = 'D:\Games\Battlefield Vietnam'
-.\bfv-native-code\build.ps1
-.\bfv-native-code\verify.ps1
-.\bfv-native-code\run.ps1
+$env:BFV_GAME_DIR = 'X:\Battlefield Vietnam - Copy'
+
+.\bfv-native-code\build.ps1                  # compile reconstructed C, write editable EXEs
+.\bfv-native-code\recomp.ps1                 # regenerate the assembly, check byte identity
+.\bfv-native-code\verify.ps1                 # original-vs-C instruction comparisons
+.\bfv-native-code\run.ps1                    # client   (run-server.ps1 for the server)
 ```
 
-For the dedicated server, use `run-server.ps1`.
-Edit the C files in `bfv-native-code/src`, then
-rebuild. Outputs are `BfVietnam-editable.exe` and `bfvietnam_w32ded-editable.exe`
-in your installation. The original EXEs are unchanged.
+### Editing
+
+- **C:** edit files in `bfv-native-code/src`, then run `build.ps1` and `recomp.ps1`.
+- **Assembly:** edit `bfv-native-code/build/<target>-recomp/text.s`, then run
+  `recomp.ps1 -AssembleOnly -Install`. Edits must keep each section the same
+  size, because addresses in data are still absolute. Running `recomp.ps1`
+  without `-AssembleOnly` regenerates the assembly and **overwrites** hand edits.
+
+The original EXEs are never modified.
 
 ## Repository
 
-| Folder | Contents |
+| Path | Contents |
 | --- | --- |
-| [bfv-native-code](bfv-native-code/) | Reconstructed C code, build/launch scripts and verification tools |
-| [analysis](analysis/) | Binary-analysis and Ghidra export/inspection tools |
-| [reports](reports/) | Client/server analysis indexes and verification summaries |
-| [docs/SETUP.md](docs/SETUP.md) | Toolchain setup, supported binary hashes and analysis instructions |
-| [docs/ANALYSIS.md](docs/ANALYSIS.md) | Current export results and remaining coverage gaps |
-| [docs/ROADMAP.md](docs/ROADMAP.md) | Remaining work toward a full source build |
+| [bfv-native-code](bfv-native-code/) | Static recompiler, reconstructed C, build/run/verify scripts |
+| [analysis](analysis/) | Ghidra export, audit and progress tools |
+| [reports](reports/) | Function indexes, call graphs, verification summaries |
+| [docs/STATIC-RECOMP.md](docs/STATIC-RECOMP.md) | Recompiler design, edit workflow, limits |
+| [docs/SETUP.md](docs/SETUP.md) | Toolchain, supported hashes, analysis setup |
 | [docs/VERIFICATION.md](docs/VERIFICATION.md) | Test coverage and its limits |
+| [docs/ROADMAP.md](docs/ROADMAP.md) | Remaining work toward a standalone source build |
+| [docs/modules](docs/modules/) | Notes on each reconstructed subsystem |
+| [docs/HANDOFF.md](docs/HANDOFF.md) | Current state for whoever continues the work |
 
-## Contributing
+## Status and limits
 
-For an agent taking over local work, read [the handoff guide](docs/HANDOFF.md)
-and [agent instructions](AGENTS.md) before making changes.
+- The assembly is a faithful listing of the original machine code, not
+  decompiled C. Only the routines in `src/` are readable C.
+- Data references and jump tables are still numeric addresses, so code cannot
+  yet grow or shrink. Symbolizing them is the next milestone.
+- The build still uses the original EXE's headers and data bytes as input.
+- Physics, gameplay, networking and engine services are not reconstructed as C.
 
-Clone the repository, create a branch, edit the source, and submit a pull request.
-For newly reconstructed functions, document the binary version, calling convention
-and object layout, then compare the compiled implementation against the original.
-Intentional gameplay changes need their own expected-behavior tests.
-
-Original game binaries, assets and generated decompiler bodies are excluded.
-See [NOTICE.md](NOTICE.md) for ownership and license scope.
+Original binaries, assets and generated assembly or decompiler output are never
+committed. See [NOTICE.md](NOTICE.md).

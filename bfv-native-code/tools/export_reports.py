@@ -184,6 +184,57 @@ def prepare(target):
     assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
     assert int(row['external_exits'])==4
 
+    with (REPORTS / target / 'artillery-search-prefix-audit.tsv').open(encoding='utf-8') as f:
+        prefix_audits=list(csv.DictReader(f,delimiter='\t'))
+    assert len(prefix_audits)==1
+    row=prefix_audits[0];patch=patches['bfv_artillery_search_prefix_bridge']
+    assert row['original_sha256']==manifest['input_sha256'] and row['status']=='eligible'
+    assert row['address']==patch['entry'] and row['patch_hex']==patch['original']
+    assert int(row['bytes'])==756 and int(row['saved_ebp'])==1
+    assert int(row['patch_bytes'])*2==len(patch['original'])
+    assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
+    assert int(row['external_exits'])==1
+    with (REPORTS / target / 'artillery-candidate-setup-audit.tsv').open(encoding='utf-8') as f:
+        candidate_audits=list(csv.DictReader(f,delimiter='\t'))
+    assert len(candidate_audits)==1
+    row=candidate_audits[0];patch=patches['bfv_artillery_candidate_setup_bridge']
+    assert row['original_sha256']==manifest['input_sha256'] and row['status']=='eligible'
+    assert row['address']==patch['entry'] and row['patch_hex']==patch['original']
+    assert int(row['bytes'])==300 and int(row['patch_bytes'])*2==len(patch['original'])
+    assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==int(row['external_exits'])==0
+    with (REPORTS / target / 'artillery-entry-audit.tsv').open(encoding='utf-8') as f:
+        entry_audits=list(csv.DictReader(f,delimiter='\t'))
+    assert len(entry_audits)==1
+    row=entry_audits[0];patch=patches['bfv_artillery_entry_bridge']
+    assert row['original_sha256']==manifest['input_sha256'] and row['status']=='eligible'
+    assert row['address']==patch['entry'] and row['patch_hex']==patch['original']
+    assert int(row['bytes'])==303 and int(row['instructions'])==93 and int(row['returns'])==3
+    assert int(row['patch_bytes'])*2==len(patch['original'])
+    assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
+    assert int(row['external_exits'])==1
+    with (REPORTS / target / 'artillery-continuations-audit.tsv').open(encoding='utf-8') as f:
+        continuation_audits=list(csv.DictReader(f,delimiter='\t'))
+    expected_continuations={'bfv_artillery_unit_score_bridge':8,'bfv_artillery_driver_reload_bridge':7,
+        'bfv_artillery_allocation_reload_bridge':7,'bfv_artillery_query_cleanup_bridge':13}
+    assert len(continuation_audits)==4 and {r['symbol'] for r in continuation_audits}==set(expected_continuations)
+    for row in continuation_audits:
+        patch=patches[row['symbol']]
+        assert row['original_sha256']==manifest['input_sha256'] and row['status']=='eligible'
+        assert row['address']==patch['entry'] and row['patch_hex']==patch['original']
+        assert int(row['bytes'])==expected_continuations[row['symbol']]
+        assert int(row['patch_bytes'])*2==len(patch['original'])
+        assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==0
+
+    with (REPORTS / target / 'artillery-final-selection-audit.tsv').open(encoding='utf-8') as f:
+        selection_audits=list(csv.DictReader(f,delimiter='\t'))
+    assert len(selection_audits)==1
+    row=selection_audits[0];patch=patches['bfv_artillery_final_selection_bridge']
+    assert row['original_sha256']==manifest['input_sha256'] and row['status']=='eligible'
+    assert row['address']==patch['entry'] and row['patch_hex']==patch['original']
+    assert int(row['bytes'])==748 and int(row['returns'])==3
+    assert int(row['patch_bytes'])*2==len(patch['original'])
+    assert int(row['external_interior_references'])==int(row['overwritten_interior_references'])==int(row['external_exits'])==0
+
     with (REPORTS / target / 'artillery-final-weights-audit.tsv').open(encoding='utf-8') as f:
         final_audits=list(csv.DictReader(f,delimiter='\t'))
     expected_final={'bfv_artillery_second_iterator_bridge':26,'bfv_artillery_final_weights_bridge':117}
@@ -208,9 +259,32 @@ def prepare(target):
     def focused(filename, group, scope, **details):
         outputs[filename] = dict(identity, passed=len(full[group]), scope=scope, **details)
 
+    focused('search-prefix-verification.json','search_prefix',
+            'Fresh-search prefix with history refresh, real generation handles, source tree advance and region bounds/lookup, gun/driver/iterator captures, saved EBP layout, full fixture memory, callback order/arguments, preserved registers and physical x87 state. Object methods, protected erase, release and containment are controlled; scratch registers, flags, unmasked exceptions and entire evaluator/live matches excluded.',
+            original_block_bytes=756,replacement_scope='partial_native_evaluator')
+    focused('continuations-verification.json','artillery_continuations',
+            'Four short evaluator entries and unit/driver plus allocation/cleanup combinations. Full fixture memory, callee-preserved registers, live reload results and physical x87 state compare. Release is controlled and disturbs an inactive physical FP slot. Scratch results after release, flags and real heap failures excluded.',
+            original_block_bytes=35,reconstructed_inline_entries=4,replacement_scope='partial_native_evaluator')
+    focused('candidate-setup-verification.json','candidate_setup',
+            'Original/source first-pass candidate timestamp weight, event position/fallback copies, displacement, '
+            'distance floor and normalization. Callback rereads, aliases, full fixture memory, live registers and '
+            'occupied x87 state compare across exceptional inputs and precision/rounding modes. Object callbacks '
+            'remain controlled; weapons, trajectory, complete evaluator and live-match behavior remain unverified.',
+            original_block_bytes=300,replacement_scope='partial_native_evaluator')
+    focused('artillery-entry-verification.json','artillery_cache',
+            'Source-owned evaluator entry/cache routing. The 303-byte cache branch is audited as a 93-instruction '
+            'boundary with three native returns; the bridge routes recompute-zero calls to editable cache logic and '
+            'reconstructs the original 0x1d8-byte frame before native candidate search for recompute-nonzero calls. '
+            'Cache behavior is covered by the artillery evaluator comparison suite; candidate search and complete '
+            'live evaluator parity remain unverified.',
+            original_block_bytes=303,returns=3,replacement_scope='partial_native_evaluator')
+
     focused('final-weights-verification.json','final_weights',
             'Original/source post-query parameter weights and second-pass iterator. Actual parameter table loads and x87 operations execute, with controlled index callbacks, global/table/row/score mutations, integer registers, saved EBP pop, full frame/arena memory and x87 state compared across nonfinite values and precision/rounding modes. CPU flags are excluded; complete final selection, firing and live-match behavior remain unverified.',
             original_block_bytes=143,replacement_scope='partial_native_evaluator')
+    focused('final-selection-verification.json','final_selection',
+            'Entire original/source final-selection tail: remembered/best/alternate transfer, notifications, array writes, rating publication, target clearing and all three return paths. Full fixture memory, callback order/arguments, nonvolatile return ABI, stack cleanup and complete physical x87 state compare. Object callbacks and 200 curve results are controlled; 72 cases execute actual native curve/conversion with fixture tables. Caller-scratch registers, flags, unmasked exceptions and complete evaluator/live matches are excluded.',
+            original_block_bytes=748,returns=3,native_curve_cases=72,controlled_curve_cases=200,replacement_scope='partial_native_evaluator')
 
     focused('next-candidate-verification.json','next_candidate',
             'Original/source first-pass node advance, captured node/table, callback-dependent '

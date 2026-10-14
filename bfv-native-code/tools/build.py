@@ -46,6 +46,13 @@ TARGETS = {
         artillery_final_selection=0x9a1001, artillery_final_selection_bias=0xb95668,
         artillery_final_curve=0x9d6540,
         artillery_final_curve_table=0xe0f670,
+        artillery_search_prefix=0x99f3cf, artillery_search_prefix_continue=0x99f6c3,
+        artillery_candidate_setup=0x99f7ab, artillery_candidate_setup_continue=0x99f8d7,
+        artillery_prefix_refresh_threshold=0xb7628c, artillery_prefix_context=0xe0ef54,
+        artillery_prefix_query_manager=0xdfa8cc, artillery_prefix_query_seed=0xe0ee08,
+        artillery_prefix_region_registry=0xe0edc0, artillery_prefix_tree_erase=0x5f2dc0,
+        artillery_prefix_tree_advance=0x517e10,
+        artillery_driver_reload=0x9a0bc2, artillery_allocation_reload=0x9a0f78,
         artillery_second_empty=0x9a0f7f,
         artillery_second_skip=0x9a0f8c,
         point_xz=0x97f070,
@@ -130,6 +137,13 @@ TARGETS = {
         artillery_final_selection=0x74b7e1, artillery_final_selection_bias=0x839ac0,
         artillery_final_curve=0x78b930,
         artillery_final_curve_table=0xc31c08,
+        artillery_search_prefix=0x749baf, artillery_search_prefix_continue=0x749ea3,
+        artillery_candidate_setup=0x749f8b, artillery_candidate_setup_continue=0x74a0b7,
+        artillery_prefix_refresh_threshold=0x81e9cc, artillery_prefix_context=0xc314b4,
+        artillery_prefix_query_manager=0xc1d338, artillery_prefix_query_seed=0xc313d0,
+        artillery_prefix_region_registry=0xc31388, artillery_prefix_tree_erase=0x5c7980,
+        artillery_prefix_tree_advance=0x718e10,
+        artillery_driver_reload=0x74b3a2, artillery_allocation_reload=0x74b758,
         artillery_second_empty=0x74b75f,
         artillery_second_skip=0x74b76c,
         point_xz=0x728f20,
@@ -193,7 +207,150 @@ def run(args, cwd):
     return result.stdout
 
 
-def build(target):
+LIFTED_FLAGS=['-m32','-std=c11','-O2','-Wall','-Wextra','-Werror','-Wno-array-bounds','-ffreestanding','-fno-builtin',
+    '-frounding-math','-fno-delete-null-pointer-checks','-fno-stack-protector','-fno-asynchronous-unwind-tables','-fno-unwind-tables','-mgeneral-regs-only']
+
+def lifted_sources(target):
+    lifted=PROJECT/'lifted'
+    return [lifted/'runtime/l1_runtime.c',*sorted((lifted/target).glob('lifted*.c'))]
+
+def compile_lifted(target,work):
+    """Compile the L1 lifted C (all of it; only verified entries get detoured)."""
+    from concurrent.futures import ThreadPoolExecutor
+    sources=lifted_sources(target);objects=[work/f'l1_{s.stem}.o' for s in sources]
+    with ThreadPoolExecutor(6) as pool:
+        list(pool.map(lambda so:run([COMPILERS/'gcc.exe',*LIFTED_FLAGS,'-c',so[0],'-o',so[1]],work),zip(sources,objects)))
+    return objects
+
+def lifted_entries(target,spec,pe,original,hand_entries):
+    """Detours for lifted functions that passed verify_lifted.py on exactly these sources.
+
+    An entry is skipped when hand-written C already owns it, when it is not an
+    instruction start of the linear .text decode that static_recomp reassembles
+    byte-exact (a misaligned index entry would cut a native instruction in half),
+    when anything may enter its first five bytes other than at the entry (a
+    labelled branch target, an image dword pointing there, or another lifted
+    function's exit), or when its detour would overlap another patch."""
+    lifted=PROJECT/'lifted'/target
+    if not (lifted/'catalog.json').exists():return [],{}
+    report_path=PROJECT/'build'/target/'lifted-verification.json'
+    if not report_path.exists():return [],dict(not_verified=1)
+    catalog=json.loads((lifted/'catalog.json').read_text())
+    report=json.loads(report_path.read_text())
+    if catalog['original_sha256']!=spec['sha'] or report['original_sha256']!=spec['sha']:
+        raise RuntimeError('Lifted catalog or verification hash differs from the ABI target')
+    runtime=hashlib.sha256()  # same hash as verify_lifted.runtime_sha256
+    for f in [PROJECT/'lifted/runtime/l1.h',PROJECT/'lifted/runtime/l1_runtime.c']:runtime.update(f.name.encode()+bytes(1)+f.read_bytes())
+    if report.get('runtime_sha256')!=runtime.hexdigest():
+        raise RuntimeError(f'{target}: lifted runtime changed since verify_lifted.py; rerun it (or remove lifted-verification.json)')
+    # only functions whose current text is exactly the verified text
+    passed={(r['address'],r['c_sha256']) for r in report['results'] if r['status']=='passed' and r.get('c_sha256')}
+    entries=[e for e in catalog['entries'] if (e['address'],e.get('c_sha256')) in passed]
+    interior={}
+    for e in entries:
+        a=int(e['address'],16)
+        for x in range(a+1,a+5):interior[x]=e
+    blocked=set()
+    from capstone import Cs,CS_ARCH_X86,CS_MODE_32  # same linear sweep as static_recomp.TextEmitter.plan
+    text=next(x for x in pe.sections if x.Name.rstrip(b'\0')==b'.text')
+    code=text.get_data()[:text.Misc_VirtualSize]
+    base=pe.OPTIONAL_HEADER.ImageBase+text.VirtualAddress
+    # Image pointers: an absolute immediate or displacement field of a .text
+    # instruction, a 4-aligned .text dword next to another .text address (jump
+    # table), or any 4-aligned dword of another section. Other byte windows that
+    # happen to spell an interior address are not pointers.
+    starts=set();offset=0;md=Cs(CS_ARCH_X86,CS_MODE_32);md.detail=True
+    sources={}  # direct branch target -> source addresses
+    # Code pointers land on instruction starts: a pointer-like dword hits an
+    # entry only when it names one of the instructions inside its first five
+    # bytes (branches and exits are checked against every interior byte).
+    pointed={}
+    for e in entries:
+        a=int(e['address'],16)
+        for i in md.disasm(pe.get_data(a-pe.OPTIONAL_HEADER.ImageBase,20),a):
+            if i.address>=a+5:break
+            if i.address>a:pointed[i.address]=e
+    def hit(v):
+        if v in pointed:blocked.add(pointed[v]['address'])
+    while offset<len(code):
+        last=offset
+        for i in md.disasm(code[offset:],base+offset):
+            starts.add(i.address);last=i.address-base+i.size
+            branch=(i.group(1) or i.group(2)) and i.op_str.startswith('0x') and ',' not in i.op_str and ':' not in i.op_str  # direct jump, jcc, loop or call
+            if branch:
+                sources.setdefault(int(i.op_str,16),[]).append(i.address)
+                continue  # its immediate is relative
+            for o in (i.disp_offset,i.imm_offset):
+                if o and o+4<=i.size:hit(int.from_bytes(i.bytes[o:o+4],'little'))
+        offset=last if last>offset else offset+1
+    # An entry the linear sweep decodes through (usually right after a jump table)
+    # is still a real entry when another indexed function calls or jumps to it
+    # directly and nothing branches to the sweep instruction that covers it.
+    import bisect
+    spans=sorted(tuple(int(y,16) for y in r.split('-')) for e in catalog['entries'] for r in e['ranges']);span_starts=[lo for lo,_ in spans]
+    def indexed(x):
+        k=bisect.bisect_right(span_starts,x)-1
+        return k>=0 and spans[k][0]<=x<spans[k][1]
+    def real_entry(e):
+        a=int(e['address'],16);own=[tuple(int(y,16) for y in r.split('-')) for r in e['ranges']]
+        if any(p in sources for p in range(a-15,a) if p in starts):return False
+        return any(indexed(s) and not any(lo<=s<hi for lo,hi in own) for s in sources.get(a,()))
+    misaligned={e['address'] for e in entries if int(e['address'],16) not in starts and not real_entry(e)}
+    stats_misaligned_entries=sum(1 for e in entries if int(e['address'],16) not in starts)-len(misaligned)
+    blocked|=misaligned
+    from array import array
+    words=array('I',code[:len(code)//4*4]);assert base%4==0
+    for k,v in enumerate(words):
+        if v in interior and ((k and base<=words[k-1]<base+len(code)) or (k+1<len(words) and base<=words[k+1]<base+len(code))):hit(v)
+    for section in pe.sections:
+        if section is text:continue
+        data=section.get_data()
+        for v in set(array('I',data[:len(data)//4*4])).intersection(interior):hit(v)
+    # A labelled interior address is harmless when every branch to it is a direct
+    # branch inside the same lifted function (the C has its own goto for it) and
+    # that function has no indirect jump that could land there natively.
+    def own(e,x):
+        spans=[tuple(int(y,16) for y in r.split('-')) for r in e['ranges']]
+        if not sources.get(x) or not all(any(lo<=s<hi for lo,hi in spans) for s in sources[x]):return False
+        for lo,hi in spans:
+            for i in md.disasm(code[lo-base:hi-base],lo):
+                if i.mnemonic=='jmp' and not i.op_str.startswith('0x'):return False
+        return True
+    labels_file=PROJECT/'build'/f'{target}-recomp'/'text.s'
+    if not labels_file.exists():raise RuntimeError(f'{target}: run recomp.ps1 once first (branch labels are needed for the detour audit)')
+    with labels_file.open(encoding='utf-8') as f:
+        for line in f:
+            if line[:4] in ('loc_','sub_') and line.rstrip().endswith(':'):
+                x=int(line[4:12],16)
+                if x in interior and not own(interior[x],x):blocked.add(interior[x]['address'])
+    for x,e in interior.items():
+        if x in sources and not own(e,x):blocked.add(e['address'])
+    for e in catalog['entries']:
+        for t in e['exits']:
+            x=int(t,16)
+            if x in interior:blocked.add(interior[x]['address'])
+    stats=dict(passed=len(entries),misaligned=len(misaligned),resynced=stats_misaligned_entries,interior_target=len(blocked-misaligned))
+    # verify_live_exceptions.py patches the call in the original vector-insert catch
+    # funclet, so that funclet stays native
+    u32=lambda a:int.from_bytes(pe.get_data(a-pe.OPTIONAL_HEADER.ImageBase,4),'little')
+    funclet=u32(u32(u32(u32(spec['vector_original_handler']+1)+16)+16)+12)
+    instrumented={e['address'] for e in entries if any(int(r.split('-')[0],16)<=funclet<int(r.split('-')[1],16) for r in e['ranges'])}
+    blocked|=instrumented;stats.update(instrumented=len(instrumented))
+    # hand-written C wins: skip lifted functions that contain any of its patches
+    hand=sorted(location for location,_,_ in hand_entries)
+    import bisect
+    result=[];skipped_taken=0
+    for e in entries:
+        a=int(e['address'],16)
+        if e['address'] in blocked:continue
+        spans=[tuple(int(x,16) for x in r.split('-')) for r in e['ranges']]
+        if any(bisect.bisect_left(hand,lo-15)<bisect.bisect_left(hand,hi) for lo,hi in spans):skipped_taken+=1;continue
+        prefix=bytes.fromhex(e['guarded_prefix'])
+        result.append((a,prefix,e['symbol']))
+    stats.update(hand_written=skipped_taken,detoured=len(result))
+    return result,stats
+
+def build(target,lifted=True):
     spec = TARGETS[target]
     original = (GAME / spec['file']).read_bytes()
     if hashlib.sha256(original).hexdigest() != spec['sha']:
@@ -217,6 +374,7 @@ def build(target):
              '-ffreestanding','-fno-builtin','-frounding-math','-fno-stack-protector','-fno-asynchronous-unwind-tables',
              '-fno-unwind-tables','-I',work,'-c',source_path,'-o',work/f'{source}.o'], work)
         objects.append(work/f'{source}.o')
+    if lifted and (PROJECT/'lifted'/target/'catalog.json').exists():objects+=compile_lifted(target,work)
     rva = align(pe.OPTIONAL_HEADER.SizeOfImage, pe.OPTIONAL_HEADER.SectionAlignment)
     address = pe.OPTIONAL_HEADER.ImageBase + rva
     (work/'payload.ld').write_text(f'SECTIONS {{ . = 0x{address:x}; .payload : {{ *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) }} /DISCARD/ : {{ *(.eh_frame*) *(.comment*) *(.drectve*) }} }}')
@@ -266,7 +424,28 @@ def build(target):
     getter_catalog=json.loads((PROJECT/'word-getters.json').read_text())['targets'][target]
     if getter_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Getter catalog hash differs from the ABI target')
     getter_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in getter_catalog['entries']]
-    for location,expected,name in [
+    accessor_catalog=json.loads((PROJECT/'field-accessors.json').read_text())['targets'][target]
+    if accessor_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Accessor catalog hash differs from the ABI target')
+    accessor_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in accessor_catalog['entries']]
+    init_catalog=json.loads((PROJECT/'static-initializers.json').read_text())['targets'][target]
+    if init_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Initializer catalog hash differs from the ABI target')
+    init_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in init_catalog['entries']]
+    deleting_catalog=json.loads((PROJECT/'deleting-destructors.json').read_text())['targets'][target]
+    if deleting_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Deleting-destructor catalog hash differs from the ABI target')
+    deleting_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in deleting_catalog['entries']]
+    construct_catalog=json.loads((PROJECT/'constructor-calls.json').read_text())['targets'][target]
+    if construct_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Constructor-call catalog hash differs from the ABI target')
+    construct_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in construct_catalog['entries']]
+    cast_catalog=json.loads((PROJECT/'dynamic-casts.json').read_text())['targets'][target]
+    if cast_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Dynamic-cast catalog hash differs from the ABI target')
+    cast_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in cast_catalog['entries']]
+    clone_catalog=json.loads((PROJECT/'clones.json').read_text())['targets'][target]
+    if clone_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Clone catalog hash differs from the ABI target')
+    clone_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in clone_catalog['entries']]
+    store_catalog=json.loads((PROJECT/'global-stores.json').read_text())['targets'][target]
+    if store_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Global-store catalog hash differs from the ABI target')
+    store_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in store_catalog['entries']]
+    hand_entries=[
         (spec['target_history'],bytes.fromhex('83ec105657'),'bfv_target_history'),
         (spec['target_history_insert'],bytes.fromhex('51558b6c2410'),'bfv_history_insert'),
         (spec['history_insert_node'],bytes.fromhex('83ec445657'),'bfv_history_insert_node'),
@@ -312,6 +491,14 @@ def build(target):
         (spec['artillery_second_category_score'],bytes.fromhex('8b8c24d80000008b51088b44243c'),'bfv_artillery_second_category_score_bridge'),
         (spec['artillery_second_iterator'],bytes.fromhex('8b44241c8b8c2404010000'),'bfv_artillery_second_iterator_bridge'),
         (spec['artillery_final_weights'],bytes.fromhex('8b168b3d')+struct.pack('<I',spec['artillery_parameter_manager'])+bytes.fromhex('8bceff92dc000000'),'bfv_artillery_final_weights_bridge'),
+        (spec['artillery_final_selection'],bytes.fromhex('d9842480000000'),'bfv_artillery_final_selection_bridge'),
+        (spec['artillery_search_prefix'],b'\x8b\x0d'+struct.pack('<I',spec['collision_clock']),'bfv_artillery_search_prefix_bridge'),
+        (spec['artillery_candidate_setup'],bytes.fromhex('8b7c24188b0f'),'bfv_artillery_candidate_setup_bridge'),
+        (spec['artillery_score'],bytes.fromhex('81ecd8010000'),'bfv_artillery_entry_bridge'),
+        (spec['artillery_second_movement_unit_score'],bytes.fromhex('c74424340000803f'),'bfv_artillery_unit_score_bridge'),
+        (spec['artillery_driver_reload'],bytes.fromhex('8bbc24fc010000'),'bfv_artillery_driver_reload_bridge'),
+        (spec['artillery_allocation_reload'],bytes.fromhex('8b842400010000'),'bfv_artillery_allocation_reload_bridge'),
+        (spec['artillery_second_empty'],bytes.fromhex('85c0740950'),'bfv_artillery_query_cleanup_bridge'),
         (spec['artillery_query_gate'],b'\xd9\x44\x24\x1c\xd8\x0d'+struct.pack('<I',spec['artillery_query_scale']),'bfv_artillery_query_gate_bridge'),
         (spec['component_event2_word'],bytes.fromhex('8b41048b4820'),'bfv_component_event2_word'),
         (spec['component_query_data'],bytes.fromhex('8b098b01ff5034'),'bfv_component_query_data'),
@@ -328,7 +515,9 @@ def build(target):
         (spec['aim_within_limits'],bytes.fromhex('83ec405657'),'bfv_aim_within_limits'),
         (spec['aim_compose'],bytes.fromhex('8b54240856'),'bfv_affine_compose'),
         (spec['vector_divide'],b'\xd9\x05'+struct.pack('<I',spec['math_one']),'bfv_vector_divide'),
-        *constant_entries,*getter_entries]:
+        *constant_entries,*getter_entries,*accessor_entries,*init_entries,*deleting_entries,*construct_entries,*cast_entries,*clone_entries,*store_entries]
+    lifted_patch_entries,lifted_stats=lifted_entries(target,spec,pe,original,hand_entries) if lifted else ([],{})
+    for location,expected,name in [*hand_entries,*lifted_patch_entries]:
         offset=pe.get_offset_from_rva(location-pe.OPTIONAL_HEADER.ImageBase)
         if original[offset:offset+len(expected)]!=expected:raise RuntimeError(f'Entry guard failed at {location:x}')
         replacement=symbols[name]
@@ -345,10 +534,11 @@ def build(target):
         raise RuntimeError(f'Close {destination.name} before rebuilding: Windows locks running executable files') from error
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
-        payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,entry_patches=entry_patches,
-        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup/insertion and red-black balancing, and first-pass candidate filter/weapon selection; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; audited constant-return functions and object-word getters; remaining engine code/services are retained from the original image')
+        payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,entry_patches=entry_patches,lifted=lifted_stats,
+        scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup/insertion and red-black balancing, and first-pass candidate filter/weapon selection; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; audited constant-return functions, object-word getters, field/global accessors, C++ static-object initializers (with and without constructor arguments) scalar deleting destructors, dynamic_cast wrappers, virtual clones and constant global stores; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
-    print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded vtable replacements and {len(entry_patches)} guarded function entries')
+    print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded vtable replacements and {len(entry_patches)} guarded function entries'
+          +(f' ({len(lifted_patch_entries)} of them L1 lifted C; {lifted_stats})' if lifted_stats else ''))
 
 
 def main():
@@ -357,10 +547,11 @@ def main():
     parser.add_argument('--target',choices=('client','server','both'),default='both')
     parser.add_argument('--game-dir',type=Path,default=GAME)
     parser.add_argument('--compiler-bin',type=Path,default=COMPILERS)
+    parser.add_argument('--no-lifted',action='store_true',help='leave out the L1 lifted C')
     args=parser.parse_args()
     GAME=args.game_dir.resolve()
     COMPILERS=args.compiler_bin.resolve()
-    for target in ('client','server') if args.target=='both' else (args.target,): build(target)
+    for target in ('client','server') if args.target=='both' else (args.target,): build(target,not args.no_lifted)
 
 
 if __name__=='__main__': main()

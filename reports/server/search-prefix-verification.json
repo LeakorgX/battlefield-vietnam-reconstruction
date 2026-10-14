@@ -1,0 +1,9 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "239dc330eda6d7838196aa931c06c439ba32e5c2cccf9402cbab592bceee179d",
+  "passed": 172,
+  "scope": "Fresh-search prefix with history refresh, real generation handles, source tree advance and region bounds/lookup, gun/driver/iterator captures, saved EBP layout, full fixture memory, callback order/arguments, preserved registers and physical x87 state. Object methods, protected erase, release and containment are controlled; scratch registers, flags, unmasked exceptions and entire evaluator/live matches excluded.",
+  "original_block_bytes": 756,
+  "replacement_scope": "partial_native_evaluator"
+}

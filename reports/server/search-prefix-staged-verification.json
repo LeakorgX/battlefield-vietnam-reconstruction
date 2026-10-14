@@ -1,0 +1,12 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "installed_sha256": "06d00e3e34c205a713f7c48ba26324c24fb97441d1bdee65cc121f0498e13fec",
+  "source_sha256": "5742b82849e73555f2079ab6c39b6d2af7f10f6ca5e81c3d7d170f7f9c0269c7",
+  "staged_payload_sha256": "83fbdf9b89fe8933c8fe2966035b0fa0f28906122923a9bc9079eac0baf8009e",
+  "passed": 172,
+  "staged": true,
+  "installed": false,
+  "original_block_bytes": 756,
+  "scope": "Fresh-search prefix: clock/history refresh, real generation handles, source tree advance and region bounds/lookup, gun/driver/region captures, candidate initialization and both native continuations. Full fixture memory, callback arguments/order, saved EBP layout, live preserved registers and physical x87 state compare. Object methods, protected erase, release and containment are controlled; scratch registers, flags, unmasked exceptions and entire evaluator/live matches excluded."
+}

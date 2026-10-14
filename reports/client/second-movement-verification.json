@@ -1,7 +1,7 @@
 {
   "target": "client",
   "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
-  "compiled_sha256": "80c760975a0406f780f09d5cbe759389d1b240f33d15cb6fd7bcb7681a6d751f",
+  "compiled_sha256": "8cad8af2580d8f823a0ed0b0c476f939c4f483d33728a15b530975d8bc914689",
   "passed": 522,
   "scope": "Original/source second-pass movement gate at three native continuations, including callbacks, flags, overlapping vectors, frame memory, captured EDI and x87 states. Virtual methods remain controlled; full evaluator/game behavior remains unverified.",
   "original_block_bytes": 201,

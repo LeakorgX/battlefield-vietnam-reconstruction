@@ -1,0 +1,8798 @@
+{
+  "target": "server",
+  "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+  "compiled_sha256": "6201f72c00f9bdfac2e6b141ed441dc294361c098cb7408342deb92c2493255b",
+  "staged": true,
+  "source_sha256": "a9301e3396a76ae202462079c8eb88462d326f5a2d8123171752832e49b4743b",
+  "passed": 332,
+  "cases": [
+    {
+      "inputs": {},
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before"
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "after"
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 0,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 0,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 1,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 1,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 256,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 256,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 257,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 257,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 4294967295,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "found": 4294967295,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "record",
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "record",
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "point",
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "point",
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1089152681,
+      "direction": [
+        3196803400,
+        1059991450,
+        1059991450
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "origin",
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1092875139,
+      "direction": [
+        3204043926,
+        3200769349,
+        3209157957
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "origin",
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1092875139,
+      "direction": [
+        3204043926,
+        3200769349,
+        3209157957
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "reference",
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1066751317,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "reference",
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1066751317,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "interface",
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "interface",
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "position_origin",
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1095640389,
+      "direction": [
+        1055813366,
+        1060295480,
+        1057691151
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "position_origin",
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "position_record",
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "mutation": "position_record",
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068149419,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2147483648
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068149419,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068149419,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2147483649
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068149419,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 3267887104
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 1120403456
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139095039
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139095040
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 4286578688
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2143363909
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 2147483648
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 2147483649
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 3267887104
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 1120403456
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 2139095039
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 2139095040
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 4286578688
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 2143363909
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "reference": 2139169605
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 1092616192
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 1092616171
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547517,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068149419,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 3240099819
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1066751320,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 3240099840
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1066751317,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 3240099861
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1066751314,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2147483648,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2147483648,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2147483649,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483650,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2147483649,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483650,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          3267887104,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1120403456,
+      "direction": [
+        3212836864,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          3267887104,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1120403456,
+      "direction": [
+        3212836864,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1120403456,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1120403456,
+      "direction": [
+        1065353216,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1120403456,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1120403456,
+      "direction": [
+        1065353216,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139095039,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2139095039,
+      "direction": [
+        1065353216,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139095039,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2139095039,
+      "direction": [
+        1065353216,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139095040,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2139095040,
+      "direction": [
+        4290772992,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139095040,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2139095040,
+      "direction": [
+        4290772992,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          4286578688,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2139095040,
+      "direction": [
+        4290772992,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          4286578688,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2139095040,
+      "direction": [
+        4290772992,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2143363909,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143363909,
+      "direction": [
+        2143363909,
+        2143363909,
+        2143363909
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2143363909,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143363909,
+      "direction": [
+        2143363909,
+        2143363909,
+        2143363909
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143363909,
+      "direction": [
+        2143363909,
+        2143363909,
+        2143363909
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143363909,
+      "direction": [
+        2143363909,
+        2143363909,
+        2143363909
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1056964607,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        1065353215,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1056964607,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        1065353215,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1056964608,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        1065353216,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1056964608,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        1065353216,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1056964609,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964609,
+      "direction": [
+        1065353216,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1056964609,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964609,
+      "direction": [
+        1065353216,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 127,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 127,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 127,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 1151,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 1151,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 1151,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 2175,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 2175,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 2175,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 3199,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 3199,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 3199,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 639,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 639,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 639,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 1663,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 1663,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 1663,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 2687,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 2687,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 2687,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 3711,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 3711,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 3711,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 895,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 895,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 895,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 1919,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 1919,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 1919,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 2943,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 2943,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 2943,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 3967,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 3967,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "cw": 3967,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 127,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 127,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 127,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 1151,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 1151,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 1151,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 2175,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 2175,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 2175,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 3199,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 3199,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 3199,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 639,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 639,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 639,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 1663,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 1663,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 1663,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 2687,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 2687,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 2687,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 3711,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 3711,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 3711,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 895,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 895,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 895,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 1919,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 1919,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 1919,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 2943,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 2943,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 2943,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 3967,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 3967,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "mutation": "record",
+        "cw": 3967,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 127,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 127,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 127,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 1151,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 1151,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 1151,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 2175,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 2175,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 2175,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 3199,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 3199,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 3199,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 639,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 639,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 639,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 1663,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 1663,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 1663,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 2687,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 2687,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 2687,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 3711,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 3711,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 3711,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 895,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 895,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 895,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 1919,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 1919,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 1919,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 2943,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 2943,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 2943,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 3967,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 3967,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "fallback": true,
+        "alias": "before",
+        "cw": 3967,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 127,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 127,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 127,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 1151,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        2147483648,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 1151,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        2147483648,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 1151,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        2147483648,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 2175,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 2175,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 2175,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 3199,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 3199,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 3199,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 639,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 639,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 639,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 1663,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        2147483648,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 1663,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        2147483648,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 1663,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        2147483648,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 2687,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 2687,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 2687,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 3711,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 3711,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 3711,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 895,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 895,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 895,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 1919,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        2147483648,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 1919,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        2147483648,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 1919,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        2147483648,
+        2147483648,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 2943,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 2943,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 2943,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 3967,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 3967,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          0,
+          0,
+          0
+        ],
+        "origin": [
+          0,
+          0,
+          0
+        ],
+        "cw": 3967,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 1056964608,
+      "direction": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 127,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 127,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 127,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 1151,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 1151,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 1151,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 2175,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 2175,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 2175,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 3199,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 3199,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 3199,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 639,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 639,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 639,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 1663,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 1663,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 1663,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 2687,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 2687,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 2687,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 3711,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 3711,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 3711,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 895,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 895,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 895,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 1919,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 1919,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 1919,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 2943,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 2943,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 2943,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642330,
+        1061997773,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 3967,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 3967,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "timestamp": 2139169605,
+        "cw": 3967,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 2143363909,
+      "distance": 1084227584,
+      "direction": [
+        1058642329,
+        1061997772,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 127,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 127,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 127,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 1151,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 1151,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 1151,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 2175,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 2175,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 2175,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 3199,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 3199,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 3199,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 639,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 639,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 639,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 1663,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 1663,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 1663,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 2687,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 2687,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 2687,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 3711,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 3711,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 3711,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 895,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 895,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 895,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 1919,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 1919,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 1919,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 2943,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 2943,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 2943,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848470,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 3967,
+        "depth": 0
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 3967,
+        "depth": 1
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2139169605,
+          2143433814,
+          1
+        ],
+        "cw": 3967,
+        "depth": 2
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1068848469,
+      "distance": 2143433814,
+      "direction": [
+        2143433814,
+        2143433814,
+        2143433814
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2970955204,
+          2437872131,
+          624487343
+        ],
+        "origin": [
+          1194897575,
+          1171741120,
+          665782464
+        ],
+        "timestamp": 3385553674,
+        "reference": 2849519886,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1195025463,
+      "direction": [
+        3212661451,
+        3188961373,
+        2682791727
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          4237407197,
+          866319035,
+          531652236
+        ],
+        "origin": [
+          3467505210,
+          763005658,
+          339509640
+        ],
+        "timestamp": 4263007543,
+        "reference": 2910531805,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 2089923549,
+      "direction": [
+        3212836864,
+        9,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          3005709150,
+          2435088839,
+          1265846262
+        ],
+        "origin": [
+          2505657453,
+          3575333997,
+          3236165757
+        ],
+        "timestamp": 3032488479,
+        "reference": 1166112645,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1427850349,
+      "direction": [
+        2643071438,
+        1065353216,
+        902336174
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2365762715,
+          3191533841,
+          675094837
+        ],
+        "origin": [
+          3909497534,
+          3458838523,
+          3906534001
+        ],
+        "timestamp": 3401670723,
+        "reference": 2158431780,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1764528363,
+      "direction": [
+        1061623015,
+        612088515,
+        1059123529
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          596943943,
+          2059742257,
+          709168762
+        ],
+        "origin": [
+          823994770,
+          2464183342,
+          1461512019
+        ],
+        "timestamp": 462101920,
+        "reference": 2400724891,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 2059742257,
+      "direction": [
+        2147483651,
+        1065353216,
+        2613819247
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          594449527,
+          1872967203,
+          3823066014
+        ],
+        "origin": [
+          1921736574,
+          3492278541,
+          1231242625
+        ],
+        "timestamp": 1710964923,
+        "reference": 587450358,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1921738103,
+      "direction": [
+        3212834056,
+        1016454717,
+        2966231270
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2095954638,
+          212899413,
+          1584049905
+        ],
+        "origin": [
+          241376624,
+          2357300867,
+          1043088654
+        ],
+        "timestamp": 2686689336,
+        "reference": 1965951391,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 2095954638,
+      "direction": [
+        1065353216,
+        0,
+        553433140
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          3691671073,
+          1947572199,
+          357907913
+        ],
+        "origin": [
+          4119446437,
+          793025365,
+          1736324910
+        ],
+        "timestamp": 3155932403,
+        "reference": 3268209734,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1972045578,
+      "direction": [
+        1065200771,
+        1040824913,
+        2976517421
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1041198705,
+          1445150161,
+          2555546684
+        ],
+        "origin": [
+          91077729,
+          346470210,
+          3551227814
+        ],
+        "timestamp": 736130675,
+        "reference": 1038563166,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069531736,
+      "distance": 1445155921,
+      "direction": [
+        660656112,
+        1065344188,
+        1023826540
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          4191902018,
+          1759955397,
+          729854310
+        ],
+        "origin": [
+          3296254996,
+          543448124,
+          1863364226
+        ],
+        "timestamp": 243136723,
+        "reference": 2945487564,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 2044418370,
+      "direction": [
+        3212836864,
+        780578028,
+        3030965078
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2647152094,
+          412120079,
+          3493705510
+        ],
+        "origin": [
+          2960375620,
+          3507875651,
+          759374467
+        ],
+        "timestamp": 1462577754,
+        "reference": 2494335083,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1360871908,
+      "direction": [
+        516318726,
+        1064571977,
+        3197791063
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          801419652,
+          1400015088,
+          80705034
+        ],
+        "origin": [
+          3315410167,
+          2270309679,
+          396509354
+        ],
+        "timestamp": 1679162715,
+        "reference": 1949145486,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1400015088,
+      "direction": [
+        832953959,
+        1065353216,
+        2209039028
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2440943775,
+          3804023627,
+          3171900971
+        ],
+        "origin": [
+          2883885836,
+          1050691927,
+          3265815812
+        ],
+        "timestamp": 4141263213,
+        "reference": 2981776325,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1656539979,
+      "direction": [
+        144375265,
+        3212836864,
+        526663276
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          522951323,
+          2613560549,
+          3071144563
+        ],
+        "origin": [
+          3942682652,
+          622728649,
+          827358750
+        ],
+        "timestamp": 3774979076,
+        "reference": 2832373720,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1795199004,
+      "direction": [
+        1065353216,
+        2147484278,
+        2341298256
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          3331669000,
+          3110262725,
+          1987763489
+        ],
+        "origin": [
+          3574845423,
+          377986693,
+          2151301195
+        ],
+        "timestamp": 2701115591,
+        "reference": 4245191934,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1987763489,
+      "direction": [
+        504813228,
+        2187820221,
+        1065353216
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          418592907,
+          2184966958,
+          1873580839
+        ],
+        "origin": [
+          2109988165,
+          3148154458,
+          345952681
+        ],
+        "timestamp": 2244986351,
+        "reference": 2230713772,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 2109988165,
+      "direction": [
+        3212836864,
+        110434,
+        828477274
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2959659818,
+          2630965878,
+          3445100602
+        ],
+        "origin": [
+          557727107,
+          84499574,
+          1001810507
+        ],
+        "timestamp": 570648167,
+        "reference": 732082805,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1297616954,
+      "direction": [
+        2726948360,
+        2398620858,
+        3212836864
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2280706301,
+          1438566257,
+          2151890149
+        ],
+        "origin": [
+          4233704627,
+          1077867791,
+          973213337
+        ],
+        "timestamp": 78423692,
+        "reference": 1986546853,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 2086220979,
+      "direction": [
+        1065353216,
+        417389166,
+        2147562130
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1593456724,
+          2072711666,
+          2051932831
+        ],
+        "origin": [
+          4169712788,
+          616833501,
+          4101077919
+        ],
+        "timestamp": 796254252,
+        "reference": 3592879874,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 2072867743,
+      "direction": [
+        1014466039,
+        1065070747,
+        1044019453
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1758340307,
+          4229464892,
+          1326288171
+        ],
+        "origin": [
+          3400490943,
+          2669997163,
+          1483368384
+        ],
+        "timestamp": 1082359357,
+        "reference": 1887350873,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 2081981244,
+      "direction": [
+        741147366,
+        3212836864,
+        2613361376
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1657443406,
+          597417632,
+          2642937372
+        ],
+        "origin": [
+          999583884,
+          2712044500,
+          2003736564
+        ],
+        "timestamp": 2315322677,
+        "reference": 3322384073,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 2003736564,
+      "direction": [
+        718887869,
+        0,
+        3212836864
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          4147554157,
+          3254062844,
+          2452140042
+        ],
+        "origin": [
+          1662647441,
+          528603836,
+          3717589354
+        ],
+        "timestamp": 1639215182,
+        "reference": 4255114949,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 2000070509,
+      "direction": [
+        3212836864,
+        2318121812,
+        634526754
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          3349435327,
+          2852846853,
+          1216489
+        ],
+        "origin": [
+          1769095809,
+          2649519112,
+          1086754697
+        ],
+        "timestamp": 2113542735,
+        "reference": 2736726433,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1769095809,
+      "direction": [
+        3212836864,
+        2152296328,
+        2530333323
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2898351753,
+          1462047530,
+          2368244295
+        ],
+        "origin": [
+          3968011576,
+          2679476325,
+          2540076458
+        ],
+        "timestamp": 549126,
+        "reference": 1206451055,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1820527928,
+      "direction": [
+        1065353216,
+        706820897,
+        0
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          3526650509,
+          3741096608,
+          3388105857
+        ],
+        "origin": [
+          4202281145,
+          2787098777,
+          2977465090
+        ],
+        "timestamp": 3121011059,
+        "reference": 1363022668,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 2054797497,
+      "direction": [
+        1065353216,
+        2751560250,
+        2398649500
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          276909017,
+          2574945531,
+          1619267670
+        ],
+        "origin": [
+          812665845,
+          2208202646,
+          664627439
+        ],
+        "timestamp": 3307060083,
+        "reference": 1737663851,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1619267670,
+      "direction": [
+        2406016772,
+        2147483769,
+        1065353216
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1356339963,
+          1310039818,
+          2310814837
+        ],
+        "origin": [
+          3241929125,
+          4025297772,
+          345122004
+        ],
+        "timestamp": 3464897216,
+        "reference": 1524933866,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 1877814124,
+      "direction": [
+        543769451,
+        1065353216,
+        2147483648
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2257254506,
+          3307379409,
+          342546001
+        ],
+        "origin": [
+          945152918,
+          1713993042,
+          4181040408
+        ],
+        "timestamp": 636646017,
+        "reference": 3787009867,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 2033556760,
+      "direction": [
+        2148101110,
+        2892946864,
+        1065353216
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          3844175374,
+          1277983262,
+          3630421329
+        ],
+        "origin": [
+          3870943467,
+          3163607561,
+          3203095516
+        ],
+        "timestamp": 3226677430,
+        "reference": 623581613,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069086168,
+      "distance": 1722137129,
+      "direction": [
+        1065353216,
+        621098648,
+        2972710854
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          2327098458,
+          2500221812,
+          306689553
+        ],
+        "origin": [
+          2815327535,
+          2416437917,
+          4161878983
+        ],
+        "timestamp": 3313236311,
+        "reference": 915882545,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 2014395335,
+      "direction": [
+        0,
+        2147483648,
+        1065353216
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          1990354325,
+          3450668775,
+          1003910504
+        ],
+        "origin": [
+          1616388940,
+          2176838281,
+          2468276432
+        ],
+        "timestamp": 3429841048,
+        "reference": 3483508403,
+        "fallback": false
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ],
+        [
+          "position",
+          50364612
+        ]
+      ],
+      "weight": 1069547520,
+      "distance": 1990354325,
+      "direction": [
+        1065353216,
+        2525520109,
+        78186725
+      ]
+    },
+    {
+      "inputs": {
+        "point": [
+          829607818,
+          1936967024,
+          3001354587
+        ],
+        "origin": [
+          1924405429,
+          1262780756,
+          2050741270
+        ],
+        "timestamp": 1617730191,
+        "reference": 1946856701,
+        "fallback": true
+      },
+      "calls": [
+        [
+          "timestamp",
+          131073,
+          50364684
+        ]
+      ],
+      "weight": 1065353216,
+      "distance": 2050741270,
+      "direction": [
+        3086317111,
+        950411165,
+        3212836864
+      ]
+    }
+  ]
+}

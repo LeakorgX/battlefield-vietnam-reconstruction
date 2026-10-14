@@ -1,13 +1,14 @@
 # Setup and local regeneration
 
-## Current native build
+## Native build and static recompilation
 
 Windows is required for launching and inspecting the native game. Supply your own
 installation with the inspected client/server hashes listed below.
 
 Required tools:
 
-- Python via `uv` on PATH. The scripts request `pefile` and `unicorn` through uv.
+- Python via `uv` on PATH. The scripts request `pefile`, `capstone` and `unicorn`
+  through uv.
 - 32-bit MinGW GCC/binutils. The tested directory is
   `C:/msys64/mingw32/bin`, targeting `i686-w64-mingw32`.
 - PowerShell.
@@ -19,6 +20,7 @@ necessary. A 64-bit compiler is not a substitute for the recovered x86 ABI.
 ```powershell
 $env:BFV_GAME_DIR='D:\Games\Battlefield Vietnam'
 .\bfv-native-code\build.ps1
+.\bfv-native-code\recomp.ps1
 .\bfv-native-code\verify.ps1
 .\bfv-native-code\run.ps1
 ```

@@ -1,0 +1,2475 @@
+{
+  "scope": "Functions that only store constants into globals, then return. Object types and meanings remain native.",
+  "targets": {
+    "client": {
+      "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+      "rejected": {},
+      "entries": [
+        {
+          "address": "00a3fd40",
+          "symbol": "bfv_client_global_store_00a3fd40",
+          "stores": [
+            [
+              "00e177b0",
+              1,
+              "00"
+            ]
+          ],
+          "guarded_prefix": "c605b077e1",
+          "native_body": "c605b077e10000c3"
+        },
+        {
+          "address": "00abddf0",
+          "symbol": "bfv_client_global_store_00abddf0",
+          "stores": [
+            [
+              "00e21210",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21214",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c7051012e2",
+          "native_body": "c7051012e20000000000c7051412e20000000000c3"
+        },
+        {
+          "address": "00abde20",
+          "symbol": "bfv_client_global_store_00abde20",
+          "stores": [
+            [
+              "00e21108",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e2110c",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e21110",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e21114",
+              4,
+              "3f800000"
+            ]
+          ],
+          "guarded_prefix": "c7050811e2",
+          "native_body": "c7050811e2000000803fc7050c11e2000000803fc7051011e2000000803fc7051411e2000000803fc3"
+        },
+        {
+          "address": "00abde60",
+          "symbol": "bfv_client_global_store_00abde60",
+          "stores": [
+            [
+              "00e21228",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e2122c",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e21230",
+              4,
+              "3f800000"
+            ]
+          ],
+          "guarded_prefix": "c7052812e2",
+          "native_body": "c7052812e2000000803fc7052c12e2000000803fc7053012e2000000803fc3"
+        },
+        {
+          "address": "00abde90",
+          "symbol": "bfv_client_global_store_00abde90",
+          "stores": [
+            [
+              "00e211d0",
+              4,
+              "00000000"
+            ],
+            [
+              "00e211d4",
+              4,
+              "00000000"
+            ],
+            [
+              "00e211d8",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c705d011e2",
+          "native_body": "c705d011e20000000000c705d411e20000000000c705d811e20000000000c3"
+        },
+        {
+          "address": "00abdec0",
+          "symbol": "bfv_client_global_store_00abdec0",
+          "stores": [
+            [
+              "00e21098",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e2109c",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210a0",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c7059810e2",
+          "native_body": "c7059810e2000000803fc7059c10e20000000000c705a010e20000000000c3"
+        },
+        {
+          "address": "00abdef0",
+          "symbol": "bfv_client_global_store_00abdef0",
+          "stores": [
+            [
+              "00e210a8",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210ac",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e210b0",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c705a810e2",
+          "native_body": "c705a810e20000000000c705ac10e2000000803fc705b010e20000000000c3"
+        },
+        {
+          "address": "00abdf20",
+          "symbol": "bfv_client_global_store_00abdf20",
+          "stores": [
+            [
+              "00e210b8",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210bc",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210c0",
+              4,
+              "3f800000"
+            ]
+          ],
+          "guarded_prefix": "c705b810e2",
+          "native_body": "c705b810e20000000000c705bc10e20000000000c705c010e2000000803fc3"
+        },
+        {
+          "address": "00abdf50",
+          "symbol": "bfv_client_global_store_00abdf50",
+          "stores": [
+            [
+              "00e211e0",
+              4,
+              "bf800000"
+            ],
+            [
+              "00e211e4",
+              4,
+              "00000000"
+            ],
+            [
+              "00e211e8",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c705e011e2",
+          "native_body": "c705e011e200000080bfc705e411e20000000000c705e811e20000000000c3"
+        },
+        {
+          "address": "00abdf80",
+          "symbol": "bfv_client_global_store_00abdf80",
+          "stores": [
+            [
+              "00e21200",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21204",
+              4,
+              "bf800000"
+            ],
+            [
+              "00e21208",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c7050012e2",
+          "native_body": "c7050012e20000000000c7050412e200000080bfc7050812e20000000000c3"
+        },
+        {
+          "address": "00abdfb0",
+          "symbol": "bfv_client_global_store_00abdfb0",
+          "stores": [
+            [
+              "00e211f0",
+              4,
+              "00000000"
+            ],
+            [
+              "00e211f4",
+              4,
+              "00000000"
+            ],
+            [
+              "00e211f8",
+              4,
+              "bf800000"
+            ]
+          ],
+          "guarded_prefix": "c705f011e2",
+          "native_body": "c705f011e20000000000c705f411e20000000000c705f811e200000080bfc3"
+        },
+        {
+          "address": "00abdfe0",
+          "symbol": "bfv_client_global_store_00abdfe0",
+          "stores": [
+            [
+              "00e21268",
+              4,
+              "00000000"
+            ],
+            [
+              "00e2126c",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21270",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21274",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c7056812e2",
+          "native_body": "c7056812e20000000000c7056c12e20000000000c7057012e20000000000c7057412e20000000000c3"
+        },
+        {
+          "address": "00abe020",
+          "symbol": "bfv_client_global_store_00abe020",
+          "stores": [
+            [
+              "00e210d8",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e210dc",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210e0",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210e4",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c705d810e2",
+          "native_body": "c705d810e2000000803fc705dc10e20000000000c705e010e20000000000c705e410e20000000000c3"
+        },
+        {
+          "address": "00abe060",
+          "symbol": "bfv_client_global_store_00abe060",
+          "stores": [
+            [
+              "00e21278",
+              4,
+              "bf800000"
+            ],
+            [
+              "00e2127c",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21280",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21284",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c7057812e2",
+          "native_body": "c7057812e200000080bfc7057c12e20000000000c7058012e20000000000c7058412e20000000000c3"
+        },
+        {
+          "address": "00abe0a0",
+          "symbol": "bfv_client_global_store_00abe0a0",
+          "stores": [
+            [
+              "00e210e8",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210ec",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e210f0",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210f4",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c705e810e2",
+          "native_body": "c705e810e20000000000c705ec10e2000000803fc705f010e20000000000c705f410e20000000000c3"
+        },
+        {
+          "address": "00abe0e0",
+          "symbol": "bfv_client_global_store_00abe0e0",
+          "stores": [
+            [
+              "00e21258",
+              4,
+              "00000000"
+            ],
+            [
+              "00e2125c",
+              4,
+              "bf800000"
+            ],
+            [
+              "00e21260",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21264",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c7055812e2",
+          "native_body": "c7055812e20000000000c7055c12e200000080bfc7056012e20000000000c7056412e20000000000c3"
+        },
+        {
+          "address": "00abe120",
+          "symbol": "bfv_client_global_store_00abe120",
+          "stores": [
+            [
+              "00e210f8",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210fc",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21100",
+              4,
+              "3f800000"
+            ],
+            [
+              "00e21104",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c705f810e2",
+          "native_body": "c705f810e20000000000c705fc10e20000000000c7050011e2000000803fc7050411e20000000000c3"
+        },
+        {
+          "address": "00abe160",
+          "symbol": "bfv_client_global_store_00abe160",
+          "stores": [
+            [
+              "00e21238",
+              4,
+              "00000000"
+            ],
+            [
+              "00e2123c",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21240",
+              4,
+              "bf800000"
+            ],
+            [
+              "00e21244",
+              4,
+              "00000000"
+            ]
+          ],
+          "guarded_prefix": "c7053812e2",
+          "native_body": "c7053812e20000000000c7053c12e20000000000c7054012e200000080bfc7054412e20000000000c3"
+        },
+        {
+          "address": "00abe1a0",
+          "symbol": "bfv_client_global_store_00abe1a0",
+          "stores": [
+            [
+              "00e210c8",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210cc",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210d0",
+              4,
+              "00000000"
+            ],
+            [
+              "00e210d4",
+              4,
+              "3f800000"
+            ]
+          ],
+          "guarded_prefix": "c705c810e2",
+          "native_body": "c705c810e20000000000c705cc10e20000000000c705d010e20000000000c705d410e2000000803fc3"
+        },
+        {
+          "address": "00abe1e0",
+          "symbol": "bfv_client_global_store_00abe1e0",
+          "stores": [
+            [
+              "00e21248",
+              4,
+              "00000000"
+            ],
+            [
+              "00e2124c",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21250",
+              4,
+              "00000000"
+            ],
+            [
+              "00e21254",
+              4,
+              "bf800000"
+            ]
+          ],
+          "guarded_prefix": "c7054812e2",
+          "native_body": "c7054812e20000000000c7054c12e20000000000c7055012e20000000000c7055412e200000080bfc3"
+        },
+        {
+          "address": "00ac9cf0",
+          "symbol": "bfv_client_global_store_00ac9cf0",
+          "stores": [
+            [
+              "00d44414",
+              4,
+              "00ca67e0"
+            ]
+          ],
+          "guarded_prefix": "c7051444d4",
+          "native_body": "c7051444d400e067ca00c3"
+        },
+        {
+          "address": "00b12c10",
+          "symbol": "bfv_client_global_store_00b12c10",
+          "stores": [
+            [
+              "00d7ee28",
+              4,
+              "00000001"
+            ]
+          ],
+          "guarded_prefix": "c70528eed7",
+          "native_body": "c70528eed70001000000c3"
+        },
+        {
+          "address": "00b1c0d0",
+          "symbol": "bfv_client_global_store_00b1c0d0",
+          "stores": [
+            [
+              "00de5a8c",
+              4,
+              "00cfbc88"
+            ]
+          ],
+          "guarded_prefix": "c7058c5ade",
+          "native_body": "c7058c5ade0088bccf00c3"
+        },
+        {
+          "address": "00b1c140",
+          "symbol": "bfv_client_global_store_00b1c140",
+          "stores": [
+            [
+              "00de5a94",
+              4,
+              "00de5a98"
+            ]
+          ],
+          "guarded_prefix": "c705945ade",
+          "native_body": "c705945ade00985ade00c3"
+        },
+        {
+          "address": "00b1c150",
+          "symbol": "bfv_client_global_store_00b1c150",
+          "stores": [
+            [
+              "00de5a90",
+              4,
+              "00cfbc88"
+            ]
+          ],
+          "guarded_prefix": "c705905ade",
+          "native_body": "c705905ade0088bccf00c3"
+        },
+        {
+          "address": "00b1fb80",
+          "symbol": "bfv_client_global_store_00b1fb80",
+          "stores": [
+            [
+              "00df70e0",
+              4,
+              "00df70e4"
+            ]
+          ],
+          "guarded_prefix": "c705e070df",
+          "native_body": "c705e070df00e470df00c3"
+        },
+        {
+          "address": "00b1fba0",
+          "symbol": "bfv_client_global_store_00b1fba0",
+          "stores": [
+            [
+              "00df70f4",
+              4,
+              "00d11448"
+            ]
+          ],
+          "guarded_prefix": "c705f470df",
+          "native_body": "c705f470df004814d100c3"
+        },
+        {
+          "address": "00b409c0",
+          "symbol": "bfv_client_global_store_00b409c0",
+          "stores": [
+            [
+              "00e13428",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7052834e1",
+          "native_body": "c7052834e1006427b400c3"
+        },
+        {
+          "address": "00b409d0",
+          "symbol": "bfv_client_global_store_00b409d0",
+          "stores": [
+            [
+              "00e13788",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7058837e1",
+          "native_body": "c7058837e1006427b400c3"
+        },
+        {
+          "address": "00b409e0",
+          "symbol": "bfv_client_global_store_00b409e0",
+          "stores": [
+            [
+              "00e12810",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7051028e1",
+          "native_body": "c7051028e1006427b400c3"
+        },
+        {
+          "address": "00b409f0",
+          "symbol": "bfv_client_global_store_00b409f0",
+          "stores": [
+            [
+              "00e12768",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7056827e1",
+          "native_body": "c7056827e1006427b400c3"
+        },
+        {
+          "address": "00b40a00",
+          "symbol": "bfv_client_global_store_00b40a00",
+          "stores": [
+            [
+              "00e13220",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7052032e1",
+          "native_body": "c7052032e1006427b400c3"
+        },
+        {
+          "address": "00b40a10",
+          "symbol": "bfv_client_global_store_00b40a10",
+          "stores": [
+            [
+              "00e12f80",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705802fe1",
+          "native_body": "c705802fe1006427b400c3"
+        },
+        {
+          "address": "00b40a20",
+          "symbol": "bfv_client_global_store_00b40a20",
+          "stores": [
+            [
+              "00e13028",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7052830e1",
+          "native_body": "c7052830e1006427b400c3"
+        },
+        {
+          "address": "00b40a30",
+          "symbol": "bfv_client_global_store_00b40a30",
+          "stores": [
+            [
+              "00e13830",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7053038e1",
+          "native_body": "c7053038e1006427b400c3"
+        },
+        {
+          "address": "00b40a40",
+          "symbol": "bfv_client_global_store_00b40a40",
+          "stores": [
+            [
+              "00e13370",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7057033e1",
+          "native_body": "c7057033e1006427b400c3"
+        },
+        {
+          "address": "00b40a50",
+          "symbol": "bfv_client_global_store_00b40a50",
+          "stores": [
+            [
+              "00e132c8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705c832e1",
+          "native_body": "c705c832e1006427b400c3"
+        },
+        {
+          "address": "00b40a60",
+          "symbol": "bfv_client_global_store_00b40a60",
+          "stores": [
+            [
+              "00e12d78",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705782de1",
+          "native_body": "c705782de1006427b400c3"
+        },
+        {
+          "address": "00b40a70",
+          "symbol": "bfv_client_global_store_00b40a70",
+          "stores": [
+            [
+              "00e12960",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7056029e1",
+          "native_body": "c7056029e1006427b400c3"
+        },
+        {
+          "address": "00b40a80",
+          "symbol": "bfv_client_global_store_00b40a80",
+          "stores": [
+            [
+              "00e13638",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7053836e1",
+          "native_body": "c7053836e1006427b400c3"
+        },
+        {
+          "address": "00b40a90",
+          "symbol": "bfv_client_global_store_00b40a90",
+          "stores": [
+            [
+              "00e126c0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705c026e1",
+          "native_body": "c705c026e1006427b400c3"
+        },
+        {
+          "address": "00b40aa0",
+          "symbol": "bfv_client_global_store_00b40aa0",
+          "stores": [
+            [
+              "00e130d0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705d030e1",
+          "native_body": "c705d030e1006427b400c3"
+        },
+        {
+          "address": "00b40ab0",
+          "symbol": "bfv_client_global_store_00b40ab0",
+          "stores": [
+            [
+              "00e12618",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7051826e1",
+          "native_body": "c7051826e1006427b400c3"
+        },
+        {
+          "address": "00b40ac0",
+          "symbol": "bfv_client_global_store_00b40ac0",
+          "stores": [
+            [
+              "00e134d0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705d034e1",
+          "native_body": "c705d034e1006427b400c3"
+        },
+        {
+          "address": "00b40ad0",
+          "symbol": "bfv_client_global_store_00b40ad0",
+          "stores": [
+            [
+              "00e12a08",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705082ae1",
+          "native_body": "c705082ae1006427b400c3"
+        },
+        {
+          "address": "00b40ae0",
+          "symbol": "bfv_client_global_store_00b40ae0",
+          "stores": [
+            [
+              "00e12cd0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705d02ce1",
+          "native_body": "c705d02ce1006427b400c3"
+        },
+        {
+          "address": "00b40af0",
+          "symbol": "bfv_client_global_store_00b40af0",
+          "stores": [
+            [
+              "00e124c8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705c824e1",
+          "native_body": "c705c824e1006427b400c3"
+        },
+        {
+          "address": "00b40b00",
+          "symbol": "bfv_client_global_store_00b40b00",
+          "stores": [
+            [
+              "00e13178",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7057831e1",
+          "native_body": "c7057831e1006427b400c3"
+        },
+        {
+          "address": "00b40b10",
+          "symbol": "bfv_client_global_store_00b40b10",
+          "stores": [
+            [
+              "00e12420",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7052024e1",
+          "native_body": "c7052024e1006427b400c3"
+        },
+        {
+          "address": "00b40b20",
+          "symbol": "bfv_client_global_store_00b40b20",
+          "stores": [
+            [
+              "00e12ab8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705b82ae1",
+          "native_body": "c705b82ae1006427b400c3"
+        },
+        {
+          "address": "00b40b30",
+          "symbol": "bfv_client_global_store_00b40b30",
+          "stores": [
+            [
+              "00e122d0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705d022e1",
+          "native_body": "c705d022e1006427b400c3"
+        },
+        {
+          "address": "00b40b40",
+          "symbol": "bfv_client_global_store_00b40b40",
+          "stores": [
+            [
+              "00e12378",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7057823e1",
+          "native_body": "c7057823e1006427b400c3"
+        },
+        {
+          "address": "00b40b50",
+          "symbol": "bfv_client_global_store_00b40b50",
+          "stores": [
+            [
+              "00e12ec8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705c82ee1",
+          "native_body": "c705c82ee1006427b400c3"
+        },
+        {
+          "address": "00b40b60",
+          "symbol": "bfv_client_global_store_00b40b60",
+          "stores": [
+            [
+              "00e12c28",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705282ce1",
+          "native_body": "c705282ce1006427b400c3"
+        },
+        {
+          "address": "00b40b70",
+          "symbol": "bfv_client_global_store_00b40b70",
+          "stores": [
+            [
+              "00e12570",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7057025e1",
+          "native_body": "c7057025e1006427b400c3"
+        },
+        {
+          "address": "00b40b80",
+          "symbol": "bfv_client_global_store_00b40b80",
+          "stores": [
+            [
+              "00e136e0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705e036e1",
+          "native_body": "c705e036e1006427b400c3"
+        },
+        {
+          "address": "00b40b90",
+          "symbol": "bfv_client_global_store_00b40b90",
+          "stores": [
+            [
+              "00e138d8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705d838e1",
+          "native_body": "c705d838e1006427b400c3"
+        },
+        {
+          "address": "00b40ba0",
+          "symbol": "bfv_client_global_store_00b40ba0",
+          "stores": [
+            [
+              "00e128b8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705b828e1",
+          "native_body": "c705b828e1006427b400c3"
+        },
+        {
+          "address": "00b40bb0",
+          "symbol": "bfv_client_global_store_00b40bb0",
+          "stores": [
+            [
+              "00e12e20",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705202ee1",
+          "native_body": "c705202ee1006427b400c3"
+        },
+        {
+          "address": "00b40eb0",
+          "symbol": "bfv_client_global_store_00b40eb0",
+          "stores": [
+            [
+              "00e16640",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7054066e1",
+          "native_body": "c7054066e1006427b400c3"
+        },
+        {
+          "address": "00b40ec0",
+          "symbol": "bfv_client_global_store_00b40ec0",
+          "stores": [
+            [
+              "00e168e8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705e868e1",
+          "native_body": "c705e868e1006427b400c3"
+        },
+        {
+          "address": "00b40ed0",
+          "symbol": "bfv_client_global_store_00b40ed0",
+          "stores": [
+            [
+              "00e15460",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7056054e1",
+          "native_body": "c7056054e1006427b400c3"
+        },
+        {
+          "address": "00b40ee0",
+          "symbol": "bfv_client_global_store_00b40ee0",
+          "stores": [
+            [
+              "00e151c0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705c051e1",
+          "native_body": "c705c051e1006427b400c3"
+        },
+        {
+          "address": "00b40ef0",
+          "symbol": "bfv_client_global_store_00b40ef0",
+          "stores": [
+            [
+              "00e160f8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705f860e1",
+          "native_body": "c705f860e1006427b400c3"
+        },
+        {
+          "address": "00b40f00",
+          "symbol": "bfv_client_global_store_00b40f00",
+          "stores": [
+            [
+              "00e15f00",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705005fe1",
+          "native_body": "c705005fe1006427b400c3"
+        },
+        {
+          "address": "00b40f10",
+          "symbol": "bfv_client_global_store_00b40f10",
+          "stores": [
+            [
+              "00e15fa8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705a85fe1",
+          "native_body": "c705a85fe1006427b400c3"
+        },
+        {
+          "address": "00b40f20",
+          "symbol": "bfv_client_global_store_00b40f20",
+          "stores": [
+            [
+              "00e16990",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7059069e1",
+          "native_body": "c7059069e1006427b400c3"
+        },
+        {
+          "address": "00b40f30",
+          "symbol": "bfv_client_global_store_00b40f30",
+          "stores": [
+            [
+              "00e16248",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7054862e1",
+          "native_body": "c7054862e1006427b400c3"
+        },
+        {
+          "address": "00b40f40",
+          "symbol": "bfv_client_global_store_00b40f40",
+          "stores": [
+            [
+              "00e161a0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705a061e1",
+          "native_body": "c705a061e1006427b400c3"
+        },
+        {
+          "address": "00b40f50",
+          "symbol": "bfv_client_global_store_00b40f50",
+          "stores": [
+            [
+              "00e15e58",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705585ee1",
+          "native_body": "c705585ee1006427b400c3"
+        },
+        {
+          "address": "00b40f60",
+          "symbol": "bfv_client_global_store_00b40f60",
+          "stores": [
+            [
+              "00e15d08",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705085de1",
+          "native_body": "c705085de1006427b400c3"
+        },
+        {
+          "address": "00b40f70",
+          "symbol": "bfv_client_global_store_00b40f70",
+          "stores": [
+            [
+              "00e153b8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705b853e1",
+          "native_body": "c705b853e1006427b400c3"
+        },
+        {
+          "address": "00b40f80",
+          "symbol": "bfv_client_global_store_00b40f80",
+          "stores": [
+            [
+              "00e16798",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7059867e1",
+          "native_body": "c7059867e1006427b400c3"
+        },
+        {
+          "address": "00b40f90",
+          "symbol": "bfv_client_global_store_00b40f90",
+          "stores": [
+            [
+              "00e15118",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7051851e1",
+          "native_body": "c7051851e1006427b400c3"
+        },
+        {
+          "address": "00b40fa0",
+          "symbol": "bfv_client_global_store_00b40fa0",
+          "stores": [
+            [
+              "00e16050",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7055060e1",
+          "native_body": "c7055060e1006427b400c3"
+        },
+        {
+          "address": "00b40fb0",
+          "symbol": "bfv_client_global_store_00b40fb0",
+          "stores": [
+            [
+              "00e14c80",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705804ce1",
+          "native_body": "c705804ce1006427b400c3"
+        },
+        {
+          "address": "00b40fc0",
+          "symbol": "bfv_client_global_store_00b40fc0",
+          "stores": [
+            [
+              "00e15a50",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705505ae1",
+          "native_body": "c705505ae1006427b400c3"
+        },
+        {
+          "address": "00b40fd0",
+          "symbol": "bfv_client_global_store_00b40fd0",
+          "stores": [
+            [
+              "00e16440",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7054064e1",
+          "native_body": "c7054064e1006427b400c3"
+        },
+        {
+          "address": "00b40fe0",
+          "symbol": "bfv_client_global_store_00b40fe0",
+          "stores": [
+            [
+              "00e15310",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7051053e1",
+          "native_body": "c7051053e1006427b400c3"
+        },
+        {
+          "address": "00b40ff0",
+          "symbol": "bfv_client_global_store_00b40ff0",
+          "stores": [
+            [
+              "00e14648",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7054846e1",
+          "native_body": "c7054846e1006427b400c3"
+        },
+        {
+          "address": "00b41000",
+          "symbol": "bfv_client_global_store_00b41000",
+          "stores": [
+            [
+              "00e14b28",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705284be1",
+          "native_body": "c705284be1006427b400c3"
+        },
+        {
+          "address": "00b41010",
+          "symbol": "bfv_client_global_store_00b41010",
+          "stores": [
+            [
+              "00e15070",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7057050e1",
+          "native_body": "c7057050e1006427b400c3"
+        },
+        {
+          "address": "00b41020",
+          "symbol": "bfv_client_global_store_00b41020",
+          "stores": [
+            [
+              "00e162f0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705f062e1",
+          "native_body": "c705f062e1006427b400c3"
+        },
+        {
+          "address": "00b41030",
+          "symbol": "bfv_client_global_store_00b41030",
+          "stores": [
+            [
+              "00e149d0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705d049e1",
+          "native_body": "c705d049e1006427b400c3"
+        },
+        {
+          "address": "00b41040",
+          "symbol": "bfv_client_global_store_00b41040",
+          "stores": [
+            [
+              "00e146f0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705f046e1",
+          "native_body": "c705f046e1006427b400c3"
+        },
+        {
+          "address": "00b41050",
+          "symbol": "bfv_client_global_store_00b41050",
+          "stores": [
+            [
+              "00e14e78",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705784ee1",
+          "native_body": "c705784ee1006427b400c3"
+        },
+        {
+          "address": "00b41060",
+          "symbol": "bfv_client_global_store_00b41060",
+          "stores": [
+            [
+              "00e14fc8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705c84fe1",
+          "native_body": "c705c84fe1006427b400c3"
+        },
+        {
+          "address": "00b41070",
+          "symbol": "bfv_client_global_store_00b41070",
+          "stores": [
+            [
+              "00e15268",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7056852e1",
+          "native_body": "c7056852e1006427b400c3"
+        },
+        {
+          "address": "00b41080",
+          "symbol": "bfv_client_global_store_00b41080",
+          "stores": [
+            [
+              "00e15510",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7051055e1",
+          "native_body": "c7051055e1006427b400c3"
+        },
+        {
+          "address": "00b41090",
+          "symbol": "bfv_client_global_store_00b41090",
+          "stores": [
+            [
+              "00e15660",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7056056e1",
+          "native_body": "c7056056e1006427b400c3"
+        },
+        {
+          "address": "00b410a0",
+          "symbol": "bfv_client_global_store_00b410a0",
+          "stores": [
+            [
+              "00e16a38",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705386ae1",
+          "native_body": "c705386ae1006427b400c3"
+        },
+        {
+          "address": "00b410b0",
+          "symbol": "bfv_client_global_store_00b410b0",
+          "stores": [
+            [
+              "00e164f0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705f064e1",
+          "native_body": "c705f064e1006427b400c3"
+        },
+        {
+          "address": "00b410c0",
+          "symbol": "bfv_client_global_store_00b410c0",
+          "stores": [
+            [
+              "00e155b8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705b855e1",
+          "native_body": "c705b855e1006427b400c3"
+        },
+        {
+          "address": "00b410d0",
+          "symbol": "bfv_client_global_store_00b410d0",
+          "stores": [
+            [
+              "00e14dd0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705d04de1",
+          "native_body": "c705d04de1006427b400c3"
+        },
+        {
+          "address": "00b410e0",
+          "symbol": "bfv_client_global_store_00b410e0",
+          "stores": [
+            [
+              "00e16840",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7054068e1",
+          "native_body": "c7054068e1006427b400c3"
+        },
+        {
+          "address": "00b410f0",
+          "symbol": "bfv_client_global_store_00b410f0",
+          "stores": [
+            [
+              "00e15900",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7050059e1",
+          "native_body": "c7050059e1006427b400c3"
+        },
+        {
+          "address": "00b41100",
+          "symbol": "bfv_client_global_store_00b41100",
+          "stores": [
+            [
+              "00e159a8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705a859e1",
+          "native_body": "c705a859e1006427b400c3"
+        },
+        {
+          "address": "00b41110",
+          "symbol": "bfv_client_global_store_00b41110",
+          "stores": [
+            [
+              "00e16598",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7059865e1",
+          "native_body": "c7059865e1006427b400c3"
+        },
+        {
+          "address": "00b41120",
+          "symbol": "bfv_client_global_store_00b41120",
+          "stores": [
+            [
+              "00e15708",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7050857e1",
+          "native_body": "c7050857e1006427b400c3"
+        },
+        {
+          "address": "00b41130",
+          "symbol": "bfv_client_global_store_00b41130",
+          "stores": [
+            [
+              "00e15b08",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705085be1",
+          "native_body": "c705085be1006427b400c3"
+        },
+        {
+          "address": "00b41140",
+          "symbol": "bfv_client_global_store_00b41140",
+          "stores": [
+            [
+              "00e166e8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705e866e1",
+          "native_body": "c705e866e1006427b400c3"
+        },
+        {
+          "address": "00b41150",
+          "symbol": "bfv_client_global_store_00b41150",
+          "stores": [
+            [
+              "00e14bd0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705d04be1",
+          "native_body": "c705d04be1006427b400c3"
+        },
+        {
+          "address": "00b41160",
+          "symbol": "bfv_client_global_store_00b41160",
+          "stores": [
+            [
+              "00e157b0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705b057e1",
+          "native_body": "c705b057e1006427b400c3"
+        },
+        {
+          "address": "00b41170",
+          "symbol": "bfv_client_global_store_00b41170",
+          "stores": [
+            [
+              "00e14918",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7051849e1",
+          "native_body": "c7051849e1006427b400c3"
+        },
+        {
+          "address": "00b41180",
+          "symbol": "bfv_client_global_store_00b41180",
+          "stores": [
+            [
+              "00e14d28",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705284de1",
+          "native_body": "c705284de1006427b400c3"
+        },
+        {
+          "address": "00b41190",
+          "symbol": "bfv_client_global_store_00b41190",
+          "stores": [
+            [
+              "00e15bb8",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705b85be1",
+          "native_body": "c705b85be1006427b400c3"
+        },
+        {
+          "address": "00b411a0",
+          "symbol": "bfv_client_global_store_00b411a0",
+          "stores": [
+            [
+              "00e16398",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7059863e1",
+          "native_body": "c7059863e1006427b400c3"
+        },
+        {
+          "address": "00b411b0",
+          "symbol": "bfv_client_global_store_00b411b0",
+          "stores": [
+            [
+              "00e14a78",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705784ae1",
+          "native_body": "c705784ae1006427b400c3"
+        },
+        {
+          "address": "00b411c0",
+          "symbol": "bfv_client_global_store_00b411c0",
+          "stores": [
+            [
+              "00e15db0",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705b05de1",
+          "native_body": "c705b05de1006427b400c3"
+        },
+        {
+          "address": "00b411d0",
+          "symbol": "bfv_client_global_store_00b411d0",
+          "stores": [
+            [
+              "00e14f20",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705204fe1",
+          "native_body": "c705204fe1006427b400c3"
+        },
+        {
+          "address": "00b411e0",
+          "symbol": "bfv_client_global_store_00b411e0",
+          "stores": [
+            [
+              "00e15858",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c7055858e1",
+          "native_body": "c7055858e1006427b400c3"
+        },
+        {
+          "address": "00b411f0",
+          "symbol": "bfv_client_global_store_00b411f0",
+          "stores": [
+            [
+              "00e15c60",
+              4,
+              "00b42764"
+            ]
+          ],
+          "guarded_prefix": "c705605ce1",
+          "native_body": "c705605ce1006427b400c3"
+        },
+        {
+          "address": "00b41a50",
+          "symbol": "bfv_client_global_store_00b41a50",
+          "stores": [
+            [
+              "00e21298",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7059812e2",
+          "native_body": "c7059812e200249bb600c3"
+        },
+        {
+          "address": "00b41a60",
+          "symbol": "bfv_client_global_store_00b41a60",
+          "stores": [
+            [
+              "00e212ac",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705ac12e2",
+          "native_body": "c705ac12e200249bb600c3"
+        },
+        {
+          "address": "00b41a70",
+          "symbol": "bfv_client_global_store_00b41a70",
+          "stores": [
+            [
+              "00e212c0",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705c012e2",
+          "native_body": "c705c012e200249bb600c3"
+        },
+        {
+          "address": "00b41a80",
+          "symbol": "bfv_client_global_store_00b41a80",
+          "stores": [
+            [
+              "00e212d4",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705d412e2",
+          "native_body": "c705d412e200249bb600c3"
+        },
+        {
+          "address": "00b41a90",
+          "symbol": "bfv_client_global_store_00b41a90",
+          "stores": [
+            [
+              "00e21300",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7050013e2",
+          "native_body": "c7050013e200249bb600c3"
+        },
+        {
+          "address": "00b41aa0",
+          "symbol": "bfv_client_global_store_00b41aa0",
+          "stores": [
+            [
+              "00e21314",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7051413e2",
+          "native_body": "c7051413e200249bb600c3"
+        },
+        {
+          "address": "00b41ab0",
+          "symbol": "bfv_client_global_store_00b41ab0",
+          "stores": [
+            [
+              "00e21334",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7053413e2",
+          "native_body": "c7053413e200249bb600c3"
+        },
+        {
+          "address": "00b41ac0",
+          "symbol": "bfv_client_global_store_00b41ac0",
+          "stores": [
+            [
+              "00e21350",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7055013e2",
+          "native_body": "c7055013e200249bb600c3"
+        },
+        {
+          "address": "00b41ad0",
+          "symbol": "bfv_client_global_store_00b41ad0",
+          "stores": [
+            [
+              "00e2136c",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7056c13e2",
+          "native_body": "c7056c13e200249bb600c3"
+        },
+        {
+          "address": "00b41ae0",
+          "symbol": "bfv_client_global_store_00b41ae0",
+          "stores": [
+            [
+              "00e213a8",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705a813e2",
+          "native_body": "c705a813e200249bb600c3"
+        },
+        {
+          "address": "00b41af0",
+          "symbol": "bfv_client_global_store_00b41af0",
+          "stores": [
+            [
+              "00e213bc",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705bc13e2",
+          "native_body": "c705bc13e200249bb600c3"
+        },
+        {
+          "address": "00b41b00",
+          "symbol": "bfv_client_global_store_00b41b00",
+          "stores": [
+            [
+              "00e213d0",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705d013e2",
+          "native_body": "c705d013e200249bb600c3"
+        },
+        {
+          "address": "00b41b10",
+          "symbol": "bfv_client_global_store_00b41b10",
+          "stores": [
+            [
+              "00e213e4",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705e413e2",
+          "native_body": "c705e413e200249bb600c3"
+        },
+        {
+          "address": "00b41b20",
+          "symbol": "bfv_client_global_store_00b41b20",
+          "stores": [
+            [
+              "00e213f8",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705f813e2",
+          "native_body": "c705f813e200249bb600c3"
+        },
+        {
+          "address": "00b41b30",
+          "symbol": "bfv_client_global_store_00b41b30",
+          "stores": [
+            [
+              "00e2140c",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7050c14e2",
+          "native_body": "c7050c14e200249bb600c3"
+        },
+        {
+          "address": "00b41b40",
+          "symbol": "bfv_client_global_store_00b41b40",
+          "stores": [
+            [
+              "00e21420",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7052014e2",
+          "native_body": "c7052014e200249bb600c3"
+        },
+        {
+          "address": "00b41b50",
+          "symbol": "bfv_client_global_store_00b41b50",
+          "stores": [
+            [
+              "00e21434",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7053414e2",
+          "native_body": "c7053414e200249bb600c3"
+        },
+        {
+          "address": "00b41b60",
+          "symbol": "bfv_client_global_store_00b41b60",
+          "stores": [
+            [
+              "00e21448",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7054814e2",
+          "native_body": "c7054814e200249bb600c3"
+        },
+        {
+          "address": "00b41b70",
+          "symbol": "bfv_client_global_store_00b41b70",
+          "stores": [
+            [
+              "00e21490",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7059014e2",
+          "native_body": "c7059014e200249bb600c3"
+        },
+        {
+          "address": "00b41b80",
+          "symbol": "bfv_client_global_store_00b41b80",
+          "stores": [
+            [
+              "00e214a4",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705a414e2",
+          "native_body": "c705a414e200249bb600c3"
+        },
+        {
+          "address": "00b41b90",
+          "symbol": "bfv_client_global_store_00b41b90",
+          "stores": [
+            [
+              "00e214b8",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705b814e2",
+          "native_body": "c705b814e200249bb600c3"
+        },
+        {
+          "address": "00b41ba0",
+          "symbol": "bfv_client_global_store_00b41ba0",
+          "stores": [
+            [
+              "00e214cc",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705cc14e2",
+          "native_body": "c705cc14e200249bb600c3"
+        },
+        {
+          "address": "00b41bb0",
+          "symbol": "bfv_client_global_store_00b41bb0",
+          "stores": [
+            [
+              "00e214f8",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705f814e2",
+          "native_body": "c705f814e200249bb600c3"
+        },
+        {
+          "address": "00b41bc0",
+          "symbol": "bfv_client_global_store_00b41bc0",
+          "stores": [
+            [
+              "00e2150c",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7050c15e2",
+          "native_body": "c7050c15e200249bb600c3"
+        },
+        {
+          "address": "00b41bd0",
+          "symbol": "bfv_client_global_store_00b41bd0",
+          "stores": [
+            [
+              "00e2152c",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7052c15e2",
+          "native_body": "c7052c15e200249bb600c3"
+        },
+        {
+          "address": "00b41be0",
+          "symbol": "bfv_client_global_store_00b41be0",
+          "stores": [
+            [
+              "00e21548",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7054815e2",
+          "native_body": "c7054815e200249bb600c3"
+        },
+        {
+          "address": "00b41bf0",
+          "symbol": "bfv_client_global_store_00b41bf0",
+          "stores": [
+            [
+              "00e21564",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7056415e2",
+          "native_body": "c7056415e200249bb600c3"
+        },
+        {
+          "address": "00b41c00",
+          "symbol": "bfv_client_global_store_00b41c00",
+          "stores": [
+            [
+              "00e21580",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7058015e2",
+          "native_body": "c7058015e200249bb600c3"
+        },
+        {
+          "address": "00b41c10",
+          "symbol": "bfv_client_global_store_00b41c10",
+          "stores": [
+            [
+              "00e215c8",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705c815e2",
+          "native_body": "c705c815e200249bb600c3"
+        },
+        {
+          "address": "00b41c20",
+          "symbol": "bfv_client_global_store_00b41c20",
+          "stores": [
+            [
+              "00e215dc",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705dc15e2",
+          "native_body": "c705dc15e200249bb600c3"
+        },
+        {
+          "address": "00b41c30",
+          "symbol": "bfv_client_global_store_00b41c30",
+          "stores": [
+            [
+              "00e215f0",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705f015e2",
+          "native_body": "c705f015e200249bb600c3"
+        },
+        {
+          "address": "00b41c40",
+          "symbol": "bfv_client_global_store_00b41c40",
+          "stores": [
+            [
+              "00e21604",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7050416e2",
+          "native_body": "c7050416e200249bb600c3"
+        },
+        {
+          "address": "00b41c50",
+          "symbol": "bfv_client_global_store_00b41c50",
+          "stores": [
+            [
+              "00e21618",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7051816e2",
+          "native_body": "c7051816e200249bb600c3"
+        },
+        {
+          "address": "00b41c60",
+          "symbol": "bfv_client_global_store_00b41c60",
+          "stores": [
+            [
+              "00e2162c",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7052c16e2",
+          "native_body": "c7052c16e200249bb600c3"
+        },
+        {
+          "address": "00b41c70",
+          "symbol": "bfv_client_global_store_00b41c70",
+          "stores": [
+            [
+              "00e21640",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7054016e2",
+          "native_body": "c7054016e200249bb600c3"
+        },
+        {
+          "address": "00b41c80",
+          "symbol": "bfv_client_global_store_00b41c80",
+          "stores": [
+            [
+              "00e21654",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7055416e2",
+          "native_body": "c7055416e200249bb600c3"
+        },
+        {
+          "address": "00b41c90",
+          "symbol": "bfv_client_global_store_00b41c90",
+          "stores": [
+            [
+              "00e21668",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7056816e2",
+          "native_body": "c7056816e200249bb600c3"
+        },
+        {
+          "address": "00b41ca0",
+          "symbol": "bfv_client_global_store_00b41ca0",
+          "stores": [
+            [
+              "00e2167c",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7057c16e2",
+          "native_body": "c7057c16e200249bb600c3"
+        },
+        {
+          "address": "00b41cb0",
+          "symbol": "bfv_client_global_store_00b41cb0",
+          "stores": [
+            [
+              "00e21690",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7059016e2",
+          "native_body": "c7059016e200249bb600c3"
+        },
+        {
+          "address": "00b41cc0",
+          "symbol": "bfv_client_global_store_00b41cc0",
+          "stores": [
+            [
+              "00e216a4",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705a416e2",
+          "native_body": "c705a416e200249bb600c3"
+        },
+        {
+          "address": "00b41cd0",
+          "symbol": "bfv_client_global_store_00b41cd0",
+          "stores": [
+            [
+              "00e216ec",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705ec16e2",
+          "native_body": "c705ec16e200249bb600c3"
+        },
+        {
+          "address": "00b41ce0",
+          "symbol": "bfv_client_global_store_00b41ce0",
+          "stores": [
+            [
+              "00e21708",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7050817e2",
+          "native_body": "c7050817e200249bb600c3"
+        },
+        {
+          "address": "00b41cf0",
+          "symbol": "bfv_client_global_store_00b41cf0",
+          "stores": [
+            [
+              "00e21728",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7052817e2",
+          "native_body": "c7052817e200249bb600c3"
+        },
+        {
+          "address": "00b41d00",
+          "symbol": "bfv_client_global_store_00b41d00",
+          "stores": [
+            [
+              "00e2173c",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7053c17e2",
+          "native_body": "c7053c17e200249bb600c3"
+        },
+        {
+          "address": "00b41d10",
+          "symbol": "bfv_client_global_store_00b41d10",
+          "stores": [
+            [
+              "00e2175c",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7055c17e2",
+          "native_body": "c7055c17e200249bb600c3"
+        },
+        {
+          "address": "00b41d20",
+          "symbol": "bfv_client_global_store_00b41d20",
+          "stores": [
+            [
+              "00e2177c",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7057c17e2",
+          "native_body": "c7057c17e200249bb600c3"
+        },
+        {
+          "address": "00b41d30",
+          "symbol": "bfv_client_global_store_00b41d30",
+          "stores": [
+            [
+              "00e21790",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7059017e2",
+          "native_body": "c7059017e200249bb600c3"
+        },
+        {
+          "address": "00b41d40",
+          "symbol": "bfv_client_global_store_00b41d40",
+          "stores": [
+            [
+              "00e217b0",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705b017e2",
+          "native_body": "c705b017e200249bb600c3"
+        },
+        {
+          "address": "00b41d50",
+          "symbol": "bfv_client_global_store_00b41d50",
+          "stores": [
+            [
+              "00e217cc",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705cc17e2",
+          "native_body": "c705cc17e200249bb600c3"
+        },
+        {
+          "address": "00b41d60",
+          "symbol": "bfv_client_global_store_00b41d60",
+          "stores": [
+            [
+              "00e217e8",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c705e817e2",
+          "native_body": "c705e817e200249bb600c3"
+        },
+        {
+          "address": "00b41d70",
+          "symbol": "bfv_client_global_store_00b41d70",
+          "stores": [
+            [
+              "00e21804",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7050418e2",
+          "native_body": "c7050418e200249bb600c3"
+        },
+        {
+          "address": "00b41d80",
+          "symbol": "bfv_client_global_store_00b41d80",
+          "stores": [
+            [
+              "00e21820",
+              4,
+              "00b69b24"
+            ]
+          ],
+          "guarded_prefix": "c7052018e2",
+          "native_body": "c7052018e200249bb600c3"
+        }
+      ]
+    },
+    "server": {
+      "original_sha256": "86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d",
+      "rejected": {},
+      "entries": [
+        {
+          "address": "007e4b00",
+          "symbol": "bfv_server_global_store_007e4b00",
+          "stores": [
+            [
+              "00bdb5b4",
+              4,
+              "008e6698"
+            ]
+          ],
+          "guarded_prefix": "c705b4b5bd",
+          "native_body": "c705b4b5bd0098668e00c3"
+        },
+        {
+          "address": "007e85b0",
+          "symbol": "bfv_server_global_store_007e85b0",
+          "stores": [
+            [
+              "00beea70",
+              4,
+              "00000001"
+            ]
+          ],
+          "guarded_prefix": "c70570eabe",
+          "native_body": "c70570eabe0001000000c3"
+        },
+        {
+          "address": "007f0250",
+          "symbol": "bfv_server_global_store_007f0250",
+          "stores": [
+            [
+              "00c14018",
+              4,
+              "00926000"
+            ]
+          ],
+          "guarded_prefix": "c7051840c1",
+          "native_body": "c7051840c10000609200c3"
+        },
+        {
+          "address": "007f02c0",
+          "symbol": "bfv_server_global_store_007f02c0",
+          "stores": [
+            [
+              "00c14020",
+              4,
+              "00c14024"
+            ]
+          ],
+          "guarded_prefix": "c7052040c1",
+          "native_body": "c7052040c1002440c100c3"
+        },
+        {
+          "address": "007f02d0",
+          "symbol": "bfv_server_global_store_007f02d0",
+          "stores": [
+            [
+              "00c1401c",
+              4,
+              "00926000"
+            ]
+          ],
+          "guarded_prefix": "c7051c40c1",
+          "native_body": "c7051c40c10000609200c3"
+        },
+        {
+          "address": "007f08f0",
+          "symbol": "bfv_server_global_store_007f08f0",
+          "stores": [
+            [
+              "00c1a710",
+              4,
+              "00c1a714"
+            ]
+          ],
+          "guarded_prefix": "c70510a7c1",
+          "native_body": "c70510a7c10014a7c100c3"
+        },
+        {
+          "address": "007f0910",
+          "symbol": "bfv_server_global_store_007f0910",
+          "stores": [
+            [
+              "00c1a724",
+              4,
+              "0092c100"
+            ]
+          ],
+          "guarded_prefix": "c70524a7c1",
+          "native_body": "c70524a7c10000c19200c3"
+        }
+      ]
+    }
+  }
+}

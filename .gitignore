@@ -6,6 +6,7 @@
 *.exe
 *.dll
 *.o
+*.s
 *.obj
 *.pdb
 *.dmp
@@ -16,5 +17,5 @@ bfv-reference-local/
 .env
 .env.*
 
-/bevy-remake/
-/docs/HISTORY.md
+/docs/archive/HISTORY.md
+

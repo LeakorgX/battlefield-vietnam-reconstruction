@@ -1,12 +1,24 @@
 # Verification: what passed and what it means
 
+## Static recompilation
+
+`bfv-native-code/recomp.ps1` rebuilds both executables from emitted assembly and
+the C payload, and requires byte identity with the verified editable EXEs.
+Client and server both reassemble byte-identically (details and counts in
+[STATIC-RECOMP.md](STATIC-RECOMP.md)). Byte identity shows the source is a
+complete, faithful listing of the build. It is not a behavioral test: the
+evidence below is what checks that reconstructed C matches the original.
+
+
 ## Three distinct sets of evidence
 
 1. Initial analysis exported native functions. This was an analysis result, not a
    compilation or runtime correctness test.
 2. Early reference oracles ran 192 original-code cases per binary, 384 in total.
    They established selected native paths but did not run newly compiled logic.
-3. The latest exported full-regression native build was compared against original instructions. It passed
+3. The latest full-regression native build (entry-bridge checkpoint, 2026-10-10)
+   passed 48,056 client + 46,472 server = 94,528 comparisons against original
+   instructions. The figures that follow are from the earlier exported build: it passed
    44,441 client checks and 42,857 server checks, 87,298 in total. This includes
    4,678 history-tree and 303 first-pass weapon-selection comparisons per target,
    alongside the previously recovered logic and accessor checks. Earlier builds also executed replacement functions in the game, as
@@ -39,7 +51,7 @@ reports, rejecting results from an older build. Full case data stays in the loca
 
 - Object-word getter checks cover 175 entries, eight stored bit patterns, receiver
   alignment and six flag/x87 scenarios (8,400 comparisons total). Compiled getter
-  body bytes match the original MOV/RET instructions. See [WORD-GETTERS.md](WORD-GETTERS.md)
+  body bytes match the original MOV/RET instructions. See [WORD-GETTERS.md](modules/WORD-GETTERS.md)
   and the hash-specific getter reports. The full regression run for this build passed; hash-specific reports record the
   executable and case totals.
 
@@ -47,21 +59,21 @@ reports, rejecting results from an older build. Full case data stays in the loca
   caller-state scenarios: 3,246 client cases and 2,478 server cases. They check
   exact EAX bits, stack cleanup, preserved registers, CPU flags, complete x87
   state and no writes/delegated engine services. Static body/reference auditing
-  precedes guarded installation. See [CONSTANT-RETURNS.md](CONSTANT-RETURNS.md).
+  precedes guarded installation. See [CONSTANT-RETURNS.md](modules/CONSTANT-RETURNS.md).
 - Affine matrix comparisons run actual original/source composition with no math
   mocks. They compare complete memory, overlapping input/output buffers, return
   pointer, stack cleanup, preserved registers and x87 status/control, including
   retained caller values and all supported precision/rounding modes. Aiming
-  integration cases execute the source-owned composition. See [AFFINE-MATRIX.md](AFFINE-MATRIX.md).
+  integration cases execute the source-owned composition. See [AFFINE-MATRIX.md](modules/AFFINE-MATRIX.md).
 - Aiming-limit checks execute the event wrapper and angular predicate, comparing
   AL results, event/matrix/trig calls, float32 trig arguments, pointer-slot reuse,
   callback mutations, preserved registers and full x87 status. Selected cases
-  execute real retained matrix composition/inverse sine. See [AIM-LIMITS.md](AIM-LIMITS.md).
+  execute real retained matrix composition/inverse sine. See [AIM-LIMITS.md](modules/AIM-LIMITS.md).
 - Shared scalar/vector math checks run actual native/reconstructed min/max/clamp,
   vector length and vector division without mocked numeric services. They compare
   extended returns, rounded vector stores, stack cleanup, preserved registers and
   full x87 status in all supported precision/rounding modes, including two retained
-  caller x87 values. See [SHARED-MATH.md](SHARED-MATH.md).
+  caller x87 values. See [SHARED-MATH.md](modules/SHARED-MATH.md).
 - 1,920 interpreter comparisons per target, covering selected plan/object types,
   early return, disabled/allowed masks, fallback/override routing, returned flags,
   context callbacks, event components and cleanup decisions.
@@ -69,7 +81,7 @@ reports, rejecting results from an older build. Full case data stays in the loca
   the notification-dependent component predicate, float32 cache/return bits,
   eligibility low bytes, exact call arguments, stack cleanup and table/index
   changes during callbacks. Evaluators and component conversion are controlled
-  native dependencies. See [ARTILLERY.md](ARTILLERY.md).
+  native dependencies. See [ARTILLERY.md](modules/ARTILLERY.md).
 - 708 artillery evaluator/integration checks per target: 700 cached-target and
   native-search forwarding cases, plus eight driver cases executing real cached
   evaluation. They check generation handles, pattern rejection/reset, cache and
@@ -98,7 +110,7 @@ reports, rejecting results from an older build. Full case data stays in the loca
   score padding. They compare full fixture/frame memory, callback order/arguments,
   live registers and x87 state across numeric boundaries and callback mutations.
   Inventory/category/availability methods are controlled; full target scoring and
-  firing behavior remain unverified. See [ARTILLERY.md](ARTILLERY.md).
+  firing behavior remain unverified. See [ARTILLERY.md](modules/ARTILLERY.md).
 - 839 artillery position/aiming-gate comparisons per target execute the four
   position/vector helpers and the post-weapon candidate gate. They compare full
   fixture memory, buffer overlap, pointer rereads, callback order/mutations, ABI,
@@ -116,7 +128,7 @@ reports, rejecting results from an older build. Full case data stays in the loca
   driver/vector pointers, projection stores/clamps, vector-length integration,
   full fixture memory, preserved registers and x87 state. Object methods remain
   controlled. Staged results have passed; installed full/live evidence is required
-  for current-build totals. See [ARTILLERY.md](ARTILLERY.md).
+  for current-build totals. See [ARTILLERY.md](modules/ARTILLERY.md).
 - 32 cached-bailout comparisons per target checking exact float32 bits.
 - 554 recomputed-bailout comparisons per target checking float32 return/cache bits,
   pattern flags, call ordering, group argument and stack cleanup. They cover
@@ -124,7 +136,7 @@ reports, rejecting results from an older build. Full case data stays in the loca
   scale factors, changing selectors and cache/flag pointers moved by callbacks.
   Reference helpers are native; rebuilt helpers execute reconstructed C with the
   same deterministic table fixtures. Object methods
-  are controlled. See [BAILOUT.md](BAILOUT.md) for the recovered interface.
+  are controlled. See [BAILOUT.md](modules/BAILOUT.md) for the recovered interface.
 - 3,840 curve-helper comparisons per target checking the exact 80-bit x87 return,
   stack cleanup, an empty x87 stack and control-word preservation. They cover
   float32 neighbors, subnormals, infinities, NaN payloads, signed zeros, all four
@@ -141,7 +153,7 @@ reports, rejecting results from an older build. Full case data stays in the loca
   insertion with controlled heap services. Exact receiver/argument bytes,
   call order, vector/timestamp mutations, record-counter wraparound, state predicates
   and vtable-pointer/slot mutations are checked. Client/server handle-field offsets
-  are distinct. See [COLLISION.md](COLLISION.md); real collision-service behavior
+  are distinct. See [COLLISION.md](modules/COLLISION.md); real collision-service behavior
   and a live invocation of the new callback are not established by these fixtures.
 - 64 direct notification-helper comparisons per target, checking full-word state
   comparison, upper flag-bit preservation, selectors, callback state mutations,
@@ -163,14 +175,14 @@ reports, rejecting results from an older build. Full case data stays in the loca
   squared and planar segment distance run under all four rounding directions and
   three precision modes. Inputs cover endpoints, interior projections, zero-length
   segments, random vectors, float32 extremes, subnormals, infinities, signed zeros
-  and selected NaN payloads. See [GEOMETRY.md](GEOMETRY.md).
+  and selected NaN payloads. See [GEOMETRY.md](modules/GEOMETRY.md).
 - 251 event comparisons per target: 176 constructor, 45 pool lookup and 30 indexed
   interface lookup cases. Constructor checks compare all 56 object bytes, copied
   array words, callbacks, untouched padding, raw float/NaN bits, byte flags, signed
   word counts and 44-byte argument cleanup. Most cases control insertion, including reserve/growth paths and input mutations. Lookup checks include
   generation mismatch, zero handles/entries and wrapped interface-table addressing.
   Eight constructor cases enable original/reconstructed insertion with controlled
-  allocation/memmove. See [EVENTS.md](EVENTS.md). Three callback and three dispatcher
+  allocation/memmove. See [EVENTS.md](modules/EVENTS.md). Three callback and three dispatcher
   cases execute these real constructor/lookups; one of each also executes insertion.
   The dispatcher cases combine them with real geometry.
 - 507 vector/exception-bridge comparisons per target check insertion at every
@@ -181,7 +193,7 @@ reports, rejecting results from an older build. Full case data stays in the loca
   and rethrow arguments. Handler thunks forward to a controlled CRT handler.
   These emulator checks do not establish real Windows exception search/unwind
   behavior; the separate live check below validates selected synchronous paths.
-  See [VECTORS.md](VECTORS.md).
+  See [VECTORS.md](modules/VECTORS.md).
 
 External virtual methods, event receivers and context/list helper bodies use
 controlled fixtures. Original and reconstructed interpreter instructions receive
@@ -240,7 +252,7 @@ released the guard's exact allocation once, and FS linkage was restored.
 and controlled fault calls. The actual game heap and C++ runtime execute. It checks
 file hashes, native insertion bytes, immutable payload bytes and patched slots;
 restores temporary call patches; and stops its child afterward. Published reports
-contain no profile data or process logs. See [VECTORS.md](VECTORS.md) for reproduction
+contain no profile data or process logs. See [VECTORS.md](modules/VECTORS.md) for reproduction
 and limits. These checks do not prove sustained matches, asynchronous faults,
 allocator exhaustion, all exception types, vanilla data parity or event lifetime.
 

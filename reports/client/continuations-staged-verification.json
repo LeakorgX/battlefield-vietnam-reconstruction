@@ -1,0 +1,12 @@
+{
+  "target": "client",
+  "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+  "installed_sha256": "bba2b40315f08a38b39da5f9fa848d2c8634737b741491c1bec3eaeebd544d91",
+  "source_sha256": "8865918d516cf71e71b1ecd2d385f727a30111410b0ce515a2e208552c9db45f",
+  "staged_payload_sha256": "1cdf43015351f175f240c84994195c4f97488778e4c8ef5228d472f73cb9db26",
+  "passed": 240,
+  "staged": true,
+  "installed": false,
+  "original_block_bytes": 35,
+  "scope": "Four short evaluator entries and unit/driver plus allocation/cleanup combinations. Complete fixture memory, callee-preserved registers, live reload results and physical x87 state compare. Release is controlled and deliberately disturbs an inactive physical FP slot. Scratch results after release, flags and real heap failures excluded."
+}

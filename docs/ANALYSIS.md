@@ -29,7 +29,7 @@ percentages.
   Their callback control flow has now been manually reconstructed and compiled
   separately in `native_collision.c`. The raw export failures remain recorded;
   readable source recovery does not make those decompiler exports successful.
-  See [COLLISION.md](COLLISION.md) for service dependencies and comparison scope.
+  See [COLLISION.md](modules/COLLISION.md) for service dependencies and comparison scope.
 - Server `0074696b`: fails with an input-varnode adjustment error under all three
   retry profiles. Boundary review found a data reference at `00813c5c` and a
   conflicting linear decode: code after `00746966` reaches an instruction starting

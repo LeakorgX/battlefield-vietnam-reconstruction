@@ -6,6 +6,12 @@
 now has source-owned cached-target validation. Much of candidate search still executes
 original machine code; this is not yet complete artillery AI.
 
+## First-pass candidate setup
+
+`artillery_candidate_setup.c` replaces the 300-byte first-pass setup interval at client `0099f7ab..0099f8d7` / server `00749f8b..0074a0b7`. It computes timestamp weight through the original clamp convention, obtains event-interface position or copies the captured record's fallback point, forms the displacement, applies a 0.5 distance floor, and divides the direction vector. Rounded temporaries and continuation registers are preserved.
+
+Both read-only 70-instruction boundary audits passed. Staged and installed verification each passed 332 cases per target, including callback mutations, low-byte results, overlapping copies, special floats, precision/rounding modes, occupied x87 state, full fixture memory and live registers. Object timestamp and position methods are controlled; interface lookup and scalar/vector math execute. Whole evaluator, trajectory, firing and live-match parity remain unverified.
+
 ## Recovered behavior
 
 1. Ask the bot for its driver handle and entry ID. Resolve the driver through the
@@ -51,7 +57,7 @@ requires valid components. No new null guards have been invented.
 | Rating stage | `009a13a0` | `0074bb80` | Reconstructed and patched |
 | Component predicate | `009d8100` | `0078c670` | Reconstructed within the rating stage |
 | Component-view conversion | `0049a980` | `00437e80` | Native |
-| Artillery target evaluator | `0099f2a0` | `00749a80` | Cached-target path reconstructed; candidate search native |
+| Artillery target evaluator | `0099f2a0` | `00749a80` | Entry gateway and cached-target path reconstructed; candidate-search interior native |
 | Artillery rating vtable slot | `00bf6378` | `00874778` | Guarded replacement |
 
 The component-view helper dynamically casts an `IObject` to
@@ -79,6 +85,20 @@ evaluators are controlled fixtures. The comparisons prove driver routing and ABI
 not target-selection quality, ballistic aiming, firing timing, complete gameplay
 or sustained multiplayer compatibility. Those systems still need recovered source
 and tests that execute their decisions. No artillery live-match claim is made.
+
+## Evaluator entry gateway
+
+The evaluator's 303-byte entry at client `0099f2a0..0099f3cf` / server
+`00749a80..00749baf` is replaced by `bfv_artillery_entry_bridge`. The gateway
+reads the low recompute byte exactly where the original does, routes
+recompute-zero calls to the editable cache logic in `bfv_artillery_evaluate`,
+and otherwise re-establishes the original 0x1d8-byte frame (saved
+EBX/ESI/EDI, ECX stored at `[esp+0xa0]`) before jumping to the reconstructed
+fresh-search prefix, so the still-native search continuation receives the
+frame it expects. The structural audit records 93 instructions, three native
+returns and one external exit; both boundary audits passed with zero external
+interior references. The evaluator comparison suite covers frame layout at
+both routing depths with preloaded x87 state and live registers.
 
 ## Cached-target evaluator
 
@@ -800,3 +820,11 @@ fixture memory, callback order/arguments, callee-preserved registers, stack clea
 and physical x87 state compare; caller-scratch registers and CPU flags are excluded.
 This stage is not installed yet, and it does not establish a complete evaluator
 or live gameplay parity. The handoff records the prerequisite running checks.
+
+The final-selection tail was subsequently registered and installed locally.
+Both binaries passed 272 installed comparisons and 16 current-hash live vector
+checks. The search-prefix, continuation, candidate-setup and evaluator entry
+gateway stages followed; the current full regression passed **94,528
+comparisons** (48,056 client + 46,472 server) with 1,404 evaluator comparisons
+per target and 8 live checks per target. These changes remain local and
+uncommitted by user instruction.
