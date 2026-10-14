@@ -34,7 +34,7 @@ $env:BFV_GAME_DIR = 'C:\path\to\Battlefield Vietnam'
 .\bfv-native-code\run.ps1       # play (run-server.ps1 for the server)
 ```
 
-To mod, find the code in `bfv-native-code/lifted/<target>/` (sorted into the game's own folders, e.g. `bf/ai/`, `ref2/world/BFSoldier.c`), edit it and rebuild. See **[MODDING.md](docs/MODDING.md)**.
+To mod, find the code in `bfv-native-code/lifted/<target>/` (sorted into the game's own folders, e.g. `bf/ai/`, `ref2/world/BFSoldier.c`), edit it and rebuild. `tools/find.py` searches it by string, class or address, and `CONSOLE.tsv` maps all ~2,250 console/script commands (like `ObjectTemplate.repairFactor`) to their code. See **[MODDING.md](docs/MODDING.md)**.
 
 ## Folders
 

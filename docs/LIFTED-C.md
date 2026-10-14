@@ -141,7 +141,14 @@ and namespaces from the mangled name), single-class vtable stores
 (MSVC keeps an object file's code together), and functions called only from one
 file or folder. The rest goes to `unsorted/`. Only whole function texts move, and
 each is checked against its catalog `c_sha256` before and after, so
-verification carries over. `lift_c.py` runs it after every full lift.
+verification carries over. `lift_c.py` runs it after every full lift, and
+refuses to run while any function is edited unless given `--force`.
+
+It also writes `CONSOLE.tsv`: each console command class (`ConsoleClassN` in an
+anonymous namespace), its name and argument types from the constructor's
+strings, its handler methods, and the direct calls from those handlers that
+fewer than nine commands share (the game function it reaches, when it is not
+inlined).
 
 ## Build integration (`tools/build.py`)
 

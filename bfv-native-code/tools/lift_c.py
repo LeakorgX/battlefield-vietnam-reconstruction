@@ -591,9 +591,18 @@ def main():
     p.add_argument('--limit',type=int,default=0,help='lift at most this many functions (pilot batches)')
     p.add_argument('--leaf-only',action='store_true',help='only functions without calls or exits')
     p.add_argument('--out',type=Path,default=PROJECT/'lifted')
+    p.add_argument('--force',action='store_true',help='overwrite lifted functions that were edited (mods)')
     args=p.parse_args()
     md=Cs(CS_ARCH_X86,CS_MODE_32);md.detail=True;lifter=Lifter(md)
     registry=json.loads((REPORTS/'recovery-registry.json').read_text(encoding='utf-8'))
+    for target in ['client','server'] if args.target=='both' else [args.target]:
+        out=args.out/target
+        if (out/'catalog.json').exists() and not args.force:  # never overwrite mods silently
+            import sort_lifted
+            old_catalog=json.loads((out/'catalog.json').read_text());texts=sort_lifted.split_texts(out)
+            edited=[e['address'] for e in old_catalog['entries'] if hashlib.sha256(texts.get(e['symbol'],'').encode()).hexdigest()!=e['c_sha256']]
+            if edited:raise SystemExit(f'{target}: {len(edited)} lifted functions were edited ({", ".join(edited[:5])}); '
+                'commit or save them, then rerun with --force to overwrite')
     for target in ['client','server'] if args.target=='both' else [args.target]:
         spec=TARGETS[target];image=(args.game_dir/spec['file']).read_bytes()
         assert hashlib.sha256(image).hexdigest()==spec['sha']

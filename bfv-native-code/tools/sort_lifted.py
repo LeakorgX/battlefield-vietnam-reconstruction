@@ -234,7 +234,37 @@ def layout(target, image, folder):
         path.write_text(src, encoding='utf-8', newline='\n')
     (folder / 'INDEX.tsv').write_text('\n'.join(index) + '\n', encoding='utf-8', newline='\n')
     if split_texts(folder) != texts: raise SystemExit(f'{target}: sorted texts differ; restore lifted/ from git')
+    console_commands(folder)
     return collections.Counter(home[int(e['address'], 16)][3] for e in entries), len(out)
+
+
+def console_commands(folder):
+    """CONSOLE.tsv from INDEX.tsv: every console command class (an anonymous
+    ConsoleClassN), its name and types from the constructor's strings, and the
+    virtual methods that run it."""
+    rows = [line.split('\t') for line in (folder / 'INDEX.tsv').read_text(encoding='utf-8').splitlines()[1:]]
+    classes = collections.defaultdict(lambda: dict(ctor=[], methods=[]))
+    for address, file, cls, how, strs in rows:
+        if '::ConsoleClass' not in cls: continue
+        c = classes[cls]; c['file'] = file
+        if how == 'vtable store' and strs: c['ctor'].append((address, strs.split(' | ')))
+        elif how == 'virtual method': c['methods'].append(address)
+    # The game function a command reaches: a direct call from its handlers that
+    # is not shared helper code (argument parsing, strings) used by many commands.
+    texts = {k.rsplit('_', 1)[1]: v for k, v in split_texts(folder).items()}
+    calls = {a: set(re.findall(r'^    /\* [0-9a-f]{8}  call 0x([0-9a-f]+) \*/', texts.get(a, ''), re.M))
+             for c in classes.values() for a in c['methods']}
+    users = collections.Counter(t for cls, c in classes.items() for t in set().union(*[calls[a] for a in c['methods']]))
+    out = ['command\ttypes\tfile\tclass\tconstructor\thandlers\tcalls']
+    for cls, c in classes.items():
+        if not c['ctor']: continue
+        address, strs = c['ctor'][0]
+        reach = sorted(f'{int(t, 16):08x}' for t in set().union(*[calls[a] for a in c['methods']]) if users[t] <= 8)
+        out.append('\t'.join([strs[0], ' '.join(s for s in strs[1:] if s != 'std::string'), c['file'], cls, address,
+                              ' '.join(c['methods']), ' '.join(reach)]))
+    out[1:] = sorted(out[1:], key=str.lower)
+    (folder / 'CONSOLE.tsv').write_text('\n'.join(out) + '\n', encoding='utf-8', newline='\n')
+    return len(out) - 1
 
 
 def main():
@@ -242,8 +272,11 @@ def main():
     p.add_argument('--game-dir', type=Path, default=GAME)
     p.add_argument('--target', choices=['client', 'server', 'both'], default='both')
     p.add_argument('--lifted', type=Path, default=PROJECT / 'lifted')
+    p.add_argument('--console-only', action='store_true', help='only rewrite CONSOLE.tsv from INDEX.tsv')
     args = p.parse_args()
     for target in ['client', 'server'] if args.target == 'both' else [args.target]:
+        if args.console_only:
+            print(f'{target}: {console_commands(args.lifted / target)} console commands'); continue
         spec = TARGETS[target]; image = (args.game_dir / spec['file']).read_bytes()
         assert hashlib.sha256(image).hexdigest() == spec['sha']
         counts, n = layout(target, image, args.lifted / target)
