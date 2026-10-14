@@ -6,14 +6,15 @@ does make the game run from C that can be edited, rebuilt and verified, which is
 the basis for modding and for the later L2/L3 clean-up passes (see
 [ROADMAP](ROADMAP.md)).
 
-The lifted C is generated from your own game files and is not committed
-(`bfv-native-code/lifted/client/` and `lifted/server/` are git-ignored). Only the
-tools and the shared runtime (`lifted/runtime/`) are in the repository.
+The lifted C is committed (owner's decision, 2026-10-14) together with
+`lifted/<target>/verified.json`, the list of functions that passed, so a fresh
+clone builds the same detours. It is sorted into the developers' own folders and
+files by `tools/sort_lifted.py` (see [MODDING](MODDING.md)).
 
 ## Pipeline
 
 ```
-original EXE ──► lift_c.py ──► lifted/<target>/lifted_NNN.c + catalog.json
+original EXE ──► lift_c.py ──► sort_lifted.py ──► lifted/<target>/<folder>/<File>.c + catalog.json + INDEX.tsv
                                    │
                  verify_lifted.py ─┴─► build/<target>/lifted-verification.json
                                    │
@@ -82,7 +83,7 @@ and the unhandled instructions above.
   The only guest-stack word written on the way out is `final ESP - 4`, which is
   where the native `ret` leaves its return address anyway.
 
-## Verifier (`tools/verify_lifted.py`, VERIFIER 12)
+## Verifier (`tools/verify_lifted.py`, VERIFIER 13)
 
 The verifier runs the original function and the compiled lifted body on two
 Unicorn machines from the same random state. It compares:
@@ -120,9 +121,27 @@ States and isolation:
   inconclusive (skipped), never a mismatch. Earlier a 2-second limit cut lifted
   runs short at random when many parts ran in parallel.
 
+- A function that still has no completed state is compared on *trace
+  prefixes*: native runs stopped at 20,000 instructions, against a lifted run of
+  the same state; the lifted events must start with the whole native trace.
+- A direct call of the function to itself is opaque on both machines too
+  (recursion would otherwise run native code on one side and C on the other).
+
 A function passes when every completed state matches and at least one state
-completed. *Unverified* means no state completed natively, so there was nothing
+completed, or, with no completed state, when every prefix matches and at least
+one prefix was compared. *Unverified* means no state completed natively, so there was nothing
 to compare. Those functions stay native.
+
+## Sorting (`tools/sort_lifted.py`)
+
+Gives each function a home from evidence in the EXE, in this order: the
+developers' source paths in assert strings, RTTI vtables (virtual methods; class
+and namespaces from the mangled name), single-class vtable stores
+(constructors/destructors), runs between two anchors of the same file or folder
+(MSVC keeps an object file's code together), and functions called only from one
+file or folder. The rest goes to `unsorted/`. Only whole function texts move, and
+each is checked against its catalog `c_sha256` before and after, so
+verification carries over. `lift_c.py` runs it after every full lift.
 
 ## Build integration (`tools/build.py`)
 
@@ -154,7 +173,14 @@ A lifted function is detoured only when **all** of these hold:
 
 `python build.py --no-lifted` builds without any lifted detours.
 
-## Status (2026-10-14)
+## Status (2026-10-14, v14 lift, VERIFIER 13)
+
+Client 33,587 passed / 49 failed / 95 unverified; server 20,412 / 19 / 42.
+Detoured: client 33,519, server 20,381. Runs as C: client 98.32%, server 98.74%
+of functions. Live exception probes pass; the server ran 180 s and the client
+90 s under `crashdbg` with no faults. The table below is the earlier v13 run.
+
+### Earlier (v13, VERIFIER 12)
 
 v13 lift, full verification under VERIFIER 12 (parallel parts, `--reuse`):
 

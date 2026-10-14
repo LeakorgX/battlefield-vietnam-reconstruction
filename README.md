@@ -9,7 +9,7 @@ You need your own copy of the game. This repo has **no game assets or original E
 
 | Stage | What it means | Client | Server |
 | --- | --- | ---: | ---: |
-| **L1: lifted C** | Every function translated to C mechanically and checked against the original. Works, but looks like assembly. | **96.8%** | **97.0%** |
+| **L1: lifted C** | Every function translated to C mechanically and checked against the original. Works, but looks like assembly. | **98.3%** | **98.7%** |
 | **L2: structured C** | Real variables, `if`/`while`, no CPU registers | not started | not started |
 | **L3: readable C/C++** | Named classes, fields and functions | 8,121 functions | (shared count) |
 
@@ -34,13 +34,13 @@ $env:BFV_GAME_DIR = 'C:\path\to\Battlefield Vietnam'
 .\bfv-native-code\run.ps1       # play (run-server.ps1 for the server)
 ```
 
-To mod, edit a file in `bfv-native-code/lifted/<target>/` or `bfv-native-code/src/`, then rebuild.
+To mod, find the code in `bfv-native-code/lifted/<target>/` (sorted into the game's own folders, e.g. `bf/ai/`, `ref2/world/BFSoldier.c`), edit it and rebuild. See **[MODDING.md](docs/MODDING.md)**.
 
 ## Folders
 
 | Path | Contents |
 | --- | --- |
-| `bfv-native-code/lifted` | Lifted C (L1) |
+| `bfv-native-code/lifted` | Lifted C (L1), in the game's original folder/file names |
 | `bfv-native-code/src` | Readable C (L3) |
 | `bfv-native-code/tools` | Lifter, verifier, build and recompiler |
 | `docs` | [Lifted C](docs/LIFTED-C.md), [Static recomp](docs/STATIC-RECOMP.md), [Handoff](docs/HANDOFF.md) |

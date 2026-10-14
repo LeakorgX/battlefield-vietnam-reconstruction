@@ -48,6 +48,10 @@ Before every run the image, the stubs and the blob are restored and stale
 translations dropped, so each state of each function starts from the same
 machine.
 
+A function with no completed state is compared on trace prefixes: the native
+run stopped at PREFIX_BUDGET instructions must be a prefix of the lifted run of
+the same state. Direct self-calls are opaque on both machines.
+
 Results carry each function's c_sha256; build.py detours only functions whose
 current text and runtime (runtime_sha256) are exactly the verified ones, and
 --reuse keeps earlier results for unchanged functions (passes also across
@@ -69,7 +73,7 @@ from unicorn import Uc,UcError,UC_ARCH_X86,UC_MODE_32,UC_HOOK_CODE,UC_HOOK_BLOCK
 from unicorn import UC_HOOK_MEM_READ_UNMAPPED,UC_HOOK_MEM_WRITE_UNMAPPED,UC_PROT_READ,UC_PROT_WRITE
 from unicorn import UC_ERR_FETCH_UNMAPPED,UC_ERR_FETCH_PROT
 from unicorn import x86_const as U
-from build import PROJECT,GAME,TARGETS,COMPILERS,run
+from build import PROJECT,GAME,TARGETS,COMPILERS,run,response
 from native_oracle import ARENA,STACK
 
 BLOB=0x20000000
@@ -98,7 +102,7 @@ FLOATS=[0.0,1.0,-1.0,0.5,2.0,-3.25,100.0,1e-3,0.75,-0.125]
 def link(target,work,lifted_dir):
     """Compile and link the lifted code at BLOB; returns (bytes, {symbol: address})."""
     work.mkdir(parents=True,exist_ok=True)
-    sources=[lifted_dir/'runtime/l1_runtime.c',*sorted((lifted_dir/target).glob('lifted*.c'))]
+    sources=[lifted_dir/'runtime/l1_runtime.c',*sorted((lifted_dir/target).rglob('*.c'))]
     inputs=[*sources,lifted_dir/'runtime/l1.h']
     stamp=work/'lifted.flags'
     if (work/'lifted.bin').exists() and (work/'lifted.map').exists() and stamp.exists() and \
@@ -106,13 +110,13 @@ def link(target,work,lifted_dir):
         return (work/'lifted.bin').read_bytes(),map_symbols(work)  # parts share one up-to-date link
     for old in work.glob('*.o'):old.unlink()
     stamp.unlink(missing_ok=True)
-    objects=[work/(source.parent.name+'_'+source.stem+'.o') for source in sources]
+    objects=[work/('_'.join(source.relative_to(lifted_dir).with_suffix('.o').parts)) for source in sources]
     with ThreadPoolExecutor(6) as pool:
-        list(pool.map(lambda so:run([COMPILERS/'gcc.exe',*FLAGS,'-c',so[0],'-o',so[1]],work),zip(sources,objects)))
+        list(pool.map(lambda so:run([COMPILERS/'gcc.exe',*FLAGS,'-I',lifted_dir/'runtime','-c',so[0],'-o',so[1]],work),zip(sources,objects)))
     (work/'lifted.ld').write_text(f'SECTIONS {{ . = 0x{BLOB:x}; .payload : {{ *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) }}'
                                   ' /DISCARD/ : { *(.eh_frame*) *(.comment*) *(.drectve*) } }')
     run([COMPILERS/'ld.exe','-T',work/'lifted.ld','--image-base','0x400000','--entry','_bfv_l1_enter',
-         '--disable-dynamicbase','--disable-reloc-section','-Map',work/'lifted.map','-o',work/'lifted.exe',*objects],work)
+         '--disable-dynamicbase','--disable-reloc-section','-Map',work/'lifted.map','-o',work/'lifted.exe',response(work/'objects.rsp',objects)],work)
     run([COMPILERS/'objcopy.exe','-O','binary','--only-section','.payload',work/'lifted.exe',work/'lifted.bin'],work)
     stamp.write_text(' '.join(FLAGS))
     return (work/'lifted.bin').read_bytes(),map_symbols(work)
@@ -132,8 +136,8 @@ def runtime_sha256(lifted_dir):
 def sources_sha256(target,lifted_dir):
     """Hash of the lifted sources; build.py only detours functions verified from these exact sources."""
     h=hashlib.sha256()
-    for f in [lifted_dir/'runtime/l1.h',lifted_dir/'runtime/l1_runtime.c',*sorted((lifted_dir/target).glob('lifted*.c'))]:
-        h.update(f.name.encode()+b'\0'+f.read_bytes())
+    for f in [lifted_dir/'runtime/l1.h',lifted_dir/'runtime/l1_runtime.c',*sorted((lifted_dir/target).rglob('*.c'))]:
+        h.update(f.relative_to(lifted_dir).as_posix().encode()+b'\0'+f.read_bytes())
     return h.hexdigest()
 
 def map_symbols(work):
@@ -639,10 +643,10 @@ def as_native(r,returns):
     return {**r,**({'regs':[fix(v) for v in r['regs']]} if r['done'] else {}),'events':events}
 
 def summary(r):
-    if not r['done']:return r
-    return dict(regs=[f'{v:08x}' for v in r['regs']],fpu=[str(v) for v in r['fpu']],sse=[f'{v:x}' for v in r['sse']],
-                events=[(e[0],f'{e[1]:08x}',[f'{v:08x}' for v in e[2]],e[3].hex()) if e[0]=='call' else
-                        (f'{e[0]:08x}',e[1],None if e[2] is None else f'{e[2]:x}') for e in r['events'][:40]])
+    events=[(e[0],f'{e[1]:08x}',[f'{v:08x}' for v in e[2]],e[3].hex()) if e[0]=='call' else
+            (f'{e[0]:08x}',e[1],None if e[2] is None else f'{e[2]:x}') for e in r.get('events',[])[:40]]
+    if not r['done']:return dict(error=r.get('error'),events=events)  # unfinished runs keep their trace
+    return dict(regs=[f'{v:08x}' for v in r['regs']],fpu=[str(v) for v in r['fpu']],sse=[f'{v:x}' for v in r['sse']],events=events)
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--game-dir',type=Path,default=GAME)

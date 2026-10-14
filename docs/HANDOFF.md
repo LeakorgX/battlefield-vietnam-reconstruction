@@ -1,10 +1,11 @@
 # Handoff
 
-Updated **2026-10-13, Asia/Baghdad**. Start here when resuming. The full
+Updated **2026-10-14, Asia/Baghdad**. Start here when resuming. The full
 chronological log up to this point is in [archive/HANDOFF-LOG.md](archive/HANDOFF-LOG.md).
 
-**User direction: finish locally; do not commit or push to GitHub.** Preserve
-uncommitted work. Keep original binaries, assets, generated assembly and private
+**User direction: commit locally when asked; the owner pushes.** The lifted C is
+committed (owner's decision, 2026-10-14). Current focus: make modding easier
+without breaking verified work (see [MODDING.md](MODDING.md)). Keep original binaries, assets, generated assembly and private
 analysis out of the repository.
 
 ## Current state
@@ -36,18 +37,21 @@ The project is now a **static recompilation**. See [STATIC-RECOMP.md](STATIC-REC
   [LIFTED-C.md](LIFTED-C.md)). `tools/lift_c.py` translates every indexed function
   into mechanical C, and `tools/verify_lifted.py` compares each one against the
   original under emulation. `build.py` detours only verified, unchanged and
-  instruction-aligned functions. Installed build (v13 lift, VERIFIER 12): client 33,267
-  and server 20,259 lifted functions run as C. "Runs as C": client 38,157/38,657
-  (96.78%), server 23,755/23,986 (97.03%) functions. Live exception probes pass;
+  instruction-aligned functions. Installed build (v14 lift, VERIFIER 13): client 33,519
+  and server 20,381 lifted functions run as C. "Runs as C": client 38,409/38,657
+  (98.32%), server 23,877/23,986 (98.74%) functions. Live exception probes pass;
   the dedicated server runs 180 s and the client 90 s under `crashdbg` with no faults.
-  Known-good EXEs: `X:\temp\bfvscan\lift\good-v6` (earlier: `good-v5`, `good-v4`).
+  The lifted C is sorted into the developers' folders and files by
+  `tools/sort_lifted.py` (client 75%, server 82% placed by evidence, the rest in
+  `unsorted/`).
+  Known-good EXEs: `X:\temp\bfvscan\lift\good-v7` (earlier: `good-v6`, `good-v5`).
 - Whole-game acceptance: **0 of 7** milestones (`reports/project-milestones.json`).
 
 Installed editable EXE hashes (match `build/<target>/manifest.json`):
 
 ```text
-client 5489f14ed7eef8ef1bc043c3432b8759df08ff78172955379adaed5fc634d8bb
-server 4c27f68d2f5078ccee838b93a9695b7e0c43d043e6763e23cfc715c66e5fa297
+client 7be136229d07cf1b9f300db0847b56f0da814f6995cbacd7536536e5e89e0f7c
+server afd6d821906819919881f9ff7de5475ee965e264b342bb7742fe0135f9cff779
 ```
 
 ## Pending

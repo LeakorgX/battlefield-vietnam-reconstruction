@@ -212,14 +212,21 @@ LIFTED_FLAGS=['-m32','-std=c11','-O2','-Wall','-Wextra','-Werror','-Wno-array-bo
 
 def lifted_sources(target):
     lifted=PROJECT/'lifted'
-    return [lifted/'runtime/l1_runtime.c',*sorted((lifted/target).glob('lifted*.c'))]
+    return [lifted/'runtime/l1_runtime.c',*sorted((lifted/target).rglob('*.c'))]
+
+def response(path,files):
+    """@file argument listing files (the lifted objects exceed the Windows command-line limit)."""
+    path.write_text(''.join('"'+Path(f).as_posix()+'"\n' for f in files))
+    return '@'+str(path)
 
 def compile_lifted(target,work):
     """Compile the L1 lifted C (all of it; only verified entries get detoured)."""
     from concurrent.futures import ThreadPoolExecutor
-    sources=lifted_sources(target);objects=[work/f'l1_{s.stem}.o' for s in sources]
+    sources=lifted_sources(target)
+    objects=[work/'l1'/(s.relative_to(PROJECT/'lifted').with_suffix('.o')) for s in sources]
+    for o in objects:o.parent.mkdir(parents=True,exist_ok=True)
     with ThreadPoolExecutor(6) as pool:
-        list(pool.map(lambda so:run([COMPILERS/'gcc.exe',*LIFTED_FLAGS,'-c',so[0],'-o',so[1]],work),zip(sources,objects)))
+        list(pool.map(lambda so:run([COMPILERS/'gcc.exe',*LIFTED_FLAGS,'-I',PROJECT/'lifted/runtime','-c',so[0],'-o',so[1]],work),zip(sources,objects)))
     return objects
 
 def lifted_entries(target,spec,pe,original,hand_entries):
@@ -257,6 +264,13 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     # only functions whose current text is exactly the verified text
     passed={(r['address'],r['c_sha256']) for r in report['results'] if r['status']=='passed' and r.get('c_sha256')}
     entries=[e for e in catalog['entries'] if (e['address'],e.get('c_sha256')) in passed]
+    # Mods: a verified function whose text was edited still runs (as edited);
+    # an edited function that never passed verification stays native.
+    from sort_lifted import split_texts
+    texts=split_texts(lifted);ok={e['address'] for e in entries}
+    for e in catalog['entries']:
+        if hashlib.sha256(texts.get(e['symbol'],'').encode()).hexdigest()!=e['c_sha256']:
+            print(f'  {target}: edited lifted function {e["address"]}'+('' if e['address'] in ok else ' (never verified: stays native)'))
     interior={}
     for e in entries:
         a=int(e['address'],16)
@@ -391,7 +405,7 @@ def build(target,lifted=True):
     (work/'payload.ld').write_text(f'SECTIONS {{ . = 0x{address:x}; .payload : {{ *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) }} /DISCARD/ : {{ *(.eh_frame*) *(.comment*) *(.drectve*) }} }}')
     run([COMPILERS/'ld.exe','-T',work/'payload.ld','--image-base','0x400000',
          '--entry','_bfv_interpret','--disable-dynamicbase','--disable-reloc-section',
-         '-Map',work/'payload.map','-o',work/'payload.exe',*objects],work)
+         '-Map',work/'payload.map','-o',work/'payload.exe',response(work/'objects.rsp',objects)],work)
     run([COMPILERS/'objcopy.exe','-O','binary','--only-section','.payload',
          work/'payload.exe',work/'payload.bin'],work)
     # The map retains final virtual addresses even with a raw binary output.
