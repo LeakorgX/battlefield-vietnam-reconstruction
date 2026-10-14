@@ -233,10 +233,21 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     function's exit), or when its detour would overlap another patch."""
     lifted=PROJECT/'lifted'/target
     if not (lifted/'catalog.json').exists():return [],{}
+    # The full verifier report stays in build/; verified.json is its committed
+    # summary (passed functions only), so a fresh clone builds the same detours.
     report_path=PROJECT/'build'/target/'lifted-verification.json'
-    if not report_path.exists():return [],dict(not_verified=1)
+    summary_path=lifted/'verified.json'
     catalog=json.loads((lifted/'catalog.json').read_text())
-    report=json.loads(report_path.read_text())
+    if report_path.exists():
+        report=json.loads(report_path.read_text())
+        summary={k:report[k] for k in ('original_sha256','runtime_sha256','verifier')}
+        summary['passed']={r['address']:r['c_sha256'] for r in report['results'] if r['status']=='passed' and r.get('c_sha256')}
+        text=json.dumps(summary,indent=0,sort_keys=True)+'\n'
+        if not summary_path.exists() or summary_path.read_text()!=text:summary_path.write_text(text,newline='\n')
+    elif summary_path.exists():
+        summary=json.loads(summary_path.read_text())
+        report=dict(summary,results=[dict(address=a,c_sha256=s,status='passed') for a,s in summary['passed'].items()])
+    else:return [],dict(not_verified=1)
     if catalog['original_sha256']!=spec['sha'] or report['original_sha256']!=spec['sha']:
         raise RuntimeError('Lifted catalog or verification hash differs from the ABI target')
     runtime=hashlib.sha256()  # same hash as verify_lifted.runtime_sha256
