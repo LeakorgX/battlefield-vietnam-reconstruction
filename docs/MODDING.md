@@ -232,22 +232,111 @@ Rules:
 - `lift_l2.py` and `lift_c.py` refuse to regenerate a target while any of its
   functions is edited. `--force` overwrites your edits, so keep a copy first.
 
-## Build a mod into the game
+## Included mod: AI Commander
 
-Build only the mods you pick into otherwise original game code (about the size
-of the original EXE; only the hooked functions run as C):
+`mods/shared/ai_commander.c` builds into both executables. It runs only on the
+machine that hosts the battle: the dedicated server, or a client hosting a
+game. Players who join need no mod.
+
+- **Frontline.** A team can capture a flag only if it holds a flag next to it.
+  Each flag is linked to its two nearest flags. A team that holds no flag can
+  capture any flag. Flags whose map sets `onlyAffectedByTeam` keep the map's
+  rule.
+- **Commander.** Every 20 seconds each team gets an attack order for the
+  nearest flag it can capture. When a team loses a flag, it gets a
+  counterattack order for that flag for 60 seconds. Captures and flags under
+  attack are announced. The messages go out through `Game::sayAll`: on a
+  client that hosts, they appear as the host's chat.
+- **Bots follow the front.** The basic temperature of each AI strategic area
+  near a flag is scaled from the map's own value: objectives and flags under
+  attack ×3, other front flags ×2, flags behind the front ×0.6.
+- **Campaign.** The game process counts battles won, by flags held at the end
+  of each round, and announces the score when the next round starts. Restarting
+  the server or game resets it.
+
+Not included: fire support, and changes to tickets or spawn waves.
+
+Build only this mod into otherwise original game code (about the size of the
+original EXE; only the two hooked functions run as C):
 
 ```bash
-uv run --with pefile --with capstone --with unicorn python bfv-native-code/tools/build.py --tree readable --mods-only --mods example_repair_factor --target client --output "X:/Battlefield Vietnam - Copy/BfVietnam-mod.exe"
+uv run --with pefile --with capstone --with unicorn python bfv-native-code/tools/build.py --tree readable --mods-only --mods ai_commander --target client --output "X:/Battlefield Vietnam - Copy/BfVietnam-AICommander.exe"
+uv run --with pefile --with capstone --with unicorn python bfv-native-code/tools/build.py --tree readable --mods-only --mods ai_commander --target server --output "X:/Battlefield Vietnam - Copy/bfvietnam_w32ded-AICommander.exe"
 ```
 
 `--mods-only` detours only the hooked functions (the hand-written C in `src/`
-stays). `--mods a,b` picks mod files by name. A file in `mods/shared/` builds
-into both executables; host-side game logic there runs on the dedicated server
-or on a client hosting a game. The full readable build (`--tree readable`
-alone) runs about 33,600 functions as C and is 59 MB; on 2026-10-23 it crashed
-at startup in `ctype<char>::ctype` (00405470), so play with the `--mods-only`
-build.
+stays). `--mods a,b` picks mod files by name. The full readable build
+(`--tree readable` alone) runs about 33,600 functions as C and is 59 MB; on
+2026-10-23 it crashed at startup in `ctype<char>::ctype` (00405470), so play
+with the `--mods-only` build.
+
+## Included mod: RPG-7 HD
+
+`mods/client/rpg7_hd.c` adds a high-detail RPG-7V and PG-7VR with a PBR
+shader, MSAA, iron sights, a visible heavy rocket in flight and bigger warhead
+effects. It loads them from `_002` override archives. [RPG7-HD.md](RPG7-HD.md)
+describes the archives, the script-override mechanism, the asset pipeline and
+the weapon data.
+
+## Included mod: HD sky
+
+`mods/client/hd_sky.c` replaces every map's sky with one 2048x2048-per-face
+sky baked from a CC0 Poly Haven HDRI, turned to each map's sun, and sets the
+fog to its horizon colour. Its data is in the `rpg7_hd` override archives, so
+build both. [HD-SKY.md](HD-SKY.md) describes the bake and the hooks.
+
+## Included mod: Aggressive AI
+
+`mods/shared/ai_aggressive.c` builds into both executables. It changes the
+values the retail AI scripts pass to the AI console commands, before each
+command runs; no script is edited.
+
+- Soldier behaviour weights (`StandardWeights`, `FireunarmedWeights`): Fire
+  x1.35, MoveTo x1.5, Scout x1.2, TakeCover x0.5, Change x2.2. Change is the
+  urgency to enter a better vehicle or seat (`BBChange`, 009856f0), so bots
+  take tanks, APCs and helicopters much more often. Idle and Avoid are kept
+  (an Idle urgency of 0 crashes the AI).
+- Strategies: `aggression` is forced to 1, `numberOfAttacks` +1,
+  `numberOfDefences` -1 when above 1, and `setStrategicObjectsModifier` x1.5 for
+  hostile and neutral objects.
+- `AIStrategicArea.vehicleSearchRadius` is doubled where it is positive.
+
+It works with AI Commander, which steers bots to the front. Bot skill stays the
+menu's setting.
+
+## Included mod: Cinematic finish
+
+The owner rejected this colour-only experiment. Use the
+[world renderer upgrade](WORLD-RENDER.md) below for the current work.
+
+`mods/client/cinematic.c` adds a compiled D3D9 colour-grading pass after the
+world and before HUD icons/menus: cooler shadows, restrained saturation,
+contrast and a light vignette. Build with `--mods-only` and include
+`ai_commander,ai_aggressive,rpg7_hd,hd_sky,cinematic`. The current output is
+`BfVietnam-Cinematic.exe`. [CINEMATIC.md](CINEMATIC.md) covers the shader,
+research, rebuild commands and verification. GPU tests pass; gameplay and
+visual tuning remain untested.
+
+## Included mod: Fast start
+
+`mods/client/fast_start.c` skips the four startup movies, so the game opens
+on the main menu. `game/Startup.con` plays them with `renderer.playBink`;
+the hook on that command's execute (`0047f760`) returns early for files
+under `Movies/`. The menu's Play Intro entry and background movies still
+work. The loading screen redraws every 0.5 s instead of every 0.1 s; each
+redraw waits for vertical sync. Each load's time goes to `fast_start.log`
+in the game folder. No game file is changed. Included in
+`BfVietnam-WorldRender.exe`.
+
+## Included mod: World renderer
+
+`mods/client/world_render.c` and `mods/shaders/world/` replace ten engine
+effects with per-pixel mesh/character lighting, gloss-dependent highlights,
+prefiltered sky reflections, terrain detail relief and Fresnel water.
+`BfVietnam-WorldRender.exe` includes the RPG, sky and AI mods, excluding the
+colour-grade `cinematic` mod. It mounts the new authored `effects_003.rfa`.
+F8 compares the new and retail-style lighting models. [WORLD-RENDER.md](WORLD-RENDER.md)
+documents scope, evidence, packaging, build commands and validation limits.
 
 ## Build options
 

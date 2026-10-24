@@ -1,5 +1,20 @@
 # Handoff
 
+2026-10-24 world renderer correction: the owner rejected the colour-only
+cinematic pass as insufficient. [WORLD-RENDER.md](WORLD-RENDER.md) describes
+the replacement: actual per-pixel mesh/character material lighting, gloss
+masks, sky specular, terrain relief and Fresnel water in ten engine effects.
+Build `BfVietnam-WorldRender.exe` with `world_render` and the RPG/sky/AI mods,
+excluding `cinematic`. New authored `effects_003.rfa` is mounted only by this
+mod. All ten effects pass the game's compiler/technique validation. Live
+binding logs pass; final visual/gameplay QA remains in progress. No commit/push.
+
+2026-10-24 cinematic mod: [CINEMATIC.md](CINEMATIC.md). Built
+`BfVietnam-Cinematic.exe` with the current RPG/sky/AI mods and a new native
+D3D9 world colour-grading pass. GPU tests pass with MSAA 0/2/4/8 and Reset;
+PE section audit has zero unexplained changes. Existing game process left
+running; new build has not been tested in gameplay. No commit or push.
+
 Updated **2026-10-19, Asia/Baghdad**. Start here when resuming. The full
 chronological log up to this point is in [archive/HANDOFF-LOG.md](archive/HANDOFF-LOG.md).
 
@@ -74,7 +89,7 @@ The project is now a **static recompilation**. See [STATIC-RECOMP.md](STATIC-REC
   2026-10-23: the owner started the full readable client build and it crashed at
   startup: access violation in `bfv_client_l1_body_00405470` (`ctype<char>::ctype`)
   +0x126 (Windows Application log). Not investigated yet. Mods are played with
-  `build.py --tree readable --mods-only` (see MODDING.md, "Build a mod into the game").
+  `build.py --tree readable --mods-only` (see MODDING.md, AI Commander).
   Next: typed prototypes and locals instead of registers. Naming stack slots as
   locals was deferred: after a call through a pointer the callee's pop count is
   unknown, and the verifier can't catch a wrong frame guess.
