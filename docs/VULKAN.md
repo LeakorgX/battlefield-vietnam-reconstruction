@@ -157,3 +157,51 @@ Each step has a gate. A step that fails its gate is not built on.
    d3d9 build at the same camera positions (`BFV_WORLD_CAPTURE=1`), no
    validation errors, frame time logged against d3d9.
 6. **Docs**. Update this file's status, `HANDOFF.md` and `MODDING.md`.
+
+### Rules `d3d9_device.c` must follow
+
+Read from the other `vk/` files on 2026-10-25. Step 1 had not started writing
+the file when work stopped.
+
+- `vkd_create_surface/texture/buffer`, `vkd_create_vdecl`, `vkd_create_shader`
+  and `vkd_create_query` do not AddRef the device, but their destroy paths
+  Release it. Every device `Create*` method must AddRef the device on success.
+  The same goes for `CreateStateBlock` and `EndStateBlock`: `sb_Release`
+  Releases the device.
+- `vkd_light_slot` is defined in `d3d9_shader.c`, so don't define it again.
+  `vkd_present_free(d)` is not in `vkd3d9.h`; declare it in the device file.
+- `vkd_state_defaults` reads `d->auto_ds`, so set `auto_ds` before calling it.
+  It does not set the viewport or the scissor rectangle.
+- While `d->recording` is set, every `Set*` method writes into
+  `recording->s` and sets the matching bit in `recording->m`, using the same
+  bit layout that `mask_for_type` and `vkd_stateblock_capture` use in
+  `d3d9_shader.c`.
+- `present_pipeline` in `d3d9_shader.c` expects `d->layout` to be a push-descriptor
+  set layout with 22 bindings: bindings 0 and 1 are uniform buffers, bindings
+  2–21 are combined image samplers, all for VS and FS. It also expects one
+  push-constant range of `sizeof(struct dxso_push)`, and `d->zero_vb` to be a
+  zeroed host buffer of at least `sizeof(struct dxso_vs_consts)`.
+- `vkd_map` has no removal, and its values are `void*`. A `VkPipeline` or
+  `VkSampler` is 64-bit on 32-bit builds, so store map values on the heap.
+  `vkd_pipelines_forget` can only mark entries dead.
+- `vkd_create_query` only supports EVENT and OCCLUSION. Occlusion restart
+  needs `d->rendering`.
+
+### Known issues in the written files (not fixed)
+
+- `present_pipes` and `drop_pipe` (`d3d9_shader.c`) store a `VkPipeline` in a
+  `void*`. On 32-bit builds the 64-bit handle is truncated.
+- `mask_for_type` uses `0x1fffffffe` in a `uint32_t`, so stage state 32 is
+  never captured in pixel state blocks.
+- AddRef on an implicit back buffer does not AddRef the device.
+- With gamma off, Present pushes 3 descriptors and skips binding 3.
+- A resource released while still bound keeps a device reference until
+  it is unbound.
+- `vkd_submit` ends the pass, then `vkd_queries_pass_end` ends it again. This
+  is harmless.
+- Planned device behaviour that is assumed or unsupported: the
+  `MultiplyTransform` order is assumed; D3DRS_WRAPn cylindrical wrapping is not
+  supported; without `independentBlend`, per-target write masks are invalid;
+  spot lights with theta == phi give an infinite constant; unbound vertex
+  inputs read zero; XYZRHW with MinZ == MaxZ cannot be represented; the
+  half-pixel offset is exactly 0.5.

@@ -1,5 +1,12 @@
 # Handoff
 
+2026-10-25 Vulkan port: not finished. [VULKAN.md](VULKAN.md) "Remaining work"
+has the six-step plan. Step 1, `vk/d3d9_device.c`, is next and the file does not
+exist yet. Before writing it, read "Rules `d3d9_device.c` must follow" and
+"Known issues in the written files" in VULKAN.md. The `vk/` sources were
+committed in c4318d6. `vk/test/out/` is ignored because it holds generated
+SPIR-V.
+
 2026-10-24 world renderer correction: the owner rejected the colour-only
 cinematic pass as insufficient. [WORLD-RENDER.md](WORLD-RENDER.md) describes
 the replacement: actual per-pixel mesh/character material lighting, gloss
