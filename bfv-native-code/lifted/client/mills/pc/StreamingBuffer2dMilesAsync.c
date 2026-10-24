@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00777980  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 00777980  StreamingBuffer2dMilesAsync::isPlaying  (virtual method)
+ * overrides: IBuffer::isPlaying  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777980, bfv_client_l1_body_00777980);
 BFV_L1_RESUME(bfv_client_l1r_00777980_1, bfv_client_l1_body_00777980, 1);
 void bfv_client_l1_body_00777980(struct bfv_cpu *c)
@@ -33,7 +36,7 @@ void bfv_client_l1_body_00777980(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0077798d  call 0x774ab0 */
+    /* 0077798d  call 0x774ab0  ; Buffer2dMiles::isPlaying */
     t = 0x00774ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00777980_1;
@@ -67,7 +70,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007779a0  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 007779a0  StreamingBuffer2dMilesAsync::isLooping  (virtual method)
+ * overrides: IBuffer::isLooping  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_007779a0, bfv_client_l1_body_007779a0);
 void bfv_client_l1_body_007779a0(struct bfv_cpu *c)
 {
@@ -82,7 +88,7 @@ void bfv_client_l1_body_007779a0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 007779a3  jmp 0x774280 */
+    /* 007779a3  jmp 0x774280  ; Buffer2dMiles::isLooping */
     c->eip = 0x00774280u;
     goto out;
 out: __attribute__((unused));
@@ -92,7 +98,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007779b0  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 007779b0  StreamingBuffer2dMilesAsync::setVolume  (virtual method)
+ * overrides: IBuffer::setVolume  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_007779b0, bfv_client_l1_body_007779b0);
 void bfv_client_l1_body_007779b0(struct bfv_cpu *c)
 {
@@ -107,7 +116,7 @@ void bfv_client_l1_body_007779b0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 007779b3  jmp 0x774520 */
+    /* 007779b3  jmp 0x774520  ; Buffer2dMiles::setVolume */
     c->eip = 0x00774520u;
     goto out;
 out: __attribute__((unused));
@@ -117,7 +126,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007779c0  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 007779c0  StreamingBuffer2dMilesAsync::setPitch  (virtual method)
+ * overrides: IBuffer::setPitch  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_007779c0, bfv_client_l1_body_007779c0);
 void bfv_client_l1_body_007779c0(struct bfv_cpu *c)
 {
@@ -132,7 +144,7 @@ void bfv_client_l1_body_007779c0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 007779c3  jmp 0x7742b0 */
+    /* 007779c3  jmp 0x7742b0  ; Buffer2dMiles::setPitch */
     c->eip = 0x007742b0u;
     goto out;
 out: __attribute__((unused));
@@ -142,7 +154,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007779d0  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 007779d0  StreamingBuffer2dMilesAsync::get_14h  (virtual method)
+ * overrides: IBuffer::vf12  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_007779d0, bfv_client_l1_body_007779d0);
 BFV_L1_RESUME(bfv_client_l1r_007779d0_1, bfv_client_l1_body_007779d0, 1);
 void bfv_client_l1_body_007779d0(struct bfv_cpu *c)
@@ -156,13 +171,13 @@ void bfv_client_l1_body_007779d0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007779d0  fld qword ptr [0xb76558] */
+    /* 007779d0  fld qword ptr [0xb76558]  ; = 2.0 */
     ea = (uint32_t)(0x00b76558u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007779d6  fld dword ptr [ecx + 0x50] */
     ea = (uint32_t)(ecx + 0x00000050u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007779d9  call 0x7c4f90 */
+    /* 007779d9  call 0x7c4f90  ; crt_007c4f90 */
     t = 0x007c4f90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007779d0_1;
@@ -180,7 +195,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007779e0  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 007779e0  StreamingBuffer2dMilesAsync::vf21  (virtual method)
+ * overrides: IStreamingBuffer2d::vf21  (3 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_007779e0, bfv_client_l1_body_007779e0);
 void bfv_client_l1_body_007779e0(struct bfv_cpu *c)
 {
@@ -195,7 +213,7 @@ void bfv_client_l1_body_007779e0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 007779e3  jmp 0x774570 */
+    /* 007779e3  jmp 0x774570  ; Buffer2dMiles::vf21 */
     c->eip = 0x00774570u;
     goto out;
 out: __attribute__((unused));
@@ -205,7 +223,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007779f0  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 007779f0  StreamingBuffer2dMilesAsync::getPlaybackRate  (virtual method)
+ * overrides: IBuffer::getPlaybackRate  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_007779f0, bfv_client_l1_body_007779f0);
 BFV_L1_RESUME(bfv_client_l1r_007779f0_1, bfv_client_l1_body_007779f0, 1);
 void bfv_client_l1_body_007779f0(struct bfv_cpu *c)
@@ -231,7 +252,7 @@ void bfv_client_l1_body_007779f0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007779f8  call dword ptr [0xb424e8] */
+    /* 007779f8  call dword ptr [0xb424e8]  ; MSS32!_AIL_sample_playback_rate@4 */
     ea = (uint32_t)(0x00b424e8u);
     t = M32(ea);
     esp -= 4;
@@ -258,7 +279,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00777a10  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 00777a10  StreamingBuffer2dMilesAsync::setPosition  (virtual method)
+ * overrides: IBuffer::setPosition  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777a10, bfv_client_l1_body_00777a10);
 void bfv_client_l1_body_00777a10(struct bfv_cpu *c)
 {
@@ -273,7 +297,7 @@ void bfv_client_l1_body_00777a10(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00777a13  jmp 0x774ae0 */
+    /* 00777a13  jmp 0x774ae0  ; Buffer2dMiles::setPosition */
     c->eip = 0x00774ae0u;
     goto out;
 out: __attribute__((unused));
@@ -283,7 +307,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00777a20  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 00777a20  StreamingBuffer2dMilesAsync::getPosition  (virtual method)
+ * overrides: IBuffer::getPosition  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777a20, bfv_client_l1_body_00777a20);
 void bfv_client_l1_body_00777a20(struct bfv_cpu *c)
 {
@@ -298,7 +325,7 @@ void bfv_client_l1_body_00777a20(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00777a23  jmp 0x7742a0 */
+    /* 00777a23  jmp 0x7742a0  ; Buffer2dMiles::getPosition */
     c->eip = 0x007742a0u;
     goto out;
 out: __attribute__((unused));
@@ -308,7 +335,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00777a30  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 00777a30  StreamingBuffer2dMilesAsync::vf17  (virtual method)
+ * overrides: IBuffer::vf17  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777a30, bfv_client_l1_body_00777a30);
 void bfv_client_l1_body_00777a30(struct bfv_cpu *c)
 {
@@ -320,12 +350,12 @@ void bfv_client_l1_body_00777a30(struct bfv_cpu *c)
     /* 00777a30  mov eax, dword ptr [ecx + 0xc] */
     ea = (uint32_t)(ecx + 0x0000000cu);
     eax = M32(ea);
-    /* 00777a33  or eax, dword ptr [esp + 4] */
+    /* 00777a33  or eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (eax | M32(ea)) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 00777a37  mov edx, dword ptr [esp + 8] */
+    /* 00777a37  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00777a3b  not edx */
@@ -349,7 +379,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00777a50  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 00777a50  StreamingBuffer2dMilesAsync::vf19_set_ch_to_0  (virtual method)
+ * overrides: IBuffer::vf19  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777a50, bfv_client_l1_body_00777a50);
 void bfv_client_l1_body_00777a50(struct bfv_cpu *c)
 {
@@ -372,7 +405,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00777a60  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 00777a60  StreamingBuffer2dMilesAsync::vf20  (virtual method)
+ * overrides: IBuffer::vf20  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777a60, bfv_client_l1_body_00777a60);
 void bfv_client_l1_body_00777a60(struct bfv_cpu *c)
 {
@@ -387,7 +423,7 @@ void bfv_client_l1_body_00777a60(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00777a63  jmp 0x774770 */
+    /* 00777a63  jmp 0x774770  ; Buffer2dMiles::vf20 */
     c->eip = 0x00774770u;
     goto out;
 out: __attribute__((unused));
@@ -397,7 +433,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777a70  (between same file) */
+/* 00777a70  StreamingBuffer2dMilesAsync::deleting_dtor_adjustor8_00777a70  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777a70, bfv_client_l1_body_00777a70);
 void bfv_client_l1_body_00777a70(struct bfv_cpu *c)
 {
@@ -412,7 +449,7 @@ void bfv_client_l1_body_00777a70(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777a73  jmp 0x7785c0 */
+    /* 00777a73  jmp 0x7785c0  ; StreamingBuffer2dMilesAsync::deleting_dtor */
     c->eip = 0x007785c0u;
     goto out;
 out: __attribute__((unused));
@@ -422,7 +459,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777a80  (between same file) */
+/* 00777a80  StreamingBuffer2dMilesAsync::isPlaying_adjustor8_00777a80  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777a80, bfv_client_l1_body_00777a80);
 void bfv_client_l1_body_00777a80(struct bfv_cpu *c)
 {
@@ -437,7 +475,7 @@ void bfv_client_l1_body_00777a80(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777a83  jmp 0x777980 */
+    /* 00777a83  jmp 0x777980  ; StreamingBuffer2dMilesAsync::isPlaying */
     c->eip = 0x00777980u;
     goto out;
 out: __attribute__((unused));
@@ -447,7 +485,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777a90  (between same file) */
+/* 00777a90  StreamingBuffer2dMilesAsync::isLooping_adjustor8_00777a90  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777a90, bfv_client_l1_body_00777a90);
 void bfv_client_l1_body_00777a90(struct bfv_cpu *c)
 {
@@ -462,7 +501,7 @@ void bfv_client_l1_body_00777a90(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777a93  jmp 0x7779a0 */
+    /* 00777a93  jmp 0x7779a0  ; StreamingBuffer2dMilesAsync::isLooping */
     c->eip = 0x007779a0u;
     goto out;
 out: __attribute__((unused));
@@ -472,7 +511,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777aa0  (between same file) */
+/* 00777aa0  StreamingBuffer2dMilesAsync::setVolume_adjustor8_00777aa0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777aa0, bfv_client_l1_body_00777aa0);
 void bfv_client_l1_body_00777aa0(struct bfv_cpu *c)
 {
@@ -487,7 +527,7 @@ void bfv_client_l1_body_00777aa0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777aa3  jmp 0x7779b0 */
+    /* 00777aa3  jmp 0x7779b0  ; StreamingBuffer2dMilesAsync::setVolume */
     c->eip = 0x007779b0u;
     goto out;
 out: __attribute__((unused));
@@ -497,7 +537,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777ab0  (between same file) */
+/* 00777ab0  StreamingBuffer2dMilesAsync::setPitch_adjustor8_00777ab0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777ab0, bfv_client_l1_body_00777ab0);
 void bfv_client_l1_body_00777ab0(struct bfv_cpu *c)
 {
@@ -512,7 +553,7 @@ void bfv_client_l1_body_00777ab0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777ab3  jmp 0x7779c0 */
+    /* 00777ab3  jmp 0x7779c0  ; StreamingBuffer2dMilesAsync::setPitch */
     c->eip = 0x007779c0u;
     goto out;
 out: __attribute__((unused));
@@ -522,7 +563,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777ac0  (between same file) */
+/* 00777ac0  Armor::get_48h_adjustor8_00777ac0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777ac0, bfv_client_l1_body_00777ac0);
 void bfv_client_l1_body_00777ac0(struct bfv_cpu *c)
 {
@@ -537,7 +579,7 @@ void bfv_client_l1_body_00777ac0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777ac3  jmp 0x6e9310 */
+    /* 00777ac3  jmp 0x6e9310  ; Armor::get_48h */
     c->eip = 0x006e9310u;
     goto out;
 out: __attribute__((unused));
@@ -547,7 +589,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777ad0  (between same file) */
+/* 00777ad0  StreamingBuffer2dMilesAsync::get_14h_adjustor8_00777ad0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777ad0, bfv_client_l1_body_00777ad0);
 void bfv_client_l1_body_00777ad0(struct bfv_cpu *c)
 {
@@ -562,7 +605,7 @@ void bfv_client_l1_body_00777ad0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777ad3  jmp 0x7779d0 */
+    /* 00777ad3  jmp 0x7779d0  ; StreamingBuffer2dMilesAsync::get_14h */
     c->eip = 0x007779d0u;
     goto out;
 out: __attribute__((unused));
@@ -572,7 +615,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777ae0  (between same file) */
+/* 00777ae0  StreamingBuffer2dMilesAsync::getPlaybackRate_adjustor8_00777ae0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777ae0, bfv_client_l1_body_00777ae0);
 void bfv_client_l1_body_00777ae0(struct bfv_cpu *c)
 {
@@ -587,7 +631,7 @@ void bfv_client_l1_body_00777ae0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777ae3  jmp 0x7779f0 */
+    /* 00777ae3  jmp 0x7779f0  ; StreamingBuffer2dMilesAsync::getPlaybackRate */
     c->eip = 0x007779f0u;
     goto out;
 out: __attribute__((unused));
@@ -597,7 +641,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777af0  (between same file) */
+/* 00777af0  AISettings::vf13_get_2ch_adjustor8_00777af0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777af0, bfv_client_l1_body_00777af0);
 void bfv_client_l1_body_00777af0(struct bfv_cpu *c)
 {
@@ -612,7 +657,7 @@ void bfv_client_l1_body_00777af0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777af3  jmp 0x956100 */
+    /* 00777af3  jmp 0x956100  ; AISettings::vf13_get_2ch */
     c->eip = 0x00956100u;
     goto out;
 out: __attribute__((unused));
@@ -622,7 +667,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777b00  (between same file) */
+/* 00777b00  StreamingBuffer2dMilesAsync::setPosition_adjustor8_00777b00  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777b00, bfv_client_l1_body_00777b00);
 void bfv_client_l1_body_00777b00(struct bfv_cpu *c)
 {
@@ -637,7 +683,7 @@ void bfv_client_l1_body_00777b00(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777b03  jmp 0x777a10 */
+    /* 00777b03  jmp 0x777a10  ; StreamingBuffer2dMilesAsync::setPosition */
     c->eip = 0x00777a10u;
     goto out;
 out: __attribute__((unused));
@@ -647,7 +693,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777b10  (between same file) */
+/* 00777b10  StreamingBuffer2dMilesAsync::getPosition_adjustor8_00777b10  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777b10, bfv_client_l1_body_00777b10);
 void bfv_client_l1_body_00777b10(struct bfv_cpu *c)
 {
@@ -662,7 +709,7 @@ void bfv_client_l1_body_00777b10(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777b13  jmp 0x777a20 */
+    /* 00777b13  jmp 0x777a20  ; StreamingBuffer2dMilesAsync::getPosition */
     c->eip = 0x00777a20u;
     goto out;
 out: __attribute__((unused));
@@ -672,7 +719,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777b20  (between same file) */
+/* 00777b20  StreamingBuffer2dMilesAsync::vf19_set_ch_to_0_adjustor8_00777b20  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777b20, bfv_client_l1_body_00777b20);
 void bfv_client_l1_body_00777b20(struct bfv_cpu *c)
 {
@@ -687,7 +735,7 @@ void bfv_client_l1_body_00777b20(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777b23  jmp 0x777a50 */
+    /* 00777b23  jmp 0x777a50  ; StreamingBuffer2dMilesAsync::vf19_set_ch_to_0 */
     c->eip = 0x00777a50u;
     goto out;
 out: __attribute__((unused));
@@ -697,7 +745,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777b30  (between same file) */
+/* 00777b30  StreamingBuffer2dMilesAsync::vf20_adjustor8_00777b30  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777b30, bfv_client_l1_body_00777b30);
 void bfv_client_l1_body_00777b30(struct bfv_cpu *c)
 {
@@ -712,7 +761,7 @@ void bfv_client_l1_body_00777b30(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777b33  jmp 0x777a60 */
+    /* 00777b33  jmp 0x777a60  ; StreamingBuffer2dMilesAsync::vf20 */
     c->eip = 0x00777a60u;
     goto out;
 out: __attribute__((unused));
@@ -722,7 +771,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777b40  (between same file) */
+/* 00777b40  StreamingBuffer2dMilesAsync::vf21_adjustor8_00777b40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777b40, bfv_client_l1_body_00777b40);
 void bfv_client_l1_body_00777b40(struct bfv_cpu *c)
 {
@@ -737,7 +787,7 @@ void bfv_client_l1_body_00777b40(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777b43  jmp 0x7779e0 */
+    /* 00777b43  jmp 0x7779e0  ; StreamingBuffer2dMilesAsync::vf21 */
     c->eip = 0x007779e0u;
     goto out;
 out: __attribute__((unused));
@@ -747,7 +797,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00777b50  (between same file) */
+/* 00777b50  Armor::get_4ch_adjustor8_00777b50  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777b50, bfv_client_l1_body_00777b50);
 void bfv_client_l1_body_00777b50(struct bfv_cpu *c)
 {
@@ -762,7 +813,7 @@ void bfv_client_l1_body_00777b50(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00777b53  jmp 0x598dc0 */
+    /* 00777b53  jmp 0x598dc0  ; Armor::get_4ch */
     c->eip = 0x00598dc0u;
     goto out;
 out: __attribute__((unused));
@@ -772,7 +823,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00777b90  (between same file) */
+/* 00777b90  StreamingBuffer2dMilesAsync::play_helper_00777b90  (between same file)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ * called by: StreamingBuffer2dMilesAsync::play
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777b90, bfv_client_l1_body_00777b90);
 BFV_L1_RESUME(bfv_client_l1r_00777b90_1, bfv_client_l1_body_00777b90, 1);
 BFV_L1_RESUME(bfv_client_l1r_00777b90_2, bfv_client_l1_body_00777b90, 2);
@@ -804,7 +858,7 @@ void bfv_client_l1_body_00777b90(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00777b9a  jne 0x777bfb */
     if (!zf) goto L_00777bfb;
-    /* 00777b9c  mov eax, dword ptr [esp + 8] */
+    /* 00777b9c  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00777ba0  push eax */
@@ -813,7 +867,7 @@ void bfv_client_l1_body_00777b90(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00777ba1  mov ecx, 0xcfac80 */
     ecx = 0xcfac80u;
-    /* 00777ba6  call 0x7720e0 */
+    /* 00777ba6  call 0x7720e0  ; pc_007720e0 */
     t = 0x007720e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00777b90_1;
@@ -873,7 +927,7 @@ L_00777bbd:
     /* 00777bcd  mov dword ptr [esi + 0xac], eax */
     ea = (uint32_t)(esi + 0x000000acu);
     M32(ea) = eax;
-    /* 00777bd3  call 0x771e70 */
+    /* 00777bd3  call 0x771e70  ; pc_00771e70 */
     t = 0x00771e70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00777b90_2;
@@ -892,7 +946,7 @@ R_2:
     /* 00777be4  mov dword ptr [esi + 0xa0], eax */
     ea = (uint32_t)(esi + 0x000000a0u);
     M32(ea) = eax;
-    /* 00777bea  call 0x771e70 */
+    /* 00777bea  call 0x771e70  ; pc_00771e70 */
     t = 0x00771e70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00777b90_3;
@@ -927,7 +981,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00777c10  (between same file) */
+/* 00777c10  StreamingBuffer2dMilesAsync::sub_00777c10  (between same file)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ * called by: StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_helper_00777f50, StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_007780c0, StreamingBuffer2dMilesAsync::ASI_error_00778370
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777c10, bfv_client_l1_body_00777c10);
 BFV_L1_RESUME(bfv_client_l1r_00777c10_1, bfv_client_l1_body_00777c10, 1);
 void bfv_client_l1_body_00777c10(struct bfv_cpu *c)
@@ -1013,7 +1070,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00777c50  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 00777c50  StreamingBuffer2dMilesAsync::stop  (virtual method)
+ * overrides: IBuffer::stop  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777c50, bfv_client_l1_body_00777c50);
 BFV_L1_RESUME(bfv_client_l1r_00777c50_1, bfv_client_l1_body_00777c50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00777c50_2, bfv_client_l1_body_00777c50, 2);
@@ -1055,7 +1115,7 @@ void bfv_client_l1_body_00777c50(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00777c65  call dword ptr [0xb42510] */
+    /* 00777c65  call dword ptr [0xb42510]  ; MSS32!_AIL_end_sample@4 */
     ea = (uint32_t)(0x00b42510u);
     t = M32(ea);
     esp -= 4;
@@ -1065,7 +1125,7 @@ void bfv_client_l1_body_00777c50(struct bfv_cpu *c)
 R_1:
     /* 00777c6b  lea ecx, [esi + 8] */
     ecx = (uint32_t)(esi + 0x00000008u);
-    /* 00777c6e  call 0x7741e0 */
+    /* 00777c6e  call 0x7741e0  ; Buffer2dMiles::releaseHandle */
     t = 0x007741e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00777c50_2;
@@ -1073,7 +1133,7 @@ R_1:
     goto out;
 R_2:
 L_00777c73:
-    /* 00777c73  mov al, byte ptr [esp + 8] */
+    /* 00777c73  mov al, byte ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(eax, M8(ea));
     /* 00777c77  mov byte ptr [esi + 0x9b], al */
@@ -1110,7 +1170,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00777c90  (between same file) */
+/* 00777c90  StreamingBuffer2dMilesAsync_calls__AIL_set_sample_address_12_00777c90  (between same file)
+ * called by: StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_007780c0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777c90, bfv_client_l1_body_00777c90);
 BFV_L1_RESUME(bfv_client_l1r_00777c90_1, bfv_client_l1_body_00777c90, 1);
 BFV_L1_RESUME(bfv_client_l1r_00777c90_2, bfv_client_l1_body_00777c90, 2);
@@ -1177,7 +1239,7 @@ void bfv_client_l1_body_00777c90(struct bfv_cpu *c)
     esi = (uint32_t)(ebx + 0x00000014u);
     /* 00777ca3  mov ecx, 9 */
     ecx = 0x9u;
-    /* 00777ca8  lea edi, [esp + 0xc] */
+    /* 00777ca8  lea edi, [esp + 0xc]  ; &var_24 */
     edi = (uint32_t)(esp + 0x0000000cu);
     /* 00777cac  push eax */
     t = eax;
@@ -1210,7 +1272,7 @@ void bfv_client_l1_body_00777c90(struct bfv_cpu *c)
     /* 00777cc1  mov byte ptr [ebx + 0x9c], 1 */
     ea = (uint32_t)(ebx + 0x0000009cu);
     M8(ea) = 0x1u;
-    /* 00777cc8  call dword ptr [0xb42588] */
+    /* 00777cc8  call dword ptr [0xb42588]  ; MSS32!_AIL_set_sample_address@12 */
     ea = (uint32_t)(0x00b42588u);
     t = M32(ea);
     esp -= 4;
@@ -1218,7 +1280,7 @@ void bfv_client_l1_body_00777c90(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 00777cce  mov ecx, dword ptr [esp + 0x18] */
+    /* 00777cce  mov ecx, dword ptr [esp + 0x18]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 00777cd2  mov edx, dword ptr [ebx + 0x10] */
@@ -1232,7 +1294,7 @@ R_1:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00777cd7  call dword ptr [0xb424f4] */
+    /* 00777cd7  call dword ptr [0xb424f4]  ; MSS32!_AIL_set_sample_playback_rate@8 */
     ea = (uint32_t)(0x00b424f4u);
     t = M32(ea);
     esp -= 4;
@@ -1240,7 +1302,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 00777cdd  mov ecx, dword ptr [esp + 0x20] */
+    /* 00777cdd  mov ecx, dword ptr [esp + 0x20]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000020u);
     ecx = M32(ea);
     /* 00777ce1  xor eax, eax */
@@ -1257,7 +1319,7 @@ R_2:
     /* 00777ce8  mov eax, 2 */
     eax = 0x2u;
 L_00777ced:
-    /* 00777ced  cmp dword ptr [esp + 0x1c], 0x10 */
+    /* 00777ced  cmp dword ptr [esp + 0x1c], 0x10  ; var_14 */
     ea = (uint32_t)(esp + 0x0000001cu);
     a = M32(ea);
     b = 0x10u;
@@ -1285,7 +1347,7 @@ L_00777cf7:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00777cfe  call dword ptr [0xb42584] */
+    /* 00777cfe  call dword ptr [0xb42584]  ; MSS32!_AIL_set_sample_type@12 */
     ea = (uint32_t)(0x00b42584u);
     t = M32(ea);
     esp -= 4;
@@ -1369,7 +1431,7 @@ L_00777d1e:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00777d39  call dword ptr [0xb424d8] */
+    /* 00777d39  call dword ptr [0xb424d8]  ; MSS32!_AIL_set_sample_loop_block@12 */
     ea = (uint32_t)(0x00b424d8u);
     t = M32(ea);
     esp -= 4;
@@ -1400,7 +1462,7 @@ R_4:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00777d51  call dword ptr [0xb424d4] */
+    /* 00777d51  call dword ptr [0xb424d4]  ; MSS32!_AIL_set_sample_loop_count@8 */
     ea = (uint32_t)(0x00b424d4u);
     t = M32(ea);
     esp -= 4;
@@ -1426,7 +1488,7 @@ R_5:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00777d6c  call dword ptr [0xb424e0] */
+    /* 00777d6c  call dword ptr [0xb424e0]  ; MSS32!_AIL_start_sample@4 */
     ea = (uint32_t)(0x00b424e0u);
     t = M32(ea);
     esp -= 4;
@@ -1474,7 +1536,7 @@ L_00777d7b:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00777d83  call dword ptr [0xb424d8] */
+    /* 00777d83  call dword ptr [0xb424d8]  ; MSS32!_AIL_set_sample_loop_block@12 */
     ea = (uint32_t)(0x00b424d8u);
     t = M32(ea);
     esp -= 4;
@@ -1493,7 +1555,7 @@ R_7:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00777d8f  call dword ptr [0xb424d4] */
+    /* 00777d8f  call dword ptr [0xb424d4]  ; MSS32!_AIL_set_sample_loop_count@8 */
     ea = (uint32_t)(0x00b424d4u);
     t = M32(ea);
     esp -= 4;
@@ -1508,7 +1570,7 @@ R_8:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00777d99  call dword ptr [0xb424e0] */
+    /* 00777d99  call dword ptr [0xb424e0]  ; MSS32!_AIL_start_sample@4 */
     ea = (uint32_t)(0x00b424e0u);
     t = M32(ea);
     esp -= 4;
@@ -1547,7 +1609,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00777db0  (between same file) */
+/* 00777db0  StreamingBuffer2dMilesAsync::sub_00777db0  (between same file)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ * called by: StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_007780c0, StreamingBuffer2dMilesAsync::play
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777db0, bfv_client_l1_body_00777db0);
 BFV_L1_RESUME(bfv_client_l1r_00777db0_1, bfv_client_l1_body_00777db0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00777db0_2, bfv_client_l1_body_00777db0, 2);
@@ -1602,7 +1667,7 @@ L_00777dc0:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 00777dc2  mov ebp, dword ptr [esp + 0x10] */
+    /* 00777dc2  mov ebp, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 00777dc6  mov dword ptr [esi + ebp*4 + 0xc0], 1 */
@@ -1845,7 +1910,7 @@ L_00777e6a:
     edx = r;
     /* 00777e74  mov ecx, edi */
     ecx = edi;
-    /* 00777e76  call 0x55a020 */
+    /* 00777e76  call 0x55a020  ; meme_0055a020 */
     t = 0x0055a020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00777db0_2;
@@ -2050,7 +2115,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00777f10  (between same file) */
+/* 00777f10  StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_helper_00777f10  (between same file)
+ * called by: StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_007780c0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777f10, bfv_client_l1_body_00777f10);
 BFV_L1_RESUME(bfv_client_l1r_00777f10_1, bfv_client_l1_body_00777f10, 1);
 void bfv_client_l1_body_00777f10(struct bfv_cpu *c)
@@ -2072,7 +2139,7 @@ void bfv_client_l1_body_00777f10(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00777f18  jne 0x777f49 */
     if (!zf) goto L_00777f49;
-    /* 00777f1a  mov eax, dword ptr [esp + 4] */
+    /* 00777f1a  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00777f1e  mov eax, dword ptr [ecx + eax*4 + 0xc0] */
@@ -2141,7 +2208,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00777f50  (between same file) */
+/* 00777f50  StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_helper_00777f50  (between same file)
+ * called by: StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_007780c0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00777f50, bfv_client_l1_body_00777f50);
 BFV_L1_RESUME(bfv_client_l1r_00777f50_1, bfv_client_l1_body_00777f50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00777f50_2, bfv_client_l1_body_00777f50, 2);
@@ -2179,7 +2248,7 @@ void bfv_client_l1_body_00777f50(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00777f5b  je 0x777f7c */
     if (zf) goto L_00777f7c;
-    /* 00777f5d  mov eax, dword ptr [esp + 8] */
+    /* 00777f5d  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00777f61  cmp dword ptr [esi + eax*4 + 0xc0], 1 */
@@ -2309,7 +2378,7 @@ L_00777fab:
     F_LOGIC(8, r);
     /* 00777fd1  jne 0x77808c */
     if (!zf) goto L_0077808c;
-    /* 00777fd7  mov edx, dword ptr [esp + 0x14] */
+    /* 00777fd7  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 00777fdb  mov ebx, dword ptr [esi + edx*4 + 0xa0] */
@@ -2352,7 +2421,7 @@ L_00777fab:
     /* 00777ffc  mov byte ptr [esi + 0x9d], 1 */
     ea = (uint32_t)(esi + 0x0000009du);
     M8(ea) = 0x1u;
-    /* 00778003  call 0x777c10 */
+    /* 00778003  call 0x777c10  ; StreamingBuffer2dMilesAsync::sub_00777c10 */
     t = 0x00777c10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00777f50_3;
@@ -2529,7 +2598,7 @@ L_0077806d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778075  mov eax, dword ptr [esp + 0x18] */
+    /* 00778075  mov eax, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00778079  mov ecx, dword ptr [esi + eax*4 + 0xa0] */
@@ -2540,7 +2609,7 @@ L_0077806d:
     SET16(edx, ((uint32_t)(int32_t)(int8_t)M8(ea)) & 0xffffu);
     /* 00778085  mov ecx, ebx */
     ecx = ebx;
-    /* 00778087  call 0x55a020 */
+    /* 00778087  call 0x55a020  ; meme_0055a020 */
     t = 0x0055a020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00777f50_6;
@@ -2548,7 +2617,7 @@ L_0077806d:
     goto out;
 R_6:
 L_0077808c:
-    /* 0077808c  mov edx, dword ptr [esp + 0x14] */
+    /* 0077808c  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
 L_00778090:
@@ -2599,7 +2668,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007780c0  (between same file) */
+/* 007780c0  StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_007780c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007780c0, bfv_client_l1_body_007780c0);
 BFV_L1_RESUME(bfv_client_l1r_007780c0_1, bfv_client_l1_body_007780c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007780c0_2, bfv_client_l1_body_007780c0, 2);
@@ -2679,7 +2749,7 @@ void bfv_client_l1_body_007780c0(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x00000004u);
     /* 007780e0  mov ecx, edi */
     ecx = edi;
-    /* 007780e2  call 0x774ab0 */
+    /* 007780e2  call 0x774ab0  ; Buffer2dMiles::isPlaying */
     t = 0x00774ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_1;
@@ -2711,7 +2781,7 @@ R_1:
     M32(esp) = t;
     /* 007780fa  mov ecx, esi */
     ecx = esi;
-    /* 007780fc  call 0x777f10 */
+    /* 007780fc  call 0x777f10  ; StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_helper_00777f10 */
     t = 0x00777f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_2;
@@ -2729,7 +2799,7 @@ R_2:
     M32(esp) = t;
     /* 0077810b  mov ecx, esi */
     ecx = esi;
-    /* 0077810d  call 0x777f50 */
+    /* 0077810d  call 0x777f50  ; StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_helper_00777f50 */
     t = 0x00777f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_3;
@@ -2743,7 +2813,7 @@ R_3:
     if (zf) goto L_00778296;
     /* 0077811a  mov ecx, edi */
     ecx = edi;
-    /* 0077811c  call 0x7748d0 */
+    /* 0077811c  call 0x7748d0  ; Buffer2dMiles_calls__AIL_allocate_sample_handle_4_007748d0 */
     t = 0x007748d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_4;
@@ -2752,7 +2822,7 @@ R_3:
 R_4:
     /* 00778121  mov ecx, edi */
     ecx = edi;
-    /* 00778123  call 0x7744f0 */
+    /* 00778123  call 0x7744f0  ; Buffer2dMiles::sub_007744f0 */
     t = 0x007744f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_5;
@@ -2761,7 +2831,7 @@ R_4:
 R_5:
     /* 00778128  mov ecx, esi */
     ecx = esi;
-    /* 0077812a  call 0x777c90 */
+    /* 0077812a  call 0x777c90  ; StreamingBuffer2dMilesAsync_calls__AIL_set_sample_address_12_00777c90 */
     t = 0x00777c90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_6;
@@ -2780,7 +2850,7 @@ R_6:
     /* 0077813d  mov dword ptr [esi + 0xc0], 3 */
     ea = (uint32_t)(esi + 0x000000c0u);
     M32(ea) = 0x3u;
-    /* 00778147  call 0x777db0 */
+    /* 00778147  call 0x777db0  ; StreamingBuffer2dMilesAsync::sub_00777db0 */
     t = 0x00777db0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_7;
@@ -2811,7 +2881,7 @@ L_0077814f:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778154  call dword ptr [0xb424fc] */
+    /* 00778154  call dword ptr [0xb424fc]  ; MSS32!_AIL_sample_position@4 */
     ea = (uint32_t)(0x00b424fcu);
     t = M32(ea);
     esp -= 4;
@@ -2839,7 +2909,7 @@ R_8:
     if (zf) goto L_0077817f;
     /* 00778170  lea ecx, [esi - 4] */
     ecx = (uint32_t)(esi + 0xfffffffcu);
-    /* 00778173  call 0x777c10 */
+    /* 00778173  call 0x777c10  ; StreamingBuffer2dMilesAsync::sub_00777c10 */
     t = 0x00777c10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_9;
@@ -2959,7 +3029,7 @@ L_007781cd:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007781db  call dword ptr [0xb424d4] */
+    /* 007781db  call dword ptr [0xb424d4]  ; MSS32!_AIL_set_sample_loop_count@8 */
     ea = (uint32_t)(0x00b424d4u);
     t = M32(ea);
     esp -= 4;
@@ -3034,7 +3104,7 @@ L_007781fd:
     M32(esp) = t;
     /* 00778214  mov ecx, edi */
     ecx = edi;
-    /* 00778216  call 0x777f10 */
+    /* 00778216  call 0x777f10  ; StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_helper_00777f10 */
     t = 0x00777f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_14;
@@ -3052,7 +3122,7 @@ R_14:
     M32(esp) = t;
     /* 00778221  mov ecx, edi */
     ecx = edi;
-    /* 00778223  call 0x777f50 */
+    /* 00778223  call 0x777f50  ; StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_helper_00777f50 */
     t = 0x00777f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_15;
@@ -3076,7 +3146,7 @@ R_15:
     /* 0077823a  mov dword ptr [edi + 0xc4], ebx */
     ea = (uint32_t)(edi + 0x000000c4u);
     M32(ea) = ebx;
-    /* 00778240  call 0x777db0 */
+    /* 00778240  call 0x777db0  ; StreamingBuffer2dMilesAsync::sub_00777db0 */
     t = 0x00777db0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_16;
@@ -3137,7 +3207,7 @@ L_0077824a:
     M32(esp) = t;
     /* 00778263  mov ecx, esi */
     ecx = esi;
-    /* 00778265  call 0x777f10 */
+    /* 00778265  call 0x777f10  ; StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_helper_00777f10 */
     t = 0x00777f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_17;
@@ -3155,7 +3225,7 @@ R_17:
     M32(esp) = t;
     /* 00778270  mov ecx, esi */
     ecx = esi;
-    /* 00778272  call 0x777f50 */
+    /* 00778272  call 0x777f50  ; StreamingBuffer2dMilesAsync_calls__AIL_sample_position_4_helper_00777f50 */
     t = 0x00777f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_18;
@@ -3179,7 +3249,7 @@ R_18:
     /* 00778289  mov dword ptr [esi + 0xc0], ebx */
     ea = (uint32_t)(esi + 0x000000c0u);
     M32(ea) = ebx;
-    /* 0077828f  call 0x777db0 */
+    /* 0077828f  call 0x777db0  ; StreamingBuffer2dMilesAsync::sub_00777db0 */
     t = 0x00777db0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007780c0_19;
@@ -3217,7 +3287,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007782a0  (between same file) */
+/* 007782a0  StreamingBuffer2dMilesAsync::stop_adjustor8_007782a0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007782a0, bfv_client_l1_body_007782a0);
 void bfv_client_l1_body_007782a0(struct bfv_cpu *c)
 {
@@ -3232,7 +3303,7 @@ void bfv_client_l1_body_007782a0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 007782a3  jmp 0x777c50 */
+    /* 007782a3  jmp 0x777c50  ; StreamingBuffer2dMilesAsync::stop */
     c->eip = 0x00777c50u;
     goto out;
 out: __attribute__((unused));
@@ -3242,7 +3313,11 @@ out: __attribute__((unused));
 }
 
 
-/* 007782b0  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 007782b0  StreamingBuffer2dMilesAsync::releaseHandle  (virtual method)
+ * overrides: IBuffer::releaseHandle  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ * called by: StreamingBuffer2dMilesAsync::~StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_007782b0, bfv_client_l1_body_007782b0);
 BFV_L1_RESUME(bfv_client_l1r_007782b0_1, bfv_client_l1_body_007782b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007782b0_2, bfv_client_l1_body_007782b0, 2);
@@ -3299,7 +3374,7 @@ void bfv_client_l1_body_007782b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007782cb  mov ecx, 0xcfac80 */
     ecx = 0xcfac80u;
-    /* 007782d0  call 0x771d40 */
+    /* 007782d0  call 0x771d40  ; pc_00771d40 */
     t = 0x00771d40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007782b0_1;
@@ -3464,7 +3539,7 @@ L_0077835d:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 00778362  jmp 0x7741e0 */
+    /* 00778362  jmp 0x7741e0  ; Buffer2dMiles::releaseHandle */
     c->eip = 0x007741e0u;
     goto out;
 L_00778367:
@@ -3491,8 +3566,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00778370  (between same file)
- * strings: "ASI codec", "ASI_error", "ASI_stream_open", "ASI_stream_close" */
+/* 00778370  StreamingBuffer2dMilesAsync::ASI_error_00778370  (between same file)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ * strings: "ASI codec", "ASI_error", "ASI_stream_open", "ASI_stream_close"
+ * called by: StreamingBuffer2dMilesAsync::play
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778370, bfv_client_l1_body_00778370);
 BFV_L1_RESUME(bfv_client_l1r_00778370_1, bfv_client_l1_body_00778370, 1);
 BFV_L1_RESUME(bfv_client_l1r_00778370_2, bfv_client_l1_body_00778370, 2);
@@ -3553,7 +3631,7 @@ void bfv_client_l1_body_00778370(struct bfv_cpu *c)
     /* 00778381  mov ebp, dword ptr [esi + 0x94] */
     ea = (uint32_t)(esi + 0x00000094u);
     ebp = M32(ea);
-    /* 00778387  mov ecx, dword ptr [0xdf7148] */
+    /* 00778387  mov ecx, dword ptr [0xdf7148]  ; g_pFileManager */
     ea = (uint32_t)(0x00df7148u);
     ecx = M32(ea);
     /* 0077838d  mov eax, dword ptr [ecx] */
@@ -3588,7 +3666,7 @@ void bfv_client_l1_body_00778370(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0077839e  call dword ptr [eax + 0x10] */
+    /* 0077839e  call dword ptr [eax + 0x10]  ; -> FileManager::vf4 = FileManager::openFile */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -3645,7 +3723,7 @@ L_007783b5:
     F_SUB(32, a, b, r);
     /* 007783bb  jne 0x7783d1 */
     if (!zf) goto L_007783d1;
-    /* 007783bd  mov ecx, dword ptr [0xbdafb8] */
+    /* 007783bd  mov ecx, dword ptr [0xbdafb8]  ; interfaceID(BufferedStream|MemStream|Win32FileStream) */
     ea = (uint32_t)(0x00bdafb8u);
     ecx = M32(ea);
     /* 007783c3  mov edx, dword ptr [eax] */
@@ -3683,7 +3761,7 @@ L_007783d1:
     /* 007783dd  mov dword ptr [0xde5a0c], eax */
     ea = (uint32_t)(0x00de5a0cu);
     M32(ea) = eax;
-    /* 007783e2  call 0x777c10 */
+    /* 007783e2  call 0x777c10  ; StreamingBuffer2dMilesAsync::sub_00777c10 */
     t = 0x00777c10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778370_3;
@@ -3701,7 +3779,7 @@ L_007783e7:
     F_SUB(32, a, b, r);
     /* 007783ef  je 0x7784a0 */
     if (zf) goto L_007784a0;
-    /* 007783f5  mov ebp, dword ptr [0xb4258c] */
+    /* 007783f5  mov ebp, dword ptr [0xb4258c]  ; MSS32!RIB_request_interface */
     ea = (uint32_t)(0x00b4258cu);
     ebp = M32(ea);
     /* 007783fb  push ebx */
@@ -3710,10 +3788,10 @@ L_007783e7:
     M32(esp) = t;
     /* 007783fc  lea ecx, [esi + 0xd8] */
     ecx = (uint32_t)(esi + 0x000000d8u);
-    /* 00778402  mov dword ptr [esp + 0x38], ecx */
+    /* 00778402  mov dword ptr [esp + 0x38], ecx  ; var_18 */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = ecx;
-    /* 00778406  lea ecx, [esp + 0x10] */
+    /* 00778406  lea ecx, [esp + 0x10]  ; &var_40 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 0077840a  push ecx */
     t = ecx;
@@ -3725,10 +3803,10 @@ L_007783e7:
     M32(esp) = t;
     /* 0077840d  lea edx, [esi + 0xc8] */
     edx = (uint32_t)(esi + 0x000000c8u);
-    /* 00778413  mov dword ptr [esp + 0x20], edx */
+    /* 00778413  mov dword ptr [esp + 0x20], edx  ; var_38 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = edx;
-    /* 00778417  push 0xbaf958 */
+    /* 00778417  push 0xbaf958  ; "ASI codec" */
     t = 0xbaf958u;
     esp -= 4;
     M32(esp) = t;
@@ -3740,46 +3818,46 @@ L_007783e7:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778429  mov dword ptr [esp + 0x20], edi */
+    /* 00778429  mov dword ptr [esp + 0x20], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = edi;
-    /* 0077842d  mov dword ptr [esp + 0x24], 0xbaf94c */
+    /* 0077842d  mov dword ptr [esp + 0x24], 0xbaf94c  ; var_3c, "ASI_error" */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = 0xbaf94cu;
-    /* 00778435  mov dword ptr [esp + 0x2c], edi */
+    /* 00778435  mov dword ptr [esp + 0x2c], edi  ; var_34 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = edi;
-    /* 00778439  mov dword ptr [esp + 0x30], edi */
+    /* 00778439  mov dword ptr [esp + 0x30], edi  ; var_30 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0077843d  mov dword ptr [esp + 0x34], 0xbaf93c */
+    /* 0077843d  mov dword ptr [esp + 0x34], 0xbaf93c  ; var_2c, "ASI_stream_open" */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = 0xbaf93cu;
-    /* 00778445  mov dword ptr [esp + 0x38], ebx */
+    /* 00778445  mov dword ptr [esp + 0x38], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = ebx;
-    /* 00778449  mov dword ptr [esp + 0x3c], edi */
+    /* 00778449  mov dword ptr [esp + 0x3c], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x0000003cu);
     M32(ea) = edi;
-    /* 0077844d  mov dword ptr [esp + 0x40], edi */
+    /* 0077844d  mov dword ptr [esp + 0x40], edi  ; var_20 */
     ea = (uint32_t)(esp + 0x00000040u);
     M32(ea) = edi;
-    /* 00778451  mov dword ptr [esp + 0x44], 0xbaf928 */
+    /* 00778451  mov dword ptr [esp + 0x44], 0xbaf928  ; var_1c, "ASI_stream_close" */
     ea = (uint32_t)(esp + 0x00000044u);
     M32(ea) = 0xbaf928u;
-    /* 00778459  mov dword ptr [esp + 0x4c], edi */
+    /* 00778459  mov dword ptr [esp + 0x4c], edi  ; var_14 */
     ea = (uint32_t)(esp + 0x0000004cu);
     M32(ea) = edi;
-    /* 0077845d  mov dword ptr [esp + 0x50], edi */
+    /* 0077845d  mov dword ptr [esp + 0x50], edi  ; var_10 */
     ea = (uint32_t)(esp + 0x00000050u);
     M32(ea) = edi;
-    /* 00778461  mov dword ptr [esp + 0x54], 0xbaf914 */
+    /* 00778461  mov dword ptr [esp + 0x54], 0xbaf914  ; var_c, "ASI_stream_process" */
     ea = (uint32_t)(esp + 0x00000054u);
     M32(ea) = 0xbaf914u;
-    /* 00778469  mov dword ptr [esp + 0x58], edx */
+    /* 00778469  mov dword ptr [esp + 0x58], edx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000058u);
     M32(ea) = edx;
-    /* 0077846d  mov dword ptr [esp + 0x5c], edi */
+    /* 0077846d  mov dword ptr [esp + 0x5c], edi  ; var_4 */
     ea = (uint32_t)(esp + 0x0000005cu);
     M32(ea) = edi;
     /* 00778471  call ebp */
@@ -3792,7 +3870,7 @@ R_4:
     /* 00778473  mov eax, dword ptr [esi + 0x94] */
     ea = (uint32_t)(esi + 0x00000094u);
     eax = M32(ea);
-    /* 00778479  lea edx, [esp + 0x20] */
+    /* 00778479  lea edx, [esp + 0x20]  ; &var_30 */
     edx = (uint32_t)(esp + 0x00000020u);
     /* 0077847d  push edx */
     t = edx;
@@ -3802,7 +3880,7 @@ R_4:
     t = 0x3u;
     esp -= 4;
     M32(esp) = t;
-    /* 00778480  push 0xbaf908 */
+    /* 00778480  push 0xbaf908  ; "ASI stream" */
     t = 0xbaf908u;
     esp -= 4;
     M32(esp) = t;
@@ -3883,7 +3961,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007784b0  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method) */
+/* 007784b0  StreamingBuffer2dMilesAsync::play  (virtual method)
+ * overrides: IBuffer::play  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_007784b0, bfv_client_l1_body_007784b0);
 BFV_L1_RESUME(bfv_client_l1r_007784b0_1, bfv_client_l1_body_007784b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007784b0_2, bfv_client_l1_body_007784b0, 2);
@@ -3934,7 +4015,7 @@ void bfv_client_l1_body_007784b0(struct bfv_cpu *c)
     /* 007784c7  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 007784c9  call dword ptr [eax + 0x48] */
+    /* 007784c9  call dword ptr [eax + 0x48]  ; -> StreamingBuffer2dMilesAsync::vf18 = BotMain::vf79_get_ch (returns this+0xc) */
     ea = (uint32_t)(eax + 0x00000048u);
     t = M32(ea);
     esp -= 4;
@@ -3959,7 +4040,7 @@ L_007784d9:
     edx = M32(ea);
     /* 007784db  mov ecx, esi */
     ecx = esi;
-    /* 007784dd  call dword ptr [edx + 0x48] */
+    /* 007784dd  call dword ptr [edx + 0x48]  ; -> StreamingBuffer2dMilesAsync::vf18 = BotMain::vf79_get_ch (returns this+0xc) */
     ea = (uint32_t)(edx + 0x00000048u);
     t = M32(ea);
     esp -= 4;
@@ -4005,7 +4086,7 @@ R_2:
     if (!zf) goto L_0077850f;
     /* 007784fc  mov ecx, esi */
     ecx = esi;
-    /* 007784fe  call 0x778370 */
+    /* 007784fe  call 0x778370  ; StreamingBuffer2dMilesAsync::ASI_error_00778370 */
     t = 0x00778370u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007784b0_3;
@@ -4039,7 +4120,7 @@ L_0077850f:
     eax = M32(ea);
     /* 00778511  mov ecx, esi */
     ecx = esi;
-    /* 00778513  call dword ptr [eax + 0x48] */
+    /* 00778513  call dword ptr [eax + 0x48]  ; -> StreamingBuffer2dMilesAsync::vf18 = BotMain::vf79_get_ch (returns this+0xc) */
     ea = (uint32_t)(eax + 0x00000048u);
     t = M32(ea);
     esp -= 4;
@@ -4057,7 +4138,7 @@ R_4:
     M32(esp) = t;
     /* 0077851c  mov ecx, esi */
     ecx = esi;
-    /* 0077851e  call 0x777b90 */
+    /* 0077851e  call 0x777b90  ; StreamingBuffer2dMilesAsync::play_helper_00777b90 */
     t = 0x00777b90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007784b0_5;
@@ -4106,7 +4187,7 @@ R_5:
     /* 00778558  mov dword ptr [esi + 0xc4], 3 */
     ea = (uint32_t)(esi + 0x000000c4u);
     M32(ea) = 0x3u;
-    /* 00778562  call 0x777db0 */
+    /* 00778562  call 0x777db0  ; StreamingBuffer2dMilesAsync::sub_00777db0 */
     t = 0x00777db0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007784b0_6;
@@ -4137,7 +4218,7 @@ L_00778572:
     /* 0077857e  mov dword ptr [esi + 0xc0], 3 */
     ea = (uint32_t)(esi + 0x000000c0u);
     M32(ea) = 0x3u;
-    /* 00778588  call 0x777db0 */
+    /* 00778588  call 0x777db0  ; StreamingBuffer2dMilesAsync::sub_00777db0 */
     t = 0x00777db0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007784b0_7;
@@ -4165,7 +4246,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007785a0  (between same file) */
+/* 007785a0  StreamingBuffer2dMilesAsync::play_adjustor8_007785a0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007785a0, bfv_client_l1_body_007785a0);
 void bfv_client_l1_body_007785a0(struct bfv_cpu *c)
 {
@@ -4180,7 +4262,7 @@ void bfv_client_l1_body_007785a0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 007785a3  jmp 0x7784b0 */
+    /* 007785a3  jmp 0x7784b0  ; StreamingBuffer2dMilesAsync::play */
     c->eip = 0x007784b0u;
     goto out;
 out: __attribute__((unused));
@@ -4190,7 +4272,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007785b0  (between same file) */
+/* 007785b0  StreamingBuffer2dMilesAsync::releaseHandle_adjustor8_007785b0  (between same file)
+ * also entered at 007785c0: StreamingBuffer2dMilesAsync::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_007785b0, bfv_client_l1_body_007785b0);
 void bfv_client_l1_body_007785b0(struct bfv_cpu *c)
 {
@@ -4205,7 +4289,7 @@ void bfv_client_l1_body_007785b0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 007785b3  jmp 0x7782b0 */
+    /* 007785b3  jmp 0x7782b0  ; StreamingBuffer2dMilesAsync::releaseHandle */
     c->eip = 0x007782b0u;
     goto out;
 out: __attribute__((unused));
@@ -4215,7 +4299,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007785e0  (between same file) */
+/* 007785e0  StreamingBuffer2dMilesAsync::~StreamingBuffer2dMilesAsync  (between same file)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ */
 BFV_L1_ENTRY(bfv_client_l1_007785e0, bfv_client_l1_body_007785e0);
 BFV_L1_RESUME(bfv_client_l1r_007785e0_1, bfv_client_l1_body_007785e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007785e0_2, bfv_client_l1_body_007785e0, 2);
@@ -4245,7 +4331,7 @@ void bfv_client_l1_body_007785e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007785e4  lea edi, [esi + 8] */
     edi = (uint32_t)(esi + 0x00000008u);
-    /* 007785e7  mov dword ptr [esi], 0xbaf8ac */
+    /* 007785e7  mov dword ptr [esi], 0xbaf8ac  ; vtable StreamingBuffer2dMilesAsync */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbaf8acu;
     /* 007785ed  mov dword ptr [esi + 4], 0xbaf8a0 */
@@ -4254,7 +4340,7 @@ void bfv_client_l1_body_007785e0(struct bfv_cpu *c)
     /* 007785f4  mov dword ptr [edi], 0xbaf83c */
     ea = (uint32_t)(edi);
     M32(ea) = 0xbaf83cu;
-    /* 007785fa  call 0x7782b0 */
+    /* 007785fa  call 0x7782b0  ; StreamingBuffer2dMilesAsync::releaseHandle */
     t = 0x007782b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007785e0_1;
@@ -4276,7 +4362,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778609  call 0x403680 */
+    /* 00778609  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007785e0_2;
@@ -4305,7 +4391,7 @@ L_00778611:
     /* 0077861f  mov byte ptr [esi + 0x64], al */
     ea = (uint32_t)(esi + 0x00000064u);
     M8(ea) = LO8(eax);
-    /* 00778622  call 0x774ef0 */
+    /* 00778622  call 0x774ef0  ; Buffer2dMiles::~Buffer2dMiles */
     t = 0x00774ef0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007785e0_3;
@@ -4316,7 +4402,7 @@ R_3:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 00778628  mov dword ptr [esi], 0xbaf374 */
+    /* 00778628  mov dword ptr [esi], 0xbaf374  ; vtable IBuffer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbaf374u;
     /* 0077862e  pop esi */
@@ -4334,8 +4420,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00778630  dice::mills::pc::StreamingBuffer2dMilesAsync  (virtual method)
- * strings: "Output file types", "Input file types", "ASI codec" */
+/* 00778630  StreamingBuffer2dMilesAsync::load  (virtual method)
+ * overrides: IBuffer::load  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMilesAsync
+ * strings: "Output file types", "Input file types", "ASI codec"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778630, bfv_client_l1_body_00778630);
 BFV_L1_RESUME(bfv_client_l1r_00778630_1, bfv_client_l1_body_00778630, 1);
 BFV_L1_RESUME(bfv_client_l1r_00778630_2, bfv_client_l1_body_00778630, 2);
@@ -4402,7 +4491,7 @@ void bfv_client_l1_body_00778630(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00778637  mov edi, dword ptr [esp + 0x8c] */
+    /* 00778637  mov edi, dword ptr [esp + 0x8c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000008cu);
     edi = M32(ea);
     /* 0077863e  push -1 */
@@ -4425,7 +4514,7 @@ void bfv_client_l1_body_00778630(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00778646  lea ecx, [esi + 0x60] */
     ecx = (uint32_t)(esi + 0x00000060u);
-    /* 00778649  call 0x4019f0 */
+    /* 00778649  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_1;
@@ -4444,18 +4533,18 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00778652  lea ecx, [esp + 0x24] */
+    /* 00778652  lea ecx, [esp + 0x24]  ; &var_70 */
     ecx = (uint32_t)(esp + 0x00000024u);
-    /* 00778656  mov dword ptr [esp + 0x3c], 0xf */
+    /* 00778656  mov dword ptr [esp + 0x3c], 0xf  ; var_58 */
     ea = (uint32_t)(esp + 0x0000003cu);
     M32(ea) = 0xfu;
-    /* 0077865e  mov dword ptr [esp + 0x38], ebx */
+    /* 0077865e  mov dword ptr [esp + 0x38], ebx  ; var_5c */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = ebx;
-    /* 00778662  mov byte ptr [esp + 0x28], bl */
+    /* 00778662  mov byte ptr [esp + 0x28], bl  ; var_6c */
     ea = (uint32_t)(esp + 0x00000028u);
     M8(ea) = LO8(ebx);
-    /* 00778666  call 0x4019f0 */
+    /* 00778666  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_2;
@@ -4468,14 +4557,14 @@ R_2:
     t = 0xffffffffu;
     esp -= 4;
     M32(esp) = t;
-    /* 00778672  mov dword ptr [esp + 0x3c], eax */
+    /* 00778672  mov dword ptr [esp + 0x3c], eax  ; var_50 */
     ea = (uint32_t)(esp + 0x0000003cu);
     M32(ea) = eax;
     /* 00778676  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00778677  lea eax, [esp + 0x20] */
+    /* 00778677  lea eax, [esp + 0x20]  ; &var_70 */
     eax = (uint32_t)(esp + 0x00000020u);
     /* 0077867b  mov ebp, 0xf */
     ebp = 0xfu;
@@ -4483,43 +4572,43 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778681  lea ecx, [esp + 0x48] */
+    /* 00778681  lea ecx, [esp + 0x48]  ; &var_4c */
     ecx = (uint32_t)(esp + 0x00000048u);
-    /* 00778685  mov dword ptr [esp + 0x40], ebx */
+    /* 00778685  mov dword ptr [esp + 0x40], ebx  ; var_54 */
     ea = (uint32_t)(esp + 0x00000040u);
     M32(ea) = ebx;
-    /* 00778689  mov dword ptr [esp + 0x60], ebp */
+    /* 00778689  mov dword ptr [esp + 0x60], ebp  ; var_34 */
     ea = (uint32_t)(esp + 0x00000060u);
     M32(ea) = ebp;
-    /* 0077868d  mov dword ptr [esp + 0x5c], ebx */
+    /* 0077868d  mov dword ptr [esp + 0x5c], ebx  ; var_38 */
     ea = (uint32_t)(esp + 0x0000005cu);
     M32(ea) = ebx;
-    /* 00778691  mov byte ptr [esp + 0x4c], bl */
+    /* 00778691  mov byte ptr [esp + 0x4c], bl  ; var_48 */
     ea = (uint32_t)(esp + 0x0000004cu);
     M8(ea) = LO8(ebx);
-    /* 00778695  call 0x4019f0 */
+    /* 00778695  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 0077869a  mov ecx, dword ptr [esp + 0x34] */
+    /* 0077869a  mov ecx, dword ptr [esp + 0x34]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000034u);
     ecx = M32(ea);
-    /* 0077869e  mov edx, dword ptr [esp + 0x38] */
+    /* 0077869e  mov edx, dword ptr [esp + 0x38]  ; var_50 */
     ea = (uint32_t)(esp + 0x00000038u);
     edx = M32(ea);
-    /* 007786a2  mov dword ptr [esp + 0x58], ecx */
+    /* 007786a2  mov dword ptr [esp + 0x58], ecx  ; var_30 */
     ea = (uint32_t)(esp + 0x00000058u);
     M32(ea) = ecx;
-    /* 007786a6  lea eax, [esp + 0x3c] */
+    /* 007786a6  lea eax, [esp + 0x3c]  ; &var_4c */
     eax = (uint32_t)(esp + 0x0000003cu);
     /* 007786aa  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007786ab  lea ecx, [esp + 0x14] */
+    /* 007786ab  lea ecx, [esp + 0x14]  ; &var_78 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 007786af  push ecx */
     t = ecx;
@@ -4527,17 +4616,17 @@ R_3:
     M32(esp) = t;
     /* 007786b0  mov ecx, 0xde5a28 */
     ecx = 0xde5a28u;
-    /* 007786b5  mov dword ptr [esp + 0x64], edx */
+    /* 007786b5  mov dword ptr [esp + 0x64], edx  ; var_2c */
     ea = (uint32_t)(esp + 0x00000064u);
     M32(ea) = edx;
-    /* 007786b9  call 0x774f80 */
+    /* 007786b9  call 0x774f80  ; Buffer2dMiles_00774f80 */
     t = 0x00774f80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 007786be  cmp dword ptr [esp + 0x54], 0x10 */
+    /* 007786be  cmp dword ptr [esp + 0x54], 0x10  ; var_34 */
     ea = (uint32_t)(esp + 0x00000054u);
     a = M32(ea);
     b = 0x10u;
@@ -4545,14 +4634,14 @@ R_4:
     F_SUB(32, a, b, r);
     /* 007786c3  jb 0x7786d2 */
     if (cf) goto L_007786d2;
-    /* 007786c5  mov edx, dword ptr [esp + 0x40] */
+    /* 007786c5  mov edx, dword ptr [esp + 0x40]  ; var_48 */
     ea = (uint32_t)(esp + 0x00000040u);
     edx = M32(ea);
     /* 007786c9  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 007786ca  call 0x403680 */
+    /* 007786ca  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_5;
@@ -4566,31 +4655,31 @@ R_5:
     F_ADD(32, a, b, r);
     esp = r;
 L_007786d2:
-    /* 007786d2  cmp dword ptr [esp + 0x30], 0x10 */
+    /* 007786d2  cmp dword ptr [esp + 0x30], 0x10  ; var_58 */
     ea = (uint32_t)(esp + 0x00000030u);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 007786d7  mov dword ptr [esp + 0x54], ebp */
+    /* 007786d7  mov dword ptr [esp + 0x54], ebp  ; var_34 */
     ea = (uint32_t)(esp + 0x00000054u);
     M32(ea) = ebp;
-    /* 007786db  mov dword ptr [esp + 0x50], ebx */
+    /* 007786db  mov dword ptr [esp + 0x50], ebx  ; var_38 */
     ea = (uint32_t)(esp + 0x00000050u);
     M32(ea) = ebx;
-    /* 007786df  mov byte ptr [esp + 0x40], bl */
+    /* 007786df  mov byte ptr [esp + 0x40], bl  ; var_48 */
     ea = (uint32_t)(esp + 0x00000040u);
     M8(ea) = LO8(ebx);
     /* 007786e3  jb 0x7786f2 */
     if (cf) goto L_007786f2;
-    /* 007786e5  mov eax, dword ptr [esp + 0x1c] */
+    /* 007786e5  mov eax, dword ptr [esp + 0x1c]  ; var_6c */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 007786e9  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007786ea  call 0x403680 */
+    /* 007786ea  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_6;
@@ -4604,7 +4693,7 @@ R_6:
     F_ADD(32, a, b, r);
     esp = r;
 L_007786f2:
-    /* 007786f2  mov ecx, dword ptr [esp + 0x10] */
+    /* 007786f2  mov ecx, dword ptr [esp + 0x10]  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 007786f6  mov edx, dword ptr [esi + 0xac] */
@@ -4622,47 +4711,47 @@ L_007786f2:
     r = 0;
     F_LOGIC(32, r);
     edx = r;
-    /* 00778709  mov dword ptr [esp + 0x60], edx */
+    /* 00778709  mov dword ptr [esp + 0x60], edx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000060u);
     M32(ea) = edx;
-    /* 0077870d  mov dword ptr [esp + 0x64], edx */
+    /* 0077870d  mov dword ptr [esp + 0x64], edx  ; var_24 */
     ea = (uint32_t)(esp + 0x00000064u);
     M32(ea) = edx;
-    /* 00778711  mov dword ptr [esp + 0x68], edx */
+    /* 00778711  mov dword ptr [esp + 0x68], edx  ; var_20 */
     ea = (uint32_t)(esp + 0x00000068u);
     M32(ea) = edx;
-    /* 00778715  mov dword ptr [esp + 0x6c], edx */
+    /* 00778715  mov dword ptr [esp + 0x6c], edx  ; var_1c */
     ea = (uint32_t)(esp + 0x0000006cu);
     M32(ea) = edx;
-    /* 00778719  mov dword ptr [esp + 0x70], edx */
+    /* 00778719  mov dword ptr [esp + 0x70], edx  ; var_18 */
     ea = (uint32_t)(esp + 0x00000070u);
     M32(ea) = edx;
-    /* 0077871d  mov dword ptr [esp + 0x74], edx */
+    /* 0077871d  mov dword ptr [esp + 0x74], edx  ; var_14 */
     ea = (uint32_t)(esp + 0x00000074u);
     M32(ea) = edx;
-    /* 00778721  mov dword ptr [esp + 0x78], edx */
+    /* 00778721  mov dword ptr [esp + 0x78], edx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000078u);
     M32(ea) = edx;
-    /* 00778725  mov dword ptr [esp + 0x7c], edx */
+    /* 00778725  mov dword ptr [esp + 0x7c], edx  ; var_c */
     ea = (uint32_t)(esp + 0x0000007cu);
     M32(ea) = edx;
-    /* 00778729  mov dword ptr [esp + 0x80], edx */
+    /* 00778729  mov dword ptr [esp + 0x80], edx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000080u);
     M32(ea) = edx;
     /* 00778730  mov dword ptr [0xde5a04], ecx */
     ea = (uint32_t)(0x00de5a04u);
     M32(ea) = ecx;
-    /* 00778736  mov dword ptr [esp + 0x84], edx */
+    /* 00778736  mov dword ptr [esp + 0x84], edx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000084u);
     M32(ea) = edx;
-    /* 0077873d  lea edx, [esp + 0x60] */
+    /* 0077873d  lea edx, [esp + 0x60]  ; &var_28 */
     edx = (uint32_t)(esp + 0x00000060u);
     /* 00778741  mov ecx, edi */
     ecx = edi;
-    /* 00778743  mov dword ptr [esp + 0x80], 0xffffffff */
+    /* 00778743  mov dword ptr [esp + 0x80], 0xffffffff  ; var_8 */
     ea = (uint32_t)(esp + 0x00000080u);
     M32(ea) = 0xffffffffu;
-    /* 0077874e  call 0x772e80 */
+    /* 0077874e  call 0x772e80  ; pc_00772e80 */
     t = 0x00772e80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_7;
@@ -4704,7 +4793,7 @@ R_7:
     esp += 8;
     goto out;
 L_00778765:
-    /* 00778765  mov eax, dword ptr [esp + 0x84] */
+    /* 00778765  mov eax, dword ptr [esp + 0x84]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000084u);
     eax = M32(ea);
     /* 0077876c  mov ecx, 1 */
@@ -4718,9 +4807,9 @@ L_00778765:
     if (zf) goto L_00778893;
     /* 00778779  mov edx, edi */
     edx = edi;
-    /* 0077877b  lea ecx, [esp + 0x3c] */
+    /* 0077877b  lea ecx, [esp + 0x3c]  ; &var_4c */
     ecx = (uint32_t)(esp + 0x0000003cu);
-    /* 0077877f  call 0x41f920 */
+    /* 0077877f  call 0x41f920  ; sub_0041f920 */
     t = 0x0041f920u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_8;
@@ -4735,28 +4824,28 @@ R_8:
     t = 0xbaf98cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0077878b  lea ecx, [esp + 0x20] */
+    /* 0077878b  lea ecx, [esp + 0x20]  ; &var_70 */
     ecx = (uint32_t)(esp + 0x00000020u);
-    /* 0077878f  mov dword ptr [esp + 0x38], ebp */
+    /* 0077878f  mov dword ptr [esp + 0x38], ebp  ; var_58 */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = ebp;
-    /* 00778793  mov dword ptr [esp + 0x34], ebx */
+    /* 00778793  mov dword ptr [esp + 0x34], ebx  ; var_5c */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = ebx;
-    /* 00778797  mov byte ptr [esp + 0x24], bl */
+    /* 00778797  mov byte ptr [esp + 0x24], bl  ; var_6c */
     ea = (uint32_t)(esp + 0x00000024u);
     M8(ea) = LO8(ebx);
-    /* 0077879b  call 0x401ae0 */
+    /* 0077879b  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_9;
     c->eip = t;
     goto out;
 R_9:
-    /* 007787a0  mov eax, dword ptr [esp + 0x30] */
+    /* 007787a0  mov eax, dword ptr [esp + 0x30]  ; var_58 */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
-    /* 007787a4  mov ecx, dword ptr [esp + 0x1c] */
+    /* 007787a4  mov ecx, dword ptr [esp + 0x1c]  ; var_6c */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 007787a8  mov edi, 0x10 */
@@ -4768,28 +4857,28 @@ R_9:
     F_SUB(32, a, b, r);
     /* 007787af  jae 0x7787b5 */
     if (!cf) goto L_007787b5;
-    /* 007787b1  lea ecx, [esp + 0x1c] */
+    /* 007787b1  lea ecx, [esp + 0x1c]  ; &var_6c */
     ecx = (uint32_t)(esp + 0x0000001cu);
 L_007787b5:
-    /* 007787b5  cmp dword ptr [esp + 0x54], edi */
+    /* 007787b5  cmp dword ptr [esp + 0x54], edi  ; var_34 */
     ea = (uint32_t)(esp + 0x00000054u);
     a = M32(ea);
     b = edi;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 007787b9  mov eax, dword ptr [esp + 0x40] */
+    /* 007787b9  mov eax, dword ptr [esp + 0x40]  ; var_48 */
     ea = (uint32_t)(esp + 0x00000040u);
     eax = M32(ea);
     /* 007787bd  jae 0x7787c3 */
     if (!cf) goto L_007787c3;
-    /* 007787bf  lea eax, [esp + 0x40] */
+    /* 007787bf  lea eax, [esp + 0x40]  ; &var_48 */
     eax = (uint32_t)(esp + 0x00000040u);
 L_007787c3:
     /* 007787c3  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 007787c4  push 0xbaf978 */
+    /* 007787c4  push 0xbaf978  ; "Output file types" */
     t = 0xbaf978u;
     esp -= 4;
     M32(esp) = t;
@@ -4797,15 +4886,15 @@ L_007787c3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007787ca  push 0xbaf964 */
+    /* 007787ca  push 0xbaf964  ; "Input file types" */
     t = 0xbaf964u;
     esp -= 4;
     M32(esp) = t;
-    /* 007787cf  push 0xbaf958 */
+    /* 007787cf  push 0xbaf958  ; "ASI codec" */
     t = 0xbaf958u;
     esp -= 4;
     M32(esp) = t;
-    /* 007787d4  call dword ptr [0xb425dc] */
+    /* 007787d4  call dword ptr [0xb425dc]  ; MSS32!_RIB_find_files_provider@20 */
     ea = (uint32_t)(0x00b425dcu);
     t = M32(ea);
     esp -= 4;
@@ -4823,7 +4912,7 @@ R_10:
     M32(ea) = eax;
     /* 007787e2  jne 0x778822 */
     if (!zf) goto L_00778822;
-    /* 007787e4  cmp dword ptr [esp + 0x30], edi */
+    /* 007787e4  cmp dword ptr [esp + 0x30], edi  ; var_58 */
     ea = (uint32_t)(esp + 0x00000030u);
     a = M32(ea);
     b = edi;
@@ -4831,14 +4920,14 @@ R_10:
     F_SUB(32, a, b, r);
     /* 007787e8  jb 0x7787f7 */
     if (cf) goto L_007787f7;
-    /* 007787ea  mov eax, dword ptr [esp + 0x1c] */
+    /* 007787ea  mov eax, dword ptr [esp + 0x1c]  ; var_6c */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 007787ee  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007787ef  call 0x403680 */
+    /* 007787ef  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_11;
@@ -4852,31 +4941,31 @@ R_11:
     F_ADD(32, a, b, r);
     esp = r;
 L_007787f7:
-    /* 007787f7  cmp dword ptr [esp + 0x54], edi */
+    /* 007787f7  cmp dword ptr [esp + 0x54], edi  ; var_34 */
     ea = (uint32_t)(esp + 0x00000054u);
     a = M32(ea);
     b = edi;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 007787fb  mov dword ptr [esp + 0x30], ebp */
+    /* 007787fb  mov dword ptr [esp + 0x30], ebp  ; var_58 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = ebp;
-    /* 007787ff  mov dword ptr [esp + 0x2c], ebx */
+    /* 007787ff  mov dword ptr [esp + 0x2c], ebx  ; var_5c */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 00778803  mov byte ptr [esp + 0x1c], bl */
+    /* 00778803  mov byte ptr [esp + 0x1c], bl  ; var_6c */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
     /* 00778807  jb 0x778816 */
     if (cf) goto L_00778816;
-    /* 00778809  mov ecx, dword ptr [esp + 0x40] */
+    /* 00778809  mov ecx, dword ptr [esp + 0x40]  ; var_48 */
     ea = (uint32_t)(esp + 0x00000040u);
     ecx = M32(ea);
     /* 0077880d  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0077880e  call 0x403680 */
+    /* 0077880e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_12;
@@ -4921,16 +5010,16 @@ L_00778816:
     esp += 8;
     goto out;
 L_00778822:
-    /* 00778822  mov eax, dword ptr [esp + 0x78] */
+    /* 00778822  mov eax, dword ptr [esp + 0x78]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000078u);
     eax = M32(ea);
-    /* 00778826  imul eax, dword ptr [esp + 0x70] */
+    /* 00778826  imul eax, dword ptr [esp + 0x70]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000070u);
     p = (int64_t)(int32_t)eax * (int64_t)(int32_t)M32(ea);
     r = (uint32_t)p & 0xffffffffu;
     cf = of = p != (int64_t)(int32_t)r;
     eax = r;
-    /* 0077882b  imul eax, dword ptr [esp + 0x74] */
+    /* 0077882b  imul eax, dword ptr [esp + 0x74]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000074u);
     p = (int64_t)(int32_t)eax * (int64_t)(int32_t)M32(ea);
     r = (uint32_t)p & 0xffffffffu;
@@ -4949,24 +5038,24 @@ L_00778822:
         F_SZP(32, r); af = 0;
         edx = r;
     }
-    /* 00778838  mov dword ptr [esp + 0x10], edx */
+    /* 00778838  mov dword ptr [esp + 0x10], edx  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
-    /* 0077883c  lea ecx, [esp + 0x18] */
+    /* 0077883c  lea ecx, [esp + 0x18]  ; &var_70 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 00778840  fild dword ptr [esp + 0x10] */
+    /* 00778840  fild dword ptr [esp + 0x10]  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00778844  mov dword ptr [esp + 0x10], eax */
+    /* 00778844  mov dword ptr [esp + 0x10], eax  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 00778848  fild dword ptr [esp + 0x10] */
+    /* 00778848  fild dword ptr [esp + 0x10]  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0077884c  fmul dword ptr [esp + 0x60] */
+    /* 0077884c  fmul dword ptr [esp + 0x60]  ; var_28 */
     ea = (uint32_t)(esp + 0x00000060u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00778850  fmul dword ptr [0xb55de0] */
+    /* 00778850  fmul dword ptr [0xb55de0]  ; = 0.125f */
     ea = (uint32_t)(0x00b55de0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00778856  fcompp */
@@ -4978,16 +5067,16 @@ L_00778822:
     F_LOGIC(8, r);
     /* 0077885d  jp 0x778879 */
     if (pf) goto L_00778879;
-    /* 0077885f  call 0x5a7c60 */
+    /* 0077885f  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_13;
     c->eip = t;
     goto out;
 R_13:
-    /* 00778864  lea ecx, [esp + 0x3c] */
+    /* 00778864  lea ecx, [esp + 0x3c]  ; &var_4c */
     ecx = (uint32_t)(esp + 0x0000003cu);
-    /* 00778868  call 0x5a7c60 */
+    /* 00778868  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_14;
@@ -5032,16 +5121,16 @@ L_00778879:
     /* 00778880  mov dword ptr [esi + 0x1c], ebx */
     ea = (uint32_t)(esi + 0x0000001cu);
     M32(ea) = ebx;
-    /* 00778883  call 0x5a7c60 */
+    /* 00778883  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_15;
     c->eip = t;
     goto out;
 R_15:
-    /* 00778888  lea ecx, [esp + 0x3c] */
+    /* 00778888  lea ecx, [esp + 0x3c]  ; &var_4c */
     ecx = (uint32_t)(esp + 0x0000003cu);
-    /* 0077888c  call 0x5a7c60 */
+    /* 0077888c  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778630_16;
@@ -5054,7 +5143,7 @@ L_00778893:
     /* 00778893  mov edx, dword ptr [esi + 0xac] */
     ea = (uint32_t)(esi + 0x000000acu);
     edx = M32(ea);
-    /* 00778899  mov eax, dword ptr [esp + 0x64] */
+    /* 00778899  mov eax, dword ptr [esp + 0x64]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000064u);
     eax = M32(ea);
     /* 0077889d  shl edx, 1 */
@@ -5081,31 +5170,31 @@ L_00778893:
     ea = (uint32_t)(esi + 0x0000001cu);
     M32(ea) = eax;
 L_007788a9:
-    /* 007788a9  mov eax, dword ptr [esp + 0x74] */
+    /* 007788a9  mov eax, dword ptr [esp + 0x74]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000074u);
     eax = M32(ea);
-    /* 007788ad  mov ecx, dword ptr [esp + 0x78] */
+    /* 007788ad  mov ecx, dword ptr [esp + 0x78]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000078u);
     ecx = M32(ea);
-    /* 007788b1  mov edx, dword ptr [esp + 0x70] */
+    /* 007788b1  mov edx, dword ptr [esp + 0x70]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000070u);
     edx = M32(ea);
     /* 007788b5  mov dword ptr [esi + 0x20], eax */
     ea = (uint32_t)(esi + 0x00000020u);
     M32(ea) = eax;
-    /* 007788b8  mov eax, dword ptr [esp + 0x68] */
+    /* 007788b8  mov eax, dword ptr [esp + 0x68]  ; var_20 */
     ea = (uint32_t)(esp + 0x00000068u);
     eax = M32(ea);
     /* 007788bc  mov dword ptr [esi + 0x24], ecx */
     ea = (uint32_t)(esi + 0x00000024u);
     M32(ea) = ecx;
-    /* 007788bf  mov ecx, dword ptr [esp + 0x7c] */
+    /* 007788bf  mov ecx, dword ptr [esp + 0x7c]  ; var_c */
     ea = (uint32_t)(esp + 0x0000007cu);
     ecx = M32(ea);
     /* 007788c3  mov dword ptr [esi + 0x28], edx */
     ea = (uint32_t)(esi + 0x00000028u);
     M32(ea) = edx;
-    /* 007788c6  mov edx, dword ptr [esp + 0x80] */
+    /* 007788c6  mov edx, dword ptr [esp + 0x80]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000080u);
     edx = M32(ea);
     /* 007788cd  pop edi */

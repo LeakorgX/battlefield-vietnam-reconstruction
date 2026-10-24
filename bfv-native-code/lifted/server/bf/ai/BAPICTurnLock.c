@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a6b50  dice::bf::ai::BAPICTurnLock  (virtual method) */
+/* 007a6b50  BAPICTurnLock::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPICTurnLock
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6b50, bfv_server_l1_body_007a6b50);
 BFV_L1_RESUME(bfv_server_l1r_007a6b50_1, bfv_server_l1_body_007a6b50, 1);
 void bfv_server_l1_body_007a6b50(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_007a6b50(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a6b50  mov al, byte ptr [esp + 4] */
+    /* 007a6b50  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 007a6b54  push esi */
@@ -28,10 +31,10 @@ void bfv_server_l1_body_007a6b50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a6b55  mov esi, ecx */
     esi = ecx;
-    /* 007a6b57  mov dword ptr [esi], 0x874498 */
+    /* 007a6b57  mov dword ptr [esi], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874498u;
-    /* 007a6b5d  mov ecx, dword ptr [0xc32a44] */
+    /* 007a6b5d  mov ecx, dword ptr [0xc32a44]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     ecx = M32(ea);
     /* 007a6b63  inc ecx */
@@ -42,10 +45,10 @@ void bfv_server_l1_body_007a6b50(struct bfv_cpu *c)
     /* 007a6b64  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 007a6b66  mov dword ptr [0xc32a44], ecx */
+    /* 007a6b66  mov dword ptr [0xc32a44], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     M32(ea) = ecx;
-    /* 007a6b6c  mov dword ptr [esi], 0x87448c */
+    /* 007a6b6c  mov dword ptr [esi], 0x87448c  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87448cu;
     /* 007a6b72  je 0x7a6b7f */
@@ -54,9 +57,9 @@ void bfv_server_l1_body_007a6b50(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a6b75  mov ecx, 0xc325c0 */
+    /* 007a6b75  mov ecx, 0xc325c0  ; g_MemoryPoolNull_BAPICTurnLock */
     ecx = 0xc325c0u;
-    /* 007a6b7a  call 0x413600 */
+    /* 007a6b7a  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a6b50_1;
@@ -81,7 +84,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a6b90  dice::bf::ai::BAPICTurnLock  (virtual method) */
+/* 007a6b90  BAPICTurnLock::execute  (virtual method)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPICTurnLock
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6b90, bfv_server_l1_body_007a6b90);
 BFV_L1_RESUME(bfv_server_l1r_007a6b90_1, bfv_server_l1_body_007a6b90, 1);
 void bfv_server_l1_body_007a6b90(struct bfv_cpu *c)
@@ -100,7 +106,7 @@ void bfv_server_l1_body_007a6b90(struct bfv_cpu *c)
     /* 007a6b92  movzx eax, byte ptr [eax + 0x18] */
     ea = (uint32_t)(eax + 0x00000018u);
     eax = M8(ea);
-    /* 007a6b96  mov ecx, dword ptr [esp + 4] */
+    /* 007a6b96  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007a6b9a  mov edx, dword ptr [ecx] */
@@ -118,10 +124,10 @@ void bfv_server_l1_body_007a6b90(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 007a6ba0  mov ecx, dword ptr [esp + 8] */
+    /* 007a6ba0  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 007a6ba4  mov edx, dword ptr [esp + 0xc] */
+    /* 007a6ba4  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 007a6ba8  mov byte ptr [ecx], 1 */

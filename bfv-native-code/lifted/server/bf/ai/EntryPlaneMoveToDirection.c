@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007647c0  dice::bf::ai::EntryPlaneMoveToDirection  (vtable store) */
+/* 007647c0  EntryPlaneMoveToDirection::EntryPlaneMoveToDirection  (vtable store)
+ * class: dice::bf::ai::EntryPlaneMoveToDirection
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_007647c0, bfv_server_l1_body_007647c0);
 void bfv_server_l1_body_007647c0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_007647c0(struct bfv_cpu *c)
     uint32_t ea;
     /* 007647c0  mov eax, ecx */
     eax = ecx;
-    /* 007647c2  mov dword ptr [eax], 0x875a94 */
+    /* 007647c2  mov dword ptr [eax], 0x875a94  ; vtable EntryPlaneMoveToDirection */
     ea = (uint32_t)(eax);
     M32(ea) = 0x875a94u;
     /* 007647c8  ret */
@@ -30,7 +33,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007647d0  (source path) */
+/* 007647d0  EntryPlaneMoveToDirection_007647d0  (source path)
+ * also entered at 00764840: EntryPlaneMoveToDirection::execute
+ * called by: RenderView::sub_007da740
+ */
 BFV_L1_ENTRY(bfv_server_l1_007647d0, bfv_server_l1_body_007647d0);
 void bfv_server_l1_body_007647d0(struct bfv_cpu *c)
 {
@@ -41,7 +47,7 @@ void bfv_server_l1_body_007647d0(struct bfv_cpu *c)
     uint32_t ea;
     /* 007647d0  mov eax, ecx */
     eax = ecx;
-    /* 007647d2  mov ecx, dword ptr [esp + 4] */
+    /* 007647d2  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007647d6  mov edx, dword ptr [ecx] */

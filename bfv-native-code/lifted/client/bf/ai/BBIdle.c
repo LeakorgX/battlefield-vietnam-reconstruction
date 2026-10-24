@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00984130  dice::bf::ai::BBIdle  (vtable store) */
+/* 00984130  BBIdle::BBIdle  (vtable store)
+ * class: dice::bf::ai::BBIdle
+ * called by: BBCreateFunctionIdle::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00984130, bfv_client_l1_body_00984130);
 BFV_L1_RESUME(bfv_client_l1r_00984130_1, bfv_client_l1_body_00984130, 1);
 BFV_L1_RESUME(bfv_client_l1r_00984130_2, bfv_client_l1_body_00984130, 2);
@@ -31,7 +34,7 @@ void bfv_client_l1_body_00984130(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00984131  mov esi, ecx */
     esi = ecx;
-    /* 00984133  mov ecx, dword ptr [0xe0eb20] */
+    /* 00984133  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 00984139  mov eax, dword ptr [ecx] */
@@ -41,7 +44,7 @@ void bfv_client_l1_body_00984130(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0098413c  call dword ptr [eax + 4] */
+    /* 0098413c  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -49,10 +52,10 @@ void bfv_client_l1_body_00984130(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0098413f  mov ecx, dword ptr [esp + 0x18] */
+    /* 0098413f  mov ecx, dword ptr [esp + 0x18]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
-    /* 00984143  mov edx, dword ptr [esp + 0x1c] */
+    /* 00984143  mov edx, dword ptr [esp + 0x1c]  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000001cu);
     edx = M32(ea);
     /* 00984147  push eax */
@@ -69,23 +72,23 @@ R_1:
     M32(esp) = t;
     /* 0098414a  mov ecx, esi */
     ecx = esi;
-    /* 0098414c  call 0x9ee2d0 */
+    /* 0098414c  call 0x9ee2d0  ; BotBehaviour::BotBehaviour */
     t = 0x009ee2d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00984130_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00984151  mov al, byte ptr [esp + 0xc] */
+    /* 00984151  mov al, byte ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     SET8L(eax, M8(ea));
-    /* 00984155  mov cl, byte ptr [esp + 0x10] */
+    /* 00984155  mov cl, byte ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     SET8L(ecx, M8(ea));
-    /* 00984159  mov edx, dword ptr [esp + 0x14] */
+    /* 00984159  mov edx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
-    /* 0098415d  mov dword ptr [esi], 0xbf58dc */
+    /* 0098415d  mov dword ptr [esi], 0xbf58dc  ; vtable BBIdle */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf58dcu;
     /* 00984163  mov byte ptr [esi + 4], al */
@@ -97,7 +100,7 @@ R_2:
     /* 00984169  mov dword ptr [esi + 0xc], edx */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = edx;
-    /* 0098416c  mov ecx, dword ptr [0xe0eb20] */
+    /* 0098416c  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 00984172  mov eax, dword ptr [ecx] */
@@ -107,7 +110,7 @@ R_2:
     r = 0;
     F_LOGIC(32, r);
     edi = r;
-    /* 00984176  call dword ptr [eax + 4] */
+    /* 00984176  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -126,7 +129,7 @@ L_00984180:
     /* 00984180  mov ecx, dword ptr [esi + 0x1c] */
     ea = (uint32_t)(esi + 0x0000001cu);
     ecx = M32(ea);
-    /* 00984183  mov dword ptr [ecx + edi*4], 0x3f800000 */
+    /* 00984183  mov dword ptr [ecx + edi*4], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(ecx + edi * 4u);
     M32(ea) = 0x3f800000u;
     /* 0098418a  mov edx, dword ptr [esi + 0x24] */
@@ -135,7 +138,7 @@ L_00984180:
     /* 0098418d  mov byte ptr [edi + edx], 0 */
     ea = (uint32_t)(edi + edx);
     M8(ea) = 0x0u;
-    /* 00984191  mov ecx, dword ptr [0xe0eb20] */
+    /* 00984191  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 00984197  mov eax, dword ptr [ecx] */
@@ -146,7 +149,7 @@ L_00984180:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 0098419a  call dword ptr [eax + 4] */
+    /* 0098419a  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -186,7 +189,11 @@ out: __attribute__((unused));
 }
 
 
-/* 009841b0  dice::bf::ai::BBIdle  (virtual method) */
+/* 009841b0  BBIdle::vf8  (virtual method)
+ * overrides: UrgencyGenerator::vf8  (24 classes implement it)
+ * class: dice::bf::ai::BBIdle
+ * also entered at 009841d0: BBIdle::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009841b0, bfv_client_l1_body_009841b0);
 BFV_L1_RESUME(bfv_client_l1r_009841b0_1, bfv_client_l1_body_009841b0, 1);
 void bfv_client_l1_body_009841b0(struct bfv_cpu *c)
@@ -206,7 +213,7 @@ void bfv_client_l1_body_009841b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009841b1  mov esi, ecx */
     esi = ecx;
-    /* 009841b3  mov ecx, dword ptr [esp + 8] */
+    /* 009841b3  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 009841b7  mov eax, dword ptr [ecx] */
@@ -223,7 +230,7 @@ R_1:
     /* 009841bf  mov ecx, dword ptr [esi + 0x1c] */
     ea = (uint32_t)(esi + 0x0000001cu);
     ecx = M32(ea);
-    /* 009841c2  mov dword ptr [ecx + eax*4], 0x3f800000 */
+    /* 009841c2  mov dword ptr [ecx + eax*4], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(ecx + eax * 4u);
     M32(ea) = 0x3f800000u;
     /* 009841c9  pop esi */
@@ -241,7 +248,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00984200  dice::bf::ai::BBIdle  (virtual method) */
+/* 00984200  BBIdle::evaluate  (virtual method)
+ * overrides: BotBehaviour::evaluate  (22 classes implement it)
+ * class: dice::bf::ai::BBIdle
+ */
 BFV_L1_ENTRY(bfv_client_l1_00984200, bfv_client_l1_body_00984200);
 BFV_L1_RESUME(bfv_client_l1r_00984200_1, bfv_client_l1_body_00984200, 1);
 BFV_L1_RESUME(bfv_client_l1r_00984200_2, bfv_client_l1_body_00984200, 2);
@@ -302,7 +312,7 @@ R_1:
     b = 0x1u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00984212  mov edi, dword ptr [esp + 0x10] */
+    /* 00984212  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 00984216  mov ecx, esi */
@@ -313,7 +323,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0098421b  call 0x983280 */
+    /* 0098421b  call 0x983280  ; BBPPattern::vf3 */
     t = 0x00983280u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00984200_2;
@@ -347,11 +357,11 @@ R_3:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0098422f  push 0x42480000 */
+    /* 0098422f  push 0x42480000  ; 50.0f */
     t = 0x42480000u;
     esp -= 4;
     M32(esp) = t;
-    /* 00984234  call 0x984540 */
+    /* 00984234  call 0x984540  ; BBIdle::evaluate_helper_00984540 */
     t = 0x00984540u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00984200_4;
@@ -385,7 +395,7 @@ R_5:
     M32(esp) = t;
     /* 00984246  mov ecx, esi */
     ecx = esi;
-    /* 00984248  call 0x983280 */
+    /* 00984248  call 0x983280  ; BBPPattern::vf3 */
     t = 0x00983280u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00984200_6;
@@ -406,7 +416,7 @@ L_0098424d:
     c->eip = t;
     goto out;
 R_7:
-    /* 00984257  fld dword ptr [esp + 0x18] */
+    /* 00984257  fld dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0098425b  mov ecx, dword ptr [ebx + 0x1c] */
@@ -419,7 +429,7 @@ R_7:
     /* 0098425f  fstp dword ptr [ecx + eax*4] */
     ea = (uint32_t)(ecx + eax * 4u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00984262  fld dword ptr [esp + 0x14] */
+    /* 00984262  fld dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00984266  pop esi */

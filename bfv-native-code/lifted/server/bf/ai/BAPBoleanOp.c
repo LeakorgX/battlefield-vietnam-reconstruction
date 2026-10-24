@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a5da0  dice::bf::ai::BAPBoleanOp  (virtual method) */
+/* 007a5da0  BAPBoleanOp::vf2  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPBoleanOp
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a5da0, bfv_server_l1_body_007a5da0);
 BFV_L1_RESUME(bfv_server_l1r_007a5da0_1, bfv_server_l1_body_007a5da0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a5da0_2, bfv_server_l1_body_007a5da0, 2);
@@ -37,10 +40,10 @@ void bfv_server_l1_body_007a5da0(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x00000008u);
     /* 007a5da7  mov ecx, edi */
     ecx = edi;
-    /* 007a5da9  mov dword ptr [esi], 0x878ea0 */
+    /* 007a5da9  mov dword ptr [esi], 0x878ea0  ; vtable BAPBoleanOp */
     ea = (uint32_t)(esi);
     M32(ea) = 0x878ea0u;
-    /* 007a5daf  call 0x4719b0 */
+    /* 007a5daf  call 0x4719b0  ; std::list::clear */
     t = 0x004719b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a5da0_1;
@@ -54,14 +57,14 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007a5db8  call 0x403df0 */
+    /* 007a5db8  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a5da0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 007a5dbd  mov al, byte ptr [esp + 0x10] */
+    /* 007a5dbd  mov al, byte ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     SET8L(eax, M8(ea));
     /* 007a5dc1  add esp, 4 */
@@ -76,7 +79,7 @@ R_2:
     /* 007a5dc6  mov dword ptr [edi + 4], 0 */
     ea = (uint32_t)(edi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 007a5dcd  mov dword ptr [esi], 0x873c74 */
+    /* 007a5dcd  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 007a5dd3  je 0x7a5dde */
@@ -85,7 +88,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a5dd6  call 0x403df0 */
+    /* 007a5dd6  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a5da0_3;

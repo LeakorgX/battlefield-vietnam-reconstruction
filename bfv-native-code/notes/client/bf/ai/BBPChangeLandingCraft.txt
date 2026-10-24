@@ -1,0 +1,5 @@
+## file
+Plan builder for boarding or leaving a landing craft.
+
+## 00988a20
+buildPlan: clears the current plan; then builds a parallel plan of BAPICChangeVehicle with the chosen handle and a BAPATrigger, wrapped in a BAPIWChange. A second branch builds the same pair without the wrapper.

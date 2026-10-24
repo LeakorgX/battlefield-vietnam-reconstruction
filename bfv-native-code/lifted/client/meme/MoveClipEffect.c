@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00abea00  dice::meme::MoveClipEffect  (virtual method) */
+/* 00abea00  MoveClipEffect::vf19  (virtual method)
+ * overrides: Effect::vf19  (18 classes implement it)
+ * class: dice::meme::MoveClipEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abea00, bfv_client_l1_body_00abea00);
 BFV_L1_RESUME(bfv_client_l1r_00abea00_1, bfv_client_l1_body_00abea00, 1);
 void bfv_client_l1_body_00abea00(struct bfv_cpu *c)
@@ -34,19 +37,19 @@ void bfv_client_l1_body_00abea00(struct bfv_cpu *c)
     /* 00abea09  fld dword ptr [ecx + 0xc] */
     ea = (uint32_t)(ecx + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abea0c  mov dword ptr [esp + 8], eax */
+    /* 00abea0c  mov dword ptr [esp + 8], eax  ; var_c */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = eax;
     /* 00abea10  mov eax, dword ptr [ecx + 0x18] */
     ea = (uint32_t)(ecx + 0x00000018u);
     eax = M32(ea);
-    /* 00abea13  fld dword ptr [0xb4456c] */
+    /* 00abea13  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abea19  mov dword ptr [esp + 0x10], eax */
+    /* 00abea19  mov dword ptr [esp + 0x10], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 00abea1d  mov eax, dword ptr [esp + 0x24] */
+    /* 00abea1d  mov eax, dword ptr [esp + 0x24]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000024u);
     eax = M32(ea);
     /* 00abea21  fsub dword ptr [eax + 0x18] */
@@ -59,7 +62,7 @@ void bfv_client_l1_body_00abea00(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abea28  mov esi, dword ptr [esp + 0x24] */
+    /* 00abea28  mov esi, dword ptr [esp + 0x24]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000024u);
     esi = M32(ea);
     /* 00abea2c  fmul dword ptr [ecx + 0x1c] */
@@ -77,10 +80,10 @@ void bfv_client_l1_body_00abea00(struct bfv_cpu *c)
     /* 00abea35  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 00abea37  mov dword ptr [esp + 0x14], edx */
+    /* 00abea37  mov dword ptr [esp + 0x14], edx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
-    /* 00abea3b  mov edx, dword ptr [esp + 0x24] */
+    /* 00abea3b  mov edx, dword ptr [esp + 0x24]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000024u);
     edx = M32(ea);
     /* 00abea3f  push esi */
@@ -97,20 +100,20 @@ void bfv_client_l1_body_00abea00(struct bfv_cpu *c)
     __asm__ volatile(".intel_syntax noprefix\n\tfchs\n\t.att_syntax prefix");
     /* 00abea45  fadd st(3) */
     __asm__ volatile(".intel_syntax noprefix\n\tfadd st(3)\n\t.att_syntax prefix");
-    /* 00abea47  fstp dword ptr [esp + 0x10] */
+    /* 00abea47  fstp dword ptr [esp + 0x10]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abea4b  fld dword ptr [ecx + 0x20] */
     ea = (uint32_t)(ecx + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abea4e  lea ecx, [esp + 0x10] */
+    /* 00abea4e  lea ecx, [esp + 0x10]  ; &var_14 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 00abea52  fsin */
     __asm__ volatile(".intel_syntax noprefix\n\tfsin\n\t.att_syntax prefix");
     /* 00abea54  mov dword ptr [esi], ecx */
     ea = (uint32_t)(esi);
     M32(ea) = ecx;
-    /* 00abea56  mov ecx, dword ptr [esp + 0x28] */
+    /* 00abea56  mov ecx, dword ptr [esp + 0x28]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000028u);
     ecx = M32(ea);
     /* 00abea5a  mov eax, dword ptr [eax] */
@@ -126,7 +129,7 @@ void bfv_client_l1_body_00abea00(struct bfv_cpu *c)
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
     /* 00abea61  fadd st(2) */
     __asm__ volatile(".intel_syntax noprefix\n\tfadd st(2)\n\t.att_syntax prefix");
-    /* 00abea63  fstp dword ptr [esp + 0x18] */
+    /* 00abea63  fstp dword ptr [esp + 0x18]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abea67  fstp st(0) */
@@ -135,7 +138,7 @@ void bfv_client_l1_body_00abea00(struct bfv_cpu *c)
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
     /* 00abea6b  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
-    /* 00abea6d  call 0x8755e0 */
+    /* 00abea6d  call 0x8755e0  ; meme::Node::dispatchUpA */
     t = 0x008755e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abea00_1;
@@ -170,8 +173,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abea80  dice::meme::MoveClipEffect  (virtual method)
- * strings: "Move length", "Move direction" */
+/* 00abea80  MoveClipEffect::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::MoveClipEffect
+ * strings: "Move length", "Move direction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abea80, bfv_client_l1_body_00abea80);
 BFV_L1_RESUME(bfv_client_l1r_00abea80_1, bfv_client_l1_body_00abea80, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abea80_2, bfv_client_l1_body_00abea80, 2);
@@ -191,14 +197,14 @@ void bfv_client_l1_body_00abea80(struct bfv_cpu *c)
     case 4: goto R_4;
     default: break;
     }
-    /* 00abea80  mov eax, dword ptr [esp + 4] */
+    /* 00abea80  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00abea84  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abea85  mov esi, dword ptr [esp + 0xc] */
+    /* 00abea85  mov esi, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 00abea89  push edi */
@@ -215,7 +221,7 @@ void bfv_client_l1_body_00abea80(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00abea8c  mov edi, ecx */
     edi = ecx;
-    /* 00abea8e  call 0xa7d100 */
+    /* 00abea8e  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abea80_1;
@@ -233,7 +239,7 @@ R_1:
     M32(esp) = t;
     /* 00abea98  lea ecx, [edi + 8] */
     ecx = (uint32_t)(edi + 0x00000008u);
-    /* 00abea9b  call 0x8757e0 */
+    /* 00abea9b  call 0x8757e0  ; meme_Width_008757e0 */
     t = 0x008757e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abea80_2;
@@ -266,7 +272,7 @@ L_00abeaab:
     /* 00abeaab  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00abeaad  push 0xc0eec4 */
+    /* 00abeaad  push 0xc0eec4  ; "Move length" */
     t = 0xc0eec4u;
     esp -= 4;
     M32(esp) = t;
@@ -294,7 +300,7 @@ R_3:
     /* 00abeabf  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00abeac1  push 0xc0eeb4 */
+    /* 00abeac1  push 0xc0eeb4  ; "Move direction" */
     t = 0xc0eeb4u;
     esp -= 4;
     M32(esp) = t;
@@ -342,7 +348,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00abeae0  (between same file) */
+/* 00abeae0  ClassTemplate<ClipEffect,Effect>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abeae0, bfv_client_l1_body_00abeae0);
 void bfv_client_l1_body_00abeae0(struct bfv_cpu *c)
 {
@@ -368,7 +375,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00abeaf0  (between same file) */
+/* 00abeaf0  ClassTemplate<ClipEffect,Effect>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abeaf0, bfv_client_l1_body_00abeaf0);
 void bfv_client_l1_body_00abeaf0(struct bfv_cpu *c)
 {
@@ -394,7 +402,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00abeb10  (between same file) */
+/* 00abeb10  ClassTemplate<MoveClipEffect,ClipEffect>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abeb10, bfv_client_l1_body_00abeb10);
 void bfv_client_l1_body_00abeb10(struct bfv_cpu *c)
 {
@@ -420,7 +429,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00abeb20  (between same file) */
+/* 00abeb20  ClassTemplate<MoveClipEffect,ClipEffect>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abeb20, bfv_client_l1_body_00abeb20);
 void bfv_client_l1_body_00abeb20(struct bfv_cpu *c)
 {
@@ -446,7 +456,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00abeb40  dice::meme::MoveClipEffect  (virtual method) */
+/* 00abeb40  MoveClipEffect::vf18  (virtual method)
+ * overrides: Effect::vf18  (18 classes implement it)
+ * class: dice::meme::MoveClipEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abeb40, bfv_client_l1_body_00abeb40);
 BFV_L1_RESUME(bfv_client_l1r_00abeb40_1, bfv_client_l1_body_00abeb40, 1);
 void bfv_client_l1_body_00abeb40(struct bfv_cpu *c)
@@ -475,19 +488,19 @@ void bfv_client_l1_body_00abeb40(struct bfv_cpu *c)
     /* 00abeb49  fld dword ptr [ecx + 0xc] */
     ea = (uint32_t)(ecx + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abeb4c  mov dword ptr [esp + 8], eax */
+    /* 00abeb4c  mov dword ptr [esp + 8], eax  ; var_c */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = eax;
     /* 00abeb50  mov eax, dword ptr [ecx + 0x18] */
     ea = (uint32_t)(ecx + 0x00000018u);
     eax = M32(ea);
-    /* 00abeb53  fld dword ptr [0xb4456c] */
+    /* 00abeb53  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abeb59  mov dword ptr [esp + 0x10], eax */
+    /* 00abeb59  mov dword ptr [esp + 0x10], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 00abeb5d  mov eax, dword ptr [esp + 0x2c] */
+    /* 00abeb5d  mov eax, dword ptr [esp + 0x2c]  ; arg_14 */
     ea = (uint32_t)(esp + 0x0000002cu);
     eax = M32(ea);
     /* 00abeb61  fsub dword ptr [eax + 0x18] */
@@ -500,7 +513,7 @@ void bfv_client_l1_body_00abeb40(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abeb68  mov esi, dword ptr [esp + 0x2c] */
+    /* 00abeb68  mov esi, dword ptr [esp + 0x2c]  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000002cu);
     esi = M32(ea);
     /* 00abeb6c  fmul dword ptr [ecx + 0x1c] */
@@ -522,17 +535,17 @@ void bfv_client_l1_body_00abeb40(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abeb78  mov dword ptr [esp + 0x18], edx */
+    /* 00abeb78  mov dword ptr [esp + 0x18], edx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = edx;
-    /* 00abeb7c  mov edx, dword ptr [esp + 0x30] */
+    /* 00abeb7c  mov edx, dword ptr [esp + 0x30]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000030u);
     edx = M32(ea);
     /* 00abeb80  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00abeb81  mov edx, dword ptr [esp + 0x2c] */
+    /* 00abeb81  mov edx, dword ptr [esp + 0x2c]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000002cu);
     edx = M32(ea);
     /* 00abeb85  fmul st(1) */
@@ -541,20 +554,20 @@ void bfv_client_l1_body_00abeb40(struct bfv_cpu *c)
     __asm__ volatile(".intel_syntax noprefix\n\tfchs\n\t.att_syntax prefix");
     /* 00abeb89  fadd st(3) */
     __asm__ volatile(".intel_syntax noprefix\n\tfadd st(3)\n\t.att_syntax prefix");
-    /* 00abeb8b  fstp dword ptr [esp + 0x10] */
+    /* 00abeb8b  fstp dword ptr [esp + 0x10]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abeb8f  fld dword ptr [ecx + 0x20] */
     ea = (uint32_t)(ecx + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abeb92  lea ecx, [esp + 0x10] */
+    /* 00abeb92  lea ecx, [esp + 0x10]  ; &var_14 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 00abeb96  fsin */
     __asm__ volatile(".intel_syntax noprefix\n\tfsin\n\t.att_syntax prefix");
     /* 00abeb98  mov dword ptr [esi], ecx */
     ea = (uint32_t)(esi);
     M32(ea) = ecx;
-    /* 00abeb9a  mov ecx, dword ptr [esp + 0x30] */
+    /* 00abeb9a  mov ecx, dword ptr [esp + 0x30]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000030u);
     ecx = M32(ea);
     /* 00abeb9e  mov eax, dword ptr [eax] */
@@ -564,7 +577,7 @@ void bfv_client_l1_body_00abeb40(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00abeba1  mov ecx, dword ptr [esp + 0x2c] */
+    /* 00abeba1  mov ecx, dword ptr [esp + 0x2c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000002cu);
     ecx = M32(ea);
     /* 00abeba5  push edx */
@@ -581,7 +594,7 @@ void bfv_client_l1_body_00abeb40(struct bfv_cpu *c)
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
     /* 00abebab  fadd st(2) */
     __asm__ volatile(".intel_syntax noprefix\n\tfadd st(2)\n\t.att_syntax prefix");
-    /* 00abebad  fstp dword ptr [esp + 0x20] */
+    /* 00abebad  fstp dword ptr [esp + 0x20]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abebb1  fstp st(0) */
@@ -590,7 +603,7 @@ void bfv_client_l1_body_00abeb40(struct bfv_cpu *c)
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
     /* 00abebb5  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
-    /* 00abebb7  call 0x875580 */
+    /* 00abebb7  call 0x875580  ; meme::Node::dispatchUpB */
     t = 0x00875580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abeb40_1;
@@ -625,7 +638,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00abec20  dice::meme::MoveClipEffect  (vtable store) */
+/* 00abec20  MoveClipEffect::create  (vtable store)
+ * class: dice::meme::MoveClipEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abec20, bfv_client_l1_body_00abec20);
 BFV_L1_RESUME(bfv_client_l1r_00abec20_1, bfv_client_l1_body_00abec20, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abec20_2, bfv_client_l1_body_00abec20, 2);
@@ -649,7 +664,7 @@ void bfv_client_l1_body_00abec20(struct bfv_cpu *c)
     t = 0x24u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abec23  call 0x403610 */
+    /* 00abec23  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abec20_1;
@@ -671,14 +686,14 @@ R_1:
     if (zf) goto L_00abec50;
     /* 00abec31  mov ecx, esi */
     ecx = esi;
-    /* 00abec33  call 0xabebf0 */
+    /* 00abec33  call 0xabebf0  ; ClipEffect::ClipEffect */
     t = 0x00abebf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abec20_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00abec38  mov dword ptr [esi], 0xc0ef74 */
+    /* 00abec38  mov dword ptr [esi], 0xc0ef74  ; vtable MoveClipEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0ef74u;
     /* 00abec3e  mov dword ptr [esi + 0x1c], 0 */
@@ -717,8 +732,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abecb0  dice::meme::MoveClipEffect  (virtual method)
- * strings: "dice::meme::MoveClipEffect" */
+/* 00abecb0  MoveClipEffect::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::MoveClipEffect
+ * strings: "dice::meme::MoveClipEffect"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abecb0, bfv_client_l1_body_00abecb0);
 BFV_L1_RESUME(bfv_client_l1r_00abecb0_1, bfv_client_l1_body_00abecb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abecb0_2, bfv_client_l1_body_00abecb0, 2);
@@ -749,27 +767,27 @@ void bfv_client_l1_body_00abecb0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00abecc5  push 0xc0efdc */
+    /* 00abecc5  push 0xc0efdc  ; "dice::meme::MoveClipEffect" */
     t = 0xc0efdcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00abecca  mov ecx, 0xe21314 */
+    /* 00abecca  mov ecx, 0xe21314  ; g_RuntimeClass_MoveClipEffect */
     ecx = 0xe21314u;
-    /* 00abeccf  call 0x875490 */
+    /* 00abeccf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abecb0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00abecd4  push 0xb41aa0 */
+    /* 00abecd4  push 0xb41aa0  ; bfv_client_global_store_00b41aa0 */
     t = 0xb41aa0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abecd9  mov dword ptr [0xe21314], 0xc0eef8 */
+    /* 00abecd9  mov dword ptr [0xe21314], 0xc0eef8  ; g_RuntimeClass_MoveClipEffect */
     ea = (uint32_t)(0x00e21314u);
     M32(ea) = 0xc0eef8u;
-    /* 00abece3  call 0x7c2cd2 */
+    /* 00abece3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abecb0_2;
@@ -783,7 +801,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00abeceb:
-    /* 00abeceb  mov eax, 0xe21314 */
+    /* 00abeceb  mov eax, 0xe21314  ; g_RuntimeClass_MoveClipEffect */
     eax = 0xe21314u;
     /* 00abecf0  ret */
     c->eip = M32(esp);

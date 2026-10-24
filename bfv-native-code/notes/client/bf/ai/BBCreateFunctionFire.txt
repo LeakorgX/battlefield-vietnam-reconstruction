@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBFire behaviour.
+
+## 00940a90
+vf0: picks the parameter object by type name: "BBPFire2d" (0x20 bytes) or "BBPFireInfantery" (0x24 bytes); null when neither matches. Allocates a 0x4c-byte BBFire with a copy of the passed-in list and that parameter, then frees the passed-in list.

@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 008714a0  dice::meme::ToggleVariableAction  (virtual method)
- * strings: "Variable" */
+/* 008714a0  ToggleVariableAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::ToggleVariableAction
+ * strings: "Variable"
+ */
 BFV_L1_ENTRY(bfv_client_l1_008714a0, bfv_client_l1_body_008714a0);
 BFV_L1_RESUME(bfv_client_l1r_008714a0_1, bfv_client_l1_body_008714a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008714a0_2, bfv_client_l1_body_008714a0, 2);
@@ -26,7 +29,7 @@ void bfv_client_l1_body_008714a0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008714a1  mov ebx, dword ptr [esp + 8] */
+    /* 008714a1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 008714a5  push esi */
@@ -37,7 +40,7 @@ void bfv_client_l1_body_008714a0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008714a7  mov edi, dword ptr [esp + 0x14] */
+    /* 008714a7  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 008714ab  push edi */
@@ -50,7 +53,7 @@ void bfv_client_l1_body_008714a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008714ad  mov esi, ecx */
     esi = ecx;
-    /* 008714af  call 0xa7d100 */
+    /* 008714af  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008714a0_1;
@@ -86,11 +89,11 @@ L_008714be:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008714c2  push 0xbd33e8 */
+    /* 008714c2  push 0xbd33e8  ; "Variable" */
     t = 0xbd33e8u;
     esp -= 4;
     M32(esp) = t;
-    /* 008714c7  add esi, 8 */
+    /* 008714c7  add esi, 8  ; field Variable (serialized) */
     a = esi;
     b = 0x8u;
     r = (a + b) & 0xffffffffu;
@@ -142,7 +145,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008714e0  dice::meme::ToggleVariableAction  (virtual method) */
+/* 008714e0  ToggleVariableAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::ToggleVariableAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_008714e0, bfv_client_l1_body_008714e0);
 BFV_L1_RESUME(bfv_client_l1r_008714e0_1, bfv_client_l1_body_008714e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008714e0_2, bfv_client_l1_body_008714e0, 2);
@@ -166,7 +172,7 @@ void bfv_client_l1_body_008714e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008714e1  mov esi, ecx */
     esi = ecx;
-    /* 008714e3  mov eax, dword ptr [esi + 8] */
+    /* 008714e3  mov eax, dword ptr [esi + 8]  ; field Variable */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
     /* 008714e6  test eax, eax */
@@ -178,7 +184,7 @@ void bfv_client_l1_body_008714e0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008714eb  mov edi, dword ptr [esp + 0xc] */
+    /* 008714eb  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 008714ef  mov ecx, eax */
@@ -198,10 +204,10 @@ void bfv_client_l1_body_008714e0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 008714f7  fld dword ptr [0xb44444] */
+    /* 008714f7  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008714fd  mov ecx, dword ptr [esi + 8] */
+    /* 008714fd  mov ecx, dword ptr [esi + 8]  ; field Variable */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
     /* 00871500  fucompp */
@@ -252,7 +258,7 @@ L_00871518:
     /* 00871518  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0087151a  push 0x3f800000 */
+    /* 0087151a  push 0x3f800000  ; 1.0f */
     t = 0x3f800000u;
     esp -= 4;
     M32(esp) = t;
@@ -292,7 +298,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00871a50  dice::meme::ToggleVariableAction  (vtable store) */
+/* 00871a50  ToggleVariableAction::create  (vtable store)
+ * class: dice::meme::ToggleVariableAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871a50, bfv_client_l1_body_00871a50);
 BFV_L1_RESUME(bfv_client_l1r_00871a50_1, bfv_client_l1_body_00871a50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871a50_2, bfv_client_l1_body_00871a50, 2);
@@ -316,7 +324,7 @@ void bfv_client_l1_body_00871a50(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00871a53  call 0x403610 */
+    /* 00871a53  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871a50_1;
@@ -338,14 +346,14 @@ R_1:
     if (zf) goto L_00871a79;
     /* 00871a61  mov ecx, esi */
     ecx = esi;
-    /* 00871a63  call 0x874870 */
+    /* 00871a63  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871a50_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00871a68  mov dword ptr [esi], 0xbd599c */
+    /* 00871a68  mov dword ptr [esi], 0xbd599c  ; vtable ToggleVariableAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd599cu;
     /* 00871a6e  mov dword ptr [esi + 8], 0 */
@@ -381,8 +389,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00871dc0  dice::meme::ToggleVariableAction  (virtual method)
- * strings: "dice::meme::ToggleVariableAction" */
+/* 00871dc0  ToggleVariableAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::ToggleVariableAction
+ * strings: "dice::meme::ToggleVariableAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871dc0, bfv_client_l1_body_00871dc0);
 BFV_L1_RESUME(bfv_client_l1r_00871dc0_1, bfv_client_l1_body_00871dc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871dc0_2, bfv_client_l1_body_00871dc0, 2);
@@ -413,13 +424,13 @@ void bfv_client_l1_body_00871dc0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00871dd5  push 0xbd5d68 */
+    /* 00871dd5  push 0xbd5d68  ; "dice::meme::ToggleVariableAction" */
     t = 0xbd5d68u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871dda  mov ecx, 0xdf66f4 */
+    /* 00871dda  mov ecx, 0xdf66f4  ; g_RuntimeClass_ToggleVariableAction */
     ecx = 0xdf66f4u;
-    /* 00871ddf  call 0x875490 */
+    /* 00871ddf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871dc0_1;
@@ -430,10 +441,10 @@ R_1:
     t = 0xb3ae10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871de9  mov dword ptr [0xdf66f4], 0xbd5b18 */
+    /* 00871de9  mov dword ptr [0xdf66f4], 0xbd5b18  ; g_RuntimeClass_ToggleVariableAction */
     ea = (uint32_t)(0x00df66f4u);
     M32(ea) = 0xbd5b18u;
-    /* 00871df3  call 0x7c2cd2 */
+    /* 00871df3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871dc0_2;
@@ -447,7 +458,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00871dfb:
-    /* 00871dfb  mov eax, 0xdf66f4 */
+    /* 00871dfb  mov eax, 0xdf66f4  ; g_RuntimeClass_ToggleVariableAction */
     eax = 0xdf66f4u;
     /* 00871e00  ret */
     c->eip = M32(esp);

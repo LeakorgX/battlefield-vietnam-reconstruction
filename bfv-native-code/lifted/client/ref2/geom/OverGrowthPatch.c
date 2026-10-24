@@ -5,8 +5,14 @@
 #include "l1.h"
 
 
-/* 0071e200  dice::ref2::geom::OverGrowthPatch  (vtable store)
- * strings: "StandardMesh/overgrowth/overgrowth" */
+/* 0071e200  OverGrowthPatch::OverGrowthPatch  (vtable store)
+ * class: dice::ref2::geom::OverGrowthPatch
+ * strings: "StandardMesh/overgrowth/overgrowth"
+ * also entered at 0071e2e0: OverGrowthPatch::vf1, RaStreamDataEditable::vf1, UnderGrowthPatch::vf1
+ * also entered at 0071e2f0: OverGrowthPatch::vf2, RaStreamDataEditable::vf2, UnderGrowthPatch::vf2
+ * also entered at 0071e300: OverGrowthPatch::vf3, RaStreamDataEditable::vf3, UnderGrowthPatch::vf3
+ * called by: OverGrowthManager::createOverGrowthPatch
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071e200, bfv_client_l1_body_0071e200);
 BFV_L1_RESUME(bfv_client_l1r_0071e200_1, bfv_client_l1_body_0071e200, 1);
 BFV_L1_RESUME(bfv_client_l1r_0071e200_2, bfv_client_l1_body_0071e200, 2);
@@ -66,7 +72,7 @@ void bfv_client_l1_body_0071e200(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0071e213  mov ebp, ecx */
     ebp = ecx;
-    /* 0071e215  call 0xa4c220 */
+    /* 0071e215  call 0xa4c220  ; RaStreamDataEditable::RaStreamDataEditable */
     t = 0x00a4c220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071e200_1;
@@ -77,7 +83,7 @@ R_1:
     esi = (uint32_t)(ebp + 0x0000018cu);
     /* 0071e220  mov ecx, esi */
     ecx = esi;
-    /* 0071e222  call 0x75e3a0 */
+    /* 0071e222  call 0x75e3a0  ; GrowthPatch::GrowthPatch */
     t = 0x0075e3a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071e200_2;
@@ -88,7 +94,7 @@ R_2:
     r = 0;
     F_LOGIC(32, r);
     ebx = r;
-    /* 0071e229  mov dword ptr [ebp], 0xba9ff4 */
+    /* 0071e229  mov dword ptr [ebp], 0xba9ff4  ; vtable OverGrowthPatch */
     ea = (uint32_t)(ebp);
     M32(ea) = 0xba9ff4u;
     /* 0071e230  mov dword ptr [esi], 0xba9fd4 */
@@ -112,7 +118,7 @@ R_2:
     M32(ea) = ebx;
     /* 0071e250  mov edi, 0xf */
     edi = 0xfu;
-    /* 0071e255  push 0xba9fac */
+    /* 0071e255  push 0xba9fac  ; "StandardMesh/overgrowth/overgrowth" */
     t = 0xba9facu;
     esp -= 4;
     M32(esp) = t;
@@ -130,14 +136,14 @@ R_2:
     /* 0071e26c  mov byte ptr [esp + 0x1c], bl */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0071e270  call 0x401ae0 */
+    /* 0071e270  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071e200_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 0071e275  mov ecx, dword ptr [0xe122cc] */
+    /* 0071e275  mov ecx, dword ptr [0xe122cc]  ; g_pShaderManager */
     ea = (uint32_t)(0x00e122ccu);
     ecx = M32(ea);
     /* 0071e27b  mov eax, dword ptr [ecx] */
@@ -147,11 +153,11 @@ R_3:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0071e27e  push 0xcf4208 */
+    /* 0071e27e  push 0xcf4208  ; typeid(RaShaderSettings) */
     t = 0xcf4208u;
     esp -= 4;
     M32(esp) = t;
-    /* 0071e283  push 0xcf25c4 */
+    /* 0071e283  push 0xcf25c4  ; typeid(IShader) */
     t = 0xcf25c4u;
     esp -= 4;
     M32(esp) = t;
@@ -165,7 +171,7 @@ R_3:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0071e28e  call dword ptr [eax + 0x10] */
+    /* 0071e28e  call dword ptr [eax + 0x10]  ; -> ShaderManager::vf4 */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -177,7 +183,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0071e292  call 0x7c334d */
+    /* 0071e292  call 0x7c334d  ; __RTDynamicCast */
     t = 0x007c334du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071e200_5;
@@ -209,7 +215,7 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0071e2aa  call 0x403680 */
+    /* 0071e2aa  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071e200_6;
@@ -278,7 +284,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0071e350  dice::ref2::geom::OverGrowthPatch  (virtual method) */
+/* 0071e350  OverGrowthPatch::vf13  (virtual method)
+ * overrides: RaStreamDataEditable::vf13  (3 classes implement it)
+ * class: dice::ref2::geom::OverGrowthPatch
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071e350, bfv_client_l1_body_0071e350);
 void bfv_client_l1_body_0071e350(struct bfv_cpu *c)
 {
@@ -286,7 +295,7 @@ void bfv_client_l1_body_0071e350(struct bfv_cpu *c)
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
-    /* 0071e350  jmp 0xa4c0e0 */
+    /* 0071e350  jmp 0xa4c0e0  ; RaStreamDataEditable::vf13 */
     c->eip = 0x00a4c0e0u;
     goto out;
 out: __attribute__((unused));
@@ -296,7 +305,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0071e360  dice::ref2::geom::OverGrowthPatch  (virtual method) */
+/* 0071e360  OverGrowthPatch::vf14  (virtual method)
+ * overrides: RaStreamDataEditable::vf14  (3 classes implement it)
+ * class: dice::ref2::geom::OverGrowthPatch
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071e360, bfv_client_l1_body_0071e360);
 void bfv_client_l1_body_0071e360(struct bfv_cpu *c)
 {
@@ -304,7 +316,7 @@ void bfv_client_l1_body_0071e360(struct bfv_cpu *c)
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
-    /* 0071e360  jmp 0xa4c030 */
+    /* 0071e360  jmp 0xa4c030  ; RaStreamDataEditable::vf14 */
     c->eip = 0x00a4c030u;
     goto out;
 out: __attribute__((unused));

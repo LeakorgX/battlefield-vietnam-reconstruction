@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0058a700  dice::bf::ai::BotBehaviour  (virtual method) */
+/* 0058a700  stub_return_this_0args_0058a700  (virtual method)
+ * overrides: UrgencyGenerator::vf7  (24 classes implement it)
+ * class: dice::bf::ai::BotBehaviour
+ * called by: Game::vf44_helper_00438190, sub_004764c0, sub_conquest_00476ba0, Evolution::sub_00484f30, GameServer::reconnectSlots_helper_00485210, GameServer::reconnectSlots_helper_0048c6a0 (+83 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0058a700, bfv_server_l1_body_0058a700);
 void bfv_server_l1_body_0058a700(struct bfv_cpu *c)
 {
@@ -26,7 +30,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1d90  dice::bf::ai::BotBehaviour  (virtual method) */
+/* 007a1d90  BotBehaviour::vf1  (virtual method)
+ * overrides: UrgencyGenerator::vf1  (24 classes implement it)
+ * class: dice::bf::ai::BotBehaviour
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1d90, bfv_server_l1_body_007a1d90);
 BFV_L1_RESUME(bfv_server_l1r_007a1d90_1, bfv_server_l1_body_007a1d90, 1);
 void bfv_server_l1_body_007a1d90(struct bfv_cpu *c)
@@ -46,7 +53,7 @@ void bfv_server_l1_body_007a1d90(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a1d91  mov esi, ecx */
     esi = ecx;
-    /* 007a1d93  mov ecx, dword ptr [esp + 8] */
+    /* 007a1d93  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 007a1d97  mov eax, dword ptr [ecx] */
@@ -81,7 +88,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1db0  dice::bf::ai::BotBehaviour  (virtual method) */
+/* 007a1db0  BotBehaviour::vf2  (virtual method)
+ * overrides: UrgencyGenerator::vf2  (24 classes implement it)
+ * class: dice::bf::ai::BotBehaviour
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1db0, bfv_server_l1_body_007a1db0);
 BFV_L1_RESUME(bfv_server_l1r_007a1db0_1, bfv_server_l1_body_007a1db0, 1);
 void bfv_server_l1_body_007a1db0(struct bfv_cpu *c)
@@ -101,7 +111,7 @@ void bfv_server_l1_body_007a1db0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a1db1  mov esi, ecx */
     esi = ecx;
-    /* 007a1db3  mov ecx, dword ptr [esp + 8] */
+    /* 007a1db3  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 007a1db7  mov eax, dword ptr [ecx] */
@@ -136,7 +146,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1dd0  dice::bf::ai::BotBehaviour  (virtual method) */
+/* 007a1dd0  BotBehaviour::vf3  (virtual method)
+ * overrides: UrgencyGenerator::vf3  (24 classes implement it)
+ * class: dice::bf::ai::BotBehaviour
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1dd0, bfv_server_l1_body_007a1dd0);
 BFV_L1_RESUME(bfv_server_l1r_007a1dd0_1, bfv_server_l1_body_007a1dd0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a1dd0_2, bfv_server_l1_body_007a1dd0, 2);
@@ -156,7 +169,7 @@ void bfv_server_l1_body_007a1dd0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1dd1  mov esi, dword ptr [esp + 8] */
+    /* 007a1dd1  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 007a1dd5  mov eax, dword ptr [esi] */
@@ -189,7 +202,7 @@ R_1:
     edx = M32(ea);
     /* 007a1dea  mov ecx, esi */
     ecx = esi;
-    /* 007a1dec  fstp dword ptr [esp + 0xc] */
+    /* 007a1dec  fstp dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007a1df0  call dword ptr [edx + 0xdc] */
@@ -200,7 +213,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 007a1df6  fld dword ptr [esp + 0xc] */
+    /* 007a1df6  fld dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007a1dfa  mov ecx, dword ptr [edi + 0x28] */
@@ -213,7 +226,7 @@ R_2:
     /* 007a1dfe  fstp dword ptr [ecx + eax*4] */
     ea = (uint32_t)(ecx + eax * 4u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007a1e01  fld dword ptr [esp + 8] */
+    /* 007a1e01  fld dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007a1e05  pop esi */
@@ -231,7 +244,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1e10  dice::bf::ai::BotBehaviour  (virtual method) */
+/* 007a1e10  BotBehaviour::vf4  (virtual method)
+ * overrides: UrgencyGenerator::vf4  (24 classes implement it)
+ * class: dice::bf::ai::BotBehaviour
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1e10, bfv_server_l1_body_007a1e10);
 BFV_L1_RESUME(bfv_server_l1r_007a1e10_1, bfv_server_l1_body_007a1e10, 1);
 void bfv_server_l1_body_007a1e10(struct bfv_cpu *c)
@@ -251,7 +267,7 @@ void bfv_server_l1_body_007a1e10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a1e11  mov esi, ecx */
     esi = ecx;
-    /* 007a1e13  mov ecx, dword ptr [esp + 8] */
+    /* 007a1e13  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 007a1e17  mov eax, dword ptr [ecx] */
@@ -286,7 +302,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1e30  dice::bf::ai::BotBehaviour  (virtual method) */
+/* 007a1e30  BotBehaviour::vf5  (virtual method)
+ * overrides: UrgencyGenerator::vf5  (24 classes implement it)
+ * class: dice::bf::ai::BotBehaviour
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1e30, bfv_server_l1_body_007a1e30);
 BFV_L1_RESUME(bfv_server_l1r_007a1e30_1, bfv_server_l1_body_007a1e30, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a1e30_2, bfv_server_l1_body_007a1e30, 2);
@@ -312,7 +331,7 @@ void bfv_server_l1_body_007a1e30(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1e31  mov esi, dword ptr [esp + 8] */
+    /* 007a1e31  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 007a1e35  mov eax, dword ptr [esi] */
@@ -334,7 +353,7 @@ void bfv_server_l1_body_007a1e30(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 007a1e42  fld dword ptr [0x851bcc] */
+    /* 007a1e42  fld dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007a1e48  mov ecx, dword ptr [edi + 0x28] */
@@ -371,7 +390,7 @@ R_2:
     /* 007a1e64  fld dword ptr [ecx + eax*4] */
     ea = (uint32_t)(ecx + eax * 4u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007a1e67  fcomp dword ptr [0x851bcc] */
+    /* 007a1e67  fcomp dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007a1e6d  fnstsw ax */
@@ -406,7 +425,7 @@ L_007a1e7b:
     c->eip = t;
     goto out;
 R_3:
-    /* 007a1e81  fld dword ptr [0x851bcc] */
+    /* 007a1e81  fld dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007a1e87  mov ecx, dword ptr [edi + 0x1c] */
@@ -496,7 +515,7 @@ R_5:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 007a1ec4  fcom dword ptr [esp + 0x10] */
+    /* 007a1ec4  fcom dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcom dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007a1ec8  fnstsw ax */
@@ -506,7 +525,7 @@ R_5:
     F_LOGIC(8, r);
     /* 007a1ecd  jnp 0x7a1ee1 */
     if (!pf) goto L_007a1ee1;
-    /* 007a1ecf  fcomp dword ptr [esp + 0x14] */
+    /* 007a1ecf  fcomp dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007a1ed3  fnstsw ax */
@@ -557,7 +576,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1ef0  dice::bf::ai::BotBehaviour  (virtual method) */
+/* 007a1ef0  BotBehaviour::vf6  (virtual method)
+ * overrides: UrgencyGenerator::vf6  (24 classes implement it)
+ * class: dice::bf::ai::BotBehaviour
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1ef0, bfv_server_l1_body_007a1ef0);
 BFV_L1_RESUME(bfv_server_l1r_007a1ef0_1, bfv_server_l1_body_007a1ef0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a1ef0_2, bfv_server_l1_body_007a1ef0, 2);
@@ -581,7 +603,7 @@ void bfv_server_l1_body_007a1ef0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1ef2  mov edi, dword ptr [esp + 0xc] */
+    /* 007a1ef2  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 007a1ef6  mov esi, ecx */
@@ -593,7 +615,7 @@ void bfv_server_l1_body_007a1ef0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1efb  call dword ptr [eax + 0x10] */
+    /* 007a1efb  call dword ptr [eax + 0x10]  ; -> BotBehaviour::vf4 */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -606,10 +628,10 @@ R_1:
     F_LOGIC(8, r);
     /* 007a1f00  je 0x7a1f22 */
     if (zf) goto L_007a1f22;
-    /* 007a1f02  mov eax, dword ptr [esp + 0x14] */
+    /* 007a1f02  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
-    /* 007a1f06  mov ecx, dword ptr [esp + 0x10] */
+    /* 007a1f06  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 007a1f0a  mov edx, dword ptr [esi] */
@@ -629,7 +651,7 @@ R_1:
     M32(esp) = t;
     /* 007a1f0f  mov ecx, esi */
     ecx = esi;
-    /* 007a1f11  call dword ptr [edx + 0x14] */
+    /* 007a1f11  call dword ptr [edx + 0x14]  ; -> BotBehaviour::vf5 */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -680,7 +702,11 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1f30  dice::bf::ai::BotBehaviour  (virtual method) */
+/* 007a1f30  BotBehaviour::vf8  (virtual method)
+ * overrides: UrgencyGenerator::vf8  (24 classes implement it)
+ * class: dice::bf::ai::BotBehaviour
+ * called by: BBTakeCover::vf8
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1f30, bfv_server_l1_body_007a1f30);
 BFV_L1_RESUME(bfv_server_l1r_007a1f30_1, bfv_server_l1_body_007a1f30, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a1f30_2, bfv_server_l1_body_007a1f30, 2);
@@ -706,7 +732,7 @@ void bfv_server_l1_body_007a1f30(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1f31  mov esi, dword ptr [esp + 8] */
+    /* 007a1f31  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 007a1f35  push edi */
@@ -845,7 +871,11 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1fa0  (between same file) */
+/* 007a1fa0  BotBehaviour::~BotBehaviour  (between same file)
+ * class: dice::bf::ai::BotBehaviour
+ * also entered at 007a2000: BotBehaviour::vf0
+ * called by: BBAirLift::deleting_dtor, BBMoveToFixed::deleting_dtor, BBFireUnarmed::deleting_dtor, BBChangeLandingCraft::deleting_dtor, BBChangeTeleport::deleting_dtor, BBMedicAssist::deleting_dtor (+7 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1fa0, bfv_server_l1_body_007a1fa0);
 BFV_L1_RESUME(bfv_server_l1r_007a1fa0_1, bfv_server_l1_body_007a1fa0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a1fa0_2, bfv_server_l1_body_007a1fa0, 2);
@@ -883,7 +913,7 @@ void bfv_server_l1_body_007a1fa0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1fa9  mov dword ptr [esi], 0x8785b4 */
+    /* 007a1fa9  mov dword ptr [esi], 0x8785b4  ; vtable BotBehaviour */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8785b4u;
     /* 007a1faf  je 0x7a1fba */
@@ -892,7 +922,7 @@ void bfv_server_l1_body_007a1fa0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1fb2  call 0x403df0 */
+    /* 007a1fb2  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a1fa0_1;
@@ -918,7 +948,7 @@ L_007a1fba:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1fc2  call 0x403df0 */
+    /* 007a1fc2  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a1fa0_2;
@@ -944,7 +974,7 @@ L_007a1fca:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1fd2  call 0x403df0 */
+    /* 007a1fd2  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a1fa0_3;
@@ -962,7 +992,7 @@ L_007a1fda:
     edi = (uint32_t)(esi + 0x00000010u);
     /* 007a1fdd  mov ecx, edi */
     ecx = edi;
-    /* 007a1fdf  call 0x4719b0 */
+    /* 007a1fdf  call 0x4719b0  ; std::list::clear */
     t = 0x004719b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a1fa0_4;
@@ -976,7 +1006,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1fe8  call 0x403df0 */
+    /* 007a1fe8  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a1fa0_5;
@@ -996,7 +1026,7 @@ R_5:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 007a1ff8  mov dword ptr [esi], 0x87858c */
+    /* 007a1ff8  mov dword ptr [esi], 0x87858c  ; vtable UrgencyGenerator */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87858cu;
     /* 007a1ffe  pop esi */
@@ -1014,7 +1044,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a2020  dice::bf::ai::BotBehaviour  (vtable store) */
+/* 007a2020  BotBehaviour::BotBehaviour  (vtable store)
+ * class: dice::bf::ai::BotBehaviour
+ * called by: BBAirLift::BBAirLift, BBMoveToFixed::BBMoveToFixed, BBFireUnarmed::BBFireUnarmed, BBIdle::BBIdle, BBBailOut::BBBailOut, BBChange::BBChange (+14 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a2020, bfv_server_l1_body_007a2020);
 BFV_L1_RESUME(bfv_server_l1r_007a2020_1, bfv_server_l1_body_007a2020, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a2020_2, bfv_server_l1_body_007a2020, 2);
@@ -1060,13 +1093,13 @@ void bfv_server_l1_body_007a2020(struct bfv_cpu *c)
     ebp = r;
     /* 007a202b  mov ecx, edi */
     ecx = edi;
-    /* 007a202d  mov dword ptr [esi], 0x8785b4 */
+    /* 007a202d  mov dword ptr [esi], 0x8785b4  ; vtable BotBehaviour */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8785b4u;
     /* 007a2033  mov dword ptr [esi + 8], ebp */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = ebp;
-    /* 007a2036  call 0x768da0 */
+    /* 007a2036  call 0x768da0  ; std::list::_Buyheadnode_12_00768da0 */
     t = 0x00768da0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a2020_1;
@@ -1079,7 +1112,7 @@ R_1:
     /* 007a203e  mov dword ptr [edi + 8], ebp */
     ea = (uint32_t)(edi + 0x00000008u);
     M32(ea) = ebp;
-    /* 007a2041  mov edi, dword ptr [esp + 0x1c] */
+    /* 007a2041  mov edi, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     edi = M32(ea);
     /* 007a2045  lea ebx, [edi*4] */
@@ -1088,7 +1121,7 @@ R_1:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 007a204d  call 0x403d80 */
+    /* 007a204d  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a2020_2;
@@ -1098,7 +1131,7 @@ R_2:
     /* 007a2052  mov dword ptr [esi + 0x1c], eax */
     ea = (uint32_t)(esi + 0x0000001cu);
     M32(ea) = eax;
-    /* 007a2055  mov eax, dword ptr [esp + 0x18] */
+    /* 007a2055  mov eax, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 007a2059  push edi */
@@ -1108,7 +1141,7 @@ R_2:
     /* 007a205a  mov dword ptr [esi + 0x20], eax */
     ea = (uint32_t)(esi + 0x00000020u);
     M32(ea) = eax;
-    /* 007a205d  call 0x403d80 */
+    /* 007a205d  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a2020_3;
@@ -1122,14 +1155,14 @@ R_3:
     /* 007a2063  mov dword ptr [esi + 0x24], eax */
     ea = (uint32_t)(esi + 0x00000024u);
     M32(ea) = eax;
-    /* 007a2066  call 0x403d80 */
+    /* 007a2066  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a2020_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 007a206b  mov ecx, dword ptr [esp + 0x24] */
+    /* 007a206b  mov ecx, dword ptr [esp + 0x24]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000024u);
     ecx = M32(ea);
     /* 007a206f  mov dword ptr [esi + 0x28], eax */
@@ -1161,7 +1194,7 @@ R_4:
     if ((sf != of)) goto L_007a20ce;
     /* 007a2086  lea edx, [edi - 3] */
     edx = (uint32_t)(edi + 0xfffffffdu);
-    /* 007a2089  lea esp, [esp] */
+    /* 007a2089  lea esp, [esp]  ; &var_10 */
     esp = (uint32_t)(esp);
 L_007a2090:
     /* 007a2090  mov ebp, dword ptr [esi + 0x28] */
@@ -1288,7 +1321,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007a20f0  dice::bf::ai::BotBehaviour  (virtual method) */
+/* 007a20f0  BotBehaviour::vf10  (virtual method)
+ * class: dice::bf::ai::BotBehaviour
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a20f0, bfv_server_l1_body_007a20f0);
 BFV_L1_RESUME(bfv_server_l1r_007a20f0_1, bfv_server_l1_body_007a20f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a20f0_2, bfv_server_l1_body_007a20f0, 2);
@@ -1330,7 +1365,7 @@ void bfv_server_l1_body_007a20f0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a20f1  mov esi, dword ptr [esp + 8] */
+    /* 007a20f1  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 007a20f5  mov eax, dword ptr [esi] */

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f6d00  dice::bf::ai::BAPANotifyBot  (virtual method) */
+/* 009f6d00  BAPANotifyBot::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPANotifyBot
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f6d00, bfv_client_l1_body_009f6d00);
 BFV_L1_RESUME(bfv_client_l1r_009f6d00_1, bfv_client_l1_body_009f6d00, 1);
 void bfv_client_l1_body_009f6d00(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_009f6d00(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009f6d00  mov al, byte ptr [esp + 4] */
+    /* 009f6d00  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 009f6d04  push esi */
@@ -28,10 +31,10 @@ void bfv_client_l1_body_009f6d00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f6d05  mov esi, ecx */
     esi = ecx;
-    /* 009f6d07  mov dword ptr [esi], 0xbf60a0 */
+    /* 009f6d07  mov dword ptr [esi], 0xbf60a0  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf60a0u;
-    /* 009f6d0d  mov ecx, dword ptr [0xe105bc] */
+    /* 009f6d0d  mov ecx, dword ptr [0xe105bc]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     ecx = M32(ea);
     /* 009f6d13  inc ecx */
@@ -42,10 +45,10 @@ void bfv_client_l1_body_009f6d00(struct bfv_cpu *c)
     /* 009f6d14  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 009f6d16  mov dword ptr [0xe105bc], ecx */
+    /* 009f6d16  mov dword ptr [0xe105bc], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     M32(ea) = ecx;
-    /* 009f6d1c  mov dword ptr [esi], 0xbf6094 */
+    /* 009f6d1c  mov dword ptr [esi], 0xbf6094  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf6094u;
     /* 009f6d22  je 0x9f6d2f */
@@ -54,9 +57,9 @@ void bfv_client_l1_body_009f6d00(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f6d25  mov ecx, 0xe10880 */
+    /* 009f6d25  mov ecx, 0xe10880  ; g_MemoryPoolNull_BAPANotifyBot */
     ecx = 0xe10880u;
-    /* 009f6d2a  call 0x412fc0 */
+    /* 009f6d2a  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f6d00_1;
@@ -81,7 +84,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f6d40  dice::bf::ai::BAPANotifyBot  (virtual method) */
+/* 009f6d40  BAPANotifyBot::execute  (virtual method)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPANotifyBot
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f6d40, bfv_client_l1_body_009f6d40);
 BFV_L1_RESUME(bfv_client_l1r_009f6d40_1, bfv_client_l1_body_009f6d40, 1);
 void bfv_client_l1_body_009f6d40(struct bfv_cpu *c)
@@ -112,7 +118,7 @@ void bfv_client_l1_body_009f6d40(struct bfv_cpu *c)
     /* 009f6d4a  mov edx, dword ptr [esi + 0x20] */
     ea = (uint32_t)(esi + 0x00000020u);
     edx = M32(ea);
-    /* 009f6d4d  mov ecx, dword ptr [esp + 8] */
+    /* 009f6d4d  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 009f6d51  mov edx, dword ptr [edx + 8] */
@@ -152,10 +158,10 @@ R_1:
     F_ADD(32, a, b, r);
     M32(ea) = r;
 L_009f6d6a:
-    /* 009f6d6a  mov eax, dword ptr [esp + 0xc] */
+    /* 009f6d6a  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
-    /* 009f6d6e  mov ecx, dword ptr [esp + 0x10] */
+    /* 009f6d6e  mov ecx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 009f6d72  mov byte ptr [eax], 1 */

@@ -1,0 +1,18 @@
+## file
+BAPWrapperWeapon is a plan statement that copies a weapon value into a plan
+variable each time it runs: the magazine round count or the heat of the weapon
+at this+0x24.
+
+## 009f8470
+Constructor(mode, heatVariable, weapon, doneValue): counts the statement and
+stores mode at this+0x18, the variable at this+0x20, the weapon at this+0x24
+and the done value at this+0x28.
+
+## 009f84b0
+execute(bot, &flag, &done): mode 0 copies the magazine round count (weapon slot
+0x30, its +4) into the variable at this+0x1c (its +8); mode 1 stores the heat
+(slot 0x64, a float) into the variable at this+0x20 (its +8). Sets flag and
+sets done to !this+0x28.
+
+## 009f8430
+Destructor: restores the base vtables, counts the destruction in g_bapaDestroyedCount and returns the object to its memory pool when bit 0 of the flag argument is set.

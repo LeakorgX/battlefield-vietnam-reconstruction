@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 004b32b0  dice::bf::StatusMonitorImpl  (vtable store) */
+/* 004b32b0  StatusMonitorImpl::StatusMonitorImpl  (vtable store)
+ * class: dice::bf::StatusMonitorImpl
+ * called by: sub_bfv_server_quit_event_004dfde0
+ */
 BFV_L1_ENTRY(bfv_server_l1_004b32b0, bfv_server_l1_body_004b32b0);
 void bfv_server_l1_body_004b32b0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_004b32b0(struct bfv_cpu *c)
     uint32_t ea;
     /* 004b32b0  mov eax, ecx */
     eax = ecx;
-    /* 004b32b2  mov dword ptr [eax], 0x81dfd4 */
+    /* 004b32b2  mov dword ptr [eax], 0x81dfd4  ; vtable StatusMonitorImpl */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81dfd4u;
     /* 004b32b8  ret */

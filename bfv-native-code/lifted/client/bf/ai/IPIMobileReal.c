@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00a099f0  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a099f0  IPIMobileReal::vf8  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a099f0, bfv_client_l1_body_00a099f0);
 BFV_L1_RESUME(bfv_client_l1r_00a099f0_1, bfv_client_l1_body_00a099f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a099f0_2, bfv_client_l1_body_00a099f0, 2);
@@ -51,7 +53,7 @@ void bfv_client_l1_body_00a099f0(struct bfv_cpu *c)
 R_1:
     /* 00a09a05  mov ecx, eax */
     ecx = eax;
-    /* 00a09a07  call 0x9d8ee0 */
+    /* 00a09a07  call 0x9d8ee0  ; IPIMobileKnown::vf8 */
     t = 0x009d8ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a099f0_2;
@@ -69,7 +71,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09a10  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09a10  IPIMobileReal::vf11  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09a10, bfv_client_l1_body_00a09a10);
 BFV_L1_RESUME(bfv_client_l1r_00a09a10_1, bfv_client_l1_body_00a09a10, 1);
 void bfv_client_l1_body_00a09a10(struct bfv_cpu *c)
@@ -100,7 +104,7 @@ R_1:
     /* 00a09a18  mov edx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     edx = M32(ea);
-    /* 00a09a1a  mov ecx, dword ptr [esp + 4] */
+    /* 00a09a1a  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00a09a1e  mov dword ptr [ecx], edx */
@@ -129,7 +133,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09a30  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09a30  IPIMobileReal::vf12  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09a30, bfv_client_l1_body_00a09a30);
 BFV_L1_RESUME(bfv_client_l1r_00a09a30_1, bfv_client_l1_body_00a09a30, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a09a30_2, bfv_client_l1_body_00a09a30, 2);
@@ -182,7 +188,7 @@ void bfv_client_l1_body_00a09a30(struct bfv_cpu *c)
 R_1:
     /* 00a09a44  mov ecx, eax */
     ecx = eax;
-    /* 00a09a46  call 0x9d8e40 */
+    /* 00a09a46  call 0x9d8e40  ; ai_009d8e40 */
     t = 0x009d8e40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a09a30_2;
@@ -263,7 +269,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09a70  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09a70  IPIMobileReal::vf13  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09a70, bfv_client_l1_body_00a09a70);
 BFV_L1_RESUME(bfv_client_l1r_00a09a70_1, bfv_client_l1_body_00a09a70, 1);
 void bfv_client_l1_body_00a09a70(struct bfv_cpu *c)
@@ -300,7 +308,7 @@ void bfv_client_l1_body_00a09a70(struct bfv_cpu *c)
 R_1:
     /* 00a09a80  mov ecx, eax */
     ecx = eax;
-    /* 00a09a82  jmp 0x6ea120 */
+    /* 00a09a82  jmp 0x6ea120  ; WrapperBase::vf12_get_18h */
     c->eip = 0x006ea120u;
     goto out;
 out: __attribute__((unused));
@@ -310,7 +318,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09a90  dice::bf::ai::IPIMobileReal  (vtable store) */
+/* 00a09a90  IPIMobileReal::IPIMobileReal  (vtable store)
+ * class: dice::bf::ai::IPIMobileReal
+ * called by: AIObjectMobile::createInformationPlugIn
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09a90, bfv_client_l1_body_00a09a90);
 void bfv_client_l1_body_00a09a90(struct bfv_cpu *c)
 {
@@ -321,10 +332,10 @@ void bfv_client_l1_body_00a09a90(struct bfv_cpu *c)
     uint32_t ea;
     /* 00a09a90  mov eax, ecx */
     eax = ecx;
-    /* 00a09a92  mov ecx, dword ptr [esp + 4] */
+    /* 00a09a92  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00a09a96  mov dword ptr [eax], 0xbfcd2c */
+    /* 00a09a96  mov dword ptr [eax], 0xbfcd2c  ; vtable IPIMobileReal */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbfcd2cu;
     /* 00a09a9c  mov dword ptr [eax + 4], ecx */
@@ -341,7 +352,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09ab0  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09ab0  IPIMobileReal::vf5  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09ab0, bfv_client_l1_body_00a09ab0);
 BFV_L1_RESUME(bfv_client_l1r_00a09ab0_1, bfv_client_l1_body_00a09ab0, 1);
 void bfv_client_l1_body_00a09ab0(struct bfv_cpu *c)
@@ -378,7 +391,7 @@ void bfv_client_l1_body_00a09ab0(struct bfv_cpu *c)
 R_1:
     /* 00a09ac0  mov ecx, eax */
     ecx = eax;
-    /* 00a09ac2  jmp 0x9d8f30 */
+    /* 00a09ac2  jmp 0x9d8f30  ; IPIMobileKnown::vf2_helper_009d8f30 */
     c->eip = 0x009d8f30u;
     goto out;
 out: __attribute__((unused));
@@ -388,7 +401,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09ad0  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09ad0  IPIMobileReal::vf4  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09ad0, bfv_client_l1_body_00a09ad0);
 BFV_L1_RESUME(bfv_client_l1r_00a09ad0_1, bfv_client_l1_body_00a09ad0, 1);
 void bfv_client_l1_body_00a09ad0(struct bfv_cpu *c)
@@ -435,7 +450,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09af0  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09af0  IPIMobileReal::vf6  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09af0, bfv_client_l1_body_00a09af0);
 BFV_L1_RESUME(bfv_client_l1r_00a09af0_1, bfv_client_l1_body_00a09af0, 1);
 void bfv_client_l1_body_00a09af0(struct bfv_cpu *c)
@@ -472,7 +489,7 @@ void bfv_client_l1_body_00a09af0(struct bfv_cpu *c)
 R_1:
     /* 00a09b00  mov ecx, eax */
     ecx = eax;
-    /* 00a09b02  jmp 0x9d8e90 */
+    /* 00a09b02  jmp 0x9d8e90  ; IPIMobileKnown::vf2_helper_009d8e90 */
     c->eip = 0x009d8e90u;
     goto out;
 out: __attribute__((unused));
@@ -482,7 +499,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09b10  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09b10  IPIMobileReal::deleting_dtor  (virtual method)
+ * overrides: InformationPlugIn::vf0  (10 classes implement it)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09b10, bfv_client_l1_body_00a09b10);
 BFV_L1_RESUME(bfv_client_l1r_00a09b10_1, bfv_client_l1_body_00a09b10, 1);
 void bfv_client_l1_body_00a09b10(struct bfv_cpu *c)
@@ -496,7 +516,7 @@ void bfv_client_l1_body_00a09b10(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00a09b10  test byte ptr [esp + 4], 1 */
+    /* 00a09b10  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -506,7 +526,7 @@ void bfv_client_l1_body_00a09b10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a09b16  mov esi, ecx */
     esi = ecx;
-    /* 00a09b18  mov dword ptr [esi], 0xbf7ea4 */
+    /* 00a09b18  mov dword ptr [esi], 0xbf7ea4  ; vtable InformationPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7ea4u;
     /* 00a09b1e  je 0xa09b2b */
@@ -515,9 +535,9 @@ void bfv_client_l1_body_00a09b10(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a09b21  mov ecx, 0xe120e8 */
+    /* 00a09b21  mov ecx, 0xe120e8  ; g_MemoryPoolNull_IPIMobileReal */
     ecx = 0xe120e8u;
-    /* 00a09b26  call 0x412fc0 */
+    /* 00a09b26  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a09b10_1;
@@ -542,7 +562,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09b40  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09b40  IPIMobileReal::vf7  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09b40, bfv_client_l1_body_00a09b40);
 BFV_L1_RESUME(bfv_client_l1r_00a09b40_1, bfv_client_l1_body_00a09b40, 1);
 void bfv_client_l1_body_00a09b40(struct bfv_cpu *c)
@@ -559,7 +581,7 @@ void bfv_client_l1_body_00a09b40(struct bfv_cpu *c)
     /* 00a09b40  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 00a09b42  call dword ptr [eax + 0x14] */
+    /* 00a09b42  call dword ptr [eax + 0x14]  ; -> IPIMobileReal::vf5 */
     ea = (uint32_t)(eax + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -569,7 +591,7 @@ void bfv_client_l1_body_00a09b40(struct bfv_cpu *c)
 R_1:
     /* 00a09b45  mov ecx, eax */
     ecx = eax;
-    /* 00a09b47  jmp 0x49aac0 */
+    /* 00a09b47  jmp 0x49aac0  ; bfv_vector_length */
     c->eip = 0x0049aac0u;
     goto out;
 out: __attribute__((unused));
@@ -579,7 +601,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09b50  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09b50  IPIMobileReal::vf10  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09b50, bfv_client_l1_body_00a09b50);
 BFV_L1_RESUME(bfv_client_l1r_00a09b50_1, bfv_client_l1_body_00a09b50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a09b50_2, bfv_client_l1_body_00a09b50, 2);
@@ -634,7 +658,7 @@ R_1:
     /* 00a09b60  mov edx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     edx = M32(ea);
-    /* 00a09b62  mov esi, dword ptr [esp + 0x20] */
+    /* 00a09b62  mov esi, dword ptr [esp + 0x20]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     esi = M32(ea);
     /* 00a09b66  mov ecx, esi */
@@ -657,12 +681,12 @@ R_1:
     /* 00a09b76  mov edx, dword ptr [edi] */
     ea = (uint32_t)(edi);
     edx = M32(ea);
-    /* 00a09b78  mov ebx, dword ptr [0xe0ef50] */
+    /* 00a09b78  mov ebx, dword ptr [0xe0ef50]  ; g_pIAITimer_00e0ef50 */
     ea = (uint32_t)(0x00e0ef50u);
     ebx = M32(ea);
     /* 00a09b7e  mov ecx, edi */
     ecx = edi;
-    /* 00a09b80  call dword ptr [edx + 0x14] */
+    /* 00a09b80  call dword ptr [edx + 0x14]  ; -> IPIMobileReal::vf5 */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -677,7 +701,7 @@ R_2:
     eax = M32(ea);
     /* 00a09b87  mov ecx, ebx */
     ecx = ebx;
-    /* 00a09b89  call dword ptr [eax + 4] */
+    /* 00a09b89  call dword ptr [eax + 4]  ; -> IAITimer::vf1 = BAPAComponentSoldierPose::get_ch (returns this+0xc) */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -685,7 +709,7 @@ R_2:
     c->eip = t;
     goto out;
 R_3:
-    /* 00a09b8c  fsubr dword ptr [esp + 0x1c] */
+    /* 00a09b8c  fsubr dword ptr [esp + 0x1c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000001cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfsubr dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a09b90  fld st(0) */
@@ -698,7 +722,7 @@ R_3:
     /* 00a09b96  fmul dword ptr [edi + 4] */
     ea = (uint32_t)(edi + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a09b99  fstp dword ptr [esp + 0x10] */
+    /* 00a09b99  fstp dword ptr [esp + 0x10]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a09b9d  fxch st(1) */
@@ -710,7 +734,7 @@ R_3:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 00a09ba3  fstp dword ptr [esp + 0x10] */
+    /* 00a09ba3  fstp dword ptr [esp + 0x10]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a09ba7  fadd dword ptr [esi] */
@@ -719,7 +743,7 @@ R_3:
     /* 00a09ba9  fstp dword ptr [esi] */
     ea = (uint32_t)(esi);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a09bab  fld dword ptr [esp + 0xc] */
+    /* 00a09bab  fld dword ptr [esp + 0xc]  ; var_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a09baf  fadd dword ptr [esi + 4] */
@@ -728,7 +752,7 @@ R_3:
     /* 00a09bb2  fstp dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a09bb5  fld dword ptr [esp + 0x10] */
+    /* 00a09bb5  fld dword ptr [esp + 0x10]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a09bb9  fadd dword ptr [esi + 8] */
@@ -762,7 +786,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09cc0  dice::bf::ai::IPIMobileReal  (virtual method) */
+/* 00a09cc0  IPIMobileReal::vf9  (virtual method)
+ * class: dice::bf::ai::IPIMobileReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09cc0, bfv_client_l1_body_00a09cc0);
 BFV_L1_RESUME(bfv_client_l1r_00a09cc0_1, bfv_client_l1_body_00a09cc0, 1);
 void bfv_client_l1_body_00a09cc0(struct bfv_cpu *c)
@@ -799,7 +825,7 @@ void bfv_client_l1_body_00a09cc0(struct bfv_cpu *c)
 R_1:
     /* 00a09cd0  mov ecx, eax */
     ecx = eax;
-    /* 00a09cd2  jmp 0x9d8fa0 */
+    /* 00a09cd2  jmp 0x9d8fa0  ; BotManager_bm_decisionMaking_helper_009d8fa0 */
     c->eip = 0x009d8fa0u;
     goto out;
 out: __attribute__((unused));

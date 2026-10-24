@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005ae050  dice::bf::TriggerObjectSpawnerEvent  (vtable store) */
+/* 005ae050  TriggerObjectSpawnerEvent::create  (vtable store)
+ * class: dice::bf::TriggerObjectSpawnerEvent
+ * also entered at 005ae080: TriggerObjectSpawnerEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ae050, bfv_client_l1_body_005ae050);
 BFV_L1_RESUME(bfv_client_l1r_005ae050_1, bfv_client_l1_body_005ae050, 1);
 void bfv_client_l1_body_005ae050(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_005ae050(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ae050  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ae050  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ae056  mov eax, dword ptr [ecx] */
@@ -53,7 +56,7 @@ R_1:
     /* 005ae068  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ae06f  mov dword ptr [eax], 0xb76170 */
+    /* 005ae06f  mov dword ptr [eax], 0xb76170  ; vtable TriggerObjectSpawnerEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb76170u;
     /* 005ae075  ret */
@@ -76,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ae090  dice::bf::TriggerObjectSpawnerEvent  (vtable store) */
+/* 005ae090  TriggerObjectSpawnerEvent::create  (vtable store)
+ * class: dice::bf::TriggerObjectSpawnerEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ae090, bfv_client_l1_body_005ae090);
 BFV_L1_RESUME(bfv_client_l1r_005ae090_1, bfv_client_l1_body_005ae090, 1);
 void bfv_client_l1_body_005ae090(struct bfv_cpu *c)
@@ -90,7 +95,7 @@ void bfv_client_l1_body_005ae090(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ae090  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ae090  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ae096  mov eax, dword ptr [ecx] */
@@ -124,7 +129,7 @@ R_1:
     /* 005ae0a8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ae0af  mov dword ptr [eax], 0xb76170 */
+    /* 005ae0af  mov dword ptr [eax], 0xb76170  ; vtable TriggerObjectSpawnerEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb76170u;
     /* 005ae0b5  jmp 0x5ae0b9 */
@@ -135,7 +140,7 @@ L_005ae0b7:
     F_LOGIC(32, r);
     eax = r;
 L_005ae0b9:
-    /* 005ae0b9  mov ecx, dword ptr [esp + 4] */
+    /* 005ae0b9  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005ae0bd  push esi */
@@ -183,7 +188,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005b0720  dice::bf::TriggerObjectSpawnerEvent  (virtual method) */
+/* 005b0720  TriggerObjectSpawnerEvent::readFromStream  (virtual method)
+ * class: dice::bf::TriggerObjectSpawnerEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005b0720, bfv_client_l1_body_005b0720);
 BFV_L1_RESUME(bfv_client_l1r_005b0720_1, bfv_client_l1_body_005b0720, 1);
 void bfv_client_l1_body_005b0720(struct bfv_cpu *c)
@@ -205,7 +212,7 @@ void bfv_client_l1_body_005b0720(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005b0722  mov esi, dword ptr [esp + 0xc] */
+    /* 005b0722  mov esi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 005b0726  push edi */
@@ -216,7 +223,7 @@ void bfv_client_l1_body_005b0720(struct bfv_cpu *c)
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 005b0729  lea eax, [esp + 0xc] */
+    /* 005b0729  lea eax, [esp + 0xc]  ; &var_4 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 005b072d  mov edi, ecx */
     edi = ecx;
@@ -226,17 +233,17 @@ void bfv_client_l1_body_005b0720(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b0730  mov ecx, esi */
     ecx = esi;
-    /* 005b0732  mov dword ptr [esp + 0x10], 0 */
+    /* 005b0732  mov dword ptr [esp + 0x10], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 005b073a  call 0x500b70 */
+    /* 005b073a  call 0x500b70  ; BitStream::readBits */
     t = 0x00500b70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005b0720_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005b073f  mov ecx, dword ptr [esp + 8] */
+    /* 005b073f  mov ecx, dword ptr [esp + 8]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 005b0743  mov dword ptr [edi + 0xc], ecx */
@@ -302,7 +309,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005b0770  dice::bf::TriggerObjectSpawnerEvent  (virtual method) */
+/* 005b0770  TriggerObjectSpawnerEvent::writeToStream  (virtual method)
+ * class: dice::bf::TriggerObjectSpawnerEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005b0770, bfv_client_l1_body_005b0770);
 BFV_L1_RESUME(bfv_client_l1r_005b0770_1, bfv_client_l1_body_005b0770, 1);
 BFV_L1_RESUME(bfv_client_l1r_005b0770_2, bfv_client_l1_body_005b0770, 2);
@@ -375,7 +384,7 @@ L_005b0777:
     edx = M32(ea);
     /* 005b0789  mov ecx, edi */
     ecx = edi;
-    /* 005b078b  call dword ptr [edx] */
+    /* 005b078b  call dword ptr [edx]  ; -> TriggerObjectSpawnerEvent::vf0 */
     ea = (uint32_t)(edx);
     t = M32(ea);
     esp -= 4;
@@ -401,7 +410,7 @@ R_1:
     M32(esp) = t;
     /* 005b079b  mov ecx, esi */
     ecx = esi;
-    /* 005b079d  call 0x500c50 */
+    /* 005b079d  call 0x500c50  ; BitStream::writeBits */
     t = 0x00500c50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005b0770_2;
@@ -426,7 +435,7 @@ R_2:
     M32(esp) = t;
     /* 005b07b0  mov ecx, esi */
     ecx = esi;
-    /* 005b07b2  call 0x500c50 */
+    /* 005b07b2  call 0x500c50  ; BitStream::writeBits */
     t = 0x00500c50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005b0770_3;
@@ -493,7 +502,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c0e90  dice::bf::TriggerObjectSpawnerEvent  (vtable store) */
+/* 005c0e90  TriggerObjectSpawnerEvent::ctor_dtor  (vtable store)
+ * class: dice::bf::TriggerObjectSpawnerEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005c0e90, bfv_client_l1_body_005c0e90);
 BFV_L1_RESUME(bfv_client_l1r_005c0e90_1, bfv_client_l1_body_005c0e90, 1);
 BFV_L1_RESUME(bfv_client_l1r_005c0e90_2, bfv_client_l1_body_005c0e90, 2);
@@ -533,7 +544,7 @@ void bfv_client_l1_body_005c0e90(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005c0e95  mov edi, dword ptr [esp + 0x2c] */
+    /* 005c0e95  mov edi, dword ptr [esp + 0x2c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000002cu);
     edi = M32(ea);
     /* 005c0e99  mov esi, ecx */
@@ -541,13 +552,13 @@ void bfv_client_l1_body_005c0e90(struct bfv_cpu *c)
     /* 005c0e9b  mov ecx, dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     ecx = M32(ea);
-    /* 005c0e9e  mov dword ptr [esp + 0x20], 0 */
+    /* 005c0e9e  mov dword ptr [esp + 0x20], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0x0u;
-    /* 005c0ea6  mov dword ptr [esp + 0x18], 0xb76170 */
+    /* 005c0ea6  mov dword ptr [esp + 0x18], 0xb76170  ; var_10, vtable TriggerObjectSpawnerEvent */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0xb76170u;
-    /* 005c0eae  mov dword ptr [esp + 0x24], edi */
+    /* 005c0eae  mov dword ptr [esp + 0x24], edi  ; var_4 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = edi;
     /* 005c0eb2  mov eax, dword ptr [ecx] */
@@ -558,12 +569,12 @@ void bfv_client_l1_body_005c0e90(struct bfv_cpu *c)
     b = ecx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 005c0eb6  mov dword ptr [esp + 8], eax */
+    /* 005c0eb6  mov dword ptr [esp + 8], eax  ; var_20 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = eax;
     /* 005c0eba  je 0x5c0ee9 */
     if (zf) goto L_005c0ee9;
-    /* 005c0ebc  lea esp, [esp] */
+    /* 005c0ebc  lea esp, [esp]  ; &var_28 */
     esp = (uint32_t)(esp);
 L_005c0ec0:
     /* 005c0ec0  mov eax, dword ptr [eax + 0x10] */
@@ -577,7 +588,7 @@ L_005c0ec0:
     F_LOGIC(8, r);
     /* 005c0ec8  je 0x5c0ed7 */
     if (zf) goto L_005c0ed7;
-    /* 005c0eca  lea ecx, [esp + 0x18] */
+    /* 005c0eca  lea ecx, [esp + 0x18]  ; &var_10 */
     ecx = (uint32_t)(esp + 0x00000018u);
     /* 005c0ece  push ecx */
     t = ecx;
@@ -586,7 +597,7 @@ L_005c0ec0:
     /* 005c0ecf  mov ecx, dword ptr [eax + 0x24] */
     ea = (uint32_t)(eax + 0x00000024u);
     ecx = M32(ea);
-    /* 005c0ed2  call 0x5b36c0 */
+    /* 005c0ed2  call 0x5b36c0  ; EventQueue::queueEvent */
     t = 0x005b36c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c0e90_1;
@@ -594,16 +605,16 @@ L_005c0ec0:
     goto out;
 R_1:
 L_005c0ed7:
-    /* 005c0ed7  lea ecx, [esp + 8] */
+    /* 005c0ed7  lea ecx, [esp + 8]  ; &var_20 */
     ecx = (uint32_t)(esp + 0x00000008u);
-    /* 005c0edb  call 0x517e10 */
+    /* 005c0edb  call 0x517e10  ; std::_Tree::iterator::_Inc */
     t = 0x00517e10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c0e90_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005c0ee0  mov eax, dword ptr [esp + 8] */
+    /* 005c0ee0  mov eax, dword ptr [esp + 8]  ; var_20 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 005c0ee4  cmp eax, dword ptr [esi + 0xc] */
@@ -615,13 +626,13 @@ R_2:
     /* 005c0ee7  jne 0x5c0ec0 */
     if (!zf) goto L_005c0ec0;
 L_005c0ee9:
-    /* 005c0ee9  mov ecx, dword ptr [0xd7d01c] */
+    /* 005c0ee9  mov ecx, dword ptr [0xd7d01c]  ; g_pPlayerManager */
     ea = (uint32_t)(0x00d7d01cu);
     ecx = M32(ea);
     /* 005c0eef  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 005c0ef1  call dword ptr [edx + 0x24] */
+    /* 005c0ef1  call dword ptr [edx + 0x24]  ; -> PlayerManager::vf9 = PlayerManager::getLocalPlayer (returns this+0x54) */
     ea = (uint32_t)(edx + 0x00000024u);
     t = M32(ea);
     esp -= 4;
@@ -634,13 +645,13 @@ R_3:
     F_LOGIC(32, r);
     /* 005c0ef6  je 0x5c0f4e */
     if (zf) goto L_005c0f4e;
-    /* 005c0ef8  mov ecx, dword ptr [0xd7d014] */
+    /* 005c0ef8  mov ecx, dword ptr [0xd7d014]  ; g_pObjectManager */
     ea = (uint32_t)(0x00d7d014u);
     ecx = M32(ea);
     /* 005c0efe  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 005c0f00  call dword ptr [eax + 0xb0] */
+    /* 005c0f00  call dword ptr [eax + 0xb0]  ; -> ObjectManager::vf44 */
     ea = (uint32_t)(eax + 0x000000b0u);
     t = M32(ea);
     esp -= 4;
@@ -658,13 +669,13 @@ R_4:
     F_SUB(32, a, b, r);
     /* 005c0f0b  jae 0x5c0f4e */
     if (!cf) goto L_005c0f4e;
-    /* 005c0f0d  lea ecx, [esp + 0x2c] */
+    /* 005c0f0d  lea ecx, [esp + 0x2c]  ; &arg_0 */
     ecx = (uint32_t)(esp + 0x0000002cu);
     /* 005c0f11  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c0f12  lea edx, [esp + 0xc] */
+    /* 005c0f12  lea edx, [esp + 0xc]  ; &var_20 */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 005c0f16  push edx */
     t = edx;
@@ -672,14 +683,14 @@ R_4:
     M32(esp) = t;
     /* 005c0f17  mov ecx, esi */
     ecx = esi;
-    /* 005c0f19  call 0x5b6600 */
+    /* 005c0f19  call 0x5b6600  ; stdext::_Hash::find_005b6600 */
     t = 0x005b6600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c0e90_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 005c0f1e  mov eax, dword ptr [esp + 8] */
+    /* 005c0f1e  mov eax, dword ptr [esp + 8]  ; var_20 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 005c0f22  cmp eax, dword ptr [esi + 8] */
@@ -690,13 +701,13 @@ R_5:
     F_SUB(32, a, b, r);
     /* 005c0f25  jne 0x5c0f46 */
     if (!zf) goto L_005c0f46;
-    /* 005c0f27  lea eax, [esp + 8] */
+    /* 005c0f27  lea eax, [esp + 8]  ; &var_20 */
     eax = (uint32_t)(esp + 0x00000008u);
     /* 005c0f2b  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c0f2c  lea ecx, [esp + 0x14] */
+    /* 005c0f2c  lea ecx, [esp + 0x14]  ; &var_18 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005c0f30  push ecx */
     t = ecx;
@@ -704,13 +715,13 @@ R_5:
     M32(esp) = t;
     /* 005c0f31  mov ecx, esi */
     ecx = esi;
-    /* 005c0f33  mov dword ptr [esp + 0x10], edi */
+    /* 005c0f33  mov dword ptr [esp + 0x10], edi  ; var_20 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edi;
-    /* 005c0f37  mov dword ptr [esp + 0x14], 0 */
+    /* 005c0f37  mov dword ptr [esp + 0x14], 0  ; var_1c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x0u;
-    /* 005c0f3f  call 0x5bdfb0 */
+    /* 005c0f3f  call 0x5bdfb0  ; stdext::_Hash::insert_005bdfb0 */
     t = 0x005bdfb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c0e90_6;
@@ -724,7 +735,7 @@ L_005c0f46:
     /* 005c0f46  mov ecx, dword ptr [eax + 0xc] */
     ea = (uint32_t)(eax + 0x0000000cu);
     ecx = M32(ea);
-    /* 005c0f49  call 0x68f080 */
+    /* 005c0f49  call 0x68f080  ; TriggerObjectSpawnerEvent::ctor_dtor_helper_0068f080 */
     t = 0x0068f080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c0e90_7;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006be7c0  dice::ref2::world::LandingGearTemplate  (virtual method) */
+/* 006be7c0  LandingGearTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::LandingGearTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006be7c0, bfv_client_l1_body_006be7c0);
 BFV_L1_RESUME(bfv_client_l1r_006be7c0_1, bfv_client_l1_body_006be7c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006be7c0_2, bfv_client_l1_body_006be7c0, 2);
@@ -31,7 +34,7 @@ void bfv_client_l1_body_006be7c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006be7c6  mov esi, ecx */
     esi = ecx;
-    /* 006be7c8  call 0x403610 */
+    /* 006be7c8  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006be7c0_1;
@@ -55,7 +58,7 @@ R_1:
     M32(esp) = t;
     /* 006be7d5  mov ecx, eax */
     ecx = eax;
-    /* 006be7d7  call 0x6fc620 */
+    /* 006be7d7  call 0x6fc620  ; LandingGear::LandingGear */
     t = 0x006fc620u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006be7c0_2;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006be7f0  dice::ref2::world::LandingGearTemplate  (vtable store) */
+/* 006be7f0  LandingGearTemplate::LandingGearTemplate  (vtable store)
+ * class: dice::ref2::world::LandingGearTemplate
+ * called by: ObjectCreatorWrapper<LandingGearTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_006be7f0, bfv_client_l1_body_006be7f0);
 BFV_L1_RESUME(bfv_client_l1r_006be7f0_1, bfv_client_l1_body_006be7f0, 1);
 void bfv_client_l1_body_006be7f0(struct bfv_cpu *c)
@@ -110,14 +116,14 @@ void bfv_client_l1_body_006be7f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006be7f1  mov esi, ecx */
     esi = ecx;
-    /* 006be7f3  call 0x6a8240 */
+    /* 006be7f3  call 0x6a8240  ; RotationalBundleTemplate::RotationalBundleTemplate */
     t = 0x006a8240u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006be7f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006be7f8  mov dword ptr [esi], 0xb9bb34 */
+    /* 006be7f8  mov dword ptr [esi], 0xb9bb34  ; vtable LandingGearTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9bb34u;
     /* 006be7fe  mov dword ptr [esi + 4], 0xb9bb1c */
@@ -129,16 +135,16 @@ R_1:
     /* 006be80c  mov dword ptr [esi + 0x1bc], 0xb9bae4 */
     ea = (uint32_t)(esi + 0x000001bcu);
     M32(ea) = 0xb9bae4u;
-    /* 006be816  mov dword ptr [esi + 0x238], 0x41f00000 */
+    /* 006be816  mov dword ptr [esi + 0x238], 0x41f00000  ; 30.0f */
     ea = (uint32_t)(esi + 0x00000238u);
     M32(ea) = 0x41f00000u;
-    /* 006be820  mov dword ptr [esi + 0x23c], 0x41a00000 */
+    /* 006be820  mov dword ptr [esi + 0x23c], 0x41a00000  ; 20.0f */
     ea = (uint32_t)(esi + 0x0000023cu);
     M32(ea) = 0x41a00000u;
-    /* 006be82a  mov dword ptr [esi + 0x240], 0x3f266666 */
+    /* 006be82a  mov dword ptr [esi + 0x240], 0x3f266666  ; 0.65f */
     ea = (uint32_t)(esi + 0x00000240u);
     M32(ea) = 0x3f266666u;
-    /* 006be834  mov dword ptr [esi + 0x244], 0x3f59999a */
+    /* 006be834  mov dword ptr [esi + 0x244], 0x3f59999a  ; 0.85f */
     ea = (uint32_t)(esi + 0x00000244u);
     M32(ea) = 0x3f59999au;
     /* 006be83e  mov eax, esi */
@@ -158,7 +164,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006be850  dice::ref2::world::LandingGearTemplate  (virtual method) */
+/* 006be850  LandingGearTemplate::getClassID  (virtual method)
+ * overrides: IPersist::vf4  (68 classes implement it)
+ * class: dice::ref2::world::LandingGearTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006be850, bfv_client_l1_body_006be850);
 void bfv_client_l1_body_006be850(struct bfv_cpu *c)
 {
@@ -167,7 +176,7 @@ void bfv_client_l1_body_006be850(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006be850  mov eax, dword ptr [0xb77f38] */
+    /* 006be850  mov eax, dword ptr [0xb77f38]  ; LandingGearTemplate::classID */
     ea = (uint32_t)(0x00b77f38u);
     eax = M32(ea);
     /* 006be855  ret */
@@ -181,7 +190,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006be860  dice::ref2::world::LandingGearTemplate  (virtual method) */
+/* 006be860  LandingGearTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::LandingGearTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006be860, bfv_client_l1_body_006be860);
 void bfv_client_l1_body_006be860(struct bfv_cpu *c)
 {
@@ -190,10 +202,10 @@ void bfv_client_l1_body_006be860(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006be860  mov eax, dword ptr [esp + 4] */
+    /* 006be860  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006be864  cmp eax, dword ptr [0xb77f38] */
+    /* 006be864  cmp eax, dword ptr [0xb77f38]  ; LandingGearTemplate::classID */
     ea = (uint32_t)(0x00b77f38u);
     a = eax;
     b = M32(ea);
@@ -208,10 +220,10 @@ void bfv_client_l1_body_006be860(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006be871:
-    /* 006be871  mov dword ptr [esp + 4], eax */
+    /* 006be871  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006be875  jmp 0x6a8170 */
+    /* 006be875  jmp 0x6a8170  ; RotationalBundleTemplate::castTo */
     c->eip = 0x006a8170u;
     goto out;
 out: __attribute__((unused));

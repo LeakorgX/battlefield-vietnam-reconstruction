@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0086b490  dice::meme::RotateEffect  (virtual method) */
+/* 0086b490  RotateEffect::vf18  (virtual method)
+ * overrides: Effect::vf18  (18 classes implement it)
+ * class: dice::meme::RotateEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086b490, bfv_client_l1_body_0086b490);
 BFV_L1_RESUME(bfv_client_l1r_0086b490_1, bfv_client_l1_body_0086b490, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086b490_2, bfv_client_l1_body_0086b490, 2);
@@ -41,7 +44,7 @@ void bfv_client_l1_body_0086b490(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b495  mov ebp, dword ptr [esp + 0x34] */
+    /* 0086b495  mov ebp, dword ptr [esp + 0x34]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000034u);
     ebp = M32(ea);
     /* 0086b499  push esi */
@@ -52,7 +55,7 @@ void bfv_client_l1_body_0086b490(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b49b  lea eax, [esp + 0x1c] */
+    /* 0086b49b  lea eax, [esp + 0x1c]  ; &var_c */
     eax = (uint32_t)(esp + 0x0000001cu);
     /* 0086b49f  mov esi, ecx */
     esi = ecx;
@@ -62,7 +65,7 @@ void bfv_client_l1_body_0086b490(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086b4a2  mov ecx, ebp */
     ecx = ebp;
-    /* 0086b4a4  call 0x875970 */
+    /* 0086b4a4  call 0x875970  ; meme_00875970 */
     t = 0x00875970u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b490_1;
@@ -75,25 +78,25 @@ R_1:
     /* 0086b4ac  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 0086b4ae  mov ecx, dword ptr [esp + 0x1c] */
+    /* 0086b4ae  mov ecx, dword ptr [esp + 0x1c]  ; var_c */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
-    /* 0086b4b2  mov edx, dword ptr [esp + 0x20] */
+    /* 0086b4b2  mov edx, dword ptr [esp + 0x20]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000020u);
     edx = M32(ea);
-    /* 0086b4b6  mov edi, dword ptr [esp + 0x2c] */
+    /* 0086b4b6  mov edi, dword ptr [esp + 0x2c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000002cu);
     edi = M32(ea);
-    /* 0086b4ba  mov dword ptr [esp + 0x14], ecx */
+    /* 0086b4ba  mov dword ptr [esp + 0x14], ecx  ; var_14 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = ecx;
-    /* 0086b4be  mov dword ptr [esp + 0x18], edx */
+    /* 0086b4be  mov dword ptr [esp + 0x18], edx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = edx;
-    /* 0086b4c2  mov dword ptr [esp + 0x10], 0 */
+    /* 0086b4c2  mov dword ptr [esp + 0x10], 0  ; var_18 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 0086b4ca  mov dword ptr [esp + 0x3c], 0 */
+    /* 0086b4ca  mov dword ptr [esp + 0x3c], 0  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000003cu);
     M32(ea) = 0x0u;
     /* 0086b4d2  je 0x86b4e0 */
@@ -115,7 +118,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 0086b4dc  fstp dword ptr [esp + 0x10] */
+    /* 0086b4dc  fstp dword ptr [esp + 0x10]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_0086b4e0:
@@ -144,14 +147,14 @@ L_0086b4e0:
     c->eip = t;
     goto out;
 R_3:
-    /* 0086b4ef  fstp dword ptr [esp + 0x3c] */
+    /* 0086b4ef  fstp dword ptr [esp + 0x3c]  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000003cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_0086b4f3:
-    /* 0086b4f3  fld dword ptr [esp + 0x3c] */
+    /* 0086b4f3  fld dword ptr [esp + 0x3c]  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000003cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0086b4f7  mov ebx, dword ptr [esp + 0x40] */
+    /* 0086b4f7  mov ebx, dword ptr [esp + 0x40]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000040u);
     ebx = M32(ea);
     /* 0086b4fb  fmul dword ptr [ebx + 0x18] */
@@ -161,34 +164,34 @@ L_0086b4f3:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b4ff  lea eax, [esp + 0x18] */
+    /* 0086b4ff  lea eax, [esp + 0x18]  ; &var_14 */
     eax = (uint32_t)(esp + 0x00000018u);
     /* 0086b503  mov ecx, ebp */
     ecx = ebp;
-    /* 0086b505  fadd dword ptr [esp + 0x14] */
+    /* 0086b505  fadd dword ptr [esp + 0x14]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0086b509  fstp dword ptr [esp] */
+    /* 0086b509  fstp dword ptr [esp]  ; var_2c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0086b50c  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b50d  call 0x875a00 */
+    /* 0086b50d  call 0x875a00  ; meme_00875a00 */
     t = 0x00875a00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b490_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 0086b512  mov ecx, dword ptr [esp + 0x38] */
+    /* 0086b512  mov ecx, dword ptr [esp + 0x38]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000038u);
     ecx = M32(ea);
-    /* 0086b516  mov edx, dword ptr [esp + 0x34] */
+    /* 0086b516  mov edx, dword ptr [esp + 0x34]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     edx = M32(ea);
-    /* 0086b51a  mov eax, dword ptr [esp + 0x30] */
+    /* 0086b51a  mov eax, dword ptr [esp + 0x30]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
     /* 0086b51e  push ebx */
@@ -217,7 +220,7 @@ R_4:
     M32(esp) = t;
     /* 0086b524  mov ecx, esi */
     ecx = esi;
-    /* 0086b526  call 0x875660 */
+    /* 0086b526  call 0x875660  ; Effect::vf18 */
     t = 0x00875660u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b490_5;
@@ -257,7 +260,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086b540  dice::meme::RotateEffect  (virtual method) */
+/* 0086b540  RotateEffect::vf19  (virtual method)
+ * overrides: Effect::vf19  (18 classes implement it)
+ * class: dice::meme::RotateEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086b540, bfv_client_l1_body_0086b540);
 BFV_L1_RESUME(bfv_client_l1r_0086b540_1, bfv_client_l1_body_0086b540, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086b540_2, bfv_client_l1_body_0086b540, 2);
@@ -293,7 +299,7 @@ void bfv_client_l1_body_0086b540(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b545  mov ebp, dword ptr [esp + 0x2c] */
+    /* 0086b545  mov ebp, dword ptr [esp + 0x2c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000002cu);
     ebp = M32(ea);
     /* 0086b549  push esi */
@@ -304,7 +310,7 @@ void bfv_client_l1_body_0086b540(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b54b  lea eax, [esp + 0x1c] */
+    /* 0086b54b  lea eax, [esp + 0x1c]  ; &var_c */
     eax = (uint32_t)(esp + 0x0000001cu);
     /* 0086b54f  mov esi, ecx */
     esi = ecx;
@@ -314,7 +320,7 @@ void bfv_client_l1_body_0086b540(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086b552  mov ecx, ebp */
     ecx = ebp;
-    /* 0086b554  call 0x875970 */
+    /* 0086b554  call 0x875970  ; meme_00875970 */
     t = 0x00875970u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b540_1;
@@ -327,25 +333,25 @@ R_1:
     /* 0086b55c  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 0086b55e  mov ecx, dword ptr [esp + 0x1c] */
+    /* 0086b55e  mov ecx, dword ptr [esp + 0x1c]  ; var_c */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
-    /* 0086b562  mov edx, dword ptr [esp + 0x20] */
+    /* 0086b562  mov edx, dword ptr [esp + 0x20]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000020u);
     edx = M32(ea);
-    /* 0086b566  mov edi, dword ptr [esp + 0x2c] */
+    /* 0086b566  mov edi, dword ptr [esp + 0x2c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000002cu);
     edi = M32(ea);
-    /* 0086b56a  mov dword ptr [esp + 0x14], ecx */
+    /* 0086b56a  mov dword ptr [esp + 0x14], ecx  ; var_14 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = ecx;
-    /* 0086b56e  mov dword ptr [esp + 0x18], edx */
+    /* 0086b56e  mov dword ptr [esp + 0x18], edx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = edx;
-    /* 0086b572  mov dword ptr [esp + 0x10], 0 */
+    /* 0086b572  mov dword ptr [esp + 0x10], 0  ; var_18 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 0086b57a  mov dword ptr [esp + 0x34], 0 */
+    /* 0086b57a  mov dword ptr [esp + 0x34], 0  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = 0x0u;
     /* 0086b582  je 0x86b590 */
@@ -367,7 +373,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 0086b58c  fstp dword ptr [esp + 0x10] */
+    /* 0086b58c  fstp dword ptr [esp + 0x10]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_0086b590:
@@ -396,14 +402,14 @@ L_0086b590:
     c->eip = t;
     goto out;
 R_3:
-    /* 0086b59f  fstp dword ptr [esp + 0x34] */
+    /* 0086b59f  fstp dword ptr [esp + 0x34]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_0086b5a3:
-    /* 0086b5a3  fld dword ptr [esp + 0x34] */
+    /* 0086b5a3  fld dword ptr [esp + 0x34]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0086b5a7  mov ebx, dword ptr [esp + 0x38] */
+    /* 0086b5a7  mov ebx, dword ptr [esp + 0x38]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000038u);
     ebx = M32(ea);
     /* 0086b5ab  fmul dword ptr [ebx + 0x18] */
@@ -413,28 +419,28 @@ L_0086b5a3:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b5af  lea eax, [esp + 0x18] */
+    /* 0086b5af  lea eax, [esp + 0x18]  ; &var_14 */
     eax = (uint32_t)(esp + 0x00000018u);
     /* 0086b5b3  mov ecx, ebp */
     ecx = ebp;
-    /* 0086b5b5  fadd dword ptr [esp + 0x14] */
+    /* 0086b5b5  fadd dword ptr [esp + 0x14]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0086b5b9  fstp dword ptr [esp] */
+    /* 0086b5b9  fstp dword ptr [esp]  ; var_2c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0086b5bc  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b5bd  call 0x875a00 */
+    /* 0086b5bd  call 0x875a00  ; meme_00875a00 */
     t = 0x00875a00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b540_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 0086b5c2  mov ecx, dword ptr [esp + 0x30] */
+    /* 0086b5c2  mov ecx, dword ptr [esp + 0x30]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000030u);
     ecx = M32(ea);
     /* 0086b5c6  push ebx */
@@ -455,7 +461,7 @@ R_4:
     M32(esp) = t;
     /* 0086b5ca  mov ecx, esi */
     ecx = esi;
-    /* 0086b5cc  call 0x875690 */
+    /* 0086b5cc  call 0x875690  ; Effect::vf19 */
     t = 0x00875690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b540_5;
@@ -495,8 +501,12 @@ out: __attribute__((unused));
 }
 
 
-/* 0086b5e0  dice::meme::RotateEffect  (virtual method)
- * strings: "Start angle", "Angle multiplyer" */
+/* 0086b5e0  RotateEffect::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::RotateEffect
+ * strings: "Start angle", "Angle multiplyer"
+ * called by: RotateAroundCoordinateEffect::serialize
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086b5e0, bfv_client_l1_body_0086b5e0);
 BFV_L1_RESUME(bfv_client_l1r_0086b5e0_1, bfv_client_l1_body_0086b5e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086b5e0_2, bfv_client_l1_body_0086b5e0, 2);
@@ -518,14 +528,14 @@ void bfv_client_l1_body_0086b5e0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b5e1  mov ebx, dword ptr [esp + 8] */
+    /* 0086b5e1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0086b5e5  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b5e6  mov esi, dword ptr [esp + 0x10] */
+    /* 0086b5e6  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 0086b5ea  push edi */
@@ -542,7 +552,7 @@ void bfv_client_l1_body_0086b5e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086b5ed  mov edi, ecx */
     edi = ecx;
-    /* 0086b5ef  call 0xa7d100 */
+    /* 0086b5ef  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b5e0_1;
@@ -583,7 +593,7 @@ L_0086b600:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b604  push 0xbd3178 */
+    /* 0086b604  push 0xbd3178  ; "Start angle" */
     t = 0xbd3178u;
     esp -= 4;
     M32(esp) = t;
@@ -619,7 +629,7 @@ R_2:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b61b  push 0xbd3164 */
+    /* 0086b61b  push 0xbd3164  ; "Angle multiplyer" */
     t = 0xbd3164u;
     esp -= 4;
     M32(esp) = t;
@@ -675,7 +685,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0086b880  dice::meme::RotateEffect  (vtable store) */
+/* 0086b880  RotateEffect::create  (vtable store)
+ * class: dice::meme::RotateEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086b880, bfv_client_l1_body_0086b880);
 BFV_L1_RESUME(bfv_client_l1r_0086b880_1, bfv_client_l1_body_0086b880, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086b880_2, bfv_client_l1_body_0086b880, 2);
@@ -699,7 +711,7 @@ void bfv_client_l1_body_0086b880(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b883  call 0x403610 */
+    /* 0086b883  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b880_1;
@@ -721,14 +733,14 @@ R_1:
     if (zf) goto L_0086b8b0;
     /* 0086b891  mov ecx, esi */
     ecx = esi;
-    /* 0086b893  call 0x874870 */
+    /* 0086b893  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b880_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0086b898  mov dword ptr [esi], 0xbd31d4 */
+    /* 0086b898  mov dword ptr [esi], 0xbd31d4  ; vtable RotateEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd31d4u;
     /* 0086b89e  mov dword ptr [esi + 8], 0 */
@@ -767,8 +779,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086b900  dice::meme::RotateEffect  (virtual method)
- * strings: "dice::meme::RotateEffect" */
+/* 0086b900  RotateEffect::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::RotateEffect
+ * strings: "dice::meme::RotateEffect"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086b900, bfv_client_l1_body_0086b900);
 BFV_L1_RESUME(bfv_client_l1r_0086b900_1, bfv_client_l1_body_0086b900, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086b900_2, bfv_client_l1_body_0086b900, 2);
@@ -799,13 +814,13 @@ void bfv_client_l1_body_0086b900(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0086b915  push 0xbd327c */
+    /* 0086b915  push 0xbd327c  ; "dice::meme::RotateEffect" */
     t = 0xbd327cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b91a  mov ecx, 0xdf6254 */
+    /* 0086b91a  mov ecx, 0xdf6254  ; g_RuntimeClass_RotateEffect */
     ecx = 0xdf6254u;
-    /* 0086b91f  call 0x875490 */
+    /* 0086b91f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b900_1;
@@ -816,10 +831,10 @@ R_1:
     t = 0xb3ab70u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086b929  mov dword ptr [0xdf6254], 0xbd3188 */
+    /* 0086b929  mov dword ptr [0xdf6254], 0xbd3188  ; g_RuntimeClass_RotateEffect */
     ea = (uint32_t)(0x00df6254u);
     M32(ea) = 0xbd3188u;
-    /* 0086b933  call 0x7c2cd2 */
+    /* 0086b933  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b900_2;
@@ -833,7 +848,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0086b93b:
-    /* 0086b93b  mov eax, 0xdf6254 */
+    /* 0086b93b  mov eax, 0xdf6254  ; g_RuntimeClass_RotateEffect */
     eax = 0xdf6254u;
     /* 0086b940  ret */
     c->eip = M32(esp);

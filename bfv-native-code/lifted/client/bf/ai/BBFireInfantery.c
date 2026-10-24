@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009a7ce0  dice::bf::ai::BBFireInfantery  (virtual method) */
+/* 009a7ce0  BBFireInfantery::vf13  (virtual method)
+ * overrides: BBFire::vf13  (2 classes implement it)
+ * class: dice::bf::ai::BBFireInfantery
+ * also entered at 009a7cf0: BBFireInfantery::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009a7ce0, bfv_client_l1_body_009a7ce0);
 void bfv_client_l1_body_009a7ce0(struct bfv_cpu *c)
 {
@@ -13,7 +17,7 @@ void bfv_client_l1_body_009a7ce0(struct bfv_cpu *c)
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
-    /* 009a7ce0  jmp 0x9a2980 */
+    /* 009a7ce0  jmp 0x9a2980  ; BBFire::vf13 */
     c->eip = 0x009a2980u;
     goto out;
 out: __attribute__((unused));
@@ -23,7 +27,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009a7d20  dice::bf::ai::BBFireInfantery  (vtable store) */
+/* 009a7d20  BBFireInfantery::BBFireInfantery  (vtable store)
+ * class: dice::bf::ai::BBFireInfantery
+ * called by: BBCreateFunctionFireInfantery::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009a7d20, bfv_client_l1_body_009a7d20);
 BFV_L1_RESUME(bfv_client_l1r_009a7d20_1, bfv_client_l1_body_009a7d20, 1);
 BFV_L1_RESUME(bfv_client_l1r_009a7d20_2, bfv_client_l1_body_009a7d20, 2);
@@ -43,7 +50,7 @@ void bfv_client_l1_body_009a7d20(struct bfv_cpu *c)
     case 4: goto R_4;
     default: break;
     }
-    /* 009a7d20  mov eax, dword ptr [esp + 0x20] */
+    /* 009a7d20  mov eax, dword ptr [esp + 0x20]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000020u);
     eax = M32(ea);
     /* 009a7d24  push ebx */
@@ -60,7 +67,7 @@ void bfv_client_l1_body_009a7d20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009a7d27  mov ebx, ecx */
     ebx = ecx;
-    /* 009a7d29  mov ecx, dword ptr [esp + 0x28] */
+    /* 009a7d29  mov ecx, dword ptr [esp + 0x28]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000028u);
     ecx = M32(ea);
     /* 009a7d2d  push eax */
@@ -77,7 +84,7 @@ void bfv_client_l1_body_009a7d20(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 009a7d32  lea edx, [esp + 0x30] */
+    /* 009a7d32  lea edx, [esp + 0x30]  ; &arg_c */
     edx = (uint32_t)(esp + 0x00000030u);
     /* 009a7d36  mov ecx, esp */
     ecx = esp;
@@ -85,20 +92,20 @@ void bfv_client_l1_body_009a7d20(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 009a7d39  call 0x940380 */
+    /* 009a7d39  call 0x940380  ; std::list::list_copy_00940380 */
     t = 0x00940380u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009a7d20_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009a7d3e  mov esi, dword ptr [esp + 0x2c] */
+    /* 009a7d3e  mov esi, dword ptr [esp + 0x2c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000002cu);
     esi = M32(ea);
-    /* 009a7d42  mov eax, dword ptr [esp + 0x28] */
+    /* 009a7d42  mov eax, dword ptr [esp + 0x28]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
-    /* 009a7d46  mov ecx, dword ptr [esp + 0x24] */
+    /* 009a7d46  mov ecx, dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     ecx = M32(ea);
     /* 009a7d4a  push esi */
@@ -115,7 +122,7 @@ R_1:
     M32(esp) = t;
     /* 009a7d4d  mov ecx, ebx */
     ecx = ebx;
-    /* 009a7d4f  call 0x995050 */
+    /* 009a7d4f  call 0x995050  ; BBFire::BBFire */
     t = 0x00995050u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009a7d20_2;
@@ -125,10 +132,10 @@ R_2:
     /* 009a7d54  mov dword ptr [ebx + 0x4c], esi */
     ea = (uint32_t)(ebx + 0x0000004cu);
     M32(ea) = esi;
-    /* 009a7d57  mov esi, dword ptr [esp + 0x20] */
+    /* 009a7d57  mov esi, dword ptr [esp + 0x20]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000020u);
     esi = M32(ea);
-    /* 009a7d5b  mov dword ptr [ebx], 0xbf648c */
+    /* 009a7d5b  mov dword ptr [ebx], 0xbf648c  ; vtable BBFireInfantery */
     ea = (uint32_t)(ebx);
     M32(ea) = 0xbf648cu;
     /* 009a7d61  mov eax, dword ptr [esi] */
@@ -147,7 +154,7 @@ R_2:
     M32(ea) = esi;
     /* 009a7d6a  je 0x9a7d81 */
     if (zf) goto L_009a7d81;
-    /* 009a7d6c  lea esp, [esp] */
+    /* 009a7d6c  lea esp, [esp]  ; &var_c */
     esp = (uint32_t)(esp);
 L_009a7d70:
     /* 009a7d70  mov edi, dword ptr [eax] */
@@ -157,7 +164,7 @@ L_009a7d70:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009a7d73  call 0x403680 */
+    /* 009a7d73  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009a7d20_3;
@@ -184,7 +191,7 @@ L_009a7d81:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009a7d82  call 0x403680 */
+    /* 009a7d82  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009a7d20_4;

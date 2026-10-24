@@ -1,0 +1,8 @@
+## file
+Plan action that finishes at once; it exists so a plan can release its control locks.
+
+## 009ee560
+Sets flag = 1 and done = 1 and returns 1.
+
+## 009ee5a0
+Destructor: restores the base vtables, counts the destruction in g_bapaDestroyedCount and returns the object to its memory pool when bit 0 of the flag argument is set.

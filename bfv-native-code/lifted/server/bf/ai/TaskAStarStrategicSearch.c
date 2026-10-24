@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00791d40  dice::bf::ai::TaskAStarStrategicSearch  (vtable store) */
+/* 00791d40  TaskAStarStrategicSearch::~TaskAStarStrategicSearch  (vtable store)
+ * class: dice::bf::ai::TaskAStarStrategicSearch
+ * called by: AStarType::~AStarType, TaskStrategicSearch::deleting_dtor, Vehicle::~Vehicle
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791d40, bfv_server_l1_body_00791d40);
 void bfv_server_l1_body_00791d40(struct bfv_cpu *c)
 {
@@ -14,22 +17,22 @@ void bfv_server_l1_body_00791d40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00791d40  cmp dword ptr [0xc31d9c], ecx */
+    /* 00791d40  cmp dword ptr [0xc31d9c], ecx  ; g_pTaskAStarStrategicSearch_00c31d9c */
     ea = (uint32_t)(0x00c31d9cu);
     a = M32(ea);
     b = ecx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00791d46  mov dword ptr [ecx], 0x8731a8 */
+    /* 00791d46  mov dword ptr [ecx], 0x8731a8  ; vtable TaskAStarStrategicSearch */
     ea = (uint32_t)(ecx);
     M32(ea) = 0x8731a8u;
     /* 00791d4c  jne 0x791d58 */
     if (!zf) goto L_00791d58;
-    /* 00791d4e  mov dword ptr [0xc31d9c], 0 */
+    /* 00791d4e  mov dword ptr [0xc31d9c], 0  ; g_pTaskAStarStrategicSearch_00c31d9c */
     ea = (uint32_t)(0x00c31d9cu);
     M32(ea) = 0x0u;
 L_00791d58:
-    /* 00791d58  jmp 0x791c60 */
+    /* 00791d58  jmp 0x791c60  ; Task::ctor_dtor */
     c->eip = 0x00791c60u;
     goto out;
 out: __attribute__((unused));
@@ -39,7 +42,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00791e90  dice::bf::ai::TaskAStarStrategicSearch  (virtual method) */
+/* 00791e90  TaskAStarStrategicSearch::execute  (virtual method)
+ * overrides: Task::execute  (8 classes implement it)
+ * class: dice::bf::ai::TaskAStarStrategicSearch
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791e90, bfv_server_l1_body_00791e90);
 BFV_L1_RESUME(bfv_server_l1r_00791e90_1, bfv_server_l1_body_00791e90, 1);
 BFV_L1_RESUME(bfv_server_l1r_00791e90_2, bfv_server_l1_body_00791e90, 2);
@@ -74,17 +80,17 @@ void bfv_server_l1_body_00791e90(struct bfv_cpu *c)
     /* 00791e96  mov ecx, dword ptr [esi + 0x14] */
     ea = (uint32_t)(esi + 0x00000014u);
     ecx = M32(ea);
-    /* 00791e99  call 0x7bec90 */
+    /* 00791e99  call 0x7bec90  ; ai_007bec90 */
     t = 0x007bec90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791e90_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00791e9e  fstp qword ptr [esp + 8] */
+    /* 00791e9e  fstp qword ptr [esp + 8]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00791ea2  mov eax, dword ptr [0xc31d9c] */
+    /* 00791ea2  mov eax, dword ptr [0xc31d9c]  ; g_pTaskAStarStrategicSearch_00c31d9c */
     ea = (uint32_t)(0x00c31d9cu);
     eax = M32(ea);
     /* 00791ea7  test eax, eax */
@@ -107,7 +113,7 @@ L_00791eaf:
     /* 00791eb1  mov dl, byte ptr [esi + 0x38] */
     ea = (uint32_t)(esi + 0x00000038u);
     SET8L(edx, M8(ea));
-    /* 00791eb4  lea eax, [esp + 8] */
+    /* 00791eb4  lea eax, [esp + 8]  ; &var_8 */
     eax = (uint32_t)(esp + 0x00000008u);
     /* 00791eb8  push eax */
     t = eax;
@@ -116,7 +122,7 @@ L_00791eaf:
     /* 00791eb9  mov eax, dword ptr [esi + 0x3c] */
     ea = (uint32_t)(esi + 0x0000003cu);
     eax = M32(ea);
-    /* 00791ebc  lea ecx, [esp + 0xb] */
+    /* 00791ebc  lea ecx, [esp + 0xb]  ; &var_9 */
     ecx = (uint32_t)(esp + 0x0000000bu);
     /* 00791ec0  push ecx */
     t = ecx;
@@ -132,17 +138,17 @@ L_00791eaf:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00791ec8  mov dword ptr [0xc31d9c], esi */
+    /* 00791ec8  mov dword ptr [0xc31d9c], esi  ; g_pTaskAStarStrategicSearch_00c31d9c */
     ea = (uint32_t)(0x00c31d9cu);
     M32(ea) = esi;
-    /* 00791ece  call 0x7bd990 */
+    /* 00791ece  call 0x7bd990  ; ai_007bd990 */
     t = 0x007bd990u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791e90_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00791ed3  mov cl, byte ptr [esp + 7] */
+    /* 00791ed3  mov cl, byte ptr [esp + 7]  ; var_9 */
     ea = (uint32_t)(esp + 0x00000007u);
     SET8L(ecx, M8(ea));
     /* 00791ed7  test cl, cl */
@@ -157,7 +163,7 @@ R_2:
     ea = (uint32_t)(esi + 0x00000034u);
     M32(ea) = 0x1u;
 L_00791ee5:
-    /* 00791ee5  fld qword ptr [0x807350] */
+    /* 00791ee5  fld qword ptr [0x807350]  ; = 0.0 */
     ea = (uint32_t)(0x00807350u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00791eeb  sub esp, 8 */
@@ -168,10 +174,10 @@ L_00791ee5:
     esp = r;
     /* 00791eee  mov ecx, esi */
     ecx = esi;
-    /* 00791ef0  fstp qword ptr [esp] */
+    /* 00791ef0  fstp qword ptr [esp]  ; var_18 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00791ef3  call 0x791cb0 */
+    /* 00791ef3  call 0x791cb0  ; Task_00791cb0 */
     t = 0x00791cb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791e90_3;
@@ -204,7 +210,7 @@ L_00791efd:
     /* 00791f04  mov dword ptr [ecx], 0xffffffff */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xffffffffu;
-    /* 00791f0a  mov dword ptr [0xc31d9c], 0 */
+    /* 00791f0a  mov dword ptr [0xc31d9c], 0  ; g_pTaskAStarStrategicSearch_00c31d9c */
     ea = (uint32_t)(0x00c31d9cu);
     M32(ea) = 0x0u;
     /* 00791f14  pop esi */
@@ -250,7 +256,7 @@ L_00791f19:
     M32(esp) = t;
     /* 00791f29  mov ecx, 0xc33da8 */
     ecx = 0xc33da8u;
-    /* 00791f2e  call 0x7bd040 */
+    /* 00791f2e  call 0x7bd040  ; ai_007bd040 */
     t = 0x007bd040u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791e90_4;
@@ -263,7 +269,7 @@ R_4:
     /* 00791f36  mov dword ptr [ecx], eax */
     ea = (uint32_t)(ecx);
     M32(ea) = eax;
-    /* 00791f38  mov dword ptr [0xc31d9c], 0 */
+    /* 00791f38  mov dword ptr [0xc31d9c], 0  ; g_pTaskAStarStrategicSearch_00c31d9c */
     ea = (uint32_t)(0x00c31d9cu);
     M32(ea) = 0x0u;
     /* 00791f42  pop esi */
@@ -287,7 +293,7 @@ L_00791f47:
     /* 00791f4a  mov dword ptr [edx], 0 */
     ea = (uint32_t)(edx);
     M32(ea) = 0x0u;
-    /* 00791f50  mov dword ptr [0xc31d9c], 0 */
+    /* 00791f50  mov dword ptr [0xc31d9c], 0  ; g_pTaskAStarStrategicSearch_00c31d9c */
     ea = (uint32_t)(0x00c31d9cu);
     M32(ea) = 0x0u;
     /* 00791f5a  pop esi */

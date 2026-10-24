@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f9270  dice::bf::ai::BAPConInsideBattleZone  (vtable store) */
+/* 009f9270  BAPConInsideBattleZone::BAPConInsideBattleZone  (vtable store)
+ * class: dice::bf::ai::BAPConInsideBattleZone
+ * also entered at 009f9290: BAPAMoveTo3dObject::vf3, BAPAMoveToObject::vf3, BAPAMoveToObjectFinding::vf3, BAPConInsideBattleZone::vf1 (+10 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f9270, bfv_client_l1_body_009f9270);
 void bfv_client_l1_body_009f9270(struct bfv_cpu *c)
 {
@@ -16,13 +19,13 @@ void bfv_client_l1_body_009f9270(struct bfv_cpu *c)
     uint32_t ea;
     /* 009f9270  mov eax, ecx */
     eax = ecx;
-    /* 009f9272  mov ecx, dword ptr [esp + 4] */
+    /* 009f9272  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 009f9276  mov dword ptr [eax + 4], 0 */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 009f927d  mov dword ptr [eax], 0xbfc35c */
+    /* 009f927d  mov dword ptr [eax], 0xbfc35c  ; vtable BAPConInsideBattleZone */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbfc35cu;
     /* 009f9283  mov dword ptr [eax + 8], ecx */
@@ -39,7 +42,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f92a0  dice::bf::ai::BAPConInsideBattleZone  (virtual method) */
+/* 009f92a0  BAPConInsideBattleZone::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConInsideBattleZone
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f92a0, bfv_client_l1_body_009f92a0);
 BFV_L1_RESUME(bfv_client_l1r_009f92a0_1, bfv_client_l1_body_009f92a0, 1);
 void bfv_client_l1_body_009f92a0(struct bfv_cpu *c)
@@ -53,7 +59,7 @@ void bfv_client_l1_body_009f92a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009f92a0  test byte ptr [esp + 4], 1 */
+    /* 009f92a0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -63,7 +69,7 @@ void bfv_client_l1_body_009f92a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f92a6  mov esi, ecx */
     esi = ecx;
-    /* 009f92a8  mov dword ptr [esi], 0xbf477c */
+    /* 009f92a8  mov dword ptr [esi], 0xbf477c  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf477cu;
     /* 009f92ae  je 0x9f92bb */
@@ -72,9 +78,9 @@ void bfv_client_l1_body_009f92a0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f92b1  mov ecx, 0xe10d00 */
+    /* 009f92b1  mov ecx, 0xe10d00  ; g_MemoryPoolNull_BAPConInsideBattleZone */
     ecx = 0xe10d00u;
-    /* 009f92b6  call 0x412fc0 */
+    /* 009f92b6  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f92a0_1;
@@ -99,7 +105,11 @@ out: __attribute__((unused));
 }
 
 
-/* 009f92d0  dice::bf::ai::BAPConInsideBattleZone  (virtual method) */
+/* 009f92d0  BAPConInsideBattleZone::evaluate  (virtual method)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConInsideBattleZone
+ * also entered at 009f9390: Action::vf2, AlphaFadeEffect::vf2, BAPAMoveTo3dDirection::vf3, BAPInfoWrapper::vf6 (+20 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f92d0, bfv_client_l1_body_009f92d0);
 BFV_L1_RESUME(bfv_client_l1r_009f92d0_1, bfv_client_l1_body_009f92d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f92d0_2, bfv_client_l1_body_009f92d0, 2);
@@ -139,7 +149,7 @@ void bfv_client_l1_body_009f92d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f92d3  mov edi, ecx */
     edi = ecx;
-    /* 009f92d5  mov ecx, dword ptr [esp + 0x10] */
+    /* 009f92d5  mov ecx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 009f92d9  mov eax, dword ptr [ecx] */
@@ -161,7 +171,7 @@ R_1:
     ecx = r;
     /* 009f92e9  je 0x9f9304 */
     if (zf) goto L_009f9304;
-    /* 009f92eb  mov edx, dword ptr [0xe0cd58] */
+    /* 009f92eb  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 009f92f1  mov edx, dword ptr [edx] */
@@ -227,7 +237,7 @@ R_2:
     /* 009f9319  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 009f931b  mov ebx, dword ptr [0xe0eb20] */
+    /* 009f931b  mov ebx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ebx = M32(ea);
     /* 009f9321  push ebp */
@@ -251,7 +261,7 @@ R_3:
     eax = M32(ea);
     /* 009f932b  mov ecx, ebx */
     ecx = ebx;
-    /* 009f932d  call dword ptr [eax + 0xc] */
+    /* 009f932d  call dword ptr [eax + 0xc]  ; -> IAISettings::vf3 = Listener3dMiles::get_14h (returns this+0x14) */
     ea = (uint32_t)(eax + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -305,7 +315,7 @@ R_5:
     /* 009f9352  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 009f9354  mov ebx, dword ptr [0xe0eb20] */
+    /* 009f9354  mov ebx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ebx = M32(ea);
     /* 009f935a  mov ecx, esi */
@@ -325,7 +335,7 @@ R_6:
     ecx = ebx;
     /* 009f9363  mov esi, eax */
     esi = eax;
-    /* 009f9365  call dword ptr [edx + 0x10] */
+    /* 009f9365  call dword ptr [edx + 0x10]  ; -> IAISettings::vf4 = BAPAComponentSoldierPose::get_18h (returns this+0x18) */
     ea = (uint32_t)(edx + 0x00000010u);
     t = M32(ea);
     esp -= 4;

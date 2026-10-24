@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00754c60  dice::bf::ai::BAPConEndOfPath  (virtual method) */
+/* 00754c60  BAPConEndOfPath::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConEndOfPath
+ */
 BFV_L1_ENTRY(bfv_server_l1_00754c60, bfv_server_l1_body_00754c60);
 BFV_L1_RESUME(bfv_server_l1r_00754c60_1, bfv_server_l1_body_00754c60, 1);
 void bfv_server_l1_body_00754c60(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_00754c60(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00754c60  test byte ptr [esp + 4], 1 */
+    /* 00754c60  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,7 +32,7 @@ void bfv_server_l1_body_00754c60(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00754c66  mov esi, ecx */
     esi = ecx;
-    /* 00754c68  mov dword ptr [esi], 0x873c74 */
+    /* 00754c68  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 00754c6e  je 0x754c7b */
@@ -38,9 +41,9 @@ void bfv_server_l1_body_00754c60(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00754c71  mov ecx, 0xc33308 */
+    /* 00754c71  mov ecx, 0xc33308  ; g_MemoryPool_00c33308 */
     ecx = 0xc33308u;
-    /* 00754c76  call 0x413600 */
+    /* 00754c76  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00754c60_1;
@@ -65,7 +68,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007ae400  dice::bf::ai::BAPConEndOfPath  (virtual method) */
+/* 007ae400  BAPConEndOfPath::evaluate  (virtual method)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConEndOfPath
+ */
 BFV_L1_ENTRY(bfv_server_l1_007ae400, bfv_server_l1_body_007ae400);
 BFV_L1_RESUME(bfv_server_l1r_007ae400_1, bfv_server_l1_body_007ae400, 1);
 void bfv_server_l1_body_007ae400(struct bfv_cpu *c)
@@ -79,7 +85,7 @@ void bfv_server_l1_body_007ae400(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007ae400  mov ecx, dword ptr [esp + 4] */
+    /* 007ae400  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007ae404  mov eax, dword ptr [ecx] */

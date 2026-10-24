@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 006a8130  dice::ref2::world::RotationalBundleTemplate  (virtual method) */
+/* 006a8130  RotationalBundleTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::RotationalBundleTemplate
+ * also entered at 006a8160: RotationalBundleTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a8130, bfv_client_l1_body_006a8130);
 BFV_L1_RESUME(bfv_client_l1r_006a8130_1, bfv_client_l1_body_006a8130, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a8130_2, bfv_client_l1_body_006a8130, 2);
@@ -31,7 +35,7 @@ void bfv_client_l1_body_006a8130(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006a8136  mov esi, ecx */
     esi = ecx;
-    /* 006a8138  call 0x403610 */
+    /* 006a8138  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a8130_1;
@@ -55,7 +59,7 @@ R_1:
     M32(esp) = t;
     /* 006a8145  mov ecx, eax */
     ecx = eax;
-    /* 006a8147  call 0x6f8a00 */
+    /* 006a8147  call 0x6f8a00  ; RotationalBundle::RotationalBundle */
     t = 0x006f8a00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a8130_2;
@@ -90,7 +94,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a8170  dice::ref2::world::RotationalBundleTemplate  (virtual method) */
+/* 006a8170  RotationalBundleTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::RotationalBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a8170, bfv_client_l1_body_006a8170);
 void bfv_client_l1_body_006a8170(struct bfv_cpu *c)
 {
@@ -99,10 +106,10 @@ void bfv_client_l1_body_006a8170(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006a8170  mov eax, dword ptr [esp + 4] */
+    /* 006a8170  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006a8174  cmp eax, dword ptr [0xb77e9c] */
+    /* 006a8174  cmp eax, dword ptr [0xb77e9c]  ; RotationalBundleTemplate::classID */
     ea = (uint32_t)(0x00b77e9cu);
     a = eax;
     b = M32(ea);
@@ -117,10 +124,10 @@ void bfv_client_l1_body_006a8170(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006a8181:
-    /* 006a8181  mov dword ptr [esp + 4], eax */
+    /* 006a8181  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006a8185  jmp 0x6a4250 */
+    /* 006a8185  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));
@@ -130,7 +137,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006a8220  (between same file) */
+/* 006a8220  RotationalBundleTemplate_getByte_22fh_006a8220  (between same file)
+ * called by: RotationalBundleNetworkable::attachToObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a8220, bfv_client_l1_body_006a8220);
 void bfv_client_l1_body_006a8220(struct bfv_cpu *c)
 {
@@ -153,7 +162,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a8240  dice::ref2::world::RotationalBundleTemplate  (vtable store) */
+/* 006a8240  RotationalBundleTemplate::RotationalBundleTemplate  (vtable store)
+ * class: dice::ref2::world::RotationalBundleTemplate
+ * called by: CameraTemplate::CameraTemplate, ObjectCreatorWrapper<RotationalBundleTemplate>::create, EngineTemplate::EngineTemplate, FloatingBundleTemplate::FloatingBundleTemplate, WingTemplate::WingTemplate, LandingGearTemplate::LandingGearTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a8240, bfv_client_l1_body_006a8240);
 BFV_L1_RESUME(bfv_client_l1r_006a8240_1, bfv_client_l1_body_006a8240, 1);
 void bfv_client_l1_body_006a8240(struct bfv_cpu *c)
@@ -173,7 +185,7 @@ void bfv_client_l1_body_006a8240(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006a8241  mov esi, ecx */
     esi = ecx;
-    /* 006a8243  call 0x6a52c0 */
+    /* 006a8243  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
     t = 0x006a52c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a8240_1;
@@ -184,7 +196,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 006a824a  mov dword ptr [esi], 0xb95ba4 */
+    /* 006a824a  mov dword ptr [esi], 0xb95ba4  ; vtable RotationalBundleTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb95ba4u;
     /* 006a8250  mov dword ptr [esi + 4], 0xb95b8c */

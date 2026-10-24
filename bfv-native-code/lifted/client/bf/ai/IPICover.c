@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a0a570  dice::bf::ai::IPICover  (virtual method) */
+/* 00a0a570  IPICover::deleting_dtor  (virtual method)
+ * overrides: InformationPlugIn::vf0  (10 classes implement it)
+ * class: dice::bf::ai::IPICover
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a570, bfv_client_l1_body_00a0a570);
 BFV_L1_RESUME(bfv_client_l1r_00a0a570_1, bfv_client_l1_body_00a0a570, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a0a570_2, bfv_client_l1_body_00a0a570, 2);
@@ -39,14 +42,14 @@ void bfv_client_l1_body_00a0a570(struct bfv_cpu *c)
     /* 00a0a577  test edi, edi */
     r = (edi & edi) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00a0a579  mov dword ptr [esi], 0xbfd01c */
+    /* 00a0a579  mov dword ptr [esi], 0xbfd01c  ; vtable IPICover */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfd01cu;
     /* 00a0a57f  je 0xa0a591 */
     if (zf) goto L_00a0a591;
     /* 00a0a581  mov ecx, edi */
     ecx = edi;
-    /* 00a0a583  call 0x9ed520 */
+    /* 00a0a583  call 0x9ed520  ; std::vector::_Tidy */
     t = 0x009ed520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a570_1;
@@ -57,7 +60,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a0a589  call 0x403680 */
+    /* 00a0a589  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a570_2;
@@ -71,11 +74,11 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00a0a591:
-    /* 00a0a591  test byte ptr [esp + 0xc], 1 */
+    /* 00a0a591  test byte ptr [esp + 0xc], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 00a0a596  mov dword ptr [esi], 0xbf7ea4 */
+    /* 00a0a596  mov dword ptr [esi], 0xbf7ea4  ; vtable InformationPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7ea4u;
     /* 00a0a59c  je 0xa0a5a9 */
@@ -84,9 +87,9 @@ L_00a0a591:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a0a59f  mov ecx, 0xe12228 */
+    /* 00a0a59f  mov ecx, 0xe12228  ; g_MemoryPoolNull_IPICover */
     ecx = 0xe12228u;
-    /* 00a0a5a4  call 0x412fc0 */
+    /* 00a0a5a4  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a570_3;
@@ -115,7 +118,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a5b0  dice::bf::ai::IPICover  (virtual method) */
+/* 00a0a5b0  IPICover::vf2  (virtual method)
+ * overrides: InformationPlugIn::vf2  (10 classes implement it)
+ * class: dice::bf::ai::IPICover
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a5b0, bfv_client_l1_body_00a0a5b0);
 BFV_L1_RESUME(bfv_client_l1r_00a0a5b0_1, bfv_client_l1_body_00a0a5b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a0a5b0_2, bfv_client_l1_body_00a0a5b0, 2);
@@ -157,7 +163,7 @@ void bfv_client_l1_body_00a0a5b0(struct bfv_cpu *c)
     if (zf) goto L_00a0a5cb;
     /* 00a0a5bb  mov ecx, edi */
     ecx = edi;
-    /* 00a0a5bd  call 0x9ed520 */
+    /* 00a0a5bd  call 0x9ed520  ; std::vector::_Tidy */
     t = 0x009ed520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a5b0_1;
@@ -168,7 +174,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a0a5c3  call 0x403680 */
+    /* 00a0a5c3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a5b0_2;
@@ -231,7 +237,7 @@ R_4:
     M32(esp) = t;
     /* 00a0a5ec  mov ecx, edi */
     ecx = edi;
-    /* 00a0a5ee  call 0x9edea0 */
+    /* 00a0a5ee  call 0x9edea0  ; ai_009edea0 */
     t = 0x009edea0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a5b0_5;
@@ -260,7 +266,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a600  dice::bf::ai::IPICover  (vtable store) */
+/* 00a0a600  IPICover::IPICover  (vtable store)
+ * class: dice::bf::ai::IPICover
+ * called by: AIObjectCover::createInformationPlugIn
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a600, bfv_client_l1_body_00a0a600);
 BFV_L1_RESUME(bfv_client_l1r_00a0a600_1, bfv_client_l1_body_00a0a600, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a0a600_2, bfv_client_l1_body_00a0a600, 2);
@@ -307,7 +316,7 @@ void bfv_client_l1_body_00a0a600(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a0a606  mov edi, ecx */
     edi = ecx;
-    /* 00a0a608  mov dword ptr [edi], 0xbfd01c */
+    /* 00a0a608  mov dword ptr [edi], 0xbfd01c  ; vtable IPICover */
     ea = (uint32_t)(edi);
     M32(ea) = 0xbfd01cu;
     /* 00a0a60e  mov dword ptr [edi + 4], eax */
@@ -385,7 +394,7 @@ R_3:
     M32(esp) = t;
     /* 00a0a642  mov ecx, esi */
     ecx = esi;
-    /* 00a0a644  call 0x9edea0 */
+    /* 00a0a644  call 0x9edea0  ; ai_009edea0 */
     t = 0x009edea0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a600_4;
@@ -431,7 +440,7 @@ L_00a0a653:
 R_5:
     /* 00a0a65e  mov ecx, eax */
     ecx = eax;
-    /* 00a0a660  call 0x97cfd0 */
+    /* 00a0a660  call 0x97cfd0  ; IPICover::constructor_helper_0097cfd0 */
     t = 0x0097cfd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a600_6;
@@ -444,7 +453,7 @@ R_6:
     M32(esp) = t;
     /* 00a0a667  mov ebx, eax */
     ebx = eax;
-    /* 00a0a669  call 0x403610 */
+    /* 00a0a669  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a600_7;
@@ -488,7 +497,7 @@ R_8:
     M32(esp) = t;
     /* 00a0a681  mov ecx, esi */
     ecx = esi;
-    /* 00a0a683  call 0x9ed5e0 */
+    /* 00a0a683  call 0x9ed5e0  ; ai_009ed5e0 */
     t = 0x009ed5e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a600_9;
@@ -502,7 +511,7 @@ R_9:
     /* 00a0a689  mov dword ptr [edi + 8], eax */
     ea = (uint32_t)(edi + 0x00000008u);
     M32(ea) = eax;
-    /* 00a0a68c  call 0x403680 */
+    /* 00a0a68c  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a600_10;
@@ -545,7 +554,7 @@ L_00a0a69c:
     /* 00a0a69f  mov dword ptr [edi + 8], eax */
     ea = (uint32_t)(edi + 0x00000008u);
     M32(ea) = eax;
-    /* 00a0a6a2  call 0x403680 */
+    /* 00a0a6a2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a600_11;

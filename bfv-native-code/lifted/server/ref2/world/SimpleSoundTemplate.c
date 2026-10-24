@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005699b0  dice::ref2::world::SimpleSoundTemplate  (vtable store) */
+/* 005699b0  SimpleSoundTemplate::SimpleSoundTemplate  (vtable store)
+ * class: dice::ref2::world::SimpleSoundTemplate
+ * called by: SimpleObjectTemplate::SimpleObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005699b0, bfv_server_l1_body_005699b0);
 void bfv_server_l1_body_005699b0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_005699b0(struct bfv_cpu *c)
     uint32_t ea;
     /* 005699b0  mov eax, ecx */
     eax = ecx;
-    /* 005699b2  mov dword ptr [eax], 0x83755c */
+    /* 005699b2  mov dword ptr [eax], 0x83755c  ; vtable SimpleSoundTemplate */
     ea = (uint32_t)(eax);
     M32(ea) = 0x83755cu;
     /* 005699b8  mov byte ptr [eax + 4], 0 */
@@ -33,7 +36,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005699d0  dice::ref2::world::SimpleSoundTemplate  (virtual method) */
+/* 005699d0  SimpleSoundTemplate::vf1  (virtual method)
+ * class: dice::ref2::world::SimpleSoundTemplate
+ * also entered at 005699e0: SimpleSoundTemplate::vf0
+ * called by: SimpleObjectTemplate::postLoad
+ */
 BFV_L1_ENTRY(bfv_server_l1_005699d0, bfv_server_l1_body_005699d0);
 void bfv_server_l1_body_005699d0(struct bfv_cpu *c)
 {

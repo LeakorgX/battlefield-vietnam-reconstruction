@@ -1,0 +1,5 @@
+## file
+Plan builder for an idle ground vehicle.
+
+## 009849a0
+buildPlan: clears the current plan and builds a BAPFlowCWhile that keeps running BAPAResetControls (1, 1, 1) while a BAPConTrue condition holds, so the vehicle stays still with all controls released.

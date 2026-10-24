@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00ac25e0  dice::meme::SplitAction  (virtual method)
- * strings: "Action 1", "Action 2" */
+/* 00ac25e0  SplitAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::SplitAction
+ * strings: "Action 1", "Action 2"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac25e0, bfv_client_l1_body_00ac25e0);
 BFV_L1_RESUME(bfv_client_l1r_00ac25e0_1, bfv_client_l1_body_00ac25e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac25e0_2, bfv_client_l1_body_00ac25e0, 2);
@@ -28,14 +31,14 @@ void bfv_client_l1_body_00ac25e0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac25e1  mov ebx, dword ptr [esp + 8] */
+    /* 00ac25e1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00ac25e5  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac25e6  mov esi, dword ptr [esp + 0x10] */
+    /* 00ac25e6  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00ac25ea  push edi */
@@ -52,7 +55,7 @@ void bfv_client_l1_body_00ac25e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00ac25ed  mov edi, ecx */
     edi = ecx;
-    /* 00ac25ef  call 0xa7d100 */
+    /* 00ac25ef  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac25e0_1;
@@ -93,7 +96,7 @@ L_00ac2600:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2604  push 0xc10768 */
+    /* 00ac2604  push 0xc10768  ; "Action 1" */
     t = 0xc10768u;
     esp -= 4;
     M32(esp) = t;
@@ -129,7 +132,7 @@ R_2:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac261b  push 0xc1075c */
+    /* 00ac261b  push 0xc1075c  ; "Action 2" */
     t = 0xc1075cu;
     esp -= 4;
     M32(esp) = t;
@@ -185,7 +188,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2640  dice::meme::SplitAction  (virtual method) */
+/* 00ac2640  SplitAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::SplitAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2640, bfv_client_l1_body_00ac2640);
 BFV_L1_RESUME(bfv_client_l1r_00ac2640_1, bfv_client_l1_body_00ac2640, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2640_2, bfv_client_l1_body_00ac2640, 2);
@@ -367,7 +373,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac26a0  (between same file) */
+/* 00ac26a0  ClassTemplate<SplitAction,Action>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac26a0, bfv_client_l1_body_00ac26a0);
 void bfv_client_l1_body_00ac26a0(struct bfv_cpu *c)
 {
@@ -393,7 +400,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac26b0  (between same file) */
+/* 00ac26b0  ClassTemplate<SplitAction,Action>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac26b0, bfv_client_l1_body_00ac26b0);
 void bfv_client_l1_body_00ac26b0(struct bfv_cpu *c)
 {
@@ -419,7 +427,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac26d0  dice::meme::SplitAction  (vtable store) */
+/* 00ac26d0  SplitAction::create  (vtable store)
+ * class: dice::meme::SplitAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac26d0, bfv_client_l1_body_00ac26d0);
 BFV_L1_RESUME(bfv_client_l1r_00ac26d0_1, bfv_client_l1_body_00ac26d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac26d0_2, bfv_client_l1_body_00ac26d0, 2);
@@ -443,7 +453,7 @@ void bfv_client_l1_body_00ac26d0(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac26d3  call 0x403610 */
+    /* 00ac26d3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac26d0_1;
@@ -465,14 +475,14 @@ R_1:
     if (zf) goto L_00ac2700;
     /* 00ac26e1  mov ecx, esi */
     ecx = esi;
-    /* 00ac26e3  call 0x874870 */
+    /* 00ac26e3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac26d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac26e8  mov dword ptr [esi], 0xc1079c */
+    /* 00ac26e8  mov dword ptr [esi], 0xc1079c  ; vtable SplitAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc1079cu;
     /* 00ac26ee  mov dword ptr [esi + 8], 0 */
@@ -511,8 +521,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2710  dice::meme::SplitAction  (virtual method)
- * strings: "dice::meme::SplitAction" */
+/* 00ac2710  SplitAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::SplitAction
+ * strings: "dice::meme::SplitAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2710, bfv_client_l1_body_00ac2710);
 BFV_L1_RESUME(bfv_client_l1r_00ac2710_1, bfv_client_l1_body_00ac2710, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2710_2, bfv_client_l1_body_00ac2710, 2);
@@ -543,27 +556,27 @@ void bfv_client_l1_body_00ac2710(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac2725  push 0xc107e4 */
+    /* 00ac2725  push 0xc107e4  ; "dice::meme::SplitAction" */
     t = 0xc107e4u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac272a  mov ecx, 0xe216ec */
+    /* 00ac272a  mov ecx, 0xe216ec  ; g_RuntimeClass_SplitAction */
     ecx = 0xe216ecu;
-    /* 00ac272f  call 0x875490 */
+    /* 00ac272f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2710_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac2734  push 0xb41cd0 */
+    /* 00ac2734  push 0xb41cd0  ; bfv_client_global_store_00b41cd0 */
     t = 0xb41cd0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2739  mov dword ptr [0xe216ec], 0xc10778 */
+    /* 00ac2739  mov dword ptr [0xe216ec], 0xc10778  ; g_RuntimeClass_SplitAction */
     ea = (uint32_t)(0x00e216ecu);
     M32(ea) = 0xc10778u;
-    /* 00ac2743  call 0x7c2cd2 */
+    /* 00ac2743  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2710_2;
@@ -577,7 +590,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac274b:
-    /* 00ac274b  mov eax, 0xe216ec */
+    /* 00ac274b  mov eax, 0xe216ec  ; g_RuntimeClass_SplitAction */
     eax = 0xe216ecu;
     /* 00ac2750  ret */
     c->eip = M32(esp);

@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00700d60  dice::ref2::world::PortalEvent  (vtable store) */
+/* 00700d60  PortalEvent::ctor_dtor  (vtable store)
+ * class: dice::ref2::world::PortalEvent
+ * also entered at 00700d90: PortalEvent::vf0
+ * called by: PortalManager::vf14
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700d60, bfv_client_l1_body_00700d60);
 void bfv_client_l1_body_00700d60(struct bfv_cpu *c)
 {
@@ -14,27 +18,27 @@ void bfv_client_l1_body_00700d60(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00700d60  mov edx, dword ptr [esp + 8] */
+    /* 00700d60  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00700d64  mov eax, ecx */
     eax = ecx;
-    /* 00700d66  mov ecx, dword ptr [esp + 4] */
+    /* 00700d66  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00700d6a  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 00700d6d  mov ecx, dword ptr [esp + 0xc] */
+    /* 00700d6d  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00700d71  mov dword ptr [eax + 8], edx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = edx;
-    /* 00700d74  mov edx, dword ptr [esp + 0x10] */
+    /* 00700d74  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
-    /* 00700d78  mov dword ptr [eax], 0xba59dc */
+    /* 00700d78  mov dword ptr [eax], 0xba59dc  ; vtable PortalEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xba59dcu;
     /* 00700d7e  mov dword ptr [eax + 0xc], ecx */

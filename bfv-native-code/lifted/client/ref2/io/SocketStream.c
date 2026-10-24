@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 008c78a0  dice::ref2::io::SocketStream  (virtual method) */
+/* 008c78a0  SocketStream::vf7  (virtual method)
+ * class: dice::ref2::io::SocketStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c78a0, bfv_client_l1_body_008c78a0);
 BFV_L1_RESUME(bfv_client_l1r_008c78a0_1, bfv_client_l1_body_008c78a0, 1);
 void bfv_client_l1_body_008c78a0(struct bfv_cpu *c)
@@ -43,7 +45,7 @@ void bfv_client_l1_body_008c78a0(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008c78b0  call dword ptr [0xb423d4] */
+    /* 008c78b0  call dword ptr [0xb423d4]  ; WSOCK32!ioctlsocket */
     ea = (uint32_t)(0x00b423d4u);
     t = M32(ea);
     esp -= 4;
@@ -88,7 +90,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c7eb0  dice::ref2::io::SocketStream  (virtual method) */
+/* 008c7eb0  SocketStream::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::io::SocketStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7eb0, bfv_client_l1_body_008c7eb0);
 void bfv_client_l1_body_008c7eb0(struct bfv_cpu *c)
 {
@@ -97,12 +102,12 @@ void bfv_client_l1_body_008c7eb0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 008c7eb0  mov edx, dword ptr [0xb42718] */
+    /* 008c7eb0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 008c7eb6  mov eax, ecx */
     eax = ecx;
-    /* 008c7eb8  mov ecx, dword ptr [esp + 4] */
+    /* 008c7eb8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008c7ebc  cmp ecx, edx */
@@ -155,7 +160,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008c8590  dice::ref2::io::SocketStream  (virtual method) */
+/* 008c8590  SocketStream::vf4  (virtual method)
+ * class: dice::ref2::io::SocketStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c8590, bfv_client_l1_body_008c8590);
 BFV_L1_RESUME(bfv_client_l1r_008c8590_1, bfv_client_l1_body_008c8590, 1);
 void bfv_client_l1_body_008c8590(struct bfv_cpu *c)
@@ -169,7 +176,7 @@ void bfv_client_l1_body_008c8590(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 008c8590  mov eax, dword ptr [esp + 8] */
+    /* 008c8590  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008c8594  test eax, eax */
@@ -193,14 +200,14 @@ L_008c859b:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008c85a1  mov eax, dword ptr [esp + 0xc] */
+    /* 008c85a1  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 008c85a5  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008c85a6  call 0x8c83b0 */
+    /* 008c85a6  call 0x8c83b0  ; io_calls_accept_008c83b0 */
     t = 0x008c83b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c8590_1;
@@ -218,7 +225,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008c85b0  dice::ref2::io::SocketStream  (virtual method) */
+/* 008c85b0  SocketStream::vf5  (virtual method)
+ * class: dice::ref2::io::SocketStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c85b0, bfv_client_l1_body_008c85b0);
 void bfv_client_l1_body_008c85b0(struct bfv_cpu *c)
 {
@@ -227,7 +236,7 @@ void bfv_client_l1_body_008c85b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 008c85b0  mov eax, dword ptr [esp + 8] */
+    /* 008c85b0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008c85b4  test eax, eax */
@@ -243,10 +252,10 @@ L_008c85bb:
     /* 008c85bb  mov ecx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     ecx = M32(ea);
-    /* 008c85be  mov dword ptr [esp + 8], eax */
+    /* 008c85be  mov dword ptr [esp + 8], eax  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = eax;
-    /* 008c85c2  jmp 0x8c84c0 */
+    /* 008c85c2  jmp 0x8c84c0  ; io_calls_accept_008c84c0 */
     c->eip = 0x008c84c0u;
     goto out;
 out: __attribute__((unused));

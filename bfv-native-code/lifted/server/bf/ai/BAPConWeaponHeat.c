@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007abd80  dice::bf::ai::BAPConWeaponHeat  (vtable store) */
+/* 007abd80  BAPConWeaponHeat::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPConWeaponHeat
+ */
 BFV_L1_ENTRY(bfv_server_l1_007abd80, bfv_server_l1_body_007abd80);
 void bfv_server_l1_body_007abd80(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_server_l1_body_007abd80(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 007abd80  mov edx, dword ptr [esp + 4] */
+    /* 007abd80  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 007abd84  mov eax, ecx */
@@ -26,13 +28,13 @@ void bfv_server_l1_body_007abd80(struct bfv_cpu *c)
     /* 007abd88  mov dword ptr [eax + 8], edx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = edx;
-    /* 007abd8b  mov edx, dword ptr [esp + 8] */
+    /* 007abd8b  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007abd8f  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 007abd92  mov dword ptr [eax], 0x87a644 */
+    /* 007abd92  mov dword ptr [eax], 0x87a644  ; vtable BAPConWeaponHeat */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87a644u;
     /* 007abd98  mov dword ptr [eax + 0xc], edx */
@@ -55,7 +57,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007abdb0  dice::bf::ai::BAPConWeaponHeat  (vtable store) */
+/* 007abdb0  BAPConWeaponHeat::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPConWeaponHeat
+ * called by: BBPFireInfantery_helper_00742d40
+ */
 BFV_L1_ENTRY(bfv_server_l1_007abdb0, bfv_server_l1_body_007abdb0);
 void bfv_server_l1_body_007abdb0(struct bfv_cpu *c)
 {
@@ -64,7 +69,7 @@ void bfv_server_l1_body_007abdb0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 007abdb0  mov edx, dword ptr [esp + 4] */
+    /* 007abdb0  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 007abdb4  mov eax, ecx */
@@ -72,7 +77,7 @@ void bfv_server_l1_body_007abdb0(struct bfv_cpu *c)
     /* 007abdb6  mov dword ptr [eax + 8], edx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = edx;
-    /* 007abdb9  mov edx, dword ptr [esp + 8] */
+    /* 007abdb9  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007abdbd  xor ecx, ecx */
@@ -82,13 +87,13 @@ void bfv_server_l1_body_007abdb0(struct bfv_cpu *c)
     /* 007abdbf  mov dword ptr [eax + 0xc], edx */
     ea = (uint32_t)(eax + 0x0000000cu);
     M32(ea) = edx;
-    /* 007abdc2  mov edx, dword ptr [esp + 0xc] */
+    /* 007abdc2  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 007abdc6  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 007abdc9  mov dword ptr [eax], 0x87a644 */
+    /* 007abdc9  mov dword ptr [eax], 0x87a644  ; vtable BAPConWeaponHeat */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87a644u;
     /* 007abdcf  mov dword ptr [eax + 0x10], edx */
@@ -108,7 +113,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007abde0  dice::bf::ai::BAPConWeaponHeat  (virtual method) */
+/* 007abde0  BAPConWeaponHeat::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConWeaponHeat
+ */
 BFV_L1_ENTRY(bfv_server_l1_007abde0, bfv_server_l1_body_007abde0);
 BFV_L1_RESUME(bfv_server_l1r_007abde0_1, bfv_server_l1_body_007abde0, 1);
 void bfv_server_l1_body_007abde0(struct bfv_cpu *c)
@@ -122,7 +130,7 @@ void bfv_server_l1_body_007abde0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007abde0  test byte ptr [esp + 4], 1 */
+    /* 007abde0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -132,7 +140,7 @@ void bfv_server_l1_body_007abde0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007abde6  mov esi, ecx */
     esi = ecx;
-    /* 007abde8  mov dword ptr [esi], 0x873c74 */
+    /* 007abde8  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 007abdee  je 0x7abdfb */
@@ -141,9 +149,9 @@ void bfv_server_l1_body_007abde0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007abdf1  mov ecx, 0xc32ec8 */
+    /* 007abdf1  mov ecx, 0xc32ec8  ; g_MemoryPoolNull_BAPConWeaponHeat */
     ecx = 0xc32ec8u;
-    /* 007abdf6  call 0x413600 */
+    /* 007abdf6  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007abde0_1;
@@ -168,7 +176,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007abe10  dice::bf::ai::BAPConWeaponHeat  (virtual method) */
+/* 007abe10  BAPConWeaponHeat::evaluate  (virtual method)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConWeaponHeat
+ */
 BFV_L1_ENTRY(bfv_server_l1_007abe10, bfv_server_l1_body_007abe10);
 BFV_L1_RESUME(bfv_server_l1r_007abe10_1, bfv_server_l1_body_007abe10, 1);
 BFV_L1_RESUME(bfv_server_l1r_007abe10_2, bfv_server_l1_body_007abe10, 2);

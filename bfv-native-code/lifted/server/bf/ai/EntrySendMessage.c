@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00761f90  dice::bf::ai::EntrySendMessage  (vtable store) */
+/* 00761f90  EntrySendMessage::EntrySendMessage  (vtable store)
+ * class: dice::bf::ai::EntrySendMessage
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00761f90, bfv_server_l1_body_00761f90);
 void bfv_server_l1_body_00761f90(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_00761f90(struct bfv_cpu *c)
     uint32_t ea;
     /* 00761f90  mov eax, ecx */
     eax = ecx;
-    /* 00761f92  mov dword ptr [eax], 0x8754a8 */
+    /* 00761f92  mov dword ptr [eax], 0x8754a8  ; vtable EntrySendMessage */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8754a8u;
     /* 00761f98  ret */

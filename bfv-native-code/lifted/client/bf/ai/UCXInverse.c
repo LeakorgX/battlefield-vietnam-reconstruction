@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009afea0  dice::bf::ai::UCXInverse  (vtable store) */
+/* 009afea0  UCXInverse::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::UCXInverse
+ * also entered at 009afed0: UCXInverse::vf1
+ * called by: AiSettings::createUCXInverse
+ */
 BFV_L1_ENTRY(bfv_client_l1_009afea0, bfv_client_l1_body_009afea0);
 void bfv_client_l1_body_009afea0(struct bfv_cpu *c)
 {
@@ -14,27 +18,27 @@ void bfv_client_l1_body_009afea0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 009afea0  mov edx, dword ptr [esp + 8] */
+    /* 009afea0  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 009afea4  mov eax, ecx */
     eax = ecx;
-    /* 009afea6  mov ecx, dword ptr [esp + 4] */
+    /* 009afea6  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 009afeaa  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 009afead  mov ecx, dword ptr [esp + 0xc] */
+    /* 009afead  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009afeb1  mov dword ptr [eax + 8], edx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = edx;
-    /* 009afeb4  mov edx, dword ptr [esp + 0x10] */
+    /* 009afeb4  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
-    /* 009afeb8  mov dword ptr [eax], 0xbf67e4 */
+    /* 009afeb8  mov dword ptr [eax], 0xbf67e4  ; vtable UCXInverse */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf67e4u;
     /* 009afebe  mov dword ptr [eax + 0xc], ecx */

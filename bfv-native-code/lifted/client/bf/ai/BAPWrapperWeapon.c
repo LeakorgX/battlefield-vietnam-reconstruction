@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f8430  dice::bf::ai::BAPWrapperWeapon  (virtual method) */
+/* 009f8430  BAPWrapperWeapon::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPWrapperWeapon
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f8430, bfv_client_l1_body_009f8430);
 BFV_L1_RESUME(bfv_client_l1r_009f8430_1, bfv_client_l1_body_009f8430, 1);
 void bfv_client_l1_body_009f8430(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_009f8430(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009f8430  mov al, byte ptr [esp + 4] */
+    /* 009f8430  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 009f8434  push esi */
@@ -28,10 +31,10 @@ void bfv_client_l1_body_009f8430(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f8435  mov esi, ecx */
     esi = ecx;
-    /* 009f8437  mov dword ptr [esi], 0xbf60a0 */
+    /* 009f8437  mov dword ptr [esi], 0xbf60a0  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf60a0u;
-    /* 009f843d  mov ecx, dword ptr [0xe105bc] */
+    /* 009f843d  mov ecx, dword ptr [0xe105bc]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     ecx = M32(ea);
     /* 009f8443  inc ecx */
@@ -42,10 +45,10 @@ void bfv_client_l1_body_009f8430(struct bfv_cpu *c)
     /* 009f8444  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 009f8446  mov dword ptr [0xe105bc], ecx */
+    /* 009f8446  mov dword ptr [0xe105bc], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     M32(ea) = ecx;
-    /* 009f844c  mov dword ptr [esi], 0xbf6094 */
+    /* 009f844c  mov dword ptr [esi], 0xbf6094  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf6094u;
     /* 009f8452  je 0x9f845f */
@@ -54,9 +57,9 @@ void bfv_client_l1_body_009f8430(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f8455  mov ecx, 0xe10b80 */
+    /* 009f8455  mov ecx, 0xe10b80  ; g_MemoryPoolNull_BAPWrapperWeapon */
     ecx = 0xe10b80u;
-    /* 009f845a  call 0x412fc0 */
+    /* 009f845a  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f8430_1;
@@ -81,7 +84,9 @@ out: __attribute__((unused));
 }
 
 
-/* 009f8470  (between same file) */
+/* 009f8470  BAPWrapperWeapon::ctor_dtor  (between same file)
+ * class: dice::bf::ai::BAPWrapperWeapon
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f8470, bfv_client_l1_body_009f8470);
 void bfv_client_l1_body_009f8470(struct bfv_cpu *c)
 {
@@ -90,7 +95,7 @@ void bfv_client_l1_body_009f8470(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, r, ea;
-    /* 009f8470  mov edx, dword ptr [esp + 8] */
+    /* 009f8470  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 009f8474  mov eax, ecx */
@@ -108,31 +113,31 @@ void bfv_client_l1_body_009f8470(struct bfv_cpu *c)
     /* 009f847e  mov dword ptr [eax + 0xc], ecx */
     ea = (uint32_t)(eax + 0x0000000cu);
     M32(ea) = ecx;
-    /* 009f8481  mov dword ptr [eax], 0xbf60a0 */
+    /* 009f8481  mov dword ptr [eax], 0xbf60a0  ; vtable BAPStatement */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf60a0u;
-    /* 009f8487  inc dword ptr [0xe105b8] */
+    /* 009f8487  inc dword ptr [0xe105b8]  ; g_bapCreatedCount */
     ea = (uint32_t)(0x00e105b8u);
     a = M32(ea);
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     M32(ea) = r;
-    /* 009f848d  mov ecx, dword ptr [esp + 4] */
+    /* 009f848d  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 009f8491  mov dword ptr [eax + 0x18], ecx */
     ea = (uint32_t)(eax + 0x00000018u);
     M32(ea) = ecx;
-    /* 009f8494  mov ecx, dword ptr [esp + 0xc] */
+    /* 009f8494  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009f8498  mov dword ptr [eax + 0x20], edx */
     ea = (uint32_t)(eax + 0x00000020u);
     M32(ea) = edx;
-    /* 009f849b  mov dl, byte ptr [esp + 0x10] */
+    /* 009f849b  mov dl, byte ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     SET8L(edx, M8(ea));
-    /* 009f849f  mov dword ptr [eax], 0xbfc064 */
+    /* 009f849f  mov dword ptr [eax], 0xbfc064  ; vtable BAPWrapperWeapon */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbfc064u;
     /* 009f84a5  mov dword ptr [eax + 0x24], ecx */
@@ -152,7 +157,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f84b0  dice::bf::ai::BAPWrapperWeapon  (virtual method) */
+/* 009f84b0  BAPWrapperWeapon::execute  (virtual method)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPWrapperWeapon
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f84b0, bfv_client_l1_body_009f84b0);
 BFV_L1_RESUME(bfv_client_l1r_009f84b0_1, bfv_client_l1_body_009f84b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f84b0_2, bfv_client_l1_body_009f84b0, 2);
@@ -248,10 +256,10 @@ R_2:
     ea = (uint32_t)(ecx + 0x00000008u);
     M32(ea) = edx;
 L_009f84e7:
-    /* 009f84e7  mov eax, dword ptr [esp + 0xc] */
+    /* 009f84e7  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
-    /* 009f84eb  mov edx, dword ptr [esp + 0x10] */
+    /* 009f84eb  mov edx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 009f84ef  mov byte ptr [eax], 1 */

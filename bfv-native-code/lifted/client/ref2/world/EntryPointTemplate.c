@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 006a7e00  dice::ref2::world::EntryPointTemplate  (vtable store) */
+/* 006a7e00  EntryPointTemplate::EntryPointTemplate  (vtable store)
+ * class: dice::ref2::world::EntryPointTemplate
+ * also entered at 006a7e30: EntryPointTemplate::getClassID
+ * called by: ObjectCreatorWrapper<EntryPointTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a7e00, bfv_client_l1_body_006a7e00);
 BFV_L1_RESUME(bfv_client_l1r_006a7e00_1, bfv_client_l1_body_006a7e00, 1);
 void bfv_client_l1_body_006a7e00(struct bfv_cpu *c)
@@ -25,14 +29,14 @@ void bfv_client_l1_body_006a7e00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006a7e01  mov esi, ecx */
     esi = ecx;
-    /* 006a7e03  call 0x696290 */
+    /* 006a7e03  call 0x696290  ; SimpleObjectTemplate::SimpleObjectTemplate */
     t = 0x00696290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a7e00_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006a7e08  mov dword ptr [esi], 0xb95974 */
+    /* 006a7e08  mov dword ptr [esi], 0xb95974  ; vtable EntryPointTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb95974u;
     /* 006a7e0e  mov dword ptr [esi + 4], 0xb95958 */
@@ -41,7 +45,7 @@ R_1:
     /* 006a7e15  mov dword ptr [esi + 0x78], 0xb9594c */
     ea = (uint32_t)(esi + 0x00000078u);
     M32(ea) = 0xb9594cu;
-    /* 006a7e1c  mov dword ptr [esi + 0x1bc], 0x40400000 */
+    /* 006a7e1c  mov dword ptr [esi + 0x1bc], 0x40400000  ; field ObjectTemplate.setEntryRadius, 3.0f */
     ea = (uint32_t)(esi + 0x000001bcu);
     M32(ea) = 0x40400000u;
     /* 006a7e26  mov eax, esi */
@@ -61,7 +65,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a7e40  dice::ref2::world::EntryPointTemplate  (virtual method) */
+/* 006a7e40  EntryPointTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::EntryPointTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a7e40, bfv_client_l1_body_006a7e40);
 void bfv_client_l1_body_006a7e40(struct bfv_cpu *c)
 {
@@ -70,12 +77,12 @@ void bfv_client_l1_body_006a7e40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 006a7e40  mov edx, dword ptr [0xb77e88] */
+    /* 006a7e40  mov edx, dword ptr [0xb77e88]  ; EntryPointTemplate::classID */
     ea = (uint32_t)(0x00b77e88u);
     edx = M32(ea);
     /* 006a7e46  mov eax, ecx */
     eax = ecx;
-    /* 006a7e48  mov ecx, dword ptr [esp + 4] */
+    /* 006a7e48  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006a7e4c  cmp ecx, edx */
@@ -85,7 +92,7 @@ void bfv_client_l1_body_006a7e40(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006a7e4e  je 0x6a7e6a */
     if (zf) goto L_006a7e6a;
-    /* 006a7e50  cmp ecx, dword ptr [0xb77ea0] */
+    /* 006a7e50  cmp ecx, dword ptr [0xb77ea0]  ; SimpleObjectTemplate::classID */
     ea = (uint32_t)(0x00b77ea0u);
     a = ecx;
     b = M32(ea);
@@ -97,7 +104,7 @@ void bfv_client_l1_body_006a7e40(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006a7e59  mov esi, dword ptr [0xb77e68] */
+    /* 006a7e59  mov esi, dword ptr [0xb77e68]  ; ObjectTemplate::classID */
     ea = (uint32_t)(0x00b77e68u);
     esi = M32(ea);
     /* 006a7e5f  xor edx, edx */
@@ -136,7 +143,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a7f50  dice::ref2::world::EntryPointTemplate  (virtual method) */
+/* 006a7f50  EntryPointTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::EntryPointTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a7f50, bfv_client_l1_body_006a7f50);
 BFV_L1_RESUME(bfv_client_l1r_006a7f50_1, bfv_client_l1_body_006a7f50, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a7f50_2, bfv_client_l1_body_006a7f50, 2);
@@ -162,7 +172,7 @@ void bfv_client_l1_body_006a7f50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006a7f56  mov esi, ecx */
     esi = ecx;
-    /* 006a7f58  call 0x403610 */
+    /* 006a7f58  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a7f50_1;
@@ -186,7 +196,7 @@ R_1:
     M32(esp) = t;
     /* 006a7f65  mov ecx, eax */
     ecx = eax;
-    /* 006a7f67  call 0x6a7e70 */
+    /* 006a7f67  call 0x6a7e70  ; EntryPoint::EntryPoint */
     t = 0x006a7e70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a7f50_2;

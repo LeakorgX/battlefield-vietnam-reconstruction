@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f89d0  dice::bf::ai::BAPAEvaluate  (virtual method) */
+/* 009f89d0  BAPAEvaluate::execute  (virtual method)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPAEvaluate
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f89d0, bfv_client_l1_body_009f89d0);
 BFV_L1_RESUME(bfv_client_l1r_009f89d0_1, bfv_client_l1_body_009f89d0, 1);
 void bfv_client_l1_body_009f89d0(struct bfv_cpu *c)
@@ -33,10 +36,10 @@ void bfv_client_l1_body_009f89d0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 009f89d8  mov ecx, dword ptr [esp + 8] */
+    /* 009f89d8  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 009f89dc  mov edx, dword ptr [esp + 0xc] */
+    /* 009f89dc  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 009f89e0  mov byte ptr [ecx], 1 */
@@ -58,7 +61,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f89f0  dice::bf::ai::BAPAEvaluate  (virtual method) */
+/* 009f89f0  BAPAEvaluate::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPAEvaluate
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f89f0, bfv_client_l1_body_009f89f0);
 BFV_L1_RESUME(bfv_client_l1r_009f89f0_1, bfv_client_l1_body_009f89f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f89f0_2, bfv_client_l1_body_009f89f0, 2);
@@ -86,7 +92,7 @@ void bfv_client_l1_body_009f89f0(struct bfv_cpu *c)
     /* 009f89f6  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 009f89f8  mov dword ptr [esi], 0xbfc1bc */
+    /* 009f89f8  mov dword ptr [esi], 0xbfc1bc  ; vtable BAPAEvaluate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfc1bcu;
     /* 009f89fe  je 0x9f8a06 */
@@ -107,13 +113,13 @@ void bfv_client_l1_body_009f89f0(struct bfv_cpu *c)
     goto out;
 R_1:
 L_009f8a06:
-    /* 009f8a06  mov al, byte ptr [esp + 8] */
+    /* 009f8a06  mov al, byte ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(eax, M8(ea));
-    /* 009f8a0a  mov dword ptr [esi], 0xbf60a0 */
+    /* 009f8a0a  mov dword ptr [esi], 0xbf60a0  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf60a0u;
-    /* 009f8a10  mov ecx, dword ptr [0xe105bc] */
+    /* 009f8a10  mov ecx, dword ptr [0xe105bc]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     ecx = M32(ea);
     /* 009f8a16  inc ecx */
@@ -124,10 +130,10 @@ L_009f8a06:
     /* 009f8a17  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 009f8a19  mov dword ptr [0xe105bc], ecx */
+    /* 009f8a19  mov dword ptr [0xe105bc], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     M32(ea) = ecx;
-    /* 009f8a1f  mov dword ptr [esi], 0xbf6094 */
+    /* 009f8a1f  mov dword ptr [esi], 0xbf6094  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf6094u;
     /* 009f8a25  je 0x9f8a30 */
@@ -136,7 +142,7 @@ L_009f8a06:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f8a28  call 0x403680 */
+    /* 009f8a28  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f89f0_2;

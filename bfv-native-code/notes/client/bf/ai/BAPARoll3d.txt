@@ -1,0 +1,8 @@
+## file
+3D plan action for rolling an aircraft.
+
+## 009fa020
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0. The return tail at 009fa060 is shared with several other small functions.
+
+## 009fa1b0
+Destructor: releases the owned object at this+0x88, restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.

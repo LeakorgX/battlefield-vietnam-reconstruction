@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00700a90  dice::ref2::world::Sector  (virtual method) */
+/* 00700a90  Sector::vf5  (virtual method)
+ * class: dice::ref2::world::Sector
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700a90, bfv_client_l1_body_00700a90);
 BFV_L1_RESUME(bfv_client_l1r_00700a90_1, bfv_client_l1_body_00700a90, 1);
 void bfv_client_l1_body_00700a90(struct bfv_cpu *c)
@@ -25,13 +27,13 @@ void bfv_client_l1_body_00700a90(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00700a93  lea eax, [esp + 0xc] */
+    /* 00700a93  lea eax, [esp + 0xc]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 00700a97  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00700a98  lea edx, [esp + 4] */
+    /* 00700a98  lea edx, [esp + 4]  ; &var_8 */
     edx = (uint32_t)(esp + 0x00000004u);
     /* 00700a9c  push edx */
     t = edx;
@@ -43,7 +45,7 @@ void bfv_client_l1_body_00700a90(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00700aa0  call 0x65eab0 */
+    /* 00700aa0  call 0x65eab0  ; std::map_uint::insert_0065eab0 */
     t = 0x0065eab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700a90_1;
@@ -67,7 +69,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00700ab0  (between same file) */
+/* 00700ab0  PortalManager::vf12_helper_00700ab0  (between same file)
+ * called by: PortalManager::vf12
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700ab0, bfv_client_l1_body_00700ab0);
 BFV_L1_RESUME(bfv_client_l1r_00700ab0_1, bfv_client_l1_body_00700ab0, 1);
 void bfv_client_l1_body_00700ab0(struct bfv_cpu *c)
@@ -84,7 +88,7 @@ void bfv_client_l1_body_00700ab0(struct bfv_cpu *c)
     /* 00700ab0  mov eax, dword ptr [ecx + 0x18] */
     ea = (uint32_t)(ecx + 0x00000018u);
     eax = M32(ea);
-    /* 00700ab3  mov ecx, dword ptr [esp + 4] */
+    /* 00700ab3  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00700ab7  sub esp, 8 */
@@ -95,13 +99,13 @@ void bfv_client_l1_body_00700ab0(struct bfv_cpu *c)
     esp = r;
     /* 00700aba  lea eax, [eax + ecx*4] */
     eax = (uint32_t)(eax + ecx * 4u);
-    /* 00700abd  lea edx, [esp + 0x10] */
+    /* 00700abd  lea edx, [esp + 0x10]  ; &arg_4 */
     edx = (uint32_t)(esp + 0x00000010u);
     /* 00700ac1  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00700ac2  lea ecx, [esp + 4] */
+    /* 00700ac2  lea ecx, [esp + 4]  ; &var_8 */
     ecx = (uint32_t)(esp + 0x00000004u);
     /* 00700ac6  push ecx */
     t = ecx;
@@ -110,7 +114,7 @@ void bfv_client_l1_body_00700ab0(struct bfv_cpu *c)
     /* 00700ac7  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 00700ac9  call 0x6eb510 */
+    /* 00700ac9  call 0x6eb510  ; std::map_uint::insert_006eb510 */
     t = 0x006eb510u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700ab0_1;
@@ -134,7 +138,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00700ae0  dice::ref2::world::Sector  (virtual method) */
+/* 00700ae0  Sector::vf4  (virtual method)
+ * class: dice::ref2::world::Sector
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700ae0, bfv_client_l1_body_00700ae0);
 BFV_L1_RESUME(bfv_client_l1r_00700ae0_1, bfv_client_l1_body_00700ae0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00700ae0_2, bfv_client_l1_body_00700ae0, 2);
@@ -173,7 +179,7 @@ void bfv_client_l1_body_00700ae0(struct bfv_cpu *c)
     b = ecx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00700aeb  mov dword ptr [esp + 4], eax */
+    /* 00700aeb  mov dword ptr [esp + 4], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
     /* 00700aef  je 0x700b33 */
@@ -182,7 +188,7 @@ void bfv_client_l1_body_00700ae0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00700af2  mov ebx, dword ptr [esp + 0x10] */
+    /* 00700af2  mov ebx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
     /* 00700af6  push esi */
@@ -220,7 +226,7 @@ L_00700af8:
     M32(esp) = t;
     /* 00700b04  mov ecx, ebx */
     ecx = ebx;
-    /* 00700b06  call 0x49aeb0 */
+    /* 00700b06  call 0x49aeb0  ; std::list::_Buynode_0049aeb0 */
     t = 0x0049aeb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700ae0_1;
@@ -235,7 +241,7 @@ R_1:
     ecx = ebx;
     /* 00700b0f  mov edi, eax */
     edi = eax;
-    /* 00700b11  call 0x489ee0 */
+    /* 00700b11  call 0x489ee0  ; std::list::_Incsize */
     t = 0x00489ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700ae0_2;
@@ -251,16 +257,16 @@ R_2:
     /* 00700b1c  mov dword ptr [ecx], edi */
     ea = (uint32_t)(ecx);
     M32(ea) = edi;
-    /* 00700b1e  lea ecx, [esp + 0x10] */
+    /* 00700b1e  lea ecx, [esp + 0x10]  ; &var_4 */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 00700b22  call 0x759850 */
+    /* 00700b22  call 0x759850  ; std::_Tree::iterator::_Inc */
     t = 0x00759850u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700ae0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 00700b27  mov eax, dword ptr [esp + 0x10] */
+    /* 00700b27  mov eax, dword ptr [esp + 0x10]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00700b2b  cmp eax, dword ptr [ebp + 0xc] */
@@ -303,7 +309,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00700b40  dice::ref2::world::Sector  (virtual method) */
+/* 00700b40  Sector::vf6  (virtual method)
+ * class: dice::ref2::world::Sector
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700b40, bfv_client_l1_body_00700b40);
 BFV_L1_RESUME(bfv_client_l1r_00700b40_1, bfv_client_l1_body_00700b40, 1);
 void bfv_client_l1_body_00700b40(struct bfv_cpu *c)
@@ -317,7 +325,7 @@ void bfv_client_l1_body_00700b40(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00700b40  lea eax, [esp + 4] */
+    /* 00700b40  lea eax, [esp + 4]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x00000004u);
     /* 00700b44  push eax */
     t = eax;
@@ -329,7 +337,7 @@ void bfv_client_l1_body_00700b40(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00700b48  call 0x6ebae0 */
+    /* 00700b48  call 0x6ebae0  ; std::_Tree::erase_key_006ebae0 */
     t = 0x006ebae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700b40_1;
@@ -347,7 +355,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00700b50  (between same file) */
+/* 00700b50  PortalManager::vf13_helper_00700b50  (between same file)
+ * called by: PortalManager::vf13
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700b50, bfv_client_l1_body_00700b50);
 BFV_L1_RESUME(bfv_client_l1r_00700b50_1, bfv_client_l1_body_00700b50, 1);
 void bfv_client_l1_body_00700b50(struct bfv_cpu *c)
@@ -364,7 +374,7 @@ void bfv_client_l1_body_00700b50(struct bfv_cpu *c)
     /* 00700b50  mov eax, dword ptr [ecx + 0x18] */
     ea = (uint32_t)(ecx + 0x00000018u);
     eax = M32(ea);
-    /* 00700b53  mov ecx, dword ptr [esp + 4] */
+    /* 00700b53  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00700b57  lea eax, [eax + ecx*4] */
@@ -372,13 +382,13 @@ void bfv_client_l1_body_00700b50(struct bfv_cpu *c)
     /* 00700b5a  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 00700b5c  lea edx, [esp + 8] */
+    /* 00700b5c  lea edx, [esp + 8]  ; &arg_4 */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 00700b60  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00700b61  call 0x6ebb40 */
+    /* 00700b61  call 0x6ebb40  ; std::_Tree::erase_key_006ebb40 */
     t = 0x006ebb40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700b50_1;
@@ -396,7 +406,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00700b70  dice::ref2::world::Sector  (vtable store) */
+/* 00700b70  Sector::Sector  (vtable store)
+ * class: dice::ref2::world::Sector
+ * called by: PortalManager::vf6
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700b70, bfv_client_l1_body_00700b70);
 BFV_L1_RESUME(bfv_client_l1r_00700b70_1, bfv_client_l1_body_00700b70, 1);
 BFV_L1_RESUME(bfv_client_l1r_00700b70_2, bfv_client_l1_body_00700b70, 2);
@@ -438,7 +451,7 @@ void bfv_client_l1_body_00700b70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00700b78  lea esi, [ebp + 8] */
     esi = (uint32_t)(ebp + 0x00000008u);
-    /* 00700b7b  mov dword ptr [ebp], 0xba59bc */
+    /* 00700b7b  mov dword ptr [ebp], 0xba59bc  ; vtable Sector */
     ea = (uint32_t)(ebp);
     M32(ea) = 0xba59bcu;
     /* 00700b82  push edi */
@@ -450,7 +463,7 @@ void bfv_client_l1_body_00700b70(struct bfv_cpu *c)
     /* 00700b85  mov dword ptr [ebp + 4], 1 */
     ea = (uint32_t)(ebp + 0x00000004u);
     M32(ea) = 0x1u;
-    /* 00700b8c  call 0x66db30 */
+    /* 00700b8c  call 0x66db30  ; std::_Tree::_Buynode_head_20_0066db30 */
     t = 0x0066db30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700b70_1;
@@ -499,7 +512,7 @@ R_1:
     /* 00700bb7  mov dword ptr [edi + 0xc], ebx */
     ea = (uint32_t)(edi + 0x0000000cu);
     M32(ea) = ebx;
-    /* 00700bba  mov dword ptr [esp + 0x14], 2 */
+    /* 00700bba  mov dword ptr [esp + 0x14], 2  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x2u;
 L_00700bc2:
@@ -507,7 +520,7 @@ L_00700bc2:
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00700bc4  call 0x403610 */
+    /* 00700bc4  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700b70_2;
@@ -531,7 +544,7 @@ R_2:
     if (zf) goto L_00700bf6;
     /* 00700bd2  mov ecx, esi */
     ecx = esi;
-    /* 00700bd4  call 0x6eaf20 */
+    /* 00700bd4  call 0x6eaf20  ; std::_Tree::_Buynode_head_20_006eaf20 */
     t = 0x006eaf20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700b70_3;
@@ -581,7 +594,7 @@ L_00700bf8:
     b = ebx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00700bfd  mov dword ptr [esp + 0x10], esi */
+    /* 00700bfd  mov dword ptr [esp + 0x10], esi  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = esi;
     /* 00700c01  jne 0x700c07 */
@@ -667,7 +680,7 @@ L_00700c2c:
     /* 00700c2c  mov eax, dword ptr [edi + 8] */
     ea = (uint32_t)(edi + 0x00000008u);
     eax = M32(ea);
-    /* 00700c2f  lea ecx, [esp + 0x10] */
+    /* 00700c2f  lea ecx, [esp + 0x10]  ; &var_8 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 00700c33  push ecx */
     t = ecx;
@@ -683,7 +696,7 @@ L_00700c2c:
     M32(esp) = t;
     /* 00700c37  mov ecx, edi */
     ecx = edi;
-    /* 00700c39  call 0x6eb790 */
+    /* 00700c39  call 0x6eb790  ; std::vector_ptr::_Insert_n_006eb790 */
     t = 0x006eb790u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700b70_4;
@@ -691,7 +704,7 @@ L_00700c2c:
     goto out;
 R_4:
 L_00700c3e:
-    /* 00700c3e  dec dword ptr [esp + 0x14] */
+    /* 00700c3e  dec dword ptr [esp + 0x14]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     a = M32(ea);
     r = (a - 1u) & 0xffffffffu;
@@ -734,7 +747,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00700c60  dice::ref2::world::Sector  (virtual method) */
+/* 00700c60  Sector::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::Sector
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700c60, bfv_client_l1_body_00700c60);
 void bfv_client_l1_body_00700c60(struct bfv_cpu *c)
 {
@@ -743,12 +759,12 @@ void bfv_client_l1_body_00700c60(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00700c60  mov edx, dword ptr [0xb42718] */
+    /* 00700c60  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00700c66  mov eax, ecx */
     eax = ecx;
-    /* 00700c68  mov ecx, dword ptr [esp + 4] */
+    /* 00700c68  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00700c6c  cmp ecx, edx */

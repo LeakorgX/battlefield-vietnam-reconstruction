@@ -1,0 +1,8 @@
+## file
+Plan builder for aircraft avoiding a collision.
+
+## 0098da20
+vf5: records an avoid request for this bot (index from bot slot 0xdc): sets the per-bot flag to 1 and stores the obstacle position (3 floats), a value, a second position (3 floats) and a last value in the per-bot arrays.
+
+## 0098db40
+buildPlan: clears the bot's current plan, takes the bot and obstacle positions in x/z and the bot's heading, and builds two diagonal directions at 45 degrees either side of the heading (0.7071 factors). Checks free space with IAIPathfinding::vf15 and vf47 and picks the side whose diagonal points away from the obstacle; reads control 5 and 2 values and ai_0097f080 and compares a height value before adding steps to the new plan.

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0049e780  dice::bf::TourOfDuty::Map  (vtable store) */
+/* 0049e780  Map::Map  (vtable store)
+ * class: dice::bf::TourOfDuty::Map
+ * called by: ObjectCreatorWrapper<Map>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049e780, bfv_server_l1_body_0049e780);
 BFV_L1_RESUME(bfv_server_l1r_0049e780_1, bfv_server_l1_body_0049e780, 1);
 BFV_L1_RESUME(bfv_server_l1r_0049e780_2, bfv_server_l1_body_0049e780, 2);
@@ -23,7 +26,7 @@ void bfv_server_l1_body_0049e780(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 0049e780  mov eax, dword ptr [esp + 0x20] */
+    /* 0049e780  mov eax, dword ptr [esp + 0x20]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000020u);
     eax = M32(ea);
     /* 0049e784  push esi */
@@ -56,7 +59,7 @@ void bfv_server_l1_body_0049e780(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0049e792  lea edx, [esp + 0x30] */
+    /* 0049e792  lea edx, [esp + 0x30]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000030u);
     /* 0049e796  mov dword ptr [ecx + 0x18], 0xf */
     ea = (uint32_t)(ecx + 0x00000018u);
@@ -71,7 +74,7 @@ void bfv_server_l1_body_0049e780(struct bfv_cpu *c)
     /* 0049e7a1  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 0049e7a4  call 0x401e20 */
+    /* 0049e7a4  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049e780_1;
@@ -80,32 +83,32 @@ void bfv_server_l1_body_0049e780(struct bfv_cpu *c)
 R_1:
     /* 0049e7a9  mov ecx, esi */
     ecx = esi;
-    /* 0049e7ab  call 0x49e7d0 */
+    /* 0049e7ab  call 0x49e7d0  ; TGMObject<GMClassType>::TGMObject */
     t = 0x0049e7d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049e780_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0049e7b0  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 0049e7b0  cmp dword ptr [esp + 0x20], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 0049e7b5  mov dword ptr [esi], 0x81afbc */
+    /* 0049e7b5  mov dword ptr [esi], 0x81afbc  ; vtable Map */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81afbcu;
     /* 0049e7bb  jb 0x49e7ca */
     if (cf) goto L_0049e7ca;
-    /* 0049e7bd  mov eax, dword ptr [esp + 0xc] */
+    /* 0049e7bd  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0049e7c1  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0049e7c2  call 0x403df0 */
+    /* 0049e7c2  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049e780_3;
@@ -136,7 +139,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0049e7d0  (called from this file only) */
+/* 0049e7d0  TGMObject<GMClassType>::TGMObject  (called from this file only)
+ * class: dice::bf::TourOfDuty::Map
+ * called by: Map::Map
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049e7d0, bfv_server_l1_body_0049e7d0);
 BFV_L1_RESUME(bfv_server_l1r_0049e7d0_1, bfv_server_l1_body_0049e7d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0049e7d0_2, bfv_server_l1_body_0049e7d0, 2);
@@ -193,13 +199,13 @@ void bfv_server_l1_body_0049e7d0(struct bfv_cpu *c)
     /* 0049e7e8  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 0049e7eb  lea eax, [esp + 0x30] */
+    /* 0049e7eb  lea eax, [esp + 0x30]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x00000030u);
     /* 0049e7ef  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0049e7f0  call 0x401e20 */
+    /* 0049e7f0  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049e7d0_1;
@@ -208,20 +214,20 @@ void bfv_server_l1_body_0049e7d0(struct bfv_cpu *c)
 R_1:
     /* 0049e7f5  mov ecx, esi */
     ecx = esi;
-    /* 0049e7f7  call 0x49e830 */
+    /* 0049e7f7  call 0x49e830  ; GMEnableObject::GMEnableObject */
     t = 0x0049e830u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049e7d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0049e7fc  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 0049e7fc  cmp dword ptr [esp + 0x20], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 0049e801  mov ecx, dword ptr [esp + 0x24] */
+    /* 0049e801  mov ecx, dword ptr [esp + 0x24]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000024u);
     ecx = M32(ea);
     /* 0049e805  mov dword ptr [esi], 0x81afd4 */
@@ -232,14 +238,14 @@ R_2:
     M32(ea) = ecx;
     /* 0049e80e  jb 0x49e81d */
     if (cf) goto L_0049e81d;
-    /* 0049e810  mov edx, dword ptr [esp + 0xc] */
+    /* 0049e810  mov edx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 0049e814  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0049e815  call 0x403df0 */
+    /* 0049e815  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049e7d0_3;

@@ -1,0 +1,8 @@
+## file
+Plan instruction that tells the bot to change to another vehicle.
+
+## 009f2ac0
+Destructor: restores the base vtables, counts the destruction in g_bapaDestroyedCount and returns the object to its memory pool when bit 0 of the flag argument is set.
+
+## 009f2b00
+Calls bot slot 0x190 with the value at this+0x18, then finishes: flag = 1, done = 1, returns 1. The tail at 009f2b30 is shared with other functions.

@@ -1,0 +1,14 @@
+## file
+Plan builder for scouting from a vehicle: look around in a direction while sensing for enemies.
+
+## 00994290
+vf5: records a scout request for this bot: stores the 3-float point, stores the normalized direction in the per-bot array at this+0xc and sets the per-bot flag to 1.
+
+## 00994330
+BAPVariable<bool> constructor helper: allocates a 0x10-byte variable record (vtable 0x00bf6130, the bool at +8) and appends it to the owner's variable list.
+
+## 009943a0
+BAPVariable<Vec3> constructor helper: allocates a 0x18-byte variable record (vtable 0x00bf6138, the vector at +8..+0x10) and appends it to the owner's variable list.
+
+## 00994420
+buildPlan: releases the bot's control locks, keeps the current plan when the bot already faces the stored direction (dot product above 0.95), otherwise clears it. Builds a parallel plan of BAPAResetControls, a BAPICScout, a BAPALookInDir towards the stored direction (with a BAPConFalse condition) and a BAPASense.

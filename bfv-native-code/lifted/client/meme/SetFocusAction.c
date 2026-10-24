@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00ac2760  dice::meme::SetFocusAction  (virtual method) */
+/* 00ac2760  SetFocusAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::SetFocusAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2760, bfv_client_l1_body_00ac2760);
 BFV_L1_RESUME(bfv_client_l1r_00ac2760_1, bfv_client_l1_body_00ac2760, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2760_2, bfv_client_l1_body_00ac2760, 2);
@@ -27,14 +30,14 @@ void bfv_client_l1_body_00ac2760(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2761  mov ebx, dword ptr [esp + 8] */
+    /* 00ac2761  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00ac2765  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2766  mov esi, dword ptr [esp + 0x10] */
+    /* 00ac2766  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00ac276a  push edi */
@@ -51,7 +54,7 @@ void bfv_client_l1_body_00ac2760(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00ac276d  mov edi, ecx */
     edi = ecx;
-    /* 00ac276f  call 0xa7d100 */
+    /* 00ac276f  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2760_1;
@@ -184,7 +187,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac27c0  dice::meme::SetFocusAction  (virtual method) */
+/* 00ac27c0  SetFocusAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::SetFocusAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac27c0, bfv_client_l1_body_00ac27c0);
 BFV_L1_RESUME(bfv_client_l1r_00ac27c0_1, bfv_client_l1_body_00ac27c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac27c0_2, bfv_client_l1_body_00ac27c0, 2);
@@ -218,14 +224,14 @@ void bfv_client_l1_body_00ac27c0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac27c5  mov edi, dword ptr [esp + 0x14] */
+    /* 00ac27c5  mov edi, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 00ac27c9  mov esi, ecx */
     esi = ecx;
     /* 00ac27cb  mov ecx, edi */
     ecx = edi;
-    /* 00ac27cd  call 0x6ddbb0 */
+    /* 00ac27cd  call 0x6ddbb0  ; ProximityGroup::vf2_addressOf_38h */
     t = 0x006ddbb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac27c0_1;
@@ -244,10 +250,10 @@ R_1:
     /* 00ac27da  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00ac27dc  mov dword ptr [esp + 8], ecx */
+    /* 00ac27dc  mov dword ptr [esp + 8], ecx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = ecx;
-    /* 00ac27e0  mov dword ptr [esp + 0xc], edx */
+    /* 00ac27e0  mov dword ptr [esp + 0xc], edx  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = edx;
     /* 00ac27e4  je 0xac27f2 */
@@ -269,7 +275,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac27ee  fstp dword ptr [esp + 8] */
+    /* 00ac27ee  fstp dword ptr [esp + 8]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_00ac27f2:
@@ -298,14 +304,14 @@ L_00ac27f2:
     c->eip = t;
     goto out;
 R_3:
-    /* 00ac2801  fstp dword ptr [esp + 0xc] */
+    /* 00ac2801  fstp dword ptr [esp + 0xc]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_00ac2805:
-    /* 00ac2805  mov ecx, dword ptr [esp + 0xc] */
+    /* 00ac2805  mov ecx, dword ptr [esp + 0xc]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 00ac2809  mov edx, dword ptr [esp + 8] */
+    /* 00ac2809  mov edx, dword ptr [esp + 8]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00ac280d  mov eax, dword ptr [edi] */
@@ -358,7 +364,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2820  (between same file) */
+/* 00ac2820  ClassTemplate<SetFocusAction,Action>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2820, bfv_client_l1_body_00ac2820);
 void bfv_client_l1_body_00ac2820(struct bfv_cpu *c)
 {
@@ -384,7 +391,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2830  (between same file) */
+/* 00ac2830  ClassTemplate<SetFocusAction,Action>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2830, bfv_client_l1_body_00ac2830);
 void bfv_client_l1_body_00ac2830(struct bfv_cpu *c)
 {
@@ -410,7 +418,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2850  dice::meme::SetFocusAction  (vtable store) */
+/* 00ac2850  SetFocusAction::create  (vtable store)
+ * class: dice::meme::SetFocusAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2850, bfv_client_l1_body_00ac2850);
 BFV_L1_RESUME(bfv_client_l1r_00ac2850_1, bfv_client_l1_body_00ac2850, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2850_2, bfv_client_l1_body_00ac2850, 2);
@@ -434,7 +444,7 @@ void bfv_client_l1_body_00ac2850(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2853  call 0x403610 */
+    /* 00ac2853  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2850_1;
@@ -456,14 +466,14 @@ R_1:
     if (zf) goto L_00ac2880;
     /* 00ac2861  mov ecx, esi */
     ecx = esi;
-    /* 00ac2863  call 0x874870 */
+    /* 00ac2863  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2850_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac2868  mov dword ptr [esi], 0xc10824 */
+    /* 00ac2868  mov dword ptr [esi], 0xc10824  ; vtable SetFocusAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc10824u;
     /* 00ac286e  mov dword ptr [esi + 8], 0 */
@@ -502,8 +512,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2890  dice::meme::SetFocusAction  (virtual method)
- * strings: "dice::meme::SetFocusAction" */
+/* 00ac2890  SetFocusAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::SetFocusAction
+ * strings: "dice::meme::SetFocusAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2890, bfv_client_l1_body_00ac2890);
 BFV_L1_RESUME(bfv_client_l1r_00ac2890_1, bfv_client_l1_body_00ac2890, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2890_2, bfv_client_l1_body_00ac2890, 2);
@@ -534,27 +547,27 @@ void bfv_client_l1_body_00ac2890(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac28a5  push 0xc1086c */
+    /* 00ac28a5  push 0xc1086c  ; "dice::meme::SetFocusAction" */
     t = 0xc1086cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac28aa  mov ecx, 0xe21708 */
+    /* 00ac28aa  mov ecx, 0xe21708  ; g_RuntimeClass_SetFocusAction */
     ecx = 0xe21708u;
-    /* 00ac28af  call 0x875490 */
+    /* 00ac28af  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2890_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac28b4  push 0xb41ce0 */
+    /* 00ac28b4  push 0xb41ce0  ; bfv_client_global_store_00b41ce0 */
     t = 0xb41ce0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac28b9  mov dword ptr [0xe21708], 0xc10800 */
+    /* 00ac28b9  mov dword ptr [0xe21708], 0xc10800  ; g_RuntimeClass_SetFocusAction */
     ea = (uint32_t)(0x00e21708u);
     M32(ea) = 0xc10800u;
-    /* 00ac28c3  call 0x7c2cd2 */
+    /* 00ac28c3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2890_2;
@@ -568,7 +581,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac28cb:
-    /* 00ac28cb  mov eax, 0xe21708 */
+    /* 00ac28cb  mov eax, 0xe21708  ; g_RuntimeClass_SetFocusAction */
     eax = 0xe21708u;
     /* 00ac28d0  ret */
     c->eip = M32(esp);

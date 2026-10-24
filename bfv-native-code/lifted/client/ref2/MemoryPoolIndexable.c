@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00413760  dice::ref2::MemoryPoolIndexable  (virtual method) */
+/* 00413760  MemoryPoolIndexable::vf8  (virtual method)
+ * class: dice::ref2::MemoryPoolIndexable
+ */
 BFV_L1_ENTRY(bfv_client_l1_00413760, bfv_client_l1_body_00413760);
 BFV_L1_RESUME(bfv_client_l1r_00413760_1, bfv_client_l1_body_00413760, 1);
 BFV_L1_RESUME(bfv_client_l1r_00413760_2, bfv_client_l1_body_00413760, 2);
@@ -22,7 +24,7 @@ void bfv_client_l1_body_00413760(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00413760  mov eax, dword ptr [esp + 8] */
+    /* 00413760  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00413764  push esi */
@@ -31,7 +33,7 @@ void bfv_client_l1_body_00413760(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00413765  mov esi, ecx */
     esi = ecx;
-    /* 00413767  mov ecx, dword ptr [esp + 0x10] */
+    /* 00413767  mov ecx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 0041376b  mov dword ptr [esi + 0x18], eax */
@@ -47,7 +49,7 @@ void bfv_client_l1_body_00413760(struct bfv_cpu *c)
     /* 00413774  mov dword ptr [esi + 0x14], edx */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = edx;
-    /* 00413777  mov dl, byte ptr [esp + 0x14] */
+    /* 00413777  mov dl, byte ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     SET8L(edx, M8(ea));
     /* 0041377b  push eax */
@@ -60,7 +62,7 @@ void bfv_client_l1_body_00413760(struct bfv_cpu *c)
     /* 0041377f  mov byte ptr [esi + 0x28], dl */
     ea = (uint32_t)(esi + 0x00000028u);
     M8(ea) = LO8(edx);
-    /* 00413782  call 0x403610 */
+    /* 00413782  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00413760_1;
@@ -89,7 +91,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00413798  call 0x403610 */
+    /* 00413798  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00413760_2;
@@ -165,7 +167,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004137d0  dice::ref2::MemoryPoolIndexable  (virtual method) */
+/* 004137d0  MemoryPoolIndexable::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::MemoryPoolIndexable
+ */
 BFV_L1_ENTRY(bfv_client_l1_004137d0, bfv_client_l1_body_004137d0);
 BFV_L1_RESUME(bfv_client_l1r_004137d0_1, bfv_client_l1_body_004137d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_004137d0_2, bfv_client_l1_body_004137d0, 2);
@@ -197,7 +202,7 @@ void bfv_client_l1_body_004137d0(struct bfv_cpu *c)
     /* 004137d6  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 004137d8  mov dword ptr [esi], 0xb4446c */
+    /* 004137d8  mov dword ptr [esi], 0xb4446c  ; vtable MemoryPoolIndexable */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4446cu;
     /* 004137de  je 0x4137e6 */
@@ -230,7 +235,7 @@ L_004137e6:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004137ee  call 0x403680 */
+    /* 004137ee  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004137d0_2;
@@ -256,7 +261,7 @@ L_004137f6:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004137fe  call 0x403680 */
+    /* 004137fe  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004137d0_3;
@@ -270,11 +275,11 @@ R_3:
     F_ADD(32, a, b, r);
     esp = r;
 L_00413806:
-    /* 00413806  test byte ptr [esp + 8], 1 */
+    /* 00413806  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0041380b  mov dword ptr [esi], 0xb4274c */
+    /* 0041380b  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 00413811  je 0x41381c */
@@ -283,7 +288,7 @@ L_00413806:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00413814  call 0x403680 */
+    /* 00413814  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004137d0_4;
@@ -314,7 +319,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00413830  dice::ref2::MemoryPoolIndexable  (vtable store) */
+/* 00413830  MemoryPoolIndexable::MemoryPoolIndexable  (vtable store)
+ * class: dice::ref2::MemoryPoolIndexable
+ */
 BFV_L1_ENTRY(bfv_client_l1_00413830, bfv_client_l1_body_00413830);
 void bfv_client_l1_body_00413830(struct bfv_cpu *c)
 {
@@ -329,7 +336,7 @@ void bfv_client_l1_body_00413830(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 00413834  mov dword ptr [eax], 0xb4446c */
+    /* 00413834  mov dword ptr [eax], 0xb4446c  ; vtable MemoryPoolIndexable */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb4446cu;
     /* 0041383a  mov dword ptr [eax + 4], 1 */
@@ -361,7 +368,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00413860  dice::ref2::MemoryPoolIndexable  (virtual method) */
+/* 00413860  MemoryPoolIndexable::vf5  (virtual method)
+ * class: dice::ref2::MemoryPoolIndexable
+ * also entered at 00413950: MemoryPoolIndexable::vf7
+ */
 BFV_L1_ENTRY(bfv_client_l1_00413860, bfv_client_l1_body_00413860);
 BFV_L1_RESUME(bfv_client_l1r_00413860_1, bfv_client_l1_body_00413860, 1);
 BFV_L1_RESUME(bfv_client_l1r_00413860_2, bfv_client_l1_body_00413860, 2);
@@ -517,7 +527,7 @@ L_004138a6:
     t = 0x2cu;
     esp -= 4;
     M32(esp) = t;
-    /* 004138b8  call 0x403610 */
+    /* 004138b8  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00413860_1;
@@ -537,7 +547,7 @@ R_1:
     F_SUB(32, a, b, r);
     /* 004138c2  je 0x413915 */
     if (zf) goto L_00413915;
-    /* 004138c4  mov dword ptr [eax], 0xb4446c */
+    /* 004138c4  mov dword ptr [eax], 0xb4446c  ; vtable MemoryPoolIndexable */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb4446cu;
     /* 004138ca  mov dword ptr [eax + 4], 1 */

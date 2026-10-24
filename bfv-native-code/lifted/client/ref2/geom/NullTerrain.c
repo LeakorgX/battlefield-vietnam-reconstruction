@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00701160  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 00701160  NullTerrain::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_00701160, bfv_client_l1_body_00701160);
 void bfv_client_l1_body_00701160(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_00701160(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00701160  mov edx, dword ptr [0xb42718] */
+    /* 00701160  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00701166  mov eax, ecx */
     eax = ecx;
-    /* 00701168  mov ecx, dword ptr [esp + 4] */
+    /* 00701168  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0070116c  cmp ecx, edx */
@@ -29,14 +32,14 @@ void bfv_client_l1_body_00701160(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0070116e  je 0x70118c */
     if (zf) goto L_0070118c;
-    /* 00701170  cmp ecx, 0x5fc276fe */
+    /* 00701170  cmp ecx, 0x5fc276fe  ; interfaceID(NullTerrain|PatchTerrain|RoamTerrain) */
     a = ecx;
     b = 0x5fc276feu;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     /* 00701176  je 0x70118c */
     if (zf) goto L_0070118c;
-    /* 00701178  cmp ecx, 0xb54616fc */
+    /* 00701178  cmp ecx, 0xb54616fc  ; interfaceID(IBase) */
     a = ecx;
     b = 0xb54616fcu;
     r = (a - b) & 0xffffffffu;
@@ -75,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00701190  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 00701190  NullTerrain::vf4_get_g_00b5456c  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_00701190, bfv_client_l1_body_00701190);
 void bfv_client_l1_body_00701190(struct bfv_cpu *c)
 {
@@ -84,7 +89,7 @@ void bfv_client_l1_body_00701190(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00701190  fld dword ptr [0xb5456c] */
+    /* 00701190  fld dword ptr [0xb5456c]  ; = -1.0f */
     ea = (uint32_t)(0x00b5456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00701196  ret */
@@ -98,7 +103,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007011a0  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 007011a0  NullTerrain::vf19  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_007011a0, bfv_client_l1_body_007011a0);
 void bfv_client_l1_body_007011a0(struct bfv_cpu *c)
 {
@@ -107,7 +114,7 @@ void bfv_client_l1_body_007011a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007011a0  fld dword ptr [0xba5a60] */
+    /* 007011a0  fld dword ptr [0xba5a60]  ; = 10.0f */
     ea = (uint32_t)(0x00ba5a60u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007011a6  ret 8 */
@@ -121,7 +128,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007011c0  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 007011c0  NullTerrain::vf25  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_007011c0, bfv_client_l1_body_007011c0);
 void bfv_client_l1_body_007011c0(struct bfv_cpu *c)
 {
@@ -144,7 +153,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007011d0  (between same file) */
+/* 007011d0  NullTerrain::queryInterface_adjustor4_007011d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007011d0, bfv_client_l1_body_007011d0);
 void bfv_client_l1_body_007011d0(struct bfv_cpu *c)
 {
@@ -159,7 +169,7 @@ void bfv_client_l1_body_007011d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 007011d3  jmp 0x701160 */
+    /* 007011d3  jmp 0x701160  ; NullTerrain::queryInterface */
     c->eip = 0x00701160u;
     goto out;
 out: __attribute__((unused));
@@ -169,7 +179,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007011e0  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 007011e0  NullTerrain::vf20  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_007011e0, bfv_client_l1_body_007011e0);
 void bfv_client_l1_body_007011e0(struct bfv_cpu *c)
 {
@@ -178,13 +190,13 @@ void bfv_client_l1_body_007011e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007011e0  mov eax, dword ptr [esp + 4] */
+    /* 007011e0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 007011e4  fld dword ptr [eax + 4] */
     ea = (uint32_t)(eax + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007011e7  fsub dword ptr [0xba5a60] */
+    /* 007011e7  fsub dword ptr [0xba5a60]  ; = 10.0f */
     ea = (uint32_t)(0x00ba5a60u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007011ed  ret 4 */
@@ -198,7 +210,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00701330  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 00701330  NullTerrain::vf17  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_00701330, bfv_client_l1_body_00701330);
 void bfv_client_l1_body_00701330(struct bfv_cpu *c)
 {
@@ -236,7 +250,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00701350  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 00701350  NullTerrain::vf9  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_00701350, bfv_client_l1_body_00701350);
 void bfv_client_l1_body_00701350(struct bfv_cpu *c)
 {
@@ -283,7 +299,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00701390  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 00701390  NullTerrain::vf22  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_00701390, bfv_client_l1_body_00701390);
 void bfv_client_l1_body_00701390(struct bfv_cpu *c)
 {
@@ -292,13 +310,13 @@ void bfv_client_l1_body_00701390(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00701390  mov eax, dword ptr [esp + 0xc] */
+    /* 00701390  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00701394  mov dword ptr [eax], 0 */
     ea = (uint32_t)(eax);
     M32(ea) = 0x0u;
-    /* 0070139a  mov dword ptr [eax + 4], 0x3f800000 */
+    /* 0070139a  mov dword ptr [eax + 4], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x3f800000u;
     /* 007013a1  mov dword ptr [eax + 8], 0 */
@@ -315,7 +333,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007013b0  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 007013b0  NullTerrain::vf23  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_007013b0, bfv_client_l1_body_007013b0);
 void bfv_client_l1_body_007013b0(struct bfv_cpu *c)
 {
@@ -324,16 +344,16 @@ void bfv_client_l1_body_007013b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007013b0  mov eax, dword ptr [esp + 0xc] */
+    /* 007013b0  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
-    /* 007013b4  fld dword ptr [0xba5a60] */
+    /* 007013b4  fld dword ptr [0xba5a60]  ; = 10.0f */
     ea = (uint32_t)(0x00ba5a60u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007013ba  mov dword ptr [eax], 0 */
     ea = (uint32_t)(eax);
     M32(ea) = 0x0u;
-    /* 007013c0  mov dword ptr [eax + 4], 0x3f800000 */
+    /* 007013c0  mov dword ptr [eax + 4], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x3f800000u;
     /* 007013c7  mov dword ptr [eax + 8], 0 */
@@ -350,7 +370,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a2e230  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 00a2e230  NullTerrain::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a2e230, bfv_client_l1_body_00a2e230);
 BFV_L1_RESUME(bfv_client_l1r_00a2e230_1, bfv_client_l1_body_00a2e230, 1);
 void bfv_client_l1_body_00a2e230(struct bfv_cpu *c)
@@ -385,14 +408,14 @@ L_00a2e23c:
     F_LOGIC(32, r);
     eax = r;
 L_00a2e23e:
-    /* 00a2e23e  mov dword ptr [eax], 0xb4274c */
+    /* 00a2e23e  mov dword ptr [eax], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb4274cu;
-    /* 00a2e244  test byte ptr [esp + 8], 1 */
+    /* 00a2e244  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 00a2e249  mov dword ptr [esi], 0xb4274c */
+    /* 00a2e249  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 00a2e24f  je 0xa2e25a */
@@ -401,7 +424,7 @@ L_00a2e23e:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a2e252  call 0x403680 */
+    /* 00a2e252  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a2e230_1;

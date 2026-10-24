@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008b5810  dice::ref2::io::ConsoleMessageServer  (virtual method) */
+/* 008b5810  ConsoleMessageServer::vf2  (virtual method)
+ * overrides: ServerService::vf2  (5 classes implement it)
+ * class: dice::ref2::io::ConsoleMessageServer
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b5810, bfv_client_l1_body_008b5810);
 BFV_L1_RESUME(bfv_client_l1r_008b5810_1, bfv_client_l1_body_008b5810, 1);
 void bfv_client_l1_body_008b5810(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_008b5810(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 008b5810  mov edx, dword ptr [esp + 8] */
+    /* 008b5810  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 008b5814  mov ecx, dword ptr [ecx + 0x24] */
@@ -44,7 +47,7 @@ void bfv_client_l1_body_008b5810(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008b5820  mov edx, dword ptr [esp + 0x14] */
+    /* 008b5820  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 008b5824  push edx */
@@ -72,7 +75,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008b5830  (between same file) */
+/* 008b5830  ConsoleMessageServer_008b5830  (between same file)
+ * called by: GameServer_0051e7a0, sub_005aa2f0, GameServer::vf33
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b5830, bfv_client_l1_body_008b5830);
 void bfv_client_l1_body_008b5830(struct bfv_cpu *c)
 {
@@ -112,7 +117,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008b5840  dice::ref2::io::ConsoleMessageServer  (vtable store) */
+/* 008b5840  ConsoleMessageServer::ConsoleMessageServer  (vtable store)
+ * class: dice::ref2::io::ConsoleMessageServer
+ * called by: Setup::Setup
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b5840, bfv_client_l1_body_008b5840);
 BFV_L1_RESUME(bfv_client_l1r_008b5840_1, bfv_client_l1_body_008b5840, 1);
 void bfv_client_l1_body_008b5840(struct bfv_cpu *c)
@@ -126,7 +134,7 @@ void bfv_client_l1_body_008b5840(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 008b5840  mov eax, dword ptr [esp + 8] */
+    /* 008b5840  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008b5844  push esi */
@@ -139,17 +147,17 @@ void bfv_client_l1_body_008b5840(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008b5846  mov esi, ecx */
     esi = ecx;
-    /* 008b5848  call 0x8ac8f0 */
+    /* 008b5848  call 0x8ac8f0  ; ServerService::ServerService */
     t = 0x008ac8f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b5840_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008b584d  mov ecx, dword ptr [esp + 8] */
+    /* 008b584d  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 008b5851  mov dword ptr [esi], 0xbdf134 */
+    /* 008b5851  mov dword ptr [esi], 0xbdf134  ; vtable ConsoleMessageServer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbdf134u;
     /* 008b5857  mov dword ptr [esi + 0x24], ecx */
@@ -172,7 +180,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008b58b0  dice::ref2::io::ConsoleMessageServer  (virtual method) */
+/* 008b58b0  ConsoleMessageServer::vf1  (virtual method)
+ * overrides: ServerService::vf1  (5 classes implement it)
+ * class: dice::ref2::io::ConsoleMessageServer
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b58b0, bfv_client_l1_body_008b58b0);
 BFV_L1_RESUME(bfv_client_l1r_008b58b0_1, bfv_client_l1_body_008b58b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008b58b0_2, bfv_client_l1_body_008b58b0, 2);
@@ -204,9 +215,9 @@ void bfv_client_l1_body_008b58b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008b58b4  mov esi, ecx */
     esi = ecx;
-    /* 008b58b6  lea ecx, [esp + 4] */
+    /* 008b58b6  lea ecx, [esp + 4]  ; &var_c */
     ecx = (uint32_t)(esp + 0x00000004u);
-    /* 008b58ba  call 0x423b10 */
+    /* 008b58ba  call 0x423b10  ; std::list::_Buyheadnode_36 */
     t = 0x00423b10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b58b0_1;
@@ -228,19 +239,19 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008b58c8  lea edx, [esp + 0x10] */
+    /* 008b58c8  lea edx, [esp + 0x10]  ; &var_c */
     edx = (uint32_t)(esp + 0x00000010u);
     /* 008b58cc  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008b58cd  mov edx, dword ptr [esp + 0x24] */
+    /* 008b58cd  mov edx, dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     edx = M32(ea);
-    /* 008b58d1  mov dword ptr [esp + 0x18], eax */
+    /* 008b58d1  mov dword ptr [esp + 0x18], eax  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = eax;
-    /* 008b58d5  mov dword ptr [esp + 0x1c], 0 */
+    /* 008b58d5  mov dword ptr [esp + 0x1c], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = 0x0u;
     /* 008b58dd  mov eax, dword ptr [ecx] */
@@ -258,23 +269,23 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 008b58e3  lea ecx, [esp + 4] */
+    /* 008b58e3  lea ecx, [esp + 4]  ; &var_c */
     ecx = (uint32_t)(esp + 0x00000004u);
-    /* 008b58e7  call 0x776030 */
+    /* 008b58e7  call 0x776030  ; std::list::clear */
     t = 0x00776030u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b58b0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 008b58ec  mov eax, dword ptr [esp + 8] */
+    /* 008b58ec  mov eax, dword ptr [esp + 8]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008b58f0  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008b58f1  call 0x403680 */
+    /* 008b58f1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b58b0_4;

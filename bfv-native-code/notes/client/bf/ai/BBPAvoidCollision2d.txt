@@ -1,0 +1,5 @@
+## file
+Plan builder for ground vehicles avoiding a collision: builds the steering plan when BBAvoid wins.
+
+## 0098e310
+buildPlan (also entered at 0098e890 as BBMoveTo::vf0): clears the bot's current plan (slots 0x13c and 0x140, then deletes the old statement list). Reads the stored obstacle for this bot (per-bot arrays indexed by bot slot 0xdc), the positions and velocities of the bot and the obstacle, and normalizes both 2D directions. The side to steer to comes from the 2D cross product of the two directions; when the dot product is above -0.2588 (the obstacle is not more than 105 degrees off the heading) it picks a turn sign with float_sign and builds the avoid plan.

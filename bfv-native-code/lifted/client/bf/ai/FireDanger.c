@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00991d50  dice::bf::ai::FireDanger  (virtual method) */
+/* 00991d50  FireDanger::vf3  (virtual method)
+ * overrides: DangerObject::vf3  (3 classes implement it)
+ * class: dice::bf::ai::FireDanger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00991d50, bfv_client_l1_body_00991d50);
 void bfv_client_l1_body_00991d50(struct bfv_cpu *c)
 {
@@ -22,7 +25,7 @@ void bfv_client_l1_body_00991d50(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00991d55  je 0x991d73 */
     if (zf) goto L_00991d73;
-    /* 00991d57  mov ecx, dword ptr [esp + 4] */
+    /* 00991d57  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00991d5b  add eax, 0x14 */

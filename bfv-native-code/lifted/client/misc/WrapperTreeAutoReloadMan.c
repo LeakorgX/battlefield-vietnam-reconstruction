@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0077f4c0  dice::WrapperTreeAutoReloadMan  (virtual method) */
+/* 0077f4c0  WrapperTreeAutoReloadMan::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::WrapperTreeAutoReloadMan
+ */
 BFV_L1_ENTRY(bfv_client_l1_0077f4c0, bfv_client_l1_body_0077f4c0);
 void bfv_client_l1_body_0077f4c0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_0077f4c0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 0077f4c0  mov edx, dword ptr [0xb42718] */
+    /* 0077f4c0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 0077f4c6  mov eax, ecx */
     eax = ecx;
-    /* 0077f4c8  mov ecx, dword ptr [esp + 4] */
+    /* 0077f4c8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0077f4cc  cmp ecx, edx */
@@ -33,7 +36,7 @@ void bfv_client_l1_body_0077f4c0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0077f4d1  mov esi, dword ptr [0xbdb048] */
+    /* 0077f4d1  mov esi, dword ptr [0xbdb048]  ; interfaceID(StandardMeshRenderer|ShaderHandler|TextureManager) */
     ea = (uint32_t)(0x00bdb048u);
     esi = M32(ea);
     /* 0077f4d7  xor edx, edx */
@@ -72,7 +75,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0077f4f0  dice::WrapperTreeAutoReloadMan  (virtual method) */
+/* 0077f4f0  WrapperTreeAutoReloadMan::vf0  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::WrapperTreeAutoReloadMan
+ */
 BFV_L1_ENTRY(bfv_client_l1_0077f4f0, bfv_client_l1_body_0077f4f0);
 BFV_L1_RESUME(bfv_client_l1r_0077f4f0_1, bfv_client_l1_body_0077f4f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0077f4f0_2, bfv_client_l1_body_0077f4f0, 2);
@@ -120,7 +126,7 @@ void bfv_client_l1_body_0077f4f0(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0077f4ff  lea eax, [esp + 0x10] */
+    /* 0077f4ff  lea eax, [esp + 0x10]  ; &var_4 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 0077f503  push eax */
     t = eax;
@@ -128,7 +134,7 @@ void bfv_client_l1_body_0077f4f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0077f504  mov ecx, esi */
     ecx = esi;
-    /* 0077f506  call 0x433b80 */
+    /* 0077f506  call 0x433b80  ; std::_Tree::erase_range_00433b80 */
     t = 0x00433b80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0077f4f0_1;
@@ -142,7 +148,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0077f50f  call 0x403680 */
+    /* 0077f50f  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0077f4f0_2;
@@ -159,7 +165,7 @@ R_2:
     /* 0077f519  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 0077f51c  mov al, byte ptr [esp + 0x14] */
+    /* 0077f51c  mov al, byte ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     SET8L(eax, M8(ea));
     /* 0077f520  add esp, 4 */
@@ -171,7 +177,7 @@ R_2:
     /* 0077f523  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0077f525  mov dword ptr [edi], 0xb4274c */
+    /* 0077f525  mov dword ptr [edi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(edi);
     M32(ea) = 0xb4274cu;
     /* 0077f52b  je 0x77f536 */
@@ -180,7 +186,7 @@ R_2:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0077f52e  call 0x403680 */
+    /* 0077f52e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0077f4f0_3;
@@ -219,7 +225,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00781520  dice::WrapperTreeAutoReloadMan  (virtual method) */
+/* 00781520  WrapperTreeAutoReloadMan::vf4  (virtual method)
+ * overrides: IFileChangeListener::vf4  (3 classes implement it)
+ * class: dice::WrapperTreeAutoReloadMan
+ */
 BFV_L1_ENTRY(bfv_client_l1_00781520, bfv_client_l1_body_00781520);
 BFV_L1_RESUME(bfv_client_l1r_00781520_1, bfv_client_l1_body_00781520, 1);
 BFV_L1_RESUME(bfv_client_l1r_00781520_2, bfv_client_l1_body_00781520, 2);
@@ -235,7 +244,7 @@ void bfv_client_l1_body_00781520(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00781520  mov eax, dword ptr [esp + 4] */
+    /* 00781520  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00781524  cmp dword ptr [eax + 0x18], 0x10 */
@@ -255,7 +264,7 @@ void bfv_client_l1_body_00781520(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0078152f  mov dl, 1 */
     SET8L(edx, 0x1u);
-    /* 00781531  call 0x780d80 */
+    /* 00781531  call 0x780d80  ; sub_00780d80 */
     t = 0x00780d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00781520_1;
@@ -275,7 +284,7 @@ L_00781539:
     M32(esp) = t;
     /* 0078153e  mov dl, 1 */
     SET8L(edx, 0x1u);
-    /* 00781540  call 0x780d80 */
+    /* 00781540  call 0x780d80  ; sub_00780d80 */
     t = 0x00780d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00781520_2;

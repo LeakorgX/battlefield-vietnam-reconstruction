@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0059e3c0  dice::ref2::world::FloatingBundleTemplate  (virtual method) */
+/* 0059e3c0  FloatingBundleTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::FloatingBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_0059e3c0, bfv_server_l1_body_0059e3c0);
 BFV_L1_RESUME(bfv_server_l1r_0059e3c0_1, bfv_server_l1_body_0059e3c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0059e3c0_2, bfv_server_l1_body_0059e3c0, 2);
@@ -31,7 +34,7 @@ void bfv_server_l1_body_0059e3c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0059e3c6  mov esi, ecx */
     esi = ecx;
-    /* 0059e3c8  call 0x403d80 */
+    /* 0059e3c8  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059e3c0_1;
@@ -55,7 +58,7 @@ R_1:
     M32(esp) = t;
     /* 0059e3d5  mov ecx, eax */
     ecx = eax;
-    /* 0059e3d7  call 0x5d88b0 */
+    /* 0059e3d7  call 0x5d88b0  ; FloatingBundle::FloatingBundle */
     t = 0x005d88b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059e3c0_2;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0059e3f0  dice::ref2::world::FloatingBundleTemplate  (virtual method) */
+/* 0059e3f0  FloatingBundleTemplate::createPhysicsNode  (virtual method)
+ * overrides: SimpleObjectTemplate::createPhysicsNode  (44 classes implement it)
+ * class: dice::ref2::world::FloatingBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_0059e3f0, bfv_server_l1_body_0059e3f0);
 BFV_L1_RESUME(bfv_server_l1r_0059e3f0_1, bfv_server_l1_body_0059e3f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0059e3f0_2, bfv_server_l1_body_0059e3f0, 2);
@@ -155,7 +161,7 @@ R_1:
     /* 0059e40c  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 0059e40e  mov ebx, dword ptr [esp + 0x10] */
+    /* 0059e40e  mov ebx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
     /* 0059e412  je 0x59e421 */
@@ -170,7 +176,7 @@ R_1:
     M32(esp) = t;
     /* 0059e416  mov ecx, eax */
     ecx = eax;
-    /* 0059e418  call 0x5d8ac0 */
+    /* 0059e418  call 0x5d8ac0  ; PhysicsFloatingBundle::PhysicsFloatingBundle */
     t = 0x005d8ac0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059e3f0_2;
@@ -281,7 +287,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0059e470  dice::ref2::world::FloatingBundleTemplate  (vtable store) */
+/* 0059e470  FloatingBundleTemplate::FloatingBundleTemplate  (vtable store)
+ * class: dice::ref2::world::FloatingBundleTemplate
+ * also entered at 0059e4d0: FloatingBundleTemplate::vf4
+ * called by: ObjectCreatorWrapper<FloatingBundleTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_0059e470, bfv_server_l1_body_0059e470);
 BFV_L1_RESUME(bfv_server_l1r_0059e470_1, bfv_server_l1_body_0059e470, 1);
 void bfv_server_l1_body_0059e470(struct bfv_cpu *c)
@@ -301,7 +311,7 @@ void bfv_server_l1_body_0059e470(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0059e471  mov esi, ecx */
     esi = ecx;
-    /* 0059e473  call 0x5899c0 */
+    /* 0059e473  call 0x5899c0  ; RotationalBundleTemplate::RotationalBundleTemplate */
     t = 0x005899c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059e470_1;
@@ -318,7 +328,7 @@ R_1:
     /* 0059e488  mov dword ptr [esi + 0x218], eax */
     ea = (uint32_t)(esi + 0x00000218u);
     M32(ea) = eax;
-    /* 0059e48e  mov dword ptr [esi], 0x83f724 */
+    /* 0059e48e  mov dword ptr [esi], 0x83f724  ; vtable FloatingBundleTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x83f724u;
     /* 0059e494  mov dword ptr [esi + 0x74], 0x83f718 */
@@ -333,7 +343,7 @@ R_1:
     /* 0059e4af  mov dword ptr [esi + 0x210], ecx */
     ea = (uint32_t)(esi + 0x00000210u);
     M32(ea) = ecx;
-    /* 0059e4b5  mov dword ptr [esi + 0x21c], 0x43c80000 */
+    /* 0059e4b5  mov dword ptr [esi + 0x21c], 0x43c80000  ; 400.0f */
     ea = (uint32_t)(esi + 0x0000021cu);
     M32(ea) = 0x43c80000u;
     /* 0059e4bf  mov dword ptr [esi + 0x220], ecx */
@@ -356,7 +366,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0059e4e0  dice::ref2::world::FloatingBundleTemplate  (virtual method) */
+/* 0059e4e0  FloatingBundleTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::FloatingBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_0059e4e0, bfv_server_l1_body_0059e4e0);
 void bfv_server_l1_body_0059e4e0(struct bfv_cpu *c)
 {
@@ -365,10 +378,10 @@ void bfv_server_l1_body_0059e4e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0059e4e0  mov eax, dword ptr [esp + 4] */
+    /* 0059e4e0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 0059e4e4  cmp eax, dword ptr [0x820744] */
+    /* 0059e4e4  cmp eax, dword ptr [0x820744]  ; FloatingBundleTemplate::classID */
     ea = (uint32_t)(0x00820744u);
     a = eax;
     b = M32(ea);
@@ -383,10 +396,10 @@ void bfv_server_l1_body_0059e4e0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_0059e4f1:
-    /* 0059e4f1  mov dword ptr [esp + 4], eax */
+    /* 0059e4f1  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 0059e4f5  jmp 0x5898e0 */
+    /* 0059e4f5  jmp 0x5898e0  ; RotationalBundleTemplate::castTo */
     c->eip = 0x005898e0u;
     goto out;
 out: __attribute__((unused));

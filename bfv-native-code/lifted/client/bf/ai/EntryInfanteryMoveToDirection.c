@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009b7a20  (source path) */
+/* 009b7a20  AIConsole::ctor_dtor_helper_009b7a20  (source path)
+ * also entered at 009b7a30: EntryInfanteryMoveToDirection::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b7a20, bfv_client_l1_body_009b7a20);
 void bfv_client_l1_body_009b7a20(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_009b7a20(struct bfv_cpu *c)
     uint32_t ea;
     /* 009b7a20  mov eax, ecx */
     eax = ecx;
-    /* 009b7a22  mov dword ptr [eax], 0xbf715c */
+    /* 009b7a22  mov dword ptr [eax], 0xbf715c  ; vtable EntryInfanteryMoveToDirection */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf715cu;
     /* 009b7a28  ret */

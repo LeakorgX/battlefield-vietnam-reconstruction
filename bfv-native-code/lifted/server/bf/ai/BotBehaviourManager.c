@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006fe370  dice::bf::ai::BotBehaviourManager  (virtual method) */
+/* 006fe370  BotBehaviourManager::vf1  (virtual method)
+ * class: dice::bf::ai::BotBehaviourManager
+ * called by: BotBehaviourManager::~BotBehaviourManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_006fe370, bfv_server_l1_body_006fe370);
 BFV_L1_RESUME(bfv_server_l1r_006fe370_1, bfv_server_l1_body_006fe370, 1);
 BFV_L1_RESUME(bfv_server_l1r_006fe370_2, bfv_server_l1_body_006fe370, 2);
@@ -61,7 +64,7 @@ void bfv_server_l1_body_006fe370(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006fe380  mov ecx, esi */
     ecx = esi;
-    /* 006fe382  call 0x471100 */
+    /* 006fe382  call 0x471100  ; std::_Tree::_Erase_00471100 */
     t = 0x00471100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe370_1;
@@ -105,7 +108,7 @@ R_1:
     M32(esp) = t;
     /* 006fe3a4  mov ecx, esi */
     ecx = esi;
-    /* 006fe3a6  call 0x471100 */
+    /* 006fe3a6  call 0x471100  ; std::_Tree::_Erase_00471100 */
     t = 0x00471100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe370_2;
@@ -152,7 +155,7 @@ R_2:
     M32(esp) = t;
     /* 006fe3c9  lea ebp, [edi + 0x1c] */
     ebp = (uint32_t)(edi + 0x0000001cu);
-    /* 006fe3cc  lea esp, [esp] */
+    /* 006fe3cc  lea esp, [esp]  ; &var_14 */
     esp = (uint32_t)(esp);
 L_006fe3d0:
     /* 006fe3d0  mov ecx, dword ptr [esi + 0x28] */
@@ -185,7 +188,7 @@ L_006fe3dd:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe3de  lea eax, [esp + 0x14] */
+    /* 006fe3de  lea eax, [esp + 0x14]  ; &var_4 */
     eax = (uint32_t)(esp + 0x00000014u);
     /* 006fe3e2  push eax */
     t = eax;
@@ -193,7 +196,7 @@ L_006fe3dd:
     M32(esp) = t;
     /* 006fe3e3  mov ecx, ebp */
     ecx = ebp;
-    /* 006fe3e5  call 0x701900 */
+    /* 006fe3e5  call 0x701900  ; std::_Tree::erase_00701900 */
     t = 0x00701900u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe370_4;
@@ -228,7 +231,7 @@ L_006fe3f2:
     esi = (uint32_t)(edi + 0x00000028u);
     /* 006fe3fa  je 0x6fe416 */
     if (zf) goto L_006fe416;
-    /* 006fe3fc  mov edx, dword ptr [esp + 0xc] */
+    /* 006fe3fc  mov edx, dword ptr [esp + 0xc]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 006fe400  push edx */
@@ -242,7 +245,7 @@ L_006fe3f2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe405  call 0x424ba0 */
+    /* 006fe405  call 0x424ba0  ; std::_Destroy_range_string */
     t = 0x00424ba0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe370_5;
@@ -256,7 +259,7 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe40e  call 0x403df0 */
+    /* 006fe40e  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe370_6;
@@ -308,7 +311,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fe430  (between same file) */
+/* 006fe430  BotBehaviourManager_006fe430  (between same file)
+ * called by: AIConsole::constructBehaviour, AiSettings::createUCConstant, AiSettings::createUCLinear, AiSettings::createUCXInverse, ai_BBAirLift_006feb60
+ */
 BFV_L1_ENTRY(bfv_server_l1_006fe430, bfv_server_l1_body_006fe430);
 BFV_L1_RESUME(bfv_server_l1r_006fe430_1, bfv_server_l1_body_006fe430, 1);
 BFV_L1_RESUME(bfv_server_l1r_006fe430_2, bfv_server_l1_body_006fe430, 2);
@@ -340,7 +345,7 @@ void bfv_server_l1_body_006fe430(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe434  mov ebp, dword ptr [esp + 0x28] */
+    /* 006fe434  mov ebp, dword ptr [esp + 0x28]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000028u);
     ebp = M32(ea);
     /* 006fe438  push esi */
@@ -357,7 +362,7 @@ void bfv_server_l1_body_006fe430(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006fe43b  mov edi, ecx */
     edi = ecx;
-    /* 006fe43d  call 0x705f20 */
+    /* 006fe43d  call 0x705f20  ; ai_00705f20 */
     t = 0x00705f20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe430_1;
@@ -415,7 +420,7 @@ L_006fe45a:
     M32(esp) = t;
     /* 006fe462  mov ecx, ebp */
     ecx = ebp;
-    /* 006fe464  call 0x401220 */
+    /* 006fe464  call 0x401220  ; std::string::compare_chars */
     t = 0x00401220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe430_2;
@@ -440,25 +445,25 @@ L_006fe46d:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe472  lea ecx, [esp + 0x18] */
+    /* 006fe472  lea ecx, [esp + 0x18]  ; &var_20 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 006fe476  mov dword ptr [esp + 0x30], 0xf */
+    /* 006fe476  mov dword ptr [esp + 0x30], 0xf  ; var_8 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = 0xfu;
-    /* 006fe47e  mov dword ptr [esp + 0x2c], 0 */
+    /* 006fe47e  mov dword ptr [esp + 0x2c], 0  ; var_c */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = 0x0u;
-    /* 006fe486  mov byte ptr [esp + 0x1c], 0 */
+    /* 006fe486  mov byte ptr [esp + 0x1c], 0  ; var_1c */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = 0x0u;
-    /* 006fe48b  call 0x401e20 */
+    /* 006fe48b  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe430_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 006fe490  lea ecx, [esp + 0xc] */
+    /* 006fe490  lea ecx, [esp + 0xc]  ; &var_20 */
     ecx = (uint32_t)(esp + 0x0000000cu);
     /* 006fe494  push ecx */
     t = ecx;
@@ -468,7 +473,7 @@ R_3:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe496  lea edx, [esp + 0x38] */
+    /* 006fe496  lea edx, [esp + 0x38]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000038u);
     /* 006fe49a  push edx */
     t = edx;
@@ -476,10 +481,10 @@ R_3:
     M32(esp) = t;
     /* 006fe49b  mov ecx, edi */
     ecx = edi;
-    /* 006fe49d  mov dword ptr [esp + 0x34], 0 */
+    /* 006fe49d  mov dword ptr [esp + 0x34], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = 0x0u;
-    /* 006fe4a5  call 0x6fe1c0 */
+    /* 006fe4a5  call 0x6fe1c0  ; BotBehaviourManager_helper_006fe1c0 */
     t = 0x006fe1c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe430_4;
@@ -489,7 +494,7 @@ R_4:
     /* 006fe4aa  mov esi, dword ptr [eax] */
     ea = (uint32_t)(eax);
     esi = M32(ea);
-    /* 006fe4ac  cmp dword ptr [esp + 0x24], 0x10 */
+    /* 006fe4ac  cmp dword ptr [esp + 0x24], 0x10  ; var_8 */
     ea = (uint32_t)(esp + 0x00000024u);
     a = M32(ea);
     b = 0x10u;
@@ -497,14 +502,14 @@ R_4:
     F_SUB(32, a, b, r);
     /* 006fe4b1  jb 0x6fe4c0 */
     if (cf) goto L_006fe4c0;
-    /* 006fe4b3  mov eax, dword ptr [esp + 0x10] */
+    /* 006fe4b3  mov eax, dword ptr [esp + 0x10]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 006fe4b7  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe4b8  call 0x403df0 */
+    /* 006fe4b8  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe430_5;
@@ -549,7 +554,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fe4d0  dice::bf::ai::BotBehaviourManager  (vtable store) */
+/* 006fe4d0  BotBehaviourManager::~BotBehaviourManager  (vtable store)
+ * class: dice::bf::ai::BotBehaviourManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_006fe4d0, bfv_server_l1_body_006fe4d0);
 BFV_L1_RESUME(bfv_server_l1r_006fe4d0_1, bfv_server_l1_body_006fe4d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_006fe4d0_2, bfv_server_l1_body_006fe4d0, 2);
@@ -597,17 +604,17 @@ void bfv_server_l1_body_006fe4d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006fe4d4  mov ebx, ecx */
     ebx = ecx;
-    /* 006fe4d6  mov dword ptr [ebx], 0x86e120 */
+    /* 006fe4d6  mov dword ptr [ebx], 0x86e120  ; vtable BotBehaviourManager */
     ea = (uint32_t)(ebx);
     M32(ea) = 0x86e120u;
     /* 006fe4dc  xor edi, edi */
     r = 0;
     F_LOGIC(32, r);
     edi = r;
-    /* 006fe4de  mov dword ptr [0xc31334], edi */
+    /* 006fe4de  mov dword ptr [0xc31334], edi  ; g_pBotBehaviourManager */
     ea = (uint32_t)(0x00c31334u);
     M32(ea) = edi;
-    /* 006fe4e4  call 0x6fe370 */
+    /* 006fe4e4  call 0x6fe370  ; BotBehaviourManager::vf1 */
     t = 0x006fe370u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe4d0_1;
@@ -640,7 +647,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe4fc  call 0x424ba0 */
+    /* 006fe4fc  call 0x424ba0  ; std::_Destroy_range_string */
     t = 0x00424ba0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe4d0_2;
@@ -654,7 +661,7 @@ R_2:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe505  call 0x403df0 */
+    /* 006fe505  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe4d0_3;
@@ -701,7 +708,7 @@ L_006fe50d:
     M32(esp) = t;
     /* 006fe525  mov ecx, esi */
     ecx = esi;
-    /* 006fe527  call 0x6fd010 */
+    /* 006fe527  call 0x6fd010  ; std::_Tree::erase_range_006fd010 */
     t = 0x006fd010u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe4d0_4;
@@ -715,7 +722,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe530  call 0x403df0 */
+    /* 006fe530  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe4d0_5;
@@ -758,7 +765,7 @@ R_5:
     M32(esp) = t;
     /* 006fe54d  mov ecx, esi */
     ecx = esi;
-    /* 006fe54f  call 0x471550 */
+    /* 006fe54f  call 0x471550  ; std::_Tree::erase_range_00471550 */
     t = 0x00471550u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe4d0_6;
@@ -772,7 +779,7 @@ R_6:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe558  call 0x403df0 */
+    /* 006fe558  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe4d0_7;
@@ -829,7 +836,7 @@ R_8:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006fe580  call 0x403df0 */
+    /* 006fe580  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fe4d0_9;

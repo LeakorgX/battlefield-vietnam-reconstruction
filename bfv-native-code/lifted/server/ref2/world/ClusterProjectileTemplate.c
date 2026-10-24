@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00567f20  dice::ref2::world::ClusterProjectileTemplate  (virtual method) */
+/* 00567f20  ClusterProjectileTemplate::postLoad  (virtual method)
+ * overrides: ObjectTemplate::postLoad  (47 classes implement it)
+ * class: dice::ref2::world::ClusterProjectileTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00567f20, bfv_server_l1_body_00567f20);
 BFV_L1_RESUME(bfv_server_l1r_00567f20_1, bfv_server_l1_body_00567f20, 1);
 BFV_L1_RESUME(bfv_server_l1r_00567f20_2, bfv_server_l1_body_00567f20, 2);
@@ -33,7 +36,7 @@ void bfv_server_l1_body_00567f20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00567f21  mov edi, ecx */
     edi = ecx;
-    /* 00567f23  call 0x5679e0 */
+    /* 00567f23  call 0x5679e0  ; ProjectileTemplate::postLoad */
     t = 0x005679e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00567f20_1;
@@ -199,7 +202,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005695b0  dice::ref2::world::ClusterProjectileTemplate  (vtable store) */
+/* 005695b0  ClusterProjectileTemplate::ClusterProjectileTemplate  (vtable store)
+ * class: dice::ref2::world::ClusterProjectileTemplate
+ * also entered at 005697a0: ClusterProjectileTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005695b0, bfv_server_l1_body_005695b0);
 BFV_L1_RESUME(bfv_server_l1r_005695b0_1, bfv_server_l1_body_005695b0, 1);
 void bfv_server_l1_body_005695b0(struct bfv_cpu *c)
@@ -219,7 +225,7 @@ void bfv_server_l1_body_005695b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005695b1  mov esi, ecx */
     esi = ecx;
-    /* 005695b3  call 0x566220 */
+    /* 005695b3  call 0x566220  ; ProjectileTemplate::ProjectileTemplate */
     t = 0x00566220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005695b0_1;
@@ -230,7 +236,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 005695ba  mov dword ptr [esi + 0x284], eax */
+    /* 005695ba  mov dword ptr [esi + 0x284], eax  ; field ObjectTemplate.StartDamageAfter */
     ea = (uint32_t)(esi + 0x00000284u);
     M32(ea) = eax;
     /* 005695c0  mov byte ptr [esi + 0x288], al */
@@ -239,7 +245,7 @@ R_1:
     /* 005695c6  mov byte ptr [esi + 0x289], al */
     ea = (uint32_t)(esi + 0x00000289u);
     M8(ea) = LO8(eax);
-    /* 005695cc  mov dword ptr [esi], 0x8374b4 */
+    /* 005695cc  mov dword ptr [esi], 0x8374b4  ; vtable ClusterProjectileTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8374b4u;
     /* 005695d2  mov dword ptr [esi + 0x74], 0x8374a8 */
@@ -271,7 +277,7 @@ R_1:
     /* 0056960d  mov byte ptr [esi + 0x2aa], al */
     ea = (uint32_t)(esi + 0x000002aau);
     M8(ea) = LO8(eax);
-    /* 00569613  mov dword ptr [esi + 0x2ac], eax */
+    /* 00569613  mov dword ptr [esi + 0x2ac], eax  ; field ObjectTemplate.fireFrameDamage */
     ea = (uint32_t)(esi + 0x000002acu);
     M32(ea) = eax;
     /* 00569619  mov byte ptr [esi + 0x2bc], al */
@@ -289,7 +295,7 @@ R_1:
     /* 00569631  mov byte ptr [esi + 0x2c0], al */
     ea = (uint32_t)(esi + 0x000002c0u);
     M8(ea) = LO8(eax);
-    /* 00569637  mov dword ptr [esi + 0x2c4], eax */
+    /* 00569637  mov dword ptr [esi + 0x2c4], eax  ; field ObjectTemplate.SpawnDistance */
     ea = (uint32_t)(esi + 0x000002c4u);
     M32(ea) = eax;
     /* 0056963d  mov dword ptr [esi + 0x2c8], eax */
@@ -316,13 +322,13 @@ R_1:
     /* 00569667  mov dword ptr [esi + 0x304], eax */
     ea = (uint32_t)(esi + 0x00000304u);
     M32(ea) = eax;
-    /* 0056966d  mov dword ptr [esi + 0x2ec], 0x41200000 */
+    /* 0056966d  mov dword ptr [esi + 0x2ec], 0x41200000  ; field ObjectTemplate.MaxTimeToEffect, 10.0f */
     ea = (uint32_t)(esi + 0x000002ecu);
     M32(ea) = 0x41200000u;
-    /* 00569677  mov dword ptr [esi + 0x2f4], 0x41a00000 */
+    /* 00569677  mov dword ptr [esi + 0x2f4], 0x41a00000  ; 20.0f */
     ea = (uint32_t)(esi + 0x000002f4u);
     M32(ea) = 0x41a00000u;
-    /* 00569681  mov dword ptr [esi + 0x2f8], 0x42c80000 */
+    /* 00569681  mov dword ptr [esi + 0x2f8], 0x42c80000  ; 100.0f */
     ea = (uint32_t)(esi + 0x000002f8u);
     M32(ea) = 0x42c80000u;
     /* 0056968b  mov ecx, 0x3f800000 */
@@ -473,7 +479,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005697b0  dice::ref2::world::ClusterProjectileTemplate  (virtual method) */
+/* 005697b0  ClusterProjectileTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::ClusterProjectileTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005697b0, bfv_server_l1_body_005697b0);
 void bfv_server_l1_body_005697b0(struct bfv_cpu *c)
 {
@@ -482,12 +491,12 @@ void bfv_server_l1_body_005697b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005697b0  mov edx, dword ptr [0x820808] */
+    /* 005697b0  mov edx, dword ptr [0x820808]  ; ClusterProjectileTemplate::classID */
     ea = (uint32_t)(0x00820808u);
     edx = M32(ea);
     /* 005697b6  mov eax, ecx */
     eax = ecx;
-    /* 005697b8  mov ecx, dword ptr [esp + 4] */
+    /* 005697b8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005697bc  cmp ecx, edx */
@@ -497,7 +506,7 @@ void bfv_server_l1_body_005697b0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005697be  je 0x5697d3 */
     if (zf) goto L_005697d3;
-    /* 005697c0  cmp ecx, dword ptr [0x820798] */
+    /* 005697c0  cmp ecx, dword ptr [0x820798]  ; ProjectileTemplate::classID */
     ea = (uint32_t)(0x00820798u);
     a = ecx;
     b = M32(ea);
@@ -505,12 +514,12 @@ void bfv_server_l1_body_005697b0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005697c6  je 0x5697d3 */
     if (zf) goto L_005697d3;
-    /* 005697c8  mov dword ptr [esp + 4], ecx */
+    /* 005697c8  mov dword ptr [esp + 4], ecx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = ecx;
     /* 005697cc  mov ecx, eax */
     ecx = eax;
-    /* 005697ce  jmp 0x586630 */
+    /* 005697ce  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 L_005697d3:
@@ -525,7 +534,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005697e0  (between same file) */
+/* 005697e0  ClusterProjectileTemplate::deleting_dtor_adjustor116_005697e0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005697e0, bfv_server_l1_body_005697e0);
 void bfv_server_l1_body_005697e0(struct bfv_cpu *c)
 {
@@ -540,7 +550,7 @@ void bfv_server_l1_body_005697e0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005697e3  jmp 0x569830 */
+    /* 005697e3  jmp 0x569830  ; ClusterProjectileTemplate::deleting_dtor */
     c->eip = 0x00569830u;
     goto out;
 out: __attribute__((unused));
@@ -550,7 +560,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005697f0  (between same file) */
+/* 005697f0  ClusterProjectileTemplate::deleting_dtor_adjustor400_005697f0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005697f0, bfv_server_l1_body_005697f0);
 void bfv_server_l1_body_005697f0(struct bfv_cpu *c)
 {
@@ -565,7 +576,7 @@ void bfv_server_l1_body_005697f0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005697f6  jmp 0x569830 */
+    /* 005697f6  jmp 0x569830  ; ClusterProjectileTemplate::deleting_dtor */
     c->eip = 0x00569830u;
     goto out;
 out: __attribute__((unused));
@@ -575,7 +586,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00569800  dice::ref2::world::ClusterProjectileTemplate  (virtual method) */
+/* 00569800  ClusterProjectileTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::ClusterProjectileTemplate
+ * also entered at 00569830: ClusterProjectileTemplate::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_00569800, bfv_server_l1_body_00569800);
 BFV_L1_RESUME(bfv_server_l1r_00569800_1, bfv_server_l1_body_00569800, 1);
 BFV_L1_RESUME(bfv_server_l1r_00569800_2, bfv_server_l1_body_00569800, 2);
@@ -601,7 +616,7 @@ void bfv_server_l1_body_00569800(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00569803  mov esi, ecx */
     esi = ecx;
-    /* 00569805  mov ecx, dword ptr [0xc0d5f0] */
+    /* 00569805  mov ecx, dword ptr [0xc0d5f0]  ; g_pool_Projectile */
     ea = (uint32_t)(0x00c0d5f0u);
     ecx = M32(ea);
     /* 0056980b  mov eax, dword ptr [ecx] */
@@ -634,7 +649,7 @@ R_1:
     M32(esp) = t;
     /* 0056981f  mov ecx, eax */
     ecx = eax;
-    /* 00569821  call 0x566df0 */
+    /* 00569821  call 0x566df0  ; ClusterProjectile::ClusterProjectile */
     t = 0x00566df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00569800_2;

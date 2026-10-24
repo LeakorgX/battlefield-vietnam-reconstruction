@@ -5,8 +5,10 @@
 #include "l1.h"
 
 
-/* 006fc710  dice::bf::ai::?A0x10db9b01::BBCreateFunctionAirLift  (virtual method)
- * strings: "BBPAirLift" */
+/* 006fc710  BBCreateFunctionAirLift::vf0  (virtual method)
+ * class: dice::bf::ai::?A0x10db9b01::BBCreateFunctionAirLift
+ * strings: "BBPAirLift"
+ */
 BFV_L1_ENTRY(bfv_server_l1_006fc710, bfv_server_l1_body_006fc710);
 BFV_L1_RESUME(bfv_server_l1r_006fc710_1, bfv_server_l1_body_006fc710, 1);
 BFV_L1_RESUME(bfv_server_l1r_006fc710_2, bfv_server_l1_body_006fc710, 2);
@@ -38,7 +40,7 @@ void bfv_server_l1_body_006fc710(struct bfv_cpu *c)
     case 10: goto R_10;
     default: break;
     }
-    /* 006fc710  mov ecx, dword ptr [esp + 8] */
+    /* 006fc710  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006fc714  mov eax, dword ptr [ecx + 0x14] */
@@ -60,7 +62,7 @@ void bfv_server_l1_body_006fc710(struct bfv_cpu *c)
     t = 0xau;
     esp -= 4;
     M32(esp) = t;
-    /* 006fc71c  push 0x86df48 */
+    /* 006fc71c  push 0x86df48  ; "BBPAirLift" */
     t = 0x86df48u;
     esp -= 4;
     M32(esp) = t;
@@ -72,7 +74,7 @@ void bfv_server_l1_body_006fc710(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 006fc724  call 0x401220 */
+    /* 006fc724  call 0x401220  ; std::string::compare_chars */
     t = 0x00401220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_1;
@@ -82,7 +84,7 @@ R_1:
     /* 006fc729  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 006fc72b  mov edi, dword ptr [esp + 0x10] */
+    /* 006fc72b  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 006fc72f  jne 0x6fc75f */
@@ -91,7 +93,7 @@ R_1:
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 006fc733  call 0x403d80 */
+    /* 006fc733  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_2;
@@ -115,7 +117,7 @@ R_2:
     M32(esp) = t;
     /* 006fc740  mov ecx, eax */
     ecx = eax;
-    /* 006fc742  call 0x72d1a0 */
+    /* 006fc742  call 0x72d1a0  ; BBPAirLift::BBPAirLift */
     t = 0x0072d1a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_3;
@@ -124,7 +126,7 @@ R_2:
 R_3:
     /* 006fc747  mov ecx, eax */
     ecx = eax;
-    /* 006fc749  call 0x58a700 */
+    /* 006fc749  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_4;
@@ -142,7 +144,7 @@ L_006fc752:
     eax = r;
     /* 006fc754  mov ecx, eax */
     ecx = eax;
-    /* 006fc756  call 0x58a700 */
+    /* 006fc756  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_5;
@@ -163,7 +165,7 @@ L_006fc761:
     t = 0x34u;
     esp -= 4;
     M32(esp) = t;
-    /* 006fc763  call 0x403d80 */
+    /* 006fc763  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_6;
@@ -181,17 +183,17 @@ R_6:
     F_LOGIC(32, r);
     /* 006fc76d  je 0x6fc789 */
     if (zf) goto L_006fc789;
-    /* 006fc76f  mov ecx, dword ptr [esp + 0x2c] */
+    /* 006fc76f  mov ecx, dword ptr [esp + 0x2c]  ; arg_1c */
     ea = (uint32_t)(esp + 0x0000002cu);
     ecx = M32(ea);
-    /* 006fc773  mov edx, dword ptr [esp + 0x28] */
+    /* 006fc773  mov edx, dword ptr [esp + 0x28]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000028u);
     edx = M32(ea);
     /* 006fc777  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006fc778  mov ecx, dword ptr [esp + 0x1c] */
+    /* 006fc778  mov ecx, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 006fc77c  push edx */
@@ -212,7 +214,7 @@ R_6:
     M32(esp) = t;
     /* 006fc780  mov ecx, eax */
     ecx = eax;
-    /* 006fc782  call 0x72d090 */
+    /* 006fc782  call 0x72d090  ; BBAirLift::BBAirLift */
     t = 0x0072d090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_7;
@@ -229,14 +231,14 @@ L_006fc789:
 L_006fc78b:
     /* 006fc78b  mov ecx, eax */
     ecx = eax;
-    /* 006fc78d  call 0x58a700 */
+    /* 006fc78d  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_8;
     c->eip = t;
     goto out;
 R_8:
-    /* 006fc792  mov esi, dword ptr [esp + 0x20] */
+    /* 006fc792  mov esi, dword ptr [esp + 0x20]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000020u);
     esi = M32(ea);
     /* 006fc796  mov ebx, eax */
@@ -265,7 +267,7 @@ L_006fc7a3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006fc7a6  call 0x403df0 */
+    /* 006fc7a6  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_9;
@@ -292,7 +294,7 @@ L_006fc7b4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006fc7b5  call 0x403df0 */
+    /* 006fc7b5  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fc710_10;

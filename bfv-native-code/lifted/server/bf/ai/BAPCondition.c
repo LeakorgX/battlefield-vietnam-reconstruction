@@ -5,56 +5,10 @@
 #include "l1.h"
 
 
-/* 0072e440  dice::bf::ai::BAPCondition  (vtable store) */
-BFV_L1_ENTRY(bfv_server_l1_0072e440, bfv_server_l1_body_0072e440);
-BFV_L1_RESUME(bfv_server_l1r_0072e440_1, bfv_server_l1_body_0072e440, 1);
-void bfv_server_l1_body_0072e440(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    default: break;
-    }
-    /* 0072e440  mov eax, dword ptr [esp + 4] */
-    ea = (uint32_t)(esp + 0x00000004u);
-    eax = M32(ea);
-    /* 0072e444  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0072e445  push edx */
-    t = edx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0072e446  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0072e447  mov ecx, 0xc32040 */
-    ecx = 0xc32040u;
-    /* 0072e44c  call 0x404290 */
-    t = 0x00404290u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e440_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 0072e451  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 00741780  dice::bf::ai::BAPCondition  (vtable store) */
+/* 00741780  BAPCondition::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPCondition
+ * called by: BAPConOpLessThan<...>::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00741780, bfv_server_l1_body_00741780);
 BFV_L1_RESUME(bfv_server_l1r_00741780_1, bfv_server_l1_body_00741780, 1);
 BFV_L1_RESUME(bfv_server_l1r_00741780_2, bfv_server_l1_body_00741780, 2);
@@ -127,7 +81,7 @@ L_00741796:
     goto out;
 R_2:
 L_007417a3:
-    /* 007417a3  mov dword ptr [esi], 0x873c74 */
+    /* 007417a3  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 007417a9  pop esi */
@@ -145,7 +99,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00747c90  dice::bf::ai::BAPCondition  (vtable store) */
+/* 00747c90  BAPCondition::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPCondition
+ * called by: BAPConOpLessThan<...>::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00747c90, bfv_server_l1_body_00747c90);
 BFV_L1_RESUME(bfv_server_l1r_00747c90_1, bfv_server_l1_body_00747c90, 1);
 BFV_L1_RESUME(bfv_server_l1r_00747c90_2, bfv_server_l1_body_00747c90, 2);
@@ -218,7 +175,7 @@ L_00747ca6:
     goto out;
 R_2:
 L_00747cb3:
-    /* 00747cb3  mov dword ptr [esi], 0x873c74 */
+    /* 00747cb3  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 00747cb9  pop esi */
@@ -236,7 +193,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a95f0  dice::bf::ai::BAPCondition  (vtable store) */
+/* 007a95f0  BAPCondition::~BAPCondition  (vtable store)
+ * class: dice::bf::ai::BAPCondition
+ * called by: BAPConObjectValidYawAiming::deleting_dtor, BAPConObjectValidPitchAiming::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a95f0, bfv_server_l1_body_007a95f0);
 BFV_L1_RESUME(bfv_server_l1r_007a95f0_1, bfv_server_l1_body_007a95f0, 1);
 void bfv_server_l1_body_007a95f0(struct bfv_cpu *c)
@@ -258,14 +218,14 @@ void bfv_server_l1_body_007a95f0(struct bfv_cpu *c)
     esi = ecx;
     /* 007a95f3  lea ecx, [esi + 0x10] */
     ecx = (uint32_t)(esi + 0x00000010u);
-    /* 007a95f6  call 0x79f690 */
+    /* 007a95f6  call 0x79f690  ; stub_noop_0args_0079f690 */
     t = 0x0079f690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a95f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007a95fb  mov dword ptr [esi], 0x873c74 */
+    /* 007a95fb  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 007a9601  pop esi */

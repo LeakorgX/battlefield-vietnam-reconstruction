@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 004c17c0  dice::bf::DatabaseCompleteAckEvent  (vtable store) */
+/* 004c17c0  DatabaseCompleteAckEvent::create  (vtable store)
+ * class: dice::bf::DatabaseCompleteAckEvent
+ * also entered at 004c17f0: DatabaseCompleteAckEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c17c0, bfv_server_l1_body_004c17c0);
 BFV_L1_RESUME(bfv_server_l1r_004c17c0_1, bfv_server_l1_body_004c17c0, 1);
 void bfv_server_l1_body_004c17c0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_004c17c0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c17c0  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c17c0  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c17c6  mov eax, dword ptr [ecx] */
@@ -53,7 +56,7 @@ R_1:
     /* 004c17d8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c17df  mov dword ptr [eax], 0x81f7e8 */
+    /* 004c17df  mov dword ptr [eax], 0x81f7e8  ; vtable DatabaseCompleteAckEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f7e8u;
     /* 004c17e5  ret */
@@ -76,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c1800  dice::bf::DatabaseCompleteAckEvent  (vtable store) */
+/* 004c1800  DatabaseCompleteAckEvent::create  (vtable store)
+ * class: dice::bf::DatabaseCompleteAckEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c1800, bfv_server_l1_body_004c1800);
 BFV_L1_RESUME(bfv_server_l1r_004c1800_1, bfv_server_l1_body_004c1800, 1);
 BFV_L1_RESUME(bfv_server_l1r_004c1800_2, bfv_server_l1_body_004c1800, 2);
@@ -92,7 +97,7 @@ void bfv_server_l1_body_004c1800(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 004c1800  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c1800  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c1806  mov eax, dword ptr [ecx] */
@@ -131,14 +136,14 @@ R_1:
     if (zf) goto L_004c182c;
     /* 004c181b  mov ecx, esi */
     ecx = esi;
-    /* 004c181d  call 0x4c1850 */
+    /* 004c181d  call 0x4c1850  ; SuicideEvent::SuicideEvent */
     t = 0x004c1850u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c1800_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 004c1822  mov dword ptr [esi], 0x81f7e8 */
+    /* 004c1822  mov dword ptr [esi], 0x81f7e8  ; vtable DatabaseCompleteAckEvent */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81f7e8u;
     /* 004c1828  mov eax, esi */
@@ -151,7 +156,7 @@ L_004c182c:
     F_LOGIC(32, r);
     eax = r;
 L_004c182e:
-    /* 004c182e  mov ecx, dword ptr [esp + 8] */
+    /* 004c182e  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 004c1832  mov esi, dword ptr [ecx] */

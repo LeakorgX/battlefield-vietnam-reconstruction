@@ -1,0 +1,8 @@
+## file
+Plan builder for an aircraft roaming around an object.
+
+## 009a8620
+Records a roam target for this bot: stores the value in the per-bot array at this+0x10 and sets the per-bot flag to 1.
+
+## 009a86a0
+buildPlan: clears the current plan and resolves the stored target. The approach distance is twice the sum of the two sizes (slot 0x24). Builds a BAPAMoveTo3dObject towards the target, with a BAPConObjectVisible condition, half of a control 2 value and 50.0, wrapped in a BAPIWRoam.

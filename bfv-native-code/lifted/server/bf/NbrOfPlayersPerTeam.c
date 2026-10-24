@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0049d390  dice::bf::NbrOfPlayersPerTeam  (vtable store) */
+/* 0049d390  NbrOfPlayersPerTeam::create  (vtable store)
+ * class: dice::bf::NbrOfPlayersPerTeam
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049d390, bfv_server_l1_body_0049d390);
 BFV_L1_RESUME(bfv_server_l1r_0049d390_1, bfv_server_l1_body_0049d390, 1);
 BFV_L1_RESUME(bfv_server_l1r_0049d390_2, bfv_server_l1_body_0049d390, 2);
@@ -37,7 +39,7 @@ void bfv_server_l1_body_0049d390(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0049d394  mov edi, ecx */
     edi = ecx;
-    /* 0049d396  call 0x403d80 */
+    /* 0049d396  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d390_1;
@@ -63,14 +65,14 @@ R_1:
     M32(esp) = t;
     /* 0049d3a6  mov ecx, esi */
     ecx = esi;
-    /* 0049d3a8  call 0x4d9170 */
+    /* 0049d3a8  call 0x4d9170  ; SubChallenge::SubChallenge */
     t = 0x004d9170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d390_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0049d3ad  mov dword ptr [esi], 0x81aca8 */
+    /* 0049d3ad  mov dword ptr [esi], 0x81aca8  ; vtable NbrOfPlayersPerTeam */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81aca8u;
     /* 0049d3b3  jmp 0x49d3b7 */
@@ -81,7 +83,7 @@ L_0049d3b5:
     F_LOGIC(32, r);
     esi = r;
 L_0049d3b7:
-    /* 0049d3b7  mov ecx, dword ptr [esp + 0x14] */
+    /* 0049d3b7  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0049d3bb  test ecx, ecx */
@@ -99,7 +101,7 @@ L_0049d3b7:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0049d3c6  call 0x402690 */
+    /* 0049d3c6  call 0x402690  ; std::string::assign_cstr */
     t = 0x00402690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d390_3;
@@ -126,7 +128,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004d9230  dice::bf::NbrOfPlayersPerTeam  (virtual method) */
+/* 004d9230  NbrOfPlayersPerTeam::apply  (virtual method)
+ * overrides: SubChallenge::apply  (23 classes implement it)
+ * class: dice::bf::NbrOfPlayersPerTeam
+ */
 BFV_L1_ENTRY(bfv_server_l1_004d9230, bfv_server_l1_body_004d9230);
 BFV_L1_RESUME(bfv_server_l1r_004d9230_1, bfv_server_l1_body_004d9230, 1);
 BFV_L1_RESUME(bfv_server_l1r_004d9230_2, bfv_server_l1_body_004d9230, 2);
@@ -164,7 +169,7 @@ void bfv_server_l1_body_004d9230(struct bfv_cpu *c)
     eax = M32(ea);
     /* 004d923a  lea eax, [eax + ecx - 1] */
     eax = (uint32_t)(eax + ecx + 0xffffffffu);
-    /* 004d923e  mov ecx, dword ptr [0xc1d33c] */
+    /* 004d923e  mov ecx, dword ptr [0xc1d33c]  ; g_pIAISettingsModifier_00c1d33c */
     ea = (uint32_t)(0x00c1d33cu);
     ecx = M32(ea);
     /* 004d9244  mov edx, dword ptr [ecx] */
@@ -177,7 +182,7 @@ void bfv_server_l1_body_004d9230(struct bfv_cpu *c)
     /* 004d9247  mov dword ptr [esp + 8], eax */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = eax;
-    /* 004d924b  call dword ptr [edx + 8] */
+    /* 004d924b  call dword ptr [edx + 8]  ; -> IAISettingsModifier::vf2 = _purecall */
     ea = (uint32_t)(edx + 0x00000008u);
     t = M32(ea);
     esp -= 4;
@@ -185,10 +190,10 @@ void bfv_server_l1_body_004d9230(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 004d924e  mov ecx, dword ptr [0xbdb7a8] */
+    /* 004d924e  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
-    /* 004d9254  mov edx, dword ptr [0x80ba88] */
+    /* 004d9254  mov edx, dword ptr [0x80ba88]  ; interfaceID(GameServer) */
     ea = (uint32_t)(0x0080ba88u);
     edx = M32(ea);
     /* 004d925a  mov eax, dword ptr [ecx] */
@@ -198,11 +203,11 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 004d925e  push 0x8eaa9c */
+    /* 004d925e  push 0x8eaa9c  ; typeid(IGameServer) */
     t = 0x8eaa9cu;
     esp -= 4;
     M32(esp) = t;
-    /* 004d9263  push 0x8e5520 */
+    /* 004d9263  push 0x8e5520  ; typeid(IBase) */
     t = 0x8e5520u;
     esp -= 4;
     M32(esp) = t;
@@ -214,7 +219,7 @@ R_1:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 004d926b  call dword ptr [eax + 0xc] */
+    /* 004d926b  call dword ptr [eax + 0xc]  ; -> Armor::vf3 = Armor::queryInterface */
     ea = (uint32_t)(eax + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -226,7 +231,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004d926f  call 0x63cbf8 */
+    /* 004d926f  call 0x63cbf8  ; __RTDynamicCast */
     t = 0x0063cbf8u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004d9230_3;

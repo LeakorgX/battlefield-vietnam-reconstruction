@@ -1,0 +1,11 @@
+## file
+Plan builder for soldiers stepping out of the way of a collision.
+
+## 0098cc10
+Constructor helper: creates an empty list head at this+4 and sets the count at this+8 to 0.
+
+## 0098ccf0
+buildPlan: same approach as the 3D version on foot. Clears the bot's current plan, takes bot and obstacle positions in x/z, builds the two 45-degree diagonals from the heading, checks them with IAIPathfinding::vf15 and vf47 and picks the side that points away from the obstacle to step to.
+
+## 0098e200
+vf5: records an avoid request for this bot: sets the per-bot flag to 1, stores the obstacle point in x/z (bfv_point_xz), a value, a second position (3 floats) and a last value in the per-bot arrays.

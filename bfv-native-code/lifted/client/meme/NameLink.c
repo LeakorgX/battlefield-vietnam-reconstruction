@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00868760  dice::meme::NameLink  (vtable store) */
+/* 00868760  NameLink::~NameLink  (vtable store)
+ * class: dice::meme::NameLink
+ */
 BFV_L1_ENTRY(bfv_client_l1_00868760, bfv_client_l1_body_00868760);
 BFV_L1_RESUME(bfv_client_l1r_00868760_1, bfv_client_l1_body_00868760, 1);
 void bfv_client_l1_body_00868760(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_00868760(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00868760  mov dword ptr [ecx], 0xbd1ce4 */
+    /* 00868760  mov dword ptr [ecx], 0xbd1ce4  ; vtable NameLink */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbd1ce4u;
     /* 00868766  mov ecx, dword ptr [ecx + 4] */
@@ -57,7 +59,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00868780  dice::meme::NameLink  (virtual method) */
+/* 00868780  NameLink::deleting_dtor  (virtual method)
+ * class: dice::meme::NameLink
+ */
 BFV_L1_ENTRY(bfv_client_l1_00868780, bfv_client_l1_body_00868780);
 BFV_L1_RESUME(bfv_client_l1r_00868780_1, bfv_client_l1_body_00868780, 1);
 BFV_L1_RESUME(bfv_client_l1r_00868780_2, bfv_client_l1_body_00868780, 2);
@@ -85,7 +89,7 @@ void bfv_client_l1_body_00868780(struct bfv_cpu *c)
     /* 00868786  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00868788  mov dword ptr [esi], 0xbd1ce4 */
+    /* 00868788  mov dword ptr [esi], 0xbd1ce4  ; vtable NameLink */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd1ce4u;
     /* 0086878e  je 0x868796 */
@@ -106,7 +110,7 @@ void bfv_client_l1_body_00868780(struct bfv_cpu *c)
     goto out;
 R_1:
 L_00868796:
-    /* 00868796  test byte ptr [esp + 8], 1 */
+    /* 00868796  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -116,7 +120,7 @@ L_00868796:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086879e  call 0x403680 */
+    /* 0086879e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00868780_2;
@@ -147,7 +151,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008d0c20  dice::meme::NameLink  (virtual method) */
+/* 008d0c20  stub_return_0_2args_008d0c20  (virtual method)
+ * class: dice::meme::NameLink
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d0c20, bfv_client_l1_body_008d0c20);
 void bfv_client_l1_body_008d0c20(struct bfv_cpu *c)
 {

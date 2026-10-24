@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0068e370  dice::ref2::world::AreaObjectTemplate  (vtable store) */
+/* 0068e370  AreaObjectTemplate::AreaObjectTemplate  (vtable store)
+ * class: dice::ref2::world::AreaObjectTemplate
+ * also entered at 0068e3f0: AreaObjectTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_0068e370, bfv_client_l1_body_0068e370);
 BFV_L1_RESUME(bfv_client_l1r_0068e370_1, bfv_client_l1_body_0068e370, 1);
 void bfv_client_l1_body_0068e370(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_client_l1_body_0068e370(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0068e371  mov esi, ecx */
     esi = ecx;
-    /* 0068e373  call 0x6a52c0 */
+    /* 0068e373  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
     t = 0x006a52c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0068e370_1;
@@ -36,7 +39,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 0068e37a  mov dword ptr [esi], 0xb92b74 */
+    /* 0068e37a  mov dword ptr [esi], 0xb92b74  ; vtable AreaObjectTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb92b74u;
     /* 0068e380  mov dword ptr [esi + 4], 0xb92b58 */
@@ -106,7 +109,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0068e400  dice::ref2::world::AreaObjectTemplate  (virtual method) */
+/* 0068e400  AreaObjectTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::AreaObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0068e400, bfv_client_l1_body_0068e400);
 void bfv_client_l1_body_0068e400(struct bfv_cpu *c)
 {
@@ -115,10 +121,10 @@ void bfv_client_l1_body_0068e400(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0068e400  mov eax, dword ptr [esp + 4] */
+    /* 0068e400  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 0068e404  cmp eax, dword ptr [0xb77f4c] */
+    /* 0068e404  cmp eax, dword ptr [0xb77f4c]  ; AreaObjectTemplate::classID */
     ea = (uint32_t)(0x00b77f4cu);
     a = eax;
     b = M32(ea);
@@ -133,10 +139,10 @@ void bfv_client_l1_body_0068e400(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_0068e411:
-    /* 0068e411  mov dword ptr [esp + 4], eax */
+    /* 0068e411  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 0068e415  jmp 0x6a4250 */
+    /* 0068e415  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));
@@ -146,7 +152,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0068e420  (between same file) */
+/* 0068e420  AreaObjectTemplate::deleting_dtor_adjustor4_0068e420  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0068e420, bfv_client_l1_body_0068e420);
 void bfv_client_l1_body_0068e420(struct bfv_cpu *c)
 {
@@ -161,7 +168,7 @@ void bfv_client_l1_body_0068e420(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0068e423  jmp 0x68e480 */
+    /* 0068e423  jmp 0x68e480  ; AreaObjectTemplate::deleting_dtor */
     c->eip = 0x0068e480u;
     goto out;
 out: __attribute__((unused));
@@ -171,7 +178,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0068e430  (between same file) */
+/* 0068e430  AreaObjectTemplate::deleting_dtor_adjustor120_0068e430  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0068e430, bfv_client_l1_body_0068e430);
 void bfv_client_l1_body_0068e430(struct bfv_cpu *c)
 {
@@ -186,7 +194,7 @@ void bfv_client_l1_body_0068e430(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0068e433  jmp 0x68e480 */
+    /* 0068e433  jmp 0x68e480  ; AreaObjectTemplate::deleting_dtor */
     c->eip = 0x0068e480u;
     goto out;
 out: __attribute__((unused));
@@ -196,7 +204,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0068e440  (between same file) */
+/* 0068e440  AreaObjectTemplate::deleting_dtor_adjustor444_0068e440  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0068e440, bfv_client_l1_body_0068e440);
 void bfv_client_l1_body_0068e440(struct bfv_cpu *c)
 {
@@ -211,7 +220,7 @@ void bfv_client_l1_body_0068e440(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0068e446  jmp 0x68e480 */
+    /* 0068e446  jmp 0x68e480  ; AreaObjectTemplate::deleting_dtor */
     c->eip = 0x0068e480u;
     goto out;
 out: __attribute__((unused));
@@ -221,7 +230,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0068e450  dice::ref2::world::AreaObjectTemplate  (virtual method) */
+/* 0068e450  AreaObjectTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::AreaObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0068e450, bfv_client_l1_body_0068e450);
 BFV_L1_RESUME(bfv_client_l1r_0068e450_1, bfv_client_l1_body_0068e450, 1);
 BFV_L1_RESUME(bfv_client_l1r_0068e450_2, bfv_client_l1_body_0068e450, 2);
@@ -247,7 +259,7 @@ void bfv_client_l1_body_0068e450(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0068e456  mov esi, ecx */
     esi = ecx;
-    /* 0068e458  call 0x403610 */
+    /* 0068e458  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0068e450_1;
@@ -271,7 +283,7 @@ R_1:
     M32(esp) = t;
     /* 0068e465  mov ecx, eax */
     ecx = eax;
-    /* 0068e467  call 0x68d7c0 */
+    /* 0068e467  call 0x68d7c0  ; AreaObject::AreaObject */
     t = 0x0068d7c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0068e450_2;
@@ -306,7 +318,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0068e480  dice::ref2::world::AreaObjectTemplate  (virtual method) */
+/* 0068e480  AreaObjectTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::AreaObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0068e480, bfv_client_l1_body_0068e480);
 BFV_L1_RESUME(bfv_client_l1r_0068e480_1, bfv_client_l1_body_0068e480, 1);
 BFV_L1_RESUME(bfv_client_l1r_0068e480_2, bfv_client_l1_body_0068e480, 2);
@@ -332,7 +347,7 @@ void bfv_client_l1_body_0068e480(struct bfv_cpu *c)
     esi = ecx;
     /* 0068e483  lea ecx, [esi + 0x1d8] */
     ecx = (uint32_t)(esi + 0x000001d8u);
-    /* 0068e489  call 0x490610 */
+    /* 0068e489  call 0x490610  ; bfv_query_vector_destroy */
     t = 0x00490610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0068e480_1;
@@ -341,14 +356,14 @@ void bfv_client_l1_body_0068e480(struct bfv_cpu *c)
 R_1:
     /* 0068e48e  mov ecx, esi */
     ecx = esi;
-    /* 0068e490  call 0x6a4480 */
+    /* 0068e490  call 0x6a4480  ; BundleTemplate::~BundleTemplate */
     t = 0x006a4480u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0068e480_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0068e495  test byte ptr [esp + 8], 1 */
+    /* 0068e495  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -358,7 +373,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0068e49d  call 0x403680 */
+    /* 0068e49d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0068e480_3;

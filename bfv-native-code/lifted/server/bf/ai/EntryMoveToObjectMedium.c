@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0075e870  dice::bf::ai::EntryMoveToObjectMedium  (vtable store) */
+/* 0075e870  EntryMoveToObjectMedium::EntryMoveToObjectMedium  (vtable store)
+ * class: dice::bf::ai::EntryMoveToObjectMedium
+ * also entered at 0075e880: EntryMoveToObjectMedium::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_0075e870, bfv_server_l1_body_0075e870);
 void bfv_server_l1_body_0075e870(struct bfv_cpu *c)
 {
@@ -16,7 +20,7 @@ void bfv_server_l1_body_0075e870(struct bfv_cpu *c)
     uint32_t ea;
     /* 0075e870  mov eax, ecx */
     eax = ecx;
-    /* 0075e872  mov dword ptr [eax], 0x874e74 */
+    /* 0075e872  mov dword ptr [eax], 0x874e74  ; vtable EntryMoveToObjectMedium */
     ea = (uint32_t)(eax);
     M32(ea) = 0x874e74u;
     /* 0075e878  ret */

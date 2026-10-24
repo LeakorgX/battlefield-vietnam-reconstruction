@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00871530  dice::meme::ModifyVariableAction  (virtual method)
- * strings: "Variable", "Modify value", "Limit value" */
+/* 00871530  ModifyVariableAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::ModifyVariableAction
+ * strings: "Variable", "Modify value", "Limit value"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871530, bfv_client_l1_body_00871530);
 BFV_L1_RESUME(bfv_client_l1r_00871530_1, bfv_client_l1_body_00871530, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871530_2, bfv_client_l1_body_00871530, 2);
@@ -30,14 +33,14 @@ void bfv_client_l1_body_00871530(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00871531  mov ebx, dword ptr [esp + 8] */
+    /* 00871531  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00871535  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00871536  mov esi, dword ptr [esp + 0x10] */
+    /* 00871536  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 0087153a  push edi */
@@ -54,7 +57,7 @@ void bfv_client_l1_body_00871530(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087153d  mov edi, ecx */
     edi = ecx;
-    /* 0087153f  call 0xa7d100 */
+    /* 0087153f  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871530_1;
@@ -95,11 +98,11 @@ L_00871550:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871554  push 0xbd33e8 */
+    /* 00871554  push 0xbd33e8  ; "Variable" */
     t = 0xbd33e8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871559  lea ecx, [edi + 8] */
+    /* 00871559  lea ecx, [edi + 8]  ; field Variable (serialized) */
     ecx = (uint32_t)(edi + 0x00000008u);
     /* 0087155c  push ecx */
     t = ecx;
@@ -127,7 +130,7 @@ R_2:
     /* 00871567  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00871569  push 0xbd5a40 */
+    /* 00871569  push 0xbd5a40  ; "Modify value" */
     t = 0xbd5a40u;
     esp -= 4;
     M32(esp) = t;
@@ -155,7 +158,7 @@ R_3:
     /* 0087157b  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0087157d  push 0xbd5a34 */
+    /* 0087157d  push 0xbd5a34  ; "Limit value" */
     t = 0xbd5a34u;
     esp -= 4;
     M32(esp) = t;
@@ -207,7 +210,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008715a0  dice::meme::ModifyVariableAction  (virtual method) */
+/* 008715a0  ModifyVariableAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::ModifyVariableAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_008715a0, bfv_client_l1_body_008715a0);
 BFV_L1_RESUME(bfv_client_l1r_008715a0_1, bfv_client_l1_body_008715a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008715a0_2, bfv_client_l1_body_008715a0, 2);
@@ -233,7 +239,7 @@ void bfv_client_l1_body_008715a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008715a1  mov esi, ecx */
     esi = ecx;
-    /* 008715a3  mov eax, dword ptr [esi + 8] */
+    /* 008715a3  mov eax, dword ptr [esi + 8]  ; field Variable */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
     /* 008715a6  test eax, eax */
@@ -245,7 +251,7 @@ void bfv_client_l1_body_008715a0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008715af  mov edi, dword ptr [esp + 0xc] */
+    /* 008715af  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 008715b3  mov ecx, eax */
@@ -268,13 +274,13 @@ R_1:
     /* 008715bb  fadd dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008715be  fst dword ptr [esp + 0xc] */
+    /* 008715be  fst dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008715c2  fld dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008715c5  fcomp dword ptr [0xb44444] */
+    /* 008715c5  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008715cb  fnstsw ax */
@@ -297,13 +303,13 @@ R_1:
     /* 008715dc  mov ecx, dword ptr [esi + 0x10] */
     ea = (uint32_t)(esi + 0x00000010u);
     ecx = M32(ea);
-    /* 008715df  mov dword ptr [esp + 0xc], ecx */
+    /* 008715df  mov dword ptr [esp + 0xc], ecx  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = ecx;
-    /* 008715e3  mov edx, dword ptr [esp + 0xc] */
+    /* 008715e3  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
-    /* 008715e7  mov ecx, dword ptr [esi + 8] */
+    /* 008715e7  mov ecx, dword ptr [esi + 8]  ; field Variable */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
     /* 008715ea  mov eax, dword ptr [ecx] */
@@ -345,7 +351,7 @@ L_008715f8:
     /* 008715f8  fld dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008715fb  fcomp dword ptr [0xb44444] */
+    /* 008715fb  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00871601  fnstsw ax */
@@ -368,7 +374,7 @@ L_008715f8:
     /* 00871612  mov edx, dword ptr [esi + 0x10] */
     ea = (uint32_t)(esi + 0x00000010u);
     edx = M32(ea);
-    /* 00871615  mov ecx, dword ptr [esi + 8] */
+    /* 00871615  mov ecx, dword ptr [esi + 8]  ; field Variable */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
     /* 00871618  mov eax, dword ptr [ecx] */
@@ -382,7 +388,7 @@ L_008715f8:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0087161c  mov dword ptr [esp + 0x14], edx */
+    /* 0087161c  mov dword ptr [esp + 0x14], edx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
     /* 00871620  call dword ptr [eax + 0x50] */
@@ -413,10 +419,10 @@ L_0087162a:
     /* 0087162a  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
 L_0087162c:
-    /* 0087162c  mov edx, dword ptr [esp + 0xc] */
+    /* 0087162c  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
-    /* 00871630  mov ecx, dword ptr [esi + 8] */
+    /* 00871630  mov ecx, dword ptr [esi + 8]  ; field Variable */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
     /* 00871633  mov eax, dword ptr [ecx] */
@@ -462,7 +468,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00871ab0  dice::meme::ModifyVariableAction  (vtable store) */
+/* 00871ab0  ModifyVariableAction::create  (vtable store)
+ * class: dice::meme::ModifyVariableAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871ab0, bfv_client_l1_body_00871ab0);
 BFV_L1_RESUME(bfv_client_l1r_00871ab0_1, bfv_client_l1_body_00871ab0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871ab0_2, bfv_client_l1_body_00871ab0, 2);
@@ -486,7 +494,7 @@ void bfv_client_l1_body_00871ab0(struct bfv_cpu *c)
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871ab3  call 0x403610 */
+    /* 00871ab3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871ab0_1;
@@ -508,14 +516,14 @@ R_1:
     if (zf) goto L_00871ae7;
     /* 00871ac1  mov ecx, esi */
     ecx = esi;
-    /* 00871ac3  call 0x874870 */
+    /* 00871ac3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871ab0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00871ac8  mov dword ptr [esi], 0xbd59ec */
+    /* 00871ac8  mov dword ptr [esi], 0xbd59ec  ; vtable ModifyVariableAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd59ecu;
     /* 00871ace  mov dword ptr [esi + 8], 0 */
@@ -557,8 +565,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00871e10  dice::meme::ModifyVariableAction  (virtual method)
- * strings: "dice::meme::ModifyVariableAction" */
+/* 00871e10  ModifyVariableAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::ModifyVariableAction
+ * strings: "dice::meme::ModifyVariableAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871e10, bfv_client_l1_body_00871e10);
 BFV_L1_RESUME(bfv_client_l1r_00871e10_1, bfv_client_l1_body_00871e10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871e10_2, bfv_client_l1_body_00871e10, 2);
@@ -589,13 +600,13 @@ void bfv_client_l1_body_00871e10(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00871e25  push 0xbd5d8c */
+    /* 00871e25  push 0xbd5d8c  ; "dice::meme::ModifyVariableAction" */
     t = 0xbd5d8cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00871e2a  mov ecx, 0xdf6708 */
+    /* 00871e2a  mov ecx, 0xdf6708  ; g_RuntimeClass_ModifyVariableAction */
     ecx = 0xdf6708u;
-    /* 00871e2f  call 0x875490 */
+    /* 00871e2f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871e10_1;
@@ -606,10 +617,10 @@ R_1:
     t = 0xb3ae20u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871e39  mov dword ptr [0xdf6708], 0xbd5b3c */
+    /* 00871e39  mov dword ptr [0xdf6708], 0xbd5b3c  ; g_RuntimeClass_ModifyVariableAction */
     ea = (uint32_t)(0x00df6708u);
     M32(ea) = 0xbd5b3cu;
-    /* 00871e43  call 0x7c2cd2 */
+    /* 00871e43  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871e10_2;
@@ -623,7 +634,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00871e4b:
-    /* 00871e4b  mov eax, 0xdf6708 */
+    /* 00871e4b  mov eax, 0xdf6708  ; g_RuntimeClass_ModifyVariableAction */
     eax = 0xdf6708u;
     /* 00871e50  ret */
     c->eip = M32(esp);

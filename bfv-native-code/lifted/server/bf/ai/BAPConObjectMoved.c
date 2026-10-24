@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a6730  dice::bf::ai::BAPConObjectMoved  (vtable store) */
+/* 007a6730  BAPConObjectMoved::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPConObjectMoved
+ * called by: BBPChange::buildPlan, BBPMedicAssist::buildPlan, BBPGotoWaypointSoldier::buildPlan, BBPGotoWaypoint2d::buildPlan, BBPFireInfantery_00744030, BBPFire2dDriver::buildPlan
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6730, bfv_server_l1_body_007a6730);
 void bfv_server_l1_body_007a6730(struct bfv_cpu *c)
 {
@@ -14,15 +17,15 @@ void bfv_server_l1_body_007a6730(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007a6730  fld dword ptr [esp + 8] */
+    /* 007a6730  fld dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007a6734  mov eax, ecx */
     eax = ecx;
-    /* 007a6736  fmul dword ptr [esp + 8] */
+    /* 007a6736  fmul dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007a673a  mov ecx, dword ptr [esp + 4] */
+    /* 007a673a  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007a673e  mov dword ptr [eax + 4], 0 */
@@ -34,7 +37,7 @@ void bfv_server_l1_body_007a6730(struct bfv_cpu *c)
     /* 007a6748  fstp dword ptr [eax + 0x18] */
     ea = (uint32_t)(eax + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007a674b  mov dword ptr [eax], 0x87916c */
+    /* 007a674b  mov dword ptr [eax], 0x87916c  ; vtable BAPConObjectMoved */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87916cu;
     /* 007a6751  ret 8 */
@@ -48,7 +51,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a6760  dice::bf::ai::BAPConObjectMoved  (virtual method) */
+/* 007a6760  BAPConObjectMoved::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectMoved
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6760, bfv_server_l1_body_007a6760);
 BFV_L1_RESUME(bfv_server_l1r_007a6760_1, bfv_server_l1_body_007a6760, 1);
 void bfv_server_l1_body_007a6760(struct bfv_cpu *c)
@@ -62,7 +68,7 @@ void bfv_server_l1_body_007a6760(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a6760  test byte ptr [esp + 4], 1 */
+    /* 007a6760  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -72,7 +78,7 @@ void bfv_server_l1_body_007a6760(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a6766  mov esi, ecx */
     esi = ecx;
-    /* 007a6768  mov dword ptr [esi], 0x873c74 */
+    /* 007a6768  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 007a676e  je 0x7a677b */
@@ -81,9 +87,9 @@ void bfv_server_l1_body_007a6760(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a6771  mov ecx, 0xc32500 */
+    /* 007a6771  mov ecx, 0xc32500  ; g_MemoryPoolNull_BAPConObjectMoved */
     ecx = 0xc32500u;
-    /* 007a6776  call 0x413600 */
+    /* 007a6776  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a6760_1;
@@ -108,7 +114,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a6790  dice::bf::ai::BAPConObjectMoved  (virtual method) */
+/* 007a6790  BAPConObjectMoved::evaluate  (virtual method)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectMoved
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6790, bfv_server_l1_body_007a6790);
 BFV_L1_RESUME(bfv_server_l1r_007a6790_1, bfv_server_l1_body_007a6790, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a6790_2, bfv_server_l1_body_007a6790, 2);
@@ -149,7 +158,7 @@ void bfv_server_l1_body_007a6790(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a67a0  je 0x7a6817 */
     if (zf) goto L_007a6817;
-    /* 007a67a2  mov edx, dword ptr [0xc2f7c0] */
+    /* 007a67a2  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 007a67a8  mov edx, dword ptr [edx] */

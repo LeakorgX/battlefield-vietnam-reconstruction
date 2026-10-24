@@ -1,0 +1,5 @@
+## file
+Plan condition: precision check for dropping a bomb, comparing the predicted impact point with the target.
+
+## 009f8d60
+Uses the aiming component at this+0xc; false unless it is ready (vf10) and the bot's own object resolves. Reads the aim point, target point and lead time, and the predicted point (slot 0x3c). The first part runs the same minimum-error tracking as BAPCConPrecision3d with the squared tolerance in this+8 and the minimum in this+0x10. If that does not decide, it asks slot 0x40 for an impact estimate, draws a debug line from the weapon matrix translation in green (0xff00, width 0.05) with IAIDebugRenderer::vf1, gets the impact point (slot 0x30) and runs the same test against it, keeping its minimum in this+0x14. this+0x18 selects the minimum-tracking mode.

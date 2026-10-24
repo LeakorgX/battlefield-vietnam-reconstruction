@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0074dd20  dice::ref2::geom::PatchTerrainShader  (virtual method) */
+/* 0074dd20  PatchTerrainShader::vf4  (virtual method)
+ * overrides: IShader::vf4  (4 classes implement it)
+ * class: dice::ref2::geom::PatchTerrainShader
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074dd20, bfv_client_l1_body_0074dd20);
 void bfv_client_l1_body_0074dd20(struct bfv_cpu *c)
 {
@@ -47,7 +50,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0074df00  dice::ref2::geom::PatchTerrainShader  (virtual method) */
+/* 0074df00  PatchTerrainShader::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::geom::PatchTerrainShader
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074df00, bfv_client_l1_body_0074df00);
 void bfv_client_l1_body_0074df00(struct bfv_cpu *c)
 {
@@ -56,12 +62,12 @@ void bfv_client_l1_body_0074df00(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 0074df00  mov edx, dword ptr [0xb42718] */
+    /* 0074df00  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 0074df06  mov eax, ecx */
     eax = ecx;
-    /* 0074df08  mov ecx, dword ptr [esp + 4] */
+    /* 0074df08  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0074df0c  cmp ecx, edx */
@@ -114,7 +120,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0074f440  dice::ref2::geom::PatchTerrainShader  (virtual method) */
+/* 0074f440  PatchTerrainShader::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::geom::PatchTerrainShader
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074f440, bfv_client_l1_body_0074f440);
 BFV_L1_RESUME(bfv_client_l1r_0074f440_1, bfv_client_l1_body_0074f440, 1);
 BFV_L1_RESUME(bfv_client_l1r_0074f440_2, bfv_client_l1_body_0074f440, 2);
@@ -145,10 +154,10 @@ void bfv_client_l1_body_0074f440(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0074f447  mov dword ptr [esi], 0xbae108 */
+    /* 0074f447  mov dword ptr [esi], 0xbae108  ; vtable PatchTerrainShader */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbae108u;
-    /* 0074f44d  call 0x74ed00 */
+    /* 0074f44d  call 0x74ed00  ; PatchTerrainShader::deleting_dtor_helper_0074ed00 */
     t = 0x0074ed00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074f440_1;
@@ -169,11 +178,11 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 0074f45a  test byte ptr [esp + 8], 1 */
+    /* 0074f45a  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0074f45f  mov dword ptr [esi], 0xb4274c */
+    /* 0074f45f  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 0074f465  je 0x74f470 */
@@ -182,7 +191,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0074f468  call 0x403680 */
+    /* 0074f468  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074f440_3;

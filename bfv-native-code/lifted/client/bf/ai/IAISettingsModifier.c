@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 008dfc70  dice::bf::ai::IAISettingsModifier  (virtual method) */
+/* 008dfc70  IAISettingsModifier::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAISettingsModifier
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dfc70, bfv_client_l1_body_008dfc70);
 BFV_L1_RESUME(bfv_client_l1r_008dfc70_1, bfv_client_l1_body_008dfc70, 1);
 void bfv_client_l1_body_008dfc70(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_008dfc70(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 008dfc70  test byte ptr [esp + 4], 1 */
+    /* 008dfc70  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,10 +31,10 @@ void bfv_client_l1_body_008dfc70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008dfc76  mov esi, ecx */
     esi = ecx;
-    /* 008dfc78  mov dword ptr [esi], 0xbe12d4 */
+    /* 008dfc78  mov dword ptr [esi], 0xbe12d4  ; vtable IAISettingsModifier */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe12d4u;
-    /* 008dfc7e  mov dword ptr [0xdfa8d0], 0 */
+    /* 008dfc7e  mov dword ptr [0xdfa8d0], 0  ; g_pIAISettingsModifier_00dfa8d0 */
     ea = (uint32_t)(0x00dfa8d0u);
     M32(ea) = 0x0u;
     /* 008dfc88  je 0x8dfc93 */
@@ -41,7 +43,7 @@ void bfv_client_l1_body_008dfc70(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008dfc8b  call 0x403680 */
+    /* 008dfc8b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfc70_1;
@@ -72,7 +74,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008dfca0  dice::bf::ai::IAISettingsModifier  (vtable store) */
+/* 008dfca0  IAISettingsModifier::IAISettingsModifier  (vtable store)
+ * class: dice::bf::ai::IAISettingsModifier
+ * called by: AISettings::AISettings
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dfca0, bfv_client_l1_body_008dfca0);
 void bfv_client_l1_body_008dfca0(struct bfv_cpu *c)
 {
@@ -83,10 +88,10 @@ void bfv_client_l1_body_008dfca0(struct bfv_cpu *c)
     uint32_t ea;
     /* 008dfca0  mov eax, ecx */
     eax = ecx;
-    /* 008dfca2  mov dword ptr [eax], 0xbe12d4 */
+    /* 008dfca2  mov dword ptr [eax], 0xbe12d4  ; vtable IAISettingsModifier */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbe12d4u;
-    /* 008dfca8  mov dword ptr [0xdfa8d0], eax */
+    /* 008dfca8  mov dword ptr [0xdfa8d0], eax  ; g_pIAISettingsModifier_00dfa8d0 */
     ea = (uint32_t)(0x00dfa8d0u);
     M32(ea) = eax;
     /* 008dfcad  ret */

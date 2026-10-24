@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0087a800  dice::meme::Tree  (vtable store) */
+/* 0087a800  Tree::Tree  (vtable store)
+ * class: dice::meme::Tree
+ * called by: NavigateTree::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087a800, bfv_client_l1_body_0087a800);
 BFV_L1_RESUME(bfv_client_l1r_0087a800_1, bfv_client_l1_body_0087a800, 1);
 void bfv_client_l1_body_0087a800(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_client_l1_body_0087a800(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087a801  mov esi, ecx */
     esi = ecx;
-    /* 0087a803  call 0x874870 */
+    /* 0087a803  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087a800_1;
@@ -42,7 +45,7 @@ R_1:
     /* 0087a80d  mov dword ptr [esi + 0xc], eax */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = eax;
-    /* 0087a810  mov dword ptr [esi], 0xbd7a1c */
+    /* 0087a810  mov dword ptr [esi], 0xbd7a1c  ; vtable Tree */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd7a1cu;
     /* 0087a816  mov eax, esi */
@@ -62,7 +65,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087a820  dice::meme::Tree  (vtable store) */
+/* 0087a820  Tree::~Tree  (vtable store)
+ * class: dice::meme::Tree
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087a820, bfv_client_l1_body_0087a820);
 BFV_L1_RESUME(bfv_client_l1r_0087a820_1, bfv_client_l1_body_0087a820, 1);
 void bfv_client_l1_body_0087a820(struct bfv_cpu *c)
@@ -84,10 +89,10 @@ void bfv_client_l1_body_0087a820(struct bfv_cpu *c)
     esi = ecx;
     /* 0087a823  lea ecx, [esi + 0xc] */
     ecx = (uint32_t)(esi + 0x0000000cu);
-    /* 0087a826  mov dword ptr [esi], 0xbd7a1c */
+    /* 0087a826  mov dword ptr [esi], 0xbd7a1c  ; vtable Tree */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd7a1cu;
-    /* 0087a82c  call 0x8776e0 */
+    /* 0087a82c  call 0x8776e0  ; Buffer::release */
     t = 0x008776e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087a820_1;
@@ -100,7 +105,7 @@ R_1:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 0087a834  jmp 0x874880 */
+    /* 0087a834  jmp 0x874880  ; RuntimeObject::~RuntimeObject */
     c->eip = 0x00874880u;
     goto out;
 out: __attribute__((unused));
@@ -110,7 +115,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087a8c0  dice::meme::Tree  (virtual method) */
+/* 0087a8c0  Tree::vf17  (virtual method)
+ * class: dice::meme::Tree
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087a8c0, bfv_client_l1_body_0087a8c0);
 void bfv_client_l1_body_0087a8c0(struct bfv_cpu *c)
 {
@@ -119,7 +126,7 @@ void bfv_client_l1_body_0087a8c0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 0087a8c0  mov eax, dword ptr [esp + 0xc] */
+    /* 0087a8c0  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0087a8c4  mov byte ptr [eax], 0 */
@@ -140,7 +147,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087a8d0  (between same file) */
+/* 0087a8d0  Tree_0087a8d0  (between same file)
+ * called by: NavigateNextSiblingAction::execute_helper_00ac41f0, NavigatePreviousSiblingAction::execute_helper_00ac4220, NavigateFirstSiblingAction::execute_helper_00ac4250, NavigateLastSiblingAction::execute_helper_00ac4280, NavigateSiblingIndexAction::execute_helper_00ac42b0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087a8d0, bfv_client_l1_body_0087a8d0);
 void bfv_client_l1_body_0087a8d0(struct bfv_cpu *c)
 {
@@ -149,7 +158,7 @@ void bfv_client_l1_body_0087a8d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 0087a8d0  mov eax, dword ptr [esp + 4] */
+    /* 0087a8d0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0087a8d4  test eax, eax */
@@ -188,7 +197,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087a8f0  dice::meme::Tree  (virtual method) */
+/* 0087a8f0  Tree::vf19  (virtual method)
+ * class: dice::meme::Tree
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087a8f0, bfv_client_l1_body_0087a8f0);
 BFV_L1_RESUME(bfv_client_l1r_0087a8f0_1, bfv_client_l1_body_0087a8f0, 1);
 void bfv_client_l1_body_0087a8f0(struct bfv_cpu *c)
@@ -206,7 +217,7 @@ void bfv_client_l1_body_0087a8f0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0087a8f1  mov esi, dword ptr [esp + 0xc] */
+    /* 0087a8f1  mov esi, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 0087a8f5  mov ecx, dword ptr [esi] */
@@ -251,7 +262,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087abe0  dice::meme::Tree  (vtable store) */
+/* 0087abe0  Tree::create  (vtable store)
+ * class: dice::meme::Tree
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087abe0, bfv_client_l1_body_0087abe0);
 BFV_L1_RESUME(bfv_client_l1r_0087abe0_1, bfv_client_l1_body_0087abe0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087abe0_2, bfv_client_l1_body_0087abe0, 2);
@@ -275,7 +288,7 @@ void bfv_client_l1_body_0087abe0(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 0087abe3  call 0x403610 */
+    /* 0087abe3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087abe0_1;
@@ -297,14 +310,14 @@ R_1:
     if (zf) goto L_0087ac10;
     /* 0087abf1  mov ecx, esi */
     ecx = esi;
-    /* 0087abf3  call 0x874870 */
+    /* 0087abf3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087abe0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0087abf8  mov dword ptr [esi], 0xbd7a1c */
+    /* 0087abf8  mov dword ptr [esi], 0xbd7a1c  ; vtable Tree */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd7a1cu;
     /* 0087abfe  mov dword ptr [esi + 8], 0 */
@@ -343,7 +356,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0087ac20  (between same file) */
+/* 0087ac20  ClassTemplate<Tree,Object>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087ac20, bfv_client_l1_body_0087ac20);
 void bfv_client_l1_body_0087ac20(struct bfv_cpu *c)
 {
@@ -369,7 +383,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0087ac30  (between same file) */
+/* 0087ac30  ClassTemplate<Tree,Object>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087ac30, bfv_client_l1_body_0087ac30);
 void bfv_client_l1_body_0087ac30(struct bfv_cpu *c)
 {
@@ -395,7 +410,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087ac50  dice::meme::Tree  (virtual method) */
+/* 0087ac50  Tree::deleting_dtor  (virtual method)
+ * overrides: RuntimeObject::vf0  (219 classes implement it)
+ * class: dice::meme::Tree
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087ac50, bfv_client_l1_body_0087ac50);
 BFV_L1_RESUME(bfv_client_l1r_0087ac50_1, bfv_client_l1_body_0087ac50, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087ac50_2, bfv_client_l1_body_0087ac50, 2);
@@ -421,10 +439,10 @@ void bfv_client_l1_body_0087ac50(struct bfv_cpu *c)
     esi = ecx;
     /* 0087ac53  lea ecx, [esi + 0xc] */
     ecx = (uint32_t)(esi + 0x0000000cu);
-    /* 0087ac56  mov dword ptr [esi], 0xbd7a1c */
+    /* 0087ac56  mov dword ptr [esi], 0xbd7a1c  ; vtable Tree */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd7a1cu;
-    /* 0087ac5c  call 0x8776e0 */
+    /* 0087ac5c  call 0x8776e0  ; Buffer::release */
     t = 0x008776e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ac50_1;
@@ -433,14 +451,14 @@ void bfv_client_l1_body_0087ac50(struct bfv_cpu *c)
 R_1:
     /* 0087ac61  mov ecx, esi */
     ecx = esi;
-    /* 0087ac63  call 0x874880 */
+    /* 0087ac63  call 0x874880  ; RuntimeObject::~RuntimeObject */
     t = 0x00874880u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ac50_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0087ac68  test byte ptr [esp + 8], 1 */
+    /* 0087ac68  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -450,7 +468,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0087ac70  call 0x403680 */
+    /* 0087ac70  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ac50_3;
@@ -481,7 +499,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087ac80  (between same file) */
+/* 0087ac80  Tree_0087ac80  (between same file)
+ * called by: NavigateFirstSiblingAction::execute_helper_00ac4250, NavigateSiblingIndexAction::execute_helper_00ac42b0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087ac80, bfv_client_l1_body_0087ac80);
 BFV_L1_RESUME(bfv_client_l1r_0087ac80_1, bfv_client_l1_body_0087ac80, 1);
 void bfv_client_l1_body_0087ac80(struct bfv_cpu *c)
@@ -495,7 +515,7 @@ void bfv_client_l1_body_0087ac80(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0087ac80  mov eax, dword ptr [esp + 4] */
+    /* 0087ac80  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0087ac84  test eax, eax */
@@ -516,7 +536,7 @@ L_0087ac8b:
     F_LOGIC(32, r);
     /* 0087ac90  je 0x87ac97 */
     if (zf) goto L_0087ac97;
-    /* 0087ac92  call 0x87a950 */
+    /* 0087ac92  call 0x87a950  ; Tree_helper_0087a950 */
     t = 0x0087a950u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ac80_1;
@@ -535,7 +555,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087aca0  (between same file) */
+/* 0087aca0  NavigateLastSiblingAction::execute_helper_0087aca0  (between same file)
+ * called by: NavigateLastSiblingAction::execute_helper_00ac4280
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087aca0, bfv_client_l1_body_0087aca0);
 BFV_L1_RESUME(bfv_client_l1r_0087aca0_1, bfv_client_l1_body_0087aca0, 1);
 void bfv_client_l1_body_0087aca0(struct bfv_cpu *c)
@@ -549,7 +571,7 @@ void bfv_client_l1_body_0087aca0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0087aca0  mov eax, dword ptr [esp + 4] */
+    /* 0087aca0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0087aca4  test eax, eax */
@@ -570,7 +592,7 @@ L_0087acab:
     F_LOGIC(32, r);
     /* 0087acb0  je 0x87acb7 */
     if (zf) goto L_0087acb7;
-    /* 0087acb2  call 0x87a970 */
+    /* 0087acb2  call 0x87a970  ; Tree_helper_0087a970 */
     t = 0x0087a970u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087aca0_1;
@@ -589,7 +611,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087acc0  dice::meme::Tree  (virtual method) */
+/* 0087acc0  Tree::vf12  (virtual method)
+ * overrides: Object::vf12  (205 classes implement it)
+ * class: dice::meme::Tree
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087acc0, bfv_client_l1_body_0087acc0);
 BFV_L1_RESUME(bfv_client_l1r_0087acc0_1, bfv_client_l1_body_0087acc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087acc0_2, bfv_client_l1_body_0087acc0, 2);
@@ -609,7 +634,7 @@ void bfv_client_l1_body_0087acc0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087acc1  mov ebx, dword ptr [esp + 8] */
+    /* 0087acc1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0087acc5  push esi */
@@ -620,7 +645,7 @@ void bfv_client_l1_body_0087acc0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0087acc7  mov edi, dword ptr [esp + 0x14] */
+    /* 0087acc7  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 0087accb  push edi */
@@ -633,7 +658,7 @@ void bfv_client_l1_body_0087acc0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087accd  mov esi, ecx */
     esi = ecx;
-    /* 0087accf  call 0x874b30 */
+    /* 0087accf  call 0x874b30  ; Object::vf12 */
     t = 0x00874b30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087acc0_1;
@@ -676,7 +701,7 @@ L_0087acde:
     edx = esi;
     /* 0087ace5  mov ecx, ebx */
     ecx = ebx;
-    /* 0087ace7  call 0x87a990 */
+    /* 0087ace7  call 0x87a990  ; Tree::vf12_helper_0087a990 */
     t = 0x0087a990u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087acc0_2;
@@ -706,7 +731,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087ad00  dice::meme::Tree  (virtual method) */
+/* 0087ad00  Tree::createObject  (virtual method)
+ * class: dice::meme::Tree
+ * also entered at 0087ad50: TreeObject::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087ad00, bfv_client_l1_body_0087ad00);
 BFV_L1_RESUME(bfv_client_l1r_0087ad00_1, bfv_client_l1_body_0087ad00, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087ad00_2, bfv_client_l1_body_0087ad00, 2);
@@ -730,7 +758,7 @@ void bfv_client_l1_body_0087ad00(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 0087ad03  call 0x403610 */
+    /* 0087ad03  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ad00_1;
@@ -752,32 +780,32 @@ R_1:
     if (zf) goto L_0087ad40;
     /* 0087ad11  mov ecx, esi */
     ecx = esi;
-    /* 0087ad13  call 0x874870 */
+    /* 0087ad13  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ad00_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0087ad18  mov eax, dword ptr [esp + 0x14] */
+    /* 0087ad18  mov eax, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
-    /* 0087ad1c  mov ecx, dword ptr [esp + 0x10] */
+    /* 0087ad1c  mov ecx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 0087ad20  mov edx, dword ptr [esp + 0x18] */
+    /* 0087ad20  mov edx, dword ptr [esp + 0x18]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     edx = M32(ea);
     /* 0087ad24  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 0087ad27  mov eax, dword ptr [esp + 0xc] */
+    /* 0087ad27  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0087ad2b  mov dword ptr [esi + 0x14], eax */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = eax;
-    /* 0087ad2e  mov dword ptr [esi], 0xbd7a74 */
+    /* 0087ad2e  mov dword ptr [esi], 0xbd7a74  ; vtable TreeObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd7a74u;
     /* 0087ad34  mov dword ptr [esi + 0xc], ecx */
@@ -816,8 +844,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087ad80  (between same file)
- * strings: "Bool" */
+/* 0087ad80  Tree_Bool_0087ad80  (between same file)
+ * strings: "Bool"
+ * called by: meme_Bool_0087aa40, Tree_Bool_0087ad80, Tree_Bool_0087ae20, Tree::vf15
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087ad80, bfv_client_l1_body_0087ad80);
 BFV_L1_RESUME(bfv_client_l1r_0087ad80_1, bfv_client_l1_body_0087ad80, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087ad80_2, bfv_client_l1_body_0087ad80, 2);
@@ -884,7 +914,7 @@ L_0087ad9b:
     /* 0087ad9f  mov eax, dword ptr [ebx] */
     ea = (uint32_t)(ebx);
     eax = M32(ea);
-    /* 0087ada1  push 0xbd7ab8 */
+    /* 0087ada1  push 0xbd7ab8  ; "Bool" */
     t = 0xbd7ab8u;
     esp -= 4;
     M32(esp) = t;
@@ -1015,7 +1045,7 @@ R_2:
     edx = ebp;
     /* 0087ade4  mov ecx, edi */
     ecx = edi;
-    /* 0087ade6  call 0x87ad80 */
+    /* 0087ade6  call 0x87ad80  ; Tree_Bool_0087ad80 */
     t = 0x0087ad80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ad80_3;
@@ -1042,7 +1072,7 @@ R_3:
     edx = ebp;
     /* 0087adf6  mov ecx, edi */
     ecx = edi;
-    /* 0087adf8  call 0x87aa40 */
+    /* 0087adf8  call 0x87aa40  ; meme_Bool_0087aa40 */
     t = 0x0087aa40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ad80_4;
@@ -1069,7 +1099,7 @@ R_4:
     edx = ebp;
     /* 0087ae08  mov ecx, edi */
     ecx = edi;
-    /* 0087ae0a  call 0x87ae20 */
+    /* 0087ae0a  call 0x87ae20  ; Tree_Bool_0087ae20 */
     t = 0x0087ae20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ad80_5;
@@ -1112,8 +1142,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087ae20  (between same file)
- * strings: "Bool" */
+/* 0087ae20  Tree_Bool_0087ae20  (between same file)
+ * strings: "Bool"
+ * called by: Tree_Bool_0087ad80, Tree_Bool_0087ae20
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087ae20, bfv_client_l1_body_0087ae20);
 BFV_L1_RESUME(bfv_client_l1r_0087ae20_1, bfv_client_l1_body_0087ae20, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087ae20_2, bfv_client_l1_body_0087ae20, 2);
@@ -1178,7 +1210,7 @@ L_0087ae3b:
     /* 0087ae3f  mov eax, dword ptr [ebx] */
     ea = (uint32_t)(ebx);
     eax = M32(ea);
-    /* 0087ae41  push 0xbd7ab8 */
+    /* 0087ae41  push 0xbd7ab8  ; "Bool" */
     t = 0xbd7ab8u;
     esp -= 4;
     M32(esp) = t;
@@ -1309,7 +1341,7 @@ R_2:
     edx = ebp;
     /* 0087ae84  mov ecx, edi */
     ecx = edi;
-    /* 0087ae86  call 0x87ad80 */
+    /* 0087ae86  call 0x87ad80  ; Tree_Bool_0087ad80 */
     t = 0x0087ad80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ae20_3;
@@ -1336,7 +1368,7 @@ R_3:
     edx = ebp;
     /* 0087ae96  mov ecx, edi */
     ecx = edi;
-    /* 0087ae98  call 0x87ae20 */
+    /* 0087ae98  call 0x87ae20  ; Tree_Bool_0087ae20 */
     t = 0x0087ae20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087ae20_4;
@@ -1379,8 +1411,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087aeb0  (between same file)
- * strings: "Bool" */
+/* 0087aeb0  Tree_Bool_0087aeb0  (between same file)
+ * strings: "Bool"
+ * called by: meme_Bool_0087aad0, Tree_Bool_0087aeb0, Tree_Bool_0087af70, Tree::vf14
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087aeb0, bfv_client_l1_body_0087aeb0);
 BFV_L1_RESUME(bfv_client_l1r_0087aeb0_1, bfv_client_l1_body_0087aeb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087aeb0_2, bfv_client_l1_body_0087aeb0, 2);
@@ -1408,14 +1442,14 @@ void bfv_client_l1_body_0087aeb0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087aeb1  mov ebx, dword ptr [esp + 8] */
+    /* 0087aeb1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0087aeb5  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0087aeb6  mov ebp, dword ptr [esp + 0x10] */
+    /* 0087aeb6  mov ebp, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 0087aeba  push esi */
@@ -1428,11 +1462,11 @@ void bfv_client_l1_body_0087aeb0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087aebc  mov edi, ecx */
     edi = ecx;
-    /* 0087aebe  push 0xbd7ab8 */
+    /* 0087aebe  push 0xbd7ab8  ; "Bool" */
     t = 0xbd7ab8u;
     esp -= 4;
     M32(esp) = t;
-    /* 0087aec3  lea ecx, [esp + 0x1c] */
+    /* 0087aec3  lea ecx, [esp + 0x1c]  ; &arg_4 */
     ecx = (uint32_t)(esp + 0x0000001cu);
     /* 0087aec7  mov dword ptr [ebp], 0 */
     ea = (uint32_t)(ebp);
@@ -1487,7 +1521,7 @@ L_0087aedc:
     esp += 16;
     goto out;
 L_0087aee5:
-    /* 0087aee5  mov al, byte ptr [esp + 0x18] */
+    /* 0087aee5  mov al, byte ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     SET8L(eax, M8(ea));
     /* 0087aee9  test al, al */
@@ -1518,7 +1552,7 @@ L_0087aee5:
     esp += 16;
     goto out;
 L_0087aef6:
-    /* 0087aef6  mov eax, dword ptr [esp + 0x1c] */
+    /* 0087aef6  mov eax, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 0087aefa  mov edx, dword ptr [esi] */
@@ -1608,7 +1642,7 @@ R_3:
     edx = esi;
     /* 0087af24  mov ecx, edi */
     ecx = edi;
-    /* 0087af26  call 0x87aeb0 */
+    /* 0087af26  call 0x87aeb0  ; Tree_Bool_0087aeb0 */
     t = 0x0087aeb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087aeb0_4;
@@ -1645,7 +1679,7 @@ R_4:
     edx = esi;
     /* 0087af3a  mov ecx, edi */
     ecx = edi;
-    /* 0087af3c  call 0x87aad0 */
+    /* 0087af3c  call 0x87aad0  ; meme_Bool_0087aad0 */
     t = 0x0087aad0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087aeb0_5;
@@ -1682,7 +1716,7 @@ R_5:
     edx = esi;
     /* 0087af50  mov ecx, edi */
     ecx = edi;
-    /* 0087af52  call 0x87af70 */
+    /* 0087af52  call 0x87af70  ; Tree_Bool_0087af70 */
     t = 0x0087af70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087aeb0_6;
@@ -1721,8 +1755,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087af70  (between same file)
- * strings: "Bool" */
+/* 0087af70  Tree_Bool_0087af70  (between same file)
+ * strings: "Bool"
+ * called by: Tree_Bool_0087aeb0, Tree_Bool_0087af70
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087af70, bfv_client_l1_body_0087af70);
 BFV_L1_RESUME(bfv_client_l1r_0087af70_1, bfv_client_l1_body_0087af70, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087af70_2, bfv_client_l1_body_0087af70, 2);
@@ -1748,14 +1784,14 @@ void bfv_client_l1_body_0087af70(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087af71  mov ebx, dword ptr [esp + 8] */
+    /* 0087af71  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0087af75  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0087af76  mov ebp, dword ptr [esp + 0x10] */
+    /* 0087af76  mov ebp, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 0087af7a  push esi */
@@ -1768,11 +1804,11 @@ void bfv_client_l1_body_0087af70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087af7c  mov edi, ecx */
     edi = ecx;
-    /* 0087af7e  push 0xbd7ab8 */
+    /* 0087af7e  push 0xbd7ab8  ; "Bool" */
     t = 0xbd7ab8u;
     esp -= 4;
     M32(esp) = t;
-    /* 0087af83  lea ecx, [esp + 0x1c] */
+    /* 0087af83  lea ecx, [esp + 0x1c]  ; &arg_4 */
     ecx = (uint32_t)(esp + 0x0000001cu);
     /* 0087af87  mov dword ptr [ebp], 0 */
     ea = (uint32_t)(ebp);
@@ -1827,7 +1863,7 @@ L_0087af9c:
     esp += 16;
     goto out;
 L_0087afa5:
-    /* 0087afa5  mov al, byte ptr [esp + 0x18] */
+    /* 0087afa5  mov al, byte ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     SET8L(eax, M8(ea));
     /* 0087afa9  test al, al */
@@ -1858,7 +1894,7 @@ L_0087afa5:
     esp += 16;
     goto out;
 L_0087afb6:
-    /* 0087afb6  mov eax, dword ptr [esp + 0x1c] */
+    /* 0087afb6  mov eax, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 0087afba  mov edx, dword ptr [esi] */
@@ -1951,7 +1987,7 @@ R_3:
     edx = esi;
     /* 0087afe6  mov ecx, edi */
     ecx = edi;
-    /* 0087afe8  call 0x87aeb0 */
+    /* 0087afe8  call 0x87aeb0  ; Tree_Bool_0087aeb0 */
     t = 0x0087aeb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087af70_4;
@@ -1988,7 +2024,7 @@ R_4:
     edx = esi;
     /* 0087affc  mov ecx, edi */
     ecx = edi;
-    /* 0087affe  call 0x87af70 */
+    /* 0087affe  call 0x87af70  ; Tree_Bool_0087af70 */
     t = 0x0087af70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087af70_5;
@@ -2027,7 +2063,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087b010  (between same file) */
+/* 0087b010  Tree_0087b010  (between same file)
+ * called by: Tree_helper_0087ab70, Tree_0087b010, Tree_helper_0087b090, Tree::serialize
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087b010, bfv_client_l1_body_0087b010);
 BFV_L1_RESUME(bfv_client_l1r_0087b010_1, bfv_client_l1_body_0087b010, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087b010_2, bfv_client_l1_body_0087b010, 2);
@@ -2055,7 +2093,7 @@ void bfv_client_l1_body_0087b010(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0087b012  mov ebp, dword ptr [esp + 0x10] */
+    /* 0087b012  mov ebp, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 0087b016  push esi */
@@ -2100,7 +2138,7 @@ L_0087b02a:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0087b02d  mov edi, dword ptr [esp + 0x14] */
+    /* 0087b02d  mov edi, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 0087b031  push edi */
@@ -2171,7 +2209,7 @@ L_0087b043:
     edx = ebx;
     /* 0087b04d  mov ecx, esi */
     ecx = esi;
-    /* 0087b04f  call 0x87b010 */
+    /* 0087b04f  call 0x87b010  ; Tree_0087b010 */
     t = 0x0087b010u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b010_2;
@@ -2204,7 +2242,7 @@ R_2:
     edx = ebx;
     /* 0087b062  mov ecx, esi */
     ecx = esi;
-    /* 0087b064  call 0x87ab70 */
+    /* 0087b064  call 0x87ab70  ; Tree_helper_0087ab70 */
     t = 0x0087ab70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b010_3;
@@ -2237,7 +2275,7 @@ R_3:
     edx = ebx;
     /* 0087b077  mov ecx, esi */
     ecx = esi;
-    /* 0087b079  call 0x87b090 */
+    /* 0087b079  call 0x87b090  ; Tree_helper_0087b090 */
     t = 0x0087b090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b010_4;
@@ -2276,7 +2314,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087b090  (between same file) */
+/* 0087b090  Tree_helper_0087b090  (between same file)
+ * called by: Tree_0087b010, Tree_helper_0087b090
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087b090, bfv_client_l1_body_0087b090);
 BFV_L1_RESUME(bfv_client_l1r_0087b090_1, bfv_client_l1_body_0087b090, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087b090_2, bfv_client_l1_body_0087b090, 2);
@@ -2302,7 +2342,7 @@ void bfv_client_l1_body_0087b090(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0087b092  mov ebp, dword ptr [esp + 0x10] */
+    /* 0087b092  mov ebp, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 0087b096  push esi */
@@ -2347,7 +2387,7 @@ L_0087b0aa:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0087b0ad  mov edi, dword ptr [esp + 0x14] */
+    /* 0087b0ad  mov edi, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 0087b0b1  push edi */
@@ -2418,7 +2458,7 @@ L_0087b0c3:
     edx = ebx;
     /* 0087b0cd  mov ecx, esi */
     ecx = esi;
-    /* 0087b0cf  call 0x87b010 */
+    /* 0087b0cf  call 0x87b010  ; Tree_0087b010 */
     t = 0x0087b010u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b090_2;
@@ -2451,7 +2491,7 @@ R_2:
     edx = ebx;
     /* 0087b0e2  mov ecx, esi */
     ecx = esi;
-    /* 0087b0e4  call 0x87b090 */
+    /* 0087b0e4  call 0x87b090  ; Tree_helper_0087b090 */
     t = 0x0087b090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b090_3;
@@ -2490,8 +2530,12 @@ out: __attribute__((unused));
 }
 
 
-/* 0087b100  dice::meme::Tree  (virtual method)
- * strings: "dice::meme::Tree" */
+/* 0087b100  Tree::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::Tree
+ * strings: "dice::meme::Tree"
+ * called by: ClearStream::vf32
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087b100, bfv_client_l1_body_0087b100);
 BFV_L1_RESUME(bfv_client_l1r_0087b100_1, bfv_client_l1_body_0087b100, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087b100_2, bfv_client_l1_body_0087b100, 2);
@@ -2522,13 +2566,13 @@ void bfv_client_l1_body_0087b100(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0087b115  push 0xbd7ae4 */
+    /* 0087b115  push 0xbd7ae4  ; "dice::meme::Tree" */
     t = 0xbd7ae4u;
     esp -= 4;
     M32(esp) = t;
-    /* 0087b11a  mov ecx, 0xdf69e0 */
+    /* 0087b11a  mov ecx, 0xdf69e0  ; g_RuntimeClass_Tree */
     ecx = 0xdf69e0u;
-    /* 0087b11f  call 0x875490 */
+    /* 0087b11f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b100_1;
@@ -2539,10 +2583,10 @@ R_1:
     t = 0xb3afc0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0087b129  mov dword ptr [0xdf69e0], 0xbd7ac4 */
+    /* 0087b129  mov dword ptr [0xdf69e0], 0xbd7ac4  ; g_RuntimeClass_Tree */
     ea = (uint32_t)(0x00df69e0u);
     M32(ea) = 0xbd7ac4u;
-    /* 0087b133  call 0x7c2cd2 */
+    /* 0087b133  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b100_2;
@@ -2556,7 +2600,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0087b13b:
-    /* 0087b13b  mov eax, 0xdf69e0 */
+    /* 0087b13b  mov eax, 0xdf69e0  ; g_RuntimeClass_Tree */
     eax = 0xdf69e0u;
     /* 0087b140  ret */
     c->eip = M32(esp);
@@ -2569,7 +2613,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087b150  dice::meme::Tree  (virtual method) */
+/* 0087b150  Tree::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::Tree
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087b150, bfv_client_l1_body_0087b150);
 BFV_L1_RESUME(bfv_client_l1r_0087b150_1, bfv_client_l1_body_0087b150, 1);
 BFV_L1_RESUME(bfv_client_l1r_0087b150_2, bfv_client_l1_body_0087b150, 2);
@@ -2589,7 +2636,7 @@ void bfv_client_l1_body_0087b150(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087b151  mov ebx, dword ptr [esp + 8] */
+    /* 0087b151  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0087b155  push esi */
@@ -2600,7 +2647,7 @@ void bfv_client_l1_body_0087b150(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0087b157  mov edi, dword ptr [esp + 0x14] */
+    /* 0087b157  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 0087b15b  push edi */
@@ -2613,7 +2660,7 @@ void bfv_client_l1_body_0087b150(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087b15d  mov esi, ecx */
     esi = ecx;
-    /* 0087b15f  call 0xa7d100 */
+    /* 0087b15f  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b150_1;
@@ -2656,7 +2703,7 @@ L_0087b16e:
     edx = esi;
     /* 0087b175  mov ecx, ebx */
     ecx = ebx;
-    /* 0087b177  call 0x87b010 */
+    /* 0087b177  call 0x87b010  ; Tree_0087b010 */
     t = 0x0087b010u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b150_2;
@@ -2686,7 +2733,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0087b190  dice::meme::Tree  (virtual method) */
+/* 0087b190  Tree::vf14  (virtual method)
+ * overrides: Object::vf14  (205 classes implement it)
+ * class: dice::meme::Tree
+ * called by: NavigateTree::vf14
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087b190, bfv_client_l1_body_0087b190);
 BFV_L1_RESUME(bfv_client_l1r_0087b190_1, bfv_client_l1_body_0087b190, 1);
 void bfv_client_l1_body_0087b190(struct bfv_cpu *c)
@@ -2700,7 +2751,7 @@ void bfv_client_l1_body_0087b190(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0087b190  mov edx, dword ptr [esp + 8] */
+    /* 0087b190  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 0087b194  push 0 */
@@ -2719,10 +2770,10 @@ void bfv_client_l1_body_0087b190(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087b19b  mov edx, ecx */
     edx = ecx;
-    /* 0087b19d  mov ecx, dword ptr [esp + 0x10] */
+    /* 0087b19d  mov ecx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 0087b1a1  call 0x87aeb0 */
+    /* 0087b1a1  call 0x87aeb0  ; Tree_Bool_0087aeb0 */
     t = 0x0087aeb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b190_1;
@@ -2740,7 +2791,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087b1b0  dice::meme::Tree  (virtual method) */
+/* 0087b1b0  Tree::vf15  (virtual method)
+ * overrides: Object::vf15  (205 classes implement it)
+ * class: dice::meme::Tree
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087b1b0, bfv_client_l1_body_0087b1b0);
 BFV_L1_RESUME(bfv_client_l1r_0087b1b0_1, bfv_client_l1_body_0087b1b0, 1);
 void bfv_client_l1_body_0087b1b0(struct bfv_cpu *c)
@@ -2757,7 +2811,7 @@ void bfv_client_l1_body_0087b1b0(struct bfv_cpu *c)
     /* 0087b1b0  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 0087b1b3  mov edx, dword ptr [esp + 8] */
+    /* 0087b1b3  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 0087b1b7  push eax */
@@ -2770,10 +2824,10 @@ void bfv_client_l1_body_0087b1b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087b1b9  mov edx, ecx */
     edx = ecx;
-    /* 0087b1bb  mov ecx, dword ptr [esp + 0xc] */
+    /* 0087b1bb  mov ecx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 0087b1bf  call 0x87ad80 */
+    /* 0087b1bf  call 0x87ad80  ; Tree_Bool_0087ad80 */
     t = 0x0087ad80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087b1b0_1;

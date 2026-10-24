@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00abed00  dice::meme::BlendFuncEffect  (virtual method) */
+/* 00abed00  BlendFuncEffect::vf18  (virtual method)
+ * overrides: Effect::vf18  (18 classes implement it)
+ * class: dice::meme::BlendFuncEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abed00, bfv_client_l1_body_00abed00);
 BFV_L1_RESUME(bfv_client_l1r_00abed00_1, bfv_client_l1_body_00abed00, 1);
 void bfv_client_l1_body_00abed00(struct bfv_cpu *c)
@@ -22,7 +25,7 @@ void bfv_client_l1_body_00abed00(struct bfv_cpu *c)
     /* 00abed00  mov edx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     edx = M32(ea);
-    /* 00abed03  mov eax, dword ptr [esp + 0x14] */
+    /* 00abed03  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00abed07  mov dword ptr [eax + 8], edx */
@@ -31,7 +34,7 @@ void bfv_client_l1_body_00abed00(struct bfv_cpu *c)
     /* 00abed0a  mov ecx, dword ptr [ecx + 0xc] */
     ea = (uint32_t)(ecx + 0x0000000cu);
     ecx = M32(ea);
-    /* 00abed0d  mov edx, dword ptr [esp + 0x18] */
+    /* 00abed0d  mov edx, dword ptr [esp + 0x18]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     edx = M32(ea);
     /* 00abed11  push eax */
@@ -44,24 +47,24 @@ void bfv_client_l1_body_00abed00(struct bfv_cpu *c)
     /* 00abed15  mov ecx, dword ptr [edx] */
     ea = (uint32_t)(edx);
     ecx = M32(ea);
-    /* 00abed17  mov eax, dword ptr [esp + 0x14] */
+    /* 00abed17  mov eax, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
-    /* 00abed1b  mov edx, dword ptr [esp + 0x10] */
+    /* 00abed1b  mov edx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00abed1f  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00abed20  mov eax, dword ptr [esp + 0x10] */
+    /* 00abed20  mov eax, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00abed24  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00abed25  mov edx, dword ptr [esp + 0x10] */
+    /* 00abed25  mov edx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00abed29  push eax */
@@ -72,7 +75,7 @@ void bfv_client_l1_body_00abed00(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00abed2b  call 0x875580 */
+    /* 00abed2b  call 0x875580  ; meme::Node::dispatchUpB */
     t = 0x00875580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abed00_1;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00abed40  dice::meme::BlendFuncEffect  (virtual method) */
+/* 00abed40  BlendFuncEffect::vf19  (virtual method)
+ * overrides: Effect::vf19  (18 classes implement it)
+ * class: dice::meme::BlendFuncEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abed40, bfv_client_l1_body_00abed40);
 BFV_L1_RESUME(bfv_client_l1r_00abed40_1, bfv_client_l1_body_00abed40, 1);
 void bfv_client_l1_body_00abed40(struct bfv_cpu *c)
@@ -107,7 +113,7 @@ void bfv_client_l1_body_00abed40(struct bfv_cpu *c)
     /* 00abed40  mov edx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     edx = M32(ea);
-    /* 00abed43  mov eax, dword ptr [esp + 0xc] */
+    /* 00abed43  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00abed47  mov dword ptr [eax + 8], edx */
@@ -116,7 +122,7 @@ void bfv_client_l1_body_00abed40(struct bfv_cpu *c)
     /* 00abed4a  mov ecx, dword ptr [ecx + 0xc] */
     ea = (uint32_t)(ecx + 0x0000000cu);
     ecx = M32(ea);
-    /* 00abed4d  mov edx, dword ptr [esp + 0x10] */
+    /* 00abed4d  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00abed51  push eax */
@@ -126,13 +132,13 @@ void bfv_client_l1_body_00abed40(struct bfv_cpu *c)
     /* 00abed52  mov dword ptr [eax + 0xc], ecx */
     ea = (uint32_t)(eax + 0x0000000cu);
     M32(ea) = ecx;
-    /* 00abed55  mov eax, dword ptr [esp + 0xc] */
+    /* 00abed55  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00abed59  mov ecx, dword ptr [edx] */
     ea = (uint32_t)(edx);
     ecx = M32(ea);
-    /* 00abed5b  mov edx, dword ptr [esp + 8] */
+    /* 00abed5b  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00abed5f  push eax */
@@ -143,7 +149,7 @@ void bfv_client_l1_body_00abed40(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00abed61  call 0x8755e0 */
+    /* 00abed61  call 0x8755e0  ; meme::Node::dispatchUpA */
     t = 0x008755e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abed40_1;
@@ -161,7 +167,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00abed70  (between same file) */
+/* 00abed70  BlendFuncEffect_00abed70  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abed70, bfv_client_l1_body_00abed70);
 BFV_L1_RESUME(bfv_client_l1r_00abed70_1, bfv_client_l1_body_00abed70, 1);
 void bfv_client_l1_body_00abed70(struct bfv_cpu *c)
@@ -181,7 +188,7 @@ void bfv_client_l1_body_00abed70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00abed71  mov esi, ecx */
     esi = ecx;
-    /* 00abed73  call 0x8758e0 */
+    /* 00abed73  call 0x8758e0  ; meme_ERROR_008758e0 */
     t = 0x008758e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abed70_1;
@@ -219,7 +226,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00abed90  (between same file) */
+/* 00abed90  ClassTemplate<BlendFuncEffect,Effect>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abed90, bfv_client_l1_body_00abed90);
 void bfv_client_l1_body_00abed90(struct bfv_cpu *c)
 {
@@ -245,7 +253,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00abeda0  (between same file) */
+/* 00abeda0  ClassTemplate<BlendFuncEffect,Effect>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abeda0, bfv_client_l1_body_00abeda0);
 void bfv_client_l1_body_00abeda0(struct bfv_cpu *c)
 {
@@ -271,8 +280,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abedc0  dice::meme::BlendFuncEffect  (virtual method)
- * strings: "Source blend func", "Destination blend func" */
+/* 00abedc0  BlendFuncEffect::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::BlendFuncEffect
+ * strings: "Source blend func", "Destination blend func"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abedc0, bfv_client_l1_body_00abedc0);
 BFV_L1_RESUME(bfv_client_l1r_00abedc0_1, bfv_client_l1_body_00abedc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abedc0_2, bfv_client_l1_body_00abedc0, 2);
@@ -290,14 +302,14 @@ void bfv_client_l1_body_00abedc0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00abedc0  mov eax, dword ptr [esp + 4] */
+    /* 00abedc0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00abedc4  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abedc5  mov esi, dword ptr [esp + 0xc] */
+    /* 00abedc5  mov esi, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 00abedc9  push edi */
@@ -314,7 +326,7 @@ void bfv_client_l1_body_00abedc0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00abedcc  mov edi, ecx */
     edi = ecx;
-    /* 00abedce  call 0xa7d100 */
+    /* 00abedce  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abedc0_1;
@@ -347,15 +359,15 @@ L_00abedde:
     /* 00abedde  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00abede0  push 0xc0f034 */
+    /* 00abede0  push 0xc0f034  ; "Source blend func" */
     t = 0xc0f034u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abede5  push 0x8758e0 */
+    /* 00abede5  push 0x8758e0  ; meme_ERROR_008758e0 */
     t = 0x8758e0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abedea  push 0xabed70 */
+    /* 00abedea  push 0xabed70  ; BlendFuncEffect_00abed70 */
     t = 0xabed70u;
     esp -= 4;
     M32(esp) = t;
@@ -383,15 +395,15 @@ R_2:
     /* 00abedfc  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00abedfe  push 0xc0f01c */
+    /* 00abedfe  push 0xc0f01c  ; "Destination blend func" */
     t = 0xc0f01cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00abee03  push 0x8758e0 */
+    /* 00abee03  push 0x8758e0  ; meme_ERROR_008758e0 */
     t = 0x8758e0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abee08  push 0xabed70 */
+    /* 00abee08  push 0xabed70  ; BlendFuncEffect_00abed70 */
     t = 0xabed70u;
     esp -= 4;
     M32(esp) = t;
@@ -439,7 +451,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00abee20  dice::meme::BlendFuncEffect  (vtable store) */
+/* 00abee20  BlendFuncEffect::create  (vtable store)
+ * class: dice::meme::BlendFuncEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abee20, bfv_client_l1_body_00abee20);
 BFV_L1_RESUME(bfv_client_l1r_00abee20_1, bfv_client_l1_body_00abee20, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abee20_2, bfv_client_l1_body_00abee20, 2);
@@ -463,7 +477,7 @@ void bfv_client_l1_body_00abee20(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abee23  call 0x403610 */
+    /* 00abee23  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abee20_1;
@@ -485,14 +499,14 @@ R_1:
     if (zf) goto L_00abee50;
     /* 00abee31  mov ecx, esi */
     ecx = esi;
-    /* 00abee33  call 0x874870 */
+    /* 00abee33  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abee20_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00abee38  mov dword ptr [esi], 0xc0f04c */
+    /* 00abee38  mov dword ptr [esi], 0xc0f04c  ; vtable BlendFuncEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0f04cu;
     /* 00abee3e  mov dword ptr [esi + 8], 7 */
@@ -531,8 +545,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abee60  dice::meme::BlendFuncEffect  (virtual method)
- * strings: "dice::meme::BlendFuncEffect" */
+/* 00abee60  BlendFuncEffect::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BlendFuncEffect
+ * strings: "dice::meme::BlendFuncEffect"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abee60, bfv_client_l1_body_00abee60);
 BFV_L1_RESUME(bfv_client_l1r_00abee60_1, bfv_client_l1_body_00abee60, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abee60_2, bfv_client_l1_body_00abee60, 2);
@@ -563,27 +580,27 @@ void bfv_client_l1_body_00abee60(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00abee75  push 0xc0f09c */
+    /* 00abee75  push 0xc0f09c  ; "dice::meme::BlendFuncEffect" */
     t = 0xc0f09cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00abee7a  mov ecx, 0xe21334 */
+    /* 00abee7a  mov ecx, 0xe21334  ; g_RuntimeClass_BlendFuncEffect */
     ecx = 0xe21334u;
-    /* 00abee7f  call 0x875490 */
+    /* 00abee7f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abee60_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00abee84  push 0xb41ab0 */
+    /* 00abee84  push 0xb41ab0  ; bfv_client_global_store_00b41ab0 */
     t = 0xb41ab0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abee89  mov dword ptr [0xe21334], 0xc0effc */
+    /* 00abee89  mov dword ptr [0xe21334], 0xc0effc  ; g_RuntimeClass_BlendFuncEffect */
     ea = (uint32_t)(0x00e21334u);
     M32(ea) = 0xc0effcu;
-    /* 00abee93  call 0x7c2cd2 */
+    /* 00abee93  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abee60_2;
@@ -597,7 +614,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00abee9b:
-    /* 00abee9b  mov eax, 0xe21334 */
+    /* 00abee9b  mov eax, 0xe21334  ; g_RuntimeClass_BlendFuncEffect */
     eax = 0xe21334u;
     /* 00abeea0  ret */
     c->eip = M32(esp);

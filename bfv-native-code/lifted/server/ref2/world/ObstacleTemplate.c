@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005b7d00  dice::ref2::world::ObstacleTemplate  (vtable store) */
+/* 005b7d00  ObstacleTemplate::ObstacleTemplate  (vtable store)
+ * class: dice::ref2::world::ObstacleTemplate
+ * also entered at 005b7d30: ObstacleTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7d00, bfv_server_l1_body_005b7d00);
 BFV_L1_RESUME(bfv_server_l1r_005b7d00_1, bfv_server_l1_body_005b7d00, 1);
 void bfv_server_l1_body_005b7d00(struct bfv_cpu *c)
@@ -25,14 +28,14 @@ void bfv_server_l1_body_005b7d00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b7d01  mov esi, ecx */
     esi = ecx;
-    /* 005b7d03  call 0x5870c0 */
+    /* 005b7d03  call 0x5870c0  ; BundleTemplate::BundleTemplate */
     t = 0x005870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b7d00_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005b7d08  mov dword ptr [esi], 0x8426c4 */
+    /* 005b7d08  mov dword ptr [esi], 0x8426c4  ; vtable ObstacleTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8426c4u;
     /* 005b7d0e  mov dword ptr [esi + 0x74], 0x8426b4 */
@@ -41,7 +44,7 @@ R_1:
     /* 005b7d15  mov dword ptr [esi + 0x190], 0x842688 */
     ea = (uint32_t)(esi + 0x00000190u);
     M32(ea) = 0x842688u;
-    /* 005b7d1f  mov dword ptr [esi + 0x1ac], 0x40a00000 */
+    /* 005b7d1f  mov dword ptr [esi + 0x1ac], 0x40a00000  ; field ObjectTemplate.damage, 5.0f */
     ea = (uint32_t)(esi + 0x000001acu);
     M32(ea) = 0x40a00000u;
     /* 005b7d29  mov eax, esi */
@@ -61,7 +64,12 @@ out: __attribute__((unused));
 }
 
 
-/* 005b7d40  dice::ref2::world::ObstacleTemplate  (virtual method) */
+/* 005b7d40  ObstacleTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::ObstacleTemplate
+ * also entered at 005b7d60: Bundle::vf0, DummyObject::vf0, Engine::vf0, FlagBase::vf0 (+9 more)
+ * also entered at 005b7d80: BundleTemplate::vf0, CameraTemplate::vf0, FireArmsBundleTemplate::vf0, FloatingBundleTemplate::vf0 (+7 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7d40, bfv_server_l1_body_005b7d40);
 void bfv_server_l1_body_005b7d40(struct bfv_cpu *c)
 {
@@ -70,10 +78,10 @@ void bfv_server_l1_body_005b7d40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005b7d40  mov eax, dword ptr [esp + 4] */
+    /* 005b7d40  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005b7d44  cmp eax, dword ptr [0x8207f4] */
+    /* 005b7d44  cmp eax, dword ptr [0x8207f4]  ; ObstacleTemplate::classID */
     ea = (uint32_t)(0x008207f4u);
     a = eax;
     b = M32(ea);
@@ -88,10 +96,10 @@ void bfv_server_l1_body_005b7d40(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005b7d51:
-    /* 005b7d51  mov dword ptr [esp + 4], eax */
+    /* 005b7d51  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005b7d55  jmp 0x586630 */
+    /* 005b7d55  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -101,7 +109,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b7da0  dice::ref2::world::ObstacleTemplate  (virtual method) */
+/* 005b7da0  ObstacleTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::ObstacleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7da0, bfv_server_l1_body_005b7da0);
 BFV_L1_RESUME(bfv_server_l1r_005b7da0_1, bfv_server_l1_body_005b7da0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005b7da0_2, bfv_server_l1_body_005b7da0, 2);
@@ -131,7 +142,7 @@ void bfv_server_l1_body_005b7da0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b7da7  mov edi, ecx */
     edi = ecx;
-    /* 005b7da9  call 0x403d80 */
+    /* 005b7da9  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b7da0_1;
@@ -157,7 +168,7 @@ R_1:
     M32(esp) = t;
     /* 005b7db8  mov ecx, esi */
     ecx = esi;
-    /* 005b7dba  call 0x581fb0 */
+    /* 005b7dba  call 0x581fb0  ; Bundle::Bundle */
     t = 0x00581fb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b7da0_2;
@@ -168,7 +179,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 005b7dc0  mov dword ptr [esi], 0x84274c */
+    /* 005b7dc0  mov dword ptr [esi], 0x84274c  ; vtable Obstacle */
     ea = (uint32_t)(esi);
     M32(ea) = 0x84274cu;
     /* 005b7dc6  mov eax, esi */

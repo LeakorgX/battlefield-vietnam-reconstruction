@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00771dd0  dice::mills::pc::StreamBufferManager  (vtable store) */
+/* 00771dd0  StreamBufferManager::~StreamBufferManager  (vtable store)
+ * class: dice::mills::pc::StreamBufferManager
+ * also entered at 00771e50: StreamBufferManager::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00771dd0, bfv_client_l1_body_00771dd0);
 BFV_L1_RESUME(bfv_client_l1r_00771dd0_1, bfv_client_l1_body_00771dd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00771dd0_2, bfv_client_l1_body_00771dd0, 2);
@@ -27,10 +30,10 @@ void bfv_client_l1_body_00771dd0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00771dd1  mov esi, ecx */
     esi = ecx;
-    /* 00771dd3  mov dword ptr [esi], 0xbaf34c */
+    /* 00771dd3  mov dword ptr [esi], 0xbaf34c  ; vtable StreamBufferManager */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbaf34cu;
-    /* 00771dd9  lea esp, [esp] */
+    /* 00771dd9  lea esp, [esp]  ; &var_4 */
     esp = (uint32_t)(esp);
 L_00771de0:
     /* 00771de0  mov ecx, dword ptr [esi + 0x10] */
@@ -81,7 +84,7 @@ L_00771de0:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00771dfd  call 0x403680 */
+    /* 00771dfd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00771dd0_1;
@@ -152,7 +155,7 @@ L_00771e22:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00771e2a  call 0x403680 */
+    /* 00771e2a  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00771dd0_2;

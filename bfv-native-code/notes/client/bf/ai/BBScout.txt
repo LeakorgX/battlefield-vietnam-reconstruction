@@ -1,0 +1,26 @@
+## file
+Behaviour that scores scouting: looking around in 8 directions.
+
+## 00991cf0
+vf8: tells the parameter object about the bot, clears its handle, sets its weight to 0.0001 and sets the per-bot flag.
+
+## 00991f50
+Rotates a 2D direction (x and z) by an angle (sin and cos); y is set to 0. Angles beyond plus or minus 1000 are handled separately.
+
+## 00991ff0
+Picks a random angle (Random_next scaled into plus or minus the given range, times 0.3927 = pi/8) and dispatches through a jump table at 009921c4 on the direction index to build the result vector.
+
+## 009921f0
+Classifies a vector between two points into one of 8 directions using dot products with the reference axes at 0x00d21c5c..0x00d21c7c; writes the sector to the outputs.
+
+## 00992350
+Copies a range of entries into a list (BBScout_helper_009748e0 per entry).
+
+## 00992690
+Forwards to 00992350.
+
+## 009926b0
+List copy constructor: creates a new head node and copies the source list in.
+
+## 00992750
+evaluate (also entered at 00993b60 as BotScript::destroy): when not usable it clears the per-bot flag and returns the stored weight. Reads the bot's vehicle, position and (when the bot has control 2) its look value. Starts 8 direction scores at 0.75 and updates per-direction times from the AI time. The base weight is 0.01, or 0.005 in one case. Stores the AI time for the chosen direction.

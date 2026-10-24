@@ -5,7 +5,12 @@
 #include "l1.h"
 
 
-/* 005bd330  dice::ref2::world::WireLinkTemplate  (virtual method) */
+/* 005bd330  WireLinkTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::WireLinkTemplate
+ * also entered at 005bd350: WireLinkTemplate::vf33
+ * also entered at 005bd360: WireLinkTemplate::vf34
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd330, bfv_server_l1_body_005bd330);
 void bfv_server_l1_body_005bd330(struct bfv_cpu *c)
 {
@@ -14,10 +19,10 @@ void bfv_server_l1_body_005bd330(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005bd330  mov eax, dword ptr [esp + 4] */
+    /* 005bd330  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005bd334  cmp eax, dword ptr [0x820814] */
+    /* 005bd334  cmp eax, dword ptr [0x820814]  ; WireLinkTemplate::classID */
     ea = (uint32_t)(0x00820814u);
     a = eax;
     b = M32(ea);
@@ -32,10 +37,10 @@ void bfv_server_l1_body_005bd330(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005bd341:
-    /* 005bd341  mov dword ptr [esp + 4], eax */
+    /* 005bd341  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005bd345  jmp 0x586630 */
+    /* 005bd345  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -45,7 +50,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd370  dice::ref2::world::WireLinkTemplate  (virtual method) */
+/* 005bd370  WireLinkTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::WireLinkTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd370, bfv_server_l1_body_005bd370);
 BFV_L1_RESUME(bfv_server_l1r_005bd370_1, bfv_server_l1_body_005bd370, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bd370_2, bfv_server_l1_body_005bd370, 2);
@@ -79,7 +87,7 @@ void bfv_server_l1_body_005bd370(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bd377  mov edi, ecx */
     edi = ecx;
-    /* 005bd379  call 0x403d80 */
+    /* 005bd379  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd370_1;
@@ -103,7 +111,7 @@ R_1:
     M32(esp) = t;
     /* 005bd386  mov ecx, eax */
     ecx = eax;
-    /* 005bd388  call 0x5dcf10 */
+    /* 005bd388  call 0x5dcf10  ; WireLink::WireLink */
     t = 0x005dcf10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd370_2;
@@ -121,7 +129,7 @@ R_2:
     M32(esp) = t;
     /* 005bd392  mov ecx, esi */
     ecx = esi;
-    /* 005bd394  call dword ptr [eax + 0xdc] */
+    /* 005bd394  call dword ptr [eax + 0xdc]  ; -> WireLink::vf55 */
     ea = (uint32_t)(eax + 0x000000dcu);
     t = M32(ea);
     esp -= 4;
@@ -186,7 +194,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd3c0  (between same file) */
+/* 005bd3c0  WireLinkTemplate::deleting_dtor_adjustor116_005bd3c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd3c0, bfv_server_l1_body_005bd3c0);
 void bfv_server_l1_body_005bd3c0(struct bfv_cpu *c)
 {
@@ -201,7 +210,7 @@ void bfv_server_l1_body_005bd3c0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005bd3c3  jmp 0x5bd450 */
+    /* 005bd3c3  jmp 0x5bd450  ; WireLinkTemplate::deleting_dtor */
     c->eip = 0x005bd450u;
     goto out;
 out: __attribute__((unused));
@@ -211,7 +220,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd3d0  (between same file) */
+/* 005bd3d0  WireLinkTemplate::deleting_dtor_adjustor400_005bd3d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd3d0, bfv_server_l1_body_005bd3d0);
 void bfv_server_l1_body_005bd3d0(struct bfv_cpu *c)
 {
@@ -226,7 +236,7 @@ void bfv_server_l1_body_005bd3d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005bd3d6  jmp 0x5bd450 */
+    /* 005bd3d6  jmp 0x5bd450  ; WireLinkTemplate::deleting_dtor */
     c->eip = 0x005bd450u;
     goto out;
 out: __attribute__((unused));
@@ -236,7 +246,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd3e0  dice::ref2::world::WireLinkTemplate  (vtable store) */
+/* 005bd3e0  WireLinkTemplate::WireLinkTemplate  (vtable store)
+ * class: dice::ref2::world::WireLinkTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd3e0, bfv_server_l1_body_005bd3e0);
 BFV_L1_RESUME(bfv_server_l1r_005bd3e0_1, bfv_server_l1_body_005bd3e0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bd3e0_2, bfv_server_l1_body_005bd3e0, 2);
@@ -258,7 +270,7 @@ void bfv_server_l1_body_005bd3e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bd3e1  mov esi, ecx */
     esi = ecx;
-    /* 005bd3e3  call 0x5870c0 */
+    /* 005bd3e3  call 0x5870c0  ; BundleTemplate::BundleTemplate */
     t = 0x005870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd3e0_1;
@@ -269,7 +281,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 005bd3ea  mov dword ptr [esi], 0x844024 */
+    /* 005bd3ea  mov dword ptr [esi], 0x844024  ; vtable WireLinkTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x844024u;
     /* 005bd3f0  mov dword ptr [esi + 0x74], 0x844018 */
@@ -298,7 +310,7 @@ R_1:
     M32(esp) = t;
     /* 005bd417  mov ecx, esi */
     ecx = esi;
-    /* 005bd419  mov dword ptr [esi + 0x1b0], 0x3e4ccccd */
+    /* 005bd419  mov dword ptr [esi + 0x1b0], 0x3e4ccccd  ; 0.2f */
     ea = (uint32_t)(esi + 0x000001b0u);
     M32(ea) = 0x3e4ccccdu;
     /* 005bd423  mov dword ptr [esi + 0x1b4], eax */
@@ -313,10 +325,10 @@ R_1:
     /* 005bd435  mov dword ptr [esi + 0xe0], edx */
     ea = (uint32_t)(esi + 0x000000e0u);
     M32(ea) = edx;
-    /* 005bd43b  mov dword ptr [esi + 0xc8], 0x3f800000 */
+    /* 005bd43b  mov dword ptr [esi + 0xc8], 0x3f800000  ; field ObjectTemplate.mass, 1.0f */
     ea = (uint32_t)(esi + 0x000000c8u);
     M32(ea) = 0x3f800000u;
-    /* 005bd445  call 0x55b410 */
+    /* 005bd445  call 0x55b410  ; ObjectTemplate::vf10 */
     t = 0x0055b410u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd3e0_2;
@@ -340,7 +352,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd450  dice::ref2::world::WireLinkTemplate  (virtual method) */
+/* 005bd450  WireLinkTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::world::WireLinkTemplate
+ * also entered at 005bd490: TurbulenceTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd450, bfv_server_l1_body_005bd450);
 BFV_L1_RESUME(bfv_server_l1r_005bd450_1, bfv_server_l1_body_005bd450, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bd450_2, bfv_server_l1_body_005bd450, 2);
@@ -362,7 +378,7 @@ void bfv_server_l1_body_005bd450(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bd451  mov esi, ecx */
     esi = ecx;
-    /* 005bd453  mov dword ptr [esi], 0x844024 */
+    /* 005bd453  mov dword ptr [esi], 0x844024  ; vtable WireLinkTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x844024u;
     /* 005bd459  mov dword ptr [esi + 0x74], 0x844018 */
@@ -371,14 +387,14 @@ void bfv_server_l1_body_005bd450(struct bfv_cpu *c)
     /* 005bd460  mov dword ptr [esi + 0x190], 0x843fec */
     ea = (uint32_t)(esi + 0x00000190u);
     M32(ea) = 0x843fecu;
-    /* 005bd46a  call 0x586880 */
+    /* 005bd46a  call 0x586880  ; BundleTemplate::~BundleTemplate */
     t = 0x00586880u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd450_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005bd46f  test byte ptr [esp + 8], 1 */
+    /* 005bd46f  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -388,7 +404,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005bd477  call 0x403df0 */
+    /* 005bd477  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd450_2;

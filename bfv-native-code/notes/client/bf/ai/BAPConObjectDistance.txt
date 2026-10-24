@@ -1,0 +1,16 @@
+## file
+BAPConObjectDistance is a bot action-plan condition that tests whether the
+distance between the bot and the object named by the handle at this+8 lies in
+a band. The flags at this+0x14 and this+0x15 choose which positions are used
+and whether the height is ignored.
+
+## 009f2340
+evaluate(bot): returns true when the handle at this+8 is stale or 0. Otherwise
+gets the bot's own AI object (bot vf51 returns its handle) and computes the
+squared distance between the target and the bot. With this+0x14 set, the
+target point comes from the target's interface at object+0x2c (its slot 0x2c
+writes a vec3) or, without that interface, from the target's vf6 position;
+with it clear both points come from vf6 (slot 0x18). With this+0x15 set the
+distance uses only x and z (dx*dx + dz*dz), otherwise x, y and z. Returns true
+when [data+0xc] <= distSq <= [data+0x10], so both limits are squared
+distances.

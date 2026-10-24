@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00781a70  dice::bf::ai::?A0xdaa11c90::CompositeInfoPredicate  (virtual method) */
+/* 00781a70  CompositeInfoPredicate::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xdaa11c90::CompositeInfoPredicate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00781a70, bfv_server_l1_body_00781a70);
 BFV_L1_RESUME(bfv_server_l1r_00781a70_1, bfv_server_l1_body_00781a70, 1);
 BFV_L1_RESUME(bfv_server_l1r_00781a70_2, bfv_server_l1_body_00781a70, 2);
@@ -29,7 +31,7 @@ void bfv_server_l1_body_00781a70(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00781a72  mov edi, dword ptr [esp + 0xc] */
+    /* 00781a72  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 00781a76  mov esi, ecx */

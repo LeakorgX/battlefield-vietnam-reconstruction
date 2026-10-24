@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0055c1c0  (called from this file only) */
+/* 0055c1c0  MusicPlayer::update_helper_0055c1c0  (called from this file only)
+ * called by: MusicPlayer::update_helper_005650d0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0055c1c0, bfv_server_l1_body_0055c1c0);
 void bfv_server_l1_body_0055c1c0(struct bfv_cpu *c)
 {
@@ -67,7 +69,7 @@ void bfv_server_l1_body_0055c1c0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     eax = r;
-    /* 0055c1dd  mov edx, dword ptr [esp + 4] */
+    /* 0055c1dd  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 0055c1e1  cmp edx, eax */
@@ -100,7 +102,7 @@ void bfv_server_l1_body_0055c1c0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0055c1f0  mov edi, dword ptr [esp + 0x10] */
+    /* 0055c1f0  mov edi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 0055c1f4  add eax, esi */
@@ -241,7 +243,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00564a50  dice::ref2::world::MusicPlayer  (virtual method) */
+/* 00564a50  MusicPlayer::vf19  (virtual method)
+ * overrides: Object::vf19  (47 classes implement it)
+ * class: dice::ref2::world::MusicPlayer
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564a50, bfv_server_l1_body_00564a50);
 BFV_L1_RESUME(bfv_server_l1r_00564a50_1, bfv_server_l1_body_00564a50, 1);
 BFV_L1_RESUME(bfv_server_l1r_00564a50_2, bfv_server_l1_body_00564a50, 2);
@@ -280,7 +285,7 @@ void bfv_server_l1_body_00564a50(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00564a5e  je 0x564a83 */
     if (zf) goto L_00564a83;
-    /* 00564a60  call 0x564a10 */
+    /* 00564a60  call 0x564a10  ; MusicPlayer::sub_00564a10 */
     t = 0x00564a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564a50_1;
@@ -307,7 +312,7 @@ R_1:
     edi = M32(ea);
     /* 00564a73  mov ecx, esi */
     ecx = esi;
-    /* 00564a75  call dword ptr [edx + 0x3c] */
+    /* 00564a75  call dword ptr [edx + 0x3c]  ; -> MusicPlayer::vf15 = Object::getWorldMatrix */
     ea = (uint32_t)(edx + 0x0000003cu);
     t = M32(ea);
     esp -= 4;
@@ -350,7 +355,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00564a90  (between same file) */
+/* 00564a90  MusicPlayer_00564a90  (between same file)
+ * called by: MusicPlayer_00564d70, MusicPlayerNetworkable::attachToObject, MusicPlayerNetworkable::nextHistoryFrame
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564a90, bfv_server_l1_body_00564a90);
 void bfv_server_l1_body_00564a90(struct bfv_cpu *c)
 {
@@ -378,7 +385,7 @@ L_00564a90:
     F_LOGIC(8, r);
     /* 00564aa4  je 0x564aab */
     if (zf) goto L_00564aab;
-    /* 00564aa6  jmp 0x564a90 */
+    /* 00564aa6  jmp 0x564a90  ; MusicPlayer_00564a90 */
     goto L_00564a90;
 L_00564aab:
     /* 00564aab  mov eax, dword ptr [eax + 0x160] */
@@ -395,7 +402,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00564ac0  (between same file) */
+/* 00564ac0  MusicPlayer_helper_00564ac0  (between same file)
+ * called by: MusicPlayer_00564d70
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564ac0, bfv_server_l1_body_00564ac0);
 BFV_L1_RESUME(bfv_server_l1r_00564ac0_1, bfv_server_l1_body_00564ac0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00564ac0_2, bfv_server_l1_body_00564ac0, 2);
@@ -437,7 +446,7 @@ void bfv_server_l1_body_00564ac0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00564ad5  je 0x564adc */
     if (zf) goto L_00564adc;
-    /* 00564ad7  call 0x564980 */
+    /* 00564ad7  call 0x564980  ; world_00564980 */
     t = 0x00564980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564ac0_1;
@@ -501,7 +510,7 @@ R_2:
     F_LOGIC(32, r);
     /* 00564b17  je 0x564b1e */
     if (zf) goto L_00564b1e;
-    /* 00564b19  call 0x564980 */
+    /* 00564b19  call 0x564980  ; world_00564980 */
     t = 0x00564980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564ac0_3;
@@ -560,7 +569,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00564b50  (between same file) */
+/* 00564b50  MusicPlayer_00564b50  (between same file)
+ * called by: sub_0055c240, MusicPlayer_00564b50, MusicPlayer_00564d70, MusicPlayerNetworkable::readState
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564b50, bfv_server_l1_body_00564b50);
 BFV_L1_RESUME(bfv_server_l1r_00564b50_1, bfv_server_l1_body_00564b50, 1);
 BFV_L1_RESUME(bfv_server_l1r_00564b50_2, bfv_server_l1_body_00564b50, 2);
@@ -616,7 +627,7 @@ void bfv_server_l1_body_00564b50(struct bfv_cpu *c)
     if (zf) goto L_00564b90;
     /* 00564b6e  mov ecx, esi */
     ecx = esi;
-    /* 00564b70  call 0x564a10 */
+    /* 00564b70  call 0x564a10  ; MusicPlayer::sub_00564a10 */
     t = 0x00564a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564b50_1;
@@ -697,7 +708,7 @@ L_00564ba8:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00564bbc  call 0x55c780 */
+    /* 00564bbc  call 0x55c780  ; world_0055c780 */
     t = 0x0055c780u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564b50_4;
@@ -718,7 +729,7 @@ R_4:
     /* 00564bd1  mov ecx, dword ptr [0xc0d4e8] */
     ea = (uint32_t)(0x00c0d4e8u);
     ecx = M32(ea);
-    /* 00564bd7  call 0x564b50 */
+    /* 00564bd7  call 0x564b50  ; MusicPlayer_00564b50 */
     t = 0x00564b50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564b50_5;
@@ -745,7 +756,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00564bf0  (between same file) */
+/* 00564bf0  MusicPlayer_helper_00564bf0  (between same file)
+ * called by: MusicPlayer_00564d70
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564bf0, bfv_server_l1_body_00564bf0);
 BFV_L1_RESUME(bfv_server_l1r_00564bf0_1, bfv_server_l1_body_00564bf0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00564bf0_2, bfv_server_l1_body_00564bf0, 2);
@@ -782,7 +795,7 @@ void bfv_server_l1_body_00564bf0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00564bfc  mov edi, dword ptr [esp + 0xc] */
+    /* 00564bfc  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 00564c00  je 0x564c1a */
@@ -824,7 +837,7 @@ L_00564c1a:
     /* 00564c28  mov ecx, dword ptr [0x905728] */
     ea = (uint32_t)(0x00905728u);
     ecx = M32(ea);
-    /* 00564c2e  call 0x55c780 */
+    /* 00564c2e  call 0x55c780  ; world_0055c780 */
     t = 0x0055c780u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564bf0_1;
@@ -851,7 +864,7 @@ R_1:
     if (zf) goto L_00564c5d;
     /* 00564c46  mov ecx, esi */
     ecx = esi;
-    /* 00564c48  call 0x564a10 */
+    /* 00564c48  call 0x564a10  ; MusicPlayer::sub_00564a10 */
     t = 0x00564a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564bf0_2;
@@ -870,7 +883,7 @@ R_2:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00564c58  call 0x5649c0 */
+    /* 00564c58  call 0x5649c0  ; MusicPlayer::sub_005649c0 */
     t = 0x005649c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564bf0_3;
@@ -897,7 +910,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00564c70  dice::ref2::world::MusicPlayer  (virtual method) */
+/* 00564c70  MusicPlayer::handleEvent  (virtual method)
+ * overrides: Object::handleEvent  (47 classes implement it)
+ * class: dice::ref2::world::MusicPlayer
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564c70, bfv_server_l1_body_00564c70);
 BFV_L1_RESUME(bfv_server_l1r_00564c70_1, bfv_server_l1_body_00564c70, 1);
 BFV_L1_RESUME(bfv_server_l1r_00564c70_2, bfv_server_l1_body_00564c70, 2);
@@ -925,7 +941,7 @@ void bfv_server_l1_body_00564c70(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564c74  push 0x904c30 */
+    /* 00564c74  push 0x904c30  ; typeid(MusicPlayerTemplate) */
     t = 0x904c30u;
     esp -= 4;
     M32(esp) = t;
@@ -934,7 +950,7 @@ void bfv_server_l1_body_00564c70(struct bfv_cpu *c)
     /* 00564c7b  mov eax, dword ptr [esi + 0x4c] */
     ea = (uint32_t)(esi + 0x0000004cu);
     eax = M32(ea);
-    /* 00564c7e  push 0x8eaa34 */
+    /* 00564c7e  push 0x8eaa34  ; typeid(IObjectTemplate) */
     t = 0x8eaa34u;
     esp -= 4;
     M32(esp) = t;
@@ -946,14 +962,14 @@ void bfv_server_l1_body_00564c70(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00564c86  call 0x63cbf8 */
+    /* 00564c86  call 0x63cbf8  ; __RTDynamicCast */
     t = 0x0063cbf8u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564c70_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00564c8b  mov edi, dword ptr [esp + 0x20] */
+    /* 00564c8b  mov edi, dword ptr [esp + 0x20]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     edi = M32(ea);
     /* 00564c8f  lea ecx, [edi - 2] */
@@ -979,7 +995,7 @@ R_1:
     c->eip = M32(ea);
     goto out;
 L_00564cf5:
-    /* 00564cf5  mov ecx, dword ptr [esp + 0x10] */
+    /* 00564cf5  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 00564cf9  push ecx */
@@ -992,7 +1008,7 @@ L_00564cf5:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00564cfd  call 0x57de70 */
+    /* 00564cfd  call 0x57de70  ; SimpleObject::handleEvent */
     t = 0x0057de70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564c70_2;
@@ -1018,7 +1034,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00564d70  (between same file) */
+/* 00564d70  MusicPlayer_00564d70  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564d70, bfv_server_l1_body_00564d70);
 BFV_L1_RESUME(bfv_server_l1r_00564d70_1, bfv_server_l1_body_00564d70, 1);
 BFV_L1_RESUME(bfv_server_l1r_00564d70_2, bfv_server_l1_body_00564d70, 2);
@@ -1079,7 +1096,7 @@ void bfv_server_l1_body_00564d70(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 00564d96  je 0x564d9f */
     if (zf) goto L_00564d9f;
-    /* 00564d98  call 0x564a90 */
+    /* 00564d98  call 0x564a90  ; MusicPlayer_00564a90 */
     t = 0x00564a90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564d70_1;
@@ -1102,7 +1119,7 @@ L_00564da5:
     if (!zf) goto L_00564db5;
     /* 00564da9  mov ecx, esi */
     ecx = esi;
-    /* 00564dab  call 0x564ac0 */
+    /* 00564dab  call 0x564ac0  ; MusicPlayer_helper_00564ac0 */
     t = 0x00564ac0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564d70_2;
@@ -1133,7 +1150,7 @@ L_00564db5:
     M32(esp) = t;
     /* 00564db6  mov ecx, esi */
     ecx = esi;
-    /* 00564db8  call 0x564bf0 */
+    /* 00564db8  call 0x564bf0  ; MusicPlayer_helper_00564bf0 */
     t = 0x00564bf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564d70_3;
@@ -1142,7 +1159,7 @@ L_00564db5:
 R_3:
     /* 00564dbd  mov ecx, esi */
     ecx = esi;
-    /* 00564dbf  call 0x564b50 */
+    /* 00564dbf  call 0x564b50  ; MusicPlayer_00564b50 */
     t = 0x00564b50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564d70_4;
@@ -1170,7 +1187,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00564dd0  (between same file) */
+/* 00564dd0  std::_Tree::_Buynode_24_00564dd0  (between same file)
+ * called by: std::_Tree::_Insert_00564e60
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564dd0, bfv_server_l1_body_00564dd0);
 BFV_L1_RESUME(bfv_server_l1r_00564dd0_1, bfv_server_l1_body_00564dd0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00564dd0_2, bfv_server_l1_body_00564dd0, 2);
@@ -1235,7 +1254,7 @@ void bfv_server_l1_body_00564dd0(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564df3  call 0x403d80 */
+    /* 00564df3  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564dd0_1;
@@ -1301,7 +1320,7 @@ R_1:
     M32(esp) = t;
     /* 00564e22  mov ecx, esi */
     ecx = esi;
-    /* 00564e24  call 0x7686e0 */
+    /* 00564e24  call 0x7686e0  ; bfv_tree_construct */
     t = 0x007686e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564dd0_2;
@@ -1349,7 +1368,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00564e45  (between same file) */
+/* 00564e45  std::_Tree::_Buynode_00564dd0_catch_00564e45  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564e45, bfv_server_l1_body_00564e45);
 BFV_L1_RESUME(bfv_server_l1r_00564e45_1, bfv_server_l1_body_00564e45, 1);
 BFV_L1_RESUME(bfv_server_l1r_00564e45_2, bfv_server_l1_body_00564e45, 2);
@@ -1372,7 +1392,7 @@ void bfv_server_l1_body_00564e45(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00564e49  call 0x403df0 */
+    /* 00564e49  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e45_1;
@@ -1393,7 +1413,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564e55  call 0x63a98e */
+    /* 00564e55  call 0x63a98e  ; _CxxThrowException */
     t = 0x0063a98eu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e45_2;
@@ -1409,8 +1429,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00564e60  (between same file)
- * strings: "map/set<T> too long" */
+/* 00564e60  std::_Tree::_Insert_00564e60  (between same file)
+ * strings: "map/set<T> too long"
+ * called by: MusicPlayer::constructor_helper_00565190
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564e60, bfv_server_l1_body_00564e60);
 BFV_L1_RESUME(bfv_server_l1r_00564e60_1, bfv_server_l1_body_00564e60, 1);
 BFV_L1_RESUME(bfv_server_l1r_00564e60_2, bfv_server_l1_body_00564e60, 2);
@@ -1474,31 +1496,31 @@ void bfv_server_l1_body_00564e60(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     esi = r;
-    /* 00564e79  push 0x808f70 */
+    /* 00564e79  push 0x808f70  ; "map/set<T> too long" */
     t = 0x808f70u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564e7e  lea ecx, [esp + 0x10] */
+    /* 00564e7e  lea ecx, [esp + 0x10]  ; &var_44 */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 00564e82  mov dword ptr [esp + 0x28], edi */
+    /* 00564e82  mov dword ptr [esp + 0x28], edi  ; var_2c */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = edi;
-    /* 00564e86  mov dword ptr [esp + 0x24], esi */
+    /* 00564e86  mov dword ptr [esp + 0x24], esi  ; var_30 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = esi;
-    /* 00564e8a  mov byte ptr [esp + 0x14], 0 */
+    /* 00564e8a  mov byte ptr [esp + 0x14], 0  ; var_40 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = 0x0u;
-    /* 00564e8f  call 0x402020 */
+    /* 00564e8f  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e60_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00564e94  lea ecx, [esp + 0x24] */
+    /* 00564e94  lea ecx, [esp + 0x24]  ; &var_28 */
     ecx = (uint32_t)(esp + 0x00000024u);
-    /* 00564e98  call 0x63aa5e */
+    /* 00564e98  call 0x63aa5e  ; exception::exception */
     t = 0x0063aa5eu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e60_2;
@@ -1513,27 +1535,27 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00564ea0  lea eax, [esp + 0x10] */
+    /* 00564ea0  lea eax, [esp + 0x10]  ; &var_44 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 00564ea4  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00564ea5  lea ecx, [esp + 0x3c] */
+    /* 00564ea5  lea ecx, [esp + 0x3c]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x0000003cu);
-    /* 00564ea9  mov dword ptr [esp + 0x30], 0x80737c */
+    /* 00564ea9  mov dword ptr [esp + 0x30], 0x80737c  ; var_28, vtable logic_error */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = 0x80737cu;
-    /* 00564eb1  mov dword ptr [esp + 0x54], edi */
+    /* 00564eb1  mov dword ptr [esp + 0x54], edi  ; var_4 */
     ea = (uint32_t)(esp + 0x00000054u);
     M32(ea) = edi;
-    /* 00564eb5  mov dword ptr [esp + 0x50], esi */
+    /* 00564eb5  mov dword ptr [esp + 0x50], esi  ; var_8 */
     ea = (uint32_t)(esp + 0x00000050u);
     M32(ea) = esi;
-    /* 00564eb9  mov byte ptr [esp + 0x40], 0 */
+    /* 00564eb9  mov byte ptr [esp + 0x40], 0  ; var_18 */
     ea = (uint32_t)(esp + 0x00000040u);
     M8(ea) = 0x0u;
-    /* 00564ebe  call 0x401e20 */
+    /* 00564ebe  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e60_3;
@@ -1544,16 +1566,16 @@ R_3:
     t = 0x8ce900u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564ec8  lea ecx, [esp + 0x28] */
+    /* 00564ec8  lea ecx, [esp + 0x28]  ; &var_28 */
     ecx = (uint32_t)(esp + 0x00000028u);
     /* 00564ecc  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00564ecd  mov dword ptr [esp + 0x2c], 0x807388 */
+    /* 00564ecd  mov dword ptr [esp + 0x2c], 0x807388  ; var_28, vtable length_error */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = 0x807388u;
-    /* 00564ed5  call 0x63a98e */
+    /* 00564ed5  call 0x63a98e  ; _CxxThrowException */
     t = 0x0063a98eu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e60_4;
@@ -1561,13 +1583,13 @@ R_3:
     goto out;
 R_4:
 L_00564eda:
-    /* 00564eda  mov edx, dword ptr [esp + 0x5c] */
+    /* 00564eda  mov edx, dword ptr [esp + 0x5c]  ; arg_c */
     ea = (uint32_t)(esp + 0x0000005cu);
     edx = M32(ea);
     /* 00564ede  mov eax, dword ptr [edi + 4] */
     ea = (uint32_t)(edi + 0x00000004u);
     eax = M32(ea);
-    /* 00564ee1  mov esi, dword ptr [esp + 0x58] */
+    /* 00564ee1  mov esi, dword ptr [esp + 0x58]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000058u);
     esi = M32(ea);
     /* 00564ee5  push ebx */
@@ -1596,7 +1618,7 @@ L_00564eda:
     M32(esp) = t;
     /* 00564eec  mov ecx, edi */
     ecx = edi;
-    /* 00564eee  call 0x564dd0 */
+    /* 00564eee  call 0x564dd0  ; std::_Tree::_Buynode_24_00564dd0 */
     t = 0x00564dd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e60_5;
@@ -1621,7 +1643,7 @@ R_5:
     b = eax;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00564efe  mov dword ptr [esp + 0x60], ecx */
+    /* 00564efe  mov dword ptr [esp + 0x60], ecx  ; arg_c */
     ea = (uint32_t)(esp + 0x00000060u);
     M32(ea) = ecx;
     /* 00564f02  mov dword ptr [edi + 8], ebx */
@@ -1647,7 +1669,7 @@ R_5:
     /* 00564f15  jmp 0x564f3a */
     goto L_00564f3a;
 L_00564f17:
-    /* 00564f17  mov al, byte ptr [esp + 0x58] */
+    /* 00564f17  mov al, byte ptr [esp + 0x58]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000058u);
     SET8L(eax, M8(ea));
     /* 00564f1b  test al, al */
@@ -1787,7 +1809,7 @@ L_00564f7d:
     M32(esp) = t;
     /* 00564f85  mov ecx, edi */
     ecx = edi;
-    /* 00564f87  call 0x5c7460 */
+    /* 00564f87  call 0x5c7460  ; bfv_tree_rotate_left */
     t = 0x005c7460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e60_6;
@@ -1822,7 +1844,7 @@ L_00564f8c:
     M32(esp) = t;
     /* 00564fa3  mov ecx, edi */
     ecx = edi;
-    /* 00564fa5  call 0x55c080 */
+    /* 00564fa5  call 0x55c080  ; bfv_tree_rotate_right */
     t = 0x0055c080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e60_7;
@@ -1856,7 +1878,7 @@ L_00564fac:
     M32(esp) = t;
     /* 00564fb9  mov ecx, edi */
     ecx = edi;
-    /* 00564fbb  call 0x55c080 */
+    /* 00564fbb  call 0x55c080  ; bfv_tree_rotate_right */
     t = 0x0055c080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e60_8;
@@ -1891,7 +1913,7 @@ L_00564fc0:
     M32(esp) = t;
     /* 00564fd7  mov ecx, edi */
     ecx = edi;
-    /* 00564fd9  call 0x5c7460 */
+    /* 00564fd9  call 0x5c7460  ; bfv_tree_rotate_left */
     t = 0x005c7460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00564e60_9;
@@ -1912,7 +1934,7 @@ L_00564fde:
     eax = (uint32_t)(esi + 0x00000004u);
     /* 00564fe9  je 0x564f50 */
     if (zf) goto L_00564f50;
-    /* 00564fef  mov ecx, dword ptr [esp + 0x64] */
+    /* 00564fef  mov ecx, dword ptr [esp + 0x64]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000064u);
     ecx = M32(ea);
     /* 00564ff3  pop ebp */
@@ -1926,7 +1948,7 @@ L_00564ff4:
     /* 00564ff7  mov edx, dword ptr [eax + 4] */
     ea = (uint32_t)(eax + 0x00000004u);
     edx = M32(ea);
-    /* 00564ffa  mov eax, dword ptr [esp + 0x54] */
+    /* 00564ffa  mov eax, dword ptr [esp + 0x54]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000054u);
     eax = M32(ea);
     /* 00564ffe  mov byte ptr [edx + 0x14], bl */
@@ -1964,7 +1986,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00565010  dice::ref2::world::MusicPlayer  (vtable store) */
+/* 00565010  MusicPlayer::~MusicPlayer  (vtable store)
+ * class: dice::ref2::world::MusicPlayer
+ */
 BFV_L1_ENTRY(bfv_server_l1_00565010, bfv_server_l1_body_00565010);
 BFV_L1_RESUME(bfv_server_l1r_00565010_1, bfv_server_l1_body_00565010, 1);
 BFV_L1_RESUME(bfv_server_l1r_00565010_2, bfv_server_l1_body_00565010, 2);
@@ -2008,7 +2032,7 @@ void bfv_server_l1_body_00565010(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0056501f  mov dword ptr [esi], 0x8370cc */
+    /* 0056501f  mov dword ptr [esi], 0x8370cc  ; vtable MusicPlayer */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8370ccu;
     /* 00565025  je 0x565036 */
@@ -2021,7 +2045,7 @@ void bfv_server_l1_body_00565010(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 0056502f  je 0x565036 */
     if (zf) goto L_00565036;
-    /* 00565031  call 0x564980 */
+    /* 00565031  call 0x564980  ; world_00564980 */
     t = 0x00564980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565010_1;
@@ -2045,7 +2069,7 @@ L_00565036:
     /* 00565041  mov byte ptr [esi + 0x159], 0 */
     ea = (uint32_t)(esi + 0x00000159u);
     M8(ea) = 0x0u;
-    /* 00565048  call dword ptr [eax + 0x28] */
+    /* 00565048  call dword ptr [eax + 0x28]  ; -> MusicPlayer::vf10 = Object::changeFlags */
     ea = (uint32_t)(eax + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -2056,13 +2080,13 @@ R_2:
     /* 0056504b  mov edi, dword ptr [0x905728] */
     ea = (uint32_t)(0x00905728u);
     edi = M32(ea);
-    /* 00565051  lea ecx, [esp + 8] */
+    /* 00565051  lea ecx, [esp + 8]  ; &var_8 */
     ecx = (uint32_t)(esp + 0x00000008u);
     /* 00565055  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00565056  lea edx, [esp + 0x10] */
+    /* 00565056  lea edx, [esp + 0x10]  ; &var_4 */
     edx = (uint32_t)(esp + 0x00000010u);
     /* 0056505a  add edi, 0x1c */
     a = edi;
@@ -2076,10 +2100,10 @@ R_2:
     M32(esp) = t;
     /* 0056505e  mov ecx, edi */
     ecx = edi;
-    /* 00565060  mov dword ptr [esp + 0x10], esi */
+    /* 00565060  mov dword ptr [esp + 0x10], esi  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = esi;
-    /* 00565064  call 0x41fc00 */
+    /* 00565064  call 0x41fc00  ; std::map_uint::find */
     t = 0x0041fc00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565010_3;
@@ -2093,7 +2117,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0056506c  lea ecx, [esp + 0xc] */
+    /* 0056506c  lea ecx, [esp + 0xc]  ; &var_8 */
     ecx = (uint32_t)(esp + 0x0000000cu);
     /* 00565070  push ecx */
     t = ecx;
@@ -2101,7 +2125,7 @@ R_3:
     M32(esp) = t;
     /* 00565071  mov ecx, edi */
     ecx = edi;
-    /* 00565073  call 0x5c7980 */
+    /* 00565073  call 0x5c7980  ; std::_Tree::erase_005c7980 */
     t = 0x005c7980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565010_4;
@@ -2110,7 +2134,7 @@ R_3:
 R_4:
     /* 00565078  mov ecx, esi */
     ecx = esi;
-    /* 0056507a  call 0x57df30 */
+    /* 0056507a  call 0x57df30  ; SimpleObject::~SimpleObject */
     t = 0x0057df30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565010_5;
@@ -2142,7 +2166,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00565090  dice::ref2::world::MusicPlayer  (virtual method) */
+/* 00565090  MusicPlayer::createNetworkable  (virtual method)
+ * overrides: Object::createNetworkable  (47 classes implement it)
+ * class: dice::ref2::world::MusicPlayer
+ */
 BFV_L1_ENTRY(bfv_server_l1_00565090, bfv_server_l1_body_00565090);
 BFV_L1_RESUME(bfv_server_l1r_00565090_1, bfv_server_l1_body_00565090, 1);
 BFV_L1_RESUME(bfv_server_l1r_00565090_2, bfv_server_l1_body_00565090, 2);
@@ -2175,7 +2202,7 @@ void bfv_server_l1_body_00565090(struct bfv_cpu *c)
     /* 0056509a  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0056509c  call dword ptr [eax + 0x50] */
+    /* 0056509c  call dword ptr [eax + 0x50]  ; -> MusicPlayerTemplate::vf20 = NetworkManager::vf26_addressOf_20h (returns &this+0x20) */
     ea = (uint32_t)(eax + 0x00000050u);
     t = M32(ea);
     esp -= 4;
@@ -2204,7 +2231,7 @@ R_1:
     M32(esp) = t;
     /* 005650ac  mov ecx, eax */
     ecx = eax;
-    /* 005650ae  call 0x401220 */
+    /* 005650ae  call 0x401220  ; std::string::compare_chars */
     t = 0x00401220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565090_2;
@@ -2225,7 +2252,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 005650c0  jmp 0x581f00 */
+    /* 005650c0  jmp 0x581f00  ; Object::attachNetworkable */
     c->eip = 0x00581f00u;
     goto out;
 L_005650c5:
@@ -2244,7 +2271,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005650d0  (between same file) */
+/* 005650d0  MusicPlayer::update_helper_005650d0  (between same file)
+ * class: dice::ref2::world::MusicPlayer
+ * called by: MusicPlayer::update
+ */
 BFV_L1_ENTRY(bfv_server_l1_005650d0, bfv_server_l1_body_005650d0);
 BFV_L1_RESUME(bfv_server_l1r_005650d0_1, bfv_server_l1_body_005650d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005650d0_2, bfv_server_l1_body_005650d0, 2);
@@ -2262,7 +2292,7 @@ void bfv_server_l1_body_005650d0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 005650d0  mov eax, dword ptr [0xbdb7a8] */
+    /* 005650d0  mov eax, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     eax = M32(ea);
     /* 005650d5  push esi */
@@ -2273,11 +2303,11 @@ void bfv_server_l1_body_005650d0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005650d8  push 0x8eaa9c */
+    /* 005650d8  push 0x8eaa9c  ; typeid(IGameServer) */
     t = 0x8eaa9cu;
     esp -= 4;
     M32(esp) = t;
-    /* 005650dd  push 0x8e7054 */
+    /* 005650dd  push 0x8e7054  ; typeid(IGame) */
     t = 0x8e7054u;
     esp -= 4;
     M32(esp) = t;
@@ -2291,7 +2321,7 @@ void bfv_server_l1_body_005650d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005650e5  mov esi, ecx */
     esi = ecx;
-    /* 005650e7  call 0x63cbf8 */
+    /* 005650e7  call 0x63cbf8  ; __RTDynamicCast */
     t = 0x0063cbf8u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005650d0_1;
@@ -2326,7 +2356,7 @@ R_1:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00565107  call 0x55c1c0 */
+    /* 00565107  call 0x55c1c0  ; MusicPlayer::update_helper_0055c1c0 */
     t = 0x0055c1c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005650d0_2;
@@ -2359,7 +2389,7 @@ R_2:
     M32(esp) = t;
     /* 00565118  mov ecx, esi */
     ecx = esi;
-    /* 0056511a  call 0x5649c0 */
+    /* 0056511a  call 0x5649c0  ; MusicPlayer::sub_005649c0 */
     t = 0x005649c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005650d0_3;
@@ -2382,7 +2412,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00565130  dice::ref2::world::MusicPlayer  (virtual method) */
+/* 00565130  MusicPlayer::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::MusicPlayer
+ */
 BFV_L1_ENTRY(bfv_server_l1_00565130, bfv_server_l1_body_00565130);
 BFV_L1_RESUME(bfv_server_l1r_00565130_1, bfv_server_l1_body_00565130, 1);
 BFV_L1_RESUME(bfv_server_l1r_00565130_2, bfv_server_l1_body_00565130, 2);
@@ -2426,13 +2459,13 @@ void bfv_server_l1_body_00565130(struct bfv_cpu *c)
     /* 00565147  fld dword ptr [esi + 0x164] */
     ea = (uint32_t)(esi + 0x00000164u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0056514d  fsub dword ptr [esp + 8] */
+    /* 0056514d  fsub dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00565151  fst dword ptr [esi + 0x164] */
     ea = (uint32_t)(esi + 0x00000164u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00565157  fcomp dword ptr [0x851bcc] */
+    /* 00565157  fcomp dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0056515d  fnstsw ax */
@@ -2442,10 +2475,10 @@ void bfv_server_l1_body_00565130(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 00565162  jp 0x565180 */
     if (pf) goto L_00565180;
-    /* 00565164  mov ecx, dword ptr [0xbdb7a8] */
+    /* 00565164  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
-    /* 0056516a  mov eax, dword ptr [0x80ba88] */
+    /* 0056516a  mov eax, dword ptr [0x80ba88]  ; interfaceID(GameServer) */
     ea = (uint32_t)(0x0080ba88u);
     eax = M32(ea);
     /* 0056516f  mov edx, dword ptr [ecx] */
@@ -2455,7 +2488,7 @@ void bfv_server_l1_body_00565130(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00565172  call dword ptr [edx + 0xc] */
+    /* 00565172  call dword ptr [edx + 0xc]  ; -> Armor::vf3 = Armor::queryInterface */
     ea = (uint32_t)(edx + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -2470,7 +2503,7 @@ R_1:
     if (zf) goto L_00565180;
     /* 00565179  mov ecx, esi */
     ecx = esi;
-    /* 0056517b  call 0x5650d0 */
+    /* 0056517b  call 0x5650d0  ; MusicPlayer::update_helper_005650d0 */
     t = 0x005650d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565130_2;
@@ -2493,7 +2526,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00565190  (between same file) */
+/* 00565190  MusicPlayer::constructor_helper_00565190  (between same file)
+ * called by: MusicPlayer::MusicPlayer
+ */
 BFV_L1_ENTRY(bfv_server_l1_00565190, bfv_server_l1_body_00565190);
 BFV_L1_RESUME(bfv_server_l1r_00565190_1, bfv_server_l1_body_00565190, 1);
 BFV_L1_RESUME(bfv_server_l1r_00565190_2, bfv_server_l1_body_00565190, 2);
@@ -2633,7 +2668,7 @@ L_005651cd:
     M32(esp) = t;
     /* 005651e7  mov ecx, edi */
     ecx = edi;
-    /* 005651e9  call 0x564e60 */
+    /* 005651e9  call 0x564e60  ; std::_Tree::_Insert_00564e60 */
     t = 0x00564e60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565190_1;
@@ -2673,7 +2708,7 @@ R_1:
     esp += 12;
     goto out;
 L_00565201:
-    /* 00565201  call 0x73f240 */
+    /* 00565201  call 0x73f240  ; bfv_tree_previous */
     t = 0x0073f240u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565190_2;
@@ -2718,7 +2753,7 @@ L_0056520a:
     M32(esp) = t;
     /* 0056521e  mov ecx, edi */
     ecx = edi;
-    /* 00565220  call 0x564e60 */
+    /* 00565220  call 0x564e60  ; std::_Tree::_Insert_00564e60 */
     t = 0x00564e60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565190_3;
@@ -2794,7 +2829,12 @@ out: __attribute__((unused));
 }
 
 
-/* 00565250  dice::ref2::world::MusicPlayer  (vtable store) */
+/* 00565250  MusicPlayer::MusicPlayer  (vtable store)
+ * class: dice::ref2::world::MusicPlayer
+ * also entered at 005652f0: CustomPlaylistPlayer::vf0, MusicPlayer::vf0
+ * also entered at 00565370: PatchTerrainTemplate::vf33
+ * called by: MusicPlayerTemplate::createObject, CustomPlaylistPlayer::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00565250, bfv_server_l1_body_00565250);
 BFV_L1_RESUME(bfv_server_l1r_00565250_1, bfv_server_l1_body_00565250, 1);
 BFV_L1_RESUME(bfv_server_l1r_00565250_2, bfv_server_l1_body_00565250, 2);
@@ -2828,7 +2868,7 @@ void bfv_server_l1_body_00565250(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 00565255  mov ebp, dword ptr [esp + 0x1c] */
+    /* 00565255  mov ebp, dword ptr [esp + 0x1c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ebp = M32(ea);
     /* 00565259  push esi */
@@ -2845,7 +2885,7 @@ void bfv_server_l1_body_00565250(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0056525c  mov esi, ecx */
     esi = ecx;
-    /* 0056525e  call 0x57e330 */
+    /* 0056525e  call 0x57e330  ; SimpleObject::SimpleObject */
     t = 0x0057e330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565250_1;
@@ -2862,7 +2902,7 @@ R_1:
     M32(esp) = t;
     /* 00565266  lea edi, [ebp + 0x194] */
     edi = (uint32_t)(ebp + 0x00000194u);
-    /* 0056526c  mov dword ptr [esi], 0x8370cc */
+    /* 0056526c  mov dword ptr [esi], 0x8370cc  ; vtable MusicPlayer */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8370ccu;
     /* 00565272  mov byte ptr [esi + 0x158], bl */
@@ -2891,7 +2931,7 @@ R_1:
     M32(esp) = t;
     /* 0056528e  mov ecx, edi */
     ecx = edi;
-    /* 00565290  call 0x401220 */
+    /* 00565290  call 0x401220  ; std::string::compare_chars */
     t = 0x00401220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565250_2;
@@ -2910,7 +2950,7 @@ R_2:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005652a0  call 0x55c290 */
+    /* 005652a0  call 0x55c290  ; world_0055c290 */
     t = 0x0055c290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565250_3;
@@ -2927,7 +2967,7 @@ L_005652a5:
     /* 005652b1  mov dword ptr [esi + 0x160], ecx */
     ea = (uint32_t)(esi + 0x00000160u);
     M32(ea) = ecx;
-    /* 005652b7  lea edx, [esp + 0x10] */
+    /* 005652b7  lea edx, [esp + 0x10]  ; &var_10 */
     edx = (uint32_t)(esp + 0x00000010u);
     /* 005652bb  mov dword ptr [esi + 0x164], ebx */
     ea = (uint32_t)(esi + 0x00000164u);
@@ -2939,7 +2979,7 @@ L_005652a5:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005652c8  lea eax, [esp + 0x1c] */
+    /* 005652c8  lea eax, [esp + 0x1c]  ; &var_8 */
     eax = (uint32_t)(esp + 0x0000001cu);
     /* 005652cc  push eax */
     t = eax;
@@ -2951,13 +2991,13 @@ L_005652a5:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 005652d0  mov dword ptr [esp + 0x18], esi */
+    /* 005652d0  mov dword ptr [esp + 0x18], esi  ; var_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = esi;
-    /* 005652d4  mov dword ptr [esp + 0x1c], ebx */
+    /* 005652d4  mov dword ptr [esp + 0x1c], ebx  ; var_c */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = ebx;
-    /* 005652d8  call 0x565190 */
+    /* 005652d8  call 0x565190  ; MusicPlayer::constructor_helper_00565190 */
     t = 0x00565190u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00565250_4;

@@ -1,0 +1,8 @@
+## file
+BAPConObjectHealth is a bot action-plan condition: true while the object
+named by the AI handle at this+8 has health at or below the limit at this+0xc.
+
+## 009f36f0
+evaluate(bot): resolves the handle at this+8 (false when the handle is stale or
+0), then asks the object's interface at object+0x24 for its health (vf4) and
+returns true when that value is <= the float limit at this+0xc.

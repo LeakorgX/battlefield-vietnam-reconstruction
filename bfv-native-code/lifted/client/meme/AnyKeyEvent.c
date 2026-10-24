@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0086aa20  dice::meme::AnyKeyEvent  (virtual method) */
+/* 0086aa20  AnyKeyEvent::vf17  (virtual method)
+ * overrides: Event::vf17  (5 classes implement it)
+ * class: dice::meme::AnyKeyEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086aa20, bfv_client_l1_body_0086aa20);
 BFV_L1_RESUME(bfv_client_l1r_0086aa20_1, bfv_client_l1_body_0086aa20, 1);
 void bfv_client_l1_body_0086aa20(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_0086aa20(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0086aa20  mov eax, dword ptr [esp + 4] */
+    /* 0086aa20  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0086aa24  push esi */
@@ -30,7 +33,7 @@ void bfv_client_l1_body_0086aa20(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086aa26  mov edi, dword ptr [esp + 0x10] */
+    /* 0086aa26  mov edi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 0086aa2a  push edi */
@@ -43,7 +46,7 @@ void bfv_client_l1_body_0086aa20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086aa2c  mov esi, ecx */
     esi = ecx;
-    /* 0086aa2e  call 0x878530 */
+    /* 0086aa2e  call 0x878530  ; Event::vf17 */
     t = 0x00878530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086aa20_1;
@@ -169,7 +172,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0086aab0  dice::meme::AnyKeyEvent  (vtable store) */
+/* 0086aab0  AnyKeyEvent::create  (vtable store)
+ * class: dice::meme::AnyKeyEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086aab0, bfv_client_l1_body_0086aab0);
 BFV_L1_RESUME(bfv_client_l1r_0086aab0_1, bfv_client_l1_body_0086aab0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086aab0_2, bfv_client_l1_body_0086aab0, 2);
@@ -193,7 +198,7 @@ void bfv_client_l1_body_0086aab0(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086aab3  call 0x403610 */
+    /* 0086aab3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086aab0_1;
@@ -215,7 +220,7 @@ R_1:
     if (zf) goto L_0086aadd;
     /* 0086aac1  mov ecx, esi */
     ecx = esi;
-    /* 0086aac3  call 0x874870 */
+    /* 0086aac3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086aab0_2;
@@ -225,7 +230,7 @@ R_2:
     /* 0086aac8  mov byte ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = 0x0u;
-    /* 0086aacc  mov dword ptr [esi], 0xbd2d5c */
+    /* 0086aacc  mov dword ptr [esi], 0xbd2d5c  ; vtable AnyKeyEvent */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd2d5cu;
     /* 0086aad2  mov dword ptr [esi + 0xc], 1 */
@@ -261,7 +266,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0086aaf0  (between same file) */
+/* 0086aaf0  ClassTemplate<AnyKeyEvent,Event>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086aaf0, bfv_client_l1_body_0086aaf0);
 void bfv_client_l1_body_0086aaf0(struct bfv_cpu *c)
 {
@@ -287,7 +293,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0086ab00  (between same file) */
+/* 0086ab00  ClassTemplate<AnyKeyEvent,Event>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086ab00, bfv_client_l1_body_0086ab00);
 void bfv_client_l1_body_0086ab00(struct bfv_cpu *c)
 {
@@ -313,8 +320,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086ab20  dice::meme::AnyKeyEvent  (virtual method)
- * strings: "Event type" */
+/* 0086ab20  AnyKeyEvent::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::AnyKeyEvent
+ * strings: "Event type"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086ab20, bfv_client_l1_body_0086ab20);
 BFV_L1_RESUME(bfv_client_l1r_0086ab20_1, bfv_client_l1_body_0086ab20, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086ab20_2, bfv_client_l1_body_0086ab20, 2);
@@ -330,7 +340,7 @@ void bfv_client_l1_body_0086ab20(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 0086ab20  mov eax, dword ptr [esp + 4] */
+    /* 0086ab20  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0086ab24  push esi */
@@ -341,7 +351,7 @@ void bfv_client_l1_body_0086ab20(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086ab26  mov edi, dword ptr [esp + 0x10] */
+    /* 0086ab26  mov edi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 0086ab2a  push edi */
@@ -354,7 +364,7 @@ void bfv_client_l1_body_0086ab20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086ab2c  mov esi, ecx */
     esi = ecx;
-    /* 0086ab2e  call 0x8784f0 */
+    /* 0086ab2e  call 0x8784f0  ; Event::serialize */
     t = 0x008784f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086ab20_1;
@@ -382,7 +392,7 @@ L_0086ab3c:
     /* 0086ab3c  mov edx, dword ptr [edi] */
     ea = (uint32_t)(edi);
     edx = M32(ea);
-    /* 0086ab3e  push 0xbd2cb8 */
+    /* 0086ab3e  push 0xbd2cb8  ; "Event type" */
     t = 0xbd2cb8u;
     esp -= 4;
     M32(esp) = t;
@@ -438,8 +448,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086ab60  dice::meme::AnyKeyEvent  (virtual method)
- * strings: "dice::meme::AnyKeyEvent" */
+/* 0086ab60  AnyKeyEvent::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::AnyKeyEvent
+ * strings: "dice::meme::AnyKeyEvent"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086ab60, bfv_client_l1_body_0086ab60);
 BFV_L1_RESUME(bfv_client_l1r_0086ab60_1, bfv_client_l1_body_0086ab60, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086ab60_2, bfv_client_l1_body_0086ab60, 2);
@@ -470,13 +483,13 @@ void bfv_client_l1_body_0086ab60(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0086ab75  push 0xbd2da4 */
+    /* 0086ab75  push 0xbd2da4  ; "dice::meme::AnyKeyEvent" */
     t = 0xbd2da4u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086ab7a  mov ecx, 0xdf61c4 */
+    /* 0086ab7a  mov ecx, 0xdf61c4  ; g_RuntimeClass_AnyKeyEvent */
     ecx = 0xdf61c4u;
-    /* 0086ab7f  call 0x875490 */
+    /* 0086ab7f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086ab60_1;
@@ -487,10 +500,10 @@ R_1:
     t = 0xb3ab20u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086ab89  mov dword ptr [0xdf61c4], 0xbd2d38 */
+    /* 0086ab89  mov dword ptr [0xdf61c4], 0xbd2d38  ; g_RuntimeClass_AnyKeyEvent */
     ea = (uint32_t)(0x00df61c4u);
     M32(ea) = 0xbd2d38u;
-    /* 0086ab93  call 0x7c2cd2 */
+    /* 0086ab93  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086ab60_2;
@@ -504,7 +517,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0086ab9b:
-    /* 0086ab9b  mov eax, 0xdf61c4 */
+    /* 0086ab9b  mov eax, 0xdf61c4  ; g_RuntimeClass_AnyKeyEvent */
     eax = 0xdf61c4u;
     /* 0086aba0  ret */
     c->eip = M32(esp);

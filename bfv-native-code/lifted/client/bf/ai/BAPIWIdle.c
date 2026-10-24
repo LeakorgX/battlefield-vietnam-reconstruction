@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009eee10  dice::bf::ai::BAPIWIdle  (vtable store) */
+/* 009eee10  BAPIWIdle::BAPIWIdle  (vtable store)
+ * class: dice::bf::ai::BAPIWIdle
+ * called by: BBPIdle3d::buildPlan
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eee10, bfv_client_l1_body_009eee10);
 BFV_L1_RESUME(bfv_client_l1r_009eee10_1, bfv_client_l1_body_009eee10, 1);
 void bfv_client_l1_body_009eee10(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_009eee10(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009eee10  mov eax, dword ptr [esp + 0xc] */
+    /* 009eee10  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 009eee14  push esi */
@@ -28,7 +31,7 @@ void bfv_client_l1_body_009eee10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009eee15  mov esi, ecx */
     esi = ecx;
-    /* 009eee17  mov ecx, dword ptr [esp + 0xc] */
+    /* 009eee17  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009eee1b  push eax */
@@ -41,17 +44,17 @@ void bfv_client_l1_body_009eee10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009eee1d  mov ecx, esi */
     ecx = esi;
-    /* 009eee1f  call 0xa0a6c0 */
+    /* 009eee1f  call 0xa0a6c0  ; BAPInfoWrapper::ctor_dtor */
     t = 0x00a0a6c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eee10_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009eee24  mov eax, dword ptr [esp + 8] */
+    /* 009eee24  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 009eee28  mov dword ptr [esi], 0xbfa24c */
+    /* 009eee28  mov dword ptr [esi], 0xbfa24c  ; vtable BAPIWIdle */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfa24cu;
     /* 009eee2e  mov ecx, dword ptr [eax] */
@@ -97,7 +100,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009eee60  dice::bf::ai::BAPIWIdle  (virtual method) */
+/* 009eee60  BAPIWIdle::deleting_dtor  (virtual method)
+ * overrides: BotScript::vf1  (55 classes implement it)
+ * class: dice::bf::ai::BAPIWIdle
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eee60, bfv_client_l1_body_009eee60);
 BFV_L1_RESUME(bfv_client_l1r_009eee60_1, bfv_client_l1_body_009eee60, 1);
 BFV_L1_RESUME(bfv_client_l1r_009eee60_2, bfv_client_l1_body_009eee60, 2);
@@ -127,7 +133,7 @@ void bfv_client_l1_body_009eee60(struct bfv_cpu *c)
     /* 009eee66  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 009eee68  mov dword ptr [esi], 0xbfa24c */
+    /* 009eee68  mov dword ptr [esi], 0xbfa24c  ; vtable BAPIWIdle */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfa24cu;
     /* 009eee6e  je 0x9eee77 */
@@ -150,14 +156,14 @@ R_1:
 L_009eee77:
     /* 009eee77  mov ecx, esi */
     ecx = esi;
-    /* 009eee79  call 0xa0a9d0 */
+    /* 009eee79  call 0xa0a9d0  ; BAPStatement::~BAPStatement */
     t = 0x00a0a9d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eee60_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009eee7e  test byte ptr [esp + 8], 1 */
+    /* 009eee7e  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -167,9 +173,9 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009eee86  mov ecx, 0xe0fd78 */
+    /* 009eee86  mov ecx, 0xe0fd78  ; g_MemoryPoolNull_BAPIWIdle */
     ecx = 0xe0fd78u;
-    /* 009eee8b  call 0x412fc0 */
+    /* 009eee8b  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eee60_3;

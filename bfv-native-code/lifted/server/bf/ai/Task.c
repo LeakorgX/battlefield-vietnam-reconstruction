@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00791c20  dice::bf::ai::Task  (vtable store) */
+/* 00791c20  Task::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::Task
+ * called by: Vehicle::constructor_helper_0072a2d0, Vehicle::Vehicle
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791c20, bfv_server_l1_body_00791c20);
 void bfv_server_l1_body_00791c20(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_server_l1_body_00791c20(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 00791c20  fld qword ptr [0x807350] */
+    /* 00791c20  fld qword ptr [0x807350]  ; = 0.0 */
     ea = (uint32_t)(0x00807350u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00791c26  mov eax, ecx */
@@ -26,10 +29,10 @@ void bfv_server_l1_body_00791c20(struct bfv_cpu *c)
     /* 00791c2a  fstp qword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00791c2d  fld qword ptr [0x807350] */
+    /* 00791c2d  fld qword ptr [0x807350]  ; = 0.0 */
     ea = (uint32_t)(0x00807350u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00791c33  mov dword ptr [eax], 0x877dec */
+    /* 00791c33  mov dword ptr [eax], 0x877dec  ; vtable Task */
     ea = (uint32_t)(eax);
     M32(ea) = 0x877decu;
     /* 00791c39  fstp qword ptr [eax + 0x28] */
@@ -70,7 +73,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00791c60  dice::bf::ai::Task  (vtable store) */
+/* 00791c60  Task::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::Task
+ * called by: TaskGetStrategicCellInfoNo::deleting_dtor, TaskStrategicSearch::deleting_dtor, Vehicle::~Vehicle
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791c60, bfv_server_l1_body_00791c60);
 BFV_L1_RESUME(bfv_server_l1r_00791c60_1, bfv_server_l1_body_00791c60, 1);
 void bfv_server_l1_body_00791c60(struct bfv_cpu *c)
@@ -92,7 +98,7 @@ void bfv_server_l1_body_00791c60(struct bfv_cpu *c)
     /* 00791c65  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00791c67  mov dword ptr [eax], 0x877dec */
+    /* 00791c67  mov dword ptr [eax], 0x877dec  ; vtable Task */
     ea = (uint32_t)(eax);
     M32(ea) = 0x877decu;
     /* 00791c6d  je 0x791c75 */
@@ -101,7 +107,7 @@ void bfv_server_l1_body_00791c60(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00791c70  call 0x7bed40 */
+    /* 00791c70  call 0x7bed40  ; ai_007bed40 */
     t = 0x007bed40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791c60_1;
@@ -120,7 +126,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791c80  dice::bf::ai::Task  (virtual method) */
+/* 00791c80  Task::vf3  (virtual method)
+ * class: dice::bf::ai::Task
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791c80, bfv_server_l1_body_00791c80);
 BFV_L1_RESUME(bfv_server_l1r_00791c80_1, bfv_server_l1_body_00791c80, 1);
 void bfv_server_l1_body_00791c80(struct bfv_cpu *c)
@@ -148,7 +156,7 @@ void bfv_server_l1_body_00791c80(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00791c8a  call 0x7bed40 */
+    /* 00791c8a  call 0x7bed40  ; ai_007bed40 */
     t = 0x007bed40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791c80_1;
@@ -167,7 +175,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791c90  (between same file) */
+/* 00791c90  Task_00791c90  (between same file)
+ * called by: TaskPlayerMapSearch::execute, TaskStrategicPlayerMapSearch::execute, TaskStrategicSearch::execute, TaskGetStrategicCellInfoNo::execute
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791c90, bfv_server_l1_body_00791c90);
 BFV_L1_RESUME(bfv_server_l1r_00791c90_1, bfv_server_l1_body_00791c90, 1);
 void bfv_server_l1_body_00791c90(struct bfv_cpu *c)
@@ -181,13 +191,13 @@ void bfv_server_l1_body_00791c90(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00791c90  mov eax, dword ptr [esp + 0x10] */
+    /* 00791c90  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 00791c94  fld qword ptr [esp + 8] */
+    /* 00791c94  fld qword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00791c98  mov edx, dword ptr [esp + 4] */
+    /* 00791c98  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00791c9c  mov ecx, dword ptr [ecx + 0x14] */
@@ -203,14 +213,14 @@ void bfv_server_l1_body_00791c90(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00791ca3  fstp qword ptr [esp] */
+    /* 00791ca3  fstp qword ptr [esp]  ; var_c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00791ca6  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00791ca7  call 0x7becb0 */
+    /* 00791ca7  call 0x7becb0  ; Task_helper_007becb0 */
     t = 0x007becb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791c90_1;
@@ -228,7 +238,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791cb0  (between same file) */
+/* 00791cb0  Task_00791cb0  (between same file)
+ * called by: TaskAStarLocalSearch::execute, TaskAStarStrategicSearch::execute, TaskStrategicSearch::execute, TaskGetStrategicCellInfoNo::execute
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791cb0, bfv_server_l1_body_00791cb0);
 void bfv_server_l1_body_00791cb0(struct bfv_cpu *c)
 {
@@ -237,10 +249,10 @@ void bfv_server_l1_body_00791cb0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 00791cb0  fld qword ptr [0x814ac8] */
+    /* 00791cb0  fld qword ptr [0x814ac8]  ; = -1.0 */
     ea = (uint32_t)(0x00814ac8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00791cb6  fld qword ptr [esp + 4] */
+    /* 00791cb6  fld qword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00791cba  fucompp */
@@ -252,7 +264,7 @@ void bfv_server_l1_body_00791cb0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 00791cc1  jp 0x791cd7 */
     if (pf) goto L_00791cd7;
-    /* 00791cc3  fld qword ptr [0x807350] */
+    /* 00791cc3  fld qword ptr [0x807350]  ; = 0.0 */
     ea = (uint32_t)(0x00807350u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00791cc9  mov byte ptr [ecx + 0x30], 1 */
@@ -269,7 +281,7 @@ void bfv_server_l1_body_00791cb0(struct bfv_cpu *c)
     esp += 12;
     goto out;
 L_00791cd7:
-    /* 00791cd7  fld qword ptr [esp + 4] */
+    /* 00791cd7  fld qword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00791cdb  xor al, al */
@@ -296,7 +308,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791cf0  dice::bf::ai::Task  (virtual method) */
+/* 00791cf0  Task::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::Task
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791cf0, bfv_server_l1_body_00791cf0);
 BFV_L1_RESUME(bfv_server_l1r_00791cf0_1, bfv_server_l1_body_00791cf0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00791cf0_2, bfv_server_l1_body_00791cf0, 2);
@@ -324,7 +338,7 @@ void bfv_server_l1_body_00791cf0(struct bfv_cpu *c)
     /* 00791cf6  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00791cf8  mov dword ptr [esi], 0x877dec */
+    /* 00791cf8  mov dword ptr [esi], 0x877dec  ; vtable Task */
     ea = (uint32_t)(esi);
     M32(ea) = 0x877decu;
     /* 00791cfe  je 0x791d06 */
@@ -333,7 +347,7 @@ void bfv_server_l1_body_00791cf0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00791d01  call 0x7bed40 */
+    /* 00791d01  call 0x7bed40  ; ai_007bed40 */
     t = 0x007bed40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791cf0_1;
@@ -341,7 +355,7 @@ void bfv_server_l1_body_00791cf0(struct bfv_cpu *c)
     goto out;
 R_1:
 L_00791d06:
-    /* 00791d06  test byte ptr [esp + 8], 1 */
+    /* 00791d06  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -351,7 +365,7 @@ L_00791d06:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00791d0e  call 0x403df0 */
+    /* 00791d0e  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791cf0_2;

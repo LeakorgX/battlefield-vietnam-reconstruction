@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008c7be0  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008c7be0  RemoteFileStream::read  (virtual method)
+ * overrides: INonlinearStream::read  (6 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7be0, bfv_client_l1_body_008c7be0);
 BFV_L1_RESUME(bfv_client_l1r_008c7be0_1, bfv_client_l1_body_008c7be0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c7be0_2, bfv_client_l1_body_008c7be0, 2);
@@ -45,7 +48,7 @@ void bfv_client_l1_body_008c7be0(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 008c7bea  mov edx, 0x2720 */
     edx = 0x2720u;
-    /* 008c7bef  call 0x8c28b0 */
+    /* 008c7bef  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7be0_1;
@@ -61,7 +64,7 @@ R_1:
     /* 008c7bfa  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7bfd  call 0x8c28b0 */
+    /* 008c7bfd  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7be0_2;
@@ -71,13 +74,13 @@ R_2:
     /* 008c7c02  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7c05  mov edx, dword ptr [esp + 0x10] */
+    /* 008c7c05  mov edx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 008c7c09  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7c0c  call 0x8c28b0 */
+    /* 008c7c0c  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7be0_3;
@@ -87,22 +90,22 @@ R_3:
     /* 008c7c11  mov ecx, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
-    /* 008c7c14  mov dword ptr [esp + 4], 0 */
+    /* 008c7c14  mov dword ptr [esp + 4], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = 0x0u;
     /* 008c7c1c  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7c1f  lea edx, [esp + 4] */
+    /* 008c7c1f  lea edx, [esp + 4]  ; &var_4 */
     edx = (uint32_t)(esp + 0x00000004u);
-    /* 008c7c23  call 0x8c28f0 */
+    /* 008c7c23  call 0x8c28f0  ; io_readDword */
     t = 0x008c28f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7be0_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 008c7c28  mov edx, dword ptr [esp + 4] */
+    /* 008c7c28  mov edx, dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 008c7c2c  mov eax, dword ptr [esi + 8] */
@@ -115,17 +118,17 @@ R_4:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008c7c33  mov edx, dword ptr [esp + 0x10] */
+    /* 008c7c33  mov edx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
-    /* 008c7c37  call 0x8c2a10 */
+    /* 008c7c37  call 0x8c2a10  ; io_008c2a10 */
     t = 0x008c2a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7be0_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 008c7c3c  mov eax, dword ptr [esp + 4] */
+    /* 008c7c3c  mov eax, dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008c7c40  pop esi */
@@ -147,7 +150,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c7c50  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008c7c50  RemoteFileStream::write  (virtual method)
+ * overrides: INonlinearStream::write  (6 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7c50, bfv_client_l1_body_008c7c50);
 BFV_L1_RESUME(bfv_client_l1r_008c7c50_1, bfv_client_l1_body_008c7c50, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c7c50_2, bfv_client_l1_body_008c7c50, 2);
@@ -191,7 +197,7 @@ void bfv_client_l1_body_008c7c50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008c7c5b  mov edx, 0x2721 */
     edx = 0x2721u;
-    /* 008c7c60  call 0x8c28b0 */
+    /* 008c7c60  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7c50_1;
@@ -207,7 +213,7 @@ R_1:
     /* 008c7c6b  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7c6e  call 0x8c28b0 */
+    /* 008c7c6e  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7c50_2;
@@ -217,7 +223,7 @@ R_2:
     /* 008c7c73  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7c76  mov edi, dword ptr [esp + 0x14] */
+    /* 008c7c76  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 008c7c7a  mov ecx, dword ptr [eax + 0x1c] */
@@ -225,7 +231,7 @@ R_2:
     ecx = M32(ea);
     /* 008c7c7d  mov edx, edi */
     edx = edi;
-    /* 008c7c7f  call 0x8c28b0 */
+    /* 008c7c7f  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7c50_3;
@@ -235,7 +241,7 @@ R_3:
     /* 008c7c84  mov ecx, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
-    /* 008c7c87  mov edx, dword ptr [esp + 0x10] */
+    /* 008c7c87  mov edx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 008c7c8b  mov ecx, dword ptr [ecx + 0x1c] */
@@ -245,7 +251,7 @@ R_3:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008c7c8f  call 0x8c2a00 */
+    /* 008c7c8f  call 0x8c2a00  ; io_008c2a00 */
     t = 0x008c2a00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7c50_4;
@@ -255,22 +261,22 @@ R_4:
     /* 008c7c94  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7c97  mov dword ptr [esp + 8], 0 */
+    /* 008c7c97  mov dword ptr [esp + 8], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = 0x0u;
     /* 008c7c9f  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7ca2  lea edx, [esp + 8] */
+    /* 008c7ca2  lea edx, [esp + 8]  ; &var_4 */
     edx = (uint32_t)(esp + 0x00000008u);
-    /* 008c7ca6  call 0x8c28f0 */
+    /* 008c7ca6  call 0x8c28f0  ; io_readDword */
     t = 0x008c28f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7c50_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 008c7cab  mov eax, dword ptr [esp + 8] */
+    /* 008c7cab  mov eax, dword ptr [esp + 8]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008c7caf  pop edi */
@@ -296,7 +302,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c7cc0  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008c7cc0  RemoteFileStream::skip  (virtual method)
+ * overrides: INonlinearStream::skip  (6 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7cc0, bfv_client_l1_body_008c7cc0);
 BFV_L1_RESUME(bfv_client_l1r_008c7cc0_1, bfv_client_l1_body_008c7cc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c7cc0_2, bfv_client_l1_body_008c7cc0, 2);
@@ -334,7 +343,7 @@ void bfv_client_l1_body_008c7cc0(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 008c7cca  mov edx, 0x2722 */
     edx = 0x2722u;
-    /* 008c7ccf  call 0x8c28b0 */
+    /* 008c7ccf  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7cc0_1;
@@ -350,7 +359,7 @@ R_1:
     /* 008c7cda  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7cdd  call 0x8c28b0 */
+    /* 008c7cdd  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7cc0_2;
@@ -360,13 +369,13 @@ R_2:
     /* 008c7ce2  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7ce5  mov edx, dword ptr [esp + 0xc] */
+    /* 008c7ce5  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 008c7ce9  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7cec  call 0x8c28b0 */
+    /* 008c7cec  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7cc0_3;
@@ -376,22 +385,22 @@ R_3:
     /* 008c7cf1  mov ecx, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
-    /* 008c7cf4  mov byte ptr [esp + 7], 0 */
+    /* 008c7cf4  mov byte ptr [esp + 7], 0  ; var_1 */
     ea = (uint32_t)(esp + 0x00000007u);
     M8(ea) = 0x0u;
     /* 008c7cf9  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7cfc  lea edx, [esp + 7] */
+    /* 008c7cfc  lea edx, [esp + 7]  ; &var_1 */
     edx = (uint32_t)(esp + 0x00000007u);
-    /* 008c7d00  call 0x8c28d0 */
+    /* 008c7d00  call 0x8c28d0  ; io_008c28d0 */
     t = 0x008c28d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7cc0_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 008c7d05  mov al, byte ptr [esp + 7] */
+    /* 008c7d05  mov al, byte ptr [esp + 7]  ; var_1 */
     ea = (uint32_t)(esp + 0x00000007u);
     SET8L(eax, M8(ea));
     /* 008c7d09  pop esi */
@@ -413,7 +422,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c7d10  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008c7d10  RemoteFileStream::getBytesLeft  (virtual method)
+ * overrides: INonlinearStream::getBytesLeft  (6 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7d10, bfv_client_l1_body_008c7d10);
 BFV_L1_RESUME(bfv_client_l1r_008c7d10_1, bfv_client_l1_body_008c7d10, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c7d10_2, bfv_client_l1_body_008c7d10, 2);
@@ -449,7 +461,7 @@ void bfv_client_l1_body_008c7d10(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 008c7d1a  mov edx, 0x2723 */
     edx = 0x2723u;
-    /* 008c7d1f  call 0x8c28b0 */
+    /* 008c7d1f  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7d10_1;
@@ -465,7 +477,7 @@ R_1:
     /* 008c7d2a  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7d2d  call 0x8c28b0 */
+    /* 008c7d2d  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7d10_2;
@@ -475,22 +487,22 @@ R_2:
     /* 008c7d32  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7d35  mov dword ptr [esp + 4], 0 */
+    /* 008c7d35  mov dword ptr [esp + 4], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = 0x0u;
     /* 008c7d3d  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7d40  lea edx, [esp + 4] */
+    /* 008c7d40  lea edx, [esp + 4]  ; &var_4 */
     edx = (uint32_t)(esp + 0x00000004u);
-    /* 008c7d44  call 0x8c28f0 */
+    /* 008c7d44  call 0x8c28f0  ; io_readDword */
     t = 0x008c28f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7d10_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 008c7d49  mov eax, dword ptr [esp + 4] */
+    /* 008c7d49  mov eax, dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008c7d4d  pop esi */
@@ -512,7 +524,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c7d50  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008c7d50  RemoteFileStream::canRead  (virtual method)
+ * overrides: INonlinearStream::canRead  (6 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7d50, bfv_client_l1_body_008c7d50);
 BFV_L1_RESUME(bfv_client_l1r_008c7d50_1, bfv_client_l1_body_008c7d50, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c7d50_2, bfv_client_l1_body_008c7d50, 2);
@@ -548,7 +563,7 @@ void bfv_client_l1_body_008c7d50(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 008c7d5a  mov edx, 0x2724 */
     edx = 0x2724u;
-    /* 008c7d5f  call 0x8c28b0 */
+    /* 008c7d5f  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7d50_1;
@@ -564,7 +579,7 @@ R_1:
     /* 008c7d6a  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7d6d  call 0x8c28b0 */
+    /* 008c7d6d  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7d50_2;
@@ -574,22 +589,22 @@ R_2:
     /* 008c7d72  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7d75  mov byte ptr [esp + 7], 0 */
+    /* 008c7d75  mov byte ptr [esp + 7], 0  ; var_1 */
     ea = (uint32_t)(esp + 0x00000007u);
     M8(ea) = 0x0u;
     /* 008c7d7a  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7d7d  lea edx, [esp + 7] */
+    /* 008c7d7d  lea edx, [esp + 7]  ; &var_1 */
     edx = (uint32_t)(esp + 0x00000007u);
-    /* 008c7d81  call 0x8c28d0 */
+    /* 008c7d81  call 0x8c28d0  ; io_008c28d0 */
     t = 0x008c28d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7d50_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 008c7d86  mov al, byte ptr [esp + 7] */
+    /* 008c7d86  mov al, byte ptr [esp + 7]  ; var_1 */
     ea = (uint32_t)(esp + 0x00000007u);
     SET8L(eax, M8(ea));
     /* 008c7d8a  pop esi */
@@ -611,7 +626,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c7d90  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008c7d90  RemoteFileStream::canWrite  (virtual method)
+ * overrides: INonlinearStream::canWrite  (6 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7d90, bfv_client_l1_body_008c7d90);
 BFV_L1_RESUME(bfv_client_l1r_008c7d90_1, bfv_client_l1_body_008c7d90, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c7d90_2, bfv_client_l1_body_008c7d90, 2);
@@ -647,7 +665,7 @@ void bfv_client_l1_body_008c7d90(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 008c7d9a  mov edx, 0x2725 */
     edx = 0x2725u;
-    /* 008c7d9f  call 0x8c28b0 */
+    /* 008c7d9f  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7d90_1;
@@ -663,7 +681,7 @@ R_1:
     /* 008c7daa  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7dad  call 0x8c28b0 */
+    /* 008c7dad  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7d90_2;
@@ -673,22 +691,22 @@ R_2:
     /* 008c7db2  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7db5  mov byte ptr [esp + 7], 0 */
+    /* 008c7db5  mov byte ptr [esp + 7], 0  ; var_1 */
     ea = (uint32_t)(esp + 0x00000007u);
     M8(ea) = 0x0u;
     /* 008c7dba  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7dbd  lea edx, [esp + 7] */
+    /* 008c7dbd  lea edx, [esp + 7]  ; &var_1 */
     edx = (uint32_t)(esp + 0x00000007u);
-    /* 008c7dc1  call 0x8c28d0 */
+    /* 008c7dc1  call 0x8c28d0  ; io_008c28d0 */
     t = 0x008c28d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7d90_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 008c7dc6  mov al, byte ptr [esp + 7] */
+    /* 008c7dc6  mov al, byte ptr [esp + 7]  ; var_1 */
     ea = (uint32_t)(esp + 0x00000007u);
     SET8L(eax, M8(ea));
     /* 008c7dca  pop esi */
@@ -710,7 +728,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c7dd0  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008c7dd0  RemoteFileStream::getSize  (virtual method)
+ * overrides: INonlinearStream::getSize  (6 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7dd0, bfv_client_l1_body_008c7dd0);
 BFV_L1_RESUME(bfv_client_l1r_008c7dd0_1, bfv_client_l1_body_008c7dd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c7dd0_2, bfv_client_l1_body_008c7dd0, 2);
@@ -746,7 +767,7 @@ void bfv_client_l1_body_008c7dd0(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 008c7dda  mov edx, 0x2726 */
     edx = 0x2726u;
-    /* 008c7ddf  call 0x8c28b0 */
+    /* 008c7ddf  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7dd0_1;
@@ -762,7 +783,7 @@ R_1:
     /* 008c7dea  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7ded  call 0x8c28b0 */
+    /* 008c7ded  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7dd0_2;
@@ -772,22 +793,22 @@ R_2:
     /* 008c7df2  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7df5  mov dword ptr [esp + 4], 0 */
+    /* 008c7df5  mov dword ptr [esp + 4], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = 0x0u;
     /* 008c7dfd  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7e00  lea edx, [esp + 4] */
+    /* 008c7e00  lea edx, [esp + 4]  ; &var_4 */
     edx = (uint32_t)(esp + 0x00000004u);
-    /* 008c7e04  call 0x8c28f0 */
+    /* 008c7e04  call 0x8c28f0  ; io_readDword */
     t = 0x008c28f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7dd0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 008c7e09  mov eax, dword ptr [esp + 4] */
+    /* 008c7e09  mov eax, dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008c7e0d  pop esi */
@@ -809,7 +830,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c7e10  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008c7e10  RemoteFileStream::seek  (virtual method)
+ * overrides: INonlinearStream::seek  (6 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7e10, bfv_client_l1_body_008c7e10);
 BFV_L1_RESUME(bfv_client_l1r_008c7e10_1, bfv_client_l1_body_008c7e10, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c7e10_2, bfv_client_l1_body_008c7e10, 2);
@@ -849,7 +873,7 @@ void bfv_client_l1_body_008c7e10(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 008c7e1a  mov edx, 0x2727 */
     edx = 0x2727u;
-    /* 008c7e1f  call 0x8c28b0 */
+    /* 008c7e1f  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7e10_1;
@@ -865,7 +889,7 @@ R_1:
     /* 008c7e2a  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7e2d  call 0x8c28b0 */
+    /* 008c7e2d  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7e10_2;
@@ -875,13 +899,13 @@ R_2:
     /* 008c7e32  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7e35  mov edx, dword ptr [esp + 0xc] */
+    /* 008c7e35  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 008c7e39  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7e3c  call 0x8c28b0 */
+    /* 008c7e3c  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7e10_3;
@@ -891,13 +915,13 @@ R_3:
     /* 008c7e41  mov ecx, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
-    /* 008c7e44  mov edx, dword ptr [esp + 0x10] */
+    /* 008c7e44  mov edx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 008c7e48  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7e4b  call 0x8c28b0 */
+    /* 008c7e4b  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7e10_4;
@@ -907,22 +931,22 @@ R_4:
     /* 008c7e50  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7e53  mov byte ptr [esp + 7], 0 */
+    /* 008c7e53  mov byte ptr [esp + 7], 0  ; var_1 */
     ea = (uint32_t)(esp + 0x00000007u);
     M8(ea) = 0x0u;
     /* 008c7e58  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7e5b  lea edx, [esp + 7] */
+    /* 008c7e5b  lea edx, [esp + 7]  ; &var_1 */
     edx = (uint32_t)(esp + 0x00000007u);
-    /* 008c7e5f  call 0x8c28d0 */
+    /* 008c7e5f  call 0x8c28d0  ; io_008c28d0 */
     t = 0x008c28d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7e10_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 008c7e64  mov al, byte ptr [esp + 7] */
+    /* 008c7e64  mov al, byte ptr [esp + 7]  ; var_1 */
     ea = (uint32_t)(esp + 0x00000007u);
     SET8L(eax, M8(ea));
     /* 008c7e68  pop esi */
@@ -944,7 +968,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c7e70  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008c7e70  RemoteFileStream::tell  (virtual method)
+ * overrides: INonlinearStream::tell  (6 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c7e70, bfv_client_l1_body_008c7e70);
 BFV_L1_RESUME(bfv_client_l1r_008c7e70_1, bfv_client_l1_body_008c7e70, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c7e70_2, bfv_client_l1_body_008c7e70, 2);
@@ -980,7 +1007,7 @@ void bfv_client_l1_body_008c7e70(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 008c7e7a  mov edx, 0x2728 */
     edx = 0x2728u;
-    /* 008c7e7f  call 0x8c28b0 */
+    /* 008c7e7f  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7e70_1;
@@ -996,7 +1023,7 @@ R_1:
     /* 008c7e8a  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7e8d  call 0x8c28b0 */
+    /* 008c7e8d  call 0x8c28b0  ; io_writeDword */
     t = 0x008c28b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7e70_2;
@@ -1006,22 +1033,22 @@ R_2:
     /* 008c7e92  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 008c7e95  mov dword ptr [esp + 4], 0 */
+    /* 008c7e95  mov dword ptr [esp + 4], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = 0x0u;
     /* 008c7e9d  mov ecx, dword ptr [eax + 0x1c] */
     ea = (uint32_t)(eax + 0x0000001cu);
     ecx = M32(ea);
-    /* 008c7ea0  lea edx, [esp + 4] */
+    /* 008c7ea0  lea edx, [esp + 4]  ; &var_4 */
     edx = (uint32_t)(esp + 0x00000004u);
-    /* 008c7ea4  call 0x8c28f0 */
+    /* 008c7ea4  call 0x8c28f0  ; io_readDword */
     t = 0x008c28f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c7e70_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 008c7ea9  mov eax, dword ptr [esp + 4] */
+    /* 008c7ea9  mov eax, dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008c7ead  pop esi */
@@ -1043,7 +1070,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c80c0  dice::ref2::io::RemoteFileStream  (vtable store) */
+/* 008c80c0  RemoteFileStream::RemoteFileStream  (vtable store)
+ * class: dice::ref2::io::RemoteFileStream
+ * called by: RemoteFileSystem::vf4
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c80c0, bfv_client_l1_body_008c80c0);
 BFV_L1_RESUME(bfv_client_l1r_008c80c0_1, bfv_client_l1_body_008c80c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008c80c0_2, bfv_client_l1_body_008c80c0, 2);
@@ -1059,10 +1089,10 @@ void bfv_client_l1_body_008c80c0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 008c80c0  mov eax, dword ptr [esp + 4] */
+    /* 008c80c0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 008c80c4  mov edx, dword ptr [esp + 8] */
+    /* 008c80c4  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 008c80c8  push esi */
@@ -1071,7 +1101,7 @@ void bfv_client_l1_body_008c80c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008c80c9  mov esi, ecx */
     esi = ecx;
-    /* 008c80cb  mov dword ptr [esi], 0xbdff1c */
+    /* 008c80cb  mov dword ptr [esi], 0xbdff1c  ; vtable RemoteFileStream */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbdff1cu;
     /* 008c80d1  mov dword ptr [esi + 4], 1 */
@@ -1107,14 +1137,14 @@ void bfv_client_l1_body_008c80c0(struct bfv_cpu *c)
     /* 008c80ee  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 008c80f1  call 0x4019f0 */
+    /* 008c80f1  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008c80c0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008c80f6  mov eax, dword ptr [esp + 0x10] */
+    /* 008c80f6  mov eax, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 008c80fa  mov ecx, dword ptr [esi + 8] */
@@ -1151,7 +1181,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d2b00  dice::ref2::io::RemoteFileStream  (virtual method) */
+/* 008d2b00  RemoteFileStream::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::io::RemoteFileStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d2b00, bfv_client_l1_body_008d2b00);
 void bfv_client_l1_body_008d2b00(struct bfv_cpu *c)
 {
@@ -1160,12 +1193,12 @@ void bfv_client_l1_body_008d2b00(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 008d2b00  mov edx, dword ptr [0xb42718] */
+    /* 008d2b00  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 008d2b06  mov eax, ecx */
     eax = ecx;
-    /* 008d2b08  mov ecx, dword ptr [esp + 4] */
+    /* 008d2b08  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008d2b0c  cmp ecx, edx */
@@ -1187,7 +1220,7 @@ void bfv_client_l1_body_008d2b00(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008d2b19  mov esi, dword ptr [0xbdafb4] */
+    /* 008d2b19  mov esi, dword ptr [0xbdafb4]  ; interfaceID(BufferedStream|MemStream|Win32FileStream) */
     ea = (uint32_t)(0x00bdafb4u);
     esi = M32(ea);
     /* 008d2b1f  xor edx, edx */

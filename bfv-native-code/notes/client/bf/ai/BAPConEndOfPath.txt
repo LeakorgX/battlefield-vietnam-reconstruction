@@ -1,0 +1,6 @@
+## file
+BAPConEndOfPath is a bot action-plan condition that is true when the bot has
+reached the end of its current path.
+
+## 009f9f10
+evaluate(bot): returns the bot's own end-of-path test (bot slot 0x114).

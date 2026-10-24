@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a9560  dice::bf::ai::BAPATurnTowardsDirection  (vtable store) */
+/* 007a9560  BAPATurnTowardsDirection::BAPATurnTowardsDirection  (vtable store)
+ * class: dice::bf::ai::BAPATurnTowardsDirection
+ * called by: BBPScout::buildPlan
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9560, bfv_server_l1_body_007a9560);
 BFV_L1_RESUME(bfv_server_l1r_007a9560_1, bfv_server_l1_body_007a9560, 1);
 void bfv_server_l1_body_007a9560(struct bfv_cpu *c)
@@ -19,10 +22,10 @@ void bfv_server_l1_body_007a9560(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a9560  mov eax, dword ptr [esp + 0x18] */
+    /* 007a9560  mov eax, dword ptr [esp + 0x18]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
-    /* 007a9564  mov edx, dword ptr [esp + 0x10] */
+    /* 007a9564  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 007a9568  push esi */
@@ -33,19 +36,19 @@ void bfv_server_l1_body_007a9560(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007a956a  mov eax, dword ptr [esp + 0x14] */
+    /* 007a956a  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 007a956e  mov esi, ecx */
     esi = ecx;
-    /* 007a9570  mov ecx, dword ptr [esp + 0x1c] */
+    /* 007a9570  mov ecx, dword ptr [esp + 0x1c]  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 007a9574  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 007a9575  mov ecx, dword ptr [esp + 0x14] */
+    /* 007a9575  mov ecx, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 007a9579  push edx */
@@ -62,17 +65,17 @@ void bfv_server_l1_body_007a9560(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a957c  mov ecx, esi */
     ecx = esi;
-    /* 007a957e  call 0x7c07d0 */
+    /* 007a957e  call 0x7c07d0  ; BAPATurn::BAPATurn */
     t = 0x007c07d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9560_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007a9583  mov eax, dword ptr [esp + 8] */
+    /* 007a9583  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 007a9587  mov dword ptr [esi], 0x879fcc */
+    /* 007a9587  mov dword ptr [esi], 0x879fcc  ; vtable BAPATurnTowardsDirection */
     ea = (uint32_t)(esi);
     M32(ea) = 0x879fccu;
     /* 007a958d  mov ecx, dword ptr [eax] */
@@ -118,7 +121,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a95b0  dice::bf::ai::BAPATurnTowardsDirection  (virtual method) */
+/* 007a95b0  BAPATurnTowardsDirection::deleting_dtor  (virtual method)
+ * overrides: BotScript::vf1  (55 classes implement it)
+ * class: dice::bf::ai::BAPATurnTowardsDirection
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a95b0, bfv_server_l1_body_007a95b0);
 BFV_L1_RESUME(bfv_server_l1r_007a95b0_1, bfv_server_l1_body_007a95b0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a95b0_2, bfv_server_l1_body_007a95b0, 2);
@@ -148,7 +154,7 @@ void bfv_server_l1_body_007a95b0(struct bfv_cpu *c)
     /* 007a95b6  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007a95b8  mov dword ptr [esi], 0x879fcc */
+    /* 007a95b8  mov dword ptr [esi], 0x879fcc  ; vtable BAPATurnTowardsDirection */
     ea = (uint32_t)(esi);
     M32(ea) = 0x879fccu;
     /* 007a95be  je 0x7a95c7 */
@@ -171,14 +177,14 @@ R_1:
 L_007a95c7:
     /* 007a95c7  mov ecx, esi */
     ecx = esi;
-    /* 007a95c9  call 0x7c03e0 */
+    /* 007a95c9  call 0x7c03e0  ; BAPStatement::~BAPStatement */
     t = 0x007c03e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a95b0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 007a95ce  test byte ptr [esp + 8], 1 */
+    /* 007a95ce  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -188,9 +194,9 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a95d6  mov ecx, 0xc32b88 */
+    /* 007a95d6  mov ecx, 0xc32b88  ; g_MemoryPoolNull_BAPATurnTowardsDirection */
     ecx = 0xc32b88u;
-    /* 007a95db  call 0x413600 */
+    /* 007a95db  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a95b0_3;

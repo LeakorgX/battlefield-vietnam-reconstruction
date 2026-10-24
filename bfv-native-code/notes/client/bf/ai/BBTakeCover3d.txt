@@ -1,0 +1,5 @@
+## file
+Behaviour that scores evasion for an aircraft.
+
+## 009af2e0
+evaluate: when not usable it clears the per-bot state and returns the stored weight. Reads the threat value (slot 0x84), the bot's seat and vehicle, the position and the IAIEnvironment vf1 value; returns 1.0 in one early case. Sums the threat from each attacker, divided by (1 - [+0x2c] * [+0x30]), and adds the facing (dot product + 1) of each nearby attacker. When the sum is positive it multiplies it by the third argument, stores it as this bot's weight and returns it.

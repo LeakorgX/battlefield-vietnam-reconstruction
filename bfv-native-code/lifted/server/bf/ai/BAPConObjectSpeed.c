@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 007a80d0  dice::bf::ai::BAPConObjectSpeed  (vtable store) */
+/* 007a80d0  BAPConObjectSpeed::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPConObjectSpeed
+ * also entered at 007a80f0: BAPAChangeWeapon::vf3, BAPConObjectSpeed::vf1
+ * called by: BBPAvoidCollisionInfantery::buildPlan
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a80d0, bfv_server_l1_body_007a80d0);
 void bfv_server_l1_body_007a80d0(struct bfv_cpu *c)
 {
@@ -14,12 +18,12 @@ void bfv_server_l1_body_007a80d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007a80d0  mov edx, dword ptr [esp + 8] */
+    /* 007a80d0  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007a80d4  mov eax, ecx */
     eax = ecx;
-    /* 007a80d6  mov ecx, dword ptr [esp + 4] */
+    /* 007a80d6  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007a80da  mov dword ptr [eax + 4], 0 */
@@ -28,7 +32,7 @@ void bfv_server_l1_body_007a80d0(struct bfv_cpu *c)
     /* 007a80e1  mov dword ptr [eax + 8], ecx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = ecx;
-    /* 007a80e4  mov dword ptr [eax], 0x879a6c */
+    /* 007a80e4  mov dword ptr [eax], 0x879a6c  ; vtable BAPConObjectSpeed */
     ea = (uint32_t)(eax);
     M32(ea) = 0x879a6cu;
     /* 007a80ea  mov dword ptr [eax + 0xc], edx */
@@ -45,7 +49,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a8100  dice::bf::ai::BAPConObjectSpeed  (virtual method) */
+/* 007a8100  BAPConObjectSpeed::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectSpeed
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a8100, bfv_server_l1_body_007a8100);
 BFV_L1_RESUME(bfv_server_l1r_007a8100_1, bfv_server_l1_body_007a8100, 1);
 void bfv_server_l1_body_007a8100(struct bfv_cpu *c)
@@ -59,7 +66,7 @@ void bfv_server_l1_body_007a8100(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a8100  test byte ptr [esp + 4], 1 */
+    /* 007a8100  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -69,7 +76,7 @@ void bfv_server_l1_body_007a8100(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a8106  mov esi, ecx */
     esi = ecx;
-    /* 007a8108  mov dword ptr [esi], 0x873c74 */
+    /* 007a8108  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 007a810e  je 0x7a811b */
@@ -78,9 +85,9 @@ void bfv_server_l1_body_007a8100(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a8111  mov ecx, 0xc32940 */
+    /* 007a8111  mov ecx, 0xc32940  ; g_MemoryPoolNull_BAPConObjectSpeed */
     ecx = 0xc32940u;
-    /* 007a8116  call 0x413600 */
+    /* 007a8116  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a8100_1;
@@ -105,8 +112,11 @@ out: __attribute__((unused));
 }
 
 
-/* 007a8130  (source path)
- * strings: "c:\bfv_code\main\battlefield\AIBotActionPlan\BAPConObject..." */
+/* 007a8130  BAPConObjectSpeed::evaluate  (source path)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectSpeed
+ * strings: "c:\bfv_code\main\battlefield\AIBotActionPlan\BAPConObject..."
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a8130, bfv_server_l1_body_007a8130);
 BFV_L1_RESUME(bfv_server_l1r_007a8130_1, bfv_server_l1_body_007a8130, 1);
 void bfv_server_l1_body_007a8130(struct bfv_cpu *c)
@@ -120,7 +130,7 @@ void bfv_server_l1_body_007a8130(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a8130  mov eax, dword ptr [0xc1d380] */
+    /* 007a8130  mov eax, dword ptr [0xc1d380]  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     eax = M32(ea);
     /* 007a8135  push esi */
@@ -129,7 +139,7 @@ void bfv_server_l1_body_007a8130(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a8136  mov esi, ecx */
     esi = ecx;
-    /* 007a8138  mov ecx, dword ptr [0x934448] */
+    /* 007a8138  mov ecx, dword ptr [0x934448]  ; g_traceRing_mask */
     ea = (uint32_t)(0x00934448u);
     ecx = M32(ea);
     /* 007a813e  inc eax */
@@ -141,13 +151,13 @@ void bfv_server_l1_body_007a8130(struct bfv_cpu *c)
     r = (eax & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 007a8141  mov dword ptr [0xc1d380], eax */
+    /* 007a8141  mov dword ptr [0xc1d380], eax  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     M32(ea) = eax;
-    /* 007a8146  mov dword ptr [eax*4 + 0xc1d360], 0x879a78 */
+    /* 007a8146  mov dword ptr [eax*4 + 0xc1d360], 0x879a78  ; g_traceRing_file, "c:\bfv_code\main\battlefield\AIBotActionPlan\BA..." */
     ea = (uint32_t)(eax * 4u + 0x00c1d360u);
     M32(ea) = 0x879a78u;
-    /* 007a8151  mov dword ptr [eax*4 + 0xc1d340], 0x37 */
+    /* 007a8151  mov dword ptr [eax*4 + 0xc1d340], 0x37  ; g_traceRing_line */
     ea = (uint32_t)(eax * 4u + 0x00c1d340u);
     M32(ea) = 0x37u;
     /* 007a815c  mov eax, dword ptr [esi + 8] */
@@ -161,7 +171,7 @@ void bfv_server_l1_body_007a8130(struct bfv_cpu *c)
     ecx = r;
     /* 007a8167  je 0x7a8184 */
     if (zf) goto L_007a8184;
-    /* 007a8169  mov edx, dword ptr [0xc2f7c0] */
+    /* 007a8169  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 007a816f  mov edx, dword ptr [edx] */

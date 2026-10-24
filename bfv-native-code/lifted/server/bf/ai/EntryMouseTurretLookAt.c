@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00760c90  (source path) */
+/* 00760c90  AIConsole::ctor_dtor_helper_00760c90  (source path)
+ * also entered at 00760ca0: EntryMouseTurretLookAt::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00760c90, bfv_server_l1_body_00760c90);
 void bfv_server_l1_body_00760c90(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_00760c90(struct bfv_cpu *c)
     uint32_t ea;
     /* 00760c90  mov eax, ecx */
     eax = ecx;
-    /* 00760c92  mov dword ptr [eax], 0x8751fc */
+    /* 00760c92  mov dword ptr [eax], 0x8751fc  ; vtable EntryMouseTurretLookAt */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8751fcu;
     /* 00760c98  ret */

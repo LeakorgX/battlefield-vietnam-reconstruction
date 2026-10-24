@@ -1,95 +1,273 @@
-# Modding with the lifted C
+# Modding
 
-The game code is in `bfv-native-code/lifted/client/` and `.../server/`. It's sorted
-into the developers' own folders and files: `bf/ai/AIMain.c`, `ref2/world/BFSoldier.c`
-and so on.
+There are two ways to mod the game, and both rebuild the executables with
+`bfv-native-code/build.ps1`:
+
+1. **Mods (start here).** Your own C files go in `bfv-native-code/mods/`. A
+   mod hooks a game function: your code runs before it, after it or instead of
+   it. Mods can do float math, keep variables between calls and call game
+   functions. They are kept apart from the generated code, so regenerating the
+   C never touches them.
+2. **Editing the readable C.** You change a game function's own code in
+   `bfv-native-code/readable/<target>/`. This suits small changes inside a
+   function, such as a constant or a condition.
+
+Your game files are never changed. The build writes `BfVietnam-editable.exe`
+and `bfvietnam_w32ded-editable.exe` into the game folder, and `run.ps1` /
+`run-server.ps1` start them.
+
+## Quick start: a mod
+
+`mods/shared/example_repair_factor.c` makes repair packs repair twice as fast:
+
+```c
+#include "bfv_mod.h"
+
+MOD_AFTER(Cmd_ObjectTemplate_repairFactor_execute, double_repair_factor)
+{
+    if (M32(MOD_THIS + 0x1c) != 1) return;  /* 0 = the command reads the value */
+    uint32_t template = GAME_THISCALL(getActiveTemplateAs, M32(HandFireArmsTemplate_classID));
+    float factor = F32(template + ObjectTemplate_repairFactor) * 2.0f;
+    F32(template + ObjectTemplate_repairFactor) = factor;
+    MOD_LOGF("repairFactor set to %f\n", factor);
+}
+```
+
+The game's `Objects.con` runs `ObjectTemplate.repairFactor 0.5`, which calls the
+handler `Cmd_ObjectTemplate_repairFactor::execute`. The hook runs after the
+handler has stored the value and doubles it.
+
+Build and run it:
+
+```powershell
+.\bfv-native-code\build.ps1            # both executables; -Target client for one
+.\bfv-native-code\run.ps1
+```
+
+The build prints `client: mods hook 1 function(s): 00626890 ...`. `MOD_LOGF`
+writes to the Windows debug output, which [DebugView](https://learn.microsoft.com/sysinternals/downloads/debugview)
+shows.
+
+### Where mod files go
+
+| Folder | Built into |
+| --- | --- |
+| `mods/client/*.c` | the client only |
+| `mods/server/*.c` | the dedicated server only |
+| `mods/shared/*.c` | both |
+
+Function, global and field names have each target's own address or offset
+(`ObjectTemplate_repairFactor` is `+0x618` on the client and `+0x5ec` on the
+server), so a file in `shared/` works for both. Addresses (`0x00626890`) belong
+to one target, so a mod that uses them goes in that target's folder. To build
+without any mods, move the files out of `mods/`.
+
+### Write a hook
+
+`find.py --hook` prints the function's calling convention, whether it can be
+hooked, and a starting skeleton:
+
+```bash
+python bfv-native-code/tools/find.py 00626890 --hook
+```
+
+```
+00626890  Cmd_ObjectTemplate_repairFactor::execute  (thiscall: 0 stack arguments, reads ecx)
+hookable: yes
+```
+
+A hook is `MOD_BEFORE(function, name)` or `MOD_AFTER(function, name)` followed
+by a body. `function` can be:
+
+- an address: `0x00626890`;
+- a name from `readable/runtime/symbols_<target>.h`: `getActiveTemplateAs`;
+- an `INDEX.tsv` name with `::` written as `_`:
+  `Cmd_ObjectTemplate_repairFactor_execute`.
+
+If a name matches more than one function, the build says so; use the address
+instead. `name` is your C function name and must be unique.
+
+Inside a hook:
+
+| Use | Meaning |
+| --- | --- |
+| `MOD_THIS` | `this` (ecx at entry) |
+| `MOD_ARG(i)`, `MOD_ARG_F(i)` | stack argument `i` (0 = first) as a 32-bit value or a float; assign to change it in a before-hook |
+| `MOD_RESULT`, `MOD_SET_RESULT(v)` | the integer/pointer result (eax), in an after-hook |
+| `MOD_RESULT_F`, `MOD_SET_RESULT_F(v)` | the float result (x87 ST0), in an after-hook |
+| `MOD_RETURN(v)`, `MOD_RETURN_F(v)` | in a before-hook: skip the function and return `v` |
+| `M8` / `M16` / `M32(addr)`, `F32(addr)` | read or write game memory (integer or float) |
+| `GAME_THISCALL(f, obj, args...)` | call a game method; `GAME_STDCALL`, `GAME_CDECL`, `GAME_FASTCALL(f, ecx, edx, args...)` for the other conventions |
+| `GAME_THISCALL_F(...)` etc. | the same for a function that returns a float |
+| `GAME_FLOAT(x)` | pass a float as an argument |
+| `GAME_VIRTUAL(obj, n)` | the address of virtual method `n` of `obj` |
+| `GAME_METHOD(obj, Class, name)` | the same by name: slot `VF_Class_name` (`GAME_METHOD(obj, AISettings, getViewDistance)`) |
+| `MOD_LOG(text)`, `MOD_LOGF(format, ...)` | debug output (`%d %u %x %s %f`) |
+
+Hooks are ordinary C. Global variables keep their value between calls, and you
+can write helper functions. `mod_sqrtf`, `mod_fabsf`, `mod_minf`, `mod_maxf` and
+`mod_clampf` cover the common math, because there is no C library.
+
+Rules:
+
+- Only functions that the build runs as C can be hooked (`hookable: yes`).
+  There are about 33,500 such functions on the client and 20,000 on the
+  server. The build stops with an error if you hook another one.
+- `MOD_RETURN` needs the function's stack cleanup, which the build reads from
+  its `ret` instructions. A function that pops different amounts on different
+  paths can't be skipped. The mod stops with a debug message and a breakpoint.
+- An after-hook runs only when the function returns to its caller. It doesn't
+  run when the function hands its tail to other code with a jump.
+- Mods are not checked against the original game, so test them in play.
+  Everything else in the build stays byte-checked.
 
 ## Find the code
 
 - **Search tool:** looks up a string, class, file name or address and prints
-  `file:line`:
+  `file:line` in the readable C (`--tree lifted` for the L1 C):
 
   ```bash
   python bfv-native-code/tools/find.py repairFactor
   python bfv-native-code/tools/find.py BotMain --target server
   python bfv-native-code/tools/find.py 00626890 --calls     # what it calls
-  python bfv-native-code/tools/find.py 00674010 --callers   # who calls it
+  python bfv-native-code/tools/find.py 00674010 --callers   # who calls it (slow: reads every file)
+  python bfv-native-code/tools/find.py repairFactor --uses  # every instruction that uses it (slow)
+  python bfv-native-code/tools/find.py FireArms --class     # its virtual methods (slots) and named fields
   ```
 
+- **Names in mods:** the build writes `build/<target>/mod_fields.h` (field
+  offsets the readable C and `names.txt` name, e.g. `AISettings_maxNBots`) and
+  `mod_slots.h` (virtual method slots, e.g. `VF_AISettings_getViewDistance 9`,
+  for `GAME_METHOD`). Only names with one value in the target are kept;
+  overloads are left out, so use `GAME_VIRTUAL(obj, n)` with the slot number
+  `find.py Class --class` shows for those.
+
+- **Settings → code (start here):** `lifted/<target>/SETTINGS.md` lists every
+  script setting with a known field (`ObjectTemplate.fireDelay`, `magSize`,
+  `reloadTime`, `Game.gamePlayMode`, ...). Under each one are the functions
+  that read (r) or write (w) it. Weapon, soldier and vehicle code reaches its
+  settings through `this->template` (`[this + 0x4c]`) or a copy the constructor
+  makes (`FireArms + 0x290` = `fireDelay`), and both are followed. To change how
+  a setting behaves, hook or edit a reader listed there. The links point into
+  `lifted/`; the same file and function exist in `readable/`, and
+  `find.py <address>` gives its readable line.
 - **Console commands:** `lifted/<target>/CONSOLE.tsv` lists every console and
   script command (client 2,251, server 1,679): name, argument types, file, the
   handler functions that run it and the game functions they call. Commands like
   `ObjectTemplate.repairFactor` in the game's `.con` files appear there as
-  `repairFactor`.
+  `repairFactor`. A handler's `execute` is a good hook: `[this+0x1c]` is 0 =
+  get, 1 = set; `[this+0x20]` the arguments; `[this+0xa4]` the result.
 - **By folder:** `bf/ai` (bots), `bf` (game rules), `ref2/world` (objects,
   soldiers, vehicles, weapons), `ref2/geom`, `ref2/rend` (graphics), `ref2/io`,
   `mills` (sound), `network`, `meme` and `bf/menu` (UI). `unsorted/` holds what
   couldn't be placed yet. Files named `console_<id>.c` hold the console commands
   of one source file.
 - **Index:** `lifted/<target>/INDEX.tsv` lists every function with its address,
-  file, class, evidence and strings.
+  file, class, evidence and strings. `FIELDS.tsv` lists every named field and
+  virtual method with its object and offset. `CLASSES.tsv` lists every class
+  with its vtable, number of virtual methods and base classes, and
+  `VTABLES.tsv` the function in each slot of those vtables.
+- **Names:** `bfv-native-code/notes/<target>/names.txt` names virtual slots and
+  fields (`IAISettings::vf1 = getMaxNBots`, `BotBehaviour+0x1c = weights`);
+  `names-console.txt` next to it is generated from the console commands and
+  `names-code.txt` from the machine code (`tools/code_names.py`). Add a
+  line when you work out what a slot or field is, then rerun `comment_l2.py`:
+  every use in the tree shows the name.
 
 ## Read a function
 
-Each original instruction is a commented C block:
+The readable C (`readable/<target>/`) is the same code as the lifted C, written
+with variables, `if`/`while` and calls by name:
 
 ```c
-/* 009b96d2  mov dword ptr [eax], 0xbf75e4 */
-ea = (uint32_t)(eax);
-M32(ea) = 0xbf75e4u;
+/* thiscall: 0 stack arguments, reads ecx */
+void bfv_client_l1_body_00626890(struct bfv_cpu *c)
+{
+#define ObjectTemplate_repairFactor 0x618  /* field offset */
+    ...
+    this_1c = M32(this_2 + 0x1c);
+    if (this_1c == 0) {
+        v4 = M32(HandFireArmsTemplate_classID);
+        CALL(1, getActiveTemplateAs);
+        ...
 ```
 
-- `eax`, `ecx`, ... are the CPU registers.
-- `M8`/`M16`/`M32(addr)` read or write game memory.
-- `cf`, `zf`, ... are the CPU flags.
-- Jumps are `goto L_<address>`. A call leaves the function and comes back at `R_<k>`.
-- For a method, `ecx` holds `this` at entry.
+- `M8`/`M16`/`M32(addr)` read or write game memory. `CALL(k, f)` calls a game
+  function with the current registers and stack.
+- `eax`, `ecx`, ... are the CPU registers. The `#define`s at the top name them
+  where they hold one value (`this`, `result`, `r_<function>`).
+- The comment above the body gives the calling convention, which a hook uses.
 
-## Worked example: what `repairFactor` sets
+Comments starting with `/**` explain the code. Each file starts with a table of
+its functions. Each function header lists what it calls and which `this+`
+fields it reads and writes. Float math, which the C does as x87 instructions,
+is written out above it as a formula (`/** speed = sqrt(x * x + y * y) */`),
+and float compares as `/** when a <= b */`. Write your own notes about what a
+function is for in `bfv-native-code/notes/<target>/<path>.txt`, under
+`## <address>`, then run
+`uv run --with pefile python bfv-native-code/tools/comment_l2.py`. Notes outside
+the generated tree survive regeneration. See
+[READABLE-C.md](READABLE-C.md#comments-toolscomment_l2py).
 
-```bash
-grep -P '^repairFactor\t' bfv-native-code/lifted/client/CONSOLE.tsv
-```
+The lifted C (`lifted/<target>/`) has one commented C block per original
+instruction. Its notes after `;` name fields, globals, virtual call targets,
+strings and float constants. `find.py <text> --uses` searches those notes.
 
-The handlers are `00626890` and `006268f0` in `ref2/world/console_08f57028_2.c`.
-`00626890` (comments only):
+## Edit the readable C
 
-```c
-/* 006268a2  mov ecx, dword ptr [0xb77ee8] */   // a global (probably the template manager)
-/* 006268a8  call 0x674010 */                    // probably returns the active template
-/* 006268e4  mov dword ptr [eax + 0x618], ecx */ // stores the value at +0x618
-```
-
-The scripts set it with `ObjectTemplate.repairFactor 0.15`
-(`objects/HandWeapons/RepairPack/Objects.con`), so `repairFactor` is most likely
-the float at offset `0x618` of the active object template. Any
-function that reads `+ 0x618` from a template uses it. To force every template's
-value to 1.0, change the C lines under `006268e4`:
-
-```c
-    /* 006268e4  mov dword ptr [eax + 0x618], ecx */
-    ea = (uint32_t)(eax + 0x00000618u);
-    M32(ea) = 0x3f800000u;  /* mod: repairFactor = 1.0f (was: ecx) */
-```
-
-Lifted files are compiled with `-mgeneral-regs-only`, so C code there can't do
-float math (the game's own x87 state must stay untouched). Write float values as
-their bit patterns (1.0f = `0x3f800000`, 2.0f = `0x40000000`, 0.5f = `0x3f000000`).
-
-## Change it
-
-1. Edit the function. You can change a constant, flip a condition, skip a call
-   with a `goto`, or add C code.
-2. Rebuild: `.\bfv-native-code\build.ps1`. The build lists every edited function.
-3. Run: `.\bfv-native-code\run.ps1` (or `run-server.ps1`).
+1. Edit the function in `readable/<target>/`. You can change a constant, flip
+   a condition or skip a call.
+2. Rebuild with `.\bfv-native-code\build.ps1`. The build lists every edited
+   function.
 
 Rules:
 
 - Keep the register and stack state consistent at the end of the function
-  (`esp` and the return through `c->eip`). The rest of the game still expects the
-  original calling convention.
-- Only functions that passed verification run as C. If the build says
-  "never verified: stays native", your edit has no effect.
-- `lift_c.py` refuses to regenerate a target while any function is edited.
-  `--force` overwrites your edits, so keep your mods in git.
-- Your original game files are never changed; the build writes `*-editable.exe` copies.
+  (`esp` and the return through `c->eip`). The rest of the game still expects
+  the original calling convention.
+- The generated C is compiled with `-mgeneral-regs-only`, so it can't do float
+  math. Write float values as bit patterns (1.0f = `0x3f800000`), or use a mod.
+- Only functions that passed verification run as C. If the build says "never
+  verified: stays native", your edit has no effect.
+- `lift_l2.py` and `lift_c.py` refuse to regenerate a target while any of its
+  functions is edited. `--force` overwrites your edits, so keep a copy first.
+
+## Build a mod into the game
+
+Build only the mods you pick into otherwise original game code (about the size
+of the original EXE; only the hooked functions run as C):
+
+```bash
+uv run --with pefile --with capstone --with unicorn python bfv-native-code/tools/build.py --tree readable --mods-only --mods example_repair_factor --target client --output "X:/Battlefield Vietnam - Copy/BfVietnam-mod.exe"
+```
+
+`--mods-only` detours only the hooked functions (the hand-written C in `src/`
+stays). `--mods a,b` picks mod files by name. A file in `mods/shared/` builds
+into both executables; host-side game logic there runs on the dedicated server
+or on a client hosting a game. The full readable build (`--tree readable`
+alone) runs about 33,600 functions as C and is 59 MB; on 2026-10-23 it crashed
+at startup in `ctype<char>::ctype` (00405470), so play with the `--mods-only`
+build.
+
+## Build options
+
+```powershell
+.\bfv-native-code\build.ps1 -Target client                      # one executable
+.\bfv-native-code\build.ps1 -Tree lifted                        # build from the L1 C instead (no mods)
+.\bfv-native-code\build.ps1 -Target client -Output X:\test.exe  # somewhere else
+```
+
+The first build compiles all of the generated C. Later builds compile only the
+files that changed (the objects are cached in `bfv-native-code/build/<target>/`).
+
+## Test the mod runtime
+
+`tools/test_mods.py` builds a test client with the hooks in
+`mods/tests/client/`, writes it to `build/client-custom/`, and runs the hooked
+functions in an emulator. It checks float results, argument changes, skipping a
+function, game calls from a hook, logging, and that the game's registers and
+x87 state survive:
+
+```bash
+uv run --with pefile --with capstone --with unicorn python bfv-native-code/tools/test_mods.py
+```

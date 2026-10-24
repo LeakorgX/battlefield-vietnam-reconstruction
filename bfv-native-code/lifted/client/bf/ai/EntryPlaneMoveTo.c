@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009baeb0  (source path) */
+/* 009baeb0  AIConsole::ctor_dtor_helper_009baeb0  (source path)
+ * also entered at 009baec0: EntryPlaneMoveTo::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009baeb0, bfv_client_l1_body_009baeb0);
 void bfv_client_l1_body_009baeb0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_009baeb0(struct bfv_cpu *c)
     uint32_t ea;
     /* 009baeb0  mov eax, ecx */
     eax = ecx;
-    /* 009baeb2  mov dword ptr [eax], 0xbf7724 */
+    /* 009baeb2  mov dword ptr [eax], 0xbf7724  ; vtable EntryPlaneMoveTo */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf7724u;
     /* 009baeb8  ret */

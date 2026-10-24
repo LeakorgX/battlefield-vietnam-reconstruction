@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a7ad10  dice::ref2::rend::SimpleBlockGraphBase  (virtual method) */
+/* 00a7ad10  SimpleBlockGraphBase::vf0  (virtual method)
+ * class: dice::ref2::rend::SimpleBlockGraphBase
+ * called by: SimpleBlockGraphD3D::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ad10, bfv_client_l1_body_00a7ad10);
 void bfv_client_l1_body_00a7ad10(struct bfv_cpu *c)
 {
@@ -31,7 +34,7 @@ void bfv_client_l1_body_00a7ad10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a7ad17  jle 0xa7ad3a */
     if ((zf | (sf != of))) goto L_00a7ad3a;
-    /* 00a7ad19  mov edx, dword ptr [esp + 8] */
+    /* 00a7ad19  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00a7ad1d  push ebx */
@@ -133,7 +136,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ad60  dice::ref2::rend::SimpleBlockGraphBase  (virtual method) */
+/* 00a7ad60  SimpleBlockGraphBase::vf1  (virtual method)
+ * class: dice::ref2::rend::SimpleBlockGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ad60, bfv_client_l1_body_00a7ad60);
 void bfv_client_l1_body_00a7ad60(struct bfv_cpu *c)
 {
@@ -142,7 +147,7 @@ void bfv_client_l1_body_00a7ad60(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00a7ad60  mov eax, dword ptr [esp + 4] */
+    /* 00a7ad60  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00a7ad64  mov edx, dword ptr [eax + 4] */
@@ -216,7 +221,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ada0  dice::ref2::rend::SimpleBlockGraphBase  (virtual method) */
+/* 00a7ada0  SimpleBlockGraphBase::vf2  (virtual method)
+ * class: dice::ref2::rend::SimpleBlockGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ada0, bfv_client_l1_body_00a7ada0);
 void bfv_client_l1_body_00a7ada0(struct bfv_cpu *c)
 {
@@ -234,7 +241,7 @@ void bfv_client_l1_body_00a7ada0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a7ada7  mov esi, dword ptr [esp + 8] */
+    /* 00a7ada7  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 00a7adab  shl ecx, 2 */
@@ -305,7 +312,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7add0  dice::ref2::rend::SimpleBlockGraphBase  (virtual method) */
+/* 00a7add0  SimpleBlockGraphBase::vf4  (virtual method)
+ * class: dice::ref2::rend::SimpleBlockGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7add0, bfv_client_l1_body_00a7add0);
 void bfv_client_l1_body_00a7add0(struct bfv_cpu *c)
 {
@@ -314,10 +323,10 @@ void bfv_client_l1_body_00a7add0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7add0  mov eax, dword ptr [esp + 4] */
+    /* 00a7add0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00a7add4  mov edx, dword ptr [esp + 8] */
+    /* 00a7add4  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00a7add8  mov dword ptr [ecx + 0x24], eax */
@@ -337,7 +346,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7adf0  dice::ref2::rend::SimpleBlockGraphBase  (virtual method) */
+/* 00a7adf0  SimpleBlockGraphBase::vf5  (virtual method)
+ * class: dice::ref2::rend::SimpleBlockGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7adf0, bfv_client_l1_body_00a7adf0);
 void bfv_client_l1_body_00a7adf0(struct bfv_cpu *c)
 {
@@ -417,7 +428,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ae10  dice::ref2::rend::SimpleBlockGraphBase  (vtable store) */
+/* 00a7ae10  SimpleBlockGraphBase::SimpleBlockGraphBase  (vtable store)
+ * class: dice::ref2::rend::SimpleBlockGraphBase
+ * called by: SimpleBlockGraphD3D::SimpleBlockGraphD3D
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ae10, bfv_client_l1_body_00a7ae10);
 BFV_L1_RESUME(bfv_client_l1r_00a7ae10_1, bfv_client_l1_body_00a7ae10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a7ae10_2, bfv_client_l1_body_00a7ae10, 2);
@@ -434,7 +448,7 @@ void bfv_client_l1_body_00a7ae10(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00a7ae10  mov ax, word ptr [esp + 4] */
+    /* 00a7ae10  mov ax, word ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET16(eax, M16(ea));
     /* 00a7ae15  push ebx */
@@ -447,14 +461,14 @@ void bfv_client_l1_body_00a7ae10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a7ae17  mov esi, ecx */
     esi = ecx;
-    /* 00a7ae19  mov cx, word ptr [esp + 0x10] */
+    /* 00a7ae19  mov cx, word ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     SET16(ecx, M16(ea));
     /* 00a7ae1e  xor ebx, ebx */
     r = 0;
     F_LOGIC(32, r);
     ebx = r;
-    /* 00a7ae20  mov dword ptr [esi], 0xc069fc */
+    /* 00a7ae20  mov dword ptr [esi], 0xc069fc  ; vtable SimpleBlockGraphBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc069fcu;
     /* 00a7ae26  mov byte ptr [esi + 0x1a], bl */
@@ -505,7 +519,7 @@ void bfv_client_l1_body_00a7ae10(struct bfv_cpu *c)
     /* 00a7ae48  mov word ptr [esi + 0x2c], bx */
     ea = (uint32_t)(esi + 0x0000002cu);
     M16(ea) = LO16(ebx);
-    /* 00a7ae4c  call 0x403610 */
+    /* 00a7ae4c  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7ae10_1;
@@ -521,7 +535,7 @@ R_1:
     /* 00a7ae59  mov dword ptr [esi + 0x1c], eax */
     ea = (uint32_t)(esi + 0x0000001cu);
     M32(ea) = eax;
-    /* 00a7ae5c  call 0x403610 */
+    /* 00a7ae5c  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7ae10_2;

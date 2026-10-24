@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006f3820  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f3820  PointPhysicsNode::vf15_addressOf_10h  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ * called by: MenuMapNode::onMouseDown, sub_TOOLTIP_ENTER_GAME_helper_00546510
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f3820, bfv_client_l1_body_006f3820);
 void bfv_client_l1_body_006f3820(struct bfv_cpu *c)
 {
@@ -26,7 +29,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f3830  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f3830  PointPhysicsNode::vf32  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f3830, bfv_client_l1_body_006f3830);
 BFV_L1_RESUME(bfv_client_l1r_006f3830_1, bfv_client_l1_body_006f3830, 1);
 void bfv_client_l1_body_006f3830(struct bfv_cpu *c)
@@ -47,7 +52,7 @@ void bfv_client_l1_body_006f3830(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006f3833  call dword ptr [eax + 0x3c] */
+    /* 006f3833  call dword ptr [eax + 0x3c]  ; -> PointPhysicsNode::vf15 = PointPhysicsNode::vf15_addressOf_10h (returns &this+0x10) */
     ea = (uint32_t)(eax + 0x0000003cu);
     t = M32(ea);
     esp -= 4;
@@ -58,7 +63,7 @@ R_1:
     /* 006f3836  mov esi, dword ptr [eax] */
     ea = (uint32_t)(eax);
     esi = M32(ea);
-    /* 006f3838  mov ecx, dword ptr [esp + 8] */
+    /* 006f3838  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006f383c  mov edx, ecx */
@@ -95,7 +100,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f3860  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f3860  PointPhysicsNode::vf58  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f3860, bfv_client_l1_body_006f3860);
 void bfv_client_l1_body_006f3860(struct bfv_cpu *c)
 {
@@ -124,7 +131,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006f3870  dice::ref2::world::PointPhysicsNode  (vtable store) */
+/* 006f3870  PointPhysicsNode::PointPhysicsNode  (vtable store)
+ * class: dice::ref2::world::PointPhysicsNode
+ * called by: Particle::Particle, SimpleObjectTemplate::createPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f3870, bfv_client_l1_body_006f3870);
 void bfv_client_l1_body_006f3870(struct bfv_cpu *c)
 {
@@ -142,7 +152,7 @@ void bfv_client_l1_body_006f3870(struct bfv_cpu *c)
     /* 006f3874  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 006f3877  mov dword ptr [eax], 0xba3fd4 */
+    /* 006f3877  mov dword ptr [eax], 0xba3fd4  ; vtable PointPhysicsNode */
     ea = (uint32_t)(eax);
     M32(ea) = 0xba3fd4u;
     /* 006f387d  mov dword ptr [eax + 8], 1 */
@@ -221,7 +231,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f3980  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f3980  PointPhysicsNode::vf51_setByte_48h  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f3980, bfv_client_l1_body_006f3980);
 void bfv_client_l1_body_006f3980(struct bfv_cpu *c)
 {
@@ -230,7 +242,7 @@ void bfv_client_l1_body_006f3980(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006f3980  mov al, byte ptr [esp + 4] */
+    /* 006f3980  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 006f3984  mov byte ptr [ecx + 0x48], al */
@@ -247,7 +259,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f39b0  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f39b0  PointPhysicsNode::vf56  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f39b0, bfv_client_l1_body_006f39b0);
 void bfv_client_l1_body_006f39b0(struct bfv_cpu *c)
 {
@@ -279,7 +293,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f39c0  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f39c0  PointPhysicsNode::vf57_set_4ch_to_0  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f39c0, bfv_client_l1_body_006f39c0);
 void bfv_client_l1_body_006f39c0(struct bfv_cpu *c)
 {
@@ -302,7 +318,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006f39f0  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f39f0  PointPhysicsNode::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f39f0, bfv_client_l1_body_006f39f0);
 BFV_L1_RESUME(bfv_client_l1r_006f39f0_1, bfv_client_l1_body_006f39f0, 1);
 void bfv_client_l1_body_006f39f0(struct bfv_cpu *c)
@@ -316,7 +335,7 @@ void bfv_client_l1_body_006f39f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 006f39f0  test byte ptr [esp + 4], 1 */
+    /* 006f39f0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -326,7 +345,7 @@ void bfv_client_l1_body_006f39f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006f39f6  mov esi, ecx */
     esi = ecx;
-    /* 006f39f8  mov dword ptr [esi], 0xb4274c */
+    /* 006f39f8  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 006f39fe  je 0x6f3a0c */
@@ -367,7 +386,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f3a20  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f3a20  PointPhysicsNode::vf55  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f3a20, bfv_client_l1_body_006f3a20);
 void bfv_client_l1_body_006f3a20(struct bfv_cpu *c)
 {
@@ -409,7 +430,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f3a70  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f3a70  PointPhysicsNode::vf27  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f3a70, bfv_client_l1_body_006f3a70);
 void bfv_client_l1_body_006f3a70(struct bfv_cpu *c)
 {
@@ -418,7 +441,7 @@ void bfv_client_l1_body_006f3a70(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006f3a70  mov eax, dword ptr [esp + 8] */
+    /* 006f3a70  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006f3a74  fld dword ptr [ecx + 0x10] */
@@ -459,7 +482,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f3aa0  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f3aa0  PointPhysicsNode::vf29  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f3aa0, bfv_client_l1_body_006f3aa0);
 void bfv_client_l1_body_006f3aa0(struct bfv_cpu *c)
 {
@@ -468,7 +493,7 @@ void bfv_client_l1_body_006f3aa0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006f3aa0  mov eax, dword ptr [esp + 8] */
+    /* 006f3aa0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006f3aa4  fld dword ptr [ecx + 0x1c] */
@@ -509,7 +534,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f3e20  dice::ref2::world::PointPhysicsNode  (virtual method) */
+/* 006f3e20  PointPhysicsNode::vf40  (virtual method)
+ * class: dice::ref2::world::PointPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f3e20, bfv_client_l1_body_006f3e20);
 BFV_L1_RESUME(bfv_client_l1r_006f3e20_1, bfv_client_l1_body_006f3e20, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f3e20_2, bfv_client_l1_body_006f3e20, 2);
@@ -545,7 +572,7 @@ void bfv_client_l1_body_006f3e20(struct bfv_cpu *c)
     /* 006f3e27  mov byte ptr [esi + 0x50], 0 */
     ea = (uint32_t)(esi + 0x00000050u);
     M8(ea) = 0x0u;
-    /* 006f3e2b  fcomp dword ptr [0xb44444] */
+    /* 006f3e2b  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006f3e31  fnstsw ax */
@@ -558,7 +585,7 @@ void bfv_client_l1_body_006f3e20(struct bfv_cpu *c)
     /* 006f3e38  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 006f3e3a  call dword ptr [eax + 0x20] */
+    /* 006f3e3a  call dword ptr [eax + 0x20]  ; -> PointPhysicsNode::vf8 = PhysicsNode::vf8_onField_ch_callVirtual_vf17 */
     ea = (uint32_t)(eax + 0x00000020u);
     t = M32(ea);
     esp -= 4;
@@ -575,7 +602,7 @@ R_1:
     /* 006f3e44  fdiv dword ptr [esp + 4] */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006f3e48  fcom dword ptr [0xb4456c] */
+    /* 006f3e48  fcom dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcom dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006f3e4e  fnstsw ax */
@@ -587,11 +614,11 @@ R_1:
     if (!zf) goto L_006f3e5d;
     /* 006f3e55  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
-    /* 006f3e57  fld dword ptr [0xb4456c] */
+    /* 006f3e57  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_006f3e5d:
-    /* 006f3e5d  fld dword ptr [0xb4456c] */
+    /* 006f3e5d  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006f3e63  push ecx */
@@ -605,7 +632,7 @@ L_006f3e5d:
     __asm__ volatile(".intel_syntax noprefix\n\tfsub st(1)\n\t.att_syntax prefix");
     /* 006f3e6a  fxch st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfxch st(1)\n\t.att_syntax prefix");
-    /* 006f3e6c  fmul dword ptr [0xb607a8] */
+    /* 006f3e6c  fmul dword ptr [0xb607a8]  ; = 25.0f */
     ea = (uint32_t)(0x00b607a8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006f3e72  faddp st(1) */
@@ -619,7 +646,7 @@ L_006f3e5d:
     M32(esp) = t;
     /* 006f3e78  mov ecx, esi */
     ecx = esi;
-    /* 006f3e7a  call 0x6f3b10 */
+    /* 006f3e7a  call 0x6f3b10  ; PointPhysicsNode::vf40_helper_006f3b10 */
     t = 0x006f3b10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f3e20_2;
@@ -636,20 +663,20 @@ L_006f3e7f:
     M32(esp) = t;
     /* 006f3e84  mov ecx, esi */
     ecx = esi;
-    /* 006f3e86  call 0x6f3c30 */
+    /* 006f3e86  call 0x6f3c30  ; PointPhysicsNode::vf40_helper_006f3c30 */
     t = 0x006f3c30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f3e20_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 006f3e8b  mov ecx, dword ptr [0xd7d020] */
+    /* 006f3e8b  mov ecx, dword ptr [0xd7d020]  ; g_pBasicPhysicsSystem */
     ea = (uint32_t)(0x00d7d020u);
     ecx = M32(ea);
     /* 006f3e91  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 006f3e93  call dword ptr [eax + 0x18] */
+    /* 006f3e93  call dword ptr [eax + 0x18]  ; vf6 of Physics.gravity, -> BasicPhysicsSystem::vf6 = WPMoveTo::vf6 */
     ea = (uint32_t)(eax + 0x00000018u);
     t = M32(ea);
     esp -= 4;

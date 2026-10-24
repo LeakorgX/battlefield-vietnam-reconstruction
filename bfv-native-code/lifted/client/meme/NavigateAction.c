@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00ac1b60  dice::meme::NavigateAction  (virtual method)
- * strings: "Action tree" */
+/* 00ac1b60  NavigateAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::NavigateAction
+ * strings: "Action tree"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac1b60, bfv_client_l1_body_00ac1b60);
 BFV_L1_RESUME(bfv_client_l1r_00ac1b60_1, bfv_client_l1_body_00ac1b60, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac1b60_2, bfv_client_l1_body_00ac1b60, 2);
@@ -26,7 +29,7 @@ void bfv_client_l1_body_00ac1b60(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac1b61  mov ebx, dword ptr [esp + 8] */
+    /* 00ac1b61  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00ac1b65  push esi */
@@ -37,7 +40,7 @@ void bfv_client_l1_body_00ac1b60(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac1b67  mov edi, dword ptr [esp + 0x14] */
+    /* 00ac1b67  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 00ac1b6b  push edi */
@@ -50,7 +53,7 @@ void bfv_client_l1_body_00ac1b60(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00ac1b6d  mov esi, ecx */
     esi = ecx;
-    /* 00ac1b6f  call 0xa7d100 */
+    /* 00ac1b6f  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac1b60_1;
@@ -86,7 +89,7 @@ L_00ac1b7e:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac1b82  push 0xc10024 */
+    /* 00ac1b82  push 0xc10024  ; "Action tree" */
     t = 0xc10024u;
     esp -= 4;
     M32(esp) = t;
@@ -142,7 +145,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac1fd0  dice::meme::NavigateAction  (vtable store) */
+/* 00ac1fd0  NavigateAction::create  (vtable store)
+ * class: dice::meme::NavigateAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac1fd0, bfv_client_l1_body_00ac1fd0);
 BFV_L1_RESUME(bfv_client_l1r_00ac1fd0_1, bfv_client_l1_body_00ac1fd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac1fd0_2, bfv_client_l1_body_00ac1fd0, 2);
@@ -166,7 +171,7 @@ void bfv_client_l1_body_00ac1fd0(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac1fd3  call 0x403610 */
+    /* 00ac1fd3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac1fd0_1;
@@ -188,14 +193,14 @@ R_1:
     if (zf) goto L_00ac1ff9;
     /* 00ac1fe1  mov ecx, esi */
     ecx = esi;
-    /* 00ac1fe3  call 0x874870 */
+    /* 00ac1fe3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac1fd0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac1fe8  mov dword ptr [esi], 0xc101e4 */
+    /* 00ac1fe8  mov dword ptr [esi], 0xc101e4  ; vtable NavigateAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc101e4u;
     /* 00ac1fee  mov dword ptr [esi + 8], 0 */
@@ -231,8 +236,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2500  dice::meme::NavigateAction  (virtual method)
- * strings: "dice::meme::NavigateAction" */
+/* 00ac2500  NavigateAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::NavigateAction
+ * strings: "dice::meme::NavigateAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2500, bfv_client_l1_body_00ac2500);
 BFV_L1_RESUME(bfv_client_l1r_00ac2500_1, bfv_client_l1_body_00ac2500, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2500_2, bfv_client_l1_body_00ac2500, 2);
@@ -263,27 +271,27 @@ void bfv_client_l1_body_00ac2500(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac2515  push 0xc1027c */
+    /* 00ac2515  push 0xc1027c  ; "dice::meme::NavigateAction" */
     t = 0xc1027cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac251a  mov ecx, 0xe215c8 */
+    /* 00ac251a  mov ecx, 0xe215c8  ; g_RuntimeClass_NavigateAction */
     ecx = 0xe215c8u;
-    /* 00ac251f  call 0x875490 */
+    /* 00ac251f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2500_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac2524  push 0xb41c10 */
+    /* 00ac2524  push 0xb41c10  ; bfv_client_global_store_00b41c10 */
     t = 0xb41c10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2529  mov dword ptr [0xe215c8], 0xc10034 */
+    /* 00ac2529  mov dword ptr [0xe215c8], 0xc10034  ; g_RuntimeClass_NavigateAction */
     ea = (uint32_t)(0x00e215c8u);
     M32(ea) = 0xc10034u;
-    /* 00ac2533  call 0x7c2cd2 */
+    /* 00ac2533  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2500_2;
@@ -297,7 +305,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac253b:
-    /* 00ac253b  mov eax, 0xe215c8 */
+    /* 00ac253b  mov eax, 0xe215c8  ; g_RuntimeClass_NavigateAction */
     eax = 0xe215c8u;
     /* 00ac2540  ret */
     c->eip = M32(esp);

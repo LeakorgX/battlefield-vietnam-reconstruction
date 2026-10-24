@@ -5,8 +5,12 @@
 #include "l1.h"
 
 
-/* 007c0b55  std::out_of_range  (vtable store)
- * strings: "invalid string position" */
+/* 007c0b55  std::_Xran  (vtable store)
+ * identified: throws out_of_range ("invalid string position"); called on bad string positions
+ * class: std::out_of_range
+ * strings: "invalid string position"
+ * called by: std::string::erase, std::string::assign_substr, sub_00402f30, std::string::append_substr, std::string::compare_chars, sub_00422fd0 (+16 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c0b55, bfv_client_l1_body_007c0b55);
 BFV_L1_RESUME(bfv_client_l1r_007c0b55_1, bfv_client_l1_body_007c0b55, 1);
 BFV_L1_RESUME(bfv_client_l1r_007c0b55_2, bfv_client_l1_body_007c0b55, 2);
@@ -28,7 +32,7 @@ void bfv_client_l1_body_007c0b55(struct bfv_cpu *c)
     }
     /* 007c0b55  mov eax, 0xac76aa */
     eax = 0xac76aau;
-    /* 007c0b5a  call 0x7c77bc */
+    /* 007c0b5a  call 0x7c77bc  ; _EH_prolog */
     t = 0x007c77bcu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c0b55_1;
@@ -41,13 +45,13 @@ R_1:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 007c0b62  push 0xbb6e8c */
+    /* 007c0b62  push 0xbb6e8c  ; "invalid string position" */
     t = 0xbb6e8cu;
     esp -= 4;
     M32(esp) = t;
     /* 007c0b67  lea ecx, [ebp - 0x28] */
     ecx = (uint32_t)(ebp + 0xffffffd8u);
-    /* 007c0b6a  call 0x402100 */
+    /* 007c0b6a  call 0x402100  ; std::string::string_cstr */
     t = 0x00402100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c0b55_2;
@@ -67,7 +71,7 @@ R_2:
     M32(esp) = t;
     /* 007c0b77  lea ecx, [ebp - 0x50] */
     ecx = (uint32_t)(ebp + 0xffffffb0u);
-    /* 007c0b7a  call 0x403d10 */
+    /* 007c0b7a  call 0x403d10  ; logic_error::logic_error */
     t = 0x00403d10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c0b55_3;
@@ -84,10 +88,10 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007c0b88  mov dword ptr [ebp - 0x50], 0xb42800 */
+    /* 007c0b88  mov dword ptr [ebp - 0x50], 0xb42800  ; vtable out_of_range */
     ea = (uint32_t)(ebp + 0xffffffb0u);
     M32(ea) = 0xb42800u;
-    /* 007c0b8f  call 0x7c1fae */
+    /* 007c0b8f  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c0b55_4;

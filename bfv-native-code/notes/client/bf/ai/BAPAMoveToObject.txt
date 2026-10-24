@@ -1,0 +1,5 @@
+## file
+Move action towards another object.
+
+## 00a0a930
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.

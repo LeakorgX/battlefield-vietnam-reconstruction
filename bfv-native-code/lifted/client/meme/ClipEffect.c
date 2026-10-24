@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00abe960  dice::meme::ClipEffect  (virtual method) */
+/* 00abe960  ClipEffect::vf18  (virtual method)
+ * overrides: Effect::vf18  (18 classes implement it)
+ * class: dice::meme::ClipEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe960, bfv_client_l1_body_00abe960);
 BFV_L1_RESUME(bfv_client_l1r_00abe960_1, bfv_client_l1_body_00abe960, 1);
 void bfv_client_l1_body_00abe960(struct bfv_cpu *c)
@@ -19,17 +22,17 @@ void bfv_client_l1_body_00abe960(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00abe960  mov eax, dword ptr [esp + 0x18] */
+    /* 00abe960  mov eax, dword ptr [esp + 0x18]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
-    /* 00abe964  mov edx, dword ptr [esp + 0x10] */
+    /* 00abe964  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00abe968  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe969  mov esi, dword ptr [esp + 0x18] */
+    /* 00abe969  mov esi, dword ptr [esp + 0x18]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     esi = M32(ea);
     /* 00abe96d  push edi */
@@ -53,7 +56,7 @@ void bfv_client_l1_body_00abe960(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe975  mov edx, dword ptr [esp + 0x18] */
+    /* 00abe975  mov edx, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     edx = M32(ea);
     /* 00abe979  mov dword ptr [esi], ecx */
@@ -62,14 +65,14 @@ void bfv_client_l1_body_00abe960(struct bfv_cpu *c)
     /* 00abe97b  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 00abe97d  mov eax, dword ptr [esp + 0x1c] */
+    /* 00abe97d  mov eax, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 00abe981  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe982  mov eax, dword ptr [esp + 0x18] */
+    /* 00abe982  mov eax, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00abe986  push edx */
@@ -80,7 +83,7 @@ void bfv_client_l1_body_00abe960(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe988  call 0x875580 */
+    /* 00abe988  call 0x875580  ; meme::Node::dispatchUpB */
     t = 0x00875580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe960_1;
@@ -109,7 +112,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00abe9a0  dice::meme::ClipEffect  (virtual method) */
+/* 00abe9a0  ClipEffect::vf19  (virtual method)
+ * overrides: Effect::vf19  (18 classes implement it)
+ * class: dice::meme::ClipEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe9a0, bfv_client_l1_body_00abe9a0);
 BFV_L1_RESUME(bfv_client_l1r_00abe9a0_1, bfv_client_l1_body_00abe9a0, 1);
 void bfv_client_l1_body_00abe9a0(struct bfv_cpu *c)
@@ -123,17 +129,17 @@ void bfv_client_l1_body_00abe9a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00abe9a0  mov eax, dword ptr [esp + 0x10] */
+    /* 00abe9a0  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 00abe9a4  mov edx, dword ptr [esp + 8] */
+    /* 00abe9a4  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00abe9a8  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe9a9  mov esi, dword ptr [esp + 0x10] */
+    /* 00abe9a9  mov esi, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00abe9ad  push edi */
@@ -159,7 +165,7 @@ void bfv_client_l1_body_00abe9a0(struct bfv_cpu *c)
     /* 00abe9b6  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 00abe9b8  mov eax, dword ptr [esp + 0x10] */
+    /* 00abe9b8  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00abe9bc  push edx */
@@ -170,7 +176,7 @@ void bfv_client_l1_body_00abe9a0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe9be  call 0x8755e0 */
+    /* 00abe9be  call 0x8755e0  ; meme::Node::dispatchUpA */
     t = 0x008755e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe9a0_1;
@@ -199,7 +205,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00abe9d0  dice::meme::ClipEffect  (virtual method) */
+/* 00abe9d0  ClipEffect::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::ClipEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe9d0, bfv_client_l1_body_00abe9d0);
 BFV_L1_RESUME(bfv_client_l1r_00abe9d0_1, bfv_client_l1_body_00abe9d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abe9d0_2, bfv_client_l1_body_00abe9d0, 2);
@@ -215,7 +224,7 @@ void bfv_client_l1_body_00abe9d0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00abe9d0  mov eax, dword ptr [esp + 4] */
+    /* 00abe9d0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00abe9d4  push esi */
@@ -226,7 +235,7 @@ void bfv_client_l1_body_00abe9d0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe9d6  mov edi, dword ptr [esp + 0x10] */
+    /* 00abe9d6  mov edi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 00abe9da  push edi */
@@ -239,7 +248,7 @@ void bfv_client_l1_body_00abe9d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00abe9dc  mov esi, ecx */
     esi = ecx;
-    /* 00abe9de  call 0xa7d100 */
+    /* 00abe9de  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe9d0_1;
@@ -270,7 +279,7 @@ L_00abe9ec:
     M32(esp) = t;
     /* 00abe9ed  lea ecx, [esi + 8] */
     ecx = (uint32_t)(esi + 0x00000008u);
-    /* 00abe9f0  call 0x8757e0 */
+    /* 00abe9f0  call 0x8757e0  ; meme_Width_008757e0 */
     t = 0x008757e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe9d0_2;
@@ -301,7 +310,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00abebf0  dice::meme::ClipEffect  (vtable store) */
+/* 00abebf0  ClipEffect::ClipEffect  (vtable store)
+ * class: dice::meme::ClipEffect
+ * called by: MoveClipEffect::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abebf0, bfv_client_l1_body_00abebf0);
 BFV_L1_RESUME(bfv_client_l1r_00abebf0_1, bfv_client_l1_body_00abebf0, 1);
 void bfv_client_l1_body_00abebf0(struct bfv_cpu *c)
@@ -321,7 +333,7 @@ void bfv_client_l1_body_00abebf0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00abebf1  mov esi, ecx */
     esi = ecx;
-    /* 00abebf3  call 0x874870 */
+    /* 00abebf3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abebf0_1;
@@ -332,7 +344,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 00abebfa  mov dword ptr [esi], 0xc0ef1c */
+    /* 00abebfa  mov dword ptr [esi], 0xc0ef1c  ; vtable ClipEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0ef1cu;
     /* 00abec00  mov dword ptr [esi + 8], eax */
@@ -367,8 +379,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abec60  dice::meme::ClipEffect  (virtual method)
- * strings: "dice::meme::ClipEffect" */
+/* 00abec60  ClipEffect::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::ClipEffect
+ * strings: "dice::meme::ClipEffect"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abec60, bfv_client_l1_body_00abec60);
 BFV_L1_RESUME(bfv_client_l1r_00abec60_1, bfv_client_l1_body_00abec60, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abec60_2, bfv_client_l1_body_00abec60, 2);
@@ -399,27 +414,27 @@ void bfv_client_l1_body_00abec60(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00abec75  push 0xc0efc4 */
+    /* 00abec75  push 0xc0efc4  ; "dice::meme::ClipEffect" */
     t = 0xc0efc4u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abec7a  mov ecx, 0xe21300 */
+    /* 00abec7a  mov ecx, 0xe21300  ; g_RuntimeClass_ClipEffect */
     ecx = 0xe21300u;
-    /* 00abec7f  call 0x875490 */
+    /* 00abec7f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abec60_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00abec84  push 0xb41a90 */
+    /* 00abec84  push 0xb41a90  ; bfv_client_global_store_00b41a90 */
     t = 0xb41a90u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abec89  mov dword ptr [0xe21300], 0xc0eed4 */
+    /* 00abec89  mov dword ptr [0xe21300], 0xc0eed4  ; g_RuntimeClass_ClipEffect */
     ea = (uint32_t)(0x00e21300u);
     M32(ea) = 0xc0eed4u;
-    /* 00abec93  call 0x7c2cd2 */
+    /* 00abec93  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abec60_2;
@@ -433,7 +448,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00abec9b:
-    /* 00abec9b  mov eax, 0xe21300 */
+    /* 00abec9b  mov eax, 0xe21300  ; g_RuntimeClass_ClipEffect */
     eax = 0xe21300u;
     /* 00abeca0  ret */
     c->eip = M32(esp);

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00403bb0  dice::ref2::MemoryPoolNull  (virtual method) */
+/* 00403bb0  MemoryPoolNull::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::MemoryPoolNull
+ */
 BFV_L1_ENTRY(bfv_client_l1_00403bb0, bfv_client_l1_body_00403bb0);
 void bfv_client_l1_body_00403bb0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_00403bb0(struct bfv_cpu *c)
     uint32_t a, b, r, ea;
     /* 00403bb0  mov eax, ecx */
     eax = ecx;
-    /* 00403bb2  mov ecx, dword ptr [esp + 4] */
+    /* 00403bb2  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00403bb6  cmp ecx, 1 */
@@ -58,7 +61,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00412ee0  dice::ref2::MemoryPoolNull  (virtual method) */
+/* 00412ee0  MemoryPool::alloc_debug  (virtual method)
+ * identified: (size, file, line); forwards to alloc(size) (vtable +0x14). Called with ecx = a global pool
+ * class: dice::ref2::MemoryPoolNull
+ * called by: SimpleObject::constructor_helper_0093cd60, SimpleObject::constructor_helper_0093cef0, AITemplateMobile::createObjectPlugIn, BAPATrigger::operator_new_pool, pool_00e0f840_alloc, pool_00e0f880_alloc (+118 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00412ee0, bfv_client_l1_body_00412ee0);
 BFV_L1_RESUME(bfv_client_l1r_00412ee0_1, bfv_client_l1_body_00412ee0, 1);
 void bfv_client_l1_body_00412ee0(struct bfv_cpu *c)
@@ -72,7 +79,7 @@ void bfv_client_l1_body_00412ee0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00412ee0  mov edx, dword ptr [esp + 4] */
+    /* 00412ee0  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00412ee4  mov eax, dword ptr [ecx] */
@@ -82,7 +89,7 @@ void bfv_client_l1_body_00412ee0(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00412ee7  call dword ptr [eax + 0x14] */
+    /* 00412ee7  call dword ptr [eax + 0x14]  ; -> MemoryPoolNull::vf5 = MemoryPoolNull::alloc */
     ea = (uint32_t)(eax + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -101,7 +108,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00412ef0  dice::ref2::MemoryPoolNull  (virtual method) */
+/* 00412ef0  MemoryPool::free_debug  (virtual method)
+ * identified: (ptr, file, line); forwards to free(ptr) (vtable +0x1c)
+ * class: dice::ref2::MemoryPoolNull
+ */
 BFV_L1_ENTRY(bfv_client_l1_00412ef0, bfv_client_l1_body_00412ef0);
 BFV_L1_RESUME(bfv_client_l1r_00412ef0_1, bfv_client_l1_body_00412ef0, 1);
 void bfv_client_l1_body_00412ef0(struct bfv_cpu *c)
@@ -115,7 +125,7 @@ void bfv_client_l1_body_00412ef0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00412ef0  mov edx, dword ptr [esp + 4] */
+    /* 00412ef0  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00412ef4  mov eax, dword ptr [ecx] */
@@ -125,7 +135,7 @@ void bfv_client_l1_body_00412ef0(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00412ef7  call dword ptr [eax + 0x1c] */
+    /* 00412ef7  call dword ptr [eax + 0x1c]  ; -> MemoryPoolNull::vf7 = 0x0076fcb0 */
     ea = (uint32_t)(eax + 0x0000001cu);
     t = M32(ea);
     esp -= 4;
@@ -144,7 +154,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0076fca0  dice::ref2::MemoryPoolNull  (virtual method) */
+/* 0076fca0  MemoryPoolNull::alloc  (virtual method)
+ * identified: (size); plain operator_new
+ * class: dice::ref2::MemoryPoolNull
+ * also entered at 0076fcb0: MemoryPoolNull::vf7
+ */
 BFV_L1_ENTRY(bfv_client_l1_0076fca0, bfv_client_l1_body_0076fca0);
 BFV_L1_RESUME(bfv_client_l1r_0076fca0_1, bfv_client_l1_body_0076fca0, 1);
 void bfv_client_l1_body_0076fca0(struct bfv_cpu *c)
@@ -158,14 +172,14 @@ void bfv_client_l1_body_0076fca0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0076fca0  mov eax, dword ptr [esp + 4] */
+    /* 0076fca0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0076fca4  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0076fca5  call 0x403610 */
+    /* 0076fca5  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0076fca0_1;

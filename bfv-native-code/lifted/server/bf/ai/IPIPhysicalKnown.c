@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00791860  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791860  IPIPhysicalKnown::vf2  (virtual method)
+ * overrides: InformationPlugIn::vf2  (10 classes implement it)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791860, bfv_server_l1_body_00791860);
 BFV_L1_RESUME(bfv_server_l1r_00791860_1, bfv_server_l1_body_00791860, 1);
 BFV_L1_RESUME(bfv_server_l1r_00791860_2, bfv_server_l1_body_00791860, 2);
@@ -73,7 +76,7 @@ R_1:
     M32(ea) = ecx;
     /* 00791881  mov ecx, edi */
     ecx = edi;
-    /* 00791883  call 0x727e00 */
+    /* 00791883  call 0x727e00  ; AIObjectPhysical_00727e00 */
     t = 0x00727e00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791860_2;
@@ -83,7 +86,7 @@ R_2:
     /* 00791888  fdiv dword ptr [esp + 8] */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0079188c  mov dword ptr [esi + 8], 0x3f000000 */
+    /* 0079188c  mov dword ptr [esi + 8], 0x3f000000  ; 0.5f */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x3f000000u;
     /* 00791893  fst dword ptr [esp + 8] */
@@ -99,14 +102,14 @@ R_2:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0079189f  call 0x78c5f0 */
+    /* 0079189f  call 0x78c5f0  ; bfv_bailout_curve */
     t = 0x0078c5f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791860_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 007918a4  fmul dword ptr [0x8148e0] */
+    /* 007918a4  fmul dword ptr [0x8148e0]  ; = 0.5f */
     ea = (uint32_t)(0x008148e0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007918aa  lea eax, [esi + 0x14] */
@@ -123,7 +126,7 @@ R_3:
     /* 007918b3  fstp dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007918b6  call 0x728080 */
+    /* 007918b6  call 0x728080  ; AIObjectPhysical_00728080 */
     t = 0x00728080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791860_4;
@@ -156,7 +159,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007918d0  dice::bf::ai::IPIPhysicalKnown  (vtable store) */
+/* 007918d0  IPIPhysicalKnown::IPIPhysicalKnown  (vtable store)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ * called by: AIObjectPhysical::createInformationPlugIn
+ */
 BFV_L1_ENTRY(bfv_server_l1_007918d0, bfv_server_l1_body_007918d0);
 void bfv_server_l1_body_007918d0(struct bfv_cpu *c)
 {
@@ -167,10 +173,10 @@ void bfv_server_l1_body_007918d0(struct bfv_cpu *c)
     uint32_t ea;
     /* 007918d0  mov eax, ecx */
     eax = ecx;
-    /* 007918d2  mov ecx, dword ptr [esp + 4] */
+    /* 007918d2  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 007918d6  mov dword ptr [eax], 0x877cd4 */
+    /* 007918d6  mov dword ptr [eax], 0x877cd4  ; vtable IPIPhysicalKnown */
     ea = (uint32_t)(eax);
     M32(ea) = 0x877cd4u;
     /* 007918dc  mov dword ptr [eax + 4], ecx */
@@ -187,7 +193,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791920  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791920  IPIPhysicalKnown::vf7  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791920, bfv_server_l1_body_00791920);
 BFV_L1_RESUME(bfv_server_l1r_00791920_1, bfv_server_l1_body_00791920, 1);
 void bfv_server_l1_body_00791920(struct bfv_cpu *c)
@@ -224,7 +232,7 @@ void bfv_server_l1_body_00791920(struct bfv_cpu *c)
 R_1:
     /* 00791930  mov ecx, eax */
     ecx = eax;
-    /* 00791932  jmp 0x728240 */
+    /* 00791932  jmp 0x728240  ; IPICover::constructor_helper_00728240 */
     c->eip = 0x00728240u;
     goto out;
 out: __attribute__((unused));
@@ -234,7 +242,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791940  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791940  IPIPhysicalKnown::vf8  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791940, bfv_server_l1_body_00791940);
 BFV_L1_RESUME(bfv_server_l1r_00791940_1, bfv_server_l1_body_00791940, 1);
 void bfv_server_l1_body_00791940(struct bfv_cpu *c)
@@ -281,7 +291,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791960  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791960  IPIPhysicalKnown::vf11  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791960, bfv_server_l1_body_00791960);
 BFV_L1_RESUME(bfv_server_l1r_00791960_1, bfv_server_l1_body_00791960, 1);
 void bfv_server_l1_body_00791960(struct bfv_cpu *c)
@@ -328,7 +340,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791980  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791980  IPIPhysicalKnown::vf18  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791980, bfv_server_l1_body_00791980);
 void bfv_server_l1_body_00791980(struct bfv_cpu *c)
 {
@@ -337,7 +351,7 @@ void bfv_server_l1_body_00791980(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, ea;
-    /* 00791980  mov edx, dword ptr [esp + 4] */
+    /* 00791980  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00791984  push esi */
@@ -382,7 +396,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007919a0  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 007919a0  IPIPhysicalKnown::deleting_dtor  (virtual method)
+ * overrides: InformationPlugIn::vf0  (10 classes implement it)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007919a0, bfv_server_l1_body_007919a0);
 BFV_L1_RESUME(bfv_server_l1r_007919a0_1, bfv_server_l1_body_007919a0, 1);
 void bfv_server_l1_body_007919a0(struct bfv_cpu *c)
@@ -396,7 +413,7 @@ void bfv_server_l1_body_007919a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007919a0  test byte ptr [esp + 4], 1 */
+    /* 007919a0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -406,7 +423,7 @@ void bfv_server_l1_body_007919a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007919a6  mov esi, ecx */
     esi = ecx;
-    /* 007919a8  mov dword ptr [esi], 0x877784 */
+    /* 007919a8  mov dword ptr [esi], 0x877784  ; vtable InformationPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0x877784u;
     /* 007919ae  je 0x7919bb */
@@ -415,9 +432,9 @@ void bfv_server_l1_body_007919a0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007919b1  mov ecx, 0xc31d18 */
+    /* 007919b1  mov ecx, 0xc31d18  ; g_MemoryPoolNull_IPIPhysicalKnown */
     ecx = 0xc31d18u;
-    /* 007919b6  call 0x413600 */
+    /* 007919b6  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007919a0_1;
@@ -442,7 +459,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791a20  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791a20  IPIPhysicalKnown::vf5  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791a20, bfv_server_l1_body_00791a20);
 BFV_L1_RESUME(bfv_server_l1r_00791a20_1, bfv_server_l1_body_00791a20, 1);
 void bfv_server_l1_body_00791a20(struct bfv_cpu *c)
@@ -494,7 +513,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791aa0  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791aa0  IPIPhysicalKnown::vf9  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791aa0, bfv_server_l1_body_00791aa0);
 BFV_L1_RESUME(bfv_server_l1r_00791aa0_1, bfv_server_l1_body_00791aa0, 1);
 void bfv_server_l1_body_00791aa0(struct bfv_cpu *c)
@@ -546,7 +567,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791ac0  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791ac0  IPIPhysicalKnown::vf10  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791ac0, bfv_server_l1_body_00791ac0);
 BFV_L1_RESUME(bfv_server_l1r_00791ac0_1, bfv_server_l1_body_00791ac0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00791ac0_2, bfv_server_l1_body_00791ac0, 2);
@@ -596,7 +619,7 @@ void bfv_server_l1_body_00791ac0(struct bfv_cpu *c)
 R_1:
     /* 00791ad6  mov ecx, eax */
     ecx = eax;
-    /* 00791ad8  call 0x728110 */
+    /* 00791ad8  call 0x728110  ; IPIPhysicalKnown::vf10_helper_00728110 */
     t = 0x00728110u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791ac0_2;
@@ -620,7 +643,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791af0  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791af0  IPIPhysicalKnown::vf13  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791af0, bfv_server_l1_body_00791af0);
 BFV_L1_RESUME(bfv_server_l1r_00791af0_1, bfv_server_l1_body_00791af0, 1);
 void bfv_server_l1_body_00791af0(struct bfv_cpu *c)
@@ -655,7 +680,7 @@ void bfv_server_l1_body_00791af0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 00791b00  fld dword ptr [0x809264] */
+    /* 00791b00  fld dword ptr [0x809264]  ; = 1.0f */
     ea = (uint32_t)(0x00809264u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00791b06  ret 4 */
@@ -669,7 +694,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791b10  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791b10  IPIPhysicalKnown::vf14  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791b10, bfv_server_l1_body_00791b10);
 BFV_L1_RESUME(bfv_server_l1r_00791b10_1, bfv_server_l1_body_00791b10, 1);
 void bfv_server_l1_body_00791b10(struct bfv_cpu *c)
@@ -721,7 +748,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791b30  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791b30  IPIPhysicalKnown::vf15  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791b30, bfv_server_l1_body_00791b30);
 BFV_L1_RESUME(bfv_server_l1r_00791b30_1, bfv_server_l1_body_00791b30, 1);
 void bfv_server_l1_body_00791b30(struct bfv_cpu *c)
@@ -773,7 +802,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791b50  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791b50  IPIPhysicalKnown::vf16  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791b50, bfv_server_l1_body_00791b50);
 BFV_L1_RESUME(bfv_server_l1r_00791b50_1, bfv_server_l1_body_00791b50, 1);
 void bfv_server_l1_body_00791b50(struct bfv_cpu *c)
@@ -825,7 +856,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791b70  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791b70  IPIPhysicalKnown::vf17  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791b70, bfv_server_l1_body_00791b70);
 BFV_L1_RESUME(bfv_server_l1r_00791b70_1, bfv_server_l1_body_00791b70, 1);
 void bfv_server_l1_body_00791b70(struct bfv_cpu *c)
@@ -877,7 +910,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791b90  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791b90  IPIPhysicalKnown::vf19  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791b90, bfv_server_l1_body_00791b90);
 BFV_L1_RESUME(bfv_server_l1r_00791b90_1, bfv_server_l1_body_00791b90, 1);
 void bfv_server_l1_body_00791b90(struct bfv_cpu *c)
@@ -924,7 +959,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00791bd0  dice::bf::ai::IPIPhysicalKnown  (virtual method) */
+/* 00791bd0  IPIPhysicalKnown::vf12  (virtual method)
+ * class: dice::bf::ai::IPIPhysicalKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791bd0, bfv_server_l1_body_00791bd0);
 BFV_L1_RESUME(bfv_server_l1r_00791bd0_1, bfv_server_l1_body_00791bd0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00791bd0_2, bfv_server_l1_body_00791bd0, 2);
@@ -970,7 +1007,7 @@ void bfv_server_l1_body_00791bd0(struct bfv_cpu *c)
 R_1:
     /* 00791be5  mov ecx, eax */
     ecx = eax;
-    /* 00791be7  call 0x728590 */
+    /* 00791be7  call 0x728590  ; IPIPhysicalKnown::vf12_helper_00728590 */
     t = 0x00728590u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791bd0_2;

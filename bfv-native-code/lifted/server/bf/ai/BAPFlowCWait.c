@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 007a6c60  (source path) */
+/* 007a6c60  BAPFlowCWait::execute  (source path)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPFlowCWait
+ * also entered at 007a6cb0: BAPFlowCWait::vf3
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6c60, bfv_server_l1_body_007a6c60);
 BFV_L1_RESUME(bfv_server_l1r_007a6c60_1, bfv_server_l1_body_007a6c60, 1);
 void bfv_server_l1_body_007a6c60(struct bfv_cpu *c)
@@ -19,10 +23,10 @@ void bfv_server_l1_body_007a6c60(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a6c60  mov eax, dword ptr [0xc1d380] */
+    /* 007a6c60  mov eax, dword ptr [0xc1d380]  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     eax = M32(ea);
-    /* 007a6c65  mov edx, dword ptr [0x934448] */
+    /* 007a6c65  mov edx, dword ptr [0x934448]  ; g_traceRing_mask */
     ea = (uint32_t)(0x00934448u);
     edx = M32(ea);
     /* 007a6c6b  inc eax */
@@ -34,16 +38,16 @@ void bfv_server_l1_body_007a6c60(struct bfv_cpu *c)
     r = (eax & edx) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 007a6c6e  mov edx, dword ptr [esp + 4] */
+    /* 007a6c6e  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
-    /* 007a6c72  mov dword ptr [0xc1d380], eax */
+    /* 007a6c72  mov dword ptr [0xc1d380], eax  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     M32(ea) = eax;
-    /* 007a6c77  mov dword ptr [eax*4 + 0xc1d360], 0x879368 */
+    /* 007a6c77  mov dword ptr [eax*4 + 0xc1d360], 0x879368  ; g_traceRing_file */
     ea = (uint32_t)(eax * 4u + 0x00c1d360u);
     M32(ea) = 0x879368u;
-    /* 007a6c82  mov dword ptr [eax*4 + 0xc1d340], 0x37 */
+    /* 007a6c82  mov dword ptr [eax*4 + 0xc1d340], 0x37  ; g_traceRing_line */
     ea = (uint32_t)(eax * 4u + 0x00c1d340u);
     M32(ea) = 0x37u;
     /* 007a6c8d  mov ecx, dword ptr [ecx + 0x18] */
@@ -64,10 +68,10 @@ void bfv_server_l1_body_007a6c60(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 007a6c95  mov ecx, dword ptr [esp + 0xc] */
+    /* 007a6c95  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 007a6c99  mov edx, dword ptr [esp + 8] */
+    /* 007a6c99  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007a6c9d  test al, al */
@@ -94,7 +98,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a6cc0  (between same file) */
+/* 007a6cc0  BAPFlowCWait::BAPFlowCWait  (between same file)
+ * class: dice::bf::ai::BAPFlowCWait
+ * called by: BBPChangeTeleport::buildPlan
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6cc0, bfv_server_l1_body_007a6cc0);
 void bfv_server_l1_body_007a6cc0(struct bfv_cpu *c)
 {
@@ -118,25 +125,25 @@ void bfv_server_l1_body_007a6cc0(struct bfv_cpu *c)
     /* 007a6cca  mov dword ptr [eax + 0xc], ecx */
     ea = (uint32_t)(eax + 0x0000000cu);
     M32(ea) = ecx;
-    /* 007a6ccd  mov dword ptr [eax], 0x874498 */
+    /* 007a6ccd  mov dword ptr [eax], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(eax);
     M32(ea) = 0x874498u;
-    /* 007a6cd3  inc dword ptr [0xc32a40] */
+    /* 007a6cd3  inc dword ptr [0xc32a40]  ; g_bapCreatedCount */
     ea = (uint32_t)(0x00c32a40u);
     a = M32(ea);
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     M32(ea) = r;
-    /* 007a6cd9  mov ecx, dword ptr [esp + 8] */
+    /* 007a6cd9  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 007a6cdd  mov dword ptr [eax + 0x10], ecx */
     ea = (uint32_t)(eax + 0x00000010u);
     M32(ea) = ecx;
-    /* 007a6ce0  mov ecx, dword ptr [esp + 4] */
+    /* 007a6ce0  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 007a6ce4  mov dword ptr [eax], 0x8793ac */
+    /* 007a6ce4  mov dword ptr [eax], 0x8793ac  ; vtable BAPFlowCWait */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8793acu;
     /* 007a6cea  mov dword ptr [eax + 0x18], ecx */
@@ -156,7 +163,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a6d00  dice::bf::ai::BAPFlowCWait  (virtual method) */
+/* 007a6d00  BAPFlowCWait::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPFlowCWait
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6d00, bfv_server_l1_body_007a6d00);
 BFV_L1_RESUME(bfv_server_l1r_007a6d00_1, bfv_server_l1_body_007a6d00, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a6d00_2, bfv_server_l1_body_007a6d00, 2);
@@ -184,7 +194,7 @@ void bfv_server_l1_body_007a6d00(struct bfv_cpu *c)
     /* 007a6d06  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007a6d08  mov dword ptr [esi], 0x8793ac */
+    /* 007a6d08  mov dword ptr [esi], 0x8793ac  ; vtable BAPFlowCWait */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8793acu;
     /* 007a6d0e  je 0x7a6d17 */
@@ -205,13 +215,13 @@ void bfv_server_l1_body_007a6d00(struct bfv_cpu *c)
     goto out;
 R_1:
 L_007a6d17:
-    /* 007a6d17  mov al, byte ptr [esp + 8] */
+    /* 007a6d17  mov al, byte ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(eax, M8(ea));
-    /* 007a6d1b  mov dword ptr [esi], 0x874498 */
+    /* 007a6d1b  mov dword ptr [esi], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874498u;
-    /* 007a6d21  mov ecx, dword ptr [0xc32a44] */
+    /* 007a6d21  mov ecx, dword ptr [0xc32a44]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     ecx = M32(ea);
     /* 007a6d27  inc ecx */
@@ -222,10 +232,10 @@ L_007a6d17:
     /* 007a6d28  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 007a6d2a  mov dword ptr [0xc32a44], ecx */
+    /* 007a6d2a  mov dword ptr [0xc32a44], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     M32(ea) = ecx;
-    /* 007a6d30  mov dword ptr [esi], 0x87448c */
+    /* 007a6d30  mov dword ptr [esi], 0x87448c  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87448cu;
     /* 007a6d36  je 0x7a6d43 */
@@ -234,9 +244,9 @@ L_007a6d17:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a6d39  mov ecx, 0xc32640 */
+    /* 007a6d39  mov ecx, 0xc32640  ; g_MemoryPoolNull_BAPFlowCWait */
     ecx = 0xc32640u;
-    /* 007a6d3e  call 0x413600 */
+    /* 007a6d3e  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a6d00_2;

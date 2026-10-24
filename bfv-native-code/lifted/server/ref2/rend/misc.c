@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007dac70  (between same folder) */
+/* 007dac70  MemVertexBlock::vf12_helper_007dac70  (between same folder)
+ * called by: MemVertexBlock::vf12
+ */
 BFV_L1_ENTRY(bfv_server_l1_007dac70, bfv_server_l1_body_007dac70);
 void bfv_server_l1_body_007dac70(struct bfv_cpu *c)
 {

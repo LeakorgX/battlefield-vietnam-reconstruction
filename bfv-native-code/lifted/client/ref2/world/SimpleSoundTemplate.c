@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00694410  dice::ref2::world::SimpleSoundTemplate  (vtable store) */
+/* 00694410  SimpleSoundTemplate::SimpleSoundTemplate  (vtable store)
+ * class: dice::ref2::world::SimpleSoundTemplate
+ * called by: world_00669cd0, SimpleObjectTemplate::SimpleObjectTemplate, world_00700380
+ */
 BFV_L1_ENTRY(bfv_client_l1_00694410, bfv_client_l1_body_00694410);
 BFV_L1_RESUME(bfv_client_l1r_00694410_1, bfv_client_l1_body_00694410, 1);
 BFV_L1_RESUME(bfv_client_l1r_00694410_2, bfv_client_l1_body_00694410, 2);
@@ -45,13 +48,13 @@ void bfv_client_l1_body_00694410(struct bfv_cpu *c)
     ebx = r;
     /* 0069441a  mov ecx, edi */
     ecx = edi;
-    /* 0069441c  mov dword ptr [esi], 0xb93310 */
+    /* 0069441c  mov dword ptr [esi], 0xb93310  ; vtable SimpleSoundTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb93310u;
     /* 00694422  mov byte ptr [esi + 4], bl */
     ea = (uint32_t)(esi + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 00694425  call 0x668980 */
+    /* 00694425  call 0x668980  ; std::list::_Buyheadnode_12_00668980 */
     t = 0x00668980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00694410_1;
@@ -71,7 +74,7 @@ R_1:
     /* 00694435  mov byte ptr [esi + 0x14], bl */
     ea = (uint32_t)(esi + 0x00000014u);
     M8(ea) = LO8(ebx);
-    /* 00694438  call 0x423b10 */
+    /* 00694438  call 0x423b10  ; std::list::_Buyheadnode_36 */
     t = 0x00423b10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00694410_2;
@@ -88,7 +91,7 @@ R_2:
     edi = (uint32_t)(esi + 0x00000024u);
     /* 00694446  mov ecx, edi */
     ecx = edi;
-    /* 00694448  call 0x423b10 */
+    /* 00694448  call 0x423b10  ; std::list::_Buyheadnode_36 */
     t = 0x00423b10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00694410_3;
@@ -126,7 +129,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00694460  (between same file) */
+/* 00694460  SimpleSoundTemplate::sub_00694460  (between same file)
+ * class: dice::ref2::world::SimpleSoundTemplate
+ * called by: SimpleSoundTemplate_006944a0, SimpleSoundTemplate::~SimpleSoundTemplate, SimpleSoundTemplate::vf1
+ */
 BFV_L1_ENTRY(bfv_client_l1_00694460, bfv_client_l1_body_00694460);
 BFV_L1_RESUME(bfv_client_l1r_00694460_1, bfv_client_l1_body_00694460, 1);
 BFV_L1_RESUME(bfv_client_l1r_00694460_2, bfv_client_l1_body_00694460, 2);
@@ -214,7 +220,7 @@ L_00694484:
     M32(esp) = t;
     /* 00694488  lea ecx, [edi + 8] */
     ecx = (uint32_t)(edi + 0x00000008u);
-    /* 0069448b  call 0x6942a0 */
+    /* 0069448b  call 0x6942a0  ; world_006942a0 */
     t = 0x006942a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00694460_2;
@@ -240,7 +246,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006944a0  (between same file) */
+/* 006944a0  SimpleSoundTemplate_006944a0  (between same file)
+ * called by: SimpleObject::sub_0066cd00
+ */
 BFV_L1_ENTRY(bfv_client_l1_006944a0, bfv_client_l1_body_006944a0);
 BFV_L1_RESUME(bfv_client_l1r_006944a0_1, bfv_client_l1_body_006944a0, 1);
 void bfv_client_l1_body_006944a0(struct bfv_cpu *c)
@@ -260,7 +268,7 @@ void bfv_client_l1_body_006944a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006944a1  mov esi, ecx */
     esi = ecx;
-    /* 006944a3  call 0x694460 */
+    /* 006944a3  call 0x694460  ; SimpleSoundTemplate::sub_00694460 */
     t = 0x00694460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006944a0_1;
@@ -273,7 +281,7 @@ R_1:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 006944ab  jmp 0x694390 */
+    /* 006944ab  jmp 0x694390  ; SimpleSoundTemplate::vf1_helper_00694390 */
     c->eip = 0x00694390u;
     goto out;
 out: __attribute__((unused));
@@ -283,7 +291,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006944b0  dice::ref2::world::SimpleSoundTemplate  (vtable store) */
+/* 006944b0  SimpleSoundTemplate::~SimpleSoundTemplate  (vtable store)
+ * class: dice::ref2::world::SimpleSoundTemplate
+ * called by: SimpleObjectTemplate::~SimpleObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006944b0, bfv_client_l1_body_006944b0);
 BFV_L1_RESUME(bfv_client_l1r_006944b0_1, bfv_client_l1_body_006944b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006944b0_2, bfv_client_l1_body_006944b0, 2);
@@ -319,10 +330,10 @@ void bfv_client_l1_body_006944b0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006944b4  mov dword ptr [esi], 0xb93310 */
+    /* 006944b4  mov dword ptr [esi], 0xb93310  ; vtable SimpleSoundTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb93310u;
-    /* 006944ba  call 0x694460 */
+    /* 006944ba  call 0x694460  ; SimpleSoundTemplate::sub_00694460 */
     t = 0x00694460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006944b0_1;
@@ -333,7 +344,7 @@ R_1:
     edi = (uint32_t)(esi + 0x00000024u);
     /* 006944c2  mov ecx, edi */
     ecx = edi;
-    /* 006944c4  call 0x776030 */
+    /* 006944c4  call 0x776030  ; std::list::clear */
     t = 0x00776030u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006944b0_2;
@@ -347,7 +358,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006944cd  call 0x403680 */
+    /* 006944cd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006944b0_3;
@@ -367,7 +378,7 @@ R_3:
     esp = r;
     /* 006944df  mov ecx, edi */
     ecx = edi;
-    /* 006944e1  call 0x776030 */
+    /* 006944e1  call 0x776030  ; std::list::clear */
     t = 0x00776030u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006944b0_4;
@@ -381,7 +392,7 @@ R_4:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006944ea  call 0x403680 */
+    /* 006944ea  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006944b0_5;
@@ -405,7 +416,7 @@ R_5:
     /* 006944f7  mov dword ptr [edi + 4], 0 */
     ea = (uint32_t)(edi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 006944fe  call 0xa825e0 */
+    /* 006944fe  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006944b0_6;
@@ -419,7 +430,7 @@ R_6:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00694507  call 0x403680 */
+    /* 00694507  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006944b0_7;
@@ -454,7 +465,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00694520  dice::ref2::world::SimpleSoundTemplate  (virtual method) */
+/* 00694520  SimpleSoundTemplate::vf1  (virtual method)
+ * class: dice::ref2::world::SimpleSoundTemplate
+ * also entered at 00694570: SimpleSoundTemplate::vf0
+ * called by: SimpleObjectTemplate::postLoad
+ */
 BFV_L1_ENTRY(bfv_client_l1_00694520, bfv_client_l1_body_00694520);
 BFV_L1_RESUME(bfv_client_l1r_00694520_1, bfv_client_l1_body_00694520, 1);
 BFV_L1_RESUME(bfv_client_l1r_00694520_2, bfv_client_l1_body_00694520, 2);
@@ -510,7 +525,7 @@ L_0069452e:
     /* 00694531  mov byte ptr [edi + 4], 1 */
     ea = (uint32_t)(edi + 0x00000004u);
     M8(ea) = 0x1u;
-    /* 00694535  call 0x694460 */
+    /* 00694535  call 0x694460  ; SimpleSoundTemplate::sub_00694460 */
     t = 0x00694460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00694520_1;
@@ -519,7 +534,7 @@ L_0069452e:
 R_1:
     /* 0069453a  mov ecx, edi */
     ecx = edi;
-    /* 0069453c  call 0x694390 */
+    /* 0069453c  call 0x694390  ; SimpleSoundTemplate::vf1_helper_00694390 */
     t = 0x00694390u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00694520_2;
@@ -528,7 +543,7 @@ R_1:
 R_2:
     /* 00694541  mov ecx, edi */
     ecx = edi;
-    /* 00694543  call 0x693cb0 */
+    /* 00694543  call 0x693cb0  ; SimpleSoundTemplate::vf1_helper_00693cb0 */
     t = 0x00693cb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00694520_3;

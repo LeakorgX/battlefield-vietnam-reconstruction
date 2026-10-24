@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006776b0  dice::ref2::world::SupplyDepotTemplate  (vtable store) */
+/* 006776b0  SupplyDepotTemplate::SupplyDepotTemplate  (vtable store)
+ * class: dice::ref2::world::SupplyDepotTemplate
+ * also entered at 00677810: SupplyDepotTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_006776b0, bfv_client_l1_body_006776b0);
 BFV_L1_RESUME(bfv_client_l1r_006776b0_1, bfv_client_l1_body_006776b0, 1);
 void bfv_client_l1_body_006776b0(struct bfv_cpu *c)
@@ -25,21 +28,21 @@ void bfv_client_l1_body_006776b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006776b1  mov esi, ecx */
     esi = ecx;
-    /* 006776b3  call 0x696290 */
+    /* 006776b3  call 0x696290  ; SimpleObjectTemplate::SimpleObjectTemplate */
     t = 0x00696290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006776b0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006776b8  fld dword ptr [0xb4456c] */
+    /* 006776b8  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006776be  xor eax, eax */
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 006776c0  mov dword ptr [esi + 0x1c0], eax */
+    /* 006776c0  mov dword ptr [esi + 0x1c0], eax  ; field ObjectTemplate.team */
     ea = (uint32_t)(esi + 0x000001c0u);
     M32(ea) = eax;
     /* 006776c6  mov byte ptr [esi + 0x1c4], al */
@@ -48,7 +51,7 @@ R_1:
     /* 006776cc  mov byte ptr [esi + 0x1c6], al */
     ea = (uint32_t)(esi + 0x000001c6u);
     M8(ea) = LO8(eax);
-    /* 006776d2  mov dword ptr [esi], 0xb91284 */
+    /* 006776d2  mov dword ptr [esi], 0xb91284  ; vtable SupplyDepotTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb91284u;
     /* 006776d8  mov dword ptr [esi + 4], 0xb9126c */
@@ -57,7 +60,7 @@ R_1:
     /* 006776df  mov dword ptr [esi + 0x78], 0xb91260 */
     ea = (uint32_t)(esi + 0x00000078u);
     M32(ea) = 0xb91260u;
-    /* 006776e6  mov dword ptr [esi + 0x1bc], 0x40000000 */
+    /* 006776e6  mov dword ptr [esi + 0x1bc], 0x40000000  ; field ObjectTemplate.radius, 2.0f */
     ea = (uint32_t)(esi + 0x000001bcu);
     M32(ea) = 0x40000000u;
     /* 006776f0  mov byte ptr [esi + 0x1c5], 1 */
@@ -117,10 +120,10 @@ R_1:
     /* 0067775d  mov dword ptr [esi + 0x224], eax */
     ea = (uint32_t)(esi + 0x00000224u);
     M32(ea) = eax;
-    /* 00677763  mov dword ptr [esi + 0x230], 0xbf800000 */
+    /* 00677763  mov dword ptr [esi + 0x230], 0xbf800000  ; -1.0f */
     ea = (uint32_t)(esi + 0x00000230u);
     M32(ea) = 0xbf800000u;
-    /* 0067776d  mov dword ptr [esi + 0x238], 0x3e800000 */
+    /* 0067776d  mov dword ptr [esi + 0x238], 0x3e800000  ; 0.25f */
     ea = (uint32_t)(esi + 0x00000238u);
     M32(ea) = 0x3e800000u;
     /* 00677777  mov ecx, 0x3f000000 */
@@ -208,7 +211,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00677820  dice::ref2::world::SupplyDepotTemplate  (virtual method) */
+/* 00677820  SupplyDepotTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::SupplyDepotTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00677820, bfv_client_l1_body_00677820);
 void bfv_client_l1_body_00677820(struct bfv_cpu *c)
 {
@@ -217,12 +223,12 @@ void bfv_client_l1_body_00677820(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00677820  mov edx, dword ptr [0xb77f10] */
+    /* 00677820  mov edx, dword ptr [0xb77f10]  ; SupplyDepotTemplate::classID */
     ea = (uint32_t)(0x00b77f10u);
     edx = M32(ea);
     /* 00677826  mov eax, ecx */
     eax = ecx;
-    /* 00677828  mov ecx, dword ptr [esp + 4] */
+    /* 00677828  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0067782c  cmp ecx, edx */
@@ -232,7 +238,7 @@ void bfv_client_l1_body_00677820(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0067782e  je 0x67784a */
     if (zf) goto L_0067784a;
-    /* 00677830  cmp ecx, dword ptr [0xb77ea0] */
+    /* 00677830  cmp ecx, dword ptr [0xb77ea0]  ; SimpleObjectTemplate::classID */
     ea = (uint32_t)(0x00b77ea0u);
     a = ecx;
     b = M32(ea);
@@ -244,7 +250,7 @@ void bfv_client_l1_body_00677820(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00677839  mov esi, dword ptr [0xb77e68] */
+    /* 00677839  mov esi, dword ptr [0xb77e68]  ; ObjectTemplate::classID */
     ea = (uint32_t)(0x00b77e68u);
     esi = M32(ea);
     /* 0067783f  xor edx, edx */
@@ -283,7 +289,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00677850  (between same file) */
+/* 00677850  SupplyDepotTemplate::deleting_dtor_adjustor4_00677850  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00677850, bfv_client_l1_body_00677850);
 void bfv_client_l1_body_00677850(struct bfv_cpu *c)
 {
@@ -298,7 +305,7 @@ void bfv_client_l1_body_00677850(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00677853  jmp 0x6778a0 */
+    /* 00677853  jmp 0x6778a0  ; SupplyDepotTemplate::deleting_dtor */
     c->eip = 0x006778a0u;
     goto out;
 out: __attribute__((unused));
@@ -308,7 +315,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00677860  (between same file) */
+/* 00677860  SupplyDepotTemplate::deleting_dtor_adjustor120_00677860  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00677860, bfv_client_l1_body_00677860);
 void bfv_client_l1_body_00677860(struct bfv_cpu *c)
 {
@@ -323,7 +331,7 @@ void bfv_client_l1_body_00677860(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00677863  jmp 0x6778a0 */
+    /* 00677863  jmp 0x6778a0  ; SupplyDepotTemplate::deleting_dtor */
     c->eip = 0x006778a0u;
     goto out;
 out: __attribute__((unused));
@@ -333,7 +341,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00677870  dice::ref2::world::SupplyDepotTemplate  (virtual method) */
+/* 00677870  SupplyDepotTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::SupplyDepotTemplate
+ * also entered at 006778a0: SupplyDepotTemplate::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00677870, bfv_client_l1_body_00677870);
 BFV_L1_RESUME(bfv_client_l1r_00677870_1, bfv_client_l1_body_00677870, 1);
 BFV_L1_RESUME(bfv_client_l1r_00677870_2, bfv_client_l1_body_00677870, 2);
@@ -359,7 +371,7 @@ void bfv_client_l1_body_00677870(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00677876  mov esi, ecx */
     esi = ecx;
-    /* 00677878  call 0x403610 */
+    /* 00677878  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00677870_1;
@@ -383,7 +395,7 @@ R_1:
     M32(esp) = t;
     /* 00677885  mov ecx, eax */
     ecx = eax;
-    /* 00677887  call 0x677200 */
+    /* 00677887  call 0x677200  ; SupplyDepot::SupplyDepot */
     t = 0x00677200u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00677870_2;

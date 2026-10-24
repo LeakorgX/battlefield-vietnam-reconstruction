@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009be0c0  dice::bf::ai::BAPInterpreter  (vtable store) */
+/* 009be0c0  BAPInterpreter::BAPInterpreter  (vtable store)
+ * class: dice::bf::ai::BAPInterpreter
+ * also entered at 009be150: BAPInterpreter::vf0
+ * called by: AISettings_00955fc0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009be0c0, bfv_client_l1_body_009be0c0);
 BFV_L1_RESUME(bfv_client_l1r_009be0c0_1, bfv_client_l1_body_009be0c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009be0c0_2, bfv_client_l1_body_009be0c0, 2);
@@ -23,7 +27,7 @@ void bfv_client_l1_body_009be0c0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 009be0c0  mov eax, dword ptr [esp + 4] */
+    /* 009be0c0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 009be0c4  push ebx */
@@ -57,10 +61,10 @@ void bfv_client_l1_body_009be0c0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009be0d0  mov dword ptr [esi], 0xbf7e30 */
+    /* 009be0d0  mov dword ptr [esi], 0xbf7e30  ; vtable BAPInterpreter */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7e30u;
-    /* 009be0d6  call 0x403610 */
+    /* 009be0d6  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009be0c0_1;
@@ -94,14 +98,14 @@ R_1:
     F_SUB(32, a, b, r);
     /* 009be0ea  jle 0x9be122 */
     if ((zf | (sf != of))) goto L_009be122;
-    /* 009be0ec  lea esp, [esp] */
+    /* 009be0ec  lea esp, [esp]  ; &var_c */
     esp = (uint32_t)(esp);
 L_009be0f0:
     /* 009be0f0  push 0xc */
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 009be0f2  call 0x403610 */
+    /* 009be0f2  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009be0c0_2;
@@ -167,7 +171,7 @@ L_009be122:
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 009be124  call 0x403610 */
+    /* 009be124  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009be0c0_3;
@@ -223,7 +227,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009be170  (source path) */
+/* 009be170  BAPInterpreter_009be170  (source path)
+ * also entered at 009be180: BAPInterpreter::vf1
+ * called by: ai_00956420
+ */
 BFV_L1_ENTRY(bfv_client_l1_009be170, bfv_client_l1_body_009be170);
 BFV_L1_RESUME(bfv_client_l1r_009be170_1, bfv_client_l1_body_009be170, 1);
 void bfv_client_l1_body_009be170(struct bfv_cpu *c)
@@ -237,7 +244,7 @@ void bfv_client_l1_body_009be170(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009be170  mov eax, dword ptr [esp + 4] */
+    /* 009be170  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 009be174  push eax */
@@ -248,7 +255,7 @@ void bfv_client_l1_body_009be170(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 009be177  call 0x9bdf60 */
+    /* 009be177  call 0x9bdf60  ; ai_009bdf60 */
     t = 0x009bdf60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009be170_1;

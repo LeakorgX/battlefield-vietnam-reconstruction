@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0059e660  dice::ref2::world::WingTemplate  (virtual method) */
+/* 0059e660  WingTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::WingTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_0059e660, bfv_server_l1_body_0059e660);
 BFV_L1_RESUME(bfv_server_l1r_0059e660_1, bfv_server_l1_body_0059e660, 1);
 BFV_L1_RESUME(bfv_server_l1r_0059e660_2, bfv_server_l1_body_0059e660, 2);
@@ -31,7 +34,7 @@ void bfv_server_l1_body_0059e660(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0059e666  mov esi, ecx */
     esi = ecx;
-    /* 0059e668  call 0x403d80 */
+    /* 0059e668  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059e660_1;
@@ -55,7 +58,7 @@ R_1:
     M32(esp) = t;
     /* 0059e675  mov ecx, eax */
     ecx = eax;
-    /* 0059e677  call 0x5d95b0 */
+    /* 0059e677  call 0x5d95b0  ; Wing::Wing */
     t = 0x005d95b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059e660_2;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0059e690  dice::ref2::world::WingTemplate  (virtual method) */
+/* 0059e690  WingTemplate::createPhysicsNode  (virtual method)
+ * overrides: SimpleObjectTemplate::createPhysicsNode  (44 classes implement it)
+ * class: dice::ref2::world::WingTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_0059e690, bfv_server_l1_body_0059e690);
 BFV_L1_RESUME(bfv_server_l1r_0059e690_1, bfv_server_l1_body_0059e690, 1);
 BFV_L1_RESUME(bfv_server_l1r_0059e690_2, bfv_server_l1_body_0059e690, 2);
@@ -151,7 +157,7 @@ R_1:
     /* 0059e6ab  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 0059e6ad  mov edi, dword ptr [esp + 0xc] */
+    /* 0059e6ad  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 0059e6b1  je 0x59e6c0 */
@@ -166,7 +172,7 @@ R_1:
     M32(esp) = t;
     /* 0059e6b5  mov ecx, eax */
     ecx = eax;
-    /* 0059e6b7  call 0x5da090 */
+    /* 0059e6b7  call 0x5da090  ; PhysicsWing::PhysicsWing */
     t = 0x005da090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059e690_2;
@@ -261,7 +267,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0059e760  dice::ref2::world::WingTemplate  (vtable store) */
+/* 0059e760  WingTemplate::WingTemplate  (vtable store)
+ * class: dice::ref2::world::WingTemplate
+ * also entered at 0059e7d0: WingTemplate::vf4
+ * called by: ObjectCreatorWrapper<WingTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_0059e760, bfv_server_l1_body_0059e760);
 BFV_L1_RESUME(bfv_server_l1r_0059e760_1, bfv_server_l1_body_0059e760, 1);
 void bfv_server_l1_body_0059e760(struct bfv_cpu *c)
@@ -281,7 +291,7 @@ void bfv_server_l1_body_0059e760(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0059e761  mov esi, ecx */
     esi = ecx;
-    /* 0059e763  call 0x5899c0 */
+    /* 0059e763  call 0x5899c0  ; RotationalBundleTemplate::RotationalBundleTemplate */
     t = 0x005899c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059e760_1;
@@ -295,7 +305,7 @@ R_1:
     /* 0059e76a  mov dword ptr [esi + 0x214], eax */
     ea = (uint32_t)(esi + 0x00000214u);
     M32(ea) = eax;
-    /* 0059e770  mov dword ptr [esi], 0x83f8e4 */
+    /* 0059e770  mov dword ptr [esi], 0x83f8e4  ; vtable WingTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x83f8e4u;
     /* 0059e776  mov dword ptr [esi + 0x74], 0x83f8d8 */
@@ -309,7 +319,7 @@ R_1:
     /* 0059e78c  mov dword ptr [esi + 0x20c], ecx */
     ea = (uint32_t)(esi + 0x0000020cu);
     M32(ea) = ecx;
-    /* 0059e792  mov dword ptr [esi + 0x210], 0x3dcccccd */
+    /* 0059e792  mov dword ptr [esi + 0x210], 0x3dcccccd  ; 0.1f */
     ea = (uint32_t)(esi + 0x00000210u);
     M32(ea) = 0x3dcccccdu;
     /* 0059e79c  mov dword ptr [esi + 0x218], eax */
@@ -324,7 +334,7 @@ R_1:
     /* 0059e7ae  mov byte ptr [esi + 0x224], al */
     ea = (uint32_t)(esi + 0x00000224u);
     M8(ea) = LO8(eax);
-    /* 0059e7b4  mov dword ptr [esi + 0x228], 0x409d1eb8 */
+    /* 0059e7b4  mov dword ptr [esi + 0x228], 0x409d1eb8  ; 4.91f */
     ea = (uint32_t)(esi + 0x00000228u);
     M32(ea) = 0x409d1eb8u;
     /* 0059e7be  mov dword ptr [esi + 0x22c], ecx */
@@ -347,7 +357,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0059e7e0  dice::ref2::world::WingTemplate  (virtual method) */
+/* 0059e7e0  WingTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::WingTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_0059e7e0, bfv_server_l1_body_0059e7e0);
 void bfv_server_l1_body_0059e7e0(struct bfv_cpu *c)
 {
@@ -356,10 +369,10 @@ void bfv_server_l1_body_0059e7e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0059e7e0  mov eax, dword ptr [esp + 4] */
+    /* 0059e7e0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 0059e7e4  cmp eax, dword ptr [0x820760] */
+    /* 0059e7e4  cmp eax, dword ptr [0x820760]  ; WingTemplate::classID */
     ea = (uint32_t)(0x00820760u);
     a = eax;
     b = M32(ea);
@@ -374,10 +387,10 @@ void bfv_server_l1_body_0059e7e0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_0059e7f1:
-    /* 0059e7f1  mov dword ptr [esp + 4], eax */
+    /* 0059e7f1  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 0059e7f5  jmp 0x5898e0 */
+    /* 0059e7f5  jmp 0x5898e0  ; RotationalBundleTemplate::castTo */
     c->eip = 0x005898e0u;
     goto out;
 out: __attribute__((unused));

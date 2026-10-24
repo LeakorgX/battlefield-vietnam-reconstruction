@@ -1,0 +1,14 @@
+## file
+Base class for plan builders. Keeps a per-bot byte array at this+4 indexed by bot slot 0xdc.
+
+## 00983240
+vf2: clears the per-bot byte for this bot.
+
+## 00983260
+vf1: returns the per-bot byte for this bot.
+
+## 00983280
+vf3: sets the per-bot byte for this bot to 1.
+
+## 009ee470
+vf4: destructor: restores the BBPPattern vtable, frees the array and frees the object when the flag says so.

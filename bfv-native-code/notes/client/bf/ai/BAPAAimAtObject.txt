@@ -1,0 +1,11 @@
+## file
+2D aim action aimed at another object (handle at this+0x13c).
+
+## 009f6290
+vf8: direction from the given point to the target object's position (slot 0x18). Returns false when the target handle at this+0x13c is stale.
+
+## 009f6470
+vf7: sets up an aim solution. Uses a cached result when this+0x12c and this+0x130 are set. Otherwise: optional extra offset from ai_00a0abf0 when this+0x19e is set; resolves the target handle at this+0x13c and the shooter object (this+0x138, slot 0xcc); copies the shooter's matrix to this+0x158 and turns the local muzzle offset into a world offset accumulated at this+0x188..+0x190. Stores the AI time at this+0x98, the inverse of the given value at this+0x9c (0 when the value is 0), the target handle at this+0xa4 and the projectile speed (muzzle speed * IAIEnvironment::vf56 * 0.9) at this+0xa0. The target point comes from the info entry (slot 0x88) when present, else from the target position when this+0x19d is set. Draws debug lines (colours 0x88ff88, 0xaaaa00, 0xffff00) and solves the lead with Aimer_00a02a70 / Aimer_00a02db0.
+
+## 009f69e0
+Destructor: releases the object at this+0x94 (its slot 8 with 1), tears down the base and returns the object to its memory pool when bit 0 of the flag argument is set.

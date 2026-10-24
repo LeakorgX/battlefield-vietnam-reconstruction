@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007232c0  dice::bf::ai::IAIScriptVariable  (vtable store) */
+/* 007232c0  IAIScriptVariable::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::IAIScriptVariable
+ */
 BFV_L1_ENTRY(bfv_server_l1_007232c0, bfv_server_l1_body_007232c0);
 BFV_L1_RESUME(bfv_server_l1r_007232c0_1, bfv_server_l1_body_007232c0, 1);
 void bfv_server_l1_body_007232c0(struct bfv_cpu *c)
@@ -25,7 +27,7 @@ void bfv_server_l1_body_007232c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007232c1  mov esi, ecx */
     esi = ecx;
-    /* 007232c3  mov dword ptr [esi], 0x87225c */
+    /* 007232c3  mov dword ptr [esi], 0x87225c  ; vtable IAIScriptVariable */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87225cu;
     /* 007232c9  cmp dword ptr [esi + 0x20], 0x10 */
@@ -43,7 +45,7 @@ void bfv_server_l1_body_007232c0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007232d3  call 0x403df0 */
+    /* 007232d3  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007232c0_1;
@@ -85,7 +87,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007232f0  dice::bf::ai::IAIScriptVariable  (virtual method) */
+/* 007232f0  IAIScriptVariable::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAIScriptVariable
+ */
 BFV_L1_ENTRY(bfv_server_l1_007232f0, bfv_server_l1_body_007232f0);
 BFV_L1_RESUME(bfv_server_l1r_007232f0_1, bfv_server_l1_body_007232f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007232f0_2, bfv_server_l1_body_007232f0, 2);
@@ -107,7 +111,7 @@ void bfv_server_l1_body_007232f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007232f1  mov esi, ecx */
     esi = ecx;
-    /* 007232f3  mov dword ptr [esi], 0x87225c */
+    /* 007232f3  mov dword ptr [esi], 0x87225c  ; vtable IAIScriptVariable */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87225cu;
     /* 007232f9  cmp dword ptr [esi + 0x20], 0x10 */
@@ -125,7 +129,7 @@ void bfv_server_l1_body_007232f0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00723303  call 0x403df0 */
+    /* 00723303  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007232f0_1;
@@ -152,7 +156,7 @@ L_0072330b:
     /* 00723317  mov byte ptr [esi + 0xc], al */
     ea = (uint32_t)(esi + 0x0000000cu);
     M8(ea) = LO8(eax);
-    /* 0072331a  test byte ptr [esp + 8], 1 */
+    /* 0072331a  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -162,7 +166,7 @@ L_0072330b:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00723322  call 0x403df0 */
+    /* 00723322  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007232f0_2;
@@ -193,7 +197,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00723330  dice::bf::ai::IAIScriptVariable  (vtable store) */
+/* 00723330  IAIScriptVariable::IAIScriptVariable  (vtable store)
+ * class: dice::bf::ai::IAIScriptVariable
+ * called by: AIScriptVariable<bool>::AIScriptVariable, AIScriptVariable<Bot*>::AIScriptVariable, AIScriptVariable<float>::AIScriptVariable, AIScriptVariable<uint>::AIScriptVariable, AIScriptVariable<int>::AIScriptVariable, AIScriptVariable<Vec3>::AIScriptVariable
+ */
 BFV_L1_ENTRY(bfv_server_l1_00723330, bfv_server_l1_body_00723330);
 BFV_L1_RESUME(bfv_server_l1r_00723330_1, bfv_server_l1_body_00723330, 1);
 void bfv_server_l1_body_00723330(struct bfv_cpu *c)
@@ -207,10 +214,10 @@ void bfv_server_l1_body_00723330(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00723330  mov eax, dword ptr [esp + 4] */
+    /* 00723330  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00723334  mov edx, dword ptr [esp + 8] */
+    /* 00723334  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00723338  push esi */
@@ -232,7 +239,7 @@ void bfv_server_l1_body_00723330(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00723342  lea ecx, [esi + 8] */
     ecx = (uint32_t)(esi + 0x00000008u);
-    /* 00723345  mov dword ptr [esi], 0x87225c */
+    /* 00723345  mov dword ptr [esi], 0x87225c  ; vtable IAIScriptVariable */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87225cu;
     /* 0072334b  push eax */
@@ -252,7 +259,7 @@ void bfv_server_l1_body_00723330(struct bfv_cpu *c)
     /* 00723357  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 0072335a  call 0x401e20 */
+    /* 0072335a  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00723330_1;

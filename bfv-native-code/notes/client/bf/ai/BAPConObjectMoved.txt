@@ -1,0 +1,9 @@
+## file
+BAPConObjectMoved is a bot action-plan condition: true when the object named by
+the handle at this+8 has moved away from the position remembered at this+0xc.
+
+## 009f2660
+evaluate: resolves the handle (false if stale) and takes the object's position
+(vf6, slot 0x18). When the squared distance from the stored position
+this+0xc..+0x14 is greater than this+0x18 (a squared distance), stores the new
+position and returns true; otherwise returns false.

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009d9460  dice::bf::ai::IAIScriptStatement  (vtable store) */
+/* 009d9460  IAIScriptStatement::~IAIScriptStatement  (vtable store)
+ * class: dice::bf::ai::IAIScriptStatement
+ * also entered at 009d9470: IAIScriptStatement::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009d9460, bfv_client_l1_body_009d9460);
 void bfv_client_l1_body_009d9460(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_client_l1_body_009d9460(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 009d9460  mov dword ptr [ecx], 0xbf8e50 */
+    /* 009d9460  mov dword ptr [ecx], 0xbf8e50  ; vtable IAIScriptStatement */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbf8e50u;
     /* 009d9466  ret */
@@ -28,7 +31,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009d9490  dice::bf::ai::IAIScriptStatement  (vtable store) */
+/* 009d9490  IAIScriptStatement::IAIScriptStatement  (vtable store)
+ * class: dice::bf::ai::IAIScriptStatement
+ * called by: IAIScriptFlow::IAIScriptFlow, IAIScriptCommand::IAIScriptCommand, IAIScriptVariableUpdater::IAIScriptVariableUpdater
+ */
 BFV_L1_ENTRY(bfv_client_l1_009d9490, bfv_client_l1_body_009d9490);
 void bfv_client_l1_body_009d9490(struct bfv_cpu *c)
 {
@@ -39,7 +45,7 @@ void bfv_client_l1_body_009d9490(struct bfv_cpu *c)
     uint32_t ea;
     /* 009d9490  mov eax, ecx */
     eax = ecx;
-    /* 009d9492  mov dword ptr [eax], 0xbf8e50 */
+    /* 009d9492  mov dword ptr [eax], 0xbf8e50  ; vtable IAIScriptStatement */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf8e50u;
     /* 009d9498  mov byte ptr [eax + 4], 0 */

@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 005c6440  dice::ref2::world::CompareLodSelectorTemplate  (virtual method) */
+/* 005c6440  CompareLodSelectorTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::world::CompareLodSelectorTemplate
+ * also entered at 005c6480: CompareLodSelectorTemplate::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c6440, bfv_server_l1_body_005c6440);
 void bfv_server_l1_body_005c6440(struct bfv_cpu *c)
 {
@@ -14,12 +18,12 @@ void bfv_server_l1_body_005c6440(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 005c6440  mov edx, dword ptr [esp + 4] */
+    /* 005c6440  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 005c6444  mov eax, ecx */
     eax = ecx;
-    /* 005c6446  cmp edx, dword ptr [0x807430] */
+    /* 005c6446  cmp edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     a = edx;
     b = M32(ea);
@@ -55,7 +59,7 @@ void bfv_server_l1_body_005c6440(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005c6467  mov esi, dword ptr [0x807434] */
+    /* 005c6467  mov esi, dword ptr [0x807434]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00807434u);
     esi = M32(ea);
     /* 005c646d  xor ecx, ecx */
@@ -94,7 +98,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c64a0  dice::ref2::world::CompareLodSelectorTemplate  (vtable store) */
+/* 005c64a0  CompareLodSelectorTemplate::CompareLodSelectorTemplate  (vtable store)
+ * class: dice::ref2::world::CompareLodSelectorTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c64a0, bfv_server_l1_body_005c64a0);
 void bfv_server_l1_body_005c64a0(struct bfv_cpu *c)
 {
@@ -105,7 +111,7 @@ void bfv_server_l1_body_005c64a0(struct bfv_cpu *c)
     uint32_t r, ea;
     /* 005c64a0  mov eax, ecx */
     eax = ecx;
-    /* 005c64a2  mov dword ptr [eax], 0x846664 */
+    /* 005c64a2  mov dword ptr [eax], 0x846664  ; vtable CompareLodSelectorTemplate */
     ea = (uint32_t)(eax);
     M32(ea) = 0x846664u;
     /* 005c64a8  mov dword ptr [eax + 4], 1 */
@@ -164,7 +170,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005c64e0  dice::ref2::world::CompareLodSelectorTemplate  (virtual method) */
+/* 005c64e0  CompareLodSelectorTemplate::vf7  (virtual method)
+ * class: dice::ref2::world::CompareLodSelectorTemplate
+ * also entered at 005c6590: DistCompareLodSelectorTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c64e0, bfv_server_l1_body_005c64e0);
 BFV_L1_RESUME(bfv_server_l1r_005c64e0_1, bfv_server_l1_body_005c64e0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005c64e0_2, bfv_server_l1_body_005c64e0, 2);
@@ -208,7 +217,7 @@ void bfv_server_l1_body_005c64e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005c64e7  mov edi, ecx */
     edi = ecx;
-    /* 005c64e9  mov ecx, dword ptr [0xc0c02c] */
+    /* 005c64e9  mov ecx, dword ptr [0xc0c02c]  ; g_pool_PathLodSelector */
     ea = (uint32_t)(0x00c0c02cu);
     ecx = M32(ea);
     /* 005c64ef  mov eax, dword ptr [ecx] */
@@ -255,7 +264,7 @@ R_1:
     /* 005c650e  mov dword ptr [eax + 0x20], ebx */
     ea = (uint32_t)(eax + 0x00000020u);
     M32(ea) = ebx;
-    /* 005c6511  mov dword ptr [eax], 0x84669c */
+    /* 005c6511  mov dword ptr [eax], 0x84669c  ; vtable CompareLodSelector */
     ea = (uint32_t)(eax);
     M32(ea) = 0x84669cu;
     /* 005c6517  mov dword ptr [eax + 0x24], 1 */
@@ -427,7 +436,7 @@ L_005c6571:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c657c  call 0x5c5f50 */
+    /* 005c657c  call 0x5c5f50  ; DistLodSelectorTemplate_005c5f50 */
     t = 0x005c5f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c64e0_3;

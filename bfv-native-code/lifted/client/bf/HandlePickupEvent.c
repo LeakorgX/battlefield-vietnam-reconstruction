@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005ad8d0  dice::bf::HandlePickupEvent  (vtable store) */
+/* 005ad8d0  HandlePickupEvent::create  (vtable store)
+ * class: dice::bf::HandlePickupEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ad8d0, bfv_client_l1_body_005ad8d0);
 BFV_L1_RESUME(bfv_client_l1r_005ad8d0_1, bfv_client_l1_body_005ad8d0, 1);
 void bfv_client_l1_body_005ad8d0(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_005ad8d0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ad8d0  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ad8d0  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ad8d6  mov eax, dword ptr [ecx] */
@@ -53,7 +55,7 @@ R_1:
     /* 005ad8e8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ad8ef  mov dword ptr [eax], 0xb76090 */
+    /* 005ad8ef  mov dword ptr [eax], 0xb76090  ; vtable HandlePickupEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb76090u;
     /* 005ad8f5  ret */
@@ -76,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ad900  dice::bf::HandlePickupEvent  (vtable store) */
+/* 005ad900  HandlePickupEvent::create  (vtable store)
+ * class: dice::bf::HandlePickupEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ad900, bfv_client_l1_body_005ad900);
 BFV_L1_RESUME(bfv_client_l1r_005ad900_1, bfv_client_l1_body_005ad900, 1);
 void bfv_client_l1_body_005ad900(struct bfv_cpu *c)
@@ -90,7 +94,7 @@ void bfv_client_l1_body_005ad900(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ad900  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ad900  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ad906  mov eax, dword ptr [ecx] */
@@ -124,7 +128,7 @@ R_1:
     /* 005ad918  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ad91f  mov dword ptr [eax], 0xb76090 */
+    /* 005ad91f  mov dword ptr [eax], 0xb76090  ; vtable HandlePickupEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb76090u;
     /* 005ad925  jmp 0x5ad929 */
@@ -135,7 +139,7 @@ L_005ad927:
     F_LOGIC(32, r);
     eax = r;
 L_005ad929:
-    /* 005ad929  mov ecx, dword ptr [esp + 4] */
+    /* 005ad929  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005ad92d  push esi */

@@ -1,0 +1,5 @@
+## file
+Plan builder for changing vehicle or seat, run when BBChange wins.
+
+## 00986d40
+buildPlan: clears the current plan and releases control locks (BotMain_sub_00973470 with 1, 1, 1), reads the bot position (control 5) and resolves the chosen target object (ai_00970500, bfv_object_lookup). Builds a parallel plan of BAPICChangeVehicle (with the chosen handle) and a BAPATrigger (BAPConFalse and BAPConTrue conditions).

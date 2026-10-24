@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 0055b830  dice::meme::BfLocaleData  (virtual method)
- * strings: "Valid" */
+/* 0055b830  BfLocaleData::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::BfLocaleData
+ * strings: "Valid"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055b830, bfv_client_l1_body_0055b830);
 BFV_L1_RESUME(bfv_client_l1r_0055b830_1, bfv_client_l1_body_0055b830, 1);
 void bfv_client_l1_body_0055b830(struct bfv_cpu *c)
@@ -26,13 +29,13 @@ void bfv_client_l1_body_0055b830(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0055b832  mov eax, ecx */
     eax = ecx;
-    /* 0055b834  mov ecx, dword ptr [esp + 0xc] */
+    /* 0055b834  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 0055b838  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 0055b83a  push 0xb6ac74 */
+    /* 0055b83a  push 0xb6ac74  ; "Valid" */
     t = 0xb6ac74u;
     esp -= 4;
     M32(esp) = t;
@@ -46,7 +49,7 @@ void bfv_client_l1_body_0055b830(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0055b843  mov eax, dword ptr [esp + 0x10] */
+    /* 0055b843  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 0055b847  push eax */
@@ -77,8 +80,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0055bb90  dice::meme::BfLocaleData  (virtual method)
- * strings: "dice::meme::BfLocaleData" */
+/* 0055bb90  BfLocaleData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BfLocaleData
+ * strings: "dice::meme::BfLocaleData"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055bb90, bfv_client_l1_body_0055bb90);
 BFV_L1_RESUME(bfv_client_l1r_0055bb90_1, bfv_client_l1_body_0055bb90, 1);
 BFV_L1_RESUME(bfv_client_l1r_0055bb90_2, bfv_client_l1_body_0055bb90, 2);
@@ -109,13 +115,13 @@ void bfv_client_l1_body_0055bb90(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0055bba5  push 0xb6ad04 */
+    /* 0055bba5  push 0xb6ad04  ; "dice::meme::BfLocaleData" */
     t = 0xb6ad04u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055bbaa  mov ecx, 0xd733e0 */
+    /* 0055bbaa  mov ecx, 0xd733e0  ; g_RuntimeClass_BfLocaleData */
     ecx = 0xd733e0u;
-    /* 0055bbaf  call 0x875490 */
+    /* 0055bbaf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055bb90_1;
@@ -126,10 +132,10 @@ R_1:
     t = 0xb30120u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055bbb9  mov dword ptr [0xd733e0], 0xb6aca4 */
+    /* 0055bbb9  mov dword ptr [0xd733e0], 0xb6aca4  ; g_RuntimeClass_BfLocaleData */
     ea = (uint32_t)(0x00d733e0u);
     M32(ea) = 0xb6aca4u;
-    /* 0055bbc3  call 0x7c2cd2 */
+    /* 0055bbc3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055bb90_2;
@@ -143,7 +149,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0055bbcb:
-    /* 0055bbcb  mov eax, 0xd733e0 */
+    /* 0055bbcb  mov eax, 0xd733e0  ; g_RuntimeClass_BfLocaleData */
     eax = 0xd733e0u;
     /* 0055bbd0  ret */
     c->eip = M32(esp);
@@ -156,7 +162,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0055c840  dice::meme::BfLocaleData  (vtable store) */
+/* 0055c840  BfLocaleData::BfLocaleData  (vtable store)
+ * class: dice::meme::BfLocaleData
+ * called by: Setup_Exit_0057d430
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055c840, bfv_client_l1_body_0055c840);
 BFV_L1_RESUME(bfv_client_l1r_0055c840_1, bfv_client_l1_body_0055c840, 1);
 BFV_L1_RESUME(bfv_client_l1r_0055c840_2, bfv_client_l1_body_0055c840, 2);
@@ -172,7 +181,7 @@ void bfv_client_l1_body_0055c840(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 0055c840  mov eax, dword ptr [esp + 4] */
+    /* 0055c840  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0055c844  push ebx */
@@ -193,7 +202,7 @@ void bfv_client_l1_body_0055c840(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0055c848  mov esi, ecx */
     esi = ecx;
-    /* 0055c84a  call 0x874530 */
+    /* 0055c84a  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c840_1;
@@ -208,13 +217,13 @@ R_1:
     ebx = r;
     /* 0055c854  mov ecx, edi */
     ecx = edi;
-    /* 0055c856  mov dword ptr [esi], 0xb6ade4 */
+    /* 0055c856  mov dword ptr [esi], 0xb6ade4  ; vtable BfLocaleData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6ade4u;
     /* 0055c85c  mov dword ptr [esi + 0xc], ebx */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = ebx;
-    /* 0055c85f  call 0x55bd00 */
+    /* 0055c85f  call 0x55bd00  ; std::list::_Buyheadnode_40_0055bd00 */
     t = 0x0055bd00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c840_2;
@@ -261,7 +270,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0055c880  dice::meme::BfLocaleData  (vtable store) */
+/* 0055c880  BfLocaleData::~BfLocaleData  (vtable store)
+ * class: dice::meme::BfLocaleData
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055c880, bfv_client_l1_body_0055c880);
 BFV_L1_RESUME(bfv_client_l1r_0055c880_1, bfv_client_l1_body_0055c880, 1);
 BFV_L1_RESUME(bfv_client_l1r_0055c880_2, bfv_client_l1_body_0055c880, 2);
@@ -294,7 +305,7 @@ void bfv_client_l1_body_0055c880(struct bfv_cpu *c)
     /* 0055c884  mov eax, dword ptr [edi + 0x14] */
     ea = (uint32_t)(edi + 0x00000014u);
     eax = M32(ea);
-    /* 0055c887  mov dword ptr [edi], 0xb6ade4 */
+    /* 0055c887  mov dword ptr [edi], 0xb6ade4  ; vtable BfLocaleData */
     ea = (uint32_t)(edi);
     M32(ea) = 0xb6ade4u;
     /* 0055c88d  mov esi, dword ptr [eax] */
@@ -322,7 +333,7 @@ L_0055c894:
     if (zf) goto L_0055c8ab;
     /* 0055c89b  mov ecx, ebx */
     ecx = ebx;
-    /* 0055c89d  call 0x55c060 */
+    /* 0055c89d  call 0x55c060  ; BfLocaleStringData_0055c060 */
     t = 0x0055c060u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c880_1;
@@ -333,7 +344,7 @@ R_1:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0055c8a3  call 0x403680 */
+    /* 0055c8a3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c880_2;
@@ -367,7 +378,7 @@ L_0055c8b3:
     esi = (uint32_t)(edi + 0x00000010u);
     /* 0055c8b6  mov ecx, esi */
     ecx = esi;
-    /* 0055c8b8  call 0x42fb20 */
+    /* 0055c8b8  call 0x42fb20  ; ServerService_0042fb20 */
     t = 0x0042fb20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c880_3;
@@ -381,7 +392,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0055c8c1  call 0x403680 */
+    /* 0055c8c1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c880_4;
@@ -407,7 +418,7 @@ R_4:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 0055c8d4  jmp 0x874550 */
+    /* 0055c8d4  jmp 0x874550  ; Data::~Data */
     c->eip = 0x00874550u;
     goto out;
 out: __attribute__((unused));
@@ -417,8 +428,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0055c8e0  (between same file)
- * strings: "found key:%s\n" */
+/* 0055c8e0  BfLocaleData_found_key_0055c8e0  (between same file)
+ * strings: "found key:%s\n"
+ * called by: MenuSystem::constructor_helper_0055cbf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055c8e0, bfv_client_l1_body_0055c8e0);
 BFV_L1_RESUME(bfv_client_l1r_0055c8e0_1, bfv_client_l1_body_0055c8e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0055c8e0_2, bfv_client_l1_body_0055c8e0, 2);
@@ -473,7 +486,7 @@ void bfv_client_l1_body_0055c8e0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0055c8ea  mov eax, dword ptr [0xcff7cc] */
+    /* 0055c8ea  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 0055c8ef  mov dword ptr [esp + 0x402c], eax */
@@ -482,7 +495,7 @@ R_1:
     /* 0055c8f6  mov dword ptr [esp + 0xc], ecx */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = ecx;
-    /* 0055c8fa  call 0x55c0e0 */
+    /* 0055c8fa  call 0x55c0e0  ; BfLocaleData_found_key_helper_0055c0e0 */
     t = 0x0055c0e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_2;
@@ -529,7 +542,7 @@ L_0055c914:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0055c91c  call 0x7c4d67 */
+    /* 0055c91c  call 0x7c4d67  ; crt_007c4d67 */
     t = 0x007c4d67u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_3;
@@ -570,7 +583,7 @@ R_3:
     /* 0055c930  mov ecx, dword ptr [esp + 0x402c] */
     ea = (uint32_t)(esp + 0x0000402cu);
     ecx = M32(ea);
-    /* 0055c937  call 0x7c2019 */
+    /* 0055c937  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_4;
@@ -606,7 +619,7 @@ L_0055c945:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0055c94f  call 0x7c4b1c */
+    /* 0055c94f  call 0x7c4b1c  ; crt_007c4b1c */
     t = 0x007c4b1cu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_5;
@@ -631,7 +644,7 @@ R_5:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0055c95e  call 0x7c4b1c */
+    /* 0055c95e  call 0x7c4b1c  ; crt_007c4b1c */
     t = 0x007c4b1cu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_6;
@@ -763,7 +776,7 @@ L_0055c9e0:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0055c9ea  call 0x7c4b1c */
+    /* 0055c9ea  call 0x7c4b1c  ; crt_007c4b1c */
     t = 0x007c4b1cu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_7;
@@ -879,7 +892,7 @@ L_0055ca44:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0055ca4a  call 0x7c419b */
+    /* 0055ca4a  call 0x7c419b  ; _stricmp */
     t = 0x007c419bu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_8;
@@ -909,7 +922,7 @@ R_8:
     /* 0055ca61  mov dword ptr [esp + 0x18], edi */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = edi;
-    /* 0055ca65  call 0x7b0c70 */
+    /* 0055ca65  call 0x7b0c70  ; tool_007b0c70 */
     t = 0x007b0c70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_9;
@@ -923,7 +936,7 @@ R_9:
     /* 0055ca6b  mov dword ptr [esp + 0x2c], eax */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = eax;
-    /* 0055ca6f  call 0x403610 */
+    /* 0055ca6f  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_10;
@@ -966,7 +979,7 @@ L_0055ca85:
     /* 0055ca93  mov dword ptr [esp + 0x38], ebx */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = ebx;
-    /* 0055ca97  call 0x55b980 */
+    /* 0055ca97  call 0x55b980  ; meme_0055b980 */
     t = 0x0055b980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_11;
@@ -1000,7 +1013,7 @@ R_11:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0055caac  call 0x55c7d0 */
+    /* 0055caac  call 0x55c7d0  ; std::vector_8::push_back_0055c7d0 */
     t = 0x0055c7d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_12;
@@ -1075,14 +1088,14 @@ L_0055cadd:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0055cae2  push 0xb6ae58 */
+    /* 0055cae2  push 0xb6ae58  ; "found key:%s\n" */
     t = 0xb6ae58u;
     esp -= 4;
     M32(esp) = t;
     /* 0055cae7  mov dword ptr [esp + 0x3c], ebx */
     ea = (uint32_t)(esp + 0x0000003cu);
     M32(ea) = ebx;
-    /* 0055caeb  call 0x7c52da */
+    /* 0055caeb  call 0x7c52da  ; crt_007c52da */
     t = 0x007c52dau;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_13;
@@ -1159,7 +1172,7 @@ L_0055cb25:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0055cb26  call 0x7c3cff */
+    /* 0055cb26  call 0x7c3cff  ; fclose */
     t = 0x007c3cffu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_14;
@@ -1183,7 +1196,7 @@ R_14:
     F_LOGIC(8, r);
     /* 0055cb38  jne 0x55cb41 */
     if (!zf) goto L_0055cb41;
-    /* 0055cb3a  call 0x55c0e0 */
+    /* 0055cb3a  call 0x55c0e0  ; BfLocaleData_found_key_helper_0055c0e0 */
     t = 0x0055c0e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_15;
@@ -1214,7 +1227,7 @@ L_0055cb41:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0055cb53  call 0x4019f0 */
+    /* 0055cb53  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_16;
@@ -1235,7 +1248,7 @@ L_0055cb58:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 0055cb63  call 0x7c2019 */
+    /* 0055cb63  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055c8e0_17;
@@ -1259,7 +1272,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0055cb80  dice::meme::BfLocaleData  (vtable store) */
+/* 0055cb80  BfLocaleData::create  (vtable store)
+ * class: dice::meme::BfLocaleData
+ * also entered at 0055cbd0: BfLocaleData::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055cb80, bfv_client_l1_body_0055cb80);
 BFV_L1_RESUME(bfv_client_l1r_0055cb80_1, bfv_client_l1_body_0055cb80, 1);
 BFV_L1_RESUME(bfv_client_l1r_0055cb80_2, bfv_client_l1_body_0055cb80, 2);
@@ -1289,7 +1305,7 @@ void bfv_client_l1_body_0055cb80(struct bfv_cpu *c)
     t = 0x28u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055cb84  call 0x403610 */
+    /* 0055cb84  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055cb80_1;
@@ -1325,7 +1341,7 @@ R_1:
     M32(esp) = t;
     /* 0055cb96  mov ecx, esi */
     ecx = esi;
-    /* 0055cb98  call 0x874530 */
+    /* 0055cb98  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055cb80_2;
@@ -1336,13 +1352,13 @@ R_2:
     edi = (uint32_t)(esi + 0x00000010u);
     /* 0055cba0  mov ecx, edi */
     ecx = edi;
-    /* 0055cba2  mov dword ptr [esi], 0xb6ade4 */
+    /* 0055cba2  mov dword ptr [esi], 0xb6ade4  ; vtable BfLocaleData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6ade4u;
     /* 0055cba8  mov dword ptr [esi + 0xc], ebx */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = ebx;
-    /* 0055cbab  call 0x55bd00 */
+    /* 0055cbab  call 0x55bd00  ; std::list::_Buyheadnode_40_0055bd00 */
     t = 0x0055bd00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055cb80_3;

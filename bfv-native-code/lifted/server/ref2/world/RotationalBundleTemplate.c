@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 005898a0  dice::ref2::world::RotationalBundleTemplate  (virtual method) */
+/* 005898a0  RotationalBundleTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::RotationalBundleTemplate
+ * also entered at 005898d0: RotationalBundleTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005898a0, bfv_server_l1_body_005898a0);
 BFV_L1_RESUME(bfv_server_l1r_005898a0_1, bfv_server_l1_body_005898a0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005898a0_2, bfv_server_l1_body_005898a0, 2);
@@ -31,7 +35,7 @@ void bfv_server_l1_body_005898a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005898a6  mov esi, ecx */
     esi = ecx;
-    /* 005898a8  call 0x403d80 */
+    /* 005898a8  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005898a0_1;
@@ -55,7 +59,7 @@ R_1:
     M32(esp) = t;
     /* 005898b5  mov ecx, eax */
     ecx = eax;
-    /* 005898b7  call 0x5d65f0 */
+    /* 005898b7  call 0x5d65f0  ; RotationalBundle::RotationalBundle */
     t = 0x005d65f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005898a0_2;
@@ -90,7 +94,12 @@ out: __attribute__((unused));
 }
 
 
-/* 005898e0  dice::ref2::world::RotationalBundleTemplate  (virtual method) */
+/* 005898e0  RotationalBundleTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::RotationalBundleTemplate
+ * also entered at 00589900: BotMain::vf100
+ * also entered at 00589930: BotMain::vf101
+ */
 BFV_L1_ENTRY(bfv_server_l1_005898e0, bfv_server_l1_body_005898e0);
 void bfv_server_l1_body_005898e0(struct bfv_cpu *c)
 {
@@ -99,10 +108,10 @@ void bfv_server_l1_body_005898e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005898e0  mov eax, dword ptr [esp + 4] */
+    /* 005898e0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005898e4  cmp eax, dword ptr [0x820754] */
+    /* 005898e4  cmp eax, dword ptr [0x820754]  ; RotationalBundleTemplate::classID */
     ea = (uint32_t)(0x00820754u);
     a = eax;
     b = M32(ea);
@@ -117,10 +126,10 @@ void bfv_server_l1_body_005898e0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005898f1:
-    /* 005898f1  mov dword ptr [esp + 4], eax */
+    /* 005898f1  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005898f5  jmp 0x586630 */
+    /* 005898f5  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -130,7 +139,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005899a0  (between same file) */
+/* 005899a0  RotationalBundleTemplate_getByte_203h_005899a0  (between same file)
+ * called by: RotationalBundleNetworkable::attachToObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_005899a0, bfv_server_l1_body_005899a0);
 void bfv_server_l1_body_005899a0(struct bfv_cpu *c)
 {
@@ -153,7 +164,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005899c0  dice::ref2::world::RotationalBundleTemplate  (vtable store) */
+/* 005899c0  RotationalBundleTemplate::RotationalBundleTemplate  (vtable store)
+ * class: dice::ref2::world::RotationalBundleTemplate
+ * called by: CameraTemplate::CameraTemplate, ObjectCreatorWrapper<RotationalBundleTemplate>::create, EngineTemplate::EngineTemplate, FloatingBundleTemplate::FloatingBundleTemplate, WingTemplate::WingTemplate, LandingGearTemplate::LandingGearTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005899c0, bfv_server_l1_body_005899c0);
 BFV_L1_RESUME(bfv_server_l1r_005899c0_1, bfv_server_l1_body_005899c0, 1);
 void bfv_server_l1_body_005899c0(struct bfv_cpu *c)
@@ -173,7 +187,7 @@ void bfv_server_l1_body_005899c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005899c1  mov esi, ecx */
     esi = ecx;
-    /* 005899c3  call 0x5870c0 */
+    /* 005899c3  call 0x5870c0  ; BundleTemplate::BundleTemplate */
     t = 0x005870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005899c0_1;
@@ -184,7 +198,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 005899ca  mov dword ptr [esi], 0x839e24 */
+    /* 005899ca  mov dword ptr [esi], 0x839e24  ; vtable RotationalBundleTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x839e24u;
     /* 005899d0  mov dword ptr [esi + 0x74], 0x839e18 */

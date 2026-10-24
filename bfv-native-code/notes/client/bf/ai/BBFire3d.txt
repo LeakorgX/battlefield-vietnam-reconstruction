@@ -1,0 +1,5 @@
+## file
+Behaviour that scores firing at an enemy from an aircraft.
+
+## 009a30e0
+evaluate: when the behaviour is not usable it clears the per-bot state and returns 0. Reads the AI time and, more than 60 seconds after the last cleanup (+0x34), erases the stored tree entries and updates +0x34. Reads the bot's vehicle and seat (ai_00970270) and position, and sets up per-target records (handles reset to -1) before scoring the targets.

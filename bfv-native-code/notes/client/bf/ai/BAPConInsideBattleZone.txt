@@ -1,0 +1,9 @@
+## file
+BAPConInsideBattleZone is a bot action-plan condition: true while the bot's
+object lies inside the map minus a margin on every side.
+
+## 009f92d0
+evaluate(bot): takes the position of the bot's own object (bot slot 0xcc, then
+the object's slot 0x18) and the margin at +8 of the condition data. Returns
+true when x >= margin, x < mapSizeX - margin (IAISettings::vf3), z >= margin
+and z < mapSizeZ - margin (IAISettings::vf4).

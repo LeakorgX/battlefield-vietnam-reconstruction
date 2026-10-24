@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0086a320  dice::meme::DivData  (virtual method) */
+/* 0086a320  DivData::getFloat  (virtual method)
+ * overrides: Data::getFloat  (41 classes implement it)
+ * class: dice::meme::DivData
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086a320, bfv_client_l1_body_0086a320);
 BFV_L1_RESUME(bfv_client_l1r_0086a320_1, bfv_client_l1_body_0086a320, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086a320_2, bfv_client_l1_body_0086a320, 2);
@@ -56,7 +59,7 @@ void bfv_client_l1_body_0086a320(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a33a  mov edi, dword ptr [esp + 0xc] */
+    /* 0086a33a  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 0086a33e  push edi */
@@ -71,7 +74,7 @@ void bfv_client_l1_body_0086a320(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0086a342  fstp dword ptr [esp + 0xc] */
+    /* 0086a342  fstp dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0086a346  mov edx, dword ptr [esi] */
@@ -91,7 +94,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 0086a34e  fdivr dword ptr [esp + 0xc] */
+    /* 0086a34e  fdivr dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfdivr dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0086a352  pop edi */
@@ -107,7 +110,7 @@ R_2:
     esp += 8;
     goto out;
 L_0086a357:
-    /* 0086a357  fld dword ptr [0xb44444] */
+    /* 0086a357  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0086a35d  ret 4 */
@@ -121,7 +124,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086a560  dice::meme::DivData  (vtable store) */
+/* 0086a560  DivData::create  (vtable store)
+ * class: dice::meme::DivData
+ * also entered at 0086a590: AddData::vf0, DivData::vf0, MulData::vf0, SubData::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086a560, bfv_client_l1_body_0086a560);
 BFV_L1_RESUME(bfv_client_l1r_0086a560_1, bfv_client_l1_body_0086a560, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086a560_2, bfv_client_l1_body_0086a560, 2);
@@ -145,7 +151,7 @@ void bfv_client_l1_body_0086a560(struct bfv_cpu *c)
     t = 0x1cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a563  call 0x403610 */
+    /* 0086a563  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a560_1;
@@ -171,14 +177,14 @@ R_1:
     M32(esp) = t;
     /* 0086a573  mov ecx, esi */
     ecx = esi;
-    /* 0086a575  call 0x86a120 */
+    /* 0086a575  call 0x86a120  ; OperatorData::OperatorData */
     t = 0x0086a120u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a560_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0086a57a  mov dword ptr [esi], 0xbd2aec */
+    /* 0086a57a  mov dword ptr [esi], 0xbd2aec  ; vtable DivData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd2aecu;
     /* 0086a580  mov eax, esi */
@@ -211,8 +217,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086a6f0  dice::meme::DivData  (virtual method)
- * strings: "dice::meme::DivData" */
+/* 0086a6f0  DivData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::DivData
+ * strings: "dice::meme::DivData"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086a6f0, bfv_client_l1_body_0086a6f0);
 BFV_L1_RESUME(bfv_client_l1r_0086a6f0_1, bfv_client_l1_body_0086a6f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086a6f0_2, bfv_client_l1_body_0086a6f0, 2);
@@ -243,13 +252,13 @@ void bfv_client_l1_body_0086a6f0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0086a705  push 0xbd2bb8 */
+    /* 0086a705  push 0xbd2bb8  ; "dice::meme::DivData" */
     t = 0xbd2bb8u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a70a  mov ecx, 0xdf6160 */
+    /* 0086a70a  mov ecx, 0xdf6160  ; g_RuntimeClass_DivData */
     ecx = 0xdf6160u;
-    /* 0086a70f  call 0x875490 */
+    /* 0086a70f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a6f0_1;
@@ -260,10 +269,10 @@ R_1:
     t = 0xb3aaf0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a719  mov dword ptr [0xdf6160], 0xbd295c */
+    /* 0086a719  mov dword ptr [0xdf6160], 0xbd295c  ; g_RuntimeClass_DivData */
     ea = (uint32_t)(0x00df6160u);
     M32(ea) = 0xbd295cu;
-    /* 0086a723  call 0x7c2cd2 */
+    /* 0086a723  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a6f0_2;
@@ -277,7 +286,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0086a72b:
-    /* 0086a72b  mov eax, 0xdf6160 */
+    /* 0086a72b  mov eax, 0xdf6160  ; g_RuntimeClass_DivData */
     eax = 0xdf6160u;
     /* 0086a730  ret */
     c->eip = M32(esp);

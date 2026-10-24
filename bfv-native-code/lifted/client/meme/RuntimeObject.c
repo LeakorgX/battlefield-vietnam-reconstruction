@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00874880  dice::meme::RuntimeObject  (vtable store) */
+/* 00874880  RuntimeObject::~RuntimeObject  (vtable store)
+ * class: dice::meme::RuntimeObject
+ * called by: MenuMapNode::~MenuMapNode, BfTextNode::deleting_dtor, BfNewCreditsListNode::deleting_dtor, BfVariablePictureNode::deleting_dtor, BfVariablePictureFillNode2::deleting_dtor, BfNewListBoxNode::deleting_dtor (+9 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874880, bfv_client_l1_body_00874880);
 void bfv_client_l1_body_00874880(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_client_l1_body_00874880(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00874880  mov dword ptr [ecx], 0xbd1cc8 */
+    /* 00874880  mov dword ptr [ecx], 0xbd1cc8  ; vtable RuntimeObject */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbd1cc8u;
     /* 00874886  ret */
@@ -28,33 +31,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00874b80  dice::meme::RuntimeObject  (vtable store) */
-BFV_L1_ENTRY(bfv_client_l1_00874b80, bfv_client_l1_body_00874b80);
-void bfv_client_l1_body_00874b80(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t a, r, ea;
-    /* 00874b80  dec dword ptr [0xdf68c0] */
-    ea = (uint32_t)(0x00df68c0u);
-    a = M32(ea);
-    r = (a - 1u) & 0xffffffffu;
-    F_DEC(32, a, r);
-    M32(ea) = r;
-    /* 00874b86  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 00875540  dice::meme::RuntimeObject  (vtable store) */
+/* 00875540  RuntimeObject::create  (vtable store)
+ * class: dice::meme::RuntimeObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_00875540, bfv_client_l1_body_00875540);
 BFV_L1_RESUME(bfv_client_l1r_00875540_1, bfv_client_l1_body_00875540, 1);
 void bfv_client_l1_body_00875540(struct bfv_cpu *c)
@@ -72,7 +51,7 @@ void bfv_client_l1_body_00875540(struct bfv_cpu *c)
     t = 0x4u;
     esp -= 4;
     M32(esp) = t;
-    /* 00875542  call 0x403610 */
+    /* 00875542  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00875540_1;
@@ -90,7 +69,7 @@ R_1:
     F_LOGIC(32, r);
     /* 0087554c  je 0x875555 */
     if (zf) goto L_00875555;
-    /* 0087554e  mov dword ptr [eax], 0xbd1cc8 */
+    /* 0087554e  mov dword ptr [eax], 0xbd1cc8  ; vtable RuntimeObject */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbd1cc8u;
     /* 00875554  ret */
@@ -113,7 +92,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00abfff0  dice::meme::RuntimeObject  (virtual method) */
+/* 00abfff0  RuntimeObject::vf3  (virtual method)
+ * class: dice::meme::RuntimeObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abfff0, bfv_client_l1_body_00abfff0);
 BFV_L1_RESUME(bfv_client_l1r_00abfff0_1, bfv_client_l1_body_00abfff0, 1);
 void bfv_client_l1_body_00abfff0(struct bfv_cpu *c)
@@ -139,7 +120,7 @@ void bfv_client_l1_body_00abfff0(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abfff8  call dword ptr [eax] */
+    /* 00abfff8  call dword ptr [eax]  ; -> RuntimeObject::vf0 = RuntimeObject::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;

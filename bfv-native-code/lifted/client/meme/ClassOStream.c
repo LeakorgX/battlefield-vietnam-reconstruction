@@ -5,8 +5,12 @@
 #include "l1.h"
 
 
-/* 00879ea0  dice::meme::ClassOStream  (virtual method)
- * strings: "Ushort" */
+/* 00879ea0  ClassOStream::vf39  (virtual method)
+ * overrides: OStream::vf39  (6 classes implement it)
+ * class: dice::meme::ClassOStream
+ * strings: "Ushort"
+ * called by: Object_Meme_Error_Creating_00874a20
+ */
 BFV_L1_ENTRY(bfv_client_l1_00879ea0, bfv_client_l1_body_00879ea0);
 BFV_L1_RESUME(bfv_client_l1r_00879ea0_1, bfv_client_l1_body_00879ea0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00879ea0_2, bfv_client_l1_body_00879ea0, 2);
@@ -91,7 +95,7 @@ L_00879ec6:
     edx = M32(ea);
     /* 00879ec8  mov ecx, ebx */
     ecx = ebx;
-    /* 00879eca  call 0x877680 */
+    /* 00879eca  call 0x877680  ; meme_00877680 */
     t = 0x00877680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00879ea0_1;
@@ -153,7 +157,7 @@ L_00879ef2:
     M32(ea) = ecx;
     /* 00879ef9  mov ecx, ebx */
     ecx = ebx;
-    /* 00879efb  call 0x8775d0 */
+    /* 00879efb  call 0x8775d0  ; meme_008775d0 */
     t = 0x008775d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00879ea0_2;
@@ -197,7 +201,7 @@ L_00879f11:
     ea = (uint32_t)(ebp + edi * 4u + 0x0000000cu);
     M32(ea) = 0x0u;
 L_00879f19:
-    /* 00879f19  push 0xbd768c */
+    /* 00879f19  push 0xbd768c  ; "Ushort" */
     t = 0xbd768cu;
     esp -= 4;
     M32(esp) = t;
@@ -209,7 +213,7 @@ L_00879f19:
     M32(esp) = t;
     /* 00879f23  mov ecx, ebp */
     ecx = ebp;
-    /* 00879f25  call 0x87b230 */
+    /* 00879f25  call 0x87b230  ; ProxyOStream::vf9 */
     t = 0x0087b230u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00879ea0_3;
@@ -243,7 +247,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087a0b0  dice::meme::ClassOStream  (vtable store) */
+/* 0087a0b0  ClassOStream::ClassOStream  (vtable store)
+ * class: dice::meme::ClassOStream
+ * called by: Object_Meme_Error_Creating_00874a20
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087a0b0, bfv_client_l1_body_0087a0b0);
 BFV_L1_RESUME(bfv_client_l1r_0087a0b0_1, bfv_client_l1_body_0087a0b0, 1);
 void bfv_client_l1_body_0087a0b0(struct bfv_cpu *c)
@@ -257,7 +264,7 @@ void bfv_client_l1_body_0087a0b0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0087a0b0  mov eax, dword ptr [esp + 4] */
+    /* 0087a0b0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0087a0b4  push esi */
@@ -281,13 +288,13 @@ void bfv_client_l1_body_0087a0b0(struct bfv_cpu *c)
     /* 0087a0c5  mov dword ptr [esi + 4], eax */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = eax;
-    /* 0087a0c8  mov dword ptr [esi], 0xbd7754 */
+    /* 0087a0c8  mov dword ptr [esi], 0xbd7754  ; vtable ClassOStream */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd7754u;
     /* 0087a0ce  mov dword ptr [esi + 0x808], eax */
     ea = (uint32_t)(esi + 0x00000808u);
     M32(ea) = eax;
-    /* 0087a0d4  call 0x87b890 */
+    /* 0087a0d4  call 0x87b890  ; MemoryOStream::MemoryOStream */
     t = 0x0087b890u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087a0b0_1;

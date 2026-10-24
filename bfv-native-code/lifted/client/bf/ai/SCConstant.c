@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009bdcc0  dice::bf::ai::SCConstant  (vtable store) */
+/* 009bdcc0  SCConstant::SCConstant  (vtable store)
+ * class: dice::bf::ai::SCConstant
+ * also entered at 009bdd00: SCConstant::vf2
+ * called by: AiStrategy::createConstantCondition
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bdcc0, bfv_client_l1_body_009bdcc0);
 BFV_L1_RESUME(bfv_client_l1r_009bdcc0_1, bfv_client_l1_body_009bdcc0, 1);
 void bfv_client_l1_body_009bdcc0(struct bfv_cpu *c)
@@ -19,10 +23,10 @@ void bfv_client_l1_body_009bdcc0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009bdcc0  mov eax, dword ptr [esp + 0x14] */
+    /* 009bdcc0  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
-    /* 009bdcc4  mov edx, dword ptr [esp + 0x10] */
+    /* 009bdcc4  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 009bdcc8  push esi */
@@ -33,26 +37,26 @@ void bfv_client_l1_body_009bdcc0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009bdcca  mov eax, dword ptr [esp + 0x14] */
+    /* 009bdcca  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 009bdcce  mov esi, ecx */
     esi = ecx;
-    /* 009bdcd0  mov ecx, dword ptr [esp + 0x10] */
+    /* 009bdcd0  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 009bdcd4  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009bdcd5  mov ecx, dword ptr [esp + 0x28] */
+    /* 009bdcd5  mov ecx, dword ptr [esp + 0x28]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000028u);
     ecx = M32(ea);
     /* 009bdcd9  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 009bdcda  mov edx, dword ptr [esp + 0x14] */
+    /* 009bdcda  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 009bdcde  push eax */
@@ -69,20 +73,20 @@ void bfv_client_l1_body_009bdcc0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009bdce1  mov ecx, esi */
     ecx = esi;
-    /* 009bdce3  call 0x95b920 */
+    /* 009bdce3  call 0x95b920  ; StrategyCondition::StrategyCondition */
     t = 0x0095b920u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bdcc0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009bdce8  mov eax, dword ptr [esp + 0x1c] */
+    /* 009bdce8  mov eax, dword ptr [esp + 0x1c]  ; arg_14 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 009bdcec  mov dword ptr [esi + 0x3c], eax */
     ea = (uint32_t)(esi + 0x0000003cu);
     M32(ea) = eax;
-    /* 009bdcef  mov dword ptr [esi], 0xbf7d94 */
+    /* 009bdcef  mov dword ptr [esi], 0xbf7d94  ; vtable SCConstant */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7d94u;
     /* 009bdcf5  mov eax, esi */
@@ -102,7 +106,12 @@ out: __attribute__((unused));
 }
 
 
-/* 009bde20  dice::bf::ai::SCConstant  (virtual method) */
+/* 009bde20  SCConstant::deleting_dtor  (virtual method)
+ * overrides: StrategyCondition::vf0  (5 classes implement it)
+ * class: dice::bf::ai::SCConstant
+ * also entered at 009bde60: SCHeterogeneous::vf2
+ * also entered at 009bdec0: PlanInterpreter::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bde20, bfv_client_l1_body_009bde20);
 BFV_L1_RESUME(bfv_client_l1r_009bde20_1, bfv_client_l1_body_009bde20, 1);
 BFV_L1_RESUME(bfv_client_l1r_009bde20_2, bfv_client_l1_body_009bde20, 2);
@@ -124,7 +133,7 @@ void bfv_client_l1_body_009bde20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009bde21  mov esi, ecx */
     esi = ecx;
-    /* 009bde23  mov dword ptr [esi], 0xbf2c3c */
+    /* 009bde23  mov dword ptr [esi], 0xbf2c3c  ; vtable StrategyCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf2c3cu;
     /* 009bde29  cmp dword ptr [esi + 0x38], 0x10 */
@@ -142,7 +151,7 @@ void bfv_client_l1_body_009bde20(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009bde33  call 0x403680 */
+    /* 009bde33  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bde20_1;
@@ -169,7 +178,7 @@ L_009bde3b:
     /* 009bde47  mov byte ptr [esi + 0x24], al */
     ea = (uint32_t)(esi + 0x00000024u);
     M8(ea) = LO8(eax);
-    /* 009bde4a  test byte ptr [esp + 8], 1 */
+    /* 009bde4a  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -179,7 +188,7 @@ L_009bde3b:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009bde52  call 0x403680 */
+    /* 009bde52  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bde20_2;

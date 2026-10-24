@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 005639d0  dice::meme::BfVariableTimeoutActionNode  (virtual method)
- * strings: "Timeout time" */
+/* 005639d0  BfVariableTimeoutActionNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::BfVariableTimeoutActionNode
+ * strings: "Timeout time"
+ */
 BFV_L1_ENTRY(bfv_client_l1_005639d0, bfv_client_l1_body_005639d0);
 BFV_L1_RESUME(bfv_client_l1r_005639d0_1, bfv_client_l1_body_005639d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005639d0_2, bfv_client_l1_body_005639d0, 2);
@@ -26,7 +29,7 @@ void bfv_client_l1_body_005639d0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 005639d1  mov ebx, dword ptr [esp + 8] */
+    /* 005639d1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 005639d5  push esi */
@@ -37,7 +40,7 @@ void bfv_client_l1_body_005639d0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005639d7  mov edi, dword ptr [esp + 0x14] */
+    /* 005639d7  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 005639db  push edi */
@@ -50,7 +53,7 @@ void bfv_client_l1_body_005639d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005639dd  mov esi, ecx */
     esi = ecx;
-    /* 005639df  call 0x86be10 */
+    /* 005639df  call 0x86be10  ; ActionNode::serialize */
     t = 0x0086be10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005639d0_1;
@@ -86,7 +89,7 @@ L_005639ee:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005639f2  push 0xb6c4dc */
+    /* 005639f2  push 0xb6c4dc  ; "Timeout time" */
     t = 0xb6c4dcu;
     esp -= 4;
     M32(esp) = t;
@@ -142,7 +145,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00563a10  dice::meme::BfVariableTimeoutActionNode  (virtual method) */
+/* 00563a10  BfVariableTimeoutActionNode::update  (virtual method)
+ * overrides: Node::update  (83 classes implement it)
+ * class: dice::meme::BfVariableTimeoutActionNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00563a10, bfv_client_l1_body_00563a10);
 BFV_L1_RESUME(bfv_client_l1r_00563a10_1, bfv_client_l1_body_00563a10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00563a10_2, bfv_client_l1_body_00563a10, 2);
@@ -197,7 +203,7 @@ void bfv_client_l1_body_00563a10(struct bfv_cpu *c)
     esp += 20;
     goto out;
 L_00563a26:
-    /* 00563a26  fld dword ptr [esp + 0x28] */
+    /* 00563a26  fld dword ptr [esp + 0x28]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000028u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00563a2a  push edi */
@@ -207,7 +213,7 @@ L_00563a26:
     /* 00563a2b  fadd dword ptr [esi + 0x10] */
     ea = (uint32_t)(esi + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00563a2e  mov edi, dword ptr [esp + 0x20] */
+    /* 00563a2e  mov edi, dword ptr [esp + 0x20]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     edi = M32(ea);
     /* 00563a32  push edi */
@@ -238,23 +244,23 @@ R_1:
     F_LOGIC(8, r);
     /* 00563a43  jp 0x563a8c */
     if (pf) goto L_00563a8c;
-    /* 00563a45  mov ecx, dword ptr [esi + 0xc] */
+    /* 00563a45  mov ecx, dword ptr [esi + 0xc]  ; field Action */
     ea = (uint32_t)(esi + 0x0000000cu);
     ecx = M32(ea);
-    /* 00563a48  lea eax, [esp + 8] */
+    /* 00563a48  lea eax, [esp + 8]  ; &var_14 */
     eax = (uint32_t)(esp + 0x00000008u);
     /* 00563a4c  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00563a4d  mov eax, dword ptr [esp + 0x28] */
+    /* 00563a4d  mov eax, dword ptr [esp + 0x28]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 00563a51  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00563a52  mov eax, dword ptr [esp + 0x30] */
+    /* 00563a52  mov eax, dword ptr [esp + 0x30]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
     /* 00563a56  push eax */
@@ -264,19 +270,19 @@ R_1:
     /* 00563a57  mov dword ptr [esi + 0x10], 0 */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 00563a5e  mov dword ptr [esp + 0x14], 0 */
+    /* 00563a5e  mov dword ptr [esp + 0x14], 0  ; var_14 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x0u;
-    /* 00563a66  mov dword ptr [esp + 0x18], 0 */
+    /* 00563a66  mov dword ptr [esp + 0x18], 0  ; var_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x0u;
-    /* 00563a6e  mov dword ptr [esp + 0x1c], 0 */
+    /* 00563a6e  mov dword ptr [esp + 0x1c], 0  ; var_c */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = 0x0u;
-    /* 00563a76  mov dword ptr [esp + 0x20], 0 */
+    /* 00563a76  mov dword ptr [esp + 0x20], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0x0u;
-    /* 00563a7e  mov dword ptr [esp + 0x24], 0 */
+    /* 00563a7e  mov dword ptr [esp + 0x24], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = 0x0u;
     /* 00563a86  mov edx, dword ptr [ecx] */
@@ -322,7 +328,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00563c20  dice::meme::BfVariableTimeoutActionNode  (vtable store) */
+/* 00563c20  BfVariableTimeoutActionNode::create  (vtable store)
+ * class: dice::meme::BfVariableTimeoutActionNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00563c20, bfv_client_l1_body_00563c20);
 BFV_L1_RESUME(bfv_client_l1r_00563c20_1, bfv_client_l1_body_00563c20, 1);
 BFV_L1_RESUME(bfv_client_l1r_00563c20_2, bfv_client_l1_body_00563c20, 2);
@@ -346,7 +354,7 @@ void bfv_client_l1_body_00563c20(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 00563c23  call 0x403610 */
+    /* 00563c23  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00563c20_1;
@@ -368,7 +376,7 @@ R_1:
     if (zf) goto L_00563c57;
     /* 00563c31  mov ecx, esi */
     ecx = esi;
-    /* 00563c33  call 0x873d90 */
+    /* 00563c33  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00563c20_2;
@@ -378,7 +386,7 @@ R_2:
     /* 00563c38  mov dword ptr [esi + 0xc], 0 */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = 0x0u;
-    /* 00563c3f  mov dword ptr [esi], 0xb6c54c */
+    /* 00563c3f  mov dword ptr [esi], 0xb6c54c  ; vtable BfVariableTimeoutActionNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6c54cu;
     /* 00563c45  mov dword ptr [esi + 0x10], 0 */
@@ -417,8 +425,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00563cb0  dice::meme::BfVariableTimeoutActionNode  (virtual method)
- * strings: "dice::meme::BfVariableTimeoutActionNode" */
+/* 00563cb0  BfVariableTimeoutActionNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BfVariableTimeoutActionNode
+ * strings: "dice::meme::BfVariableTimeoutActionNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00563cb0, bfv_client_l1_body_00563cb0);
 BFV_L1_RESUME(bfv_client_l1r_00563cb0_1, bfv_client_l1_body_00563cb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00563cb0_2, bfv_client_l1_body_00563cb0, 2);
@@ -449,13 +460,13 @@ void bfv_client_l1_body_00563cb0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00563cc5  push 0xb6c6f4 */
+    /* 00563cc5  push 0xb6c6f4  ; "dice::meme::BfVariableTimeoutActionNode" */
     t = 0xb6c6f4u;
     esp -= 4;
     M32(esp) = t;
-    /* 00563cca  mov ecx, 0xd735f8 */
+    /* 00563cca  mov ecx, 0xd735f8  ; g_RuntimeClass_BfVariableTimeoutActionNode */
     ecx = 0xd735f8u;
-    /* 00563ccf  call 0x875490 */
+    /* 00563ccf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00563cb0_1;
@@ -466,10 +477,10 @@ R_1:
     t = 0xb30280u;
     esp -= 4;
     M32(esp) = t;
-    /* 00563cd9  mov dword ptr [0xd735f8], 0xb6c500 */
+    /* 00563cd9  mov dword ptr [0xd735f8], 0xb6c500  ; g_RuntimeClass_BfVariableTimeoutActionNode */
     ea = (uint32_t)(0x00d735f8u);
     M32(ea) = 0xb6c500u;
-    /* 00563ce3  call 0x7c2cd2 */
+    /* 00563ce3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00563cb0_2;
@@ -483,7 +494,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00563ceb:
-    /* 00563ceb  mov eax, 0xd735f8 */
+    /* 00563ceb  mov eax, 0xd735f8  ; g_RuntimeClass_BfVariableTimeoutActionNode */
     eax = 0xd735f8u;
     /* 00563cf0  ret */
     c->eip = M32(esp);

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007bff40  dice::bf::ai::IPIArmamentKnown  (virtual method) */
+/* 007bff40  IPIArmamentKnown::vf13_set_18h_to_1  (virtual method)
+ * class: dice::bf::ai::IPIArmamentKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007bff40, bfv_server_l1_body_007bff40);
 void bfv_server_l1_body_007bff40(struct bfv_cpu *c)
 {
@@ -28,7 +30,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007bfff0  dice::bf::ai::IPIArmamentKnown  (virtual method) */
+/* 007bfff0  IPIArmamentKnown::deleting_dtor  (virtual method)
+ * overrides: InformationPlugIn::vf0  (10 classes implement it)
+ * class: dice::bf::ai::IPIArmamentKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007bfff0, bfv_server_l1_body_007bfff0);
 BFV_L1_RESUME(bfv_server_l1r_007bfff0_1, bfv_server_l1_body_007bfff0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007bfff0_2, bfv_server_l1_body_007bfff0, 2);
@@ -50,14 +55,14 @@ void bfv_server_l1_body_007bfff0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007bfff1  mov esi, ecx */
     esi = ecx;
-    /* 007bfff3  call 0x7bff50 */
+    /* 007bfff3  call 0x7bff50  ; IPIArmamentKnown::~IPIArmamentKnown */
     t = 0x007bff50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007bfff0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007bfff8  test byte ptr [esp + 8], 1 */
+    /* 007bfff8  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -67,9 +72,9 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c0000  mov ecx, 0xc34778 */
+    /* 007c0000  mov ecx, 0xc34778  ; g_MemoryPoolNull_IPIArmamentKnown */
     ecx = 0xc34778u;
-    /* 007c0005  call 0x413600 */
+    /* 007c0005  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007bfff0_2;
@@ -94,7 +99,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007c0010  (between same file) */
+/* 007c0010  IPIArmamentKnown::sub_007c0010  (between same file)
+ * class: dice::bf::ai::IPIArmamentKnown
+ * called by: IPIArmamentKnown::vf2, IPIArmamentKnown::vf6, IPIArmamentKnown::vf7, IPIArmamentKnown::vf4, IPIArmamentKnown::IPIArmamentKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c0010, bfv_server_l1_body_007c0010);
 BFV_L1_RESUME(bfv_server_l1r_007c0010_1, bfv_server_l1_body_007c0010, 1);
 BFV_L1_RESUME(bfv_server_l1r_007c0010_2, bfv_server_l1_body_007c0010, 2);
@@ -165,7 +173,7 @@ void bfv_server_l1_body_007c0010(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c0021  mov dword ptr [esp + 0x10], ebp */
+    /* 007c0021  mov dword ptr [esp + 0x10], ebp  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ebp;
     /* 007c0025  je 0x7c0043 */
@@ -289,7 +297,7 @@ L_007c006b:
     M32(esp) = t;
     /* 007c006e  lea ecx, [ebp + 8] */
     ecx = (uint32_t)(ebp + 0x00000008u);
-    /* 007c0071  call 0x7a0d90 */
+    /* 007c0071  call 0x7a0d90  ; AIObjectArmament_007a0d90 */
     t = 0x007a0d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0010_3;
@@ -307,7 +315,7 @@ L_007c0078:
     /* 007c007b  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007c007d  mov dword ptr [esp + 0x14], edx */
+    /* 007c007d  mov dword ptr [esp + 0x14], edx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
     /* 007c0081  je 0x7c0167 */
@@ -388,9 +396,9 @@ R_4:
     t = 0x8cu;
     esp -= 4;
     M32(esp) = t;
-    /* 007c00c8  mov ecx, 0xc31678 */
+    /* 007c00c8  mov ecx, 0xc31678  ; g_MemoryPoolNull_WeaponBundleKnown */
     ecx = 0xc31678u;
-    /* 007c00cd  call 0x404290 */
+    /* 007c00cd  call 0x404290  ; MemoryPool::alloc_debug */
     t = 0x00404290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0010_5;
@@ -438,20 +446,20 @@ R_6:
     M32(esp) = t;
     /* 007c00ec  mov ecx, edi */
     ecx = edi;
-    /* 007c00ee  call 0x72ad60 */
+    /* 007c00ee  call 0x72ad60  ; WeaponBundleKnown::WeaponBundleKnown */
     t = 0x0072ad60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0010_7;
     c->eip = t;
     goto out;
 R_7:
-    /* 007c00f3  mov ebp, dword ptr [esp + 0x10] */
+    /* 007c00f3  mov ebp, dword ptr [esp + 0x10]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 007c00f7  mov ecx, dword ptr [ebp + 0xc] */
     ea = (uint32_t)(ebp + 0x0000000cu);
     ecx = M32(ea);
-    /* 007c00fa  mov edx, dword ptr [esp + 0x14] */
+    /* 007c00fa  mov edx, dword ptr [esp + 0x14]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 007c00fe  add ecx, esi */
@@ -483,9 +491,9 @@ L_007c0108:
     t = 0x8cu;
     esp -= 4;
     M32(esp) = t;
-    /* 007c0114  mov ecx, 0xc315f8 */
+    /* 007c0114  mov ecx, 0xc315f8  ; g_MemoryPoolNull_WeaponFireArmKnown */
     ecx = 0xc315f8u;
-    /* 007c0119  call 0x404290 */
+    /* 007c0119  call 0x404290  ; MemoryPool::alloc_debug */
     t = 0x00404290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0010_8;
@@ -533,20 +541,20 @@ R_9:
     M32(esp) = t;
     /* 007c0138  mov ecx, edi */
     ecx = edi;
-    /* 007c013a  call 0x72aa90 */
+    /* 007c013a  call 0x72aa90  ; WeaponFireArmKnown::WeaponFireArmKnown */
     t = 0x0072aa90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0010_10;
     c->eip = t;
     goto out;
 R_10:
-    /* 007c013f  mov ebp, dword ptr [esp + 0x10] */
+    /* 007c013f  mov ebp, dword ptr [esp + 0x10]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 007c0143  mov ecx, dword ptr [ebp + 0xc] */
     ea = (uint32_t)(ebp + 0x0000000cu);
     ecx = M32(ea);
-    /* 007c0146  mov edx, dword ptr [esp + 0x14] */
+    /* 007c0146  mov edx, dword ptr [esp + 0x14]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 007c014a  add ecx, esi */
@@ -583,7 +591,7 @@ L_007c0154:
     ea = (uint32_t)(ecx);
     M32(ea) = eax;
 L_007c015d:
-    /* 007c015d  mov edx, dword ptr [esp + 0x14] */
+    /* 007c015d  mov edx, dword ptr [esp + 0x14]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 007c0161  inc edx */
@@ -617,7 +625,7 @@ L_007c0167:
 R_11:
     /* 007c0177  mov ecx, eax */
     ecx = eax;
-    /* 007c0179  call 0x7a0a30 */
+    /* 007c0179  call 0x7a0a30  ; AIObjectArmament_007a0a30 */
     t = 0x007a0a30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0010_12;
@@ -663,7 +671,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007c0190  dice::bf::ai::IPIArmamentKnown  (virtual method) */
+/* 007c0190  IPIArmamentKnown::vf2  (virtual method)
+ * overrides: InformationPlugIn::vf2  (10 classes implement it)
+ * class: dice::bf::ai::IPIArmamentKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c0190, bfv_server_l1_body_007c0190);
 BFV_L1_RESUME(bfv_server_l1r_007c0190_1, bfv_server_l1_body_007c0190, 1);
 BFV_L1_RESUME(bfv_server_l1r_007c0190_2, bfv_server_l1_body_007c0190, 2);
@@ -697,7 +708,7 @@ void bfv_server_l1_body_007c0190(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007c0199  je 0x7c01a0 */
     if (zf) goto L_007c01a0;
-    /* 007c019b  call 0x7c0010 */
+    /* 007c019b  call 0x7c0010  ; IPIArmamentKnown::sub_007c0010 */
     t = 0x007c0010u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0190_1;
@@ -797,7 +808,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007c01d0  dice::bf::ai::IPIArmamentKnown  (virtual method) */
+/* 007c01d0  IPIArmamentKnown::vf6  (virtual method)
+ * class: dice::bf::ai::IPIArmamentKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c01d0, bfv_server_l1_body_007c01d0);
 BFV_L1_RESUME(bfv_server_l1r_007c01d0_1, bfv_server_l1_body_007c01d0, 1);
 void bfv_server_l1_body_007c01d0(struct bfv_cpu *c)
@@ -825,7 +838,7 @@ void bfv_server_l1_body_007c01d0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 007c01d8  je 0x7c01df */
     if (zf) goto L_007c01df;
-    /* 007c01da  call 0x7c0010 */
+    /* 007c01da  call 0x7c0010  ; IPIArmamentKnown::sub_007c0010 */
     t = 0x007c0010u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c01d0_1;
@@ -836,7 +849,7 @@ L_007c01df:
     /* 007c01df  mov eax, dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     eax = M32(ea);
-    /* 007c01e2  mov ecx, dword ptr [esp + 8] */
+    /* 007c01e2  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 007c01e6  lea eax, [eax + ecx*4] */
@@ -859,7 +872,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007c01f0  dice::bf::ai::IPIArmamentKnown  (virtual method) */
+/* 007c01f0  IPIArmamentKnown::vf7  (virtual method)
+ * class: dice::bf::ai::IPIArmamentKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c01f0, bfv_server_l1_body_007c01f0);
 BFV_L1_RESUME(bfv_server_l1r_007c01f0_1, bfv_server_l1_body_007c01f0, 1);
 void bfv_server_l1_body_007c01f0(struct bfv_cpu *c)
@@ -887,7 +902,7 @@ void bfv_server_l1_body_007c01f0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 007c01f8  je 0x7c01ff */
     if (zf) goto L_007c01ff;
-    /* 007c01fa  call 0x7c0010 */
+    /* 007c01fa  call 0x7c0010  ; IPIArmamentKnown::sub_007c0010 */
     t = 0x007c0010u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c01f0_1;
@@ -912,7 +927,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007c0210  dice::bf::ai::IPIArmamentKnown  (virtual method) */
+/* 007c0210  IPIArmamentKnown::vf4  (virtual method)
+ * class: dice::bf::ai::IPIArmamentKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c0210, bfv_server_l1_body_007c0210);
 BFV_L1_RESUME(bfv_server_l1r_007c0210_1, bfv_server_l1_body_007c0210, 1);
 void bfv_server_l1_body_007c0210(struct bfv_cpu *c)
@@ -940,7 +957,7 @@ void bfv_server_l1_body_007c0210(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 007c0218  je 0x7c021f */
     if (zf) goto L_007c021f;
-    /* 007c021a  call 0x7c0010 */
+    /* 007c021a  call 0x7c0010  ; IPIArmamentKnown::sub_007c0010 */
     t = 0x007c0010u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0210_1;
@@ -966,7 +983,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007c0230  dice::bf::ai::IPIArmamentKnown  (vtable store) */
+/* 007c0230  IPIArmamentKnown::IPIArmamentKnown  (vtable store)
+ * class: dice::bf::ai::IPIArmamentKnown
+ * called by: AIObjectArmament::createInformationPlugIn
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c0230, bfv_server_l1_body_007c0230);
 BFV_L1_RESUME(bfv_server_l1r_007c0230_1, bfv_server_l1_body_007c0230, 1);
 void bfv_server_l1_body_007c0230(struct bfv_cpu *c)
@@ -990,7 +1010,7 @@ void bfv_server_l1_body_007c0230(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007c0233  mov esi, ecx */
     esi = ecx;
-    /* 007c0235  mov dword ptr [esi], 0x87b9c4 */
+    /* 007c0235  mov dword ptr [esi], 0x87b9c4  ; vtable IPIArmamentKnown */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87b9c4u;
     /* 007c023b  mov dword ptr [esi + 0xc], eax */
@@ -1002,7 +1022,7 @@ void bfv_server_l1_body_007c0230(struct bfv_cpu *c)
     /* 007c0241  mov dword ptr [esi + 0x14], eax */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = eax;
-    /* 007c0244  mov eax, dword ptr [esp + 8] */
+    /* 007c0244  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007c0248  mov byte ptr [esi + 0x18], 1 */
@@ -1011,7 +1031,7 @@ void bfv_server_l1_body_007c0230(struct bfv_cpu *c)
     /* 007c024c  mov dword ptr [esi + 4], eax */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = eax;
-    /* 007c024f  call 0x7c0010 */
+    /* 007c024f  call 0x7c0010  ; IPIArmamentKnown::sub_007c0010 */
     t = 0x007c0010u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0230_1;

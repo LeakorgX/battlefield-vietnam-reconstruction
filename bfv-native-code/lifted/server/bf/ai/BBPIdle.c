@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a2580  dice::bf::ai::BBPIdle  (vtable store) */
+/* 007a2580  BBPIdle::BBPIdle  (vtable store)
+ * class: dice::bf::ai::BBPIdle
+ * called by: BBPIdleInfantery::BBPIdleInfantery, BBPIdle3d::BBPIdle3d, BBPIdle2d::BBPIdle2d
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a2580, bfv_server_l1_body_007a2580);
 BFV_L1_RESUME(bfv_server_l1r_007a2580_1, bfv_server_l1_body_007a2580, 1);
 void bfv_server_l1_body_007a2580(struct bfv_cpu *c)
@@ -25,20 +28,20 @@ void bfv_server_l1_body_007a2580(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a2581  mov esi, ecx */
     esi = ecx;
-    /* 007a2583  call 0x7a21f0 */
+    /* 007a2583  call 0x7a21f0  ; BBPPattern::BBPPattern */
     t = 0x007a21f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a2580_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007a2588  mov eax, dword ptr [esp + 8] */
+    /* 007a2588  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007a258c  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 007a258f  mov dword ptr [esi], 0x8787b4 */
+    /* 007a258f  mov dword ptr [esi], 0x8787b4  ; vtable BBPIdle */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8787b4u;
     /* 007a2595  mov eax, esi */
@@ -58,7 +61,11 @@ out: __attribute__((unused));
 }
 
 
-/* 007a25a0  dice::bf::ai::BBPIdle  (vtable store) */
+/* 007a25a0  BBPIdle::~BBPIdle  (vtable store)
+ * class: dice::bf::ai::BBPIdle
+ * also entered at 007a25b0: BBPIdle::vf4
+ * called by: BBPIdleInfantery::deleting_dtor, BBPIdle3d::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a25a0, bfv_server_l1_body_007a25a0);
 void bfv_server_l1_body_007a25a0(struct bfv_cpu *c)
 {
@@ -67,10 +74,10 @@ void bfv_server_l1_body_007a25a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007a25a0  mov dword ptr [ecx], 0x8787b4 */
+    /* 007a25a0  mov dword ptr [ecx], 0x8787b4  ; vtable BBPIdle */
     ea = (uint32_t)(ecx);
     M32(ea) = 0x8787b4u;
-    /* 007a25a6  jmp 0x7a21a0 */
+    /* 007a25a6  jmp 0x7a21a0  ; BBPPattern::~BBPPattern */
     c->eip = 0x007a21a0u;
     goto out;
 out: __attribute__((unused));

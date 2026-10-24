@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0062e8f0  dice::WrapperStringTree  (vtable store) */
+/* 0062e8f0  WrapperStringTree::WrapperStringTree  (vtable store)
+ * class: dice::WrapperStringTree
+ * also entered at 0062e910: WrapperStringTree::vf0, WrapperTree::vf0
+ * called by: sub_00629140, sub_WRAPPER_TREE_006299e0, sub_All_tests_passed_0062a4c0, sub_0062a920, sub_0062ab20
+ */
 BFV_L1_ENTRY(bfv_server_l1_0062e8f0, bfv_server_l1_body_0062e8f0);
 BFV_L1_RESUME(bfv_server_l1r_0062e8f0_1, bfv_server_l1_body_0062e8f0, 1);
 void bfv_server_l1_body_0062e8f0(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_server_l1_body_0062e8f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0062e8f0  mov eax, dword ptr [esp + 4] */
+    /* 0062e8f0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0062e8f4  push esi */
@@ -32,14 +36,14 @@ void bfv_server_l1_body_0062e8f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0062e8f6  mov esi, ecx */
     esi = ecx;
-    /* 0062e8f8  call 0x62e390 */
+    /* 0062e8f8  call 0x62e390  ; WrapperTree::WrapperTree */
     t = 0x0062e390u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0062e8f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0062e8fd  mov dword ptr [esi], 0x850354 */
+    /* 0062e8fd  mov dword ptr [esi], 0x850354  ; vtable WrapperStringTree */
     ea = (uint32_t)(esi);
     M32(ea) = 0x850354u;
     /* 0062e903  mov eax, esi */

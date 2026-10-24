@@ -1,0 +1,11 @@
+## file
+Plan builder for a medic assisting another soldier.
+
+## 0098ac20
+BAPVariable<Weapon*> constructor helper: allocates a 0x10-byte variable record (vtable 0x00bf5cdc) and appends it to the owner's variable list.
+
+## 0098ac90
+BAPVariable<int> constructor helper: allocates a 0x10-byte variable record (vtable 0x00bf5ce4) and appends it to the owner's variable list.
+
+## 0098ad00
+buildPlan: when the bot's slot 0x50 object is present it clears the current plan, resolves the target (bfv_event_interface 4 and 2), measures the distance to it and picks a weapon or kit with ai_009f38d0 (parameter slot 0x2c on -1). Builds a serial plan: a parallel BAPAResetControls (1, 0, 1) with a BAPATrigger, plus the move to the target.

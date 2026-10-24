@@ -33,7 +33,7 @@ def compile_staged(target,source='artillery_final_weights',entry='bfv_artillery_
         '-ffreestanding','-fno-builtin','-frounding-math','-fno-stack-protector',
         '-fno-asynchronous-unwind-tables','-fno-unwind-tables','-I',work,'-c',
         PROJECT/'src'/f'{source}.c','-o',work/'stage.o'])
-    (work/'payload.ld').write_text('SECTIONS { . = 0x0200a000; .payload : { *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) } /DISCARD/ : { *(.eh_frame*) *(.comment*) *(.drectve*) } }')
+    (work/'payload.ld').write_text('SECTIONS { . = '+hex(ARENA+0xa000)+'; .payload : { *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) } /DISCARD/ : { *(.eh_frame*) *(.comment*) *(.drectve*) } }')
     command([COMPILERS/'ld.exe','-T',work/'payload.ld','--image-base','0',
         '--entry','_'+entry,'--disable-dynamicbase',
         '--disable-reloc-section','-Map',work/'payload.map','-o',work/'payload.exe',work/'stage.o'])

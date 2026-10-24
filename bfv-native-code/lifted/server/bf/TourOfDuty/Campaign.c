@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 004a5830  dice::bf::TourOfDuty::Campaign  (vtable store) */
+/* 004a5830  Campaign::Campaign  (vtable store)
+ * class: dice::bf::TourOfDuty::Campaign
+ * also entered at 004a58b0: Campaign::vf0
+ * called by: ObjectCreatorWrapper<Campaign>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_004a5830, bfv_server_l1_body_004a5830);
 BFV_L1_RESUME(bfv_server_l1r_004a5830_1, bfv_server_l1_body_004a5830, 1);
 BFV_L1_RESUME(bfv_server_l1r_004a5830_2, bfv_server_l1_body_004a5830, 2);
@@ -27,7 +31,7 @@ void bfv_server_l1_body_004a5830(struct bfv_cpu *c)
     case 5: goto R_5;
     default: break;
     }
-    /* 004a5830  mov eax, dword ptr [esp + 0x20] */
+    /* 004a5830  mov eax, dword ptr [esp + 0x20]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000020u);
     eax = M32(ea);
     /* 004a5834  push ebx */
@@ -64,7 +68,7 @@ void bfv_server_l1_body_004a5830(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 004a5843  lea edx, [esp + 0x34] */
+    /* 004a5843  lea edx, [esp + 0x34]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000034u);
     /* 004a5847  mov dword ptr [ecx + 0x18], 0xf */
     ea = (uint32_t)(ecx + 0x00000018u);
@@ -79,7 +83,7 @@ void bfv_server_l1_body_004a5830(struct bfv_cpu *c)
     /* 004a5852  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 004a5855  call 0x401e20 */
+    /* 004a5855  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004a5830_1;
@@ -88,7 +92,7 @@ void bfv_server_l1_body_004a5830(struct bfv_cpu *c)
 R_1:
     /* 004a585a  mov ecx, esi */
     ecx = esi;
-    /* 004a585c  call 0x4a5910 */
+    /* 004a585c  call 0x4a5910  ; TGMObject<int>::TGMObject */
     t = 0x004a5910u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004a5830_2;
@@ -101,10 +105,10 @@ R_2:
     M32(esp) = t;
     /* 004a5862  lea ecx, [esi + 0x28] */
     ecx = (uint32_t)(esi + 0x00000028u);
-    /* 004a5865  mov dword ptr [esi], 0x81c47c */
+    /* 004a5865  mov dword ptr [esi], 0x81c47c  ; vtable Campaign */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81c47cu;
-    /* 004a586b  call 0x4a56f0 */
+    /* 004a586b  call 0x4a56f0  ; std::vector::_Buy_4_004a56f0 */
     t = 0x004a56f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004a5830_3;
@@ -130,14 +134,14 @@ R_3:
     /* 004a5883  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 004a5886  call 0x402020 */
+    /* 004a5886  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004a5830_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 004a588b  cmp dword ptr [esp + 0x24], 0x10 */
+    /* 004a588b  cmp dword ptr [esp + 0x24], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000024u);
     a = M32(ea);
     b = 0x10u;
@@ -145,14 +149,14 @@ R_4:
     F_SUB(32, a, b, r);
     /* 004a5890  jb 0x4a589f */
     if (cf) goto L_004a589f;
-    /* 004a5892  mov eax, dword ptr [esp + 0x10] */
+    /* 004a5892  mov eax, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 004a5896  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004a5897  call 0x403df0 */
+    /* 004a5897  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004a5830_5;

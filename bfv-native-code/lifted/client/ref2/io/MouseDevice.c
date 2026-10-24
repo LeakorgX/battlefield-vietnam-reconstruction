@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 008dcb80  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dcb80  MouseDevice::vf20  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcb80, bfv_client_l1_body_008dcb80);
 void bfv_client_l1_body_008dcb80(struct bfv_cpu *c)
 {
@@ -17,7 +19,7 @@ void bfv_client_l1_body_008dcb80(struct bfv_cpu *c)
     /* 008dcb80  mov eax, dword ptr [ecx + 0x10] */
     ea = (uint32_t)(ecx + 0x00000010u);
     eax = M32(ea);
-    /* 008dcb83  and eax, dword ptr [esp + 4] */
+    /* 008dcb83  and eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (eax & M32(ea)) & 0xffffffffu;
     F_LOGIC(32, r);
@@ -54,7 +56,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcba0  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dcba0  MouseDevice::vf21  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcba0, bfv_client_l1_body_008dcba0);
 void bfv_client_l1_body_008dcba0(struct bfv_cpu *c)
 {
@@ -63,7 +67,7 @@ void bfv_client_l1_body_008dcba0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 008dcba0  mov eax, dword ptr [esp + 4] */
+    /* 008dcba0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcba4  test dword ptr [ecx + 0x14], eax */
@@ -100,7 +104,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcbc0  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dcbc0  MouseDevice::vf22  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcbc0, bfv_client_l1_body_008dcbc0);
 void bfv_client_l1_body_008dcbc0(struct bfv_cpu *c)
 {
@@ -109,7 +115,7 @@ void bfv_client_l1_body_008dcbc0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 008dcbc0  mov eax, dword ptr [esp + 4] */
+    /* 008dcbc0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcbc4  test dword ptr [ecx + 0x14], eax */
@@ -146,7 +152,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd470  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd470  MouseDevice::vf5  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd470, bfv_client_l1_body_008dd470);
 BFV_L1_RESUME(bfv_client_l1r_008dd470_1, bfv_client_l1_body_008dd470, 1);
 BFV_L1_RESUME(bfv_client_l1r_008dd470_2, bfv_client_l1_body_008dd470, 2);
@@ -176,7 +184,7 @@ void bfv_client_l1_body_008dd470(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd473  mov edi, dword ptr [esp + 0x10] */
+    /* 008dd473  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 008dd477  test edi, edi */
@@ -196,7 +204,7 @@ void bfv_client_l1_body_008dd470(struct bfv_cpu *c)
     t = 0x5u;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd484  call dword ptr [0xb4236c] */
+    /* 008dd484  call dword ptr [0xb4236c]  ; USER32!GetFocus */
     ea = (uint32_t)(0x00b4236cu);
     t = M32(ea);
     esp -= 4;
@@ -228,7 +236,7 @@ L_008dd491:
     t = 0x6u;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd498  call dword ptr [0xb4236c] */
+    /* 008dd498  call dword ptr [0xb4236c]  ; USER32!GetFocus */
     ea = (uint32_t)(0x00b4236cu);
     t = M32(ea);
     esp -= 4;
@@ -310,7 +318,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd4c0  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd4c0  MouseDevice::vf7  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd4c0, bfv_client_l1_body_008dd4c0);
 BFV_L1_RESUME(bfv_client_l1r_008dd4c0_1, bfv_client_l1_body_008dd4c0, 1);
 void bfv_client_l1_body_008dd4c0(struct bfv_cpu *c)
@@ -403,7 +413,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd4f0  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd4f0  MouseDevice::vf8  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd4f0, bfv_client_l1_body_008dd4f0);
 BFV_L1_RESUME(bfv_client_l1r_008dd4f0_1, bfv_client_l1_body_008dd4f0, 1);
 void bfv_client_l1_body_008dd4f0(struct bfv_cpu *c)
@@ -479,7 +491,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd510  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd510  MouseDevice::vf13  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd510, bfv_client_l1_body_008dd510);
 void bfv_client_l1_body_008dd510(struct bfv_cpu *c)
 {
@@ -488,7 +502,7 @@ void bfv_client_l1_body_008dd510(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dd510  mov eax, dword ptr [esp + 4] */
+    /* 008dd510  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dd514  cmp eax, dword ptr [ecx + 0x38] */
@@ -499,7 +513,7 @@ void bfv_client_l1_body_008dd510(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008dd517  jg 0x8dd521 */
     if (!(zf | (sf != of))) goto L_008dd521;
-    /* 008dd519  mov dl, byte ptr [esp + 8] */
+    /* 008dd519  mov dl, byte ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(edx, M8(ea));
     /* 008dd51d  mov byte ptr [eax + ecx + 0x50], dl */
@@ -517,7 +531,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd530  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd530  MouseDevice::vf14  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd530, bfv_client_l1_body_008dd530);
 void bfv_client_l1_body_008dd530(struct bfv_cpu *c)
 {
@@ -526,7 +542,7 @@ void bfv_client_l1_body_008dd530(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dd530  mov eax, dword ptr [esp + 4] */
+    /* 008dd530  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dd534  cmp eax, dword ptr [ecx + 0x38] */
@@ -560,7 +576,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd550  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd550  MouseDevice::vf15  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd550, bfv_client_l1_body_008dd550);
 void bfv_client_l1_body_008dd550(struct bfv_cpu *c)
 {
@@ -569,7 +587,7 @@ void bfv_client_l1_body_008dd550(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dd550  mov eax, dword ptr [esp + 4] */
+    /* 008dd550  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dd554  cmp eax, dword ptr [ecx + 0x38] */
@@ -580,7 +598,7 @@ void bfv_client_l1_body_008dd550(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008dd557  jg 0x8dd561 */
     if (!(zf | (sf != of))) goto L_008dd561;
-    /* 008dd559  fld dword ptr [esp + 8] */
+    /* 008dd559  fld dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd55d  fstp dword ptr [ecx + eax*4 + 0x40] */
@@ -598,7 +616,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd570  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd570  MouseDevice::vf16  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd570, bfv_client_l1_body_008dd570);
 void bfv_client_l1_body_008dd570(struct bfv_cpu *c)
 {
@@ -607,7 +627,7 @@ void bfv_client_l1_body_008dd570(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dd570  mov eax, dword ptr [esp + 4] */
+    /* 008dd570  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dd574  cmp eax, dword ptr [ecx + 0x38] */
@@ -618,7 +638,7 @@ void bfv_client_l1_body_008dd570(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008dd577  jle 0x8dd582 */
     if ((zf | (sf != of))) goto L_008dd582;
-    /* 008dd579  fld dword ptr [0xb44444] */
+    /* 008dd579  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd57f  ret 4 */
@@ -640,7 +660,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd590  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd590  MouseDevice::vf12  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd590, bfv_client_l1_body_008dd590);
 void bfv_client_l1_body_008dd590(struct bfv_cpu *c)
 {
@@ -649,7 +671,7 @@ void bfv_client_l1_body_008dd590(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 008dd590  mov eax, dword ptr [esp + 4] */
+    /* 008dd590  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dd594  mov dl, byte ptr [eax + ecx + 0x50] */
@@ -658,7 +680,7 @@ void bfv_client_l1_body_008dd590(struct bfv_cpu *c)
     /* 008dd598  test dl, dl */
     r = (LO8(edx) & LO8(edx)) & 0xffu;
     F_LOGIC(8, r);
-    /* 008dd59a  mov dl, byte ptr [esp + 8] */
+    /* 008dd59a  mov dl, byte ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(edx, M8(ea));
     /* 008dd59e  je 0x8dd5b6 */
@@ -715,7 +737,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd5d0  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd5d0  MouseDevice::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd5d0, bfv_client_l1_body_008dd5d0);
 void bfv_client_l1_body_008dd5d0(struct bfv_cpu *c)
 {
@@ -724,12 +749,12 @@ void bfv_client_l1_body_008dd5d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 008dd5d0  mov edx, dword ptr [0xb42718] */
+    /* 008dd5d0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 008dd5d6  mov eax, ecx */
     eax = ecx;
-    /* 008dd5d8  mov ecx, dword ptr [esp + 4] */
+    /* 008dd5d8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008dd5dc  cmp ecx, edx */
@@ -739,7 +764,7 @@ void bfv_client_l1_body_008dd5d0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008dd5de  je 0x8dd5fa */
     if (zf) goto L_008dd5fa;
-    /* 008dd5e0  cmp ecx, dword ptr [0xbdb01c] */
+    /* 008dd5e0  cmp ecx, dword ptr [0xbdb01c]  ; interfaceID(KeyboardDevice|MouseDevice) */
     ea = (uint32_t)(0x00bdb01cu);
     a = ecx;
     b = M32(ea);
@@ -790,7 +815,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd600  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd600  MouseDevice::vf10  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd600, bfv_client_l1_body_008dd600);
 void bfv_client_l1_body_008dd600(struct bfv_cpu *c)
 {
@@ -837,7 +864,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd620  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd620  MouseDevice::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd620, bfv_client_l1_body_008dd620);
 BFV_L1_RESUME(bfv_client_l1r_008dd620_1, bfv_client_l1_body_008dd620, 1);
 BFV_L1_RESUME(bfv_client_l1r_008dd620_2, bfv_client_l1_body_008dd620, 2);
@@ -869,7 +899,7 @@ void bfv_client_l1_body_008dd620(struct bfv_cpu *c)
     /* 008dd626  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 008dd628  mov dword ptr [esi], 0xbe10c4 */
+    /* 008dd628  mov dword ptr [esi], 0xbe10c4  ; vtable MouseDevice */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe10c4u;
     /* 008dd62e  je 0x8dd646 */
@@ -938,11 +968,11 @@ R_3:
     ea = (uint32_t)(esi + 0x00000058u);
     M32(ea) = 0x0u;
 L_008dd65a:
-    /* 008dd65a  test byte ptr [esp + 8], 1 */
+    /* 008dd65a  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 008dd65f  mov dword ptr [esi], 0xb4274c */
+    /* 008dd65f  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 008dd665  je 0x8dd670 */
@@ -951,7 +981,7 @@ L_008dd65a:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd668  call 0x403680 */
+    /* 008dd668  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dd620_4;
@@ -982,7 +1012,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd680  dice::ref2::io::MouseDevice  (vtable store) */
+/* 008dd680  MouseDevice::MouseDevice  (vtable store)
+ * class: dice::ref2::io::MouseDevice
+ * called by: DX8InputDeviceManager::vf4
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd680, bfv_client_l1_body_008dd680);
 void bfv_client_l1_body_008dd680(struct bfv_cpu *c)
 {
@@ -999,7 +1032,7 @@ void bfv_client_l1_body_008dd680(struct bfv_cpu *c)
     ecx = r;
     /* 008dd684  mov edx, 0x3f800000 */
     edx = 0x3f800000u;
-    /* 008dd689  mov dword ptr [eax], 0xbe10c4 */
+    /* 008dd689  mov dword ptr [eax], 0xbe10c4  ; vtable MouseDevice */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbe10c4u;
     /* 008dd68f  mov dword ptr [eax + 4], 1 */
@@ -1088,7 +1121,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd6e0  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd6e0  MouseDevice::vf23  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd6e0, bfv_client_l1_body_008dd6e0);
 BFV_L1_RESUME(bfv_client_l1r_008dd6e0_1, bfv_client_l1_body_008dd6e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008dd6e0_2, bfv_client_l1_body_008dd6e0, 2);
@@ -1114,7 +1149,7 @@ void bfv_client_l1_body_008dd6e0(struct bfv_cpu *c)
     case 7: goto R_7;
     default: break;
     }
-    /* 008dd6e0  mov eax, dword ptr [0xdf7150] */
+    /* 008dd6e0  mov eax, dword ptr [0xdf7150]  ; g_pInputDeviceManager */
     ea = (uint32_t)(0x00df7150u);
     eax = M32(ea);
     /* 008dd6e5  sub esp, 0x40 */
@@ -1142,7 +1177,7 @@ void bfv_client_l1_body_008dd6e0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd6f6  call dword ptr [0xb420f8] */
+    /* 008dd6f6  call dword ptr [0xb420f8]  ; KERNEL32!GetModuleHandleA */
     ea = (uint32_t)(0x00b420f8u);
     t = M32(ea);
     esp -= 4;
@@ -1172,7 +1207,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd70d  call 0xa9048a */
+    /* 008dd70d  call 0xa9048a  ; io_thunk_DirectInput8Create_00a9048a */
     t = 0x00a9048au;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dd6e0_2;
@@ -1279,13 +1314,13 @@ L_008dd73f:
     /* 008dd73f  mov eax, dword ptr [edi] */
     ea = (uint32_t)(edi);
     eax = M32(ea);
-    /* 008dd741  lea ecx, [esp + 0x20] */
+    /* 008dd741  lea ecx, [esp + 0x20]  ; &var_2c */
     ecx = (uint32_t)(esp + 0x00000020u);
     /* 008dd745  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd746  mov dword ptr [esp + 0x24], 0x2c */
+    /* 008dd746  mov dword ptr [esp + 0x24], 0x2c  ; var_2c */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = 0x2cu;
     /* 008dd74e  mov edx, dword ptr [eax] */
@@ -1303,10 +1338,10 @@ L_008dd73f:
     c->eip = t;
     goto out;
 R_4:
-    /* 008dd754  mov eax, dword ptr [esp + 0x30] */
+    /* 008dd754  mov eax, dword ptr [esp + 0x30]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
-    /* 008dd758  mov edx, dword ptr [esp + 0x2c] */
+    /* 008dd758  mov edx, dword ptr [esp + 0x2c]  ; var_20 */
     ea = (uint32_t)(esp + 0x0000002cu);
     edx = M32(ea);
     /* 008dd75c  mov dword ptr [esi + 0xc], eax */
@@ -1345,7 +1380,7 @@ R_5:
     /* 008dd773  mov edi, dword ptr [edi] */
     ea = (uint32_t)(edi);
     edi = M32(ea);
-    /* 008dd775  lea eax, [esp + 0xc] */
+    /* 008dd775  lea eax, [esp + 0xc]  ; &var_40 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 008dd779  push eax */
     t = eax;
@@ -1355,19 +1390,19 @@ R_5:
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd77c  mov dword ptr [esp + 0x14], 0x14 */
+    /* 008dd77c  mov dword ptr [esp + 0x14], 0x14  ; var_40 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x14u;
-    /* 008dd784  mov dword ptr [esp + 0x18], 0x10 */
+    /* 008dd784  mov dword ptr [esp + 0x18], 0x10  ; var_3c */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x10u;
-    /* 008dd78c  mov dword ptr [esp + 0x1c], 0 */
+    /* 008dd78c  mov dword ptr [esp + 0x1c], 0  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = 0x0u;
-    /* 008dd794  mov dword ptr [esp + 0x20], 0 */
+    /* 008dd794  mov dword ptr [esp + 0x20], 0  ; var_34 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0x0u;
-    /* 008dd79c  mov dword ptr [esp + 0x24], 0x64 */
+    /* 008dd79c  mov dword ptr [esp + 0x24], 0x64  ; var_30 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = 0x64u;
     /* 008dd7a4  mov edx, dword ptr [edi] */
@@ -1394,7 +1429,7 @@ R_6:
     M32(esp) = t;
     /* 008dd7ae  mov ecx, esi */
     ecx = esi;
-    /* 008dd7b0  call dword ptr [edx + 0x14] */
+    /* 008dd7b0  call dword ptr [edx + 0x14]  ; -> MouseDevice::vf5 */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -1455,7 +1490,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd7d0  dice::ref2::io::MouseDevice  (virtual method) */
+/* 008dd7d0  MouseDevice::vf9  (virtual method)
+ * class: dice::ref2::io::MouseDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd7d0, bfv_client_l1_body_008dd7d0);
 BFV_L1_RESUME(bfv_client_l1r_008dd7d0_1, bfv_client_l1_body_008dd7d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008dd7d0_2, bfv_client_l1_body_008dd7d0, 2);
@@ -1481,7 +1518,7 @@ void bfv_client_l1_body_008dd7d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 008dd7d3  mov eax, dword ptr [0xcff7cc] */
+    /* 008dd7d3  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 008dd7d8  push esi */
@@ -1490,7 +1527,7 @@ void bfv_client_l1_body_008dd7d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008dd7d9  mov esi, ecx */
     esi = ecx;
-    /* 008dd7db  mov dword ptr [esp + 0x1c], eax */
+    /* 008dd7db  mov dword ptr [esp + 0x1c], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = eax;
     /* 008dd7df  mov eax, dword ptr [esi + 0x54] */
@@ -1510,7 +1547,7 @@ L_008dd7f0:
     /* 008dd7f3  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 008dd7f5  lea edx, [esp + 8] */
+    /* 008dd7f5  lea edx, [esp + 8]  ; &var_18 */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 008dd7f9  push edx */
     t = edx;
@@ -1575,10 +1612,10 @@ L_008dd81f:
     F_LOGIC(32, r);
     /* 008dd821  jl 0x8dd998 */
     if ((sf != of)) goto L_008dd998;
-    /* 008dd827  fld dword ptr [esp + 0x24] */
+    /* 008dd827  fld dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd82b  fcomp dword ptr [0xb44444] */
+    /* 008dd82b  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd831  fnstsw ax */
@@ -1588,68 +1625,68 @@ L_008dd81f:
     F_LOGIC(8, r);
     /* 008dd836  jne 0x8dd899 */
     if (!zf) goto L_008dd899;
-    /* 008dd838  fild dword ptr [esp + 8] */
+    /* 008dd838  fild dword ptr [esp + 8]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd83c  fmul dword ptr [esi + 0x40] */
     ea = (uint32_t)(esi + 0x00000040u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd83f  fld dword ptr [0xb4456c] */
+    /* 008dd83f  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd845  fdiv dword ptr [esp + 0x24] */
+    /* 008dd845  fdiv dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd849  fstp dword ptr [esp + 0x24] */
+    /* 008dd849  fstp dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd84d  fld dword ptr [0xb556dc] */
+    /* 008dd84d  fld dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd853  fmul st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
-    /* 008dd855  fmul dword ptr [esp + 0x24] */
+    /* 008dd855  fmul dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd859  fstp dword ptr [esi + 0x18] */
     ea = (uint32_t)(esi + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd85c  fild dword ptr [esp + 0xc] */
+    /* 008dd85c  fild dword ptr [esp + 0xc]  ; var_14 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd860  fmul dword ptr [esi + 0x44] */
     ea = (uint32_t)(esi + 0x00000044u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd863  fld dword ptr [0xb556dc] */
+    /* 008dd863  fld dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd869  fmul st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
-    /* 008dd86b  fmul dword ptr [esp + 0x24] */
+    /* 008dd86b  fmul dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd86f  fstp dword ptr [esi + 0x1c] */
     ea = (uint32_t)(esi + 0x0000001cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd872  fild dword ptr [esp + 0x10] */
+    /* 008dd872  fild dword ptr [esp + 0x10]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd876  fmul dword ptr [esi + 0x48] */
     ea = (uint32_t)(esi + 0x00000048u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd879  fst dword ptr [esp + 4] */
+    /* 008dd879  fst dword ptr [esp + 4]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd87d  mov edx, dword ptr [esp + 4] */
+    /* 008dd87d  mov edx, dword ptr [esp + 4]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
-    /* 008dd881  fmul dword ptr [0xb556dc] */
+    /* 008dd881  fmul dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd887  mov dword ptr [esi + 0x30], edx */
     ea = (uint32_t)(esi + 0x00000030u);
     M32(ea) = edx;
-    /* 008dd88a  fmul dword ptr [esp + 0x24] */
+    /* 008dd88a  fmul dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd88e  fstp dword ptr [esi + 0x20] */
@@ -1762,7 +1799,7 @@ L_008dd8d3:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd8d8  lea edx, [esp + 8] */
+    /* 008dd8d8  lea edx, [esp + 8]  ; &var_1c */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 008dd8dc  push edx */
     t = edx;
@@ -1776,7 +1813,7 @@ L_008dd8d3:
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd8e4  mov dword ptr [esp + 0x14], 0x64 */
+    /* 008dd8e4  mov dword ptr [esp + 0x14], 0x64  ; var_1c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x64u;
     /* 008dd8ec  mov ecx, dword ptr [eax] */
@@ -1799,7 +1836,7 @@ R_3:
     F_LOGIC(32, r);
     /* 008dd8f4  jl 0x8dd998 */
     if ((sf != of)) goto L_008dd998;
-    /* 008dd8fa  mov ecx, dword ptr [esp + 4] */
+    /* 008dd8fa  mov ecx, dword ptr [esp + 4]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008dd8fe  test ecx, ecx */
@@ -1849,14 +1886,14 @@ L_008dd98e:
     /* 008dd992  jne 0x8dd910 */
     if (!zf) goto L_008dd910;
 L_008dd998:
-    /* 008dd998  mov ecx, dword ptr [esp + 0x1c] */
+    /* 008dd998  mov ecx, dword ptr [esp + 0x1c]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 008dd99c  pop esi */
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 008dd99d  call 0x7c2019 */
+    /* 008dd99d  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dd7d0_4;

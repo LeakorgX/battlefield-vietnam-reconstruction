@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00991d80  dice::bf::ai::InfoDanger  (virtual method) */
+/* 00991d80  InfoDanger::vf4  (virtual method)
+ * overrides: DangerObject::vf4  (3 classes implement it)
+ * class: dice::bf::ai::InfoDanger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00991d80, bfv_client_l1_body_00991d80);
 void bfv_client_l1_body_00991d80(struct bfv_cpu *c)
 {
@@ -32,7 +35,7 @@ void bfv_client_l1_body_00991d80(struct bfv_cpu *c)
     ecx = r;
     /* 00991d90  je 0x991daa */
     if (zf) goto L_00991daa;
-    /* 00991d92  mov edx, dword ptr [0xe0cd58] */
+    /* 00991d92  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 00991d98  mov edx, dword ptr [edx] */
@@ -81,7 +84,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00991db0  dice::bf::ai::InfoDanger  (virtual method) */
+/* 00991db0  InfoDanger::vf3  (virtual method)
+ * overrides: DangerObject::vf3  (3 classes implement it)
+ * class: dice::bf::ai::InfoDanger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00991db0, bfv_client_l1_body_00991db0);
 BFV_L1_RESUME(bfv_client_l1r_00991db0_1, bfv_client_l1_body_00991db0, 1);
 void bfv_client_l1_body_00991db0(struct bfv_cpu *c)
@@ -106,7 +112,7 @@ void bfv_client_l1_body_00991db0(struct bfv_cpu *c)
     ecx = r;
     /* 00991dbb  je 0x991dd8 */
     if (zf) goto L_00991dd8;
-    /* 00991dbd  mov edx, dword ptr [0xe0cd58] */
+    /* 00991dbd  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 00991dc3  mov edx, dword ptr [edx] */
@@ -164,7 +170,7 @@ R_1:
     /* 00991de2  mov edx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     edx = M32(ea);
-    /* 00991de4  mov ecx, dword ptr [esp + 4] */
+    /* 00991de4  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00991de8  mov dword ptr [ecx], edx */
@@ -195,7 +201,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009aae90  dice::bf::ai::InfoDanger  (virtual method) */
+/* 009aae90  InfoDanger::vf0  (virtual method)
+ * overrides: DangerObject::vf0  (3 classes implement it)
+ * class: dice::bf::ai::InfoDanger
+ */
 BFV_L1_ENTRY(bfv_client_l1_009aae90, bfv_client_l1_body_009aae90);
 BFV_L1_RESUME(bfv_client_l1r_009aae90_1, bfv_client_l1_body_009aae90, 1);
 BFV_L1_RESUME(bfv_client_l1r_009aae90_2, bfv_client_l1_body_009aae90, 2);
@@ -211,7 +220,7 @@ void bfv_client_l1_body_009aae90(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 009aae90  mov dl, byte ptr [esp + 4] */
+    /* 009aae90  mov dl, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(edx, M8(ea));
     /* 009aae94  test dl, 2 */
@@ -262,7 +271,7 @@ L_009aaeb0:
     r = (a - 1u) & 0xffffffffu;
     F_DEC(32, a, r);
     ecx = r;
-    /* 009aaeb4  mov dword ptr [eax], 0xbf5fd4 */
+    /* 009aaeb4  mov dword ptr [eax], 0xbf5fd4  ; vtable DangerObject */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf5fd4u;
     /* 009aaeba  jne 0x9aaeb0 */
@@ -277,7 +286,7 @@ L_009aaebc:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 009aaec2  call 0x403680 */
+    /* 009aaec2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009aae90_1;
@@ -309,7 +318,7 @@ L_009aaed1:
     /* 009aaed1  test dl, 1 */
     r = (LO8(edx) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 009aaed4  mov dword ptr [esi], 0xbf5fd4 */
+    /* 009aaed4  mov dword ptr [esi], 0xbf5fd4  ; vtable DangerObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf5fd4u;
     /* 009aaeda  je 0x9aaee5 */
@@ -318,7 +327,7 @@ L_009aaed1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009aaedd  call 0x403680 */
+    /* 009aaedd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009aae90_2;

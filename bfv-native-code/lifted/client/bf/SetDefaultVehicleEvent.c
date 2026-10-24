@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005ad420  dice::bf::SetDefaultVehicleEvent  (vtable store) */
+/* 005ad420  SetDefaultVehicleEvent::create  (vtable store)
+ * class: dice::bf::SetDefaultVehicleEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ad420, bfv_client_l1_body_005ad420);
 BFV_L1_RESUME(bfv_client_l1r_005ad420_1, bfv_client_l1_body_005ad420, 1);
 void bfv_client_l1_body_005ad420(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_005ad420(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ad420  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ad420  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ad426  mov eax, dword ptr [ecx] */
@@ -53,7 +55,7 @@ R_1:
     /* 005ad438  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ad43f  mov dword ptr [eax], 0xb76004 */
+    /* 005ad43f  mov dword ptr [eax], 0xb76004  ; vtable SetDefaultVehicleEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb76004u;
     /* 005ad445  ret */
@@ -76,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ad450  dice::bf::SetDefaultVehicleEvent  (vtable store) */
+/* 005ad450  SetDefaultVehicleEvent::create  (vtable store)
+ * class: dice::bf::SetDefaultVehicleEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ad450, bfv_client_l1_body_005ad450);
 BFV_L1_RESUME(bfv_client_l1r_005ad450_1, bfv_client_l1_body_005ad450, 1);
 void bfv_client_l1_body_005ad450(struct bfv_cpu *c)
@@ -90,7 +94,7 @@ void bfv_client_l1_body_005ad450(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ad450  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ad450  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ad456  mov eax, dword ptr [ecx] */
@@ -124,7 +128,7 @@ R_1:
     /* 005ad468  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ad46f  mov dword ptr [eax], 0xb76004 */
+    /* 005ad46f  mov dword ptr [eax], 0xb76004  ; vtable SetDefaultVehicleEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb76004u;
     /* 005ad475  jmp 0x5ad479 */
@@ -135,7 +139,7 @@ L_005ad477:
     F_LOGIC(32, r);
     eax = r;
 L_005ad479:
-    /* 005ad479  mov ecx, dword ptr [esp + 4] */
+    /* 005ad479  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005ad47d  push esi */

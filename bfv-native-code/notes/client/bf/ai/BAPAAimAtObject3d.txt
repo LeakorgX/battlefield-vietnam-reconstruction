@@ -1,0 +1,11 @@
+## file
+3D aim action aimed at another object (handle at this+0x1c4).
+
+## 009f9740
+vf7: direction from the given point to the target object's position. Returns false when the target handle at this+0x1c4 is stale.
+
+## 009f9840
+vf8: sets up the 3D aim solution. Turns the local weapon offset into world space and accumulates it at this+0xf4..+0xfc. Stores the AI time at this+0x10c, an inverse value at this+0x110, the projectile speed (muzzle speed * IAIEnvironment::vf56 * 0.9) at this+0x114 and the target at this+0x118. Gets the target point from the info entry or the target position, subtracts the offset, adds the shooter velocity, and solves the lead with Aimer_00a02a70.
+
+## 009f9cf0
+Destructor: releases the object at this+0x18, tears down the BAPAAimAt3d base and returns the object to g_MemoryPool_BAPAAimAtObject3d when bit 0 of the flag argument is set.

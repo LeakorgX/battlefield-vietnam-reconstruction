@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009db7b0  dice::bf::ai::SVUBotVehicle  (vtable store) */
+/* 009db7b0  SVUBotVehicle::SVUBotVehicle  (vtable store)
+ * class: dice::bf::ai::SVUBotVehicle
+ * also entered at 009db7e0: SVUBotVehicle::vf0
+ * called by: AIScriptManager::nThe_variable_does_0096d980
+ */
 BFV_L1_ENTRY(bfv_client_l1_009db7b0, bfv_client_l1_body_009db7b0);
 BFV_L1_RESUME(bfv_client_l1r_009db7b0_1, bfv_client_l1_body_009db7b0, 1);
 void bfv_client_l1_body_009db7b0(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_client_l1_body_009db7b0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009db7b0  mov eax, dword ptr [esp + 4] */
+    /* 009db7b0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 009db7b4  push esi */
@@ -36,17 +40,17 @@ void bfv_client_l1_body_009db7b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009db7b8  mov esi, ecx */
     esi = ecx;
-    /* 009db7ba  call 0xa09e70 */
+    /* 009db7ba  call 0xa09e70  ; ISVUBot::ISVUBot */
     t = 0x00a09e70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009db7b0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009db7bf  mov ecx, dword ptr [esp + 0xc] */
+    /* 009db7bf  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 009db7c3  mov dword ptr [esi], 0xbf908c */
+    /* 009db7c3  mov dword ptr [esi], 0xbf908c  ; vtable SVUBotVehicle */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf908cu;
     /* 009db7c9  mov dword ptr [esi + 0x10], ecx */
@@ -69,7 +73,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009db810  dice::bf::ai::SVUBotVehicle  (virtual method) */
+/* 009db810  SVUBotVehicle::execute  (virtual method)
+ * overrides: IAIScriptStatement::execute  (17 classes implement it)
+ * class: dice::bf::ai::SVUBotVehicle
+ */
 BFV_L1_ENTRY(bfv_client_l1_009db810, bfv_client_l1_body_009db810);
 BFV_L1_RESUME(bfv_client_l1r_009db810_1, bfv_client_l1_body_009db810, 1);
 BFV_L1_RESUME(bfv_client_l1r_009db810_2, bfv_client_l1_body_009db810, 2);
@@ -134,7 +141,7 @@ R_2:
     ecx = r;
     /* 009db835  je 0x9db86a */
     if (zf) goto L_009db86a;
-    /* 009db837  mov edx, dword ptr [0xe0cd58] */
+    /* 009db837  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 009db83d  mov edx, dword ptr [edx] */

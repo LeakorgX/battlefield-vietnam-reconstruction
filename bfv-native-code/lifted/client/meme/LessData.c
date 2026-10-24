@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00abf510  dice::meme::LessData  (virtual method) */
+/* 00abf510  LessData::getFloat  (virtual method)
+ * overrides: Data::getFloat  (41 classes implement it)
+ * class: dice::meme::LessData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abf510, bfv_client_l1_body_00abf510);
 BFV_L1_RESUME(bfv_client_l1r_00abf510_1, bfv_client_l1_body_00abf510, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abf510_2, bfv_client_l1_body_00abf510, 2);
@@ -56,7 +59,7 @@ void bfv_client_l1_body_00abf510(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abf52a  mov edi, dword ptr [esp + 0xc] */
+    /* 00abf52a  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 00abf52e  push edi */
@@ -71,7 +74,7 @@ void bfv_client_l1_body_00abf510(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 00abf532  fstp dword ptr [esp + 0xc] */
+    /* 00abf532  fstp dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abf536  mov edx, dword ptr [esi] */
@@ -91,7 +94,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 00abf53e  fcomp dword ptr [esp + 0xc] */
+    /* 00abf53e  fcomp dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abf542  pop edi */
@@ -109,7 +112,7 @@ R_2:
     F_LOGIC(8, r);
     /* 00abf549  jne 0xabf554 */
     if (!zf) goto L_00abf554;
-    /* 00abf54b  fld dword ptr [0xb4456c] */
+    /* 00abf54b  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abf551  ret 4 */
@@ -117,7 +120,7 @@ R_2:
     esp += 8;
     goto out;
 L_00abf554:
-    /* 00abf554  fld dword ptr [0xb44444] */
+    /* 00abf554  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abf55a  ret 4 */
@@ -131,7 +134,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00abf900  dice::meme::LessData  (vtable store) */
+/* 00abf900  LessData::create  (vtable store)
+ * class: dice::meme::LessData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abf900, bfv_client_l1_body_00abf900);
 BFV_L1_RESUME(bfv_client_l1r_00abf900_1, bfv_client_l1_body_00abf900, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abf900_2, bfv_client_l1_body_00abf900, 2);
@@ -155,7 +160,7 @@ void bfv_client_l1_body_00abf900(struct bfv_cpu *c)
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abf903  call 0x403610 */
+    /* 00abf903  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abf900_1;
@@ -181,7 +186,7 @@ R_1:
     M32(esp) = t;
     /* 00abf913  mov ecx, esi */
     ecx = esi;
-    /* 00abf915  call 0x874530 */
+    /* 00abf915  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abf900_2;
@@ -194,7 +199,7 @@ R_2:
     /* 00abf921  mov dword ptr [esi + 0x10], 0 */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 00abf928  mov dword ptr [esi], 0xc0f4b4 */
+    /* 00abf928  mov dword ptr [esi], 0xc0f4b4  ; vtable LessData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0f4b4u;
     /* 00abf92e  mov eax, esi */
@@ -227,8 +232,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abfcb0  dice::meme::LessData  (virtual method)
- * strings: "dice::meme::LessData" */
+/* 00abfcb0  LessData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::LessData
+ * strings: "dice::meme::LessData"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abfcb0, bfv_client_l1_body_00abfcb0);
 BFV_L1_RESUME(bfv_client_l1r_00abfcb0_1, bfv_client_l1_body_00abfcb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abfcb0_2, bfv_client_l1_body_00abfcb0, 2);
@@ -259,27 +267,27 @@ void bfv_client_l1_body_00abfcb0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00abfcc5  push 0xc0f810 */
+    /* 00abfcc5  push 0xc0f810  ; "dice::meme::LessData" */
     t = 0xc0f810u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abfcca  mov ecx, 0xe213f8 */
+    /* 00abfcca  mov ecx, 0xe213f8  ; g_RuntimeClass_LessData */
     ecx = 0xe213f8u;
-    /* 00abfccf  call 0x875490 */
+    /* 00abfccf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abfcb0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00abfcd4  push 0xb41b20 */
+    /* 00abfcd4  push 0xb41b20  ; bfv_client_global_store_00b41b20 */
     t = 0xb41b20u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abfcd9  mov dword ptr [0xe213f8], 0xc0f48c */
+    /* 00abfcd9  mov dword ptr [0xe213f8], 0xc0f48c  ; g_RuntimeClass_LessData */
     ea = (uint32_t)(0x00e213f8u);
     M32(ea) = 0xc0f48cu;
-    /* 00abfce3  call 0x7c2cd2 */
+    /* 00abfce3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abfcb0_2;
@@ -293,7 +301,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00abfceb:
-    /* 00abfceb  mov eax, 0xe213f8 */
+    /* 00abfceb  mov eax, 0xe213f8  ; g_RuntimeClass_LessData */
     eax = 0xe213f8u;
     /* 00abfcf0  ret */
     c->eip = M32(esp);

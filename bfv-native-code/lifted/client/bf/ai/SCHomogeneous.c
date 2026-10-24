@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009bdd40  dice::bf::ai::SCHomogeneous  (vtable store) */
+/* 009bdd40  SCHomogeneous::SCHomogeneous  (vtable store)
+ * class: dice::bf::ai::SCHomogeneous
+ * also entered at 009bdd80: SCHomogeneous::vf2
+ * called by: AiStrategy::createHomogenousCondition
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bdd40, bfv_client_l1_body_009bdd40);
 BFV_L1_RESUME(bfv_client_l1r_009bdd40_1, bfv_client_l1_body_009bdd40, 1);
 void bfv_client_l1_body_009bdd40(struct bfv_cpu *c)
@@ -19,10 +23,10 @@ void bfv_client_l1_body_009bdd40(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009bdd40  mov eax, dword ptr [esp + 0x14] */
+    /* 009bdd40  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
-    /* 009bdd44  mov edx, dword ptr [esp + 0x10] */
+    /* 009bdd44  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 009bdd48  push esi */
@@ -33,26 +37,26 @@ void bfv_client_l1_body_009bdd40(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009bdd4a  mov eax, dword ptr [esp + 0x14] */
+    /* 009bdd4a  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 009bdd4e  mov esi, ecx */
     esi = ecx;
-    /* 009bdd50  mov ecx, dword ptr [esp + 0x10] */
+    /* 009bdd50  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 009bdd54  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009bdd55  mov ecx, dword ptr [esp + 0x24] */
+    /* 009bdd55  mov ecx, dword ptr [esp + 0x24]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000024u);
     ecx = M32(ea);
     /* 009bdd59  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 009bdd5a  mov edx, dword ptr [esp + 0x14] */
+    /* 009bdd5a  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 009bdd5e  push eax */
@@ -69,14 +73,14 @@ void bfv_client_l1_body_009bdd40(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009bdd61  mov ecx, esi */
     ecx = esi;
-    /* 009bdd63  call 0x95b920 */
+    /* 009bdd63  call 0x95b920  ; StrategyCondition::StrategyCondition */
     t = 0x0095b920u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bdd40_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009bdd68  mov dword ptr [esi], 0xbf7dc4 */
+    /* 009bdd68  mov dword ptr [esi], 0xbf7dc4  ; vtable SCHomogeneous */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7dc4u;
     /* 009bdd6e  mov eax, esi */

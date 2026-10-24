@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00abe310  dice::meme::DynamicIndexPointer  (virtual method) */
+/* 00abe310  DynamicIndexPointer::vf20  (virtual method)
+ * overrides: Pointer::vf20  (2 classes implement it)
+ * class: dice::meme::DynamicIndexPointer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe310, bfv_client_l1_body_00abe310);
 BFV_L1_RESUME(bfv_client_l1r_00abe310_1, bfv_client_l1_body_00abe310, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abe310_2, bfv_client_l1_body_00abe310, 2);
@@ -21,7 +24,7 @@ void bfv_client_l1_body_00abe310(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00abe310  mov eax, dword ptr [esp + 0xc] */
+    /* 00abe310  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00abe314  test eax, eax */
@@ -90,13 +93,13 @@ L_00abe323:
     F_INC(32, a, r);
     M32(ea) = r;
 L_00abe343:
-    /* 00abe343  fild dword ptr [esp + 0x10] */
+    /* 00abe343  fild dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abe347  mov eax, dword ptr [ecx + eax*4 + 0x14] */
     ea = (uint32_t)(ecx + eax * 4u + 0x00000014u);
     eax = M32(ea);
-    /* 00abe34b  mov ecx, dword ptr [esp + 4] */
+    /* 00abe34b  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00abe34f  push 0 */
@@ -109,13 +112,13 @@ L_00abe343:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00abe354  fstp dword ptr [esp + 4] */
+    /* 00abe354  fstp dword ptr [esp + 4]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abe358  fild dword ptr [esp + 0x14] */
+    /* 00abe358  fild dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abe35c  fstp dword ptr [esp] */
+    /* 00abe35c  fstp dword ptr [esp]  ; var_c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abe35f  push eax */
@@ -126,7 +129,7 @@ L_00abe343:
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe362  call 0x868b30 */
+    /* 00abe362  call 0x868b30  ; System_00868b30 */
     t = 0x00868b30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe310_1;
@@ -145,7 +148,7 @@ L_00abe36c:
     r = (a - 1u) & 0xffffffffu;
     F_DEC(32, a, r);
     eax = r;
-    /* 00abe36d  fild dword ptr [esp + 0x10] */
+    /* 00abe36d  fild dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abe371  mov edx, eax */
@@ -255,13 +258,13 @@ L_00abe36c:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00abe3ab  fstp dword ptr [esp + 4] */
+    /* 00abe3ab  fstp dword ptr [esp + 4]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abe3af  fild dword ptr [esp + 0x14] */
+    /* 00abe3af  fild dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abe3b3  fstp dword ptr [esp] */
+    /* 00abe3b3  fstp dword ptr [esp]  ; var_c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abe3b6  push 1 */
@@ -286,14 +289,14 @@ L_00abe36c:
     /* 00abe3bf  mov dword ptr [ecx + 0x24], edx */
     ea = (uint32_t)(ecx + 0x00000024u);
     M32(ea) = edx;
-    /* 00abe3c2  mov ecx, dword ptr [esp + 0x14] */
+    /* 00abe3c2  mov ecx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 00abe3c6  push 1 */
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe3c8  call 0x868b30 */
+    /* 00abe3c8  call 0x868b30  ; System_00868b30 */
     t = 0x00868b30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe310_2;
@@ -313,7 +316,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00abe3e0  dice::meme::DynamicIndexPointer  (virtual method) */
+/* 00abe3e0  DynamicIndexPointer::vf21  (virtual method)
+ * overrides: Pointer::vf21  (2 classes implement it)
+ * class: dice::meme::DynamicIndexPointer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe3e0, bfv_client_l1_body_00abe3e0);
 BFV_L1_RESUME(bfv_client_l1r_00abe3e0_1, bfv_client_l1_body_00abe3e0, 1);
 void bfv_client_l1_body_00abe3e0(struct bfv_cpu *c)
@@ -335,7 +341,7 @@ void bfv_client_l1_body_00abe3e0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 00abe3e5  je 0xabe3f5 */
     if (zf) goto L_00abe3f5;
-    /* 00abe3e7  mov eax, dword ptr [esp + 0xc] */
+    /* 00abe3e7  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00abe3eb  test eax, eax */
@@ -352,7 +358,7 @@ L_00abe3f5:
     /* 00abe3f5  mov eax, 1 */
     eax = 0x1u;
 L_00abe3fa:
-    /* 00abe3fa  fild dword ptr [esp + 8] */
+    /* 00abe3fa  fild dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abe3fe  push 0 */
@@ -367,10 +373,10 @@ L_00abe3fa:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe403  mov ecx, dword ptr [esp + 0x10] */
+    /* 00abe403  mov ecx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00abe407  fstp dword ptr [esp] */
+    /* 00abe407  fstp dword ptr [esp]  ; var_c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abe40a  push eax */
@@ -381,7 +387,7 @@ L_00abe3fa:
     t = 0x2u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe40d  call 0x868b30 */
+    /* 00abe40d  call 0x868b30  ; System_00868b30 */
     t = 0x00868b30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe3e0_1;
@@ -401,8 +407,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abe420  dice::meme::DynamicIndexPointer  (virtual method)
- * strings: "Index order", "Is locked" */
+/* 00abe420  DynamicIndexPointer::vf16  (virtual method)
+ * overrides: Object::vf16  (205 classes implement it)
+ * class: dice::meme::DynamicIndexPointer
+ * strings: "Index order", "Is locked"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe420, bfv_client_l1_body_00abe420);
 BFV_L1_RESUME(bfv_client_l1r_00abe420_1, bfv_client_l1_body_00abe420, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abe420_2, bfv_client_l1_body_00abe420, 2);
@@ -420,7 +429,7 @@ void bfv_client_l1_body_00abe420(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00abe420  mov eax, dword ptr [esp + 4] */
+    /* 00abe420  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00abe424  push ebp */
@@ -431,7 +440,7 @@ void bfv_client_l1_body_00abe420(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe426  mov edi, dword ptr [esp + 0x10] */
+    /* 00abe426  mov edi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 00abe42a  push edi */
@@ -444,7 +453,7 @@ void bfv_client_l1_body_00abe420(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00abe42c  mov ebp, ecx */
     ebp = ecx;
-    /* 00abe42e  call 0x874b30 */
+    /* 00abe42e  call 0x874b30  ; Object::vf12 */
     t = 0x00874b30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe420_1;
@@ -487,7 +496,7 @@ L_00abe443:
     /* 00abe443  mov edx, dword ptr [edi] */
     ea = (uint32_t)(edi);
     edx = M32(ea);
-    /* 00abe445  push 0xc0ec68 */
+    /* 00abe445  push 0xc0ec68  ; "Index order" */
     t = 0xc0ec68u;
     esp -= 4;
     M32(esp) = t;
@@ -531,7 +540,7 @@ R_2:
     /* 00abe45d  mov eax, dword ptr [edi] */
     ea = (uint32_t)(edi);
     eax = M32(ea);
-    /* 00abe45f  push 0xc0ec5c */
+    /* 00abe45f  push 0xc0ec5c  ; "Is locked" */
     t = 0xc0ec5cu;
     esp -= 4;
     M32(esp) = t;
@@ -612,7 +621,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00abe490  dice::meme::DynamicIndexPointer  (virtual method) */
+/* 00abe490  DynamicIndexPointer::vf18  (virtual method)
+ * overrides: Pointer::vf18  (2 classes implement it)
+ * class: dice::meme::DynamicIndexPointer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe490, bfv_client_l1_body_00abe490);
 void bfv_client_l1_body_00abe490(struct bfv_cpu *c)
 {
@@ -624,7 +636,7 @@ void bfv_client_l1_body_00abe490(struct bfv_cpu *c)
     /* 00abe490  fld dword ptr [ecx + 0x38] */
     ea = (uint32_t)(ecx + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abe493  fcomp dword ptr [0xb44444] */
+    /* 00abe493  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abe499  fnstsw ax */
@@ -637,14 +649,14 @@ void bfv_client_l1_body_00abe490(struct bfv_cpu *c)
     /* 00abe4a0  fld dword ptr [ecx + 0x38] */
     ea = (uint32_t)(ecx + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00abe4a3  fsub dword ptr [esp + 8] */
+    /* 00abe4a3  fsub dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abe4a7  fstp dword ptr [ecx + 0x38] */
     ea = (uint32_t)(ecx + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_00abe4aa:
-    /* 00abe4aa  jmp 0x873af0 */
+    /* 00abe4aa  jmp 0x873af0  ; Pointer::vf18 */
     c->eip = 0x00873af0u;
     goto out;
 out: __attribute__((unused));
@@ -654,7 +666,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00abe510  dice::meme::DynamicIndexPointer  (vtable store) */
+/* 00abe510  DynamicIndexPointer::create  (vtable store)
+ * class: dice::meme::DynamicIndexPointer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe510, bfv_client_l1_body_00abe510);
 BFV_L1_RESUME(bfv_client_l1r_00abe510_1, bfv_client_l1_body_00abe510, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abe510_2, bfv_client_l1_body_00abe510, 2);
@@ -682,7 +696,7 @@ void bfv_client_l1_body_00abe510(struct bfv_cpu *c)
     t = 0x3cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe514  call 0x403610 */
+    /* 00abe514  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe510_1;
@@ -710,7 +724,7 @@ R_1:
     if (zf) goto L_00abe559;
     /* 00abe524  mov ecx, esi */
     ecx = esi;
-    /* 00abe526  call 0x8738f0 */
+    /* 00abe526  call 0x8738f0  ; Pointer::Pointer */
     t = 0x008738f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe510_2;
@@ -737,7 +751,7 @@ R_2:
     M32(ea) = ebx;
     /* 00abe53d  mov eax, 0x64 */
     eax = 0x64u;
-    /* 00abe542  mov dword ptr [esi], 0xc0ebfc */
+    /* 00abe542  mov dword ptr [esi], 0xc0ebfc  ; vtable DynamicIndexPointer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0ebfcu;
     /* 00abe548  mov dword ptr [esi + 0x18], eax */
@@ -790,8 +804,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abe6d0  dice::meme::DynamicIndexPointer  (virtual method)
- * strings: "dice::meme::DynamicIndexPointer" */
+/* 00abe6d0  DynamicIndexPointer::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::DynamicIndexPointer
+ * strings: "dice::meme::DynamicIndexPointer"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe6d0, bfv_client_l1_body_00abe6d0);
 BFV_L1_RESUME(bfv_client_l1r_00abe6d0_1, bfv_client_l1_body_00abe6d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abe6d0_2, bfv_client_l1_body_00abe6d0, 2);
@@ -822,27 +839,27 @@ void bfv_client_l1_body_00abe6d0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00abe6e5  push 0xc0ee30 */
+    /* 00abe6e5  push 0xc0ee30  ; "dice::meme::DynamicIndexPointer" */
     t = 0xc0ee30u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe6ea  mov ecx, 0xe21298 */
+    /* 00abe6ea  mov ecx, 0xe21298  ; g_RuntimeClass_DynamicIndexPointer */
     ecx = 0xe21298u;
-    /* 00abe6ef  call 0x875490 */
+    /* 00abe6ef  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe6d0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00abe6f4  push 0xb41a50 */
+    /* 00abe6f4  push 0xb41a50  ; bfv_client_global_store_00b41a50 */
     t = 0xb41a50u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe6f9  mov dword ptr [0xe21298], 0xc0ec8c */
+    /* 00abe6f9  mov dword ptr [0xe21298], 0xc0ec8c  ; g_RuntimeClass_DynamicIndexPointer */
     ea = (uint32_t)(0x00e21298u);
     M32(ea) = 0xc0ec8cu;
-    /* 00abe703  call 0x7c2cd2 */
+    /* 00abe703  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe6d0_2;
@@ -856,7 +873,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00abe70b:
-    /* 00abe70b  mov eax, 0xe21298 */
+    /* 00abe70b  mov eax, 0xe21298  ; g_RuntimeClass_DynamicIndexPointer */
     eax = 0xe21298u;
     /* 00abe710  ret */
     c->eip = M32(esp);

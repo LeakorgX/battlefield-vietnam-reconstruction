@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0052f8d0  dice::bf::NoVehicleRespawning  (vtable store) */
+/* 0052f8d0  NoVehicleRespawning::create  (vtable store)
+ * class: dice::bf::NoVehicleRespawning
+ */
 BFV_L1_ENTRY(bfv_client_l1_0052f8d0, bfv_client_l1_body_0052f8d0);
 BFV_L1_RESUME(bfv_client_l1r_0052f8d0_1, bfv_client_l1_body_0052f8d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0052f8d0_2, bfv_client_l1_body_0052f8d0, 2);
@@ -37,7 +39,7 @@ void bfv_client_l1_body_0052f8d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0052f8d4  mov edi, ecx */
     edi = ecx;
-    /* 0052f8d6  call 0x403610 */
+    /* 0052f8d6  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f8d0_1;
@@ -59,14 +61,14 @@ R_1:
     if (zf) goto L_0052f8f3;
     /* 0052f8e4  mov ecx, esi */
     ecx = esi;
-    /* 0052f8e6  call 0x52f870 */
+    /* 0052f8e6  call 0x52f870  ; TSubChallenge<string>::TSubChallenge */
     t = 0x0052f870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f8d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0052f8eb  mov dword ptr [esi], 0xb64bd4 */
+    /* 0052f8eb  mov dword ptr [esi], 0xb64bd4  ; vtable NoVehicleRespawning */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb64bd4u;
     /* 0052f8f1  jmp 0x52f8f5 */
@@ -77,7 +79,7 @@ L_0052f8f3:
     F_LOGIC(32, r);
     esi = r;
 L_0052f8f5:
-    /* 0052f8f5  mov ecx, dword ptr [esp + 0x14] */
+    /* 0052f8f5  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0052f8f9  test ecx, ecx */
@@ -95,7 +97,7 @@ L_0052f8f5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0052f904  call 0x414f50 */
+    /* 0052f904  call 0x414f50  ; std::string::assign_cstr */
     t = 0x00414f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f8d0_3;
@@ -122,7 +124,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005c9a80  dice::bf::NoVehicleRespawning  (virtual method) */
+/* 005c9a80  NoVehicleRespawning::apply  (virtual method)
+ * overrides: SubChallenge::apply  (23 classes implement it)
+ * class: dice::bf::NoVehicleRespawning
+ */
 BFV_L1_ENTRY(bfv_client_l1_005c9a80, bfv_client_l1_body_005c9a80);
 BFV_L1_RESUME(bfv_client_l1r_005c9a80_1, bfv_client_l1_body_005c9a80, 1);
 BFV_L1_RESUME(bfv_client_l1r_005c9a80_2, bfv_client_l1_body_005c9a80, 2);
@@ -140,7 +145,7 @@ void bfv_client_l1_body_005c9a80(struct bfv_cpu *c)
     }
     /* 005c9a80  mov eax, ecx */
     eax = ecx;
-    /* 005c9a82  mov ecx, dword ptr [0xd7d018] */
+    /* 005c9a82  mov ecx, dword ptr [0xd7d018]  ; g_pObjectTemplateManager */
     ea = (uint32_t)(0x00d7d018u);
     ecx = M32(ea);
     /* 005c9a88  mov edx, dword ptr [ecx] */
@@ -156,7 +161,7 @@ void bfv_client_l1_body_005c9a80(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c9a8e  call dword ptr [edx + 0x30] */
+    /* 005c9a8e  call dword ptr [edx + 0x30]  ; -> ObjectTemplateManager::vf12 = ObjectTemplateManager::getTemplate */
     ea = (uint32_t)(edx + 0x00000030u);
     t = M32(ea);
     esp -= 4;

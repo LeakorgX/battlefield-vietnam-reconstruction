@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00565060  dice::meme::BfColorData  (virtual method)
- * strings: "Green", "Blue", "Alpha" */
+/* 00565060  BfColorData::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::BfColorData
+ * strings: "Green", "Blue", "Alpha"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00565060, bfv_client_l1_body_00565060);
 BFV_L1_RESUME(bfv_client_l1r_00565060_1, bfv_client_l1_body_00565060, 1);
 BFV_L1_RESUME(bfv_client_l1r_00565060_2, bfv_client_l1_body_00565060, 2);
@@ -28,7 +31,7 @@ void bfv_client_l1_body_00565060(struct bfv_cpu *c)
     case 5: goto R_5;
     default: break;
     }
-    /* 00565060  mov eax, dword ptr [esp + 4] */
+    /* 00565060  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00565064  sub esp, 0x10 */
@@ -41,7 +44,7 @@ void bfv_client_l1_body_00565060(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00565068  mov esi, dword ptr [esp + 0x1c] */
+    /* 00565068  mov esi, dword ptr [esp + 0x1c]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     esi = M32(ea);
     /* 0056506c  push edi */
@@ -58,7 +61,7 @@ void bfv_client_l1_body_00565060(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0056506f  mov edi, ecx */
     edi = ecx;
-    /* 00565071  call 0xa7d100 */
+    /* 00565071  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00565060_1;
@@ -103,7 +106,7 @@ R_2:
     edx = M32(ea);
     /* 00565090  lea eax, [edi + 0x10] */
     eax = (uint32_t)(edi + 0x00000010u);
-    /* 00565093  push 0xb69d2c */
+    /* 00565093  push 0xb69d2c  ; "Green" */
     t = 0xb69d2cu;
     esp -= 4;
     M32(esp) = t;
@@ -157,11 +160,11 @@ L_005650ac:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 005650af  push 0xb69d24 */
+    /* 005650af  push 0xb69d24  ; "Blue" */
     t = 0xb69d24u;
     esp -= 4;
     M32(esp) = t;
-    /* 005650b4  lea ebp, [edi + 0x14] */
+    /* 005650b4  lea ebp, [edi + 0x14]  ; field Blue (serialized) */
     ebp = (uint32_t)(edi + 0x00000014u);
     /* 005650b7  push ebp */
     t = ebp;
@@ -212,11 +215,11 @@ L_005650ca:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 005650cd  push 0xb69d1c */
+    /* 005650cd  push 0xb69d1c  ; "Alpha" */
     t = 0xb69d1cu;
     esp -= 4;
     M32(esp) = t;
-    /* 005650d2  lea ebx, [edi + 0x18] */
+    /* 005650d2  lea ebx, [edi + 0x18]  ; field Alpha (serialized) */
     ebx = (uint32_t)(edi + 0x00000018u);
     /* 005650d5  push ebx */
     t = ebx;
@@ -270,19 +273,19 @@ L_005650e9:
     /* 005650ec  mov ecx, dword ptr [edi + 0x10] */
     ea = (uint32_t)(edi + 0x00000010u);
     ecx = M32(ea);
-    /* 005650ef  mov edx, dword ptr [ebp] */
+    /* 005650ef  mov edx, dword ptr [ebp]  ; field Blue */
     ea = (uint32_t)(ebp);
     edx = M32(ea);
-    /* 005650f2  mov dword ptr [esp + 0x10], eax */
+    /* 005650f2  mov dword ptr [esp + 0x10], eax  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 005650f6  mov eax, dword ptr [ebx] */
+    /* 005650f6  mov eax, dword ptr [ebx]  ; field Alpha */
     ea = (uint32_t)(ebx);
     eax = M32(ea);
-    /* 005650f8  mov dword ptr [esp + 0x14], ecx */
+    /* 005650f8  mov dword ptr [esp + 0x14], ecx  ; var_c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = ecx;
-    /* 005650fc  mov ecx, dword ptr [esp + 0x10] */
+    /* 005650fc  mov ecx, dword ptr [esp + 0x10]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 00565100  add edi, 0x1c */
@@ -294,19 +297,19 @@ L_005650e9:
     /* 00565103  mov dword ptr [edi], ecx */
     ea = (uint32_t)(edi);
     M32(ea) = ecx;
-    /* 00565105  mov dword ptr [esp + 0x18], edx */
+    /* 00565105  mov dword ptr [esp + 0x18], edx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = edx;
-    /* 00565109  mov edx, dword ptr [esp + 0x14] */
+    /* 00565109  mov edx, dword ptr [esp + 0x14]  ; var_c */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
-    /* 0056510d  mov dword ptr [esp + 0x1c], eax */
+    /* 0056510d  mov dword ptr [esp + 0x1c], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = eax;
-    /* 00565111  mov eax, dword ptr [esp + 0x18] */
+    /* 00565111  mov eax, dword ptr [esp + 0x18]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
-    /* 00565115  mov ecx, dword ptr [esp + 0x1c] */
+    /* 00565115  mov ecx, dword ptr [esp + 0x1c]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 00565119  mov dword ptr [edi + 4], edx */
@@ -353,7 +356,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00565130  dice::meme::BfColorData  (vtable store) */
+/* 00565130  BfColorData::create  (vtable store)
+ * class: dice::meme::BfColorData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00565130, bfv_client_l1_body_00565130);
 BFV_L1_RESUME(bfv_client_l1r_00565130_1, bfv_client_l1_body_00565130, 1);
 BFV_L1_RESUME(bfv_client_l1r_00565130_2, bfv_client_l1_body_00565130, 2);
@@ -377,7 +382,7 @@ void bfv_client_l1_body_00565130(struct bfv_cpu *c)
     t = 0x2cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00565133  call 0x403610 */
+    /* 00565133  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00565130_1;
@@ -403,7 +408,7 @@ R_1:
     M32(esp) = t;
     /* 00565143  mov ecx, esi */
     ecx = esi;
-    /* 00565145  call 0x874530 */
+    /* 00565145  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00565130_2;
@@ -424,7 +429,7 @@ R_2:
     /* 00565158  mov dword ptr [esi + 0x18], eax */
     ea = (uint32_t)(esi + 0x00000018u);
     M32(ea) = eax;
-    /* 0056515b  mov dword ptr [esi], 0xb6ca94 */
+    /* 0056515b  mov dword ptr [esi], 0xb6ca94  ; vtable BfColorData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6ca94u;
     /* 00565161  mov dword ptr [esi + 0x1c], eax */
@@ -469,7 +474,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00565180  (between same file) */
+/* 00565180  ClassTemplate<BfColorData,Data>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00565180, bfv_client_l1_body_00565180);
 void bfv_client_l1_body_00565180(struct bfv_cpu *c)
 {
@@ -495,7 +501,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00565190  (between same file) */
+/* 00565190  ClassTemplate<BfColorData,Data>::decInstanceCount  (between same file)
+ * also entered at 005651b0: BfColorData::vf2
+ */
 BFV_L1_ENTRY(bfv_client_l1_00565190, bfv_client_l1_body_00565190);
 void bfv_client_l1_body_00565190(struct bfv_cpu *c)
 {
@@ -521,8 +529,12 @@ out: __attribute__((unused));
 }
 
 
-/* 005651c0  dice::meme::BfColorData  (virtual method)
- * strings: "dice::meme::BfColorData" */
+/* 005651c0  BfColorData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BfColorData
+ * strings: "dice::meme::BfColorData"
+ * called by: BfCrosshairNode::serialize, BfColorFillNode::serialize, BfGaugeNode::serialize
+ */
 BFV_L1_ENTRY(bfv_client_l1_005651c0, bfv_client_l1_body_005651c0);
 BFV_L1_RESUME(bfv_client_l1r_005651c0_1, bfv_client_l1_body_005651c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005651c0_2, bfv_client_l1_body_005651c0, 2);
@@ -553,13 +565,13 @@ void bfv_client_l1_body_005651c0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 005651d5  push 0xb6cb2c */
+    /* 005651d5  push 0xb6cb2c  ; "dice::meme::BfColorData" */
     t = 0xb6cb2cu;
     esp -= 4;
     M32(esp) = t;
-    /* 005651da  mov ecx, 0xd73680 */
+    /* 005651da  mov ecx, 0xd73680  ; g_RuntimeClass_BfColorData */
     ecx = 0xd73680u;
-    /* 005651df  call 0x875490 */
+    /* 005651df  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005651c0_1;
@@ -570,10 +582,10 @@ R_1:
     t = 0xb302d0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005651e9  mov dword ptr [0xd73680], 0xb6cb0c */
+    /* 005651e9  mov dword ptr [0xd73680], 0xb6cb0c  ; g_RuntimeClass_BfColorData */
     ea = (uint32_t)(0x00d73680u);
     M32(ea) = 0xb6cb0cu;
-    /* 005651f3  call 0x7c2cd2 */
+    /* 005651f3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005651c0_2;
@@ -587,7 +599,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_005651fb:
-    /* 005651fb  mov eax, 0xd73680 */
+    /* 005651fb  mov eax, 0xd73680  ; g_RuntimeClass_BfColorData */
     eax = 0xd73680u;
     /* 00565200  ret */
     c->eip = M32(esp);

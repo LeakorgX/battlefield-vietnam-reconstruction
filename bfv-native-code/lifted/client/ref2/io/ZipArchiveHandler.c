@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008b35b0  dice::ref2::io::ZipArchiveHandler  (virtual method) */
+/* 008b35b0  ZipArchiveHandler::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::io::ZipArchiveHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b35b0, bfv_client_l1_body_008b35b0);
 void bfv_client_l1_body_008b35b0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_008b35b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 008b35b0  mov edx, dword ptr [0xb42718] */
+    /* 008b35b0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 008b35b6  mov eax, ecx */
     eax = ecx;
-    /* 008b35b8  mov ecx, dword ptr [esp + 4] */
+    /* 008b35b8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008b35bc  cmp ecx, edx */
@@ -33,7 +36,7 @@ void bfv_client_l1_body_008b35b0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008b35c1  mov esi, dword ptr [0xbdafec] */
+    /* 008b35c1  mov esi, dword ptr [0xbdafec]  ; interfaceID(FlatArchiveHandler) */
     ea = (uint32_t)(0x00bdafecu);
     esi = M32(ea);
     /* 008b35c7  xor edx, edx */
@@ -72,7 +75,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008d02a0  dice::ref2::io::ZipArchiveHandler  (virtual method) */
+/* 008d02a0  ZipArchiveHandler::vf5  (virtual method)
+ * class: dice::ref2::io::ZipArchiveHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d02a0, bfv_client_l1_body_008d02a0);
 BFV_L1_RESUME(bfv_client_l1r_008d02a0_1, bfv_client_l1_body_008d02a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008d02a0_2, bfv_client_l1_body_008d02a0, 2);
@@ -120,7 +125,7 @@ void bfv_client_l1_body_008d02a0(struct bfv_cpu *c)
     t = 0xbe03a0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008d02c6  mov ecx, 0xdf9fc4 */
+    /* 008d02c6  mov ecx, 0xdf9fc4  ; g_str_ZIP_PK3 */
     ecx = 0xdf9fc4u;
     /* 008d02cb  mov dword ptr [0xdf9fdc], 0xf */
     ea = (uint32_t)(0x00df9fdcu);
@@ -131,18 +136,18 @@ void bfv_client_l1_body_008d02a0(struct bfv_cpu *c)
     /* 008d02da  mov byte ptr [0xdf9fc8], al */
     ea = (uint32_t)(0x00df9fc8u);
     M8(ea) = LO8(eax);
-    /* 008d02df  call 0x401ae0 */
+    /* 008d02df  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d02a0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008d02e4  push 0xb3bf80 */
+    /* 008d02e4  push 0xb3bf80  ; atexit_destroy_str_ZIP_PK3 */
     t = 0xb3bf80u;
     esp -= 4;
     M32(esp) = t;
-    /* 008d02e9  call 0x7c2cd2 */
+    /* 008d02e9  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d02a0_2;
@@ -156,7 +161,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_008d02f1:
-    /* 008d02f1  mov eax, 0xdf9fc4 */
+    /* 008d02f1  mov eax, 0xdf9fc4  ; g_str_ZIP_PK3 */
     eax = 0xdf9fc4u;
     /* 008d02f6  ret */
     c->eip = M32(esp);
@@ -169,7 +174,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d0a60  dice::ref2::io::ZipArchiveHandler  (virtual method) */
+/* 008d0a60  ZipArchiveHandler::vf4  (virtual method)
+ * class: dice::ref2::io::ZipArchiveHandler
+ * also entered at 008d0ac0: ZipArchive::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d0a60, bfv_client_l1_body_008d0a60);
 BFV_L1_RESUME(bfv_client_l1r_008d0a60_1, bfv_client_l1_body_008d0a60, 1);
 BFV_L1_RESUME(bfv_client_l1r_008d0a60_2, bfv_client_l1_body_008d0a60, 2);
@@ -199,7 +207,7 @@ void bfv_client_l1_body_008d0a60(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008d0a63  mov esi, ecx */
     esi = ecx;
-    /* 008d0a65  call 0x403610 */
+    /* 008d0a65  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d0a60_1;
@@ -223,7 +231,7 @@ R_1:
     M32(esp) = t;
     /* 008d0a72  mov ecx, eax */
     ecx = eax;
-    /* 008d0a74  call 0x8d0890 */
+    /* 008d0a74  call 0x8d0890  ; ZipArchive::ZipArchive */
     t = 0x008d0890u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d0a60_2;
@@ -240,13 +248,13 @@ L_008d0a7d:
     F_LOGIC(32, r);
     esi = r;
 L_008d0a7f:
-    /* 008d0a7f  mov eax, dword ptr [esp + 0x10] */
+    /* 008d0a7f  mov eax, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 008d0a83  mov ecx, dword ptr [esp + 0xc] */
+    /* 008d0a83  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 008d0a87  mov edx, dword ptr [esp + 8] */
+    /* 008d0a87  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 008d0a8b  push eax */
@@ -263,7 +271,7 @@ L_008d0a7f:
     M32(esp) = t;
     /* 008d0a8e  mov ecx, esi */
     ecx = esi;
-    /* 008d0a90  call 0x8d09c0 */
+    /* 008d0a90  call 0x8d09c0  ; ZipArchiveHandler::vf4_helper_008d09c0 */
     t = 0x008d09c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d0a60_3;

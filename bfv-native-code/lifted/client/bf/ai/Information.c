@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009ec9d0  dice::bf::ai::Information  (vtable store) */
+/* 009ec9d0  Information::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::Information
+ * called by: InformationReal::InformationReal, InformationKnown::InformationKnown, InformationDummy::InformationDummy
+ */
 BFV_L1_ENTRY(bfv_client_l1_009ec9d0, bfv_client_l1_body_009ec9d0);
 void bfv_client_l1_body_009ec9d0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_009ec9d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 009ec9d0  mov edx, dword ptr [esp + 4] */
+    /* 009ec9d0  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 009ec9d4  mov eax, ecx */
     eax = ecx;
-    /* 009ec9d6  mov ecx, dword ptr [esp + 8] */
+    /* 009ec9d6  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 009ec9da  mov dword ptr [eax + 0x1c], ecx */
@@ -29,7 +32,7 @@ void bfv_client_l1_body_009ec9d0(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 009ec9df  mov dword ptr [eax], 0xbf9e0c */
+    /* 009ec9df  mov dword ptr [eax], 0xbf9e0c  ; vtable Information */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf9e0cu;
     /* 009ec9e5  mov dword ptr [eax + 0x20], edx */
@@ -64,7 +67,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009eca00  dice::bf::ai::Information  (vtable store) */
+/* 009eca00  Information::~Information  (vtable store)
+ * class: dice::bf::ai::Information
+ * called by: InformationReal::deleting_dtor, InformationKnown::deleting_dtor, InformationDummy::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eca00, bfv_client_l1_body_009eca00);
 BFV_L1_RESUME(bfv_client_l1r_009eca00_1, bfv_client_l1_body_009eca00, 1);
 void bfv_client_l1_body_009eca00(struct bfv_cpu *c)
@@ -86,7 +92,7 @@ void bfv_client_l1_body_009eca00(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 009eca02  mov dword ptr [ecx], 0xbf9e0c */
+    /* 009eca02  mov dword ptr [ecx], 0xbf9e0c  ; vtable Information */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbf9e0cu;
     /* 009eca08  lea esi, [ecx + 0x24] */
@@ -150,7 +156,9 @@ out: __attribute__((unused));
 }
 
 
-/* 009eca30  (between same file) */
+/* 009eca30  Information_009eca30  (between same file)
+ * called by: AIObjectSecondaryReal::createInformation, AIObjectSecondaryShared::createInformation, AIObjectReal::createInformation, AIObjectShared::createInformation
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eca30, bfv_client_l1_body_009eca30);
 BFV_L1_RESUME(bfv_client_l1r_009eca30_1, bfv_client_l1_body_009eca30, 1);
 BFV_L1_RESUME(bfv_client_l1r_009eca30_2, bfv_client_l1_body_009eca30, 2);
@@ -174,7 +182,7 @@ void bfv_client_l1_body_009eca30(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009eca31  mov esi, dword ptr [esp + 8] */
+    /* 009eca31  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 009eca35  mov eax, dword ptr [esi] */
@@ -315,7 +323,9 @@ out: __attribute__((unused));
 }
 
 
-/* 009eca90  dice::bf::ai::Information  (virtual method) */
+/* 009eca90  Information::vf0  (virtual method)
+ * class: dice::bf::ai::Information
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eca90, bfv_client_l1_body_009eca90);
 BFV_L1_RESUME(bfv_client_l1r_009eca90_1, bfv_client_l1_body_009eca90, 1);
 BFV_L1_RESUME(bfv_client_l1r_009eca90_2, bfv_client_l1_body_009eca90, 2);
@@ -345,7 +355,7 @@ void bfv_client_l1_body_009eca90(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 009eca95  mov dword ptr [ebx], 0xbf9e0c */
+    /* 009eca95  mov dword ptr [ebx], 0xbf9e0c  ; vtable Information */
     ea = (uint32_t)(ebx);
     M32(ea) = 0xbf9e0cu;
     /* 009eca9b  lea esi, [ebx + 0x24] */
@@ -390,7 +400,7 @@ L_009ecaaf:
     edi = r;
     /* 009ecab3  jne 0x9ecaa3 */
     if (!zf) goto L_009ecaa3;
-    /* 009ecab5  test byte ptr [esp + 0x10], 1 */
+    /* 009ecab5  test byte ptr [esp + 0x10], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -400,7 +410,7 @@ L_009ecaaf:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 009ecabd  call 0x403680 */
+    /* 009ecabd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eca90_2;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007c0260  dice::bf::ai::IPICover  (virtual method) */
+/* 007c0260  IPICover::deleting_dtor  (virtual method)
+ * overrides: InformationPlugIn::vf0  (10 classes implement it)
+ * class: dice::bf::ai::IPICover
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c0260, bfv_server_l1_body_007c0260);
 BFV_L1_RESUME(bfv_server_l1r_007c0260_1, bfv_server_l1_body_007c0260, 1);
 BFV_L1_RESUME(bfv_server_l1r_007c0260_2, bfv_server_l1_body_007c0260, 2);
@@ -39,14 +42,14 @@ void bfv_server_l1_body_007c0260(struct bfv_cpu *c)
     /* 007c0267  test edi, edi */
     r = (edi & edi) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007c0269  mov dword ptr [esi], 0x87ba3c */
+    /* 007c0269  mov dword ptr [esi], 0x87ba3c  ; vtable IPICover */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87ba3cu;
     /* 007c026f  je 0x7c0281 */
     if (zf) goto L_007c0281;
     /* 007c0271  mov ecx, edi */
     ecx = edi;
-    /* 007c0273  call 0x737110 */
+    /* 007c0273  call 0x737110  ; BBPAvoidCollisionInfantery_00737110 */
     t = 0x00737110u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0260_1;
@@ -57,7 +60,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c0279  call 0x403df0 */
+    /* 007c0279  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0260_2;
@@ -71,11 +74,11 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_007c0281:
-    /* 007c0281  test byte ptr [esp + 0xc], 1 */
+    /* 007c0281  test byte ptr [esp + 0xc], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 007c0286  mov dword ptr [esi], 0x877784 */
+    /* 007c0286  mov dword ptr [esi], 0x877784  ; vtable InformationPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0x877784u;
     /* 007c028c  je 0x7c0299 */
@@ -84,9 +87,9 @@ L_007c0281:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c028f  mov ecx, 0xc347f8 */
+    /* 007c028f  mov ecx, 0xc347f8  ; g_MemoryPoolNull_IPICover */
     ecx = 0xc347f8u;
-    /* 007c0294  call 0x413600 */
+    /* 007c0294  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c0260_3;
@@ -115,7 +118,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007c02a0  dice::bf::ai::IPICover  (virtual method) */
+/* 007c02a0  IPICover::vf2  (virtual method)
+ * overrides: InformationPlugIn::vf2  (10 classes implement it)
+ * class: dice::bf::ai::IPICover
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c02a0, bfv_server_l1_body_007c02a0);
 BFV_L1_RESUME(bfv_server_l1r_007c02a0_1, bfv_server_l1_body_007c02a0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007c02a0_2, bfv_server_l1_body_007c02a0, 2);
@@ -157,7 +163,7 @@ void bfv_server_l1_body_007c02a0(struct bfv_cpu *c)
     if (zf) goto L_007c02bb;
     /* 007c02ab  mov ecx, edi */
     ecx = edi;
-    /* 007c02ad  call 0x737110 */
+    /* 007c02ad  call 0x737110  ; BBPAvoidCollisionInfantery_00737110 */
     t = 0x00737110u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c02a0_1;
@@ -168,7 +174,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c02b3  call 0x403df0 */
+    /* 007c02b3  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c02a0_2;
@@ -231,7 +237,7 @@ R_4:
     M32(esp) = t;
     /* 007c02dc  mov ecx, edi */
     ecx = edi;
-    /* 007c02de  call 0x7a1bf0 */
+    /* 007c02de  call 0x7a1bf0  ; ai_007a1bf0 */
     t = 0x007a1bf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c02a0_5;
@@ -260,7 +266,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007c02f0  dice::bf::ai::IPICover  (vtable store) */
+/* 007c02f0  IPICover::IPICover  (vtable store)
+ * class: dice::bf::ai::IPICover
+ * called by: AIObjectCover::createInformationPlugIn
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c02f0, bfv_server_l1_body_007c02f0);
 BFV_L1_RESUME(bfv_server_l1r_007c02f0_1, bfv_server_l1_body_007c02f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007c02f0_2, bfv_server_l1_body_007c02f0, 2);
@@ -307,7 +316,7 @@ void bfv_server_l1_body_007c02f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007c02f6  mov edi, ecx */
     edi = ecx;
-    /* 007c02f8  mov dword ptr [edi], 0x87ba3c */
+    /* 007c02f8  mov dword ptr [edi], 0x87ba3c  ; vtable IPICover */
     ea = (uint32_t)(edi);
     M32(ea) = 0x87ba3cu;
     /* 007c02fe  mov dword ptr [edi + 4], eax */
@@ -385,7 +394,7 @@ R_3:
     M32(esp) = t;
     /* 007c0332  mov ecx, esi */
     ecx = esi;
-    /* 007c0334  call 0x7a1bf0 */
+    /* 007c0334  call 0x7a1bf0  ; ai_007a1bf0 */
     t = 0x007a1bf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c02f0_4;
@@ -431,7 +440,7 @@ L_007c0343:
 R_5:
     /* 007c034e  mov ecx, eax */
     ecx = eax;
-    /* 007c0350  call 0x728240 */
+    /* 007c0350  call 0x728240  ; IPICover::constructor_helper_00728240 */
     t = 0x00728240u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c02f0_6;
@@ -444,7 +453,7 @@ R_6:
     M32(esp) = t;
     /* 007c0357  mov ebx, eax */
     ebx = eax;
-    /* 007c0359  call 0x403d80 */
+    /* 007c0359  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c02f0_7;
@@ -488,7 +497,7 @@ R_8:
     M32(esp) = t;
     /* 007c0371  mov ecx, esi */
     ecx = esi;
-    /* 007c0373  call 0x7a1330 */
+    /* 007c0373  call 0x7a1330  ; ai_007a1330 */
     t = 0x007a1330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c02f0_9;
@@ -502,7 +511,7 @@ R_9:
     /* 007c0379  mov dword ptr [edi + 8], eax */
     ea = (uint32_t)(edi + 0x00000008u);
     M32(ea) = eax;
-    /* 007c037c  call 0x403df0 */
+    /* 007c037c  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c02f0_10;
@@ -545,7 +554,7 @@ L_007c038c:
     /* 007c038f  mov dword ptr [edi + 8], eax */
     ea = (uint32_t)(edi + 0x00000008u);
     M32(ea) = eax;
-    /* 007c0392  call 0x403df0 */
+    /* 007c0392  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007c02f0_11;

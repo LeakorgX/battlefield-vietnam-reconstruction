@@ -1,0 +1,23 @@
+## file
+2D aim action aimed at a fixed point (pointer to the point at this+0x138).
+
+## 009f5c90
+vf13: when the valid flag this+0x19c is set, writes the value at this+0x198 to the output.
+
+## 009f5cb0
+vf8: direction from the given point to the stored target point.
+
+## 009f5d90
+vf7: sets up the aim solution at a fixed point. Same steps as BAPAAimAtObject::vf7: world muzzle offset accumulated at this+0x188..+0x190, AI time at this+0x98, inverse value at this+0x9c, target at this+0xa4, projectile speed (muzzle speed * IAIEnvironment::vf56 * 0.9) at this+0xa0. Draws debug lines and solves the lead with a zero target velocity through Aimer_00a02a70 and Aimer_00a02db0.
+
+## 009f6160
+Destructor: releases the object at this+0x94, tears down the base and returns the object to g_MemoryPool_BAPAAimAtPoint when bit 0 of the flag argument is set.
+
+## 009f61c0
+vf11: when the valid flag this+0x19c is set, copies the vector at this+4..+0xc to the output.
+
+## 009f61f0
+vf12: when the valid flag this+0x19c is set, copies a stored vector to the output.
+
+## 009f6220
+vf14: target point at a given time from Aimer_00a02c30 plus the muzzle offset at this+0x188..+0x190.

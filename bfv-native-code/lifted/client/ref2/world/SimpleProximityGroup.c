@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 006ddb70  dice::ref2::world::SimpleProximityGroup  (vtable store) */
+/* 006ddb70  SimpleProximityGroup::create  (vtable store)
+ * class: dice::ref2::world::SimpleProximityGroup
+ */
 BFV_L1_ENTRY(bfv_client_l1_006ddb70, bfv_client_l1_body_006ddb70);
 BFV_L1_RESUME(bfv_client_l1r_006ddb70_1, bfv_client_l1_body_006ddb70, 1);
 BFV_L1_RESUME(bfv_client_l1r_006ddb70_2, bfv_client_l1_body_006ddb70, 2);
@@ -37,7 +39,7 @@ void bfv_client_l1_body_006ddb70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006ddb74  mov edi, ecx */
     edi = ecx;
-    /* 006ddb76  call 0x403610 */
+    /* 006ddb76  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006ddb70_1;
@@ -59,14 +61,14 @@ R_1:
     if (zf) goto L_006ddb93;
     /* 006ddb84  mov ecx, esi */
     ecx = esi;
-    /* 006ddb86  call 0x6ffd20 */
+    /* 006ddb86  call 0x6ffd20  ; ProximityGroup::ProximityGroup */
     t = 0x006ffd20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006ddb70_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 006ddb8b  mov dword ptr [esi], 0xba0e24 */
+    /* 006ddb8b  mov dword ptr [esi], 0xba0e24  ; vtable SimpleProximityGroup */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba0e24u;
     /* 006ddb91  jmp 0x6ddb95 */
@@ -77,7 +79,7 @@ L_006ddb93:
     F_LOGIC(32, r);
     esi = r;
 L_006ddb95:
-    /* 006ddb95  mov ecx, dword ptr [esp + 0x14] */
+    /* 006ddb95  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 006ddb99  test ecx, ecx */
@@ -95,7 +97,7 @@ L_006ddb95:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006ddba4  call 0x414f50 */
+    /* 006ddba4  call 0x414f50  ; std::string::assign_cstr */
     t = 0x00414f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006ddb70_3;

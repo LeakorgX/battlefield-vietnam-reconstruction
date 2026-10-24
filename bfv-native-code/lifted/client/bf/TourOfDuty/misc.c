@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00530880  (called from this folder only) */
+/* 00530880  GMEnableObject::GMEnableObject  (called from this folder only)
+ * class: dice::bf::GMEnableObject
+ * called by: TGMObject<GMClassType>::TGMObject, TGMObject<int>::TGMObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_00530880, bfv_client_l1_body_00530880);
 BFV_L1_RESUME(bfv_client_l1r_00530880_1, bfv_client_l1_body_00530880, 1);
 BFV_L1_RESUME(bfv_client_l1r_00530880_2, bfv_client_l1_body_00530880, 2);
@@ -47,13 +50,13 @@ void bfv_client_l1_body_00530880(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00530889  mov dword ptr [esp + 0x20], eax */
+    /* 00530889  mov dword ptr [esp + 0x20], eax  ; var_8 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = eax;
-    /* 0053088d  mov byte ptr [esp + 0x10], al */
+    /* 0053088d  mov byte ptr [esp + 0x10], al  ; var_18 */
     ea = (uint32_t)(esp + 0x00000010u);
     M8(ea) = LO8(eax);
-    /* 00530891  lea eax, [esp + 0x2c] */
+    /* 00530891  lea eax, [esp + 0x2c]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 00530895  mov esi, ecx */
     esi = ecx;
@@ -61,19 +64,19 @@ void bfv_client_l1_body_00530880(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00530898  lea ecx, [esp + 0x10] */
+    /* 00530898  lea ecx, [esp + 0x10]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 0053089c  mov dword ptr [esp + 0x28], 0xf */
+    /* 0053089c  mov dword ptr [esp + 0x28], 0xf  ; var_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0xfu;
-    /* 005308a4  call 0x4019f0 */
+    /* 005308a4  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00530880_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005308a9  lea ecx, [esp + 4] */
+    /* 005308a9  lea ecx, [esp + 4]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000004u);
     /* 005308ad  push ecx */
     t = ecx;
@@ -81,35 +84,35 @@ R_1:
     M32(esp) = t;
     /* 005308ae  lea ecx, [esi + 4] */
     ecx = (uint32_t)(esi + 0x00000004u);
-    /* 005308b1  mov dword ptr [esi], 0xb64e34 */
+    /* 005308b1  mov dword ptr [esi], 0xb64e34  ; vtable GMObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb64e34u;
-    /* 005308b7  call 0x403ce0 */
+    /* 005308b7  call 0x403ce0  ; std::string::string_copy */
     t = 0x00403ce0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00530880_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005308bc  lea ecx, [esp + 4] */
+    /* 005308bc  lea ecx, [esp + 4]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000004u);
-    /* 005308c0  call 0x5a7c60 */
+    /* 005308c0  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00530880_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 005308c5  cmp dword ptr [esp + 0x3c], 0x10 */
+    /* 005308c5  cmp dword ptr [esp + 0x3c], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x0000003cu);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 005308ca  mov dl, byte ptr [esp + 0x40] */
+    /* 005308ca  mov dl, byte ptr [esp + 0x40]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000040u);
     SET8L(edx, M8(ea));
-    /* 005308ce  mov dword ptr [esi], 0xb64e1c */
+    /* 005308ce  mov dword ptr [esi], 0xb64e1c  ; vtable GMEnableObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb64e1cu;
     /* 005308d4  mov byte ptr [esi + 0x20], dl */
@@ -117,14 +120,14 @@ R_3:
     M8(ea) = LO8(edx);
     /* 005308d7  jb 0x5308e6 */
     if (cf) goto L_005308e6;
-    /* 005308d9  mov eax, dword ptr [esp + 0x28] */
+    /* 005308d9  mov eax, dword ptr [esp + 0x28]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 005308dd  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005308de  call 0x403680 */
+    /* 005308de  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00530880_4;

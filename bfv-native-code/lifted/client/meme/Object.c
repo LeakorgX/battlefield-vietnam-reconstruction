@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00874870  dice::meme::Object  (vtable store) */
+/* 00874870  Object::Object  (vtable store)
+ * class: dice::meme::Object
+ * called by: System::System, ButtonEvent::create, ExtendedButtonEvent::create, AnyKeyEvent::create, TypeEvent::create, Effect::Effect (+64 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874870, bfv_client_l1_body_00874870);
 void bfv_client_l1_body_00874870(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_00874870(struct bfv_cpu *c)
     uint32_t ea;
     /* 00874870  mov eax, ecx */
     eax = ecx;
-    /* 00874872  mov dword ptr [eax], 0xbd6a14 */
+    /* 00874872  mov dword ptr [eax], 0xbd6a14  ; vtable Object */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbd6a14u;
     /* 00874878  mov byte ptr [eax + 4], 0 */
@@ -33,7 +36,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00874890  dice::meme::Object  (virtual method) */
+/* 00874890  Object::vf6  (virtual method)
+ * class: dice::meme::Object
+ * called by: MenuMapNode::vf6, BfLocalePictureButtonNode::vf6, BfVariablePictureNode::vf6, BfVariablePictureFillNode2::vf6, BfOccupiedVehicleNode::vf6, VariablePictureNode::vf6
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874890, bfv_client_l1_body_00874890);
 void bfv_client_l1_body_00874890(struct bfv_cpu *c)
 {
@@ -75,8 +81,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008748b0  (between same file)
- * strings: "Ulong", "Object name", "Class name", "Meme: Error: Writing to ostream "%s"\r\n" */
+/* 008748b0  Object_Ulong_008748b0  (between same file)
+ * strings: "Ulong", "Object name", "Class name", "Meme: Error: Writing to ostream "%s"\r\n"
+ * called by: List::vf21, OStream::vf24
+ */
 BFV_L1_ENTRY(bfv_client_l1_008748b0, bfv_client_l1_body_008748b0);
 BFV_L1_RESUME(bfv_client_l1r_008748b0_1, bfv_client_l1_body_008748b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008748b0_2, bfv_client_l1_body_008748b0, 2);
@@ -162,7 +170,7 @@ R_1:
     /* 008748d0  mov dword ptr [esp + 0x10], eax */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 008748d4  push 0xbd6a98 */
+    /* 008748d4  push 0xbd6a98  ; "Ulong" */
     t = 0xbd6a98u;
     esp -= 4;
     M32(esp) = t;
@@ -228,7 +236,7 @@ L_008748fb:
     /* 00874902  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00874904  push 0xbd6a8c */
+    /* 00874904  push 0xbd6a8c  ; "Object name" */
     t = 0xbd6a8cu;
     esp -= 4;
     M32(esp) = t;
@@ -259,7 +267,7 @@ L_00874917:
     /* 00874917  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 00874919  push 0xbd6a80 */
+    /* 00874919  push 0xbd6a80  ; "Class name" */
     t = 0xbd6a80u;
     esp -= 4;
     M32(esp) = t;
@@ -349,7 +357,7 @@ R_5:
     /* 00874953  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 00874955  push 0xbd6a8c */
+    /* 00874955  push 0xbd6a8c  ; "Object name" */
     t = 0xbd6a8cu;
     esp -= 4;
     M32(esp) = t;
@@ -426,7 +434,7 @@ R_8:
     /* 00874987  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 00874989  push 0xbd6a80 */
+    /* 00874989  push 0xbd6a80  ; "Class name" */
     t = 0xbd6a80u;
     esp -= 4;
     M32(esp) = t;
@@ -484,7 +492,7 @@ R_10:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 008749aa  push 0xbd6a58 */
+    /* 008749aa  push 0xbd6a58  ; "Meme: Error: Writing to ostream "%s"\r\n" */
     t = 0xbd6a58u;
     esp -= 4;
     M32(esp) = t;
@@ -492,7 +500,7 @@ R_10:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008749b0  call 0x868ab0 */
+    /* 008749b0  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008748b0_11;
@@ -585,7 +593,7 @@ R_13:
     /* 008749e8  mov dword ptr [esp + 0x10], eax */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 008749ec  push 0xbd6a98 */
+    /* 008749ec  push 0xbd6a98  ; "Ulong" */
     t = 0xbd6a98u;
     esp -= 4;
     M32(esp) = t;
@@ -662,8 +670,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00874a20  (between same file)
- * strings: "Meme: Error: Creating ostream "%s"\r\n", "Class name", "Meme: Error: Writing to stream "%s"\r\n" */
+/* 00874a20  Object_Meme_Error_Creating_00874a20  (between same file)
+ * strings: "Meme: Error: Creating ostream "%s"\r\n", "Class name", "Meme: Error: Writing to stream "%s"\r\n"
+ * called by: ObjectLink::vf8
+ */
 BFV_L1_ENTRY_DEEP(bfv_client_l1_00874a20, bfv_client_l1_body_00874a20, 0xa00);
 BFV_L1_RESUME_DEEP(bfv_client_l1r_00874a20_1, bfv_client_l1_body_00874a20, 1, 0xa00);
 BFV_L1_RESUME_DEEP(bfv_client_l1r_00874a20_2, bfv_client_l1_body_00874a20, 2, 0xa00);
@@ -772,7 +782,7 @@ R_2:
     t = 0x100u;
     esp -= 4;
     M32(esp) = t;
-    /* 00874a5c  lea edx, [esp + 0xc] */
+    /* 00874a5c  lea edx, [esp + 0xc]  ; &var_91c */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 00874a60  push edx */
     t = edx;
@@ -796,7 +806,7 @@ R_3:
     /* 00874a67  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 00874a69  lea ecx, [esp + 8] */
+    /* 00874a69  lea ecx, [esp + 8]  ; &var_91c */
     ecx = (uint32_t)(esp + 0x00000008u);
     /* 00874a6d  push ecx */
     t = ecx;
@@ -817,13 +827,13 @@ R_4:
     F_LOGIC(32, r);
     /* 00874a75  jne 0x874a95 */
     if (!zf) goto L_00874a95;
-    /* 00874a77  lea edx, [esp + 8] */
+    /* 00874a77  lea edx, [esp + 8]  ; &var_91c */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 00874a7b  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00874a7c  push 0xbd6ac8 */
+    /* 00874a7c  push 0xbd6ac8  ; "Meme: Error: Creating ostream "%s"\r\n" */
     t = 0xbd6ac8u;
     esp -= 4;
     M32(esp) = t;
@@ -831,7 +841,7 @@ R_4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874a82  call 0x868ab0 */
+    /* 00874a82  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874a20_5;
@@ -871,9 +881,9 @@ L_00874a95:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00874a96  lea ecx, [esp + 0x10c] */
+    /* 00874a96  lea ecx, [esp + 0x10c]  ; &var_81c */
     ecx = (uint32_t)(esp + 0x0000010cu);
-    /* 00874a9d  call 0x87a0b0 */
+    /* 00874a9d  call 0x87a0b0  ; ClassOStream::ClassOStream */
     t = 0x0087a0b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874a20_6;
@@ -897,7 +907,7 @@ R_7:
     /* 00874aa9  mov eax, dword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     eax = M32(ea);
-    /* 00874aac  push 0xbd6a80 */
+    /* 00874aac  push 0xbd6a80  ; "Class name" */
     t = 0xbd6a80u;
     esp -= 4;
     M32(esp) = t;
@@ -909,9 +919,9 @@ R_7:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874ab3  lea ecx, [esp + 0x114] */
+    /* 00874ab3  lea ecx, [esp + 0x114]  ; &var_81c */
     ecx = (uint32_t)(esp + 0x00000114u);
-    /* 00874aba  call 0x879ea0 */
+    /* 00874aba  call 0x879ea0  ; ClassOStream::vf39 */
     t = 0x00879ea0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874a20_8;
@@ -924,7 +934,7 @@ R_8:
     /* 00874ac1  jne 0x874aca */
     if (!zf) goto L_00874aca;
 L_00874ac3:
-    /* 00874ac3  lea ecx, [esp + 8] */
+    /* 00874ac3  lea ecx, [esp + 8]  ; &var_91c */
     ecx = (uint32_t)(esp + 0x00000008u);
     /* 00874ac7  push ecx */
     t = ecx;
@@ -939,7 +949,7 @@ L_00874aca:
     /* 00874acc  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 00874ace  lea eax, [esp + 0x108] */
+    /* 00874ace  lea eax, [esp + 0x108]  ; &var_81c */
     eax = (uint32_t)(esp + 0x00000108u);
     /* 00874ad5  push eax */
     t = eax;
@@ -966,9 +976,9 @@ R_9:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874adf  lea ecx, [esp + 0x10c] */
+    /* 00874adf  lea ecx, [esp + 0x10c]  ; &var_81c */
     ecx = (uint32_t)(esp + 0x0000010cu);
-    /* 00874ae6  call 0x879f40 */
+    /* 00874ae6  call 0x879f40  ; meme_Static_string_00879f40 */
     t = 0x00879f40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874a20_10;
@@ -980,14 +990,14 @@ R_10:
     F_LOGIC(8, r);
     /* 00874aed  jne 0x874b19 */
     if (!zf) goto L_00874b19;
-    /* 00874aef  lea edx, [esp + 8] */
+    /* 00874aef  lea edx, [esp + 8]  ; &var_91c */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 00874af3  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
 L_00874af4:
-    /* 00874af4  push 0xbd6aa0 */
+    /* 00874af4  push 0xbd6aa0  ; "Meme: Error: Writing to stream "%s"\r\n" */
     t = 0xbd6aa0u;
     esp -= 4;
     M32(esp) = t;
@@ -995,7 +1005,7 @@ L_00874af4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874afa  call 0x868ab0 */
+    /* 00874afa  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874a20_11;
@@ -1008,9 +1018,9 @@ R_11:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 00874b02  lea ecx, [esp + 0x108] */
+    /* 00874b02  lea ecx, [esp + 0x108]  ; &var_81c */
     ecx = (uint32_t)(esp + 0x00000108u);
-    /* 00874b09  call 0x87a030 */
+    /* 00874b09  call 0x87a030  ; ClassOStream::~ClassOStream */
     t = 0x0087a030u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874a20_12;
@@ -1040,9 +1050,9 @@ R_12:
     esp += 4;
     goto out;
 L_00874b19:
-    /* 00874b19  lea ecx, [esp + 0x108] */
+    /* 00874b19  lea ecx, [esp + 0x108]  ; &var_81c */
     ecx = (uint32_t)(esp + 0x00000108u);
-    /* 00874b20  call 0x87a030 */
+    /* 00874b20  call 0x87a030  ; ClassOStream::~ClassOStream */
     t = 0x0087a030u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874a20_13;
@@ -1077,7 +1087,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00874b30  dice::meme::Object  (virtual method) */
+/* 00874b30  Object::vf12  (virtual method)
+ * class: dice::meme::Object
+ * called by: System::vf16, DisableNode::vf14, CullActionNode::vf14, PathNode::vf14, PathNode::vf12, PathNode::vf16 (+5 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874b30, bfv_client_l1_body_00874b30);
 BFV_L1_RESUME(bfv_client_l1r_00874b30_1, bfv_client_l1_body_00874b30, 1);
 void bfv_client_l1_body_00874b30(struct bfv_cpu *c)
@@ -1091,7 +1104,7 @@ void bfv_client_l1_body_00874b30(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00874b30  mov edx, dword ptr [esp + 8] */
+    /* 00874b30  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00874b34  mov eax, dword ptr [ecx] */
@@ -1101,14 +1114,14 @@ void bfv_client_l1_body_00874b30(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00874b37  mov edx, dword ptr [esp + 8] */
+    /* 00874b37  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00874b3b  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00874b3c  call dword ptr [eax + 0x34] */
+    /* 00874b3c  call dword ptr [eax + 0x34]  ; -> Object::vf13 = stub_return_true_2args_00a7d100 */
     ea = (uint32_t)(eax + 0x00000034u);
     t = M32(ea);
     esp -= 4;
@@ -1132,7 +1145,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00874b50  dice::meme::Object  (vtable store) */
+/* 00874b50  Object::create  (vtable store)
+ * class: dice::meme::Object
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874b50, bfv_client_l1_body_00874b50);
 BFV_L1_RESUME(bfv_client_l1r_00874b50_1, bfv_client_l1_body_00874b50, 1);
 void bfv_client_l1_body_00874b50(struct bfv_cpu *c)
@@ -1150,7 +1165,7 @@ void bfv_client_l1_body_00874b50(struct bfv_cpu *c)
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00874b52  call 0x403610 */
+    /* 00874b52  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874b50_1;
@@ -1168,7 +1183,7 @@ R_1:
     F_LOGIC(32, r);
     /* 00874b5c  je 0x874b69 */
     if (zf) goto L_00874b69;
-    /* 00874b5e  mov dword ptr [eax], 0xbd6a14 */
+    /* 00874b5e  mov dword ptr [eax], 0xbd6a14  ; vtable Object */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbd6a14u;
     /* 00874b64  mov byte ptr [eax + 4], 0 */
@@ -1194,8 +1209,67 @@ out: __attribute__((unused));
 }
 
 
-/* 00874bc0  dice::meme::Object  (virtual method)
- * strings: "dice::meme::Object" */
+/* 00874b70  ClassTemplate<Object,RuntimeObject>::incInstanceCount  (between same file)
+ */
+BFV_L1_ENTRY(bfv_client_l1_00874b70, bfv_client_l1_body_00874b70);
+void bfv_client_l1_body_00874b70(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t a, r, ea;
+    /* 00874b70  inc dword ptr [0xdf68c0] */
+    ea = (uint32_t)(0x00df68c0u);
+    a = M32(ea);
+    r = (a + 1u) & 0xffffffffu;
+    F_INC(32, a, r);
+    M32(ea) = r;
+    /* 00874b76  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00874b80  ClassTemplate<Object,RuntimeObject>::decInstanceCount  (between same file)
+ * also entered at 00874ba0: ClearStream::vf0, IStream::vf0, InfoOStream::vf0, OStream::vf0 (+2 more)
+ */
+BFV_L1_ENTRY(bfv_client_l1_00874b80, bfv_client_l1_body_00874b80);
+void bfv_client_l1_body_00874b80(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t a, r, ea;
+    /* 00874b80  dec dword ptr [0xdf68c0] */
+    ea = (uint32_t)(0x00df68c0u);
+    a = M32(ea);
+    r = (a - 1u) & 0xffffffffu;
+    F_DEC(32, a, r);
+    M32(ea) = r;
+    /* 00874b86  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00874bc0  Object::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::Object
+ * strings: "dice::meme::Object"
+ * called by: ClearStream::Class_name_00874c40, ClearStream::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874bc0, bfv_client_l1_body_00874bc0);
 BFV_L1_RESUME(bfv_client_l1r_00874bc0_1, bfv_client_l1_body_00874bc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00874bc0_2, bfv_client_l1_body_00874bc0, 2);
@@ -1226,13 +1300,13 @@ void bfv_client_l1_body_00874bc0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00874bd5  push 0xbd6b14 */
+    /* 00874bd5  push 0xbd6b14  ; "dice::meme::Object" */
     t = 0xbd6b14u;
     esp -= 4;
     M32(esp) = t;
-    /* 00874bda  mov ecx, 0xdf68c4 */
+    /* 00874bda  mov ecx, 0xdf68c4  ; g_RuntimeClass_Object */
     ecx = 0xdf68c4u;
-    /* 00874bdf  call 0x875490 */
+    /* 00874bdf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874bc0_1;
@@ -1243,10 +1317,10 @@ R_1:
     t = 0xb3af20u;
     esp -= 4;
     M32(esp) = t;
-    /* 00874be9  mov dword ptr [0xdf68c4], 0xbd6af4 */
+    /* 00874be9  mov dword ptr [0xdf68c4], 0xbd6af4  ; g_RuntimeClass_Object */
     ea = (uint32_t)(0x00df68c4u);
     M32(ea) = 0xbd6af4u;
-    /* 00874bf3  call 0x7c2cd2 */
+    /* 00874bf3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874bc0_2;
@@ -1260,7 +1334,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00874bfb:
-    /* 00874bfb  mov eax, 0xdf68c4 */
+    /* 00874bfb  mov eax, 0xdf68c4  ; g_RuntimeClass_Object */
     eax = 0xdf68c4u;
     /* 00874c00  ret */
     c->eip = M32(esp);

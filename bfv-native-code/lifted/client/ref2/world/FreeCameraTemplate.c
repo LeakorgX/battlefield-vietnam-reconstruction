@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 005f57e0  dice::ref2::world::FreeCameraTemplate  (vtable store) */
+/* 005f57e0  FreeCameraTemplate::FreeCameraTemplate  (vtable store)
+ * class: dice::ref2::world::FreeCameraTemplate
+ * also entered at 005f5820: FreeCameraTemplate::getClassID
+ * called by: ObjectCreatorWrapper<FreeCameraTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_005f57e0, bfv_client_l1_body_005f57e0);
 BFV_L1_RESUME(bfv_client_l1r_005f57e0_1, bfv_client_l1_body_005f57e0, 1);
 void bfv_client_l1_body_005f57e0(struct bfv_cpu *c)
@@ -25,14 +29,14 @@ void bfv_client_l1_body_005f57e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005f57e1  mov esi, ecx */
     esi = ecx;
-    /* 005f57e3  call 0x6a52c0 */
+    /* 005f57e3  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
     t = 0x006a52c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005f57e0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005f57e8  mov dword ptr [esi], 0xb7a1bc */
+    /* 005f57e8  mov dword ptr [esi], 0xb7a1bc  ; vtable FreeCameraTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb7a1bcu;
     /* 005f57ee  mov dword ptr [esi + 4], 0xb7a1a4 */
@@ -64,7 +68,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005f5830  dice::ref2::world::FreeCameraTemplate  (virtual method) */
+/* 005f5830  FreeCameraTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::FreeCameraTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_005f5830, bfv_client_l1_body_005f5830);
 BFV_L1_RESUME(bfv_client_l1r_005f5830_1, bfv_client_l1_body_005f5830, 1);
 BFV_L1_RESUME(bfv_client_l1r_005f5830_2, bfv_client_l1_body_005f5830, 2);
@@ -90,7 +97,7 @@ void bfv_client_l1_body_005f5830(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005f5836  mov esi, ecx */
     esi = ecx;
-    /* 005f5838  call 0x403610 */
+    /* 005f5838  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005f5830_1;
@@ -114,7 +121,7 @@ R_1:
     M32(esp) = t;
     /* 005f5845  mov ecx, eax */
     ecx = eax;
-    /* 005f5847  call 0x5f49a0 */
+    /* 005f5847  call 0x5f49a0  ; FreeCamera::FreeCamera */
     t = 0x005f49a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005f5830_2;
@@ -149,7 +156,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005f5860  dice::ref2::world::FreeCameraTemplate  (virtual method) */
+/* 005f5860  FreeCameraTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::FreeCameraTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_005f5860, bfv_client_l1_body_005f5860);
 void bfv_client_l1_body_005f5860(struct bfv_cpu *c)
 {
@@ -158,10 +168,10 @@ void bfv_client_l1_body_005f5860(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005f5860  mov eax, dword ptr [esp + 4] */
+    /* 005f5860  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005f5864  cmp eax, dword ptr [0xb77ec4] */
+    /* 005f5864  cmp eax, dword ptr [0xb77ec4]  ; FreeCameraTemplate::classID */
     ea = (uint32_t)(0x00b77ec4u);
     a = eax;
     b = M32(ea);
@@ -176,10 +186,10 @@ void bfv_client_l1_body_005f5860(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005f5871:
-    /* 005f5871  mov dword ptr [esp + 4], eax */
+    /* 005f5871  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005f5875  jmp 0x6a4250 */
+    /* 005f5875  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));
@@ -189,25 +199,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005f5880  dice::ref2::world::FreeCameraTemplate  (vtable store) */
-BFV_L1_ENTRY(bfv_client_l1_005f5880, bfv_client_l1_body_005f5880);
-void bfv_client_l1_body_005f5880(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    /* 005f5880  jmp 0x6a49e0 */
-    c->eip = 0x006a49e0u;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 006db650  dice::ref2::world::FreeCameraTemplate  (virtual method) */
+/* 006db650  FreeCameraTemplate::addRef  (virtual method)
+ * overrides: IBase::addRef  (395 classes implement it)
+ * class: dice::ref2::world::FreeCameraTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006db650, bfv_client_l1_body_006db650);
 void bfv_client_l1_body_006db650(struct bfv_cpu *c)
 {
@@ -238,7 +233,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006dbfe0  dice::ref2::world::FreeCameraTemplate  (virtual method) */
+/* 006dbfe0  FreeCameraTemplate::release  (virtual method)
+ * overrides: IBase::release  (395 classes implement it)
+ * class: dice::ref2::world::FreeCameraTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006dbfe0, bfv_client_l1_body_006dbfe0);
 BFV_L1_RESUME(bfv_client_l1r_006dbfe0_1, bfv_client_l1_body_006dbfe0, 1);
 void bfv_client_l1_body_006dbfe0(struct bfv_cpu *c)
@@ -283,7 +281,7 @@ void bfv_client_l1_body_006dbfe0(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 006dbffa  call dword ptr [eax] */
+    /* 006dbffa  call dword ptr [eax]  ; -> FreeCameraTemplate::vf0 = BundleTemplate::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;

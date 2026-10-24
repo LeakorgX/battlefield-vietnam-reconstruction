@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008d0c30  dice::ref2::io::FlatLZOReadStream  (virtual method) */
+/* 008d0c30  FlatLZOReadStream::skip  (virtual method)
+ * overrides: INonlinearStream::skip  (6 classes implement it)
+ * class: dice::ref2::io::FlatLZOReadStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d0c30, bfv_client_l1_body_008d0c30);
 void bfv_client_l1_body_008d0c30(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_client_l1_body_008d0c30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008d0c30  mov eax, dword ptr [esp + 4] */
+    /* 008d0c30  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008d0c34  mov edx, dword ptr [ecx + 0x2c] */
@@ -67,7 +70,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d0c60  dice::ref2::io::FlatLZOReadStream  (virtual method) */
+/* 008d0c60  FlatLZOReadStream::getBytesLeft  (virtual method)
+ * overrides: INonlinearStream::getBytesLeft  (6 classes implement it)
+ * class: dice::ref2::io::FlatLZOReadStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d0c60, bfv_client_l1_body_008d0c60);
 void bfv_client_l1_body_008d0c60(struct bfv_cpu *c)
 {
@@ -100,7 +106,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d0c70  dice::ref2::io::FlatLZOReadStream  (virtual method) */
+/* 008d0c70  FlatLZOReadStream::getSize  (virtual method)
+ * overrides: INonlinearStream::getSize  (6 classes implement it)
+ * class: dice::ref2::io::FlatLZOReadStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d0c70, bfv_client_l1_body_008d0c70);
 void bfv_client_l1_body_008d0c70(struct bfv_cpu *c)
 {
@@ -126,7 +135,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d1d60  dice::ref2::io::FlatLZOReadStream  (virtual method) */
+/* 008d1d60  FlatLZOReadStream::seek  (virtual method)
+ * overrides: INonlinearStream::seek  (6 classes implement it)
+ * class: dice::ref2::io::FlatLZOReadStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d1d60, bfv_client_l1_body_008d1d60);
 BFV_L1_RESUME(bfv_client_l1r_008d1d60_1, bfv_client_l1_body_008d1d60, 1);
 void bfv_client_l1_body_008d1d60(struct bfv_cpu *c)
@@ -148,7 +160,7 @@ void bfv_client_l1_body_008d1d60(struct bfv_cpu *c)
     /* 008d1d66  mov edx, dword ptr [ecx + 4] */
     ea = (uint32_t)(ecx + 0x00000004u);
     edx = M32(ea);
-    /* 008d1d69  mov ecx, dword ptr [esp + 4] */
+    /* 008d1d69  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008d1d6d  push eax */
@@ -159,10 +171,10 @@ void bfv_client_l1_body_008d1d60(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008d1d6f  mov edx, dword ptr [esp + 0x10] */
+    /* 008d1d6f  mov edx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
-    /* 008d1d73  call 0x8c2820 */
+    /* 008d1d73  call 0x8c2820  ; io_008c2820 */
     t = 0x008c2820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d1d60_1;
@@ -185,7 +197,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d38d0  dice::ref2::io::FlatLZOReadStream  (vtable store) */
+/* 008d38d0  FlatLZOReadStream::FlatLZOReadStream  (vtable store)
+ * class: dice::ref2::io::FlatLZOReadStream
+ * called by: FlatArchive::vf4, FlatArchive::vf9
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d38d0, bfv_client_l1_body_008d38d0);
 BFV_L1_RESUME(bfv_client_l1r_008d38d0_1, bfv_client_l1_body_008d38d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008d38d0_2, bfv_client_l1_body_008d38d0, 2);
@@ -216,10 +231,10 @@ void bfv_client_l1_body_008d38d0(struct bfv_cpu *c)
     case 9: goto R_9;
     default: break;
     }
-    /* 008d38d0  mov eax, dword ptr [esp + 4] */
+    /* 008d38d0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 008d38d4  mov edx, dword ptr [esp + 0xc] */
+    /* 008d38d4  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 008d38d8  push ebx */
@@ -240,10 +255,10 @@ void bfv_client_l1_body_008d38d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008d38dd  mov esi, ecx */
     esi = ecx;
-    /* 008d38df  mov ecx, dword ptr [esp + 0x14] */
+    /* 008d38df  mov ecx, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
-    /* 008d38e3  mov dword ptr [esi], 0xbe04b4 */
+    /* 008d38e3  mov dword ptr [esi], 0xbe04b4  ; vtable FlatLZOReadStream */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe04b4u;
     /* 008d38e9  mov dword ptr [esi + 4], 1 */
@@ -323,7 +338,7 @@ void bfv_client_l1_body_008d38d0(struct bfv_cpu *c)
     /* 008d3932  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 008d3935  call 0x4019f0 */
+    /* 008d3935  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d38d0_1;
@@ -403,7 +418,7 @@ R_3:
     b = ebx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 008d3965  mov dword ptr [esp + 0x14], eax */
+    /* 008d3965  mov dword ptr [esp + 0x14], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
     /* 008d3969  je 0x8d3973 */
@@ -423,7 +438,7 @@ R_4:
     ea = (uint32_t)(ebp + 0x00000010u);
     M32(ea) = ebx;
 L_008d3973:
-    /* 008d3973  mov eax, dword ptr [esp + 0x14] */
+    /* 008d3973  mov eax, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 008d3977  mov dword ptr [ebp + 0x10], eax */
@@ -451,7 +466,7 @@ L_008d397a:
     /* 008d3987  mov dword ptr [ebp + 0x7c], edx */
     ea = (uint32_t)(ebp + 0x0000007cu);
     M32(ea) = edx;
-    /* 008d398a  call 0x757bc0 */
+    /* 008d398a  call 0x757bc0  ; GridCollisionMesh_00757bc0 */
     t = 0x00757bc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d38d0_5;
@@ -484,7 +499,7 @@ R_6:
     /* 008d39a4  mov ecx, dword ptr [eax + 0x10] */
     ea = (uint32_t)(eax + 0x00000010u);
     ecx = M32(ea);
-    /* 008d39a7  mov eax, dword ptr [esp + 0x18] */
+    /* 008d39a7  mov eax, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 008d39ab  mov eax, dword ptr [eax + 8] */
@@ -517,7 +532,7 @@ R_7:
     ecx = M32(ea);
     /* 008d39bb  mov edx, edi */
     edx = edi;
-    /* 008d39bd  call 0x8d3370 */
+    /* 008d39bd  call 0x8d3370  ; io_008d3370 */
     t = 0x008d3370u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d38d0_8;
@@ -596,7 +611,7 @@ L_008d39e2:
     M32(esp) = t;
     /* 008d39e4  lea ecx, [esi + 0x18] */
     ecx = (uint32_t)(esi + 0x00000018u);
-    /* 008d39e7  call 0x4c9770 */
+    /* 008d39e7  call 0x4c9770  ; std::vector_ptr::resize_004c9770 */
     t = 0x004c9770u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d38d0_9;
@@ -607,10 +622,10 @@ R_9:
     r = 0;
     F_LOGIC(32, r);
     ebp = r;
-    /* 008d39ee  mov dword ptr [esp + 0x18], ebx */
+    /* 008d39ee  mov dword ptr [esp + 0x18], ebx  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = ebx;
-    /* 008d39f2  mov dword ptr [esp + 0x14], ebx */
+    /* 008d39f2  mov dword ptr [esp + 0x14], ebx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = ebx;
 L_008d39f6:
@@ -678,12 +693,12 @@ L_008d39f6:
     /* 008d3a16  mov edx, dword ptr [esi + 0x1c] */
     ea = (uint32_t)(esi + 0x0000001cu);
     edx = M32(ea);
-    /* 008d3a19  mov ecx, dword ptr [esp + 0x18] */
+    /* 008d3a19  mov ecx, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 008d3a1d  lea eax, [edx + ebp*4] */
     eax = (uint32_t)(edx + ebp * 4u);
-    /* 008d3a20  mov edx, dword ptr [esp + 0x14] */
+    /* 008d3a20  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 008d3a24  mov dword ptr [eax], ecx */
@@ -716,10 +731,10 @@ L_008d39f6:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     edx = r;
-    /* 008d3a33  mov dword ptr [esp + 0x18], ecx */
+    /* 008d3a33  mov dword ptr [esp + 0x18], ecx  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = ecx;
-    /* 008d3a37  mov dword ptr [esp + 0x14], edx */
+    /* 008d3a37  mov dword ptr [esp + 0x14], edx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
     /* 008d3a3b  jmp 0x8d39f6 */
@@ -754,7 +769,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d3a50  dice::ref2::io::FlatLZOReadStream  (vtable store) */
+/* 008d3a50  FlatLZOReadStream::FlatLZOReadStream  (vtable store)
+ * class: dice::ref2::io::FlatLZOReadStream
+ * called by: FlatLZOReadStream::clone
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d3a50, bfv_client_l1_body_008d3a50);
 BFV_L1_RESUME(bfv_client_l1r_008d3a50_1, bfv_client_l1_body_008d3a50, 1);
 BFV_L1_RESUME(bfv_client_l1r_008d3a50_2, bfv_client_l1_body_008d3a50, 2);
@@ -789,7 +807,7 @@ void bfv_client_l1_body_008d3a50(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 008d3a51  mov eax, dword ptr [esp + 8] */
+    /* 008d3a51  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008d3a55  push ebx */
@@ -810,7 +828,7 @@ void bfv_client_l1_body_008d3a50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008d3a5a  mov esi, ecx */
     esi = ecx;
-    /* 008d3a5c  mov dword ptr [esi], 0xbe04b4 */
+    /* 008d3a5c  mov dword ptr [esi], 0xbe04b4  ; vtable FlatLZOReadStream */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe04b4u;
     /* 008d3a62  mov dword ptr [esi + 4], 1 */
@@ -902,7 +920,7 @@ void bfv_client_l1_body_008d3a50(struct bfv_cpu *c)
     /* 008d3ab4  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 008d3ab7  call 0x4019f0 */
+    /* 008d3ab7  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d3a50_1;
@@ -982,7 +1000,7 @@ R_3:
     b = ebx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 008d3ae7  mov dword ptr [esp + 0x18], eax */
+    /* 008d3ae7  mov dword ptr [esp + 0x18], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = eax;
     /* 008d3aeb  je 0x8d3af5 */
@@ -1002,7 +1020,7 @@ R_4:
     ea = (uint32_t)(ebp + 0x00000010u);
     M32(ea) = ebx;
 L_008d3af5:
-    /* 008d3af5  mov eax, dword ptr [esp + 0x18] */
+    /* 008d3af5  mov eax, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 008d3af9  mov dword ptr [ebp + 0x10], eax */
@@ -1030,7 +1048,7 @@ L_008d3afc:
     /* 008d3b09  mov dword ptr [ebp + 0x7c], edx */
     ea = (uint32_t)(ebp + 0x0000007cu);
     M32(ea) = edx;
-    /* 008d3b0c  call 0x757bc0 */
+    /* 008d3b0c  call 0x757bc0  ; GridCollisionMesh_00757bc0 */
     t = 0x00757bc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d3a50_5;
@@ -1096,7 +1114,7 @@ R_7:
     ecx = M32(ea);
     /* 008d3b3c  mov edx, edi */
     edx = edi;
-    /* 008d3b3e  call 0x8d3370 */
+    /* 008d3b3e  call 0x8d3370  ; io_008d3370 */
     t = 0x008d3370u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d3a50_8;
@@ -1175,7 +1193,7 @@ L_008d3b63:
     M32(esp) = t;
     /* 008d3b65  lea ecx, [esi + 0x18] */
     ecx = (uint32_t)(esi + 0x00000018u);
-    /* 008d3b68  call 0x4c9770 */
+    /* 008d3b68  call 0x4c9770  ; std::vector_ptr::resize_004c9770 */
     t = 0x004c9770u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d3a50_9;
@@ -1186,10 +1204,10 @@ R_9:
     r = 0;
     F_LOGIC(32, r);
     ebp = r;
-    /* 008d3b6f  mov dword ptr [esp + 0x18], ebx */
+    /* 008d3b6f  mov dword ptr [esp + 0x18], ebx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = ebx;
-    /* 008d3b73  mov dword ptr [esp + 0x10], ebx */
+    /* 008d3b73  mov dword ptr [esp + 0x10], ebx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ebx;
 L_008d3b77:
@@ -1257,12 +1275,12 @@ L_008d3b77:
     /* 008d3b97  mov edx, dword ptr [esi + 0x1c] */
     ea = (uint32_t)(esi + 0x0000001cu);
     edx = M32(ea);
-    /* 008d3b9a  mov ecx, dword ptr [esp + 0x18] */
+    /* 008d3b9a  mov ecx, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 008d3b9e  lea eax, [edx + ebp*4] */
     eax = (uint32_t)(edx + ebp * 4u);
-    /* 008d3ba1  mov edx, dword ptr [esp + 0x10] */
+    /* 008d3ba1  mov edx, dword ptr [esp + 0x10]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 008d3ba5  mov dword ptr [eax], ecx */
@@ -1295,10 +1313,10 @@ L_008d3b77:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     edx = r;
-    /* 008d3bb4  mov dword ptr [esp + 0x18], ecx */
+    /* 008d3bb4  mov dword ptr [esp + 0x18], ecx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = ecx;
-    /* 008d3bb8  mov dword ptr [esp + 0x10], edx */
+    /* 008d3bb8  mov dword ptr [esp + 0x10], edx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
     /* 008d3bbc  jmp 0x8d3b77 */
@@ -1337,7 +1355,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d3bd0  dice::ref2::io::FlatLZOReadStream  (virtual method) */
+/* 008d3bd0  FlatLZOReadStream::read  (virtual method)
+ * overrides: INonlinearStream::read  (6 classes implement it)
+ * class: dice::ref2::io::FlatLZOReadStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d3bd0, bfv_client_l1_body_008d3bd0);
 BFV_L1_RESUME(bfv_client_l1r_008d3bd0_1, bfv_client_l1_body_008d3bd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008d3bd0_2, bfv_client_l1_body_008d3bd0, 2);
@@ -1705,14 +1726,14 @@ L_008d3ca4:
     M32(esp) = t;
     /* 008d3cbc  jge 0x8d3cc4 */
     if ((sf == of)) goto L_008d3cc4;
-    /* 008d3cbe  fadd dword ptr [0xb42f8c] */
+    /* 008d3cbe  fadd dword ptr [0xb42f8c]  ; = 4294967300.0f */
     ea = (uint32_t)(0x00b42f8cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_008d3cc4:
-    /* 008d3cc4  fmul dword ptr [0xb5d484] */
+    /* 008d3cc4  fmul dword ptr [0xb5d484]  ; = 1.5f */
     ea = (uint32_t)(0x00b5d484u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008d3cca  call 0x7c2dd0 */
+    /* 008d3cca  call 0x7c2dd0  ; _ftol2 */
     t = 0x007c2dd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d3bd0_1;
@@ -1725,7 +1746,7 @@ R_1:
     M32(esp) = t;
     /* 008d3cd0  mov ecx, ebp */
     ecx = ebp;
-    /* 008d3cd2  call 0x757bc0 */
+    /* 008d3cd2  call 0x757bc0  ; GridCollisionMesh_00757bc0 */
     t = 0x00757bc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d3bd0_2;
@@ -2179,7 +2200,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d3e10  dice::ref2::io::FlatLZOReadStream  (virtual method) */
+/* 008d3e10  FlatLZOReadStream::clone  (virtual method)
+ * overrides: INonlinearStream::clone  (6 classes implement it)
+ * class: dice::ref2::io::FlatLZOReadStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d3e10, bfv_client_l1_body_008d3e10);
 BFV_L1_RESUME(bfv_client_l1r_008d3e10_1, bfv_client_l1_body_008d3e10, 1);
 BFV_L1_RESUME(bfv_client_l1r_008d3e10_2, bfv_client_l1_body_008d3e10, 2);
@@ -2209,7 +2233,7 @@ void bfv_client_l1_body_008d3e10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008d3e13  mov esi, ecx */
     esi = ecx;
-    /* 008d3e15  call 0x403610 */
+    /* 008d3e15  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d3e10_1;
@@ -2233,7 +2257,7 @@ R_1:
     M32(esp) = t;
     /* 008d3e22  mov ecx, eax */
     ecx = eax;
-    /* 008d3e24  call 0x8d3a50 */
+    /* 008d3e24  call 0x8d3a50  ; FlatLZOReadStream::FlatLZOReadStream */
     t = 0x008d3a50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d3e10_2;
@@ -2252,7 +2276,7 @@ R_2:
     M32(esp) = t;
     /* 008d3e32  mov ecx, eax */
     ecx = eax;
-    /* 008d3e34  call dword ptr [edx + 0xc] */
+    /* 008d3e34  call dword ptr [edx + 0xc]  ; -> FlatLZOReadStream::vf3 = RemoteFileStream::queryInterface */
     ea = (uint32_t)(edx + 0x0000000cu);
     t = M32(ea);
     esp -= 4;

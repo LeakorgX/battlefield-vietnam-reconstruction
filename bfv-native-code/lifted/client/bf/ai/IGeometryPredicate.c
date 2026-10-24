@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 009cc2c0  dice::bf::ai::?A0xdaa11c90::IGeometryPredicate  (virtual method) */
+/* 009cc2c0  IGeometryPredicate::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xdaa11c90::IGeometryPredicate
+ */
 BFV_L1_ENTRY(bfv_client_l1_009cc2c0, bfv_client_l1_body_009cc2c0);
 void bfv_client_l1_body_009cc2c0(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_009cc2c0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 009cc2c0  mov ecx, dword ptr [esp + 4] */
+    /* 009cc2c0  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 009cc2c4  mov edx, dword ptr [ecx + 0x60] */

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00729f00  dice::bf::ai::IAIDebugRenderer  (virtual method) */
+/* 00729f00  IAIDebugRenderer::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAIDebugRenderer
+ */
 BFV_L1_ENTRY(bfv_server_l1_00729f00, bfv_server_l1_body_00729f00);
 BFV_L1_RESUME(bfv_server_l1r_00729f00_1, bfv_server_l1_body_00729f00, 1);
 void bfv_server_l1_body_00729f00(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_server_l1_body_00729f00(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00729f00  test byte ptr [esp + 4], 1 */
+    /* 00729f00  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,10 +31,10 @@ void bfv_server_l1_body_00729f00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00729f06  mov esi, ecx */
     esi = ecx;
-    /* 00729f08  mov dword ptr [esi], 0x873124 */
+    /* 00729f08  mov dword ptr [esi], 0x873124  ; vtable IAIDebugRenderer */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873124u;
-    /* 00729f0e  mov dword ptr [0xc314b8], 0 */
+    /* 00729f0e  mov dword ptr [0xc314b8], 0  ; g_pIAIDebugRenderer_00c314b8 */
     ea = (uint32_t)(0x00c314b8u);
     M32(ea) = 0x0u;
     /* 00729f18  je 0x729f23 */
@@ -41,7 +43,7 @@ void bfv_server_l1_body_00729f00(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00729f1b  call 0x403df0 */
+    /* 00729f1b  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00729f00_1;
@@ -72,7 +74,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00729f30  dice::bf::ai::IAIDebugRenderer  (vtable store) */
+/* 00729f30  IAIDebugRenderer::IAIDebugRenderer  (vtable store)
+ * class: dice::bf::ai::IAIDebugRenderer
+ * called by: AIDebugRenderer::AIDebugRenderer
+ */
 BFV_L1_ENTRY(bfv_server_l1_00729f30, bfv_server_l1_body_00729f30);
 void bfv_server_l1_body_00729f30(struct bfv_cpu *c)
 {
@@ -83,10 +88,10 @@ void bfv_server_l1_body_00729f30(struct bfv_cpu *c)
     uint32_t ea;
     /* 00729f30  mov eax, ecx */
     eax = ecx;
-    /* 00729f32  mov dword ptr [eax], 0x873124 */
+    /* 00729f32  mov dword ptr [eax], 0x873124  ; vtable IAIDebugRenderer */
     ea = (uint32_t)(eax);
     M32(ea) = 0x873124u;
-    /* 00729f38  mov dword ptr [0xc314b8], eax */
+    /* 00729f38  mov dword ptr [0xc314b8], eax  ; g_pIAIDebugRenderer_00c314b8 */
     ea = (uint32_t)(0x00c314b8u);
     M32(ea) = eax;
     /* 00729f3d  ret */

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0078e8b0  dice::bf::ai::IAIScriptStatement  (vtable store) */
+/* 0078e8b0  IAIScriptStatement::~IAIScriptStatement  (vtable store)
+ * class: dice::bf::ai::IAIScriptStatement
+ * also entered at 0078e8c0: IAIScriptStatement::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078e8b0, bfv_server_l1_body_0078e8b0);
 void bfv_server_l1_body_0078e8b0(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_server_l1_body_0078e8b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0078e8b0  mov dword ptr [ecx], 0x8777dc */
+    /* 0078e8b0  mov dword ptr [ecx], 0x8777dc  ; vtable IAIScriptStatement */
     ea = (uint32_t)(ecx);
     M32(ea) = 0x8777dcu;
     /* 0078e8b6  ret */
@@ -28,7 +31,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0078e8e0  dice::bf::ai::IAIScriptStatement  (vtable store) */
+/* 0078e8e0  IAIScriptStatement::IAIScriptStatement  (vtable store)
+ * class: dice::bf::ai::IAIScriptStatement
+ * called by: IAIScriptFlow::IAIScriptFlow, IAIScriptCommand::IAIScriptCommand, IAIScriptVariableUpdater::IAIScriptVariableUpdater
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078e8e0, bfv_server_l1_body_0078e8e0);
 void bfv_server_l1_body_0078e8e0(struct bfv_cpu *c)
 {
@@ -39,7 +45,7 @@ void bfv_server_l1_body_0078e8e0(struct bfv_cpu *c)
     uint32_t ea;
     /* 0078e8e0  mov eax, ecx */
     eax = ecx;
-    /* 0078e8e2  mov dword ptr [eax], 0x8777dc */
+    /* 0078e8e2  mov dword ptr [eax], 0x8777dc  ; vtable IAIScriptStatement */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8777dcu;
     /* 0078e8e8  mov byte ptr [eax + 4], 0 */

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 008a20d0  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a20d0  KeyboardDevice::vf5  (virtual method)
+ * class: dice::ref2::io::KeyboardDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a20d0, bfv_client_l1_body_008a20d0);
 BFV_L1_RESUME(bfv_client_l1r_008a20d0_1, bfv_client_l1_body_008a20d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008a20d0_2, bfv_client_l1_body_008a20d0, 2);
@@ -35,7 +37,7 @@ void bfv_client_l1_body_008a20d0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008a20d3  mov edi, dword ptr [esp + 0x10] */
+    /* 008a20d3  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 008a20d7  test edi, edi */
@@ -55,7 +57,7 @@ void bfv_client_l1_body_008a20d0(struct bfv_cpu *c)
     t = 0x15u;
     esp -= 4;
     M32(esp) = t;
-    /* 008a20e7  call dword ptr [0xb4236c] */
+    /* 008a20e7  call dword ptr [0xb4236c]  ; USER32!GetFocus */
     ea = (uint32_t)(0x00b4236cu);
     t = M32(ea);
     esp -= 4;
@@ -87,7 +89,7 @@ L_008a20f7:
     t = 0x16u;
     esp -= 4;
     M32(esp) = t;
-    /* 008a2101  call dword ptr [0xb4236c] */
+    /* 008a2101  call dword ptr [0xb4236c]  ; USER32!GetFocus */
     ea = (uint32_t)(0x00b4236cu);
     t = M32(ea);
     esp -= 4;
@@ -169,7 +171,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008a2130  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a2130  KeyboardDevice::vf7  (virtual method)
+ * class: dice::ref2::io::KeyboardDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a2130, bfv_client_l1_body_008a2130);
 BFV_L1_RESUME(bfv_client_l1r_008a2130_1, bfv_client_l1_body_008a2130, 1);
 void bfv_client_l1_body_008a2130(struct bfv_cpu *c)
@@ -262,7 +266,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008a2160  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a2160  KeyboardDevice::vf8  (virtual method)
+ * class: dice::ref2::io::KeyboardDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a2160, bfv_client_l1_body_008a2160);
 BFV_L1_RESUME(bfv_client_l1r_008a2160_1, bfv_client_l1_body_008a2160, 1);
 void bfv_client_l1_body_008a2160(struct bfv_cpu *c)
@@ -338,7 +344,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008a2190  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a2190  KeyboardDevice::vf11  (virtual method)
+ * class: dice::ref2::io::KeyboardDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a2190, bfv_client_l1_body_008a2190);
 void bfv_client_l1_body_008a2190(struct bfv_cpu *c)
 {
@@ -347,7 +355,7 @@ void bfv_client_l1_body_008a2190(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, c0, ea;
-    /* 008a2190  movzx eax, byte ptr [esp + 4] */
+    /* 008a2190  movzx eax, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M8(ea);
     /* 008a2195  mov cl, byte ptr [eax + ecx + 0xc] */
@@ -389,7 +397,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008a21b0  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a21b0  KeyboardDevice::vf12  (virtual method)
+ * class: dice::ref2::io::KeyboardDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a21b0, bfv_client_l1_body_008a21b0);
 void bfv_client_l1_body_008a21b0(struct bfv_cpu *c)
 {
@@ -398,7 +408,7 @@ void bfv_client_l1_body_008a21b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008a21b0  movzx eax, byte ptr [esp + 4] */
+    /* 008a21b0  movzx eax, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M8(ea);
     /* 008a21b5  mov dl, byte ptr [eax + ecx + 0x10c] */
@@ -445,7 +455,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008a21e0  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a21e0  KeyboardDevice::vf13  (virtual method)
+ * class: dice::ref2::io::KeyboardDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a21e0, bfv_client_l1_body_008a21e0);
 void bfv_client_l1_body_008a21e0(struct bfv_cpu *c)
 {
@@ -454,7 +466,7 @@ void bfv_client_l1_body_008a21e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008a21e0  movzx eax, byte ptr [esp + 4] */
+    /* 008a21e0  movzx eax, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M8(ea);
     /* 008a21e5  mov dl, byte ptr [eax + ecx + 0x10c] */
@@ -501,7 +513,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008a2210  (between same file) */
+/* 008a2210  KeyboardDevice_calls_GetKeyboardLayout_008a2210  (between same file)
+ * called by: Controls::keyDisplayName_helper_004d6d20
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a2210, bfv_client_l1_body_008a2210);
 BFV_L1_RESUME(bfv_client_l1r_008a2210_1, bfv_client_l1_body_008a2210, 1);
 BFV_L1_RESUME(bfv_client_l1r_008a2210_2, bfv_client_l1_body_008a2210, 2);
@@ -541,7 +555,7 @@ void bfv_client_l1_body_008a2210(struct bfv_cpu *c)
     /* 008a2224  mov dword ptr [0xdf9ea4], ecx */
     ea = (uint32_t)(0x00df9ea4u);
     M32(ea) = ecx;
-    /* 008a222a  call dword ptr [0xb42314] */
+    /* 008a222a  call dword ptr [0xb42314]  ; USER32!GetKeyboardLayout */
     ea = (uint32_t)(0x00b42314u);
     t = M32(ea);
     esp -= 4;
@@ -557,7 +571,7 @@ L_008a2235:
     t = 0xdf9da0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008a223a  call dword ptr [0xb42318] */
+    /* 008a223a  call dword ptr [0xb42318]  ; USER32!GetKeyboardState */
     ea = (uint32_t)(0x00b42318u);
     t = M32(ea);
     esp -= 4;
@@ -582,7 +596,7 @@ L_008a2247:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008a224d  mov esi, dword ptr [esp + 8] */
+    /* 008a224d  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 008a2251  push eax */
@@ -597,7 +611,7 @@ L_008a2247:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008a2255  call dword ptr [0xb4231c] */
+    /* 008a2255  call dword ptr [0xb4231c]  ; USER32!MapVirtualKeyExA */
     ea = (uint32_t)(0x00b4231cu);
     t = M32(ea);
     esp -= 4;
@@ -608,7 +622,7 @@ R_3:
     /* 008a225b  mov ecx, dword ptr [0xdf9ea0] */
     ea = (uint32_t)(0x00df9ea0u);
     ecx = M32(ea);
-    /* 008a2261  mov edx, dword ptr [esp + 0xc] */
+    /* 008a2261  mov edx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 008a2265  push ecx */
@@ -635,7 +649,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008a2270  call dword ptr [0xb42320] */
+    /* 008a2270  call dword ptr [0xb42320]  ; USER32!ToAsciiEx */
     ea = (uint32_t)(0x00b42320u);
     t = M32(ea);
     esp -= 4;
@@ -658,7 +672,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008a2280  (between same file) */
+/* 008a2280  KeyboardDevice_calls_GetKeyboardLayout_008a2280  (between same file)
+ * called by: ServerService_TOOLTIP_TURN_OFF_helper_004221f0
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a2280, bfv_client_l1_body_008a2280);
 BFV_L1_RESUME(bfv_client_l1r_008a2280_1, bfv_client_l1_body_008a2280, 1);
 BFV_L1_RESUME(bfv_client_l1r_008a2280_2, bfv_client_l1_body_008a2280, 2);
@@ -696,7 +712,7 @@ void bfv_client_l1_body_008a2280(struct bfv_cpu *c)
     /* 008a2294  mov dword ptr [0xdf9eac], ecx */
     ea = (uint32_t)(0x00df9eacu);
     M32(ea) = ecx;
-    /* 008a229a  call dword ptr [0xb42314] */
+    /* 008a229a  call dword ptr [0xb42314]  ; USER32!GetKeyboardLayout */
     ea = (uint32_t)(0x00b42314u);
     t = M32(ea);
     esp -= 4;
@@ -708,14 +724,14 @@ R_1:
     ea = (uint32_t)(0x00df9ea8u);
     M32(ea) = eax;
 L_008a22a5:
-    /* 008a22a5  mov eax, dword ptr [esp + 4] */
+    /* 008a22a5  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008a22a9  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008a22aa  call dword ptr [0xb42310] */
+    /* 008a22aa  call dword ptr [0xb42310]  ; USER32!VkKeyScanA */
     ea = (uint32_t)(0x00b42310u);
     t = M32(ea);
     esp -= 4;
@@ -747,7 +763,7 @@ R_2:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008a22c3  call dword ptr [0xb4231c] */
+    /* 008a22c3  call dword ptr [0xb4231c]  ; USER32!MapVirtualKeyExA */
     ea = (uint32_t)(0x00b4231cu);
     t = M32(ea);
     esp -= 4;
@@ -755,7 +771,7 @@ R_2:
     c->eip = t;
     goto out;
 R_3:
-    /* 008a22c9  mov ecx, dword ptr [esp + 8] */
+    /* 008a22c9  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 008a22cd  mov dword ptr [ecx], eax */
@@ -783,7 +799,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008a22e0  (between same file) */
+/* 008a22e0  KeyboardDevice::~KeyboardDevice  (between same file)
+ * class: dice::ref2::io::KeyboardDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a22e0, bfv_client_l1_body_008a22e0);
 BFV_L1_RESUME(bfv_client_l1r_008a22e0_1, bfv_client_l1_body_008a22e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008a22e0_2, bfv_client_l1_body_008a22e0, 2);
@@ -813,7 +831,7 @@ void bfv_client_l1_body_008a22e0(struct bfv_cpu *c)
     /* 008a22e9  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 008a22eb  mov dword ptr [esi], 0xbdd084 */
+    /* 008a22eb  mov dword ptr [esi], 0xbdd084  ; vtable KeyboardDevice */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbdd084u;
     /* 008a22f1  je 0x8a230f */
@@ -882,7 +900,7 @@ R_3:
     ea = (uint32_t)(esi + 0x00000210u);
     M32(ea) = 0x0u;
 L_008a2329:
-    /* 008a2329  mov dword ptr [esi], 0xb4274c */
+    /* 008a2329  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 008a232f  pop esi */
@@ -900,7 +918,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008a2340  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a2340  KeyboardDevice::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::io::KeyboardDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a2340, bfv_client_l1_body_008a2340);
 void bfv_client_l1_body_008a2340(struct bfv_cpu *c)
 {
@@ -909,12 +930,12 @@ void bfv_client_l1_body_008a2340(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 008a2340  mov edx, dword ptr [0xb42718] */
+    /* 008a2340  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 008a2346  mov eax, ecx */
     eax = ecx;
-    /* 008a2348  mov ecx, dword ptr [esp + 4] */
+    /* 008a2348  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008a234c  cmp ecx, edx */
@@ -924,7 +945,7 @@ void bfv_client_l1_body_008a2340(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008a234e  je 0x8a236a */
     if (zf) goto L_008a236a;
-    /* 008a2350  cmp ecx, dword ptr [0xbdb01c] */
+    /* 008a2350  cmp ecx, dword ptr [0xbdb01c]  ; interfaceID(KeyboardDevice|MouseDevice) */
     ea = (uint32_t)(0x00bdb01cu);
     a = ecx;
     b = M32(ea);
@@ -975,7 +996,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008a2370  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a2370  KeyboardDevice::vf10  (virtual method)
+ * class: dice::ref2::io::KeyboardDevice
+ * also entered at 008a2390: KeyboardDevice::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a2370, bfv_client_l1_body_008a2370);
 void bfv_client_l1_body_008a2370(struct bfv_cpu *c)
 {
@@ -1022,7 +1046,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008a23b0  dice::ref2::io::KeyboardDevice  (vtable store) */
+/* 008a23b0  KeyboardDevice::KeyboardDevice  (vtable store)
+ * class: dice::ref2::io::KeyboardDevice
+ * called by: DX8InputDeviceManager::vf4
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a23b0, bfv_client_l1_body_008a23b0);
 void bfv_client_l1_body_008a23b0(struct bfv_cpu *c)
 {
@@ -1037,7 +1064,7 @@ void bfv_client_l1_body_008a23b0(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 008a23b4  mov dword ptr [eax], 0xbdd084 */
+    /* 008a23b4  mov dword ptr [eax], 0xbdd084  ; vtable KeyboardDevice */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbdd084u;
     /* 008a23ba  mov dword ptr [eax + 4], 1 */
@@ -1060,7 +1087,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008a23d0  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a23d0  KeyboardDevice::vf14  (virtual method)
+ * class: dice::ref2::io::KeyboardDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a23d0, bfv_client_l1_body_008a23d0);
 BFV_L1_RESUME(bfv_client_l1r_008a23d0_1, bfv_client_l1_body_008a23d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008a23d0_2, bfv_client_l1_body_008a23d0, 2);
@@ -1084,7 +1113,7 @@ void bfv_client_l1_body_008a23d0(struct bfv_cpu *c)
     case 6: goto R_6;
     default: break;
     }
-    /* 008a23d0  mov eax, dword ptr [0xdf7150] */
+    /* 008a23d0  mov eax, dword ptr [0xdf7150]  ; g_pInputDeviceManager */
     ea = (uint32_t)(0x00df7150u);
     eax = M32(ea);
     /* 008a23d5  sub esp, 0x14 */
@@ -1112,7 +1141,7 @@ void bfv_client_l1_body_008a23d0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008a23e6  call dword ptr [0xb420f8] */
+    /* 008a23e6  call dword ptr [0xb420f8]  ; KERNEL32!GetModuleHandleA */
     ea = (uint32_t)(0x00b420f8u);
     t = M32(ea);
     esp -= 4;
@@ -1142,7 +1171,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008a2400  call 0xa9048a */
+    /* 008a2400  call 0xa9048a  ; io_thunk_DirectInput8Create_00a9048a */
     t = 0x00a9048au;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008a23d0_2;
@@ -1276,7 +1305,7 @@ R_4:
     /* 008a2446  mov edi, dword ptr [edi] */
     ea = (uint32_t)(edi);
     edi = M32(ea);
-    /* 008a2448  lea ecx, [esp + 0xc] */
+    /* 008a2448  lea ecx, [esp + 0xc]  ; &var_14 */
     ecx = (uint32_t)(esp + 0x0000000cu);
     /* 008a244c  push ecx */
     t = ecx;
@@ -1286,19 +1315,19 @@ R_4:
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 008a244f  mov dword ptr [esp + 0x14], 0x14 */
+    /* 008a244f  mov dword ptr [esp + 0x14], 0x14  ; var_14 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x14u;
-    /* 008a2457  mov dword ptr [esp + 0x18], 0x10 */
+    /* 008a2457  mov dword ptr [esp + 0x18], 0x10  ; var_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x10u;
-    /* 008a245f  mov dword ptr [esp + 0x1c], 0 */
+    /* 008a245f  mov dword ptr [esp + 0x1c], 0  ; var_c */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = 0x0u;
-    /* 008a2467  mov dword ptr [esp + 0x20], 0 */
+    /* 008a2467  mov dword ptr [esp + 0x20], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0x0u;
-    /* 008a246f  mov dword ptr [esp + 0x24], 0xa */
+    /* 008a246f  mov dword ptr [esp + 0x24], 0xa  ; var_4 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = 0xau;
     /* 008a2477  mov eax, dword ptr [edi] */
@@ -1325,7 +1354,7 @@ R_5:
     M32(esp) = t;
     /* 008a2481  mov ecx, esi */
     ecx = esi;
-    /* 008a2483  call dword ptr [edx + 0x14] */
+    /* 008a2483  call dword ptr [edx + 0x14]  ; -> KeyboardDevice::vf5 */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -1402,7 +1431,11 @@ out: __attribute__((unused));
 }
 
 
-/* 008a24b0  dice::ref2::io::KeyboardDevice  (virtual method) */
+/* 008a24b0  KeyboardDevice::vf9  (virtual method)
+ * class: dice::ref2::io::KeyboardDevice
+ * also entered at 008a2580: Console::vf0
+ * also entered at 008a25a0: OldConsole::vf32
+ */
 BFV_L1_ENTRY(bfv_client_l1_008a24b0, bfv_client_l1_body_008a24b0);
 BFV_L1_RESUME(bfv_client_l1r_008a24b0_1, bfv_client_l1_body_008a24b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008a24b0_2, bfv_client_l1_body_008a24b0, 2);

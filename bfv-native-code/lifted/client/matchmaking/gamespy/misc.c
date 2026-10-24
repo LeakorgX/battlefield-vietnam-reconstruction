@@ -5,8 +5,10 @@
 #include "l1.h"
 
 
-/* 005a15a0  (called from this folder only)
- * strings: "dedicated", "status", "game_id", "map_id" */
+/* 005a15a0  gamespy_dedicated_005a15a0  (called from this folder only)
+ * strings: "dedicated", "status", "game_id", "map_id"
+ * called by: GameSpyJoin::ctor_dtor, GameSpyHost::GameSpyHost
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a15a0, bfv_client_l1_body_005a15a0);
 BFV_L1_RESUME(bfv_client_l1r_005a15a0_1, bfv_client_l1_body_005a15a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005a15a0_2, bfv_client_l1_body_005a15a0, 2);
@@ -106,275 +108,275 @@ void bfv_client_l1_body_005a15a0(struct bfv_cpu *c)
         edi += (df ? -4u : 4u);
         ecx--;
     }
-    /* 005a15af  mov edx, 0xb6db78 */
+    /* 005a15af  mov edx, 0xb6db78  ; "dedicated" */
     edx = 0xb6db78u;
     /* 005a15b4  mov ecx, 0x32 */
     ecx = 0x32u;
-    /* 005a15b9  call 0x5a9250 */
+    /* 005a15b9  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005a15be  mov edx, 0xb7451c */
+    /* 005a15be  mov edx, 0xb7451c  ; "status" */
     edx = 0xb7451cu;
     /* 005a15c3  mov ecx, 0x33 */
     ecx = 0x33u;
-    /* 005a15c8  call 0x5a9250 */
+    /* 005a15c8  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005a15cd  mov edx, 0xb74514 */
+    /* 005a15cd  mov edx, 0xb74514  ; "game_id" */
     edx = 0xb74514u;
     /* 005a15d2  mov ecx, 0x34 */
     ecx = 0x34u;
-    /* 005a15d7  call 0x5a9250 */
+    /* 005a15d7  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 005a15dc  mov edx, 0xb7450c */
+    /* 005a15dc  mov edx, 0xb7450c  ; "map_id" */
     edx = 0xb7450cu;
     /* 005a15e1  mov ecx, 0x35 */
     ecx = 0x35u;
-    /* 005a15e6  call 0x5a9250 */
+    /* 005a15e6  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 005a15eb  mov edx, 0xb6dc28 */
+    /* 005a15eb  mov edx, 0xb6dc28  ; "sv_punkbuster" */
     edx = 0xb6dc28u;
     /* 005a15f0  mov ecx, 0x36 */
     ecx = 0x36u;
-    /* 005a15f5  call 0x5a9250 */
+    /* 005a15f5  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 005a15fa  mov edx, 0xb744f8 */
+    /* 005a15fa  mov edx, 0xb744f8  ; "number_of_rounds" */
     edx = 0xb744f8u;
     /* 005a15ff  mov ecx, 0x38 */
     ecx = 0x38u;
-    /* 005a1604  call 0x5a9250 */
+    /* 005a1604  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_6;
     c->eip = t;
     goto out;
 R_6:
-    /* 005a1609  mov edx, 0xb744e8 */
+    /* 005a1609  mov edx, 0xb744e8  ; "spawn_wave_time" */
     edx = 0xb744e8u;
     /* 005a160e  mov ecx, 0x39 */
     ecx = 0x39u;
-    /* 005a1613  call 0x5a9250 */
+    /* 005a1613  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_7;
     c->eip = t;
     goto out;
 R_7:
-    /* 005a1618  mov edx, 0xb744dc */
+    /* 005a1618  mov edx, 0xb744dc  ; "spawn_delay" */
     edx = 0xb744dcu;
     /* 005a161d  mov ecx, 0x3a */
     ecx = 0x3au;
-    /* 005a1622  call 0x5a9250 */
+    /* 005a1622  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_8;
     c->eip = t;
     goto out;
 R_8:
-    /* 005a1627  mov edx, 0xb744c4 */
+    /* 005a1627  mov edx, 0xb744c4  ; "soldier_friendly_fire" */
     edx = 0xb744c4u;
     /* 005a162c  mov ecx, 0x3b */
     ecx = 0x3bu;
-    /* 005a1631  call 0x5a9250 */
+    /* 005a1631  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_9;
     c->eip = t;
     goto out;
 R_9:
-    /* 005a1636  mov edx, 0xb744ac */
+    /* 005a1636  mov edx, 0xb744ac  ; "vehicle_friendly_fire" */
     edx = 0xb744acu;
     /* 005a163b  mov ecx, 0x3c */
     ecx = 0x3cu;
-    /* 005a1640  call 0x5a9250 */
+    /* 005a1640  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_10;
     c->eip = t;
     goto out;
 R_10:
-    /* 005a1645  mov edx, 0xb74498 */
+    /* 005a1645  mov edx, 0xb74498  ; "game_start_delay" */
     edx = 0xb74498u;
     /* 005a164a  mov ecx, 0x3d */
     ecx = 0x3du;
-    /* 005a164f  call 0x5a9250 */
+    /* 005a164f  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_11;
     c->eip = t;
     goto out;
 R_11:
-    /* 005a1654  mov edx, 0xb74488 */
+    /* 005a1654  mov edx, 0xb74488  ; "ticket_ratio" */
     edx = 0xb74488u;
     /* 005a1659  mov ecx, 0x3e */
     ecx = 0x3eu;
-    /* 005a165e  call 0x5a9250 */
+    /* 005a165e  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_12;
     c->eip = t;
     goto out;
 R_12:
-    /* 005a1663  mov edx, 0xb74478 */
+    /* 005a1663  mov edx, 0xb74478  ; "allow_nose_cam" */
     edx = 0xb74478u;
     /* 005a1668  mov ecx, 0x3f */
     ecx = 0x3fu;
-    /* 005a166d  call 0x5a9250 */
+    /* 005a166d  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_13;
     c->eip = t;
     goto out;
 R_13:
-    /* 005a1672  mov edx, 0xb74468 */
+    /* 005a1672  mov edx, 0xb74468  ; "external_view" */
     edx = 0xb74468u;
     /* 005a1677  mov ecx, 0x40 */
     ecx = 0x40u;
-    /* 005a167c  call 0x5a9250 */
+    /* 005a167c  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_14;
     c->eip = t;
     goto out;
 R_14:
-    /* 005a1681  mov edx, 0xb74458 */
+    /* 005a1681  mov edx, 0xb74458  ; "us_team_ratio" */
     edx = 0xb74458u;
     /* 005a1686  mov ecx, 0x41 */
     ecx = 0x41u;
-    /* 005a168b  call 0x5a9250 */
+    /* 005a168b  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_15;
     c->eip = t;
     goto out;
 R_15:
-    /* 005a1690  mov edx, 0xb74448 */
+    /* 005a1690  mov edx, 0xb74448  ; "nva_team_ratio" */
     edx = 0xb74448u;
     /* 005a1695  mov ecx, 0x42 */
     ecx = 0x42u;
-    /* 005a169a  call 0x5a9250 */
+    /* 005a169a  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_16;
     c->eip = t;
     goto out;
 R_16:
-    /* 005a169f  mov edx, 0xb74430 */
+    /* 005a169f  mov edx, 0xb74430  ; "bandwidth_choke_limit" */
     edx = 0xb74430u;
     /* 005a16a4  mov ecx, 0x43 */
     ecx = 0x43u;
-    /* 005a16a9  call 0x5a9250 */
+    /* 005a16a9  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_17;
     c->eip = t;
     goto out;
 R_17:
-    /* 005a16ae  mov edx, 0xb55f94 */
+    /* 005a16ae  mov edx, 0xb55f94  ; "free_camera" */
     edx = 0xb55f94u;
     /* 005a16b3  mov ecx, 0x44 */
     ecx = 0x44u;
-    /* 005a16b8  call 0x5a9250 */
+    /* 005a16b8  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_18;
     c->eip = t;
     goto out;
 R_18:
-    /* 005a16bd  mov edx, 0xb7441c */
+    /* 005a16bd  mov edx, 0xb7441c  ; "auto_balance_teams" */
     edx = 0xb7441cu;
     /* 005a16c2  mov ecx, 0x45 */
     ecx = 0x45u;
-    /* 005a16c7  call 0x5a9250 */
+    /* 005a16c7  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_19;
     c->eip = t;
     goto out;
 R_19:
-    /* 005a16cc  mov edx, 0xb74408 */
+    /* 005a16cc  mov edx, 0xb74408  ; "name_tag_distance" */
     edx = 0xb74408u;
     /* 005a16d1  mov ecx, 0x46 */
     ecx = 0x46u;
-    /* 005a16d6  call 0x5a9250 */
+    /* 005a16d6  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_20;
     c->eip = t;
     goto out;
 R_20:
-    /* 005a16db  mov edx, 0xb743f0 */
+    /* 005a16db  mov edx, 0xb743f0  ; "name_tag_distance_scope" */
     edx = 0xb743f0u;
     /* 005a16e0  mov ecx, 0x47 */
     ecx = 0x47u;
-    /* 005a16e5  call 0x5a9250 */
+    /* 005a16e5  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_21;
     c->eip = t;
     goto out;
 R_21:
-    /* 005a16ea  mov edx, 0xb743e4 */
+    /* 005a16ea  mov edx, 0xb743e4  ; "kickback" */
     edx = 0xb743e4u;
     /* 005a16ef  mov ecx, 0x48 */
     ecx = 0x48u;
-    /* 005a16f4  call 0x5a9250 */
+    /* 005a16f4  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_22;
     c->eip = t;
     goto out;
 R_22:
-    /* 005a16f9  mov edx, 0xb743d0 */
+    /* 005a16f9  mov edx, 0xb743d0  ; "kickback_on_splash" */
     edx = 0xb743d0u;
     /* 005a16fe  mov ecx, 0x49 */
     ecx = 0x49u;
-    /* 005a1703  call 0x5a9250 */
+    /* 005a1703  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_23;
     c->eip = t;
     goto out;
 R_23:
-    /* 005a1708  mov edx, 0xb743b0 */
+    /* 005a1708  mov edx, 0xb743b0  ; "soldier_friendly_fire_on_splash" */
     edx = 0xb743b0u;
     /* 005a170d  mov ecx, 0x4a */
     ecx = 0x4au;
-    /* 005a1712  call 0x5a9250 */
+    /* 005a1712  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_24;
     c->eip = t;
     goto out;
 R_24:
-    /* 005a1717  mov edx, 0xb74390 */
+    /* 005a1717  mov edx, 0xb74390  ; "vehicle_friendly_fire_on_splash" */
     edx = 0xb74390u;
     /* 005a171c  mov ecx, 0x4b */
     ecx = 0x4bu;
-    /* 005a1721  call 0x5a9250 */
+    /* 005a1721  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_25;
@@ -385,113 +387,113 @@ R_25:
     edx = 0xb7438cu;
     /* 005a172b  mov ecx, 0x4c */
     ecx = 0x4cu;
-    /* 005a1730  call 0x5a9250 */
+    /* 005a1730  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_26;
     c->eip = t;
     goto out;
 R_26:
-    /* 005a1735  mov edx, 0xb74380 */
+    /* 005a1735  mov edx, 0xb74380  ; "bot_skill" */
     edx = 0xb74380u;
     /* 005a173a  mov ecx, 0x4d */
     ecx = 0x4du;
-    /* 005a173f  call 0x5a9250 */
+    /* 005a173f  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_27;
     c->eip = t;
     goto out;
 R_27:
-    /* 005a1744  mov edx, 0xb74378 */
+    /* 005a1744  mov edx, 0xb74378  ; "kills_" */
     edx = 0xb74378u;
     /* 005a1749  mov ecx, 0x4e */
     ecx = 0x4eu;
-    /* 005a174e  call 0x5a9250 */
+    /* 005a174e  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_28;
     c->eip = t;
     goto out;
 R_28:
-    /* 005a1753  mov edx, 0xb7436c */
+    /* 005a1753  mov edx, 0xb7436c  ; "tickets_t" */
     edx = 0xb7436cu;
     /* 005a1758  mov ecx, 0x4f */
     ecx = 0x4fu;
-    /* 005a175d  call 0x5a9250 */
+    /* 005a175d  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_29;
     c->eip = t;
     goto out;
 R_29:
-    /* 005a1762  mov edx, 0xb7435c */
+    /* 005a1762  mov edx, 0xb7435c  ; "reservedslots" */
     edx = 0xb7435cu;
     /* 005a1767  mov ecx, 0x50 */
     ecx = 0x50u;
-    /* 005a176c  call 0x5a9250 */
+    /* 005a176c  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_30;
     c->eip = t;
     goto out;
 R_30:
-    /* 005a1771  mov edx, 0xb6dc14 */
+    /* 005a1771  mov edx, 0xb6dc14  ; "spectatorsallowed" */
     edx = 0xb6dc14u;
     /* 005a1776  mov ecx, 0x54 */
     ecx = 0x54u;
-    /* 005a177b  call 0x5a9250 */
+    /* 005a177b  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_31;
     c->eip = t;
     goto out;
 R_31:
-    /* 005a1780  mov edx, 0xb6dc04 */
+    /* 005a1780  mov edx, 0xb6dc04  ; "spectatorvoting" */
     edx = 0xb6dc04u;
     /* 005a1785  mov ecx, 0x55 */
     ecx = 0x55u;
-    /* 005a178a  call 0x5a9250 */
+    /* 005a178a  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_32;
     c->eip = t;
     goto out;
 R_32:
-    /* 005a178f  mov edx, 0xb74348 */
+    /* 005a178f  mov edx, 0xb74348  ; "spectatorswitchtime" */
     edx = 0xb74348u;
     /* 005a1794  mov ecx, 0x56 */
     ecx = 0x56u;
-    /* 005a1799  call 0x5a9250 */
+    /* 005a1799  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_33;
     c->eip = t;
     goto out;
 R_33:
-    /* 005a179e  mov edx, 0xb7433c */
+    /* 005a179e  mov edx, 0xb7433c  ; "active_mods" */
     edx = 0xb7433cu;
     /* 005a17a3  mov ecx, 0x51 */
     ecx = 0x51u;
-    /* 005a17a8  call 0x5a9250 */
+    /* 005a17a8  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_34;
     c->eip = t;
     goto out;
 R_34:
-    /* 005a17ad  mov edx, 0xb7432c */
+    /* 005a17ad  mov edx, 0xb7432c  ; "all_active_mods" */
     edx = 0xb7432cu;
     /* 005a17b2  mov ecx, 0x52 */
     ecx = 0x52u;
-    /* 005a17b7  call 0x5a9250 */
+    /* 005a17b7  call 0x5a9250  ; qr2_register_key */
     t = 0x005a9250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a15a0_35;
     c->eip = t;
     goto out;
 R_35:
-    /* 005a17bc  mov edx, 0xb7431c */
+    /* 005a17bc  mov edx, 0xb7431c  ; "game_id_name" */
     edx = 0xb7431cu;
     /* 005a17c1  mov ecx, 0x53 */
     ecx = 0x53u;
@@ -499,7 +501,7 @@ R_35:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 005a17c7  jmp 0x5a9250 */
+    /* 005a17c7  jmp 0x5a9250  ; qr2_register_key */
     c->eip = 0x005a9250u;
     goto out;
 out: __attribute__((unused));
@@ -509,8 +511,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005a7df0  (called from this folder only)
- * strings: "players", "numplayers", "(NONE)", "info" */
+/* 005a7df0  gamespy_players_005a7df0  (called from this folder only)
+ * strings: "players", "numplayers", "(NONE)", "info"
+ * called by: GameSpyJoin::vf9, GameSpyLanJoin::vf9
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a7df0, bfv_client_l1_body_005a7df0);
 BFV_L1_RESUME(bfv_client_l1r_005a7df0_1, bfv_client_l1_body_005a7df0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005a7df0_2, bfv_client_l1_body_005a7df0, 2);
@@ -540,10 +544,10 @@ void bfv_client_l1_body_005a7df0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 005a7df3  mov dword ptr [esp], edx */
+    /* 005a7df3  mov dword ptr [esp], edx  ; var_8 */
     ea = (uint32_t)(esp);
     M32(ea) = edx;
-    /* 005a7df6  call 0x5d2e80 */
+    /* 005a7df6  call 0x5d2e80  ; bfv_client_return_word_005d2e80 */
     t = 0x005d2e80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7df0_1;
@@ -579,7 +583,7 @@ R_1:
     /* 005a7e0b  jmp 0x5a7e11 */
     goto L_005a7e11;
 L_005a7e0d:
-    /* 005a7e0d  mov ecx, dword ptr [esp + 0x14] */
+    /* 005a7e0d  mov ecx, dword ptr [esp + 0x14]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
 L_005a7e11:
@@ -603,10 +607,10 @@ L_005a7e11:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 005a7e22  mov dword ptr [esp + 0x14], ecx */
+    /* 005a7e22  mov dword ptr [esp + 0x14], ecx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = ecx;
-    /* 005a7e26  mov edi, 0xb75880 */
+    /* 005a7e26  mov edi, 0xb75880  ; "players" */
     edi = 0xb75880u;
     /* 005a7e2b  mov esi, eax */
     esi = eax;
@@ -629,18 +633,18 @@ L_005a7e11:
     }
     /* 005a7e36  jne 0x5a7e84 */
     if (!zf) goto L_005a7e84;
-    /* 005a7e38  mov ebp, dword ptr [esp + 0x1c] */
+    /* 005a7e38  mov ebp, dword ptr [esp + 0x1c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ebp = M32(ea);
     /* 005a7e3c  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7e3d  mov edx, 0xb5dfdc */
+    /* 005a7e3d  mov edx, 0xb5dfdc  ; "numplayers" */
     edx = 0xb5dfdcu;
     /* 005a7e42  mov ecx, ebp */
     ecx = ebp;
-    /* 005a7e44  call 0x5d2e10 */
+    /* 005a7e44  call 0x5d2e10  ; gamespy_ping_005d2e10 */
     t = 0x005d2e10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7df0_2;
@@ -671,7 +675,7 @@ L_005a7e55:
     /* 005a7e5b  jmp 0x5a7e60 */
     goto L_005a7e60;
 L_005a7e60:
-    /* 005a7e60  push 0xb46934 */
+    /* 005a7e60  push 0xb46934  ; "(NONE)" */
     t = 0xb46934u;
     esp -= 4;
     M32(esp) = t;
@@ -683,14 +687,14 @@ L_005a7e60:
     edx = esi;
     /* 005a7e68  mov ecx, ebp */
     ecx = ebp;
-    /* 005a7e6a  call 0x5d2810 */
+    /* 005a7e6a  call 0x5d2810  ; SBServerGetPlayerStringValue */
     t = 0x005d2810u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7df0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 005a7e6f  mov ecx, dword ptr [esp + 0x10] */
+    /* 005a7e6f  mov ecx, dword ptr [esp + 0x10]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 005a7e73  push eax */
@@ -709,7 +713,7 @@ R_3:
     t = 0x2u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7e78  call 0x5a9ba0 */
+    /* 005a7e78  call 0x5a9ba0  ; sub_005a9ba0 */
     t = 0x005a9ba0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7df0_4;
@@ -763,7 +767,7 @@ L_005a7e84:
 L_005a7ea2:
     /* 005a7ea2  mov esi, eax */
     esi = eax;
-    /* 005a7ea4  mov edi, 0xb42c8c */
+    /* 005a7ea4  mov edi, 0xb42c8c  ; "info" */
     edi = 0xb42c8cu;
     /* 005a7ea9  mov ecx, 5 */
     ecx = 0x5u;
@@ -787,23 +791,23 @@ L_005a7ea2:
     /* 005a7eb4  mov ebp, 1 */
     ebp = 0x1u;
 L_005a7eb9:
-    /* 005a7eb9  mov ecx, dword ptr [esp + 0x1c] */
+    /* 005a7eb9  mov ecx, dword ptr [esp + 0x1c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
-    /* 005a7ebd  push 0xb46934 */
+    /* 005a7ebd  push 0xb46934  ; "(NONE)" */
     t = 0xb46934u;
     esp -= 4;
     M32(esp) = t;
     /* 005a7ec2  mov edx, ebx */
     edx = ebx;
-    /* 005a7ec4  call 0x5d27a0 */
+    /* 005a7ec4  call 0x5d27a0  ; SBServerGetStringValue */
     t = 0x005d27a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7df0_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 005a7ec9  mov ecx, dword ptr [esp + 0x10] */
+    /* 005a7ec9  mov ecx, dword ptr [esp + 0x10]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 005a7ecd  push eax */
@@ -818,7 +822,7 @@ R_5:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7ed0  call 0x5a9c60 */
+    /* 005a7ed0  call 0x5a9c60  ; KeyValueTables::set */
     t = 0x005a9c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7df0_6;
@@ -826,7 +830,7 @@ R_5:
     goto out;
 R_6:
 L_005a7ed5:
-    /* 005a7ed5  mov ecx, dword ptr [esp + 0x14] */
+    /* 005a7ed5  mov ecx, dword ptr [esp + 0x14]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 005a7ed9  mov eax, dword ptr [ecx] */
@@ -872,7 +876,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005a7ef0  (called from this folder only) */
+/* 005a7ef0  gamespy_005a7ef0  (called from this folder only)
+ * called by: GameSpyJoin::vf12, GameSpyLanJoin::vf10
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a7ef0, bfv_client_l1_body_005a7ef0);
 BFV_L1_RESUME(bfv_client_l1r_005a7ef0_1, bfv_client_l1_body_005a7ef0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005a7ef0_2, bfv_client_l1_body_005a7ef0, 2);
@@ -938,7 +944,7 @@ void bfv_client_l1_body_005a7ef0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005a7f00  je 0x5a7ffb */
     if (zf) goto L_005a7ffb;
-    /* 005a7f06  mov eax, dword ptr [esp + 0x70] */
+    /* 005a7f06  mov eax, dword ptr [esp + 0x70]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000070u);
     eax = M32(ea);
     /* 005a7f0a  push -1 */
@@ -955,18 +961,18 @@ void bfv_client_l1_body_005a7ef0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7f13  lea ecx, [esp + 0x1c] */
+    /* 005a7f13  lea ecx, [esp + 0x1c]  ; &var_5c */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 005a7f17  mov dword ptr [esp + 0x34], edi */
+    /* 005a7f17  mov dword ptr [esp + 0x34], edi  ; var_44 */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = edi;
-    /* 005a7f1b  mov dword ptr [esp + 0x30], ebx */
+    /* 005a7f1b  mov dword ptr [esp + 0x30], ebx  ; var_48 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = ebx;
-    /* 005a7f1f  mov byte ptr [esp + 0x20], bl */
+    /* 005a7f1f  mov byte ptr [esp + 0x20], bl  ; var_58 */
     ea = (uint32_t)(esp + 0x00000020u);
     M8(ea) = LO8(ebx);
-    /* 005a7f23  call 0x4019f0 */
+    /* 005a7f23  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7ef0_1;
@@ -981,52 +987,52 @@ R_1:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7f2b  lea ecx, [esp + 0x18] */
+    /* 005a7f2b  lea ecx, [esp + 0x18]  ; &var_5c */
     ecx = (uint32_t)(esp + 0x00000018u);
     /* 005a7f2f  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7f30  lea ecx, [esp + 0x38] */
+    /* 005a7f30  lea ecx, [esp + 0x38]  ; &var_40 */
     ecx = (uint32_t)(esp + 0x00000038u);
-    /* 005a7f34  mov dword ptr [esp + 0x50], edi */
+    /* 005a7f34  mov dword ptr [esp + 0x50], edi  ; var_28 */
     ea = (uint32_t)(esp + 0x00000050u);
     M32(ea) = edi;
-    /* 005a7f38  mov dword ptr [esp + 0x4c], ebx */
+    /* 005a7f38  mov dword ptr [esp + 0x4c], ebx  ; var_2c */
     ea = (uint32_t)(esp + 0x0000004cu);
     M32(ea) = ebx;
-    /* 005a7f3c  mov byte ptr [esp + 0x3c], bl */
+    /* 005a7f3c  mov byte ptr [esp + 0x3c], bl  ; var_3c */
     ea = (uint32_t)(esp + 0x0000003cu);
     M8(ea) = LO8(ebx);
-    /* 005a7f40  call 0x4019f0 */
+    /* 005a7f40  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7ef0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005a7f45  cmp dword ptr [esp + 0x28], 0x10 */
+    /* 005a7f45  cmp dword ptr [esp + 0x28], 0x10  ; var_44 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 005a7f4a  mov edx, dword ptr [esp + 0x74] */
+    /* 005a7f4a  mov edx, dword ptr [esp + 0x74]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000074u);
     edx = M32(ea);
-    /* 005a7f4e  mov dword ptr [esp + 0x48], edx */
+    /* 005a7f4e  mov dword ptr [esp + 0x48], edx  ; var_24 */
     ea = (uint32_t)(esp + 0x00000048u);
     M32(ea) = edx;
     /* 005a7f52  jb 0x5a7f61 */
     if (cf) goto L_005a7f61;
-    /* 005a7f54  mov eax, dword ptr [esp + 0x14] */
+    /* 005a7f54  mov eax, dword ptr [esp + 0x14]  ; var_58 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 005a7f58  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7f59  call 0x403680 */
+    /* 005a7f59  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7ef0_3;
@@ -1048,49 +1054,49 @@ L_005a7f61:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7f64  lea ecx, [esp + 0x34] */
+    /* 005a7f64  lea ecx, [esp + 0x34]  ; &var_40 */
     ecx = (uint32_t)(esp + 0x00000034u);
     /* 005a7f68  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7f69  lea ecx, [esp + 0x58] */
+    /* 005a7f69  lea ecx, [esp + 0x58]  ; &var_20 */
     ecx = (uint32_t)(esp + 0x00000058u);
-    /* 005a7f6d  mov dword ptr [esp + 0x34], edi */
+    /* 005a7f6d  mov dword ptr [esp + 0x34], edi  ; var_44 */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = edi;
-    /* 005a7f71  mov dword ptr [esp + 0x30], ebx */
+    /* 005a7f71  mov dword ptr [esp + 0x30], ebx  ; var_48 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = ebx;
-    /* 005a7f75  mov byte ptr [esp + 0x20], bl */
+    /* 005a7f75  mov byte ptr [esp + 0x20], bl  ; var_58 */
     ea = (uint32_t)(esp + 0x00000020u);
     M8(ea) = LO8(ebx);
-    /* 005a7f79  mov dword ptr [esp + 0x70], edi */
+    /* 005a7f79  mov dword ptr [esp + 0x70], edi  ; var_8 */
     ea = (uint32_t)(esp + 0x00000070u);
     M32(ea) = edi;
-    /* 005a7f7d  mov dword ptr [esp + 0x6c], ebx */
+    /* 005a7f7d  mov dword ptr [esp + 0x6c], ebx  ; var_c */
     ea = (uint32_t)(esp + 0x0000006cu);
     M32(ea) = ebx;
-    /* 005a7f81  mov byte ptr [esp + 0x5c], bl */
+    /* 005a7f81  mov byte ptr [esp + 0x5c], bl  ; var_1c */
     ea = (uint32_t)(esp + 0x0000005cu);
     M8(ea) = LO8(ebx);
-    /* 005a7f85  call 0x4019f0 */
+    /* 005a7f85  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7ef0_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 005a7f8a  mov edx, dword ptr [esp + 0x48] */
+    /* 005a7f8a  mov edx, dword ptr [esp + 0x48]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000048u);
     edx = M32(ea);
-    /* 005a7f8e  lea eax, [esp + 0x4c] */
+    /* 005a7f8e  lea eax, [esp + 0x4c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000004cu);
     /* 005a7f92  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7f93  lea ecx, [esp + 0x74] */
+    /* 005a7f93  lea ecx, [esp + 0x74]  ; &arg_0 */
     ecx = (uint32_t)(esp + 0x00000074u);
     /* 005a7f97  push ecx */
     t = ecx;
@@ -1098,10 +1104,10 @@ R_4:
     M32(esp) = t;
     /* 005a7f98  lea ecx, [esi + 0x4c] */
     ecx = (uint32_t)(esi + 0x0000004cu);
-    /* 005a7f9b  mov dword ptr [esp + 0x70], edx */
+    /* 005a7f9b  mov dword ptr [esp + 0x70], edx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000070u);
     M32(ea) = edx;
-    /* 005a7f9f  call 0x5a7d90 */
+    /* 005a7f9f  call 0x5a7d90  ; sub_005a7d90 */
     t = 0x005a7d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7ef0_5;
@@ -1111,7 +1117,7 @@ R_5:
     /* 005a7fa4  mov ebp, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ebp = M32(ea);
-    /* 005a7fa6  cmp dword ptr [esp + 0x64], 0x10 */
+    /* 005a7fa6  cmp dword ptr [esp + 0x64], 0x10  ; var_8 */
     ea = (uint32_t)(esp + 0x00000064u);
     a = M32(ea);
     b = 0x10u;
@@ -1119,14 +1125,14 @@ R_5:
     F_SUB(32, a, b, r);
     /* 005a7fab  jb 0x5a7fba */
     if (cf) goto L_005a7fba;
-    /* 005a7fad  mov edx, dword ptr [esp + 0x50] */
+    /* 005a7fad  mov edx, dword ptr [esp + 0x50]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000050u);
     edx = M32(ea);
     /* 005a7fb1  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7fb2  call 0x403680 */
+    /* 005a7fb2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7ef0_6;
@@ -1140,31 +1146,31 @@ R_6:
     F_ADD(32, a, b, r);
     esp = r;
 L_005a7fba:
-    /* 005a7fba  cmp dword ptr [esp + 0x44], 0x10 */
+    /* 005a7fba  cmp dword ptr [esp + 0x44], 0x10  ; var_28 */
     ea = (uint32_t)(esp + 0x00000044u);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 005a7fbf  mov dword ptr [esp + 0x64], edi */
+    /* 005a7fbf  mov dword ptr [esp + 0x64], edi  ; var_8 */
     ea = (uint32_t)(esp + 0x00000064u);
     M32(ea) = edi;
-    /* 005a7fc3  mov dword ptr [esp + 0x60], ebx */
+    /* 005a7fc3  mov dword ptr [esp + 0x60], ebx  ; var_c */
     ea = (uint32_t)(esp + 0x00000060u);
     M32(ea) = ebx;
-    /* 005a7fc7  mov byte ptr [esp + 0x50], bl */
+    /* 005a7fc7  mov byte ptr [esp + 0x50], bl  ; var_1c */
     ea = (uint32_t)(esp + 0x00000050u);
     M8(ea) = LO8(ebx);
     /* 005a7fcb  jb 0x5a7fda */
     if (cf) goto L_005a7fda;
-    /* 005a7fcd  mov eax, dword ptr [esp + 0x30] */
+    /* 005a7fcd  mov eax, dword ptr [esp + 0x30]  ; var_3c */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
     /* 005a7fd1  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a7fd2  call 0x403680 */
+    /* 005a7fd2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a7ef0_7;
@@ -1184,13 +1190,13 @@ L_005a7fda:
     b = M32(ea);
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 005a7fdd  mov dword ptr [esp + 0x44], edi */
+    /* 005a7fdd  mov dword ptr [esp + 0x44], edi  ; var_28 */
     ea = (uint32_t)(esp + 0x00000044u);
     M32(ea) = edi;
-    /* 005a7fe1  mov dword ptr [esp + 0x40], ebx */
+    /* 005a7fe1  mov dword ptr [esp + 0x40], ebx  ; var_2c */
     ea = (uint32_t)(esp + 0x00000040u);
     M32(ea) = ebx;
-    /* 005a7fe5  mov byte ptr [esp + 0x30], bl */
+    /* 005a7fe5  mov byte ptr [esp + 0x30], bl  ; var_3c */
     ea = (uint32_t)(esp + 0x00000030u);
     M8(ea) = LO8(ebx);
     /* 005a7fe9  je 0x5a7ffb */
@@ -1198,7 +1204,7 @@ L_005a7fda:
     /* 005a7feb  mov ecx, dword ptr [esi + 0x5c] */
     ea = (uint32_t)(esi + 0x0000005cu);
     ecx = M32(ea);
-    /* 005a7fee  mov edx, dword ptr [esp + 0x78] */
+    /* 005a7fee  mov edx, dword ptr [esp + 0x78]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000078u);
     edx = M32(ea);
     /* 005a7ff2  push ecx */
@@ -1254,7 +1260,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005a9250  (called from this file only) */
+/* 005a9250  qr2_register_key  (called from this file only)
+ * identified: (keyId, const char *name): GameSpy query/report 2; stores name for custom keys 50..254
+ * called by: gamespy_dedicated_005a15a0
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a9250, bfv_client_l1_body_005a9250);
 void bfv_client_l1_body_005a9250(struct bfv_cpu *c)
 {
@@ -1292,85 +1301,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005d2690  (called from this file only) */
-BFV_L1_ENTRY(bfv_client_l1_005d2690, bfv_client_l1_body_005d2690);
-BFV_L1_RESUME(bfv_client_l1r_005d2690_1, bfv_client_l1_body_005d2690, 1);
-BFV_L1_RESUME(bfv_client_l1r_005d2690_2, bfv_client_l1_body_005d2690, 2);
-void bfv_client_l1_body_005d2690(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    default: break;
-    }
-    /* 005d2690  mov ecx, dword ptr fs:[0x2c] */
-    ea = (uint32_t)(0x0000002cu);
-    ecx = bfv_fs_read32(ea);
-    /* 005d2697  mov eax, dword ptr [0xdf0708] */
-    ea = (uint32_t)(0x00df0708u);
-    eax = M32(ea);
-    /* 005d269c  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005d269d  mov esi, dword ptr [ecx + eax*4] */
-    ea = (uint32_t)(ecx + eax * 4u);
-    esi = M32(ea);
-    /* 005d26a0  mov ecx, dword ptr [esi + 4] */
-    ea = (uint32_t)(esi + 0x00000004u);
-    ecx = M32(ea);
-    /* 005d26a6  test ecx, ecx */
-    r = (ecx & ecx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005d26a8  je 0x5d26c8 */
-    if (zf) goto L_005d26c8;
-    /* 005d26aa  call 0x5d78c0 */
-    t = 0x005d78c0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2690_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005d26af  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005d26b1  jne 0x5d26c8 */
-    if (!zf) goto L_005d26c8;
-    /* 005d26b3  mov ecx, dword ptr [esi + 4] */
-    ea = (uint32_t)(esi + 0x00000004u);
-    ecx = M32(ea);
-    /* 005d26b9  call 0x5d7880 */
-    t = 0x005d7880u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2690_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005d26be  mov dword ptr [esi + 4], 0 */
-    ea = (uint32_t)(esi + 0x00000004u);
-    M32(ea) = 0x0u;
-L_005d26c8:
-    /* 005d26c8  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005d26c9  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005d27a0  (called from this folder only) */
+/* 005d27a0  SBServerGetStringValue  (called from this folder only)
+ * identified: (server, key, default): TableLookup in +0x18, else the default
+ * called by: gamespy_players_005a7df0
+ */
 BFV_L1_ENTRY(bfv_client_l1_005d27a0, bfv_client_l1_body_005d27a0);
 BFV_L1_RESUME(bfv_client_l1r_005d27a0_1, bfv_client_l1_body_005d27a0, 1);
 void bfv_client_l1_body_005d27a0(struct bfv_cpu *c)
@@ -1393,12 +1327,12 @@ void bfv_client_l1_body_005d27a0(struct bfv_cpu *c)
     /* 005d27a3  mov ecx, dword ptr [ecx + 0x18] */
     ea = (uint32_t)(ecx + 0x00000018u);
     ecx = M32(ea);
-    /* 005d27a6  mov dword ptr [esp], edx */
+    /* 005d27a6  mov dword ptr [esp], edx  ; var_8 */
     ea = (uint32_t)(esp);
     M32(ea) = edx;
-    /* 005d27a9  lea edx, [esp] */
+    /* 005d27a9  lea edx, [esp]  ; &var_8 */
     edx = (uint32_t)(esp);
-    /* 005d27ac  call 0x5d79a0 */
+    /* 005d27ac  call 0x5d79a0  ; TableLookup */
     t = 0x005d79a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d27a0_1;
@@ -1410,7 +1344,7 @@ R_1:
     F_LOGIC(32, r);
     /* 005d27b3  jne 0x5d27bf */
     if (!zf) goto L_005d27bf;
-    /* 005d27b5  mov eax, dword ptr [esp + 0xc] */
+    /* 005d27b5  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 005d27b9  add esp, 8 */
@@ -1444,7 +1378,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005d2810  (called from this file only) */
+/* 005d2810  SBServerGetPlayerStringValue  (called from this file only)
+ * identified: (server, player, key, default): sprintf "%s%d" key, TableLookup
+ * called by: gamespy_players_005a7df0
+ */
 BFV_L1_ENTRY(bfv_client_l1_005d2810, bfv_client_l1_body_005d2810);
 BFV_L1_RESUME(bfv_client_l1r_005d2810_1, bfv_client_l1_body_005d2810, 1);
 BFV_L1_RESUME(bfv_client_l1r_005d2810_2, bfv_client_l1_body_005d2810, 2);
@@ -1470,7 +1407,7 @@ void bfv_client_l1_body_005d2810(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 005d2816  mov eax, dword ptr [0xcff7cc] */
+    /* 005d2816  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 005d281b  push esi */
@@ -1481,10 +1418,10 @@ void bfv_client_l1_body_005d2810(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005d281d  mov dword ptr [esp + 0x90], eax */
+    /* 005d281d  mov dword ptr [esp + 0x90], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000090u);
     M32(ea) = eax;
-    /* 005d2824  mov eax, dword ptr [esp + 0x98] */
+    /* 005d2824  mov eax, dword ptr [esp + 0x98]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000098u);
     eax = M32(ea);
     /* 005d282b  push eax */
@@ -1493,7 +1430,7 @@ void bfv_client_l1_body_005d2810(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005d282c  mov esi, ecx */
     esi = ecx;
-    /* 005d282e  lea ecx, [esp + 0x14] */
+    /* 005d282e  lea ecx, [esp + 0x14]  ; &var_84 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005d2832  push 0xb54fcc */
     t = 0xb54fccu;
@@ -1503,7 +1440,7 @@ void bfv_client_l1_body_005d2810(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005d2838  call 0x7c21e4 */
+    /* 005d2838  call 0x7c21e4  ; sprintf */
     t = 0x007c21e4u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2810_1;
@@ -1513,9 +1450,9 @@ R_1:
     /* 005d283d  mov ecx, dword ptr [esi + 0x18] */
     ea = (uint32_t)(esi + 0x00000018u);
     ecx = M32(ea);
-    /* 005d2840  lea edx, [esp + 0x1c] */
+    /* 005d2840  lea edx, [esp + 0x1c]  ; &var_84 */
     edx = (uint32_t)(esp + 0x0000001cu);
-    /* 005d2844  mov dword ptr [esp + 0x14], edx */
+    /* 005d2844  mov dword ptr [esp + 0x14], edx  ; var_8c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
     /* 005d2848  add esp, 0x10 */
@@ -1524,9 +1461,9 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 005d284b  lea edx, [esp + 4] */
+    /* 005d284b  lea edx, [esp + 4]  ; &var_8c */
     edx = (uint32_t)(esp + 0x00000004u);
-    /* 005d284f  call 0x5d79a0 */
+    /* 005d284f  call 0x5d79a0  ; TableLookup */
     t = 0x005d79a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2810_2;
@@ -1542,13 +1479,13 @@ R_2:
     esi = t;
     /* 005d2857  jne 0x5d2875 */
     if (!zf) goto L_005d2875;
-    /* 005d2859  mov eax, dword ptr [esp + 0x94] */
+    /* 005d2859  mov eax, dword ptr [esp + 0x94]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000094u);
     eax = M32(ea);
-    /* 005d2860  mov ecx, dword ptr [esp + 0x88] */
+    /* 005d2860  mov ecx, dword ptr [esp + 0x88]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000088u);
     ecx = M32(ea);
-    /* 005d2867  call 0x7c2019 */
+    /* 005d2867  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2810_3;
@@ -1566,13 +1503,13 @@ R_3:
     esp += 12;
     goto out;
 L_005d2875:
-    /* 005d2875  mov ecx, dword ptr [esp + 0x88] */
+    /* 005d2875  mov ecx, dword ptr [esp + 0x88]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000088u);
     ecx = M32(ea);
     /* 005d287c  mov eax, dword ptr [eax + 4] */
     ea = (uint32_t)(eax + 0x00000004u);
     eax = M32(ea);
-    /* 005d287f  call 0x7c2019 */
+    /* 005d287f  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2810_4;
@@ -1596,7 +1533,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005d2890  (called from this folder only) */
+/* 005d2890  SBServerGetPublicAddress  (called from this folder only)
+ * identified: inet_ntoa(server->publicip)
+ * called by: GameSpyJoin::vf4, GameSpyJoin::vf12, GameSpyLanJoin::vf10
+ */
 BFV_L1_ENTRY(bfv_client_l1_005d2890, bfv_client_l1_body_005d2890);
 BFV_L1_RESUME(bfv_client_l1r_005d2890_1, bfv_client_l1_body_005d2890, 1);
 void bfv_client_l1_body_005d2890(struct bfv_cpu *c)
@@ -1617,7 +1557,7 @@ void bfv_client_l1_body_005d2890(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005d2893  call 0x7db2fe */
+    /* 005d2893  call 0x7db2fe  ; lib_thunk_inet_ntoa_007db2fe */
     t = 0x007db2feu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2890_1;
@@ -1635,7 +1575,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005d28b0  (called from this folder only) */
+/* 005d28b0  SBServerGetPublicQueryPort  (called from this folder only)
+ * identified: ntohs(server->publicport)
+ * called by: GameSpyJoin::vf4, GameSpyJoin::vf12, GameSpyLanJoin::vf10
+ */
 BFV_L1_ENTRY(bfv_client_l1_005d28b0, bfv_client_l1_body_005d28b0);
 BFV_L1_RESUME(bfv_client_l1r_005d28b0_1, bfv_client_l1_body_005d28b0, 1);
 void bfv_client_l1_body_005d28b0(struct bfv_cpu *c)
@@ -1660,7 +1603,7 @@ void bfv_client_l1_body_005d28b0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005d28b7  call 0x7db304 */
+    /* 005d28b7  call 0x7db304  ; lib_thunk_ntohs_007db304 */
     t = 0x007db304u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d28b0_1;
@@ -1678,8 +1621,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005d2e10  (called from this file only)
- * strings: "ping", "ping_" */
+/* 005d2e10  gamespy_ping_005d2e10  (called from this file only)
+ * strings: "ping", "ping_"
+ * called by: gamespy_players_005a7df0
+ */
 BFV_L1_ENTRY(bfv_client_l1_005d2e10, bfv_client_l1_body_005d2e10);
 BFV_L1_RESUME(bfv_client_l1r_005d2e10_1, bfv_client_l1_body_005d2e10, 1);
 BFV_L1_RESUME(bfv_client_l1r_005d2e10_2, bfv_client_l1_body_005d2e10, 2);
@@ -1715,7 +1660,7 @@ void bfv_client_l1_body_005d2e10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005d2e16  mov ebx, ecx */
     ebx = ecx;
-    /* 005d2e18  mov edi, 0xb71204 */
+    /* 005d2e18  mov edi, 0xb71204  ; "ping" */
     edi = 0xb71204u;
     /* 005d2e1d  mov esi, edx */
     esi = edx;
@@ -1738,7 +1683,7 @@ void bfv_client_l1_body_005d2e10(struct bfv_cpu *c)
     }
     /* 005d2e28  je 0x5d2e3c */
     if (zf) goto L_005d2e3c;
-    /* 005d2e2a  mov edi, 0xb5dfe8 */
+    /* 005d2e2a  mov edi, 0xb5dfe8  ; "ping_" */
     edi = 0xb5dfe8u;
     /* 005d2e2f  mov esi, edx */
     esi = edx;
@@ -1774,12 +1719,12 @@ L_005d2e43:
     /* 005d2e43  mov ecx, dword ptr [ebx + 0x18] */
     ea = (uint32_t)(ebx + 0x00000018u);
     ecx = M32(ea);
-    /* 005d2e46  mov dword ptr [esp + 0xc], edx */
+    /* 005d2e46  mov dword ptr [esp + 0xc], edx  ; var_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = edx;
-    /* 005d2e4a  lea edx, [esp + 0xc] */
+    /* 005d2e4a  lea edx, [esp + 0xc]  ; &var_8 */
     edx = (uint32_t)(esp + 0x0000000cu);
-    /* 005d2e4e  call 0x5d79a0 */
+    /* 005d2e4e  call 0x5d79a0  ; TableLookup */
     t = 0x005d79a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2e10_1;
@@ -1800,7 +1745,7 @@ R_1:
     /* 005d2e5c  jne 0x5d2e6b */
     if (!zf) goto L_005d2e6b;
 L_005d2e5e:
-    /* 005d2e5e  mov eax, dword ptr [esp + 0x18] */
+    /* 005d2e5e  mov eax, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 005d2e62  pop edi */
@@ -1830,7 +1775,7 @@ L_005d2e6b:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005d2e6c  call 0x7c3dd8 */
+    /* 005d2e6c  call 0x7c3dd8  ; atoi */
     t = 0x007c3dd8u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2e10_2;
@@ -1873,7 +1818,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005d2f00  (called from this folder only) */
+/* 005d2f00  gamespy_005d2f00  (called from this folder only)
+ * called by: GameSpyJoin::vf10, GameSpyLanJoin::vf10
+ */
 BFV_L1_ENTRY(bfv_client_l1_005d2f00, bfv_client_l1_body_005d2f00);
 BFV_L1_RESUME(bfv_client_l1r_005d2f00_1, bfv_client_l1_body_005d2f00, 1);
 void bfv_client_l1_body_005d2f00(struct bfv_cpu *c)
@@ -1887,7 +1834,7 @@ void bfv_client_l1_body_005d2f00(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005d2f00  mov eax, dword ptr [esp + 4] */
+    /* 005d2f00  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005d2f04  push esi */
@@ -1900,7 +1847,7 @@ void bfv_client_l1_body_005d2f00(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005d2f08  lea ecx, [esp + 0xc] */
+    /* 005d2f08  lea ecx, [esp + 0xc]  ; &arg_0 */
     ecx = (uint32_t)(esp + 0x0000000cu);
     /* 005d2f0c  push ecx */
     t = ecx;
@@ -1908,7 +1855,7 @@ void bfv_client_l1_body_005d2f00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005d2f0d  mov ecx, esi */
     ecx = esi;
-    /* 005d2f0f  call 0x5d2e90 */
+    /* 005d2f0f  call 0x5d2e90  ; std::map_string::find_005d2e90 */
     t = 0x005d2e90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2f00_1;
@@ -1918,7 +1865,7 @@ R_1:
     /* 005d2f14  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005d2f17  mov eax, dword ptr [esp + 8] */
+    /* 005d2f17  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 005d2f1b  cmp eax, ecx */
@@ -1943,7 +1890,7 @@ R_1:
     esp += 8;
     goto out;
 L_005d2f26:
-    /* 005d2f26  mov eax, 0xccb130 */
+    /* 005d2f26  mov eax, 0xccb130  ; g_str_invalid_key */
     eax = 0xccb130u;
     /* 005d2f2b  ret 4 */
     c->eip = M32(esp);
@@ -1956,10 +1903,16 @@ out: __attribute__((unused));
 }
 
 
-/* 005d78c0  (called from this file only) */
-BFV_L1_ENTRY(bfv_client_l1_005d78c0, bfv_client_l1_body_005d78c0);
-BFV_L1_RESUME(bfv_client_l1r_005d78c0_1, bfv_client_l1_body_005d78c0, 1);
-void bfv_client_l1_body_005d78c0(struct bfv_cpu *c)
+/* 005d2f30  gamespy_005d2f30  (called from this file only)
+ * called by: gamespy_005d3020
+ */
+BFV_L1_ENTRY(bfv_client_l1_005d2f30, bfv_client_l1_body_005d2f30);
+BFV_L1_RESUME(bfv_client_l1r_005d2f30_1, bfv_client_l1_body_005d2f30, 1);
+BFV_L1_RESUME(bfv_client_l1r_005d2f30_2, bfv_client_l1_body_005d2f30, 2);
+BFV_L1_RESUME(bfv_client_l1r_005d2f30_3, bfv_client_l1_body_005d2f30, 3);
+BFV_L1_RESUME(bfv_client_l1r_005d2f30_4, bfv_client_l1_body_005d2f30, 4);
+BFV_L1_RESUME(bfv_client_l1r_005d2f30_5, bfv_client_l1_body_005d2f30, 5);
+void bfv_client_l1_body_005d2f30(struct bfv_cpu *c)
 {
     uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
@@ -1968,2070 +1921,289 @@ void bfv_client_l1_body_005d78c0(struct bfv_cpu *c)
     uint32_t t, a, b, r, ea;
     switch (c->eip) { /* 0: entry; k: return from the k-th call */
     case 1: goto R_1;
+    case 2: goto R_2;
+    case 3: goto R_3;
+    case 4: goto R_4;
+    case 5: goto R_5;
     default: break;
     }
-    /* 005d78c0  push ebx */
-    t = ebx;
+    /* 005d2f30  sub esp, 0x1c */
+    a = esp;
+    b = 0x1cu;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    esp = r;
+    /* 005d2f33  push esi */
+    t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005d78c1  push edi */
+    /* 005d2f34  push edi */
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005d78c2  mov edi, ecx */
+    /* 005d2f35  mov edi, ecx */
     edi = ecx;
-    /* 005d78c4  xor ebx, ebx */
-    r = 0;
-    F_LOGIC(32, r);
-    ebx = r;
-    /* 005d78c6  test edi, edi */
-    r = (edi & edi) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005d78c8  jne 0x5d78cf */
-    if (!zf) goto L_005d78cf;
-    /* 005d78ca  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005d78cb  xor eax, eax */
-    r = 0;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 005d78cd  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005d78ce  ret */
-    c->eip = M32(esp);
-    esp += 4;
+    /* 005d2f37  call 0x4241e0  ; std::_Tree::_Buynode_head_72_004241e0 */
+    t = 0x004241e0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2f30_1;
+    c->eip = t;
     goto out;
-L_005d78cf:
-    /* 005d78cf  mov eax, dword ptr [edi + 4] */
+R_1:
+    /* 005d2f3c  mov dword ptr [edi + 4], eax */
     ea = (uint32_t)(edi + 0x00000004u);
-    eax = M32(ea);
-    /* 005d78d2  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005d78d3  xor esi, esi */
-    r = 0;
-    F_LOGIC(32, r);
-    esi = r;
-    /* 005d78d5  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005d78d7  jle 0x5d78f4 */
-    if ((zf | (sf != of))) goto L_005d78f4;
-    /* 005d78d9  lea esp, [esp] */
-    esp = (uint32_t)(esp);
-L_005d78e0:
-    /* 005d78e0  mov eax, dword ptr [edi] */
-    ea = (uint32_t)(edi);
-    eax = M32(ea);
-    /* 005d78e2  mov ecx, dword ptr [eax + esi*4] */
-    ea = (uint32_t)(eax + esi * 4u);
-    ecx = M32(ea);
-    /* 005d78e5  call 0x5d28a0 */
-    t = 0x005d28a0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d78c0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005d78ea  add ebx, eax */
-    a = ebx;
-    b = eax;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    ebx = r;
-    /* 005d78ec  mov eax, dword ptr [edi + 4] */
-    ea = (uint32_t)(edi + 0x00000004u);
-    eax = M32(ea);
-    /* 005d78ef  inc esi */
-    a = esi;
-    r = (a + 1u) & 0xffffffffu;
-    F_INC(32, a, r);
-    esi = r;
-    /* 005d78f0  cmp esi, eax */
-    a = esi;
-    b = eax;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005d78f2  jl 0x5d78e0 */
-    if ((sf != of)) goto L_005d78e0;
-L_005d78f4:
-    /* 005d78f4  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005d78f5  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005d78f6  mov eax, ebx */
-    eax = ebx;
-    /* 005d78f8  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005d78f9  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005ddc50  (called from this file only) */
-BFV_L1_ENTRY(bfv_client_l1_005ddc50, bfv_client_l1_body_005ddc50);
-BFV_L1_RESUME(bfv_client_l1r_005ddc50_1, bfv_client_l1_body_005ddc50, 1);
-void bfv_client_l1_body_005ddc50(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    default: break;
-    }
-    /* 005ddc50  mov ecx, dword ptr [ecx + 4] */
-    ea = (uint32_t)(ecx + 0x00000004u);
-    ecx = M32(ea);
-    /* 005ddc53  call 0x5d1920 */
-    t = 0x005d1920u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ddc50_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005ddc58  mov eax, dword ptr [eax] */
-    ea = (uint32_t)(eax);
-    eax = M32(ea);
-    /* 005ddc5a  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005ddca0  (called from this file only) */
-BFV_L1_ENTRY(bfv_client_l1_005ddca0, bfv_client_l1_body_005ddca0);
-BFV_L1_RESUME(bfv_client_l1r_005ddca0_1, bfv_client_l1_body_005ddca0, 1);
-BFV_L1_RESUME(bfv_client_l1r_005ddca0_2, bfv_client_l1_body_005ddca0, 2);
-BFV_L1_RESUME(bfv_client_l1r_005ddca0_3, bfv_client_l1_body_005ddca0, 3);
-BFV_L1_RESUME(bfv_client_l1r_005ddca0_4, bfv_client_l1_body_005ddca0, 4);
-BFV_L1_RESUME(bfv_client_l1r_005ddca0_5, bfv_client_l1_body_005ddca0, 5);
-BFV_L1_RESUME(bfv_client_l1r_005ddca0_6, bfv_client_l1_body_005ddca0, 6);
-void bfv_client_l1_body_005ddca0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    case 4: goto R_4;
-    case 5: goto R_5;
-    case 6: goto R_6;
-    default: break;
-    }
-    /* 005ddca0  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ddca1  push ebp */
-    t = ebp;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ddca2  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ddca3  mov esi, ecx */
-    esi = ecx;
-    /* 005ddca5  mov ecx, dword ptr [esi + 4] */
-    ea = (uint32_t)(esi + 0x00000004u);
-    ecx = M32(ea);
-    /* 005ddca8  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ddca9  call 0x5d28a0 */
-    t = 0x005d28a0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ddca0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005ddcae  mov ebp, eax */
-    ebp = eax;
-    /* 005ddcb0  xor edi, edi */
-    r = 0;
-    F_LOGIC(32, r);
-    edi = r;
-    /* 005ddcb2  test ebp, ebp */
-    r = (ebp & ebp) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005ddcb4  jle 0x5ddce9 */
-    if ((zf | (sf != of))) goto L_005ddce9;
-    /* 005ddcb6  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ddcb7  jmp 0x5ddcc0 */
-    goto L_005ddcc0;
-L_005ddcc0:
-    /* 005ddcc0  mov ecx, dword ptr [esi + 4] */
-    ea = (uint32_t)(esi + 0x00000004u);
-    ecx = M32(ea);
-    /* 005ddcc3  mov edx, edi */
-    edx = edi;
-    /* 005ddcc5  call 0x5d1920 */
-    t = 0x005d1920u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ddca0_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005ddcca  mov edx, dword ptr [esi + 0x5bc] */
-    ea = (uint32_t)(esi + 0x000005bcu);
-    edx = M32(ea);
-    /* 005ddcd0  test edx, edx */
-    r = (edx & edx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005ddcd2  mov ebx, dword ptr [eax] */
-    ea = (uint32_t)(eax);
-    ebx = M32(ea);
-    /* 005ddcd4  mov ecx, ebx */
-    ecx = ebx;
-    /* 005ddcd6  jne 0x5ddcd8 */
-    if (!zf) goto L_005ddcd8;
-L_005ddcd8:
-    /* 005ddcd8  call 0x5d28d0 */
-    t = 0x005d28d0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ddca0_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 005ddcdd  inc edi */
-    a = edi;
-    r = (a + 1u) & 0xffffffffu;
-    F_INC(32, a, r);
-    edi = r;
-    /* 005ddcde  cmp edi, ebp */
-    a = edi;
-    b = ebp;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005ddce0  mov dword ptr [esi + 0x5bc], ebx */
-    ea = (uint32_t)(esi + 0x000005bcu);
-    M32(ea) = ebx;
-    /* 005ddce6  jl 0x5ddcc0 */
-    if ((sf != of)) goto L_005ddcc0;
-    /* 005ddce8  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-L_005ddce9:
-    /* 005ddce9  mov ecx, dword ptr [esi + 4] */
-    ea = (uint32_t)(esi + 0x00000004u);
-    ecx = M32(ea);
-    /* 005ddcec  call 0x5d1c80 */
-    t = 0x005d1c80u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ddca0_4;
-    c->eip = t;
-    goto out;
-R_4:
-    /* 005ddcf1  mov ecx, dword ptr [esi + 0x5bc] */
-    ea = (uint32_t)(esi + 0x000005bcu);
-    ecx = M32(ea);
-    /* 005ddcf7  test ecx, ecx */
-    r = (ecx & ecx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005ddcf9  je 0x5ddd20 */
-    if (zf) goto L_005ddd20;
-    /* 005ddcfb  mov dword ptr [esp + 0xc], ecx */
-    ea = (uint32_t)(esp + 0x0000000cu);
-    M32(ea) = ecx;
-    /* 005ddcff  nop */
-L_005ddd00:
-    /* 005ddd00  call 0x6fc8b0 */
-    t = 0x006fc8b0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ddca0_5;
-    c->eip = t;
-    goto out;
-R_5:
-    /* 005ddd05  lea ecx, [esp + 0xc] */
-    ecx = (uint32_t)(esp + 0x0000000cu);
-    /* 005ddd09  mov edi, eax */
-    edi = eax;
-    /* 005ddd0b  call 0x5d26d0 */
-    t = 0x005d26d0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ddca0_6;
-    c->eip = t;
-    goto out;
-R_6:
-    /* 005ddd10  test edi, edi */
-    r = (edi & edi) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005ddd12  mov ecx, edi */
-    ecx = edi;
-    /* 005ddd14  mov dword ptr [esp + 0xc], ecx */
-    ea = (uint32_t)(esp + 0x0000000cu);
-    M32(ea) = ecx;
-    /* 005ddd18  jne 0x5ddd00 */
-    if (!zf) goto L_005ddd00;
-    /* 005ddd1a  mov dword ptr [esi + 0x5bc], edi */
-    ea = (uint32_t)(esi + 0x000005bcu);
-    M32(ea) = edi;
-L_005ddd20:
-    /* 005ddd20  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005ddd21  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005ddd22  pop ebp */
-    t = M32(esp);
-    esp += 4;
-    ebp = t;
-    /* 005ddd23  pop ecx */
-    t = M32(esp);
-    esp += 4;
-    ecx = t;
-    /* 005ddd24  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005dddd0  (called from this file only) */
-BFV_L1_ENTRY(bfv_client_l1_005dddd0, bfv_client_l1_body_005dddd0);
-BFV_L1_RESUME(bfv_client_l1r_005dddd0_1, bfv_client_l1_body_005dddd0, 1);
-BFV_L1_RESUME(bfv_client_l1r_005dddd0_2, bfv_client_l1_body_005dddd0, 2);
-BFV_L1_RESUME(bfv_client_l1r_005dddd0_3, bfv_client_l1_body_005dddd0, 3);
-BFV_L1_RESUME(bfv_client_l1r_005dddd0_4, bfv_client_l1_body_005dddd0, 4);
-BFV_L1_RESUME(bfv_client_l1r_005dddd0_5, bfv_client_l1_body_005dddd0, 5);
-void bfv_client_l1_body_005dddd0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    case 4: goto R_4;
-    case 5: goto R_5;
-    default: break;
-    }
-    /* 005dddd0  cmp dword ptr [0xe21880], 1 */
-    ea = (uint32_t)(0x00e21880u);
-    a = M32(ea);
-    b = 0x1u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005dddd7  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dddd8  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dddd9  mov edi, edx */
-    edi = edx;
-    /* 005ddddb  mov esi, ecx */
-    esi = ecx;
-    /* 005ddddd  jne 0x5ddeb7 */
-    if (!zf) goto L_005ddeb7;
-    /* 005ddde3  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ddde4  xor ebx, ebx */
-    r = 0;
-    F_LOGIC(32, r);
-    ebx = r;
-    /* 005ddde6  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ddde7  mov edx, 0x64 */
-    edx = 0x64u;
-    /* 005dddec  mov ecx, 4 */
-    ecx = 0x4u;
-    /* 005dddf1  mov dword ptr [esi], 1 */
-    ea = (uint32_t)(esi);
-    M32(ea) = 0x1u;
-    /* 005dddf7  call 0x5d18c0 */
-    t = 0x005d18c0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dddd0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005dddfc  mov ecx, esi */
-    ecx = esi;
-    /* 005dddfe  mov dword ptr [esi + 4], eax */
-    ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = eax;
-    /* 005dde01  mov dword ptr [esi + 0x5bc], ebx */
-    ea = (uint32_t)(esi + 0x000005bcu);
-    M32(ea) = ebx;
-    /* 005dde07  call 0x5d2dc0 */
-    t = 0x005d2dc0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dddd0_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005dde0c  lea edx, [esi + 0xc] */
-    edx = (uint32_t)(esi + 0x0000000cu);
-    /* 005dde0f  mov eax, edi */
-    eax = edi;
-    /* 005dde11  sub edx, edi */
-    a = edx;
-    b = edi;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    edx = r;
-L_005dde13:
-    /* 005dde13  mov cl, byte ptr [eax] */
-    ea = (uint32_t)(eax);
-    SET8L(ecx, M8(ea));
-    /* 005dde15  mov byte ptr [edx + eax], cl */
-    ea = (uint32_t)(edx + eax);
-    M8(ea) = LO8(ecx);
-    /* 005dde18  inc eax */
-    a = eax;
-    r = (a + 1u) & 0xffffffffu;
-    F_INC(32, a, r);
-    eax = r;
-    /* 005dde19  cmp cl, bl */
-    a = LO8(ecx);
-    b = LO8(ebx);
-    r = (a - b) & 0xffu;
-    F_SUB(8, a, b, r);
-    /* 005dde1b  jne 0x5dde13 */
-    if (!zf) goto L_005dde13;
-    /* 005dde1d  mov eax, dword ptr [esp + 0x10] */
-    ea = (uint32_t)(esp + 0x00000010u);
-    eax = M32(ea);
-    /* 005dde21  lea edx, [esi + 0x2c] */
-    edx = (uint32_t)(esi + 0x0000002cu);
-    /* 005dde24  sub edx, eax */
-    a = edx;
-    b = eax;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    edx = r;
-L_005dde26:
-    /* 005dde26  mov cl, byte ptr [eax] */
-    ea = (uint32_t)(eax);
-    SET8L(ecx, M8(ea));
-    /* 005dde28  mov byte ptr [edx + eax], cl */
-    ea = (uint32_t)(edx + eax);
-    M8(ea) = LO8(ecx);
-    /* 005dde2b  inc eax */
-    a = eax;
-    r = (a + 1u) & 0xffffffffu;
-    F_INC(32, a, r);
-    eax = r;
-    /* 005dde2c  cmp cl, bl */
-    a = LO8(ecx);
-    b = LO8(ebx);
-    r = (a - b) & 0xffu;
-    F_SUB(8, a, b, r);
-    /* 005dde2e  jne 0x5dde26 */
-    if (!zf) goto L_005dde26;
-    /* 005dde30  mov eax, dword ptr [esp + 0x14] */
-    ea = (uint32_t)(esp + 0x00000014u);
-    eax = M32(ea);
-    /* 005dde34  lea edx, [esi + 0x4c] */
-    edx = (uint32_t)(esi + 0x0000004cu);
-    /* 005dde37  sub edx, eax */
-    a = edx;
-    b = eax;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    edx = r;
-    /* 005dde39  lea esp, [esp] */
-    esp = (uint32_t)(esp);
-L_005dde40:
-    /* 005dde40  mov cl, byte ptr [eax] */
-    ea = (uint32_t)(eax);
-    SET8L(ecx, M8(ea));
-    /* 005dde42  mov byte ptr [edx + eax], cl */
-    ea = (uint32_t)(edx + eax);
-    M8(ea) = LO8(ecx);
-    /* 005dde45  inc eax */
-    a = eax;
-    r = (a + 1u) & 0xffffffffu;
-    F_INC(32, a, r);
-    eax = r;
-    /* 005dde46  cmp cl, bl */
-    a = LO8(ecx);
-    b = LO8(ebx);
-    r = (a - b) & 0xffu;
-    F_SUB(8, a, b, r);
-    /* 005dde48  jne 0x5dde40 */
-    if (!zf) goto L_005dde40;
-    /* 005dde4a  mov eax, dword ptr [esp + 0x1c] */
-    ea = (uint32_t)(esp + 0x0000001cu);
-    eax = M32(ea);
-    /* 005dde4e  mov ecx, dword ptr [esp + 0x20] */
-    ea = (uint32_t)(esp + 0x00000020u);
-    ecx = M32(ea);
-    /* 005dde52  mov edx, dword ptr [esp + 0x18] */
-    ea = (uint32_t)(esp + 0x00000018u);
-    edx = M32(ea);
-    /* 005dde56  mov dword ptr [esi + 0x480], eax */
-    ea = (uint32_t)(esi + 0x00000480u);
-    M32(ea) = eax;
-    /* 005dde5c  mov dword ptr [esi + 0x484], ecx */
-    ea = (uint32_t)(esi + 0x00000484u);
-    M32(ea) = ecx;
-    /* 005dde62  mov ecx, 0xb44284 */
-    ecx = 0xb44284u;
-    /* 005dde67  or eax, 0xffffffff */
-    r = (eax | 0xffffffffu) & 0xffffffffu;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 005dde6a  mov dword ptr [esi + 0x488], ecx */
-    ea = (uint32_t)(esi + 0x00000488u);
-    M32(ea) = ecx;
-    /* 005dde70  mov dword ptr [esi + 0x490], ebx */
-    ea = (uint32_t)(esi + 0x00000490u);
-    M32(ea) = ebx;
-    /* 005dde76  mov dword ptr [esi + 0x4a0], eax */
-    ea = (uint32_t)(esi + 0x000004a0u);
-    M32(ea) = eax;
-    /* 005dde7c  mov dword ptr [esi + 0x74], ebx */
-    ea = (uint32_t)(esi + 0x00000074u);
-    M32(ea) = ebx;
-    /* 005dde7f  mov dword ptr [esi + 0x78], ebx */
-    ea = (uint32_t)(esi + 0x00000078u);
-    M32(ea) = ebx;
-    /* 005dde82  mov dword ptr [esi + 8], ebx */
-    ea = (uint32_t)(esi + 0x00000008u);
-    M32(ea) = ebx;
-    /* 005dde85  mov dword ptr [esi + 0x47c], eax */
-    ea = (uint32_t)(esi + 0x0000047cu);
-    M32(ea) = eax;
-    /* 005dde8b  mov dword ptr [esi + 0x478], ebx */
-    ea = (uint32_t)(esi + 0x00000478u);
-    M32(ea) = ebx;
-    /* 005dde91  mov dword ptr [esi + 0x494], ebx */
-    ea = (uint32_t)(esi + 0x00000494u);
-    M32(ea) = ebx;
-    /* 005dde97  mov dword ptr [esi + 0x4a8], edx */
-    ea = (uint32_t)(esi + 0x000004a8u);
-    M32(ea) = edx;
-    /* 005dde9d  mov dword ptr [esi + 0x49c], ecx */
-    ea = (uint32_t)(esi + 0x0000049cu);
-    M32(ea) = ecx;
-    /* 005ddea3  call 0x5d1cf0 */
-    t = 0x005d1cf0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dddd0_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 005ddea8  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ddea9  call 0x7c3ddd */
-    t = 0x007c3dddu;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dddd0_4;
-    c->eip = t;
-    goto out;
-R_4:
-    /* 005ddeae  add esp, 4 */
-    a = esp;
-    b = 0x4u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-    /* 005ddeb1  call 0x5d1d10 */
-    t = 0x005d1d10u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dddd0_5;
-    c->eip = t;
-    goto out;
-R_5:
-    /* 005ddeb6  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-L_005ddeb7:
-    /* 005ddeb7  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005ddeb8  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005ddeb9  ret 0x14 */
-    c->eip = M32(esp);
-    esp += 24;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005de020  (called from this file only) */
-BFV_L1_ENTRY(bfv_client_l1_005de020, bfv_client_l1_body_005de020);
-BFV_L1_RESUME(bfv_client_l1r_005de020_1, bfv_client_l1_body_005de020, 1);
-BFV_L1_RESUME(bfv_client_l1r_005de020_2, bfv_client_l1_body_005de020, 2);
-BFV_L1_RESUME(bfv_client_l1r_005de020_3, bfv_client_l1_body_005de020, 3);
-BFV_L1_RESUME(bfv_client_l1r_005de020_4, bfv_client_l1_body_005de020, 4);
-void bfv_client_l1_body_005de020(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    case 4: goto R_4;
-    default: break;
-    }
-    /* 005de020  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005de021  mov esi, ecx */
-    esi = ecx;
-    /* 005de023  call 0x5ddfc0 */
-    t = 0x005ddfc0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005de020_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005de028  mov ecx, esi */
-    ecx = esi;
-    /* 005de02a  call 0x5ddca0 */
-    t = 0x005ddca0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005de020_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005de02f  mov ecx, esi */
-    ecx = esi;
-    /* 005de031  call 0x5d2690 */
-    t = 0x005d2690u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005de020_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 005de036  mov ecx, dword ptr [esi + 4] */
-    ea = (uint32_t)(esi + 0x00000004u);
-    ecx = M32(ea);
-    /* 005de039  test ecx, ecx */
-    r = (ecx & ecx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005de03b  je 0x5de042 */
-    if (zf) goto L_005de042;
-    /* 005de03d  call 0x5d1a80 */
-    t = 0x005d1a80u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005de020_4;
-    c->eip = t;
-    goto out;
-R_4:
-L_005de042:
-    /* 005de042  mov dword ptr [esi + 4], 0 */
-    ea = (uint32_t)(esi + 0x00000004u);
-    M32(ea) = 0x0u;
-    /* 005de049  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005de04a  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005ded30  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005ded30, bfv_client_l1_body_005ded30);
-BFV_L1_RESUME(bfv_client_l1r_005ded30_1, bfv_client_l1_body_005ded30, 1);
-BFV_L1_RESUME(bfv_client_l1r_005ded30_2, bfv_client_l1_body_005ded30, 2);
-void bfv_client_l1_body_005ded30(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    default: break;
-    }
-    /* 005ded30  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded31  mov esi, ecx */
-    esi = ecx;
-    /* 005ded33  call 0x5ddc60 */
-    t = 0x005ddc60u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ded30_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005ded38  mov eax, dword ptr [esi] */
-    ea = (uint32_t)(esi);
-    eax = M32(ea);
-    /* 005ded3a  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005ded3c  je 0x5ded54 */
-    if (zf) goto L_005ded54;
-    /* 005ded3e  cmp eax, 1 */
-    a = eax;
-    b = 0x1u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005ded41  jle 0x5ded50 */
-    if ((zf | (sf != of))) goto L_005ded50;
-    /* 005ded43  cmp eax, 3 */
-    a = eax;
-    b = 0x3u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005ded46  jg 0x5ded50 */
-    if (!(zf | (sf != of))) goto L_005ded50;
-    /* 005ded48  mov eax, esi */
-    eax = esi;
-    /* 005ded4a  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005ded4b  jmp 0x5dec80 */
-    c->eip = 0x005dec80u;
-    goto out;
-L_005ded50:
-    /* 005ded50  xor eax, eax */
-    r = 0;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 005ded52  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005ded53  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-L_005ded54:
-    /* 005ded54  call 0x5de640 */
-    t = 0x005de640u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ded30_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005ded59  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005ded5a  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005ded60  (called from this file only) */
-BFV_L1_ENTRY(bfv_client_l1_005ded60, bfv_client_l1_body_005ded60);
-BFV_L1_RESUME(bfv_client_l1r_005ded60_1, bfv_client_l1_body_005ded60, 1);
-BFV_L1_RESUME(bfv_client_l1r_005ded60_2, bfv_client_l1_body_005ded60, 2);
-BFV_L1_RESUME(bfv_client_l1r_005ded60_3, bfv_client_l1_body_005ded60, 3);
-BFV_L1_RESUME(bfv_client_l1r_005ded60_4, bfv_client_l1_body_005ded60, 4);
-BFV_L1_RESUME(bfv_client_l1r_005ded60_5, bfv_client_l1_body_005ded60, 5);
-BFV_L1_RESUME(bfv_client_l1r_005ded60_6, bfv_client_l1_body_005ded60, 6);
-BFV_L1_RESUME(bfv_client_l1r_005ded60_7, bfv_client_l1_body_005ded60, 7);
-void bfv_client_l1_body_005ded60(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    case 4: goto R_4;
-    case 5: goto R_5;
-    case 6: goto R_6;
-    case 7: goto R_7;
-    default: break;
-    }
-    /* 005ded60  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded61  push ebp */
-    t = ebp;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded62  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded63  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded64  mov esi, eax */
-    esi = eax;
-    /* 005ded66  mov ebp, 1 */
-    ebp = 0x1u;
-    /* 005ded6b  xor ebx, ebx */
-    r = 0;
-    F_LOGIC(32, r);
-    ebx = r;
-    /* 005ded6d  lea ecx, [ecx] */
-    ecx = (uint32_t)(ecx);
-L_005ded70:
-    /* 005ded70  mov eax, dword ptr [esp + 0x18] */
-    ea = (uint32_t)(esp + 0x00000018u);
-    eax = M32(ea);
-    /* 005ded74  mov ecx, dword ptr [esp + 0x14] */
-    ea = (uint32_t)(esp + 0x00000014u);
-    ecx = M32(ea);
-    /* 005ded78  mov edx, dword ptr [esi + 0x4a0] */
-    ea = (uint32_t)(esi + 0x000004a0u);
-    edx = M32(ea);
-    /* 005ded7e  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded7f  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded80  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded81  push edx */
-    t = edx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded82  dec ebp */
-    a = ebp;
-    r = (a - 1u) & 0xffffffffu;
-    F_DEC(32, a, r);
-    ebp = r;
-    /* 005ded83  call 0x7db2aa */
-    t = 0x007db2aau;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ded60_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005ded88  cmp eax, ebx */
-    a = eax;
-    b = ebx;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005ded8a  jg 0x5dee02 */
-    if (!(zf | (sf != of))) goto L_005dee02;
-    /* 005ded8c  cmp ebp, ebx */
-    a = ebp;
-    b = ebx;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005ded8e  jl 0x5dedf6 */
-    if ((sf != of)) goto L_005dedf6;
-    /* 005ded90  mov eax, dword ptr [esi + 0x74] */
-    ea = (uint32_t)(esi + 0x00000074u);
-    eax = M32(ea);
-    /* 005ded93  cmp eax, ebx */
-    a = eax;
-    b = ebx;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005ded95  je 0x5deda0 */
-    if (zf) goto L_005deda0;
-    /* 005ded97  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005ded98  call 0x7c266d */
-    t = 0x007c266du;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ded60_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005ded9d  add esp, 4 */
-    a = esp;
-    b = 0x4u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-L_005deda0:
-    /* 005deda0  mov eax, dword ptr [esi + 0x4a0] */
-    ea = (uint32_t)(esi + 0x000004a0u);
-    eax = M32(ea);
-    /* 005deda6  or edi, 0xffffffff */
-    r = (edi | 0xffffffffu) & 0xffffffffu;
-    F_LOGIC(32, r);
-    edi = r;
-    /* 005deda9  cmp eax, edi */
-    a = eax;
-    b = edi;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005dedab  mov dword ptr [esi + 0x74], ebx */
-    ea = (uint32_t)(esi + 0x00000074u);
-    M32(ea) = ebx;
-    /* 005dedae  mov dword ptr [esi + 0x78], ebx */
-    ea = (uint32_t)(esi + 0x00000078u);
-    M32(ea) = ebx;
-    /* 005dedb1  je 0x5dedb9 */
-    if (zf) goto L_005dedb9;
-    /* 005dedb3  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dedb4  call 0x7db2a4 */
-    t = 0x007db2a4u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ded60_3;
-    c->eip = t;
-    goto out;
-R_3:
-L_005dedb9:
-    /* 005dedb9  mov dword ptr [esi + 0x4a0], edi */
-    ea = (uint32_t)(esi + 0x000004a0u);
-    M32(ea) = edi;
-    /* 005dedbf  mov dword ptr [esi], 1 */
-    ea = (uint32_t)(esi);
-    M32(ea) = 0x1u;
-    /* 005dedc5  call 0x5ddf40 */
-    t = 0x005ddf40u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ded60_4;
-    c->eip = t;
-    goto out;
-R_4:
-    /* 005dedca  mov dword ptr [esi + 0x47c], edi */
-    ea = (uint32_t)(esi + 0x0000047cu);
-    M32(ea) = edi;
-    /* 005dedd0  call 0x5ddec0 */
-    t = 0x005ddec0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ded60_5;
-    c->eip = t;
-    goto out;
-R_5:
-    /* 005dedd5  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dedd6  push 2 */
-    t = 0x2u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dedd8  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dedd9  xor edx, edx */
-    r = 0;
-    F_LOGIC(32, r);
-    edx = r;
-    /* 005deddb  mov ecx, esi */
-    ecx = esi;
-    /* 005deddd  call 0x5de840 */
-    t = 0x005de840u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ded60_6;
-    c->eip = t;
-    goto out;
-R_6:
-    /* 005dede2  mov edi, eax */
-    edi = eax;
-    /* 005dede4  cmp edi, ebx */
-    a = edi;
-    b = ebx;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005dede6  je 0x5ded70 */
-    if (zf) goto L_005ded70;
-    /* 005dede8  call 0x5de790 */
-    t = 0x005de790u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ded60_7;
-    c->eip = t;
-    goto out;
-R_7:
-    /* 005deded  mov eax, edi */
-    eax = edi;
-    /* 005dedef  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005dedf0  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005dedf1  pop ebp */
-    t = M32(esp);
-    esp += 4;
-    ebp = t;
-    /* 005dedf2  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005dedf3  ret 8 */
-    c->eip = M32(esp);
-    esp += 12;
-    goto out;
-L_005dedf6:
-    /* 005dedf6  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005dedf7  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005dedf8  pop ebp */
-    t = M32(esp);
-    esp += 4;
-    ebp = t;
-    /* 005dedf9  mov eax, 3 */
-    eax = 0x3u;
-    /* 005dedfe  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005dedff  ret 8 */
-    c->eip = M32(esp);
-    esp += 12;
-    goto out;
-L_005dee02:
-    /* 005dee02  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005dee03  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005dee04  pop ebp */
-    t = M32(esp);
-    esp += 4;
-    ebp = t;
-    /* 005dee05  xor eax, eax */
-    r = 0;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 005dee07  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005dee08  ret 8 */
-    c->eip = M32(esp);
-    esp += 12;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005dee10  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005dee10, bfv_client_l1_body_005dee10);
-BFV_L1_RESUME(bfv_client_l1r_005dee10_1, bfv_client_l1_body_005dee10, 1);
-BFV_L1_RESUME(bfv_client_l1r_005dee10_2, bfv_client_l1_body_005dee10, 2);
-BFV_L1_RESUME(bfv_client_l1r_005dee10_3, bfv_client_l1_body_005dee10, 3);
-BFV_L1_RESUME(bfv_client_l1r_005dee10_4, bfv_client_l1_body_005dee10, 4);
-BFV_L1_RESUME(bfv_client_l1r_005dee10_5, bfv_client_l1_body_005dee10, 5);
-void bfv_client_l1_body_005dee10(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    case 4: goto R_4;
-    case 5: goto R_5;
-    default: break;
-    }
-    /* 005dee10  sub esp, 0x14 */
-    a = esp;
-    b = 0x14u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    esp = r;
-    /* 005dee13  mov eax, dword ptr [0xcff7cc] */
-    ea = (uint32_t)(0x00cff7ccu);
-    eax = M32(ea);
-    /* 005dee18  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dee19  mov esi, ecx */
-    esi = ecx;
-    /* 005dee1b  mov dword ptr [esp + 0x14], eax */
-    ea = (uint32_t)(esp + 0x00000014u);
-    M32(ea) = eax;
-    /* 005dee1f  cmp dword ptr [esi], 1 */
-    ea = (uint32_t)(esi);
-    a = M32(ea);
-    b = 0x1u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005dee22  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dee23  mov edi, edx */
-    edi = edx;
-    /* 005dee25  jne 0x5dee4f */
-    if (!zf) goto L_005dee4f;
-    /* 005dee27  push 0 */
-    t = 0x0u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dee29  push 2 */
-    t = 0x2u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dee2b  push 0 */
-    t = 0x0u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dee2d  xor edx, edx */
-    r = 0;
-    F_LOGIC(32, r);
-    edx = r;
-    /* 005dee2f  call 0x5de840 */
-    t = 0x005de840u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dee10_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005dee34  cmp dword ptr [esi], 1 */
-    ea = (uint32_t)(esi);
-    a = M32(ea);
-    b = 0x1u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005dee37  jne 0x5dee4f */
-    if (!zf) goto L_005dee4f;
-    /* 005dee39  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005dee3a  mov eax, 3 */
-    eax = 0x3u;
-    /* 005dee3f  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005dee40  mov ecx, dword ptr [esp + 0x10] */
-    ea = (uint32_t)(esp + 0x00000010u);
-    ecx = M32(ea);
-    /* 005dee44  call 0x7c2019 */
-    t = 0x007c2019u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dee10_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005dee49  add esp, 0x14 */
-    a = esp;
-    b = 0x14u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-    /* 005dee4c  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-L_005dee4f:
-    /* 005dee4f  push 9 */
-    t = 0x9u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dee51  call 0x7db298 */
-    t = 0x007db298u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dee10_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 005dee56  mov word ptr [esp + 8], ax */
-    ea = (uint32_t)(esp + 0x00000008u);
-    M16(ea) = LO16(eax);
-    /* 005dee5b  mov ax, word ptr [esp + 0x20] */
-    ea = (uint32_t)(esp + 0x00000020u);
-    SET16(eax, M16(ea));
-    /* 005dee60  push 9 */
-    t = 0x9u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dee62  lea ecx, [esp + 0xc] */
-    ecx = (uint32_t)(esp + 0x0000000cu);
-    /* 005dee66  mov word ptr [esp + 0x13], ax */
-    ea = (uint32_t)(esp + 0x00000013u);
-    M16(ea) = LO16(eax);
-    /* 005dee6b  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005dee6c  mov eax, esi */
-    eax = esi;
-    /* 005dee6e  mov byte ptr [esp + 0x12], 1 */
-    ea = (uint32_t)(esp + 0x00000012u);
+    /* 005d2f3f  mov byte ptr [eax + 0x45], 1 */
+    ea = (uint32_t)(eax + 0x00000045u);
     M8(ea) = 0x1u;
-    /* 005dee73  mov dword ptr [esp + 0x13], edi */
-    ea = (uint32_t)(esp + 0x00000013u);
-    M32(ea) = edi;
-    /* 005dee77  call 0x5ded60 */
-    t = 0x005ded60u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dee10_4;
-    c->eip = t;
-    goto out;
-R_4:
-    /* 005dee7c  mov ecx, dword ptr [esp + 0x18] */
-    ea = (uint32_t)(esp + 0x00000018u);
-    ecx = M32(ea);
-    /* 005dee80  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005dee81  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005dee82  call 0x7c2019 */
-    t = 0x007c2019u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005dee10_5;
-    c->eip = t;
-    goto out;
-R_5:
-    /* 005dee87  add esp, 0x14 */
-    a = esp;
-    b = 0x14u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-    /* 005dee8a  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005e5250  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e5250, bfv_client_l1_body_005e5250);
-BFV_L1_RESUME(bfv_client_l1r_005e5250_1, bfv_client_l1_body_005e5250, 1);
-BFV_L1_RESUME(bfv_client_l1r_005e5250_2, bfv_client_l1_body_005e5250, 2);
-BFV_L1_RESUME(bfv_client_l1r_005e5250_3, bfv_client_l1_body_005e5250, 3);
-void bfv_client_l1_body_005e5250(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    default: break;
-    }
-    /* 005e5250  cmp dword ptr [0xe21880], 1 */
-    ea = (uint32_t)(0x00e21880u);
-    a = M32(ea);
-    b = 0x1u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005e5257  push ebx */
+    /* 005d2f43  mov eax, dword ptr [edi + 4] */
+    ea = (uint32_t)(edi + 0x00000004u);
+    eax = M32(ea);
+    /* 005d2f46  mov dword ptr [eax + 4], eax */
+    ea = (uint32_t)(eax + 0x00000004u);
+    M32(ea) = eax;
+    /* 005d2f49  mov eax, dword ptr [edi + 4] */
+    ea = (uint32_t)(edi + 0x00000004u);
+    eax = M32(ea);
+    /* 005d2f4c  mov dword ptr [eax], eax */
+    ea = (uint32_t)(eax);
+    M32(ea) = eax;
+    /* 005d2f4e  mov eax, dword ptr [edi + 4] */
+    ea = (uint32_t)(edi + 0x00000004u);
+    eax = M32(ea);
+    /* 005d2f51  mov dword ptr [eax + 8], eax */
+    ea = (uint32_t)(eax + 0x00000008u);
+    M32(ea) = eax;
+    /* 005d2f54  mov dword ptr [edi + 8], 0 */
+    ea = (uint32_t)(edi + 0x00000008u);
+    M32(ea) = 0x0u;
+    /* 005d2f5b  mov eax, dword ptr [0xccadf8] */
+    ea = (uint32_t)(0x00ccadf8u);
+    eax = M32(ea);
+    /* 005d2f60  test eax, eax */
+    r = (eax & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 005d2f62  mov esi, 0xccadf8 */
+    esi = 0xccadf8u;
+    /* 005d2f67  je 0x5d300c */
+    if (zf) goto L_005d300c;
+    /* 005d2f6d  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 005e5258  push edi */
-    t = edi;
+    /* 005d2f6e  mov eax, 0xf */
+    eax = 0xfu;
+    /* 005d2f73  push ebp */
+    t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 005e5259  mov edi, edx */
-    edi = edx;
-    /* 005e525b  mov ebx, ecx */
-    ebx = ecx;
-    /* 005e525d  je 0x5e5266 */
-    if (zf) goto L_005e5266;
-    /* 005e525f  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005e5260  xor eax, eax */
-    r = 0;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 005e5262  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005e5263  ret 0x18 */
-    c->eip = M32(esp);
-    esp += 28;
-    goto out;
-L_005e5266:
-    /* 005e5266  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5267  push 0x620 */
-    t = 0x620u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e526c  call 0x7c265b */
-    t = 0x007c265bu;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5250_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005e5271  mov esi, eax */
-    esi = eax;
-    /* 005e5273  add esp, 4 */
-    a = esp;
+L_005d2f74:
+    /* 005d2f74  mov ebp, dword ptr [esi + 4] */
+    ea = (uint32_t)(esi + 0x00000004u);
+    ebp = M32(ea);
+    /* 005d2f77  add esi, 4 */
+    a = esi;
     b = 0x4u;
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
-    esp = r;
-    /* 005e5276  test esi, esi */
-    r = (esi & esi) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005e5278  jne 0x5e5280 */
-    if (!zf) goto L_005e5280;
-    /* 005e527a  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005e527b  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005e527c  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005e527d  ret 0x18 */
-    c->eip = M32(esp);
-    esp += 28;
-    goto out;
-L_005e5280:
-    /* 005e5280  mov eax, dword ptr [esp + 0x20] */
-    ea = (uint32_t)(esp + 0x00000020u);
-    eax = M32(ea);
-    /* 005e5284  mov edx, dword ptr [esp + 0x14] */
-    ea = (uint32_t)(esp + 0x00000014u);
-    edx = M32(ea);
-    /* 005e5288  mov ecx, dword ptr [esp + 0x24] */
-    ea = (uint32_t)(esp + 0x00000024u);
+    esi = r;
+    /* 005d2f7a  mov ecx, dword ptr [esi + 4] */
+    ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005e528c  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e528d  push 0x5e5060 */
-    t = 0x5e5060u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5292  push edx */
-    t = edx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5293  mov dword ptr [esi + 0x618], eax */
-    ea = (uint32_t)(esi + 0x00000618u);
+    /* 005d2f7d  add esi, 4 */
+    a = esi;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 005d2f80  mov dword ptr [esp + 0x28], eax  ; var_4 */
+    ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = eax;
-    /* 005e5299  mov eax, dword ptr [esp + 0x1c] */
-    ea = (uint32_t)(esp + 0x0000001cu);
-    eax = M32(ea);
-    /* 005e529d  push eax */
+    /* 005d2f84  mov eax, ecx */
+    eax = ecx;
+    /* 005d2f86  add esi, 4 */
+    a = esi;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 005d2f89  mov dword ptr [esp + 0x24], 0  ; var_8 */
+    ea = (uint32_t)(esp + 0x00000024u);
+    M32(ea) = 0x0u;
+    /* 005d2f91  mov byte ptr [esp + 0x14], 0  ; var_18 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    M8(ea) = 0x0u;
+    /* 005d2f96  lea edx, [eax + 1] */
+    edx = (uint32_t)(eax + 0x00000001u);
+    /* 005d2f99  lea esp, [esp]  ; &var_2c */
+    esp = (uint32_t)(esp);
+L_005d2fa0:
+    /* 005d2fa0  mov bl, byte ptr [eax] */
+    ea = (uint32_t)(eax);
+    SET8L(ebx, M8(ea));
+    /* 005d2fa2  inc eax */
+    a = eax;
+    r = (a + 1u) & 0xffffffffu;
+    F_INC(32, a, r);
+    eax = r;
+    /* 005d2fa3  test bl, bl */
+    r = (LO8(ebx) & LO8(ebx)) & 0xffu;
+    F_LOGIC(8, r);
+    /* 005d2fa5  jne 0x5d2fa0 */
+    if (!zf) goto L_005d2fa0;
+    /* 005d2fa7  sub eax, edx */
+    a = eax;
+    b = edx;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    eax = r;
+    /* 005d2fa9  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005e529e  mov dword ptr [esi + 0x61c], ecx */
-    ea = (uint32_t)(esi + 0x0000061cu);
-    M32(ea) = ecx;
-    /* 005e52a4  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e52a5  lea ecx, [esi + 0x48] */
-    ecx = (uint32_t)(esi + 0x00000048u);
-    /* 005e52a8  mov edx, ebx */
-    edx = ebx;
-    /* 005e52aa  mov dword ptr [esi + 0x60c], 0 */
-    ea = (uint32_t)(esi + 0x0000060cu);
-    M32(ea) = 0x0u;
-    /* 005e52b4  call 0x5dddd0 */
-    t = 0x005dddd0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5250_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005e52b9  mov ecx, dword ptr [esp + 0x1c] */
-    ea = (uint32_t)(esp + 0x0000001cu);
-    ecx = M32(ea);
-    /* 005e52bd  mov edx, dword ptr [esp + 0x18] */
-    ea = (uint32_t)(esp + 0x00000018u);
-    edx = M32(ea);
-    /* 005e52c1  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e52c2  push 0x5e51e0 */
-    t = 0x5e51e0u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e52c7  push ecx */
+    /* 005d2faa  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005e52c8  mov ecx, esi */
-    ecx = esi;
-    /* 005e52ca  call 0x5e62f0 */
-    t = 0x005e62f0u;
+    /* 005d2fab  lea ecx, [esp + 0x18]  ; &var_1c */
+    ecx = (uint32_t)(esp + 0x00000018u);
+    /* 005d2faf  call 0x401ae0  ; std::string::assign_chars */
+    t = 0x00401ae0u;
     esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5250_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 005e52cf  mov eax, esi */
-    eax = esi;
-    /* 005e52d1  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005e52d2  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005e52d3  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005e52d4  ret 0x18 */
-    c->eip = M32(esp);
-    esp += 28;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005e52e0  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e52e0, bfv_client_l1_body_005e52e0);
-BFV_L1_RESUME(bfv_client_l1r_005e52e0_1, bfv_client_l1_body_005e52e0, 1);
-BFV_L1_RESUME(bfv_client_l1r_005e52e0_2, bfv_client_l1_body_005e52e0, 2);
-BFV_L1_RESUME(bfv_client_l1r_005e52e0_3, bfv_client_l1_body_005e52e0, 3);
-void bfv_client_l1_body_005e52e0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    default: break;
-    }
-    /* 005e52e0  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e52e1  mov esi, ecx */
-    esi = ecx;
-    /* 005e52e3  lea ecx, [esi + 0x48] */
-    ecx = (uint32_t)(esi + 0x00000048u);
-    /* 005e52e6  call 0x5de020 */
-    t = 0x005de020u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e52e0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005e52eb  mov ecx, esi */
-    ecx = esi;
-    /* 005e52ed  call 0x5e6380 */
-    t = 0x005e6380u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e52e0_2;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2f30_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005e52f2  push esi */
-    t = esi;
+    /* 005d2fb4  lea eax, [esp + 0x10]  ; &var_1c */
+    eax = (uint32_t)(esp + 0x00000010u);
+    /* 005d2fb8  push eax */
+    t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005e52f3  call 0x7c266d */
-    t = 0x007c266du;
+    /* 005d2fb9  mov ecx, edi */
+    ecx = edi;
+    /* 005d2fbb  call 0x436830  ; Setup_00436830 */
+    t = 0x00436830u;
     esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e52e0_3;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2f30_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 005e52f8  add esp, 4 */
+    /* 005d2fc0  mov edx, ebp */
+    edx = ebp;
+    /* 005d2fc2  mov ecx, eax */
+    ecx = eax;
+    /* 005d2fc4  lea ebx, [edx + 1] */
+    ebx = (uint32_t)(edx + 0x00000001u);
+L_005d2fc7:
+    /* 005d2fc7  mov al, byte ptr [edx] */
+    ea = (uint32_t)(edx);
+    SET8L(eax, M8(ea));
+    /* 005d2fc9  inc edx */
+    a = edx;
+    r = (a + 1u) & 0xffffffffu;
+    F_INC(32, a, r);
+    edx = r;
+    /* 005d2fca  test al, al */
+    r = (LO8(eax) & LO8(eax)) & 0xffu;
+    F_LOGIC(8, r);
+    /* 005d2fcc  jne 0x5d2fc7 */
+    if (!zf) goto L_005d2fc7;
+    /* 005d2fce  sub edx, ebx */
+    a = edx;
+    b = ebx;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    edx = r;
+    /* 005d2fd0  push edx */
+    t = edx;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005d2fd1  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005d2fd2  call 0x401ae0  ; std::string::assign_chars */
+    t = 0x00401ae0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2f30_4;
+    c->eip = t;
+    goto out;
+R_4:
+    /* 005d2fd7  cmp dword ptr [esp + 0x28], 0x10  ; var_4 */
+    ea = (uint32_t)(esp + 0x00000028u);
+    a = M32(ea);
+    b = 0x10u;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    /* 005d2fdc  jb 0x5d2feb */
+    if (cf) goto L_005d2feb;
+    /* 005d2fde  mov ecx, dword ptr [esp + 0x14]  ; var_18 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    ecx = M32(ea);
+    /* 005d2fe2  push ecx */
+    t = ecx;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005d2fe3  call 0x403680  ; operator_delete */
+    t = 0x00403680u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d2f30_5;
+    c->eip = t;
+    goto out;
+R_5:
+    /* 005d2fe8  add esp, 4 */
     a = esp;
     b = 0x4u;
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 005e52fb  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005e52fc  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005e53a0  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e53a0, bfv_client_l1_body_005e53a0);
-BFV_L1_RESUME(bfv_client_l1r_005e53a0_1, bfv_client_l1_body_005e53a0, 1);
-BFV_L1_RESUME(bfv_client_l1r_005e53a0_2, bfv_client_l1_body_005e53a0, 2);
-void bfv_client_l1_body_005e53a0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    default: break;
-    }
-    /* 005e53a0  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e53a1  mov esi, ecx */
-    esi = ecx;
-    /* 005e53a3  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e53a4  lea edi, [esi + 0x48] */
-    edi = (uint32_t)(esi + 0x00000048u);
-    /* 005e53a7  mov ecx, edi */
-    ecx = edi;
-    /* 005e53a9  call 0x5ddfc0 */
-    t = 0x005ddfc0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e53a0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005e53ae  mov ecx, esi */
-    ecx = esi;
-    /* 005e53b0  call 0x5e6360 */
-    t = 0x005e6360u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e53a0_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005e53b5  mov ecx, edi */
-    ecx = edi;
-    /* 005e53b7  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005e53b8  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005e53b9  jmp 0x5ddca0 */
-    c->eip = 0x005ddca0u;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005e53c0  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e53c0, bfv_client_l1_body_005e53c0);
-void bfv_client_l1_body_005e53c0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t a, b, r, c0, ea;
-    /* 005e53c0  mov eax, dword ptr [ecx + 0x10] */
-    ea = (uint32_t)(ecx + 0x00000010u);
-    eax = M32(ea);
-    /* 005e53c3  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005e53c5  jle 0x5e53cd */
-    if ((zf | (sf != of))) goto L_005e53cd;
-    /* 005e53c7  mov eax, 2 */
-    eax = 0x2u;
-    /* 005e53cc  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-L_005e53cd:
-    /* 005e53cd  mov eax, dword ptr [ecx + 0x48] */
-    ea = (uint32_t)(ecx + 0x00000048u);
-    eax = M32(ea);
-    /* 005e53d0  cmp eax, 3 */
-    a = eax;
-    b = 0x3u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005e53d3  je 0x5e53e2 */
-    if (zf) goto L_005e53e2;
-    /* 005e53d5  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005e53d7  je 0x5e53e2 */
-    if (zf) goto L_005e53e2;
-    /* 005e53d9  dec eax */
-    a = eax;
-    r = (a - 1u) & 0xffffffffu;
-    F_DEC(32, a, r);
-    eax = r;
-    /* 005e53da  neg eax */
-    a = eax;
-    r = (0u - a) & 0xffffffffu;
-    F_NEG(32, a, r);
-    eax = r;
-    /* 005e53dc  sbb eax, eax */
-    a = eax;
-    b = eax;
-    c0 = cf;
-    r = (a - b - cf) & 0xffffffffu;
-    F_SBB(32, a, b, c0, r);
-    eax = r;
-    /* 005e53de  and eax, 3 */
-    r = (eax & 0x3u) & 0xffffffffu;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 005e53e1  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-L_005e53e2:
-    /* 005e53e2  mov eax, 1 */
-    eax = 0x1u;
-    /* 005e53e7  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005e53f0  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e53f0, bfv_client_l1_body_005e53f0);
-void bfv_client_l1_body_005e53f0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t a, b, r;
-    /* 005e53f0  add ecx, 0x48 */
-    a = ecx;
-    b = 0x48u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    ecx = r;
-    /* 005e53f3  jmp 0x5ddc50 */
-    c->eip = 0x005ddc50u;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005e5400  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e5400, bfv_client_l1_body_005e5400);
-BFV_L1_RESUME(bfv_client_l1r_005e5400_1, bfv_client_l1_body_005e5400, 1);
-BFV_L1_RESUME(bfv_client_l1r_005e5400_2, bfv_client_l1_body_005e5400, 2);
-BFV_L1_RESUME(bfv_client_l1r_005e5400_3, bfv_client_l1_body_005e5400, 3);
-BFV_L1_RESUME(bfv_client_l1r_005e5400_4, bfv_client_l1_body_005e5400, 4);
-void bfv_client_l1_body_005e5400(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    case 4: goto R_4;
-    default: break;
-    }
-    /* 005e5400  mov eax, dword ptr [esp + 4] */
-    ea = (uint32_t)(esp + 0x00000004u);
-    eax = M32(ea);
-    /* 005e5404  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5405  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5406  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5407  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5408  mov esi, edx */
-    esi = edx;
-    /* 005e540a  mov edi, ecx */
-    edi = ecx;
-    /* 005e540c  call 0x7db298 */
-    t = 0x007db298u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5400_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005e5411  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5412  mov ebx, eax */
-    ebx = eax;
-    /* 005e5414  call 0x7db292 */
-    t = 0x007db292u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5400_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005e5419  lea esi, [edi + 0x48] */
-    esi = (uint32_t)(edi + 0x00000048u);
-    /* 005e541c  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e541d  mov edx, eax */
-    edx = eax;
-    /* 005e541f  mov ecx, esi */
-    ecx = esi;
-    /* 005e5421  call 0x5ddb80 */
-    t = 0x005ddb80u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5400_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 005e5426  cmp eax, -1 */
-    a = eax;
-    b = 0xffffffffu;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005e5429  je 0x5e543a */
-    if (zf) goto L_005e543a;
-    /* 005e542b  mov edx, eax */
-    edx = eax;
-    /* 005e542d  mov ecx, esi */
-    ecx = esi;
-    /* 005e542f  call 0x5ddc50 */
-    t = 0x005ddc50u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5400_4;
-    c->eip = t;
-    goto out;
-R_4:
-    /* 005e5434  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005e5435  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005e5436  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005e5437  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-L_005e543a:
-    /* 005e543a  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005e543b  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005e543c  xor eax, eax */
-    r = 0;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 005e543e  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005e543f  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005e5450  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e5450, bfv_client_l1_body_005e5450);
-void bfv_client_l1_body_005e5450(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t a, b, r;
-    /* 005e5450  add ecx, 0x48 */
-    a = ecx;
-    b = 0x48u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    ecx = r;
-    /* 005e5453  jmp 0x5ddc40 */
-    c->eip = 0x005ddc40u;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005e5460  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e5460, bfv_client_l1_body_005e5460);
-void bfv_client_l1_body_005e5460(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t a, b, r;
-    /* 005e5460  add ecx, 0x48 */
-    a = ecx;
-    b = 0x48u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    ecx = r;
-    /* 005e5463  jmp 0x5ddaf0 */
-    c->eip = 0x005ddaf0u;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 005e5630  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e5630, bfv_client_l1_body_005e5630);
-BFV_L1_RESUME(bfv_client_l1r_005e5630_1, bfv_client_l1_body_005e5630, 1);
-BFV_L1_RESUME(bfv_client_l1r_005e5630_2, bfv_client_l1_body_005e5630, 2);
-BFV_L1_RESUME(bfv_client_l1r_005e5630_3, bfv_client_l1_body_005e5630, 3);
-void bfv_client_l1_body_005e5630(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    default: break;
-    }
-    /* 005e5630  mov ecx, dword ptr [edi + 0x610] */
-    ea = (uint32_t)(edi + 0x00000610u);
-    ecx = M32(ea);
-    /* 005e5636  xor eax, eax */
-    r = 0;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 005e5638  test ecx, ecx */
-    r = (ecx & ecx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005e563a  je 0x5e5673 */
-    if (zf) goto L_005e5673;
-    /* 005e563c  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e563d  lea ecx, [ecx] */
-    ecx = (uint32_t)(ecx);
-L_005e5640:
-    /* 005e5640  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005e5642  jne 0x5e5672 */
-    if (!zf) goto L_005e5672;
-    /* 005e5644  mov ecx, 0xa */
-    ecx = 0xau;
-    /* 005e5649  call 0x5d1d00 */
-    t = 0x005d1d00u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5630_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 005e564e  mov ecx, edi */
-    ecx = edi;
-    /* 005e5650  call 0x5e6780 */
-    t = 0x005e6780u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5630_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 005e5655  lea esi, [edi + 0x48] */
-    esi = (uint32_t)(edi + 0x00000048u);
-    /* 005e5658  mov ecx, esi */
-    ecx = esi;
-    /* 005e565a  call 0x5ded30 */
-    t = 0x005ded30u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5630_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 005e565f  test ebx, ebx */
-    r = (ebx & ebx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005e5661  je 0x5e5668 */
-    if (zf) goto L_005e5668;
-    /* 005e5663  cmp dword ptr [esi], 0 */
+L_005d2feb:
+    /* 005d2feb  cmp dword ptr [esi], 0 */
     ea = (uint32_t)(esi);
     a = M32(ea);
     b = 0x0u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 005e5666  je 0x5e5672 */
-    if (zf) goto L_005e5672;
-L_005e5668:
-    /* 005e5668  mov ecx, dword ptr [edi + 0x610] */
-    ea = (uint32_t)(edi + 0x00000610u);
-    ecx = M32(ea);
-    /* 005e566e  test ecx, ecx */
-    r = (ecx & ecx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005e5670  jne 0x5e5640 */
-    if (!zf) goto L_005e5640;
-L_005e5672:
-    /* 005e5672  pop esi */
+    /* 005d2fee  mov eax, 0xf */
+    eax = 0xfu;
+    /* 005d2ff3  mov dword ptr [esp + 0x28], eax  ; var_4 */
+    ea = (uint32_t)(esp + 0x00000028u);
+    M32(ea) = eax;
+    /* 005d2ff7  mov dword ptr [esp + 0x24], 0  ; var_8 */
+    ea = (uint32_t)(esp + 0x00000024u);
+    M32(ea) = 0x0u;
+    /* 005d2fff  mov byte ptr [esp + 0x14], 0  ; var_18 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    M8(ea) = 0x0u;
+    /* 005d3004  jne 0x5d2f74 */
+    if (!zf) goto L_005d2f74;
+    /* 005d300a  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 005d300b  pop ebx */
+    t = M32(esp);
+    esp += 4;
+    ebx = t;
+L_005d300c:
+    /* 005d300c  mov eax, edi */
+    eax = edi;
+    /* 005d300e  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 005d300f  pop esi */
     t = M32(esp);
     esp += 4;
     esi = t;
-L_005e5673:
-    /* 005e5673  ret */
+    /* 005d3010  add esp, 0x1c */
+    a = esp;
+    b = 0x1cu;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 005d3013  ret */
     c->eip = M32(esp);
     esp += 4;
     goto out;
@@ -4042,23 +2214,14 @@ out: __attribute__((unused));
 }
 
 
-/* 005e5680  (called from this folder only) */
-BFV_L1_ENTRY(bfv_client_l1_005e5680, bfv_client_l1_body_005e5680);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_1, bfv_client_l1_body_005e5680, 1);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_2, bfv_client_l1_body_005e5680, 2);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_3, bfv_client_l1_body_005e5680, 3);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_4, bfv_client_l1_body_005e5680, 4);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_5, bfv_client_l1_body_005e5680, 5);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_6, bfv_client_l1_body_005e5680, 6);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_7, bfv_client_l1_body_005e5680, 7);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_8, bfv_client_l1_body_005e5680, 8);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_9, bfv_client_l1_body_005e5680, 9);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_10, bfv_client_l1_body_005e5680, 10);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_11, bfv_client_l1_body_005e5680, 11);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_12, bfv_client_l1_body_005e5680, 12);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_13, bfv_client_l1_body_005e5680, 13);
-BFV_L1_RESUME(bfv_client_l1r_005e5680_14, bfv_client_l1_body_005e5680, 14);
-void bfv_client_l1_body_005e5680(struct bfv_cpu *c)
+/* 005d3020  gamespy_005d3020  (called from this folder only)
+ * also entered at 005d3060: ITone::vf26
+ * called by: GameSpyJoin::vf10, GameSpyJoin::vf9, GameSpyLanJoin::vf9, GameSpyLanJoin::vf10
+ */
+BFV_L1_ENTRY(bfv_client_l1_005d3020, bfv_client_l1_body_005d3020);
+BFV_L1_RESUME(bfv_client_l1r_005d3020_1, bfv_client_l1_body_005d3020, 1);
+BFV_L1_RESUME(bfv_client_l1r_005d3020_2, bfv_client_l1_body_005d3020, 2);
+void bfv_client_l1_body_005d3020(struct bfv_cpu *c)
 {
     uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
@@ -4068,377 +2231,60 @@ void bfv_client_l1_body_005e5680(struct bfv_cpu *c)
     switch (c->eip) { /* 0: entry; k: return from the k-th call */
     case 1: goto R_1;
     case 2: goto R_2;
-    case 3: goto R_3;
-    case 4: goto R_4;
-    case 5: goto R_5;
-    case 6: goto R_6;
-    case 7: goto R_7;
-    case 8: goto R_8;
-    case 9: goto R_9;
-    case 10: goto R_10;
-    case 11: goto R_11;
-    case 12: goto R_12;
-    case 13: goto R_13;
-    case 14: goto R_14;
     default: break;
     }
-    /* 005e5680  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5681  mov eax, dword ptr [esp + 0xc] */
-    ea = (uint32_t)(esp + 0x0000000cu);
-    eax = M32(ea);
-    /* 005e5685  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5686  push ebp */
-    t = ebp;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5687  mov ebp, dword ptr [esp + 0x10] */
-    ea = (uint32_t)(esp + 0x00000010u);
-    ebp = M32(ea);
-    /* 005e568b  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e568c  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e568d  xor ebx, ebx */
-    r = 0;
+    /* 005d3020  mov cl, byte ptr [0xd7bd48] */
+    ea = (uint32_t)(0x00d7bd48u);
+    SET8L(ecx, M8(ea));
+    /* 005d3026  mov eax, 1 */
+    eax = 0x1u;
+    /* 005d302b  test al, cl */
+    r = (LO8(eax) & LO8(ecx)) & 0xffu;
+    F_LOGIC(8, r);
+    /* 005d302d  jne 0x5d3054 */
+    if (!zf) goto L_005d3054;
+    /* 005d302f  mov edx, dword ptr [0xd7bd48] */
+    ea = (uint32_t)(0x00d7bd48u);
+    edx = M32(ea);
+    /* 005d3035  or edx, eax */
+    r = (edx | eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    ebx = r;
-    /* 005e568f  cmp eax, ebx */
-    a = eax;
-    b = ebx;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005e5691  mov edi, ecx */
-    edi = ecx;
-    /* 005e5693  mov esi, edx */
-    esi = edx;
-    /* 005e5695  mov dword ptr [esp + 0x10], ebx */
-    ea = (uint32_t)(esp + 0x00000010u);
-    M32(ea) = ebx;
-    /* 005e5699  mov dword ptr [edi + 0x60c], 1 */
-    ea = (uint32_t)(edi + 0x0000060cu);
-    M32(ea) = 0x1u;
-    /* 005e56a3  push ebp */
-    t = ebp;
+    edx = r;
+    /* 005d3037  mov ecx, 0xd7bd3c */
+    ecx = 0xd7bd3cu;
+    /* 005d303c  mov dword ptr [0xd7bd48], edx */
+    ea = (uint32_t)(0x00d7bd48u);
+    M32(ea) = edx;
+    /* 005d3042  call 0x5d2f30  ; gamespy_005d2f30 */
+    t = 0x005d2f30u;
     esp -= 4;
-    M32(esp) = t;
-    /* 005e56a4  jne 0x5e5723 */
-    if (!zf) goto L_005e5723;
-    /* 005e56a6  lea ebx, [edi + 0x48] */
-    ebx = (uint32_t)(edi + 0x00000048u);
-    /* 005e56a9  call 0x7db298 */
-    t = 0x007db298u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_1;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d3020_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005e56ae  push eax */
-    t = eax;
+    /* 005d3047  push 0xb31870  ; sub_00b31870 */
+    t = 0xb31870u;
     esp -= 4;
     M32(esp) = t;
-    /* 005e56af  push esi */
-    t = esi;
+    /* 005d304c  call 0x7c2cd2  ; atexit */
+    t = 0x007c2cd2u;
     esp -= 4;
-    M32(esp) = t;
-    /* 005e56b0  call 0x7db292 */
-    t = 0x007db292u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_2;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005d3020_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005e56b5  mov edx, eax */
-    edx = eax;
-    /* 005e56b7  mov ecx, ebx */
-    ecx = ebx;
-    /* 005e56b9  call 0x5ddb80 */
-    t = 0x005ddb80u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 005e56be  cmp eax, -1 */
-    a = eax;
-    b = 0xffffffffu;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005e56c1  jne 0x5e56ef */
-    if (!zf) goto L_005e56ef;
-    /* 005e56c3  mov ebx, dword ptr [esp + 0x24] */
-    ea = (uint32_t)(esp + 0x00000024u);
-    ebx = M32(ea);
-    /* 005e56c7  xor eax, eax */
-    r = 0;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 005e56c9  test ebx, ebx */
-    r = (ebx & ebx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005e56cb  setne al */
-    SET8L(eax, (!zf) ? 1u : 0u);
-    /* 005e56ce  mov edx, esi */
-    edx = esi;
-    /* 005e56d0  mov ecx, edi */
-    ecx = edi;
-    /* 005e56d2  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e56d3  push 1 */
-    t = 0x1u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e56d5  push ebp */
-    t = ebp;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e56d6  call 0x5e6430 */
-    t = 0x005e6430u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_4;
-    c->eip = t;
-    goto out;
-R_4:
-    /* 005e56db  mov ebx, eax */
-    ebx = eax;
-    /* 005e56dd  mov edx, ebx */
-    edx = ebx;
-    /* 005e56df  lea ecx, [edi + 0x48] */
-    ecx = (uint32_t)(edi + 0x00000048u);
-    /* 005e56e2  call 0x5ddb50 */
-    t = 0x005ddb50u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_5;
-    c->eip = t;
-    goto out;
-R_5:
-    /* 005e56e7  mov eax, dword ptr [esp + 0x10] */
-    ea = (uint32_t)(esp + 0x00000010u);
-    eax = M32(ea);
-    /* 005e56eb  xor ebx, ebx */
-    r = 0;
-    F_LOGIC(32, r);
-    ebx = r;
-    /* 005e56ed  jmp 0x5e5739 */
-    goto L_005e5739;
-L_005e56ef:
-    /* 005e56ef  mov edx, eax */
-    edx = eax;
-    /* 005e56f1  mov ecx, ebx */
-    ecx = ebx;
-    /* 005e56f3  call 0x5ddc50 */
-    t = 0x005ddc50u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_6;
-    c->eip = t;
-    goto out;
-R_6:
-    /* 005e56f8  mov ebx, eax */
-    ebx = eax;
-    /* 005e56fa  mov eax, dword ptr [esp + 0x24] */
-    ea = (uint32_t)(esp + 0x00000024u);
-    eax = M32(ea);
-    /* 005e56fe  xor ecx, ecx */
-    r = 0;
-    F_LOGIC(32, r);
-    ecx = r;
-    /* 005e5700  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 005e5702  setne cl */
-    SET8L(ecx, (!zf) ? 1u : 0u);
-    /* 005e5705  mov edx, ebx */
-    edx = ebx;
-    /* 005e5707  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5708  push 1 */
-    t = 0x1u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e570a  mov ecx, edi */
-    ecx = edi;
-    /* 005e570c  call 0x5e63b0 */
-    t = 0x005e63b0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_7;
-    c->eip = t;
-    goto out;
-R_7:
-    /* 005e5711  mov edx, ebx */
-    edx = ebx;
-    /* 005e5713  lea ecx, [edi + 0x48] */
-    ecx = (uint32_t)(edi + 0x00000048u);
-    /* 005e5716  call 0x5ddb50 */
-    t = 0x005ddb50u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_8;
-    c->eip = t;
-    goto out;
-R_8:
-    /* 005e571b  mov eax, dword ptr [esp + 0x10] */
-    ea = (uint32_t)(esp + 0x00000010u);
-    eax = M32(ea);
-    /* 005e571f  xor ebx, ebx */
-    r = 0;
-    F_LOGIC(32, r);
-    ebx = r;
-    /* 005e5721  jmp 0x5e5739 */
-    goto L_005e5739;
-L_005e5723:
-    /* 005e5723  call 0x7db298 */
-    t = 0x007db298u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_9;
-    c->eip = t;
-    goto out;
-R_9:
-    /* 005e5728  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5729  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e572a  call 0x7db292 */
-    t = 0x007db292u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_10;
-    c->eip = t;
-    goto out;
-R_10:
-    /* 005e572f  lea ecx, [edi + 0x48] */
-    ecx = (uint32_t)(edi + 0x00000048u);
-    /* 005e5732  mov edx, eax */
-    edx = eax;
-    /* 005e5734  call 0x5dee10 */
-    t = 0x005dee10u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_11;
-    c->eip = t;
-    goto out;
-R_11:
-L_005e5739:
-    /* 005e5739  cmp dword ptr [esp + 0x20], ebx */
-    ea = (uint32_t)(esp + 0x00000020u);
-    a = M32(ea);
-    b = ebx;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005e573d  jne 0x5e5777 */
-    if (!zf) goto L_005e5777;
-    /* 005e573f  cmp eax, ebx */
-    a = eax;
-    b = ebx;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 005e5741  jne 0x5e5777 */
-    if (!zf) goto L_005e5777;
-    /* 005e5743  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e5744  call 0x7db292 */
-    t = 0x007db292u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_12;
-    c->eip = t;
-    goto out;
-R_12:
-    /* 005e5749  push ebp */
-    t = ebp;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005e574a  mov dword ptr [edi + 0x610], eax */
-    ea = (uint32_t)(edi + 0x00000610u);
-    M32(ea) = eax;
-    /* 005e5750  call 0x7db298 */
-    t = 0x007db298u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_13;
-    c->eip = t;
-    goto out;
-R_13:
-    /* 005e5755  mov ebx, dword ptr [esp + 0x1c] */
-    ea = (uint32_t)(esp + 0x0000001cu);
-    ebx = M32(ea);
-    /* 005e5759  mov word ptr [edi + 0x614], ax */
-    ea = (uint32_t)(edi + 0x00000614u);
-    M16(ea) = LO16(eax);
-    /* 005e5760  call 0x5e5630 */
-    t = 0x005e5630u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e5680_14;
-    c->eip = t;
-    goto out;
-R_14:
-    /* 005e5765  mov dword ptr [edi + 0x60c], 0 */
-    ea = (uint32_t)(edi + 0x0000060cu);
-    M32(ea) = 0x0u;
-    /* 005e576f  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005e5770  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005e5771  pop ebp */
-    t = M32(esp);
-    esp += 4;
-    ebp = t;
-    /* 005e5772  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005e5773  pop ecx */
-    t = M32(esp);
-    esp += 4;
-    ecx = t;
-    /* 005e5774  ret 0x10 */
+    /* 005d3051  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+L_005d3054:
+    /* 005d3054  mov eax, 0xd7bd3c */
+    eax = 0xd7bd3cu;
+    /* 005d3059  ret */
     c->eip = M32(esp);
-    esp += 20;
-    goto out;
-L_005e5777:
-    /* 005e5777  mov dword ptr [edi + 0x60c], ebx */
-    ea = (uint32_t)(edi + 0x0000060cu);
-    M32(ea) = ebx;
-    /* 005e577d  pop edi */
-    t = M32(esp);
     esp += 4;
-    edi = t;
-    /* 005e577e  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005e577f  pop ebp */
-    t = M32(esp);
-    esp += 4;
-    ebp = t;
-    /* 005e5780  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 005e5781  pop ecx */
-    t = M32(esp);
-    esp += 4;
-    ecx = t;
-    /* 005e5782  ret 0x10 */
-    c->eip = M32(esp);
-    esp += 20;
     goto out;
 out: __attribute__((unused));
     c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;

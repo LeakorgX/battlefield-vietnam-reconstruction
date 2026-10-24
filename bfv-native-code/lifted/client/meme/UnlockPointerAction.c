@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00abe670  dice::meme::UnlockPointerAction  (vtable store) */
+/* 00abe670  UnlockPointerAction::create  (vtable store)
+ * class: dice::meme::UnlockPointerAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe670, bfv_client_l1_body_00abe670);
 BFV_L1_RESUME(bfv_client_l1r_00abe670_1, bfv_client_l1_body_00abe670, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abe670_2, bfv_client_l1_body_00abe670, 2);
@@ -29,7 +31,7 @@ void bfv_client_l1_body_00abe670(struct bfv_cpu *c)
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe673  call 0x403610 */
+    /* 00abe673  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe670_1;
@@ -51,14 +53,14 @@ R_1:
     if (zf) goto L_00abe692;
     /* 00abe681  mov ecx, esi */
     ecx = esi;
-    /* 00abe683  call 0x874870 */
+    /* 00abe683  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe670_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00abe688  mov dword ptr [esi], 0xc0ed6c */
+    /* 00abe688  mov dword ptr [esi], 0xc0ed6c  ; vtable UnlockPointerAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0ed6cu;
     /* 00abe68e  mov eax, esi */
@@ -91,8 +93,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abe770  dice::meme::UnlockPointerAction  (virtual method)
- * strings: "dice::meme::UnlockPointerAction" */
+/* 00abe770  UnlockPointerAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::UnlockPointerAction
+ * strings: "dice::meme::UnlockPointerAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe770, bfv_client_l1_body_00abe770);
 BFV_L1_RESUME(bfv_client_l1r_00abe770_1, bfv_client_l1_body_00abe770, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abe770_2, bfv_client_l1_body_00abe770, 2);
@@ -123,27 +128,27 @@ void bfv_client_l1_body_00abe770(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00abe785  push 0xc0ee70 */
+    /* 00abe785  push 0xc0ee70  ; "dice::meme::UnlockPointerAction" */
     t = 0xc0ee70u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe78a  mov ecx, 0xe212c0 */
+    /* 00abe78a  mov ecx, 0xe212c0  ; g_RuntimeClass_UnlockPointerAction */
     ecx = 0xe212c0u;
-    /* 00abe78f  call 0x875490 */
+    /* 00abe78f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe770_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00abe794  push 0xb41a70 */
+    /* 00abe794  push 0xb41a70  ; bfv_client_global_store_00b41a70 */
     t = 0xb41a70u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abe799  mov dword ptr [0xe212c0], 0xc0ecd4 */
+    /* 00abe799  mov dword ptr [0xe212c0], 0xc0ecd4  ; g_RuntimeClass_UnlockPointerAction */
     ea = (uint32_t)(0x00e212c0u);
     M32(ea) = 0xc0ecd4u;
-    /* 00abe7a3  call 0x7c2cd2 */
+    /* 00abe7a3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe770_2;
@@ -157,7 +162,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00abe7ab:
-    /* 00abe7ab  mov eax, 0xe212c0 */
+    /* 00abe7ab  mov eax, 0xe212c0  ; g_RuntimeClass_UnlockPointerAction */
     eax = 0xe212c0u;
     /* 00abe7b0  ret */
     c->eip = M32(esp);
@@ -170,7 +175,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00abe8c0  dice::meme::UnlockPointerAction  (virtual method) */
+/* 00abe8c0  UnlockPointerAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::UnlockPointerAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abe8c0, bfv_client_l1_body_00abe8c0);
 BFV_L1_RESUME(bfv_client_l1r_00abe8c0_1, bfv_client_l1_body_00abe8c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abe8c0_2, bfv_client_l1_body_00abe8c0, 2);
@@ -186,10 +194,10 @@ void bfv_client_l1_body_00abe8c0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00abe8c0  mov ecx, dword ptr [esp + 4] */
+    /* 00abe8c0  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00abe8c4  call 0x6dc0d0 */
+    /* 00abe8c4  call 0x6dc0d0  ; NetworkManager::vf26_addressOf_20h */
     t = 0x006dc0d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe8c0_1;
@@ -199,7 +207,7 @@ R_1:
     /* 00abe8c9  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 00abe8cb  call 0xabe810 */
+    /* 00abe8cb  call 0xabe810  ; meme_dice_meme_DynamicIndexPointer_00abe810 */
     t = 0x00abe810u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abe8c0_2;

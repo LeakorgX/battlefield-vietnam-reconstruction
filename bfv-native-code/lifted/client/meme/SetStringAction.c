@@ -5,8 +5,12 @@
 #include "l1.h"
 
 
-/* 008713f0  dice::meme::SetStringAction  (virtual method)
- * strings: "Variable", "Data" */
+/* 008713f0  SetStringAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::SetStringAction
+ * strings: "Variable", "Data"
+ * called by: SetVariableSoftAction::serialize, SetVariableSineAction::serialize, SetVariableArrayAction::serialize
+ */
 BFV_L1_ENTRY(bfv_client_l1_008713f0, bfv_client_l1_body_008713f0);
 BFV_L1_RESUME(bfv_client_l1r_008713f0_1, bfv_client_l1_body_008713f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008713f0_2, bfv_client_l1_body_008713f0, 2);
@@ -28,14 +32,14 @@ void bfv_client_l1_body_008713f0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008713f1  mov ebx, dword ptr [esp + 8] */
+    /* 008713f1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 008713f5  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008713f6  mov esi, dword ptr [esp + 0x10] */
+    /* 008713f6  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 008713fa  push edi */
@@ -52,7 +56,7 @@ void bfv_client_l1_body_008713f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008713fd  mov edi, ecx */
     edi = ecx;
-    /* 008713ff  call 0xa7d100 */
+    /* 008713ff  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008713f0_1;
@@ -93,11 +97,11 @@ L_00871410:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871414  push 0xbd33e8 */
+    /* 00871414  push 0xbd33e8  ; "Variable" */
     t = 0xbd33e8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871419  lea ecx, [edi + 8] */
+    /* 00871419  lea ecx, [edi + 8]  ; field Variable (serialized) */
     ecx = (uint32_t)(edi + 0x00000008u);
     /* 0087141c  push ecx */
     t = ecx;
@@ -129,11 +133,11 @@ R_2:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0087142b  push 0xb6a3f0 */
+    /* 0087142b  push 0xb6a3f0  ; "Data" */
     t = 0xb6a3f0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871430  add edi, 0xc */
+    /* 00871430  add edi, 0xc  ; field Data (serialized) */
     a = edi;
     b = 0xcu;
     r = (a + b) & 0xffffffffu;
@@ -185,7 +189,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00871450  dice::meme::SetStringAction  (virtual method) */
+/* 00871450  SetStringAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::SetStringAction
+ */
 BFV_L1_ENTRY_DEEP(bfv_client_l1_00871450, bfv_client_l1_body_00871450, 0x500);
 BFV_L1_RESUME_DEEP(bfv_client_l1r_00871450_1, bfv_client_l1_body_00871450, 1, 0x500);
 BFV_L1_RESUME_DEEP(bfv_client_l1r_00871450_2, bfv_client_l1_body_00871450, 2, 0x500);
@@ -213,7 +220,7 @@ void bfv_client_l1_body_00871450(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00871457  mov esi, ecx */
     esi = ecx;
-    /* 00871459  mov eax, dword ptr [esi + 8] */
+    /* 00871459  mov eax, dword ptr [esi + 8]  ; field Variable */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
     /* 0087145c  test eax, eax */
@@ -221,7 +228,7 @@ void bfv_client_l1_body_00871450(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 0087145e  je 0x87148e */
     if (zf) goto L_0087148e;
-    /* 00871460  mov ecx, dword ptr [esi + 0xc] */
+    /* 00871460  mov ecx, dword ptr [esi + 0xc]  ; field Data */
     ea = (uint32_t)(esi + 0x0000000cu);
     ecx = M32(ea);
     /* 00871463  test ecx, ecx */
@@ -233,14 +240,14 @@ void bfv_client_l1_body_00871450(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00871468  mov edi, dword ptr [esp + 0x40c] */
+    /* 00871468  mov edi, dword ptr [esp + 0x40c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000040cu);
     edi = M32(ea);
     /* 0087146f  push 0x400 */
     t = 0x400u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871474  lea eax, [esp + 0xc] */
+    /* 00871474  lea eax, [esp + 0xc]  ; &var_400 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 00871478  push eax */
     t = eax;
@@ -250,20 +257,20 @@ void bfv_client_l1_body_00871450(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0087147a  call 0x8746c0 */
+    /* 0087147a  call 0x8746c0  ; Data_008746c0 */
     t = 0x008746c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871450_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0087147f  mov ecx, dword ptr [esi + 8] */
+    /* 0087147f  mov ecx, dword ptr [esi + 8]  ; field Variable */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
     /* 00871482  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 00871484  lea eax, [esp + 8] */
+    /* 00871484  lea eax, [esp + 8]  ; &var_400 */
     eax = (uint32_t)(esp + 0x00000008u);
     /* 00871488  push eax */
     t = eax;
@@ -311,7 +318,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008719e0  dice::meme::SetStringAction  (vtable store) */
+/* 008719e0  SetStringAction::create  (vtable store)
+ * class: dice::meme::SetStringAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_008719e0, bfv_client_l1_body_008719e0);
 BFV_L1_RESUME(bfv_client_l1r_008719e0_1, bfv_client_l1_body_008719e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008719e0_2, bfv_client_l1_body_008719e0, 2);
@@ -335,7 +344,7 @@ void bfv_client_l1_body_008719e0(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 008719e3  call 0x403610 */
+    /* 008719e3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008719e0_1;
@@ -357,14 +366,14 @@ R_1:
     if (zf) goto L_00871a10;
     /* 008719f1  mov ecx, esi */
     ecx = esi;
-    /* 008719f3  call 0x874870 */
+    /* 008719f3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008719e0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 008719f8  mov dword ptr [esi], 0xbd594c */
+    /* 008719f8  mov dword ptr [esi], 0xbd594c  ; vtable SetStringAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd594cu;
     /* 008719fe  mov dword ptr [esi + 8], 0 */
@@ -403,8 +412,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00871d70  dice::meme::SetStringAction  (virtual method)
- * strings: "dice::meme::SetStringAction" */
+/* 00871d70  SetStringAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::SetStringAction
+ * strings: "dice::meme::SetStringAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871d70, bfv_client_l1_body_00871d70);
 BFV_L1_RESUME(bfv_client_l1r_00871d70_1, bfv_client_l1_body_00871d70, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871d70_2, bfv_client_l1_body_00871d70, 2);
@@ -435,13 +447,13 @@ void bfv_client_l1_body_00871d70(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00871d85  push 0xbd5d4c */
+    /* 00871d85  push 0xbd5d4c  ; "dice::meme::SetStringAction" */
     t = 0xbd5d4cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00871d8a  mov ecx, 0xdf66e0 */
+    /* 00871d8a  mov ecx, 0xdf66e0  ; g_RuntimeClass_SetStringAction */
     ecx = 0xdf66e0u;
-    /* 00871d8f  call 0x875490 */
+    /* 00871d8f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871d70_1;
@@ -452,10 +464,10 @@ R_1:
     t = 0xb3ae00u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871d99  mov dword ptr [0xdf66e0], 0xbd5af4 */
+    /* 00871d99  mov dword ptr [0xdf66e0], 0xbd5af4  ; g_RuntimeClass_SetStringAction */
     ea = (uint32_t)(0x00df66e0u);
     M32(ea) = 0xbd5af4u;
-    /* 00871da3  call 0x7c2cd2 */
+    /* 00871da3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871d70_2;
@@ -469,7 +481,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00871dab:
-    /* 00871dab  mov eax, 0xdf66e0 */
+    /* 00871dab  mov eax, 0xdf66e0  ; g_RuntimeClass_SetStringAction */
     eax = 0xdf66e0u;
     /* 00871db0  ret */
     c->eip = M32(esp);

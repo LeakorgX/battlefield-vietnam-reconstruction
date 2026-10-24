@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00673fd0  dice::ref2::world::ObjectFlagPredicator  (vtable store) */
+/* 00673fd0  ObjectFlagPredicator::ObjectFlagPredicator  (vtable store)
+ * class: dice::ref2::world::ObjectFlagPredicator
+ * called by: ServerService_helper_0049cf10, ServerService_helper_004a6aa0, sub_004a6fa0, GameClient::vf15, bf_005b5c90, bf_005b5d50 (+15 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00673fd0, bfv_client_l1_body_00673fd0);
 void bfv_client_l1_body_00673fd0(struct bfv_cpu *c)
 {
@@ -16,10 +19,10 @@ void bfv_client_l1_body_00673fd0(struct bfv_cpu *c)
     uint32_t ea;
     /* 00673fd0  mov eax, ecx */
     eax = ecx;
-    /* 00673fd2  mov ecx, dword ptr [esp + 4] */
+    /* 00673fd2  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00673fd6  mov dword ptr [eax], 0xb90bec */
+    /* 00673fd6  mov dword ptr [eax], 0xb90bec  ; vtable ObjectFlagPredicator */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb90becu;
     /* 00673fdc  mov dword ptr [eax + 4], ecx */
@@ -36,7 +39,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00673ff0  dice::ref2::world::ObjectFlagPredicator  (virtual method) */
+/* 00673ff0  ObjectFlagPredicator::vf0  (virtual method)
+ * class: dice::ref2::world::ObjectFlagPredicator
+ * called by: ObjectDropKitPredicator::vf0, DrawVisiblePredicate::vf0, CullPredicator::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00673ff0, bfv_client_l1_body_00673ff0);
 void bfv_client_l1_body_00673ff0(struct bfv_cpu *c)
 {
@@ -45,7 +51,7 @@ void bfv_client_l1_body_00673ff0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, c0, ea;
-    /* 00673ff0  mov eax, dword ptr [esp + 4] */
+    /* 00673ff0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00673ff4  mov eax, dword ptr [eax + 4] */

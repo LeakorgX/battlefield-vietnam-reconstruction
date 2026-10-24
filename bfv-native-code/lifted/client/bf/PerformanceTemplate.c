@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a88900  dice::bf::PerformanceTemplate  (virtual method) */
+/* 00a88900  PerformanceTemplate::vf1  (virtual method)
+ * overrides: IPerformanceTemplate::vf1  (2 classes implement it)
+ * class: dice::bf::PerformanceTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a88900, bfv_client_l1_body_00a88900);
 BFV_L1_RESUME(bfv_client_l1r_00a88900_1, bfv_client_l1_body_00a88900, 1);
 void bfv_client_l1_body_00a88900(struct bfv_cpu *c)
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a88930  dice::bf::PerformanceTemplate  (virtual method) */
+/* 00a88930  PerformanceTemplate::vf3  (virtual method)
+ * overrides: IPerformanceTemplate::vf3  (2 classes implement it)
+ * class: dice::bf::PerformanceTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a88930, bfv_client_l1_body_00a88930);
 BFV_L1_RESUME(bfv_client_l1r_00a88930_1, bfv_client_l1_body_00a88930, 1);
 void bfv_client_l1_body_00a88930(struct bfv_cpu *c)
@@ -176,7 +182,7 @@ L_00a88954:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 00a88959  jmp 0xa825e0 */
+    /* 00a88959  jmp 0xa825e0  ; std::list::clear */
     c->eip = 0x00a825e0u;
     goto out;
 out: __attribute__((unused));
@@ -186,7 +192,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a88960  dice::bf::PerformanceTemplate  (virtual method) */
+/* 00a88960  PerformanceTemplate::vf4  (virtual method)
+ * overrides: IPerformanceTemplate::vf4  (2 classes implement it)
+ * class: dice::bf::PerformanceTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a88960, bfv_client_l1_body_00a88960);
 void bfv_client_l1_body_00a88960(struct bfv_cpu *c)
 {
@@ -215,7 +224,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a88970  dice::bf::PerformanceTemplate  (virtual method) */
+/* 00a88970  PerformanceTemplate::vf5  (virtual method)
+ * overrides: IPerformanceTemplate::vf5  (2 classes implement it)
+ * class: dice::bf::PerformanceTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a88970, bfv_client_l1_body_00a88970);
 void bfv_client_l1_body_00a88970(struct bfv_cpu *c)
 {
@@ -267,7 +279,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a88990  (between same file) */
+/* 00a88990  PerformanceTemplate::~PerformanceTemplate  (between same file)
+ * class: dice::bf::PerformanceTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a88990, bfv_client_l1_body_00a88990);
 BFV_L1_RESUME(bfv_client_l1r_00a88990_1, bfv_client_l1_body_00a88990, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a88990_2, bfv_client_l1_body_00a88990, 2);
@@ -300,7 +314,7 @@ void bfv_client_l1_body_00a88990(struct bfv_cpu *c)
     /* 00a88994  mov eax, dword ptr [edi + 0xc] */
     ea = (uint32_t)(edi + 0x0000000cu);
     eax = M32(ea);
-    /* 00a88997  mov dword ptr [edi], 0xc077a0 */
+    /* 00a88997  mov dword ptr [edi], 0xc077a0  ; vtable PerformanceTemplate */
     ea = (uint32_t)(edi);
     M32(ea) = 0xc077a0u;
     /* 00a8899d  mov esi, dword ptr [eax] */
@@ -354,7 +368,7 @@ L_00a889b7:
     esi = (uint32_t)(edi + 0x00000008u);
     /* 00a889ba  mov ecx, esi */
     ecx = esi;
-    /* 00a889bc  call 0xa825e0 */
+    /* 00a889bc  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a88990_2;
@@ -363,7 +377,7 @@ L_00a889b7:
 R_2:
     /* 00a889c1  mov ecx, esi */
     ecx = esi;
-    /* 00a889c3  call 0xa825e0 */
+    /* 00a889c3  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a88990_3;
@@ -377,7 +391,7 @@ R_3:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a889cc  call 0x403680 */
+    /* 00a889cc  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a88990_4;
@@ -393,7 +407,7 @@ R_4:
     /* 00a889d4  mov dword ptr [esi + 4], 0 */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 00a889db  mov dword ptr [edi], 0xc07784 */
+    /* 00a889db  mov dword ptr [edi], 0xc07784  ; vtable IPerformanceTemplate */
     ea = (uint32_t)(edi);
     M32(ea) = 0xc07784u;
     /* 00a889e1  pop edi */
@@ -415,7 +429,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a889f0  dice::bf::PerformanceTemplate  (vtable store) */
+/* 00a889f0  PerformanceTemplate::PerformanceTemplate  (vtable store)
+ * class: dice::bf::PerformanceTemplate
+ * also entered at 00a88a30: PerformanceTemplate::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a889f0, bfv_client_l1_body_00a889f0);
 BFV_L1_RESUME(bfv_client_l1r_00a889f0_1, bfv_client_l1_body_00a889f0, 1);
 void bfv_client_l1_body_00a889f0(struct bfv_cpu *c)
@@ -441,7 +458,7 @@ void bfv_client_l1_body_00a889f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a889f4  lea edi, [esi + 8] */
     edi = (uint32_t)(esi + 0x00000008u);
-    /* 00a889f7  mov dword ptr [esi], 0xc077a0 */
+    /* 00a889f7  mov dword ptr [esi], 0xc077a0  ; vtable PerformanceTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc077a0u;
     /* 00a889fd  mov ecx, edi */
@@ -449,7 +466,7 @@ void bfv_client_l1_body_00a889f0(struct bfv_cpu *c)
     /* 00a889ff  mov dword ptr [esi + 4], 0 */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 00a88a06  call 0xa887f0 */
+    /* 00a88a06  call 0xa887f0  ; std::list::_Buyheadnode_12_00a887f0 */
     t = 0x00a887f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a889f0_1;
@@ -492,7 +509,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a88a50  dice::bf::PerformanceTemplate  (virtual method) */
+/* 00a88a50  PerformanceTemplate::vf2  (virtual method)
+ * overrides: IPerformanceTemplate::vf2  (2 classes implement it)
+ * class: dice::bf::PerformanceTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a88a50, bfv_client_l1_body_00a88a50);
 BFV_L1_RESUME(bfv_client_l1r_00a88a50_1, bfv_client_l1_body_00a88a50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a88a50_2, bfv_client_l1_body_00a88a50, 2);
@@ -534,7 +554,7 @@ void bfv_client_l1_body_00a88a50(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 00a88a5c  lea esi, [ebp + 8] */
     esi = (uint32_t)(ebp + 0x00000008u);
-    /* 00a88a5f  lea eax, [esp + 0x14] */
+    /* 00a88a5f  lea eax, [esp + 0x14]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x00000014u);
     /* 00a88a63  push eax */
     t = eax;
@@ -550,7 +570,7 @@ void bfv_client_l1_body_00a88a50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a88a66  mov ecx, esi */
     ecx = esi;
-    /* 00a88a68  call 0xa88880 */
+    /* 00a88a68  call 0xa88880  ; std::list::_Buynode_00a88880 */
     t = 0x00a88880u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a88a50_1;
@@ -565,7 +585,7 @@ R_1:
     ecx = esi;
     /* 00a88a71  mov ebx, eax */
     ebx = eax;
-    /* 00a88a73  call 0x489ee0 */
+    /* 00a88a73  call 0x489ee0  ; std::list::_Incsize */
     t = 0x00489ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a88a50_2;

@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 005877a0  dice::ref2::world::CameraTemplate  (vtable store) */
+/* 005877a0  CameraTemplate::CameraTemplate  (vtable store)
+ * class: dice::ref2::world::CameraTemplate
+ * also entered at 00587830: CameraTemplate::vf4
+ * called by: ObjectCreatorWrapper<CameraTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_005877a0, bfv_server_l1_body_005877a0);
 BFV_L1_RESUME(bfv_server_l1r_005877a0_1, bfv_server_l1_body_005877a0, 1);
 void bfv_server_l1_body_005877a0(struct bfv_cpu *c)
@@ -25,7 +29,7 @@ void bfv_server_l1_body_005877a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005877a1  mov esi, ecx */
     esi = ecx;
-    /* 005877a3  call 0x5899c0 */
+    /* 005877a3  call 0x5899c0  ; RotationalBundleTemplate::RotationalBundleTemplate */
     t = 0x005899c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005877a0_1;
@@ -59,7 +63,7 @@ R_1:
     /* 005877d0  mov byte ptr [esi + 0x220], al */
     ea = (uint32_t)(esi + 0x00000220u);
     M8(ea) = LO8(eax);
-    /* 005877d6  mov dword ptr [esi], 0x839a34 */
+    /* 005877d6  mov dword ptr [esi], 0x839a34  ; vtable CameraTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x839a34u;
     /* 005877dc  mov dword ptr [esi + 0x74], 0x839a28 */
@@ -92,7 +96,7 @@ R_1:
     /* 0058781b  mov dword ptr [esi + 0x22c], eax */
     ea = (uint32_t)(esi + 0x0000022cu);
     M32(ea) = eax;
-    /* 00587821  mov dword ptr [esi + 0x230], 0x40000000 */
+    /* 00587821  mov dword ptr [esi + 0x230], 0x40000000  ; 2.0f */
     ea = (uint32_t)(esi + 0x00000230u);
     M32(ea) = 0x40000000u;
     /* 0058782b  mov eax, esi */
@@ -112,7 +116,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00587840  dice::ref2::world::CameraTemplate  (virtual method) */
+/* 00587840  CameraTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::CameraTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00587840, bfv_server_l1_body_00587840);
 void bfv_server_l1_body_00587840(struct bfv_cpu *c)
 {
@@ -121,10 +128,10 @@ void bfv_server_l1_body_00587840(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00587840  mov eax, dword ptr [esp + 4] */
+    /* 00587840  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00587844  cmp eax, dword ptr [0x82072c] */
+    /* 00587844  cmp eax, dword ptr [0x82072c]  ; CameraTemplate::classID */
     ea = (uint32_t)(0x0082072cu);
     a = eax;
     b = M32(ea);
@@ -139,10 +146,10 @@ void bfv_server_l1_body_00587840(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_00587851:
-    /* 00587851  mov dword ptr [esp + 4], eax */
+    /* 00587851  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 00587855  jmp 0x5898e0 */
+    /* 00587855  jmp 0x5898e0  ; RotationalBundleTemplate::castTo */
     c->eip = 0x005898e0u;
     goto out;
 out: __attribute__((unused));
@@ -152,7 +159,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00588950  dice::ref2::world::CameraTemplate  (virtual method) */
+/* 00588950  CameraTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::CameraTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00588950, bfv_server_l1_body_00588950);
 BFV_L1_RESUME(bfv_server_l1r_00588950_1, bfv_server_l1_body_00588950, 1);
 BFV_L1_RESUME(bfv_server_l1r_00588950_2, bfv_server_l1_body_00588950, 2);
@@ -178,7 +188,7 @@ void bfv_server_l1_body_00588950(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00588956  mov esi, ecx */
     esi = ecx;
-    /* 00588958  call 0x403d80 */
+    /* 00588958  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00588950_1;
@@ -202,7 +212,7 @@ R_1:
     M32(esp) = t;
     /* 00588965  mov ecx, eax */
     ecx = eax;
-    /* 00588967  call 0x5884c0 */
+    /* 00588967  call 0x5884c0  ; CameraTemplate::createObject_helper_005884c0 */
     t = 0x005884c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00588950_2;

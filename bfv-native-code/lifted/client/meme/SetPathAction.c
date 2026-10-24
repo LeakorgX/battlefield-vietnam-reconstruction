@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 0086fbb0  dice::meme::SetPathAction  (virtual method)
- * strings: "Path node", "Destination node", "In time", "Out time" */
+/* 0086fbb0  SetPathAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::SetPathAction
+ * strings: "Path node", "Destination node", "In time", "Out time"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086fbb0, bfv_client_l1_body_0086fbb0);
 BFV_L1_RESUME(bfv_client_l1r_0086fbb0_1, bfv_client_l1_body_0086fbb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086fbb0_2, bfv_client_l1_body_0086fbb0, 2);
@@ -42,14 +45,14 @@ void bfv_client_l1_body_0086fbb0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0086fbb1  mov ebx, dword ptr [esp + 8] */
+    /* 0086fbb1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0086fbb5  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086fbb6  mov esi, dword ptr [esp + 0x10] */
+    /* 0086fbb6  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 0086fbba  push edi */
@@ -66,7 +69,7 @@ void bfv_client_l1_body_0086fbb0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086fbbd  mov edi, ecx */
     edi = ecx;
-    /* 0086fbbf  call 0xa7d100 */
+    /* 0086fbbf  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086fbb0_1;
@@ -102,7 +105,7 @@ L_0086fbce:
     /* 0086fbcf  mov ebp, dword ptr [esi] */
     ea = (uint32_t)(esi);
     ebp = M32(ea);
-    /* 0086fbd1  call 0x86fb10 */
+    /* 0086fbd1  call 0x86fb10  ; PathNode::getRuntimeClass */
     t = 0x0086fb10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086fbb0_2;
@@ -113,7 +116,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0086fbd7  push 0xbd4974 */
+    /* 0086fbd7  push 0xbd4974  ; "Path node" */
     t = 0xbd4974u;
     esp -= 4;
     M32(esp) = t;
@@ -171,7 +174,7 @@ L_0086fbf3:
     /* 0086fbf3  mov ebp, dword ptr [esi] */
     ea = (uint32_t)(esi);
     ebp = M32(ea);
-    /* 0086fbf5  call 0x8744e0 */
+    /* 0086fbf5  call 0x8744e0  ; NameNode::getRuntimeClass */
     t = 0x008744e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086fbb0_4;
@@ -182,7 +185,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0086fbfb  push 0xbd4960 */
+    /* 0086fbfb  push 0xbd4960  ; "Destination node" */
     t = 0xbd4960u;
     esp -= 4;
     M32(esp) = t;
@@ -214,7 +217,7 @@ R_5:
     /* 0086fc0e  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086fc10  push 0xbd4958 */
+    /* 0086fc10  push 0xbd4958  ; "In time" */
     t = 0xbd4958u;
     esp -= 4;
     M32(esp) = t;
@@ -242,7 +245,7 @@ R_6:
     /* 0086fc22  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086fc24  push 0xbd494c */
+    /* 0086fc24  push 0xbd494c  ; "Out time" */
     t = 0xbd494cu;
     esp -= 4;
     M32(esp) = t;
@@ -270,7 +273,7 @@ R_7:
     /* 0086fc36  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086fc38  push 0xbd493c */
+    /* 0086fc38  push 0xbd493c  ; "In wait time" */
     t = 0xbd493cu;
     esp -= 4;
     M32(esp) = t;
@@ -298,7 +301,7 @@ R_8:
     /* 0086fc4a  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086fc4c  push 0xbd492c */
+    /* 0086fc4c  push 0xbd492c  ; "Out wait time" */
     t = 0xbd492cu;
     esp -= 4;
     M32(esp) = t;
@@ -326,7 +329,7 @@ R_9:
     /* 0086fc5e  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086fc60  push 0xbd4910 */
+    /* 0086fc60  push 0xbd4910  ; "Paint outnode over innode" */
     t = 0xbd4910u;
     esp -= 4;
     M32(esp) = t;
@@ -382,7 +385,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086fed0  dice::meme::SetPathAction  (vtable store) */
+/* 0086fed0  SetPathAction::SetPathAction  (vtable store)
+ * class: dice::meme::SetPathAction
+ * called by: PushPathAction::create, PopPathAction::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086fed0, bfv_client_l1_body_0086fed0);
 BFV_L1_RESUME(bfv_client_l1r_0086fed0_1, bfv_client_l1_body_0086fed0, 1);
 void bfv_client_l1_body_0086fed0(struct bfv_cpu *c)
@@ -402,17 +408,17 @@ void bfv_client_l1_body_0086fed0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086fed1  mov esi, ecx */
     esi = ecx;
-    /* 0086fed3  call 0x874870 */
+    /* 0086fed3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086fed0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0086fed8  mov eax, dword ptr [esp + 8] */
+    /* 0086fed8  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 0086fedc  mov ecx, dword ptr [esp + 0xc] */
+    /* 0086fedc  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 0086fee0  mov dword ptr [esi + 8], eax */
@@ -439,7 +445,7 @@ R_1:
     /* 0086fef6  mov byte ptr [esi + 0x20], al */
     ea = (uint32_t)(esi + 0x00000020u);
     M8(ea) = LO8(eax);
-    /* 0086fef9  mov dword ptr [esi], 0xbd4a04 */
+    /* 0086fef9  mov dword ptr [esi], 0xbd4a04  ; vtable SetPathAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd4a04u;
     /* 0086feff  mov dword ptr [esi + 0xc], ecx */
@@ -462,7 +468,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086ff10  dice::meme::SetPathAction  (virtual method) */
+/* 0086ff10  SetPathAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::SetPathAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086ff10, bfv_client_l1_body_0086ff10);
 BFV_L1_RESUME(bfv_client_l1r_0086ff10_1, bfv_client_l1_body_0086ff10, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086ff10_2, bfv_client_l1_body_0086ff10, 2);
@@ -498,7 +507,7 @@ void bfv_client_l1_body_0086ff10(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086ff1b  call 0x48fff0 */
+    /* 0086ff1b  call 0x48fff0  ; sub_0048fff0 */
     t = 0x0048fff0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086ff10_1;
@@ -524,7 +533,7 @@ R_1:
     F_LOGIC(32, r);
     /* 0086ff2d  je 0x86ff34 */
     if (zf) goto L_0086ff34;
-    /* 0086ff2f  call 0x490030 */
+    /* 0086ff2f  call 0x490030  ; sub_00490030 */
     t = 0x00490030u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086ff10_2;
@@ -613,7 +622,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00870000  dice::meme::SetPathAction  (vtable store) */
+/* 00870000  SetPathAction::create  (vtable store)
+ * class: dice::meme::SetPathAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00870000, bfv_client_l1_body_00870000);
 BFV_L1_RESUME(bfv_client_l1r_00870000_1, bfv_client_l1_body_00870000, 1);
 BFV_L1_RESUME(bfv_client_l1r_00870000_2, bfv_client_l1_body_00870000, 2);
@@ -641,7 +652,7 @@ void bfv_client_l1_body_00870000(struct bfv_cpu *c)
     t = 0x24u;
     esp -= 4;
     M32(esp) = t;
-    /* 00870004  call 0x403610 */
+    /* 00870004  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870000_1;
@@ -669,7 +680,7 @@ R_1:
     if (zf) goto L_00870040;
     /* 00870014  mov ecx, esi */
     ecx = esi;
-    /* 00870016  call 0x874870 */
+    /* 00870016  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870000_2;
@@ -699,7 +710,7 @@ R_2:
     /* 00870032  mov byte ptr [esi + 0x20], bl */
     ea = (uint32_t)(esi + 0x00000020u);
     M8(ea) = LO8(ebx);
-    /* 00870035  mov dword ptr [esi], 0xbd4a04 */
+    /* 00870035  mov dword ptr [esi], 0xbd4a04  ; vtable SetPathAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd4a04u;
     /* 0087003b  mov eax, esi */
@@ -740,8 +751,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00870120  dice::meme::SetPathAction  (virtual method)
- * strings: "dice::meme::SetPathAction" */
+/* 00870120  SetPathAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::SetPathAction
+ * strings: "dice::meme::SetPathAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00870120, bfv_client_l1_body_00870120);
 BFV_L1_RESUME(bfv_client_l1r_00870120_1, bfv_client_l1_body_00870120, 1);
 BFV_L1_RESUME(bfv_client_l1r_00870120_2, bfv_client_l1_body_00870120, 2);
@@ -772,13 +786,13 @@ void bfv_client_l1_body_00870120(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00870135  push 0xbd4a4c */
+    /* 00870135  push 0xbd4a4c  ; "dice::meme::SetPathAction" */
     t = 0xbd4a4cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0087013a  mov ecx, 0xdf6514 */
+    /* 0087013a  mov ecx, 0xdf6514  ; g_RuntimeClass_SetPathAction */
     ecx = 0xdf6514u;
-    /* 0087013f  call 0x875490 */
+    /* 0087013f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870120_1;
@@ -789,10 +803,10 @@ R_1:
     t = 0xb3ad00u;
     esp -= 4;
     M32(esp) = t;
-    /* 00870149  mov dword ptr [0xdf6514], 0xbd4994 */
+    /* 00870149  mov dword ptr [0xdf6514], 0xbd4994  ; g_RuntimeClass_SetPathAction */
     ea = (uint32_t)(0x00df6514u);
     M32(ea) = 0xbd4994u;
-    /* 00870153  call 0x7c2cd2 */
+    /* 00870153  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870120_2;
@@ -806,7 +820,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0087015b:
-    /* 0087015b  mov eax, 0xdf6514 */
+    /* 0087015b  mov eax, 0xdf6514  ; g_RuntimeClass_SetPathAction */
     eax = 0xdf6514u;
     /* 00870160  ret */
     c->eip = M32(esp);

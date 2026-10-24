@@ -5,7 +5,116 @@
 #include "l1.h"
 
 
-/* 005b73f0  dice::ref2::world::SeatObjectTemplate  (virtual method) */
+/* 005b7360  SeatObjectTemplate::SeatObjectTemplate  (vtable store)
+ * class: dice::ref2::world::SeatObjectTemplate
+ */
+BFV_L1_ENTRY(bfv_server_l1_005b7360, bfv_server_l1_body_005b7360);
+BFV_L1_RESUME(bfv_server_l1r_005b7360_1, bfv_server_l1_body_005b7360, 1);
+void bfv_server_l1_body_005b7360(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    default: break;
+    }
+    /* 005b7360  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005b7361  mov esi, ecx */
+    esi = ecx;
+    /* 005b7363  call 0x5870c0  ; BundleTemplate::BundleTemplate */
+    t = 0x005870c0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b7360_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 005b7368  mov dword ptr [esi + 0x1ac], 0x8420cc  ; vtable ISeatObjectTemplate */
+    ea = (uint32_t)(esi + 0x000001acu);
+    M32(ea) = 0x8420ccu;
+    /* 005b7372  mov dword ptr [esi], 0x842244  ; vtable SeatObjectTemplate */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x842244u;
+    /* 005b7378  mov dword ptr [esi + 0x74], 0x842234 */
+    ea = (uint32_t)(esi + 0x00000074u);
+    M32(ea) = 0x842234u;
+    /* 005b737f  mov dword ptr [esi + 0x190], 0x842208 */
+    ea = (uint32_t)(esi + 0x00000190u);
+    M32(ea) = 0x842208u;
+    /* 005b7389  mov dword ptr [esi + 0x1ac], 0x8421ec */
+    ea = (uint32_t)(esi + 0x000001acu);
+    M32(ea) = 0x8421ecu;
+    /* 005b7393  mov dword ptr [esi + 0x1b0], 1 */
+    ea = (uint32_t)(esi + 0x000001b0u);
+    M32(ea) = 0x1u;
+    /* 005b739d  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 005b739f  mov dword ptr [esi + 0x1b4], eax */
+    ea = (uint32_t)(esi + 0x000001b4u);
+    M32(ea) = eax;
+    /* 005b73a5  mov dword ptr [esi + 0x1cc], eax */
+    ea = (uint32_t)(esi + 0x000001ccu);
+    M32(ea) = eax;
+    /* 005b73ab  mov ecx, 0xf */
+    ecx = 0xfu;
+    /* 005b73b0  mov dword ptr [esi + 0x1d0], ecx */
+    ea = (uint32_t)(esi + 0x000001d0u);
+    M32(ea) = ecx;
+    /* 005b73b6  mov byte ptr [esi + 0x1bc], al */
+    ea = (uint32_t)(esi + 0x000001bcu);
+    M8(ea) = LO8(eax);
+    /* 005b73bc  mov dword ptr [esi + 0x1e8], eax */
+    ea = (uint32_t)(esi + 0x000001e8u);
+    M32(ea) = eax;
+    /* 005b73c2  mov dword ptr [esi + 0x1ec], ecx */
+    ea = (uint32_t)(esi + 0x000001ecu);
+    M32(ea) = ecx;
+    /* 005b73c8  mov byte ptr [esi + 0x1d8], al */
+    ea = (uint32_t)(esi + 0x000001d8u);
+    M8(ea) = LO8(eax);
+    /* 005b73ce  mov eax, 0x42340000 */
+    eax = 0x42340000u;
+    /* 005b73d3  mov dword ptr [esi + 0x1f0], eax */
+    ea = (uint32_t)(esi + 0x000001f0u);
+    M32(ea) = eax;
+    /* 005b73d9  mov dword ptr [esi + 0x1f4], eax */
+    ea = (uint32_t)(esi + 0x000001f4u);
+    M32(ea) = eax;
+    /* 005b73df  mov dword ptr [esi + 0x1f8], eax */
+    ea = (uint32_t)(esi + 0x000001f8u);
+    M32(ea) = eax;
+    /* 005b73e5  mov dword ptr [esi + 0x1fc], eax */
+    ea = (uint32_t)(esi + 0x000001fcu);
+    M32(ea) = eax;
+    /* 005b73eb  mov eax, esi */
+    eax = esi;
+    /* 005b73ed  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005b73ee  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 005b73f0  SeatObjectTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::world::SeatObjectTemplate
+ * also entered at 005b7440: SeatObjectTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b73f0, bfv_server_l1_body_005b73f0);
 void bfv_server_l1_body_005b73f0(struct bfv_cpu *c)
 {
@@ -14,12 +123,12 @@ void bfv_server_l1_body_005b73f0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005b73f0  mov edx, dword ptr [0x807430] */
+    /* 005b73f0  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 005b73f6  mov eax, ecx */
     eax = ecx;
-    /* 005b73f8  mov ecx, dword ptr [esp + 4] */
+    /* 005b73f8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005b73fc  cmp ecx, edx */
@@ -29,7 +138,7 @@ void bfv_server_l1_body_005b73f0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005b73fe  je 0x5b7432 */
     if (zf) goto L_005b7432;
-    /* 005b7400  cmp ecx, dword ptr [0x820638] */
+    /* 005b7400  cmp ecx, dword ptr [0x820638]  ; interfaceID(BundleTemplate) */
     ea = (uint32_t)(0x00820638u);
     a = ecx;
     b = M32(ea);
@@ -37,7 +146,7 @@ void bfv_server_l1_body_005b73f0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005b7406  je 0x5b7432 */
     if (zf) goto L_005b7432;
-    /* 005b7408  cmp ecx, dword ptr [0x82063c] */
+    /* 005b7408  cmp ecx, dword ptr [0x82063c]  ; interfaceID(BundleTemplate) */
     ea = (uint32_t)(0x0082063cu);
     a = ecx;
     b = M32(ea);
@@ -61,7 +170,7 @@ void bfv_server_l1_body_005b73f0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005b741c:
-    /* 005b741c  cmp ecx, dword ptr [0x829158] */
+    /* 005b741c  cmp ecx, dword ptr [0x829158]  ; interfaceID(SeatObjectTemplate) */
     ea = (uint32_t)(0x00829158u);
     a = ecx;
     b = M32(ea);
@@ -101,7 +210,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b7450  dice::ref2::world::SeatObjectTemplate  (virtual method) */
+/* 005b7450  SeatObjectTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::SeatObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7450, bfv_server_l1_body_005b7450);
 void bfv_server_l1_body_005b7450(struct bfv_cpu *c)
 {
@@ -110,10 +222,10 @@ void bfv_server_l1_body_005b7450(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005b7450  mov eax, dword ptr [esp + 4] */
+    /* 005b7450  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005b7454  cmp eax, dword ptr [0x829154] */
+    /* 005b7454  cmp eax, dword ptr [0x829154]  ; SeatObjectTemplate::classID */
     ea = (uint32_t)(0x00829154u);
     a = eax;
     b = M32(ea);
@@ -128,10 +240,10 @@ void bfv_server_l1_body_005b7450(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005b7461:
-    /* 005b7461  mov dword ptr [esp + 4], eax */
+    /* 005b7461  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005b7465  jmp 0x586630 */
+    /* 005b7465  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -141,7 +253,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005b7470  (between same file) */
+/* 005b7470  SeatObjectTemplate_005b7470  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7470, bfv_server_l1_body_005b7470);
 void bfv_server_l1_body_005b7470(struct bfv_cpu *c)
 {
@@ -153,7 +266,7 @@ void bfv_server_l1_body_005b7470(struct bfv_cpu *c)
     /* 005b7470  mov edx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     edx = M32(ea);
-    /* 005b7473  mov eax, dword ptr [esp + 4] */
+    /* 005b7473  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005b7477  or edx, eax */
@@ -174,7 +287,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005b7480  (between same file) */
+/* 005b7480  SeatObjectTemplate::deleting_dtor_adjustor116_005b7480  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7480, bfv_server_l1_body_005b7480);
 void bfv_server_l1_body_005b7480(struct bfv_cpu *c)
 {
@@ -189,7 +303,7 @@ void bfv_server_l1_body_005b7480(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005b7483  jmp 0x5b75c0 */
+    /* 005b7483  jmp 0x5b75c0  ; SeatObjectTemplate::deleting_dtor */
     c->eip = 0x005b75c0u;
     goto out;
 out: __attribute__((unused));
@@ -199,7 +313,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005b7490  (between same file) */
+/* 005b7490  SeatObjectTemplate::deleting_dtor_adjustor400_005b7490  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7490, bfv_server_l1_body_005b7490);
 void bfv_server_l1_body_005b7490(struct bfv_cpu *c)
 {
@@ -214,7 +329,7 @@ void bfv_server_l1_body_005b7490(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005b7496  jmp 0x5b75c0 */
+    /* 005b7496  jmp 0x5b75c0  ; SeatObjectTemplate::deleting_dtor */
     c->eip = 0x005b75c0u;
     goto out;
 out: __attribute__((unused));
@@ -224,7 +339,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005b74a0  (between same file) */
+/* 005b74a0  SeatObjectTemplate::queryInterface_adjustor400_005b74a0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b74a0, bfv_server_l1_body_005b74a0);
 void bfv_server_l1_body_005b74a0(struct bfv_cpu *c)
 {
@@ -239,7 +355,7 @@ void bfv_server_l1_body_005b74a0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005b74a6  jmp 0x5b73f0 */
+    /* 005b74a6  jmp 0x5b73f0  ; SeatObjectTemplate::queryInterface */
     c->eip = 0x005b73f0u;
     goto out;
 out: __attribute__((unused));
@@ -249,7 +365,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005b74b0  (between same file) */
+/* 005b74b0  SeatObjectTemplate::deleting_dtor_adjustor428_005b74b0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b74b0, bfv_server_l1_body_005b74b0);
 void bfv_server_l1_body_005b74b0(struct bfv_cpu *c)
 {
@@ -264,7 +381,7 @@ void bfv_server_l1_body_005b74b0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005b74b6  jmp 0x5b75c0 */
+    /* 005b74b6  jmp 0x5b75c0  ; SeatObjectTemplate::deleting_dtor */
     c->eip = 0x005b75c0u;
     goto out;
 out: __attribute__((unused));
@@ -274,7 +391,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005b74c0  (between same file) */
+/* 005b74c0  SeatObjectTemplate::queryInterface_adjustor428_005b74c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b74c0, bfv_server_l1_body_005b74c0);
 void bfv_server_l1_body_005b74c0(struct bfv_cpu *c)
 {
@@ -289,7 +407,7 @@ void bfv_server_l1_body_005b74c0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005b74c6  jmp 0x5b73f0 */
+    /* 005b74c6  jmp 0x5b73f0  ; SeatObjectTemplate::queryInterface */
     c->eip = 0x005b73f0u;
     goto out;
 out: __attribute__((unused));
@@ -299,7 +417,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b74d0  dice::ref2::world::SeatObjectTemplate  (virtual method) */
+/* 005b74d0  SeatObjectTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::SeatObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b74d0, bfv_server_l1_body_005b74d0);
 BFV_L1_RESUME(bfv_server_l1r_005b74d0_1, bfv_server_l1_body_005b74d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005b74d0_2, bfv_server_l1_body_005b74d0, 2);
@@ -329,7 +450,7 @@ void bfv_server_l1_body_005b74d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b74d7  mov edi, ecx */
     edi = ecx;
-    /* 005b74d9  call 0x403d80 */
+    /* 005b74d9  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b74d0_1;
@@ -355,17 +476,17 @@ R_1:
     M32(esp) = t;
     /* 005b74e8  mov ecx, esi */
     ecx = esi;
-    /* 005b74ea  call 0x581fb0 */
+    /* 005b74ea  call 0x581fb0  ; Bundle::Bundle */
     t = 0x00581fb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b74d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005b74ef  mov dword ptr [esi + 0x158], 0x8420ac */
+    /* 005b74ef  mov dword ptr [esi + 0x158], 0x8420ac  ; vtable ISeatObject */
     ea = (uint32_t)(esi + 0x00000158u);
     M32(ea) = 0x8420acu;
-    /* 005b74f9  mov dword ptr [esi], 0x84210c */
+    /* 005b74f9  mov dword ptr [esi], 0x84210c  ; vtable SeatObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0x84210cu;
     /* 005b74ff  mov dword ptr [esi + 0x158], 0x8420e8 */

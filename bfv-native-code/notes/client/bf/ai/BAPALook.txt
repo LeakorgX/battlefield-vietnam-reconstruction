@@ -1,0 +1,5 @@
+## file
+Base plan action for looking. Subclasses supply the look direction through vf6.
+
+## 00a0a9f0
+Base execute: does nothing, sets flag = 0 and done = 1.

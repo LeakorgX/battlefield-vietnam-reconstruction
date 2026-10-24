@@ -5,8 +5,10 @@
 #include "l1.h"
 
 
-/* 00940660  dice::bf::ai::?A0x10db9b01::BBCreateFunctionAvoid  (virtual method)
- * strings: "BBPAvoidCollision2d", "BBPAvoidCollision3d", "BBPAvoidCollisionInfantery" */
+/* 00940660  BBCreateFunctionAvoid::vf0  (virtual method)
+ * class: dice::bf::ai::?A0x10db9b01::BBCreateFunctionAvoid
+ * strings: "BBPAvoidCollision2d", "BBPAvoidCollision3d", "BBPAvoidCollisionInfantery"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00940660, bfv_client_l1_body_00940660);
 BFV_L1_RESUME(bfv_client_l1r_00940660_1, bfv_client_l1_body_00940660, 1);
 BFV_L1_RESUME(bfv_client_l1r_00940660_2, bfv_client_l1_body_00940660, 2);
@@ -68,7 +70,7 @@ void bfv_client_l1_body_00940660(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00940662  mov esi, dword ptr [esp + 0x10] */
+    /* 00940662  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00940666  mov eax, dword ptr [esi + 0x14] */
@@ -82,7 +84,7 @@ void bfv_client_l1_body_00940660(struct bfv_cpu *c)
     t = 0x13u;
     esp -= 4;
     M32(esp) = t;
-    /* 0094066c  push 0xbef4ac */
+    /* 0094066c  push 0xbef4ac  ; "BBPAvoidCollision2d" */
     t = 0xbef4acu;
     esp -= 4;
     M32(esp) = t;
@@ -96,7 +98,7 @@ void bfv_client_l1_body_00940660(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00940674  mov ecx, esi */
     ecx = esi;
-    /* 00940676  call 0x4038f0 */
+    /* 00940676  call 0x4038f0  ; std::string::compare_chars */
     t = 0x004038f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_1;
@@ -106,7 +108,7 @@ R_1:
     /* 0094067b  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 0094067d  mov ebx, dword ptr [esp + 0x10] */
+    /* 0094067d  mov ebx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
     /* 00940681  jne 0x9406b7 */
@@ -115,7 +117,7 @@ R_1:
     t = 0x20u;
     esp -= 4;
     M32(esp) = t;
-    /* 00940685  call 0x403610 */
+    /* 00940685  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_2;
@@ -139,7 +141,7 @@ R_2:
     M32(esp) = t;
     /* 00940692  mov ecx, eax */
     ecx = eax;
-    /* 00940694  call 0x98e2d0 */
+    /* 00940694  call 0x98e2d0  ; BBPAvoidCollision2d::BBPAvoidCollision2d */
     t = 0x0098e2d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_3;
@@ -148,7 +150,7 @@ R_2:
 R_3:
     /* 00940699  mov ecx, eax */
     ecx = eax;
-    /* 0094069b  call 0x414720 */
+    /* 0094069b  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_4;
@@ -166,7 +168,7 @@ L_009406a7:
     eax = r;
     /* 009406a9  mov ecx, eax */
     ecx = eax;
-    /* 009406ab  call 0x414720 */
+    /* 009406ab  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_5;
@@ -185,7 +187,7 @@ L_009406b7:
     t = 0x13u;
     esp -= 4;
     M32(esp) = t;
-    /* 009406bc  push 0xbef498 */
+    /* 009406bc  push 0xbef498  ; "BBPAvoidCollision3d" */
     t = 0xbef498u;
     esp -= 4;
     M32(esp) = t;
@@ -199,7 +201,7 @@ L_009406b7:
     M32(esp) = t;
     /* 009406c4  mov ecx, esi */
     ecx = esi;
-    /* 009406c6  call 0x4038f0 */
+    /* 009406c6  call 0x4038f0  ; std::string::compare_chars */
     t = 0x004038f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_6;
@@ -215,7 +217,7 @@ R_6:
     t = 0x20u;
     esp -= 4;
     M32(esp) = t;
-    /* 009406d1  call 0x403610 */
+    /* 009406d1  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_7;
@@ -239,7 +241,7 @@ R_7:
     M32(esp) = t;
     /* 009406de  mov ecx, eax */
     ecx = eax;
-    /* 009406e0  call 0x98db00 */
+    /* 009406e0  call 0x98db00  ; BBPAvoidCollision3d::BBPAvoidCollision3d */
     t = 0x0098db00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_8;
@@ -248,7 +250,7 @@ R_7:
 R_8:
     /* 009406e5  mov ecx, eax */
     ecx = eax;
-    /* 009406e7  call 0x414720 */
+    /* 009406e7  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_9;
@@ -266,7 +268,7 @@ L_009406f0:
     eax = r;
     /* 009406f2  mov ecx, eax */
     ecx = eax;
-    /* 009406f4  call 0x414720 */
+    /* 009406f4  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_10;
@@ -285,7 +287,7 @@ L_009406fd:
     t = 0x1au;
     esp -= 4;
     M32(esp) = t;
-    /* 00940702  push 0xbef47c */
+    /* 00940702  push 0xbef47c  ; "BBPAvoidCollisionInfantery" */
     t = 0xbef47cu;
     esp -= 4;
     M32(esp) = t;
@@ -299,7 +301,7 @@ L_009406fd:
     M32(esp) = t;
     /* 0094070a  mov ecx, esi */
     ecx = esi;
-    /* 0094070c  call 0x4038f0 */
+    /* 0094070c  call 0x4038f0  ; std::string::compare_chars */
     t = 0x004038f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_11;
@@ -315,7 +317,7 @@ R_11:
     t = 0x20u;
     esp -= 4;
     M32(esp) = t;
-    /* 00940717  call 0x403610 */
+    /* 00940717  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_12;
@@ -339,7 +341,7 @@ R_12:
     M32(esp) = t;
     /* 00940724  mov ecx, eax */
     ecx = eax;
-    /* 00940726  call 0x98cc30 */
+    /* 00940726  call 0x98cc30  ; BBPAvoidCollisionInfantery::BBPAvoidCollisionInfantery */
     t = 0x0098cc30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_13;
@@ -348,7 +350,7 @@ R_12:
 R_13:
     /* 0094072b  mov ecx, eax */
     ecx = eax;
-    /* 0094072d  call 0x414720 */
+    /* 0094072d  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_14;
@@ -366,7 +368,7 @@ L_00940736:
     eax = r;
     /* 00940738  mov ecx, eax */
     ecx = eax;
-    /* 0094073a  call 0x414720 */
+    /* 0094073a  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_15;
@@ -387,7 +389,7 @@ L_00940745:
     t = 0x40u;
     esp -= 4;
     M32(esp) = t;
-    /* 00940747  call 0x403610 */
+    /* 00940747  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_16;
@@ -407,10 +409,10 @@ R_16:
     F_LOGIC(32, r);
     /* 00940753  je 0x94077e */
     if (zf) goto L_0094077e;
-    /* 00940755  mov eax, dword ptr [esp + 0x2c] */
+    /* 00940755  mov eax, dword ptr [esp + 0x2c]  ; arg_1c */
     ea = (uint32_t)(esp + 0x0000002cu);
     eax = M32(ea);
-    /* 00940759  mov ecx, dword ptr [esp + 0x28] */
+    /* 00940759  mov ecx, dword ptr [esp + 0x28]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000028u);
     ecx = M32(ea);
     /* 0094075d  push eax */
@@ -427,7 +429,7 @@ R_16:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00940762  lea edx, [esp + 0x30] */
+    /* 00940762  lea edx, [esp + 0x30]  ; &arg_c */
     edx = (uint32_t)(esp + 0x00000030u);
     /* 00940766  mov ecx, esp */
     ecx = esp;
@@ -435,14 +437,14 @@ R_16:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00940769  call 0x940380 */
+    /* 00940769  call 0x940380  ; std::list::list_copy_00940380 */
     t = 0x00940380u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_17;
     c->eip = t;
     goto out;
 R_17:
-    /* 0094076e  mov eax, dword ptr [esp + 0x2c] */
+    /* 0094076e  mov eax, dword ptr [esp + 0x2c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000002cu);
     eax = M32(ea);
     /* 00940772  push esi */
@@ -459,7 +461,7 @@ R_17:
     M32(esp) = t;
     /* 00940775  mov ecx, edi */
     ecx = edi;
-    /* 00940777  call 0x98bdd0 */
+    /* 00940777  call 0x98bdd0  ; BBAvoid::BBAvoid */
     t = 0x0098bdd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_18;
@@ -476,14 +478,14 @@ L_0094077e:
 L_00940780:
     /* 00940780  mov ecx, eax */
     ecx = eax;
-    /* 00940782  call 0x414720 */
+    /* 00940782  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_19;
     c->eip = t;
     goto out;
 R_19:
-    /* 00940787  mov esi, dword ptr [esp + 0x20] */
+    /* 00940787  mov esi, dword ptr [esp + 0x20]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000020u);
     esi = M32(ea);
     /* 0094078b  mov ebx, eax */
@@ -512,7 +514,7 @@ L_00940798:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0094079b  call 0x403680 */
+    /* 0094079b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_20;
@@ -539,7 +541,7 @@ L_009407a9:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009407aa  call 0x403680 */
+    /* 009407aa  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00940660_21;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0054ea00  dice::ref2::world::ObjectDropKitPredicator  (virtual method) */
+/* 0054ea00  ObjectDropKitPredicator::vf0  (virtual method)
+ * overrides: ObjectFlagPredicator::vf0  (3 classes implement it)
+ * class: dice::ref2::world::ObjectDropKitPredicator
+ */
 BFV_L1_ENTRY(bfv_server_l1_0054ea00, bfv_server_l1_body_0054ea00);
 BFV_L1_RESUME(bfv_server_l1r_0054ea00_1, bfv_server_l1_body_0054ea00, 1);
 BFV_L1_RESUME(bfv_server_l1r_0054ea00_2, bfv_server_l1_body_0054ea00, 2);
@@ -25,14 +28,14 @@ void bfv_server_l1_body_0054ea00(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0054ea01  mov esi, dword ptr [esp + 8] */
+    /* 0054ea01  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 0054ea05  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0054ea06  call 0x564090 */
+    /* 0054ea06  call 0x564090  ; ObjectFlagPredicator::vf0 */
     t = 0x00564090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0054ea00_1;
@@ -44,7 +47,7 @@ R_1:
     F_LOGIC(8, r);
     /* 0054ea0d  je 0x54ea2a */
     if (zf) goto L_0054ea2a;
-    /* 0054ea0f  mov ecx, dword ptr [0x829150] */
+    /* 0054ea0f  mov ecx, dword ptr [0x829150]  ; interfaceID(BFSoldier|FreeCamera|PlayerControlObject) */
     ea = (uint32_t)(0x00829150u);
     ecx = M32(ea);
     /* 0054ea15  mov eax, dword ptr [esi] */

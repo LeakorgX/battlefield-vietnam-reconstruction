@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 006f66e0  dice::ref2::world::CustomPlaylistPlayer  (vtable store) */
+/* 006f66e0  CustomPlaylistPlayer::CustomPlaylistPlayer  (vtable store)
+ * class: dice::ref2::world::CustomPlaylistPlayer
+ * also entered at 006f6710: CustomPlaylistPlayer::vf0, MusicPlayer::vf0
+ * called by: world_Custom_helper_006f68f0
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f66e0, bfv_client_l1_body_006f66e0);
 BFV_L1_RESUME(bfv_client_l1r_006f66e0_1, bfv_client_l1_body_006f66e0, 1);
 void bfv_client_l1_body_006f66e0(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_client_l1_body_006f66e0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 006f66e0  mov eax, dword ptr [esp + 4] */
+    /* 006f66e0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006f66e4  push esi */
@@ -32,14 +36,14 @@ void bfv_client_l1_body_006f66e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006f66e6  mov esi, ecx */
     esi = ecx;
-    /* 006f66e8  call 0x6687d0 */
+    /* 006f66e8  call 0x6687d0  ; MusicPlayer::MusicPlayer */
     t = 0x006687d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f66e0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006f66ed  mov dword ptr [esi], 0xba42dc */
+    /* 006f66ed  mov dword ptr [esi], 0xba42dc  ; vtable CustomPlaylistPlayer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba42dcu;
     /* 006f66f3  mov dword ptr [esi + 0x84], 0xba42c4 */
@@ -65,8 +69,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6730  dice::ref2::world::CustomPlaylistPlayer  (virtual method)
- * strings: "Custom F: %s L: %.2f" */
+/* 006f6730  CustomPlaylistPlayer::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::CustomPlaylistPlayer
+ * strings: "Custom F: %s L: %.2f"
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6730, bfv_client_l1_body_006f6730);
 BFV_L1_RESUME(bfv_client_l1r_006f6730_1, bfv_client_l1_body_006f6730, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f6730_2, bfv_client_l1_body_006f6730, 2);
@@ -133,7 +140,7 @@ void bfv_client_l1_body_006f6730(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 006f6733  mov eax, dword ptr [0xcff7cc] */
+    /* 006f6733  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 006f6738  mov dword ptr [esp + 0x38], eax */
@@ -174,7 +181,7 @@ void bfv_client_l1_body_006f6730(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006f675d  mov ecx, esi */
     ecx = esi;
-    /* 006f675f  call 0x667f10 */
+    /* 006f675f  call 0x667f10  ; CustomPlaylistPlayer::sub_00667f10 */
     t = 0x00667f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_1;
@@ -187,7 +194,7 @@ R_1:
     M32(esp) = t;
     /* 006f6765  mov ecx, esi */
     ecx = esi;
-    /* 006f6767  call 0x667e90 */
+    /* 006f6767  call 0x667e90  ; CustomPlaylistPlayer::sub_00667e90 */
     t = 0x00667e90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_2;
@@ -201,7 +208,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006f6773  call 0x668f80 */
+    /* 006f6773  call 0x668f80  ; world_00668f80 */
     t = 0x00668f80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_3;
@@ -233,7 +240,7 @@ R_4:
     if (!zf) goto L_006f67d5;
     /* 006f6787  mov ecx, esi */
     ecx = esi;
-    /* 006f6789  call 0x667f10 */
+    /* 006f6789  call 0x667f10  ; CustomPlaylistPlayer::sub_00667f10 */
     t = 0x00667f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_5;
@@ -246,7 +253,7 @@ R_5:
     M32(esp) = t;
     /* 006f678f  mov ecx, esi */
     ecx = esi;
-    /* 006f6791  call 0x667e90 */
+    /* 006f6791  call 0x667e90  ; CustomPlaylistPlayer::sub_00667e90 */
     t = 0x00667e90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_6;
@@ -260,7 +267,7 @@ R_6:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006f679d  call 0x668ab0 */
+    /* 006f679d  call 0x668ab0  ; world_00668ab0 */
     t = 0x00668ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_7;
@@ -276,7 +283,7 @@ R_7:
     if (!zf) goto L_006f67b0;
     /* 006f67a7  mov ecx, esi */
     ecx = esi;
-    /* 006f67a9  call 0x667e90 */
+    /* 006f67a9  call 0x667e90  ; CustomPlaylistPlayer::sub_00667e90 */
     t = 0x00667e90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_8;
@@ -309,7 +316,7 @@ L_006f67b0:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006f67c5  call 0x668f80 */
+    /* 006f67c5  call 0x668f80  ; world_00668f80 */
     t = 0x00668f80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_9;
@@ -346,7 +353,7 @@ L_006f67d5:
     F_LOGIC(8, r);
     /* 006f67df  je 0x6f68dc */
     if (zf) goto L_006f68dc;
-    /* 006f67e5  mov ecx, dword ptr [0xd3de68] */
+    /* 006f67e5  mov ecx, dword ptr [0xd3de68]  ; g_pDebugRenderer */
     ea = (uint32_t)(0x00d3de68u);
     ecx = M32(ea);
     /* 006f67eb  test ecx, ecx */
@@ -371,7 +378,7 @@ L_006f67d5:
 R_11:
     /* 006f67fa  mov ecx, esi */
     ecx = esi;
-    /* 006f67fc  call 0x667f10 */
+    /* 006f67fc  call 0x667f10  ; CustomPlaylistPlayer::sub_00667f10 */
     t = 0x00667f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_12;
@@ -384,7 +391,7 @@ R_12:
     M32(esp) = t;
     /* 006f6802  mov ecx, esi */
     ecx = esi;
-    /* 006f6804  call 0x667e90 */
+    /* 006f6804  call 0x667e90  ; CustomPlaylistPlayer::sub_00667e90 */
     t = 0x00667e90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_13;
@@ -404,7 +411,7 @@ R_13:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006f6815  call 0x669060 */
+    /* 006f6815  call 0x669060  ; world_00669060 */
     t = 0x00669060u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_14;
@@ -430,7 +437,7 @@ L_006f6825:
 L_006f6828:
     /* 006f6828  mov ecx, esi */
     ecx = esi;
-    /* 006f682a  call 0x667f10 */
+    /* 006f682a  call 0x667f10  ; CustomPlaylistPlayer::sub_00667f10 */
     t = 0x00667f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_15;
@@ -443,7 +450,7 @@ R_15:
     M32(esp) = t;
     /* 006f6830  mov ecx, esi */
     ecx = esi;
-    /* 006f6832  call 0x667e90 */
+    /* 006f6832  call 0x667e90  ; CustomPlaylistPlayer::sub_00667e90 */
     t = 0x00667e90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_16;
@@ -457,7 +464,7 @@ R_16:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006f683e  call 0x669170 */
+    /* 006f683e  call 0x669170  ; world_00669170 */
     t = 0x00669170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_17;
@@ -479,7 +486,7 @@ R_17:
     M32(esp) = t;
     /* 006f684a  lea ecx, [esp + 0x30] */
     ecx = (uint32_t)(esp + 0x00000030u);
-    /* 006f684e  push 0xba43bc */
+    /* 006f684e  push 0xba43bc  ; "Custom F: %s L: %.2f" */
     t = 0xba43bcu;
     esp -= 4;
     M32(esp) = t;
@@ -487,7 +494,7 @@ R_17:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006f6854  call 0x41f8a0 */
+    /* 006f6854  call 0x41f8a0  ; string_format */
     t = 0x0041f8a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_18;
@@ -502,14 +509,14 @@ R_18:
     esp = r;
     /* 006f685c  lea ecx, [esp + 8] */
     ecx = (uint32_t)(esp + 0x00000008u);
-    /* 006f6860  call 0x5a7c60 */
+    /* 006f6860  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_19;
     c->eip = t;
     goto out;
 R_19:
-    /* 006f6865  mov edx, dword ptr [0xd3de68] */
+    /* 006f6865  mov edx, dword ptr [0xd3de68]  ; g_pDebugRenderer */
     ea = (uint32_t)(0x00d3de68u);
     edx = M32(ea);
     /* 006f686b  mov edi, dword ptr [edx] */
@@ -527,7 +534,7 @@ R_19:
     esp = r;
     /* 006f6872  mov eax, esp */
     eax = esp;
-    /* 006f6874  mov dword ptr [esp + 0x1c], 0x3f800000 */
+    /* 006f6874  mov dword ptr [esp + 0x1c], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = 0x3f800000u;
     /* 006f687c  mov ecx, dword ptr [esp + 0x1c] */
@@ -536,7 +543,7 @@ R_19:
     /* 006f6880  mov dword ptr [eax], ecx */
     ea = (uint32_t)(eax);
     M32(ea) = ecx;
-    /* 006f6882  mov dword ptr [esp + 0x20], 0x3f800000 */
+    /* 006f6882  mov dword ptr [esp + 0x20], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0x3f800000u;
     /* 006f688a  mov edx, dword ptr [esp + 0x20] */
@@ -545,7 +552,7 @@ R_19:
     /* 006f688e  mov dword ptr [eax + 4], edx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = edx;
-    /* 006f6891  mov dword ptr [esp + 0x24], 0x3f800000 */
+    /* 006f6891  mov dword ptr [esp + 0x24], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = 0x3f800000u;
     /* 006f6899  mov ecx, dword ptr [esp + 0x24] */
@@ -554,7 +561,7 @@ R_19:
     /* 006f689d  mov dword ptr [eax + 8], ecx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = ecx;
-    /* 006f68a0  mov dword ptr [esp + 0x28], 0x3f800000 */
+    /* 006f68a0  mov dword ptr [esp + 0x28], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0x3f800000u;
     /* 006f68a8  mov edx, dword ptr [esp + 0x28] */
@@ -571,7 +578,7 @@ R_19:
     M32(esp) = t;
     /* 006f68b4  mov ecx, esi */
     ecx = esi;
-    /* 006f68b6  call 0x667e90 */
+    /* 006f68b6  call 0x667e90  ; CustomPlaylistPlayer::sub_00667e90 */
     t = 0x00667e90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_20;
@@ -589,14 +596,14 @@ R_20:
     M32(esp) = t;
     /* 006f68bf  mov ecx, esi */
     ecx = esi;
-    /* 006f68c1  call 0x667f10 */
+    /* 006f68c1  call 0x667f10  ; CustomPlaylistPlayer::sub_00667f10 */
     t = 0x00667f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_21;
     c->eip = t;
     goto out;
 R_21:
-    /* 006f68c6  mov ecx, dword ptr [0xd3de68] */
+    /* 006f68c6  mov ecx, dword ptr [0xd3de68]  ; g_pDebugRenderer */
     ea = (uint32_t)(0x00d3de68u);
     ecx = M32(ea);
     /* 006f68cc  add eax, 0xa */
@@ -619,7 +626,7 @@ R_21:
 R_22:
     /* 006f68d3  lea ecx, [esp + 0x24] */
     ecx = (uint32_t)(esp + 0x00000024u);
-    /* 006f68d7  call 0x5a7c60 */
+    /* 006f68d7  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_23;
@@ -630,7 +637,7 @@ L_006f68dc:
     /* 006f68dc  mov ecx, dword ptr [esp + 0x40] */
     ea = (uint32_t)(esp + 0x00000040u);
     ecx = M32(ea);
-    /* 006f68e0  call 0x7c2019 */
+    /* 006f68e0  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6730_24;

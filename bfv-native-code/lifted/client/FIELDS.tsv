@@ -1,0 +1,1376 @@
+object	offset	kind	commands
+**g_pWPart->+0xc[i]-0x4	0x14	field	WPart.numParticles
+**g_pWPart->+0xc[i]-0x4	0x190	field	WPart.fadeZ
+**g_pWPart->+0xc[i]-0x4	0x194	field	WPart.pointSpriteMinSize
+**g_pWPart->+0xc[i]-0x4	0x198	field	WPart.pointSpriteMaxSize
+**g_pWPart->+0xc[i]-0x4	0x30	field	WPart.partSize
+**g_pWPart->+0xc[i]-0x4	0x34	field	WPart.partSize
+**g_pWPart->+0xc[i]-0x4	0x38	field	WPart.radius
+**g_pWPart->+0xc[i]-0x4	0x88	field	WPart.type
+**g_pWPart->+0xc[i]-0x4	0x8c	field	WPart.random
+**g_pWPart->+0xc[i]-0x4	0x9c	field	WPart.acceleration
+*g_pBasicPhysicsSystem.vf8()	0x0	field	Physics.wind
+*g_pBasicPhysicsSystem.vf8()	0x4	field	Physics.wind
+*g_pBasicPhysicsSystem.vf8()	0x8	field	Physics.wind
+*g_pGame	0xf0	field	Game.botSpawnFreq
+*g_pGame.vf3()	0xf0	field	Game.botSpawnFreq
+*g_pHudManager_00d682b8->+0x1c	0x3c	field	Game.crossHairRadius
+*g_pHudManager_00d682b8->+0x1c	0x40	field	Game.crossHairSize
+*g_pMaterialManager.vf16()	0x0	field	MaterialManager.damageMod
+*g_pMaterialManager.vf6()	0x0	field	MaterialManager.materialDefGroup
+*g_pMaterialManager.vf6()	0x10	field	MaterialManager.materialElasticity
+*g_pMaterialManager.vf6()	0x14	field	MaterialManager.materialResistance
+*g_pMaterialManager.vf6()	0x4	field	MaterialManager.materialAttGroup
+*g_pMaterialManager.vf6()	0x8	field	MaterialManager.materialDamage
+*g_pMaterialManager.vf6()	0xc	field	MaterialManager.materialFriction
+*g_pMenuManager_00d5dc38->+0x10	0x22	field	Game.proximitySoundEnable
+*g_pMenuManager_00d5dc38->+0x10	0x34	field	Game.3DProvider
+*g_pMenuManager_00d5dc38->+0x10	0x38	field	Game.SoundOcclusion
+*g_pMenuManager_00d5dc38->+0x10	0x3c	field	Game.speakerConfig
+*g_pMenuManager_00d5dc38->+0x10	0x50	field	Game.soundPerformance
+*g_pMenuManager_00d5dc38->+0x14	0x34	field	Renderer.gammaFactor
+*g_pMenuManager_00d5dc38->+0x28->+0x8	0x68	field	Game.setCampaignAiSkill
+*g_pMenuManager_00d5dc38->+0x28->+0x8	0x6c	field	Game.setCampaignBotRatio
+*g_pMenuManager_00d5dc38->+0x28->+0x8	0x74	field	Game.setCampaignNrOfLives
+*g_pMenuManager_00d5dc38->+0x28->+0x8	0x7c	field	Game.setCampaignDifficulty
+*g_pMenuManager_00d5dc38->+0x28->+0xc	0x84	field	Game.setSkirmishAiSkill
+*g_pMenuManager_00d5dc38->+0x28->+0xc	0x88	field	Game.setSkirmishBotRatio
+*g_pMenuManager_00d5dc38->+0x28->+0xc	0x90	field	Game.setSkirmishNrOfLives
+*g_pMenuManager_00d5dc38->+0x28->+0xc	0x98	field	Game.setSkirmishDifficulty
+*g_pNetworkManager_00df9ec8	0x44	field	Game.interpolationTime
+*g_pNetworkManager_00df9ec8	0x48	field	Game.extrapolationTime
+*g_pObjectEditor	0x54	field	ObjectEditor.setMouseSensitivity
+*g_pObjectEditor	0x58	field	ObjectEditor.setMouseSensitivityFast
+*g_pObjectEditor	0x5c	field	ObjectEditor.setMouseSensitivitySlow
+*g_pObjectEditor	0xa4	field	ObjectEditor.setRandMaxTilt
+*g_pObjectManager.vf23()	0x4c	field	Object.template
+*g_pObjectManager.vf23().vf9().vf20()	0x0	field	Object.geometry.color
+*g_pObjectManager.vf23().vf9().vf20()	0x4	field	Object.geometry.color
+*g_pObjectManager.vf23().vf9().vf20()	0x8	field	Object.geometry.color
+*g_pObjectManager.vf23().vf9().vf22()	0x0	field	Object.geometry.tesselation
+*g_pObjectManager.vf23().vf9().vf22()	0x4	field	Object.geometry.tesselation
+*g_pObjectManager.vf23().vf9().vf5()	0x0	field	Object.geometry.scale
+*g_pObjectManager.vf23().vf9().vf5()	0x4	field	Object.geometry.scale
+*g_pObjectManager.vf23().vf9().vf5()	0x8	field	Object.geometry.scale
+*g_pPlayerManager.vf23()	0xc0	field	Player.team
+*g_pPlayerManager.vf23()	0xc4	field	Player.skinSelection
+*g_pPlayerManager.vf23()	0xc8	field	Player.std::string
+*g_pPlayerManager.vf23()	0xdc	field	Player.spawnGroup
+*g_pSky	0x20	field	setCloudFog
+*g_pSky	0x24	field	getNClouds
+*g_pSky	0x34	field	changeOfsSkyHeight
+*g_pSky	0x38	field	setRotAngle
+*g_pSky	0x84	field	rotateSunSpeed
+*g_pSky->+0x1c	0x7c	field	Cloud.setSpeed
+*g_pSky->+0x1c	0x90	field	Cloud.getTexScale
+*g_pSky->+0x1c	0x94	field	Cloud.setHeight
+*g_pTerrain.vf3().vf14()	0x10c	field	Water.waterAlphaDepth
+*g_pTerrain.vf3().vf14()	0x114	field	Water.waterColorDepth
+*g_pTerrain.vf3().vf15()	0x10c	field	WaterBelowTerrain.waterAlphaDepth
+*g_pTerrain.vf3().vf15()	0x114	field	WaterBelowTerrain.waterColorDepth
+*g_pTerrain.vf3().vf17()	0x0	field	Terrain.shadowStaticObjectsCullBox
+*g_pTerrain.vf3().vf17()	0x4	field	Terrain.shadowStaticObjectsCullBox
+*g_pTerrain.vf3().vf17()	0x8	field	Terrain.shadowStaticObjectsCullBox
+*g_pTerrain.vf3().vf9()	0x0	field	Terrain.shadowAmbient
+*g_pTerrain.vf3().vf9()	0x4	field	Terrain.shadowAmbient
+*g_pTerrain.vf3().vf9()	0x8	field	Terrain.shadowAmbient
+*g_setup	0x150	field	Game.team
+*g_setup	0x160	field	Game.collisionFactor
+*g_setup	0x164	field	Game.maxCollVelSqr
+*g_setup	0x168	field	Game.maxCollInterval
+*g_setup	0x16c	field	Game.lockFps
+*g_setup	0x234	field	Game.gameMode
+*g_setup	0x398	field	Game.gamePlayMode Game.serverGamePlayMode
+*g_setup	0x434	field	Game.setCampaignScores
+*g_setup	0x438	field	Game.setCampaignDifficulty
+*g_setup	0x458	field	Game.setMissionNr
+*g_setup	0x45c	field	Game.intensityScale
+*g_setup	0x4cc	field	Game.serverGamePlayMode
+*g_setup	0x4d0	field	Game.serverGameTime
+*g_setup	0x4d4	field	Game.serverMaxPlayers
+*g_setup	0x4d8	field	Game.serverScoreLimit
+*g_setup	0x4dc	field	Game.serverNumberOfRounds
+*g_setup	0x4e0	field	Game.serverSpawnTime
+*g_setup	0x4e4	field	Game.serverSpawnDelay
+*g_setup	0x4e8	field	Game.serverGameStartDelay
+*g_setup	0x4ec	field	Game.serverGameRoundStartDelay
+*g_setup	0x4f0	field	Game.serverSoldierFriendlyFire
+*g_setup	0x4f4	field	Game.serverVehicleFriendlyFire
+*g_setup	0x4f8	field	Game.serverTicketRatio
+*g_setup	0x500	field	Game.serverAlliedTeamRatio
+*g_setup	0x504	field	Game.serverAxisTeamRatio
+*g_setup	0x508	field	Game.serverCoopAiSkill
+*g_setup	0x50c	field	Game.serverCoopCpu
+*g_setup	0x52c	field	Game.serverSpectatorAllowSwitchTime
+*g_setup	0x550	field	Game.serverNumReservedSlots
+*g_setup	0x55c	field	Game.serverNameTagDistance
+*g_setup	0x560	field	Game.serverNameTagDistanceScope
+*g_setup	0x564	field	Game.serverBandwidthChokeLimit
+*g_setup	0x570	field	Game.serverKickBack
+*g_setup	0x574	field	Game.serverKickBackOnSplash
+*g_setup	0x578	field	Game.serverSoldierFriendlyFireOnSplash
+*g_setup	0x57c	field	Game.serverVehicleFriendlyFireOnSplash
+*g_setup	0x6b8	field	Game.serverPort
+*g_setup	0x6c0	field	Game.serverDeathCameraType
+*g_setup	0x6c8	field	Game.gameSpyLANPort
+*g_setup	0x6cc	field	Game.gameSpyPort
+*g_setup	0x6d0	field	Game.ASEPort
+*g_setup	0x8c	field	Game.goToInterface
+*g_setup	0x9dc	field	Game.entryPointRadius
+*g_setup->+0x108	0x1d4	field	Game.setChineseYTextOffset
+*g_setup->+0x108	0x1d8	field	Game.setJapaneseYTextOffset
+*g_setup->+0x108	0x1dc	field	Game.setKoreanYTextOffset
+*g_setup->+0x108	0x1dc0	field	Game.setRadioTimeoutTime
+*g_setup->+0x108	0x1dc4	field	Game.setRadioFlashTime
+*g_setup->+0x108	0x1dc8	field	Game.setPlayerHitFlashTime
+*g_setup->+0x108	0x5c	field	PlayerStats.setDeaths
+*g_setup->+0x108	0x60	field	PlayerStats.setKills
+*g_setup->+0x108	0x64	field	PlayerStats.setCaptures
+*g_setup->+0x108	0x68	field	PlayerStats.setDefences
+*g_setup->+0x108	0x6c	field	PlayerStats.setAttacks
+*g_setup->+0x108	0x70	field	PlayerStats.setTKs
+*g_setup->+0x108	0x74	field	PlayerStats.setScore
+*g_setup->+0x108	0x9c	field	PlayerStats.setVictoryType
+*g_setup->+0x108	0xa0	field	PlayerStats.setWinner
+*g_setup->+0x108	0xa4	field	PlayerStats.setFirstPlace
+*g_setup->+0x108	0xa8	field	PlayerStats.setSecondPlace
+*g_setup->+0x108	0xac	field	PlayerStats.setThirdPlace
+*g_setup->+0x108	0xb0	field	PlayerStats.setTotDeaths
+*g_setup->+0x108	0xb4	field	PlayerStats.setTotKills
+*g_setup->+0x108	0xb8	field	PlayerStats.setTotCaptures
+*g_setup->+0x108	0xbc	field	PlayerStats.setTotDefences
+*g_setup->+0x108	0xc0	field	PlayerStats.setTotAttacks
+*g_setup->+0x108	0xc4	field	PlayerStats.setTotTKs
+*g_setup->+0x108	0xc8	field	PlayerStats.setTotScore
+*g_setup->+0x2bc->+0x120	0x48	field	Shadow.numOfShadows
+*g_setup->+0x2bc->+0x120	0x4c	field	Shadow.shadowsViewDistance
+*g_setup->+0x2bc->+0x120	0x50	field	Shadow.shadowsHeight
+*g_setup->+0x2bc->+0x120	0x58	field	Shadow.numOutlinesPerFrame
+AITemplateManager::getActiveTemplate()	0x10	field	AITemplate.allowedTimeDiff
+AITemplateManager::getActiveTemplate()	0x10	field	AITemplatePlugIn.equipmentType AITemplatePlugIn.minAlt AITemplatePlugIn.yawSensitivity
+AITemplateManager::getActiveTemplate()	0x14	field	AITemplate.basicTemp
+AITemplateManager::getActiveTemplate()	0x14	field	AITemplatePlugIn.throttleLookAhead AITemplatePlugIn.transparency
+AITemplateManager::getActiveTemplate()	0x14	field	WeaponTemplate.drag
+AITemplateManager::getActiveTemplate()	0x18	field	WeaponTemplate.precision
+AITemplateManager::getActiveTemplate()	0x1c	field	AITemplatePlugIn.coverSearchRadius AITemplatePlugIn.rollLookAhead
+AITemplateManager::getActiveTemplate()	0x20	field	AITemplatePlugIn.lodHeight AITemplatePlugIn.yawLookAhead
+AITemplateManager::getActiveTemplate()	0x20	field	WeaponTemplate.ChargePossibility
+AITemplateManager::getActiveTemplate()	0x24	field	AITemplatePlugIn.throttleScale
+AITemplateManager::getActiveTemplate()	0x28	field	AITemplatePlugIn.pitchScale
+AITemplateManager::getActiveTemplate()	0x28	field	WeaponTemplate.minRange
+AITemplateManager::getActiveTemplate()	0x2c	field	AITemplatePlugIn.rollScale
+AITemplateManager::getActiveTemplate()	0x2c	field	WeaponTemplate.maxRange
+AITemplateManager::getActiveTemplate()	0x30	field	AITemplatePlugIn.yawScale
+AITemplateManager::getActiveTemplate()	0x34	field	AITemplatePlugIn.avoidCollisionLookAhead AITemplatePlugIn.lookVerticalSensitivity
+AITemplateManager::getActiveTemplate()	0x34	field	WeaponTemplate.soundSphereRadius
+AITemplateManager::getActiveTemplate()	0x38	field	AITemplate.side
+AITemplateManager::getActiveTemplate()	0x38	field	AITemplatePlugIn.lookHorizontalSensitivity
+AITemplateManager::getActiveTemplate()	0x38	field	WeaponTemplate.exitVelocity
+AITemplateManager::getActiveTemplate()	0x3c	field	AITemplatePlugIn.lookVerticalLookAhead
+AITemplateManager::getActiveTemplate()	0x4	field	AITemplatePlugIn.throttleSensitivity AITemplatePlugIn.vehicleNumber
+AITemplateManager::getActiveTemplate()	0x40	field	AITemplatePlugIn.lookHorizontalLookAhead
+AITemplateManager::getActiveTemplate()	0x40	field	WeaponTemplate.deviation
+AITemplateManager::getActiveTemplate()	0x44	field	AITemplatePlugIn.lookVerticalScale
+AITemplateManager::getActiveTemplate()	0x44	field	WeaponTemplate.deviationCorrectionTime
+AITemplateManager::getActiveTemplate()	0x48	field	AITemplatePlugIn.lookHorizontalScale
+AITemplateManager::getActiveTemplate()	0x4c	field	AITemplatePlugIn.maxSpeedBumpinessFallOff
+AITemplateManager::getActiveTemplate()	0x50	field	AITemplatePlugIn.driveThrottleControl
+AITemplateManager::getActiveTemplate()	0x50	field	WeaponTemplate.weaponActivate
+AITemplateManager::getActiveTemplate()	0x54	field	AITemplatePlugIn.driveTurnControl
+AITemplateManager::getActiveTemplate()	0x54	field	WeaponTemplate.weaponFire
+AITemplateManager::getActiveTemplate()	0x58	field	AITemplatePlugIn.aimVerticalControl
+AITemplateManager::getActiveTemplate()	0x5c	field	AITemplatePlugIn.aimHorizontalControl
+AITemplateManager::getActiveTemplate()	0x60	field	AITemplatePlugIn.lookVerticalControl
+AITemplateManager::getActiveTemplate()	0x64	field	AITemplatePlugIn.lookHorizontalControl
+AITemplateManager::getActiveTemplate()	0x8	field	AITemplate.types
+AITemplateManager::getActiveTemplate()	0x8	field	AITemplatePlugIn.coverValue AITemplatePlugIn.maxSpeed AITemplatePlugIn.pitchSensitivity
+AITemplateManager::getActiveTemplate()	0xc	field	AITemplate.degeneration
+AITemplateManager::getActiveTemplate()	0xc	field	AITemplatePlugIn.rollSensitivity AITemplatePlugIn.turnRadius
+BundleTemplate::getPosition()	0x0	field	ObjectTemplate.getPosition
+BundleTemplate::getPosition()	0x4	field	ObjectTemplate.getPosition
+BundleTemplate::getPosition()	0x8	field	ObjectTemplate.getPosition
+BundleTemplate::getRotation()	0x0	field	ObjectTemplate.getRotation
+BundleTemplate::getRotation()	0x4	field	ObjectTemplate.getRotation
+BundleTemplate::getRotation()	0x8	field	ObjectTemplate.getRotation
+Cmd_Renderer_LMAmbientColor::execute_helper_004a0eb0()	0x0	field	Renderer.LMAmbientColor
+Cmd_Renderer_LMAmbientColor::execute_helper_004a0eb0()	0x4	field	Renderer.LMAmbientColor
+Cmd_Renderer_LMAmbientColor::execute_helper_004a0eb0()	0x8	field	Renderer.LMAmbientColor
+Cmd_Renderer_ambientColor::execute_helper_004228c0()	0x0	field	Renderer.ambientColor
+Cmd_Renderer_ambientColor::execute_helper_004228c0()	0x4	field	Renderer.ambientColor
+Cmd_Renderer_ambientColor::execute_helper_004228c0()	0x8	field	Renderer.ambientColor
+Cmd_Renderer_diffuseColor::execute_helper_00422820()	0x0	field	Renderer.diffuseColor
+Cmd_Renderer_diffuseColor::execute_helper_00422820()	0x4	field	Renderer.diffuseColor
+Cmd_Renderer_diffuseColor::execute_helper_00422820()	0x8	field	Renderer.diffuseColor
+Cmd_Renderer_fogColorVec::execute_helper_00422960()	0x0	field	Renderer.fogColorVec
+Cmd_Renderer_fogColorVec::execute_helper_00422960()	0x4	field	Renderer.fogColorVec
+Cmd_Renderer_fogColorVec::execute_helper_00422960()	0x8	field	Renderer.fogColorVec
+Cmd_Renderer_secondarydiffuseColor::execute_helper_004a0e10()	0x0	field	Renderer.secondarydiffuseColor
+Cmd_Renderer_secondarydiffuseColor::execute_helper_004a0e10()	0x4	field	Renderer.secondarydiffuseColor
+Cmd_Renderer_secondarydiffuseColor::execute_helper_004a0e10()	0x8	field	Renderer.secondarydiffuseColor
+Cmd_Renderer_specularColor::execute_helper_00422870()	0x0	field	Renderer.specularColor
+Cmd_Renderer_specularColor::execute_helper_00422870()	0x4	field	Renderer.specularColor
+Cmd_Renderer_specularColor::execute_helper_00422870()	0x8	field	Renderer.specularColor
+Cmd_WPart_color::execute_helper_00a34f80()	0x0	field	WPart.color
+Cmd_WPart_color::execute_helper_00a34f80()	0x4	field	WPart.color
+Cmd_WPart_color::execute_helper_00a34f80()	0x8	field	WPart.color
+Cmd_WPart_color::execute_helper_00a34f80()	0xc	field	WPart.color
+KitTemplateManager::sub_00938d90()	0x8	field	KitTemplate.getType
+NetworkManager::vf24_addressOf_14h()	0x0	field	RayTracer.light.direction
+NetworkManager::vf24_addressOf_14h()	0x4	field	RayTracer.light.direction
+NetworkManager::vf24_addressOf_14h()	0x8	field	RayTracer.light.direction
+Object::getGroundPos()	0x0	field	Object.getGroundPos
+Object::getGroundPos()	0x4	field	Object.getGroundPos
+Object::getGroundPos()	0x8	field	Object.getGroundPos
+Object::setObjectToGround()	0x0	field	Object.setObjectToGround
+Object::setObjectToGround()	0x4	field	Object.setObjectToGround
+Object::setObjectToGround()	0x8	field	Object.setObjectToGround
+PortalPassing::vf6()	0x0	field	AILandingZone.maxCorner
+PortalPassing::vf6()	0x4	field	AILandingZone.maxCorner
+getAIMain()	0x50	field	botStatisticUpdateSpeed
+getActiveTemplateAs()	0x1d8	field	ObjectTemplate.detectionRadius
+getActiveTemplateAs()	0x1e0	field	ObjectTemplate.seatFlags
+getActiveTemplateAs()	0x21c	field	ObjectTemplate.passengerTurnLeftAngle
+getActiveTemplateAs()	0x220	field	ObjectTemplate.passengerTurnRightAngle
+getActiveTemplateAs()	0x224	field	ObjectTemplate.passengerUpAngle
+getActiveTemplateAs()	0x228	field	ObjectTemplate.passengerDownAngle
+getActiveTemplateAs()	0x260	field	ObjectTemplate.damageForBeingOutSideWorld
+getActiveTemplateAs()	0x390	field	ObjectTemplate.exitSpeedMod
+getActiveTemplateAs()	0x3a0	field	ObjectTemplate.cameraDelayDistance
+getActiveTemplateAs()	0x3a4	field	ObjectTemplate.cameraDelayTime
+getActiveTemplateAs()	0x3a8	field	ObjectTemplate.forwardMod
+getActiveTemplateAs(dice::bf::BFSpawnPointTemplate)	0x1dc	field	ObjectTemplate.setSpawnPreventionDelay
+getActiveTemplateAs(dice::bf::BFSpawnPointTemplate)	0x1e0	field	ObjectTemplate.getSpawnId ObjectTemplate.setSpawnId
+getActiveTemplateAs(dice::bf::BFSpawnPointTemplate)	0x1e4	field	ObjectTemplate.getGroup ObjectTemplate.setGroup
+getActiveTemplateAs(dice::bf::BFSpawnPointTemplate)	0x1f0	field	ObjectTemplate.rollingSpawnTeam
+getActiveTemplateAs(dice::ref2::world::AnimatedBundleTemplate)	0x218	field	ObjectTemplate.setCheckBoneDistance
+getActiveTemplateAs(dice::ref2::world::AnimatedBundleTemplate)	0x21c	field	ObjectTemplate.setAnimatedTextureSpeed
+getActiveTemplateAs(dice::ref2::world::AnimatedBundleTemplate)	0x220	field	ObjectTemplate.setAnimatedTextureSpeed
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x1e0	field	ObjectTemplate.setCharacterHeight
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x20c	field	ObjectTemplate.setTurnLeftRightAngle
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x214	field	ObjectTemplate.setPointUpDownAngle
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x21c	field	ObjectTemplate.setLiePointUpDownAngle
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x230	field	ObjectTemplate.setLodDistance
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x234	field	ObjectTemplate.set1pFov
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x334	field	ObjectTemplate.swimBoost
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x354	field	ObjectTemplate.setBackPitchFactor1
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x358	field	ObjectTemplate.setBackPitchFactor2
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x35c	field	ObjectTemplate.setBackPitchFactor3
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x360	field	ObjectTemplate.setHeadPitchFactor
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x398	field	ObjectTemplate.setParachuteDrag
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x39c	field	ObjectTemplate.setParachuteSpeed
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x3ac	field	ObjectTemplate.slowDownMod
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x3b8	field	ObjectTemplate.setZoomedSpeedFactor
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x3bc	field	ObjectTemplate.setZoomedAccelFactor
+getActiveTemplateAs(dice::ref2::world::ClusterProjectileTemplate)	0x2b0	field	ObjectTemplate.StartDamageAfter
+getActiveTemplateAs(dice::ref2::world::ClusterProjectileTemplate)	0x2d8	field	ObjectTemplate.fireFrameDamage
+getActiveTemplateAs(dice::ref2::world::ClusterProjectileTemplate)	0x2dc	field	ObjectTemplate.fireRadius
+getActiveTemplateAs(dice::ref2::world::ClusterProjectileTemplate)	0x2e0	field	ObjectTemplate.fireDuration
+getActiveTemplateAs(dice::ref2::world::ClusterProjectileTemplate)	0x2e4	field	ObjectTemplate.fireDurationAlt
+getActiveTemplateAs(dice::ref2::world::ClusterProjectileTemplate)	0x2f0	field	ObjectTemplate.SpawnDistance
+getActiveTemplateAs(dice::ref2::world::ClusterProjectileTemplate)	0x318	field	ObjectTemplate.MaxTimeToEffect
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x218	field	ObjectTemplate.setCheckBoneDistance
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x21c	field	ObjectTemplate.setAnimatedTextureSpeed
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x220	field	ObjectTemplate.setAnimatedTextureSpeed
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x2a0	field	ObjectTemplate.radius
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x2a4	field	ObjectTemplate.team
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x2e4	field	ObjectTemplate.conversionTime
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x2f8	field	ObjectTemplate.objectSpawnerId
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x2fc	field	ObjectTemplate.onlyTakeableByTeam
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x300	field	ObjectTemplate.onlyAffectedByTeam
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x304	field	ObjectTemplate.areaValueTeam1 ObjectTemplate.setAreaValue
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x308	field	ObjectTemplate.areaValueTeam2 ObjectTemplate.setAreaValue
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)	0x30c	field	ObjectTemplate.flagHeightOn3dMap
+getActiveTemplateAs(dice::ref2::world::ControlPointTemplate)->+0x2ec	0x0	field	ObjectTemplate.spawnGroupId
+getActiveTemplateAs(dice::ref2::world::EffectBundleTemplate)	0x1d8	field	ObjectTemplate.minDistanceUnderWaterSurface
+getActiveTemplateAs(dice::ref2::world::EffectBundleTemplate)	0x1dc	field	ObjectTemplate.maxDistanceUnderWaterSurface
+getActiveTemplateAs(dice::ref2::world::EmitterTemplate)	0x1c0	field	ObjectTemplate.emitterSpeedScale
+getActiveTemplateAs(dice::ref2::world::EmitterTemplate)	0x1c8	field	ObjectTemplate.startProbability
+getActiveTemplateAs(dice::ref2::world::EmitterTemplate)	0x1cc	field	ObjectTemplate.intensityAtSpeed
+getActiveTemplateAs(dice::ref2::world::EmitterTemplate)	0x1d0	field	ObjectTemplate.lodDistance
+getActiveTemplateAs(dice::ref2::world::EmitterTemplate)	0x488	field	ObjectTemplate.minGeneratedParticles
+getActiveTemplateAs(dice::ref2::world::EntryPointTemplate)	0x1bc	field	ObjectTemplate.setEntryRadius
+getActiveTemplateAs(dice::ref2::world::FireArmsBundleTemplate)	0x1d8	field	ObjectTemplate.inputFire
+getActiveTemplateAs(dice::ref2::world::FireArmsBundleTemplate)	0x1dc	field	ObjectTemplate.inputReload
+getActiveTemplateAs(dice::ref2::world::FireArmsBundleTemplate)	0x1e0	field	ObjectTemplate.roundOfFire
+getActiveTemplateAs(dice::ref2::world::FireArmsBundleTemplate)	0x1e4	field	ObjectTemplate.reloadTime
+getActiveTemplateAs(dice::ref2::world::FireArmsBundleTemplate)	0x1e8	field	ObjectTemplate.numOfMag
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2a0	field	ObjectTemplate.DetectionTime
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2a8	field	ObjectTemplate.leftAngle
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2ac	field	ObjectTemplate.rightAngle
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2b0	field	ObjectTemplate.upAngle
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2b4	field	ObjectTemplate.downAngle
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2b8	field	ObjectTemplate.lieUpAngle
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2bc	field	ObjectTemplate.lieDownAngle
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2c0	field	ObjectTemplate.fireDelay
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2c4	field	ObjectTemplate.hideDuringFireTime
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2c8	field	ObjectTemplate.recoilSpeed
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x2cc	field	ObjectTemplate.recoilSize
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3b4	field	ObjectTemplate.magSize
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3b8	field	ObjectTemplate.startingMag
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3c0	field	ObjectTemplate.type
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3c4	field	ObjectTemplate.numOfMag
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3c8	field	ObjectTemplate.ammoType
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3cc	field	ObjectTemplate.reloadTime
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3d0	field	ObjectTemplate.singleBulletReloadTime
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3d4	field	ObjectTemplate.roundOfFire
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3d8	field	ObjectTemplate.exhaustRepairTime
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3dc	field	ObjectTemplate.delayToUse
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x3f8	field	ObjectTemplate.unZoomBetweenFireTime
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x400	field	ObjectTemplate.zoomFov
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x404	field	ObjectTemplate.soldierZoomFov
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x424	field	ObjectTemplate.GUIIndex
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x428	field	ObjectTemplate.hudAmmoType
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x480	field	ObjectTemplate.ammoBarSize
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x484	field	ObjectTemplate.ammoBarPosX
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x488	field	ObjectTemplate.ammoBarPosY
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x48c	field	ObjectTemplate.ammoBarTextPosX
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x490	field	ObjectTemplate.ammoBarTextPosY
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x498	field	ObjectTemplate.crossHairType
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x4f4	field	ObjectTemplate.inputFire
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x4f8	field	ObjectTemplate.inputReload
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x508	field	ObjectTemplate.velocity
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x50c	field	ObjectTemplate.fireingForce
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x520	field	ObjectTemplate.startingHeat
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x524	field	ObjectTemplate.heatAddWhenFire
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x528	field	ObjectTemplate.coolDownPerSec
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x554	field	ObjectTemplate.maxHeatTTL
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x558	field	ObjectTemplate.timeDelayOnOverHeat
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x560	field	ObjectTemplate.timeToNotAllowChange
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x564	field	ObjectTemplate.weaponLink
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x5ac	field	ObjectTemplate.altWeaponIndex
+getActiveTemplateAs(dice::ref2::world::FireArmsTemplate)	0x5b4	field	ObjectTemplate.ejectClipTime
+getActiveTemplateAs(dice::ref2::world::FlagBaseTemplate)	0x1bc	field	ObjectTemplate.setFlagLocation
+getActiveTemplateAs(dice::ref2::world::FlagBaseTemplate)	0x1c0	field	ObjectTemplate.setFlagLocation
+getActiveTemplateAs(dice::ref2::world::FlagBaseTemplate)	0x1c4	field	ObjectTemplate.setFlagLocation
+getActiveTemplateAs(dice::ref2::world::FlagBaseTemplate)	0x1d4	field	ObjectTemplate.team
+getActiveTemplateAs(dice::ref2::world::FlagBaseTemplate)	0x1d8	field	ObjectTemplate.radius
+getActiveTemplateAs(dice::ref2::world::FlagTemplate)	0x1f4	field	ObjectTemplate.radius
+getActiveTemplateAs(dice::ref2::world::FlagTemplate)	0x1f8	field	ObjectTemplate.timeToReSpawn
+getActiveTemplateAs(dice::ref2::world::HandFireArmsTemplate)	0x5fc	field	ObjectTemplate.setDevMod
+getActiveTemplateAs(dice::ref2::world::HandFireArmsTemplate)	0x60c	field	ObjectTemplate.healDistance
+getActiveTemplateAs(dice::ref2::world::HandFireArmsTemplate)	0x610	field	ObjectTemplate.healFactor
+getActiveTemplateAs(dice::ref2::world::HandFireArmsTemplate)	0x614	field	ObjectTemplate.selfHealFactor
+getActiveTemplateAs(dice::ref2::world::HandFireArmsTemplate)	0x618	field	ObjectTemplate.repairFactor
+getActiveTemplateAs(dice::ref2::world::HandFireArmsTemplate)	0x61c	field	ObjectTemplate.repairDistance
+getActiveTemplateAs(dice::ref2::world::HandFireArmsTemplate)	0x620	field	ObjectTemplate.disarmMinesDistance
+getActiveTemplateAs(dice::ref2::world::ItemTemplate)	0x1e0	field	ObjectTemplate.yawSpeed
+getActiveTemplateAs(dice::ref2::world::KitTemplate)	0x208	field	ObjectTemplate.type
+getActiveTemplateAs(dice::ref2::world::KitTemplate)	0x258	field	ObjectTemplate.setKitSpeedFactor
+getActiveTemplateAs(dice::ref2::world::KitTemplate)	0x25c	field	ObjectTemplate.setKitAccelFactor
+getActiveTemplateAs(dice::ref2::world::LensFlareTemplate)	0x1cc	field	ObjectTemplate.getNumFlares
+getActiveTemplateAs(dice::ref2::world::LensFlareTemplate)	0x1d4	field	ObjectTemplate.getNumCoronas
+getActiveTemplateAs(dice::ref2::world::LensFlareTemplate)	0x1d8	field	ObjectTemplate.getTotSprites
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x1e8	field	ObjectTemplate.minSpawnDelay ObjectTemplate.setSpawnDelay
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x1ec	field	ObjectTemplate.maxSpawnDelay ObjectTemplate.setSpawnDelay
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x1f0	field	ObjectTemplate.timeToLive
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x1f4	field	ObjectTemplate.distance
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x1f8	field	ObjectTemplate.team
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x1fc	field	ObjectTemplate.spawnDelayAtStart
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x204	field	ObjectTemplate.nrOfObjectToSpawn
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x208	field	ObjectTemplate.maxNrOfObjectSpawned
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x20c	field	ObjectTemplate.radius
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x210	field	ObjectTemplate.useButtonRadius
+getActiveTemplateAs(dice::ref2::world::ObjectSpawnerTemplate)	0x220	field	ObjectTemplate.damageWhenLost
+getActiveTemplateAs(dice::ref2::world::ObstacleTemplate)	0x1d8	field	ObjectTemplate.damage
+getActiveTemplateAs(dice::ref2::world::ParticleTemplate)	0xa0	field	ObjectTemplate.sizeModifierX
+getActiveTemplateAs(dice::ref2::world::ParticleTemplate)	0xa4	field	ObjectTemplate.sizeModifierY
+getActiveTemplateAs(dice::ref2::world::ParticleTemplate)	0xa8	field	ObjectTemplate.sizeModifierZ
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x1dc	field	ObjectTemplate.minDist
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x1e0	field	ObjectTemplate.maxDist
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x1e4	field	ObjectTemplate.minDistAlpha
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x1e8	field	ObjectTemplate.maxDistAlpha
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x1f0	field	ObjectTemplate.gravityModifier
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x1f4	field	ObjectTemplate.explodeNearEnemyDistance
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x1fc	field	ObjectTemplate.timeUntilExplodeActive
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x258	field	ObjectTemplate.distToStartLoseDamage
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x25c	field	ObjectTemplate.distToMinDamage
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x26c	field	ObjectTemplate.forceOnExplosion
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x270	field	ObjectTemplate.YModOnExplosion
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x274	field	ObjectTemplate.material2
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x280	field	ObjectTemplate.tracerLength
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x284	field	ObjectTemplate.timeToRemoveTK
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x290	field	ObjectTemplate.heatMaxTurnForce
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x294	field	ObjectTemplate.heatMaxTurnForceVsAir
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x298	field	ObjectTemplate.damageDelayTime
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x2a0	field	ObjectTemplate.projectileType
+getActiveTemplateAs(dice::ref2::world::ProjectileTemplate)	0x2a4	field	ObjectTemplate.ProximityFusePrimer
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x108	field	ObjectTemplate.physicsFrequency
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x114	field	ObjectTemplate.hitPoints
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x118	field	ObjectTemplate.maxHitPoints
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x11c	field	ObjectTemplate.material
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x120	field	ObjectTemplate.damageMod
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x124	field	ObjectTemplate.angleMod
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x128	field	ObjectTemplate.speedMod
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x144	field	ObjectTemplate.waterDamageDelay
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x148	field	ObjectTemplate.timeToLiveAfterDeath
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x150	field	ObjectTemplate.timeToStartFadeAfterDeath
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x158	field	ObjectTemplate.criticalDamage
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x160	field	ObjectTemplate.explosionRadius
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x164	field	ObjectTemplate.explosionDamage
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x168	field	ObjectTemplate.explosionMaterial
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x16c	field	ObjectTemplate.explosionForce
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x170	field	ObjectTemplate.explosionForceMod
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x174	field	ObjectTemplate.explosionForceMax
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x178	field	ObjectTemplate.hpLostWhileCriticalDamage
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x17c	field	ObjectTemplate.hpLostWhileUpSideDown
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x180	field	ObjectTemplate.hpLostWhileDamageFromWater
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x198	field	ObjectTemplate.hpLostWhileDamageFromDeepWater
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x1a0	field	ObjectTemplate.deepWaterLevel
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x1a4	field	ObjectTemplate.deepWaterDamageDelay
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0xe4	field	ObjectTemplate.drag
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0xf4	field	ObjectTemplate.mass
+getActiveTemplateAs(dice::ref2::world::SpawnPointTemplate)	0x1dc	field	ObjectTemplate.setSpawnPreventionDelay
+getActiveTemplateAs(dice::ref2::world::SpawnPointTemplate)	0x1e0	field	ObjectTemplate.setSpawnId
+getActiveTemplateAs(dice::ref2::world::SpriteParticleNewTemplate)->+0x80	0x5b4	field	ObjectTemplate.srcBlendMode
+getActiveTemplateAs(dice::ref2::world::SpriteParticleNewTemplate)->+0x80	0x5b8	field	ObjectTemplate.destBlendMode
+getActiveTemplateAs(dice::ref2::world::SupplyDepotTemplate)	0x1bc	field	ObjectTemplate.radius
+getActiveTemplateAs(dice::ref2::world::SupplyDepotTemplate)	0x1c0	field	ObjectTemplate.team
+getBotGoalPosition()	0x0	field	getBotGoalPosition
+getBotGoalPosition()	0x4	field	getBotGoalPosition
+getBotGoalPosition()	0x8	field	getBotGoalPosition
+getBotPosition()	0x0	field	getBotPosition
+getBotPosition()	0x4	field	getBotPosition
+getBotPosition()	0x8	field	getBotPosition
+getRendCameraPosition()	0x0	field	getRendCameraPosition
+getRendCameraPosition()	0x4	field	getRendCameraPosition
+getRendCameraPosition()	0x8	field	getRendCameraPosition
+getRendCameraRotation()	0x0	field	getRendCameraRotation
+getRendCameraRotation()	0x4	field	getRendCameraRotation
+getRendCameraRotation()	0x8	field	getRendCameraRotation
+getStrategyHeat()	0x0	field	getStrategyHeat
+getStrategyHeat()	0x4	field	getStrategyHeat
+rend_00a2a380()	0x0	field	sunLightDirectionVec
+rend_00a2a380()	0x4	field	sunLightDirectionVec
+rend_00a2a380()	0x8	field	sunLightDirectionVec
+result	0x0	field	ObjectTemplate.nameTagOffset
+result	0x0	field	ObjectTemplate.vehicleIconPos
+result	0x4	field	ObjectTemplate.nameTagOffset
+result	0x4	field	ObjectTemplate.vehicleIconPos
+result	0x8	field	ObjectTemplate.nameTagOffset
+stub_return_this_0args_00414720()	0x0	field	AILandingZone.minCorner
+stub_return_this_0args_00414720()	0x4	field	AILandingZone.minCorner
+sub_00a3c900()	0x0	field	Shadow.shadowColor
+sub_00a3c900()	0x4	field	Shadow.shadowColor
+sub_00a3c900()	0x8	field	Shadow.shadowColor
+sub_00a3c900()	0xc	field	Shadow.shadowColor
+*0x00de59fc	0x10	vf4	PitchBend.setMinMax
+*0x00de59fc	0x14	vf5	PitchBend.setFrames
+*0x00de59fc	0x18	vf6	PitchBend.setSmoothLooping
+*0x00de59fc	0x8	vf2	PitchBend.setTimeRatio
+*g_pBasicPhysicsSystem	0x14	vf5	Physics.gravity
+*g_pBasicPhysicsSystem	0x18	vf6	Physics.gravity
+*g_pBasicPhysicsSystem	0x1c	vf7	Physics.wind
+*g_pBasicPhysicsSystem	0x20	vf8	Physics.wind
+*g_pBasicPhysicsSystem	0x24	vf9	Physics.airDensityZeroAtHeight
+*g_pBasicPhysicsSystem	0x28	vf10	Physics.airDensityZeroAtHeight
+*g_pBasicPhysicsSystem	0x2c	vf11	Physics.listProperties
+*g_pControlMapManager	0x14	vf5	ControlMap.create
+*g_pControlMapManager	0x28	vf10	ControlMap.deleteControlMap
+*g_pControlMapManager.vf12()	0x28	vf10	ControlMap.addKeyAndButtonToAxisMapping
+*g_pControlMapManager.vf12()	0x2c	vf11	ControlMap.addButtonAndKeyToAxisMapping
+*g_pControlMapManager.vf12()	0x34	vf13	ControlMap.addKeysToAxisMapping
+*g_pControlMapManager.vf12()	0x38	vf14	ControlMap.addButtonsToAxisMapping
+*g_pControlMapManager.vf12()	0x3c	vf15	ControlMap.addAxisToAxisMapping
+*g_pControlMapManager.vf12()	0x44	vf17	ControlMap.addAxisToTriggerMapping
+*g_pControlMapManager.vf12()	0x48	vf18	ControlMap.AddKeyToTriggerMapping
+*g_pControlMapManager.vf12()	0x4c	vf19	ControlMap.addButtonToTriggerMapping
+*g_pControlMapManager.vf12()	0x58	vf22	ControlMap.setButtonRiseTime
+*g_pControlMapManager.vf12()	0x5c	vf23	ControlMap.setButtonFallTime
+*g_pFileChangeManager	0x1c	vf7	FileChangeManager.enable
+*g_pFileChangeManager	0x20	vf8	FileChangeManager.enable
+*g_pFileChangeManager	0x24	vf9	FileChangeManager.delayTime
+*g_pFileChangeManager	0x28	vf10	FileChangeManager.delayTime
+*g_pFileManager	0x14	vf5	FileManager.fileExists
+*g_pFileManager	0x18	vf6	FileManager.deleteFile
+*g_pFileManager	0x1c	vf7	FileManager.moveFile
+*g_pFileManager	0x20	vf8	FileManager.copyFile
+*g_pFileManager	0x4c	vf19	FileManager.addPathOverload
+*g_pFileManager	0x50	vf20	FileManager.removePathOverload
+*g_pFileManager	0x54	vf21	FileManager.addMergeDirectory
+*g_pFileManager	0x58	vf22	FileManager.removeMergeDirectory
+*g_pGame.vf3()	0x10	vf4	Game.connectionType
+*g_pGame.vf3()	0x100	vf64	Admin.enableRemoteAdmin Game.forcePlayerToTeam
+*g_pGame.vf3()	0x104	vf65	Admin.disableRemoteAdmin Game.setTeamRatio
+*g_pGame.vf3()	0x10c	vf67	Game.delayBeforeStartingGame
+*g_pGame.vf3()	0x110	vf68	Game.delayBeforeStartingGame Game.listMaps
+*g_pGame.vf3()	0x114	vf69	Game.roundDelayBeforeStartingGame
+*g_pGame.vf3()	0x118	vf70	Game.addFirstNameOnTeam Game.roundDelayBeforeStartingGame
+*g_pGame.vf3()	0x11c	vf71	Game.addSecondNameOnTeam Game.scoreLimit
+*g_pGame.vf3()	0x120	vf72	Game.getRandomNameForTeam Game.scoreLimit
+*g_pGame.vf3()	0x124	vf73	Game.autoBalanceTeam Game.randomNames
+*g_pGame.vf3()	0x128	vf74	Game.autoBalanceTeam Game.randomNames
+*g_pGame.vf3()	0x12c	vf75	Game.setMinNrOfPlayers
+*g_pGame.vf3()	0x134	vf77	Game.soldierFFRatio
+*g_pGame.vf3()	0x138	vf78	Game.maxNrOfPlayers Game.soldierFFRatio
+*g_pGame.vf3()	0x13c	vf79	Game.maxNrOfPlayers Game.vehicleFFRatio
+*g_pGame.vf3()	0x14	vf5	Game.connectionType
+*g_pGame.vf3()	0x140	vf80	Game.changePlayerName Game.vehicleFFRatio
+*g_pGame.vf3()	0x144	vf81	Game.soldierFFRatioOnSplash Game.timeLimit
+*g_pGame.vf3()	0x148	vf82	Game.soldierFFRatioOnSplash Game.timeLimit
+*g_pGame.vf3()	0x14c	vf83	Game.vehicleFFRatioOnSplash
+*g_pGame.vf3()	0x150	vf84	Game.vehicleFFRatioOnSplash
+*g_pGame.vf3()	0x154	vf85	Game.kickBack
+*g_pGame.vf3()	0x158	vf86	Game.kickBack
+*g_pGame.vf3()	0x15c	vf87	Game.kickBackOnSplash
+*g_pGame.vf3()	0x160	vf88	Game.kickBackOnSplash
+*g_pGame.vf3()	0x164	vf89	Game.restartMap
+*g_pGame.vf3()	0x168	vf90	Game.hidableUndergrowthMaterials
+*g_pGame.vf3()	0x16c	vf91	Game.timeBeforeRestartMap
+*g_pGame.vf3()	0x170	vf92	Game.timeBeforeRestartMap
+*g_pGame.vf3()	0x178	vf94	Game.createAIPlayer
+*g_pGame.vf3()	0x17c	vf95	Game.createUnspawnedAIPlayer
+*g_pGame.vf3()	0x18	vf6	Game.packetDropRatio
+*g_pGame.vf3()	0x180	vf96	Admin.serverMessage
+*g_pGame.vf3()	0x188	vf98	Game.damageForBeingOutSideWorld
+*g_pGame.vf3()	0x18c	vf99	Game.damageForBeingOutSideWorld
+*g_pGame.vf3()	0x190	vf100	Game.spawnPlayer
+*g_pGame.vf3()	0x194	vf101	Game.spawnTemplateName
+*g_pGame.vf3()	0x198	vf102	Game.setKit Game.setMaxNameTagDistance
+*g_pGame.vf3()	0x19c	vf103	Game.setGodMode
+*g_pGame.vf3()	0x1a8	vf106	Game.setNrOfRounds
+*g_pGame.vf3()	0x1ac	vf107	Game.setMajorVictory
+*g_pGame.vf3()	0x1b4	vf109	Game.setMinorVictory
+*g_pGame.vf3()	0x1c	vf7	Game.packetDropRatio
+*g_pGame.vf3()	0x1cc	vf115	Admin.tagPlayerId
+*g_pGame.vf3()	0x1d0	vf116	Admin.tagPlayerId
+*g_pGame.vf3()	0x1d4	vf117	Admin.voteMapMajority
+*g_pGame.vf3()	0x1d8	vf118	Admin.voteMapMajority
+*g_pGame.vf3()	0x1dc	vf119	Admin.voteKickPlayerMajority
+*g_pGame.vf3()	0x1e0	vf120	Admin.voteKickPlayerMajority
+*g_pGame.vf3()	0x1e4	vf121	Admin.voteKickTeamPlayerMajority
+*g_pGame.vf3()	0x1e8	vf122	Admin.voteKickTeamPlayerMajority
+*g_pGame.vf3()	0x1ec	vf123	Admin.enableMapVote
+*g_pGame.vf3()	0x1f0	vf124	Admin.enableMapVote
+*g_pGame.vf3()	0x1f4	vf125	Admin.enableKickPlayerVote
+*g_pGame.vf3()	0x1f8	vf126	Admin.enableKickPlayerVote
+*g_pGame.vf3()	0x1fc	vf127	Admin.enableKickTeamPlayerVote
+*g_pGame.vf3()	0x200	vf128	Admin.enableKickTeamPlayerVote
+*g_pGame.vf3()	0x204	vf129	Admin.allowNoseCam
+*g_pGame.vf3()	0x208	vf130	Admin.allowNoseCam
+*g_pGame.vf3()	0x20c	vf131	Admin.externalViews
+*g_pGame.vf3()	0x210	vf132	Admin.externalViews
+*g_pGame.vf3()	0x214	vf133	Admin.crossHairCenterPoint
+*g_pGame.vf3()	0x218	vf134	Admin.crossHairCenterPoint
+*g_pGame.vf3()	0x244	vf145	Admin.votingTime
+*g_pGame.vf3()	0x248	vf146	Admin.votingTime
+*g_pGame.vf3()	0x250	vf148	Admin.kickPlayer
+*g_pGame.vf3()	0x254	vf149	Admin.kickPlayerByName
+*g_pGame.vf3()	0x260	vf152	Admin.banPlayer
+*g_pGame.vf3()	0x264	vf153	Admin.banPlayer
+*g_pGame.vf3()	0x268	vf154	Admin.addAddressToBanList
+*g_pGame.vf3()	0x26c	vf155	Admin.addAddressToBanList
+*g_pGame.vf3()	0x270	vf156	Admin.removeAddressFromBanList
+*g_pGame.vf3()	0x274	vf157	Admin.changeMap
+*g_pGame.vf3()	0x278	vf158	Admin.changeMap
+*g_pGame.vf3()	0x28	vf10	Game.disconnect
+*g_pGame.vf3()	0x280	vf160	Admin.clearBanList
+*g_pGame.vf3()	0x284	vf161	Admin.listBannedAddresses
+*g_pGame.vf3()	0x288	vf162	Admin.banPlayerKey
+*g_pGame.vf3()	0x28c	vf163	Admin.banPlayerKey
+*g_pGame.vf3()	0x290	vf164	Admin.addKeyToBanList
+*g_pGame.vf3()	0x294	vf165	Admin.addKeyToBanList
+*g_pGame.vf3()	0x298	vf166	Admin.removeKeyFromBanList
+*g_pGame.vf3()	0x29c	vf167	Admin.listBannedKeys
+*g_pGame.vf3()	0x2a4	vf169	Admin.bandwidthChokeLimit
+*g_pGame.vf3()	0x2a8	vf170	Admin.bandwidthChokeLimit
+*g_pGame.vf3()	0x2dc	vf183	Game.autoSpawnBots
+*g_pGame.vf3()	0x2e0	vf184	Game.autoSpawnBots
+*g_pGame.vf3()	0x2e4	vf185	Game.maxAILodNum
+*g_pGame.vf3()	0x2e8	vf186	Game.maxAILodNum
+*g_pGame.vf3()	0x300	vf192	Game.assultTeam
+*g_pGame.vf3()	0x304	vf193	Game.assultTeam
+*g_pGame.vf3()	0x310	vf196	Game.clearDebugLines
+*g_pGame.vf3()	0x318	vf198	Game.drawDebug
+*g_pGame.vf3()	0x31c	vf199	Game.drawDebug
+*g_pGame.vf3()	0x320	vf200	Admin.maxAllowedConnectionType
+*g_pGame.vf3()	0x324	vf201	Admin.maxAllowedConnectionType
+*g_pGame.vf3()	0x32c	vf203	Admin.spawnDelayPenaltyForTK
+*g_pGame.vf3()	0x330	vf204	Admin.spawnDelayPenaltyForTK
+*g_pGame.vf3()	0x334	vf205	Admin.nrOfTKToKick
+*g_pGame.vf3()	0x338	vf206	Admin.nrOfTKToKick
+*g_pGame.vf3()	0x33c	vf207	Admin.banPlayerOnTKKick
+*g_pGame.vf3()	0x34	vf13	Game.suicide
+*g_pGame.vf3()	0x340	vf208	Admin.banPlayerOnTKKick
+*g_pGame.vf3()	0x344	vf209	Admin.TKPunishMode
+*g_pGame.vf3()	0x348	vf210	Admin.TKPunishMode
+*g_pGame.vf3()	0x34c	vf211	Game.expUpForceModifierOnSoldier
+*g_pGame.vf3()	0x350	vf212	Game.expUpForceModifierOnSoldier
+*g_pGame.vf3()	0x354	vf213	Game.expRadiusCutOnSoldier
+*g_pGame.vf3()	0x358	vf214	Game.expRadiusCutOnSoldier
+*g_pGame.vf3()	0x38	vf14	Game.setTeam
+*g_pGame.vf3()	0x48	vf18	Game.voteMap
+*g_pGame.vf3()	0x50	vf20	Game.spawnObjectAt Game.voteKickPlayer
+*g_pGame.vf3()	0x58	vf22	Game.voteKickTeamPlayer
+*g_pGame.vf3()	0x5c	vf23	Game.TKForgive
+*g_pGame.vf3()	0x60	vf24	Game.TKPunish
+*g_pGame.vf3()	0x64	vf25	Game.commandRate Game.setTeamSkin
+*g_pGame.vf3()	0x68	vf26	Game.commandRate
+*g_pGame.vf3()	0x6c	vf27	Game.connectToServer Game.setStatsGatheringEnabled
+*g_pGame.vf3()	0x74	vf29	Game.clientsidePrediction Game.killPlayer
+*g_pGame.vf3()	0x7c	vf31	Game.clientsideSleepingPhysics
+*g_pGame.vf3()	0x80	vf32	Game.clientsideSleepingPhysicsDist
+*g_pGame.vf3()	0x84	vf33	Game.clientsideSleepingPhysicsDist Game.startServer
+*g_pGame.vf3()	0x8c	vf35	Game.networkStatsGatheringEnabled
+*g_pGame.vf3()	0x90	vf36	Game.networkStatsGatheringEnabled
+*g_pGame.vf3()	0x98	vf38	Game.getGameLevelPath
+*g_pGame.vf3()	0x9c	vf39	Game.spawnObject
+*g_pGame.vf3()	0xa0	vf40	Game.setTicketLostPerMin
+*g_pGame.vf3()	0xa8	vf42	Game.setNumberOfTickets
+*g_pGame.vf3()	0xac	vf43	Game.setCurrentNumberOfTickets
+*g_pGame.vf3()	0xb0	vf44	Admin.execRemoteCommand Game.setNumberOfTicketPerPlayer
+*g_pGame.vf3()	0xb4	vf45	Game.setTicketRatio
+*g_pGame.vf3()	0xbc	vf47	Game.listPlayers
+*g_pGame.vf3()	0xc0	vf48	Game.spawnPlayers
+*g_pGame.vf3()	0xc4	vf49	Game.spawnPlayers
+*g_pGame.vf3()	0xc8	vf50	Game.timeToNextWave
+*g_pGame.vf3()	0xcc	vf51	Game.timeToNextWave
+*g_pGame.vf3()	0xd0	vf52	Game.spawnWaveTime
+*g_pGame.vf3()	0xd4	vf53	Game.isAiLevel Game.spawnWaveTime
+*g_pGame.vf3()	0xd8	vf54	Game.isAiLevel Game.spawnWaves
+*g_pGame.vf3()	0xdc	vf55	Game.isNightLevel Game.spawnWaves
+*g_pGame.vf3()	0xe0	vf56	Game.isNightLevel Game.spawnDelay
+*g_pGame.vf3()	0xe4	vf57	Game.spawnDelay
+*g_pGame.vf3()	0xe8	vf58	Game.setUseActiveCombatArea
+*g_pGame.vf3()	0xec	vf59	Game.debugDamage
+*g_pGame.vf3()	0xf0	vf60	Game.debugDamage Game.setActiveCombatArea
+*g_pGame.vf3()	0xfc	vf63	Game.forcePlayerToTeam
+*g_pGeometryTemplateManager	0x1c	vf7	GeometryTemplate.active
+*g_pGeometryTemplateManager	0x24	vf9	GeometryTemplate.deleteAll
+*g_pGeometryTemplateManager.vf8().vf3()	0x10	vf4	GeometryTemplate.cullBackFaces
+*g_pGeometryTemplateManager.vf8().vf3()	0x24	vf9	GeometryTemplate.type
+*g_pGeometryTemplateManager.vf8().vf3()	0x30	vf12	GeometryTemplate.setLodDistance
+*g_pGeometryTemplateManager.vf8().vf3()	0x34	vf13	GeometryTemplate.color GeometryTemplate.materialSize
+*g_pGeometryTemplateManager.vf8().vf3()	0x3c	vf15	GeometryTemplate.tesselation
+*g_pGeometryTemplateManager.vf8().vf3()	0x44	vf17	GeometryTemplate.reloadShader
+*g_pGeometryTemplateManager.vf8().vf3()	0x4c	vf19	GeometryTemplate.detailTexScale
+*g_pGeometryTemplateManager.vf8().vf3()	0x54	vf21	GeometryTemplate.texOffsetX
+*g_pGeometryTemplateManager.vf8().vf3()	0x5c	vf23	GeometryTemplate.texOffsetY
+*g_pGeometryTemplateManager.vf8().vf3()	0x64	vf25	GeometryTemplate.targetTriCount
+*g_pGeometryTemplateManager.vf8().vf3()	0x6c	vf27	GeometryTemplate.worldSize
+*g_pGeometryTemplateManager.vf8().vf3()	0x74	vf29	GeometryTemplate.yScale
+*g_pGeometryTemplateManager.vf8().vf3()	0x7c	vf31	GeometryTemplate.waterLevel
+*g_pGeometryTemplateManager.vf8().vf3()	0x84	vf33	GeometryTemplate.waterBelowLevel
+*g_pGeometryTemplateManager.vf8().vf3()	0x8c	vf35	GeometryTemplate.waveHeight
+*g_pGeometryTemplateManager.vf8().vf3()	0xa4	vf41	GeometryTemplate.seaFloorLevel
+*g_pGeometryTemplateManager.vf8().vf3()	0xac	vf43	GeometryTemplate.shadowPrecision
+*g_pGeometryTemplateManager.vf8().vf3()	0xb4	vf45	GeometryTemplate.drawWaterBelowTerrain
+*g_pIAIPathfindingSetup_00e0ee0c	0x24	vf9	setSearchMapMaxSlope
+*g_pIAIPathfindingSetup_00e0ee0c	0x28	vf10	getSearchMapMaxSlope
+*g_pIAIPathfindingSetup_00e0ee0c	0x2c	vf11	setWaterDepth
+*g_pIAIPathfindingSetup_00e0ee0c	0x30	vf12	getWaterDepth
+*g_pIAIPathfindingSetup_00e0ee0c	0x34	vf13	setBrush
+*g_pIAIPathfindingSetup_00e0ee0c	0x38	vf14	getBrush
+*g_pIAIPathfindingSetup_00e0ee0c	0x9c	vf39	aiMeshRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xa0	vf40	aiMeshRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xa8	vf42	mapLandscapeRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xac	vf43	mapLandscapeRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xb0	vf44	mapFloodingRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xb4	vf45	mapFloodingRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xb8	vf46	mapObjectsRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xbc	vf47	mapObjectsRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xc0	vf48	mapTriRemovalRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xc4	vf49	mapTriRemovalRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xc8	vf50	mapObjectLocalRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xcc	vf51	mapObjectLocalRendering
+*g_pIAIPathfindingSetup_00e0ee0c	0xd0	vf52	compileAIMeshes
+*g_pIAIPathfindingSetup_00e0ee0c	0xd4	vf53	pathfindingDebugLevel
+*g_pIAIPathfindingSetup_00e0ee0c	0xd8	vf54	pathfindingDebugLevel
+*g_pIAIPathfindingSetup_00e0ee0c	0xdc	vf55	drawAIPathFindingMap
+*g_pIAIPathfinding_00e0ee08	0xa4	vf41	checkStrategicPositionForAll
+*g_pIAIScriptManager_00e0ee58	0x10	vf4	AiScript.runScript
+*g_pIAIScriptManager_00e0ee58	0x14	vf5	AiScript.createScriptFlow
+*g_pIAIScriptManager_00e0ee58	0x18	vf6	AiScript.createScriptCommand
+*g_pIAIScriptManager_00e0ee58	0x1c	vf7	AiScript.createMoveCommand
+*g_pIAIScriptManager_00e0ee58	0x20	vf8	AiScript.createScriptVariable
+*g_pIAIScriptManager_00e0ee58	0x34	vf13	AiScript.createGlobalBotUpdater
+*g_pIAIScriptManager_00e0ee58	0x38	vf14	AiScript.createBotUpdater
+*g_pIAIScriptManager_00e0ee58	0x40	vf16	AiScript.close
+*g_pIAIScriptManager_00e0ee58	0x44	vf17	AiScript.setActiveBot
+*g_pIAIScriptManager_00e0ee58	0x8	vf2	AiScript.createScript
+*g_pIAIScriptManager_00e0ee58	0xc	vf3	AiScript.endScript
+*g_pIAISettingsModifier_00dfa8d0	0x30	vf12	AiSettings.setWorldMapSize
+*g_pIAISettingsModifier_00dfa8d0	0x34	vf13	AiSettings.setViewDistance
+*g_pIAISettingsModifier_00dfa8d0	0x38	vf14	AiSettings.setStatsViewDistance
+*g_pIAISettingsModifier_00dfa8d0	0x3c	vf15	AiSettings.setInformationGridDimension
+*g_pIAISettingsModifier_00dfa8d0	0x4	vf1	AiSettings.setMaxNBots
+*g_pIAISettingsModifier_00dfa8d0	0x40	vf16	AiSettings.setNSides
+*g_pIAISettingsModifier_00dfa8d0	0x44	vf17	AiSettings.setBotSkill
+*g_pIAISettingsModifier_00dfa8d0	0x48	vf18	AiSettings.setSAIUpdateFrequency
+*g_pIAISettingsModifier_00dfa8d0	0x54	vf21	AiSettings.setRespawnAllowed
+*g_pIAISettingsModifier_00dfa8d0	0x58	vf22	AiSettings.setNVehiclesTypes
+*g_pIAISettingsModifier_00dfa8d0	0x5c	vf23	AiSettings.setVehicle
+*g_pIAISettingsModifier_00dfa8d0	0x60	vf24	AiSettings.createVehicleGroup
+*g_pIAISettingsModifier_00dfa8d0	0x64	vf25	AiSettings.addVehicleToVehicleGroup
+*g_pIAISettingsModifier_00dfa8d0	0xc	vf3	AiSettings.setNBehaviours
+*g_pIAISettings_00e0eb20	0x24	vf9	AiSettings.getViewDistance
+*g_pIAISettings_00e0eb20	0x28	vf10	AiSettings.getStatsViewDistance
+*g_pIAISettings_00e0eb20	0x34	vf13	AiSettings.getInformationGridDimension
+*g_pIAISettings_00e0eb20	0x38	vf14	AiSettings.getNSides
+*g_pIAISettings_00e0eb20	0x3c	vf15	AiSettings.getBotSkill
+*g_pIAISettings_00e0eb20	0x40	vf16	AiSettings.getSAIUpdateFrequency
+*g_pIAISettings_00e0eb20	0x58	vf22	AiSettings.getVehicle
+*g_pIAISettings_00e0eb20	0x5c	vf23	AiSettings.getNumberOfVehicleGroups
+*g_pIAISettings_00e0eb20	0x64	vf25	AiSettings.getVehicleGroup
+*g_pIAISettings_00e0eb20	0x68	vf26	AiSettings.getVehicleGroupName
+*g_pIBotManagerModifier_00e0ee10	0x10	vf4	AIBotManager.setUnplannedDecisionMakingThreshold
+*g_pIBotManagerModifier_00e0ee10	0x14	vf5	AIBotManager.setDecisionMakingInterleave
+*g_pIBotManagerModifier_00e0ee10	0x18	vf6	AIBotManager.setSensingQuotient
+*g_pIBotManagerModifier_00e0ee10	0x1c	vf7	AIBotManager.setSystemQuotient
+*g_pIBotManagerModifier_00e0ee10	0x20	vf8	AIBotManager.getLodLevelFullTicks
+*g_pIBotManagerModifier_00e0ee10	0x24	vf9	AIBotManager.getLodLevelMediumTicks
+*g_pIBotManagerModifier_00e0ee10	0x28	vf10	AIBotManager.getLodLevelLightTicks
+*g_pIBotManagerModifier_00e0ee10	0x2c	vf11	AIBotManager.getLodLevelFullPriority
+*g_pIBotManagerModifier_00e0ee10	0x30	vf12	AIBotManager.getLodLevelMediumPriority
+*g_pIBotManagerModifier_00e0ee10	0x34	vf13	AIBotManager.getLodLevelLightPriority
+*g_pIBotManagerModifier_00e0ee10	0x38	vf14	AIBotManager.getPlannedDecisionMakingThresholdFull
+*g_pIBotManagerModifier_00e0ee10	0x3c	vf15	AIBotManager.getPlannedDecisionMakingThresholdMedium
+*g_pIBotManagerModifier_00e0ee10	0x4	vf1	AIBotManager.setLodLevelTicks
+*g_pIBotManagerModifier_00e0ee10	0x40	vf16	AIBotManager.getPlannedDecisionMakingThresholdLight
+*g_pIBotManagerModifier_00e0ee10	0x44	vf17	AIBotManager.getUnplannedDecisionMakingThresholdFull
+*g_pIBotManagerModifier_00e0ee10	0x48	vf18	AIBotManager.getUnplannedDecisionMakingThresholdMedium
+*g_pIBotManagerModifier_00e0ee10	0x4c	vf19	AIBotManager.getUnplannedDecisionMakingThresholdLight
+*g_pIBotManagerModifier_00e0ee10	0x50	vf20	AIBotManager.getPlannedDecisionMakingInterleave
+*g_pIBotManagerModifier_00e0ee10	0x54	vf21	AIBotManager.getUnplannedDecisionMakingInterleave
+*g_pIBotManagerModifier_00e0ee10	0x58	vf22	AIBotManager.getSensingQuotient
+*g_pIBotManagerModifier_00e0ee10	0x5c	vf23	AIBotManager.getMemoryUpdateQuotient
+*g_pIBotManagerModifier_00e0ee10	0x60	vf24	AIBotManager.getSystemDecisionMakingQuotient
+*g_pIBotManagerModifier_00e0ee10	0x64	vf25	AIBotManager.getSystemPathfindingQuotient
+*g_pIBotManagerModifier_00e0ee10	0x68	vf26	AIBotManager.getSystemSensingQuotient
+*g_pIBotManagerModifier_00e0ee10	0x8	vf2	AIBotManager.setLodLevelPriority
+*g_pIBotManagerModifier_00e0ee10	0xa4	vf41	AIBotManager.enableBotScriptDebugger
+*g_pIBotManagerModifier_00e0ee10	0xc	vf3	AIBotManager.setPlannedDecisionMakingThreshold
+*g_pIBotManager_00dfa8c8	0x4	vf1	getBotCount
+*g_pIBotManager_00dfa8c8	0x44	vf17	showBotSense
+*g_pIBotManager_00dfa8c8	0x48	vf18	showBotSense
+*g_pIBotManager_00dfa8c8	0x8	vf2	getNumberOfActiveBots
+*g_pIBotManager_00dfa8c8	0xc	vf3	getNumberOfDeactivedBots
+*g_pInputDeviceManager	0x14	vf5	InputDevices.setAxisScale InputDevices.setInvertAxis
+*g_pInputDeviceManager.vf5()	0x34	vf13	InputDevices.setInvertAxis
+*g_pInputDeviceManager.vf5()	0x3c	vf15	InputDevices.setAxisScale
+*g_pLodSelectorTemplateManager	0x1c	vf7	LodSelectorTemplate.active
+*g_pLodSelectorTemplateManager	0x24	vf9	LodSelectorTemplate.deleteAll
+*g_pLodSelectorTemplateManager.vf8().vf3()	0x28	vf10	LodSelectorTemplate.addLodComparison LodSelectorTemplate.addLodDistance
+*g_pLodSelectorTemplateManager.vf8().vf3()	0x2c	vf11	LodSelectorTemplate.addLodDistance
+*g_pLodSelectorTemplateManager.vf8().vf3()	0x40	vf16	LodSelectorTemplate.hasFirstPersonLod
+*g_pLodSelectorTemplateManager.vf8().vf3()	0x48	vf18	LodSelectorTemplate.hasFiredLods
+*g_pMaterialManager	0x10	vf4	MaterialManager.material
+*g_pMaterialManager	0x14	vf5	MaterialManager.material
+*g_pMaterialManager	0x30	vf12	MaterialManager.attGroup
+*g_pMaterialManager	0x34	vf13	MaterialManager.attGroup
+*g_pMaterialManager	0x38	vf14	MaterialManager.defGroup
+*g_pMaterialManager	0x3c	vf15	MaterialManager.defGroup
+*g_pMaterialManager	0x40	vf16	MaterialManager.damageMod MaterialManager.setEffectTemplate
+*g_pMaterialManager	0x50	vf20	MaterialManager.getDamageMod
+*g_pMaterialManager	0x68	vf26	MaterialManager.setCell
+*g_pMaterialManager	0x6c	vf27	MaterialManager.setCell
+*g_pMaterialManager	0x74	vf29	MaterialManager.dumpMaterialList
+*g_pNetworkableInfoManager	0x20	vf8	NetworkableInfo.deleteInfo
+*g_pNetworkableInfoManager	0x2c	vf11	NetworkableInfo.createNewInfo
+*g_pNetworkableInfoManager.vf9()	0x20	vf8	NetworkableInfo.setPredictionMode
+*g_pNetworkableInfoManager.vf9()	0x28	vf10	NetworkableInfo.setBasePriority
+*g_pNetworkableInfoManager.vf9()	0x30	vf12	NetworkableInfo.setIsUnique
+*g_pNetworkableInfoManager.vf9()	0x38	vf14	NetworkableInfo.setForceNetworkableId
+*g_pObjectManager	0x10	vf4	Object.initGrid
+*g_pObjectManager	0x30	vf12	Debug.useFrustumGrid
+*g_pObjectManager	0x68	vf26	Terrain.refreshTerrainSampling
+*g_pObjectManager.vf23()	0xd4	vf53	Object.handleDamage
+*g_pObjectManager.vf23().vf9()	0x10	vf4	Object.geometry.scale
+*g_pObjectManager.vf23().vf9()	0x14	vf5	Object.geometry.scale
+*g_pObjectManager.vf23().vf9()	0x1c	vf7	Object.geometry.template
+*g_pObjectManager.vf23().vf9()	0x20	vf8	Object.aiSide
+*g_pObjectManager.vf23().vf9()	0x3c	vf15	Object.geometry.reload Object.geometry.type
+*g_pObjectManager.vf23().vf9()	0x40	vf16	Object.geometry.type
+*g_pObjectManager.vf23().vf9()	0x44	vf17	Object.geometry.shader
+*g_pObjectManager.vf23().vf9()	0x48	vf18	Object.geometry.shader
+*g_pObjectManager.vf23().vf9()	0x4c	vf19	Object.geometry.color
+*g_pObjectManager.vf23().vf9()	0x50	vf20	Object.geometry.color
+*g_pObjectManager.vf23().vf9()	0x54	vf21	Object.geometry.tesselation
+*g_pObjectManager.vf23().vf9()	0x58	vf22	Object.geometry.tesselation
+*g_pObjectTemplateManager	0x58	vf22	ObjectTemplate.create
+*g_pObjectTemplateManager.vf18()	0x18	vf6	ObjectTemplate.name
+*g_pObjectTemplateManager.vf18()	0xc	vf3	ObjectTemplate.lodSelector
+*g_pObjectTemplateManager.vf18().vf3()	0x10	vf4	ObjectTemplate.lodSelector
+*g_pObjectTemplateManager.vf18().vf3()	0x14	vf5	ObjectTemplate.lodSelector
+*g_pOldConsole_00df9eb4	0x28	vf10	Console.bindKeyToConsoleScript
+*g_pOldConsole_00df9eb4	0x3c	vf15	Console.listVariables
+*g_pOldConsole_00df9eb4	0x40	vf16	Console.listConstants
+*g_pOldConsole_00df9eb4	0x44	vf17	Console.echoErrors
+*g_pOldConsole_00df9eb4	0x48	vf18	Console.echoErrors
+*g_pOldConsole_00df9eb4	0x4c	vf19	Console.echo
+*g_pOldConsole_00df9eb4	0x50	vf20	Console.echo
+*g_pOldConsole_00df9eb4	0x54	vf21	Console.maxLineSize
+*g_pOldConsole_00df9eb4	0x58	vf22	Console.maxLineSize
+*g_pOldConsole_00df9eb4	0x5c	vf23	Console.maxHistorySize
+*g_pOldConsole_00df9eb4	0x60	vf24	Console.maxHistorySize
+*g_pOldConsole_00df9eb4	0x64	vf25	Console.maxCommandHistorySize
+*g_pOldConsole_00df9eb4	0x68	vf26	Console.maxCommandHistorySize
+*g_pOldConsole_00df9eb4	0x6c	vf27	Console.useRelativePaths
+*g_pOldConsole_00df9eb4	0x70	vf28	Console.useRelativePaths
+*g_pOldConsole_00df9eb4	0x74	vf29	Console.workingPath
+*g_pOldConsole_00df9eb4	0x78	vf30	Console.workingPath
+*g_pPlayerManager	0x50	vf20	Player.create
+*g_pPlayerManager	0x58	vf22	Player.saveAll
+*g_pPlayerManager	0x60	vf24	Player.active
+*g_pPlayerManager.vf23()	0x18	vf6	Player.name
+*g_pPlayerManager.vf23()	0x20	vf8	Player.isAi Player.isNetwork
+*g_pPlayerManager.vf23()	0x38	vf14	Player.vehicle
+*g_pPlayerManager.vf23()	0x3c	vf15	Player.setVehicleWithInputId Player.vehicle
+*g_pRenderView	0x18	vf6	Renderer.fieldOfView
+*g_pRenderView	0x1c	vf7	Renderer.fieldOfView
+*g_pRenderView	0x2c	vf11	Renderer.nearPlane
+*g_pRenderView	0x30	vf12	Renderer.nearPlane
+*g_pRenderer	0x170	vf92	Renderer.deviceBehaviour
+*g_pRenderer	0x174	vf93	Renderer.deviceBehaviour
+*g_pRenderer	0x178	vf94	Renderer.vsyncEnabled
+*g_pRenderer	0x17c	vf95	Renderer.vsyncEnabled
+*g_pRenderer	0x180	vf96	Renderer.numBackbuffers
+*g_pRenderer	0x184	vf97	Renderer.numBackbuffers
+*g_pRenderer	0x188	vf98	Renderer.hWProgramableTransformEnabled
+*g_pRenderer	0x18c	vf99	Renderer.hWProgramableTransformEnabled
+*g_pRenderer	0x190	vf100	Renderer.globalLodPercent
+*g_pRenderer	0x194	vf101	Renderer.globalLodPercent
+*g_pRenderer	0x1a0	vf104	Renderer.globalLodRadius
+*g_pRenderer	0x1a4	vf105	Renderer.globalLodRadius
+*g_pRenderer	0x1a8	vf106	Renderer.globalLodRadiusScaleFactor
+*g_pRenderer	0x1ac	vf107	Renderer.globalLodRadiusScaleFactor
+*g_pRenderer	0x1b0	vf108	Renderer.drawEnable
+*g_pRenderer	0x1b4	vf109	Renderer.drawEnable
+*g_pRenderer	0xd0	vf52	Renderer.enableCenteredMultiSampling
+*g_pRenderer	0xd4	vf53	Renderer.isMultiSamplingCentered
+*g_pRenderer	0xd8	vf54	Renderer.multiSampleMode
+*g_pRenderer	0xdc	vf55	Renderer.multiSampleMode
+*g_pRenderer	0xe0	vf56	Renderer.multiSamplePrefilter
+*g_pRenderer	0xe4	vf57	Renderer.multiSamplePrefilter
+*g_pRenderer.vf3().vf121()	0x1c	vf7	TextureList.print
+*g_pRenderer.vf3().vf121()	0x20	vf8	TextureList.skipMipmap
+*g_pRenderer.vf3().vf121()	0x24	vf9	TextureList.printNames
+*g_pRenderer.vf3().vf121()	0x28	vf10	TextureList.printLoaded
+*g_pResourceManager	0x24	vf9	ResourceManager.memoryLimit
+*g_pResourceManager	0x28	vf10	ResourceManager.memoryLimit
+*g_pResourceManager	0x2c	vf11	ResourceManager.tempPrintPriorityList
+*g_pScoreManager	0x18	vf6	ScoreManager.death
+*g_pScoreManager	0x1c	vf7	ScoreManager.death
+*g_pScoreManager	0x20	vf8	ScoreManager.kill
+*g_pScoreManager	0x24	vf9	ScoreManager.kill
+*g_pScoreManager	0x28	vf10	ScoreManager.capture
+*g_pScoreManager	0x2c	vf11	ScoreManager.capture
+*g_pScoreManager	0x30	vf12	ScoreManager.std::string
+*g_pScoreManager	0x34	vf13	ScoreManager.std::string
+*g_pScoreManager	0x38	vf14	ScoreManager.attack
+*g_pScoreManager	0x3c	vf15	ScoreManager.attack
+*g_pScoreManager	0x40	vf16	ScoreManager.defence
+*g_pScoreManager	0x44	vf17	ScoreManager.defence
+*g_pScoreManager	0x5c	vf23	ScoreManager.rule
+*g_pScoreManager	0x60	vf24	ScoreManager.addScalar
+*g_pShaderManager	0x18	vf6	ShaderManager.unloadAll
+*g_pShaderManager	0x48	vf18	ShaderManager.setFloatParam
+*g_pShaderManager	0x4c	vf19	ShaderManager.getFloatParam
+*g_pShaderManager	0x50	vf20	ShaderManager.setIntegerParam
+*g_pShaderManager	0x54	vf21	ShaderManager.getIntegerParam
+*g_pShaderManager	0x58	vf22	ShaderManager.setVectorParam
+*g_pShaderManager	0x5c	vf23	ShaderManager.getVectorParam
+*g_pShaderManager	0x68	vf26	ShaderManager.disableStandardMeshShader
+*g_pShaderManager	0x6c	vf27	ShaderManager.disableStandardMeshShader
+*g_pShaderManager	0x70	vf28	ShaderManager.setDefaultShaderSolidColor
+*g_pStandardMeshRenderer	0x7c	vf31	StandardMesh.reloadLightmaps
+*g_pStandardMeshRenderer	0x88	vf34	StandardMesh.loadLightmapPalette
+*g_pTerrain.vf3()	0x18	vf6	Terrain.debugRLEenabled
+*g_pTerrain.vf3()	0x20	vf8	Terrain.shadowAmbient
+*g_pTerrain.vf3()	0x24	vf9	Terrain.shadowAmbient
+*g_pTerrain.vf3()	0x28	vf10	Terrain.shadowBorderFadeTime
+*g_pTerrain.vf3()	0x2c	vf11	Terrain.shadowBorderFadeTime
+*g_pTerrain.vf3()	0x30	vf12	Terrain.shadowSamplingCullY
+*g_pTerrain.vf3()	0x34	vf13	Terrain.shadowSamplingCullY
+*g_pTerrain.vf3()	0x40	vf16	Terrain.shadowStaticObjectsCullBox
+*g_pTerrain.vf3()	0x44	vf17	Terrain.shadowStaticObjectsCullBox
+*g_pTerrain.vf3()	0x80	vf32	Terrain.textureLodFactor
+*g_pTerrain.vf3()	0x84	vf33	Terrain.textureLodFactor
+*g_pTextureManager	0x24	vf9	TextureManager.reload
+*g_pTextureManager	0x2c	vf11	TextureManager.reloadAll
+*g_pTextureManager	0x30	vf12	TextureManager.unload
+*g_pTextureManager	0x34	vf13	TextureManager.unloadAll
+*g_pTextureManager	0x4c	vf19	TextureManager.skipMipmaps
+*g_pTextureManager	0x50	vf20	TextureManager.skipMipmaps
+*g_pTextureManager	0x5c	vf23	TextureManager.mipmaps
+*g_pTextureManager	0x60	vf24	TextureManager.mipmaps
+*g_pTextureManager	0x64	vf25	TextureManager.mipmapFilter
+*g_pTextureManager	0x68	vf26	TextureManager.mipmapFilter
+*g_pTextureManager	0x7c	vf31	TextureManager.alternativePath
+*g_pTextureManager	0x80	vf32	TextureManager.alternativePath
+*g_pTextureManager	0xa8	vf42	TextureManager.printTextures
+*g_pToolBenchmark	0x18	vf6	ToolBenchmark.setActive
+*g_pToolBenchmark	0x30	vf12	ToolBenchmark.addSplinePoint
+*g_pToolBenchmark	0x34	vf13	ToolBenchmark.clearAllSplinePoints
+*g_pToolBenchmark	0x38	vf14	ToolBenchmark.save
+*g_pToolBenchmark	0x3c	vf15	ToolBenchmark.buildSpline
+*g_pToolBenchmark	0x40	vf16	ToolBenchmark.start
+*g_pToolBenchmark	0x44	vf17	ToolBenchmark.stop
+*g_pToolBenchmark	0x48	vf18	ToolBenchmark.setSpeed
+*g_pToolBenchmark	0x4c	vf19	ToolBenchmark.showSpline
+ai_0096a760()	0x2c	vf11	AiScript.addWaypoint AiScript.setConditional
+ai_0096a760()	0x4	vf1	AiScript.addWaypoint AiScript.setConditional
+ai_0096a7b0()	0x20	vf8	AiScript.createScriptVariable
+ai_0096a7b0()	0x24	vf9	AiScript.createGlobalScriptVariableUpdater
+ai_0096a7b0()	0x28	vf10	AiScript.createScriptVariableUpdater
+geom_00713230()	0x44	vf17	Terrain.detailTexName
+getActiveTemplateAs()	0x84	vf33	ObjectTemplate.addPcoPosId
+getActiveTemplateAs()	0x88	vf34	ObjectTemplate.submarineData
+getActiveTemplateAs()	0x8c	vf35	ObjectTemplate.submarineHudDepthModifier
+getActiveTemplateAs()	0x90	vf36	ObjectTemplate.submarineHudDepthModifier
+getActiveTemplateAs()	0x94	vf37	ObjectTemplate.submarineHudDirModifier
+getActiveTemplateAs()	0x98	vf38	ObjectTemplate.submarineHudDirModifier
+getActiveTemplateAs()	0xa4	vf41	ObjectTemplate.vehicleSpawnRadius
+getActiveTemplateAs()	0xa8	vf42	ObjectTemplate.vehicleSpawnRadius
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x100	vf64	ObjectTemplate.CPGaugeIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x104	vf65	ObjectTemplate.selectScreenBigFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x108	vf66	ObjectTemplate.selectScreenBigFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x10c	vf67	ObjectTemplate.smallTriangleFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x110	vf68	ObjectTemplate.smallTriangleFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x1c	vf7	ObjectTemplate.std::string
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0x20	vf8	ObjectTemplate.std::string
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xa4	vf41	ObjectTemplate.soldierStandingIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xa8	vf42	ObjectTemplate.soldierStandingIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xac	vf43	ObjectTemplate.soldierCrouchIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xb0	vf44	ObjectTemplate.soldierCrouchIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xb4	vf45	ObjectTemplate.soldierProneIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xb8	vf46	ObjectTemplate.soldierProneIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xbc	vf47	ObjectTemplate.controlPointIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xc0	vf48	ObjectTemplate.controlPointIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xc4	vf49	ObjectTemplate.controlPointUndergroundIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xc8	vf50	ObjectTemplate.controlPointUndergroundIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xcc	vf51	ObjectTemplate.minimapIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xd0	vf52	ObjectTemplate.minimapIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xd4	vf53	ObjectTemplate.ticketIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xd8	vf54	ObjectTemplate.ticketIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xdc	vf55	ObjectTemplate.teamFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xe0	vf56	ObjectTemplate.teamFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xe4	vf57	ObjectTemplate.hudFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xe8	vf58	ObjectTemplate.hudFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xec	vf59	ObjectTemplate.selectionFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xf0	vf60	ObjectTemplate.selectionFlagIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xf4	vf61	ObjectTemplate.teamFlagSmallIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xf8	vf62	ObjectTemplate.teamFlagSmallIcon
+getActiveTemplateAs(dice::ref2::world::BFSoldierTemplate)	0xfc	vf63	ObjectTemplate.CPGaugeIcon
+getActiveTemplateAs(dice::ref2::world::ItemTemplate)	0x84	vf33	ObjectTemplate.team
+getActiveTemplateAs(dice::ref2::world::ItemTemplate)	0x88	vf34	ObjectTemplate.team
+getActiveTemplateAs(dice::ref2::world::ItemTemplate)	0x8c	vf35	ObjectTemplate.teamChange
+getActiveTemplateAs(dice::ref2::world::ItemTemplate)	0x90	vf36	ObjectTemplate.teamChange
+getActiveTemplateAs(dice::ref2::world::KitPartTemplate)	0x84	vf33	ObjectTemplate.boneName
+getActiveTemplateAs(dice::ref2::world::KitPartTemplate)	0x88	vf34	ObjectTemplate.boneName
+getActiveTemplateAs(dice::ref2::world::KitPartTemplate)	0x90	vf36	ObjectTemplate.copyLinksCount
+getActiveTemplateAs(dice::ref2::world::KitPartTemplate)	0x94	vf37	ObjectTemplate.copyLinksCount
+getActiveTemplateAs(dice::ref2::world::SimpleObjectTemplate)	0x58	vf22	ObjectTemplate.geometry
+ActionFunction	0xc	serialized	Action
+ActionNode	0xc	serialized	Action
+AirControls	0x10	menu data	AirMouseSensitivity
+AirControls	0x14	menu data	AirMouseInvert
+AirControls	0x18	menu data	AirKeyboardSensitivity
+Ammo	0x10	menu data	MaxPrimaryAmmo
+Ammo	0x14	menu data	PrimaryMag
+Ammo	0x18	menu data	SecondarySoldierAmmo
+Ammo	0x1c	menu data	MaxSecondarySoldierAmmo
+Ammo	0x20	menu data	SecondarySoldierMag
+Ammo	0x8	menu data	HasSecondarySoldierAmmo
+Ammo	0xc	menu data	PrimaryAmmo
+BfAddSubEffectNode	0x10	serialized	Value
+BfAddSubEffectNode	0x24	serialized	Delay
+BfAddSubNextEffectNode	0x10	serialized	Value
+BfAddSubNextEffectNode	0x28	serialized	Delay
+BfAnimationNode	0x10	serialized	Frames
+BfAnimationNode	0x14	serialized	Start
+BfAnimationNode	0x15	serialized	Looping
+BfBinkNode	0x1c	serialized	Play
+BfButtonNode	0x18	serialized	Action
+BfButtonNode	0x1c	serialized	Width
+BfButtonNode	0x20	serialized	Height
+BfButtonNode	0xc	serialized	Picture
+BfColorData	0x14	serialized	Blue
+BfColorData	0x18	serialized	Alpha
+BfColorFillNode	0x10	serialized	Color
+BfColorFillNode	0x18	serialized	Picture
+BfColorFillNode	0x1c	serialized	Data
+BfCreditsNode	0x14	serialized	Time
+BfCreditsNode	0xc	serialized	Value
+BfCrosshairNode	0x14	serialized	Radius
+BfCrosshairNode	0x18	serialized	Deviation
+BfCrosshairNode	0x1c	serialized	color
+BfCrosshairNode	0x20	serialized	outline
+BfCrosshairNode	0xc	serialized	Thickness
+BfEditNode	0x10	serialized	String
+BfEditNode	0x18	serialized	Font
+BfEditNode	0x2c	serialized	Focus
+BfEditNodeInt	0x48	serialized	String
+BfEditNodeInt	0x58	serialized	Font
+BfEditNodeInt	0x70	serialized	Focus
+BfEditNodeNew	0x10	serialized	Font
+BfEditNodeNew	0x30	serialized	Index
+BfEditNodeNew	0xc	serialized	String
+BfFixedSliderNode	0x44	serialized	Interval
+BfFixedSliderNode	0x48	serialized	Data
+BfGaugeNode	0x14	serialized	color
+BfGaugeNode	0xc	serialized	Data
+BfLocaleNode	0xc	serialized	Locale
+BfLocalePictureButtonNode	0x14	serialized	Action
+BfLocalePictureButtonNode	0x20	serialized	Width
+BfLocalePictureButtonNode	0x24	serialized	Height
+BfLocalePictureButtonNode	0xc	serialized	Picture
+BfLocaleStringData	0x60	serialized	Valid
+BfLocaleStringData	0x68	serialized	Locale
+BfMultiplyColorEffect	0x1c	serialized	Green
+BfMultiplyColorEffect	0x20	serialized	Blue
+BfMultiplyColorEffect	0x24	serialized	Alpha
+BfMultiplyColorEffect2	0x18	serialized	Alpha
+BfNavigationButtonNode	0x24	serialized	Picture
+BfNavigationButtonNode	0x34	serialized	Action
+BfNavigationButtonNode	0x38	serialized	Width
+BfNavigationButtonNode	0x3c	serialized	Height
+BfNavigationButtonNode	0x44	serialized	Index
+BfNewCreditsListNode	0x10	serialized	HeadingStyle
+BfNewCreditsListNode	0x18	serialized	CurrentPosition
+BfNewCreditsListNode	0x1c	serialized	Step
+BfNewCreditsListNode	0x20	serialized	StartValue
+BfNewCreditsListNode	0x24	serialized	EndValue
+BfNewCreditsListNode	0xc	serialized	Style
+BfNewListBoxNode	0x34	serialized	Font
+BfNewListBoxNode	0x7c	serialized	IsSelectable
+BfOccupiedVehicleNode	0x10	serialized	Position
+BfOccupiedVehicleNode	0xc	serialized	BfOccupiedVehicleData
+BfPictureButtonNode	0x18	serialized	Action
+BfPictureButtonNode	0x24	serialized	Width
+BfPictureButtonNode	0x28	serialized	Height
+BfPictureButtonNode	0xc	serialized	Picture
+BfPictureFillNode	0x10	serialized	Picture
+BfPictureFillNode	0x18	serialized	Data
+BfRectangle	0xc	serialized	Thickness
+BfScrollPictureNode	0x14	serialized	Data
+BfScrollPictureNode	0x20	serialized	Size
+BfSelectButtonNode	0x24	serialized	Picture
+BfSelectButtonNode	0x34	serialized	Action
+BfSelectButtonNode	0x38	serialized	Width
+BfSelectButtonNode	0x3c	serialized	Height
+BfSelectButtonNode	0x40	serialized	Index
+BfSliderNode	0x44	serialized	Data
+BfTextNode	0x10	serialized	String
+BfTextNode	0x14	serialized	Type
+BfTextNode	0xc	serialized	Style
+BfTransformNodeSize	0x4c	serialized	Width
+BfTransformNodeSize	0x50	serialized	Height
+BfTriangleButtonsNode	0x18	serialized	Action
+BfTriangleButtonsNode	0x1c	serialized	Width
+BfTriangleButtonsNode	0x20	serialized	Height
+BfVariablePictureFillNode	0x10	serialized	Picture
+BfVariablePictureFillNode	0x18	serialized	Data
+BfVariablePictureFillNode	0x20	serialized	Size
+BfVariablePictureFillNode2	0x10	serialized	Picture
+BfVariablePictureFillNode2	0x20	serialized	Data
+BfVariablePictureFillNode2	0x28	serialized	Size
+BfVariablePictureNode	0x14	serialized	redraw
+BfVerticalScrollExNode	0x24	serialized	Style
+BfVerticalScrollExNode	0xc	serialized	Text
+BfVerticalScrollNode	0x20	serialized	Font
+BfVerticalScrollNode	0xc	serialized	Text
+CallFunctionAction	0x8	serialized	Function
+CallFunctionVariableAction	0x8	serialized	Function
+CampaignMenu	0x140	menu data	NewCampaignFlag
+CampaignMenu	0x141	menu data	DisableContinueCampaign
+CampaignMenu	0x142	menu data	FinishedCampaign
+CampaignMenu	0x144	menu data	ShowCampaignConfirm
+CampaignMenu	0x154	menu data	CampaignVictory
+CampaignMenu	0x175	menu data	ShowNextButton
+CampaignMenu	0x2c	menu data	CampaignMap
+CampaignMenu	0x68	menu data	CampaignAiSkill
+CampaignMenu	0x6c	menu data	CampaignBotRatio
+CampaignMenu	0x70	menu data	CampaignTicketRatio
+CampaignMenu	0x74	menu data	CampaignNrOfLives
+CampaignMenu	0x78	menu data	CampaignOverallDifficulty
+CampaignMenu	0x7c	menu data	CampaignDifficultyLevel
+CampaignMenu	0x80	menu data	CampaignCustom
+CampaignMenu	0x84	menu data	ShowCampaignDisconnectConfirm
+CampaignMenu	0x90	menu data	ActiveLevelState
+CampaignMenu	0x98	menu data	TotalLevelsActive
+CampaignMenu	0x9c	menu data	MissionText
+CampaignMenu	0xc	menu data	CampaignLevelName
+ChallengeMenu	0x2c	menu data	ChallengeMap
+ChallengeMenu	0x4c	menu data	ShowChallengeDisconnectConfirm
+ChallengeMenu	0x58	menu data	ChallengeSelectedKit
+ChallengeMenu	0x60	menu data	ChallengeText
+ChallengeMenu	0x95	menu data	ShowCompletedInsigniaPicture
+ChallengeMenu	0x98	menu data	CompletedInsigniaPicture
+ChallengeMenu	0xc	menu data	ChallengeLevelName
+CommonControls	0x10	menu data	MenuMouseSensitivity
+CrossHair	0x30	menu data	ScopeIndex
+CrossHair	0x34	menu data	Radius
+CrossHair	0x38	menu data	Deviation
+CrossHair	0x8	menu data	ShowCrossHair
+CrossHair	0x84	menu data	SniperSight
+CrossHair	0xc	menu data	CrossHairType
+CullActionNode	0xc	serialized	Action
+CullEventActionNode	0x10	serialized	Event
+CullEventActionNode	0xc	serialized	Action
+CullNode	0xc	serialized	Data
+CullVariableActionNode	0x10	serialized	Variable
+CullVariableActionNode	0xc	serialized	Action
+CullVariableAndEventActionNode	0x10	serialized	Variable
+CullVariableAndEventActionNode	0x14	serialized	Event
+CullVariableAndEventActionNode	0xc	serialized	Action
+CullVariableNode	0x10	serialized	Data
+CullVariableNode	0xc	serialized	Variable
+DirectionBar	0x10	menu data	DirectionBarY
+DirectionBar	0x14	menu data	DirectionBarYNormal
+DirectionBar	0x18	menu data	OldDirectionBarX
+DirectionBar	0x1c	menu data	OldDirectionBarY
+DirectionBar	0x20	menu data	ArtDofAngle
+DirectionBar	0x24	menu data	ArtPosAngle
+DirectionBar	0x8	menu data	ShowDirectionBar
+DirectionBar	0xc	menu data	DirectionBarX
+EditNode	0x10	serialized	Font
+EditNode	0xc	serialized	String
+EffectNode	0xc	serialized	Effect
+ExtendedNormalToFocusEffectNode	0xc	serialized	Effect
+Filter	0x2c	menu data	PlayersFilter
+Filter	0x54	menu data	PingFilter
+Filter	0x7c	menu data	GameFilter
+Filter	0x9c	menu data	MapFilter
+Filter	0xc	menu data	ServerFilter
+GeneralOptions	0x28	menu data	LineSpeed
+GeneralOptions	0x2c	menu data	ToolTip
+GeneralOptions	0x2d	menu data	RadioToolTip
+GeneralOptions	0x30	menu data	CrossHairRed
+GeneralOptions	0x34	menu data	CrossHairGreen
+GeneralOptions	0x38	menu data	CrossHairBlue
+GeneralOptions	0x3c	menu data	StaticMinimap
+GeneralOptions	0x40	menu data	MinimapTransparency
+GeneralOptions	0x44	menu data	SkirmishPercentageOfBots
+GeneralOptions	0x48	menu data	SkirmishPercentageOfCpu
+GeneralOptions	0x4c	menu data	CampaignPercentageOfBots
+GeneralOptions	0x50	menu data	CampaignPercentageOfCpu
+GeneralOptions	0x54	menu data	RadioRed
+GeneralOptions	0x58	menu data	RadioGreen
+GeneralOptions	0x5c	menu data	RadioBlue
+GeneralOptions	0x8	menu data	PlayerName
+HudManager	0x38	menu data	MyIconAngle
+HudManager	0x50	menu data	ScoutCameraTime
+HudManager	0x54	menu data	ScoutCameraMaxTime
+IfElseEventActionNode	0x10	serialized	Variable
+IfElseEventActionNode	0x18	serialized	Event
+IfElseEventActionNode	0xc	serialized	Action
+IndexCountData	0xc	serialized	Data
+IndexDataData	0x10	serialized	Index
+IndexDataData	0xc	serialized	Data
+InfantryControls	0x10	menu data	InfMouseSensitivity
+InfantryControls	0x14	menu data	InfMouseInvert
+InternetMenu	0x14	menu data	ShowInternetJoinDisconnectConfirm
+InternetMenu	0x18	menu data	ShowInternetJoinAddDisconnectConfirm
+InternetMenu	0x1c	menu data	ShowRentServerExitConfirm
+InternetMenu	0x20	menu data	ShowLegend
+InternetMenu	0x2b4	menu data	Port
+InternetMenu	0x2b8	menu data	Updating
+InternetMenu	0x309	menu data	EnableAddFavorite
+InternetMenu	0x325	menu data	PunkBusterEnable
+LanMenu	0x18	menu data	ShowLanJoinDisconnectConfirm
+LandSeaControls	0x10	menu data	LandSeaMouseSensitivity
+LandSeaControls	0x14	menu data	LandSeaMouseInvert
+LandSeaControls	0x18	menu data	LandSeaKeyboardSensitivity
+MapVoteInterface	0x15	menu data	FromSpawnMapVote
+MapVoteInterface	0x20	menu data	MapVoteActiveMsg
+MapVoteInterface	0x9	menu data	RemoteAdmin
+MapVoteInterface	0xa	menu data	MapVoteActive
+MapVoteInterface	0xb	menu data	ShowMapScrollbar
+ModifyVariableAction	0x8	serialized	Variable
+NavigateSiblingIndexAction	0xc	serialized	Index
+NavigateTreeObject	0x18	serialized	Description
+NavigateTreeObject	0x1c	serialized	Action
+NavigateViewNode	0x10	serialized	Font
+NodeListNode	0x24	serialized	Index
+OverHeatRecover	0x10	menu data	ShowRecover
+OverHeatRecover	0x14	menu data	Recover
+OverHeatRecover	0x8	menu data	OverHeat
+OverHeatRecover	0xc	menu data	SecondaryOverHeat
+PictureNode	0xc	serialized	Picture
+Profile	0x2c	menu data	ProfileName
+Profile	0x4c	menu data	ShowProfileError
+Profile	0x50	menu data	ShowProfile
+Profile	0x54	menu data	ShowMainProfile
+Profile	0x74	menu data	UseAlternateInsignia
+Profile	0xb0	menu data	ExpandedRadioCommands
+Profile	0xb1	menu data	AutoReloadWeapon
+Profile	0xc	menu data	Profile
+Radio	0x10	menu data	RadioMessage
+Radio	0x14	menu data	RadioCategory
+Radio	0x18	menu data	NumberOfControlPoints
+Radio	0x1c	menu data	CurrentTimeOut
+Radio	0x20	menu data	RadioGameMode
+Radio	0x24	menu data	RadioIconType
+Radio	0x3d0	menu data	RadioLayout
+Radio	0xc	menu data	ShowRadioIcons
+ReloadBar	0x8	menu data	ReloadTime
+ReloadBar	0xc	menu data	ReloadTimeSecondary
+Scoreboard	0x10	menu data	AlliedRoundWon
+Scoreboard	0x14	menu data	AxisPlayerTotal
+Scoreboard	0x18	menu data	AxisScoreTotal
+Scoreboard	0x1c	menu data	AxisKillsTotal
+Scoreboard	0x20	menu data	AxisDeathsTotal
+Scoreboard	0x24	menu data	AxisPingTotal
+Scoreboard	0x28	menu data	AlliedPlayerTotal
+Scoreboard	0x2c	menu data	AlliedScoreTotal
+Scoreboard	0x30	menu data	AlliedKillsTotal
+Scoreboard	0x34	menu data	AlliedDeathsTotal
+Scoreboard	0x38	menu data	AlliedPingTotal
+Scoreboard	0x3c	menu data	SpawnScoreBoard
+Scoreboard	0x3e	menu data	RemoteAdmin
+Scoreboard	0x40	menu data	FromSpawnScoreboard
+Scoreboard	0x41	menu data	EnableVoteKickTeam
+Scoreboard	0x42	menu data	EnableVoteKick
+Scoreboard	0x43	menu data	EnableAddBuddy
+Scoreboard	0x44	menu data	EnableRemBuddy
+Scoreboard	0x45	menu data	EnableMapVoteButton
+Scoreboard	0x50	menu data	ShowScrollBarAllied
+Scoreboard	0x51	menu data	ShowScrollBarAxis
+Scoreboard	0x52	menu data	ShowScrollBarSpectator
+Scoreboard	0x8	menu data	ScoreBoard
+Scoreboard	0xc	menu data	AxisRoundWon
+Scoreboard	0xd0	menu data	KickVoteActive
+Scoreboard	0xf1	menu data	GameStatusEndGame
+Scoreboard	0xf2	menu data	GameStatusSinglePlayer
+ServerInfo	0x50	menu data	NumServers
+ServerInfo	0x54	menu data	TotServers
+ServerInfo	0x58	menu data	NumPlayers
+ServerInfo	0x5c	menu data	ShowServerInfo
+SetStringAction	0x8	serialized	Variable
+SetStringAction	0xc	serialized	Data
+SetVariableArrayAction	0x10	serialized	Index
+SetVariableSineAction	0x10	serialized	Speed
+SetVariableSoftAction	0x10	serialized	Speed
+SingleplayerMenu	0x14	menu data	Team
+SingleplayerMenu	0x18	menu data	ButtonSelectedSingleplayOptions
+SkirmishMenu	0x2c	menu data	SkirmishMap
+SkirmishMenu	0x84	menu data	SkirmishAiSkill
+SkirmishMenu	0x88	menu data	SkirmishBotRatio
+SkirmishMenu	0x8c	menu data	SkirmishTicketRatio
+SkirmishMenu	0x90	menu data	SkirmishNrOfLives
+SkirmishMenu	0x94	menu data	SkirmishOverallDifficulty
+SkirmishMenu	0x98	menu data	SkirmishDifficultyLevel
+SkirmishMenu	0x9c	menu data	SkirmishCustom
+SkirmishMenu	0xa0	menu data	ShowSkirmishDisconnectConfirm
+SkirmishMenu	0xc	menu data	SkirmishLevelName
+SliderNode	0x20	serialized	Data
+Soldier	0x14	menu data	SoldierPose
+Soldier	0x18	menu data	ShowSoldierIcon
+Soldier	0x1c	menu data	SoldierHitPoints
+Soldier	0x20	menu data	SoldierMaxHitPoints
+Soldier	0x24	menu data	SoldierIcon
+Soldier	0x44	menu data	SoldierHealthBarIcon
+Soldier	0x64	menu data	SoldierHealthBarFullIcon
+SoldierAmmo	0x10	menu data	SoldierAmmoBar
+SoldierAmmo	0x30	menu data	SoldierAmmoBarFill
+SoldierAmmo	0x50	menu data	SoldierAmmoIcon
+SoldierAmmo	0x70	menu data	SecondaryAmmoType
+SoldierAmmo	0x74	menu data	SoldierSecondaryAmmoBar
+SoldierAmmo	0x94	menu data	SoldierSecondaryAmmoBarFill
+SoldierAmmo	0xb4	menu data	SoldierSecondaryAmmoBarSize
+SoldierAmmo	0xb8	menu data	SoldierAmmoPosX
+SoldierAmmo	0xbc	menu data	SoldierAmmoPosY
+SoldierAmmo	0xc	menu data	AmmoType
+SoldierAmmo	0xc0	menu data	SoldierAmmoTextPosX
+SoldierAmmo	0xc4	menu data	SoldierAmmoTextPosY
+SoldierAmmo	0xc8	menu data	SoldierAmmoBarSize
+SoldierAmmo	0xcc	menu data	SoldierAmmoHasMag
+SoundAction	0x8	serialized	Sound
+SoundOptions	0x14	menu data	MasterVolume
+SoundOptions	0x1c	menu data	MusicVolume
+SoundOptions	0x20	menu data	MusicOnOff
+SoundOptions	0x21	menu data	IngameMusicOnOff
+SoundOptions	0x22	menu data	ProximitySounds
+SoundOptions	0x28	menu data	Quality
+SoundOptions	0x38	menu data	SoundDetail3D
+SoundOptions	0x4d	menu data	ShowEAXLogo
+SoundOptions	0x50	menu data	SoundPerformance
+SoundOptions	0x58	menu data	LocalizedDialog
+SoundOptions	0x59	menu data	ShowSpeakerConfig
+SoundOptions	0x8	menu data	SoundPresent
+SoundOptions	0x9	menu data	EnableSound
+SoundOptions	0xc	menu data	Channel
+SpawnInterface	0x10	menu data	NewTeam
+SpawnInterface	0x1c	menu data	SelectedMainWeapon
+SpawnInterface	0x20	menu data	SelectedSkin
+SpawnInterface	0x24	menu data	SelectedHead
+SpawnInterface	0x28	menu data	PlayerDeaths
+SpawnInterface	0x2c	menu data	PlayerKills
+SpawnInterface	0x30	menu data	PlayerPing
+SpawnInterface	0x34	menu data	PlayerScore
+SpawnInterface	0x38	menu data	PlayerName
+SpawnInterface	0x61	menu data	RedrawKit
+SpawnInterface	0x69	menu data	ShowSpawnText
+SpawnInterface	0x6c	menu data	SpawnText
+SpawnInterface	0x8	menu data	ShowChangeTeam
+SpawnInterface	0xc	menu data	AllowTeamChange
+SpawnInterface	0xc7	menu data	IsAlive
+SpawnInterface	0xc8	menu data	SelectedKit
+SpawnInterface	0xcc	menu data	GameKit
+SpawnInterface	0xd0	menu data	ShowKit
+SpawnInterface	0xd5	menu data	ShowChangeKit
+Submarine	0x10	menu data	DirectionAngle
+Submarine	0x14	menu data	Depth
+Submarine	0x18	menu data	MaxDepth
+Submarine	0x1c	menu data	WaterDepth
+Submarine	0x20	menu data	WantedDepth
+Submarine	0x24	menu data	MaximumDepth
+Submarine	0x28	menu data	Oxygen
+Submarine	0x2c	menu data	ShowDepthHud
+Submarine	0x8	menu data	ShowSubmarine
+Submarine	0x9	menu data	ShowPeriscope
+Submarine	0xc	menu data	DiveAngle
+TextNode	0x10	serialized	String
+TextNode	0xc	serialized	Style
+TimeoutActionNode	0xc	serialized	Action
+ToggleVariableAction	0x8	serialized	Variable
+ToolTipManager	0x10	menu data	ToolTipTime
+ToolTipManager	0x14	menu data	MaxToolTipTime
+ToolTipManager	0x18	menu data	SmallToolTip
+ToolTipManager	0x1c	menu data	ToolTipKeyString
+ToolTipManager	0x2bc	menu data	ToolTipHeading
+ToolTipManager	0x2dc	menu data	ToolTipFooter
+ToolTipManager	0x2fc	menu data	ShowToolTipText
+ToolTipManager	0x2fd	menu data	FadeToolTipText
+ToolTipManager	0x300	menu data	ToolTipState
+ToolTipManager	0x320	menu data	ToolTipStateChange
+ToolTipManager	0x8	menu data	ShowToolTip
+ToolTipManager	0x9	menu data	ShowRadioToolTip
+ToolTipManager	0xc	menu data	ToolTipIndex
+VariableColorEffect	0x10	serialized	Blue
+VariableColorEffect	0x14	serialized	Alpha
+VariableColorEffect	0xc	serialized	Green
+VariableEffectNode	0xc	serialized	Effect
+VehicleAmmo	0x10	menu data	PrimaryAmmoBar
+VehicleAmmo	0x34	menu data	PrimaryAmmoText
+VehicleAmmo	0x38	menu data	RedrawPrimaryAmmo
+VehicleAmmo	0x3c	menu data	SecondaryAmmo
+VehicleAmmo	0x40	menu data	SecondaryAmmoBar
+VehicleAmmo	0x64	menu data	SecondaryAmmoText
+VehicleAmmo	0x68	menu data	MaxSecondaryAmmo
+VehicleAmmo	0x6c	menu data	RedrawSecondaryAmmo
+VehicleAmmo	0x6d	menu data	UnlimitedPrimaryAmmo
+VehicleAmmo	0x6e	menu data	UnlimitedSecondaryAmmo
+VehicleAmmo	0xc	menu data	NumberOfWeaponIcons
+VideoOptions	0x10	menu data	Lightmaps
+VideoOptions	0x12	menu data	Shadows
+VideoOptions	0x13	menu data	EnvironmentMapping
+VideoOptions	0x14	menu data	GraphicsQuality
+VideoOptions	0x1c	menu data	Viewdistance
+VideoOptions	0x24	menu data	GeometryQuality
+VideoOptions	0x28	menu data	Performance
+VideoOptions	0x30	menu data	RenderWhenSpawnMenu
+VideoOptions	0x34	menu data	GammaControl
+VideoOptions	0x38	menu data	ContrastControl
+VideoOptions	0x3c	menu data	BrightnessControl
+VideoOptions	0x8	menu data	DetailTexture
+VolumedSoundAction	0x8	serialized	Sound
+VoteFeedback	0x18	menu data	VoteMessageIngame
+VoteFeedback	0x8	menu data	ShowVoteMessageIngame
+Weapon	0x10	menu data	SelectingWeapon
+Weapon	0x12	menu data	ShowWeaponIcon
+Weapon	0x14	menu data	NumberOfItems
+Weapon	0x18	menu data	CurrentWeaponTimeOut
+Weapon	0x1c	menu data	WeaponTimeOut
+Weapon	0x8	menu data	WeaponSelect
+Weapon	0xc	menu data	ActiveWeapon

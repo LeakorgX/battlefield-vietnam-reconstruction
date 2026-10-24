@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0069f120  dice::ref2::world::EffectBundleTemplate::EffectInfo  (vtable store) */
+/* 0069f120  EffectInfo::EffectInfo  (vtable store)
+ * class: dice::ref2::world::EffectBundleTemplate::EffectInfo
+ * also entered at 0069f150: EffectInfo::vf0
+ * called by: ObjectCreatorWrapper<EffectInfo>::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_0069f120, bfv_client_l1_body_0069f120);
 BFV_L1_RESUME(bfv_client_l1r_0069f120_1, bfv_client_l1_body_0069f120, 1);
 void bfv_client_l1_body_0069f120(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_client_l1_body_0069f120(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0069f120  mov eax, dword ptr [esp + 4] */
+    /* 0069f120  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0069f124  push esi */
@@ -32,7 +36,7 @@ void bfv_client_l1_body_0069f120(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0069f126  mov esi, ecx */
     esi = ecx;
-    /* 0069f128  call 0x6a4620 */
+    /* 0069f128  call 0x6a4620  ; TemplateInfo::TemplateInfo */
     t = 0x006a4620u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069f120_1;
@@ -49,7 +53,7 @@ R_1:
     /* 0069f132  mov dword ptr [esi + 0x7c], eax */
     ea = (uint32_t)(esi + 0x0000007cu);
     M32(ea) = eax;
-    /* 0069f135  mov dword ptr [esi], 0xb94e80 */
+    /* 0069f135  mov dword ptr [esi], 0xb94e80  ; vtable EffectInfo */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb94e80u;
     /* 0069f13b  mov eax, esi */
@@ -69,7 +73,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069f9d0  dice::ref2::world::EffectBundleTemplate::EffectInfo  (vtable store) */
+/* 0069f9d0  EffectInfo::create  (vtable store)
+ * class: dice::ref2::world::EffectBundleTemplate::EffectInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_0069f9d0, bfv_client_l1_body_0069f9d0);
 BFV_L1_RESUME(bfv_client_l1r_0069f9d0_1, bfv_client_l1_body_0069f9d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0069f9d0_2, bfv_client_l1_body_0069f9d0, 2);
@@ -105,7 +111,7 @@ void bfv_client_l1_body_0069f9d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0069f9d8  mov edi, ecx */
     edi = ecx;
-    /* 0069f9da  call 0x403610 */
+    /* 0069f9da  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069f9d0_1;
@@ -125,7 +131,7 @@ R_1:
     F_LOGIC(32, r);
     /* 0069f9e6  je 0x69fa0c */
     if (zf) goto L_0069fa0c;
-    /* 0069f9e8  mov eax, dword ptr [esp + 0x10] */
+    /* 0069f9e8  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 0069f9ec  push eax */
@@ -134,14 +140,14 @@ R_1:
     M32(esp) = t;
     /* 0069f9ed  mov ecx, esi */
     ecx = esi;
-    /* 0069f9ef  call 0x6a4620 */
+    /* 0069f9ef  call 0x6a4620  ; TemplateInfo::TemplateInfo */
     t = 0x006a4620u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069f9d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0069f9f4  mov dword ptr [esi], 0xb94e80 */
+    /* 0069f9f4  mov dword ptr [esi], 0xb94e80  ; vtable EffectInfo */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb94e80u;
     /* 0069f9fa  mov dword ptr [esi + 0x78], 0 */
@@ -168,7 +174,7 @@ L_0069fa0e:
     F_LOGIC(32, r);
     /* 0069fa13  lea esi, [edi + 8] */
     esi = (uint32_t)(edi + 0x00000008u);
-    /* 0069fa16  mov dword ptr [esp + 0x10], ebx */
+    /* 0069fa16  mov dword ptr [esp + 0x10], ebx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ebx;
     /* 0069fa1a  jne 0x69fa20 */
@@ -252,7 +258,7 @@ L_0069fa45:
     /* 0069fa45  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 0069fa48  lea ecx, [esp + 0x10] */
+    /* 0069fa48  lea ecx, [esp + 0x10]  ; &arg_0 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 0069fa4c  push ecx */
     t = ecx;
@@ -268,7 +274,7 @@ L_0069fa45:
     M32(esp) = t;
     /* 0069fa50  mov ecx, esi */
     ecx = esi;
-    /* 0069fa52  call 0x69f170 */
+    /* 0069fa52  call 0x69f170  ; std::vector_ptr::_Insert_n_0069f170 */
     t = 0x0069f170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069f9d0_3;

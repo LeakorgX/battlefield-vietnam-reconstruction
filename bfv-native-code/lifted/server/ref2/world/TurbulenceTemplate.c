@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005bd4a0  dice::ref2::world::TurbulenceTemplate  (virtual method) */
+/* 005bd4a0  TurbulenceTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::TurbulenceTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd4a0, bfv_server_l1_body_005bd4a0);
 void bfv_server_l1_body_005bd4a0(struct bfv_cpu *c)
 {
@@ -14,10 +17,10 @@ void bfv_server_l1_body_005bd4a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005bd4a0  mov eax, dword ptr [esp + 4] */
+    /* 005bd4a0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005bd4a4  cmp eax, dword ptr [0x82081c] */
+    /* 005bd4a4  cmp eax, dword ptr [0x82081c]  ; TurbulenceTemplate::classID */
     ea = (uint32_t)(0x0082081cu);
     a = eax;
     b = M32(ea);
@@ -32,10 +35,10 @@ void bfv_server_l1_body_005bd4a0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005bd4b1:
-    /* 005bd4b1  mov dword ptr [esp + 4], eax */
+    /* 005bd4b1  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005bd4b5  jmp 0x586630 */
+    /* 005bd4b5  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -45,7 +48,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd4c0  dice::ref2::world::TurbulenceTemplate  (virtual method) */
+/* 005bd4c0  TurbulenceTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::TurbulenceTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd4c0, bfv_server_l1_body_005bd4c0);
 BFV_L1_RESUME(bfv_server_l1r_005bd4c0_1, bfv_server_l1_body_005bd4c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bd4c0_2, bfv_server_l1_body_005bd4c0, 2);
@@ -71,7 +77,7 @@ void bfv_server_l1_body_005bd4c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bd4c6  mov esi, ecx */
     esi = ecx;
-    /* 005bd4c8  call 0x403d80 */
+    /* 005bd4c8  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd4c0_1;
@@ -95,7 +101,7 @@ R_1:
     M32(esp) = t;
     /* 005bd4d5  mov ecx, eax */
     ecx = eax;
-    /* 005bd4d7  call 0x5dd220 */
+    /* 005bd4d7  call 0x5dd220  ; Turbulence::Turbulence */
     t = 0x005dd220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd4c0_2;
@@ -130,7 +136,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd4f0  (between same file) */
+/* 005bd4f0  TurbulenceTemplate::deleting_dtor_adjustor116_005bd4f0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd4f0, bfv_server_l1_body_005bd4f0);
 void bfv_server_l1_body_005bd4f0(struct bfv_cpu *c)
 {
@@ -145,7 +152,7 @@ void bfv_server_l1_body_005bd4f0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005bd4f3  jmp 0x5bd570 */
+    /* 005bd4f3  jmp 0x5bd570  ; TurbulenceTemplate::deleting_dtor */
     c->eip = 0x005bd570u;
     goto out;
 out: __attribute__((unused));
@@ -155,7 +162,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd500  (between same file) */
+/* 005bd500  TurbulenceTemplate::deleting_dtor_adjustor400_005bd500  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd500, bfv_server_l1_body_005bd500);
 void bfv_server_l1_body_005bd500(struct bfv_cpu *c)
 {
@@ -170,7 +178,7 @@ void bfv_server_l1_body_005bd500(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005bd506  jmp 0x5bd570 */
+    /* 005bd506  jmp 0x5bd570  ; TurbulenceTemplate::deleting_dtor */
     c->eip = 0x005bd570u;
     goto out;
 out: __attribute__((unused));
@@ -180,7 +188,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd510  dice::ref2::world::TurbulenceTemplate  (vtable store) */
+/* 005bd510  TurbulenceTemplate::TurbulenceTemplate  (vtable store)
+ * class: dice::ref2::world::TurbulenceTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd510, bfv_server_l1_body_005bd510);
 BFV_L1_RESUME(bfv_server_l1r_005bd510_1, bfv_server_l1_body_005bd510, 1);
 void bfv_server_l1_body_005bd510(struct bfv_cpu *c)
@@ -200,7 +210,7 @@ void bfv_server_l1_body_005bd510(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bd511  mov esi, ecx */
     esi = ecx;
-    /* 005bd513  call 0x5870c0 */
+    /* 005bd513  call 0x5870c0  ; BundleTemplate::BundleTemplate */
     t = 0x005870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd510_1;
@@ -213,7 +223,7 @@ R_1:
     eax = r;
     /* 005bd51a  mov ecx, 1 */
     ecx = 0x1u;
-    /* 005bd51f  mov dword ptr [esi], 0x84410c */
+    /* 005bd51f  mov dword ptr [esi], 0x84410c  ; vtable TurbulenceTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x84410cu;
     /* 005bd525  mov dword ptr [esi + 0x74], 0x844100 */
@@ -260,7 +270,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd570  dice::ref2::world::TurbulenceTemplate  (virtual method) */
+/* 005bd570  TurbulenceTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::world::TurbulenceTemplate
+ * also entered at 005bd5b0: FlagTemplate::vf32, ItemTemplate::vf32, KitTemplate::vf32
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd570, bfv_server_l1_body_005bd570);
 BFV_L1_RESUME(bfv_server_l1r_005bd570_1, bfv_server_l1_body_005bd570, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bd570_2, bfv_server_l1_body_005bd570, 2);
@@ -282,7 +296,7 @@ void bfv_server_l1_body_005bd570(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bd571  mov esi, ecx */
     esi = ecx;
-    /* 005bd573  mov dword ptr [esi], 0x84410c */
+    /* 005bd573  mov dword ptr [esi], 0x84410c  ; vtable TurbulenceTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x84410cu;
     /* 005bd579  mov dword ptr [esi + 0x74], 0x844100 */
@@ -291,14 +305,14 @@ void bfv_server_l1_body_005bd570(struct bfv_cpu *c)
     /* 005bd580  mov dword ptr [esi + 0x190], 0x8440d4 */
     ea = (uint32_t)(esi + 0x00000190u);
     M32(ea) = 0x8440d4u;
-    /* 005bd58a  call 0x586880 */
+    /* 005bd58a  call 0x586880  ; BundleTemplate::~BundleTemplate */
     t = 0x00586880u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd570_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005bd58f  test byte ptr [esp + 8], 1 */
+    /* 005bd58f  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -308,7 +322,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005bd597  call 0x403df0 */
+    /* 005bd597  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd570_2;

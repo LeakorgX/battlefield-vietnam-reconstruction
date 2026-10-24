@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005a0890  dice::bf::menu::SoldierAmmo  (vtable store) */
+/* 005a0890  SoldierAmmo::SoldierAmmo  (vtable store)
+ * class: dice::bf::menu::SoldierAmmo
+ * called by: HudManager::HudManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a0890, bfv_client_l1_body_005a0890);
 void bfv_client_l1_body_005a0890(struct bfv_cpu *c)
 {
@@ -23,10 +26,10 @@ void bfv_client_l1_body_005a0890(struct bfv_cpu *c)
     /* 005a0894  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 005a0897  mov dword ptr [eax + 0xc], ecx */
+    /* 005a0897  mov dword ptr [eax + 0xc], ecx  ; field AmmoType */
     ea = (uint32_t)(eax + 0x0000000cu);
     M32(ea) = ecx;
-    /* 005a089a  mov dword ptr [eax], 0xb74114 */
+    /* 005a089a  mov dword ptr [eax], 0xb74114  ; vtable SoldierAmmo */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb74114u;
     /* 005a08a0  mov dword ptr [eax + 0x24], ecx */
@@ -58,7 +61,7 @@ void bfv_client_l1_body_005a0890(struct bfv_cpu *c)
     /* 005a08bd  mov byte ptr [eax + 0x54], cl */
     ea = (uint32_t)(eax + 0x00000054u);
     M8(ea) = LO8(ecx);
-    /* 005a08c0  mov dword ptr [eax + 0x70], ecx */
+    /* 005a08c0  mov dword ptr [eax + 0x70], ecx  ; field SecondaryAmmoType */
     ea = (uint32_t)(eax + 0x00000070u);
     M32(ea) = ecx;
     /* 005a08c3  mov dword ptr [eax + 0x88], ecx */
@@ -79,7 +82,7 @@ void bfv_client_l1_body_005a0890(struct bfv_cpu *c)
     /* 005a08de  mov byte ptr [eax + 0x98], cl */
     ea = (uint32_t)(eax + 0x00000098u);
     M8(ea) = LO8(ecx);
-    /* 005a08e4  mov ecx, dword ptr [esp + 4] */
+    /* 005a08e4  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005a08e8  mov dword ptr [eax + 8], ecx */
@@ -96,7 +99,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005a08f0  (between same file) */
+/* 005a08f0  SoldierAmmo::~SoldierAmmo  (between same file)
+ * class: dice::bf::menu::SoldierAmmo
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a08f0, bfv_client_l1_body_005a08f0);
 BFV_L1_RESUME(bfv_client_l1r_005a08f0_1, bfv_client_l1_body_005a08f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005a08f0_2, bfv_client_l1_body_005a08f0, 2);
@@ -132,7 +137,7 @@ void bfv_client_l1_body_005a08f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005a08f3  mov esi, ecx */
     esi = ecx;
-    /* 005a08f5  mov dword ptr [esi], 0xb74114 */
+    /* 005a08f5  mov dword ptr [esi], 0xb74114  ; vtable SoldierAmmo */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb74114u;
     /* 005a08fb  mov eax, dword ptr [esi + 0xac] */
@@ -158,7 +163,7 @@ void bfv_client_l1_body_005a08f0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0912  call 0x403680 */
+    /* 005a0912  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a08f0_1;
@@ -202,7 +207,7 @@ L_005a091a:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a093f  call 0x403680 */
+    /* 005a093f  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a08f0_2;
@@ -240,7 +245,7 @@ L_005a0947:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a095f  call 0x403680 */
+    /* 005a095f  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a08f0_3;
@@ -278,7 +283,7 @@ L_005a0967:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0979  call 0x403680 */
+    /* 005a0979  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a08f0_4;
@@ -316,7 +321,7 @@ L_005a0981:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0993  call 0x403680 */
+    /* 005a0993  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a08f0_5;
@@ -343,7 +348,7 @@ L_005a099b:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 005a09a5  mov dword ptr [esi], 0xb53ea8 */
+    /* 005a09a5  mov dword ptr [esi], 0xb53ea8  ; vtable IMenuObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb53ea8u;
     /* 005a09ab  pop esi */
@@ -369,7 +374,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005a09b0  (between same file) */
+/* 005a09b0  Soldier::vf6_helper_005a09b0  (between same file)
+ * also entered at 005a0a60: SoldierAmmo::vf0
+ * called by: Soldier::vf6
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a09b0, bfv_client_l1_body_005a09b0);
 BFV_L1_RESUME(bfv_client_l1r_005a09b0_1, bfv_client_l1_body_005a09b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005a09b0_2, bfv_client_l1_body_005a09b0, 2);
@@ -512,7 +520,7 @@ R_3:
     /* 005a0a04  mov ecx, dword ptr [edx + 8] */
     ea = (uint32_t)(edx + 0x00000008u);
     ecx = M32(ea);
-    /* 005a0a07  call 0x5843b0 */
+    /* 005a0a07  call 0x5843b0  ; DirectionBar_005843b0 */
     t = 0x005843b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a09b0_4;
@@ -632,7 +640,7 @@ R_6:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0a4c  call 0x5843b0 */
+    /* 005a0a4c  call 0x5843b0  ; DirectionBar_005843b0 */
     t = 0x005843b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a09b0_7;
@@ -670,8 +678,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005a0a80  dice::bf::menu::SoldierAmmo  (virtual method)
- * strings: "Ammo", "Ammo/SoldierAmmo", "AmmoType", "SoldierAmmoPosX" */
+/* 005a0a80  SoldierAmmo::registerMenuData  (virtual method)
+ * overrides: IMenuObject::registerMenuData  (36 classes implement it)
+ * class: dice::bf::menu::SoldierAmmo
+ * strings: "Ammo", "Ammo/SoldierAmmo", "AmmoType", "SoldierAmmoPosX"
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a0a80, bfv_client_l1_body_005a0a80);
 BFV_L1_RESUME(bfv_client_l1r_005a0a80_1, bfv_client_l1_body_005a0a80, 1);
 BFV_L1_RESUME(bfv_client_l1r_005a0a80_2, bfv_client_l1_body_005a0a80, 2);
@@ -783,7 +794,7 @@ void bfv_client_l1_body_005a0a80(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 005a0a83  mov eax, dword ptr [0xcff7cc] */
+    /* 005a0a83  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 005a0a88  push ebx */
@@ -814,25 +825,25 @@ void bfv_client_l1_body_005a0a80(struct bfv_cpu *c)
     ebx = r;
     /* 005a0a92  mov edi, 0xf */
     edi = 0xfu;
-    /* 005a0a97  push 0xb73fb8 */
+    /* 005a0a97  push 0xb73fb8  ; "Ammo" */
     t = 0xb73fb8u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0a9c  lea ecx, [esp + 0x50] */
+    /* 005a0a9c  lea ecx, [esp + 0x50]  ; &var_20 */
     ecx = (uint32_t)(esp + 0x00000050u);
-    /* 005a0aa0  mov dword ptr [esp + 0x6c], eax */
+    /* 005a0aa0  mov dword ptr [esp + 0x6c], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x0000006cu);
     M32(ea) = eax;
-    /* 005a0aa4  mov dword ptr [esp + 0x68], edi */
+    /* 005a0aa4  mov dword ptr [esp + 0x68], edi  ; var_8 */
     ea = (uint32_t)(esp + 0x00000068u);
     M32(ea) = edi;
-    /* 005a0aa8  mov dword ptr [esp + 0x64], ebx */
+    /* 005a0aa8  mov dword ptr [esp + 0x64], ebx  ; var_c */
     ea = (uint32_t)(esp + 0x00000064u);
     M32(ea) = ebx;
-    /* 005a0aac  mov byte ptr [esp + 0x54], bl */
+    /* 005a0aac  mov byte ptr [esp + 0x54], bl  ; var_1c */
     ea = (uint32_t)(esp + 0x00000054u);
     M8(ea) = LO8(ebx);
-    /* 005a0ab0  call 0x401ae0 */
+    /* 005a0ab0  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_1;
@@ -845,22 +856,22 @@ R_1:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0abb  push 0xb74244 */
+    /* 005a0abb  push 0xb74244  ; "Ammo/SoldierAmmo" */
     t = 0xb74244u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0ac0  lea ecx, [esp + 0x34] */
+    /* 005a0ac0  lea ecx, [esp + 0x34]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000034u);
-    /* 005a0ac4  mov dword ptr [esp + 0x4c], edi */
+    /* 005a0ac4  mov dword ptr [esp + 0x4c], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x0000004cu);
     M32(ea) = edi;
-    /* 005a0ac8  mov dword ptr [esp + 0x48], ebx */
+    /* 005a0ac8  mov dword ptr [esp + 0x48], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000048u);
     M32(ea) = ebx;
-    /* 005a0acc  mov byte ptr [esp + 0x38], bl */
+    /* 005a0acc  mov byte ptr [esp + 0x38], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x00000038u);
     M8(ea) = LO8(ebx);
-    /* 005a0ad0  call 0x401ae0 */
+    /* 005a0ad0  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_2;
@@ -871,35 +882,35 @@ R_2:
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0ad7  push 0xb74238 */
+    /* 005a0ad7  push 0xb74238  ; "AmmoType" */
     t = 0xb74238u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0adc  lea ecx, [esp + 0x18] */
+    /* 005a0adc  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0ae0  mov dword ptr [esp + 0x30], edi */
+    /* 005a0ae0  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0ae4  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0ae4  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0ae8  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0ae8  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0aec  call 0x401ae0 */
+    /* 005a0aec  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 005a0af1  lea eax, [esp + 0x48] */
+    /* 005a0af1  lea eax, [esp + 0x48]  ; &var_20 */
     eax = (uint32_t)(esp + 0x00000048u);
     /* 005a0af5  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0af6  lea ecx, [esp + 0x14] */
+    /* 005a0af6  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0afa  push ecx */
     t = ecx;
@@ -908,16 +919,16 @@ R_3:
     /* 005a0afb  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0afe  lea edx, [esi + 0xc] */
+    /* 005a0afe  lea edx, [esi + 0xc]  ; field AmmoType (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x0000000cu);
-    /* 005a0b01  call 0x4c5a10 */
+    /* 005a0b01  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 005a0b06  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0b06  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -925,14 +936,14 @@ R_4:
     F_SUB(32, a, b, r);
     /* 005a0b0a  jb 0x5a0b19 */
     if (cf) goto L_005a0b19;
-    /* 005a0b0c  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0b0c  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0b10  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0b11  call 0x403680 */
+    /* 005a0b11  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_5;
@@ -950,35 +961,35 @@ L_005a0b19:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0b1a  push 0xb74228 */
+    /* 005a0b1a  push 0xb74228  ; "SoldierAmmoPosX" */
     t = 0xb74228u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0b1f  lea ecx, [esp + 0x18] */
+    /* 005a0b1f  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0b23  mov dword ptr [esp + 0x30], edi */
+    /* 005a0b23  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0b27  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0b27  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0b2b  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0b2b  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0b2f  call 0x401ae0 */
+    /* 005a0b2f  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_6;
     c->eip = t;
     goto out;
 R_6:
-    /* 005a0b34  lea eax, [esp + 0x2c] */
+    /* 005a0b34  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0b38  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0b39  lea ecx, [esp + 0x14] */
+    /* 005a0b39  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0b3d  push ecx */
     t = ecx;
@@ -987,16 +998,16 @@ R_6:
     /* 005a0b3e  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0b41  lea edx, [esi + 0xb8] */
+    /* 005a0b41  lea edx, [esi + 0xb8]  ; field SoldierAmmoPosX (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x000000b8u);
-    /* 005a0b47  call 0x4c5a10 */
+    /* 005a0b47  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_7;
     c->eip = t;
     goto out;
 R_7:
-    /* 005a0b4c  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0b4c  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1004,14 +1015,14 @@ R_7:
     F_SUB(32, a, b, r);
     /* 005a0b50  jb 0x5a0b5f */
     if (cf) goto L_005a0b5f;
-    /* 005a0b52  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0b52  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0b56  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0b57  call 0x403680 */
+    /* 005a0b57  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_8;
@@ -1029,35 +1040,35 @@ L_005a0b5f:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0b60  push 0xb74218 */
+    /* 005a0b60  push 0xb74218  ; "SoldierAmmoPosY" */
     t = 0xb74218u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0b65  lea ecx, [esp + 0x18] */
+    /* 005a0b65  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0b69  mov dword ptr [esp + 0x30], edi */
+    /* 005a0b69  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0b6d  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0b6d  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0b71  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0b71  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0b75  call 0x401ae0 */
+    /* 005a0b75  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_9;
     c->eip = t;
     goto out;
 R_9:
-    /* 005a0b7a  lea eax, [esp + 0x2c] */
+    /* 005a0b7a  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0b7e  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0b7f  lea ecx, [esp + 0x14] */
+    /* 005a0b7f  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0b83  push ecx */
     t = ecx;
@@ -1066,16 +1077,16 @@ R_9:
     /* 005a0b84  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0b87  lea edx, [esi + 0xbc] */
+    /* 005a0b87  lea edx, [esi + 0xbc]  ; field SoldierAmmoPosY (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x000000bcu);
-    /* 005a0b8d  call 0x4c5a10 */
+    /* 005a0b8d  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_10;
     c->eip = t;
     goto out;
 R_10:
-    /* 005a0b92  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0b92  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1083,14 +1094,14 @@ R_10:
     F_SUB(32, a, b, r);
     /* 005a0b96  jb 0x5a0ba5 */
     if (cf) goto L_005a0ba5;
-    /* 005a0b98  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0b98  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0b9c  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0b9d  call 0x403680 */
+    /* 005a0b9d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_11;
@@ -1108,35 +1119,35 @@ L_005a0ba5:
     t = 0x13u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0ba7  push 0xb74204 */
+    /* 005a0ba7  push 0xb74204  ; "SoldierAmmoTextPosX" */
     t = 0xb74204u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0bac  lea ecx, [esp + 0x18] */
+    /* 005a0bac  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0bb0  mov dword ptr [esp + 0x30], edi */
+    /* 005a0bb0  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0bb4  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0bb4  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0bb8  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0bb8  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0bbc  call 0x401ae0 */
+    /* 005a0bbc  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_12;
     c->eip = t;
     goto out;
 R_12:
-    /* 005a0bc1  lea eax, [esp + 0x2c] */
+    /* 005a0bc1  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0bc5  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0bc6  lea ecx, [esp + 0x14] */
+    /* 005a0bc6  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0bca  push ecx */
     t = ecx;
@@ -1145,16 +1156,16 @@ R_12:
     /* 005a0bcb  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0bce  lea edx, [esi + 0xc0] */
+    /* 005a0bce  lea edx, [esi + 0xc0]  ; field SoldierAmmoTextPosX (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x000000c0u);
-    /* 005a0bd4  call 0x4c5a10 */
+    /* 005a0bd4  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_13;
     c->eip = t;
     goto out;
 R_13:
-    /* 005a0bd9  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0bd9  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1162,14 +1173,14 @@ R_13:
     F_SUB(32, a, b, r);
     /* 005a0bdd  jb 0x5a0bec */
     if (cf) goto L_005a0bec;
-    /* 005a0bdf  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0bdf  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0be3  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0be4  call 0x403680 */
+    /* 005a0be4  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_14;
@@ -1187,35 +1198,35 @@ L_005a0bec:
     t = 0x13u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0bee  push 0xb741f0 */
+    /* 005a0bee  push 0xb741f0  ; "SoldierAmmoTextPosY" */
     t = 0xb741f0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0bf3  lea ecx, [esp + 0x18] */
+    /* 005a0bf3  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0bf7  mov dword ptr [esp + 0x30], edi */
+    /* 005a0bf7  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0bfb  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0bfb  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0bff  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0bff  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0c03  call 0x401ae0 */
+    /* 005a0c03  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_15;
     c->eip = t;
     goto out;
 R_15:
-    /* 005a0c08  lea eax, [esp + 0x2c] */
+    /* 005a0c08  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0c0c  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0c0d  lea ecx, [esp + 0x14] */
+    /* 005a0c0d  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0c11  push ecx */
     t = ecx;
@@ -1224,16 +1235,16 @@ R_15:
     /* 005a0c12  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0c15  lea edx, [esi + 0xc4] */
+    /* 005a0c15  lea edx, [esi + 0xc4]  ; field SoldierAmmoTextPosY (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x000000c4u);
-    /* 005a0c1b  call 0x4c5a10 */
+    /* 005a0c1b  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_16;
     c->eip = t;
     goto out;
 R_16:
-    /* 005a0c20  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0c20  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1241,14 +1252,14 @@ R_16:
     F_SUB(32, a, b, r);
     /* 005a0c24  jb 0x5a0c33 */
     if (cf) goto L_005a0c33;
-    /* 005a0c26  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0c26  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0c2a  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0c2b  call 0x403680 */
+    /* 005a0c2b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_17;
@@ -1266,35 +1277,35 @@ L_005a0c33:
     t = 0x12u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0c35  push 0xb741dc */
+    /* 005a0c35  push 0xb741dc  ; "SoldierAmmoBarSize" */
     t = 0xb741dcu;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0c3a  lea ecx, [esp + 0x18] */
+    /* 005a0c3a  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0c3e  mov dword ptr [esp + 0x30], edi */
+    /* 005a0c3e  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0c42  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0c42  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0c46  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0c46  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0c4a  call 0x401ae0 */
+    /* 005a0c4a  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_18;
     c->eip = t;
     goto out;
 R_18:
-    /* 005a0c4f  lea eax, [esp + 0x2c] */
+    /* 005a0c4f  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0c53  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0c54  lea ecx, [esp + 0x14] */
+    /* 005a0c54  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0c58  push ecx */
     t = ecx;
@@ -1303,16 +1314,16 @@ R_18:
     /* 005a0c59  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0c5c  lea edx, [esi + 0xc8] */
+    /* 005a0c5c  lea edx, [esi + 0xc8]  ; field SoldierAmmoBarSize (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x000000c8u);
-    /* 005a0c62  call 0x4c5a10 */
+    /* 005a0c62  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_19;
     c->eip = t;
     goto out;
 R_19:
-    /* 005a0c67  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0c67  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1320,14 +1331,14 @@ R_19:
     F_SUB(32, a, b, r);
     /* 005a0c6b  jb 0x5a0c7a */
     if (cf) goto L_005a0c7a;
-    /* 005a0c6d  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0c6d  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0c71  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0c72  call 0x403680 */
+    /* 005a0c72  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_20;
@@ -1345,35 +1356,35 @@ L_005a0c7a:
     t = 0x11u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0c7c  push 0xb741c8 */
+    /* 005a0c7c  push 0xb741c8  ; "SoldierAmmoHasMag" */
     t = 0xb741c8u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0c81  lea ecx, [esp + 0x18] */
+    /* 005a0c81  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0c85  mov dword ptr [esp + 0x30], edi */
+    /* 005a0c85  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0c89  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0c89  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0c8d  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0c8d  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0c91  call 0x401ae0 */
+    /* 005a0c91  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_21;
     c->eip = t;
     goto out;
 R_21:
-    /* 005a0c96  lea eax, [esp + 0x2c] */
+    /* 005a0c96  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0c9a  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0c9b  lea ecx, [esp + 0x14] */
+    /* 005a0c9b  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0c9f  push ecx */
     t = ecx;
@@ -1382,16 +1393,16 @@ R_21:
     /* 005a0ca0  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0ca3  lea edx, [esi + 0xcc] */
+    /* 005a0ca3  lea edx, [esi + 0xcc]  ; field SoldierAmmoHasMag (menu data, meme_registerBoolRef) */
     edx = (uint32_t)(esi + 0x000000ccu);
-    /* 005a0ca9  call 0x487df0 */
+    /* 005a0ca9  call 0x487df0  ; meme_registerBoolRef */
     t = 0x00487df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_22;
     c->eip = t;
     goto out;
 R_22:
-    /* 005a0cae  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0cae  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1399,14 +1410,14 @@ R_22:
     F_SUB(32, a, b, r);
     /* 005a0cb2  jb 0x5a0cc1 */
     if (cf) goto L_005a0cc1;
-    /* 005a0cb4  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0cb4  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0cb8  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0cb9  call 0x403680 */
+    /* 005a0cb9  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_23;
@@ -1424,35 +1435,35 @@ L_005a0cc1:
     t = 0xeu;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0cc3  push 0xb741b8 */
+    /* 005a0cc3  push 0xb741b8  ; "SoldierAmmoBar" */
     t = 0xb741b8u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0cc8  lea ecx, [esp + 0x18] */
+    /* 005a0cc8  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0ccc  mov dword ptr [esp + 0x30], edi */
+    /* 005a0ccc  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0cd0  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0cd0  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0cd4  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0cd4  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0cd8  call 0x401ae0 */
+    /* 005a0cd8  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_24;
     c->eip = t;
     goto out;
 R_24:
-    /* 005a0cdd  lea eax, [esp + 0x2c] */
+    /* 005a0cdd  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0ce1  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0ce2  lea ecx, [esp + 0x14] */
+    /* 005a0ce2  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0ce6  push ecx */
     t = ecx;
@@ -1461,9 +1472,9 @@ R_24:
     /* 005a0ce7  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0cea  lea edx, [esi + 0x10] */
+    /* 005a0cea  lea edx, [esi + 0x10]  ; field SoldierAmmoBar (menu data, meme_registerStringData) */
     edx = (uint32_t)(esi + 0x00000010u);
-    /* 005a0ced  call 0x4e1220 */
+    /* 005a0ced  call 0x4e1220  ; meme_registerStringData */
     t = 0x004e1220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_25;
@@ -1473,7 +1484,7 @@ R_25:
     /* 005a0cf2  mov dword ptr [esi + 0x2c], eax */
     ea = (uint32_t)(esi + 0x0000002cu);
     M32(ea) = eax;
-    /* 005a0cf5  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0cf5  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1481,14 +1492,14 @@ R_25:
     F_SUB(32, a, b, r);
     /* 005a0cf9  jb 0x5a0d08 */
     if (cf) goto L_005a0d08;
-    /* 005a0cfb  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0cfb  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0cff  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d00  call 0x403680 */
+    /* 005a0d00  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_26;
@@ -1506,35 +1517,35 @@ L_005a0d08:
     t = 0x12u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d0a  push 0xb741a4 */
+    /* 005a0d0a  push 0xb741a4  ; "SoldierAmmoBarFill" */
     t = 0xb741a4u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d0f  lea ecx, [esp + 0x18] */
+    /* 005a0d0f  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0d13  mov dword ptr [esp + 0x30], edi */
+    /* 005a0d13  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0d17  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0d17  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0d1b  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0d1b  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0d1f  call 0x401ae0 */
+    /* 005a0d1f  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_27;
     c->eip = t;
     goto out;
 R_27:
-    /* 005a0d24  lea eax, [esp + 0x2c] */
+    /* 005a0d24  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0d28  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d29  lea ecx, [esp + 0x14] */
+    /* 005a0d29  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0d2d  push ecx */
     t = ecx;
@@ -1543,9 +1554,9 @@ R_27:
     /* 005a0d2e  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0d31  lea edx, [esi + 0x30] */
+    /* 005a0d31  lea edx, [esi + 0x30]  ; field SoldierAmmoBarFill (menu data, meme_registerStringData) */
     edx = (uint32_t)(esi + 0x00000030u);
-    /* 005a0d34  call 0x4e1220 */
+    /* 005a0d34  call 0x4e1220  ; meme_registerStringData */
     t = 0x004e1220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_28;
@@ -1555,7 +1566,7 @@ R_28:
     /* 005a0d39  mov dword ptr [esi + 0x4c], eax */
     ea = (uint32_t)(esi + 0x0000004cu);
     M32(ea) = eax;
-    /* 005a0d3c  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0d3c  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1563,14 +1574,14 @@ R_28:
     F_SUB(32, a, b, r);
     /* 005a0d40  jb 0x5a0d4f */
     if (cf) goto L_005a0d4f;
-    /* 005a0d42  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0d42  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0d46  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d47  call 0x403680 */
+    /* 005a0d47  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_29;
@@ -1588,35 +1599,35 @@ L_005a0d4f:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d50  push 0xb74194 */
+    /* 005a0d50  push 0xb74194  ; "SoldierAmmoIcon" */
     t = 0xb74194u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d55  lea ecx, [esp + 0x18] */
+    /* 005a0d55  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0d59  mov dword ptr [esp + 0x30], edi */
+    /* 005a0d59  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0d5d  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0d5d  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0d61  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0d61  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0d65  call 0x401ae0 */
+    /* 005a0d65  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_30;
     c->eip = t;
     goto out;
 R_30:
-    /* 005a0d6a  lea eax, [esp + 0x2c] */
+    /* 005a0d6a  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0d6e  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d6f  lea ecx, [esp + 0x14] */
+    /* 005a0d6f  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0d73  push ecx */
     t = ecx;
@@ -1625,9 +1636,9 @@ R_30:
     /* 005a0d74  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0d77  lea edx, [esi + 0x50] */
+    /* 005a0d77  lea edx, [esi + 0x50]  ; field SoldierAmmoIcon (menu data, meme_registerStringData) */
     edx = (uint32_t)(esi + 0x00000050u);
-    /* 005a0d7a  call 0x4e1220 */
+    /* 005a0d7a  call 0x4e1220  ; meme_registerStringData */
     t = 0x004e1220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_31;
@@ -1637,7 +1648,7 @@ R_31:
     /* 005a0d7f  mov dword ptr [esi + 0x6c], eax */
     ea = (uint32_t)(esi + 0x0000006cu);
     M32(ea) = eax;
-    /* 005a0d82  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0d82  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1645,14 +1656,14 @@ R_31:
     F_SUB(32, a, b, r);
     /* 005a0d86  jb 0x5a0d95 */
     if (cf) goto L_005a0d95;
-    /* 005a0d88  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0d88  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0d8c  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d8d  call 0x403680 */
+    /* 005a0d8d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_32;
@@ -1670,35 +1681,35 @@ L_005a0d95:
     t = 0x11u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d97  push 0xb74180 */
+    /* 005a0d97  push 0xb74180  ; "SecondaryAmmoType" */
     t = 0xb74180u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0d9c  lea ecx, [esp + 0x18] */
+    /* 005a0d9c  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0da0  mov dword ptr [esp + 0x30], edi */
+    /* 005a0da0  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0da4  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0da4  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0da8  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0da8  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0dac  call 0x401ae0 */
+    /* 005a0dac  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_33;
     c->eip = t;
     goto out;
 R_33:
-    /* 005a0db1  lea eax, [esp + 0x48] */
+    /* 005a0db1  lea eax, [esp + 0x48]  ; &var_20 */
     eax = (uint32_t)(esp + 0x00000048u);
     /* 005a0db5  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0db6  lea ecx, [esp + 0x14] */
+    /* 005a0db6  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0dba  push ecx */
     t = ecx;
@@ -1707,16 +1718,16 @@ R_33:
     /* 005a0dbb  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0dbe  lea edx, [esi + 0x70] */
+    /* 005a0dbe  lea edx, [esi + 0x70]  ; field SecondaryAmmoType (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x00000070u);
-    /* 005a0dc1  call 0x4c5a10 */
+    /* 005a0dc1  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_34;
     c->eip = t;
     goto out;
 R_34:
-    /* 005a0dc6  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0dc6  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1724,14 +1735,14 @@ R_34:
     F_SUB(32, a, b, r);
     /* 005a0dca  jb 0x5a0dd9 */
     if (cf) goto L_005a0dd9;
-    /* 005a0dcc  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0dcc  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0dd0  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0dd1  call 0x403680 */
+    /* 005a0dd1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_35;
@@ -1749,35 +1760,35 @@ L_005a0dd9:
     t = 0x17u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0ddb  push 0xb74168 */
+    /* 005a0ddb  push 0xb74168  ; "SoldierSecondaryAmmoBar" */
     t = 0xb74168u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0de0  lea ecx, [esp + 0x18] */
+    /* 005a0de0  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0de4  mov dword ptr [esp + 0x30], edi */
+    /* 005a0de4  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0de8  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0de8  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0dec  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0dec  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0df0  call 0x401ae0 */
+    /* 005a0df0  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_36;
     c->eip = t;
     goto out;
 R_36:
-    /* 005a0df5  lea eax, [esp + 0x2c] */
+    /* 005a0df5  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0df9  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0dfa  lea ecx, [esp + 0x14] */
+    /* 005a0dfa  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0dfe  push ecx */
     t = ecx;
@@ -1786,9 +1797,9 @@ R_36:
     /* 005a0dff  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0e02  lea edx, [esi + 0x74] */
+    /* 005a0e02  lea edx, [esi + 0x74]  ; field SoldierSecondaryAmmoBar (menu data, meme_registerStringData) */
     edx = (uint32_t)(esi + 0x00000074u);
-    /* 005a0e05  call 0x4e1220 */
+    /* 005a0e05  call 0x4e1220  ; meme_registerStringData */
     t = 0x004e1220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_37;
@@ -1798,7 +1809,7 @@ R_37:
     /* 005a0e0a  mov dword ptr [esi + 0x90], eax */
     ea = (uint32_t)(esi + 0x00000090u);
     M32(ea) = eax;
-    /* 005a0e10  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0e10  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1806,14 +1817,14 @@ R_37:
     F_SUB(32, a, b, r);
     /* 005a0e14  jb 0x5a0e23 */
     if (cf) goto L_005a0e23;
-    /* 005a0e16  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0e16  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0e1a  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0e1b  call 0x403680 */
+    /* 005a0e1b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_38;
@@ -1831,35 +1842,35 @@ L_005a0e23:
     t = 0x1bu;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0e25  push 0xb7414c */
+    /* 005a0e25  push 0xb7414c  ; "SoldierSecondaryAmmoBarFill" */
     t = 0xb7414cu;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0e2a  lea ecx, [esp + 0x18] */
+    /* 005a0e2a  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0e2e  mov dword ptr [esp + 0x30], edi */
+    /* 005a0e2e  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0e32  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0e32  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0e36  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0e36  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0e3a  call 0x401ae0 */
+    /* 005a0e3a  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_39;
     c->eip = t;
     goto out;
 R_39:
-    /* 005a0e3f  lea eax, [esp + 0x2c] */
+    /* 005a0e3f  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0e43  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0e44  lea ecx, [esp + 0x14] */
+    /* 005a0e44  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0e48  push ecx */
     t = ecx;
@@ -1868,9 +1879,9 @@ R_39:
     /* 005a0e49  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0e4c  lea edx, [esi + 0x94] */
+    /* 005a0e4c  lea edx, [esi + 0x94]  ; field SoldierSecondaryAmmoBarFill (menu data, meme_registerStringData) */
     edx = (uint32_t)(esi + 0x00000094u);
-    /* 005a0e52  call 0x4e1220 */
+    /* 005a0e52  call 0x4e1220  ; meme_registerStringData */
     t = 0x004e1220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_40;
@@ -1880,7 +1891,7 @@ R_40:
     /* 005a0e57  mov dword ptr [esi + 0xb0], eax */
     ea = (uint32_t)(esi + 0x000000b0u);
     M32(ea) = eax;
-    /* 005a0e5d  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0e5d  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1888,14 +1899,14 @@ R_40:
     F_SUB(32, a, b, r);
     /* 005a0e61  jb 0x5a0e70 */
     if (cf) goto L_005a0e70;
-    /* 005a0e63  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0e63  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0e67  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0e68  call 0x403680 */
+    /* 005a0e68  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_41;
@@ -1913,35 +1924,35 @@ L_005a0e70:
     t = 0x1bu;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0e72  push 0xb74130 */
+    /* 005a0e72  push 0xb74130  ; "SoldierSecondaryAmmoBarSize" */
     t = 0xb74130u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0e77  lea ecx, [esp + 0x18] */
+    /* 005a0e77  lea ecx, [esp + 0x18]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005a0e7b  mov dword ptr [esp + 0x30], edi */
+    /* 005a0e7b  mov dword ptr [esp + 0x30], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 005a0e7f  mov dword ptr [esp + 0x2c], ebx */
+    /* 005a0e7f  mov dword ptr [esp + 0x2c], ebx  ; var_44 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 005a0e83  mov byte ptr [esp + 0x1c], bl */
+    /* 005a0e83  mov byte ptr [esp + 0x1c], bl  ; var_54 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a0e87  call 0x401ae0 */
+    /* 005a0e87  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_42;
     c->eip = t;
     goto out;
 R_42:
-    /* 005a0e8c  lea eax, [esp + 0x2c] */
+    /* 005a0e8c  lea eax, [esp + 0x2c]  ; &var_3c */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 005a0e90  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0e91  lea ecx, [esp + 0x14] */
+    /* 005a0e91  lea ecx, [esp + 0x14]  ; &var_58 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005a0e95  push ecx */
     t = ecx;
@@ -1950,16 +1961,16 @@ R_42:
     /* 005a0e96  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a0e99  lea edx, [esi + 0xb4] */
+    /* 005a0e99  lea edx, [esi + 0xb4]  ; field SoldierSecondaryAmmoBarSize (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x000000b4u);
-    /* 005a0e9f  call 0x4c5a10 */
+    /* 005a0e9f  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_43;
     c->eip = t;
     goto out;
 R_43:
-    /* 005a0ea4  cmp dword ptr [esp + 0x28], ebp */
+    /* 005a0ea4  cmp dword ptr [esp + 0x28], ebp  ; var_40 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1967,14 +1978,14 @@ R_43:
     F_SUB(32, a, b, r);
     /* 005a0ea8  jb 0x5a0eb7 */
     if (cf) goto L_005a0eb7;
-    /* 005a0eaa  mov edx, dword ptr [esp + 0x14] */
+    /* 005a0eaa  mov edx, dword ptr [esp + 0x14]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 005a0eae  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0eaf  call 0x403680 */
+    /* 005a0eaf  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_44;
@@ -1988,7 +1999,7 @@ R_44:
     F_ADD(32, a, b, r);
     esp = r;
 L_005a0eb7:
-    /* 005a0eb7  cmp dword ptr [esp + 0x44], ebp */
+    /* 005a0eb7  cmp dword ptr [esp + 0x44], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000044u);
     a = M32(ea);
     b = ebp;
@@ -1996,14 +2007,14 @@ L_005a0eb7:
     F_SUB(32, a, b, r);
     /* 005a0ebb  jb 0x5a0eca */
     if (cf) goto L_005a0eca;
-    /* 005a0ebd  mov eax, dword ptr [esp + 0x30] */
+    /* 005a0ebd  mov eax, dword ptr [esp + 0x30]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
     /* 005a0ec1  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0ec2  call 0x403680 */
+    /* 005a0ec2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_45;
@@ -2017,10 +2028,10 @@ R_45:
     F_ADD(32, a, b, r);
     esp = r;
 L_005a0eca:
-    /* 005a0eca  mov eax, dword ptr [esp + 0x60] */
+    /* 005a0eca  mov eax, dword ptr [esp + 0x60]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000060u);
     eax = M32(ea);
-    /* 005a0ece  mov dword ptr [esp + 0x44], edi */
+    /* 005a0ece  mov dword ptr [esp + 0x44], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000044u);
     M32(ea) = edi;
     /* 005a0ed2  pop edi */
@@ -2040,10 +2051,10 @@ L_005a0eca:
     t = M32(esp);
     esp += 4;
     ebp = t;
-    /* 005a0ed7  mov dword ptr [esp + 0x34], ebx */
+    /* 005a0ed7  mov dword ptr [esp + 0x34], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = ebx;
-    /* 005a0edb  mov byte ptr [esp + 0x24], bl */
+    /* 005a0edb  mov byte ptr [esp + 0x24], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x00000024u);
     M8(ea) = LO8(ebx);
     /* 005a0edf  pop ebx */
@@ -2052,14 +2063,14 @@ L_005a0eca:
     ebx = t;
     /* 005a0ee0  jb 0x5a0eef */
     if (cf) goto L_005a0eef;
-    /* 005a0ee2  mov ecx, dword ptr [esp + 0x3c] */
+    /* 005a0ee2  mov ecx, dword ptr [esp + 0x3c]  ; var_1c */
     ea = (uint32_t)(esp + 0x0000003cu);
     ecx = M32(ea);
     /* 005a0ee6  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0ee7  call 0x403680 */
+    /* 005a0ee7  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_46;
@@ -2073,12 +2084,12 @@ R_46:
     F_ADD(32, a, b, r);
     esp = r;
 L_005a0eef:
-    /* 005a0eef  mov ecx, dword ptr [esp + 0x54] */
+    /* 005a0eef  mov ecx, dword ptr [esp + 0x54]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000054u);
     ecx = M32(ea);
     /* 005a0ef3  mov al, 1 */
     SET8L(eax, 0x1u);
-    /* 005a0ef5  call 0x7c2019 */
+    /* 005a0ef5  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0a80_47;

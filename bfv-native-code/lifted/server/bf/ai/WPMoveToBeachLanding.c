@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0071a820  dice::bf::ai::WPMoveToBeachLanding  (virtual method) */
+/* 0071a820  WPMoveToBeachLanding::get_10h  (virtual method)
+ * overrides: WaypointList::vf6  (10 classes implement it)
+ * class: dice::bf::ai::WPMoveToBeachLanding
+ * called by: VoteEvent::ctor_dtor_helper_004d67e0, GameServer::voteKickPlayer
+ */
 BFV_L1_ENTRY(bfv_server_l1_0071a820, bfv_server_l1_body_0071a820);
 void bfv_server_l1_body_0071a820(struct bfv_cpu *c)
 {
@@ -28,7 +32,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0078cfb0  dice::bf::ai::WPMoveToBeachLanding  (virtual method) */
+/* 0078cfb0  WPMoveToBeachLanding::update  (virtual method)
+ * overrides: WaypointList::update  (10 classes implement it)
+ * class: dice::bf::ai::WPMoveToBeachLanding
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078cfb0, bfv_server_l1_body_0078cfb0);
 BFV_L1_RESUME(bfv_server_l1r_0078cfb0_1, bfv_server_l1_body_0078cfb0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0078cfb0_2, bfv_server_l1_body_0078cfb0, 2);
@@ -102,7 +109,7 @@ void bfv_server_l1_body_0078cfb0(struct bfv_cpu *c)
     /* 0078cfc9  fstp qword ptr [esp] */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0078cfcc  call 0x63de80 */
+    /* 0078cfcc  call 0x63de80  ; crt_0063de80 */
     t = 0x0063de80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078cfb0_1;
@@ -222,7 +229,7 @@ R_2:
     /* 0078d031  mov dword ptr [edx + 4], ecx */
     ea = (uint32_t)(edx + 0x00000004u);
     M32(ea) = ecx;
-    /* 0078d034  call 0x403df0 */
+    /* 0078d034  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078cfb0_3;
@@ -267,7 +274,7 @@ L_0078d04d:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d052  call 0x70e230 */
+    /* 0078d052  call 0x70e230  ; bfv_server_read_global_0070e230 */
     t = 0x0070e230u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078cfb0_4;
@@ -276,7 +283,7 @@ L_0078d04d:
 R_4:
     /* 0078d057  mov ecx, eax */
     ecx = eax;
-    /* 0078d059  call 0x70e4b0 */
+    /* 0078d059  call 0x70e4b0  ; ai_0070e4b0 */
     t = 0x0070e4b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078cfb0_5;
@@ -296,7 +303,7 @@ R_5:
     M32(esp) = t;
     /* 0078d065  mov ecx, ebp */
     ecx = ebp;
-    /* 0078d067  call 0x71c330 */
+    /* 0078d067  call 0x71c330  ; bfv_region_contains_point3 */
     t = 0x0071c330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078cfb0_6;
@@ -325,7 +332,7 @@ R_6:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d07e  push 0x3f666666 */
+    /* 0078d07e  push 0x3f666666  ; 0.9f */
     t = 0x3f666666u;
     esp -= 4;
     M32(esp) = t;
@@ -345,7 +352,7 @@ R_7:
     M32(esp) = t;
     /* 0078d08c  mov ecx, ebp */
     ecx = ebp;
-    /* 0078d08e  call 0x720b70 */
+    /* 0078d08e  call 0x720b70  ; AIStrategicArea::sub_00720b70 */
     t = 0x00720b70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078cfb0_8;
@@ -390,7 +397,7 @@ L_0078d0ad:
 L_0078d0b4:
     /* 0078d0b4  lea ecx, [esi + 0x20] */
     ecx = (uint32_t)(esi + 0x00000020u);
-    /* 0078d0b7  call 0x4d6460 */
+    /* 0078d0b7  call 0x4d6460  ; sub_004d6460 */
     t = 0x004d6460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078cfb0_9;
@@ -432,14 +439,14 @@ L_0078d0cc:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d0d7  call 0x721a00 */
+    /* 0078d0d7  call 0x721a00  ; ai_00721a00 */
     t = 0x00721a00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078cfb0_10;
     c->eip = t;
     goto out;
 R_10:
-    /* 0078d0dc  fcomp dword ptr [0x81fac4] */
+    /* 0078d0dc  fcomp dword ptr [0x81fac4]  ; = 10.0f */
     ea = (uint32_t)(0x0081fac4u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0078d0e2  fnstsw ax */
@@ -484,7 +491,7 @@ L_0078d0f2:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d105  call 0x721a00 */
+    /* 0078d105  call 0x721a00  ; ai_00721a00 */
     t = 0x00721a00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078cfb0_11;
@@ -494,7 +501,7 @@ R_11:
     /* 0078d10a  fstp dword ptr [esi + 0x14] */
     ea = (uint32_t)(esi + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0078d10d  fld dword ptr [0x809264] */
+    /* 0078d10d  fld dword ptr [0x809264]  ; = 1.0f */
     ea = (uint32_t)(0x00809264u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0078d113  pop edi */
@@ -524,7 +531,7 @@ L_0078d11c:
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = 0x0u;
 L_0078d123:
-    /* 0078d123  fld dword ptr [0x809264] */
+    /* 0078d123  fld dword ptr [0x809264]  ; = 1.0f */
     ea = (uint32_t)(0x00809264u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0078d129  pop edi */
@@ -556,7 +563,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0078d140  dice::bf::ai::WPMoveToBeachLanding  (virtual method) */
+/* 0078d140  WPMoveToBeachLanding::vf0  (virtual method)
+ * overrides: WaypointList::vf0  (10 classes implement it)
+ * class: dice::bf::ai::WPMoveToBeachLanding
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078d140, bfv_server_l1_body_0078d140);
 BFV_L1_RESUME(bfv_server_l1r_0078d140_1, bfv_server_l1_body_0078d140, 1);
 BFV_L1_RESUME(bfv_server_l1r_0078d140_2, bfv_server_l1_body_0078d140, 2);
@@ -588,10 +598,10 @@ void bfv_server_l1_body_0078d140(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x00000020u);
     /* 0078d147  mov ecx, edi */
     ecx = edi;
-    /* 0078d149  mov dword ptr [esi], 0x8776ac */
+    /* 0078d149  mov dword ptr [esi], 0x8776ac  ; vtable WPMoveToBeachLanding */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8776acu;
-    /* 0078d14f  call 0x4719b0 */
+    /* 0078d14f  call 0x4719b0  ; std::list::clear */
     t = 0x004719b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d140_1;
@@ -605,14 +615,14 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d158  call 0x403df0 */
+    /* 0078d158  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d140_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0078d15d  mov al, byte ptr [esp + 0x10] */
+    /* 0078d15d  mov al, byte ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     SET8L(eax, M8(ea));
     /* 0078d161  add esp, 4 */
@@ -627,7 +637,7 @@ R_2:
     /* 0078d166  mov dword ptr [edi + 4], 0 */
     ea = (uint32_t)(edi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 0078d16d  mov dword ptr [esi], 0x874c64 */
+    /* 0078d16d  mov dword ptr [esi], 0x874c64  ; vtable WaypointList */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874c64u;
     /* 0078d173  je 0x78d17e */
@@ -636,7 +646,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d176  call 0x403df0 */
+    /* 0078d176  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d140_3;
@@ -671,7 +681,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0078d190  dice::bf::ai::WPMoveToBeachLanding  (virtual method) */
+/* 0078d190  WPMoveToBeachLanding::getTarget  (virtual method)
+ * overrides: WaypointList::getTarget  (10 classes implement it)
+ * class: dice::bf::ai::WPMoveToBeachLanding
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078d190, bfv_server_l1_body_0078d190);
 BFV_L1_RESUME(bfv_server_l1r_0078d190_1, bfv_server_l1_body_0078d190, 1);
 BFV_L1_RESUME(bfv_server_l1r_0078d190_2, bfv_server_l1_body_0078d190, 2);
@@ -709,7 +722,7 @@ void bfv_server_l1_body_0078d190(struct bfv_cpu *c)
     /* 0078d19d  mov eax, dword ptr [eax] */
     ea = (uint32_t)(eax);
     eax = M32(ea);
-    /* 0078d19f  mov ecx, dword ptr [esp + 0xc] */
+    /* 0078d19f  mov ecx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 0078d1a3  add eax, 8 */
@@ -765,7 +778,7 @@ L_0078d1be:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d1ca  lea edx, [esp + 4] */
+    /* 0078d1ca  lea edx, [esp + 4]  ; &var_8 */
     edx = (uint32_t)(esp + 0x00000004u);
     /* 0078d1ce  je 0x78d1d9 */
     if (zf) goto L_0078d1d9;
@@ -777,7 +790,7 @@ L_0078d1be:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d1d2  call 0x721850 */
+    /* 0078d1d2  call 0x721850  ; ai_00721850 */
     t = 0x00721850u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d190_1;
@@ -787,7 +800,7 @@ R_1:
     /* 0078d1d7  jmp 0x78d1e5 */
     goto L_0078d1e5;
 L_0078d1d9:
-    /* 0078d1d9  push 0x41200000 */
+    /* 0078d1d9  push 0x41200000  ; 10.0f */
     t = 0x41200000u;
     esp -= 4;
     M32(esp) = t;
@@ -799,7 +812,7 @@ L_0078d1d9:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d1e0  call 0x7217a0 */
+    /* 0078d1e0  call 0x7217a0  ; ai_007217a0 */
     t = 0x007217a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d190_2;
@@ -807,14 +820,14 @@ L_0078d1d9:
     goto out;
 R_2:
 L_0078d1e5:
-    /* 0078d1e5  mov edx, dword ptr [esp + 0x10] */
+    /* 0078d1e5  mov edx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
-    /* 0078d1e9  lea ecx, [esp + 4] */
+    /* 0078d1e9  lea ecx, [esp + 4]  ; &var_8 */
     ecx = (uint32_t)(esp + 0x00000004u);
     /* 0078d1ed  mov bl, al */
     SET8L(ebx, LO8(eax));
-    /* 0078d1ef  call 0x728f30 */
+    /* 0078d1ef  call 0x728f30  ; ai_00728f30 */
     t = 0x00728f30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d190_3;
@@ -844,7 +857,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0078d200  (between same file) */
+/* 0078d200  WPMoveToBeachLanding_helper_0078d200  (between same file)
+ * called by: WPMoveToBeachLanding_helper_0078d2a0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078d200, bfv_server_l1_body_0078d200);
 BFV_L1_RESUME(bfv_server_l1r_0078d200_1, bfv_server_l1_body_0078d200, 1);
 void bfv_server_l1_body_0078d200(struct bfv_cpu *c)
@@ -900,28 +915,28 @@ void bfv_server_l1_body_0078d200(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d21e  mov dword ptr [ebp - 0x10], esp */
+    /* 0078d21e  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 0078d221  mov edi, ecx */
     edi = ecx;
-    /* 0078d223  mov dword ptr [ebp - 0x18], edi */
+    /* 0078d223  mov dword ptr [ebp - 0x18], edi  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = edi;
-    /* 0078d226  mov esi, dword ptr [ebp + 0xc] */
+    /* 0078d226  mov esi, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     esi = M32(ea);
-    /* 0078d229  mov dword ptr [ebp - 0x14], esi */
+    /* 0078d229  mov dword ptr [ebp - 0x14], esi  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = esi;
-    /* 0078d22c  mov dword ptr [ebp - 4], 0 */
+    /* 0078d22c  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
-    /* 0078d233  mov ebx, dword ptr [ebp + 8] */
+    /* 0078d233  mov ebx, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     ebx = M32(ea);
 L_0078d236:
-    /* 0078d236  cmp esi, dword ptr [ebp + 0x10] */
+    /* 0078d236  cmp esi, dword ptr [ebp + 0x10]  ; arg_8 */
     ea = (uint32_t)(ebp + 0x00000010u);
     a = esi;
     b = M32(ea);
@@ -941,7 +956,7 @@ L_0078d236:
     M32(esp) = t;
     /* 0078d240  mov ecx, edi */
     ecx = edi;
-    /* 0078d242  call 0x71ca90 */
+    /* 0078d242  call 0x71ca90  ; WPMoveToBeachLanding_helper_0071ca90 */
     t = 0x0071ca90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d200_1;
@@ -951,16 +966,16 @@ R_1:
     /* 0078d247  mov esi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     esi = M32(ea);
-    /* 0078d249  mov dword ptr [ebp + 0xc], esi */
+    /* 0078d249  mov dword ptr [ebp + 0xc], esi  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     M32(ea) = esi;
     /* 0078d24c  jmp 0x78d236 */
     goto L_0078d236;
 L_0078d24e:
-    /* 0078d24e  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 0078d24e  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
-    /* 0078d255  mov ecx, dword ptr [ebp - 0xc] */
+    /* 0078d255  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 0078d258  mov dword ptr fs:[0], ecx */
@@ -995,7 +1010,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0078d268  (between same file) */
+/* 0078d268  WPMoveToBeachLanding_helper_0078d200_catch_0078d268  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078d268, bfv_server_l1_body_0078d268);
 BFV_L1_RESUME(bfv_server_l1r_0078d268_1, bfv_server_l1_body_0078d268, 1);
 BFV_L1_RESUME(bfv_server_l1r_0078d268_2, bfv_server_l1_body_0078d268, 2);
@@ -1046,7 +1062,7 @@ L_0078d275:
     M32(esp) = t;
     /* 0078d280  mov ecx, ebx */
     ecx = ebx;
-    /* 0078d282  call 0x73c880 */
+    /* 0078d282  call 0x73c880  ; std::list::erase */
     t = 0x0073c880u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d268_1;
@@ -1072,7 +1088,7 @@ L_0078d28d:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d291  call 0x63a98e */
+    /* 0078d291  call 0x63a98e  ; _CxxThrowException */
     t = 0x0063a98eu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d268_2;
@@ -1088,7 +1104,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0078d2a0  (between same file) */
+/* 0078d2a0  WPMoveToBeachLanding_helper_0078d2a0  (between same file)
+ * called by: WPMoveToBeachLanding::constructor_helper_0078d2c0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078d2a0, bfv_server_l1_body_0078d2a0);
 BFV_L1_RESUME(bfv_server_l1r_0078d2a0_1, bfv_server_l1_body_0078d2a0, 1);
 void bfv_server_l1_body_0078d2a0(struct bfv_cpu *c)
@@ -1102,24 +1120,24 @@ void bfv_server_l1_body_0078d2a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0078d2a0  mov eax, dword ptr [esp + 0xc] */
+    /* 0078d2a0  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
-    /* 0078d2a4  mov edx, dword ptr [esp + 0xc] */
+    /* 0078d2a4  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 0078d2a8  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d2a9  mov eax, dword ptr [esp + 0xc] */
+    /* 0078d2a9  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0078d2ad  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d2ae  mov edx, dword ptr [esp + 0xc] */
+    /* 0078d2ae  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 0078d2b2  push eax */
@@ -1130,7 +1148,7 @@ void bfv_server_l1_body_0078d2a0(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d2b4  call 0x78d200 */
+    /* 0078d2b4  call 0x78d200  ; WPMoveToBeachLanding_helper_0078d200 */
     t = 0x0078d200u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d2a0_1;
@@ -1148,7 +1166,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0078d2c0  (between same file) */
+/* 0078d2c0  WPMoveToBeachLanding::constructor_helper_0078d2c0  (between same file)
+ * called by: WPMoveToBeachLanding::WPMoveToBeachLanding
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078d2c0, bfv_server_l1_body_0078d2c0);
 BFV_L1_RESUME(bfv_server_l1r_0078d2c0_1, bfv_server_l1_body_0078d2c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0078d2c0_2, bfv_server_l1_body_0078d2c0, 2);
@@ -1206,15 +1226,15 @@ void bfv_server_l1_body_0078d2c0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d2de  mov dword ptr [ebp - 0x10], esp */
+    /* 0078d2de  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 0078d2e1  mov esi, ecx */
     esi = ecx;
-    /* 0078d2e3  mov dword ptr [ebp - 0x14], esi */
+    /* 0078d2e3  mov dword ptr [ebp - 0x14], esi  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = esi;
-    /* 0078d2e6  call 0x71b870 */
+    /* 0078d2e6  call 0x71b870  ; std::list::_Buyheadnode_24_0071b870 */
     t = 0x0071b870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d2c0_1;
@@ -1227,10 +1247,10 @@ R_1:
     /* 0078d2ee  mov dword ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 0078d2f5  mov dword ptr [ebp - 4], 0 */
+    /* 0078d2f5  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
-    /* 0078d2fc  mov eax, dword ptr [ebp + 8] */
+    /* 0078d2fc  mov eax, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     eax = M32(ea);
     /* 0078d2ff  mov eax, dword ptr [eax + 4] */
@@ -1238,37 +1258,37 @@ R_1:
     eax = M32(ea);
     /* 0078d302  mov ecx, eax */
     ecx = eax;
-    /* 0078d304  mov dword ptr [ebp - 0x18], ecx */
+    /* 0078d304  mov dword ptr [ebp - 0x18], ecx  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = ecx;
-    /* 0078d307  mov dword ptr [ebp - 0x1c], ecx */
+    /* 0078d307  mov dword ptr [ebp - 0x1c], ecx  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = ecx;
-    /* 0078d30a  mov dword ptr [ebp - 0x20], eax */
+    /* 0078d30a  mov dword ptr [ebp - 0x20], eax  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = eax;
     /* 0078d30d  mov eax, dword ptr [eax] */
     ea = (uint32_t)(eax);
     eax = M32(ea);
-    /* 0078d30f  mov dword ptr [ebp - 0x24], eax */
+    /* 0078d30f  mov dword ptr [ebp - 0x24], eax  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = eax;
-    /* 0078d312  mov dword ptr [ebp - 0x28], eax */
+    /* 0078d312  mov dword ptr [ebp - 0x28], eax  ; var_2c */
     ea = (uint32_t)(ebp + 0xffffffd8u);
     M32(ea) = eax;
     /* 0078d315  mov edx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     edx = M32(ea);
-    /* 0078d318  mov dword ptr [ebp - 0x2c], edx */
+    /* 0078d318  mov dword ptr [ebp - 0x2c], edx  ; var_30 */
     ea = (uint32_t)(ebp + 0xffffffd4u);
     M32(ea) = edx;
     /* 0078d31b  mov edx, dword ptr [edx] */
     ea = (uint32_t)(edx);
     edx = M32(ea);
-    /* 0078d31d  mov dword ptr [ebp - 0x30], edx */
+    /* 0078d31d  mov dword ptr [ebp - 0x30], edx  ; var_34 */
     ea = (uint32_t)(ebp + 0xffffffd0u);
     M32(ea) = edx;
-    /* 0078d320  mov dword ptr [ebp - 0x34], edx */
+    /* 0078d320  mov dword ptr [ebp - 0x34], edx  ; var_38 */
     ea = (uint32_t)(ebp + 0xffffffccu);
     M32(ea) = edx;
     /* 0078d323  push ecx */
@@ -1285,19 +1305,19 @@ R_1:
     M32(esp) = t;
     /* 0078d326  mov ecx, esi */
     ecx = esi;
-    /* 0078d328  call 0x78d2a0 */
+    /* 0078d328  call 0x78d2a0  ; WPMoveToBeachLanding_helper_0078d2a0 */
     t = 0x0078d2a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d2c0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0078d32d  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 0078d32d  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 0078d334  mov eax, esi */
     eax = esi;
-    /* 0078d336  mov ecx, dword ptr [ebp - 0xc] */
+    /* 0078d336  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 0078d339  mov dword ptr fs:[0], ecx */
@@ -1332,7 +1352,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0078d349  (between same file) */
+/* 0078d349  WPMoveToBeachLanding::constructor_helper_0078d2c0_catch_0078d349  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078d349, bfv_server_l1_body_0078d349);
 BFV_L1_RESUME(bfv_server_l1r_0078d349_1, bfv_server_l1_body_0078d349, 1);
 BFV_L1_RESUME(bfv_server_l1r_0078d349_2, bfv_server_l1_body_0078d349, 2);
@@ -1351,7 +1372,7 @@ void bfv_server_l1_body_0078d349(struct bfv_cpu *c)
     /* 0078d349  mov ecx, dword ptr [ebp - 0x14] */
     ea = (uint32_t)(ebp + 0xffffffecu);
     ecx = M32(ea);
-    /* 0078d34c  call 0x737110 */
+    /* 0078d34c  call 0x737110  ; BBPAvoidCollisionInfantery_00737110 */
     t = 0x00737110u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d349_1;
@@ -1366,7 +1387,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0078d355  call 0x63a98e */
+    /* 0078d355  call 0x63a98e  ; _CxxThrowException */
     t = 0x0063a98eu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d349_2;
@@ -1382,7 +1403,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0078d360  dice::bf::ai::WPMoveToBeachLanding  (vtable store) */
+/* 0078d360  WPMoveToBeachLanding::WPMoveToBeachLanding  (vtable store)
+ * class: dice::bf::ai::WPMoveToBeachLanding
+ * called by: AIStrategicArea::vf27_helper_0071d610
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078d360, bfv_server_l1_body_0078d360);
 BFV_L1_RESUME(bfv_server_l1r_0078d360_1, bfv_server_l1_body_0078d360, 1);
 void bfv_server_l1_body_0078d360(struct bfv_cpu *c)
@@ -1396,14 +1420,14 @@ void bfv_server_l1_body_0078d360(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0078d360  fld dword ptr [0x8220c8] */
+    /* 0078d360  fld dword ptr [0x8220c8]  ; = 5.0f */
     ea = (uint32_t)(0x008220c8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0078d366  xor al, al */
     r = 0;
     F_LOGIC(8, r);
     SET8L(eax, r);
-    /* 0078d368  fcomp dword ptr [esp + 8] */
+    /* 0078d368  fcomp dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0078d36c  push esi */
@@ -1412,7 +1436,7 @@ void bfv_server_l1_body_0078d360(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0078d36d  mov esi, ecx */
     esi = ecx;
-    /* 0078d36f  mov ecx, dword ptr [esp + 0x10] */
+    /* 0078d36f  mov ecx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 0078d373  mov byte ptr [esi + 5], al */
@@ -1435,7 +1459,7 @@ void bfv_server_l1_body_0078d360(struct bfv_cpu *c)
     /* 0078d385  test ah, 5 */
     r = (HI8(eax) & 0x5u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0078d388  mov dword ptr [esi], 0x8776ac */
+    /* 0078d388  mov dword ptr [esi], 0x8776ac  ; vtable WPMoveToBeachLanding */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8776acu;
     /* 0078d38e  mov dword ptr [esi + 8], ecx */
@@ -1443,26 +1467,26 @@ void bfv_server_l1_body_0078d360(struct bfv_cpu *c)
     M32(ea) = ecx;
     /* 0078d391  jp 0x78d399 */
     if (pf) goto L_0078d399;
-    /* 0078d393  fld dword ptr [esp + 0xc] */
+    /* 0078d393  fld dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0078d397  jmp 0x78d39f */
     goto L_0078d39f;
 L_0078d399:
-    /* 0078d399  fld dword ptr [0x8220c8] */
+    /* 0078d399  fld dword ptr [0x8220c8]  ; = 5.0f */
     ea = (uint32_t)(0x008220c8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_0078d39f:
-    /* 0078d39f  mov ecx, dword ptr [esp + 0x18] */
+    /* 0078d39f  mov ecx, dword ptr [esp + 0x18]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 0078d3a3  fstp dword ptr [esi + 0x10] */
     ea = (uint32_t)(esi + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0078d3a6  mov edx, dword ptr [esp + 0x14] */
+    /* 0078d3a6  mov edx, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
-    /* 0078d3aa  mov eax, dword ptr [esp + 8] */
+    /* 0078d3aa  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0078d3ae  push ecx */
@@ -1477,7 +1501,7 @@ L_0078d39f:
     /* 0078d3b5  mov dword ptr [esi + 0x1c], eax */
     ea = (uint32_t)(esi + 0x0000001cu);
     M32(ea) = eax;
-    /* 0078d3b8  call 0x78d2c0 */
+    /* 0078d3b8  call 0x78d2c0  ; WPMoveToBeachLanding::constructor_helper_0078d2c0 */
     t = 0x0078d2c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078d360_1;
@@ -1487,7 +1511,7 @@ R_1:
     /* 0078d3bd  mov edx, dword ptr [esi + 0x1c] */
     ea = (uint32_t)(esi + 0x0000001cu);
     edx = M32(ea);
-    /* 0078d3c0  mov eax, dword ptr [esp + 0x1c] */
+    /* 0078d3c0  mov eax, dword ptr [esp + 0x1c]  ; arg_14 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 0078d3c4  mov dword ptr [eax + 0x1f8], edx */

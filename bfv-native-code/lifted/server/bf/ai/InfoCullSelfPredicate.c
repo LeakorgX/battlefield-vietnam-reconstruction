@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007814a0  dice::bf::ai::?A0xdaa11c90::InfoCullSelfPredicate  (virtual method) */
+/* 007814a0  InfoCullSelfPredicate::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xdaa11c90::InfoCullSelfPredicate
+ */
 BFV_L1_ENTRY(bfv_server_l1_007814a0, bfv_server_l1_body_007814a0);
 void bfv_server_l1_body_007814a0(struct bfv_cpu *c)
 {
@@ -17,7 +19,7 @@ void bfv_server_l1_body_007814a0(struct bfv_cpu *c)
     /* 007814a0  mov ecx, dword ptr [ecx + 4] */
     ea = (uint32_t)(ecx + 0x00000004u);
     ecx = M32(ea);
-    /* 007814a3  mov edx, dword ptr [esp + 4] */
+    /* 007814a3  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 007814a7  xor eax, eax */

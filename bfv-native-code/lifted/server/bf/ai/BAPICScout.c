@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0073e360  dice::bf::ai::BAPICScout  (virtual method) */
+/* 0073e360  BAPICScout::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPICScout
+ */
 BFV_L1_ENTRY(bfv_server_l1_0073e360, bfv_server_l1_body_0073e360);
 BFV_L1_RESUME(bfv_server_l1r_0073e360_1, bfv_server_l1_body_0073e360, 1);
 void bfv_server_l1_body_0073e360(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_0073e360(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0073e360  mov al, byte ptr [esp + 4] */
+    /* 0073e360  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 0073e364  push esi */
@@ -28,10 +31,10 @@ void bfv_server_l1_body_0073e360(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0073e365  mov esi, ecx */
     esi = ecx;
-    /* 0073e367  mov dword ptr [esi], 0x874498 */
+    /* 0073e367  mov dword ptr [esi], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874498u;
-    /* 0073e36d  mov ecx, dword ptr [0xc32a44] */
+    /* 0073e36d  mov ecx, dword ptr [0xc32a44]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     ecx = M32(ea);
     /* 0073e373  inc ecx */
@@ -42,10 +45,10 @@ void bfv_server_l1_body_0073e360(struct bfv_cpu *c)
     /* 0073e374  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0073e376  mov dword ptr [0xc32a44], ecx */
+    /* 0073e376  mov dword ptr [0xc32a44], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     M32(ea) = ecx;
-    /* 0073e37c  mov dword ptr [esi], 0x87448c */
+    /* 0073e37c  mov dword ptr [esi], 0x87448c  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87448cu;
     /* 0073e382  je 0x73e38f */
@@ -54,9 +57,9 @@ void bfv_server_l1_body_0073e360(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0073e385  mov ecx, 0xc32b48 */
+    /* 0073e385  mov ecx, 0xc32b48  ; g_MemoryPool_00c32b48 */
     ecx = 0xc32b48u;
-    /* 0073e38a  call 0x413600 */
+    /* 0073e38a  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0073e360_1;
@@ -81,7 +84,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a9510  dice::bf::ai::BAPICScout  (virtual method) */
+/* 007a9510  BAPICScout::execute  (virtual method)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPICScout
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9510, bfv_server_l1_body_007a9510);
 BFV_L1_RESUME(bfv_server_l1r_007a9510_1, bfv_server_l1_body_007a9510, 1);
 void bfv_server_l1_body_007a9510(struct bfv_cpu *c)
@@ -95,7 +101,7 @@ void bfv_server_l1_body_007a9510(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a9510  mov ecx, dword ptr [esp + 4] */
+    /* 007a9510  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007a9514  mov eax, dword ptr [ecx] */
@@ -109,10 +115,10 @@ void bfv_server_l1_body_007a9510(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 007a951c  mov ecx, dword ptr [esp + 8] */
+    /* 007a951c  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 007a9520  mov edx, dword ptr [esp + 0xc] */
+    /* 007a9520  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 007a9524  mov byte ptr [ecx], 1 */

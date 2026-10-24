@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006e7600  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e7600  SoundObject::vf2  (virtual method)
+ * overrides: ISoundObject::vf2  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7600, bfv_client_l1_body_006e7600);
 BFV_L1_RESUME(bfv_client_l1r_006e7600_1, bfv_client_l1_body_006e7600, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e7600_2, bfv_client_l1_body_006e7600, 2);
@@ -35,21 +38,21 @@ void bfv_client_l1_body_006e7600(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006e7602  mov edi, ecx */
     edi = ecx;
-    /* 006e7604  call 0xa88160 */
+    /* 006e7604  call 0xa88160  ; world_00a88160 */
     t = 0x00a88160u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7600_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006e7609  mov ecx, dword ptr [esp + 0xc] */
+    /* 006e7609  mov ecx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 006e760d  mov esi, eax */
     esi = eax;
     /* 006e760f  mov edx, esi */
     edx = esi;
-    /* 006e7611  call 0x556330 */
+    /* 006e7611  call 0x556330  ; world_00556330 */
     t = 0x00556330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7600_2;
@@ -87,7 +90,7 @@ L_006e761f:
     M32(esp) = t;
     /* 006e7623  mov ecx, edi */
     ecx = edi;
-    /* 006e7625  call dword ptr [eax + 4] */
+    /* 006e7625  call dword ptr [eax + 4]  ; -> SoundObject::vf1 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -145,7 +148,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7640  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e7640  SoundObject::vf4  (virtual method)
+ * overrides: ISoundObject::vf4  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7640, bfv_client_l1_body_006e7640);
 BFV_L1_RESUME(bfv_client_l1r_006e7640_1, bfv_client_l1_body_006e7640, 1);
 void bfv_client_l1_body_006e7640(struct bfv_cpu *c)
@@ -180,7 +186,7 @@ void bfv_client_l1_body_006e7640(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006e764a  je 0x6e7665 */
     if (zf) goto L_006e7665;
-    /* 006e764c  lea esp, [esp] */
+    /* 006e764c  lea esp, [esp]  ; &var_8 */
     esp = (uint32_t)(esp);
 L_006e7650:
     /* 006e7650  mov ecx, dword ptr [esi] */
@@ -239,7 +245,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7670  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e7670  SoundObject::vf5  (virtual method)
+ * overrides: ISoundObject::vf5  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7670, bfv_client_l1_body_006e7670);
 BFV_L1_RESUME(bfv_client_l1r_006e7670_1, bfv_client_l1_body_006e7670, 1);
 void bfv_client_l1_body_006e7670(struct bfv_cpu *c)
@@ -274,7 +283,7 @@ void bfv_client_l1_body_006e7670(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006e767a  je 0x6e7695 */
     if (zf) goto L_006e7695;
-    /* 006e767c  lea esp, [esp] */
+    /* 006e767c  lea esp, [esp]  ; &var_8 */
     esp = (uint32_t)(esp);
 L_006e7680:
     /* 006e7680  mov ecx, dword ptr [esi] */
@@ -333,7 +342,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e76a0  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e76a0  SoundObject::vf7  (virtual method)
+ * overrides: ISoundObject::vf7  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e76a0, bfv_client_l1_body_006e76a0);
 BFV_L1_RESUME(bfv_client_l1r_006e76a0_1, bfv_client_l1_body_006e76a0, 1);
 void bfv_client_l1_body_006e76a0(struct bfv_cpu *c)
@@ -372,7 +384,7 @@ void bfv_client_l1_body_006e76a0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 006e76ad  mov ebx, dword ptr [esp + 0x10] */
+    /* 006e76ad  mov ebx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
 L_006e76b1:
@@ -440,7 +452,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e76d0  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e76d0  SoundObject::vf8  (virtual method)
+ * overrides: ISoundObject::vf8  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e76d0, bfv_client_l1_body_006e76d0);
 BFV_L1_RESUME(bfv_client_l1r_006e76d0_1, bfv_client_l1_body_006e76d0, 1);
 void bfv_client_l1_body_006e76d0(struct bfv_cpu *c)
@@ -479,7 +494,7 @@ void bfv_client_l1_body_006e76d0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 006e76dd  mov ebx, dword ptr [esp + 0x10] */
+    /* 006e76dd  mov ebx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
 L_006e76e1:
@@ -547,7 +562,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7700  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e7700  SoundObject::vf9  (virtual method)
+ * overrides: ISoundObject::vf9  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7700, bfv_client_l1_body_006e7700);
 BFV_L1_RESUME(bfv_client_l1r_006e7700_1, bfv_client_l1_body_006e7700, 1);
 void bfv_client_l1_body_006e7700(struct bfv_cpu *c)
@@ -586,7 +604,7 @@ void bfv_client_l1_body_006e7700(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 006e770d  mov ebx, dword ptr [esp + 0x10] */
+    /* 006e770d  mov ebx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
 L_006e7711:
@@ -654,7 +672,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7730  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e7730  SoundObject::vf6  (virtual method)
+ * overrides: ISoundObject::vf6  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7730, bfv_client_l1_body_006e7730);
 BFV_L1_RESUME(bfv_client_l1r_006e7730_1, bfv_client_l1_body_006e7730, 1);
 void bfv_client_l1_body_006e7730(struct bfv_cpu *c)
@@ -693,14 +714,14 @@ void bfv_client_l1_body_006e7730(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 006e773d  mov ebx, dword ptr [esp + 0x14] */
+    /* 006e773d  mov ebx, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     ebx = M32(ea);
     /* 006e7741  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 006e7742  mov ebp, dword ptr [esp + 0x14] */
+    /* 006e7742  mov ebp, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     ebp = M32(ea);
 L_006e7746:
@@ -776,7 +797,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7770  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e7770  SoundObject::vf3  (virtual method)
+ * overrides: ISoundObject::vf3  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7770, bfv_client_l1_body_006e7770);
 void bfv_client_l1_body_006e7770(struct bfv_cpu *c)
 {
@@ -802,7 +826,7 @@ void bfv_client_l1_body_006e7770(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     eax = r;
-    /* 006e777c  mov edx, dword ptr [esp + 4] */
+    /* 006e777c  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 006e7780  sar eax, 2 */
@@ -850,7 +874,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e77a0  (between same file) */
+/* 006e77a0  SoundObject::~SoundObject  (between same file)
+ * class: dice::ref2::world::SoundObject
+ * called by: SoundObject::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e77a0, bfv_client_l1_body_006e77a0);
 BFV_L1_RESUME(bfv_client_l1r_006e77a0_1, bfv_client_l1_body_006e77a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e77a0_2, bfv_client_l1_body_006e77a0, 2);
@@ -887,7 +914,7 @@ void bfv_client_l1_body_006e77a0(struct bfv_cpu *c)
     b = eax;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 006e77ac  mov dword ptr [esi], 0xba33bc */
+    /* 006e77ac  mov dword ptr [esi], 0xba33bc  ; vtable SoundObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba33bcu;
     /* 006e77b2  je 0x6e77ca */
@@ -946,7 +973,7 @@ L_006e77ca:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006e77d2  call 0x403680 */
+    /* 006e77d2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e77a0_2;
@@ -973,7 +1000,7 @@ L_006e77da:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 006e77f0  mov dword ptr [esi], 0xba3384 */
+    /* 006e77f0  mov dword ptr [esi], 0xba3384  ; vtable ISoundObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba3384u;
     /* 006e77f6  pop esi */
@@ -991,7 +1018,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7800  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e7800  SoundObject::deleting_dtor  (virtual method)
+ * overrides: ISoundObject::vf0  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7800, bfv_client_l1_body_006e7800);
 BFV_L1_RESUME(bfv_client_l1r_006e7800_1, bfv_client_l1_body_006e7800, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e7800_2, bfv_client_l1_body_006e7800, 2);
@@ -1013,14 +1043,14 @@ void bfv_client_l1_body_006e7800(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006e7801  mov esi, ecx */
     esi = ecx;
-    /* 006e7803  call 0x6e77a0 */
+    /* 006e7803  call 0x6e77a0  ; SoundObject::~SoundObject */
     t = 0x006e77a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7800_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006e7808  test byte ptr [esp + 8], 1 */
+    /* 006e7808  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -1028,7 +1058,7 @@ R_1:
     if (zf) goto L_006e7816;
     /* 006e780f  mov ecx, esi */
     ecx = esi;
-    /* 006e7811  call 0x6e7820 */
+    /* 006e7811  call 0x6e7820  ; SoundObject::deleting_dtor_helper_006e7820 */
     t = 0x006e7820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7800_2;
@@ -1053,7 +1083,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7820  (between same file) */
+/* 006e7820  SoundObject::deleting_dtor_helper_006e7820  (between same file)
+ * class: dice::ref2::world::SoundObject
+ * called by: SoundObject::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7820, bfv_client_l1_body_006e7820);
 BFV_L1_RESUME(bfv_client_l1r_006e7820_1, bfv_client_l1_body_006e7820, 1);
 void bfv_client_l1_body_006e7820(struct bfv_cpu *c)
@@ -1069,7 +1102,7 @@ void bfv_client_l1_body_006e7820(struct bfv_cpu *c)
     }
     /* 006e7820  mov eax, ecx */
     eax = ecx;
-    /* 006e7822  mov ecx, dword ptr [0xda1ab0] */
+    /* 006e7822  mov ecx, dword ptr [0xda1ab0]  ; g_pool_SoundObject */
     ea = (uint32_t)(0x00da1ab0u);
     ecx = M32(ea);
     /* 006e7828  mov edx, dword ptr [ecx] */
@@ -1098,7 +1131,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7830  (between same file) */
+/* 006e7830  std::vector_ptr::_Insert_n_006e7830  (between same file)
+ * called by: std::vector_ptr::push_back_006e7a80
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7830, bfv_client_l1_body_006e7830);
 BFV_L1_RESUME(bfv_client_l1r_006e7830_1, bfv_client_l1_body_006e7830, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e7830_2, bfv_client_l1_body_006e7830, 2);
@@ -1164,18 +1199,18 @@ void bfv_client_l1_body_006e7830(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006e784e  mov dword ptr [ebp - 0x10], esp */
+    /* 006e784e  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 006e7851  mov esi, ecx */
     esi = ecx;
-    /* 006e7853  mov eax, dword ptr [ebp + 0x10] */
+    /* 006e7853  mov eax, dword ptr [ebp + 0x10]  ; arg_8 */
     ea = (uint32_t)(ebp + 0x00000010u);
     eax = M32(ea);
     /* 006e7856  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 006e7858  mov dword ptr [ebp - 0x14], ecx */
+    /* 006e7858  mov dword ptr [ebp - 0x14], ecx  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = ecx;
     /* 006e785b  mov edi, dword ptr [esi + 4] */
@@ -1213,7 +1248,7 @@ L_006e7866:
         eax = r;
     }
 L_006e786e:
-    /* 006e786e  mov edx, dword ptr [ebp + 0xc] */
+    /* 006e786e  mov edx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     edx = M32(ea);
     /* 006e7871  test edx, edx */
@@ -1270,7 +1305,7 @@ L_006e7889:
     if (!cf) goto L_006e789b;
     /* 006e7894  mov ecx, esi */
     ecx = esi;
-    /* 006e7896  call 0xa894e0 */
+    /* 006e7896  call 0xa894e0  ; std::vector::_Xlen */
     t = 0x00a894e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7830_1;
@@ -1458,14 +1493,14 @@ L_006e78f2:
         F_SZP(32, r); af = 0;
         eax = r;
     }
-    /* 006e78f5  mov dword ptr [ebp - 0x20], eax */
+    /* 006e78f5  mov dword ptr [ebp - 0x20], eax  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = eax;
     /* 006e78f8  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006e78f9  call 0x403610 */
+    /* 006e78f9  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7830_2;
@@ -1480,17 +1515,17 @@ R_2:
     esp = r;
     /* 006e7901  mov edi, eax */
     edi = eax;
-    /* 006e7903  mov dword ptr [ebp - 0x24], edi */
+    /* 006e7903  mov dword ptr [ebp - 0x24], edi  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = edi;
-    /* 006e7906  mov dword ptr [ebp - 4], 0 */
+    /* 006e7906  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
     /* 006e790d  push edi */
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006e790e  mov ebx, dword ptr [ebp + 8] */
+    /* 006e790e  mov ebx, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     ebx = M32(ea);
     /* 006e7911  push ebx */
@@ -1506,23 +1541,23 @@ R_2:
     M32(esp) = t;
     /* 006e7916  mov ecx, esi */
     ecx = esi;
-    /* 006e7918  call 0xa6ad10 */
+    /* 006e7918  call 0xa6ad10  ; bfv_vector_copy */
     t = 0x00a6ad10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7830_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 006e791d  mov dword ptr [ebp - 0x1c], eax */
+    /* 006e791d  mov dword ptr [ebp - 0x1c], eax  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = eax;
-    /* 006e7920  lea ecx, [ebp - 0x14] */
+    /* 006e7920  lea ecx, [ebp - 0x14]  ; &var_18 */
     ecx = (uint32_t)(ebp + 0xffffffecu);
     /* 006e7923  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006e7924  mov edx, dword ptr [ebp + 0xc] */
+    /* 006e7924  mov edx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     edx = M32(ea);
     /* 006e7927  push edx */
@@ -1535,14 +1570,14 @@ R_3:
     M32(esp) = t;
     /* 006e7929  mov ecx, esi */
     ecx = esi;
-    /* 006e792b  call 0x4ef090 */
+    /* 006e792b  call 0x4ef090  ; bfv_vector_fill */
     t = 0x004ef090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7830_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 006e7930  mov dword ptr [ebp - 0x1c], eax */
+    /* 006e7930  mov dword ptr [ebp - 0x1c], eax  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = eax;
     /* 006e7933  push eax */
@@ -1562,14 +1597,14 @@ R_4:
     M32(esp) = t;
     /* 006e7939  mov ecx, esi */
     ecx = esi;
-    /* 006e793b  call 0xa6ad10 */
+    /* 006e793b  call 0xa6ad10  ; bfv_vector_copy */
     t = 0x00a6ad10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7830_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 006e7940  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 006e7940  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 006e7947  mov ecx, dword ptr [esi + 4] */
@@ -1607,7 +1642,7 @@ L_006e7952:
         eax = r;
     }
 L_006e795a:
-    /* 006e795a  mov ebx, dword ptr [ebp + 0xc] */
+    /* 006e795a  mov ebx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     ebx = M32(ea);
     /* 006e795d  add ebx, eax */
@@ -1625,7 +1660,7 @@ L_006e795a:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006e7964  call 0x403680 */
+    /* 006e7964  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7830_6;
@@ -1639,7 +1674,7 @@ R_6:
     F_ADD(32, a, b, r);
     esp = r;
 L_006e796c:
-    /* 006e796c  mov ecx, dword ptr [ebp - 0x20] */
+    /* 006e796c  mov ecx, dword ptr [ebp - 0x20]  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     ecx = M32(ea);
     /* 006e796f  add ecx, edi */
@@ -1659,7 +1694,7 @@ L_006e796c:
     /* 006e797a  mov dword ptr [esi + 4], edi */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = edi;
-    /* 006e797d  mov ecx, dword ptr [ebp - 0xc] */
+    /* 006e797d  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 006e7980  mov dword ptr fs:[0], ecx */
@@ -1694,7 +1729,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7990  (between same file) */
+/* 006e7990  std::vector_ptr::_Insert_n_006e7830_catch_006e7990  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7990, bfv_client_l1_body_006e7990);
 BFV_L1_RESUME(bfv_client_l1r_006e7990_1, bfv_client_l1_body_006e7990, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e7990_2, bfv_client_l1_body_006e7990, 2);
@@ -1727,7 +1763,7 @@ void bfv_client_l1_body_006e7990(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006e7994  call 0x403680 */
+    /* 006e7994  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7990_1;
@@ -1748,7 +1784,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 006e79a0  call 0x7c1fae */
+    /* 006e79a0  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7990_2;
@@ -1811,7 +1847,7 @@ R_2:
     M32(esp) = t;
     /* 006e79c5  mov ecx, esi */
     ecx = esi;
-    /* 006e79c7  call 0xa6ad10 */
+    /* 006e79c7  call 0xa6ad10  ; bfv_vector_copy */
     t = 0x00a6ad10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7990_3;
@@ -1867,7 +1903,7 @@ R_3:
     M32(esp) = t;
     /* 006e79e8  mov ecx, esi */
     ecx = esi;
-    /* 006e79ea  call 0x4ef090 */
+    /* 006e79ea  call 0x4ef090  ; bfv_vector_fill */
     t = 0x004ef090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7990_4;
@@ -1941,7 +1977,7 @@ L_006e7a0d:
     M32(esp) = t;
     /* 006e7a21  mov ecx, esi */
     ecx = esi;
-    /* 006e7a23  call 0xa6ad10 */
+    /* 006e7a23  call 0xa6ad10  ; bfv_vector_copy */
     t = 0x00a6ad10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7990_5;
@@ -1960,7 +1996,7 @@ R_5:
     edx = M32(ea);
     /* 006e7a2f  mov ecx, edi */
     ecx = edi;
-    /* 006e7a31  call 0xa03770 */
+    /* 006e7a31  call 0xa03770  ; bfv_vector_shift */
     t = 0x00a03770u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7990_6;
@@ -1981,7 +2017,7 @@ R_6:
 L_006e7a40:
     /* 006e7a40  mov ecx, edi */
     ecx = edi;
-    /* 006e7a42  call 0x6f7000 */
+    /* 006e7a42  call 0x6f7000  ; bfv_vector_fill_range */
     t = 0x006f7000u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7990_7;
@@ -2023,7 +2059,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7a60  dice::ref2::world::SoundObject  (vtable store) */
+/* 006e7a60  SoundObject::SoundObject  (vtable store)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7a60, bfv_client_l1_body_006e7a60);
 void bfv_client_l1_body_006e7a60(struct bfv_cpu *c)
 {
@@ -2038,7 +2076,7 @@ void bfv_client_l1_body_006e7a60(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 006e7a64  mov dword ptr [eax], 0xba33bc */
+    /* 006e7a64  mov dword ptr [eax], 0xba33bc  ; vtable SoundObject */
     ea = (uint32_t)(eax);
     M32(ea) = 0xba33bcu;
     /* 006e7a6a  mov dword ptr [eax + 0xc], ecx */
@@ -2064,7 +2102,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7a80  (between same file) */
+/* 006e7a80  std::vector_ptr::push_back_006e7a80  (between same file)
+ * called by: SoundObject::vf1
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7a80, bfv_client_l1_body_006e7a80);
 BFV_L1_RESUME(bfv_client_l1r_006e7a80_1, bfv_client_l1_body_006e7a80, 1);
 void bfv_client_l1_body_006e7a80(struct bfv_cpu *c)
@@ -2151,7 +2191,7 @@ L_006e7a94:
     /* 006e7aa4  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 006e7aa7  mov edx, dword ptr [esp + 8] */
+    /* 006e7aa7  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 006e7aab  mov edx, dword ptr [edx] */
@@ -2178,7 +2218,7 @@ L_006e7a94:
     esp += 8;
     goto out;
 L_006e7ab9:
-    /* 006e7ab9  mov edx, dword ptr [esp + 8] */
+    /* 006e7ab9  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 006e7abd  mov eax, dword ptr [ecx + 8] */
@@ -2196,7 +2236,7 @@ L_006e7ab9:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006e7ac4  call 0x6e7830 */
+    /* 006e7ac4  call 0x6e7830  ; std::vector_ptr::_Insert_n_006e7830 */
     t = 0x006e7830u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7a80_1;
@@ -2218,7 +2258,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e7ad0  dice::ref2::world::SoundObject  (virtual method) */
+/* 006e7ad0  SoundObject::vf1  (virtual method)
+ * overrides: ISoundObject::vf1  (2 classes implement it)
+ * class: dice::ref2::world::SoundObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7ad0, bfv_client_l1_body_006e7ad0);
 BFV_L1_RESUME(bfv_client_l1r_006e7ad0_1, bfv_client_l1_body_006e7ad0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e7ad0_2, bfv_client_l1_body_006e7ad0, 2);
@@ -2246,7 +2289,7 @@ void bfv_client_l1_body_006e7ad0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 006e7ad1  mov ebx, dword ptr [esp + 8] */
+    /* 006e7ad1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 006e7ad5  test ebx, ebx */
@@ -2260,7 +2303,7 @@ void bfv_client_l1_body_006e7ad0(struct bfv_cpu *c)
     edi = ecx;
     /* 006e7ada  jne 0x6e7af4 */
     if (!zf) goto L_006e7af4;
-    /* 006e7adc  lea eax, [esp + 0xc] */
+    /* 006e7adc  lea eax, [esp + 0xc]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 006e7ae0  push eax */
     t = eax;
@@ -2268,10 +2311,10 @@ void bfv_client_l1_body_006e7ad0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006e7ae1  lea ecx, [edi + 8] */
     ecx = (uint32_t)(edi + 0x00000008u);
-    /* 006e7ae4  mov dword ptr [esp + 0x10], ebx */
+    /* 006e7ae4  mov dword ptr [esp + 0x10], ebx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ebx;
-    /* 006e7ae8  call 0x6e7a80 */
+    /* 006e7ae8  call 0x6e7a80  ; std::vector_ptr::push_back_006e7a80 */
     t = 0x006e7a80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7ad0_1;
@@ -2299,7 +2342,7 @@ L_006e7af4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006e7af5  call 0xa88140 */
+    /* 006e7af5  call 0xa88140  ; world_00a88140 */
     t = 0x00a88140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7ad0_2;
@@ -2317,7 +2360,7 @@ R_2:
     M32(esp) = t;
     /* 006e7aff  mov ecx, esi */
     ecx = esi;
-    /* 006e7b01  mov dword ptr [esp + 0x14], esi */
+    /* 006e7b01  mov dword ptr [esp + 0x14], esi  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = esi;
     /* 006e7b05  call dword ptr [edx + 4] */
@@ -2350,7 +2393,7 @@ R_3:
     c->eip = t;
     goto out;
 R_4:
-    /* 006e7b14  lea ecx, [esp + 0x10] */
+    /* 006e7b14  lea ecx, [esp + 0x10]  ; &arg_0 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 006e7b18  push ecx */
     t = ecx;
@@ -2358,10 +2401,10 @@ R_4:
     M32(esp) = t;
     /* 006e7b19  lea ecx, [edi + 8] */
     ecx = (uint32_t)(edi + 0x00000008u);
-    /* 006e7b1c  mov dword ptr [esp + 0x14], 0 */
+    /* 006e7b1c  mov dword ptr [esp + 0x14], 0  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x0u;
-    /* 006e7b24  call 0x6e7a80 */
+    /* 006e7b24  call 0x6e7a80  ; std::vector_ptr::push_back_006e7a80 */
     t = 0x006e7a80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7ad0_5;
@@ -2389,7 +2432,7 @@ R_5:
     esp += 8;
     goto out;
 L_006e7b31:
-    /* 006e7b31  lea edx, [esp + 0x10] */
+    /* 006e7b31  lea edx, [esp + 0x10]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000010u);
     /* 006e7b35  push edx */
     t = edx;
@@ -2397,7 +2440,7 @@ L_006e7b31:
     M32(esp) = t;
     /* 006e7b36  lea ecx, [edi + 8] */
     ecx = (uint32_t)(edi + 0x00000008u);
-    /* 006e7b39  call 0x6e7a80 */
+    /* 006e7b39  call 0x6e7a80  ; std::vector_ptr::push_back_006e7a80 */
     t = 0x006e7a80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7ad0_6;

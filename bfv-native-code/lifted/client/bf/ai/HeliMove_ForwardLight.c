@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00933510  dice::bf::ai::HeliMove_ForwardLight  (vtable store) */
+/* 00933510  HeliMove_ForwardLight::HeliMove_ForwardLight  (vtable store)
+ * class: dice::bf::ai::HeliMove_ForwardLight
+ * called by: HeliMoveControlLight::createMoves
+ */
 BFV_L1_ENTRY(bfv_client_l1_00933510, bfv_client_l1_body_00933510);
 BFV_L1_RESUME(bfv_client_l1r_00933510_1, bfv_client_l1_body_00933510, 1);
 BFV_L1_RESUME(bfv_client_l1r_00933510_2, bfv_client_l1_body_00933510, 2);
@@ -27,66 +30,66 @@ void bfv_client_l1_body_00933510(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00933511  push 0x41800000 */
+    /* 00933511  push 0x41800000  ; 16.0f */
     t = 0x41800000u;
     esp -= 4;
     M32(esp) = t;
-    /* 00933516  push 0x41400000 */
+    /* 00933516  push 0x41400000  ; 12.0f */
     t = 0x41400000u;
     esp -= 4;
     M32(esp) = t;
-    /* 0093351b  push 0x40f00000 */
+    /* 0093351b  push 0x40f00000  ; 7.5f */
     t = 0x40f00000u;
     esp -= 4;
     M32(esp) = t;
-    /* 00933520  push 0x40000000 */
+    /* 00933520  push 0x40000000  ; 2.0f */
     t = 0x40000000u;
     esp -= 4;
     M32(esp) = t;
-    /* 00933525  push 0x3fc00000 */
+    /* 00933525  push 0x3fc00000  ; 1.5f */
     t = 0x3fc00000u;
     esp -= 4;
     M32(esp) = t;
-    /* 0093352a  mov eax, dword ptr [esp + 0x38] */
+    /* 0093352a  mov eax, dword ptr [esp + 0x38]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000038u);
     eax = M32(ea);
-    /* 0093352e  push 0x3f000000 */
+    /* 0093352e  push 0x3f000000  ; 0.5f */
     t = 0x3f000000u;
     esp -= 4;
     M32(esp) = t;
-    /* 00933533  push 0x3f19999a */
+    /* 00933533  push 0x3f19999a  ; 0.6f */
     t = 0x3f19999au;
     esp -= 4;
     M32(esp) = t;
-    /* 00933538  push 0x3f800000 */
+    /* 00933538  push 0x3f800000  ; 1.0f */
     t = 0x3f800000u;
     esp -= 4;
     M32(esp) = t;
-    /* 0093353d  push 0x40400000 */
+    /* 0093353d  push 0x40400000  ; 3.0f */
     t = 0x40400000u;
     esp -= 4;
     M32(esp) = t;
-    /* 00933542  push 0x40200000 */
+    /* 00933542  push 0x40200000  ; 2.5f */
     t = 0x40200000u;
     esp -= 4;
     M32(esp) = t;
-    /* 00933547  push 0x3d4ccccd */
+    /* 00933547  push 0x3d4ccccd  ; 0.05f */
     t = 0x3d4ccccdu;
     esp -= 4;
     M32(esp) = t;
-    /* 0093354c  push 0xbdcccccd */
+    /* 0093354c  push 0xbdcccccd  ; -0.1f */
     t = 0xbdcccccdu;
     esp -= 4;
     M32(esp) = t;
-    /* 00933551  push 0xbe4ccccd */
+    /* 00933551  push 0xbe4ccccd  ; -0.2f */
     t = 0xbe4ccccdu;
     esp -= 4;
     M32(esp) = t;
-    /* 00933556  push 0x3f733333 */
+    /* 00933556  push 0x3f733333  ; 0.95f */
     t = 0x3f733333u;
     esp -= 4;
     M32(esp) = t;
-    /* 0093355b  push 0x428c0000 */
+    /* 0093355b  push 0x428c0000  ; 70.0f */
     t = 0x428c0000u;
     esp -= 4;
     M32(esp) = t;
@@ -116,7 +119,7 @@ void bfv_client_l1_body_00933510(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0093356d  lea edx, [esp + 0x6c] */
+    /* 0093356d  lea edx, [esp + 0x6c]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x0000006cu);
     /* 00933571  mov dword ptr [ecx + 0x18], 0xf */
     ea = (uint32_t)(ecx + 0x00000018u);
@@ -131,7 +134,7 @@ void bfv_client_l1_body_00933510(struct bfv_cpu *c)
     /* 0093357c  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 0093357f  call 0x4019f0 */
+    /* 0093357f  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00933510_1;
@@ -140,32 +143,32 @@ void bfv_client_l1_body_00933510(struct bfv_cpu *c)
 R_1:
     /* 00933584  mov ecx, esi */
     ecx = esi;
-    /* 00933586  call 0x933170 */
+    /* 00933586  call 0x933170  ; HeliMove_Forward::HeliMove_Forward */
     t = 0x00933170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00933510_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0093358b  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 0093358b  cmp dword ptr [esp + 0x20], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00933590  mov dword ptr [esi], 0xbeed94 */
+    /* 00933590  mov dword ptr [esi], 0xbeed94  ; vtable HeliMove_ForwardLight */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbeed94u;
     /* 00933596  jb 0x9335a5 */
     if (cf) goto L_009335a5;
-    /* 00933598  mov eax, dword ptr [esp + 0xc] */
+    /* 00933598  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0093359c  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0093359d  call 0x403680 */
+    /* 0093359d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00933510_3;

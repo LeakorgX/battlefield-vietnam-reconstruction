@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 006f13e0  dice::ref2::world::PhysicsNodeManager  (virtual method) */
+/* 006f13e0  PhysicsNodeManager::vf5  (virtual method)
+ * class: dice::ref2::world::PhysicsNodeManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f13e0, bfv_client_l1_body_006f13e0);
 BFV_L1_RESUME(bfv_client_l1r_006f13e0_1, bfv_client_l1_body_006f13e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f13e0_2, bfv_client_l1_body_006f13e0, 2);
@@ -29,7 +31,7 @@ void bfv_client_l1_body_006f13e0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006f13e2  mov edi, dword ptr [esp + 0xc] */
+    /* 006f13e2  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 006f13e6  test edi, edi */
@@ -90,7 +92,7 @@ R_1:
     /* 006f140f  mov dword ptr [ecx + 4], edx */
     ea = (uint32_t)(ecx + 0x00000004u);
     M32(ea) = edx;
-    /* 006f1412  call 0x403680 */
+    /* 006f1412  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f13e0_2;
@@ -134,7 +136,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f1430  dice::ref2::world::PhysicsNodeManager  (virtual method) */
+/* 006f1430  PhysicsNodeManager::vf6  (virtual method)
+ * class: dice::ref2::world::PhysicsNodeManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f1430, bfv_client_l1_body_006f1430);
 BFV_L1_RESUME(bfv_client_l1r_006f1430_1, bfv_client_l1_body_006f1430, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f1430_2, bfv_client_l1_body_006f1430, 2);
@@ -281,11 +285,11 @@ R_3:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 006f1484  push 0xce74d8 */
+    /* 006f1484  push 0xce74d8  ; typeid(WireLink) */
     t = 0xce74d8u;
     esp -= 4;
     M32(esp) = t;
-    /* 006f1489  push 0xca7454 */
+    /* 006f1489  push 0xca7454  ; typeid(IObject) */
     t = 0xca7454u;
     esp -= 4;
     M32(esp) = t;
@@ -307,7 +311,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006f1496  call 0x7c334d */
+    /* 006f1496  call 0x7c334d  ; __RTDynamicCast */
     t = 0x007c334du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1430_5;
@@ -419,7 +423,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f14e0  dice::ref2::world::PhysicsNodeManager  (vtable store) */
+/* 006f14e0  PhysicsNodeManager::PhysicsNodeManager  (vtable store)
+ * class: dice::ref2::world::PhysicsNodeManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f14e0, bfv_client_l1_body_006f14e0);
 BFV_L1_RESUME(bfv_client_l1r_006f14e0_1, bfv_client_l1_body_006f14e0, 1);
 void bfv_client_l1_body_006f14e0(struct bfv_cpu *c)
@@ -445,7 +451,7 @@ void bfv_client_l1_body_006f14e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006f14e4  lea edi, [esi + 8] */
     edi = (uint32_t)(esi + 0x00000008u);
-    /* 006f14e7  mov dword ptr [esi], 0xba3b74 */
+    /* 006f14e7  mov dword ptr [esi], 0xba3b74  ; vtable PhysicsNodeManager */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba3b74u;
     /* 006f14ed  mov ecx, edi */
@@ -453,7 +459,7 @@ void bfv_client_l1_body_006f14e0(struct bfv_cpu *c)
     /* 006f14ef  mov dword ptr [esi + 4], 1 */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = 0x1u;
-    /* 006f14f6  call 0x6f12d0 */
+    /* 006f14f6  call 0x6f12d0  ; std::list::_Buyheadnode_12_006f12d0 */
     t = 0x006f12d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f14e0_1;
@@ -487,7 +493,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006f1510  dice::ref2::world::PhysicsNodeManager  (virtual method) */
+/* 006f1510  PhysicsNodeManager::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::PhysicsNodeManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f1510, bfv_client_l1_body_006f1510);
 void bfv_client_l1_body_006f1510(struct bfv_cpu *c)
 {
@@ -496,12 +505,12 @@ void bfv_client_l1_body_006f1510(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 006f1510  mov edx, dword ptr [0xb42718] */
+    /* 006f1510  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 006f1516  mov eax, ecx */
     eax = ecx;
-    /* 006f1518  mov ecx, dword ptr [esp + 4] */
+    /* 006f1518  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006f151c  cmp ecx, edx */
@@ -554,8 +563,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006f1540  dice::ref2::world::PhysicsNodeManager  (virtual method)
- * strings: "size:    X:%-5f Y:%-5f Z:%-5f\ndrag:    X:%-5f Y:%-5f Z:%..." */
+/* 006f1540  PhysicsNodeManager::vf7  (virtual method)
+ * class: dice::ref2::world::PhysicsNodeManager
+ * strings: "size:    X:%-5f Y:%-5f Z:%-5f\ndrag:    X:%-5f Y:%-5f Z:%..."
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f1540, bfv_client_l1_body_006f1540);
 BFV_L1_RESUME(bfv_client_l1r_006f1540_1, bfv_client_l1_body_006f1540, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f1540_2, bfv_client_l1_body_006f1540, 2);
@@ -639,7 +650,7 @@ void bfv_client_l1_body_006f1540(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 006f154c  mov eax, dword ptr [0xcff7cc] */
+    /* 006f154c  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 006f1551  push ebx */
@@ -729,7 +740,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 006f15ad  mov ecx, dword ptr [0xba5a68] */
+    /* 006f15ad  mov ecx, dword ptr [0xba5a68]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00ba5a68u);
     ecx = M32(ea);
     /* 006f15b3  mov edx, dword ptr [eax] */
@@ -775,10 +786,10 @@ R_3:
     c->eip = t;
     goto out;
 R_4:
-    /* 006f15c9  mov ecx, dword ptr [0xb8100c] */
+    /* 006f15c9  mov ecx, dword ptr [0xb8100c]  ; PlayerControlObjectTemplate::classID */
     ea = (uint32_t)(0x00b8100cu);
     ecx = M32(ea);
-    /* 006f15cf  mov edx, dword ptr [0xb77f44] */
+    /* 006f15cf  mov edx, dword ptr [0xb77f44]  ; DistCompareLodSelector::classID */
     ea = (uint32_t)(0x00b77f44u);
     edx = M32(ea);
     /* 006f15d5  push ecx */
@@ -789,12 +800,12 @@ R_4:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006f15d7  mov edx, dword ptr [0xb77f1c] */
+    /* 006f15d7  mov edx, dword ptr [0xb77f1c]  ; LodObjectTemplate::classID */
     ea = (uint32_t)(0x00b77f1cu);
     edx = M32(ea);
     /* 006f15dd  mov ecx, eax */
     ecx = eax;
-    /* 006f15df  call 0x66b230 */
+    /* 006f15df  call 0x66b230  ; IgnoreObjectAndFlagPredicator_0066b230 */
     t = 0x0066b230u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_5;
@@ -827,7 +838,7 @@ L_006f15ee:
     edx = (uint32_t)(esp + 0x00000058u);
     /* 006f15fc  mov ecx, edi */
     ecx = edi;
-    /* 006f15fe  call 0x6828a0 */
+    /* 006f15fe  call 0x6828a0  ; PhysicsNode_006828a0 */
     t = 0x006828a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_6;
@@ -928,7 +939,7 @@ R_8:
     /* 006f1658  fmul dword ptr [esp + 0x18] */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006f165c  fmul dword ptr [0xb92000] */
+    /* 006f165c  fmul dword ptr [0xb92000]  ; = 0.785f */
     ea = (uint32_t)(0x00b92000u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006f1662  fstp dword ptr [esp + 0x24] */
@@ -946,7 +957,7 @@ R_8:
     /* 006f1672  fmul dword ptr [esp + 0x18] */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006f1676  fmul dword ptr [0xb92000] */
+    /* 006f1676  fmul dword ptr [0xb92000]  ; = 0.785f */
     ea = (uint32_t)(0x00b92000u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006f167c  fstp dword ptr [esp + 0x4c] */
@@ -958,7 +969,7 @@ R_8:
     /* 006f1684  fmul dword ptr [esp + 0x10] */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006f1688  fmul dword ptr [0xb92000] */
+    /* 006f1688  fmul dword ptr [0xb92000]  ; = 0.785f */
     ea = (uint32_t)(0x00b92000u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006f168e  fstp dword ptr [esp + 0x20] */
@@ -1011,7 +1022,7 @@ R_10:
     /* 006f16bb  mov byte ptr [esp + 0xa4], bl */
     ea = (uint32_t)(esp + 0x000000a4u);
     M8(ea) = LO8(ebx);
-    /* 006f16c2  call 0x4019f0 */
+    /* 006f16c2  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_11;
@@ -1034,7 +1045,7 @@ R_11:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006f16dc  call 0x410520 */
+    /* 006f16dc  call 0x410520  ; std::operator_plus_string_cstr */
     t = 0x00410520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_12;
@@ -1061,7 +1072,7 @@ R_12:
     M32(esp) = t;
     /* 006f16e8  lea ecx, [esp + 0xbc] */
     ecx = (uint32_t)(esp + 0x000000bcu);
-    /* 006f16ef  call 0x403160 */
+    /* 006f16ef  call 0x403160  ; std::string::append_substr */
     t = 0x00403160u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_13;
@@ -1083,7 +1094,7 @@ R_13:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006f1703  call 0x403680 */
+    /* 006f1703  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_14;
@@ -1303,7 +1314,7 @@ R_21:
     /* 006f17d5  fstp qword ptr [esp] */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006f17d8  push 0xba3b98 */
+    /* 006f17d8  push 0xba3b98  ; "size:    X:%-5f Y:%-5f Z:%-5f\ndrag:    X:%-5f ..." */
     t = 0xba3b98u;
     esp -= 4;
     M32(esp) = t;
@@ -1311,7 +1322,7 @@ R_21:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006f17de  call 0x41f8a0 */
+    /* 006f17de  call 0x41f8a0  ; string_format */
     t = 0x0041f8a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_22;
@@ -1338,7 +1349,7 @@ R_22:
     M32(esp) = t;
     /* 006f17ea  lea ecx, [esp + 0xbc] */
     ecx = (uint32_t)(esp + 0x000000bcu);
-    /* 006f17f1  call 0x403160 */
+    /* 006f17f1  call 0x403160  ; std::string::append_substr */
     t = 0x00403160u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_23;
@@ -1364,7 +1375,7 @@ R_23:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006f1808  call 0x403680 */
+    /* 006f1808  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_24;
@@ -1404,7 +1415,7 @@ L_006f1810:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006f1832  call 0x403680 */
+    /* 006f1832  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_25;
@@ -1477,7 +1488,7 @@ L_006f1866:
     /* 006f1880  mov byte ptr [esi + 4], bl */
     ea = (uint32_t)(esi + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 006f1883  call 0x4019f0 */
+    /* 006f1883  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_26;
@@ -1499,7 +1510,7 @@ R_26:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006f189a  call 0x403680 */
+    /* 006f189a  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_27;
@@ -1518,7 +1529,7 @@ L_006f18a2:
     ecx = M32(ea);
     /* 006f18a9  mov eax, esi */
     eax = esi;
-    /* 006f18ab  call 0x7c2019 */
+    /* 006f18ab  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f1540_28;
@@ -1554,7 +1565,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f18c0  dice::ref2::world::PhysicsNodeManager  (virtual method) */
+/* 006f18c0  PhysicsNodeManager::vf4  (virtual method)
+ * class: dice::ref2::world::PhysicsNodeManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f18c0, bfv_client_l1_body_006f18c0);
 BFV_L1_RESUME(bfv_client_l1r_006f18c0_1, bfv_client_l1_body_006f18c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f18c0_2, bfv_client_l1_body_006f18c0, 2);
@@ -1578,7 +1591,7 @@ void bfv_client_l1_body_006f18c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006f18c1  mov ebp, ecx */
     ebp = ecx;
-    /* 006f18c3  mov ecx, dword ptr [esp + 8] */
+    /* 006f18c3  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006f18c7  mov eax, dword ptr [ecx] */
@@ -1620,7 +1633,7 @@ R_1:
     eax = M32(ea);
     /* 006f18de  lea esi, [ebp + 8] */
     esi = (uint32_t)(ebp + 0x00000008u);
-    /* 006f18e1  lea edx, [esp + 0x14] */
+    /* 006f18e1  lea edx, [esp + 0x14]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000014u);
     /* 006f18e5  push edx */
     t = edx;
@@ -1636,7 +1649,7 @@ R_1:
     M32(esp) = t;
     /* 006f18e8  mov ecx, esi */
     ecx = esi;
-    /* 006f18ea  call 0x6f1360 */
+    /* 006f18ea  call 0x6f1360  ; std::list::_Buynode_006f1360 */
     t = 0x006f1360u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f18c0_2;
@@ -1651,7 +1664,7 @@ R_2:
     ecx = esi;
     /* 006f18f3  mov ebx, eax */
     ebx = eax;
-    /* 006f18f5  call 0x489ee0 */
+    /* 006f18f5  call 0x489ee0  ; std::list::_Incsize */
     t = 0x00489ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f18c0_3;
@@ -1673,7 +1686,7 @@ R_3:
     /* 006f1905  mov eax, dword ptr [edx] */
     ea = (uint32_t)(edx);
     eax = M32(ea);
-    /* 006f1907  mov ecx, dword ptr [esp + 0x14] */
+    /* 006f1907  mov ecx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 006f190b  pop edi */
@@ -1707,7 +1720,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008b37d0  dice::ref2::world::PhysicsNodeManager  (virtual method) */
+/* 008b37d0  PhysicsNodeManager::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::PhysicsNodeManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b37d0, bfv_client_l1_body_008b37d0);
 BFV_L1_RESUME(bfv_client_l1r_008b37d0_1, bfv_client_l1_body_008b37d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008b37d0_2, bfv_client_l1_body_008b37d0, 2);
@@ -1731,18 +1747,18 @@ void bfv_client_l1_body_008b37d0(struct bfv_cpu *c)
     esi = ecx;
     /* 008b37d3  lea ecx, [esi + 8] */
     ecx = (uint32_t)(esi + 0x00000008u);
-    /* 008b37d6  call 0x9ed520 */
+    /* 008b37d6  call 0x9ed520  ; std::vector::_Tidy */
     t = 0x009ed520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b37d0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008b37db  test byte ptr [esp + 8], 1 */
+    /* 008b37db  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 008b37e0  mov dword ptr [esi], 0xb4274c */
+    /* 008b37e0  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 008b37e6  je 0x8b37f1 */
@@ -1751,7 +1767,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008b37e9  call 0x403680 */
+    /* 008b37e9  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b37d0_2;

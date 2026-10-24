@@ -1,0 +1,5 @@
+## file
+Behaviour that scores a soldier taking cover.
+
+## 009abed0
+evaluate: when not usable it clears the per-bot state and returns the stored weight. Reads the soldier's seat, vehicle, the IAIEnvironment vf1 value, the threat value (slot 0x84) and control info, then fills 8 candidate records (handles -1) and scores the cover objects around the soldier.

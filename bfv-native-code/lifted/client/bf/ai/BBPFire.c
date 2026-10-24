@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f57c0  dice::bf::ai::BBPFire  (vtable store) */
+/* 009f57c0  BBPFire::~BBPFire  (vtable store)
+ * class: dice::bf::ai::BBPFire
+ * called by: BBPFireInfantery::deleting_dtor, BBPFire2d::deleting_dtor, BBPFire2dDriver::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f57c0, bfv_client_l1_body_009f57c0);
 BFV_L1_RESUME(bfv_client_l1r_009f57c0_1, bfv_client_l1_body_009f57c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f57c0_2, bfv_client_l1_body_009f57c0, 2);
@@ -34,10 +37,10 @@ void bfv_client_l1_body_009f57c0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f57c7  mov dword ptr [esi], 0xbfb8d4 */
+    /* 009f57c7  mov dword ptr [esi], 0xbfb8d4  ; vtable BBPFire */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfb8d4u;
-    /* 009f57cd  call 0x403680 */
+    /* 009f57cd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f57c0_1;
@@ -51,7 +54,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009f57d6  call 0x403680 */
+    /* 009f57d6  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f57c0_2;
@@ -70,7 +73,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 009f57e1  jmp 0x9ee450 */
+    /* 009f57e1  jmp 0x9ee450  ; BBPPattern::~BBPPattern */
     c->eip = 0x009ee450u;
     goto out;
 out: __attribute__((unused));
@@ -80,7 +83,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f57f0  dice::bf::ai::BBPFire  (virtual method) */
+/* 009f57f0  BBPFire::deleting_dtor  (virtual method)
+ * overrides: BBPPattern::vf4  (33 classes implement it)
+ * class: dice::bf::ai::BBPFire
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f57f0, bfv_client_l1_body_009f57f0);
 BFV_L1_RESUME(bfv_client_l1r_009f57f0_1, bfv_client_l1_body_009f57f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f57f0_2, bfv_client_l1_body_009f57f0, 2);
@@ -113,10 +119,10 @@ void bfv_client_l1_body_009f57f0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f57f7  mov dword ptr [esi], 0xbfb8d4 */
+    /* 009f57f7  mov dword ptr [esi], 0xbfb8d4  ; vtable BBPFire */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfb8d4u;
-    /* 009f57fd  call 0x403680 */
+    /* 009f57fd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f57f0_1;
@@ -130,7 +136,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009f5806  call 0x403680 */
+    /* 009f5806  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f57f0_2;
@@ -145,14 +151,14 @@ R_2:
     esp = r;
     /* 009f580e  mov ecx, esi */
     ecx = esi;
-    /* 009f5810  call 0x9ee450 */
+    /* 009f5810  call 0x9ee450  ; BBPPattern::~BBPPattern */
     t = 0x009ee450u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f57f0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 009f5815  test byte ptr [esp + 8], 1 */
+    /* 009f5815  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -162,7 +168,7 @@ R_3:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f581d  call 0x403680 */
+    /* 009f581d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f57f0_4;
@@ -193,7 +199,11 @@ out: __attribute__((unused));
 }
 
 
-/* 009f5830  dice::bf::ai::BBPFire  (vtable store) */
+/* 009f5830  BBPFire::BBPFire  (vtable store)
+ * class: dice::bf::ai::BBPFire
+ * also entered at 009f5880: BAPAChangeWeapon::vf3, BAPConObjectSpeed::vf1
+ * called by: BBPFireInfantery::BBPFireInfantery, BBPFire2d::BBPFire2d, BBPFire2dDriver::BBPFire2dDriver, BBPFire3d::BBPFire3d
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f5830, bfv_client_l1_body_009f5830);
 BFV_L1_RESUME(bfv_client_l1r_009f5830_1, bfv_client_l1_body_009f5830, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f5830_2, bfv_client_l1_body_009f5830, 2);
@@ -221,23 +231,23 @@ void bfv_client_l1_body_009f5830(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f5831  mov esi, ecx */
     esi = ecx;
-    /* 009f5833  call 0x9ee4a0 */
+    /* 009f5833  call 0x9ee4a0  ; BBPPattern::BBPPattern */
     t = 0x009ee4a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f5830_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009f5838  mov dword ptr [esi], 0xbfb8d4 */
+    /* 009f5838  mov dword ptr [esi], 0xbfb8d4  ; vtable BBPFire */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfb8d4u;
-    /* 009f583e  mov ecx, dword ptr [0xe0eb20] */
+    /* 009f583e  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 009f5844  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 009f5846  call dword ptr [eax + 4] */
+    /* 009f5846  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -259,7 +269,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f584d  call 0x403610 */
+    /* 009f584d  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f5830_3;
@@ -269,7 +279,7 @@ R_3:
     /* 009f5852  mov dword ptr [esi + 0xc], eax */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = eax;
-    /* 009f5855  mov ecx, dword ptr [0xe0eb20] */
+    /* 009f5855  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 009f585b  mov edx, dword ptr [ecx] */
@@ -281,7 +291,7 @@ R_3:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 009f5860  call dword ptr [edx + 4] */
+    /* 009f5860  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -303,7 +313,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f5867  call 0x403610 */
+    /* 009f5867  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f5830_5;

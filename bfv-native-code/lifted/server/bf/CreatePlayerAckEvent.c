@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 004c1140  dice::bf::CreatePlayerAckEvent  (vtable store) */
+/* 004c1140  CreatePlayerAckEvent::create  (vtable store)
+ * class: dice::bf::CreatePlayerAckEvent
+ * also entered at 004c1170: BAPConObjectExists::vf1, BAPWrapperFinished::vf3, CreatePlayerAckEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c1140, bfv_server_l1_body_004c1140);
 BFV_L1_RESUME(bfv_server_l1r_004c1140_1, bfv_server_l1_body_004c1140, 1);
 void bfv_server_l1_body_004c1140(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_004c1140(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c1140  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c1140  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c1146  mov eax, dword ptr [ecx] */
@@ -53,7 +56,7 @@ R_1:
     /* 004c1158  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c115f  mov dword ptr [eax], 0x81f6ec */
+    /* 004c115f  mov dword ptr [eax], 0x81f6ec  ; vtable CreatePlayerAckEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f6ecu;
     /* 004c1165  ret */
@@ -76,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c1180  dice::bf::CreatePlayerAckEvent  (vtable store) */
+/* 004c1180  CreatePlayerAckEvent::create  (vtable store)
+ * class: dice::bf::CreatePlayerAckEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c1180, bfv_server_l1_body_004c1180);
 BFV_L1_RESUME(bfv_server_l1r_004c1180_1, bfv_server_l1_body_004c1180, 1);
 void bfv_server_l1_body_004c1180(struct bfv_cpu *c)
@@ -90,7 +95,7 @@ void bfv_server_l1_body_004c1180(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c1180  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c1180  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c1186  mov eax, dword ptr [ecx] */
@@ -124,7 +129,7 @@ R_1:
     /* 004c1198  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c119f  mov dword ptr [eax], 0x81f6ec */
+    /* 004c119f  mov dword ptr [eax], 0x81f6ec  ; vtable CreatePlayerAckEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f6ecu;
     /* 004c11a5  jmp 0x4c11a9 */
@@ -135,7 +140,7 @@ L_004c11a7:
     F_LOGIC(32, r);
     eax = r;
 L_004c11a9:
-    /* 004c11a9  mov ecx, dword ptr [esp + 4] */
+    /* 004c11a9  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 004c11ad  push esi */

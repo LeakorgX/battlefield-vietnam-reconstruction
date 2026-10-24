@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBRoam behaviour.
+
+## 00940f10
+vf0: picks the parameter object by type name: "BBPRoam2d" (0x10 bytes) or "BBPRoam3d" (0x14 bytes); null when neither matches. Allocates a 0x30-byte BBRoam with a copy of the passed-in list, then frees the passed-in list.

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005ac4d0  dice::bf::AckEvent  (vtable store) */
+/* 005ac4d0  AckEvent::ctor_dtor  (vtable store)
+ * class: dice::bf::AckEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ac4d0, bfv_client_l1_body_005ac4d0);
 void bfv_client_l1_body_005ac4d0(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_005ac4d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, ea;
-    /* 005ac4d0  mov edx, dword ptr [esp + 4] */
+    /* 005ac4d0  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 005ac4d4  mov eax, ecx */
@@ -26,7 +28,7 @@ void bfv_client_l1_body_005ac4d0(struct bfv_cpu *c)
     /* 005ac4d7  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ac4de  mov dword ptr [eax], 0xb75bb0 */
+    /* 005ac4de  mov dword ptr [eax], 0xb75bb0  ; vtable AckEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb75bb0u;
     /* 005ac4e4  mov esi, dword ptr [edx] */
@@ -70,7 +72,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005acb80  dice::bf::AckEvent  (virtual method) */
+/* 005acb80  AckEvent::readFromStream  (virtual method)
+ * class: dice::bf::AckEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005acb80, bfv_client_l1_body_005acb80);
 BFV_L1_RESUME(bfv_client_l1r_005acb80_1, bfv_client_l1_body_005acb80, 1);
 void bfv_client_l1_body_005acb80(struct bfv_cpu *c)
@@ -88,7 +92,7 @@ void bfv_client_l1_body_005acb80(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005acb81  mov esi, dword ptr [esp + 8] */
+    /* 005acb81  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 005acb85  add ecx, 0xc */
@@ -107,7 +111,7 @@ void bfv_client_l1_body_005acb80(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005acb8e  mov ecx, esi */
     ecx = esi;
-    /* 005acb90  call 0x500b70 */
+    /* 005acb90  call 0x500b70  ; BitStream::readBits */
     t = 0x00500b70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005acb80_1;
@@ -164,7 +168,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ad020  dice::bf::AckEvent  (vtable store) */
+/* 005ad020  AckEvent::ctor_dtor  (vtable store)
+ * class: dice::bf::AckEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ad020, bfv_client_l1_body_005ad020);
 BFV_L1_RESUME(bfv_client_l1r_005ad020_1, bfv_client_l1_body_005ad020, 1);
 void bfv_client_l1_body_005ad020(struct bfv_cpu *c)
@@ -186,7 +192,7 @@ void bfv_client_l1_body_005ad020(struct bfv_cpu *c)
     edx = 0xb44284u;
     /* 005ad027  mov ecx, 0x1c */
     ecx = 0x1cu;
-    /* 005ad02c  call 0x5ad050 */
+    /* 005ad02c  call 0x5ad050  ; AckEvent::ctor_dtor_helper_005ad050 */
     t = 0x005ad050u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ad020_1;
@@ -201,7 +207,7 @@ R_1:
     /* 005ad035  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ad03c  mov dword ptr [eax], 0xb75bb0 */
+    /* 005ad03c  mov dword ptr [eax], 0xb75bb0  ; vtable AckEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb75bb0u;
     /* 005ad042  ret */
@@ -224,7 +230,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ad050  (between same file) */
+/* 005ad050  AckEvent::ctor_dtor_helper_005ad050  (between same file)
+ * called by: AckEvent::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ad050, bfv_client_l1_body_005ad050);
 BFV_L1_RESUME(bfv_client_l1r_005ad050_1, bfv_client_l1_body_005ad050, 1);
 void bfv_client_l1_body_005ad050(struct bfv_cpu *c)
@@ -246,7 +254,7 @@ void bfv_client_l1_body_005ad050(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005ad052  mov edi, dword ptr [esp + 0xc] */
+    /* 005ad052  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 005ad056  push edi */
@@ -255,7 +263,7 @@ void bfv_client_l1_body_005ad050(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005ad057  mov eax, ecx */
     eax = ecx;
-    /* 005ad059  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ad059  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ad05f  mov esi, dword ptr [ecx] */
@@ -296,7 +304,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ad070  dice::bf::AckEvent  (vtable store) */
+/* 005ad070  AckEvent::create  (vtable store)
+ * class: dice::bf::AckEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ad070, bfv_client_l1_body_005ad070);
 BFV_L1_RESUME(bfv_client_l1r_005ad070_1, bfv_client_l1_body_005ad070, 1);
 void bfv_client_l1_body_005ad070(struct bfv_cpu *c)
@@ -310,7 +320,7 @@ void bfv_client_l1_body_005ad070(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ad070  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ad070  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ad076  mov eax, dword ptr [ecx] */
@@ -345,7 +355,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005ad089  mov esi, dword ptr [esp + 8] */
+    /* 005ad089  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 005ad08d  push edi */
@@ -359,7 +369,7 @@ R_1:
     /* 005ad095  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ad09c  mov dword ptr [eax], 0xb75bb0 */
+    /* 005ad09c  mov dword ptr [eax], 0xb75bb0  ; vtable AckEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb75bb0u;
     /* 005ad0a2  rep movsd dword ptr es:[edi], dword ptr [esi] */
@@ -386,7 +396,7 @@ L_005ad0a9:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005ad0aa  mov esi, dword ptr [esp + 8] */
+    /* 005ad0aa  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 005ad0ae  push edi */
@@ -427,7 +437,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005b1770  dice::bf::AckEvent  (virtual method) */
+/* 005b1770  AckEvent::writeToStream  (virtual method)
+ * class: dice::bf::AckEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005b1770, bfv_client_l1_body_005b1770);
 BFV_L1_RESUME(bfv_client_l1r_005b1770_1, bfv_client_l1_body_005b1770, 1);
 BFV_L1_RESUME(bfv_client_l1r_005b1770_2, bfv_client_l1_body_005b1770, 2);
@@ -500,7 +512,7 @@ L_005b1777:
     edx = M32(ea);
     /* 005b1789  mov ecx, edi */
     ecx = edi;
-    /* 005b178b  call dword ptr [edx] */
+    /* 005b178b  call dword ptr [edx]  ; -> AckEvent::vf0 = AITemplateMobile::vf2 */
     ea = (uint32_t)(edx);
     t = M32(ea);
     esp -= 4;
@@ -526,7 +538,7 @@ R_1:
     M32(esp) = t;
     /* 005b179b  mov ecx, esi */
     ecx = esi;
-    /* 005b179d  call 0x500c50 */
+    /* 005b179d  call 0x500c50  ; BitStream::writeBits */
     t = 0x00500c50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005b1770_2;
@@ -549,7 +561,7 @@ R_2:
     M32(esp) = t;
     /* 005b17ab  mov ecx, esi */
     ecx = esi;
-    /* 005b17ad  call 0x500c50 */
+    /* 005b17ad  call 0x500c50  ; BitStream::writeBits */
     t = 0x00500c50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005b1770_3;

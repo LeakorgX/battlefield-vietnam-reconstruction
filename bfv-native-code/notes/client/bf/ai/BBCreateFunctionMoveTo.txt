@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBMoveTo (go to waypoint) behaviour.
+
+## 009407c0
+vf0: picks the parameter object by type name: "BBPGotoWaypoint2d", "BBPGotoWaypointBoat", "BBPGotoWaypoint3d" or "BBPGotoWaypointInfantery" (the last builds a BBPGotoWaypointSoldier; all 0xc bytes); null when none matches. Allocates a 0x30-byte BBMoveTo with a copy of the passed-in list, then frees the passed-in list.

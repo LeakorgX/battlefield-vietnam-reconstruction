@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00674a60  dice::ref2::world::ControlPointTemplate  (virtual method) */
+/* 00674a60  ControlPointTemplate::postLoad  (virtual method)
+ * overrides: ObjectTemplate::postLoad  (47 classes implement it)
+ * class: dice::ref2::world::ControlPointTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00674a60, bfv_client_l1_body_00674a60);
 BFV_L1_RESUME(bfv_client_l1r_00674a60_1, bfv_client_l1_body_00674a60, 1);
 BFV_L1_RESUME(bfv_client_l1r_00674a60_2, bfv_client_l1_body_00674a60, 2);
@@ -62,7 +65,7 @@ void bfv_client_l1_body_00674a60(struct bfv_cpu *c)
     /* 00674a7b  jmp 0x674a80 */
     goto L_00674a80;
 L_00674a80:
-    /* 00674a80  mov ecx, dword ptr [0xda21a8] */
+    /* 00674a80  mov ecx, dword ptr [0xda21a8]  ; g_pGeometryTemplateManager */
     ea = (uint32_t)(0x00da21a8u);
     ecx = M32(ea);
     /* 00674a86  mov edx, dword ptr [ecx] */
@@ -107,7 +110,7 @@ R_2:
 L_00674a9a:
     /* 00674a9a  lea ecx, [esp + 4] */
     ecx = (uint32_t)(esp + 0x00000004u);
-    /* 00674a9e  call 0x504c00 */
+    /* 00674a9e  call 0x504c00  ; std::_Tree::iterator::_Inc_2d */
     t = 0x00504c00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00674a60_3;
@@ -128,7 +131,7 @@ R_3:
 L_00674aaf:
     /* 00674aaf  mov ecx, esi */
     ecx = esi;
-    /* 00674ab1  call 0x6d0a80 */
+    /* 00674ab1  call 0x6d0a80  ; AnimatedBundleTemplate::postLoad */
     t = 0x006d0a80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00674a60_4;
@@ -159,7 +162,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00675540  dice::ref2::world::ControlPointTemplate  (vtable store) */
+/* 00675540  ControlPointTemplate::ControlPointTemplate  (vtable store)
+ * class: dice::ref2::world::ControlPointTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00675540, bfv_client_l1_body_00675540);
 BFV_L1_RESUME(bfv_client_l1r_00675540_1, bfv_client_l1_body_00675540, 1);
 BFV_L1_RESUME(bfv_client_l1r_00675540_2, bfv_client_l1_body_00675540, 2);
@@ -191,7 +196,7 @@ void bfv_client_l1_body_00675540(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00675543  mov esi, ecx */
     esi = ecx;
-    /* 00675545  call 0x6d3170 */
+    /* 00675545  call 0x6d3170  ; AnimatedBundleTemplate::AnimatedBundleTemplate */
     t = 0x006d3170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00675540_1;
@@ -202,7 +207,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     ebx = r;
-    /* 0067554c  mov dword ptr [esi], 0xb9101c */
+    /* 0067554c  mov dword ptr [esi], 0xb9101c  ; vtable ControlPointTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9101cu;
     /* 00675552  mov dword ptr [esi + 4], 0xb91000 */
@@ -214,10 +219,10 @@ R_1:
     /* 00675560  mov dword ptr [esi + 0x1bc], 0xb90fc8 */
     ea = (uint32_t)(esi + 0x000001bcu);
     M32(ea) = 0xb90fc8u;
-    /* 0067556a  mov dword ptr [esi + 0x2a0], 0x41200000 */
+    /* 0067556a  mov dword ptr [esi + 0x2a0], 0x41200000  ; field ObjectTemplate.radius, 10.0f */
     ea = (uint32_t)(esi + 0x000002a0u);
     M32(ea) = 0x41200000u;
-    /* 00675574  mov dword ptr [esi + 0x2a4], ebx */
+    /* 00675574  mov dword ptr [esi + 0x2a4], ebx  ; field ObjectTemplate.team */
     ea = (uint32_t)(esi + 0x000002a4u);
     M32(ea) = ebx;
     /* 0067557a  lea edi, [esi + 0x2c4] */
@@ -233,7 +238,7 @@ R_1:
     /* 00675592  mov byte ptr [esi + 0x2ac], bl */
     ea = (uint32_t)(esi + 0x000002acu);
     M8(ea) = LO8(ebx);
-    /* 00675598  call 0x4243e0 */
+    /* 00675598  call 0x4243e0  ; std::_Tree::_Buynode_head_48_004243e0 */
     t = 0x004243e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00675540_2;
@@ -298,7 +303,7 @@ R_2:
     /* 006755f1  mov dword ptr [esi + 0x2d4], eax */
     ea = (uint32_t)(esi + 0x000002d4u);
     M32(ea) = eax;
-    /* 006755f7  mov dword ptr [esi + 0x2e4], eax */
+    /* 006755f7  mov dword ptr [esi + 0x2e4], eax  ; field ObjectTemplate.conversionTime */
     ea = (uint32_t)(esi + 0x000002e4u);
     M32(ea) = eax;
     /* 006755fd  mov dword ptr [esi + 0x2ec], ebx */
@@ -310,22 +315,22 @@ R_2:
     /* 00675609  mov dword ptr [esi + 0x2f4], ebx */
     ea = (uint32_t)(esi + 0x000002f4u);
     M32(ea) = ebx;
-    /* 0067560f  mov dword ptr [esi + 0x2f8], 0xffffffff */
+    /* 0067560f  mov dword ptr [esi + 0x2f8], 0xffffffff  ; field ObjectTemplate.objectSpawnerId */
     ea = (uint32_t)(esi + 0x000002f8u);
     M32(ea) = 0xffffffffu;
-    /* 00675619  mov dword ptr [esi + 0x2fc], ebx */
+    /* 00675619  mov dword ptr [esi + 0x2fc], ebx  ; field ObjectTemplate.onlyTakeableByTeam */
     ea = (uint32_t)(esi + 0x000002fcu);
     M32(ea) = ebx;
-    /* 0067561f  mov dword ptr [esi + 0x300], ebx */
+    /* 0067561f  mov dword ptr [esi + 0x300], ebx  ; field ObjectTemplate.onlyAffectedByTeam */
     ea = (uint32_t)(esi + 0x00000300u);
     M32(ea) = ebx;
-    /* 00675625  mov dword ptr [esi + 0x304], ebx */
+    /* 00675625  mov dword ptr [esi + 0x304], ebx  ; field ObjectTemplate.areaValueTeam1/ObjectTemplate.setAreaValue */
     ea = (uint32_t)(esi + 0x00000304u);
     M32(ea) = ebx;
-    /* 0067562b  mov dword ptr [esi + 0x308], ebx */
+    /* 0067562b  mov dword ptr [esi + 0x308], ebx  ; field ObjectTemplate.areaValueTeam2/ObjectTemplate.setAreaValue */
     ea = (uint32_t)(esi + 0x00000308u);
     M32(ea) = ebx;
-    /* 00675631  mov dword ptr [esi + 0x30c], 0x410b3333 */
+    /* 00675631  mov dword ptr [esi + 0x30c], 0x410b3333  ; field ObjectTemplate.flagHeightOn3dMap, 8.7f */
     ea = (uint32_t)(esi + 0x0000030cu);
     M32(ea) = 0x410b3333u;
     /* 0067563b  mov eax, 0x41700000 */
@@ -333,7 +338,7 @@ R_2:
     /* 00675640  mov dword ptr [esi + 0x310], eax */
     ea = (uint32_t)(esi + 0x00000310u);
     M32(ea) = eax;
-    /* 00675646  mov dword ptr [esi + 0x314], 0x41c80000 */
+    /* 00675646  mov dword ptr [esi + 0x314], 0x41c80000  ; 25.0f */
     ea = (uint32_t)(esi + 0x00000314u);
     M32(ea) = 0x41c80000u;
     /* 00675650  mov dword ptr [esi + 0x318], eax */
@@ -353,7 +358,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00675661  call 0x403680 */
+    /* 00675661  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00675540_3;
@@ -401,7 +406,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006756f0  dice::ref2::world::ControlPointTemplate  (virtual method) */
+/* 006756f0  ControlPointTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::ControlPointTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006756f0, bfv_client_l1_body_006756f0);
 void bfv_client_l1_body_006756f0(struct bfv_cpu *c)
 {
@@ -410,12 +418,12 @@ void bfv_client_l1_body_006756f0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006756f0  mov edx, dword ptr [0xb77f14] */
+    /* 006756f0  mov edx, dword ptr [0xb77f14]  ; ControlPointTemplate::classID */
     ea = (uint32_t)(0x00b77f14u);
     edx = M32(ea);
     /* 006756f6  mov eax, ecx */
     eax = ecx;
-    /* 006756f8  mov ecx, dword ptr [esp + 4] */
+    /* 006756f8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006756fc  cmp ecx, edx */
@@ -425,7 +433,7 @@ void bfv_client_l1_body_006756f0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006756fe  je 0x675713 */
     if (zf) goto L_00675713;
-    /* 00675700  cmp ecx, dword ptr [0xb77ef8] */
+    /* 00675700  cmp ecx, dword ptr [0xb77ef8]  ; AnimatedBundleTemplate::classID */
     ea = (uint32_t)(0x00b77ef8u);
     a = ecx;
     b = M32(ea);
@@ -433,12 +441,12 @@ void bfv_client_l1_body_006756f0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00675706  je 0x675713 */
     if (zf) goto L_00675713;
-    /* 00675708  mov dword ptr [esp + 4], ecx */
+    /* 00675708  mov dword ptr [esp + 4], ecx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = ecx;
     /* 0067570c  mov ecx, eax */
     ecx = eax;
-    /* 0067570e  jmp 0x6a4250 */
+    /* 0067570e  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 L_00675713:
@@ -453,7 +461,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00675720  (between same file) */
+/* 00675720  ControlPointTemplate::deleting_dtor_adjustor4_00675720  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00675720, bfv_client_l1_body_00675720);
 void bfv_client_l1_body_00675720(struct bfv_cpu *c)
 {
@@ -468,7 +477,7 @@ void bfv_client_l1_body_00675720(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00675723  jmp 0x6757c0 */
+    /* 00675723  jmp 0x6757c0  ; ControlPointTemplate::deleting_dtor */
     c->eip = 0x006757c0u;
     goto out;
 out: __attribute__((unused));
@@ -478,7 +487,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00675730  (between same file) */
+/* 00675730  BundleTemplate::queryInterface_adjustor4_00675730  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00675730, bfv_client_l1_body_00675730);
 void bfv_client_l1_body_00675730(struct bfv_cpu *c)
 {
@@ -493,7 +503,7 @@ void bfv_client_l1_body_00675730(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00675733  jmp 0x675690 */
+    /* 00675733  jmp 0x675690  ; BundleTemplate::queryInterface */
     c->eip = 0x00675690u;
     goto out;
 out: __attribute__((unused));
@@ -503,7 +513,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00675740  (between same file) */
+/* 00675740  ControlPointTemplate::deleting_dtor_adjustor120_00675740  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00675740, bfv_client_l1_body_00675740);
 void bfv_client_l1_body_00675740(struct bfv_cpu *c)
 {
@@ -518,7 +529,7 @@ void bfv_client_l1_body_00675740(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00675743  jmp 0x6757c0 */
+    /* 00675743  jmp 0x6757c0  ; ControlPointTemplate::deleting_dtor */
     c->eip = 0x006757c0u;
     goto out;
 out: __attribute__((unused));
@@ -528,7 +539,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00675750  (between same file) */
+/* 00675750  ControlPointTemplate::deleting_dtor_adjustor444_00675750  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00675750, bfv_client_l1_body_00675750);
 void bfv_client_l1_body_00675750(struct bfv_cpu *c)
 {
@@ -543,7 +555,7 @@ void bfv_client_l1_body_00675750(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00675756  jmp 0x6757c0 */
+    /* 00675756  jmp 0x6757c0  ; ControlPointTemplate::deleting_dtor */
     c->eip = 0x006757c0u;
     goto out;
 out: __attribute__((unused));
@@ -553,7 +565,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00675760  (between same file) */
+/* 00675760  BundleTemplate::queryInterface_adjustor444_00675760  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00675760, bfv_client_l1_body_00675760);
 void bfv_client_l1_body_00675760(struct bfv_cpu *c)
 {
@@ -568,7 +581,7 @@ void bfv_client_l1_body_00675760(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00675766  jmp 0x675690 */
+    /* 00675766  jmp 0x675690  ; BundleTemplate::queryInterface */
     c->eip = 0x00675690u;
     goto out;
 out: __attribute__((unused));
@@ -578,7 +591,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00675770  dice::ref2::world::ControlPointTemplate  (virtual method) */
+/* 00675770  ControlPointTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::ControlPointTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00675770, bfv_client_l1_body_00675770);
 BFV_L1_RESUME(bfv_client_l1r_00675770_1, bfv_client_l1_body_00675770, 1);
 BFV_L1_RESUME(bfv_client_l1r_00675770_2, bfv_client_l1_body_00675770, 2);
@@ -604,7 +620,7 @@ void bfv_client_l1_body_00675770(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00675776  mov esi, ecx */
     esi = ecx;
-    /* 00675778  call 0x403610 */
+    /* 00675778  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00675770_1;
@@ -628,7 +644,7 @@ R_1:
     M32(esp) = t;
     /* 00675785  mov ecx, eax */
     ecx = eax;
-    /* 00675787  call 0x6742a0 */
+    /* 00675787  call 0x6742a0  ; ControlPoint::ControlPoint */
     t = 0x006742a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00675770_2;

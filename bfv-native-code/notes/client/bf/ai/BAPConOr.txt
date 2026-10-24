@@ -1,0 +1,11 @@
+## file
+BAPConOr is the boolean OR of a list of bot action-plan conditions (list head
+pointer at this+0xc).
+
+## 009f1be0
+evaluate(bot): evaluates the child conditions in list order and returns 1 at
+the first true one; returns 0 when all are false or the list is empty.
+
+## 009f1e20
+Adds a child condition: stores this as the child's parent (child+4) and
+appends it to the list at this+8.

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00760a30  dice::bf::ai::EntrySoldierPose  (vtable store) */
+/* 00760a30  EntrySoldierPose::EntrySoldierPose  (vtable store)
+ * class: dice::bf::ai::EntrySoldierPose
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00760a30, bfv_server_l1_body_00760a30);
 void bfv_server_l1_body_00760a30(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_00760a30(struct bfv_cpu *c)
     uint32_t ea;
     /* 00760a30  mov eax, ecx */
     eax = ecx;
-    /* 00760a32  mov dword ptr [eax], 0x875114 */
+    /* 00760a32  mov dword ptr [eax], 0x875114  ; vtable EntrySoldierPose */
     ea = (uint32_t)(eax);
     M32(ea) = 0x875114u;
     /* 00760a38  ret */
@@ -30,8 +33,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00760a40  (source path)
- * strings: "c:\bfv_code\main\battlefield\AIPlanInterpreter\EntrySoldi..." */
+/* 00760a40  EntrySoldierPose::execute  (source path)
+ * overrides: BAPEntry::execute  (46 classes implement it)
+ * class: dice::bf::ai::EntrySoldierPose
+ * strings: "c:\bfv_code\main\battlefield\AIPlanInterpreter\EntrySoldi..."
+ */
 BFV_L1_ENTRY(bfv_server_l1_00760a40, bfv_server_l1_body_00760a40);
 BFV_L1_RESUME(bfv_server_l1r_00760a40_1, bfv_server_l1_body_00760a40, 1);
 BFV_L1_RESUME(bfv_server_l1r_00760a40_2, bfv_server_l1_body_00760a40, 2);
@@ -79,7 +85,7 @@ void bfv_server_l1_body_00760a40(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00760a41  mov eax, dword ptr [0xc1d380] */
+    /* 00760a41  mov eax, dword ptr [0xc1d380]  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     eax = M32(ea);
     /* 00760a46  push ebx */
@@ -93,7 +99,7 @@ void bfv_server_l1_body_00760a40(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00760a4c  mov esi, dword ptr [0x934448] */
+    /* 00760a4c  mov esi, dword ptr [0x934448]  ; g_traceRing_mask */
     ea = (uint32_t)(0x00934448u);
     esi = M32(ea);
     /* 00760a52  inc eax */
@@ -105,13 +111,13 @@ void bfv_server_l1_body_00760a40(struct bfv_cpu *c)
     r = (eax & esi) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 00760a55  mov dword ptr [0xc1d380], eax */
+    /* 00760a55  mov dword ptr [0xc1d380], eax  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     M32(ea) = eax;
-    /* 00760a5a  mov dword ptr [eax*4 + 0xc1d360], 0x875120 */
+    /* 00760a5a  mov dword ptr [eax*4 + 0xc1d360], 0x875120  ; g_traceRing_file, "c:\bfv_code\main\battlefield\AIPlanInterpreter\..." */
     ea = (uint32_t)(eax * 4u + 0x00c1d360u);
     M32(ea) = 0x875120u;
-    /* 00760a65  mov dword ptr [eax*4 + 0xc1d340], 0x21 */
+    /* 00760a65  mov dword ptr [eax*4 + 0xc1d340], 0x21  ; g_traceRing_line */
     ea = (uint32_t)(eax * 4u + 0x00c1d340u);
     M32(ea) = 0x21u;
     /* 00760a70  mov eax, dword ptr [ebx] */
@@ -155,7 +161,7 @@ R_2:
     ecx = r;
     /* 00760a8e  je 0x760bbd */
     if (zf) goto L_00760bbd;
-    /* 00760a94  mov edx, dword ptr [0xc2f7c0] */
+    /* 00760a94  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 00760a9a  mov edx, dword ptr [edx] */
@@ -192,10 +198,10 @@ R_2:
     /* 00760ab7  mov eax, dword ptr [edi + 0x20] */
     ea = (uint32_t)(edi + 0x00000020u);
     eax = M32(ea);
-    /* 00760aba  mov ecx, dword ptr [0xc314b0] */
+    /* 00760aba  mov ecx, dword ptr [0xc314b0]  ; g_pIAITimer_00c314b0 */
     ea = (uint32_t)(0x00c314b0u);
     ecx = M32(ea);
-    /* 00760ac0  mov edx, dword ptr [0xc314b4] */
+    /* 00760ac0  mov edx, dword ptr [0xc314b4]  ; g_pIAIEnvironment_00c314b4 */
     ea = (uint32_t)(0x00c314b4u);
     edx = M32(ea);
     /* 00760ac6  mov dword ptr [esp + 0xc], eax */
@@ -237,7 +243,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00760ae4  call dword ptr [edx + 4] */
+    /* 00760ae4  call dword ptr [edx + 4]  ; -> IAITimer::vf1 = BAPAComponentSoldierPose::get_ch (returns this+0xc) */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -262,7 +268,7 @@ R_4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00760af2  call dword ptr [eax + 0x70] */
+    /* 00760af2  call dword ptr [eax + 0x70]  ; -> IAIEnvironment::vf28 = BFEnvironment::vf28 */
     ea = (uint32_t)(eax + 0x00000070u);
     t = M32(ea);
     esp -= 4;
@@ -351,7 +357,7 @@ R_9:
     /* 00760b2c  mov byte ptr [eax], 1 */
     ea = (uint32_t)(eax);
     M8(ea) = 0x1u;
-    /* 00760b2f  call 0x6064a0 */
+    /* 00760b2f  call 0x6064a0  ; AIScriptManager::vf29_get_40h */
     t = 0x006064a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00760a40_10;
@@ -365,7 +371,7 @@ R_10:
     if (zf) goto L_00760b56;
     /* 00760b38  mov ecx, ebx */
     ecx = ebx;
-    /* 00760b3a  call 0x6064a0 */
+    /* 00760b3a  call 0x6064a0  ; AIScriptManager::vf29_get_40h */
     t = 0x006064a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00760a40_11;
@@ -455,7 +461,7 @@ L_00760b56:
     esp += 20;
     goto out;
 L_00760b67:
-    /* 00760b67  call 0x4beae0 */
+    /* 00760b67  call 0x4beae0  ; WrapperExeception::vf2_get_3ch */
     t = 0x004beae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00760a40_13;
@@ -469,7 +475,7 @@ R_13:
     if (zf) goto L_00760ba5;
     /* 00760b70  mov ecx, ebx */
     ecx = ebx;
-    /* 00760b72  call 0x4beae0 */
+    /* 00760b72  call 0x4beae0  ; WrapperExeception::vf2_get_3ch */
     t = 0x004beae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00760a40_14;

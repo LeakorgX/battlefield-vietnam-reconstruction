@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00781500  dice::bf::ai::?A0xdaa11c90::InfoEnemyPredicate  (virtual method) */
+/* 00781500  InfoEnemyPredicate::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xdaa11c90::InfoEnemyPredicate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00781500, bfv_server_l1_body_00781500);
 BFV_L1_RESUME(bfv_server_l1r_00781500_1, bfv_server_l1_body_00781500, 1);
 BFV_L1_RESUME(bfv_server_l1r_00781500_2, bfv_server_l1_body_00781500, 2);
@@ -27,7 +29,7 @@ void bfv_server_l1_body_00781500(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00781501  mov esi, dword ptr [esp + 8] */
+    /* 00781501  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 00781505  mov eax, dword ptr [esi + 0x10] */
@@ -98,7 +100,7 @@ R_2:
     edx = M32(ea);
     /* 0078152a  mov ecx, eax */
     ecx = eax;
-    /* 0078152c  call 0x728c90 */
+    /* 0078152c  call 0x728c90  ; bfv_target_handle_eligible */
     t = 0x00728c90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00781500_3;

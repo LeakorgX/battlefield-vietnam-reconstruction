@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00692bd0  dice::ref2::world::SonarObjectTemplate  (vtable store) */
+/* 00692bd0  SonarObjectTemplate::SonarObjectTemplate  (vtable store)
+ * class: dice::ref2::world::SonarObjectTemplate
+ * also entered at 00692c20: SonarObjectTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_00692bd0, bfv_client_l1_body_00692bd0);
 BFV_L1_RESUME(bfv_client_l1r_00692bd0_1, bfv_client_l1_body_00692bd0, 1);
 void bfv_client_l1_body_00692bd0(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_client_l1_body_00692bd0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00692bd1  mov esi, ecx */
     esi = ecx;
-    /* 00692bd3  call 0x6a52c0 */
+    /* 00692bd3  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
     t = 0x006a52c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00692bd0_1;
@@ -42,7 +45,7 @@ R_1:
     /* 00692be0  mov byte ptr [esi + 0x1dd], al */
     ea = (uint32_t)(esi + 0x000001ddu);
     M8(ea) = LO8(eax);
-    /* 00692be6  mov dword ptr [esi], 0xb930fc */
+    /* 00692be6  mov dword ptr [esi], 0xb930fc  ; vtable SonarObjectTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb930fcu;
     /* 00692bec  mov dword ptr [esi + 4], 0xb930e4 */
@@ -54,7 +57,7 @@ R_1:
     /* 00692bfa  mov dword ptr [esi + 0x1bc], 0xb930ac */
     ea = (uint32_t)(esi + 0x000001bcu);
     M32(ea) = 0xb930acu;
-    /* 00692c04  mov dword ptr [esi + 0x1d8], 0x42480000 */
+    /* 00692c04  mov dword ptr [esi + 0x1d8], 0x42480000  ; 50.0f */
     ea = (uint32_t)(esi + 0x000001d8u);
     M32(ea) = 0x42480000u;
     /* 00692c0e  mov eax, esi */
@@ -74,7 +77,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00692c30  dice::ref2::world::SonarObjectTemplate  (virtual method) */
+/* 00692c30  SonarObjectTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::SonarObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00692c30, bfv_client_l1_body_00692c30);
 void bfv_client_l1_body_00692c30(struct bfv_cpu *c)
 {
@@ -83,10 +89,10 @@ void bfv_client_l1_body_00692c30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00692c30  mov eax, dword ptr [esp + 4] */
+    /* 00692c30  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00692c34  cmp eax, dword ptr [0xb81028] */
+    /* 00692c34  cmp eax, dword ptr [0xb81028]  ; SonarObjectTemplate::classID */
     ea = (uint32_t)(0x00b81028u);
     a = eax;
     b = M32(ea);
@@ -101,10 +107,10 @@ void bfv_client_l1_body_00692c30(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_00692c41:
-    /* 00692c41  mov dword ptr [esp + 4], eax */
+    /* 00692c41  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 00692c45  jmp 0x6a4250 */
+    /* 00692c45  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));
@@ -114,7 +120,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00692d20  dice::ref2::world::SonarObjectTemplate  (virtual method) */
+/* 00692d20  SonarObjectTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::SonarObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00692d20, bfv_client_l1_body_00692d20);
 BFV_L1_RESUME(bfv_client_l1r_00692d20_1, bfv_client_l1_body_00692d20, 1);
 BFV_L1_RESUME(bfv_client_l1r_00692d20_2, bfv_client_l1_body_00692d20, 2);
@@ -140,7 +149,7 @@ void bfv_client_l1_body_00692d20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00692d26  mov esi, ecx */
     esi = ecx;
-    /* 00692d28  call 0x403610 */
+    /* 00692d28  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00692d20_1;
@@ -164,7 +173,7 @@ R_1:
     M32(esp) = t;
     /* 00692d35  mov ecx, eax */
     ecx = eax;
-    /* 00692d37  call 0x692c50 */
+    /* 00692d37  call 0x692c50  ; SonarObject::SonarObject */
     t = 0x00692c50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00692d20_2;

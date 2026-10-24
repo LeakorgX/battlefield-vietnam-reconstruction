@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009f78c0  dice::bf::ai::BAPConSharedCondition  (virtual method) */
+/* 009f78c0  BAPConSharedCondition::evaluate  (virtual method)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConSharedCondition
+ * also entered at 009f78f0: BAPConSharedCondition::vf1
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f78c0, bfv_client_l1_body_009f78c0);
 BFV_L1_RESUME(bfv_client_l1r_009f78c0_1, bfv_client_l1_body_009f78c0, 1);
 void bfv_client_l1_body_009f78c0(struct bfv_cpu *c)
@@ -51,7 +55,7 @@ L_009f78d3:
     /* 009f78d3  mov ecx, dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     ecx = M32(ea);
-    /* 009f78d6  mov eax, dword ptr [esp + 8] */
+    /* 009f78d6  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 009f78da  mov edx, dword ptr [ecx] */
@@ -96,7 +100,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f7900  dice::bf::ai::BAPConSharedCondition  (vtable store) */
+/* 009f7900  BAPConSharedCondition::BAPConSharedCondition  (vtable store)
+ * class: dice::bf::ai::BAPConSharedCondition
+ * called by: BBPFireInfantery_helper_00998590, BBPFireInfantery::buildPlan_helper_00999880
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f7900, bfv_client_l1_body_009f7900);
 BFV_L1_RESUME(bfv_client_l1r_009f7900_1, bfv_client_l1_body_009f7900, 1);
 void bfv_client_l1_body_009f7900(struct bfv_cpu *c)
@@ -123,10 +130,10 @@ void bfv_client_l1_body_009f7900(struct bfv_cpu *c)
     /* 009f7905  mov dword ptr [esi + 4], 0 */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 009f790c  mov dword ptr [esi], 0xbfbe64 */
+    /* 009f790c  mov dword ptr [esi], 0xbfbe64  ; vtable BAPConSharedCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfbe64u;
-    /* 009f7912  call 0x403610 */
+    /* 009f7912  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f7900_1;
@@ -153,7 +160,7 @@ R_1:
     /* 009f7928  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 009f792b  mov eax, dword ptr [esp + 8] */
+    /* 009f792b  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 009f792f  mov dword ptr [esi + 0xc], eax */
@@ -180,7 +187,7 @@ L_009f793b:
     /* 009f793d  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 009f7940  mov eax, dword ptr [esp + 8] */
+    /* 009f7940  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 009f7944  mov dword ptr [esi + 0xc], eax */
@@ -206,7 +213,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f7950  dice::bf::ai::BAPConSharedCondition  (vtable store) */
+/* 009f7950  BAPConSharedCondition::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPConSharedCondition
+ * called by: BBPFireInfantery_helper_00998590, BBPFireInfantery::buildPlan_helper_00999880
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f7950, bfv_client_l1_body_009f7950);
 BFV_L1_RESUME(bfv_client_l1r_009f7950_1, bfv_client_l1_body_009f7950, 1);
 void bfv_client_l1_body_009f7950(struct bfv_cpu *c)
@@ -238,9 +248,9 @@ void bfv_client_l1_body_009f7950(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 009f795c  mov ecx, 0xe10a40 */
+    /* 009f795c  mov ecx, 0xe10a40  ; g_MemoryPoolNull_BAPConSharedCondition */
     ecx = 0xe10a40u;
-    /* 009f7961  call 0x412ee0 */
+    /* 009f7961  call 0x412ee0  ; MemoryPool::alloc_debug */
     t = 0x00412ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f7950_1;
@@ -255,7 +265,7 @@ R_1:
     /* 009f796a  mov dword ptr [eax + 4], 0 */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 009f7971  mov dword ptr [eax], 0xbfbe64 */
+    /* 009f7971  mov dword ptr [eax], 0xbfbe64  ; vtable BAPConSharedCondition */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbfbe64u;
     /* 009f7977  mov ecx, dword ptr [esi + 8] */
@@ -301,7 +311,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f7990  dice::bf::ai::BAPConSharedCondition  (virtual method) */
+/* 009f7990  BAPConSharedCondition::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConSharedCondition
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f7990, bfv_client_l1_body_009f7990);
 BFV_L1_RESUME(bfv_client_l1r_009f7990_1, bfv_client_l1_body_009f7990, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f7990_2, bfv_client_l1_body_009f7990, 2);
@@ -331,7 +344,7 @@ void bfv_client_l1_body_009f7990(struct bfv_cpu *c)
     /* 009f7996  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 009f7998  mov dword ptr [esi], 0xbfbe64 */
+    /* 009f7998  mov dword ptr [esi], 0xbfbe64  ; vtable BAPConSharedCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfbe64u;
     /* 009f799e  je 0x9f79a7 */
@@ -367,7 +380,7 @@ L_009f79a7:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f79b0  call 0x403680 */
+    /* 009f79b0  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f7990_2;
@@ -381,11 +394,11 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_009f79b8:
-    /* 009f79b8  test byte ptr [esp + 8], 1 */
+    /* 009f79b8  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 009f79bd  mov dword ptr [esi], 0xbf477c */
+    /* 009f79bd  mov dword ptr [esi], 0xbf477c  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf477cu;
     /* 009f79c3  je 0x9f79d0 */
@@ -394,9 +407,9 @@ L_009f79b8:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f79c6  mov ecx, 0xe10a40 */
+    /* 009f79c6  mov ecx, 0xe10a40  ; g_MemoryPoolNull_BAPConSharedCondition */
     ecx = 0xe10a40u;
-    /* 009f79cb  call 0x412fc0 */
+    /* 009f79cb  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f7990_3;

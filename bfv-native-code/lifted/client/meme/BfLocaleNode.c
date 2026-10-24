@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0055b7e0  dice::meme::BfLocaleNode  (virtual method) */
+/* 0055b7e0  BfLocaleNode::update  (virtual method)
+ * overrides: Node::update  (83 classes implement it)
+ * class: dice::meme::BfLocaleNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055b7e0, bfv_client_l1_body_0055b7e0);
 BFV_L1_RESUME(bfv_client_l1r_0055b7e0_1, bfv_client_l1_body_0055b7e0, 1);
 void bfv_client_l1_body_0055b7e0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_0055b7e0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0055b7e0  mov eax, dword ptr [ecx + 0xc] */
+    /* 0055b7e0  mov eax, dword ptr [ecx + 0xc]  ; field Locale */
     ea = (uint32_t)(ecx + 0x0000000cu);
     eax = M32(ea);
     /* 0055b7e3  test eax, eax */
@@ -72,13 +75,13 @@ void bfv_client_l1_body_0055b7e0(struct bfv_cpu *c)
     if (zf) goto L_0055b828;
     /* 0055b805  mov eax, ecx */
     eax = ecx;
-    /* 0055b807  mov ecx, dword ptr [esp + 8] */
+    /* 0055b807  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 0055b80b  mov edx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     edx = M32(ea);
-    /* 0055b80d  push 0x3f800000 */
+    /* 0055b80d  push 0x3f800000  ; 1.0f */
     t = 0x3f800000u;
     esp -= 4;
     M32(esp) = t;
@@ -132,33 +135,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0055ba30  dice::meme::BfLocaleNode  (vtable store) */
-BFV_L1_ENTRY(bfv_client_l1_0055ba30, bfv_client_l1_body_0055ba30);
-void bfv_client_l1_body_0055ba30(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t a, r, ea;
-    /* 0055ba30  dec dword ptr [0xd733c8] */
-    ea = (uint32_t)(0x00d733c8u);
-    a = M32(ea);
-    r = (a - 1u) & 0xffffffffu;
-    F_DEC(32, a, r);
-    M32(ea) = r;
-    /* 0055ba36  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 0055ba80  dice::meme::BfLocaleNode  (vtable store) */
+/* 0055ba80  BfLocaleNode::create  (vtable store)
+ * class: dice::meme::BfLocaleNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055ba80, bfv_client_l1_body_0055ba80);
 BFV_L1_RESUME(bfv_client_l1r_0055ba80_1, bfv_client_l1_body_0055ba80, 1);
 BFV_L1_RESUME(bfv_client_l1r_0055ba80_2, bfv_client_l1_body_0055ba80, 2);
@@ -182,7 +161,7 @@ void bfv_client_l1_body_0055ba80(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055ba83  call 0x403610 */
+    /* 0055ba83  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055ba80_1;
@@ -204,14 +183,14 @@ R_1:
     if (zf) goto L_0055bab4;
     /* 0055ba91  mov ecx, esi */
     ecx = esi;
-    /* 0055ba93  call 0x873d90 */
+    /* 0055ba93  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055ba80_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0055ba98  mov dword ptr [esi], 0xb6aba4 */
+    /* 0055ba98  mov dword ptr [esi], 0xb6aba4  ; vtable BfLocaleNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6aba4u;
     /* 0055ba9e  mov dword ptr [esi + 0xc], 0 */
@@ -253,7 +232,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0055bac0  (between same file) */
+/* 0055bac0  std::_Uninit_copy_8_0055bac0  (between same file)
+ * called by: std::uninitialized_copy_8_0055be80, BfLocaleData_found_key_helper_0055c260_catch_0055c3c6
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055bac0, bfv_client_l1_body_0055bac0);
 BFV_L1_RESUME(bfv_client_l1r_0055bac0_1, bfv_client_l1_body_0055bac0, 1);
 void bfv_client_l1_body_0055bac0(struct bfv_cpu *c)
@@ -309,25 +290,25 @@ void bfv_client_l1_body_0055bac0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0055bade  mov dword ptr [ebp - 0x10], esp */
+    /* 0055bade  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
-    /* 0055bae1  mov dword ptr [ebp - 0x14], edx */
+    /* 0055bae1  mov dword ptr [ebp - 0x14], edx  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = edx;
     /* 0055bae4  mov esi, ecx */
     esi = ecx;
-    /* 0055bae6  mov dword ptr [ebp - 4], 0 */
+    /* 0055bae6  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
-    /* 0055baed  mov ebx, dword ptr [ebp + 0xc] */
+    /* 0055baed  mov ebx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     ebx = M32(ea);
-    /* 0055baf0  mov edi, dword ptr [ebp + 8] */
+    /* 0055baf0  mov edi, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     edi = M32(ea);
 L_0055baf3:
-    /* 0055baf3  cmp esi, dword ptr [ebp - 0x14] */
+    /* 0055baf3  cmp esi, dword ptr [ebp - 0x14]  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     a = esi;
     b = M32(ea);
@@ -345,7 +326,7 @@ L_0055baf3:
     M32(esp) = t;
     /* 0055bafa  mov ecx, ebx */
     ecx = ebx;
-    /* 0055bafc  call 0x6a06a0 */
+    /* 0055bafc  call 0x6a06a0  ; std::allocator_8::construct */
     t = 0x006a06a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055bac0_1;
@@ -358,7 +339,7 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     edi = r;
-    /* 0055bb04  mov dword ptr [ebp + 8], edi */
+    /* 0055bb04  mov dword ptr [ebp + 8], edi  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     M32(ea) = edi;
     /* 0055bb07  add esi, 8 */
@@ -367,18 +348,18 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esi = r;
-    /* 0055bb0a  mov dword ptr [ebp - 0x18], esi */
+    /* 0055bb0a  mov dword ptr [ebp - 0x18], esi  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = esi;
     /* 0055bb0d  jmp 0x55baf3 */
     goto L_0055baf3;
 L_0055bb0f:
-    /* 0055bb0f  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 0055bb0f  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 0055bb16  mov eax, edi */
     eax = edi;
-    /* 0055bb18  mov ecx, dword ptr [ebp - 0xc] */
+    /* 0055bb18  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 0055bb1b  mov dword ptr fs:[0], ecx */
@@ -413,7 +394,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0055bb2b  (between same file) */
+/* 0055bb2b  BfLocaleNode_0055bac0_catch_0055bb2b  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055bb2b, bfv_client_l1_body_0055bb2b);
 BFV_L1_RESUME(bfv_client_l1r_0055bb2b_1, bfv_client_l1_body_0055bb2b, 1);
 void bfv_client_l1_body_0055bb2b(struct bfv_cpu *c)
@@ -435,7 +417,7 @@ void bfv_client_l1_body_0055bb2b(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055bb2f  call 0x7c1fae */
+    /* 0055bb2f  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055bb2b_1;
@@ -451,8 +433,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0055bb40  dice::meme::BfLocaleNode  (virtual method)
- * strings: "dice::meme::BfLocaleNode" */
+/* 0055bb40  BfLocaleNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BfLocaleNode
+ * strings: "dice::meme::BfLocaleNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055bb40, bfv_client_l1_body_0055bb40);
 BFV_L1_RESUME(bfv_client_l1r_0055bb40_1, bfv_client_l1_body_0055bb40, 1);
 BFV_L1_RESUME(bfv_client_l1r_0055bb40_2, bfv_client_l1_body_0055bb40, 2);
@@ -483,13 +468,13 @@ void bfv_client_l1_body_0055bb40(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0055bb55  push 0xb6ace8 */
+    /* 0055bb55  push 0xb6ace8  ; "dice::meme::BfLocaleNode" */
     t = 0xb6ace8u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055bb5a  mov ecx, 0xd733cc */
+    /* 0055bb5a  mov ecx, 0xd733cc  ; g_RuntimeClass_BfLocaleNode */
     ecx = 0xd733ccu;
-    /* 0055bb5f  call 0x875490 */
+    /* 0055bb5f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055bb40_1;
@@ -500,10 +485,10 @@ R_1:
     t = 0xb30110u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055bb69  mov dword ptr [0xd733cc], 0xb6ac80 */
+    /* 0055bb69  mov dword ptr [0xd733cc], 0xb6ac80  ; g_RuntimeClass_BfLocaleNode */
     ea = (uint32_t)(0x00d733ccu);
     M32(ea) = 0xb6ac80u;
-    /* 0055bb73  call 0x7c2cd2 */
+    /* 0055bb73  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055bb40_2;
@@ -517,7 +502,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0055bb7b:
-    /* 0055bb7b  mov eax, 0xd733cc */
+    /* 0055bb7b  mov eax, 0xd733cc  ; g_RuntimeClass_BfLocaleNode */
     eax = 0xd733ccu;
     /* 0055bb80  ret */
     c->eip = M32(esp);
@@ -530,8 +515,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0055be00  dice::meme::BfLocaleNode  (virtual method)
- * strings: "dice::meme::BfLocaleData", "Locale" */
+/* 0055be00  BfLocaleNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::BfLocaleNode
+ * strings: "dice::meme::BfLocaleData", "Locale"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0055be00, bfv_client_l1_body_0055be00);
 BFV_L1_RESUME(bfv_client_l1r_0055be00_1, bfv_client_l1_body_0055be00, 1);
 BFV_L1_RESUME(bfv_client_l1r_0055be00_2, bfv_client_l1_body_0055be00, 2);
@@ -555,7 +543,7 @@ void bfv_client_l1_body_0055be00(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0055be01  mov ebx, dword ptr [esp + 8] */
+    /* 0055be01  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0055be05  push esi */
@@ -566,7 +554,7 @@ void bfv_client_l1_body_0055be00(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0055be07  mov edi, dword ptr [esp + 0x14] */
+    /* 0055be07  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 0055be0b  push edi */
@@ -579,7 +567,7 @@ void bfv_client_l1_body_0055be00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0055be0d  mov esi, ecx */
     esi = ecx;
-    /* 0055be0f  call 0x873f50 */
+    /* 0055be0f  call 0x873f50  ; Node::serialize */
     t = 0x00873f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055be00_1;
@@ -623,13 +611,13 @@ L_0055be1e:
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0055be33  push 0xb6ad04 */
+    /* 0055be33  push 0xb6ad04  ; "dice::meme::BfLocaleData" */
     t = 0xb6ad04u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055be38  mov ecx, 0xd733e0 */
+    /* 0055be38  mov ecx, 0xd733e0  ; g_RuntimeClass_BfLocaleData */
     ecx = 0xd733e0u;
-    /* 0055be3d  call 0x875490 */
+    /* 0055be3d  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055be00_2;
@@ -640,10 +628,10 @@ R_2:
     t = 0xb30120u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055be47  mov dword ptr [0xd733e0], 0xb6aca4 */
+    /* 0055be47  mov dword ptr [0xd733e0], 0xb6aca4  ; g_RuntimeClass_BfLocaleData */
     ea = (uint32_t)(0x00d733e0u);
     M32(ea) = 0xb6aca4u;
-    /* 0055be51  call 0x7c2cd2 */
+    /* 0055be51  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0055be00_3;
@@ -660,15 +648,15 @@ L_0055be59:
     /* 0055be59  mov eax, dword ptr [edi] */
     ea = (uint32_t)(edi);
     eax = M32(ea);
-    /* 0055be5b  push 0xd733e0 */
+    /* 0055be5b  push 0xd733e0  ; g_RuntimeClass_BfLocaleData */
     t = 0xd733e0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0055be60  push 0xb6ad4c */
+    /* 0055be60  push 0xb6ad4c  ; "Locale" */
     t = 0xb6ad4cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0055be65  add esi, 0xc */
+    /* 0055be65  add esi, 0xc  ; field Locale (serialized) */
     a = esi;
     b = 0xcu;
     r = (a + b) & 0xffffffffu;

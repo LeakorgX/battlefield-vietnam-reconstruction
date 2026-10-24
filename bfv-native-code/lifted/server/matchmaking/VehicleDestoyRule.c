@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 004b4410  dice::matchmaking::VehicleDestoyRule  (virtual method) */
+/* 004b4410  VehicleDestoyRule::vf0  (virtual method)
+ * class: dice::matchmaking::VehicleDestoyRule
+ */
 BFV_L1_ENTRY(bfv_server_l1_004b4410, bfv_server_l1_body_004b4410);
 BFV_L1_RESUME(bfv_server_l1r_004b4410_1, bfv_server_l1_body_004b4410, 1);
 BFV_L1_RESUME(bfv_server_l1r_004b4410_2, bfv_server_l1_body_004b4410, 2);
@@ -27,7 +29,7 @@ void bfv_server_l1_body_004b4410(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 004b4413  mov ecx, dword ptr [0xbe9b50] */
+    /* 004b4413  mov ecx, dword ptr [0xbe9b50]  ; g_pScoreManager */
     ea = (uint32_t)(0x00be9b50u);
     ecx = M32(ea);
     /* 004b4419  mov eax, dword ptr [ecx] */
@@ -45,7 +47,7 @@ void bfv_server_l1_body_004b4410(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 004b4420  mov ecx, dword ptr [esp + 0xc] */
+    /* 004b4420  mov ecx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 004b4424  mov dl, byte ptr [ecx + 0x88] */
@@ -57,7 +59,7 @@ R_1:
     /* 004b4430  test dl, dl */
     r = (LO8(edx) & LO8(edx)) & 0xffu;
     F_LOGIC(8, r);
-    /* 004b4432  fstp qword ptr [esp] */
+    /* 004b4432  fstp qword ptr [esp]  ; var_8 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 004b4435  jne 0x4b4458 */
@@ -69,14 +71,14 @@ R_1:
     /* 004b4438  mov esi, dword ptr [eax + 4] */
     ea = (uint32_t)(eax + 0x00000004u);
     esi = M32(ea);
-    /* 004b443b  call 0x6634b0 */
+    /* 004b443b  call 0x6634b0  ; getTimeSeconds */
     t = 0x006634b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b4410_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 004b4440  fsub qword ptr [esp + 4] */
+    /* 004b4440  fsub qword ptr [esp + 4]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 004b4444  fld dword ptr [esi] */

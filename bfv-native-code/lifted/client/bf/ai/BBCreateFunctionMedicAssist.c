@@ -5,8 +5,10 @@
 #include "l1.h"
 
 
-/* 0093fde0  dice::bf::ai::?A0x10db9b01::BBCreateFunctionMedicAssist  (virtual method)
- * strings: "BBPMedicAssist" */
+/* 0093fde0  BBCreateFunctionMedicAssist::vf0  (virtual method)
+ * class: dice::bf::ai::?A0x10db9b01::BBCreateFunctionMedicAssist
+ * strings: "BBPMedicAssist"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0093fde0, bfv_client_l1_body_0093fde0);
 BFV_L1_RESUME(bfv_client_l1r_0093fde0_1, bfv_client_l1_body_0093fde0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0093fde0_2, bfv_client_l1_body_0093fde0, 2);
@@ -38,7 +40,7 @@ void bfv_client_l1_body_0093fde0(struct bfv_cpu *c)
     case 10: goto R_10;
     default: break;
     }
-    /* 0093fde0  mov ecx, dword ptr [esp + 8] */
+    /* 0093fde0  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 0093fde4  mov eax, dword ptr [ecx + 0x14] */
@@ -60,7 +62,7 @@ void bfv_client_l1_body_0093fde0(struct bfv_cpu *c)
     t = 0xeu;
     esp -= 4;
     M32(esp) = t;
-    /* 0093fdec  push 0xbef46c */
+    /* 0093fdec  push 0xbef46c  ; "BBPMedicAssist" */
     t = 0xbef46cu;
     esp -= 4;
     M32(esp) = t;
@@ -72,7 +74,7 @@ void bfv_client_l1_body_0093fde0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0093fdf4  call 0x4038f0 */
+    /* 0093fdf4  call 0x4038f0  ; std::string::compare_chars */
     t = 0x004038f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_1;
@@ -82,7 +84,7 @@ R_1:
     /* 0093fdf9  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 0093fdfb  mov edi, dword ptr [esp + 0x10] */
+    /* 0093fdfb  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 0093fdff  jne 0x93fe2f */
@@ -91,7 +93,7 @@ R_1:
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 0093fe03  call 0x403610 */
+    /* 0093fe03  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_2;
@@ -115,7 +117,7 @@ R_2:
     M32(esp) = t;
     /* 0093fe10  mov ecx, eax */
     ecx = eax;
-    /* 0093fe12  call 0x98abd0 */
+    /* 0093fe12  call 0x98abd0  ; BBPMedicAssist::BBPMedicAssist */
     t = 0x0098abd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_3;
@@ -124,7 +126,7 @@ R_2:
 R_3:
     /* 0093fe17  mov ecx, eax */
     ecx = eax;
-    /* 0093fe19  call 0x414720 */
+    /* 0093fe19  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_4;
@@ -142,7 +144,7 @@ L_0093fe22:
     eax = r;
     /* 0093fe24  mov ecx, eax */
     ecx = eax;
-    /* 0093fe26  call 0x414720 */
+    /* 0093fe26  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_5;
@@ -163,7 +165,7 @@ L_0093fe31:
     t = 0x40u;
     esp -= 4;
     M32(esp) = t;
-    /* 0093fe33  call 0x403610 */
+    /* 0093fe33  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_6;
@@ -181,17 +183,17 @@ R_6:
     F_LOGIC(32, r);
     /* 0093fe3d  je 0x93fe59 */
     if (zf) goto L_0093fe59;
-    /* 0093fe3f  mov ecx, dword ptr [esp + 0x2c] */
+    /* 0093fe3f  mov ecx, dword ptr [esp + 0x2c]  ; arg_1c */
     ea = (uint32_t)(esp + 0x0000002cu);
     ecx = M32(ea);
-    /* 0093fe43  mov edx, dword ptr [esp + 0x28] */
+    /* 0093fe43  mov edx, dword ptr [esp + 0x28]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000028u);
     edx = M32(ea);
     /* 0093fe47  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0093fe48  mov ecx, dword ptr [esp + 0x1c] */
+    /* 0093fe48  mov ecx, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 0093fe4c  push edx */
@@ -212,7 +214,7 @@ R_6:
     M32(esp) = t;
     /* 0093fe50  mov ecx, eax */
     ecx = eax;
-    /* 0093fe52  call 0x989ed0 */
+    /* 0093fe52  call 0x989ed0  ; BBMedicAssist::BBMedicAssist */
     t = 0x00989ed0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_7;
@@ -229,14 +231,14 @@ L_0093fe59:
 L_0093fe5b:
     /* 0093fe5b  mov ecx, eax */
     ecx = eax;
-    /* 0093fe5d  call 0x414720 */
+    /* 0093fe5d  call 0x414720  ; stub_return_this_0args_00414720 */
     t = 0x00414720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_8;
     c->eip = t;
     goto out;
 R_8:
-    /* 0093fe62  mov esi, dword ptr [esp + 0x20] */
+    /* 0093fe62  mov esi, dword ptr [esp + 0x20]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000020u);
     esi = M32(ea);
     /* 0093fe66  mov ebx, eax */
@@ -265,7 +267,7 @@ L_0093fe73:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0093fe76  call 0x403680 */
+    /* 0093fe76  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_9;
@@ -292,7 +294,7 @@ L_0093fe84:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0093fe85  call 0x403680 */
+    /* 0093fe85  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0093fde0_10;

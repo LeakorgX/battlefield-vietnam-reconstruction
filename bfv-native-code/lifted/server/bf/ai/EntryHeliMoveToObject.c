@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00765940  (source path) */
+/* 00765940  AIConsole::ctor_dtor_helper_00765940  (source path)
+ * also entered at 00765950: EntryHeliMoveToObject::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00765940, bfv_server_l1_body_00765940);
 void bfv_server_l1_body_00765940(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_00765940(struct bfv_cpu *c)
     uint32_t ea;
     /* 00765940  mov eax, ecx */
     eax = ecx;
-    /* 00765942  mov dword ptr [eax], 0x875c9c */
+    /* 00765942  mov dword ptr [eax], 0x875c9c  ; vtable EntryHeliMoveToObject */
     ea = (uint32_t)(eax);
     M32(ea) = 0x875c9cu;
     /* 00765948  ret */

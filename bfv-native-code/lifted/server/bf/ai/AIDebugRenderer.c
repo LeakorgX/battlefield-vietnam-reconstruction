@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005fcdc0  dice::bf::ai::AIDebugRenderer  (virtual method) */
+/* 005fcdc0  stub_noop_4args_005fcdc0  (virtual method)
+ * overrides: IAIDebugRenderer::vf1  (2 classes implement it)
+ * class: dice::bf::ai::AIDebugRenderer
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fcdc0, bfv_server_l1_body_005fcdc0);
 void bfv_server_l1_body_005fcdc0(struct bfv_cpu *c)
 {
@@ -24,7 +27,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007812d0  dice::bf::ai::AIDebugRenderer  (virtual method) */
+/* 007812d0  AIDebugRenderer::vf5  (virtual method)
+ * overrides: IAIDebugRenderer::vf5  (2 classes implement it)
+ * class: dice::bf::ai::AIDebugRenderer
+ */
 BFV_L1_ENTRY(bfv_server_l1_007812d0, bfv_server_l1_body_007812d0);
 BFV_L1_RESUME(bfv_server_l1r_007812d0_1, bfv_server_l1_body_007812d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007812d0_2, bfv_server_l1_body_007812d0, 2);
@@ -50,7 +56,7 @@ void bfv_server_l1_body_007812d0(struct bfv_cpu *c)
     esi = ecx;
     /* 007812d3  lea ecx, [esi + 8] */
     ecx = (uint32_t)(esi + 0x00000008u);
-    /* 007812d6  call 0x4719b0 */
+    /* 007812d6  call 0x4719b0  ; std::list::clear */
     t = 0x004719b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007812d0_1;
@@ -59,7 +65,7 @@ void bfv_server_l1_body_007812d0(struct bfv_cpu *c)
 R_1:
     /* 007812db  lea ecx, [esi + 0x20] */
     ecx = (uint32_t)(esi + 0x00000020u);
-    /* 007812de  call 0x4719b0 */
+    /* 007812de  call 0x4719b0  ; std::list::clear */
     t = 0x004719b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007812d0_2;
@@ -68,7 +74,7 @@ R_1:
 R_2:
     /* 007812e3  lea ecx, [esi + 0x2c] */
     ecx = (uint32_t)(esi + 0x0000002cu);
-    /* 007812e6  call 0x781270 */
+    /* 007812e6  call 0x781270  ; ai_00781270 */
     t = 0x00781270u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007812d0_3;
@@ -92,7 +98,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00781360  dice::bf::ai::AIDebugRenderer  (vtable store) */
+/* 00781360  AIDebugRenderer::AIDebugRenderer  (vtable store)
+ * class: dice::bf::ai::AIDebugRenderer
+ * called by: AIMain::vf4, AIMain::AIMain
+ */
 BFV_L1_ENTRY(bfv_server_l1_00781360, bfv_server_l1_body_00781360);
 BFV_L1_RESUME(bfv_server_l1r_00781360_1, bfv_server_l1_body_00781360, 1);
 BFV_L1_RESUME(bfv_server_l1r_00781360_2, bfv_server_l1_body_00781360, 2);
@@ -128,7 +137,7 @@ void bfv_server_l1_body_00781360(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00781363  mov esi, ecx */
     esi = ecx;
-    /* 00781365  call 0x729f30 */
+    /* 00781365  call 0x729f30  ; IAIDebugRenderer::IAIDebugRenderer */
     t = 0x00729f30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00781360_1;
@@ -139,13 +148,13 @@ R_1:
     edi = (uint32_t)(esi + 0x00000008u);
     /* 0078136d  mov ecx, edi */
     ecx = edi;
-    /* 0078136f  mov dword ptr [esi], 0x8770e4 */
+    /* 0078136f  mov dword ptr [esi], 0x8770e4  ; vtable AIDebugRenderer */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8770e4u;
     /* 00781375  mov byte ptr [esi + 4], 1 */
     ea = (uint32_t)(esi + 0x00000004u);
     M8(ea) = 0x1u;
-    /* 00781379  call 0x7810c0 */
+    /* 00781379  call 0x7810c0  ; std::list::_Buyheadnode_44_007810c0 */
     t = 0x007810c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00781360_2;
@@ -166,7 +175,7 @@ R_2:
     edi = (uint32_t)(esi + 0x00000014u);
     /* 00781389  mov ecx, edi */
     ecx = edi;
-    /* 0078138b  call 0x781150 */
+    /* 0078138b  call 0x781150  ; std::list::_Buyheadnode_36_00781150 */
     t = 0x00781150u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00781360_3;
@@ -183,7 +192,7 @@ R_3:
     edi = (uint32_t)(esi + 0x00000020u);
     /* 00781399  mov ecx, edi */
     ecx = edi;
-    /* 0078139b  call 0x781150 */
+    /* 0078139b  call 0x781150  ; std::list::_Buyheadnode_36_00781150 */
     t = 0x00781150u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00781360_4;
@@ -200,7 +209,7 @@ R_4:
     edi = (uint32_t)(esi + 0x0000002cu);
     /* 007813a9  mov ecx, edi */
     ecx = edi;
-    /* 007813ab  call 0x7811e0 */
+    /* 007813ab  call 0x7811e0  ; std::list::_Buyheadnode_60_007811e0 */
     t = 0x007811e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00781360_5;
@@ -238,7 +247,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007813c0  dice::bf::ai::AIDebugRenderer  (vtable store) */
+/* 007813c0  AIDebugRenderer::~AIDebugRenderer  (vtable store)
+ * class: dice::bf::ai::AIDebugRenderer
+ * also entered at 00781440: AIDebugRenderer::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_007813c0, bfv_server_l1_body_007813c0);
 BFV_L1_RESUME(bfv_server_l1r_007813c0_1, bfv_server_l1_body_007813c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007813c0_2, bfv_server_l1_body_007813c0, 2);
@@ -284,10 +296,10 @@ void bfv_server_l1_body_007813c0(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x0000002cu);
     /* 007813c8  mov ecx, edi */
     ecx = edi;
-    /* 007813ca  mov dword ptr [esi], 0x8770e4 */
+    /* 007813ca  mov dword ptr [esi], 0x8770e4  ; vtable AIDebugRenderer */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8770e4u;
-    /* 007813d0  call 0x781270 */
+    /* 007813d0  call 0x781270  ; ai_00781270 */
     t = 0x00781270u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007813c0_1;
@@ -301,7 +313,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007813d9  call 0x403df0 */
+    /* 007813d9  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007813c0_2;
@@ -325,7 +337,7 @@ R_2:
     esp = r;
     /* 007813e9  mov ecx, edi */
     ecx = edi;
-    /* 007813eb  call 0x4719b0 */
+    /* 007813eb  call 0x4719b0  ; std::list::clear */
     t = 0x004719b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007813c0_3;
@@ -339,7 +351,7 @@ R_3:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 007813f4  call 0x403df0 */
+    /* 007813f4  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007813c0_4;
@@ -373,7 +385,7 @@ R_5:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0078140d  call 0x403df0 */
+    /* 0078140d  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007813c0_6;
@@ -393,7 +405,7 @@ R_6:
     esp = r;
     /* 0078141b  mov ecx, edi */
     ecx = edi;
-    /* 0078141d  call 0x4719b0 */
+    /* 0078141d  call 0x4719b0  ; std::list::clear */
     t = 0x004719b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007813c0_7;
@@ -407,7 +419,7 @@ R_7:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00781426  call 0x403df0 */
+    /* 00781426  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007813c0_8;

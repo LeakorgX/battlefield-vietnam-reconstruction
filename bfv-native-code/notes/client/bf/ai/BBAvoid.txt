@@ -1,0 +1,5 @@
+## file
+Behaviour that weighs how urgently the bot must steer away from nearby objects. Like the other behaviours it keeps per-bot arrays indexed by the bot's slot 0xdc: weights at +0x1c, handles at +8 and a changed flag at +0x24.
+
+## 0098c1a0
+evaluate: when the parameter object (this+0xc) says the behaviour is not usable (slot 4) it clears the bot's weight and returns 0. Otherwise it takes the bot's own object, its transform and speed, and walks the list of nearby objects. For each valid object it skips the bot's own vehicle and, for flagged objects, only continues when IAIMain::vf29 is above 0.4. It predicts both positions with the object's velocity, gets a closeness factor from helper 0098bb40 (with a time margin of 0.3 or the parameter's slot 0x2c) and, while IAIPathfindingSetup::vf35 bounds the distance, adds speed * factor / length to a running urgency and stores the object handle. When the sum stays 0 it clears the weight; otherwise the weight is the sum times the input scale, the handle-changed byte is set when no handle was stored, and the weight is returned.

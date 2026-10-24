@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 004c0230  dice::bf::RemoteCommandEvent  (virtual method) */
+/* 004c0230  RemoteCommandEvent::readFromStream  (virtual method)
+ * class: dice::bf::RemoteCommandEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c0230, bfv_server_l1_body_004c0230);
 BFV_L1_RESUME(bfv_server_l1r_004c0230_1, bfv_server_l1_body_004c0230, 1);
 BFV_L1_RESUME(bfv_server_l1r_004c0230_2, bfv_server_l1_body_004c0230, 2);
@@ -25,7 +27,7 @@ void bfv_server_l1_body_004c0230(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 004c0231  mov esi, dword ptr [esp + 8] */
+    /* 004c0231  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 004c0235  push edi */
@@ -46,7 +48,7 @@ void bfv_server_l1_body_004c0230(struct bfv_cpu *c)
     M32(esp) = t;
     /* 004c023e  mov ecx, esi */
     ecx = esi;
-    /* 004c0240  call 0x4870c0 */
+    /* 004c0240  call 0x4870c0  ; BitStream::readBits */
     t = 0x004870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c0230_1;
@@ -69,7 +71,7 @@ R_1:
     M32(esp) = t;
     /* 004c024e  mov ecx, esi */
     ecx = esi;
-    /* 004c0250  call 0x4870c0 */
+    /* 004c0250  call 0x4870c0  ; BitStream::readBits */
     t = 0x004870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c0230_2;
@@ -134,7 +136,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004c1b90  dice::bf::RemoteCommandEvent  (vtable store) */
+/* 004c1b90  RemoteCommandEvent::create  (vtable store)
+ * class: dice::bf::RemoteCommandEvent
+ * also entered at 004c1bc0: RemoteCommandEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c1b90, bfv_server_l1_body_004c1b90);
 BFV_L1_RESUME(bfv_server_l1r_004c1b90_1, bfv_server_l1_body_004c1b90, 1);
 void bfv_server_l1_body_004c1b90(struct bfv_cpu *c)
@@ -148,7 +153,7 @@ void bfv_server_l1_body_004c1b90(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c1b90  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c1b90  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c1b96  mov eax, dword ptr [ecx] */
@@ -182,7 +187,7 @@ R_1:
     /* 004c1ba8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c1baf  mov dword ptr [eax], 0x81f858 */
+    /* 004c1baf  mov dword ptr [eax], 0x81f858  ; vtable RemoteCommandEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f858u;
     /* 004c1bb5  ret */
@@ -205,7 +210,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c1bd0  dice::bf::RemoteCommandEvent  (vtable store) */
+/* 004c1bd0  RemoteCommandEvent::create  (vtable store)
+ * class: dice::bf::RemoteCommandEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c1bd0, bfv_server_l1_body_004c1bd0);
 BFV_L1_RESUME(bfv_server_l1r_004c1bd0_1, bfv_server_l1_body_004c1bd0, 1);
 void bfv_server_l1_body_004c1bd0(struct bfv_cpu *c)
@@ -219,7 +226,7 @@ void bfv_server_l1_body_004c1bd0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c1bd0  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c1bd0  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c1bd6  mov eax, dword ptr [ecx] */
@@ -254,7 +261,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 004c1be9  mov esi, dword ptr [esp + 8] */
+    /* 004c1be9  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 004c1bed  push edi */
@@ -268,7 +275,7 @@ R_1:
     /* 004c1bf5  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c1bfc  mov dword ptr [eax], 0x81f858 */
+    /* 004c1bfc  mov dword ptr [eax], 0x81f858  ; vtable RemoteCommandEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f858u;
     /* 004c1c02  rep movsd dword ptr es:[edi], dword ptr [esi] */
@@ -295,7 +302,7 @@ L_004c1c09:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 004c1c0a  mov esi, dword ptr [esp + 8] */
+    /* 004c1c0a  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 004c1c0e  push edi */
@@ -336,7 +343,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c3980  dice::bf::RemoteCommandEvent  (virtual method) */
+/* 004c3980  RemoteCommandEvent::writeToStream  (virtual method)
+ * class: dice::bf::RemoteCommandEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c3980, bfv_server_l1_body_004c3980);
 BFV_L1_RESUME(bfv_server_l1r_004c3980_1, bfv_server_l1_body_004c3980, 1);
 BFV_L1_RESUME(bfv_server_l1r_004c3980_2, bfv_server_l1_body_004c3980, 2);
@@ -411,7 +420,7 @@ L_004c3987:
     edx = M32(ea);
     /* 004c3999  mov ecx, edi */
     ecx = edi;
-    /* 004c399b  call dword ptr [edx] */
+    /* 004c399b  call dword ptr [edx]  ; -> RemoteCommandEvent::vf0 */
     ea = (uint32_t)(edx);
     t = M32(ea);
     esp -= 4;
@@ -437,7 +446,7 @@ R_1:
     M32(esp) = t;
     /* 004c39ab  mov ecx, esi */
     ecx = esi;
-    /* 004c39ad  call 0x4871a0 */
+    /* 004c39ad  call 0x4871a0  ; BitStream::writeBits */
     t = 0x004871a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c3980_2;
@@ -456,7 +465,7 @@ R_2:
     M32(esp) = t;
     /* 004c39b8  mov ecx, esi */
     ecx = esi;
-    /* 004c39ba  call 0x4871a0 */
+    /* 004c39ba  call 0x4871a0  ; BitStream::writeBits */
     t = 0x004871a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c3980_3;
@@ -479,7 +488,7 @@ R_3:
     M32(esp) = t;
     /* 004c39c8  mov ecx, esi */
     ecx = esi;
-    /* 004c39ca  call 0x4871a0 */
+    /* 004c39ca  call 0x4871a0  ; BitStream::writeBits */
     t = 0x004871a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c3980_4;

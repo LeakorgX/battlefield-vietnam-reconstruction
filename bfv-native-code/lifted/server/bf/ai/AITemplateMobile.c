@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00721ae0  dice::bf::ai::AITemplateMobile  (vtable store) */
+/* 00721ae0  AITemplateMobile::AITemplateMobile  (vtable store)
+ * class: dice::bf::ai::AITemplateMobile
+ * called by: AITemplatePlugInManager::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_00721ae0, bfv_server_l1_body_00721ae0);
 void bfv_server_l1_body_00721ae0(struct bfv_cpu *c)
 {
@@ -22,7 +25,7 @@ void bfv_server_l1_body_00721ae0(struct bfv_cpu *c)
     ecx = r;
     /* 00721ae4  mov edx, 0x41200000 */
     edx = 0x41200000u;
-    /* 00721ae9  mov dword ptr [eax], 0x871f10 */
+    /* 00721ae9  mov dword ptr [eax], 0x871f10  ; vtable AITemplateMobile */
     ea = (uint32_t)(eax);
     M32(ea) = 0x871f10u;
     /* 00721aef  mov dword ptr [eax + 4], 0xffffffff */
@@ -40,22 +43,22 @@ void bfv_server_l1_body_00721ae0(struct bfv_cpu *c)
     /* 00721aff  mov dword ptr [eax + 0x1c], ecx */
     ea = (uint32_t)(eax + 0x0000001cu);
     M32(ea) = ecx;
-    /* 00721b02  mov dword ptr [eax + 0x20], 0x3f400000 */
+    /* 00721b02  mov dword ptr [eax + 0x20], 0x3f400000  ; 0.75f */
     ea = (uint32_t)(eax + 0x00000020u);
     M32(ea) = 0x3f400000u;
-    /* 00721b09  mov dword ptr [eax + 0x24], 0x42c80000 */
+    /* 00721b09  mov dword ptr [eax + 0x24], 0x42c80000  ; 100.0f */
     ea = (uint32_t)(eax + 0x00000024u);
     M32(ea) = 0x42c80000u;
     /* 00721b10  mov dword ptr [eax + 0x28], edx */
     ea = (uint32_t)(eax + 0x00000028u);
     M32(ea) = edx;
-    /* 00721b13  mov dword ptr [eax + 0x2c], 0x3dcccccd */
+    /* 00721b13  mov dword ptr [eax + 0x2c], 0x3dcccccd  ; 0.1f */
     ea = (uint32_t)(eax + 0x0000002cu);
     M32(ea) = 0x3dcccccdu;
-    /* 00721b1a  mov dword ptr [eax + 0x30], 0x3c23d70a */
+    /* 00721b1a  mov dword ptr [eax + 0x30], 0x3c23d70a  ; 0.01f */
     ea = (uint32_t)(eax + 0x00000030u);
     M32(ea) = 0x3c23d70au;
-    /* 00721b21  mov dword ptr [eax + 0x34], 0x40a00000 */
+    /* 00721b21  mov dword ptr [eax + 0x34], 0x40a00000  ; 5.0f */
     ea = (uint32_t)(eax + 0x00000034u);
     M32(ea) = 0x40a00000u;
     /* 00721b28  mov byte ptr [eax + 0x38], cl */
@@ -72,7 +75,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00721b30  (between same file) */
+/* 00721b30  AITemplatePlugIn::setSoundSphereRadius  (between same file)
+ * called by: Cmd_AITemplatePlugIn_setSoundSphereRadius::execute
+ */
 BFV_L1_ENTRY(bfv_server_l1_00721b30, bfv_server_l1_body_00721b30);
 void bfv_server_l1_body_00721b30(struct bfv_cpu *c)
 {
@@ -81,10 +86,10 @@ void bfv_server_l1_body_00721b30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00721b30  mov eax, dword ptr [esp + 4] */
+    /* 00721b30  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00721b34  mov edx, dword ptr [esp + 8] */
+    /* 00721b34  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00721b38  mov dword ptr [ecx + 0x28], eax */
@@ -104,7 +109,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00721b50  (between same file) */
+/* 00721b50  AITemplatePlugIn::setHearingProbability  (between same file)
+ * called by: Cmd_AITemplatePlugIn_setHearingProbability::execute
+ */
 BFV_L1_ENTRY(bfv_server_l1_00721b50, bfv_server_l1_body_00721b50);
 void bfv_server_l1_body_00721b50(struct bfv_cpu *c)
 {
@@ -113,10 +120,10 @@ void bfv_server_l1_body_00721b50(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00721b50  mov eax, dword ptr [esp + 4] */
+    /* 00721b50  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00721b54  mov edx, dword ptr [esp + 8] */
+    /* 00721b54  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00721b58  mov dword ptr [ecx + 0x30], eax */
@@ -136,7 +143,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00721b70  dice::bf::ai::AITemplateMobile  (virtual method) */
+/* 00721b70  AITemplateMobile::createObjectPlugIn  (virtual method)
+ * overrides: AITemplatePlugIn::createObjectPlugIn  (8 classes implement it)
+ * class: dice::bf::ai::AITemplateMobile
+ */
 BFV_L1_ENTRY(bfv_server_l1_00721b70, bfv_server_l1_body_00721b70);
 BFV_L1_RESUME(bfv_server_l1r_00721b70_1, bfv_server_l1_body_00721b70, 1);
 BFV_L1_RESUME(bfv_server_l1r_00721b70_2, bfv_server_l1_body_00721b70, 2);
@@ -168,13 +178,13 @@ void bfv_server_l1_body_00721b70(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00721b78  jl 0x721b85 */
     if ((sf != of)) goto L_00721b85;
-    /* 00721b7a  mov ecx, dword ptr [0xc313d0] */
+    /* 00721b7a  mov ecx, dword ptr [0xc313d0]  ; g_pIAIPathfinding_00c313d0 */
     ea = (uint32_t)(0x00c313d0u);
     ecx = M32(ea);
     /* 00721b80  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 00721b82  call dword ptr [eax + 0xc] */
+    /* 00721b82  call dword ptr [eax + 0xc]  ; -> IAIPathfinding::vf3 = AIPathfinding::vf3 */
     ea = (uint32_t)(eax + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -195,9 +205,9 @@ L_00721b85:
     t = 0x34u;
     esp -= 4;
     M32(esp) = t;
-    /* 00721b8e  mov ecx, 0xc31c98 */
+    /* 00721b8e  mov ecx, 0xc31c98  ; g_MemoryPoolNull_AIObjectMobile */
     ecx = 0xc31c98u;
-    /* 00721b93  call 0x404290 */
+    /* 00721b93  call 0x404290  ; MemoryPool::alloc_debug */
     t = 0x00404290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00721b70_2;
@@ -209,7 +219,7 @@ R_2:
     F_LOGIC(32, r);
     /* 00721b9a  je 0x721bad */
     if (zf) goto L_00721bad;
-    /* 00721b9c  mov ecx, dword ptr [esp + 8] */
+    /* 00721b9c  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00721ba0  push esi */
@@ -222,7 +232,7 @@ R_2:
     M32(esp) = t;
     /* 00721ba2  mov ecx, eax */
     ecx = eax;
-    /* 00721ba4  call 0x78db50 */
+    /* 00721ba4  call 0x78db50  ; AITemplateMobile::createObjectPlugIn_helper_0078db50 */
     t = 0x0078db50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00721b70_3;
@@ -257,7 +267,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0078db50  (called from this file only) */
+/* 0078db50  AITemplateMobile::createObjectPlugIn_helper_0078db50  (called from this file only)
+ * called by: AITemplateMobile::createObjectPlugIn
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078db50, bfv_server_l1_body_0078db50);
 BFV_L1_RESUME(bfv_server_l1r_0078db50_1, bfv_server_l1_body_0078db50, 1);
 void bfv_server_l1_body_0078db50(struct bfv_cpu *c)
@@ -271,7 +283,7 @@ void bfv_server_l1_body_0078db50(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0078db50  mov eax, dword ptr [esp + 4] */
+    /* 0078db50  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0078db54  push esi */
@@ -280,7 +292,7 @@ void bfv_server_l1_body_0078db50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0078db55  mov esi, ecx */
     esi = ecx;
-    /* 0078db57  mov ecx, dword ptr [esp + 0xc] */
+    /* 0078db57  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 0078db5b  push 8 */
@@ -290,7 +302,7 @@ void bfv_server_l1_body_0078db50(struct bfv_cpu *c)
     /* 0078db5d  mov dword ptr [esi + 4], eax */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = eax;
-    /* 0078db60  mov dword ptr [esi], 0x87772c */
+    /* 0078db60  mov dword ptr [esi], 0x87772c  ; vtable AIObjectMobile */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87772cu;
     /* 0078db66  mov dword ptr [esi + 0x14], ecx */
@@ -302,7 +314,7 @@ void bfv_server_l1_body_0078db50(struct bfv_cpu *c)
     /* 0078db6d  mov dword ptr [esi + 0x30], 0 */
     ea = (uint32_t)(esi + 0x00000030u);
     M32(ea) = 0x0u;
-    /* 0078db74  call 0x403d80 */
+    /* 0078db74  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078db50_1;
@@ -323,7 +335,7 @@ R_1:
     /* 0078db80  mov dword ptr [eax + 4], esi */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = esi;
-    /* 0078db83  mov dword ptr [eax], 0x877748 */
+    /* 0078db83  mov dword ptr [eax], 0x877748  ; vtable PortalEventCallback */
     ea = (uint32_t)(eax);
     M32(ea) = 0x877748u;
     /* 0078db89  mov dword ptr [esi + 0x1c], eax */

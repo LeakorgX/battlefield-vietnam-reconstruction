@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0075e100  dice::ref2::geom::GrowthPatch  (vtable store) */
+/* 0075e100  GrowthPatch::~GrowthPatch  (vtable store)
+ * class: dice::ref2::geom::GrowthPatch
+ * called by: RaStreamData::~RaStreamData, UnderGrowthPatch::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_0075e100, bfv_client_l1_body_0075e100);
 void bfv_client_l1_body_0075e100(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_client_l1_body_0075e100(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0075e100  mov dword ptr [ecx], 0xbaeb20 */
+    /* 0075e100  mov dword ptr [ecx], 0xbaeb20  ; vtable GrowthPatch */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbaeb20u;
     /* 0075e106  ret */
@@ -28,7 +31,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0075e3a0  dice::ref2::geom::GrowthPatch  (vtable store) */
+/* 0075e3a0  GrowthPatch::GrowthPatch  (vtable store)
+ * class: dice::ref2::geom::GrowthPatch
+ * called by: OverGrowthPatch::OverGrowthPatch, UnderGrowthPatch::UnderGrowthPatch
+ */
 BFV_L1_ENTRY(bfv_client_l1_0075e3a0, bfv_client_l1_body_0075e3a0);
 void bfv_client_l1_body_0075e3a0(struct bfv_cpu *c)
 {
@@ -49,7 +55,7 @@ void bfv_client_l1_body_0075e3a0(struct bfv_cpu *c)
     /* 0075e3a7  mov byte ptr [eax + 5], cl */
     ea = (uint32_t)(eax + 0x00000005u);
     M8(ea) = LO8(ecx);
-    /* 0075e3aa  mov dword ptr [eax], 0xbaeb20 */
+    /* 0075e3aa  mov dword ptr [eax], 0xbaeb20  ; vtable GrowthPatch */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbaeb20u;
     /* 0075e3b0  mov byte ptr [eax + 6], 1 */

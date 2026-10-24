@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009bc0e0  dice::bf::ai::EntryCarMoveToDirection  (vtable store) */
+/* 009bc0e0  EntryCarMoveToDirection::EntryCarMoveToDirection  (vtable store)
+ * class: dice::bf::ai::EntryCarMoveToDirection
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bc0e0, bfv_client_l1_body_009bc0e0);
 void bfv_client_l1_body_009bc0e0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_009bc0e0(struct bfv_cpu *c)
     uint32_t ea;
     /* 009bc0e0  mov eax, ecx */
     eax = ecx;
-    /* 009bc0e2  mov dword ptr [eax], 0xbf7a74 */
+    /* 009bc0e2  mov dword ptr [eax], 0xbf7a74  ; vtable EntryCarMoveToDirection */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf7a74u;
     /* 009bc0e8  ret */

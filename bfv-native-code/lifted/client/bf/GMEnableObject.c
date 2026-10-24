@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00530600  dice::bf::GMEnableObject  (virtual method) */
+/* 00530600  GMEnableObject::vf3_getByte_20h  (virtual method)
+ * class: dice::bf::GMEnableObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_00530600, bfv_client_l1_body_00530600);
 void bfv_client_l1_body_00530600(struct bfv_cpu *c)
 {
@@ -28,7 +30,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00568f60  dice::bf::GMEnableObject  (virtual method) */
+/* 00568f60  GMEnableObject::vf4_setByte_20h  (virtual method)
+ * class: dice::bf::GMEnableObject
+ * called by: Setup_Exit_0057d430
+ */
 BFV_L1_ENTRY(bfv_client_l1_00568f60, bfv_client_l1_body_00568f60);
 void bfv_client_l1_body_00568f60(struct bfv_cpu *c)
 {
@@ -37,7 +42,7 @@ void bfv_client_l1_body_00568f60(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00568f60  mov al, byte ptr [esp + 4] */
+    /* 00568f60  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 00568f64  mov byte ptr [ecx + 0x20], al */

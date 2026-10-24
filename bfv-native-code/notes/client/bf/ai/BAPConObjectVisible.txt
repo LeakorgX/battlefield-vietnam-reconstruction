@@ -1,0 +1,7 @@
+## file
+BAPConObjectVisible is a bot action-plan condition: true while the bot has
+sense information about the object named by the handle at this+8.
+
+## 009f9d70
+evaluate(bot): asks the bot for its information entry about the handle at
+this+8 (bot slot 0x88) and returns whether it got one.

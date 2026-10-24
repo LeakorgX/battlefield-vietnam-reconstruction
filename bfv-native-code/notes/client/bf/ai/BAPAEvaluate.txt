@@ -1,0 +1,8 @@
+## file
+Plan action that runs a callback object once and finishes.
+
+## 009f89d0
+Calls slot 1 of the callback at this+0x18, then sets flag = 1 and done = 1.
+
+## 009f89f0
+Destructor: deletes the callback at this+0x18 (its slot 0 with 1), restores the base vtables, counts the destruction and frees the object when bit 0 of the flag argument is set.

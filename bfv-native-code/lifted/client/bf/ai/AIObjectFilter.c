@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00926b20  dice::bf::ai::?A0xcfef952e::AIObjectFilter  (virtual method) */
+/* 00926b20  AIObjectFilter::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xcfef952e::AIObjectFilter
+ */
 BFV_L1_ENTRY(bfv_client_l1_00926b20, bfv_client_l1_body_00926b20);
 BFV_L1_RESUME(bfv_client_l1r_00926b20_1, bfv_client_l1_body_00926b20, 1);
 void bfv_client_l1_body_00926b20(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_00926b20(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00926b20  mov ecx, dword ptr [esp + 4] */
+    /* 00926b20  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00926b24  test dword ptr [ecx + 4], 0x400000 */
@@ -37,7 +39,7 @@ void bfv_client_l1_body_00926b20(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_00926b32:
-    /* 00926b32  mov eax, dword ptr [0xbe1364] */
+    /* 00926b32  mov eax, dword ptr [0xbe1364]  ; interfaceID(AIObject) */
     ea = (uint32_t)(0x00be1364u);
     eax = M32(ea);
     /* 00926b37  mov edx, dword ptr [ecx] */

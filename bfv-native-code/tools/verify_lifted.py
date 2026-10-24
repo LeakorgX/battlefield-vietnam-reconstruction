@@ -33,13 +33,15 @@ later ones small (counts and indices near zero, arena words pointing at
 themselves). A native run that still runs out of budget or leaves the function
 is skipped without running the lifted body; when that leaves a function with no
 completed state and some ran out of budget, the states are drawn again with a
-native budget of BIG_BUDGET instructions. Only .text is executable, and an
-indirect call made by the function into .text is opaque on both machines too
+native budget of BIG_BUDGET instructions. Only the code sections are executable
+(.text and the patch code in the .tls slack and .ctfsnd), and an
+indirect call made by the function into code is opaque on both machines too
 (real code reached through a random pointer may read its return address). The
 frame below the entry stub (the default gap, or the body's own gap for
 _bfv_l1_enter_deep) is the
 lifted code's own and is excluded from the comparison. Runs are bounded by an
-instruction count and EVENT_LIMIT events; a run stopped by the RUN_SECONDS
+instruction count, EVENT_LIMIT events and OPAQUE_CALLS opaque calls (a loop
+whose exit depends on opaque results is out of budget); a run stopped by the RUN_SECONDS
 wall-clock limit instead is inconclusive and skipped.
 Every call is an event: target, all general registers and 20 bytes of
 stack arguments. Pages touched outside the mapped memory are mapped on demand
@@ -70,7 +72,7 @@ from pathlib import Path
 import pefile
 from capstone import Cs,CS_ARCH_X86,CS_MODE_32,CS_OP_IMM,CS_OP_REG
 from unicorn import Uc,UcError,UC_ARCH_X86,UC_MODE_32,UC_HOOK_CODE,UC_HOOK_BLOCK,UC_HOOK_MEM_READ,UC_HOOK_MEM_WRITE,UC_MEM_WRITE
-from unicorn import UC_HOOK_MEM_READ_UNMAPPED,UC_HOOK_MEM_WRITE_UNMAPPED,UC_PROT_READ,UC_PROT_WRITE
+from unicorn import UC_HOOK_MEM_READ_UNMAPPED,UC_HOOK_MEM_WRITE_UNMAPPED,UC_PROT_READ,UC_PROT_WRITE,UC_PROT_ALL
 from unicorn import UC_ERR_FETCH_UNMAPPED,UC_ERR_FETCH_PROT
 from unicorn import x86_const as U
 from build import PROJECT,GAME,TARGETS,COMPILERS,run,response
@@ -83,7 +85,7 @@ GPRS=[U.UC_X86_REG_EAX,U.UC_X86_REG_ECX,U.UC_X86_REG_EDX,U.UC_X86_REG_EBX,U.UC_X
       U.UC_X86_REG_ESI,U.UC_X86_REG_EDI]
 FPU=[U.UC_X86_REG_FPCW,U.UC_X86_REG_FPSW,U.UC_X86_REG_FPTAG,*[getattr(U,f'UC_X86_REG_FP{n}') for n in range(8)]]
 SSE=[U.UC_X86_REG_MXCSR,*[getattr(U,f'UC_X86_REG_XMM{n}') for n in range(8)]]
-VERIFIER=13  # bump when the states or comparison change; old results are then not reused
+VERIFIER=24  # bump when the states or comparison change; old results are then not reused
 ARENA_SIZE=0x10000;LAZY_PAGES=64;
 RUN_SECONDS=20;EVENT_LIMIT=20_000
 PREFIX_BUDGET=20_000  # native instructions of a prefix comparison
@@ -95,15 +97,22 @@ FUNCS=0x1ff00000;FUNC_COUNT=32;IMPORTS=0x1fe00000
 # loader) are executable. A transfer anywhere else (a random pointer used as a
 # function) is an opaque call: recorded like a stub call, then it returns
 # K(target) in EAX to its caller, identically on both machines.
+ESP_BIT=16;POISON=0x5a5a5a5b
 CODE=0x1ff10000;STOP=CODE;LOADER=CODE+0x100;OPAQUE_CALLS=64
 ENTRY_SP=STACK+0x8000
+# Thread data: fs points at a TEB page (SEH chain end, stack base and limit),
+# loaded through a GDT, on both machines.
+TEB=0x1fd00000;GDT=TEB+0x1000;FS_SELECTOR=3*8|3;SS_SELECTOR=4*8  # SS: flat 32-bit, so pushes use ESP
+# The readable runtime's shadow stacks (l1_runtime.c): only the top SHADOW_USED
+# bytes of slot 0 (the one thread) and the slot table are mapped.
+SHADOW_USED=0x40000
 FLOATS=[0.0,1.0,-1.0,0.5,2.0,-3.25,100.0,1e-3,0.75,-0.125]
 
 def link(target,work,lifted_dir):
     """Compile and link the lifted code at BLOB; returns (bytes, {symbol: address})."""
     work.mkdir(parents=True,exist_ok=True)
     sources=[lifted_dir/'runtime/l1_runtime.c',*sorted((lifted_dir/target).rglob('*.c'))]
-    inputs=[*sources,lifted_dir/'runtime/l1.h']
+    inputs=[*sources,*runtime_headers(lifted_dir)]
     stamp=work/'lifted.flags'
     if (work/'lifted.bin').exists() and (work/'lifted.map').exists() and stamp.exists() and \
        stamp.read_text()==' '.join(FLAGS) and (work/'lifted.bin').stat().st_mtime>max(f.stat().st_mtime for f in inputs):
@@ -114,6 +123,7 @@ def link(target,work,lifted_dir):
     with ThreadPoolExecutor(6) as pool:
         list(pool.map(lambda so:run([COMPILERS/'gcc.exe',*FLAGS,'-I',lifted_dir/'runtime','-c',so[0],'-o',so[1]],work),zip(sources,objects)))
     (work/'lifted.ld').write_text(f'SECTIONS {{ . = 0x{BLOB:x}; .payload : {{ *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) }}'
+                                  ' .bfvshadow ALIGN(4096) (NOLOAD) : { *(.bfvshadow) }'
                                   ' /DISCARD/ : { *(.eh_frame*) *(.comment*) *(.drectve*) } }')
     run([COMPILERS/'ld.exe','-T',work/'lifted.ld','--image-base','0x400000','--entry','_bfv_l1_enter',
          '--disable-dynamicbase','--disable-reloc-section','-Map',work/'lifted.map','-o',work/'lifted.exe',response(work/'objects.rsp',objects)],work)
@@ -121,22 +131,40 @@ def link(target,work,lifted_dir):
     stamp.write_text(' '.join(FLAGS))
     return (work/'lifted.bin').read_bytes(),map_symbols(work)
 
+def runtime_headers(lifted_dir):
+    """l1.h, and l2.h and the address names for the readable tree."""
+    return [h for h in (lifted_dir/'runtime/l1.h',lifted_dir/'runtime/l2.h',lifted_dir/'runtime/symbols_client.h',
+                        lifted_dir/'runtime/symbols_server.h') if h.name=='l1.h' or h.exists()]
+
 def trampoline(symbols):
     """[start, end) of the shared trampoline code in the blob (the default and
-    the deep entry, which follows it), and the deep entry."""
+    the deep entry, which follows it, and in the readable runtime bfv_call and
+    the return path up to bfv_l1_runtime_end), and the deep entry."""
     start=symbols['bfv_l1_enter'];deep=symbols['bfv_l1_enter_deep']
+    if 'bfv_l1_runtime_end' in symbols:return start,symbols['bfv_l1_runtime_end'],deep
     return start,min(a for a in symbols.values() if a>max(start,deep)),deep
+
+def shadow_range(symbols):
+    """[lo, hi) of the mapped shadow stack and slot table, or None (L1 runtime)."""
+    if 'bfv_threads' not in symbols:return None
+    return symbols['bfv_threads']-SHADOW_USED,symbols['bfv_shadow_end']
+
+def teb_page():
+    """TEB contents: no SEH frame, the stack's base and limit, the TEB itself."""
+    page=bytearray(0x1000)
+    struct.pack_into('<III',page,0,0xffffffff,STACK+0x10000,STACK);struct.pack_into('<I',page,0x18,TEB)
+    return bytes(page)
 
 def runtime_sha256(lifted_dir):
     """Hash of the shared runtime; with a function's own c_sha256 it fixes the compiled code."""
     h=hashlib.sha256()
-    for f in [lifted_dir/'runtime/l1.h',lifted_dir/'runtime/l1_runtime.c']:h.update(f.name.encode()+bytes(1)+f.read_bytes())
+    for f in [*runtime_headers(lifted_dir),lifted_dir/'runtime/l1_runtime.c']:h.update(f.name.encode()+bytes(1)+f.read_bytes())
     return h.hexdigest()
 
 def sources_sha256(target,lifted_dir):
     """Hash of the lifted sources; build.py only detours functions verified from these exact sources."""
     h=hashlib.sha256()
-    for f in [lifted_dir/'runtime/l1.h',lifted_dir/'runtime/l1_runtime.c',*sorted((lifted_dir/target).rglob('*.c'))]:
+    for f in [*runtime_headers(lifted_dir),lifted_dir/'runtime/l1_runtime.c',*sorted((lifted_dir/target).rglob('*.c'))]:
         h.update(f.relative_to(lifted_dir).as_posix().encode()+b'\0'+f.read_bytes())
     return h.hexdigest()
 
@@ -148,8 +176,10 @@ def map_symbols(work):
     return symbols
 
 class Machine:
-    def __init__(self,image,pe,blob,quiet=(0,0)):
+    def __init__(self,image,pe,blob,quiet=(0,0),shadow=None):
         m=self.uc=Uc(UC_ARCH_X86,UC_MODE_32);base=pe.OPTIONAL_HEADER.ImageBase
+        # A Phenom has 3DNow! (the d3dx and 0x0081/0x0085 vector code); CR4.OSFXSR enables SSE on it.
+        m.ctl_set_cpu_model(U.UC_CPU_X86_PHENOM);m.reg_write(U.UC_X86_REG_CR4,0x200)
         m.mem_map(base,(pe.OPTIONAL_HEADER.SizeOfImage+4095)&~4095)
         m.mem_write(base,image[:pe.OPTIONAL_HEADER.SizeOfHeaders])
         for s in pe.sections:m.mem_write(base+s.VirtualAddress,s.get_data())
@@ -158,23 +188,29 @@ class Machine:
         if not hasattr(pe,'DIRECTORY_ENTRY_IMPORT'):pe.parse_data_directories()
         for n,imp in enumerate(i for d in getattr(pe,'DIRECTORY_ENTRY_IMPORT',[]) for i in d.imports):
             m.mem_write(imp.address,struct.pack('<I',IMPORTS+16*n))
-        # only .text is executable: a call through a garbage pointer into data is opaque
-        lo,hi=text_range(pe);lo&=~0xfff;hi=(hi+0xfff)&~0xfff;end=base+((pe.OPTIONAL_HEADER.SizeOfImage+4095)&~4095)
-        if base<lo:m.mem_protect(base,lo-base,UC_PROT_READ|UC_PROT_WRITE)
-        if hi<end:m.mem_protect(hi,end-hi,UC_PROT_READ|UC_PROT_WRITE)
+        # only code is executable: a call through a garbage pointer into data is opaque
+        m.mem_protect(base,(pe.OPTIONAL_HEADER.SizeOfImage+4095)&~4095,UC_PROT_READ|UC_PROT_WRITE)
+        for lo,hi in code_ranges(pe):m.mem_protect(lo&~0xfff,((hi+0xfff)&~0xfff)-(lo&~0xfff),UC_PROT_ALL)
         m.mem_map(ARENA,ARENA_SIZE,UC_PROT_READ|UC_PROT_WRITE);m.mem_map(STACK,0x10000,UC_PROT_READ|UC_PROT_WRITE)
         m.mem_map(CODE,0x1000)
+        # fs: a data segment over the TEB page
+        m.mem_map(TEB,0x2000,UC_PROT_READ|UC_PROT_WRITE);m.mem_write(TEB,teb_page())
+        m.mem_write(GDT+8*(FS_SELECTOR>>3),struct.pack('<HHBBBB',0xfff,TEB&0xffff,(TEB>>16)&0xff,0xf3,0x40,TEB>>24))
+        m.mem_write(GDT+SS_SELECTOR,struct.pack('<HHBBBB',0xffff,0,0,0x93,0xcf,0))
+        m.reg_write(U.UC_X86_REG_GDTR,(0,GDT,0x1000,0));m.reg_write(U.UC_X86_REG_SS,SS_SELECTOR);m.reg_write(U.UC_X86_REG_FS,FS_SELECTOR)
+        self.shadow=shadow or (0,0)
+        if shadow:m.mem_map(shadow[0],shadow[1]-shadow[0],UC_PROT_READ|UC_PROT_WRITE)
         m.mem_map(BLOB,(len(blob)+0xffff)&~0xffff);m.mem_write(BLOB,blob)
         self.blob_end=BLOB+len(blob);self.events=None
         m.mem_write(STOP,b'\x90')
         m.mem_map(FUNCS,0x1000)
         m.mem_write(FUNCS,b''.join(bytes([0xb8])+struct.pack('<I',ARENA+0x100+n*0x1f4)+bytes([0xc3,0xcc,0xcc])
                                    for n in range(FUNC_COUNT)))
-        self.sites={}
+        self.sites={};self.abi_calls={};self.ret_mask=None;self.ret_calls=set();self.ncalls=0;self.quiet=bool(quiet[1]);self.last_from=None
         def indirect(uc,address,size,data):
             if self.events is not None and (address-FUNCS)%8==0:
                 sp=uc.reg_read(U.UC_X86_REG_ESP)
-                self.events.append(('call',address,tuple(uc.reg_read(r) for r in GPRS),bytes(uc.mem_read(sp+4,20))))
+                self.call_event(uc,address,sp)
                 self.returning(uc,ARENA+0x100+(address-FUNCS)//8*0x1f4)
         m.hook_add(UC_HOOK_CODE,indirect,begin=FUNCS,end=FUNCS+8*FUNC_COUNT)
         # A run may write the image, the function stubs or the blob (stray stores,
@@ -191,22 +227,30 @@ class Machine:
             # A native store into the blob or well below ESP goes through a garbage
             # pointer into what the lifted machine uses for its code or C frame:
             # the state is skipped.
-            if not quiet[1] and kind==UC_MEM_WRITE and (BLOB<=address<self.blob_end or
+            if not quiet[1] and kind==UC_MEM_WRITE and (BLOB<=address<self.blob_end or self.shadow[0]<=address<self.shadow[1] or
                     STACK<=address<uc.reg_read(U.UC_X86_REG_ESP)-0x20):
                 self.left=('garbage store',address);uc.emu_stop();return
-            if BLOB<=address<self.blob_end:return
+            # the blob and the shadow stack (the lifted body's C frame) are the lifted code's own
+            if BLOB<=address<self.blob_end or self.shadow[0]<=address<self.shadow[1]:return
             # the trampoline's continuation word at ESP-4 is dead stack, and the stub
             # pushes, the cpu struct and the C frame lie below the guest ESP at the
             # last (re)entry minus the gap, where guest code never reaches (lifted
             # machine only)
-            eip=uc.reg_read(U.UC_X86_REG_EIP)
-            if quiet[0]<=eip<quiet[1] or BLOB<=eip<self.blob_end and STACK<=address<max(self.frame_top,uc.reg_read(U.UC_X86_REG_ESP)+16):return
-            self.events.append((address,size,value&((1<<(8*size))-1) if kind==UC_MEM_WRITE else None))
+            eip=uc.reg_read(U.UC_X86_REG_EIP);sp=uc.reg_read(U.UC_X86_REG_ESP)
+            if quiet[0]<=eip<quiet[1] or BLOB<=eip<self.blob_end and STACK<=address<max(self.frame_top,sp+16 if STACK<=sp<STACK+0x10000 else 0):return
+            event=(address,size,value&((1<<(8*size))-1) if kind==UC_MEM_WRITE else None)
+            # unicorn's pushad stores EDI first, at the lowest address; the CPU's
+            # order (and the lifted body's) is EAX first, at the highest
+            if kind==UC_MEM_WRITE and base<=eip<self.image_end and uc.mem_read(eip,1)==b'\x60':
+                if not(self.pushad and self.pushad[0]==eip and self.pushad[2]<8 and self.pushad[1]+self.pushad[2]==len(self.events)):
+                    self.pushad=(eip,len(self.events),0)
+                _,at,n=self.pushad;self.events.insert(at,event);self.pushad=(eip,at,n+1);return
+            self.events.append(event)
         m.hook_add(UC_HOOK_MEM_READ,access);m.hook_add(UC_HOOK_MEM_WRITE,access)
         self.frame_top=0
         def enter(uc,address,size,data):self.frame_top=uc.reg_read(U.UC_X86_REG_ESP)+8  # E-GAP
         def enter_deep(uc,address,size,data):self.frame_top=uc.reg_read(U.UC_X86_REG_ESP)+12  # E-G
-        if quiet[1]:
+        if quiet[1] and not self.shadow[1]:  # the readable runtime keeps *cpu on the shadow stack: no guest frame to leave out
             m.hook_add(UC_HOOK_CODE,enter,begin=quiet[0],end=quiet[0])
             m.hook_add(UC_HOOK_CODE,enter_deep,begin=quiet[2],end=quiet[2])
         # Data reached through random pointers (floats or small integers used as
@@ -230,10 +274,19 @@ class Machine:
         # that is no function entry nor stored as a code pointer goes through a
         # garbage pointer; it is treated as an opaque callee, as the garbage could
         # read the return address, which differs between the two machines.
-        self.canon={};self.home=None;self.left=False;self.prev=None;self.rets={};self.starts=set();self.text=(0,0);self.targets=set();self.callees=set()
-        self.disasm=Cs(CS_ARCH_X86,CS_MODE_32);self.disasm.detail=True
+        self.canon={};self.home=None;self.left=False;self.prev=None;self.rets={};self.starts=set();self.code=[];self.targets=set();self.callees=set()
+        self.disasm=Cs(CS_ARCH_X86,CS_MODE_32);self.disasm.detail=True;counter=Cs(CS_ARCH_X86,CS_MODE_32)
+        self.ninsn={};self.budget=0;self.executed=0
         def block(uc,address,size,data):
-            prev=self.prev;self.prev=(address,size)
+            # the instruction budget: emu_start's count would add a code hook on every
+            # instruction, and with one unicorn loses the lazy flags of an instruction
+            # before a rep string instruction whose first access faults into a lazy page
+            if self.budget:
+                n=self.ninsn.get((address,size))
+                if n is None:n=self.ninsn[(address,size)]=max(1,sum(1 for _ in counter.disasm_lite(bytes(uc.mem_read(address,size)),address)))
+                self.executed+=n
+                if self.executed>self.budget:uc.emu_stop();return
+            prev=self.prev;self.prev=(address,size);self.last_from=prev
             if prev is None or self.events is None:return
             if BLOB<=prev[0]<self.blob_end:kind='blob'
             else:
@@ -244,7 +297,7 @@ class Machine:
                 kind=self.rets[prev[0]]
             # a direct call of the function's own entry (recursion) is opaque on
             # the native machine as well, like the lifted body's call of it
-            if (kind in ('blob','call') or kind=='direct call' and address==self.home) and                self.text[0]<=address<self.text[1] and (address not in self.callees or address==self.home):
+            if (kind in ('blob','call') or kind=='direct call' and address==self.home) and                any(lo<=address<hi for lo,hi in self.code) and (address not in self.callees or address==self.home):
                 sp=uc.reg_read(U.UC_X86_REG_ESP);ret=struct.unpack('<I',bytes(uc.mem_read(sp,4)))[0]
                 # every indirect call of the checked function is opaque, like its
                 # direct callees are stubs: real code reached through a random
@@ -252,12 +305,30 @@ class Machine:
                 # machines (this includes the function's own entry, a pointer that
                 # holds it until the game sets it at run time)
                 if ret in self.sites:
-                    self.events.append(('call',address,tuple(uc.reg_read(r) for r in GPRS),bytes(uc.mem_read(sp+4,20))))
+                    self.call_event(uc,address,sp)
                     self.returning(uc,opaque_result(address));self.prev=None;return
             if kind=='ret' and not (BLOB<=address<self.blob_end or address==STOP or after_call(uc,address)):
                 self.left=(prev[0],address,kind);uc.emu_stop()
         m.hook_add(UC_HOOK_BLOCK,block)
         self.context=m.context_save()  # includes segment descriptor caches
+
+    def call_event(self,uc,address,sp):
+        """A call: its target, registers and the first stack words. Registers the
+        callee can't see (L2b register variables, the call's ABI in the catalog)
+        are left out."""
+        regs=tuple(uc.reg_read(r) for r in GPRS)
+        m=self.abi_calls.get(struct.unpack('<I',bytes(uc.mem_read(sp,4)))[0])
+        # native `ret` to a random address: the event is masked like the final
+        # registers, on both machines (verify() applies ret_calls to both)
+        if m is None and self.ret_mask is not None and not self.quiet:
+            src=self.last_from if self.prev and self.prev[0]==address else self.prev
+            last=None
+            if src:
+                for ins in self.disasm.disasm(bytes(uc.mem_read(*src)),src[0]):last=ins
+            if last is not None and last.mnemonic=='ret':self.ret_calls.add(self.ncalls)
+        self.ncalls+=1
+        if m is not None:regs=tuple(v if (m|ESP_BIT)>>k&1 else None for k,v in enumerate(regs))
+        self.events.append(('call',address,regs,bytes(uc.mem_read(sp+4,20))))
 
     def returning(self,uc,result,pop=0):
         """A callee stub (or an opaque callee) was reached with [ESP] holding the
@@ -283,6 +354,11 @@ class Machine:
         # resume stub stands for the native return address (as in as_native)
         if ret in self.canon:uc.mem_write(sp,struct.pack('<I',self.canon[ret]))
         if result is not None:uc.reg_write(U.UC_X86_REG_EAX,result)
+        # ecx/edx the call didn't hand over: a real callee leaves something there
+        m=self.abi_calls.get(ret)
+        if m is not None:
+            for bit,reg in ((2,U.UC_X86_REG_ECX),(4,U.UC_X86_REG_EDX)):
+                if not m&bit:uc.reg_write(reg,POISON)
         uc.reg_write(U.UC_X86_REG_ESP,sp+4+pop+args)
         if halt:self.halted=True;uc.emu_stop()
         else:uc.reg_write(U.UC_X86_REG_EIP,ret)
@@ -300,7 +376,7 @@ class Machine:
 
     def run(self,state,entry,count,callees=(),sites=None):
         m=self.uc;arena,stack,regs,x87,flags=state
-        self.reset();self.sites=sites or {};self.prev=None;self.rets={};self.callees={t for t,_ in callees};self.targets=self.starts|self.callees
+        self.reset();self.sites=sites or {};self.prev=None;self.rets={};self.ninsn={};self.callees={t for t,_ in callees};self.targets=self.starts|self.callees
         saved=[(t,bytes(m.mem_read(t,len(code)))) for t,code in callees]
         for t,code in callees:m.mem_write(t,code);m.ctl_remove_cache(t,t+len(code))  # drop stale translations
         stubs={t:(struct.unpack('<I',code[1:5])[0] if code[0]==0xb8 else None,
@@ -308,7 +384,7 @@ class Machine:
         def called(uc,address,size,data):  # callee stub reached: arguments are an event
             if self.events is not None:
                 sp=uc.reg_read(U.UC_X86_REG_ESP)
-                self.events.append(('call',address,tuple(uc.reg_read(r) for r in GPRS),bytes(uc.mem_read(sp+4,20))))
+                self.call_event(uc,address,sp)
                 self.returning(uc,*stubs[address])
         hooks=[m.hook_add(UC_HOOK_CODE,called,begin=t,end=t) for t,_ in callees]
         try:return self._run(state,entry,count)
@@ -317,8 +393,9 @@ class Machine:
             for t,old in saved:m.mem_write(t,old);m.ctl_remove_cache(t,t+len(old))
 
     def _run(self,state,entry,count):
-        m=self.uc;arena,stack,regs,x87,flags=state
-        m.mem_write(ARENA,arena);m.mem_write(STACK,b'\0'*0x10000);m.mem_write(ENTRY_SP,stack)
+        m=self.uc;arena,stack,regs,x87,flags=state;self.budget=0
+        m.mem_write(ARENA,arena);m.mem_write(STACK,b'\0'*0x10000);m.mem_write(ENTRY_SP,stack);m.mem_write(TEB,teb_page())
+        if self.shadow[1]:m.mem_write(self.shadow[0],bytes(self.shadow[1]-self.shadow[0]))
         self.state_seed=int.from_bytes(hashlib.sha256(arena[:256]).digest()[:8],'little')
         # the whole CODE page: STOP is a frame_state stack word, so stores through it land here
         m.mem_write(CODE,b'\x90'+bytes(0xfff));m.ctl_remove_cache(CODE,CODE+0x1000)
@@ -331,17 +408,19 @@ class Machine:
             loader=b''.join(b'\xd9\x05'+struct.pack('<I',ARENA+ARENA_SIZE-0x100+4*k) for k in range(len(x87)))
             m.mem_write(ARENA+ARENA_SIZE-0x100,struct.pack(f'<{len(x87)}f',*x87))
             m.mem_write(LOADER,loader);m.emu_start(LOADER,LOADER+len(loader))
-        self.events=[];self.halted=False;self.left=False;self.frame_top=0;self.flooded=False;began=time.monotonic()
+        self.events=[];self.pushad=None;self.halted=False;self.ret_calls=set();self.ncalls=0;self.left=False;self.frame_top=0;self.flooded=False;began=time.monotonic()
         try:
             start=entry
             for opaque in range(OPAQUE_CALLS+1):
                 # the instruction count is the budget; the wall-clock limit only
                 # ends runs the count misses, and such a run is inconclusive
-                try:m.emu_start(start,STOP,timeout=max(1,int((began+RUN_SECONDS-time.monotonic())*1_000_000)),count=count);break
+                self.executed=0;self.budget=count  # per start, as emu_start's count
+                try:m.emu_start(start,STOP,timeout=max(1,int((began+RUN_SECONDS-time.monotonic())*1_000_000)));break
                 except UcError as e:
-                    if e.errno not in (UC_ERR_FETCH_UNMAPPED,UC_ERR_FETCH_PROT) or opaque==OPAQUE_CALLS:raise
+                    if e.errno not in (UC_ERR_FETCH_UNMAPPED,UC_ERR_FETCH_PROT):raise
+                    if opaque==OPAQUE_CALLS:break  # out of opaque calls: out of budget
                     target=m.reg_read(U.UC_X86_REG_EIP);sp=m.reg_read(U.UC_X86_REG_ESP)
-                    self.events.append(('call',target,tuple(m.reg_read(r) for r in GPRS),bytes(m.mem_read(sp+4,20))))
+                    self.call_event(m,target,sp)
                     # the first 16 return K(target); later ones (a list walked through
                     # opaque calls would cycle) vary and are sometimes 0
                     self.returning(m,opaque_result(target) if opaque<16 else opaque_result(target,opaque))
@@ -358,7 +437,10 @@ class Machine:
             error=error or ('timeout' if time.monotonic()-began>=RUN_SECONDS and not self.flooded else 'budget')
             # an unfinished run keeps its trace for the prefix comparison
             return dict(done=False,error=error,events=events)
-        return dict(done=True,regs=[m.reg_read(r) for r in GPRS],fpu=[m.reg_read(r) for r in FPU],
+        regs=[m.reg_read(r) for r in GPRS]
+        # returned with `ret`: only what the callers read (L2b register variables)
+        if self.ret_mask is not None and not self.halted:regs=[v if (self.ret_mask|ESP_BIT)>>k&1 else None for k,v in enumerate(regs)]
+        return dict(done=True,regs=regs,fpu=[m.reg_read(r) for r in FPU],
             sse=[m.reg_read(r) for r in SSE],
             events=[e for e in events if e[0]=='call' or not (STACK<=e[0]<final_sp)])
 
@@ -374,18 +456,21 @@ def lazy_page(seed,page):
         else:words.append(struct.unpack('<I',struct.pack('<f',rng.choice(FLOATS)))[0])
     return struct.pack('<1024I',*words)
 
-def text_range(pe):
-    text=next(s for s in pe.sections if s.Name.rstrip(b'\0')==b'.text');lo=pe.OPTIONAL_HEADER.ImageBase+text.VirtualAddress
-    return lo,lo+text.Misc_VirtualSize
+def code_ranges(pe):
+    """Executable sections, .text first. The 1.21 patch put code in the raw
+    slack of the 9-byte .tls section, which the loader maps with its page."""
+    return [(pe.OPTIONAL_HEADER.ImageBase+s.VirtualAddress,pe.OPTIONAL_HEADER.ImageBase+s.VirtualAddress+
+             max(s.Misc_VirtualSize,min(s.SizeOfRawData,(s.Misc_VirtualSize+0xfff)&~0xfff)))
+            for s in pe.sections if s.Characteristics&0x20000000]
 
 def call_targets(target,pe):
     """Indexed function entries and code pointers stored in data (vtables, tables)."""
     with (PROJECT.parent/'reports'/target/'all-functions.tsv').open(encoding='utf-8') as f:
         starts={int(row['address'],16) for row in csv.DictReader(f,delimiter='\t')}
-    lo,hi=text_range(pe)
+    code=code_ranges(pe)
     for section in pe.sections:
-        if not lo<=pe.OPTIONAL_HEADER.ImageBase+section.VirtualAddress<hi:
-            data=section.get_data();starts|={v for (v,) in struct.iter_unpack('<I',data[:len(data)&~3]) if lo<=v<hi}
+        if not section.Characteristics&0x20000000:
+            data=section.get_data();starts|={v for (v,) in struct.iter_unpack('<I',data[:len(data)&~3]) if any(lo<=v<hi for lo,hi in code)}
     return starts
 
 def opaque_result(target,n=None):
@@ -442,6 +527,14 @@ def stack_cleanup(pe,target,disasm,cache={}):
             if i.mnemonic=='int3':break
     return cache[target]
 
+def cookie_check(pe,t,disasm):
+    """__security_check_cookie (`cmp ecx, [cookie]; jne fail; ret`) returns
+    with every register unchanged; its stub is a bare `ret`, so a function whose
+    result is in eax across it is checked for keeping it there."""
+    try:i=list(disasm.disasm(pe.get_data(t-0x400000,16),t,3))
+    except Exception:return False
+    return len(i)==3 and i[0].mnemonic=='cmp' and i[0].op_str.startswith('ecx, dword ptr [0x') and i[1].mnemonic=='jne' and i[2].mnemonic=='ret' and not i[2].op_str
+
 def callee_stubs(entry,pe,disasm):
     """Direct call/jump targets outside the function (the catalogued exits), each
     replaced on both machines by `mov eax, K; ret N` (K a deterministic arena
@@ -454,7 +547,7 @@ def callee_stubs(entry,pe,disasm):
         ret=bytes([0xc2])+struct.pack('<H',pop) if pop else bytes([0xc3])
         room=(order[n+1]-t) if n+1<len(order) else 8
         k=ARENA+0x100+((t*2654435761)&0x7ffc)
-        code=bytes([0xb8])+struct.pack('<I',k)+ret if room>=5+len(ret) and not (address-5-len(ret)<t<address) else ret
+        code=bytes([0xb8])+struct.pack('<I',k)+ret if room>=5+len(ret) and not (address-5-len(ret)<t<address) and not cookie_check(pe,t,disasm) else ret
         stubs.append((t,code))
     return stubs
 
@@ -515,7 +608,49 @@ def call_sites(entry,pe,disasm):
         if pop>0:sites[ret]=(pop,False)
     return sites
 
-def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'lifted',part=None,reuse=None):
+def report_name(lifted_dir):
+    """Report file stem: lifted-verification for lifted/, <dir>-verification otherwise (readable/)."""
+    return 'lifted' if Path(lifted_dir).resolve()==(PROJECT/'lifted').resolve() else Path(lifted_dir).name
+
+VCORE=PROJECT/'build'/'vcore'/'vcore.exe'
+
+def verify_cpp(target,work,entries,pe,disasm,native,symbols,states,seed,threads):
+    """Run the emulation in tools/vcore (C++, same machines, states and
+    comparison as below): this side writes each function's stubs, sites and
+    masks to a job file and reads back one result line per function."""
+    assert VCORE.exists(),f'build {VCORE} first (tools/vcore/build.ps1)'
+    base=pe.OPTIONAL_HEADER.ImageBase
+    (work/'image.mem').write_bytes(bytes(native.uc.mem_read(base,native.image_end-base)))
+    start,end,deep=trampoline(symbols)
+    hx=lambda v:f'{v:x}'
+    lines=[f'image {base:x} {pe.OPTIONAL_HEADER.SizeOfImage:x} {work/"image.mem"}',f'blob {work/"lifted.bin"}',
+           *(f'code {lo:x} {hi:x}' for lo,hi in code_ranges(pe)),f'quiet {start:x} {end:x} {deep:x}',f'states {states} {seed}']
+    if shadow_range(symbols):lines.append('shadow {:x} {:x}'.format(*shadow_range(symbols)))
+    for entry in entries:
+        address=int(entry['address'],16)
+        assert pe.get_data(address-0x400000,entry['bytes'])==bytes.fromhex(entry['native_body'])
+        sites=call_sites(entry,pe,disasm);abi=entry.get('abi') or {}
+        calls={int(r,16):m for r,m in abi.get('calls',{}).items()}
+        lines.append(f'E {entry["address"]} {hx(symbols[entry["symbol"]])} {hx(address)}')
+        lines+=[f'C {hx(t)} {code.hex()}' for t,code in callee_stubs(entry,pe,disasm)]
+        lines+=[f'S {hx(r)} {p} {int(h)}' for r,(p,h) in sites.items()]
+        lifted_sites={**sites,**{symbols[n]:sites[int(r,16)] for n,r in entry['resumes'].items() if int(r,16) in sites}}
+        lines+=[f'L {hx(r)} {p} {int(h)}' for r,(p,h) in lifted_sites.items()]
+        lines+=[f'R {hx(symbols[n])} {r}' for n,r in entry['resumes'].items()]
+        lines+=[f'A {hx(r)} {m}' for r,m in calls.items()]
+        lines+=[f'B {hx(r)} {m}' for r,m in calls.items()]
+        lines+=[f'B {hx(symbols[n])} {calls[int(r,16)]}' for n,r in entry['resumes'].items() if int(r,16) in calls]
+        if abi.get('ret') is not None:lines.append(f'M {abi["ret"]}')
+    (work/'vcore.job').write_text('\n'.join(lines)+'\n')
+    run([VCORE,work/'vcore.job',work/'vcore.out',str(threads)],work)
+    by={e['address']:e for e in entries};results=[]
+    for line in (work/'vcore.out').read_text().splitlines():
+        address,status,completed,skipped,prefixed,failure=line.split(' ',5)
+        results.append(dict(address=address,c_sha256=by[address].get('c_sha256'),status=status,completed=int(completed),skipped=int(skipped),
+                            **({'prefixed':int(prefixed)} if int(prefixed) else {}),**({'failure':json.loads(failure)} if failure!='-' else {})))
+    return results
+
+def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'lifted',part=None,reuse=None,engine='py',threads=8):
     spec=TARGETS[target];image=(game_dir/spec['file']).read_bytes()
     assert hashlib.sha256(image).hexdigest()==spec['sha']
     catalog=json.loads((lifted_dir/target/'catalog.json').read_text())
@@ -523,8 +658,9 @@ def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'l
     work=PROJECT/'build'/(f'{target}-lifted' if lifted_dir==PROJECT/'lifted' else f'{target}-lifted-{lifted_dir.name}')
     blob,symbols=link(target,work,lifted_dir)
     disasm=Cs(CS_ARCH_X86,CS_MODE_32);disasm.detail=True
-    pe=pefile.PE(data=image);native=Machine(image,pe,blob);lifted=Machine(image,pe,blob,trampoline(symbols))
-    native.starts=lifted.starts=call_targets(target,pe);native.text=lifted.text=text_range(pe)
+    pe=pefile.PE(data=image);shadow=shadow_range(symbols)
+    native=Machine(image,pe,blob,shadow=shadow);lifted=Machine(image,pe,blob,trampoline(symbols),shadow)
+    native.starts=lifted.starts=call_targets(target,pe);native.code=lifted.code=code_ranges(pe)
     results=[];started=time.time()
     entries=[e for e in catalog['entries'] if not only or e['address'] in only]
     if limit:entries=entries[:limit]
@@ -549,6 +685,9 @@ def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'l
     if part:
         entries=entries[part[0]::part[1]]
         if part[0]:reused=[]  # part 0 carries the reused results into the merge
+    if engine=='cpp':
+        results=verify_cpp(target,work,entries,pe,disasm,native,symbols,states,seed,threads)
+        entries=[]
     for index,entry in enumerate(entries):
         address=int(entry['address'],16);rng=random.Random(seed*1_000_003+address)
         assert pe.get_data(address-0x400000,entry['bytes'])==bytes.fromhex(entry['native_body'])
@@ -558,6 +697,10 @@ def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'l
         sites=call_sites(entry,pe,disasm)
         returns={symbols[name]:int(ret,16) for name,ret in entry['resumes'].items()};lifted.canon=returns
         native.home=lifted.home=address
+        abi=entry.get('abi') or {}
+        native.abi_calls={int(r,16):m for r,m in abi.get('calls',{}).items()}
+        lifted.abi_calls={**native.abi_calls,**{symbols[name]:native.abi_calls[int(r,16)] for name,r in entry['resumes'].items() if int(r,16) in native.abi_calls}}
+        native.ret_mask=lifted.ret_mask=abi.get('ret')
         lifted_sites={**sites,**{symbols[name]:sites[int(ret,16)] for name,ret in entry['resumes'].items() if int(ret,16) in sites}}
         # draw until `states` complete, at most three times as many; a function
         # none of whose states completed because the native run kept running out
@@ -576,6 +719,7 @@ def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'l
                 if not a['done'] and a['error'] in ('budget','left the function','timeout'):  # lifted run not needed
                     skipped+=1;out_of_budget+=a['error']=='budget';continue
                 b=as_native(lifted.run(state,symbols[entry['symbol']],lifted_budget,callees,lifted_sites),returns)
+                a,b=ret_view(a,native),ret_view(b,native)
                 if not b['done'] and b['error']=='timeout':skipped+=1;continue  # inconclusive
                 if not a['done']:
                     skipped+=1
@@ -597,7 +741,8 @@ def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'l
                 if not a['done'] and a['error'] in ('stack lost','left the function','budget'):
                     state=frame_state(state);a=native.run(state,address,PREFIX_BUDGET,callees,sites)
                 if a['done'] or a['error']!='budget' or not a['events']:continue
-                b=as_native(lifted.run(state,symbols[entry['symbol']],20*PREFIX_BUDGET,callees,lifted_sites),returns)
+                b=as_native(lifted.run(state,symbols[entry['symbol']],100*PREFIX_BUDGET,callees,lifted_sites),returns)
+                a,b=ret_view(a,native),ret_view(b,native)
                 n=len(a['events'])
                 # a lifted run that completes (native might too, after the prefix)
                 # or stops short of the native trace is inconclusive, unless it
@@ -622,11 +767,27 @@ def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'l
     report=dict(target=target,lifted_dir=str(lifted_dir),original_sha256=spec['sha'],sources_sha256=sources_sha256(target,lifted_dir),
                 runtime_sha256=runtime_sha256(lifted_dir),verifier=VERIFIER,states_per_function=states,seed=seed,counts=counts,results=results)
     (PROJECT/'build'/target).mkdir(parents=True,exist_ok=True)
-    if not only and not limit and lifted_dir==PROJECT/'lifted':
-        name=f'lifted-verification.part{part[0]}of{part[1]}.json' if part else 'lifted-verification.json'
+    if not only and not limit:
+        stem=report_name(lifted_dir)+'-verification'
+        name=f'{stem}.part{part[0]}of{part[1]}.json' if part else f'{stem}.json'
         (PROJECT/'build'/target/name).write_text(json.dumps(report,indent=1))
     print(f'{target}: {counts}')
     return report
+
+def ret_view(r,native):
+    """Calls the native run made with `ret` (a return to a random address) and,
+    when the run ended there, its final registers: only what callers see."""
+    if native.ret_mask is None or not native.ret_calls or 'events' not in r:return r
+    keep=lambda regs:[v if (native.ret_mask|ESP_BIT)>>k&1 else None for k,v in enumerate(regs)]
+    events=[];n=0
+    for e in r['events']:
+        if e[0]=='call':
+            if n in native.ret_calls:e=(e[0],e[1],tuple(keep(e[2])),e[3])
+            n+=1
+        events.append(e)
+    out={**r,'events':events}
+    if r.get('done') and native.halted and native.ncalls-1 in native.ret_calls:out['regs']=keep(r['regs'])
+    return out
 
 def as_native(r,returns):
     """The lifted run with its resume-stub addresses replaced by the native return
@@ -643,10 +804,11 @@ def as_native(r,returns):
     return {**r,**({'regs':[fix(v) for v in r['regs']]} if r['done'] else {}),'events':events}
 
 def summary(r):
-    events=[(e[0],f'{e[1]:08x}',[f'{v:08x}' for v in e[2]],e[3].hex()) if e[0]=='call' else
+    hx=lambda v:'-' if v is None else f'{v:08x}'
+    events=[(e[0],f'{e[1]:08x}',[hx(v) for v in e[2]],e[3].hex()) if e[0]=='call' else
             (f'{e[0]:08x}',e[1],None if e[2] is None else f'{e[2]:x}') for e in r.get('events',[])[:40]]
     if not r['done']:return dict(error=r.get('error'),events=events)  # unfinished runs keep their trace
-    return dict(regs=[f'{v:08x}' for v in r['regs']],fpu=[str(v) for v in r['fpu']],sse=[f'{v:x}' for v in r['sse']],events=events)
+    return dict(regs=[hx(v) for v in r['regs']],fpu=[str(v) for v in r['fpu']],sse=[f'{v:x}' for v in r['sse']],events=events)
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--game-dir',type=Path,default=GAME)
@@ -658,21 +820,24 @@ if __name__=='__main__':
     p.add_argument('--part',help='K/N: check every N-th function starting at K (run N parts in parallel, then --merge)')
     p.add_argument('--reuse',action='store_true',help='keep results from build/<target>/lifted-verification.json for unchanged functions')
     p.add_argument('--merge',type=int,metavar='N',help='combine N part reports into lifted-verification.json')
+    p.add_argument('--engine',choices=['py','cpp'],default='py',help='cpp: run the emulation in tools/vcore (much faster)')
+    p.add_argument('--threads',type=int,default=8,help='vcore worker threads')
     a=p.parse_args()
     if a.merge:
         for t in ['client','server'] if a.target=='both' else [a.target]:
-            parts=[json.loads((PROJECT/'build'/t/f'lifted-verification.part{k}of{a.merge}.json').read_text()) for k in range(a.merge)]
+            stem=report_name(a.lifted_dir)+'-verification'
+            parts=[json.loads((PROJECT/'build'/t/f'{stem}.part{k}of{a.merge}.json').read_text()) for k in range(a.merge)]
             assert len({(r['lifted_dir'],r['original_sha256'],r['sources_sha256'],r.get('runtime_sha256'),r['states_per_function'],r['seed']) for r in parts})==1
             results=sorted((r for q in parts for r in q['results']),key=lambda r:int(r['address'],16))
             counts={s:sum(r['status']==s for r in results) for s in ('passed','failed','unverified')}
             report={**parts[0],'counts':counts,'results':results}
-            (PROJECT/'build'/t/'lifted-verification.json').write_text(json.dumps(report,indent=1))
+            (PROJECT/'build'/t/f'{stem}.json').write_text(json.dumps(report,indent=1))
             print(f'{t}: merged {len(results)} results {counts}')
         raise SystemExit
     part=tuple(map(int,a.part.split('/'))) if a.part else None
     for t in ['client','server'] if a.target=='both' else [a.target]:
-        old=PROJECT/'build'/t/'lifted-verification.json'
+        old=PROJECT/'build'/t/f'{report_name(a.lifted_dir)}-verification.json'
         report=verify(t,a.game_dir,a.states,set(a.only or []),a.limit,a.seed,a.lifted_dir.resolve(),part,
-                      old if a.reuse and old.exists() else None)
+                      old if a.reuse and old.exists() else None,a.engine,a.threads)
         for r in [r for r in report['results'] if r['status']=='failed'][:a.show_failures]:
-            print(json.dumps(r)[:3000])
+            print(json.dumps(r)[:30000])

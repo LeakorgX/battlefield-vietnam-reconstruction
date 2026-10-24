@@ -1,0 +1,5 @@
+## file
+Behaviour that scores roaming around.
+
+## 009a7ef0
+evaluate: when not usable it clears the per-bot state and returns 0. Reads the bot's vehicle and position and an IAIEnvironment vf9 value (-1.0 argument), resets the bot's handle to -1 and clears 8 per-direction slots. For each nearby object it puts the offset into one of 8 directions (45-degree sectors, 0.7071 factors) and weighs it with bfv_artillery_component_test for control 3.

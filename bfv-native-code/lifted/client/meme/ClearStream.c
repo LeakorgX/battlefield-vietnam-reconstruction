@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00727380  dice::meme::ClearStream  (virtual method) */
+/* 00727380  ClearStream::vf33_callVirtual_vf30  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00727380, bfv_client_l1_body_00727380);
 void bfv_client_l1_body_00727380(struct bfv_cpu *c)
 {
@@ -28,8 +30,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00874c10  dice::meme::ClearStream  (vtable store)
- * strings: "Object" */
+/* 00874c10  ClearStream::ctor_dtor  (vtable store)
+ * class: dice::meme::ClearStream
+ * strings: "Object"
+ * called by: System::vf18, List::vf1, ObjectList::vf1
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874c10, bfv_client_l1_body_00874c10);
 BFV_L1_RESUME(bfv_client_l1r_00874c10_1, bfv_client_l1_body_00874c10, 1);
 void bfv_client_l1_body_00874c10(struct bfv_cpu *c)
@@ -53,7 +58,7 @@ void bfv_client_l1_body_00874c10(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00874c15  push 0xb794bc */
+    /* 00874c15  push 0xb794bc  ; "Object" */
     t = 0xb794bcu;
     esp -= 4;
     M32(esp) = t;
@@ -65,15 +70,15 @@ void bfv_client_l1_body_00874c10(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00874c1c  lea ecx, [esp + 0x10] */
+    /* 00874c1c  lea ecx, [esp + 0x10]  ; &var_8 */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 00874c20  mov dword ptr [esp + 0x10], 0xbd206c */
+    /* 00874c20  mov dword ptr [esp + 0x10], 0xbd206c  ; var_8, vtable ClearStream */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0xbd206cu;
-    /* 00874c28  mov byte ptr [esp + 0x14], 0 */
+    /* 00874c28  mov byte ptr [esp + 0x14], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = 0x0u;
-    /* 00874c2d  call 0x879c30 */
+    /* 00874c2d  call 0x879c30  ; ClearStream::vf24 */
     t = 0x00879c30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c10_1;
@@ -97,8 +102,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00874c40  (between same file)
- * strings: "Class name", "Meme: Error: Reading from istream "%s"\r\n", "Meme: Error: Class '%s' not found\r\n", "Meme: Error: Loading class '%s' need to be inherited from..." */
+/* 00874c40  ClearStream::Class_name_00874c40  (between same file)
+ * class: dice::meme::ClearStream
+ * strings: "Class name", "Meme: Error: Reading from istream "%s"\r\n", "Meme: Error: Class '%s' not found\r\n", "Meme: Error: Loading class '%s' need to be inherited from..."
+ * called by: ClearStream::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874c40, bfv_client_l1_body_00874c40);
 BFV_L1_RESUME(bfv_client_l1r_00874c40_1, bfv_client_l1_body_00874c40, 1);
 BFV_L1_RESUME(bfv_client_l1r_00874c40_2, bfv_client_l1_body_00874c40, 2);
@@ -152,7 +160,7 @@ void bfv_client_l1_body_00874c40(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874c45  push 0xbd6a80 */
+    /* 00874c45  push 0xbd6a80  ; "Class name" */
     t = 0xbd6a80u;
     esp -= 4;
     M32(esp) = t;
@@ -200,7 +208,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00874c6b  push 0xbd6bd8 */
+    /* 00874c6b  push 0xbd6bd8  ; "Meme: Error: Reading from istream "%s"\r\n" */
     t = 0xbd6bd8u;
     esp -= 4;
     M32(esp) = t;
@@ -208,7 +216,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874c71  call 0x868ab0 */
+    /* 00874c71  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c40_2;
@@ -250,7 +258,7 @@ L_00874c83:
     M32(esp) = t;
     /* 00874c84  lea ecx, [esp + 0xc] */
     ecx = (uint32_t)(esp + 0x0000000cu);
-    /* 00874c88  call 0x8753f0 */
+    /* 00874c88  call 0x8753f0  ; meme_008753f0 */
     t = 0x008753f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c40_3;
@@ -270,7 +278,7 @@ R_3:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00874c98  push 0xbd6bb4 */
+    /* 00874c98  push 0xbd6bb4  ; "Meme: Error: Class '%s' not found\r\n" */
     t = 0xbd6bb4u;
     esp -= 4;
     M32(esp) = t;
@@ -278,7 +286,7 @@ R_3:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874c9e  call 0x868ab0 */
+    /* 00874c9e  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c40_4;
@@ -318,7 +326,7 @@ R_4:
     esp += 12;
     goto out;
 L_00874cb1:
-    /* 00874cb1  call 0x874bc0 */
+    /* 00874cb1  call 0x874bc0  ; Object::getRuntimeClass */
     t = 0x00874bc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c40_5;
@@ -331,7 +339,7 @@ R_5:
     M32(esp) = t;
     /* 00874cb7  mov ecx, ebx */
     ecx = ebx;
-    /* 00874cb9  call 0x8752d0 */
+    /* 00874cb9  call 0x8752d0  ; meme_008752d0 */
     t = 0x008752d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c40_6;
@@ -350,7 +358,7 @@ R_6:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00874cc7  push 0xbd6b70 */
+    /* 00874cc7  push 0xbd6b70  ; "Meme: Error: Loading class '%s' need to be inhe..." */
     t = 0xbd6b70u;
     esp -= 4;
     M32(esp) = t;
@@ -358,7 +366,7 @@ R_6:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874ccd  call 0x868ab0 */
+    /* 00874ccd  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c40_7;
@@ -409,7 +417,7 @@ L_00874ce0:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 00874ce6  push 0xbd6b58 */
+    /* 00874ce6  push 0xbd6b58  ; "Meme: Loading: %s\r\n" */
     t = 0xbd6b58u;
     esp -= 4;
     M32(esp) = t;
@@ -417,7 +425,7 @@ L_00874ce0:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874cec  call 0x868ab0 */
+    /* 00874cec  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c40_8;
@@ -485,7 +493,7 @@ R_11:
     M32(esp) = t;
     /* 00874d0f  mov ecx, esi */
     ecx = esi;
-    /* 00874d11  call 0x869020 */
+    /* 00874d11  call 0x869020  ; ClearStream::sub_00869020 */
     t = 0x00869020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c40_12;
@@ -532,7 +540,7 @@ R_13:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00874d2d  push 0xbd6b28 */
+    /* 00874d2d  push 0xbd6b28  ; "Meme: Error: Reading from istream "%s(%s)"\r\n" */
     t = 0xbd6b28u;
     esp -= 4;
     M32(esp) = t;
@@ -540,7 +548,7 @@ R_13:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874d33  call 0x868ab0 */
+    /* 00874d33  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874c40_14;
@@ -619,8 +627,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00874d60  dice::meme::ClearStream  (vtable store)
- * strings: "Object" */
+/* 00874d60  ClearStream::ctor_dtor  (vtable store)
+ * class: dice::meme::ClearStream
+ * strings: "Object"
+ * called by: System::vf17
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874d60, bfv_client_l1_body_00874d60);
 BFV_L1_RESUME(bfv_client_l1r_00874d60_1, bfv_client_l1_body_00874d60, 1);
 BFV_L1_RESUME(bfv_client_l1r_00874d60_2, bfv_client_l1_body_00874d60, 2);
@@ -650,7 +661,7 @@ void bfv_client_l1_body_00874d60(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00874d64  mov esi, edx */
     esi = edx;
-    /* 00874d66  mov edx, dword ptr [esp + 0x10] */
+    /* 00874d66  mov edx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00874d6a  push edi */
@@ -661,7 +672,7 @@ void bfv_client_l1_body_00874d60(struct bfv_cpu *c)
     edi = ecx;
     /* 00874d6d  mov ecx, esi */
     ecx = esi;
-    /* 00874d6f  call 0x875370 */
+    /* 00874d6f  call 0x875370  ; ClearStream::ctor_dtor_helper_00875370 */
     t = 0x00875370u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874d60_1;
@@ -700,7 +711,7 @@ R_2:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00874d86  push 0xb794bc */
+    /* 00874d86  push 0xb794bc  ; "Object" */
     t = 0xb794bcu;
     esp -= 4;
     M32(esp) = t;
@@ -712,15 +723,15 @@ R_2:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874d8d  lea ecx, [esp + 0x18] */
+    /* 00874d8d  lea ecx, [esp + 0x18]  ; &var_8 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 00874d91  mov dword ptr [esp + 0x18], 0xbd206c */
+    /* 00874d91  mov dword ptr [esp + 0x18], 0xbd206c  ; var_8, vtable ClearStream */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0xbd206cu;
-    /* 00874d99  mov byte ptr [esp + 0x1c], al */
+    /* 00874d99  mov byte ptr [esp + 0x1c], al  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(eax);
-    /* 00874d9d  call 0x879c30 */
+    /* 00874d9d  call 0x879c30  ; ClearStream::vf24 */
     t = 0x00879c30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874d60_3;
@@ -778,8 +789,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00874dc0  dice::meme::ClearStream  (vtable store)
- * strings: "Object", "Meme: Error: Unable to open istream "%s"\r\n", "Meme: Info: Trying old format "%s"\r\n" */
+/* 00874dc0  ClearStream::ctor_dtor  (vtable store)
+ * class: dice::meme::ClearStream
+ * strings: "Object", "Meme: Error: Unable to open istream "%s"\r\n", "Meme: Info: Trying old format "%s"\r\n"
+ * called by: EventIterator::ctor_dtor, ClearStream::ctor_dtor
+ */
 BFV_L1_ENTRY_DEEP(bfv_client_l1_00874dc0, bfv_client_l1_body_00874dc0, 0x900);
 BFV_L1_RESUME_DEEP(bfv_client_l1r_00874dc0_1, bfv_client_l1_body_00874dc0, 1, 0x900);
 BFV_L1_RESUME_DEEP(bfv_client_l1r_00874dc0_2, bfv_client_l1_body_00874dc0, 2, 0x900);
@@ -841,7 +855,7 @@ void bfv_client_l1_body_00874dc0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874dc9  mov edi, dword ptr [esp + 0x82c] */
+    /* 00874dc9  mov edi, dword ptr [esp + 0x82c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000082cu);
     edi = M32(ea);
     /* 00874dd0  test edi, edi */
@@ -857,7 +871,7 @@ void bfv_client_l1_body_00874dc0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00874dde  push 0xb794bc */
+    /* 00874dde  push 0xb794bc  ; "Object" */
     t = 0xb794bcu;
     esp -= 4;
     M32(esp) = t;
@@ -869,15 +883,15 @@ void bfv_client_l1_body_00874dc0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874de5  lea ecx, [esp + 0x1c] */
+    /* 00874de5  lea ecx, [esp + 0x1c]  ; &var_81c */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 00874de9  mov dword ptr [esp + 0x1c], 0xbd206c */
+    /* 00874de9  mov dword ptr [esp + 0x1c], 0xbd206c  ; var_81c, vtable ClearStream */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = 0xbd206cu;
-    /* 00874df1  mov byte ptr [esp + 0x20], 0 */
+    /* 00874df1  mov byte ptr [esp + 0x20], 0  ; var_818 */
     ea = (uint32_t)(esp + 0x00000020u);
     M8(ea) = 0x0u;
-    /* 00874df6  call 0x879c30 */
+    /* 00874df6  call 0x879c30  ; ClearStream::vf24 */
     t = 0x00879c30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_1;
@@ -890,7 +904,7 @@ R_1:
     M32(esp) = t;
     /* 00874dfc  mov ecx, esi */
     ecx = esi;
-    /* 00874dfe  call 0x868a70 */
+    /* 00874dfe  call 0x868a70  ; ClearStream::sub_00868a70 */
     t = 0x00868a70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_2;
@@ -911,7 +925,7 @@ R_2:
     M32(esp) = t;
     /* 00874e0b  mov ecx, esi */
     ecx = esi;
-    /* 00874e0d  call 0x868be0 */
+    /* 00874e0d  call 0x868be0  ; OutputIStream::create */
     t = 0x00868be0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_3;
@@ -927,7 +941,7 @@ R_3:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874e17  push 0xbd6c2c */
+    /* 00874e17  push 0xbd6c2c  ; "Meme: Error: Unable to open istream "%s"\r\n" */
     t = 0xbd6c2cu;
     esp -= 4;
     M32(esp) = t;
@@ -935,7 +949,7 @@ R_3:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874e1d  call 0x868ab0 */
+    /* 00874e1d  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_4;
@@ -979,9 +993,9 @@ L_00874e33:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00874e34  lea ecx, [esp + 0x18] */
+    /* 00874e34  lea ecx, [esp + 0x18]  ; &var_814 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 00874e38  call 0x87a0f0 */
+    /* 00874e38  call 0x87a0f0  ; ClassIStream::ClassIStream */
     t = 0x0087a0f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_5;
@@ -992,9 +1006,9 @@ R_5:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874e3e  lea ecx, [esp + 0x18] */
+    /* 00874e3e  lea ecx, [esp + 0x18]  ; &var_814 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 00874e42  call 0x87a160 */
+    /* 00874e42  call 0x87a160  ; ClassIStream_Static_string_0087a160 */
     t = 0x0087a160u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_6;
@@ -1010,7 +1024,7 @@ R_6:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874e4c  lea eax, [esp + 0x18] */
+    /* 00874e4c  lea eax, [esp + 0x18]  ; &var_814 */
     eax = (uint32_t)(esp + 0x00000018u);
     /* 00874e50  push eax */
     t = eax;
@@ -1020,7 +1034,7 @@ R_6:
     edx = ebp;
     /* 00874e53  mov ecx, esi */
     ecx = esi;
-    /* 00874e55  call 0x874c40 */
+    /* 00874e55  call 0x874c40  ; ClearStream::Class_name_00874c40 */
     t = 0x00874c40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_7;
@@ -1030,11 +1044,11 @@ R_7:
     /* 00874e5a  test al, al */
     r = (LO8(eax) & LO8(eax)) & 0xffu;
     F_LOGIC(8, r);
-    /* 00874e5c  lea ecx, [esp + 0x14] */
+    /* 00874e5c  lea ecx, [esp + 0x14]  ; &var_814 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 00874e60  jne 0x874e75 */
     if (!zf) goto L_00874e75;
-    /* 00874e62  call 0x87a130 */
+    /* 00874e62  call 0x87a130  ; ClassIStream::ctor_dtor */
     t = 0x0087a130u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_8;
@@ -1069,7 +1083,7 @@ L_00874e67:
     esp += 8;
     goto out;
 L_00874e75:
-    /* 00874e75  call 0x87a130 */
+    /* 00874e75  call 0x87a130  ; ClassIStream::ctor_dtor */
     t = 0x0087a130u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_9;
@@ -1106,9 +1120,9 @@ L_00874e88:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00874e89  lea ecx, [esp + 0x18] */
+    /* 00874e89  lea ecx, [esp + 0x18]  ; &var_814 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 00874e8d  call 0x87a130 */
+    /* 00874e8d  call 0x87a130  ; ClassIStream::ctor_dtor */
     t = 0x0087a130u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_10;
@@ -1119,7 +1133,7 @@ R_10:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874e93  push 0xbd6c04 */
+    /* 00874e93  push 0xbd6c04  ; "Meme: Info: Trying old format "%s"\r\n" */
     t = 0xbd6c04u;
     esp -= 4;
     M32(esp) = t;
@@ -1127,7 +1141,7 @@ R_10:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874e99  call 0x868ab0 */
+    /* 00874e99  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_11;
@@ -1146,7 +1160,7 @@ R_11:
     M32(esp) = t;
     /* 00874ea2  mov ecx, esi */
     ecx = esi;
-    /* 00874ea4  call 0x868be0 */
+    /* 00874ea4  call 0x868be0  ; OutputIStream::create */
     t = 0x00868be0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_12;
@@ -1164,7 +1178,7 @@ R_12:
     M32(esp) = t;
     /* 00874eae  jne 0x874ecd */
     if (!zf) goto L_00874ecd;
-    /* 00874eb0  push 0xbd6c2c */
+    /* 00874eb0  push 0xbd6c2c  ; "Meme: Error: Unable to open istream "%s"\r\n" */
     t = 0xbd6c2cu;
     esp -= 4;
     M32(esp) = t;
@@ -1172,7 +1186,7 @@ R_12:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00874eb6  call 0x868ab0 */
+    /* 00874eb6  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_13;
@@ -1224,7 +1238,7 @@ L_00874ecd:
     edx = ebp;
     /* 00874ed0  mov ecx, esi */
     ecx = esi;
-    /* 00874ed2  call 0x874c40 */
+    /* 00874ed2  call 0x874c40  ; ClearStream::Class_name_00874c40 */
     t = 0x00874c40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874dc0_14;
@@ -1245,7 +1259,7 @@ R_14:
     /* 00874ede  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00874ee0  call dword ptr [edx + 0x68] */
+    /* 00874ee0  call dword ptr [edx + 0x68]  ; -> ClearStream::vf26 */
     ea = (uint32_t)(edx + 0x00000068u);
     t = M32(ea);
     esp -= 4;
@@ -1287,7 +1301,7 @@ L_00874ef2:
     /* 00874ef2  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 00874ef4  call dword ptr [eax + 0x68] */
+    /* 00874ef4  call dword ptr [eax + 0x68]  ; -> ClearStream::vf26 */
     ea = (uint32_t)(eax + 0x00000068u);
     t = M32(ea);
     esp -= 4;
@@ -1330,8 +1344,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00874f10  dice::meme::ClearStream  (vtable store)
- * strings: "Object", "Ulong", "Object name", "Class name" */
+/* 00874f10  ClearStream::ctor_dtor  (vtable store)
+ * class: dice::meme::ClearStream
+ * strings: "Object", "Ulong", "Object name", "Class name"
+ * called by: IStream::vf24, List::vf20
+ */
 BFV_L1_ENTRY(bfv_client_l1_00874f10, bfv_client_l1_body_00874f10);
 BFV_L1_RESUME(bfv_client_l1r_00874f10_1, bfv_client_l1_body_00874f10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00874f10_2, bfv_client_l1_body_00874f10, 2);
@@ -1427,7 +1444,7 @@ void bfv_client_l1_body_00874f10(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00874f1b  push 0xb794bc */
+    /* 00874f1b  push 0xb794bc  ; "Object" */
     t = 0xb794bcu;
     esp -= 4;
     M32(esp) = t;
@@ -1445,13 +1462,13 @@ void bfv_client_l1_body_00874f10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00874f26  lea ecx, [esp + 0x20] */
     ecx = (uint32_t)(esp + 0x00000020u);
-    /* 00874f2a  mov dword ptr [esp + 0x20], 0xbd206c */
+    /* 00874f2a  mov dword ptr [esp + 0x20], 0xbd206c  ; vtable ClearStream */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0xbd206cu;
     /* 00874f32  mov byte ptr [esp + 0x24], 0 */
     ea = (uint32_t)(esp + 0x00000024u);
     M8(ea) = 0x0u;
-    /* 00874f37  call 0x879c30 */
+    /* 00874f37  call 0x879c30  ; ClearStream::vf24 */
     t = 0x00879c30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_1;
@@ -1480,7 +1497,7 @@ R_2:
     /* 00874f4f  mov dword ptr [esp + 0x10], eax */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 00874f53  push 0xbd6a98 */
+    /* 00874f53  push 0xbd6a98  ; "Ulong" */
     t = 0xbd6a98u;
     esp -= 4;
     M32(esp) = t;
@@ -1508,7 +1525,7 @@ R_3:
     /* 00874f66  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00874f68  push 0xbd6a8c */
+    /* 00874f68  push 0xbd6a8c  ; "Object name" */
     t = 0xbd6a8cu;
     esp -= 4;
     M32(esp) = t;
@@ -1544,7 +1561,7 @@ R_4:
     /* 00874f84  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00874f86  push 0xbd6a80 */
+    /* 00874f86  push 0xbd6a80  ; "Class name" */
     t = 0xbd6a80u;
     esp -= 4;
     M32(esp) = t;
@@ -1625,7 +1642,7 @@ L_00874fad:
     M32(esp) = t;
     /* 00874fbf  mov ecx, ebx */
     ecx = ebx;
-    /* 00874fc1  call 0x868a70 */
+    /* 00874fc1  call 0x868a70  ; ClearStream::sub_00868a70 */
     t = 0x00868a70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_6;
@@ -1650,7 +1667,7 @@ R_6:
     if (zf) goto L_00875081;
     /* 00874fdc  lea ecx, [esp + 0x1c] */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 00874fe0  call 0x8753f0 */
+    /* 00874fe0  call 0x8753f0  ; meme_008753f0 */
     t = 0x008753f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_7;
@@ -1664,7 +1681,7 @@ R_7:
     F_LOGIC(32, r);
     /* 00874fe9  je 0x875043 */
     if (zf) goto L_00875043;
-    /* 00874feb  call 0x874bc0 */
+    /* 00874feb  call 0x874bc0  ; Object::getRuntimeClass */
     t = 0x00874bc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_8;
@@ -1677,7 +1694,7 @@ R_8:
     M32(esp) = t;
     /* 00874ff1  mov ecx, ebp */
     ecx = ebp;
-    /* 00874ff3  call 0x8752d0 */
+    /* 00874ff3  call 0x8752d0  ; meme_008752d0 */
     t = 0x008752d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_9;
@@ -1717,7 +1734,7 @@ R_10:
     /* 0087500c  mov dword ptr [edi], eax */
     ea = (uint32_t)(edi);
     M32(ea) = eax;
-    /* 0087500e  call 0x869020 */
+    /* 0087500e  call 0x869020  ; ClearStream::sub_00869020 */
     t = 0x00869020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_11;
@@ -1757,7 +1774,7 @@ R_12:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00875025  push 0xbd6cf4 */
+    /* 00875025  push 0xbd6cf4  ; "Meme: Error reading from istream "%s"\r\n" */
     t = 0xbd6cf4u;
     esp -= 4;
     M32(esp) = t;
@@ -1765,7 +1782,7 @@ R_12:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087502b  call 0x868ab0 */
+    /* 0087502b  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_13;
@@ -1815,7 +1832,7 @@ L_00875043:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00875048  push 0xbd6cc8 */
+    /* 00875048  push 0xbd6cc8  ; "Meme: Error: Loading: Unknown class: %s\r\n" */
     t = 0xbd6cc8u;
     esp -= 4;
     M32(esp) = t;
@@ -1823,7 +1840,7 @@ L_00875043:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087504e  call 0x868ab0 */
+    /* 0087504e  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_16;
@@ -1875,7 +1892,7 @@ R_17:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00875077  push 0xbd6c90 */
+    /* 00875077  push 0xbd6c90  ; "Meme: Warning: reading differs from saved file ..." */
     t = 0xbd6c90u;
     esp -= 4;
     M32(esp) = t;
@@ -1892,7 +1909,7 @@ L_00875081:
     edx = edi;
     /* 00875088  mov ecx, ebx */
     ecx = ebx;
-    /* 0087508a  call 0x874dc0 */
+    /* 0087508a  call 0x874dc0  ; ClearStream::ctor_dtor */
     t = 0x00874dc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_18;
@@ -1904,7 +1921,7 @@ R_18:
 L_00875094:
     /* 00875094  lea ecx, [esp + 0x1c] */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 00875098  call 0x8753f0 */
+    /* 00875098  call 0x8753f0  ; meme_008753f0 */
     t = 0x008753f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_19;
@@ -1932,7 +1949,7 @@ R_19:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008750b0  push 0xbd6cc8 */
+    /* 008750b0  push 0xbd6cc8  ; "Meme: Error: Loading: Unknown class: %s\r\n" */
     t = 0xbd6cc8u;
     esp -= 4;
     M32(esp) = t;
@@ -1945,7 +1962,7 @@ L_008750ba:
     /* 008750bc  je 0x875145 */
     if (zf) goto L_00875145;
 L_008750c2:
-    /* 008750c2  call 0x874bc0 */
+    /* 008750c2  call 0x874bc0  ; Object::getRuntimeClass */
     t = 0x00874bc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_20;
@@ -1958,7 +1975,7 @@ R_20:
     M32(esp) = t;
     /* 008750c8  mov ecx, ebp */
     ecx = ebp;
-    /* 008750ca  call 0x8752d0 */
+    /* 008750ca  call 0x8752d0  ; meme_008752d0 */
     t = 0x008752d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_21;
@@ -2018,7 +2035,7 @@ R_23:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008750ef  push 0xbd6bd8 */
+    /* 008750ef  push 0xbd6bd8  ; "Meme: Error: Reading from istream "%s"\r\n" */
     t = 0xbd6bd8u;
     esp -= 4;
     M32(esp) = t;
@@ -2026,7 +2043,7 @@ R_23:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008750f5  call 0x868ab0 */
+    /* 008750f5  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_24;
@@ -2135,7 +2152,7 @@ R_27:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00875137  push 0xbd6c58 */
+    /* 00875137  push 0xbd6c58  ; "Meme: Warning: Reading differs from saved file ..." */
     t = 0xbd6c58u;
     esp -= 4;
     M32(esp) = t;
@@ -2144,7 +2161,7 @@ L_0087513c:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087513d  call 0x868ab0 */
+    /* 0087513d  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00874f10_28;
@@ -2271,7 +2288,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878aa0  dice::meme::ClearStream  (virtual method) */
+/* 00878aa0  ClearStream::vf7  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878aa0, bfv_client_l1_body_00878aa0);
 BFV_L1_RESUME(bfv_client_l1r_00878aa0_1, bfv_client_l1_body_00878aa0, 1);
 void bfv_client_l1_body_00878aa0(struct bfv_cpu *c)
@@ -2288,7 +2307,7 @@ void bfv_client_l1_body_00878aa0(struct bfv_cpu *c)
     /* 00878aa0  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 00878aa2  call dword ptr [eax + 0x18] */
+    /* 00878aa2  call dword ptr [eax + 0x18]  ; -> ClearStream::vf6 = stub_return_true_0args_0064e7d0 */
     ea = (uint32_t)(eax + 0x00000018u);
     t = M32(ea);
     esp -= 4;
@@ -2307,7 +2326,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878ab0  dice::meme::ClearStream  (virtual method) */
+/* 00878ab0  ClearStream::vf19  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878ab0, bfv_client_l1_body_00878ab0);
 BFV_L1_RESUME(bfv_client_l1r_00878ab0_1, bfv_client_l1_body_00878ab0, 1);
 void bfv_client_l1_body_00878ab0(struct bfv_cpu *c)
@@ -2324,7 +2345,7 @@ void bfv_client_l1_body_00878ab0(struct bfv_cpu *c)
     /* 00878ab0  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 00878ab2  call dword ptr [eax + 0x18] */
+    /* 00878ab2  call dword ptr [eax + 0x18]  ; -> ClearStream::vf6 = stub_return_true_0args_0064e7d0 */
     ea = (uint32_t)(eax + 0x00000018u);
     t = M32(ea);
     esp -= 4;
@@ -2343,7 +2364,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878ac0  dice::meme::ClearStream  (virtual method) */
+/* 00878ac0  ClearStream::vf23  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878ac0, bfv_client_l1_body_00878ac0);
 BFV_L1_RESUME(bfv_client_l1r_00878ac0_1, bfv_client_l1_body_00878ac0, 1);
 void bfv_client_l1_body_00878ac0(struct bfv_cpu *c)
@@ -2360,7 +2383,7 @@ void bfv_client_l1_body_00878ac0(struct bfv_cpu *c)
     /* 00878ac0  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 00878ac2  call dword ptr [eax + 0x18] */
+    /* 00878ac2  call dword ptr [eax + 0x18]  ; -> ClearStream::vf6 = stub_return_true_0args_0064e7d0 */
     ea = (uint32_t)(eax + 0x00000018u);
     t = M32(ea);
     esp -= 4;
@@ -2379,7 +2402,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878ad0  dice::meme::ClearStream  (virtual method) */
+/* 00878ad0  ClearStream::vf25  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878ad0, bfv_client_l1_body_00878ad0);
 BFV_L1_RESUME(bfv_client_l1r_00878ad0_1, bfv_client_l1_body_00878ad0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00878ad0_2, bfv_client_l1_body_00878ad0, 2);
@@ -2397,7 +2422,7 @@ void bfv_client_l1_body_00878ad0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00878ad0  mov eax, dword ptr [esp + 0x10] */
+    /* 00878ad0  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878ad4  test eax, eax */
@@ -2418,24 +2443,24 @@ void bfv_client_l1_body_00878ad0(struct bfv_cpu *c)
     /* 00878adc  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 00878ade  call 0x878710 */
+    /* 00878ade  call 0x878710  ; Event::getRuntimeClass */
     t = 0x00878710u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00878ad0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00878ae3  mov ecx, dword ptr [esp + 0x10] */
+    /* 00878ae3  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00878ae7  mov edx, dword ptr [esp + 0xc] */
+    /* 00878ae7  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00878aeb  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878aec  mov eax, dword ptr [esp + 0x18] */
+    /* 00878aec  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00878af0  push eax */
@@ -2452,7 +2477,7 @@ R_1:
     M32(esp) = t;
     /* 00878af3  mov ecx, esi */
     ecx = esi;
-    /* 00878af5  call dword ptr [edi + 0x60] */
+    /* 00878af5  call dword ptr [edi + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edi + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -2473,7 +2498,7 @@ R_2:
     esp += 20;
     goto out;
 L_00878afd:
-    /* 00878afd  mov ecx, dword ptr [esp + 0xc] */
+    /* 00878afd  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00878b01  mov edx, dword ptr [esi] */
@@ -2483,14 +2508,14 @@ L_00878afd:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878b04  mov eax, dword ptr [esp + 0x14] */
+    /* 00878b04  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00878b08  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878b09  mov eax, dword ptr [esp + 0x10] */
+    /* 00878b09  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878b0d  push ecx */
@@ -2503,7 +2528,7 @@ L_00878afd:
     M32(esp) = t;
     /* 00878b0f  mov ecx, esi */
     ecx = esi;
-    /* 00878b11  call dword ptr [edx + 0x60] */
+    /* 00878b11  call dword ptr [edx + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edx + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -2526,7 +2551,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878b20  dice::meme::ClearStream  (virtual method) */
+/* 00878b20  ClearStream::vf26  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878b20, bfv_client_l1_body_00878b20);
 BFV_L1_RESUME(bfv_client_l1r_00878b20_1, bfv_client_l1_body_00878b20, 1);
 BFV_L1_RESUME(bfv_client_l1r_00878b20_2, bfv_client_l1_body_00878b20, 2);
@@ -2544,7 +2571,7 @@ void bfv_client_l1_body_00878b20(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00878b20  mov eax, dword ptr [esp + 0x10] */
+    /* 00878b20  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878b24  test eax, eax */
@@ -2565,24 +2592,24 @@ void bfv_client_l1_body_00878b20(struct bfv_cpu *c)
     /* 00878b2c  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 00878b2e  call 0x879e50 */
+    /* 00878b2e  call 0x879e50  ; Action::getRuntimeClass */
     t = 0x00879e50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00878b20_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00878b33  mov ecx, dword ptr [esp + 0x10] */
+    /* 00878b33  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00878b37  mov edx, dword ptr [esp + 0xc] */
+    /* 00878b37  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00878b3b  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878b3c  mov eax, dword ptr [esp + 0x18] */
+    /* 00878b3c  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00878b40  push eax */
@@ -2599,7 +2626,7 @@ R_1:
     M32(esp) = t;
     /* 00878b43  mov ecx, esi */
     ecx = esi;
-    /* 00878b45  call dword ptr [edi + 0x60] */
+    /* 00878b45  call dword ptr [edi + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edi + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -2620,7 +2647,7 @@ R_2:
     esp += 20;
     goto out;
 L_00878b4d:
-    /* 00878b4d  mov ecx, dword ptr [esp + 0xc] */
+    /* 00878b4d  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00878b51  mov edx, dword ptr [esi] */
@@ -2630,14 +2657,14 @@ L_00878b4d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878b54  mov eax, dword ptr [esp + 0x14] */
+    /* 00878b54  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00878b58  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878b59  mov eax, dword ptr [esp + 0x10] */
+    /* 00878b59  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878b5d  push ecx */
@@ -2650,7 +2677,7 @@ L_00878b4d:
     M32(esp) = t;
     /* 00878b5f  mov ecx, esi */
     ecx = esi;
-    /* 00878b61  call dword ptr [edx + 0x60] */
+    /* 00878b61  call dword ptr [edx + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edx + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -2673,7 +2700,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878b70  dice::meme::ClearStream  (virtual method) */
+/* 00878b70  ClearStream::vf27  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878b70, bfv_client_l1_body_00878b70);
 BFV_L1_RESUME(bfv_client_l1r_00878b70_1, bfv_client_l1_body_00878b70, 1);
 BFV_L1_RESUME(bfv_client_l1r_00878b70_2, bfv_client_l1_body_00878b70, 2);
@@ -2691,7 +2720,7 @@ void bfv_client_l1_body_00878b70(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00878b70  mov eax, dword ptr [esp + 0x10] */
+    /* 00878b70  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878b74  test eax, eax */
@@ -2712,24 +2741,24 @@ void bfv_client_l1_body_00878b70(struct bfv_cpu *c)
     /* 00878b7c  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 00878b7e  call 0x874820 */
+    /* 00878b7e  call 0x874820  ; Data::getRuntimeClass */
     t = 0x00874820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00878b70_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00878b83  mov ecx, dword ptr [esp + 0x10] */
+    /* 00878b83  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00878b87  mov edx, dword ptr [esp + 0xc] */
+    /* 00878b87  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00878b8b  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878b8c  mov eax, dword ptr [esp + 0x18] */
+    /* 00878b8c  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00878b90  push eax */
@@ -2746,7 +2775,7 @@ R_1:
     M32(esp) = t;
     /* 00878b93  mov ecx, esi */
     ecx = esi;
-    /* 00878b95  call dword ptr [edi + 0x60] */
+    /* 00878b95  call dword ptr [edi + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edi + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -2767,7 +2796,7 @@ R_2:
     esp += 20;
     goto out;
 L_00878b9d:
-    /* 00878b9d  mov ecx, dword ptr [esp + 0xc] */
+    /* 00878b9d  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00878ba1  mov edx, dword ptr [esi] */
@@ -2777,14 +2806,14 @@ L_00878b9d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878ba4  mov eax, dword ptr [esp + 0x14] */
+    /* 00878ba4  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00878ba8  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878ba9  mov eax, dword ptr [esp + 0x10] */
+    /* 00878ba9  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878bad  push ecx */
@@ -2797,7 +2826,7 @@ L_00878b9d:
     M32(esp) = t;
     /* 00878baf  mov ecx, esi */
     ecx = esi;
-    /* 00878bb1  call dword ptr [edx + 0x60] */
+    /* 00878bb1  call dword ptr [edx + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edx + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -2820,7 +2849,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878bc0  dice::meme::ClearStream  (virtual method) */
+/* 00878bc0  ClearStream::vf28  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878bc0, bfv_client_l1_body_00878bc0);
 BFV_L1_RESUME(bfv_client_l1r_00878bc0_1, bfv_client_l1_body_00878bc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00878bc0_2, bfv_client_l1_body_00878bc0, 2);
@@ -2838,7 +2869,7 @@ void bfv_client_l1_body_00878bc0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00878bc0  mov eax, dword ptr [esp + 0x10] */
+    /* 00878bc0  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878bc4  test eax, eax */
@@ -2859,24 +2890,24 @@ void bfv_client_l1_body_00878bc0(struct bfv_cpu *c)
     /* 00878bcc  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 00878bce  call 0x8756e0 */
+    /* 00878bce  call 0x8756e0  ; Effect::getRuntimeClass */
     t = 0x008756e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00878bc0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00878bd3  mov ecx, dword ptr [esp + 0x10] */
+    /* 00878bd3  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00878bd7  mov edx, dword ptr [esp + 0xc] */
+    /* 00878bd7  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00878bdb  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878bdc  mov eax, dword ptr [esp + 0x18] */
+    /* 00878bdc  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00878be0  push eax */
@@ -2893,7 +2924,7 @@ R_1:
     M32(esp) = t;
     /* 00878be3  mov ecx, esi */
     ecx = esi;
-    /* 00878be5  call dword ptr [edi + 0x60] */
+    /* 00878be5  call dword ptr [edi + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edi + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -2914,7 +2945,7 @@ R_2:
     esp += 20;
     goto out;
 L_00878bed:
-    /* 00878bed  mov ecx, dword ptr [esp + 0xc] */
+    /* 00878bed  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00878bf1  mov edx, dword ptr [esi] */
@@ -2924,14 +2955,14 @@ L_00878bed:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878bf4  mov eax, dword ptr [esp + 0x14] */
+    /* 00878bf4  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00878bf8  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878bf9  mov eax, dword ptr [esp + 0x10] */
+    /* 00878bf9  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878bfd  push ecx */
@@ -2944,7 +2975,7 @@ L_00878bed:
     M32(esp) = t;
     /* 00878bff  mov ecx, esi */
     ecx = esi;
-    /* 00878c01  call dword ptr [edx + 0x60] */
+    /* 00878c01  call dword ptr [edx + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edx + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -2967,7 +2998,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878c10  dice::meme::ClearStream  (virtual method) */
+/* 00878c10  ClearStream::vf29  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878c10, bfv_client_l1_body_00878c10);
 BFV_L1_RESUME(bfv_client_l1r_00878c10_1, bfv_client_l1_body_00878c10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00878c10_2, bfv_client_l1_body_00878c10, 2);
@@ -2985,7 +3018,7 @@ void bfv_client_l1_body_00878c10(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00878c10  mov eax, dword ptr [esp + 0x10] */
+    /* 00878c10  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878c14  test eax, eax */
@@ -3006,24 +3039,24 @@ void bfv_client_l1_body_00878c10(struct bfv_cpu *c)
     /* 00878c1c  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 00878c1e  call 0x875280 */
+    /* 00878c1e  call 0x875280  ; Function::getRuntimeClass */
     t = 0x00875280u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00878c10_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00878c23  mov ecx, dword ptr [esp + 0x10] */
+    /* 00878c23  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00878c27  mov edx, dword ptr [esp + 0xc] */
+    /* 00878c27  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00878c2b  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878c2c  mov eax, dword ptr [esp + 0x18] */
+    /* 00878c2c  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00878c30  push eax */
@@ -3040,7 +3073,7 @@ R_1:
     M32(esp) = t;
     /* 00878c33  mov ecx, esi */
     ecx = esi;
-    /* 00878c35  call dword ptr [edi + 0x60] */
+    /* 00878c35  call dword ptr [edi + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edi + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -3061,7 +3094,7 @@ R_2:
     esp += 20;
     goto out;
 L_00878c3d:
-    /* 00878c3d  mov ecx, dword ptr [esp + 0xc] */
+    /* 00878c3d  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00878c41  mov edx, dword ptr [esi] */
@@ -3071,14 +3104,14 @@ L_00878c3d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878c44  mov eax, dword ptr [esp + 0x14] */
+    /* 00878c44  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00878c48  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878c49  mov eax, dword ptr [esp + 0x10] */
+    /* 00878c49  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878c4d  push ecx */
@@ -3091,7 +3124,7 @@ L_00878c3d:
     M32(esp) = t;
     /* 00878c4f  mov ecx, esi */
     ecx = esi;
-    /* 00878c51  call dword ptr [edx + 0x60] */
+    /* 00878c51  call dword ptr [edx + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edx + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -3114,7 +3147,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878c60  dice::meme::ClearStream  (virtual method) */
+/* 00878c60  ClearStream::vf30  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878c60, bfv_client_l1_body_00878c60);
 BFV_L1_RESUME(bfv_client_l1r_00878c60_1, bfv_client_l1_body_00878c60, 1);
 BFV_L1_RESUME(bfv_client_l1r_00878c60_2, bfv_client_l1_body_00878c60, 2);
@@ -3132,7 +3167,7 @@ void bfv_client_l1_body_00878c60(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00878c60  mov eax, dword ptr [esp + 0x10] */
+    /* 00878c60  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878c64  test eax, eax */
@@ -3153,24 +3188,24 @@ void bfv_client_l1_body_00878c60(struct bfv_cpu *c)
     /* 00878c6c  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 00878c6e  call 0x874310 */
+    /* 00878c6e  call 0x874310  ; Node::getRuntimeClass */
     t = 0x00874310u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00878c60_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00878c73  mov ecx, dword ptr [esp + 0x10] */
+    /* 00878c73  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00878c77  mov edx, dword ptr [esp + 0xc] */
+    /* 00878c77  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00878c7b  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878c7c  mov eax, dword ptr [esp + 0x18] */
+    /* 00878c7c  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00878c80  push eax */
@@ -3187,7 +3222,7 @@ R_1:
     M32(esp) = t;
     /* 00878c83  mov ecx, esi */
     ecx = esi;
-    /* 00878c85  call dword ptr [edi + 0x60] */
+    /* 00878c85  call dword ptr [edi + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edi + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -3208,7 +3243,7 @@ R_2:
     esp += 20;
     goto out;
 L_00878c8d:
-    /* 00878c8d  mov ecx, dword ptr [esp + 0xc] */
+    /* 00878c8d  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00878c91  mov edx, dword ptr [esi] */
@@ -3218,14 +3253,14 @@ L_00878c8d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878c94  mov eax, dword ptr [esp + 0x14] */
+    /* 00878c94  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00878c98  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878c99  mov eax, dword ptr [esp + 0x10] */
+    /* 00878c99  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878c9d  push ecx */
@@ -3238,7 +3273,7 @@ L_00878c8d:
     M32(esp) = t;
     /* 00878c9f  mov ecx, esi */
     ecx = esi;
-    /* 00878ca1  call dword ptr [edx + 0x60] */
+    /* 00878ca1  call dword ptr [edx + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edx + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -3261,7 +3296,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878cb0  dice::meme::ClearStream  (virtual method) */
+/* 00878cb0  ClearStream::vf31  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878cb0, bfv_client_l1_body_00878cb0);
 BFV_L1_RESUME(bfv_client_l1r_00878cb0_1, bfv_client_l1_body_00878cb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00878cb0_2, bfv_client_l1_body_00878cb0, 2);
@@ -3279,7 +3316,7 @@ void bfv_client_l1_body_00878cb0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00878cb0  mov eax, dword ptr [esp + 0x10] */
+    /* 00878cb0  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878cb4  test eax, eax */
@@ -3300,24 +3337,24 @@ void bfv_client_l1_body_00878cb0(struct bfv_cpu *c)
     /* 00878cbc  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 00878cbe  call 0x876390 */
+    /* 00878cbe  call 0x876390  ; Style::getRuntimeClass */
     t = 0x00876390u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00878cb0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00878cc3  mov ecx, dword ptr [esp + 0x10] */
+    /* 00878cc3  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00878cc7  mov edx, dword ptr [esp + 0xc] */
+    /* 00878cc7  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00878ccb  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878ccc  mov eax, dword ptr [esp + 0x18] */
+    /* 00878ccc  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00878cd0  push eax */
@@ -3334,7 +3371,7 @@ R_1:
     M32(esp) = t;
     /* 00878cd3  mov ecx, esi */
     ecx = esi;
-    /* 00878cd5  call dword ptr [edi + 0x60] */
+    /* 00878cd5  call dword ptr [edi + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edi + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -3355,7 +3392,7 @@ R_2:
     esp += 20;
     goto out;
 L_00878cdd:
-    /* 00878cdd  mov ecx, dword ptr [esp + 0xc] */
+    /* 00878cdd  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00878ce1  mov edx, dword ptr [esi] */
@@ -3365,14 +3402,14 @@ L_00878cdd:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878ce4  mov eax, dword ptr [esp + 0x14] */
+    /* 00878ce4  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00878ce8  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878ce9  mov eax, dword ptr [esp + 0x10] */
+    /* 00878ce9  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878ced  push ecx */
@@ -3385,7 +3422,7 @@ L_00878cdd:
     M32(esp) = t;
     /* 00878cef  mov ecx, esi */
     ecx = esi;
-    /* 00878cf1  call dword ptr [edx + 0x60] */
+    /* 00878cf1  call dword ptr [edx + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edx + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -3408,7 +3445,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878d00  dice::meme::ClearStream  (virtual method) */
+/* 00878d00  ClearStream::vf32  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878d00, bfv_client_l1_body_00878d00);
 BFV_L1_RESUME(bfv_client_l1r_00878d00_1, bfv_client_l1_body_00878d00, 1);
 BFV_L1_RESUME(bfv_client_l1r_00878d00_2, bfv_client_l1_body_00878d00, 2);
@@ -3426,7 +3465,7 @@ void bfv_client_l1_body_00878d00(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00878d00  mov eax, dword ptr [esp + 0x10] */
+    /* 00878d00  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878d04  test eax, eax */
@@ -3447,24 +3486,24 @@ void bfv_client_l1_body_00878d00(struct bfv_cpu *c)
     /* 00878d0c  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 00878d0e  call 0x87b100 */
+    /* 00878d0e  call 0x87b100  ; Tree::getRuntimeClass */
     t = 0x0087b100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00878d00_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00878d13  mov ecx, dword ptr [esp + 0x10] */
+    /* 00878d13  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00878d17  mov edx, dword ptr [esp + 0xc] */
+    /* 00878d17  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00878d1b  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878d1c  mov eax, dword ptr [esp + 0x18] */
+    /* 00878d1c  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00878d20  push eax */
@@ -3481,7 +3520,7 @@ R_1:
     M32(esp) = t;
     /* 00878d23  mov ecx, esi */
     ecx = esi;
-    /* 00878d25  call dword ptr [edi + 0x60] */
+    /* 00878d25  call dword ptr [edi + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edi + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -3502,7 +3541,7 @@ R_2:
     esp += 20;
     goto out;
 L_00878d2d:
-    /* 00878d2d  mov ecx, dword ptr [esp + 0xc] */
+    /* 00878d2d  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00878d31  mov edx, dword ptr [esi] */
@@ -3512,14 +3551,14 @@ L_00878d2d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878d34  mov eax, dword ptr [esp + 0x14] */
+    /* 00878d34  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00878d38  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00878d39  mov eax, dword ptr [esp + 0x10] */
+    /* 00878d39  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00878d3d  push ecx */
@@ -3532,7 +3571,7 @@ L_00878d2d:
     M32(esp) = t;
     /* 00878d3f  mov ecx, esi */
     ecx = esi;
-    /* 00878d41  call dword ptr [edx + 0x60] */
+    /* 00878d41  call dword ptr [edx + 0x60]  ; -> ClearStream::vf24 */
     ea = (uint32_t)(edx + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -3555,7 +3594,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00879c10  dice::meme::ClearStream  (virtual method) */
+/* 00879c10  ClearStream::vf22  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00879c10, bfv_client_l1_body_00879c10);
 BFV_L1_RESUME(bfv_client_l1r_00879c10_1, bfv_client_l1_body_00879c10, 1);
 void bfv_client_l1_body_00879c10(struct bfv_cpu *c)
@@ -3569,10 +3610,10 @@ void bfv_client_l1_body_00879c10(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00879c10  mov ecx, dword ptr [esp + 8] */
+    /* 00879c10  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 00879c14  mov edx, dword ptr [esp + 4] */
+    /* 00879c14  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00879c18  mov eax, dword ptr [ecx] */
@@ -3601,7 +3642,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00879c30  dice::meme::ClearStream  (virtual method) */
+/* 00879c30  ClearStream::vf24  (virtual method)
+ * class: dice::meme::ClearStream
+ * called by: ClearStream::ctor_dtor, ClearStream::ctor_dtor, ClearStream::ctor_dtor, ClearStream::ctor_dtor, ObjectLink::vf14
+ */
 BFV_L1_ENTRY(bfv_client_l1_00879c30, bfv_client_l1_body_00879c30);
 BFV_L1_RESUME(bfv_client_l1r_00879c30_1, bfv_client_l1_body_00879c30, 1);
 BFV_L1_RESUME(bfv_client_l1r_00879c30_2, bfv_client_l1_body_00879c30, 2);
@@ -3631,7 +3675,7 @@ void bfv_client_l1_body_00879c30(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00879c31  mov esi, dword ptr [esp + 0xc] */
+    /* 00879c31  mov esi, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 00879c35  push edi */
@@ -3670,7 +3714,7 @@ R_1:
     /* 00879c4a  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00879c4c  mov eax, dword ptr [esp + 0xc] */
+    /* 00879c4c  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00879c50  jne 0x879c7d */
@@ -3682,7 +3726,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00879c55  mov dword ptr [esp + 0x14], ecx */
+    /* 00879c55  mov dword ptr [esp + 0x14], ecx  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = ecx;
     /* 00879c59  mov dword ptr [esi], 0 */
@@ -3711,7 +3755,7 @@ R_2:
     /* 00879c69  mov edx, dword ptr [edi] */
     ea = (uint32_t)(edi);
     edx = M32(ea);
-    /* 00879c6b  lea eax, [esp + 0x10] */
+    /* 00879c6b  lea eax, [esp + 0x10]  ; &arg_4 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 00879c6f  push eax */
     t = eax;
@@ -3719,7 +3763,7 @@ R_2:
     M32(esp) = t;
     /* 00879c70  mov ecx, edi */
     ecx = edi;
-    /* 00879c72  call dword ptr [edx + 0x8c] */
+    /* 00879c72  call dword ptr [edx + 0x8c]  ; -> ClearStream::vf35 */
     ea = (uint32_t)(edx + 0x0000008cu);
     t = M32(ea);
     esp -= 4;
@@ -3815,7 +3859,7 @@ L_00879c99:
     esp += 20;
     goto out;
 L_00879ca3:
-    /* 00879ca3  mov dword ptr [esp + 0x10], ecx */
+    /* 00879ca3  mov dword ptr [esp + 0x10], ecx  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ecx;
     /* 00879ca7  mov dword ptr [esi], 0 */
@@ -3853,10 +3897,10 @@ L_00879cb6:
     esp += 20;
     goto out;
 L_00879cbd:
-    /* 00879cbd  mov ecx, dword ptr [esp + 0x10] */
+    /* 00879cbd  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00879cc1  mov edx, dword ptr [esp + 0xc] */
+    /* 00879cc1  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00879cc5  mov eax, dword ptr [ecx] */
@@ -3904,7 +3948,7 @@ L_00879cd7:
     /* 00879cd7  mov eax, dword ptr [edi] */
     ea = (uint32_t)(edi);
     eax = M32(ea);
-    /* 00879cd9  lea ecx, [esp + 0x10] */
+    /* 00879cd9  lea ecx, [esp + 0x10]  ; &arg_4 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 00879cdd  push ecx */
     t = ecx;
@@ -3912,7 +3956,7 @@ L_00879cd7:
     M32(esp) = t;
     /* 00879cde  mov ecx, edi */
     ecx = edi;
-    /* 00879ce0  call dword ptr [eax + 0x8c] */
+    /* 00879ce0  call dword ptr [eax + 0x8c]  ; -> ClearStream::vf35 */
     ea = (uint32_t)(eax + 0x0000008cu);
     t = M32(ea);
     esp -= 4;
@@ -3939,7 +3983,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00879cf0  dice::meme::ClearStream  (virtual method) */
+/* 00879cf0  ClearStream::vf35  (virtual method)
+ * class: dice::meme::ClearStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00879cf0, bfv_client_l1_body_00879cf0);
 BFV_L1_RESUME(bfv_client_l1r_00879cf0_1, bfv_client_l1_body_00879cf0, 1);
 void bfv_client_l1_body_00879cf0(struct bfv_cpu *c)
@@ -3953,10 +3999,10 @@ void bfv_client_l1_body_00879cf0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00879cf0  mov ecx, dword ptr [esp + 4] */
+    /* 00879cf0  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00879cf4  call 0x875330 */
+    /* 00879cf4  call 0x875330  ; meme_00875330 */
     t = 0x00875330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00879cf0_1;

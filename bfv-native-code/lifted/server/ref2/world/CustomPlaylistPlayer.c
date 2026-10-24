@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005d4b40  dice::ref2::world::CustomPlaylistPlayer  (vtable store) */
+/* 005d4b40  CustomPlaylistPlayer::ctor_dtor  (vtable store)
+ * class: dice::ref2::world::CustomPlaylistPlayer
+ * called by: Game_Custom_0055c620
+ */
 BFV_L1_ENTRY(bfv_server_l1_005d4b40, bfv_server_l1_body_005d4b40);
 BFV_L1_RESUME(bfv_server_l1r_005d4b40_1, bfv_server_l1_body_005d4b40, 1);
 BFV_L1_RESUME(bfv_server_l1r_005d4b40_2, bfv_server_l1_body_005d4b40, 2);
@@ -46,7 +49,7 @@ void bfv_server_l1_body_005d4b40(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005d4b4b  call 0x55c290 */
+    /* 005d4b4b  call 0x55c290  ; world_0055c290 */
     t = 0x0055c290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d4b40_1;
@@ -64,7 +67,7 @@ R_1:
     t = 0x1b8u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d4b5a  call 0x403d80 */
+    /* 005d4b5a  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d4b40_2;
@@ -84,7 +87,7 @@ R_2:
     if (zf) goto L_005d4bc2;
     /* 005d4b66  mov ecx, eax */
     ecx = eax;
-    /* 005d4b68  call 0x548c90 */
+    /* 005d4b68  call 0x548c90  ; MusicPlayerTemplate::MusicPlayerTemplate */
     t = 0x00548c90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d4b40_3;
@@ -112,7 +115,7 @@ R_3:
     M32(esp) = t;
     /* 005d4b78  lea ecx, [edi + 0x194] */
     ecx = (uint32_t)(edi + 0x00000194u);
-    /* 005d4b7e  call 0x401e20 */
+    /* 005d4b7e  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d4b40_4;
@@ -123,7 +126,7 @@ R_4:
     t = 0x168u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d4b88  call 0x403d80 */
+    /* 005d4b88  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d4b40_5;
@@ -149,7 +152,7 @@ R_5:
     M32(esp) = t;
     /* 005d4b97  mov ecx, esi */
     ecx = esi;
-    /* 005d4b99  call 0x565250 */
+    /* 005d4b99  call 0x565250  ; MusicPlayer::MusicPlayer */
     t = 0x00565250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d4b40_6;
@@ -158,7 +161,7 @@ R_5:
 R_6:
     /* 005d4b9e  mov eax, esi */
     eax = esi;
-    /* 005d4ba0  mov dword ptr [esi], 0x847324 */
+    /* 005d4ba0  mov dword ptr [esi], 0x847324  ; vtable CustomPlaylistPlayer */
     ea = (uint32_t)(esi);
     M32(ea) = 0x847324u;
     /* 005d4ba6  mov byte ptr [esi + 0x158], 0 */

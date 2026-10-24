@@ -1,0 +1,8 @@
+## file
+Plan instruction that sets the bot's turn lock.
+
+## 009f2a20
+Destructor: restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.
+
+## 009f2a60
+Calls bot slot 0x68 with the byte at this+0x18 (lock on or off), then finishes: flag = 1, done = 1, returns 1.

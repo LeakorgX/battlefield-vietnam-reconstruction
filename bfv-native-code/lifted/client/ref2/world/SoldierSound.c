@@ -5,7 +5,102 @@
 #include "l1.h"
 
 
-/* 006e7fa0  dice::ref2::world::SoldierSound  (virtual method) */
+/* 006e7f30  SoldierSound::SoldierSound  (vtable store)
+ * class: dice::ref2::world::SoldierSound
+ * also entered at 006e7f80: ISoldierSound::vf0, SoldierSound::vf0
+ */
+BFV_L1_ENTRY(bfv_client_l1_006e7f30, bfv_client_l1_body_006e7f30);
+void bfv_client_l1_body_006e7f30(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t r, ea;
+    /* 006e7f30  mov eax, ecx */
+    eax = ecx;
+    /* 006e7f32  xor ecx, ecx */
+    r = 0;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 006e7f34  mov dword ptr [eax], 0xba341c  ; vtable SoldierSound */
+    ea = (uint32_t)(eax);
+    M32(ea) = 0xba341cu;
+    /* 006e7f3a  mov dword ptr [eax + 4], ecx */
+    ea = (uint32_t)(eax + 0x00000004u);
+    M32(ea) = ecx;
+    /* 006e7f3d  mov dword ptr [eax + 8], ecx */
+    ea = (uint32_t)(eax + 0x00000008u);
+    M32(ea) = ecx;
+    /* 006e7f40  mov dword ptr [eax + 0xc], ecx */
+    ea = (uint32_t)(eax + 0x0000000cu);
+    M32(ea) = ecx;
+    /* 006e7f43  mov dword ptr [eax + 0x10], ecx */
+    ea = (uint32_t)(eax + 0x00000010u);
+    M32(ea) = ecx;
+    /* 006e7f46  mov dword ptr [eax + 0x14], ecx */
+    ea = (uint32_t)(eax + 0x00000014u);
+    M32(ea) = ecx;
+    /* 006e7f49  mov dword ptr [eax + 0x18], ecx */
+    ea = (uint32_t)(eax + 0x00000018u);
+    M32(ea) = ecx;
+    /* 006e7f4c  mov dword ptr [eax + 0x1c], ecx */
+    ea = (uint32_t)(eax + 0x0000001cu);
+    M32(ea) = ecx;
+    /* 006e7f4f  mov dword ptr [eax + 0x20], ecx */
+    ea = (uint32_t)(eax + 0x00000020u);
+    M32(ea) = ecx;
+    /* 006e7f52  mov dword ptr [eax + 0x28], ecx */
+    ea = (uint32_t)(eax + 0x00000028u);
+    M32(ea) = ecx;
+    /* 006e7f55  mov dword ptr [eax + 0x2c], ecx */
+    ea = (uint32_t)(eax + 0x0000002cu);
+    M32(ea) = ecx;
+    /* 006e7f58  mov dword ptr [eax + 0x30], ecx */
+    ea = (uint32_t)(eax + 0x00000030u);
+    M32(ea) = ecx;
+    /* 006e7f5b  mov dword ptr [eax + 0x34], ecx */
+    ea = (uint32_t)(eax + 0x00000034u);
+    M32(ea) = ecx;
+    /* 006e7f5e  mov dword ptr [eax + 0x38], ecx */
+    ea = (uint32_t)(eax + 0x00000038u);
+    M32(ea) = ecx;
+    /* 006e7f61  mov dword ptr [eax + 0x3c], ecx */
+    ea = (uint32_t)(eax + 0x0000003cu);
+    M32(ea) = ecx;
+    /* 006e7f64  mov dword ptr [eax + 0x40], ecx */
+    ea = (uint32_t)(eax + 0x00000040u);
+    M32(ea) = ecx;
+    /* 006e7f67  mov dword ptr [eax + 0x44], ecx */
+    ea = (uint32_t)(eax + 0x00000044u);
+    M32(ea) = ecx;
+    /* 006e7f6a  mov dword ptr [eax + 0x4c], ecx */
+    ea = (uint32_t)(eax + 0x0000004cu);
+    M32(ea) = ecx;
+    /* 006e7f6d  mov byte ptr [eax + 0x50], 1 */
+    ea = (uint32_t)(eax + 0x00000050u);
+    M8(ea) = 0x1u;
+    /* 006e7f71  mov byte ptr [eax + 0x51], cl */
+    ea = (uint32_t)(eax + 0x00000051u);
+    M8(ea) = LO8(ecx);
+    /* 006e7f74  mov byte ptr [eax + 0x52], cl */
+    ea = (uint32_t)(eax + 0x00000052u);
+    M8(ea) = LO8(ecx);
+    /* 006e7f77  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 006e7fa0  SoldierSound::vf2  (virtual method)
+ * overrides: ISoldierSound::vf2  (2 classes implement it)
+ * class: dice::ref2::world::SoldierSound
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e7fa0, bfv_client_l1_body_006e7fa0);
 BFV_L1_RESUME(bfv_client_l1r_006e7fa0_1, bfv_client_l1_body_006e7fa0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e7fa0_2, bfv_client_l1_body_006e7fa0, 2);
@@ -41,7 +136,7 @@ void bfv_client_l1_body_006e7fa0(struct bfv_cpu *c)
     case 12: goto R_12;
     default: break;
     }
-    /* 006e7fa0  mov eax, dword ptr [esp + 4] */
+    /* 006e7fa0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006e7fa4  push ebx */
@@ -54,14 +149,14 @@ void bfv_client_l1_body_006e7fa0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006e7fa6  mov ebx, ecx */
     ebx = ecx;
-    /* 006e7fa8  call 0x6e7b50 */
+    /* 006e7fa8  call 0x6e7b50  ; SoldierSound::vf2_helper_006e7b50 */
     t = 0x006e7b50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7fa0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006e7fad  lea ecx, [esp + 0x10] */
+    /* 006e7fad  lea ecx, [esp + 0x10]  ; &arg_8 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 006e7fb1  push ecx */
     t = ecx;
@@ -69,7 +164,7 @@ R_1:
     M32(esp) = t;
     /* 006e7fb2  mov ecx, ebx */
     ecx = ebx;
-    /* 006e7fb4  call 0x6e7bc0 */
+    /* 006e7fb4  call 0x6e7bc0  ; SoldierSound::vf2_helper_006e7bc0 */
     t = 0x006e7bc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e7fa0_2;
@@ -85,14 +180,14 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006e7fc2  mov esi, dword ptr [esp + 0x10] */
+    /* 006e7fc2  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 006e7fc6  push edi */
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006e7fc7  mov edi, dword ptr [esp + 0x18] */
+    /* 006e7fc7  mov edi, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     edi = M32(ea);
     /* 006e7fcb  cmp edi, 0x11 */
@@ -374,7 +469,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006e8060  (between same file) */
+/* 006e8060  std::_Tree::_Buynode_head_24_006e8060  (between same file)
+ * called by: sub_00b1a450
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e8060, bfv_client_l1_body_006e8060);
 BFV_L1_RESUME(bfv_client_l1r_006e8060_1, bfv_client_l1_body_006e8060, 1);
 void bfv_client_l1_body_006e8060(struct bfv_cpu *c)
@@ -430,14 +527,14 @@ void bfv_client_l1_body_006e8060(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006e807e  mov dword ptr [ebp - 0x10], esp */
+    /* 006e807e  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 006e8081  push 0x18 */
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 006e8083  call 0x403610 */
+    /* 006e8083  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e8060_1;
@@ -450,20 +547,20 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 006e808b  mov dword ptr [ebp - 0x18], eax */
+    /* 006e808b  mov dword ptr [ebp - 0x18], eax  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = eax;
     /* 006e808e  xor edx, edx */
     r = 0;
     F_LOGIC(32, r);
     edx = r;
-    /* 006e8090  mov dword ptr [ebp - 4], edx */
+    /* 006e8090  mov dword ptr [ebp - 4], edx  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = edx;
-    /* 006e8093  mov dword ptr [ebp - 0x1c], edx */
+    /* 006e8093  mov dword ptr [ebp - 0x1c], edx  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = edx;
-    /* 006e8096  mov dword ptr [ebp - 0x20], eax */
+    /* 006e8096  mov dword ptr [ebp - 0x20], eax  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = eax;
     /* 006e8099  cmp eax, edx */
@@ -479,15 +576,15 @@ R_1:
 L_006e809f:
     /* 006e809f  mov ebx, 1 */
     ebx = 0x1u;
-    /* 006e80a4  mov dword ptr [ebp - 0x14], ebx */
+    /* 006e80a4  mov dword ptr [ebp - 0x14], ebx  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = ebx;
-    /* 006e80a7  mov dword ptr [ebp - 0x24], edx */
+    /* 006e80a7  mov dword ptr [ebp - 0x24], edx  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = edx;
     /* 006e80aa  lea ecx, [eax + 4] */
     ecx = (uint32_t)(eax + 0x00000004u);
-    /* 006e80ad  mov dword ptr [ebp - 0x28], ecx */
+    /* 006e80ad  mov dword ptr [ebp - 0x28], ecx  ; var_2c */
     ea = (uint32_t)(ebp + 0xffffffd8u);
     M32(ea) = ecx;
     /* 006e80b0  cmp ecx, edx */
@@ -501,15 +598,15 @@ L_006e809f:
     ea = (uint32_t)(ecx);
     M32(ea) = edx;
 L_006e80b6:
-    /* 006e80b6  mov dword ptr [ebp - 0x14], 2 */
+    /* 006e80b6  mov dword ptr [ebp - 0x14], 2  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = 0x2u;
-    /* 006e80bd  mov dword ptr [ebp - 0x2c], edx */
+    /* 006e80bd  mov dword ptr [ebp - 0x2c], edx  ; var_30 */
     ea = (uint32_t)(ebp + 0xffffffd4u);
     M32(ea) = edx;
     /* 006e80c0  lea ecx, [eax + 8] */
     ecx = (uint32_t)(eax + 0x00000008u);
-    /* 006e80c3  mov dword ptr [ebp - 0x30], ecx */
+    /* 006e80c3  mov dword ptr [ebp - 0x30], ecx  ; var_34 */
     ea = (uint32_t)(ebp + 0xffffffd0u);
     M32(ea) = ecx;
     /* 006e80c6  cmp ecx, edx */
@@ -523,7 +620,7 @@ L_006e80b6:
     ea = (uint32_t)(ecx);
     M32(ea) = edx;
 L_006e80cc:
-    /* 006e80cc  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 006e80cc  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 006e80d3  mov byte ptr [eax + 0x14], bl */
@@ -532,7 +629,7 @@ L_006e80cc:
     /* 006e80d6  mov byte ptr [eax + 0x15], dl */
     ea = (uint32_t)(eax + 0x00000015u);
     M8(ea) = LO8(edx);
-    /* 006e80d9  mov ecx, dword ptr [ebp - 0xc] */
+    /* 006e80d9  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 006e80dc  mov dword ptr fs:[0], ecx */
@@ -567,7 +664,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006e80ea  (between same file) */
+/* 006e80ea  SoldierSound_006e8060_catch_006e80ea  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e80ea, bfv_client_l1_body_006e80ea);
 BFV_L1_RESUME(bfv_client_l1r_006e80ea_1, bfv_client_l1_body_006e80ea, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e80ea_2, bfv_client_l1_body_006e80ea, 2);
@@ -590,7 +688,7 @@ void bfv_client_l1_body_006e80ea(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006e80ee  call 0x403680 */
+    /* 006e80ee  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e80ea_1;
@@ -615,7 +713,7 @@ R_1:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006e80fa  call 0x7c1fae */
+    /* 006e80fa  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e80ea_2;
@@ -631,7 +729,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006e8100  (between same file) */
+/* 006e8100  std::_Tree::_Buynode_24_006e8100  (between same file)
+ * called by: std::_Tree::_Insert_006e81d0
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e8100, bfv_client_l1_body_006e8100);
 BFV_L1_RESUME(bfv_client_l1r_006e8100_1, bfv_client_l1_body_006e8100, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e8100_2, bfv_client_l1_body_006e8100, 2);
@@ -696,7 +796,7 @@ void bfv_client_l1_body_006e8100(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 006e8123  call 0x403610 */
+    /* 006e8123  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e8100_1;
@@ -762,7 +862,7 @@ R_1:
     M32(esp) = t;
     /* 006e8152  mov ecx, esi */
     ecx = esi;
-    /* 006e8154  call 0x517c10 */
+    /* 006e8154  call 0x517c10  ; bfv_tree_construct */
     t = 0x00517c10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e8100_2;
@@ -810,7 +910,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006e8175  (between same file) */
+/* 006e8175  SoldierSound_006e8100_catch_006e8175  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e8175, bfv_client_l1_body_006e8175);
 BFV_L1_RESUME(bfv_client_l1r_006e8175_1, bfv_client_l1_body_006e8175, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e8175_2, bfv_client_l1_body_006e8175, 2);
@@ -833,7 +934,7 @@ void bfv_client_l1_body_006e8175(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006e8179  call 0x403680 */
+    /* 006e8179  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e8175_1;
@@ -854,7 +955,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 006e8185  call 0x7c1fae */
+    /* 006e8185  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e8175_2;
@@ -870,7 +971,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e8190  dice::ref2::world::SoldierSound  (virtual method) */
+/* 006e8190  SoldierSound::vf1  (virtual method)
+ * overrides: ISoldierSound::vf1  (2 classes implement it)
+ * class: dice::ref2::world::SoldierSound
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e8190, bfv_client_l1_body_006e8190);
 BFV_L1_RESUME(bfv_client_l1r_006e8190_1, bfv_client_l1_body_006e8190, 1);
 void bfv_client_l1_body_006e8190(struct bfv_cpu *c)
@@ -901,13 +1005,13 @@ void bfv_client_l1_body_006e8190(struct bfv_cpu *c)
     edi = M32(ea);
     /* 006e8199  mov esi, ecx */
     esi = ecx;
-    /* 006e819b  lea eax, [esp + 0x10] */
+    /* 006e819b  lea eax, [esp + 0x10]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 006e819f  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006e81a0  lea ecx, [esp + 0xc] */
+    /* 006e81a0  lea ecx, [esp + 0xc]  ; &var_4 */
     ecx = (uint32_t)(esp + 0x0000000cu);
     /* 006e81a4  push ecx */
     t = ecx;
@@ -915,14 +1019,14 @@ void bfv_client_l1_body_006e8190(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006e81a5  mov ecx, edi */
     ecx = edi;
-    /* 006e81a7  call 0x68f100 */
+    /* 006e81a7  call 0x68f100  ; std::map_uint::find */
     t = 0x0068f100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e8190_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006e81ac  mov eax, dword ptr [esp + 8] */
+    /* 006e81ac  mov eax, dword ptr [esp + 8]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006e81b0  cmp eax, dword ptr [edi + 4] */

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008697d0  dice::meme::StringRefData  (virtual method) */
+/* 008697d0  StringRefData::setString  (virtual method)
+ * overrides: Data::setString  (41 classes implement it)
+ * class: dice::meme::StringRefData
+ */
 BFV_L1_ENTRY(bfv_client_l1_008697d0, bfv_client_l1_body_008697d0);
 BFV_L1_RESUME(bfv_client_l1r_008697d0_1, bfv_client_l1_body_008697d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008697d0_2, bfv_client_l1_body_008697d0, 2);
@@ -30,17 +33,17 @@ void bfv_client_l1_body_008697d0(struct bfv_cpu *c)
     /* 008697d3  mov ecx, dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     ecx = M32(ea);
-    /* 008697d6  call 0x8776e0 */
+    /* 008697d6  call 0x8776e0  ; Buffer::release */
     t = 0x008776e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008697d0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008697db  mov ecx, dword ptr [esp + 0xc] */
+    /* 008697db  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 008697df  call 0x8775d0 */
+    /* 008697df  call 0x8775d0  ; meme_008775d0 */
     t = 0x008775d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008697d0_2;
@@ -70,7 +73,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008697f0  dice::meme::StringRefData  (virtual method) */
+/* 008697f0  StringRefData::setFloat  (virtual method)
+ * overrides: Data::setFloat  (41 classes implement it)
+ * class: dice::meme::StringRefData
+ */
 BFV_L1_ENTRY(bfv_client_l1_008697f0, bfv_client_l1_body_008697f0);
 BFV_L1_RESUME(bfv_client_l1r_008697f0_1, bfv_client_l1_body_008697f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008697f0_2, bfv_client_l1_body_008697f0, 2);
@@ -86,7 +92,7 @@ void bfv_client_l1_body_008697f0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 008697f0  mov eax, dword ptr [esp + 8] */
+    /* 008697f0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008697f4  sub esp, 0x20 */
@@ -105,24 +111,24 @@ void bfv_client_l1_body_008697f0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008697fb  lea edx, [esp + 8] */
+    /* 008697fb  lea edx, [esp + 8]  ; &var_20 */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 008697ff  mov ecx, 7 */
     ecx = 0x7u;
-    /* 00869804  call 0x8777c0 */
+    /* 00869804  call 0x8777c0  ; meme_008777c0 */
     t = 0x008777c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008697f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00869809  mov ecx, dword ptr [esp + 0x28] */
+    /* 00869809  mov ecx, dword ptr [esp + 0x28]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000028u);
     ecx = M32(ea);
     /* 0086980d  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086980f  lea eax, [esp + 4] */
+    /* 0086980f  lea eax, [esp + 4]  ; &var_20 */
     eax = (uint32_t)(esp + 0x00000004u);
     /* 00869813  push eax */
     t = eax;
@@ -134,7 +140,7 @@ R_1:
     M32(esp) = t;
     /* 00869815  mov ecx, esi */
     ecx = esi;
-    /* 00869817  call dword ptr [edx + 0x58] */
+    /* 00869817  call dword ptr [edx + 0x58]  ; -> StringRefData::vf22 = StringRefData::setString */
     ea = (uint32_t)(edx + 0x00000058u);
     t = M32(ea);
     esp -= 4;
@@ -163,7 +169,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00869830  dice::meme::StringRefData  (virtual method) */
+/* 00869830  StringRefData::getFloat  (virtual method)
+ * overrides: Data::getFloat  (41 classes implement it)
+ * class: dice::meme::StringRefData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00869830, bfv_client_l1_body_00869830);
 BFV_L1_RESUME(bfv_client_l1r_00869830_1, bfv_client_l1_body_00869830, 1);
 void bfv_client_l1_body_00869830(struct bfv_cpu *c)
@@ -188,7 +197,7 @@ void bfv_client_l1_body_00869830(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00869837  jne 0x869842 */
     if (!zf) goto L_00869842;
-    /* 00869839  fld dword ptr [0xb44444] */
+    /* 00869839  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0086983f  ret 4 */
@@ -196,7 +205,7 @@ void bfv_client_l1_body_00869830(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_00869842:
-    /* 00869842  call 0x877770 */
+    /* 00869842  call 0x877770  ; meme_00877770 */
     t = 0x00877770u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00869830_1;
@@ -214,7 +223,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00869850  dice::meme::StringRefData  (virtual method) */
+/* 00869850  StringRefData::getChar  (virtual method)
+ * overrides: Data::getChar  (41 classes implement it)
+ * class: dice::meme::StringRefData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00869850, bfv_client_l1_body_00869850);
 void bfv_client_l1_body_00869850(struct bfv_cpu *c)
 {
@@ -239,7 +251,7 @@ void bfv_client_l1_body_00869850(struct bfv_cpu *c)
     esp += 12;
     goto out;
 L_0086985c:
-    /* 0086985c  mov ecx, dword ptr [esp + 8] */
+    /* 0086985c  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00869860  movzx eax, byte ptr [eax + ecx] */
@@ -256,7 +268,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008699e0  dice::meme::StringRefData  (vtable store) */
+/* 008699e0  StringRefData::create  (vtable store)
+ * class: dice::meme::StringRefData
+ */
 BFV_L1_ENTRY(bfv_client_l1_008699e0, bfv_client_l1_body_008699e0);
 BFV_L1_RESUME(bfv_client_l1r_008699e0_1, bfv_client_l1_body_008699e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008699e0_2, bfv_client_l1_body_008699e0, 2);
@@ -280,7 +294,7 @@ void bfv_client_l1_body_008699e0(struct bfv_cpu *c)
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 008699e3  call 0x403610 */
+    /* 008699e3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008699e0_1;
@@ -306,7 +320,7 @@ R_1:
     M32(esp) = t;
     /* 008699f3  mov ecx, esi */
     ecx = esi;
-    /* 008699f5  call 0x874530 */
+    /* 008699f5  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008699e0_2;
@@ -321,7 +335,7 @@ R_2:
     /* 00869a00  mov dword ptr [eax], 0 */
     ea = (uint32_t)(eax);
     M32(ea) = 0x0u;
-    /* 00869a06  mov dword ptr [esi], 0xbd23b4 */
+    /* 00869a06  mov dword ptr [esi], 0xbd23b4  ; vtable StringRefData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd23b4u;
     /* 00869a0c  mov eax, esi */
@@ -354,8 +368,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00869ba0  dice::meme::StringRefData  (virtual method)
- * strings: "dice::meme::StringRefData" */
+/* 00869ba0  StringRefData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::StringRefData
+ * strings: "dice::meme::StringRefData"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00869ba0, bfv_client_l1_body_00869ba0);
 BFV_L1_RESUME(bfv_client_l1r_00869ba0_1, bfv_client_l1_body_00869ba0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00869ba0_2, bfv_client_l1_body_00869ba0, 2);
@@ -386,13 +403,13 @@ void bfv_client_l1_body_00869ba0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00869bb5  push 0xbd253c */
+    /* 00869bb5  push 0xbd253c  ; "dice::meme::StringRefData" */
     t = 0xbd253cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00869bba  mov ecx, 0xdf6074 */
+    /* 00869bba  mov ecx, 0xdf6074  ; g_RuntimeClass_StringRefData */
     ecx = 0xdf6074u;
-    /* 00869bbf  call 0x875490 */
+    /* 00869bbf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00869ba0_1;
@@ -403,10 +420,10 @@ R_1:
     t = 0xb3aa60u;
     esp -= 4;
     M32(esp) = t;
-    /* 00869bc9  mov dword ptr [0xdf6074], 0xbd24e0 */
+    /* 00869bc9  mov dword ptr [0xdf6074], 0xbd24e0  ; g_RuntimeClass_StringRefData */
     ea = (uint32_t)(0x00df6074u);
     M32(ea) = 0xbd24e0u;
-    /* 00869bd3  call 0x7c2cd2 */
+    /* 00869bd3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00869ba0_2;
@@ -420,7 +437,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00869bdb:
-    /* 00869bdb  mov eax, 0xdf6074 */
+    /* 00869bdb  mov eax, 0xdf6074  ; g_RuntimeClass_StringRefData */
     eax = 0xdf6074u;
     /* 00869be0  ret */
     c->eip = M32(esp);

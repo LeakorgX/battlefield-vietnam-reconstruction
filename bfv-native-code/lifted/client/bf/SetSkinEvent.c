@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00517d50  dice::bf::SetSkinEvent  (vtable store) */
+/* 00517d50  SetSkinEvent::ctor_dtor  (vtable store)
+ * class: dice::bf::SetSkinEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_00517d50, bfv_client_l1_body_00517d50);
 BFV_L1_RESUME(bfv_client_l1r_00517d50_1, bfv_client_l1_body_00517d50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00517d50_2, bfv_client_l1_body_00517d50, 2);
@@ -31,7 +33,7 @@ void bfv_client_l1_body_00517d50(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00517d54  mov esi, dword ptr [esp + 0x18] */
+    /* 00517d54  mov esi, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     esi = M32(ea);
     /* 00517d58  test esi, esi */
@@ -45,7 +47,7 @@ void bfv_client_l1_body_00517d50(struct bfv_cpu *c)
     edi = ecx;
     /* 00517d5d  je 0x517d9f */
     if (zf) goto L_00517d9f;
-    /* 00517d5f  mov eax, dword ptr [esp + 0x20] */
+    /* 00517d5f  mov eax, dword ptr [esp + 0x20]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     eax = M32(ea);
     /* 00517d63  mov edx, dword ptr [esi] */
@@ -56,10 +58,10 @@ void bfv_client_l1_body_00517d50(struct bfv_cpu *c)
     /* 00517d67  mov dword ptr [esi + 0xc4], eax */
     ea = (uint32_t)(esi + 0x000000c4u);
     M32(ea) = eax;
-    /* 00517d6d  mov dword ptr [esp + 0x10], 0 */
+    /* 00517d6d  mov dword ptr [esp + 0x10], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 00517d75  mov dword ptr [esp + 8], 0xb611bc */
+    /* 00517d75  mov dword ptr [esp + 8], 0xb611bc  ; var_10, vtable SetSkinEvent */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = 0xb611bcu;
     /* 00517d7d  call dword ptr [edx + 0x44] */
@@ -73,20 +75,20 @@ R_1:
     /* 00517d80  mov edx, dword ptr [edi] */
     ea = (uint32_t)(edi);
     edx = M32(ea);
-    /* 00517d82  mov byte ptr [esp + 0x14], al */
+    /* 00517d82  mov byte ptr [esp + 0x14], al  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = LO8(eax);
     /* 00517d86  mov al, byte ptr [esi + 0xc4] */
     ea = (uint32_t)(esi + 0x000000c4u);
     SET8L(eax, M8(ea));
-    /* 00517d8c  mov byte ptr [esp + 0x15], al */
+    /* 00517d8c  mov byte ptr [esp + 0x15], al  ; var_3 */
     ea = (uint32_t)(esp + 0x00000015u);
     M8(ea) = LO8(eax);
     /* 00517d90  push 1 */
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 00517d92  lea eax, [esp + 0xc] */
+    /* 00517d92  lea eax, [esp + 0xc]  ; &var_10 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 00517d96  push eax */
     t = eax;
@@ -128,7 +130,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005adf50  dice::bf::SetSkinEvent  (vtable store) */
+/* 005adf50  SetSkinEvent::create  (vtable store)
+ * class: dice::bf::SetSkinEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005adf50, bfv_client_l1_body_005adf50);
 BFV_L1_RESUME(bfv_client_l1r_005adf50_1, bfv_client_l1_body_005adf50, 1);
 void bfv_client_l1_body_005adf50(struct bfv_cpu *c)
@@ -142,7 +146,7 @@ void bfv_client_l1_body_005adf50(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005adf50  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005adf50  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005adf56  mov eax, dword ptr [ecx] */
@@ -176,7 +180,7 @@ R_1:
     /* 005adf68  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005adf6f  mov dword ptr [eax], 0xb611bc */
+    /* 005adf6f  mov dword ptr [eax], 0xb611bc  ; vtable SetSkinEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb611bcu;
     /* 005adf75  ret */
@@ -199,7 +203,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005adf80  dice::bf::SetSkinEvent  (vtable store) */
+/* 005adf80  SetSkinEvent::create  (vtable store)
+ * class: dice::bf::SetSkinEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005adf80, bfv_client_l1_body_005adf80);
 BFV_L1_RESUME(bfv_client_l1r_005adf80_1, bfv_client_l1_body_005adf80, 1);
 void bfv_client_l1_body_005adf80(struct bfv_cpu *c)
@@ -213,7 +219,7 @@ void bfv_client_l1_body_005adf80(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005adf80  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005adf80  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005adf86  mov eax, dword ptr [ecx] */
@@ -247,7 +253,7 @@ R_1:
     /* 005adf98  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005adf9f  mov dword ptr [eax], 0xb611bc */
+    /* 005adf9f  mov dword ptr [eax], 0xb611bc  ; vtable SetSkinEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb611bcu;
     /* 005adfa5  jmp 0x5adfa9 */
@@ -258,7 +264,7 @@ L_005adfa7:
     F_LOGIC(32, r);
     eax = r;
 L_005adfa9:
-    /* 005adfa9  mov ecx, dword ptr [esp + 4] */
+    /* 005adfa9  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005adfad  push esi */
@@ -306,7 +312,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c6af0  dice::bf::SetSkinEvent  (vtable store) */
+/* 005c6af0  SetSkinEvent::ctor_dtor  (vtable store)
+ * class: dice::bf::SetSkinEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005c6af0, bfv_client_l1_body_005c6af0);
 BFV_L1_RESUME(bfv_client_l1r_005c6af0_1, bfv_client_l1_body_005c6af0, 1);
 void bfv_client_l1_body_005c6af0(struct bfv_cpu *c)
@@ -338,7 +346,7 @@ void bfv_client_l1_body_005c6af0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005c6afa  jne 0x5c6b27 */
     if (!zf) goto L_005c6b27;
-    /* 005c6afc  mov eax, dword ptr [esp + 0x14] */
+    /* 005c6afc  mov eax, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 005c6b00  cmp eax, -1 */
@@ -348,18 +356,18 @@ void bfv_client_l1_body_005c6af0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005c6b03  je 0x5c6b27 */
     if (zf) goto L_005c6b27;
-    /* 005c6b05  mov byte ptr [esp + 0xd], al */
+    /* 005c6b05  mov byte ptr [esp + 0xd], al  ; var_3 */
     ea = (uint32_t)(esp + 0x0000000du);
     M8(ea) = LO8(eax);
     /* 005c6b09  mov eax, dword ptr [ecx + 0x14] */
     ea = (uint32_t)(ecx + 0x00000014u);
     eax = M32(ea);
-    /* 005c6b0c  lea edx, [esp] */
+    /* 005c6b0c  lea edx, [esp]  ; &var_10 */
     edx = (uint32_t)(esp);
-    /* 005c6b0f  mov dword ptr [esp + 8], 0 */
+    /* 005c6b0f  mov dword ptr [esp + 8], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005c6b17  mov dword ptr [esp], 0xb611bc */
+    /* 005c6b17  mov dword ptr [esp], 0xb611bc  ; var_10, vtable SetSkinEvent */
     ea = (uint32_t)(esp);
     M32(ea) = 0xb611bcu;
     /* 005c6b1e  mov ecx, dword ptr [eax + 0x24] */
@@ -369,7 +377,7 @@ void bfv_client_l1_body_005c6af0(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c6b22  call 0x5b36c0 */
+    /* 005c6b22  call 0x5b36c0  ; EventQueue::queueEvent */
     t = 0x005b36c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c6af0_1;

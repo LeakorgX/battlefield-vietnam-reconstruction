@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0099eb00  dice::bf::ai::BBFireLargeBore  (virtual method) */
+/* 0099eb00  BBFireLargeBore::vf13  (virtual method)
+ * class: dice::bf::ai::BBFireLargeBore
+ */
 BFV_L1_ENTRY(bfv_client_l1_0099eb00, bfv_client_l1_body_0099eb00);
 BFV_L1_RESUME(bfv_client_l1r_0099eb00_1, bfv_client_l1_body_0099eb00, 1);
 BFV_L1_RESUME(bfv_client_l1r_0099eb00_2, bfv_client_l1_body_0099eb00, 2);
@@ -162,7 +164,7 @@ R_4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0099eb57  call 0x99d310 */
+    /* 0099eb57  call 0x99d310  ; BBPFire2d::sub_0099d310 */
     t = 0x0099d310u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099eb00_5;
@@ -278,7 +280,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0099eba0  (between same file) */
+/* 0099eba0  std::_Tree::_Erase_0099eba0  (between same file)
+ * called by: std::_Tree::_Erase_0099eba0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0099eba0, bfv_client_l1_body_0099eba0);
 BFV_L1_RESUME(bfv_client_l1r_0099eba0_1, bfv_client_l1_body_0099eba0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0099eba0_2, bfv_client_l1_body_0099eba0, 2);
@@ -306,7 +310,7 @@ void bfv_client_l1_body_0099eba0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0099eba3  mov edi, dword ptr [esp + 0x10] */
+    /* 0099eba3  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 0099eba7  mov al, byte ptr [edi + 0x15] */
@@ -331,7 +335,7 @@ L_0099ebb2:
     M32(esp) = t;
     /* 0099ebb6  mov ecx, ebx */
     ecx = ebx;
-    /* 0099ebb8  call 0x99eba0 */
+    /* 0099ebb8  call 0x99eba0  ; std::_Tree::_Erase_0099eba0 */
     t = 0x0099eba0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099eba0_1;
@@ -345,7 +349,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0099ebc0  call 0x403680 */
+    /* 0099ebc0  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099eba0_2;
@@ -392,7 +396,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0099ebe0  (between same file) */
+/* 0099ebe0  std::_Tree::_Buynode_24_0099ebe0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0099ebe0, bfv_client_l1_body_0099ebe0);
 BFV_L1_RESUME(bfv_client_l1r_0099ebe0_1, bfv_client_l1_body_0099ebe0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0099ebe0_2, bfv_client_l1_body_0099ebe0, 2);
@@ -457,7 +462,7 @@ void bfv_client_l1_body_0099ebe0(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 0099ec03  call 0x403610 */
+    /* 0099ec03  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099ebe0_1;
@@ -523,7 +528,7 @@ R_1:
     M32(esp) = t;
     /* 0099ec32  mov ecx, esi */
     ecx = esi;
-    /* 0099ec34  call 0x517c10 */
+    /* 0099ec34  call 0x517c10  ; bfv_tree_construct */
     t = 0x00517c10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099ebe0_2;
@@ -571,7 +576,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0099ec55  (between same file) */
+/* 0099ec55  BBFireLargeBore_0099ebe0_catch_0099ec55  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0099ec55, bfv_client_l1_body_0099ec55);
 BFV_L1_RESUME(bfv_client_l1r_0099ec55_1, bfv_client_l1_body_0099ec55, 1);
 BFV_L1_RESUME(bfv_client_l1r_0099ec55_2, bfv_client_l1_body_0099ec55, 2);
@@ -594,7 +600,7 @@ void bfv_client_l1_body_0099ec55(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0099ec59  call 0x403680 */
+    /* 0099ec59  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099ec55_1;
@@ -615,7 +621,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0099ec65  call 0x7c1fae */
+    /* 0099ec65  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099ec55_2;
@@ -631,7 +637,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0099ec70  (between same file) */
+/* 0099ec70  std::_Tree::_Buynode_head_24_0099ec70  (between same file)
+ * called by: BBFireLargeBore::BBFireLargeBore
+ */
 BFV_L1_ENTRY(bfv_client_l1_0099ec70, bfv_client_l1_body_0099ec70);
 BFV_L1_RESUME(bfv_client_l1r_0099ec70_1, bfv_client_l1_body_0099ec70, 1);
 void bfv_client_l1_body_0099ec70(struct bfv_cpu *c)
@@ -687,14 +695,14 @@ void bfv_client_l1_body_0099ec70(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0099ec8e  mov dword ptr [ebp - 0x10], esp */
+    /* 0099ec8e  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 0099ec91  push 0x18 */
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 0099ec93  call 0x403610 */
+    /* 0099ec93  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099ec70_1;
@@ -707,20 +715,20 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 0099ec9b  mov dword ptr [ebp - 0x18], eax */
+    /* 0099ec9b  mov dword ptr [ebp - 0x18], eax  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = eax;
     /* 0099ec9e  xor edx, edx */
     r = 0;
     F_LOGIC(32, r);
     edx = r;
-    /* 0099eca0  mov dword ptr [ebp - 4], edx */
+    /* 0099eca0  mov dword ptr [ebp - 4], edx  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = edx;
-    /* 0099eca3  mov dword ptr [ebp - 0x1c], edx */
+    /* 0099eca3  mov dword ptr [ebp - 0x1c], edx  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = edx;
-    /* 0099eca6  mov dword ptr [ebp - 0x20], eax */
+    /* 0099eca6  mov dword ptr [ebp - 0x20], eax  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = eax;
     /* 0099eca9  cmp eax, edx */
@@ -736,15 +744,15 @@ R_1:
 L_0099ecaf:
     /* 0099ecaf  mov ebx, 1 */
     ebx = 0x1u;
-    /* 0099ecb4  mov dword ptr [ebp - 0x14], ebx */
+    /* 0099ecb4  mov dword ptr [ebp - 0x14], ebx  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = ebx;
-    /* 0099ecb7  mov dword ptr [ebp - 0x24], edx */
+    /* 0099ecb7  mov dword ptr [ebp - 0x24], edx  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = edx;
     /* 0099ecba  lea ecx, [eax + 4] */
     ecx = (uint32_t)(eax + 0x00000004u);
-    /* 0099ecbd  mov dword ptr [ebp - 0x28], ecx */
+    /* 0099ecbd  mov dword ptr [ebp - 0x28], ecx  ; var_2c */
     ea = (uint32_t)(ebp + 0xffffffd8u);
     M32(ea) = ecx;
     /* 0099ecc0  cmp ecx, edx */
@@ -758,15 +766,15 @@ L_0099ecaf:
     ea = (uint32_t)(ecx);
     M32(ea) = edx;
 L_0099ecc6:
-    /* 0099ecc6  mov dword ptr [ebp - 0x14], 2 */
+    /* 0099ecc6  mov dword ptr [ebp - 0x14], 2  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = 0x2u;
-    /* 0099eccd  mov dword ptr [ebp - 0x2c], edx */
+    /* 0099eccd  mov dword ptr [ebp - 0x2c], edx  ; var_30 */
     ea = (uint32_t)(ebp + 0xffffffd4u);
     M32(ea) = edx;
     /* 0099ecd0  lea ecx, [eax + 8] */
     ecx = (uint32_t)(eax + 0x00000008u);
-    /* 0099ecd3  mov dword ptr [ebp - 0x30], ecx */
+    /* 0099ecd3  mov dword ptr [ebp - 0x30], ecx  ; var_34 */
     ea = (uint32_t)(ebp + 0xffffffd0u);
     M32(ea) = ecx;
     /* 0099ecd6  cmp ecx, edx */
@@ -780,7 +788,7 @@ L_0099ecc6:
     ea = (uint32_t)(ecx);
     M32(ea) = edx;
 L_0099ecdc:
-    /* 0099ecdc  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 0099ecdc  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 0099ece3  mov byte ptr [eax + 0x14], bl */
@@ -789,7 +797,7 @@ L_0099ecdc:
     /* 0099ece6  mov byte ptr [eax + 0x15], dl */
     ea = (uint32_t)(eax + 0x00000015u);
     M8(ea) = LO8(edx);
-    /* 0099ece9  mov ecx, dword ptr [ebp - 0xc] */
+    /* 0099ece9  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 0099ecec  mov dword ptr fs:[0], ecx */
@@ -824,7 +832,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0099ecfa  (between same file) */
+/* 0099ecfa  BBFireLargeBore::constructor_helper_0099ec70_catch_0099ecfa  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0099ecfa, bfv_client_l1_body_0099ecfa);
 BFV_L1_RESUME(bfv_client_l1r_0099ecfa_1, bfv_client_l1_body_0099ecfa, 1);
 BFV_L1_RESUME(bfv_client_l1r_0099ecfa_2, bfv_client_l1_body_0099ecfa, 2);
@@ -847,7 +856,7 @@ void bfv_client_l1_body_0099ecfa(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0099ecfe  call 0x403680 */
+    /* 0099ecfe  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099ecfa_1;
@@ -872,7 +881,7 @@ R_1:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0099ed0a  call 0x7c1fae */
+    /* 0099ed0a  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099ecfa_2;
@@ -888,7 +897,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0099f0b0  dice::bf::ai::BBFireLargeBore  (vtable store) */
+/* 0099f0b0  BBFireLargeBore::~BBFireLargeBore  (vtable store)
+ * class: dice::bf::ai::BBFireLargeBore
+ */
 BFV_L1_ENTRY(bfv_client_l1_0099f0b0, bfv_client_l1_body_0099f0b0);
 BFV_L1_RESUME(bfv_client_l1r_0099f0b0_1, bfv_client_l1_body_0099f0b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0099f0b0_2, bfv_client_l1_body_0099f0b0, 2);
@@ -931,10 +942,10 @@ void bfv_client_l1_body_0099f0b0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0099f0b9  mov dword ptr [esi], 0xbf62f0 */
+    /* 0099f0b9  mov dword ptr [esi], 0xbf62f0  ; vtable BBFireLargeBore */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf62f0u;
-    /* 0099f0bf  call 0x403680 */
+    /* 0099f0bf  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f0b0_1;
@@ -948,7 +959,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0099f0c8  call 0x403680 */
+    /* 0099f0c8  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f0b0_2;
@@ -999,7 +1010,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0099f0ea  call 0x403680 */
+    /* 0099f0ea  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f0b0_4;
@@ -1024,7 +1035,7 @@ R_4:
     /* 0099f0f9  mov dword ptr [edi + 8], eax */
     ea = (uint32_t)(edi + 0x00000008u);
     M32(ea) = eax;
-    /* 0099f0fc  call 0x9ee250 */
+    /* 0099f0fc  call 0x9ee250  ; BotBehaviour::~BotBehaviour */
     t = 0x009ee250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f0b0_5;
@@ -1054,7 +1065,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0099f110  (between same file) */
+/* 0099f110  BBFireLargeBore::BBFireLargeBore  (vtable store)
+ * class: dice::bf::ai::BBFireLargeBore
+ * also entered at 0099f280: BBFireLargeBore::vf0
+ * called by: BBCreateFunctionFireLargeBore::vf0, BBFireArtilleryDriver::BBFireArtilleryDriver
+ */
 BFV_L1_ENTRY(bfv_client_l1_0099f110, bfv_client_l1_body_0099f110);
 BFV_L1_RESUME(bfv_client_l1r_0099f110_1, bfv_client_l1_body_0099f110, 1);
 BFV_L1_RESUME(bfv_client_l1r_0099f110_2, bfv_client_l1_body_0099f110, 2);
@@ -1108,7 +1123,7 @@ void bfv_client_l1_body_0099f110(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0099f113  mov esi, ecx */
     esi = ecx;
-    /* 0099f115  mov ecx, dword ptr [0xe0eb20] */
+    /* 0099f115  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 0099f11b  mov eax, dword ptr [ecx] */
@@ -1118,7 +1133,7 @@ void bfv_client_l1_body_0099f110(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0099f11e  call dword ptr [eax + 4] */
+    /* 0099f11e  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -1146,7 +1161,7 @@ R_1:
     M32(esp) = t;
     /* 0099f12c  mov ecx, esi */
     ecx = esi;
-    /* 0099f12e  call 0x9ee2d0 */
+    /* 0099f12e  call 0x9ee2d0  ; BotBehaviour::BotBehaviour */
     t = 0x009ee2d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f110_2;
@@ -1161,13 +1176,13 @@ R_2:
     ebx = r;
     /* 0099f138  mov ecx, edi */
     ecx = edi;
-    /* 0099f13a  mov dword ptr [esi], 0xbf62f0 */
+    /* 0099f13a  mov dword ptr [esi], 0xbf62f0  ; vtable BBFireLargeBore */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf62f0u;
     /* 0099f140  mov dword ptr [esi + 0x34], ebx */
     ea = (uint32_t)(esi + 0x00000034u);
     M32(ea) = ebx;
-    /* 0099f143  call 0x99ec70 */
+    /* 0099f143  call 0x99ec70  ; std::_Tree::_Buynode_head_24_0099ec70 */
     t = 0x0099ec70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f110_3;
@@ -1249,7 +1264,7 @@ L_0099f174:
     M32(ea) = ecx;
     /* 0099f18a  lea ecx, [esi + 0x10] */
     ecx = (uint32_t)(esi + 0x00000010u);
-    /* 0099f18d  call 0x9716f0 */
+    /* 0099f18d  call 0x9716f0  ; BotMain_009716f0 */
     t = 0x009716f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f110_4;
@@ -1265,7 +1280,7 @@ R_4:
     /* 0099f197  mov dword ptr [esp + 0x38], eax */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = eax;
-    /* 0099f19b  call 0x972b70 */
+    /* 0099f19b  call 0x972b70  ; std::list::_Incsize_00972b70 */
     t = 0x00972b70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f110_5;
@@ -1313,13 +1328,13 @@ L_0099f1b2:
     /* 0099f1c4  mov dword ptr [esi + 0xc], ebp */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = ebp;
-    /* 0099f1c7  mov ecx, dword ptr [0xe0eb20] */
+    /* 0099f1c7  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 0099f1cd  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 0099f1cf  call dword ptr [edx + 4] */
+    /* 0099f1cf  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -1341,7 +1356,7 @@ R_6:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0099f1d6  call 0x403610 */
+    /* 0099f1d6  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f110_7;
@@ -1351,7 +1366,7 @@ R_7:
     /* 0099f1db  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 0099f1de  mov ecx, dword ptr [0xe0eb20] */
+    /* 0099f1de  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 0099f1e4  mov eax, dword ptr [ecx] */
@@ -1363,7 +1378,7 @@ R_7:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 0099f1e9  call dword ptr [eax + 4] */
+    /* 0099f1e9  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -1385,7 +1400,7 @@ R_8:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0099f1f0  call 0x403610 */
+    /* 0099f1f0  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f110_9;
@@ -1395,7 +1410,7 @@ R_9:
     /* 0099f1f5  mov dword ptr [esi + 0x30], eax */
     ea = (uint32_t)(esi + 0x00000030u);
     M32(ea) = eax;
-    /* 0099f1f8  mov ecx, dword ptr [0xe0eb20] */
+    /* 0099f1f8  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 0099f1fe  mov edx, dword ptr [ecx] */
@@ -1411,7 +1426,7 @@ R_9:
     r = 0;
     F_LOGIC(32, r);
     edi = r;
-    /* 0099f205  call dword ptr [edx + 4] */
+    /* 0099f205  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -1445,7 +1460,7 @@ L_0099f210:
     /* 0099f227  mov dword ptr [edx + edi*4], 0xffffffff */
     ea = (uint32_t)(edx + edi * 4u);
     M32(ea) = 0xffffffffu;
-    /* 0099f22e  mov ecx, dword ptr [0xe0eb20] */
+    /* 0099f22e  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 0099f234  mov eax, dword ptr [ecx] */
@@ -1456,7 +1471,7 @@ L_0099f210:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 0099f237  call dword ptr [eax + 4] */
+    /* 0099f237  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -1478,7 +1493,7 @@ L_0099f23e:
     M32(esp) = t;
     /* 0099f23f  mov ecx, ebp */
     ecx = ebp;
-    /* 0099f241  call 0x5a3150 */
+    /* 0099f241  call 0x5a3150  ; BAPAComponentSoldierPose::set_18h */
     t = 0x005a3150u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f110_12;
@@ -1509,7 +1524,7 @@ L_0099f251:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0099f254  call 0x403680 */
+    /* 0099f254  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f110_13;
@@ -1536,7 +1551,7 @@ L_0099f262:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0099f263  call 0x403680 */
+    /* 0099f263  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099f110_14;
@@ -1578,7 +1593,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009a12f0  dice::bf::ai::BBFireLargeBore  (virtual method) */
+/* 009a12f0  BBFireLargeBore::evaluate  (virtual method)
+ * overrides: BotBehaviour::evaluate  (22 classes implement it)
+ * class: dice::bf::ai::BBFireLargeBore
+ */
 BFV_L1_ENTRY(bfv_client_l1_009a12f0, bfv_client_l1_body_009a12f0);
 BFV_L1_RESUME(bfv_client_l1r_009a12f0_1, bfv_client_l1_body_009a12f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009a12f0_2, bfv_client_l1_body_009a12f0, 2);
@@ -1598,7 +1616,7 @@ void bfv_client_l1_body_009a12f0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009a12f1  mov esi, dword ptr [esp + 8] */
+    /* 009a12f1  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 009a12f5  mov eax, dword ptr [esi] */
@@ -1628,7 +1646,7 @@ R_1:
     ecx = r;
     /* 009a130a  je 0x9a1325 */
     if (zf) goto L_009a1325;
-    /* 009a130c  mov edx, dword ptr [0xe0cd58] */
+    /* 009a130c  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 009a1312  mov edx, dword ptr [edx] */
@@ -1683,7 +1701,7 @@ L_009a1333:
     F_LOGIC(32, r);
     ecx = r;
 L_009a1335:
-    /* 009a1335  mov edx, dword ptr [esp + 0x14] */
+    /* 009a1335  mov edx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 009a1339  push ecx */
@@ -1694,7 +1712,7 @@ L_009a1335:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009a133b  mov eax, dword ptr [esp + 0x18] */
+    /* 009a133b  mov eax, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 009a133f  push edx */
@@ -1711,7 +1729,7 @@ L_009a1335:
     M32(esp) = t;
     /* 009a1342  mov ecx, edi */
     ecx = edi;
-    /* 009a1344  call 0x99f2a0 */
+    /* 009a1344  call 0x99f2a0  ; bfv_artillery_evaluate */
     t = 0x0099f2a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009a12f0_2;

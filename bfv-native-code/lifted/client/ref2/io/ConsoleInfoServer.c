@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008b58a0  dice::ref2::io::ConsoleInfoServer  (virtual method) */
+/* 008b58a0  ConsoleInfoServer::vf4  (virtual method)
+ * overrides: ServerService::vf4  (5 classes implement it)
+ * class: dice::ref2::io::ConsoleInfoServer
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b58a0, bfv_client_l1_body_008b58a0);
 BFV_L1_RESUME(bfv_client_l1r_008b58a0_1, bfv_client_l1_body_008b58a0, 1);
 void bfv_client_l1_body_008b58a0(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_client_l1_body_008b58a0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 008b58a3  call 0x776030 */
+    /* 008b58a3  call 0x776030  ; std::list::clear */
     t = 0x00776030u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b58a0_1;
@@ -45,7 +48,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008b5910  dice::ref2::io::ConsoleInfoServer  (vtable store) */
+/* 008b5910  ConsoleInfoServer::ConsoleInfoServer  (vtable store)
+ * class: dice::ref2::io::ConsoleInfoServer
+ * called by: Setup::Setup
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b5910, bfv_client_l1_body_008b5910);
 BFV_L1_RESUME(bfv_client_l1r_008b5910_1, bfv_client_l1_body_008b5910, 1);
 BFV_L1_RESUME(bfv_client_l1r_008b5910_2, bfv_client_l1_body_008b5910, 2);
@@ -61,7 +67,7 @@ void bfv_client_l1_body_008b5910(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 008b5910  mov eax, dword ptr [esp + 8] */
+    /* 008b5910  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008b5914  push esi */
@@ -78,14 +84,14 @@ void bfv_client_l1_body_008b5910(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008b5917  mov esi, ecx */
     esi = ecx;
-    /* 008b5919  call 0x8ac8f0 */
+    /* 008b5919  call 0x8ac8f0  ; ServerService::ServerService */
     t = 0x008ac8f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b5910_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008b591e  mov ecx, dword ptr [esp + 0xc] */
+    /* 008b591e  mov ecx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 008b5922  mov dword ptr [esi + 0x28], ecx */
@@ -95,13 +101,13 @@ R_1:
     edi = (uint32_t)(esi + 0x0000002cu);
     /* 008b5928  mov ecx, edi */
     ecx = edi;
-    /* 008b592a  mov dword ptr [esi], 0xbdf164 */
+    /* 008b592a  mov dword ptr [esi], 0xbdf164  ; vtable ConsoleInfoServer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbdf164u;
     /* 008b5930  mov byte ptr [esi + 0x24], 0 */
     ea = (uint32_t)(esi + 0x00000024u);
     M8(ea) = 0x0u;
-    /* 008b5934  call 0x423b10 */
+    /* 008b5934  call 0x423b10  ; std::list::_Buyheadnode_36 */
     t = 0x00423b10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b5910_2;
@@ -135,7 +141,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008b5950  dice::ref2::io::ConsoleInfoServer  (virtual method) */
+/* 008b5950  ConsoleInfoServer::vf3  (virtual method)
+ * overrides: ServerService::vf3  (5 classes implement it)
+ * class: dice::ref2::io::ConsoleInfoServer
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b5950, bfv_client_l1_body_008b5950);
 BFV_L1_RESUME(bfv_client_l1r_008b5950_1, bfv_client_l1_body_008b5950, 1);
 BFV_L1_RESUME(bfv_client_l1r_008b5950_2, bfv_client_l1_body_008b5950, 2);
@@ -170,7 +179,7 @@ void bfv_client_l1_body_008b5950(struct bfv_cpu *c)
     b = eax;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 008b5959  mov dword ptr [esp + 4], ecx */
+    /* 008b5959  mov dword ptr [esp + 4], ecx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = ecx;
     /* 008b595d  je 0x8b599a */
@@ -183,7 +192,7 @@ void bfv_client_l1_body_008b5950(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 008b5961  mov ebp, dword ptr [esp + 0x14] */
+    /* 008b5961  mov ebp, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     ebp = M32(ea);
     /* 008b5965  push edi */
@@ -213,7 +222,7 @@ L_008b5966:
     M32(esp) = t;
     /* 008b5972  mov ecx, ebp */
     ecx = ebp;
-    /* 008b5974  call 0x496260 */
+    /* 008b5974  call 0x496260  ; std::list::_Buynode_36_00496260 */
     t = 0x00496260u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b5950_1;
@@ -228,14 +237,14 @@ R_1:
     ecx = ebp;
     /* 008b597d  mov ebx, eax */
     ebx = eax;
-    /* 008b597f  call 0x4962f0 */
+    /* 008b597f  call 0x4962f0  ; std::list::_Incsize_004962f0 */
     t = 0x004962f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b5950_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 008b5984  mov eax, dword ptr [esp + 0x10] */
+    /* 008b5984  mov eax, dword ptr [esp + 0x10]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 008b5988  mov dword ptr [edi + 4], ebx */
@@ -292,7 +301,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008b59b0  (between same file) */
+/* 008b59b0  ConsoleRunServer::vf2_helper_008b59b0  (between same file)
+ * called by: ConsoleRunServer::vf2
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b59b0, bfv_client_l1_body_008b59b0);
 BFV_L1_RESUME(bfv_client_l1r_008b59b0_1, bfv_client_l1_body_008b59b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008b59b0_2, bfv_client_l1_body_008b59b0, 2);
@@ -314,14 +325,14 @@ void bfv_client_l1_body_008b59b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008b59b1  mov eax, ecx */
     eax = ecx;
-    /* 008b59b3  mov ecx, dword ptr [esp + 0xc] */
+    /* 008b59b3  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 008b59b7  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008b59b8  mov ebx, dword ptr [esp + 0xc] */
+    /* 008b59b8  mov ebx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ebx = M32(ea);
     /* 008b59bc  cmp ebx, ecx */
@@ -329,7 +340,7 @@ void bfv_client_l1_body_008b59b0(struct bfv_cpu *c)
     b = ecx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 008b59be  mov dword ptr [esp + 4], eax */
+    /* 008b59be  mov dword ptr [esp + 4], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
     /* 008b59c2  je 0x8b5a0c */
@@ -338,7 +349,7 @@ void bfv_client_l1_body_008b59b0(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 008b59c5  mov ebp, dword ptr [esp + 0x18] */
+    /* 008b59c5  mov ebp, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     ebp = M32(ea);
     /* 008b59c9  push esi */
@@ -372,7 +383,7 @@ L_008b59d0:
     M32(esp) = t;
     /* 008b59d9  mov ecx, ebp */
     ecx = ebp;
-    /* 008b59db  call 0x496260 */
+    /* 008b59db  call 0x496260  ; std::list::_Buynode_36_00496260 */
     t = 0x00496260u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b59b0_1;
@@ -387,14 +398,14 @@ R_1:
     ecx = ebp;
     /* 008b59e4  mov edi, eax */
     edi = eax;
-    /* 008b59e6  call 0x4962f0 */
+    /* 008b59e6  call 0x4962f0  ; std::list::_Incsize_004962f0 */
     t = 0x004962f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b59b0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 008b59eb  mov eax, dword ptr [esp + 0x1c] */
+    /* 008b59eb  mov eax, dword ptr [esp + 0x1c]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 008b59ef  mov dword ptr [esi + 4], edi */
@@ -419,7 +430,7 @@ R_2:
     M32(ea) = edi;
     /* 008b59fc  jne 0x8b59d0 */
     if (!zf) goto L_008b59d0;
-    /* 008b59fe  mov eax, dword ptr [esp + 0x10] */
+    /* 008b59fe  mov eax, dword ptr [esp + 0x10]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 008b5a02  pop edi */
@@ -450,7 +461,7 @@ R_2:
     esp += 20;
     goto out;
 L_008b5a0c:
-    /* 008b5a0c  mov edx, dword ptr [esp + 0x14] */
+    /* 008b5a0c  mov edx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 008b5a10  mov dword ptr [eax], edx */
@@ -475,7 +486,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008b5a20  dice::ref2::io::ConsoleInfoServer  (virtual method) */
+/* 008b5a20  ConsoleInfoServer::deleting_dtor  (virtual method)
+ * overrides: ServerService::vf0  (5 classes implement it)
+ * class: dice::ref2::io::ConsoleInfoServer
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b5a20, bfv_client_l1_body_008b5a20);
 BFV_L1_RESUME(bfv_client_l1r_008b5a20_1, bfv_client_l1_body_008b5a20, 1);
 BFV_L1_RESUME(bfv_client_l1r_008b5a20_2, bfv_client_l1_body_008b5a20, 2);
@@ -501,7 +515,7 @@ void bfv_client_l1_body_008b5a20(struct bfv_cpu *c)
     esi = ecx;
     /* 008b5a23  lea ecx, [esi + 0x2c] */
     ecx = (uint32_t)(esi + 0x0000002cu);
-    /* 008b5a26  call 0x4330c0 */
+    /* 008b5a26  call 0x4330c0  ; std::vector::_Tidy_004330c0 */
     t = 0x004330c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b5a20_1;
@@ -510,14 +524,14 @@ void bfv_client_l1_body_008b5a20(struct bfv_cpu *c)
 R_1:
     /* 008b5a2b  mov ecx, esi */
     ecx = esi;
-    /* 008b5a2d  call 0x4244f0 */
+    /* 008b5a2d  call 0x4244f0  ; ServerService::~ServerService */
     t = 0x004244f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b5a20_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 008b5a32  test byte ptr [esp + 8], 1 */
+    /* 008b5a32  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -527,7 +541,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008b5a3a  call 0x403680 */
+    /* 008b5a3a  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b5a20_3;

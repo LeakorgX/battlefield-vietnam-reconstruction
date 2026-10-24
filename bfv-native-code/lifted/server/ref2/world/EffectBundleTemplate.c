@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0056b7f0  dice::ref2::world::EffectBundleTemplate  (virtual method) */
+/* 0056b7f0  EffectBundleTemplate::postLoad  (virtual method)
+ * overrides: ObjectTemplate::postLoad  (47 classes implement it)
+ * class: dice::ref2::world::EffectBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_0056b7f0, bfv_server_l1_body_0056b7f0);
 BFV_L1_RESUME(bfv_server_l1r_0056b7f0_1, bfv_server_l1_body_0056b7f0, 1);
 void bfv_server_l1_body_0056b7f0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_0056b7f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0056b7f0  call 0x586af0 */
+    /* 0056b7f0  call 0x586af0  ; BundleTemplate::postLoad */
     t = 0x00586af0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0056b7f0_1;
@@ -42,7 +45,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00581cc0  dice::ref2::world::EffectBundleTemplate  (vtable store) */
+/* 00581cc0  EffectBundleTemplate::EffectBundleTemplate  (vtable store)
+ * class: dice::ref2::world::EffectBundleTemplate
+ * also entered at 00581d30: EffectBundleTemplate::vf4
+ * called by: ObjectCreatorWrapper<EffectBundleTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581cc0, bfv_server_l1_body_00581cc0);
 BFV_L1_RESUME(bfv_server_l1r_00581cc0_1, bfv_server_l1_body_00581cc0, 1);
 void bfv_server_l1_body_00581cc0(struct bfv_cpu *c)
@@ -62,14 +69,14 @@ void bfv_server_l1_body_00581cc0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00581cc1  mov esi, ecx */
     esi = ecx;
-    /* 00581cc3  call 0x5870c0 */
+    /* 00581cc3  call 0x5870c0  ; BundleTemplate::BundleTemplate */
     t = 0x005870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581cc0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00581cc8  mov dword ptr [esi], 0x8394d4 */
+    /* 00581cc8  mov dword ptr [esi], 0x8394d4  ; vtable EffectBundleTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8394d4u;
     /* 00581cce  mov dword ptr [esi + 0x74], 0x8394c8 */
@@ -80,10 +87,10 @@ R_1:
     M32(ea) = 0x83949cu;
     /* 00581cdf  mov eax, 0xbf800000 */
     eax = 0xbf800000u;
-    /* 00581ce4  mov dword ptr [esi + 0x1ac], eax */
+    /* 00581ce4  mov dword ptr [esi + 0x1ac], eax  ; field ObjectTemplate.minDistanceUnderWaterSurface */
     ea = (uint32_t)(esi + 0x000001acu);
     M32(ea) = eax;
-    /* 00581cea  mov dword ptr [esi + 0x1b0], eax */
+    /* 00581cea  mov dword ptr [esi + 0x1b0], eax  ; field ObjectTemplate.maxDistanceUnderWaterSurface */
     ea = (uint32_t)(esi + 0x000001b0u);
     M32(ea) = eax;
     /* 00581cf0  xor eax, eax */
@@ -99,10 +106,10 @@ R_1:
     /* 00581cfe  mov byte ptr [esi + 0x1c0], al */
     ea = (uint32_t)(esi + 0x000001c0u);
     M8(ea) = LO8(eax);
-    /* 00581d04  mov dword ptr [esi + 0x1b8], 0x3f800000 */
+    /* 00581d04  mov dword ptr [esi + 0x1b8], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esi + 0x000001b8u);
     M32(ea) = 0x3f800000u;
-    /* 00581d0e  mov dword ptr [esi + 0x1c4], 0x43fa8000 */
+    /* 00581d0e  mov dword ptr [esi + 0x1c4], 0x43fa8000  ; 501.0f */
     ea = (uint32_t)(esi + 0x000001c4u);
     M32(ea) = 0x43fa8000u;
     /* 00581d18  mov dword ptr [esi + 0x1cc], eax */
@@ -131,7 +138,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00581d40  dice::ref2::world::EffectBundleTemplate  (virtual method) */
+/* 00581d40  EffectBundleTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::EffectBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581d40, bfv_server_l1_body_00581d40);
 void bfv_server_l1_body_00581d40(struct bfv_cpu *c)
 {
@@ -140,10 +150,10 @@ void bfv_server_l1_body_00581d40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00581d40  mov eax, dword ptr [esp + 4] */
+    /* 00581d40  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00581d44  cmp eax, dword ptr [0x820734] */
+    /* 00581d44  cmp eax, dword ptr [0x820734]  ; EffectBundleTemplate::classID */
     ea = (uint32_t)(0x00820734u);
     a = eax;
     b = M32(ea);
@@ -158,10 +168,10 @@ void bfv_server_l1_body_00581d40(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_00581d51:
-    /* 00581d51  mov dword ptr [esp + 4], eax */
+    /* 00581d51  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 00581d55  jmp 0x586630 */
+    /* 00581d55  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -171,7 +181,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00581d60  (between same file) */
+/* 00581d60  EffectBundleTemplate::deleting_dtor_adjustor116_00581d60  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581d60, bfv_server_l1_body_00581d60);
 void bfv_server_l1_body_00581d60(struct bfv_cpu *c)
 {
@@ -186,7 +197,7 @@ void bfv_server_l1_body_00581d60(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00581d63  jmp 0x581db0 */
+    /* 00581d63  jmp 0x581db0  ; EffectBundleTemplate::deleting_dtor */
     c->eip = 0x00581db0u;
     goto out;
 out: __attribute__((unused));
@@ -196,7 +207,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00581d70  (between same file) */
+/* 00581d70  EffectBundleTemplate::deleting_dtor_adjustor400_00581d70  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581d70, bfv_server_l1_body_00581d70);
 void bfv_server_l1_body_00581d70(struct bfv_cpu *c)
 {
@@ -211,7 +223,7 @@ void bfv_server_l1_body_00581d70(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00581d76  jmp 0x581db0 */
+    /* 00581d76  jmp 0x581db0  ; EffectBundleTemplate::deleting_dtor */
     c->eip = 0x00581db0u;
     goto out;
 out: __attribute__((unused));
@@ -221,7 +233,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00581d80  dice::ref2::world::EffectBundleTemplate  (virtual method) */
+/* 00581d80  EffectBundleTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::EffectBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581d80, bfv_server_l1_body_00581d80);
 BFV_L1_RESUME(bfv_server_l1r_00581d80_1, bfv_server_l1_body_00581d80, 1);
 BFV_L1_RESUME(bfv_server_l1r_00581d80_2, bfv_server_l1_body_00581d80, 2);
@@ -247,7 +262,7 @@ void bfv_server_l1_body_00581d80(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00581d83  mov esi, ecx */
     esi = ecx;
-    /* 00581d85  mov ecx, dword ptr [0xc0d980] */
+    /* 00581d85  mov ecx, dword ptr [0xc0d980]  ; g_pMemoryPool_00c0d980 */
     ea = (uint32_t)(0x00c0d980u);
     ecx = M32(ea);
     /* 00581d8b  mov eax, dword ptr [ecx] */
@@ -261,7 +276,7 @@ void bfv_server_l1_body_00581d80(struct bfv_cpu *c)
     t = 0x170u;
     esp -= 4;
     M32(esp) = t;
-    /* 00581d97  call dword ptr [eax + 0x10] */
+    /* 00581d97  call dword ptr [eax + 0x10]  ; -> MemoryPool::vf4 = MemoryPool::alloc_debug */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -280,7 +295,7 @@ R_1:
     M32(esp) = t;
     /* 00581d9f  mov ecx, eax */
     ecx = eax;
-    /* 00581da1  call 0x581370 */
+    /* 00581da1  call 0x581370  ; EffectBundle::EffectBundle */
     t = 0x00581370u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581d80_2;
@@ -315,7 +330,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00581db0  dice::ref2::world::EffectBundleTemplate  (virtual method) */
+/* 00581db0  EffectBundleTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::world::EffectBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581db0, bfv_server_l1_body_00581db0);
 BFV_L1_RESUME(bfv_server_l1r_00581db0_1, bfv_server_l1_body_00581db0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00581db0_2, bfv_server_l1_body_00581db0, 2);
@@ -341,7 +359,7 @@ void bfv_server_l1_body_00581db0(struct bfv_cpu *c)
     esi = ecx;
     /* 00581db3  lea ecx, [esi + 0x1c8] */
     ecx = (uint32_t)(esi + 0x000001c8u);
-    /* 00581db9  call 0x6ff4f0 */
+    /* 00581db9  call 0x6ff4f0  ; bfv_query_vector_destroy */
     t = 0x006ff4f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581db0_1;
@@ -350,14 +368,14 @@ void bfv_server_l1_body_00581db0(struct bfv_cpu *c)
 R_1:
     /* 00581dbe  mov ecx, esi */
     ecx = esi;
-    /* 00581dc0  call 0x586880 */
+    /* 00581dc0  call 0x586880  ; BundleTemplate::~BundleTemplate */
     t = 0x00586880u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581db0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00581dc5  test byte ptr [esp + 8], 1 */
+    /* 00581dc5  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -367,7 +385,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00581dcd  call 0x403df0 */
+    /* 00581dcd  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581db0_3;

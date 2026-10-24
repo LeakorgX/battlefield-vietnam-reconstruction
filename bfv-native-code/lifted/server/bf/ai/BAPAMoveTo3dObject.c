@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a56b0  (source path) */
+/* 007a56b0  BAPAMoveTo3dObject::execute  (source path)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPAMoveTo3dObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a56b0, bfv_server_l1_body_007a56b0);
 void bfv_server_l1_body_007a56b0(struct bfv_cpu *c)
 {
@@ -14,10 +17,10 @@ void bfv_server_l1_body_007a56b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, r, ea;
-    /* 007a56b0  mov eax, dword ptr [0xc1d380] */
+    /* 007a56b0  mov eax, dword ptr [0xc1d380]  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     eax = M32(ea);
-    /* 007a56b5  mov ecx, dword ptr [0x934448] */
+    /* 007a56b5  mov ecx, dword ptr [0x934448]  ; g_traceRing_mask */
     ea = (uint32_t)(0x00934448u);
     ecx = M32(ea);
     /* 007a56bb  inc eax */
@@ -29,19 +32,19 @@ void bfv_server_l1_body_007a56b0(struct bfv_cpu *c)
     r = (eax & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 007a56be  mov ecx, dword ptr [esp + 0xc] */
+    /* 007a56be  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 007a56c2  mov dword ptr [0xc1d380], eax */
+    /* 007a56c2  mov dword ptr [0xc1d380], eax  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     M32(ea) = eax;
-    /* 007a56c7  mov dword ptr [eax*4 + 0xc1d360], 0x878cd0 */
+    /* 007a56c7  mov dword ptr [eax*4 + 0xc1d360], 0x878cd0  ; g_traceRing_file */
     ea = (uint32_t)(eax * 4u + 0x00c1d360u);
     M32(ea) = 0x878cd0u;
-    /* 007a56d2  mov dword ptr [eax*4 + 0xc1d340], 0x53 */
+    /* 007a56d2  mov dword ptr [eax*4 + 0xc1d340], 0x53  ; g_traceRing_line */
     ea = (uint32_t)(eax * 4u + 0x00c1d340u);
     M32(ea) = 0x53u;
-    /* 007a56dd  mov eax, dword ptr [esp + 8] */
+    /* 007a56dd  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007a56e1  mov byte ptr [eax], 0 */
@@ -65,7 +68,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a5790  (between same file) */
+/* 007a5790  BAPAMoveTo3dObject::BAPAMoveTo3dObject  (between same file)
+ * class: dice::bf::ai::BAPAMoveTo3dObject
+ * called by: BBPChange::buildPlan, BBPGotoWaypoint3d::buildPlan, BBPRoam3d::buildPlan
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a5790, bfv_server_l1_body_007a5790);
 void bfv_server_l1_body_007a5790(struct bfv_cpu *c)
 {
@@ -80,7 +86,7 @@ void bfv_server_l1_body_007a5790(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 007a5794  mov dword ptr [eax], 0x874498 */
+    /* 007a5794  mov dword ptr [eax], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(eax);
     M32(ea) = 0x874498u;
     /* 007a579a  mov dword ptr [eax + 8], ecx */
@@ -92,62 +98,62 @@ void bfv_server_l1_body_007a5790(struct bfv_cpu *c)
     /* 007a57a0  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 007a57a3  inc dword ptr [0xc32a40] */
+    /* 007a57a3  inc dword ptr [0xc32a40]  ; g_bapCreatedCount */
     ea = (uint32_t)(0x00c32a40u);
     a = M32(ea);
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     M32(ea) = r;
-    /* 007a57a9  mov edx, dword ptr [esp + 4] */
+    /* 007a57a9  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 007a57ad  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a57ae  mov esi, dword ptr [esp + 0x18] */
+    /* 007a57ae  mov esi, dword ptr [esp + 0x18]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     esi = M32(ea);
     /* 007a57b2  mov dword ptr [eax + 0x18], edx */
     ea = (uint32_t)(eax + 0x00000018u);
     M32(ea) = edx;
-    /* 007a57b5  mov edx, dword ptr [esp + 0xc] */
+    /* 007a57b5  mov edx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 007a57b9  mov dword ptr [eax + 0x48], esi */
     ea = (uint32_t)(eax + 0x00000048u);
     M32(ea) = esi;
-    /* 007a57bc  mov esi, dword ptr [esp + 0x28] */
+    /* 007a57bc  mov esi, dword ptr [esp + 0x28]  ; arg_20 */
     ea = (uint32_t)(esp + 0x00000028u);
     esi = M32(ea);
     /* 007a57c0  mov dword ptr [eax + 0x1c], edx */
     ea = (uint32_t)(eax + 0x0000001cu);
     M32(ea) = edx;
-    /* 007a57c3  mov edx, dword ptr [esp + 0x10] */
+    /* 007a57c3  mov edx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 007a57c7  mov dword ptr [eax + 0x10], esi */
     ea = (uint32_t)(eax + 0x00000010u);
     M32(ea) = esi;
-    /* 007a57ca  mov esi, dword ptr [esp + 0x20] */
+    /* 007a57ca  mov esi, dword ptr [esp + 0x20]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000020u);
     esi = M32(ea);
     /* 007a57ce  mov dword ptr [eax + 0x20], edx */
     ea = (uint32_t)(eax + 0x00000020u);
     M32(ea) = edx;
-    /* 007a57d1  mov edx, dword ptr [esp + 0x14] */
+    /* 007a57d1  mov edx, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 007a57d5  mov dword ptr [eax + 8], esi */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = esi;
-    /* 007a57d8  mov esi, dword ptr [esp + 0x24] */
+    /* 007a57d8  mov esi, dword ptr [esp + 0x24]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000024u);
     esi = M32(ea);
     /* 007a57dc  mov dword ptr [eax + 0x24], edx */
     ea = (uint32_t)(eax + 0x00000024u);
     M32(ea) = edx;
-    /* 007a57df  mov edx, dword ptr [esp + 0x1c] */
+    /* 007a57df  mov edx, dword ptr [esp + 0x1c]  ; arg_14 */
     ea = (uint32_t)(esp + 0x0000001cu);
     edx = M32(ea);
     /* 007a57e3  mov dword ptr [eax + 0xc], esi */
@@ -156,7 +162,7 @@ void bfv_server_l1_body_007a5790(struct bfv_cpu *c)
     /* 007a57e6  mov dword ptr [eax + 0x28], edx */
     ea = (uint32_t)(eax + 0x00000028u);
     M32(ea) = edx;
-    /* 007a57e9  mov dword ptr [eax], 0x878d18 */
+    /* 007a57e9  mov dword ptr [eax], 0x878d18  ; vtable BAPAMoveTo3dObject */
     ea = (uint32_t)(eax);
     M32(ea) = 0x878d18u;
     /* 007a57ef  mov dword ptr [eax + 0x38], ecx */
@@ -192,7 +198,7 @@ void bfv_server_l1_body_007a5790(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a580f  mov edi, dword ptr [0xc2f7c0] */
+    /* 007a580f  mov edi, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edi = M32(ea);
     /* 007a5815  mov edi, dword ptr [edi] */
@@ -297,7 +303,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a5860  dice::bf::ai::BAPAMoveTo3dObject  (virtual method) */
+/* 007a5860  BAPAMoveTo3dObject::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPAMoveTo3dObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a5860, bfv_server_l1_body_007a5860);
 BFV_L1_RESUME(bfv_server_l1r_007a5860_1, bfv_server_l1_body_007a5860, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a5860_2, bfv_server_l1_body_007a5860, 2);
@@ -325,7 +334,7 @@ void bfv_server_l1_body_007a5860(struct bfv_cpu *c)
     /* 007a5866  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007a5868  mov dword ptr [esi], 0x878d18 */
+    /* 007a5868  mov dword ptr [esi], 0x878d18  ; vtable BAPAMoveTo3dObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0x878d18u;
     /* 007a586e  je 0x7a5877 */
@@ -346,13 +355,13 @@ void bfv_server_l1_body_007a5860(struct bfv_cpu *c)
     goto out;
 R_1:
 L_007a5877:
-    /* 007a5877  mov al, byte ptr [esp + 8] */
+    /* 007a5877  mov al, byte ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(eax, M8(ea));
-    /* 007a587b  mov dword ptr [esi], 0x874498 */
+    /* 007a587b  mov dword ptr [esi], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874498u;
-    /* 007a5881  mov ecx, dword ptr [0xc32a44] */
+    /* 007a5881  mov ecx, dword ptr [0xc32a44]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     ecx = M32(ea);
     /* 007a5887  inc ecx */
@@ -363,10 +372,10 @@ L_007a5877:
     /* 007a5888  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 007a588a  mov dword ptr [0xc32a44], ecx */
+    /* 007a588a  mov dword ptr [0xc32a44], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     M32(ea) = ecx;
-    /* 007a5890  mov dword ptr [esi], 0x87448c */
+    /* 007a5890  mov dword ptr [esi], 0x87448c  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87448cu;
     /* 007a5896  je 0x7a58a3 */
@@ -375,9 +384,9 @@ L_007a5877:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a5899  mov ecx, 0xc32300 */
+    /* 007a5899  mov ecx, 0xc32300  ; g_MemoryPoolNull_BAPAMoveTo3dObject */
     ecx = 0xc32300u;
-    /* 007a589e  call 0x413600 */
+    /* 007a589e  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a5860_2;

@@ -5,8 +5,10 @@
 #include "l1.h"
 
 
-/* 006eb6b0  (source path)
- * strings: "c:\bfv_code\main\battlefield\AI\AIRadio.cpp", "player != NULL" */
+/* 006eb6b0  AIRadio_AIRadio_cpp_006eb6b0  (source path)
+ * strings: "c:\bfv_code\main\battlefield\AI\AIRadio.cpp", "player != NULL"
+ * called by: AIMain_helper_006ed080
+ */
 BFV_L1_ENTRY(bfv_server_l1_006eb6b0, bfv_server_l1_body_006eb6b0);
 BFV_L1_RESUME(bfv_server_l1r_006eb6b0_1, bfv_server_l1_body_006eb6b0, 1);
 BFV_L1_RESUME(bfv_server_l1r_006eb6b0_2, bfv_server_l1_body_006eb6b0, 2);
@@ -52,7 +54,7 @@ void bfv_server_l1_body_006eb6b0(struct bfv_cpu *c)
 R_1:
     /* 006eb6bc  mov ecx, eax */
     ecx = eax;
-    /* 006eb6be  call 0x58a700 */
+    /* 006eb6be  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006eb6b0_2;
@@ -68,15 +70,15 @@ R_2:
     t = 0x3b1u;
     esp -= 4;
     M32(esp) = t;
-    /* 006eb6cc  push 0x86d688 */
+    /* 006eb6cc  push 0x86d688  ; "c:\bfv_code\main\battlefield\AI\AIRadio.cpp" */
     t = 0x86d688u;
     esp -= 4;
     M32(esp) = t;
-    /* 006eb6d1  push 0x86d678 */
+    /* 006eb6d1  push 0x86d678  ; "player != NULL" */
     t = 0x86d678u;
     esp -= 4;
     M32(esp) = t;
-    /* 006eb6d6  call 0x7e06a2 */
+    /* 006eb6d6  call 0x7e06a2  ; crt_Program_007e06a2 */
     t = 0x007e06a2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006eb6b0_3;
@@ -98,10 +100,10 @@ R_3:
     esp += 8;
     goto out;
 L_006eb6e3:
-    /* 006eb6e3  mov ecx, dword ptr [0xbdb7a8] */
+    /* 006eb6e3  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
-    /* 006eb6e9  mov eax, dword ptr [0x80ba88] */
+    /* 006eb6e9  mov eax, dword ptr [0x80ba88]  ; interfaceID(GameServer) */
     ea = (uint32_t)(0x0080ba88u);
     eax = M32(ea);
     /* 006eb6ee  mov edx, dword ptr [ecx] */
@@ -115,7 +117,7 @@ L_006eb6e3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006eb6f2  call dword ptr [edx + 0xc] */
+    /* 006eb6f2  call dword ptr [edx + 0xc]  ; -> Armor::vf3 = Armor::queryInterface */
     ea = (uint32_t)(edx + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -134,7 +136,7 @@ R_4:
     t = 0x3b5u;
     esp -= 4;
     M32(esp) = t;
-    /* 006eb700  push 0x86d688 */
+    /* 006eb700  push 0x86d688  ; "c:\bfv_code\main\battlefield\AI\AIRadio.cpp" */
     t = 0x86d688u;
     esp -= 4;
     M32(esp) = t;
@@ -142,7 +144,7 @@ R_4:
     t = 0x86d664u;
     esp -= 4;
     M32(esp) = t;
-    /* 006eb70a  call 0x7e06a2 */
+    /* 006eb70a  call 0x7e06a2  ; crt_Program_007e06a2 */
     t = 0x007e06a2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006eb6b0_5;

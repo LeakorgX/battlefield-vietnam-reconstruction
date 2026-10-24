@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009f82f0  dice::bf::ai::BAPWrapperFinished  (virtual method) */
+/* 009f82f0  BAPWrapperFinished::execute  (virtual method)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPWrapperFinished
+ * also entered at 009f8330: BAPConObjectExists::vf1, BAPWrapperFinished::vf3, CreatePlayerAckEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f82f0, bfv_client_l1_body_009f82f0);
 BFV_L1_RESUME(bfv_client_l1r_009f82f0_1, bfv_client_l1_body_009f82f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f82f0_2, bfv_client_l1_body_009f82f0, 2);
@@ -25,7 +29,7 @@ void bfv_client_l1_body_009f82f0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 009f82f1  mov ebx, dword ptr [esp + 0x10] */
+    /* 009f82f1  mov ebx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
     /* 009f82f5  push esi */
@@ -46,19 +50,19 @@ void bfv_client_l1_body_009f82f0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f8300  mov edi, dword ptr [esp + 0x10] */
+    /* 009f8300  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 009f8304  mov ecx, edi */
     ecx = edi;
-    /* 009f8306  call 0x9707f0 */
+    /* 009f8306  call 0x9707f0  ; NetClient::vf18 */
     t = 0x009707f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f82f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009f830b  mov ecx, dword ptr [esp + 0x14] */
+    /* 009f830b  mov ecx, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 009f830f  mov edx, dword ptr [eax] */
@@ -125,7 +129,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f8340  (between same file) */
+/* 009f8340  BAPWrapperFinished::ctor_dtor  (between same file)
+ * class: dice::bf::ai::BAPWrapperFinished
+ * called by: BBPFireInfantery_helper_00998590
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f8340, bfv_client_l1_body_009f8340);
 void bfv_client_l1_body_009f8340(struct bfv_cpu *c)
 {
@@ -134,12 +141,12 @@ void bfv_client_l1_body_009f8340(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, r, ea;
-    /* 009f8340  mov dl, byte ptr [esp + 8] */
+    /* 009f8340  mov dl, byte ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(edx, M8(ea));
     /* 009f8344  mov eax, ecx */
     eax = ecx;
-    /* 009f8346  mov dword ptr [eax], 0xbf60a0 */
+    /* 009f8346  mov dword ptr [eax], 0xbf60a0  ; vtable BAPStatement */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf60a0u;
     /* 009f834c  mov dword ptr [eax + 4], 0 */
@@ -151,19 +158,19 @@ void bfv_client_l1_body_009f8340(struct bfv_cpu *c)
     /* 009f835a  mov dword ptr [eax + 0xc], 0 */
     ea = (uint32_t)(eax + 0x0000000cu);
     M32(ea) = 0x0u;
-    /* 009f8361  inc dword ptr [0xe105b8] */
+    /* 009f8361  inc dword ptr [0xe105b8]  ; g_bapCreatedCount */
     ea = (uint32_t)(0x00e105b8u);
     a = M32(ea);
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     M32(ea) = r;
-    /* 009f8367  mov ecx, dword ptr [esp + 4] */
+    /* 009f8367  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 009f836b  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 009f836d  mov dword ptr [eax], 0xbfc014 */
+    /* 009f836d  mov dword ptr [eax], 0xbfc014  ; vtable BAPWrapperFinished */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbfc014u;
     /* 009f8373  mov dword ptr [eax + 0x18], ecx */
@@ -189,7 +196,11 @@ out: __attribute__((unused));
 }
 
 
-/* 009f8390  dice::bf::ai::BAPWrapperFinished  (virtual method) */
+/* 009f8390  BAPWrapperFinished::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPWrapperFinished
+ * also entered at 009f83e0: BAPConObjectHealth::vf1, BAPWrapperWeapon::vf3, VoteEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f8390, bfv_client_l1_body_009f8390);
 BFV_L1_RESUME(bfv_client_l1r_009f8390_1, bfv_client_l1_body_009f8390, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f8390_2, bfv_client_l1_body_009f8390, 2);
@@ -217,7 +228,7 @@ void bfv_client_l1_body_009f8390(struct bfv_cpu *c)
     /* 009f8396  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 009f8398  mov dword ptr [esi], 0xbfc014 */
+    /* 009f8398  mov dword ptr [esi], 0xbfc014  ; vtable BAPWrapperFinished */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfc014u;
     /* 009f839e  je 0x9f83a7 */
@@ -238,13 +249,13 @@ void bfv_client_l1_body_009f8390(struct bfv_cpu *c)
     goto out;
 R_1:
 L_009f83a7:
-    /* 009f83a7  mov al, byte ptr [esp + 8] */
+    /* 009f83a7  mov al, byte ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(eax, M8(ea));
-    /* 009f83ab  mov dword ptr [esi], 0xbf60a0 */
+    /* 009f83ab  mov dword ptr [esi], 0xbf60a0  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf60a0u;
-    /* 009f83b1  mov ecx, dword ptr [0xe105bc] */
+    /* 009f83b1  mov ecx, dword ptr [0xe105bc]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     ecx = M32(ea);
     /* 009f83b7  inc ecx */
@@ -255,10 +266,10 @@ L_009f83a7:
     /* 009f83b8  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 009f83ba  mov dword ptr [0xe105bc], ecx */
+    /* 009f83ba  mov dword ptr [0xe105bc], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     M32(ea) = ecx;
-    /* 009f83c0  mov dword ptr [esi], 0xbf6094 */
+    /* 009f83c0  mov dword ptr [esi], 0xbf6094  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf6094u;
     /* 009f83c6  je 0x9f83d3 */
@@ -267,9 +278,9 @@ L_009f83a7:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f83c9  mov ecx, 0xe10b40 */
+    /* 009f83c9  mov ecx, 0xe10b40  ; g_MemoryPoolNull_BAPWrapperFinished */
     ecx = 0xe10b40u;
-    /* 009f83ce  call 0x412fc0 */
+    /* 009f83ce  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f8390_2;

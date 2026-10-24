@@ -5,8 +5,10 @@
 #include "l1.h"
 
 
-/* 006fdbd0  dice::bf::ai::?A0x10db9b01::BBCreateFunctionFireDriver  (virtual method)
- * strings: "BBPFire2dDriver" */
+/* 006fdbd0  BBCreateFunctionFireDriver::vf0  (virtual method)
+ * class: dice::bf::ai::?A0x10db9b01::BBCreateFunctionFireDriver
+ * strings: "BBPFire2dDriver"
+ */
 BFV_L1_ENTRY(bfv_server_l1_006fdbd0, bfv_server_l1_body_006fdbd0);
 BFV_L1_RESUME(bfv_server_l1r_006fdbd0_1, bfv_server_l1_body_006fdbd0, 1);
 BFV_L1_RESUME(bfv_server_l1r_006fdbd0_2, bfv_server_l1_body_006fdbd0, 2);
@@ -40,7 +42,7 @@ void bfv_server_l1_body_006fdbd0(struct bfv_cpu *c)
     case 11: goto R_11;
     default: break;
     }
-    /* 006fdbd0  mov ecx, dword ptr [esp + 8] */
+    /* 006fdbd0  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006fdbd4  mov eax, dword ptr [ecx + 0x14] */
@@ -62,7 +64,7 @@ void bfv_server_l1_body_006fdbd0(struct bfv_cpu *c)
     t = 0xfu;
     esp -= 4;
     M32(esp) = t;
-    /* 006fdbdc  push 0x86e0b0 */
+    /* 006fdbdc  push 0x86e0b0  ; "BBPFire2dDriver" */
     t = 0x86e0b0u;
     esp -= 4;
     M32(esp) = t;
@@ -74,7 +76,7 @@ void bfv_server_l1_body_006fdbd0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 006fdbe4  call 0x401220 */
+    /* 006fdbe4  call 0x401220  ; std::string::compare_chars */
     t = 0x00401220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_1;
@@ -84,7 +86,7 @@ R_1:
     /* 006fdbe9  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 006fdbeb  mov ebx, dword ptr [esp + 0x10] */
+    /* 006fdbeb  mov ebx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
     /* 006fdbef  jne 0x6fdc1f */
@@ -93,7 +95,7 @@ R_1:
     t = 0x20u;
     esp -= 4;
     M32(esp) = t;
-    /* 006fdbf3  call 0x403d80 */
+    /* 006fdbf3  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_2;
@@ -117,7 +119,7 @@ R_2:
     M32(esp) = t;
     /* 006fdc00  mov ecx, eax */
     ecx = eax;
-    /* 006fdc02  call 0x74bea0 */
+    /* 006fdc02  call 0x74bea0  ; BBPFire2dDriver::BBPFire2dDriver */
     t = 0x0074bea0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_3;
@@ -126,7 +128,7 @@ R_2:
 R_3:
     /* 006fdc07  mov ecx, eax */
     ecx = eax;
-    /* 006fdc09  call 0x58a700 */
+    /* 006fdc09  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_4;
@@ -144,7 +146,7 @@ L_006fdc12:
     eax = r;
     /* 006fdc14  mov ecx, eax */
     ecx = eax;
-    /* 006fdc16  call 0x58a700 */
+    /* 006fdc16  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_5;
@@ -165,7 +167,7 @@ L_006fdc21:
     t = 0x38u;
     esp -= 4;
     M32(esp) = t;
-    /* 006fdc23  call 0x403d80 */
+    /* 006fdc23  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_6;
@@ -185,10 +187,10 @@ R_6:
     F_LOGIC(32, r);
     /* 006fdc2f  je 0x6fdc5a */
     if (zf) goto L_006fdc5a;
-    /* 006fdc31  mov ecx, dword ptr [esp + 0x2c] */
+    /* 006fdc31  mov ecx, dword ptr [esp + 0x2c]  ; arg_1c */
     ea = (uint32_t)(esp + 0x0000002cu);
     ecx = M32(ea);
-    /* 006fdc35  mov edx, dword ptr [esp + 0x28] */
+    /* 006fdc35  mov edx, dword ptr [esp + 0x28]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000028u);
     edx = M32(ea);
     /* 006fdc39  push ecx */
@@ -205,7 +207,7 @@ R_6:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 006fdc3e  lea eax, [esp + 0x30] */
+    /* 006fdc3e  lea eax, [esp + 0x30]  ; &arg_c */
     eax = (uint32_t)(esp + 0x00000030u);
     /* 006fdc42  mov ecx, esp */
     ecx = esp;
@@ -213,14 +215,14 @@ R_6:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006fdc45  call 0x6fd2a0 */
+    /* 006fdc45  call 0x6fd2a0  ; ai_006fd2a0 */
     t = 0x006fd2a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_7;
     c->eip = t;
     goto out;
 R_7:
-    /* 006fdc4a  mov ecx, dword ptr [esp + 0x2c] */
+    /* 006fdc4a  mov ecx, dword ptr [esp + 0x2c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000002cu);
     ecx = M32(ea);
     /* 006fdc4e  push edi */
@@ -237,7 +239,7 @@ R_7:
     M32(esp) = t;
     /* 006fdc51  mov ecx, esi */
     ecx = esi;
-    /* 006fdc53  call 0x74bce0 */
+    /* 006fdc53  call 0x74bce0  ; BBFireArtilleryDriver::BBFireArtilleryDriver */
     t = 0x0074bce0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_8;
@@ -254,14 +256,14 @@ L_006fdc5a:
 L_006fdc5c:
     /* 006fdc5c  mov ecx, eax */
     ecx = eax;
-    /* 006fdc5e  call 0x58a700 */
+    /* 006fdc5e  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_9;
     c->eip = t;
     goto out;
 R_9:
-    /* 006fdc63  mov esi, dword ptr [esp + 0x20] */
+    /* 006fdc63  mov esi, dword ptr [esp + 0x20]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000020u);
     esi = M32(ea);
     /* 006fdc67  mov ebx, eax */
@@ -290,7 +292,7 @@ L_006fdc74:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006fdc77  call 0x403df0 */
+    /* 006fdc77  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_10;
@@ -317,7 +319,7 @@ L_006fdc85:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006fdc86  call 0x403df0 */
+    /* 006fdc86  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fdbd0_11;

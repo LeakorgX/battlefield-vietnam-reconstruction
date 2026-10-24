@@ -5,209 +5,9 @@
 #include "l1.h"
 
 
-/* 006a2960  dice::bf::ai::IBotManager  (vtable store) */
-BFV_L1_ENTRY(bfv_server_l1_006a2960, bfv_server_l1_body_006a2960);
-void bfv_server_l1_body_006a2960(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, n, ea;
-    /* 006a2960  mov edx, dword ptr [esp + 4] */
-    ea = (uint32_t)(esp + 0x00000004u);
-    edx = M32(ea);
-    /* 006a2964  cmp dword ptr [edx], 0x5c0 */
-    ea = (uint32_t)(edx);
-    a = M32(ea);
-    b = 0x5c0u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 006a296a  jbe 0x6a2971 */
-    if ((cf | zf)) goto L_006a2971;
-    /* 006a296c  xor al, al */
-    r = 0;
-    F_LOGIC(8, r);
-    SET8L(eax, r);
-    /* 006a296e  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-L_006a2971:
-    /* 006a2971  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 006a2972  mov esi, dword ptr [ecx] */
-    ea = (uint32_t)(ecx);
-    esi = M32(ea);
-    /* 006a2974  xor eax, eax */
-    r = 0;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 006a2976  cmp esi, eax */
-    a = esi;
-    b = eax;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 006a2978  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 006a2979  jg 0x6a2980 */
-    if (!(zf | (sf != of))) goto L_006a2980;
-    /* 006a297b  mov dword ptr [ecx + 8], eax */
-    ea = (uint32_t)(ecx + 0x00000008u);
-    M32(ea) = eax;
-    /* 006a297e  jmp 0x6a2995 */
-    goto L_006a2995;
-L_006a2980:
-    /* 006a2980  cmp esi, dword ptr [ecx + 0x14] */
-    ea = (uint32_t)(ecx + 0x00000014u);
-    a = esi;
-    b = M32(ea);
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 006a2983  jb 0x6a298c */
-    if (cf) goto L_006a298c;
-    /* 006a2985  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 006a2986  xor al, al */
-    r = 0;
-    F_LOGIC(8, r);
-    SET8L(eax, r);
-    /* 006a2988  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 006a2989  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-L_006a298c:
-    /* 006a298c  mov eax, dword ptr [ecx + 4] */
-    ea = (uint32_t)(ecx + 0x00000004u);
-    eax = M32(ea);
-    /* 006a298f  mov edi, dword ptr [ecx + 0x18] */
-    ea = (uint32_t)(ecx + 0x00000018u);
-    edi = M32(ea);
-    /* 006a2992  inc eax */
-    a = eax;
-    r = (a + 1u) & 0xffffffffu;
-    F_INC(32, a, r);
-    eax = r;
-    /* 006a2993  and eax, edi */
-    r = (eax & edi) & 0xffffffffu;
-    F_LOGIC(32, r);
-    eax = r;
-L_006a2995:
-    /* 006a2995  mov dword ptr [ecx + 4], eax */
-    ea = (uint32_t)(ecx + 0x00000004u);
-    M32(ea) = eax;
-    /* 006a2998  inc esi */
-    a = esi;
-    r = (a + 1u) & 0xffffffffu;
-    F_INC(32, a, r);
-    esi = r;
-    /* 006a2999  mov dword ptr [ecx], esi */
-    ea = (uint32_t)(ecx);
-    M32(ea) = esi;
-    /* 006a299b  mov ecx, dword ptr [ecx + 0xc] */
-    ea = (uint32_t)(ecx + 0x0000000cu);
-    ecx = M32(ea);
-    /* 006a299e  lea eax, [eax + eax*2] */
-    eax = (uint32_t)(eax + eax * 2u);
-    /* 006a29a1  mov edi, dword ptr [ecx + eax*8 + 0x14] */
-    ea = (uint32_t)(ecx + eax * 8u + 0x00000014u);
-    edi = M32(ea);
-    /* 006a29a5  lea eax, [ecx + eax*8] */
-    eax = (uint32_t)(ecx + eax * 8u);
-    /* 006a29a8  mov ecx, dword ptr [edx + 8] */
-    ea = (uint32_t)(edx + 0x00000008u);
-    ecx = M32(ea);
-    /* 006a29ab  mov dword ptr [eax + 8], ecx */
-    ea = (uint32_t)(eax + 0x00000008u);
-    M32(ea) = ecx;
-    /* 006a29ae  mov ecx, dword ptr [edx] */
-    ea = (uint32_t)(edx);
-    ecx = M32(ea);
-    /* 006a29b0  mov dword ptr [eax], ecx */
-    ea = (uint32_t)(eax);
-    M32(ea) = ecx;
-    /* 006a29b2  mov ecx, dword ptr [edx + 4] */
-    ea = (uint32_t)(edx + 0x00000004u);
-    ecx = M32(ea);
-    /* 006a29b5  mov dword ptr [eax + 4], ecx */
-    ea = (uint32_t)(eax + 0x00000004u);
-    M32(ea) = ecx;
-    /* 006a29b8  mov ecx, dword ptr [edx + 0x10] */
-    ea = (uint32_t)(edx + 0x00000010u);
-    ecx = M32(ea);
-    /* 006a29bb  mov dword ptr [eax + 0x10], ecx */
-    ea = (uint32_t)(eax + 0x00000010u);
-    M32(ea) = ecx;
-    /* 006a29be  mov ecx, dword ptr [edx] */
-    ea = (uint32_t)(edx);
-    ecx = M32(ea);
-    /* 006a29c0  mov esi, dword ptr [edx + 0x14] */
-    ea = (uint32_t)(edx + 0x00000014u);
-    esi = M32(ea);
-    /* 006a29c3  mov edx, ecx */
-    edx = ecx;
-    /* 006a29c5  shr ecx, 2 */
-    n = 0x2u & 31u;
-    if (n) {
-        a = ecx;
-        r = n < 32 ? a >> n : 0u;
-        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
-        of = SIGN(32, a);
-        F_SZP(32, r); af = 0;
-        ecx = r;
-    }
-    /* 006a29c8  rep movsd dword ptr es:[edi], dword ptr [esi] */
-    while (ecx) {
-        M32(edi) = M32(esi);
-        esi += (df ? -4u : 4u);
-        edi += (df ? -4u : 4u);
-        ecx--;
-    }
-    /* 006a29ca  mov ecx, edx */
-    ecx = edx;
-    /* 006a29cc  and ecx, 3 */
-    r = (ecx & 0x3u) & 0xffffffffu;
-    F_LOGIC(32, r);
-    ecx = r;
-    /* 006a29cf  rep movsb byte ptr es:[edi], byte ptr [esi] */
-    while (ecx) {
-        M8(edi) = M8(esi);
-        esi += (df ? -1u : 1u);
-        edi += (df ? -1u : 1u);
-        ecx--;
-    }
-    /* 006a29d1  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 006a29d2  mov al, 1 */
-    SET8L(eax, 0x1u);
-    /* 006a29d4  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 006a29d5  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 006a2a00  dice::bf::ai::IBotManager  (virtual method) */
+/* 006a2a00  IBotManager::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IBotManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_006a2a00, bfv_server_l1_body_006a2a00);
 BFV_L1_RESUME(bfv_server_l1r_006a2a00_1, bfv_server_l1_body_006a2a00, 1);
 void bfv_server_l1_body_006a2a00(struct bfv_cpu *c)
@@ -221,7 +21,7 @@ void bfv_server_l1_body_006a2a00(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 006a2a00  test byte ptr [esp + 4], 1 */
+    /* 006a2a00  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -231,10 +31,10 @@ void bfv_server_l1_body_006a2a00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006a2a06  mov esi, ecx */
     esi = ecx;
-    /* 006a2a08  mov dword ptr [esi], 0x860354 */
+    /* 006a2a08  mov dword ptr [esi], 0x860354  ; vtable IBotManager */
     ea = (uint32_t)(esi);
     M32(ea) = 0x860354u;
-    /* 006a2a0e  mov dword ptr [0xc1d334], 0 */
+    /* 006a2a0e  mov dword ptr [0xc1d334], 0  ; g_pIBotManager_00c1d334 */
     ea = (uint32_t)(0x00c1d334u);
     M32(ea) = 0x0u;
     /* 006a2a18  je 0x6a2a23 */
@@ -243,7 +43,7 @@ void bfv_server_l1_body_006a2a00(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006a2a1b  call 0x403df0 */
+    /* 006a2a1b  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006a2a00_1;
@@ -266,6 +66,37 @@ L_006a2a23:
     /* 006a2a26  ret 4 */
     c->eip = M32(esp);
     esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 006a2a30  IBotManager::IBotManager  (vtable store)
+ * class: dice::bf::ai::IBotManager
+ * called by: BotManager::ctor_dtor
+ */
+BFV_L1_ENTRY(bfv_server_l1_006a2a30, bfv_server_l1_body_006a2a30);
+void bfv_server_l1_body_006a2a30(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t ea;
+    /* 006a2a30  mov eax, ecx */
+    eax = ecx;
+    /* 006a2a32  mov dword ptr [eax], 0x860354  ; vtable IBotManager */
+    ea = (uint32_t)(eax);
+    M32(ea) = 0x860354u;
+    /* 006a2a38  mov dword ptr [0xc1d334], eax  ; g_pIBotManager_00c1d334 */
+    ea = (uint32_t)(0x00c1d334u);
+    M32(ea) = eax;
+    /* 006a2a3d  ret */
+    c->eip = M32(esp);
+    esp += 4;
     goto out;
 out: __attribute__((unused));
     c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;

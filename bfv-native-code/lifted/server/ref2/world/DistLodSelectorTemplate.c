@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005c5da0  dice::ref2::world::DistLodSelectorTemplate  (virtual method) */
+/* 005c5da0  DistLodSelectorTemplate::vf12  (virtual method)
+ * class: dice::ref2::world::DistLodSelectorTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c5da0, bfv_server_l1_body_005c5da0);
 void bfv_server_l1_body_005c5da0(struct bfv_cpu *c)
 {
@@ -71,7 +73,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c5dc0  (between same file) */
+/* 005c5dc0  DistLodSelectorTemplate_005c5dc0  (between same file)
+ * called by: DistLodSelectorTemplate::vf10, DistCompareLodSelector2::vf8, DistLodSelector::vf8, CompareLodSelector::vf8, DistCompareLodSelector::vf8
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c5dc0, bfv_server_l1_body_005c5dc0);
 void bfv_server_l1_body_005c5dc0(struct bfv_cpu *c)
 {
@@ -88,14 +92,14 @@ void bfv_server_l1_body_005c5dc0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005c5dc2  mov esi, dword ptr [esp + 0x10] */
+    /* 005c5dc2  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 005c5dc6  push edi */
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005c5dc7  mov edi, dword ptr [esp + 0x10] */
+    /* 005c5dc7  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 005c5dcb  sub esi, edi */
@@ -213,7 +217,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c5e10  (between same file) */
+/* 005c5e10  DistLodSelectorTemplate::~DistLodSelectorTemplate  (between same file)
+ * class: dice::ref2::world::DistLodSelectorTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c5e10, bfv_server_l1_body_005c5e10);
 BFV_L1_RESUME(bfv_server_l1r_005c5e10_1, bfv_server_l1_body_005c5e10, 1);
 BFV_L1_RESUME(bfv_server_l1r_005c5e10_2, bfv_server_l1_body_005c5e10, 2);
@@ -243,7 +249,7 @@ void bfv_server_l1_body_005c5e10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005c5e12  mov esi, ecx */
     esi = ecx;
-    /* 005c5e14  mov dword ptr [esi], 0x8465dc */
+    /* 005c5e14  mov dword ptr [esi], 0x8465dc  ; vtable DistLodSelectorTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8465dcu;
     /* 005c5e1a  cmp dword ptr [esi + 0x5c], 0x10 */
@@ -261,7 +267,7 @@ void bfv_server_l1_body_005c5e10(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c5e24  call 0x403df0 */
+    /* 005c5e24  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5e10_1;
@@ -302,7 +308,7 @@ L_005c5e2c:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c5e43  call 0x403df0 */
+    /* 005c5e43  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5e10_2;
@@ -339,7 +345,7 @@ L_005c5e4b:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c5e5c  call 0x403df0 */
+    /* 005c5e5c  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5e10_3;
@@ -377,7 +383,7 @@ L_005c5e64:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c5e77  call 0x403df0 */
+    /* 005c5e77  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5e10_4;
@@ -400,7 +406,7 @@ L_005c5e7f:
     /* 005c5e89  mov byte ptr [esi + 0xc], bl */
     ea = (uint32_t)(esi + 0x0000000cu);
     M8(ea) = LO8(ebx);
-    /* 005c5e8c  mov dword ptr [esi], 0x807464 */
+    /* 005c5e8c  mov dword ptr [esi], 0x807464  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0x807464u;
     /* 005c5e92  pop esi */
@@ -422,7 +428,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005c5ea0  dice::ref2::world::DistLodSelectorTemplate  (virtual method) */
+/* 005c5ea0  DistLodSelectorTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::world::DistLodSelectorTemplate
+ * also entered at 005c5ee0: DistLodSelectorTemplate::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c5ea0, bfv_server_l1_body_005c5ea0);
 void bfv_server_l1_body_005c5ea0(struct bfv_cpu *c)
 {
@@ -431,12 +441,12 @@ void bfv_server_l1_body_005c5ea0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 005c5ea0  mov edx, dword ptr [esp + 4] */
+    /* 005c5ea0  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 005c5ea4  mov eax, ecx */
     eax = ecx;
-    /* 005c5ea6  cmp edx, dword ptr [0x807430] */
+    /* 005c5ea6  cmp edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     a = edx;
     b = M32(ea);
@@ -472,7 +482,7 @@ void bfv_server_l1_body_005c5ea0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005c5ec7  mov esi, dword ptr [0x807434] */
+    /* 005c5ec7  mov esi, dword ptr [0x807434]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00807434u);
     esi = M32(ea);
     /* 005c5ecd  xor ecx, ecx */
@@ -511,7 +521,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c5f40  dice::ref2::world::DistLodSelectorTemplate  (virtual method) */
+/* 005c5f40  DistLodSelectorTemplate::vf11  (virtual method)
+ * class: dice::ref2::world::DistLodSelectorTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c5f40, bfv_server_l1_body_005c5f40);
 void bfv_server_l1_body_005c5f40(struct bfv_cpu *c)
 {
@@ -523,7 +535,7 @@ void bfv_server_l1_body_005c5f40(struct bfv_cpu *c)
     /* 005c5f40  mov eax, dword ptr [ecx + 0x28] */
     ea = (uint32_t)(ecx + 0x00000028u);
     eax = M32(ea);
-    /* 005c5f43  mov ecx, dword ptr [esp + 4] */
+    /* 005c5f43  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005c5f47  fld dword ptr [eax + ecx*4] */
@@ -542,7 +554,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c5f50  (between same file) */
+/* 005c5f50  DistLodSelectorTemplate_005c5f50  (between same file)
+ * called by: DistLodSelectorTemplate::vf7, CompareLodSelectorTemplate::vf7, DistCompareLodSelectorTemplate::vf7, DistCompareLodSelectorTemplate2::vf7
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c5f50, bfv_server_l1_body_005c5f50);
 BFV_L1_RESUME(bfv_server_l1r_005c5f50_1, bfv_server_l1_body_005c5f50, 1);
 BFV_L1_RESUME(bfv_server_l1r_005c5f50_2, bfv_server_l1_body_005c5f50, 2);
@@ -608,18 +622,18 @@ void bfv_server_l1_body_005c5f50(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005c5f6e  mov dword ptr [ebp - 0x10], esp */
+    /* 005c5f6e  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 005c5f71  mov esi, ecx */
     esi = ecx;
-    /* 005c5f73  mov eax, dword ptr [ebp + 0x10] */
+    /* 005c5f73  mov eax, dword ptr [ebp + 0x10]  ; arg_8 */
     ea = (uint32_t)(ebp + 0x00000010u);
     eax = M32(ea);
     /* 005c5f76  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 005c5f78  mov dword ptr [ebp - 0x14], ecx */
+    /* 005c5f78  mov dword ptr [ebp - 0x14], ecx  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = ecx;
     /* 005c5f7b  mov edi, dword ptr [esi + 4] */
@@ -657,7 +671,7 @@ L_005c5f86:
         eax = r;
     }
 L_005c5f8e:
-    /* 005c5f8e  mov edx, dword ptr [ebp + 0xc] */
+    /* 005c5f8e  mov edx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     edx = M32(ea);
     /* 005c5f91  test edx, edx */
@@ -714,7 +728,7 @@ L_005c5fa9:
     if (!cf) goto L_005c5fbb;
     /* 005c5fb4  mov ecx, esi */
     ecx = esi;
-    /* 005c5fb6  call 0x48e690 */
+    /* 005c5fb6  call 0x48e690  ; std::vector::_Xlen */
     t = 0x0048e690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5f50_1;
@@ -902,14 +916,14 @@ L_005c6012:
         F_SZP(32, r); af = 0;
         eax = r;
     }
-    /* 005c6015  mov dword ptr [ebp - 0x20], eax */
+    /* 005c6015  mov dword ptr [ebp - 0x20], eax  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = eax;
     /* 005c6018  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c6019  call 0x403d80 */
+    /* 005c6019  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5f50_2;
@@ -924,17 +938,17 @@ R_2:
     esp = r;
     /* 005c6021  mov edi, eax */
     edi = eax;
-    /* 005c6023  mov dword ptr [ebp - 0x24], edi */
+    /* 005c6023  mov dword ptr [ebp - 0x24], edi  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = edi;
-    /* 005c6026  mov dword ptr [ebp - 4], 0 */
+    /* 005c6026  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
     /* 005c602d  push edi */
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005c602e  mov ebx, dword ptr [ebp + 8] */
+    /* 005c602e  mov ebx, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     ebx = M32(ea);
     /* 005c6031  push ebx */
@@ -950,23 +964,23 @@ R_2:
     M32(esp) = t;
     /* 005c6036  mov ecx, esi */
     ecx = esi;
-    /* 005c6038  call 0x41fbd0 */
+    /* 005c6038  call 0x41fbd0  ; bfv_vector_copy */
     t = 0x0041fbd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5f50_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 005c603d  mov dword ptr [ebp - 0x1c], eax */
+    /* 005c603d  mov dword ptr [ebp - 0x1c], eax  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = eax;
-    /* 005c6040  lea ecx, [ebp - 0x14] */
+    /* 005c6040  lea ecx, [ebp - 0x14]  ; &var_18 */
     ecx = (uint32_t)(ebp + 0xffffffecu);
     /* 005c6043  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c6044  mov edx, dword ptr [ebp + 0xc] */
+    /* 005c6044  mov edx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     edx = M32(ea);
     /* 005c6047  push edx */
@@ -979,14 +993,14 @@ R_3:
     M32(esp) = t;
     /* 005c6049  mov ecx, esi */
     ecx = esi;
-    /* 005c604b  call 0x5f83e0 */
+    /* 005c604b  call 0x5f83e0  ; bfv_vector_fill */
     t = 0x005f83e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5f50_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 005c6050  mov dword ptr [ebp - 0x1c], eax */
+    /* 005c6050  mov dword ptr [ebp - 0x1c], eax  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = eax;
     /* 005c6053  push eax */
@@ -1006,14 +1020,14 @@ R_4:
     M32(esp) = t;
     /* 005c6059  mov ecx, esi */
     ecx = esi;
-    /* 005c605b  call 0x41fbd0 */
+    /* 005c605b  call 0x41fbd0  ; bfv_vector_copy */
     t = 0x0041fbd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5f50_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 005c6060  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 005c6060  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 005c6067  mov ecx, dword ptr [esi + 4] */
@@ -1051,7 +1065,7 @@ L_005c6072:
         eax = r;
     }
 L_005c607a:
-    /* 005c607a  mov ebx, dword ptr [ebp + 0xc] */
+    /* 005c607a  mov ebx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     ebx = M32(ea);
     /* 005c607d  add ebx, eax */
@@ -1069,7 +1083,7 @@ L_005c607a:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c6084  call 0x403df0 */
+    /* 005c6084  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c5f50_6;
@@ -1083,7 +1097,7 @@ R_6:
     F_ADD(32, a, b, r);
     esp = r;
 L_005c608c:
-    /* 005c608c  mov ecx, dword ptr [ebp - 0x20] */
+    /* 005c608c  mov ecx, dword ptr [ebp - 0x20]  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     ecx = M32(ea);
     /* 005c608f  add ecx, edi */
@@ -1103,7 +1117,7 @@ L_005c608c:
     /* 005c609a  mov dword ptr [esi + 4], edi */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = edi;
-    /* 005c609d  mov ecx, dword ptr [ebp - 0xc] */
+    /* 005c609d  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 005c60a0  mov dword ptr fs:[0], ecx */
@@ -1138,7 +1152,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005c60b0  (between same file) */
+/* 005c60b0  DistLodSelectorTemplate_005c5f50_catch_005c60b0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c60b0, bfv_server_l1_body_005c60b0);
 BFV_L1_RESUME(bfv_server_l1r_005c60b0_1, bfv_server_l1_body_005c60b0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005c60b0_2, bfv_server_l1_body_005c60b0, 2);
@@ -1171,7 +1186,7 @@ void bfv_server_l1_body_005c60b0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c60b4  call 0x403df0 */
+    /* 005c60b4  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c60b0_1;
@@ -1192,7 +1207,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005c60c0  call 0x63a98e */
+    /* 005c60c0  call 0x63a98e  ; _CxxThrowException */
     t = 0x0063a98eu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c60b0_2;
@@ -1255,7 +1270,7 @@ R_2:
     M32(esp) = t;
     /* 005c60e5  mov ecx, esi */
     ecx = esi;
-    /* 005c60e7  call 0x41fbd0 */
+    /* 005c60e7  call 0x41fbd0  ; bfv_vector_copy */
     t = 0x0041fbd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c60b0_3;
@@ -1311,7 +1326,7 @@ R_3:
     M32(esp) = t;
     /* 005c6108  mov ecx, esi */
     ecx = esi;
-    /* 005c610a  call 0x5f83e0 */
+    /* 005c610a  call 0x5f83e0  ; bfv_vector_fill */
     t = 0x005f83e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c60b0_4;
@@ -1385,7 +1400,7 @@ L_005c612d:
     M32(esp) = t;
     /* 005c6141  mov ecx, esi */
     ecx = esi;
-    /* 005c6143  call 0x41fbd0 */
+    /* 005c6143  call 0x41fbd0  ; bfv_vector_copy */
     t = 0x0041fbd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c60b0_5;
@@ -1404,7 +1419,7 @@ R_5:
     edx = M32(ea);
     /* 005c614f  mov ecx, edi */
     ecx = edi;
-    /* 005c6151  call 0x7901d0 */
+    /* 005c6151  call 0x7901d0  ; bfv_vector_shift */
     t = 0x007901d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c60b0_6;
@@ -1425,7 +1440,7 @@ R_6:
 L_005c6160:
     /* 005c6160  mov ecx, edi */
     ecx = edi;
-    /* 005c6162  call 0x705df0 */
+    /* 005c6162  call 0x705df0  ; bfv_vector_fill_range */
     t = 0x00705df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c60b0_7;
@@ -1467,7 +1482,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c6180  dice::ref2::world::DistLodSelectorTemplate  (vtable store) */
+/* 005c6180  DistLodSelectorTemplate::DistLodSelectorTemplate  (vtable store)
+ * class: dice::ref2::world::DistLodSelectorTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c6180, bfv_server_l1_body_005c6180);
 void bfv_server_l1_body_005c6180(struct bfv_cpu *c)
 {
@@ -1478,7 +1495,7 @@ void bfv_server_l1_body_005c6180(struct bfv_cpu *c)
     uint32_t r, ea;
     /* 005c6180  mov eax, ecx */
     eax = ecx;
-    /* 005c6182  mov dword ptr [eax], 0x8465dc */
+    /* 005c6182  mov dword ptr [eax], 0x8465dc  ; vtable DistLodSelectorTemplate */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8465dcu;
     /* 005c6188  mov dword ptr [eax + 4], 1 */
@@ -1537,7 +1554,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c61c0  dice::ref2::world::DistLodSelectorTemplate  (virtual method) */
+/* 005c61c0  DistLodSelectorTemplate::vf10  (virtual method)
+ * class: dice::ref2::world::DistLodSelectorTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c61c0, bfv_server_l1_body_005c61c0);
 BFV_L1_RESUME(bfv_server_l1r_005c61c0_1, bfv_server_l1_body_005c61c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005c61c0_2, bfv_server_l1_body_005c61c0, 2);
@@ -1581,21 +1600,21 @@ void bfv_server_l1_body_005c61c0(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c61ce  lea edx, [esp + 0x18] */
+    /* 005c61ce  lea edx, [esp + 0x18]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000018u);
-    /* 005c61d2  lea ecx, [esp + 0x10] */
+    /* 005c61d2  lea ecx, [esp + 0x10]  ; &var_4 */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 005c61d6  call 0x5c5dc0 */
+    /* 005c61d6  call 0x5c5dc0  ; DistLodSelectorTemplate_005c5dc0 */
     t = 0x005c5dc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c61c0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005c61db  mov edx, dword ptr [esp + 4] */
+    /* 005c61db  mov edx, dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
-    /* 005c61df  lea eax, [esp + 0xc] */
+    /* 005c61df  lea eax, [esp + 0xc]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 005c61e3  push eax */
     t = eax;
@@ -1611,7 +1630,7 @@ R_1:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c61ea  call 0x4297c0 */
+    /* 005c61ea  call 0x4297c0  ; bfv_vector_insert */
     t = 0x004297c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c61c0_2;
@@ -1637,7 +1656,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005c62f0  dice::ref2::world::DistLodSelectorTemplate  (virtual method) */
+/* 005c62f0  DistLodSelectorTemplate::vf7  (virtual method)
+ * class: dice::ref2::world::DistLodSelectorTemplate
+ * also entered at 005c63a0: CompareLodSelectorTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005c62f0, bfv_server_l1_body_005c62f0);
 BFV_L1_RESUME(bfv_server_l1r_005c62f0_1, bfv_server_l1_body_005c62f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005c62f0_2, bfv_server_l1_body_005c62f0, 2);
@@ -1681,7 +1703,7 @@ void bfv_server_l1_body_005c62f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005c62f7  mov edi, ecx */
     edi = ecx;
-    /* 005c62f9  mov ecx, dword ptr [0xc0c02c] */
+    /* 005c62f9  mov ecx, dword ptr [0xc0c02c]  ; g_pool_PathLodSelector */
     ea = (uint32_t)(0x00c0c02cu);
     ecx = M32(ea);
     /* 005c62ff  mov eax, dword ptr [ecx] */
@@ -1728,7 +1750,7 @@ R_1:
     /* 005c631e  mov dword ptr [eax + 0x20], ebx */
     ea = (uint32_t)(eax + 0x00000020u);
     M32(ea) = ebx;
-    /* 005c6321  mov dword ptr [eax], 0x846614 */
+    /* 005c6321  mov dword ptr [eax], 0x846614  ; vtable DistLodSelector */
     ea = (uint32_t)(eax);
     M32(ea) = 0x846614u;
     /* 005c6327  mov dword ptr [eax + 0x24], 1 */
@@ -1900,7 +1922,7 @@ L_005c6381:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c638c  call 0x5c5f50 */
+    /* 005c638c  call 0x5c5f50  ; DistLodSelectorTemplate_005c5f50 */
     t = 0x005c5f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005c62f0_3;

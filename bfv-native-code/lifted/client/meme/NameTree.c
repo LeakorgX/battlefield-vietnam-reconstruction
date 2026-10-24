@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00878310  dice::meme::NameTree  (virtual method) */
+/* 00878310  NameTree::vf15  (virtual method)
+ * overrides: NameLink::vf15  (4 classes implement it)
+ * class: dice::meme::NameTree
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878310, bfv_client_l1_body_00878310);
 BFV_L1_RESUME(bfv_client_l1r_00878310_1, bfv_client_l1_body_00878310, 1);
 BFV_L1_RESUME(bfv_client_l1r_00878310_2, bfv_client_l1_body_00878310, 2);
@@ -41,7 +44,7 @@ void bfv_client_l1_body_00878310(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00878319  mov edi, dword ptr [esp + 0xc] */
+    /* 00878319  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 0087831d  je 0x87832b */
@@ -200,7 +203,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00878380  dice::meme::NameTree  (virtual method) */
+/* 00878380  NameTree::vf20  (virtual method)
+ * overrides: NameLink::vf20  (4 classes implement it)
+ * class: dice::meme::NameTree
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878380, bfv_client_l1_body_00878380);
 BFV_L1_RESUME(bfv_client_l1r_00878380_1, bfv_client_l1_body_00878380, 1);
 void bfv_client_l1_body_00878380(struct bfv_cpu *c)
@@ -214,7 +220,7 @@ void bfv_client_l1_body_00878380(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00878380  mov eax, dword ptr [esp + 8] */
+    /* 00878380  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00878384  test eax, eax */
@@ -235,7 +241,7 @@ L_0087838d:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0087838e  mov esi, dword ptr [esp + 0x10] */
+    /* 0087838e  mov esi, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00878392  test esi, esi */
@@ -257,7 +263,7 @@ L_00878396:
     esp += 16;
     goto out;
 L_0087839c:
-    /* 0087839c  mov edx, dword ptr [esp + 8] */
+    /* 0087839c  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 008783a0  test edx, edx */
@@ -280,7 +286,7 @@ L_0087839c:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008783aa  call 0x878190 */
+    /* 008783aa  call 0x878190  ; DirectoryLink::vf20 */
     t = 0x00878190u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00878380_1;
@@ -302,7 +308,11 @@ out: __attribute__((unused));
 }
 
 
-/* 008783c0  dice::meme::NameTree  (virtual method) */
+/* 008783c0  NameTree::vf21  (virtual method)
+ * overrides: NameLink::vf21  (4 classes implement it)
+ * class: dice::meme::NameTree
+ * also entered at 00878400: ObjectLink::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_008783c0, bfv_client_l1_body_008783c0);
 BFV_L1_RESUME(bfv_client_l1r_008783c0_1, bfv_client_l1_body_008783c0, 1);
 void bfv_client_l1_body_008783c0(struct bfv_cpu *c)
@@ -316,7 +326,7 @@ void bfv_client_l1_body_008783c0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 008783c0  mov eax, dword ptr [esp + 8] */
+    /* 008783c0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008783c4  test eax, eax */
@@ -337,7 +347,7 @@ L_008783cd:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008783ce  mov esi, dword ptr [esp + 0x10] */
+    /* 008783ce  mov esi, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 008783d2  test esi, esi */
@@ -362,7 +372,7 @@ L_008783d9:
     esp += 16;
     goto out;
 L_008783df:
-    /* 008783df  mov edx, dword ptr [esp + 8] */
+    /* 008783df  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 008783e3  test edx, edx */
@@ -382,7 +392,7 @@ L_008783df:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008783ea  call 0x878220 */
+    /* 008783ea  call 0x878220  ; DirectoryLink::vf21 */
     t = 0x00878220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008783c0_1;

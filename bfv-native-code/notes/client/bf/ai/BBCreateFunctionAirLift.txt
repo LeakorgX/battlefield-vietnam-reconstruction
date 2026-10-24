@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBAirLift behaviour from a parameter type name.
+
+## 0093f7f0
+vf0: when the type name equals "BBPAirLift" it allocates a 0xc-byte BBPAirLift parameter object for the bot, otherwise the parameter is null. Allocates a 0x34-byte BBAirLift with that parameter and returns it. Frees the passed-in list (each node, then the head node) before returning.

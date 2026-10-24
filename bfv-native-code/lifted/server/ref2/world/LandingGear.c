@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005da0e0  dice::ref2::world::LandingGear  (vtable store) */
+/* 005da0e0  LandingGear::LandingGear  (vtable store)
+ * class: dice::ref2::world::LandingGear
+ * called by: LandingGearTemplate::createObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_005da0e0, bfv_server_l1_body_005da0e0);
 BFV_L1_RESUME(bfv_server_l1r_005da0e0_1, bfv_server_l1_body_005da0e0, 1);
 void bfv_server_l1_body_005da0e0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_005da0e0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005da0e0  mov eax, dword ptr [esp + 4] */
+    /* 005da0e0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005da0e4  push esi */
@@ -32,7 +35,7 @@ void bfv_server_l1_body_005da0e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005da0e6  mov esi, ecx */
     esi = ecx;
-    /* 005da0e8  call 0x5d65f0 */
+    /* 005da0e8  call 0x5d65f0  ; RotationalBundle::RotationalBundle */
     t = 0x005d65f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005da0e0_1;
@@ -58,7 +61,7 @@ R_1:
     /* 005da103  mov dword ptr [edx + 4], eax */
     ea = (uint32_t)(edx + 0x00000004u);
     M32(ea) = eax;
-    /* 005da106  mov dword ptr [esi], 0x848184 */
+    /* 005da106  mov dword ptr [esi], 0x848184  ; vtable LandingGear */
     ea = (uint32_t)(esi);
     M32(ea) = 0x848184u;
     /* 005da10c  mov byte ptr [esi + 0x198], 0 */
@@ -84,7 +87,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005da120  dice::ref2::world::LandingGear  (virtual method) */
+/* 005da120  LandingGear::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::LandingGear
+ */
 BFV_L1_ENTRY(bfv_server_l1_005da120, bfv_server_l1_body_005da120);
 BFV_L1_RESUME(bfv_server_l1r_005da120_1, bfv_server_l1_body_005da120, 1);
 BFV_L1_RESUME(bfv_server_l1r_005da120_2, bfv_server_l1_body_005da120, 2);
@@ -140,7 +146,7 @@ void bfv_server_l1_body_005da120(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005da12e  call dword ptr [eax + 0x34] */
+    /* 005da12e  call dword ptr [eax + 0x34]  ; -> LandingGear::vf13 = Object::getWorldPosition */
     ea = (uint32_t)(eax + 0x00000034u);
     t = M32(ea);
     esp -= 4;
@@ -157,10 +163,10 @@ R_1:
     /* 005da137  mov edi, dword ptr [eax] */
     ea = (uint32_t)(eax);
     edi = M32(ea);
-    /* 005da139  mov dword ptr [esp + 0x18], ecx */
+    /* 005da139  mov dword ptr [esp + 0x18], ecx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = ecx;
-    /* 005da13d  mov ecx, dword ptr [0xc0f118] */
+    /* 005da13d  mov ecx, dword ptr [0xc0f118]  ; g_pTerrain */
     ea = (uint32_t)(0x00c0f118u);
     ecx = M32(ea);
     /* 005da143  mov edx, dword ptr [ecx] */
@@ -182,20 +188,20 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 005da14a  fsubr dword ptr [esp + 0x18] */
+    /* 005da14a  fsubr dword ptr [esp + 0x18]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsubr dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005da14e  mov ecx, dword ptr [0xc0f118] */
+    /* 005da14e  mov ecx, dword ptr [0xc0f118]  ; g_pTerrain */
     ea = (uint32_t)(0x00c0f118u);
     ecx = M32(ea);
     /* 005da154  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 005da156  push 0x42c80000 */
+    /* 005da156  push 0x42c80000  ; 100.0f */
     t = 0x42c80000u;
     esp -= 4;
     M32(esp) = t;
-    /* 005da15b  fstp dword ptr [esp + 0x14] */
+    /* 005da15b  fstp dword ptr [esp + 0x14]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005da15f  push ebx */
@@ -214,10 +220,10 @@ R_2:
     c->eip = t;
     goto out;
 R_3:
-    /* 005da164  fsubr dword ptr [esp + 0x18] */
+    /* 005da164  fsubr dword ptr [esp + 0x18]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsubr dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005da168  fcom dword ptr [esp + 0x10] */
+    /* 005da168  fcom dword ptr [esp + 0x10]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcom dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005da16c  fnstsw ax */
@@ -227,7 +233,7 @@ R_3:
     F_LOGIC(8, r);
     /* 005da171  jp 0x5da179 */
     if (pf) goto L_005da179;
-    /* 005da173  fstp dword ptr [esp + 0x10] */
+    /* 005da173  fstp dword ptr [esp + 0x10]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005da177  jmp 0x5da17b */
@@ -250,7 +256,7 @@ L_005da180:
     /* 005da183  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 005da185  call dword ptr [edx + 0x10] */
+    /* 005da185  call dword ptr [edx + 0x10]  ; -> LandingGearTemplate::vf4 */
     ea = (uint32_t)(edx + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -258,7 +264,7 @@ L_005da180:
     c->eip = t;
     goto out;
 R_4:
-    /* 005da188  cmp eax, dword ptr [0x82073c] */
+    /* 005da188  cmp eax, dword ptr [0x82073c]  ; EngineTemplate::classID */
     ea = (uint32_t)(0x0082073cu);
     a = eax;
     b = M32(ea);
@@ -293,7 +299,7 @@ L_005da199:
     M32(esp) = t;
     /* 005da1a2  mov ecx, edi */
     ecx = edi;
-    /* 005da1a4  call dword ptr [edx + 0x24] */
+    /* 005da1a4  call dword ptr [edx + 0x24]  ; -> LandingGear::vf9 = Object::getComponent */
     ea = (uint32_t)(edx + 0x00000024u);
     t = M32(ea);
     esp -= 4;
@@ -320,7 +326,7 @@ L_005da1a9:
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
     /* 005da1b7  mov ecx, ebx */
     ecx = ebx;
-    /* 005da1b9  call 0x5d7a70 */
+    /* 005da1b9  call 0x5d7a70  ; world_005d7a70 */
     t = 0x005d7a70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005da120_6;
@@ -328,7 +334,7 @@ L_005da1a9:
     goto out;
 R_6:
 L_005da1be:
-    /* 005da1be  fld dword ptr [esp + 0x10] */
+    /* 005da1be  fld dword ptr [esp + 0x10]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005da1c2  fcomp dword ptr [ebp + 0x20c] */
@@ -355,7 +361,7 @@ L_005da1be:
     ea = (uint32_t)(esi + 0x00000198u);
     M8(ea) = 0x0u;
 L_005da1e3:
-    /* 005da1e3  fld dword ptr [esp + 0x10] */
+    /* 005da1e3  fld dword ptr [esp + 0x10]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005da1e7  fcomp dword ptr [ebp + 0x210] */
@@ -400,7 +406,7 @@ L_005da20c:
     /* 005da21b  mov eax, 0xbf800000 */
     eax = 0xbf800000u;
 L_005da220:
-    /* 005da220  mov ecx, dword ptr [esp + 0x24] */
+    /* 005da220  mov ecx, dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     ecx = M32(ea);
     /* 005da224  mov dword ptr [esi + 0x170], eax */
@@ -412,7 +418,7 @@ L_005da220:
     /* 005da230  mov dword ptr [esi + 0x178], eax */
     ea = (uint32_t)(esi + 0x00000178u);
     M32(ea) = eax;
-    /* 005da236  mov eax, dword ptr [esp + 0x28] */
+    /* 005da236  mov eax, dword ptr [esp + 0x28]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 005da23a  push eax */
@@ -425,7 +431,7 @@ L_005da220:
     M32(esp) = t;
     /* 005da23c  mov ecx, esi */
     ecx = esi;
-    /* 005da23e  call 0x5d68d0 */
+    /* 005da23e  call 0x5d68d0  ; RotationalBundle::update */
     t = 0x005d68d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005da120_7;
@@ -465,7 +471,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00711690  dice::ref2::world::LandingGear  (vtable store) */
+/* 00711690  LandingGear::ctor_dtor  (vtable store)
+ * class: dice::ref2::world::LandingGear
+ * called by: SAI::chooseStrategy
+ */
 BFV_L1_ENTRY(bfv_server_l1_00711690, bfv_server_l1_body_00711690);
 void bfv_server_l1_body_00711690(struct bfv_cpu *c)
 {
@@ -474,7 +483,7 @@ void bfv_server_l1_body_00711690(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00711690  mov eax, dword ptr [esp + 4] */
+    /* 00711690  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00711694  mov eax, dword ptr [ecx + eax*4 + 0x84] */

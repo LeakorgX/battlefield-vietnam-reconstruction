@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00790fd0  dice::bf::ai::SVUBotExists  (vtable store) */
+/* 00790fd0  SVUBotExists::SVUBotExists  (vtable store)
+ * class: dice::bf::ai::SVUBotExists
+ * also entered at 00791000: SVUBotExists::vf0
+ * called by: AIScriptManager::nThe_variable_does_00725280
+ */
 BFV_L1_ENTRY(bfv_server_l1_00790fd0, bfv_server_l1_body_00790fd0);
 BFV_L1_RESUME(bfv_server_l1r_00790fd0_1, bfv_server_l1_body_00790fd0, 1);
 void bfv_server_l1_body_00790fd0(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_server_l1_body_00790fd0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00790fd0  mov eax, dword ptr [esp + 4] */
+    /* 00790fd0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00790fd4  push esi */
@@ -36,17 +40,17 @@ void bfv_server_l1_body_00790fd0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00790fd8  mov esi, ecx */
     esi = ecx;
-    /* 00790fda  call 0x7bebb0 */
+    /* 00790fda  call 0x7bebb0  ; ISVUBot::ISVUBot */
     t = 0x007bebb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00790fd0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00790fdf  mov ecx, dword ptr [esp + 0xc] */
+    /* 00790fdf  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 00790fe3  mov dword ptr [esi], 0x877b1c */
+    /* 00790fe3  mov dword ptr [esi], 0x877b1c  ; vtable SVUBotExists */
     ea = (uint32_t)(esi);
     M32(ea) = 0x877b1cu;
     /* 00790fe9  mov dword ptr [esi + 0x10], ecx */
@@ -69,7 +73,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00791030  dice::bf::ai::SVUBotExists  (virtual method) */
+/* 00791030  SVUBotExists::execute  (virtual method)
+ * overrides: IAIScriptStatement::execute  (17 classes implement it)
+ * class: dice::bf::ai::SVUBotExists
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791030, bfv_server_l1_body_00791030);
 BFV_L1_RESUME(bfv_server_l1r_00791030_1, bfv_server_l1_body_00791030, 1);
 BFV_L1_RESUME(bfv_server_l1r_00791030_2, bfv_server_l1_body_00791030, 2);
@@ -132,7 +139,7 @@ R_2:
     ecx = r;
     /* 00791055  je 0x791080 */
     if (zf) goto L_00791080;
-    /* 00791057  mov edx, dword ptr [0xc2f7c0] */
+    /* 00791057  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 0079105d  mov edx, dword ptr [edx] */

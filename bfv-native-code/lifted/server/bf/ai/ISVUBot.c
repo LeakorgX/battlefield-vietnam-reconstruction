@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007beb70  dice::bf::ai::ISVUBot  (vtable store) */
+/* 007beb70  ISVUBot::~ISVUBot  (vtable store)
+ * class: dice::bf::ai::ISVUBot
+ * also entered at 007beb80: ISVUBot::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_007beb70, bfv_server_l1_body_007beb70);
 void bfv_server_l1_body_007beb70(struct bfv_cpu *c)
 {
@@ -14,10 +17,10 @@ void bfv_server_l1_body_007beb70(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007beb70  mov dword ptr [ecx], 0x87b7d4 */
+    /* 007beb70  mov dword ptr [ecx], 0x87b7d4  ; vtable ISVUBot */
     ea = (uint32_t)(ecx);
     M32(ea) = 0x87b7d4u;
-    /* 007beb76  jmp 0x7277e0 */
+    /* 007beb76  jmp 0x7277e0  ; IAIScriptVariableUpdater::~IAIScriptVariableUpdater */
     c->eip = 0x007277e0u;
     goto out;
 out: __attribute__((unused));
@@ -27,7 +30,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007bebb0  dice::bf::ai::ISVUBot  (vtable store) */
+/* 007bebb0  ISVUBot::ISVUBot  (vtable store)
+ * class: dice::bf::ai::ISVUBot
+ * called by: SVUBotVehicle::SVUBotVehicle, SVUBotPos::SVUBotPos, SVUBotHealth::SVUBotHealth, SVUBotExists::SVUBotExists
+ */
 BFV_L1_ENTRY(bfv_server_l1_007bebb0, bfv_server_l1_body_007bebb0);
 BFV_L1_RESUME(bfv_server_l1r_007bebb0_1, bfv_server_l1_body_007bebb0, 1);
 void bfv_server_l1_body_007bebb0(struct bfv_cpu *c)
@@ -41,7 +47,7 @@ void bfv_server_l1_body_007bebb0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007bebb0  mov eax, dword ptr [esp + 8] */
+    /* 007bebb0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007bebb4  push esi */
@@ -54,17 +60,17 @@ void bfv_server_l1_body_007bebb0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007bebb6  mov esi, ecx */
     esi = ecx;
-    /* 007bebb8  call 0x7277c0 */
+    /* 007bebb8  call 0x7277c0  ; IAIScriptVariableUpdater::IAIScriptVariableUpdater */
     t = 0x007277c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007bebb0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007bebbd  mov ecx, dword ptr [esp + 8] */
+    /* 007bebbd  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 007bebc1  mov dword ptr [esi], 0x87b7d4 */
+    /* 007bebc1  mov dword ptr [esi], 0x87b7d4  ; vtable ISVUBot */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87b7d4u;
     /* 007bebc7  mov dword ptr [esi + 0xc], ecx */

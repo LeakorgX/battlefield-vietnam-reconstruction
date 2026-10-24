@@ -1,0 +1,5 @@
+## file
+Plan builder for an idle aircraft.
+
+## 00984620
+buildPlan: clears the current plan, reads the bot's position (control 5) and builds a serial plan: BAPAResetControls (0, 1, 1), then a BAPAMoveTo3d towards the current point with a BAPConFalse condition (never finishes). When the vehicle's speed value (slot 0x1c) is 0.1 or less it first calls bot slot 0x17c. The plan is wrapped in a BAPIWIdle.

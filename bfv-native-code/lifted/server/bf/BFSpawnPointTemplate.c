@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 004bea30  dice::bf::BFSpawnPointTemplate  (vtable store) */
+/* 004bea30  BFSpawnPointTemplate::BFSpawnPointTemplate  (vtable store)
+ * class: dice::bf::BFSpawnPointTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_004bea30, bfv_server_l1_body_004bea30);
 BFV_L1_RESUME(bfv_server_l1r_004bea30_1, bfv_server_l1_body_004bea30, 1);
 void bfv_server_l1_body_004bea30(struct bfv_cpu *c)
@@ -25,7 +27,7 @@ void bfv_server_l1_body_004bea30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 004bea31  mov esi, ecx */
     esi = ecx;
-    /* 004bea33  call 0x56aae0 */
+    /* 004bea33  call 0x56aae0  ; SimpleObjectTemplate::SimpleObjectTemplate */
     t = 0x0056aae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004bea30_1;
@@ -36,7 +38,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 004bea3a  mov dword ptr [esi], 0x81f03c */
+    /* 004bea3a  mov dword ptr [esi], 0x81f03c  ; vtable BFSpawnPointTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81f03cu;
     /* 004bea40  mov dword ptr [esi + 0x74], 0x81f02c */
@@ -71,10 +73,10 @@ R_1:
     /* 004bea7c  mov dword ptr [esi + 0x1ac], eax */
     ea = (uint32_t)(esi + 0x000001acu);
     M32(ea) = eax;
-    /* 004bea82  mov dword ptr [esi + 0x1b0], eax */
+    /* 004bea82  mov dword ptr [esi + 0x1b0], eax  ; field ObjectTemplate.setSpawnPreventionDelay */
     ea = (uint32_t)(esi + 0x000001b0u);
     M32(ea) = eax;
-    /* 004bea88  mov dword ptr [esi + 0x1b4], eax */
+    /* 004bea88  mov dword ptr [esi + 0x1b4], eax  ; field ObjectTemplate.getSpawnId/ObjectTemplate.setSpawnId */
     ea = (uint32_t)(esi + 0x000001b4u);
     M32(ea) = eax;
     /* 004bea8e  mov byte ptr [esi + 0x1bd], al */
@@ -92,10 +94,10 @@ R_1:
     /* 004beaa6  mov byte ptr [esi + 0x1c1], al */
     ea = (uint32_t)(esi + 0x000001c1u);
     M8(ea) = LO8(eax);
-    /* 004beaac  mov dword ptr [esi + 0x1c4], eax */
+    /* 004beaac  mov dword ptr [esi + 0x1c4], eax  ; field ObjectTemplate.rollingSpawnTeam */
     ea = (uint32_t)(esi + 0x000001c4u);
     M32(ea) = eax;
-    /* 004beab2  mov dword ptr [esi + 0x1b8], 0xffffffff */
+    /* 004beab2  mov dword ptr [esi + 0x1b8], 0xffffffff  ; field ObjectTemplate.getGroup/ObjectTemplate.setGroup */
     ea = (uint32_t)(esi + 0x000001b8u);
     M32(ea) = 0xffffffffu;
     /* 004beabc  mov byte ptr [esi + 0x1bc], cl */
@@ -118,7 +120,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004beb80  dice::bf::BFSpawnPointTemplate  (virtual method) */
+/* 004beb80  BFSpawnPointTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::bf::BFSpawnPointTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_004beb80, bfv_server_l1_body_004beb80);
 void bfv_server_l1_body_004beb80(struct bfv_cpu *c)
 {
@@ -127,12 +132,12 @@ void bfv_server_l1_body_004beb80(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 004beb80  mov edx, dword ptr [0x8207b4] */
+    /* 004beb80  mov edx, dword ptr [0x8207b4]  ; BFSpawnPointTemplate::classID */
     ea = (uint32_t)(0x008207b4u);
     edx = M32(ea);
     /* 004beb86  mov eax, ecx */
     eax = ecx;
-    /* 004beb88  mov ecx, dword ptr [esp + 4] */
+    /* 004beb88  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 004beb8c  cmp ecx, edx */
@@ -142,7 +147,7 @@ void bfv_server_l1_body_004beb80(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 004beb8e  je 0x4bebaa */
     if (zf) goto L_004bebaa;
-    /* 004beb90  cmp ecx, dword ptr [0x820758] */
+    /* 004beb90  cmp ecx, dword ptr [0x820758]  ; SimpleObjectTemplate::classID */
     ea = (uint32_t)(0x00820758u);
     a = ecx;
     b = M32(ea);
@@ -154,7 +159,7 @@ void bfv_server_l1_body_004beb80(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 004beb99  mov esi, dword ptr [0x820720] */
+    /* 004beb99  mov esi, dword ptr [0x820720]  ; ObjectTemplate::classID */
     ea = (uint32_t)(0x00820720u);
     esi = M32(ea);
     /* 004beb9f  xor edx, edx */
@@ -193,7 +198,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004bebf0  dice::bf::BFSpawnPointTemplate  (virtual method) */
+/* 004bebf0  BFSpawnPointTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::bf::BFSpawnPointTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_004bebf0, bfv_server_l1_body_004bebf0);
 BFV_L1_RESUME(bfv_server_l1r_004bebf0_1, bfv_server_l1_body_004bebf0, 1);
 BFV_L1_RESUME(bfv_server_l1r_004bebf0_2, bfv_server_l1_body_004bebf0, 2);
@@ -219,7 +227,7 @@ void bfv_server_l1_body_004bebf0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 004bebf6  mov esi, ecx */
     esi = ecx;
-    /* 004bebf8  call 0x403d80 */
+    /* 004bebf8  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004bebf0_1;
@@ -243,7 +251,7 @@ R_1:
     M32(esp) = t;
     /* 004bec05  mov ecx, eax */
     ecx = eax;
-    /* 004bec07  call 0x4e1ab0 */
+    /* 004bec07  call 0x4e1ab0  ; BFSpawnPoint::BFSpawnPoint */
     t = 0x004e1ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004bebf0_2;
@@ -278,7 +286,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00548d70  dice::bf::BFSpawnPointTemplate  (virtual method) */
+/* 00548d70  BFSpawnPointTemplate::release  (virtual method)
+ * overrides: IBase::release  (301 classes implement it)
+ * class: dice::bf::BFSpawnPointTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00548d70, bfv_server_l1_body_00548d70);
 BFV_L1_RESUME(bfv_server_l1r_00548d70_1, bfv_server_l1_body_00548d70, 1);
 void bfv_server_l1_body_00548d70(struct bfv_cpu *c)
@@ -323,7 +334,7 @@ void bfv_server_l1_body_00548d70(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 00548d8a  call dword ptr [eax] */
+    /* 00548d8a  call dword ptr [eax]  ; -> BFSpawnPointTemplate::vf0 = SimpleObjectTemplate::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;
@@ -349,7 +360,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007077e0  dice::bf::BFSpawnPointTemplate  (virtual method) */
+/* 007077e0  BFSpawnPointTemplate::addRef  (virtual method)
+ * overrides: IBase::addRef  (301 classes implement it)
+ * class: dice::bf::BFSpawnPointTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_007077e0, bfv_server_l1_body_007077e0);
 void bfv_server_l1_body_007077e0(struct bfv_cpu *c)
 {

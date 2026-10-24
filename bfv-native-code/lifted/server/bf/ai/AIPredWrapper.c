@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00781b40  dice::bf::ai::?A0xdaa11c90::AIPredWrapper  (virtual method) */
+/* 00781b40  AIPredWrapper::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xdaa11c90::AIPredWrapper
+ */
 BFV_L1_ENTRY(bfv_server_l1_00781b40, bfv_server_l1_body_00781b40);
 BFV_L1_RESUME(bfv_server_l1r_00781b40_1, bfv_server_l1_body_00781b40, 1);
 void bfv_server_l1_body_00781b40(struct bfv_cpu *c)
@@ -23,7 +25,7 @@ void bfv_server_l1_body_00781b40(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00781b41  mov esi, dword ptr [esp + 8] */
+    /* 00781b41  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 00781b45  test esi, esi */
@@ -96,7 +98,7 @@ L_00781b62:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 00781b6d  mov dword ptr [esp + 4], eax */
+    /* 00781b6d  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
     /* 00781b71  jmp dword ptr [edx] */

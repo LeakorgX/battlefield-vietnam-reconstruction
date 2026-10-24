@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007028d0  dice::ref2::rend::RaStreamData  (virtual method) */
+/* 007028d0  RaStreamData::vf1_callVirtual_vf3  (virtual method)
+ * class: dice::ref2::rend::RaStreamData
+ */
 BFV_L1_ENTRY(bfv_client_l1_007028d0, bfv_client_l1_body_007028d0);
 void bfv_client_l1_body_007028d0(struct bfv_cpu *c)
 {
@@ -28,7 +30,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007028e0  dice::ref2::rend::RaStreamData  (virtual method) */
+/* 007028e0  RaStreamData::vf2_callVirtual_vf4  (virtual method)
+ * class: dice::ref2::rend::RaStreamData
+ * also entered at 007028f0: RaStreamData::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_007028e0, bfv_client_l1_body_007028e0);
 void bfv_client_l1_body_007028e0(struct bfv_cpu *c)
 {
@@ -51,7 +56,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00707230  dice::ref2::rend::RaStreamData  (vtable store) */
+/* 00707230  RaStreamData::ctor_dtor  (vtable store)
+ * class: dice::ref2::rend::RaStreamData
+ * called by: RaStreamData::ctor_dtor, sub_007074b0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00707230, bfv_client_l1_body_00707230);
 BFV_L1_RESUME(bfv_client_l1r_00707230_1, bfv_client_l1_body_00707230, 1);
 BFV_L1_RESUME(bfv_client_l1r_00707230_2, bfv_client_l1_body_00707230, 2);
@@ -83,7 +91,7 @@ void bfv_client_l1_body_00707230(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00707233  mov esi, dword ptr [esp + 0x10] */
+    /* 00707233  mov esi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00707237  mov al, byte ptr [esi + 0x91] */
@@ -118,7 +126,7 @@ L_00707248:
     M32(esp) = t;
     /* 0070724c  mov ecx, ebp */
     ecx = ebp;
-    /* 0070724e  call 0x707230 */
+    /* 0070724e  call 0x707230  ; RaStreamData::ctor_dtor */
     t = 0x00707230u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00707230_1;
@@ -165,7 +173,7 @@ L_00707261:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0070726b  call 0x403680 */
+    /* 0070726b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00707230_3;
@@ -192,10 +200,10 @@ L_00707273:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00707281  mov dword ptr [esi + 0x10], 0xba5fb8 */
+    /* 00707281  mov dword ptr [esi + 0x10], 0xba5fb8  ; vtable RaStreamData */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = 0xba5fb8u;
-    /* 00707288  call 0x403680 */
+    /* 00707288  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00707230_4;
@@ -248,7 +256,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0070a330  dice::ref2::rend::RaStreamData  (vtable store) */
+/* 0070a330  RaStreamData::ctor_dtor  (vtable store)
+ * class: dice::ref2::rend::RaStreamData
+ * called by: StandardMeshTemplate::vf41, UnderGrowthPatch::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_0070a330, bfv_client_l1_body_0070a330);
 BFV_L1_RESUME(bfv_client_l1r_0070a330_1, bfv_client_l1_body_0070a330, 1);
 void bfv_client_l1_body_0070a330(struct bfv_cpu *c)
@@ -270,14 +281,14 @@ void bfv_client_l1_body_0070a330(struct bfv_cpu *c)
     esi = ecx;
     /* 0070a333  lea ecx, [esi + 0x158] */
     ecx = (uint32_t)(esi + 0x00000158u);
-    /* 0070a339  call 0x490610 */
+    /* 0070a339  call 0x490610  ; bfv_query_vector_destroy */
     t = 0x00490610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0070a330_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0070a33e  mov dword ptr [esi], 0xba5fb8 */
+    /* 0070a33e  mov dword ptr [esi], 0xba5fb8  ; vtable RaStreamData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba5fb8u;
     /* 0070a344  pop esi */
@@ -295,7 +306,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0071e7e0  dice::ref2::rend::RaStreamData  (vtable store) */
+/* 0071e7e0  RaStreamData::~RaStreamData  (vtable store)
+ * class: dice::ref2::rend::RaStreamData
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071e7e0, bfv_client_l1_body_0071e7e0);
 BFV_L1_RESUME(bfv_client_l1r_0071e7e0_1, bfv_client_l1_body_0071e7e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0071e7e0_2, bfv_client_l1_body_0071e7e0, 2);
@@ -341,7 +354,7 @@ void bfv_client_l1_body_0071e7e0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0071e7f1  call 0x403680 */
+    /* 0071e7f1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071e7e0_1;
@@ -381,7 +394,7 @@ L_0071e817:
     F_LOGIC(32, r);
     ecx = r;
 L_0071e819:
-    /* 0071e819  call 0x75e100 */
+    /* 0071e819  call 0x75e100  ; GrowthPatch::~GrowthPatch */
     t = 0x0075e100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071e7e0_2;
@@ -402,7 +415,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0071e829  call 0x403680 */
+    /* 0071e829  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071e7e0_3;
@@ -429,7 +442,7 @@ L_0071e831:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 0071e844  mov dword ptr [esi], 0xba5fb8 */
+    /* 0071e844  mov dword ptr [esi], 0xba5fb8  ; vtable RaStreamData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba5fb8u;
     /* 0071e84a  pop esi */
@@ -447,7 +460,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007327c0  dice::ref2::rend::RaStreamData  (vtable store) */
+/* 007327c0  RaStreamData::~RaStreamData  (vtable store)
+ * class: dice::ref2::rend::RaStreamData
+ * called by: std::_Tree::erase_00735f00, std::_Tree::_Erase_00736250, geom_007365a0_catch_00736841, geom_00736a20
+ */
 BFV_L1_ENTRY(bfv_client_l1_007327c0, bfv_client_l1_body_007327c0);
 BFV_L1_RESUME(bfv_client_l1r_007327c0_1, bfv_client_l1_body_007327c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007327c0_2, bfv_client_l1_body_007327c0, 2);
@@ -525,7 +541,7 @@ L_007327d5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007327e0  call 0x403680 */
+    /* 007327e0  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007327c0_2;
@@ -562,7 +578,7 @@ L_007327e8:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00732805  call 0x403680 */
+    /* 00732805  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007327c0_3;
@@ -599,7 +615,7 @@ L_0073280d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0073282a  call 0x403680 */
+    /* 0073282a  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007327c0_4;
@@ -636,7 +652,7 @@ L_00732832:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0073284f  call 0x403680 */
+    /* 0073284f  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007327c0_5;
@@ -718,7 +734,7 @@ L_00732884:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0073288e  call 0x403680 */
+    /* 0073288e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007327c0_8;
@@ -741,7 +757,7 @@ L_00732896:
     /* 007328a0  mov byte ptr [esi + 8], bl */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = LO8(ebx);
-    /* 007328a3  mov dword ptr [esi], 0xba5fb8 */
+    /* 007328a3  mov dword ptr [esi], 0xba5fb8  ; vtable RaStreamData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba5fb8u;
     /* 007328a9  pop esi */
@@ -763,7 +779,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007517f0  dice::ref2::rend::RaStreamData  (vtable store) */
+/* 007517f0  RaStreamData::ctor_dtor  (vtable store)
+ * class: dice::ref2::rend::RaStreamData
+ * called by: PatchWaterCell::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_007517f0, bfv_client_l1_body_007517f0);
 BFV_L1_RESUME(bfv_client_l1r_007517f0_1, bfv_client_l1_body_007517f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007517f0_2, bfv_client_l1_body_007517f0, 2);
@@ -799,7 +818,7 @@ void bfv_client_l1_body_007517f0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007517fe  call 0x403680 */
+    /* 007517fe  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007517f0_1;
@@ -862,7 +881,7 @@ L_00751830:
     goto out;
 R_3:
 L_0075183c:
-    /* 0075183c  mov dword ptr [esi], 0xba5fb8 */
+    /* 0075183c  mov dword ptr [esi], 0xba5fb8  ; vtable RaStreamData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba5fb8u;
     /* 00751842  pop esi */
@@ -880,7 +899,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a82480  dice::ref2::rend::RaStreamData  (virtual method) */
+/* 00a82480  stub_return_0_0args_00a82480  (virtual method)
+ * class: dice::ref2::rend::RaStreamData
+ * called by: Cmd_Object_occlusionQuadVisible::execute, Cmd_Object_occlusionQuadVisible::hasTarget, Cmd_Object_setOcclusionQuadWidthHeight::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a82480, bfv_client_l1_body_00a82480);
 void bfv_client_l1_body_00a82480(struct bfv_cpu *c)
 {

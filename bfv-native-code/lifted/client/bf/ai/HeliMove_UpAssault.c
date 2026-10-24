@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00933760  dice::bf::ai::HeliMove_UpAssault  (vtable store) */
+/* 00933760  HeliMove_UpAssault::HeliMove_UpAssault  (vtable store)
+ * class: dice::bf::ai::HeliMove_UpAssault
+ * called by: HeliMoveControlAssault::createMoves
+ */
 BFV_L1_ENTRY(bfv_client_l1_00933760, bfv_client_l1_body_00933760);
 BFV_L1_RESUME(bfv_client_l1r_00933760_1, bfv_client_l1_body_00933760, 1);
 BFV_L1_RESUME(bfv_client_l1r_00933760_2, bfv_client_l1_body_00933760, 2);
@@ -23,14 +26,14 @@ void bfv_client_l1_body_00933760(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00933760  mov eax, dword ptr [esp + 0x20] */
+    /* 00933760  mov eax, dword ptr [esp + 0x20]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000020u);
     eax = M32(ea);
     /* 00933764  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00933765  push 0x3e4ccccd */
+    /* 00933765  push 0x3e4ccccd  ; 0.2f */
     t = 0x3e4ccccdu;
     esp -= 4;
     M32(esp) = t;
@@ -60,7 +63,7 @@ void bfv_client_l1_body_00933760(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00933777  lea edx, [esp + 0x34] */
+    /* 00933777  lea edx, [esp + 0x34]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000034u);
     /* 0093377b  mov dword ptr [ecx + 0x18], 0xf */
     ea = (uint32_t)(ecx + 0x00000018u);
@@ -75,7 +78,7 @@ void bfv_client_l1_body_00933760(struct bfv_cpu *c)
     /* 00933786  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 00933789  call 0x4019f0 */
+    /* 00933789  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00933760_1;
@@ -84,32 +87,32 @@ void bfv_client_l1_body_00933760(struct bfv_cpu *c)
 R_1:
     /* 0093378e  mov ecx, esi */
     ecx = esi;
-    /* 00933790  call 0x933090 */
+    /* 00933790  call 0x933090  ; HeliMove_Up::HeliMove_Up */
     t = 0x00933090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00933760_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00933795  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 00933795  cmp dword ptr [esp + 0x20], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 0093379a  mov dword ptr [esi], 0xbeedf8 */
+    /* 0093379a  mov dword ptr [esi], 0xbeedf8  ; vtable HeliMove_UpAssault */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbeedf8u;
     /* 009337a0  jb 0x9337af */
     if (cf) goto L_009337af;
-    /* 009337a2  mov eax, dword ptr [esp + 0xc] */
+    /* 009337a2  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 009337a6  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009337a7  call 0x403680 */
+    /* 009337a7  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00933760_3;

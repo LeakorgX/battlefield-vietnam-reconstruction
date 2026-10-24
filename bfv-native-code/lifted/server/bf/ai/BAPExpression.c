@@ -5,56 +5,9 @@
 #include "l1.h"
 
 
-/* 00741320  dice::bf::ai::BAPExpression  (vtable store) */
-BFV_L1_ENTRY(bfv_server_l1_00741320, bfv_server_l1_body_00741320);
-BFV_L1_RESUME(bfv_server_l1r_00741320_1, bfv_server_l1_body_00741320, 1);
-void bfv_server_l1_body_00741320(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    default: break;
-    }
-    /* 00741320  mov eax, dword ptr [esp + 4] */
-    ea = (uint32_t)(esp + 0x00000004u);
-    eax = M32(ea);
-    /* 00741324  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00741325  push edx */
-    t = edx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00741326  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00741327  mov ecx, 0xc32d08 */
-    ecx = 0xc32d08u;
-    /* 0074132c  call 0x404290 */
-    t = 0x00404290u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00741320_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 00741331  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 007417b0  dice::bf::ai::BAPExpression  (vtable store) */
+/* 007417b0  BAPExpression::BAPExpression  (vtable store)
+ * class: dice::bf::ai::BAPExpression
+ */
 BFV_L1_ENTRY(bfv_server_l1_007417b0, bfv_server_l1_body_007417b0);
 BFV_L1_RESUME(bfv_server_l1r_007417b0_1, bfv_server_l1_body_007417b0, 1);
 void bfv_server_l1_body_007417b0(struct bfv_cpu *c)
@@ -68,7 +21,7 @@ void bfv_server_l1_body_007417b0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007417b0  test byte ptr [esp + 4], 1 */
+    /* 007417b0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -78,7 +31,7 @@ void bfv_server_l1_body_007417b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007417b6  mov esi, ecx */
     esi = ecx;
-    /* 007417b8  mov dword ptr [esi], 0x8745d8 */
+    /* 007417b8  mov dword ptr [esi], 0x8745d8  ; vtable BAPExpression */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8745d8u;
     /* 007417be  je 0x7417cb */
@@ -87,9 +40,9 @@ void bfv_server_l1_body_007417b0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007417c1  mov ecx, 0xc319b8 */
+    /* 007417c1  mov ecx, 0xc319b8  ; g_MemoryPool_BAPOpAdd */
     ecx = 0xc319b8u;
-    /* 007417c6  call 0x413600 */
+    /* 007417c6  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007417b0_1;

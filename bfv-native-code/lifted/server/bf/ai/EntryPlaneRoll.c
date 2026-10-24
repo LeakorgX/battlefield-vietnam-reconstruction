@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007639a0  (source path) */
+/* 007639a0  AIConsole::ctor_dtor_helper_007639a0  (source path)
+ * also entered at 007639b0: EntryPlaneRoll::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_007639a0, bfv_server_l1_body_007639a0);
 void bfv_server_l1_body_007639a0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_007639a0(struct bfv_cpu *c)
     uint32_t ea;
     /* 007639a0  mov eax, ecx */
     eax = ecx;
-    /* 007639a2  mov dword ptr [eax], 0x8758ec */
+    /* 007639a2  mov dword ptr [eax], 0x8758ec  ; vtable EntryPlaneRoll */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8758ecu;
     /* 007639a8  ret */

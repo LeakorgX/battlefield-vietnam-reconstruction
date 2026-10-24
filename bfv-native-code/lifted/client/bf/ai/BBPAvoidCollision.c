@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f40e0  dice::bf::ai::BBPAvoidCollision  (vtable store) */
+/* 009f40e0  BBPAvoidCollision::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BBPAvoidCollision
+ * called by: BBPAvoidCollisionInfantery::deleting_dtor, BBPAvoidCollision3d::deleting_dtor, BBPAvoidCollision2d::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f40e0, bfv_client_l1_body_009f40e0);
 BFV_L1_RESUME(bfv_client_l1r_009f40e0_1, bfv_client_l1_body_009f40e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f40e0_2, bfv_client_l1_body_009f40e0, 2);
@@ -36,10 +39,10 @@ void bfv_client_l1_body_009f40e0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f40e7  mov dword ptr [esi], 0xbfb354 */
+    /* 009f40e7  mov dword ptr [esi], 0xbfb354  ; vtable BBPAvoidCollision */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfb354u;
-    /* 009f40ed  call 0x403680 */
+    /* 009f40ed  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f40e0_1;
@@ -53,7 +56,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009f40f6  call 0x403680 */
+    /* 009f40f6  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f40e0_2;
@@ -67,7 +70,7 @@ R_2:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 009f40ff  call 0x403680 */
+    /* 009f40ff  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f40e0_3;
@@ -86,7 +89,7 @@ R_3:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 009f410a  jmp 0x9ee450 */
+    /* 009f410a  jmp 0x9ee450  ; BBPPattern::~BBPPattern */
     c->eip = 0x009ee450u;
     goto out;
 out: __attribute__((unused));
@@ -96,7 +99,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f4110  dice::bf::ai::BBPAvoidCollision  (virtual method) */
+/* 009f4110  BBPAvoidCollision::deleting_dtor  (virtual method)
+ * overrides: BBPPattern::vf4  (33 classes implement it)
+ * class: dice::bf::ai::BBPAvoidCollision
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f4110, bfv_client_l1_body_009f4110);
 BFV_L1_RESUME(bfv_client_l1r_009f4110_1, bfv_client_l1_body_009f4110, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f4110_2, bfv_client_l1_body_009f4110, 2);
@@ -131,10 +137,10 @@ void bfv_client_l1_body_009f4110(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f4117  mov dword ptr [esi], 0xbfb354 */
+    /* 009f4117  mov dword ptr [esi], 0xbfb354  ; vtable BBPAvoidCollision */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfb354u;
-    /* 009f411d  call 0x403680 */
+    /* 009f411d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4110_1;
@@ -148,7 +154,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009f4126  call 0x403680 */
+    /* 009f4126  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4110_2;
@@ -162,7 +168,7 @@ R_2:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 009f412f  call 0x403680 */
+    /* 009f412f  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4110_3;
@@ -177,14 +183,14 @@ R_3:
     esp = r;
     /* 009f4137  mov ecx, esi */
     ecx = esi;
-    /* 009f4139  call 0x9ee450 */
+    /* 009f4139  call 0x9ee450  ; BBPPattern::~BBPPattern */
     t = 0x009ee450u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4110_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 009f413e  test byte ptr [esp + 8], 1 */
+    /* 009f413e  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -194,7 +200,7 @@ R_4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f4146  call 0x403680 */
+    /* 009f4146  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4110_5;

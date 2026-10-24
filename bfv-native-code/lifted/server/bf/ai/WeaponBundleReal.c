@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0072a7a0  dice::bf::ai::WeaponBundleReal  (vtable store) */
+/* 0072a7a0  WeaponBundleReal::WeaponBundleReal  (vtable store)
+ * class: dice::bf::ai::WeaponBundleReal
+ * called by: SimpleObject::constructor_helper_006faf00
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a7a0, bfv_server_l1_body_0072a7a0);
 BFV_L1_RESUME(bfv_server_l1r_0072a7a0_1, bfv_server_l1_body_0072a7a0, 1);
 void bfv_server_l1_body_0072a7a0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_0072a7a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0072a7a0  mov eax, dword ptr [esp + 8] */
+    /* 0072a7a0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0072a7a4  push esi */
@@ -30,7 +33,7 @@ void bfv_server_l1_body_0072a7a0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072a7a6  mov edi, dword ptr [esp + 0xc] */
+    /* 0072a7a6  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 0072a7aa  push edi */
@@ -43,7 +46,7 @@ void bfv_server_l1_body_0072a7a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0072a7ac  mov esi, ecx */
     esi = ecx;
-    /* 0072a7ae  call 0x79e970 */
+    /* 0072a7ae  call 0x79e970  ; WeaponBundle::WeaponBundle */
     t = 0x0079e970u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072a7a0_1;
@@ -57,7 +60,7 @@ R_1:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 0072a7b7  mov dword ptr [esi], 0x873334 */
+    /* 0072a7b7  mov dword ptr [esi], 0x873334  ; vtable WeaponBundleReal */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873334u;
     /* 0072a7bd  mov eax, esi */
@@ -77,7 +80,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a7f0  dice::bf::ai::WeaponBundleReal  (virtual method) */
+/* 0072a7f0  WeaponBundleReal::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::bf::ai::WeaponBundleReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a7f0, bfv_server_l1_body_0072a7f0);
 BFV_L1_RESUME(bfv_server_l1r_0072a7f0_1, bfv_server_l1_body_0072a7f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072a7f0_2, bfv_server_l1_body_0072a7f0, 2);
@@ -99,17 +105,17 @@ void bfv_server_l1_body_0072a7f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0072a7f1  mov esi, ecx */
     esi = ecx;
-    /* 0072a7f3  mov dword ptr [esi], 0x873334 */
+    /* 0072a7f3  mov dword ptr [esi], 0x873334  ; vtable WeaponBundleReal */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873334u;
-    /* 0072a7f9  call 0x79e9b0 */
+    /* 0072a7f9  call 0x79e9b0  ; WeaponBundle::~WeaponBundle */
     t = 0x0079e9b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072a7f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0072a7fe  test byte ptr [esp + 8], 1 */
+    /* 0072a7fe  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -119,9 +125,9 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072a806  mov ecx, 0xc31578 */
+    /* 0072a806  mov ecx, 0xc31578  ; g_MemoryPoolNull_WeaponBundleReal */
     ecx = 0xc31578u;
-    /* 0072a80b  call 0x413600 */
+    /* 0072a80b  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072a7f0_2;
@@ -146,7 +152,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a820  dice::bf::ai::WeaponBundleReal  (virtual method) */
+/* 0072a820  WeaponBundleReal::vf12_onField_14h_callVirtual_vf56  (virtual method)
+ * overrides: Weapon::vf12  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundleReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a820, bfv_server_l1_body_0072a820);
 void bfv_server_l1_body_0072a820(struct bfv_cpu *c)
 {
@@ -172,7 +181,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a830  dice::bf::ai::WeaponBundleReal  (virtual method) */
+/* 0072a830  WeaponBundleReal::vf13  (virtual method)
+ * overrides: Weapon::vf13  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundleReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a830, bfv_server_l1_body_0072a830);
 BFV_L1_RESUME(bfv_server_l1r_0072a830_1, bfv_server_l1_body_0072a830, 1);
 void bfv_server_l1_body_0072a830(struct bfv_cpu *c)
@@ -210,7 +222,7 @@ void bfv_server_l1_body_0072a830(struct bfv_cpu *c)
 R_1:
     /* 0072a83d  mov esi, eax */
     esi = eax;
-    /* 0072a83f  mov eax, dword ptr [esp + 0xc] */
+    /* 0072a83f  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0072a843  mov ecx, 0x10 */
@@ -243,7 +255,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a860  dice::bf::ai::WeaponBundleReal  (virtual method) */
+/* 0072a860  WeaponBundleReal::vf14_onField_14h_callVirtual_vf59  (virtual method)
+ * overrides: Weapon::vf14  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundleReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a860, bfv_server_l1_body_0072a860);
 void bfv_server_l1_body_0072a860(struct bfv_cpu *c)
 {
@@ -269,7 +284,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a870  dice::bf::ai::WeaponBundleReal  (virtual method) */
+/* 0072a870  WeaponBundleReal::vf27  (virtual method)
+ * overrides: Weapon::vf27  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundleReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a870, bfv_server_l1_body_0072a870);
 BFV_L1_RESUME(bfv_server_l1r_0072a870_1, bfv_server_l1_body_0072a870, 1);
 void bfv_server_l1_body_0072a870(struct bfv_cpu *c)
@@ -290,14 +308,14 @@ void bfv_server_l1_body_0072a870(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0072a874  mov ebx, dword ptr [esp + 8] */
+    /* 0072a874  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0072a878  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0072a879  call 0x5b6290 */
+    /* 0072a879  call 0x5b6290  ; WeaponBundleReal::vf27_helper_005b6290 */
     t = 0x005b6290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072a870_1;
@@ -321,7 +339,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a8c0  dice::bf::ai::WeaponBundleReal  (virtual method) */
+/* 0072a8c0  WeaponBundleReal::vf10  (virtual method)
+ * overrides: Weapon::vf10  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundleReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a8c0, bfv_server_l1_body_0072a8c0);
 BFV_L1_RESUME(bfv_server_l1r_0072a8c0_1, bfv_server_l1_body_0072a8c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072a8c0_2, bfv_server_l1_body_0072a8c0, 2);
@@ -444,7 +465,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a900  dice::bf::ai::WeaponBundleReal  (virtual method) */
+/* 0072a900  WeaponBundleReal::vf25  (virtual method)
+ * overrides: Weapon::vf25  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundleReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a900, bfv_server_l1_body_0072a900);
 BFV_L1_RESUME(bfv_server_l1r_0072a900_1, bfv_server_l1_body_0072a900, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072a900_2, bfv_server_l1_body_0072a900, 2);
@@ -520,7 +544,7 @@ L_0072a918:
     c->eip = t;
     goto out;
 R_2:
-    /* 0072a922  cmp eax, dword ptr [0x820794] */
+    /* 0072a922  cmp eax, dword ptr [0x820794]  ; FireArmsTemplate::classID */
     ea = (uint32_t)(0x00820794u);
     a = eax;
     b = M32(ea);
@@ -541,7 +565,7 @@ R_2:
     c->eip = t;
     goto out;
 R_3:
-    /* 0072a931  cmp eax, dword ptr [0x8207a0] */
+    /* 0072a931  cmp eax, dword ptr [0x8207a0]  ; HandFireArmsTemplate::classID */
     ea = (uint32_t)(0x008207a0u);
     a = eax;
     b = M32(ea);
@@ -607,7 +631,7 @@ L_0072a953:
     esp += 4;
     goto out;
 L_0072a960:
-    /* 0072a960  fld dword ptr [0x851bcc] */
+    /* 0072a960  fld dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0072a966  pop ecx */
@@ -625,7 +649,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a970  dice::bf::ai::WeaponBundleReal  (virtual method) */
+/* 0072a970  WeaponBundleReal::vf28  (virtual method)
+ * overrides: Weapon::vf28  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundleReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a970, bfv_server_l1_body_0072a970);
 BFV_L1_RESUME(bfv_server_l1r_0072a970_1, bfv_server_l1_body_0072a970, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072a970_2, bfv_server_l1_body_0072a970, 2);
@@ -693,7 +720,7 @@ L_0072a981:
     c->eip = t;
     goto out;
 R_2:
-    /* 0072a98b  cmp eax, dword ptr [0x820794] */
+    /* 0072a98b  cmp eax, dword ptr [0x820794]  ; FireArmsTemplate::classID */
     ea = (uint32_t)(0x00820794u);
     a = eax;
     b = M32(ea);
@@ -714,7 +741,7 @@ R_2:
     c->eip = t;
     goto out;
 R_3:
-    /* 0072a99a  cmp eax, dword ptr [0x8207a0] */
+    /* 0072a99a  cmp eax, dword ptr [0x8207a0]  ; HandFireArmsTemplate::classID */
     ea = (uint32_t)(0x008207a0u);
     a = eax;
     b = M32(ea);
@@ -730,7 +757,7 @@ R_3:
     F_LOGIC(32, r);
     /* 0072a9a7  jne 0x72a981 */
     if (!zf) goto L_0072a981;
-    /* 0072a9a9  mov ecx, dword ptr [esp + 8] */
+    /* 0072a9a9  mov ecx, dword ptr [esp + 8]  ; retaddr */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 0072a9ad  pop edi */
@@ -747,11 +774,11 @@ R_3:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 0072a9b2  jmp 0x571720 */
+    /* 0072a9b2  jmp 0x571720  ; FireArms_getByte_329h_00571720 */
     c->eip = 0x00571720u;
     goto out;
 L_0072a9b7:
-    /* 0072a9b7  mov dword ptr [esp + 8], esi */
+    /* 0072a9b7  mov dword ptr [esp + 8], esi  ; retaddr */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = esi;
     /* 0072a9bb  pop edi */
@@ -759,7 +786,7 @@ L_0072a9b7:
     esp += 4;
     edi = t;
 L_0072a9bc:
-    /* 0072a9bc  mov ecx, dword ptr [esp + 4] */
+    /* 0072a9bc  mov ecx, dword ptr [esp + 4]  ; retaddr */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0072a9c0  pop esi */
@@ -772,7 +799,7 @@ L_0072a9bc:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 0072a9c4  jmp 0x571720 */
+    /* 0072a9c4  jmp 0x571720  ; FireArms_getByte_329h_00571720 */
     c->eip = 0x00571720u;
     goto out;
 out: __attribute__((unused));

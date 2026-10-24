@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0086a740  dice::meme::ButtonEvent  (virtual method) */
+/* 0086a740  ButtonEvent::vf17  (virtual method)
+ * overrides: Event::vf17  (5 classes implement it)
+ * class: dice::meme::ButtonEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086a740, bfv_client_l1_body_0086a740);
 BFV_L1_RESUME(bfv_client_l1r_0086a740_1, bfv_client_l1_body_0086a740, 1);
 void bfv_client_l1_body_0086a740(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_0086a740(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0086a740  mov eax, dword ptr [esp + 4] */
+    /* 0086a740  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0086a744  push esi */
@@ -30,7 +33,7 @@ void bfv_client_l1_body_0086a740(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a746  mov edi, dword ptr [esp + 0x10] */
+    /* 0086a746  mov edi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 0086a74a  push edi */
@@ -43,7 +46,7 @@ void bfv_client_l1_body_0086a740(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086a74c  mov esi, ecx */
     esi = ecx;
-    /* 0086a74e  call 0x878530 */
+    /* 0086a74e  call 0x878530  ; Event::vf17 */
     t = 0x00878530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a740_1;
@@ -120,7 +123,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0086a7f0  dice::meme::ButtonEvent  (vtable store) */
+/* 0086a7f0  ButtonEvent::create  (vtable store)
+ * class: dice::meme::ButtonEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086a7f0, bfv_client_l1_body_0086a7f0);
 BFV_L1_RESUME(bfv_client_l1r_0086a7f0_1, bfv_client_l1_body_0086a7f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086a7f0_2, bfv_client_l1_body_0086a7f0, 2);
@@ -144,7 +149,7 @@ void bfv_client_l1_body_0086a7f0(struct bfv_cpu *c)
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a7f3  call 0x403610 */
+    /* 0086a7f3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a7f0_1;
@@ -166,7 +171,7 @@ R_1:
     if (zf) goto L_0086a821;
     /* 0086a801  mov ecx, esi */
     ecx = esi;
-    /* 0086a803  call 0x874870 */
+    /* 0086a803  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a7f0_2;
@@ -184,7 +189,7 @@ R_2:
     /* 0086a813  mov byte ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = 0x0u;
-    /* 0086a817  mov dword ptr [esi], 0xbd2bf4 */
+    /* 0086a817  mov dword ptr [esi], 0xbd2bf4  ; vtable ButtonEvent */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd2bf4u;
     /* 0086a81d  mov eax, esi */
@@ -217,8 +222,12 @@ out: __attribute__((unused));
 }
 
 
-/* 0086a8e0  dice::meme::ButtonEvent  (virtual method)
- * strings: "Event type", "Button type" */
+/* 0086a8e0  ButtonEvent::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::ButtonEvent
+ * strings: "Event type", "Button type"
+ * called by: ExtendedButtonEvent::serialize
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086a8e0, bfv_client_l1_body_0086a8e0);
 BFV_L1_RESUME(bfv_client_l1r_0086a8e0_1, bfv_client_l1_body_0086a8e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086a8e0_2, bfv_client_l1_body_0086a8e0, 2);
@@ -236,14 +245,14 @@ void bfv_client_l1_body_0086a8e0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 0086a8e0  mov eax, dword ptr [esp + 4] */
+    /* 0086a8e0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0086a8e4  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a8e5  mov esi, dword ptr [esp + 0xc] */
+    /* 0086a8e5  mov esi, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 0086a8e9  push edi */
@@ -260,7 +269,7 @@ void bfv_client_l1_body_0086a8e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086a8ec  mov edi, ecx */
     edi = ecx;
-    /* 0086a8ee  call 0x8784f0 */
+    /* 0086a8ee  call 0x8784f0  ; Event::serialize */
     t = 0x008784f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a8e0_1;
@@ -293,11 +302,11 @@ L_0086a8fe:
     /* 0086a8fe  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086a900  push 0xbd2cb8 */
+    /* 0086a900  push 0xbd2cb8  ; "Event type" */
     t = 0xbd2cb8u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a905  push 0x878550 */
+    /* 0086a905  push 0x878550  ; meme_ButtonPress_00878550 */
     t = 0x878550u;
     esp -= 4;
     M32(esp) = t;
@@ -329,15 +338,15 @@ R_2:
     /* 0086a91c  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086a91e  push 0xbd2cac */
+    /* 0086a91e  push 0xbd2cac  ; "Button type" */
     t = 0xbd2cacu;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a923  push 0x879d00 */
+    /* 0086a923  push 0x879d00  ; meme_Select_00879d00 */
     t = 0x879d00u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a928  push 0x86a780 */
+    /* 0086a928  push 0x86a780  ; meme_0086a780 */
     t = 0x86a780u;
     esp -= 4;
     M32(esp) = t;
@@ -385,8 +394,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086a980  dice::meme::ButtonEvent  (virtual method)
- * strings: "dice::meme::ButtonEvent" */
+/* 0086a980  ButtonEvent::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::ButtonEvent
+ * strings: "dice::meme::ButtonEvent"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086a980, bfv_client_l1_body_0086a980);
 BFV_L1_RESUME(bfv_client_l1r_0086a980_1, bfv_client_l1_body_0086a980, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086a980_2, bfv_client_l1_body_0086a980, 2);
@@ -417,13 +429,13 @@ void bfv_client_l1_body_0086a980(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0086a995  push 0xbd2cd4 */
+    /* 0086a995  push 0xbd2cd4  ; "dice::meme::ButtonEvent" */
     t = 0xbd2cd4u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a99a  mov ecx, 0xdf6190 */
+    /* 0086a99a  mov ecx, 0xdf6190  ; g_RuntimeClass_ButtonEvent */
     ecx = 0xdf6190u;
-    /* 0086a99f  call 0x875490 */
+    /* 0086a99f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a980_1;
@@ -434,10 +446,10 @@ R_1:
     t = 0xb3ab00u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086a9a9  mov dword ptr [0xdf6190], 0xbd2bd0 */
+    /* 0086a9a9  mov dword ptr [0xdf6190], 0xbd2bd0  ; g_RuntimeClass_ButtonEvent */
     ea = (uint32_t)(0x00df6190u);
     M32(ea) = 0xbd2bd0u;
-    /* 0086a9b3  call 0x7c2cd2 */
+    /* 0086a9b3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086a980_2;
@@ -451,7 +463,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0086a9bb:
-    /* 0086a9bb  mov eax, 0xdf6190 */
+    /* 0086a9bb  mov eax, 0xdf6190  ; g_RuntimeClass_ButtonEvent */
     eax = 0xdf6190u;
     /* 0086a9c0  ret */
     c->eip = M32(esp);

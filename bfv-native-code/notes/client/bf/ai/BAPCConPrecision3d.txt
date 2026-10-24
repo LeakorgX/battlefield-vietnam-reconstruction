@@ -1,0 +1,5 @@
+## file
+Plan condition: checks whether the aim of a weapon component converges on its target in 3D.
+
+## 009f8af0
+Uses the aiming component at this+0x10; false unless its vf10 (slot 0x28) reports ready and the target handle at this+8 still resolves. Reads the component's current aim point, target point and lead time (slots 0x38, 0x2c, 0x34), then asks slot 0x3c for the predicted point at (lead time - current AI time). Without this+0x14: true when the squared distance between the two points is at most this+0xc (a squared tolerance). With this+0x14 it tracks the smallest squared error in this+0x18 (reset to FLT_MAX): while the error keeps shrinking it stores the new minimum and returns false; once it stops shrinking the result is true when the minimum is within this+0xc. Every success, and every in-tolerance minimum, stamps the current AI time with bfv_client_set_word_00970ce0.

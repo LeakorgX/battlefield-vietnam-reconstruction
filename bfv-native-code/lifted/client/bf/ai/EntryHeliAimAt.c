@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009bb680  dice::bf::ai::EntryHeliAimAt  (vtable store) */
+/* 009bb680  EntryHeliAimAt::EntryHeliAimAt  (vtable store)
+ * class: dice::bf::ai::EntryHeliAimAt
+ * also entered at 009bb690: EntryHeliAimAt::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bb680, bfv_client_l1_body_009bb680);
 void bfv_client_l1_body_009bb680(struct bfv_cpu *c)
 {
@@ -16,7 +20,7 @@ void bfv_client_l1_body_009bb680(struct bfv_cpu *c)
     uint32_t ea;
     /* 009bb680  mov eax, ecx */
     eax = ecx;
-    /* 009bb682  mov dword ptr [eax], 0xbf7994 */
+    /* 009bb682  mov dword ptr [eax], 0xbf7994  ; vtable EntryHeliAimAt */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf7994u;
     /* 009bb688  ret */

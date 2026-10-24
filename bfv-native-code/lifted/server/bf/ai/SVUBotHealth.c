@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00790ed0  dice::bf::ai::SVUBotHealth  (vtable store) */
+/* 00790ed0  SVUBotHealth::SVUBotHealth  (vtable store)
+ * class: dice::bf::ai::SVUBotHealth
+ * also entered at 00790f00: SVUBotHealth::vf0
+ * called by: AIScriptManager::nThe_variable_does_00725280
+ */
 BFV_L1_ENTRY(bfv_server_l1_00790ed0, bfv_server_l1_body_00790ed0);
 BFV_L1_RESUME(bfv_server_l1r_00790ed0_1, bfv_server_l1_body_00790ed0, 1);
 void bfv_server_l1_body_00790ed0(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_server_l1_body_00790ed0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00790ed0  mov eax, dword ptr [esp + 4] */
+    /* 00790ed0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00790ed4  push esi */
@@ -36,17 +40,17 @@ void bfv_server_l1_body_00790ed0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00790ed8  mov esi, ecx */
     esi = ecx;
-    /* 00790eda  call 0x7bebb0 */
+    /* 00790eda  call 0x7bebb0  ; ISVUBot::ISVUBot */
     t = 0x007bebb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00790ed0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00790edf  mov ecx, dword ptr [esp + 0xc] */
+    /* 00790edf  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 00790ee3  mov dword ptr [esi], 0x877ac4 */
+    /* 00790ee3  mov dword ptr [esi], 0x877ac4  ; vtable SVUBotHealth */
     ea = (uint32_t)(esi);
     M32(ea) = 0x877ac4u;
     /* 00790ee9  mov dword ptr [esi + 0x10], ecx */
@@ -69,7 +73,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00790f30  dice::bf::ai::SVUBotHealth  (virtual method) */
+/* 00790f30  SVUBotHealth::execute  (virtual method)
+ * overrides: IAIScriptStatement::execute  (17 classes implement it)
+ * class: dice::bf::ai::SVUBotHealth
+ */
 BFV_L1_ENTRY(bfv_server_l1_00790f30, bfv_server_l1_body_00790f30);
 BFV_L1_RESUME(bfv_server_l1r_00790f30_1, bfv_server_l1_body_00790f30, 1);
 BFV_L1_RESUME(bfv_server_l1r_00790f30_2, bfv_server_l1_body_00790f30, 2);
@@ -136,7 +143,7 @@ R_2:
     ecx = r;
     /* 00790f55  je 0x790fb3 */
     if (zf) goto L_00790fb3;
-    /* 00790f57  mov edx, dword ptr [0xc2f7c0] */
+    /* 00790f57  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 00790f5d  mov edx, dword ptr [edx] */
@@ -250,7 +257,7 @@ L_00790fa3:
     /* 00790fa3  mov eax, dword ptr [esi + 0x10] */
     ea = (uint32_t)(esi + 0x00000010u);
     eax = M32(ea);
-    /* 00790fa6  fld dword ptr [0x809264] */
+    /* 00790fa6  fld dword ptr [0x809264]  ; = 1.0f */
     ea = (uint32_t)(0x00809264u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00790fac  fstp dword ptr [eax + 0x24] */
@@ -268,7 +275,7 @@ L_00790fb3:
     /* 00790fb3  mov eax, dword ptr [esi + 0x10] */
     ea = (uint32_t)(esi + 0x00000010u);
     eax = M32(ea);
-    /* 00790fb6  fld dword ptr [0x851bcc] */
+    /* 00790fb6  fld dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00790fbc  fstp dword ptr [eax + 0x24] */

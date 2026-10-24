@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0096feb0  dice::bf::ai::IAIScriptVariableUpdater  (vtable store) */
+/* 0096feb0  IAIScriptVariableUpdater::IAIScriptVariableUpdater  (vtable store)
+ * class: dice::bf::ai::IAIScriptVariableUpdater
+ * called by: SVUComparer<bool>::SVUComparer, SVUComparer<Bot*>::SVUComparer, SVUComparer<float>::SVUComparer, SVUComparer<uint>::SVUComparer, SVUComparer<int>::SVUComparer, ISVUBot::ISVUBot
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096feb0, bfv_client_l1_body_0096feb0);
 BFV_L1_RESUME(bfv_client_l1r_0096feb0_1, bfv_client_l1_body_0096feb0, 1);
 void bfv_client_l1_body_0096feb0(struct bfv_cpu *c)
@@ -25,20 +28,20 @@ void bfv_client_l1_body_0096feb0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0096feb1  mov esi, ecx */
     esi = ecx;
-    /* 0096feb3  call 0x9d9490 */
+    /* 0096feb3  call 0x9d9490  ; IAIScriptStatement::IAIScriptStatement */
     t = 0x009d9490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096feb0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0096feb8  mov eax, dword ptr [esp + 8] */
+    /* 0096feb8  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0096febc  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 0096febf  mov dword ptr [esi], 0xbf44ac */
+    /* 0096febf  mov dword ptr [esi], 0xbf44ac  ; vtable IAIScriptVariableUpdater */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf44acu;
     /* 0096fec5  mov eax, esi */
@@ -58,7 +61,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096fed0  dice::bf::ai::IAIScriptVariableUpdater  (vtable store) */
+/* 0096fed0  IAIScriptVariableUpdater::~IAIScriptVariableUpdater  (vtable store)
+ * class: dice::bf::ai::IAIScriptVariableUpdater
+ * also entered at 0096fee0: IAIScriptVariableUpdater::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096fed0, bfv_client_l1_body_0096fed0);
 void bfv_client_l1_body_0096fed0(struct bfv_cpu *c)
 {
@@ -67,10 +73,10 @@ void bfv_client_l1_body_0096fed0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0096fed0  mov dword ptr [ecx], 0xbf44ac */
+    /* 0096fed0  mov dword ptr [ecx], 0xbf44ac  ; vtable IAIScriptVariableUpdater */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbf44acu;
-    /* 0096fed6  jmp 0x9d9460 */
+    /* 0096fed6  jmp 0x9d9460  ; IAIScriptStatement::~IAIScriptStatement */
     c->eip = 0x009d9460u;
     goto out;
 out: __attribute__((unused));

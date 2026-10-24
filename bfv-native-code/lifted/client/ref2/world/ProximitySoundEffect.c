@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00700340  dice::ref2::world::ProximitySoundEffect  (vtable store)
- * strings: "noname" */
+/* 00700340  ProximitySoundEffect::ProximitySoundEffect  (vtable store)
+ * class: dice::ref2::world::ProximitySoundEffect
+ * strings: "noname"
+ * called by: ObjectCreatorWrapper<ProximitySoundEffect>::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700340, bfv_client_l1_body_00700340);
 BFV_L1_RESUME(bfv_client_l1r_00700340_1, bfv_client_l1_body_00700340, 1);
 void bfv_client_l1_body_00700340(struct bfv_cpu *c)
@@ -32,7 +35,7 @@ void bfv_client_l1_body_00700340(struct bfv_cpu *c)
     esi = ecx;
     /* 00700344  lea ecx, [esi + 4] */
     ecx = (uint32_t)(esi + 0x00000004u);
-    /* 00700347  mov dword ptr [esi], 0xba5948 */
+    /* 00700347  mov dword ptr [esi], 0xba5948  ; vtable ProximitySoundEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba5948u;
     /* 0070034d  xor ebx, ebx */
@@ -49,14 +52,14 @@ void bfv_client_l1_body_00700340(struct bfv_cpu *c)
     /* 00700358  mov dword ptr [ecx + 0x14], ebx */
     ea = (uint32_t)(ecx + 0x00000014u);
     M32(ea) = ebx;
-    /* 0070035b  push 0xba5950 */
+    /* 0070035b  push 0xba5950  ; "noname" */
     t = 0xba5950u;
     esp -= 4;
     M32(esp) = t;
     /* 00700360  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 00700363  call 0x401ae0 */
+    /* 00700363  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700340_1;

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 004dfec0  (called from this file only) */
+/* 004dfec0  ConsoleInputThread::vf1_helper_004dfec0  (called from this file only)
+ * called by: ConsoleInputThread::vf1
+ */
 BFV_L1_ENTRY(bfv_server_l1_004dfec0, bfv_server_l1_body_004dfec0);
 BFV_L1_RESUME(bfv_server_l1r_004dfec0_1, bfv_server_l1_body_004dfec0, 1);
 BFV_L1_RESUME(bfv_server_l1r_004dfec0_2, bfv_server_l1_body_004dfec0, 2);
@@ -39,7 +41,7 @@ void bfv_server_l1_body_004dfec0(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x00000024u);
     /* 004dfec7  mov ecx, edi */
     ecx = edi;
-    /* 004dfec9  call 0x7db410 */
+    /* 004dfec9  call 0x7db410  ; ref2_calls_WaitForSingleObject_007db410 */
     t = 0x007db410u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dfec0_1;
@@ -117,7 +119,7 @@ L_004dfee4:
     /* 004dfef4  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 004dfef7  mov edx, dword ptr [esp + 0xc] */
+    /* 004dfef7  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 004dfefb  mov dword ptr [eax], edx */
@@ -134,7 +136,7 @@ L_004dfee4:
     M32(ea) = eax;
     /* 004dff03  mov ecx, edi */
     ecx = edi;
-    /* 004dff05  call 0x7db420 */
+    /* 004dff05  call 0x7db420  ; ref2_calls_ReleaseMutex_007db420 */
     t = 0x007db420u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dfec0_2;
@@ -157,7 +159,7 @@ L_004dff0f:
     /* 004dff0f  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 004dff12  lea edx, [esp + 0xc] */
+    /* 004dff12  lea edx, [esp + 0xc]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 004dff16  push edx */
     t = edx;
@@ -171,7 +173,7 @@ L_004dff0f:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004dff1a  call 0x491170 */
+    /* 004dff1a  call 0x491170  ; GameServer_00491170 */
     t = 0x00491170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dfec0_3;
@@ -180,7 +182,7 @@ L_004dff0f:
 R_3:
     /* 004dff1f  mov ecx, edi */
     ecx = edi;
-    /* 004dff21  call 0x7db420 */
+    /* 004dff21  call 0x7db420  ; ref2_calls_ReleaseMutex_007db420 */
     t = 0x007db420u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dfec0_4;
@@ -206,7 +208,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004dff30  ?A0xbe4253ed::ConsoleInputThread  (virtual method) */
+/* 004dff30  ConsoleInputThread::vf1  (virtual method)
+ * overrides: Thread::vf1  (3 classes implement it)
+ * class: ?A0xbe4253ed::ConsoleInputThread
+ */
 BFV_L1_ENTRY(bfv_server_l1_004dff30, bfv_server_l1_body_004dff30);
 BFV_L1_RESUME(bfv_server_l1r_004dff30_1, bfv_server_l1_body_004dff30, 1);
 BFV_L1_RESUME(bfv_server_l1r_004dff30_2, bfv_server_l1_body_004dff30, 2);
@@ -263,7 +268,7 @@ void bfv_server_l1_body_004dff30(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x00000020u);
     /* 004dff3f  mov ecx, edi */
     ecx = edi;
-    /* 004dff41  call 0x7db410 */
+    /* 004dff41  call 0x7db410  ; ref2_calls_WaitForSingleObject_007db410 */
     t = 0x007db410u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dff30_1;
@@ -275,7 +280,7 @@ R_1:
     SET8L(ebx, M8(ea));
     /* 004dff49  mov ecx, edi */
     ecx = edi;
-    /* 004dff4b  call 0x7db420 */
+    /* 004dff4b  call 0x7db420  ; ref2_calls_ReleaseMutex_007db420 */
     t = 0x007db420u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dff30_2;
@@ -299,7 +304,7 @@ L_004dff58:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004dff5e  call dword ptr [0x8070ec] */
+    /* 004dff5e  call dword ptr [0x8070ec]  ; KERNEL32!WaitForSingleObject */
     ea = (uint32_t)(0x008070ecu);
     t = M32(ea);
     esp -= 4;
@@ -315,7 +320,7 @@ R_3:
     /* 004dff6c  mov eax, dword ptr [ebp + 0xc] */
     ea = (uint32_t)(ebp + 0x0000000cu);
     eax = M32(ea);
-    /* 004dff6f  lea ecx, [esp + 0x10] */
+    /* 004dff6f  lea ecx, [esp + 0x10]  ; &var_18 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 004dff73  push ecx */
     t = ecx;
@@ -325,7 +330,7 @@ R_3:
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 004dff76  lea edx, [esp + 0x1c] */
+    /* 004dff76  lea edx, [esp + 0x1c]  ; &var_14 */
     edx = (uint32_t)(esp + 0x0000001cu);
     /* 004dff7a  push edx */
     t = edx;
@@ -335,7 +340,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004dff7c  call dword ptr [0x807108] */
+    /* 004dff7c  call dword ptr [0x807108]  ; KERNEL32!ReadConsoleInputA */
     ea = (uint32_t)(0x00807108u);
     t = M32(ea);
     esp -= 4;
@@ -348,7 +353,7 @@ R_4:
     F_LOGIC(32, r);
     /* 004dff84  je 0x4dfff5 */
     if (zf) goto L_004dfff5;
-    /* 004dff86  mov eax, dword ptr [esp + 0x10] */
+    /* 004dff86  mov eax, dword ptr [esp + 0x10]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 004dff8a  test eax, eax */
@@ -356,7 +361,7 @@ R_4:
     F_LOGIC(32, r);
     /* 004dff8c  jbe 0x4dfff5 */
     if ((cf | zf)) goto L_004dfff5;
-    /* 004dff8e  cmp word ptr [esp + 0x14], 1 */
+    /* 004dff8e  cmp word ptr [esp + 0x14], 1  ; var_14 */
     ea = (uint32_t)(esp + 0x00000014u);
     a = M16(ea);
     b = 0x1u;
@@ -364,7 +369,7 @@ R_4:
     F_SUB(16, a, b, r);
     /* 004dff94  jne 0x4dfff5 */
     if (!zf) goto L_004dfff5;
-    /* 004dff96  mov eax, dword ptr [esp + 0x18] */
+    /* 004dff96  mov eax, dword ptr [esp + 0x18]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 004dff9a  test eax, eax */
@@ -372,7 +377,7 @@ R_4:
     F_LOGIC(32, r);
     /* 004dff9c  je 0x4dfff5 */
     if (zf) goto L_004dfff5;
-    /* 004dff9e  movzx eax, word ptr [esp + 0x1e] */
+    /* 004dff9e  movzx eax, word ptr [esp + 0x1e]  ; var_a */
     ea = (uint32_t)(esp + 0x0000001eu);
     eax = M16(ea);
     /* 004dffa3  add eax, -0xd */
@@ -396,7 +401,7 @@ R_4:
     c->eip = M32(ea);
     goto out;
 L_004dffe3:
-    /* 004dffe3  movsx eax, byte ptr [esp + 0x22] */
+    /* 004dffe3  movsx eax, byte ptr [esp + 0x22]  ; var_6 */
     ea = (uint32_t)(esp + 0x00000022u);
     eax = (uint32_t)(int32_t)(int8_t)M8(ea);
     /* 004dffe8  test eax, eax */
@@ -411,7 +416,7 @@ L_004dffe3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004dfff0  call 0x4dfec0 */
+    /* 004dfff0  call 0x4dfec0  ; ConsoleInputThread::vf1_helper_004dfec0 */
     t = 0x004dfec0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dff30_5;
@@ -426,7 +431,7 @@ L_004dfff5:
     edi = (uint32_t)(esi + 0x00000020u);
     /* 004dfffb  mov ecx, edi */
     ecx = edi;
-    /* 004dfffd  call 0x7db410 */
+    /* 004dfffd  call 0x7db410  ; ref2_calls_WaitForSingleObject_007db410 */
     t = 0x007db410u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dff30_6;
@@ -438,7 +443,7 @@ R_6:
     SET8L(ebx, M8(ea));
     /* 004e0005  mov ecx, edi */
     ecx = edi;
-    /* 004e0007  call 0x7db420 */
+    /* 004e0007  call 0x7db420  ; ref2_calls_ReleaseMutex_007db420 */
     t = 0x007db420u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dff30_7;

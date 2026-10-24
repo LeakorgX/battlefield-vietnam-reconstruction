@@ -1,0 +1,8 @@
+## file
+Plan instruction that switches the bot to scouting.
+
+## 00993c20
+Destructor: restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.
+
+## 009f53f0
+Calls bot vf102 (slot 0x198), then finishes: flag = 1, done = 1, returns 1.

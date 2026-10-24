@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 0086cbb0  dice::meme::CallFunctionVariableAction  (virtual method)
- * strings: "Function", "Result data" */
+/* 0086cbb0  CallFunctionVariableAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::CallFunctionVariableAction
+ * strings: "Function", "Result data"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086cbb0, bfv_client_l1_body_0086cbb0);
 BFV_L1_RESUME(bfv_client_l1r_0086cbb0_1, bfv_client_l1_body_0086cbb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086cbb0_2, bfv_client_l1_body_0086cbb0, 2);
@@ -28,14 +31,14 @@ void bfv_client_l1_body_0086cbb0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cbb1  mov ebx, dword ptr [esp + 8] */
+    /* 0086cbb1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0086cbb5  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cbb6  mov esi, dword ptr [esp + 0x10] */
+    /* 0086cbb6  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 0086cbba  push edi */
@@ -52,7 +55,7 @@ void bfv_client_l1_body_0086cbb0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086cbbd  mov edi, ecx */
     edi = ecx;
-    /* 0086cbbf  call 0xa7d100 */
+    /* 0086cbbf  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086cbb0_1;
@@ -71,11 +74,11 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cbcc  push 0xbd3dac */
+    /* 0086cbcc  push 0xbd3dac  ; "Function" */
     t = 0xbd3dacu;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cbd1  lea ecx, [edi + 8] */
+    /* 0086cbd1  lea ecx, [edi + 8]  ; field Function (serialized) */
     ecx = (uint32_t)(edi + 0x00000008u);
     /* 0086cbd4  push ecx */
     t = ecx;
@@ -129,7 +132,7 @@ L_0086cbe7:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cbeb  push 0xbd3db8 */
+    /* 0086cbeb  push 0xbd3db8  ; "Result data" */
     t = 0xbd3db8u;
     esp -= 4;
     M32(esp) = t;
@@ -185,7 +188,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086cc10  dice::meme::CallFunctionVariableAction  (virtual method) */
+/* 0086cc10  CallFunctionVariableAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::CallFunctionVariableAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086cc10, bfv_client_l1_body_0086cc10);
 BFV_L1_RESUME(bfv_client_l1r_0086cc10_1, bfv_client_l1_body_0086cc10, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086cc10_2, bfv_client_l1_body_0086cc10, 2);
@@ -209,7 +215,7 @@ void bfv_client_l1_body_0086cc10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086cc11  mov esi, ecx */
     esi = ecx;
-    /* 0086cc13  mov eax, dword ptr [esi + 8] */
+    /* 0086cc13  mov eax, dword ptr [esi + 8]  ; field Function */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
     /* 0086cc16  test eax, eax */
@@ -221,7 +227,7 @@ void bfv_client_l1_body_0086cc10(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cc1b  mov edi, dword ptr [esp + 0xc] */
+    /* 0086cc1b  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 0086cc1f  mov ecx, eax */
@@ -257,7 +263,7 @@ R_1:
     /* 0086cc32  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 0086cc34  push 0x3f800000 */
+    /* 0086cc34  push 0x3f800000  ; 1.0f */
     t = 0x3f800000u;
     esp -= 4;
     M32(esp) = t;
@@ -334,7 +340,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0086ccf0  dice::meme::CallFunctionVariableAction  (vtable store) */
+/* 0086ccf0  CallFunctionVariableAction::create  (vtable store)
+ * class: dice::meme::CallFunctionVariableAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086ccf0, bfv_client_l1_body_0086ccf0);
 BFV_L1_RESUME(bfv_client_l1r_0086ccf0_1, bfv_client_l1_body_0086ccf0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086ccf0_2, bfv_client_l1_body_0086ccf0, 2);
@@ -358,7 +366,7 @@ void bfv_client_l1_body_0086ccf0(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086ccf3  call 0x403610 */
+    /* 0086ccf3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086ccf0_1;
@@ -380,7 +388,7 @@ R_1:
     if (zf) goto L_0086cd20;
     /* 0086cd01  mov ecx, esi */
     ecx = esi;
-    /* 0086cd03  call 0x874870 */
+    /* 0086cd03  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086ccf0_2;
@@ -390,7 +398,7 @@ R_2:
     /* 0086cd08  mov dword ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 0086cd0f  mov dword ptr [esi], 0xbd3e64 */
+    /* 0086cd0f  mov dword ptr [esi], 0xbd3e64  ; vtable CallFunctionVariableAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd3e64u;
     /* 0086cd15  mov dword ptr [esi + 0xc], 0 */
@@ -426,8 +434,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086cd80  dice::meme::CallFunctionVariableAction  (virtual method)
- * strings: "dice::meme::CallFunctionVariableAction" */
+/* 0086cd80  CallFunctionVariableAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::CallFunctionVariableAction
+ * strings: "dice::meme::CallFunctionVariableAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086cd80, bfv_client_l1_body_0086cd80);
 BFV_L1_RESUME(bfv_client_l1r_0086cd80_1, bfv_client_l1_body_0086cd80, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086cd80_2, bfv_client_l1_body_0086cd80, 2);
@@ -458,13 +469,13 @@ void bfv_client_l1_body_0086cd80(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0086cd95  push 0xbd3ecc */
+    /* 0086cd95  push 0xbd3ecc  ; "dice::meme::CallFunctionVariableAction" */
     t = 0xbd3eccu;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cd9a  mov ecx, 0xdf639c */
+    /* 0086cd9a  mov ecx, 0xdf639c  ; g_RuntimeClass_CallFunctionVariableAction */
     ecx = 0xdf639cu;
-    /* 0086cd9f  call 0x875490 */
+    /* 0086cd9f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086cd80_1;
@@ -475,10 +486,10 @@ R_1:
     t = 0xb3ac30u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cda9  mov dword ptr [0xdf639c], 0xbd3dec */
+    /* 0086cda9  mov dword ptr [0xdf639c], 0xbd3dec  ; g_RuntimeClass_CallFunctionVariableAction */
     ea = (uint32_t)(0x00df639cu);
     M32(ea) = 0xbd3decu;
-    /* 0086cdb3  call 0x7c2cd2 */
+    /* 0086cdb3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086cd80_2;
@@ -492,7 +503,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0086cdbb:
-    /* 0086cdbb  mov eax, 0xdf639c */
+    /* 0086cdbb  mov eax, 0xdf639c  ; g_RuntimeClass_CallFunctionVariableAction */
     eax = 0xdf639cu;
     /* 0086cdc0  ret */
     c->eip = M32(esp);

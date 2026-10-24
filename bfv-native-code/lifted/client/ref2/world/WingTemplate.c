@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006be370  dice::ref2::world::WingTemplate  (virtual method) */
+/* 006be370  WingTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::WingTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006be370, bfv_client_l1_body_006be370);
 BFV_L1_RESUME(bfv_client_l1r_006be370_1, bfv_client_l1_body_006be370, 1);
 BFV_L1_RESUME(bfv_client_l1r_006be370_2, bfv_client_l1_body_006be370, 2);
@@ -31,7 +34,7 @@ void bfv_client_l1_body_006be370(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006be376  mov esi, ecx */
     esi = ecx;
-    /* 006be378  call 0x403610 */
+    /* 006be378  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006be370_1;
@@ -55,7 +58,7 @@ R_1:
     M32(esp) = t;
     /* 006be385  mov ecx, eax */
     ecx = eax;
-    /* 006be387  call 0x6fbae0 */
+    /* 006be387  call 0x6fbae0  ; Wing::Wing */
     t = 0x006fbae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006be370_2;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006be3a0  dice::ref2::world::WingTemplate  (virtual method) */
+/* 006be3a0  WingTemplate::createPhysicsNode  (virtual method)
+ * overrides: SimpleObjectTemplate::createPhysicsNode  (44 classes implement it)
+ * class: dice::ref2::world::WingTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006be3a0, bfv_client_l1_body_006be3a0);
 BFV_L1_RESUME(bfv_client_l1r_006be3a0_1, bfv_client_l1_body_006be3a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006be3a0_2, bfv_client_l1_body_006be3a0, 2);
@@ -151,7 +157,7 @@ R_1:
     /* 006be3bb  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 006be3bd  mov edi, dword ptr [esp + 0xc] */
+    /* 006be3bd  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 006be3c1  je 0x6be3d0 */
@@ -166,7 +172,7 @@ R_1:
     M32(esp) = t;
     /* 006be3c5  mov ecx, eax */
     ecx = eax;
-    /* 006be3c7  call 0x6fc5d0 */
+    /* 006be3c7  call 0x6fc5d0  ; PhysicsWing::PhysicsWing */
     t = 0x006fc5d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006be3a0_2;
@@ -224,7 +230,7 @@ R_3:
     c->eip = t;
     goto out;
 R_4:
-    /* 006be3e9  mov ecx, dword ptr [0xd7d008] */
+    /* 006be3e9  mov ecx, dword ptr [0xd7d008]  ; g_pPhysicsNodeManager */
     ea = (uint32_t)(0x00d7d008u);
     ecx = M32(ea);
     /* 006be3ef  mov edx, dword ptr [ecx] */
@@ -234,7 +240,7 @@ R_4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006be3f2  call dword ptr [edx + 0x10] */
+    /* 006be3f2  call dword ptr [edx + 0x10]  ; -> PhysicsNodeManager::vf4 */
     ea = (uint32_t)(edx + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -261,7 +267,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006be420  dice::ref2::world::WingTemplate  (vtable store) */
+/* 006be420  WingTemplate::WingTemplate  (vtable store)
+ * class: dice::ref2::world::WingTemplate
+ * also entered at 006be490: WingTemplate::getClassID
+ * called by: ObjectCreatorWrapper<WingTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_006be420, bfv_client_l1_body_006be420);
 BFV_L1_RESUME(bfv_client_l1r_006be420_1, bfv_client_l1_body_006be420, 1);
 void bfv_client_l1_body_006be420(struct bfv_cpu *c)
@@ -281,7 +291,7 @@ void bfv_client_l1_body_006be420(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006be421  mov esi, ecx */
     esi = ecx;
-    /* 006be423  call 0x6a8240 */
+    /* 006be423  call 0x6a8240  ; RotationalBundleTemplate::RotationalBundleTemplate */
     t = 0x006a8240u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006be420_1;
@@ -295,7 +305,7 @@ R_1:
     /* 006be42a  mov dword ptr [esi + 0x240], eax */
     ea = (uint32_t)(esi + 0x00000240u);
     M32(ea) = eax;
-    /* 006be430  mov dword ptr [esi], 0xb9b974 */
+    /* 006be430  mov dword ptr [esi], 0xb9b974  ; vtable WingTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9b974u;
     /* 006be436  mov dword ptr [esi + 4], 0xb9b95c */
@@ -312,7 +322,7 @@ R_1:
     /* 006be453  mov dword ptr [esi + 0x238], ecx */
     ea = (uint32_t)(esi + 0x00000238u);
     M32(ea) = ecx;
-    /* 006be459  mov dword ptr [esi + 0x23c], 0x3dcccccd */
+    /* 006be459  mov dword ptr [esi + 0x23c], 0x3dcccccd  ; 0.1f */
     ea = (uint32_t)(esi + 0x0000023cu);
     M32(ea) = 0x3dcccccdu;
     /* 006be463  mov dword ptr [esi + 0x244], eax */
@@ -327,7 +337,7 @@ R_1:
     /* 006be475  mov byte ptr [esi + 0x250], al */
     ea = (uint32_t)(esi + 0x00000250u);
     M8(ea) = LO8(eax);
-    /* 006be47b  mov dword ptr [esi + 0x254], 0x409d1eb8 */
+    /* 006be47b  mov dword ptr [esi + 0x254], 0x409d1eb8  ; 4.91f */
     ea = (uint32_t)(esi + 0x00000254u);
     M32(ea) = 0x409d1eb8u;
     /* 006be485  mov dword ptr [esi + 0x258], ecx */
@@ -350,7 +360,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006be4a0  dice::ref2::world::WingTemplate  (virtual method) */
+/* 006be4a0  WingTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::WingTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006be4a0, bfv_client_l1_body_006be4a0);
 void bfv_client_l1_body_006be4a0(struct bfv_cpu *c)
 {
@@ -359,10 +372,10 @@ void bfv_client_l1_body_006be4a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006be4a0  mov eax, dword ptr [esp + 4] */
+    /* 006be4a0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006be4a4  cmp eax, dword ptr [0xb77ea8] */
+    /* 006be4a4  cmp eax, dword ptr [0xb77ea8]  ; WingTemplate::classID */
     ea = (uint32_t)(0x00b77ea8u);
     a = eax;
     b = M32(ea);
@@ -377,10 +390,10 @@ void bfv_client_l1_body_006be4a0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006be4b1:
-    /* 006be4b1  mov dword ptr [esp + 4], eax */
+    /* 006be4b1  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006be4b5  jmp 0x6a8170 */
+    /* 006be4b5  jmp 0x6a8170  ; RotationalBundleTemplate::castTo */
     c->eip = 0x006a8170u;
     goto out;
 out: __attribute__((unused));

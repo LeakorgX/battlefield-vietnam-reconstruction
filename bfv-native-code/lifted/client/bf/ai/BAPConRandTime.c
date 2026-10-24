@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f2d10  dice::bf::ai::BAPConRandTime  (vtable store) */
+/* 009f2d10  BAPConRandTime::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPConRandTime
+ * called by: BBPFireInfantery::buildPlan_helper_00999880
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f2d10, bfv_client_l1_body_009f2d10);
 void bfv_client_l1_body_009f2d10(struct bfv_cpu *c)
 {
@@ -14,18 +17,18 @@ void bfv_client_l1_body_009f2d10(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 009f2d10  mov edx, dword ptr [esp + 8] */
+    /* 009f2d10  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 009f2d14  mov eax, ecx */
     eax = ecx;
-    /* 009f2d16  mov ecx, dword ptr [esp + 4] */
+    /* 009f2d16  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 009f2d1a  mov dword ptr [eax + 4], 0 */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 009f2d21  mov dword ptr [eax], 0xbfaca8 */
+    /* 009f2d21  mov dword ptr [eax], 0xbfaca8  ; vtable BAPConRandTime */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbfaca8u;
     /* 009f2d27  mov dword ptr [eax + 0xc], ecx */
@@ -45,7 +48,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f2e30  dice::bf::ai::BAPConRandTime  (virtual method) */
+/* 009f2e30  BAPConRandTime::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConRandTime
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f2e30, bfv_client_l1_body_009f2e30);
 BFV_L1_RESUME(bfv_client_l1r_009f2e30_1, bfv_client_l1_body_009f2e30, 1);
 void bfv_client_l1_body_009f2e30(struct bfv_cpu *c)
@@ -59,7 +65,7 @@ void bfv_client_l1_body_009f2e30(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009f2e30  test byte ptr [esp + 4], 1 */
+    /* 009f2e30  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -69,7 +75,7 @@ void bfv_client_l1_body_009f2e30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f2e36  mov esi, ecx */
     esi = ecx;
-    /* 009f2e38  mov dword ptr [esi], 0xbf477c */
+    /* 009f2e38  mov dword ptr [esi], 0xbf477c  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf477cu;
     /* 009f2e3e  je 0x9f2e4b */
@@ -78,9 +84,9 @@ void bfv_client_l1_body_009f2e30(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f2e41  mov ecx, 0xe101f8 */
+    /* 009f2e41  mov ecx, 0xe101f8  ; g_MemoryPoolNull_BAPConRandTime */
     ecx = 0xe101f8u;
-    /* 009f2e46  call 0x412fc0 */
+    /* 009f2e46  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f2e30_1;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 004c1490  dice::bf::SpawnRequestEvent  (vtable store) */
+/* 004c1490  SpawnRequestEvent::create  (vtable store)
+ * class: dice::bf::SpawnRequestEvent
+ * also entered at 004c14c0: SpawnRequestEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c1490, bfv_server_l1_body_004c1490);
 BFV_L1_RESUME(bfv_server_l1r_004c1490_1, bfv_server_l1_body_004c1490, 1);
 void bfv_server_l1_body_004c1490(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_004c1490(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c1490  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c1490  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c1496  mov eax, dword ptr [ecx] */
@@ -53,7 +56,7 @@ R_1:
     /* 004c14a8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c14af  mov dword ptr [eax], 0x81f75c */
+    /* 004c14af  mov dword ptr [eax], 0x81f75c  ; vtable SpawnRequestEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f75cu;
     /* 004c14b5  ret */
@@ -76,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c14d0  dice::bf::SpawnRequestEvent  (vtable store) */
+/* 004c14d0  SpawnRequestEvent::create  (vtable store)
+ * class: dice::bf::SpawnRequestEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c14d0, bfv_server_l1_body_004c14d0);
 BFV_L1_RESUME(bfv_server_l1r_004c14d0_1, bfv_server_l1_body_004c14d0, 1);
 void bfv_server_l1_body_004c14d0(struct bfv_cpu *c)
@@ -90,7 +95,7 @@ void bfv_server_l1_body_004c14d0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c14d0  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c14d0  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c14d6  mov eax, dword ptr [ecx] */
@@ -124,7 +129,7 @@ R_1:
     /* 004c14e8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c14ef  mov dword ptr [eax], 0x81f75c */
+    /* 004c14ef  mov dword ptr [eax], 0x81f75c  ; vtable SpawnRequestEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f75cu;
     /* 004c14f5  jmp 0x4c14f9 */
@@ -135,7 +140,7 @@ L_004c14f7:
     F_LOGIC(32, r);
     eax = r;
 L_004c14f9:
-    /* 004c14f9  mov ecx, dword ptr [esp + 4] */
+    /* 004c14f9  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 004c14fd  push esi */

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0052f7f0  dice::bf::TimeLimit  (vtable store) */
+/* 0052f7f0  TimeLimit::create  (vtable store)
+ * class: dice::bf::TimeLimit
+ */
 BFV_L1_ENTRY(bfv_client_l1_0052f7f0, bfv_client_l1_body_0052f7f0);
 BFV_L1_RESUME(bfv_client_l1r_0052f7f0_1, bfv_client_l1_body_0052f7f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0052f7f0_2, bfv_client_l1_body_0052f7f0, 2);
@@ -37,7 +39,7 @@ void bfv_client_l1_body_0052f7f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0052f7f4  mov edi, ecx */
     edi = ecx;
-    /* 0052f7f6  call 0x403610 */
+    /* 0052f7f6  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f7f0_1;
@@ -63,14 +65,14 @@ R_1:
     M32(esp) = t;
     /* 0052f806  mov ecx, esi */
     ecx = esi;
-    /* 0052f808  call 0x5c9950 */
+    /* 0052f808  call 0x5c9950  ; SubChallenge::SubChallenge */
     t = 0x005c9950u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f7f0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0052f80d  mov dword ptr [esi], 0xb64b98 */
+    /* 0052f80d  mov dword ptr [esi], 0xb64b98  ; vtable TimeLimit */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb64b98u;
     /* 0052f813  jmp 0x52f817 */
@@ -81,7 +83,7 @@ L_0052f815:
     F_LOGIC(32, r);
     esi = r;
 L_0052f817:
-    /* 0052f817  mov ecx, dword ptr [esp + 0x14] */
+    /* 0052f817  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0052f81b  test ecx, ecx */
@@ -99,7 +101,7 @@ L_0052f817:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0052f826  call 0x414f50 */
+    /* 0052f826  call 0x414f50  ; std::string::assign_cstr */
     t = 0x00414f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f7f0_3;
@@ -126,7 +128,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005c98c0  dice::bf::TimeLimit  (virtual method) */
+/* 005c98c0  TimeLimit::apply  (virtual method)
+ * overrides: SubChallenge::apply  (23 classes implement it)
+ * class: dice::bf::TimeLimit
+ */
 BFV_L1_ENTRY(bfv_client_l1_005c98c0, bfv_client_l1_body_005c98c0);
 BFV_L1_RESUME(bfv_client_l1r_005c98c0_1, bfv_client_l1_body_005c98c0, 1);
 void bfv_client_l1_body_005c98c0(struct bfv_cpu *c)
@@ -142,7 +147,7 @@ void bfv_client_l1_body_005c98c0(struct bfv_cpu *c)
     }
     /* 005c98c0  mov eax, ecx */
     eax = ecx;
-    /* 005c98c2  mov ecx, dword ptr [0xd45950] */
+    /* 005c98c2  mov ecx, dword ptr [0xd45950]  ; g_pGame */
     ea = (uint32_t)(0x00d45950u);
     ecx = M32(ea);
     /* 005c98c8  mov eax, dword ptr [eax + 0x48] */

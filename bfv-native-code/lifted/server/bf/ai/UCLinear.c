@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0075a600  dice::bf::ai::UCLinear  (vtable store) */
+/* 0075a600  UCLinear::UCLinear  (vtable store)
+ * class: dice::bf::ai::UCLinear
+ * also entered at 0075a620: UCLinear::vf1
+ * called by: AiSettings::createUCLinear
+ */
 BFV_L1_ENTRY(bfv_server_l1_0075a600, bfv_server_l1_body_0075a600);
 void bfv_server_l1_body_0075a600(struct bfv_cpu *c)
 {
@@ -14,15 +18,15 @@ void bfv_server_l1_body_0075a600(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0075a600  mov edx, dword ptr [esp + 8] */
+    /* 0075a600  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 0075a604  mov eax, ecx */
     eax = ecx;
-    /* 0075a606  mov ecx, dword ptr [esp + 4] */
+    /* 0075a606  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 0075a60a  mov dword ptr [eax], 0x874bb4 */
+    /* 0075a60a  mov dword ptr [eax], 0x874bb4  ; vtable UCLinear */
     ea = (uint32_t)(eax);
     M32(ea) = 0x874bb4u;
     /* 0075a610  mov dword ptr [eax + 4], ecx */

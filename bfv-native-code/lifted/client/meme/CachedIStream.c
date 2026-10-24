@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 008789d0  dice::meme::CachedIStream  (vtable store) */
+/* 008789d0  CachedIStream::CachedIStream  (vtable store)
+ * class: dice::meme::CachedIStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008789d0, bfv_client_l1_body_008789d0);
 BFV_L1_RESUME(bfv_client_l1r_008789d0_1, bfv_client_l1_body_008789d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008789d0_2, bfv_client_l1_body_008789d0, 2);
@@ -29,7 +31,7 @@ void bfv_client_l1_body_008789d0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008789d2  mov edi, dword ptr [esp + 0xc] */
+    /* 008789d2  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 008789d6  push 0 */
@@ -42,14 +44,14 @@ void bfv_client_l1_body_008789d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008789d9  mov esi, ecx */
     esi = ecx;
-    /* 008789db  call 0x878910 */
+    /* 008789db  call 0x878910  ; ProxyIStream::ProxyIStream */
     t = 0x00878910u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008789d0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008789e0  mov dword ptr [esi], 0xbd73cc */
+    /* 008789e0  mov dword ptr [esi], 0xbd73cc  ; vtable CachedIStream */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd73ccu;
     /* 008789e6  mov eax, dword ptr [edi] */
@@ -92,7 +94,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00878a10  dice::meme::CachedIStream  (virtual method) */
+/* 00878a10  CachedIStream::skip  (virtual method)
+ * overrides: IStream::skip  (6 classes implement it)
+ * class: dice::meme::CachedIStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878a10, bfv_client_l1_body_00878a10);
 void bfv_client_l1_body_00878a10(struct bfv_cpu *c)
 {
@@ -110,7 +115,7 @@ void bfv_client_l1_body_00878a10(struct bfv_cpu *c)
     /* 00878a16  mov edx, dword ptr [ecx + 0x14] */
     ea = (uint32_t)(ecx + 0x00000014u);
     edx = M32(ea);
-    /* 00878a19  mov eax, dword ptr [esp + 4] */
+    /* 00878a19  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00878a1d  add edx, eax */
@@ -133,7 +138,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00878a30  dice::meme::CachedIStream  (virtual method) */
+/* 00878a30  CachedIStream::read  (virtual method)
+ * overrides: IStream::read  (6 classes implement it)
+ * class: dice::meme::CachedIStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878a30, bfv_client_l1_body_00878a30);
 void bfv_client_l1_body_00878a30(struct bfv_cpu *c)
 {
@@ -165,7 +173,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00878a50  dice::meme::CachedIStream  (virtual method) */
+/* 00878a50  CachedIStream::vf38  (virtual method)
+ * overrides: IStream::vf38  (6 classes implement it)
+ * class: dice::meme::CachedIStream
+ * also entered at 00878a70: CachedIStream::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878a50, bfv_client_l1_body_00878a50);
 BFV_L1_RESUME(bfv_client_l1r_00878a50_1, bfv_client_l1_body_00878a50, 1);
 void bfv_client_l1_body_00878a50(struct bfv_cpu *c)

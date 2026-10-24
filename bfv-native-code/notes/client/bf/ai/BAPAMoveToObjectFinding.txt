@@ -1,0 +1,20 @@
+## file
+Move action that follows a found path towards another object (target handle at this+0x68). Goal at this+0x78, current waypoint at this+0x80, the stand-off radius at this+0x6c, the move-target point at this+0x3c, the bot at this+0xb0.
+
+## 009f0920
+vf6: returns the address of the goal point at this+0x78.
+
+## 009f0950
+vf7: copies the two 2-float values at this+0x88 and this+0x90 to the outputs and returns the address of the goal point at this+0x78.
+
+## 009f09b0
+vf8: writes the byte at this+0x70 (path valid) to the output and returns the address of the current waypoint at this+0x80.
+
+## 009f09f0
+vf9: tail call to slot 0xf4 (vf61) of the bot at this+0xb0.
+
+## 009f0a80
+Chooses where to stand near the target and requests a path there. Clears the path-valid flag this+0x70 and returns early when the bot's object, the target (this+0x68) or their movement interfaces are missing. The stand-off radius is the target's size (slot 0x24) times 1.1, or FLT_MAX. It tries the target position and then points offset sideways by this+0x6c, checking each with the path finder (IAIPathfinding::vf33 for a free cell, vf21 and vf19 for nearest reachable points, vf43 and vf44 for cell searches) and keeping candidates within this+0x6c of the target. When searching a list of cells (BotMain_009710b0) it scores each by distance and by how far its direction turns away from the current direction, scaled with bfv_float_clamp of distance / (radius * 5). The chosen point is stored at this+0x3c (y = 0). Finally it resets this+0x58 and this+0xaa and asks the bot (slot 0xe8) to plan a path; the result goes to this+0x70.
+
+## 009f12f0
+vf12: per-frame update. Fails (and clears this+0x70) when the bot's object or the target is gone. When the trigger object at this+0xb4 says a new path is needed (its slot 0, and the bot's path-end slot 0x114 once this+0xb8 is set) it runs 009f0a80; loops until a path is valid. Then asks the bot for the next waypoint (slot 0xf0 with this+0xaa), writing it at this+0x80, stores the path-valid flag and converts the point with ai_0097f0d0.

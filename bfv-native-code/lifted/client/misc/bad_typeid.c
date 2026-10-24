@@ -5,7 +5,35 @@
 #include "l1.h"
 
 
-/* 007c21c2  bad_typeid  (virtual method) */
+/* 007c214f  bad_typeid::~bad_typeid  (vtable store)
+ * class: bad_typeid
+ * called by: bad_typeid::deleting_dtor
+ */
+BFV_L1_ENTRY(bfv_client_l1_007c214f, bfv_client_l1_body_007c214f);
+void bfv_client_l1_body_007c214f(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t ea;
+    /* 007c214f  mov dword ptr [ecx], 0xbb7064  ; vtable bad_typeid */
+    ea = (uint32_t)(ecx);
+    M32(ea) = 0xbb7064u;
+    /* 007c2155  jmp 0x7c20bf  ; exception::~exception */
+    c->eip = 0x007c20bfu;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 007c21c2  bad_typeid::deleting_dtor  (virtual method)
+ * overrides: exception::vf0  (9 classes implement it)
+ * class: bad_typeid
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c21c2, bfv_client_l1_body_007c21c2);
 BFV_L1_RESUME(bfv_client_l1r_007c21c2_1, bfv_client_l1_body_007c21c2, 1);
 BFV_L1_RESUME(bfv_client_l1r_007c21c2_2, bfv_client_l1_body_007c21c2, 2);
@@ -27,14 +55,14 @@ void bfv_client_l1_body_007c21c2(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007c21c3  mov esi, ecx */
     esi = ecx;
-    /* 007c21c5  call 0x7c214f */
+    /* 007c21c5  call 0x7c214f  ; bad_typeid::~bad_typeid */
     t = 0x007c214fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c21c2_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007c21ca  test byte ptr [esp + 8], 1 */
+    /* 007c21ca  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -44,7 +72,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c21d2  call 0x403680 */
+    /* 007c21d2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c21c2_2;

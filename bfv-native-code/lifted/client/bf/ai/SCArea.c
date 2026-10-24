@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009bdb30  dice::bf::ai::SCArea  (virtual method) */
+/* 009bdb30  SCArea::vf2  (virtual method)
+ * overrides: StrategyCondition::vf2  (5 classes implement it)
+ * class: dice::bf::ai::SCArea
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bdb30, bfv_client_l1_body_009bdb30);
 BFV_L1_RESUME(bfv_client_l1r_009bdb30_1, bfv_client_l1_body_009bdb30, 1);
 BFV_L1_RESUME(bfv_client_l1r_009bdb30_2, bfv_client_l1_body_009bdb30, 2);
@@ -33,7 +36,7 @@ void bfv_client_l1_body_009bdb30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009bdb32  mov edi, ecx */
     edi = ecx;
-    /* 009bdb34  call 0x950f00 */
+    /* 009bdb34  call 0x950f00  ; bfv_client_read_global_00950f00 */
     t = 0x00950f00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bdb30_1;
@@ -49,7 +52,7 @@ R_1:
     M32(esp) = t;
     /* 009bdb3d  mov ecx, eax */
     ecx = eax;
-    /* 009bdb3f  call 0x951120 */
+    /* 009bdb3f  call 0x951120  ; std::vector_ptr::atOrNull */
     t = 0x00951120u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bdb30_2;
@@ -76,7 +79,7 @@ R_3:
     F_LOGIC(32, r);
     /* 009bdb4f  je 0x9bdb5c */
     if (zf) goto L_009bdb5c;
-    /* 009bdb51  fld dword ptr [0xb5456c] */
+    /* 009bdb51  fld dword ptr [0xb5456c]  ; = -1.0f */
     ea = (uint32_t)(0x00b5456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009bdb57  pop edi */
@@ -92,7 +95,7 @@ R_3:
     esp += 16;
     goto out;
 L_009bdb5c:
-    /* 009bdb5c  mov eax, dword ptr [esp + 0x14] */
+    /* 009bdb5c  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 009bdb60  mov ecx, dword ptr [esi + eax*4 + 0x70] */
@@ -106,7 +109,7 @@ L_009bdb5c:
     F_SUB(32, a, b, r);
     /* 009bdb67  jne 0x9bdb74 */
     if (!zf) goto L_009bdb74;
-    /* 009bdb69  fld dword ptr [0xb4456c] */
+    /* 009bdb69  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009bdb6f  pop edi */
@@ -122,7 +125,7 @@ L_009bdb5c:
     esp += 16;
     goto out;
 L_009bdb74:
-    /* 009bdb74  fld dword ptr [0xb5456c] */
+    /* 009bdb74  fld dword ptr [0xb5456c]  ; = -1.0f */
     ea = (uint32_t)(0x00b5456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009bdb7a  pop edi */
@@ -144,7 +147,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009bdb80  (between same file) */
+/* 009bdb80  SCArea::~SCArea  (between same file)
+ * class: dice::bf::ai::SCArea
+ * also entered at 009bdbe0: SCArea::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bdb80, bfv_client_l1_body_009bdb80);
 BFV_L1_RESUME(bfv_client_l1r_009bdb80_1, bfv_client_l1_body_009bdb80, 1);
 BFV_L1_RESUME(bfv_client_l1r_009bdb80_2, bfv_client_l1_body_009bdb80, 2);
@@ -170,7 +176,7 @@ void bfv_client_l1_body_009bdb80(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009bdb82  mov esi, ecx */
     esi = ecx;
-    /* 009bdb84  mov dword ptr [esi], 0xbf7d64 */
+    /* 009bdb84  mov dword ptr [esi], 0xbf7d64  ; vtable SCArea */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7d64u;
     /* 009bdb8a  cmp dword ptr [esi + 0x58], 0x10 */
@@ -188,7 +194,7 @@ void bfv_client_l1_body_009bdb80(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009bdb94  call 0x403680 */
+    /* 009bdb94  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bdb80_1;
@@ -215,7 +221,7 @@ L_009bdb9c:
     /* 009bdba8  mov byte ptr [esi + 0x44], bl */
     ea = (uint32_t)(esi + 0x00000044u);
     M8(ea) = LO8(ebx);
-    /* 009bdbab  mov dword ptr [esi], 0xbf2c3c */
+    /* 009bdbab  mov dword ptr [esi], 0xbf2c3c  ; vtable StrategyCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf2c3cu;
     /* 009bdbb1  cmp dword ptr [esi + 0x38], 0x10 */
@@ -233,7 +239,7 @@ L_009bdb9c:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009bdbbb  call 0x403680 */
+    /* 009bdbbb  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bdb80_2;
@@ -275,7 +281,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009bdc00  dice::bf::ai::SCArea  (vtable store) */
+/* 009bdc00  SCArea::SCArea  (vtable store)
+ * class: dice::bf::ai::SCArea
+ * called by: AiStrategy::createAreaCondition
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bdc00, bfv_client_l1_body_009bdc00);
 BFV_L1_RESUME(bfv_client_l1r_009bdc00_1, bfv_client_l1_body_009bdc00, 1);
 BFV_L1_RESUME(bfv_client_l1r_009bdc00_2, bfv_client_l1_body_009bdc00, 2);
@@ -291,7 +300,7 @@ void bfv_client_l1_body_009bdc00(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 009bdc00  mov eax, dword ptr [esp + 4] */
+    /* 009bdc00  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 009bdc04  push esi */
@@ -324,17 +333,17 @@ void bfv_client_l1_body_009bdc00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009bdc10  mov esi, ecx */
     esi = ecx;
-    /* 009bdc12  call 0x95b920 */
+    /* 009bdc12  call 0x95b920  ; StrategyCondition::StrategyCondition */
     t = 0x0095b920u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bdc00_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009bdc17  mov ecx, dword ptr [esp + 0x10] */
+    /* 009bdc17  mov ecx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 009bdc1b  mov edx, dword ptr [esp + 0xc] */
+    /* 009bdc1b  mov edx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 009bdc1f  mov dword ptr [esi + 0x3c], ecx */
@@ -346,7 +355,7 @@ R_1:
     M32(esp) = t;
     /* 009bdc24  lea ecx, [esi + 0x40] */
     ecx = (uint32_t)(esi + 0x00000040u);
-    /* 009bdc27  mov dword ptr [esi], 0xbf7d64 */
+    /* 009bdc27  mov dword ptr [esi], 0xbf7d64  ; vtable SCArea */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7d64u;
     /* 009bdc2d  push 0 */
@@ -366,14 +375,14 @@ R_1:
     /* 009bdc3e  mov byte ptr [ecx + 4], 0 */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = 0x0u;
-    /* 009bdc42  call 0x4019f0 */
+    /* 009bdc42  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bdc00_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009bdc47  mov eax, dword ptr [esp + 0x14] */
+    /* 009bdc47  mov eax, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 009bdc4b  mov dword ptr [esi + 0x5c], eax */

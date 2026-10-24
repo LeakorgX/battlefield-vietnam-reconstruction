@@ -1,0 +1,11 @@
+## file
+Plan action that presses a control once. Owns two parts at this+0x1c and this+0x20.
+
+## 009dc490
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.
+
+## 009dc540
+Destructor: releases the parts at this+0x1c and this+0x20, restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.
+
+## 009dc5a0
+vf5: jumps into the middle of the next function at 0x009dc5b2.

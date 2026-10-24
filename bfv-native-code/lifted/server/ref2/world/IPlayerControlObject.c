@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0079f680  dice::ref2::world::IPlayerControlObject  (virtual method) */
+/* 0079f680  stub_return_minus1_0args_0079f680  (virtual method)
+ * class: dice::ref2::world::IPlayerControlObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_0079f680, bfv_server_l1_body_0079f680);
 void bfv_server_l1_body_0079f680(struct bfv_cpu *c)
 {

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a2e1d0  dice::ref2::rend::AverageMipmapScaleFilter  (virtual method) */
+/* 00a2e1d0  AverageMipmapScaleFilter::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::rend::AverageMipmapScaleFilter
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a2e1d0, bfv_client_l1_body_00a2e1d0);
 void bfv_client_l1_body_00a2e1d0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_00a2e1d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00a2e1d0  mov edx, dword ptr [0xb42718] */
+    /* 00a2e1d0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00a2e1d6  mov eax, ecx */
     eax = ecx;
-    /* 00a2e1d8  mov ecx, dword ptr [esp + 4] */
+    /* 00a2e1d8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00a2e1dc  cmp ecx, edx */
@@ -29,7 +32,7 @@ void bfv_client_l1_body_00a2e1d0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00a2e1de  je 0xa2e209 */
     if (zf) goto L_00a2e209;
-    /* 00a2e1e0  cmp ecx, dword ptr [0xb4271c] */
+    /* 00a2e1e0  cmp ecx, dword ptr [0xb4271c]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00b4271cu);
     a = ecx;
     b = M32(ea);
@@ -105,7 +108,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a651a0  dice::ref2::rend::AverageMipmapScaleFilter  (virtual method) */
+/* 00a651a0  AverageMipmapScaleFilter::vf4  (virtual method)
+ * class: dice::ref2::rend::AverageMipmapScaleFilter
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a651a0, bfv_client_l1_body_00a651a0);
 BFV_L1_RESUME(bfv_client_l1r_00a651a0_1, bfv_client_l1_body_00a651a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a651a0_2, bfv_client_l1_body_00a651a0, 2);
@@ -137,7 +142,7 @@ void bfv_client_l1_body_00a651a0(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 00a651a5  mov ebp, dword ptr [esp + 0x6c] */
+    /* 00a651a5  mov ebp, dword ptr [esp + 0x6c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000006cu);
     ebp = M32(ea);
     /* 00a651a9  mov eax, dword ptr [ebp] */
@@ -161,7 +166,7 @@ void bfv_client_l1_body_00a651a0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 00a651b3  mov esi, dword ptr [esp + 0x78] */
+    /* 00a651b3  mov esi, dword ptr [esp + 0x78]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000078u);
     esi = M32(ea);
     /* 00a651b7  mov edx, dword ptr [ebp] */
@@ -183,7 +188,7 @@ R_1:
     }
     /* 00a651c0  mov ecx, ebp */
     ecx = ebp;
-    /* 00a651c2  mov dword ptr [esp + 0x48], ebx */
+    /* 00a651c2  mov dword ptr [esp + 0x48], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000048u);
     M32(ea) = ebx;
     /* 00a651c6  call dword ptr [edx + 0x38] */
@@ -208,7 +213,7 @@ R_2:
     }
     /* 00a651cd  mov ecx, ebp */
     ecx = ebp;
-    /* 00a651cf  mov dword ptr [esp + 0x14], eax */
+    /* 00a651cf  mov dword ptr [esp + 0x14], eax  ; var_5c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
     /* 00a651d3  mov eax, dword ptr [ebp] */
@@ -278,7 +283,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a65460  dice::ref2::rend::AverageMipmapScaleFilter  (virtual method) */
+/* 00a65460  AverageMipmapScaleFilter::vf5  (virtual method)
+ * class: dice::ref2::rend::AverageMipmapScaleFilter
+ * also entered at 00a65730: TextureConverter::vf5
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a65460, bfv_client_l1_body_00a65460);
 BFV_L1_RESUME(bfv_client_l1r_00a65460_1, bfv_client_l1_body_00a65460, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a65460_2, bfv_client_l1_body_00a65460, 2);
@@ -318,7 +326,7 @@ void bfv_client_l1_body_00a65460(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a65467  mov edi, dword ptr [esp + 0x78] */
+    /* 00a65467  mov edi, dword ptr [esp + 0x78]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000078u);
     edi = M32(ea);
     /* 00a6546b  mov eax, dword ptr [edi] */
@@ -330,10 +338,10 @@ void bfv_client_l1_body_00a65460(struct bfv_cpu *c)
     ebp = r;
     /* 00a6546f  mov ecx, edi */
     ecx = edi;
-    /* 00a65471  mov dword ptr [esp + 0x54], ebp */
+    /* 00a65471  mov dword ptr [esp + 0x54], ebp  ; var_20 */
     ea = (uint32_t)(esp + 0x00000054u);
     M32(ea) = ebp;
-    /* 00a65475  mov dword ptr [esp + 0x58], ebp */
+    /* 00a65475  mov dword ptr [esp + 0x58], ebp  ; var_1c */
     ea = (uint32_t)(esp + 0x00000058u);
     M32(ea) = ebp;
     /* 00a65479  call dword ptr [eax + 0x34] */
@@ -349,7 +357,7 @@ R_1:
     edx = M32(ea);
     /* 00a6547e  mov ecx, edi */
     ecx = edi;
-    /* 00a65480  mov dword ptr [esp + 0x10], eax */
+    /* 00a65480  mov dword ptr [esp + 0x10], eax  ; var_64 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
     /* 00a65484  call dword ptr [edx + 0x38] */
@@ -367,7 +375,7 @@ R_2:
     eax = M32(ea);
     /* 00a6548b  mov ecx, edi */
     ecx = edi;
-    /* 00a6548d  mov dword ptr [esp + 0x50], ebx */
+    /* 00a6548d  mov dword ptr [esp + 0x50], ebx  ; var_24 */
     ea = (uint32_t)(esp + 0x00000050u);
     M32(ea) = ebx;
     /* 00a65491  call dword ptr [eax + 0x14] */
@@ -387,7 +395,7 @@ R_3:
     b = 0x9u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00a6549c  mov dword ptr [esp + 0x34], ecx */
+    /* 00a6549c  mov dword ptr [esp + 0x34], ecx  ; var_40 */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = ecx;
     /* 00a654a0  ja 0xa656fe */

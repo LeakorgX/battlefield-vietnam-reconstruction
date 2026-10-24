@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005deda0  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005deda0  NullTerrain::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005deda0, bfv_server_l1_body_005deda0);
 void bfv_server_l1_body_005deda0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_server_l1_body_005deda0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005deda0  mov edx, dword ptr [0x807430] */
+    /* 005deda0  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 005deda6  mov eax, ecx */
     eax = ecx;
-    /* 005deda8  mov ecx, dword ptr [esp + 4] */
+    /* 005deda8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005dedac  cmp ecx, edx */
@@ -29,14 +32,14 @@ void bfv_server_l1_body_005deda0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005dedae  je 0x5dedcc */
     if (zf) goto L_005dedcc;
-    /* 005dedb0  cmp ecx, 0x5fc276fe */
+    /* 005dedb0  cmp ecx, 0x5fc276fe  ; interfaceID(NullTerrain|PatchTerrain) */
     a = ecx;
     b = 0x5fc276feu;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     /* 005dedb6  je 0x5dedcc */
     if (zf) goto L_005dedcc;
-    /* 005dedb8  cmp ecx, 0xb54616fc */
+    /* 005dedb8  cmp ecx, 0xb54616fc  ; interfaceID(IBase) */
     a = ecx;
     b = 0xb54616fcu;
     r = (a - b) & 0xffffffffu;
@@ -75,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005dedd0  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005dedd0  NullTerrain::vf4_get_g_00817648  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dedd0, bfv_server_l1_body_005dedd0);
 void bfv_server_l1_body_005dedd0(struct bfv_cpu *c)
 {
@@ -84,7 +89,7 @@ void bfv_server_l1_body_005dedd0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005dedd0  fld dword ptr [0x817648] */
+    /* 005dedd0  fld dword ptr [0x817648]  ; = -1.0f */
     ea = (uint32_t)(0x00817648u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005dedd6  ret */
@@ -98,7 +103,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005dede0  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005dede0  NullTerrain::vf18  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dede0, bfv_server_l1_body_005dede0);
 void bfv_server_l1_body_005dede0(struct bfv_cpu *c)
 {
@@ -107,7 +114,7 @@ void bfv_server_l1_body_005dede0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005dede0  fld dword ptr [0x851bcc] */
+    /* 005dede0  fld dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005dede6  ret 4 */
@@ -121,7 +128,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005dedf0  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005dedf0  NullTerrain::vf19  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dedf0, bfv_server_l1_body_005dedf0);
 void bfv_server_l1_body_005dedf0(struct bfv_cpu *c)
 {
@@ -130,7 +139,7 @@ void bfv_server_l1_body_005dedf0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005dedf0  fld dword ptr [0x8488b8] */
+    /* 005dedf0  fld dword ptr [0x8488b8]  ; = 10.0f */
     ea = (uint32_t)(0x008488b8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005dedf6  ret 8 */
@@ -144,7 +153,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005dee20  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005dee20  NullTerrain::vf25  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dee20, bfv_server_l1_body_005dee20);
 void bfv_server_l1_body_005dee20(struct bfv_cpu *c)
 {
@@ -167,7 +178,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005dee30  (between same file) */
+/* 005dee30  NullTerrain::deleting_dtor_adjustor4_005dee30  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dee30, bfv_server_l1_body_005dee30);
 void bfv_server_l1_body_005dee30(struct bfv_cpu *c)
 {
@@ -182,7 +194,7 @@ void bfv_server_l1_body_005dee30(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005dee33  jmp 0x5dee60 */
+    /* 005dee33  jmp 0x5dee60  ; NullTerrain::deleting_dtor */
     c->eip = 0x005dee60u;
     goto out;
 out: __attribute__((unused));
@@ -192,7 +204,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005dee40  (between same file) */
+/* 005dee40  NullTerrain::queryInterface_adjustor4_005dee40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dee40, bfv_server_l1_body_005dee40);
 void bfv_server_l1_body_005dee40(struct bfv_cpu *c)
 {
@@ -207,7 +220,7 @@ void bfv_server_l1_body_005dee40(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005dee43  jmp 0x5deda0 */
+    /* 005dee43  jmp 0x5deda0  ; NullTerrain::queryInterface */
     c->eip = 0x005deda0u;
     goto out;
 out: __attribute__((unused));
@@ -217,7 +230,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005dee50  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005dee50  NullTerrain::vf20  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dee50, bfv_server_l1_body_005dee50);
 void bfv_server_l1_body_005dee50(struct bfv_cpu *c)
 {
@@ -226,13 +241,13 @@ void bfv_server_l1_body_005dee50(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005dee50  mov eax, dword ptr [esp + 4] */
+    /* 005dee50  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005dee54  fld dword ptr [eax + 4] */
     ea = (uint32_t)(eax + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005dee57  fsub dword ptr [0x8488b8] */
+    /* 005dee57  fsub dword ptr [0x8488b8]  ; = 10.0f */
     ea = (uint32_t)(0x008488b8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005dee5d  ret 4 */
@@ -246,7 +261,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005dee60  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005dee60  NullTerrain::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dee60, bfv_server_l1_body_005dee60);
 BFV_L1_RESUME(bfv_server_l1r_005dee60_1, bfv_server_l1_body_005dee60, 1);
 void bfv_server_l1_body_005dee60(struct bfv_cpu *c)
@@ -281,14 +299,14 @@ L_005dee6c:
     F_LOGIC(32, r);
     eax = r;
 L_005dee6e:
-    /* 005dee6e  mov dword ptr [eax], 0x807464 */
+    /* 005dee6e  mov dword ptr [eax], 0x807464  ; vtable IBase */
     ea = (uint32_t)(eax);
     M32(ea) = 0x807464u;
-    /* 005dee74  test byte ptr [esp + 8], 1 */
+    /* 005dee74  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 005dee79  mov dword ptr [esi], 0x807464 */
+    /* 005dee79  mov dword ptr [esi], 0x807464  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0x807464u;
     /* 005dee7f  je 0x5dee8a */
@@ -297,7 +315,7 @@ L_005dee6e:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005dee82  call 0x403df0 */
+    /* 005dee82  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005dee60_1;
@@ -328,7 +346,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005defe0  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005defe0  NullTerrain::vf17  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005defe0, bfv_server_l1_body_005defe0);
 void bfv_server_l1_body_005defe0(struct bfv_cpu *c)
 {
@@ -366,7 +386,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005df000  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005df000  NullTerrain::vf9  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005df000, bfv_server_l1_body_005df000);
 void bfv_server_l1_body_005df000(struct bfv_cpu *c)
 {
@@ -413,7 +435,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005df040  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005df040  NullTerrain::vf22  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005df040, bfv_server_l1_body_005df040);
 void bfv_server_l1_body_005df040(struct bfv_cpu *c)
 {
@@ -422,13 +446,13 @@ void bfv_server_l1_body_005df040(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005df040  mov eax, dword ptr [esp + 0xc] */
+    /* 005df040  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 005df044  mov dword ptr [eax], 0 */
     ea = (uint32_t)(eax);
     M32(ea) = 0x0u;
-    /* 005df04a  mov dword ptr [eax + 4], 0x3f800000 */
+    /* 005df04a  mov dword ptr [eax + 4], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x3f800000u;
     /* 005df051  mov dword ptr [eax + 8], 0 */
@@ -445,7 +469,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005df060  dice::ref2::geom::NullTerrain  (virtual method) */
+/* 005df060  NullTerrain::vf23  (virtual method)
+ * class: dice::ref2::geom::NullTerrain
+ */
 BFV_L1_ENTRY(bfv_server_l1_005df060, bfv_server_l1_body_005df060);
 void bfv_server_l1_body_005df060(struct bfv_cpu *c)
 {
@@ -454,16 +480,16 @@ void bfv_server_l1_body_005df060(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005df060  mov eax, dword ptr [esp + 0xc] */
+    /* 005df060  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
-    /* 005df064  fld dword ptr [0x8488b8] */
+    /* 005df064  fld dword ptr [0x8488b8]  ; = 10.0f */
     ea = (uint32_t)(0x008488b8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005df06a  mov dword ptr [eax], 0 */
     ea = (uint32_t)(eax);
     M32(ea) = 0x0u;
-    /* 005df070  mov dword ptr [eax + 4], 0x3f800000 */
+    /* 005df070  mov dword ptr [eax + 4], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x3f800000u;
     /* 005df077  mov dword ptr [eax + 8], 0 */

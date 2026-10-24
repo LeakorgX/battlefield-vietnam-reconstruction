@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0096acf0  dice::bf::ai::IAIScriptCommand  (vtable store) */
+/* 0096acf0  IAIScriptCommand::~IAIScriptCommand  (vtable store)
+ * class: dice::bf::ai::IAIScriptCommand
+ * also entered at 0096ad50: IAIScriptCommand::vf0
+ * called by: SCMove::deleting_dtor, SCStandard::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096acf0, bfv_client_l1_body_0096acf0);
 BFV_L1_RESUME(bfv_client_l1r_0096acf0_1, bfv_client_l1_body_0096acf0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0096acf0_2, bfv_client_l1_body_0096acf0, 2);
@@ -44,10 +48,10 @@ void bfv_client_l1_body_0096acf0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0096acf8  mov dword ptr [esi], 0xbf376c */
+    /* 0096acf8  mov dword ptr [esi], 0xbf376c  ; vtable IAIScriptCommand */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf376cu;
-    /* 0096acfe  call 0x403680 */
+    /* 0096acfe  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096acf0_1;
@@ -64,7 +68,7 @@ R_1:
     esp = r;
     /* 0096ad09  mov ecx, edi */
     ecx = edi;
-    /* 0096ad0b  call 0xa825e0 */
+    /* 0096ad0b  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096acf0_2;
@@ -78,7 +82,7 @@ R_2:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0096ad14  call 0x403680 */
+    /* 0096ad14  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096acf0_3;
@@ -98,7 +102,7 @@ R_3:
     esp = r;
     /* 0096ad26  mov ecx, edi */
     ecx = edi;
-    /* 0096ad28  call 0xa825e0 */
+    /* 0096ad28  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096acf0_4;
@@ -112,7 +116,7 @@ R_4:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0096ad31  call 0x403680 */
+    /* 0096ad31  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096acf0_5;
@@ -138,7 +142,7 @@ R_5:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 0096ad44  jmp 0x9d9460 */
+    /* 0096ad44  jmp 0x9d9460  ; IAIScriptStatement::~IAIScriptStatement */
     c->eip = 0x009d9460u;
     goto out;
 out: __attribute__((unused));
@@ -148,7 +152,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096ad70  dice::bf::ai::IAIScriptCommand  (vtable store) */
+/* 0096ad70  IAIScriptCommand::IAIScriptCommand  (vtable store)
+ * class: dice::bf::ai::IAIScriptCommand
+ * called by: SCMove::SCMove, SCStandard::SCStandard
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096ad70, bfv_client_l1_body_0096ad70);
 BFV_L1_RESUME(bfv_client_l1r_0096ad70_1, bfv_client_l1_body_0096ad70, 1);
 BFV_L1_RESUME(bfv_client_l1r_0096ad70_2, bfv_client_l1_body_0096ad70, 2);
@@ -176,7 +183,7 @@ void bfv_client_l1_body_0096ad70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0096ad72  mov esi, ecx */
     esi = ecx;
-    /* 0096ad74  call 0x9d9490 */
+    /* 0096ad74  call 0x9d9490  ; IAIScriptStatement::IAIScriptStatement */
     t = 0x009d9490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096ad70_1;
@@ -187,10 +194,10 @@ R_1:
     edi = (uint32_t)(esi + 0x00000008u);
     /* 0096ad7c  mov ecx, edi */
     ecx = edi;
-    /* 0096ad7e  mov dword ptr [esi], 0xbf376c */
+    /* 0096ad7e  mov dword ptr [esi], 0xbf376c  ; vtable IAIScriptCommand */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf376cu;
-    /* 0096ad84  call 0x96abe0 */
+    /* 0096ad84  call 0x96abe0  ; std::list::_Buyheadnode_12_0096abe0 */
     t = 0x0096abe0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096ad70_2;
@@ -207,7 +214,7 @@ R_2:
     edi = (uint32_t)(esi + 0x00000014u);
     /* 0096ad96  mov ecx, edi */
     ecx = edi;
-    /* 0096ad98  call 0x96abe0 */
+    /* 0096ad98  call 0x96abe0  ; std::list::_Buyheadnode_12_0096abe0 */
     t = 0x0096abe0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096ad70_3;
@@ -224,7 +231,7 @@ R_3:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 0096ada8  mov dword ptr [esi + 0x20], 0x42c80000 */
+    /* 0096ada8  mov dword ptr [esi + 0x20], 0x42c80000  ; 100.0f */
     ea = (uint32_t)(esi + 0x00000020u);
     M32(ea) = 0x42c80000u;
     /* 0096adaf  mov dword ptr [esi + 0x2c], 0 */
@@ -247,7 +254,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009dbff0  dice::bf::ai::IAIScriptCommand  (virtual method) */
+/* 009dbff0  IAIScriptCommand::isValid  (virtual method)
+ * overrides: IAIScriptStatement::isValid  (17 classes implement it)
+ * class: dice::bf::ai::IAIScriptCommand
+ */
 BFV_L1_ENTRY(bfv_client_l1_009dbff0, bfv_client_l1_body_009dbff0);
 void bfv_client_l1_body_009dbff0(struct bfv_cpu *c)
 {
@@ -279,7 +289,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009eb9d0  dice::bf::ai::IAIScriptCommand  (virtual method) */
+/* 009eb9d0  IAIScriptCommand::vf9  (virtual method)
+ * overrides: IAIScriptStatement::vf9  (17 classes implement it)
+ * class: dice::bf::ai::IAIScriptCommand
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eb9d0, bfv_client_l1_body_009eb9d0);
 void bfv_client_l1_body_009eb9d0(struct bfv_cpu *c)
 {
@@ -288,7 +301,7 @@ void bfv_client_l1_body_009eb9d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 009eb9d0  mov eax, dword ptr [esp + 4] */
+    /* 009eb9d0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 009eb9d4  mov dword ptr [eax], 0xffffffff */

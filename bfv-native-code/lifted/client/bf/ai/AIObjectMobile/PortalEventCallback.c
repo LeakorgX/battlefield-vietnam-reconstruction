@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 009d9080  dice::bf::ai::AIObjectMobile::PortalEventCallback  (virtual method) */
+/* 009d9080  PortalEventCallback::vf0  (virtual method)
+ * class: dice::bf::ai::AIObjectMobile::PortalEventCallback
+ */
 BFV_L1_ENTRY(bfv_client_l1_009d9080, bfv_client_l1_body_009d9080);
 BFV_L1_RESUME(bfv_client_l1r_009d9080_1, bfv_client_l1_body_009d9080, 1);
 BFV_L1_RESUME(bfv_client_l1r_009d9080_2, bfv_client_l1_body_009d9080, 2);
@@ -27,7 +29,7 @@ void bfv_client_l1_body_009d9080(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009d9081  mov esi, dword ptr [esp + 8] */
+    /* 009d9081  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 009d9085  push edi */
@@ -38,7 +40,7 @@ void bfv_client_l1_body_009d9080(struct bfv_cpu *c)
     edi = ecx;
     /* 009d9088  mov ecx, esi */
     ecx = esi;
-    /* 009d908a  call 0xac3ee0 */
+    /* 009d908a  call 0xac3ee0  ; BAPAComponentSoldierPose::vf7 */
     t = 0x00ac3ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009d9080_1;
@@ -52,7 +54,7 @@ R_1:
     ecx = esi;
     /* 009d9093  jne 0x9d90a5 */
     if (!zf) goto L_009d90a5;
-    /* 009d9095  call 0xac3f60 */
+    /* 009d9095  call 0xac3f60  ; BAPAComponentSoldierPose::vf10_get_10h */
     t = 0x00ac3f60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009d9080_2;
@@ -78,7 +80,7 @@ R_2:
     esp += 8;
     goto out;
 L_009d90a5:
-    /* 009d90a5  call 0xac3ee0 */
+    /* 009d90a5  call 0xac3ee0  ; BAPAComponentSoldierPose::vf7 */
     t = 0x00ac3ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009d9080_3;

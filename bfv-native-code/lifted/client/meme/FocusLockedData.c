@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00ac3cf0  dice::meme::FocusLockedData  (virtual method) */
+/* 00ac3cf0  FocusLockedData::getChar  (virtual method)
+ * overrides: Data::getChar  (41 classes implement it)
+ * class: dice::meme::FocusLockedData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac3cf0, bfv_client_l1_body_00ac3cf0);
 BFV_L1_RESUME(bfv_client_l1r_00ac3cf0_1, bfv_client_l1_body_00ac3cf0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac3cf0_2, bfv_client_l1_body_00ac3cf0, 2);
@@ -23,10 +26,10 @@ void bfv_client_l1_body_00ac3cf0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00ac3cf0  mov ecx, dword ptr [esp + 4] */
+    /* 00ac3cf0  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00ac3cf4  call 0x956120 */
+    /* 00ac3cf4  call 0x956120  ; BotMain::vf53_get_30h */
     t = 0x00956120u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3cf0_1;
@@ -36,14 +39,14 @@ R_1:
     /* 00ac3cf9  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00ac3cfb  mov edx, dword ptr [esp + 8] */
+    /* 00ac3cfb  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00ac3cff  je 0xac3d0b */
     if (zf) goto L_00ac3d0b;
     /* 00ac3d01  mov cl, 1 */
     SET8L(ecx, 0x1u);
-    /* 00ac3d03  call 0x869430 */
+    /* 00ac3d03  call 0x869430  ; BoolData_00869430 */
     t = 0x00869430u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3cf0_2;
@@ -59,7 +62,7 @@ L_00ac3d0b:
     r = 0;
     F_LOGIC(8, r);
     SET8L(ecx, r);
-    /* 00ac3d0d  call 0x869430 */
+    /* 00ac3d0d  call 0x869430  ; BoolData_00869430 */
     t = 0x00869430u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3cf0_3;
@@ -77,7 +80,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac3d20  dice::meme::FocusLockedData  (virtual method) */
+/* 00ac3d20  FocusLockedData::getFloat  (virtual method)
+ * overrides: Data::getFloat  (41 classes implement it)
+ * class: dice::meme::FocusLockedData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac3d20, bfv_client_l1_body_00ac3d20);
 BFV_L1_RESUME(bfv_client_l1r_00ac3d20_1, bfv_client_l1_body_00ac3d20, 1);
 void bfv_client_l1_body_00ac3d20(struct bfv_cpu *c)
@@ -91,20 +97,20 @@ void bfv_client_l1_body_00ac3d20(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00ac3d20  mov ecx, dword ptr [esp + 4] */
+    /* 00ac3d20  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00ac3d24  call 0x956120 */
+    /* 00ac3d24  call 0x956120  ; BotMain::vf53_get_30h */
     t = 0x00956120u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3d20_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac3d29  mov dword ptr [esp + 4], eax */
+    /* 00ac3d29  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 00ac3d2d  fild dword ptr [esp + 4] */
+    /* 00ac3d2d  fild dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00ac3d31  ret 4 */
@@ -118,7 +124,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac3d40  dice::meme::FocusLockedData  (vtable store) */
+/* 00ac3d40  FocusLockedData::create  (vtable store)
+ * class: dice::meme::FocusLockedData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac3d40, bfv_client_l1_body_00ac3d40);
 BFV_L1_RESUME(bfv_client_l1r_00ac3d40_1, bfv_client_l1_body_00ac3d40, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac3d40_2, bfv_client_l1_body_00ac3d40, 2);
@@ -142,7 +150,7 @@ void bfv_client_l1_body_00ac3d40(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac3d43  call 0x403610 */
+    /* 00ac3d43  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3d40_1;
@@ -168,14 +176,14 @@ R_1:
     M32(esp) = t;
     /* 00ac3d53  mov ecx, esi */
     ecx = esi;
-    /* 00ac3d55  call 0x874530 */
+    /* 00ac3d55  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3d40_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac3d5a  mov dword ptr [esi], 0xc10f4c */
+    /* 00ac3d5a  mov dword ptr [esi], 0xc10f4c  ; vtable FocusLockedData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc10f4cu;
     /* 00ac3d60  mov eax, esi */
@@ -208,7 +216,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac3d70  (between same file) */
+/* 00ac3d70  ClassTemplate<FocusLockedData,Data>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac3d70, bfv_client_l1_body_00ac3d70);
 void bfv_client_l1_body_00ac3d70(struct bfv_cpu *c)
 {
@@ -234,7 +243,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac3d80  (between same file) */
+/* 00ac3d80  ClassTemplate<FocusLockedData,Data>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac3d80, bfv_client_l1_body_00ac3d80);
 void bfv_client_l1_body_00ac3d80(struct bfv_cpu *c)
 {
@@ -260,8 +270,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac3da0  dice::meme::FocusLockedData  (virtual method)
- * strings: "dice::meme::FocusLockedData" */
+/* 00ac3da0  FocusLockedData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::FocusLockedData
+ * strings: "dice::meme::FocusLockedData"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac3da0, bfv_client_l1_body_00ac3da0);
 BFV_L1_RESUME(bfv_client_l1r_00ac3da0_1, bfv_client_l1_body_00ac3da0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac3da0_2, bfv_client_l1_body_00ac3da0, 2);
@@ -292,27 +305,27 @@ void bfv_client_l1_body_00ac3da0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac3db5  push 0xc10fe4 */
+    /* 00ac3db5  push 0xc10fe4  ; "dice::meme::FocusLockedData" */
     t = 0xc10fe4u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac3dba  mov ecx, 0xe21804 */
+    /* 00ac3dba  mov ecx, 0xe21804  ; g_RuntimeClass_FocusLockedData */
     ecx = 0xe21804u;
-    /* 00ac3dbf  call 0x875490 */
+    /* 00ac3dbf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3da0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac3dc4  push 0xb41d70 */
+    /* 00ac3dc4  push 0xb41d70  ; bfv_client_global_store_00b41d70 */
     t = 0xb41d70u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac3dc9  mov dword ptr [0xe21804], 0xc10fc4 */
+    /* 00ac3dc9  mov dword ptr [0xe21804], 0xc10fc4  ; g_RuntimeClass_FocusLockedData */
     ea = (uint32_t)(0x00e21804u);
     M32(ea) = 0xc10fc4u;
-    /* 00ac3dd3  call 0x7c2cd2 */
+    /* 00ac3dd3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3da0_2;
@@ -326,7 +339,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac3ddb:
-    /* 00ac3ddb  mov eax, 0xe21804 */
+    /* 00ac3ddb  mov eax, 0xe21804  ; g_RuntimeClass_FocusLockedData */
     eax = 0xe21804u;
     /* 00ac3de0  ret */
     c->eip = M32(esp);

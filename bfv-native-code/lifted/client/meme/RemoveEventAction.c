@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00ac3870  dice::meme::RemoveEventAction  (virtual method)
- * strings: "dice::meme::RemoveEventAction" */
+/* 00ac3870  RemoveEventAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::RemoveEventAction
+ * strings: "dice::meme::RemoveEventAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac3870, bfv_client_l1_body_00ac3870);
 BFV_L1_RESUME(bfv_client_l1r_00ac3870_1, bfv_client_l1_body_00ac3870, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac3870_2, bfv_client_l1_body_00ac3870, 2);
@@ -37,27 +40,27 @@ void bfv_client_l1_body_00ac3870(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac3885  push 0xc10e30 */
+    /* 00ac3885  push 0xc10e30  ; "dice::meme::RemoveEventAction" */
     t = 0xc10e30u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac388a  mov ecx, 0xe217cc */
+    /* 00ac388a  mov ecx, 0xe217cc  ; g_RuntimeClass_RemoveEventAction */
     ecx = 0xe217ccu;
-    /* 00ac388f  call 0x875490 */
+    /* 00ac388f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3870_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac3894  push 0xb41d50 */
+    /* 00ac3894  push 0xb41d50  ; bfv_client_global_store_00b41d50 */
     t = 0xb41d50u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac3899  mov dword ptr [0xe217cc], 0xc10e10 */
+    /* 00ac3899  mov dword ptr [0xe217cc], 0xc10e10  ; g_RuntimeClass_RemoveEventAction */
     ea = (uint32_t)(0x00e217ccu);
     M32(ea) = 0xc10e10u;
-    /* 00ac38a3  call 0x7c2cd2 */
+    /* 00ac38a3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac3870_2;
@@ -71,7 +74,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac38ab:
-    /* 00ac38ab  mov eax, 0xe217cc */
+    /* 00ac38ab  mov eax, 0xe217cc  ; g_RuntimeClass_RemoveEventAction */
     eax = 0xe217ccu;
     /* 00ac38b0  ret */
     c->eip = M32(esp);
@@ -84,7 +87,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac38c0  dice::meme::RemoveEventAction  (vtable store) */
+/* 00ac38c0  RemoveEventAction::create  (vtable store)
+ * class: dice::meme::RemoveEventAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac38c0, bfv_client_l1_body_00ac38c0);
 BFV_L1_RESUME(bfv_client_l1r_00ac38c0_1, bfv_client_l1_body_00ac38c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac38c0_2, bfv_client_l1_body_00ac38c0, 2);
@@ -108,7 +113,7 @@ void bfv_client_l1_body_00ac38c0(struct bfv_cpu *c)
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac38c3  call 0x403610 */
+    /* 00ac38c3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac38c0_1;
@@ -130,14 +135,14 @@ R_1:
     if (zf) goto L_00ac38e2;
     /* 00ac38d1  mov ecx, esi */
     ecx = esi;
-    /* 00ac38d3  call 0x874870 */
+    /* 00ac38d3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac38c0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac38d8  mov dword ptr [esi], 0xc10e54 */
+    /* 00ac38d8  mov dword ptr [esi], 0xc10e54  ; vtable RemoveEventAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc10e54u;
     /* 00ac38de  mov eax, esi */

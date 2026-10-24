@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00769d70  dice::bf::ai::BotMain::Path  (virtual method) */
+/* 00769d70  Path::deleting_dtor  (virtual method)
+ * overrides: IPathBuffer::vf1  (2 classes implement it)
+ * class: dice::bf::ai::BotMain::Path
+ */
 BFV_L1_ENTRY(bfv_server_l1_00769d70, bfv_server_l1_body_00769d70);
 BFV_L1_RESUME(bfv_server_l1r_00769d70_1, bfv_server_l1_body_00769d70, 1);
 BFV_L1_RESUME(bfv_server_l1r_00769d70_2, bfv_server_l1_body_00769d70, 2);
@@ -31,7 +34,7 @@ void bfv_server_l1_body_00769d70(struct bfv_cpu *c)
     esi = ecx;
     /* 00769d73  lea ecx, [esi + 0x84] */
     ecx = (uint32_t)(esi + 0x00000084u);
-    /* 00769d79  call 0x768f00 */
+    /* 00769d79  call 0x768f00  ; BotMain_00768f00 */
     t = 0x00768f00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00769d70_1;
@@ -40,18 +43,18 @@ void bfv_server_l1_body_00769d70(struct bfv_cpu *c)
 R_1:
     /* 00769d7e  lea ecx, [esi + 0x70] */
     ecx = (uint32_t)(esi + 0x00000070u);
-    /* 00769d81  call 0x768f00 */
+    /* 00769d81  call 0x768f00  ; BotMain_00768f00 */
     t = 0x00768f00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00769d70_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00769d86  test byte ptr [esp + 8], 1 */
+    /* 00769d86  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 00769d8b  mov dword ptr [esi], 0x87630c */
+    /* 00769d8b  mov dword ptr [esi], 0x87630c  ; vtable IPathBuffer */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87630cu;
     /* 00769d91  je 0x769d9c */
@@ -60,7 +63,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00769d94  call 0x403df0 */
+    /* 00769d94  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00769d70_3;
@@ -91,7 +94,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0076d8a0  dice::bf::ai::BotMain::Path  (virtual method) */
+/* 0076d8a0  Path::vf0  (virtual method)
+ * overrides: IPathBuffer::vf0  (2 classes implement it)
+ * class: dice::bf::ai::BotMain::Path
+ */
 BFV_L1_ENTRY(bfv_server_l1_0076d8a0, bfv_server_l1_body_0076d8a0);
 void bfv_server_l1_body_0076d8a0(struct bfv_cpu *c)
 {
@@ -124,7 +130,7 @@ void bfv_server_l1_body_0076d8a0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0076d8b1  jmp 0x76d4a0 */
+    /* 0076d8b1  jmp 0x76d4a0  ; sub_0076d4a0 */
     c->eip = 0x0076d4a0u;
     goto out;
 L_0076d8b6:
@@ -134,7 +140,7 @@ L_0076d8b6:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0076d8b9  jmp 0x76d4a0 */
+    /* 0076d8b9  jmp 0x76d4a0  ; sub_0076d4a0 */
     c->eip = 0x0076d4a0u;
     goto out;
 L_0076d8be:

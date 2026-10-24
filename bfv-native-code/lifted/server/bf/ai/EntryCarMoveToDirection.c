@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00511d10  dice::bf::ai::EntryCarMoveToDirection  (virtual method) */
+/* 00511d10  stub_return_true_4args_00511d10  (virtual method)
+ * overrides: BAPEntry::execute  (46 classes implement it)
+ * class: dice::bf::ai::EntryCarMoveToDirection
+ * also entered at 00511d20: PlayerControlObjectNetworkable::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_00511d10, bfv_server_l1_body_00511d10);
 void bfv_server_l1_body_00511d10(struct bfv_cpu *c)
 {
@@ -26,7 +30,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007667c0  dice::bf::ai::EntryCarMoveToDirection  (vtable store) */
+/* 007667c0  EntryCarMoveToDirection::EntryCarMoveToDirection  (vtable store)
+ * class: dice::bf::ai::EntryCarMoveToDirection
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_007667c0, bfv_server_l1_body_007667c0);
 void bfv_server_l1_body_007667c0(struct bfv_cpu *c)
 {
@@ -37,7 +44,7 @@ void bfv_server_l1_body_007667c0(struct bfv_cpu *c)
     uint32_t ea;
     /* 007667c0  mov eax, ecx */
     eax = ecx;
-    /* 007667c2  mov dword ptr [eax], 0x875e74 */
+    /* 007667c2  mov dword ptr [eax], 0x875e74  ; vtable EntryCarMoveToDirection */
     ea = (uint32_t)(eax);
     M32(ea) = 0x875e74u;
     /* 007667c8  ret */

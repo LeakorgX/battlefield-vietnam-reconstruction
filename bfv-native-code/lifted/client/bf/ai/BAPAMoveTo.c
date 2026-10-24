@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009fc8e0  dice::bf::ai::BAPAMoveTo  (virtual method) */
+/* 009fc8e0  BAPAMoveTo::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPAMoveTo
+ */
 BFV_L1_ENTRY(bfv_client_l1_009fc8e0, bfv_client_l1_body_009fc8e0);
 BFV_L1_RESUME(bfv_client_l1r_009fc8e0_1, bfv_client_l1_body_009fc8e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009fc8e0_2, bfv_client_l1_body_009fc8e0, 2);
@@ -29,26 +32,26 @@ void bfv_client_l1_body_009fc8e0(struct bfv_cpu *c)
     esi = ecx;
     /* 009fc8e3  lea ecx, [esi + 0x18] */
     ecx = (uint32_t)(esi + 0x00000018u);
-    /* 009fc8e6  mov dword ptr [esi], 0xbfc89c */
+    /* 009fc8e6  mov dword ptr [esi], 0xbfc89c  ; vtable BAPAMoveTo */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfc89cu;
     /* 009fc8ec  mov dword ptr [ecx], 0xbfc85c */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbfc85cu;
-    /* 009fc8f2  call 0xa0a790 */
+    /* 009fc8f2  call 0xa0a790  ; BAPAComponentSoldierPose::ctor_dtor */
     t = 0x00a0a790u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009fc8e0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009fc8f7  mov al, byte ptr [esp + 8] */
+    /* 009fc8f7  mov al, byte ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(eax, M8(ea));
-    /* 009fc8fb  mov dword ptr [esi], 0xbf60a0 */
+    /* 009fc8fb  mov dword ptr [esi], 0xbf60a0  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf60a0u;
-    /* 009fc901  mov ecx, dword ptr [0xe105bc] */
+    /* 009fc901  mov ecx, dword ptr [0xe105bc]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     ecx = M32(ea);
     /* 009fc907  inc ecx */
@@ -59,10 +62,10 @@ R_1:
     /* 009fc908  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 009fc90a  mov dword ptr [0xe105bc], ecx */
+    /* 009fc90a  mov dword ptr [0xe105bc], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     M32(ea) = ecx;
-    /* 009fc910  mov dword ptr [esi], 0xbf6094 */
+    /* 009fc910  mov dword ptr [esi], 0xbf6094  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf6094u;
     /* 009fc916  je 0x9fc921 */
@@ -71,7 +74,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009fc919  call 0x403680 */
+    /* 009fc919  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009fc8e0_2;

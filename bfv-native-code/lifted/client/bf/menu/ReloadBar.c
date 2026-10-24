@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005aa070  dice::bf::menu::ReloadBar  (vtable store) */
+/* 005aa070  ReloadBar::ReloadBar  (vtable store)
+ * class: dice::bf::menu::ReloadBar
+ * called by: Vehicle::Vehicle
+ */
 BFV_L1_ENTRY(bfv_client_l1_005aa070, bfv_client_l1_body_005aa070);
 void bfv_client_l1_body_005aa070(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_005aa070(struct bfv_cpu *c)
     uint32_t ea;
     /* 005aa070  mov eax, ecx */
     eax = ecx;
-    /* 005aa072  mov dword ptr [eax], 0xb75994 */
+    /* 005aa072  mov dword ptr [eax], 0xb75994  ; vtable ReloadBar */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb75994u;
     /* 005aa078  mov dword ptr [eax + 4], 0 */
@@ -33,8 +36,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005aa080  dice::bf::menu::ReloadBar  (virtual method)
- * strings: "Ammo", "ReloadTime", "ReloadTimeSecondary" */
+/* 005aa080  ReloadBar::registerMenuData  (virtual method)
+ * overrides: IMenuObject::registerMenuData  (36 classes implement it)
+ * class: dice::bf::menu::ReloadBar
+ * strings: "Ammo", "ReloadTime", "ReloadTimeSecondary"
+ */
 BFV_L1_ENTRY(bfv_client_l1_005aa080, bfv_client_l1_body_005aa080);
 BFV_L1_RESUME(bfv_client_l1r_005aa080_1, bfv_client_l1_body_005aa080, 1);
 BFV_L1_RESUME(bfv_client_l1r_005aa080_2, bfv_client_l1_body_005aa080, 2);
@@ -70,7 +76,7 @@ void bfv_client_l1_body_005aa080(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 005aa083  mov eax, dword ptr [0xcff7cc] */
+    /* 005aa083  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 005aa088  push ebx */
@@ -91,25 +97,25 @@ void bfv_client_l1_body_005aa080(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ebx = r;
-    /* 005aa090  push 0xb73fb8 */
+    /* 005aa090  push 0xb73fb8  ; "Ammo" */
     t = 0xb73fb8u;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa095  lea ecx, [esp + 0x2c] */
+    /* 005aa095  lea ecx, [esp + 0x2c]  ; &var_20 */
     ecx = (uint32_t)(esp + 0x0000002cu);
-    /* 005aa099  mov dword ptr [esp + 0x48], eax */
+    /* 005aa099  mov dword ptr [esp + 0x48], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000048u);
     M32(ea) = eax;
-    /* 005aa09d  mov dword ptr [esp + 0x44], 0xf */
+    /* 005aa09d  mov dword ptr [esp + 0x44], 0xf  ; var_8 */
     ea = (uint32_t)(esp + 0x00000044u);
     M32(ea) = 0xfu;
-    /* 005aa0a5  mov dword ptr [esp + 0x40], ebx */
+    /* 005aa0a5  mov dword ptr [esp + 0x40], ebx  ; var_c */
     ea = (uint32_t)(esp + 0x00000040u);
     M32(ea) = ebx;
-    /* 005aa0a9  mov byte ptr [esp + 0x30], bl */
+    /* 005aa0a9  mov byte ptr [esp + 0x30], bl  ; var_1c */
     ea = (uint32_t)(esp + 0x00000030u);
     M8(ea) = LO8(ebx);
-    /* 005aa0ad  call 0x401ae0 */
+    /* 005aa0ad  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005aa080_1;
@@ -120,35 +126,35 @@ R_1:
     t = 0xau;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa0b4  push 0xb759c4 */
+    /* 005aa0b4  push 0xb759c4  ; "ReloadTime" */
     t = 0xb759c4u;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa0b9  lea ecx, [esp + 0x10] */
+    /* 005aa0b9  lea ecx, [esp + 0x10]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 005aa0bd  mov dword ptr [esp + 0x28], 0xf */
+    /* 005aa0bd  mov dword ptr [esp + 0x28], 0xf  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0xfu;
-    /* 005aa0c5  mov dword ptr [esp + 0x24], ebx */
+    /* 005aa0c5  mov dword ptr [esp + 0x24], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = ebx;
-    /* 005aa0c9  mov byte ptr [esp + 0x14], bl */
+    /* 005aa0c9  mov byte ptr [esp + 0x14], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = LO8(ebx);
-    /* 005aa0cd  call 0x401ae0 */
+    /* 005aa0cd  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005aa080_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005aa0d2  lea eax, [esp + 0x24] */
+    /* 005aa0d2  lea eax, [esp + 0x24]  ; &var_20 */
     eax = (uint32_t)(esp + 0x00000024u);
     /* 005aa0d6  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa0d7  lea ecx, [esp + 0xc] */
+    /* 005aa0d7  lea ecx, [esp + 0xc]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x0000000cu);
     /* 005aa0db  push ecx */
     t = ecx;
@@ -157,16 +163,16 @@ R_2:
     /* 005aa0dc  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005aa0df  lea edx, [esi + 8] */
+    /* 005aa0df  lea edx, [esi + 8]  ; field ReloadTime (menu data, meme_registerFloatRef) */
     edx = (uint32_t)(esi + 0x00000008u);
-    /* 005aa0e2  call 0x4c5a90 */
+    /* 005aa0e2  call 0x4c5a90  ; meme_registerFloatRef */
     t = 0x004c5a90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005aa080_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 005aa0e7  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 005aa0e7  cmp dword ptr [esp + 0x20], 0x10  ; var_24 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
@@ -174,14 +180,14 @@ R_3:
     F_SUB(32, a, b, r);
     /* 005aa0ec  jb 0x5aa0fb */
     if (cf) goto L_005aa0fb;
-    /* 005aa0ee  mov edx, dword ptr [esp + 0xc] */
+    /* 005aa0ee  mov edx, dword ptr [esp + 0xc]  ; var_38 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 005aa0f2  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa0f3  call 0x403680 */
+    /* 005aa0f3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005aa080_4;
@@ -199,35 +205,35 @@ L_005aa0fb:
     t = 0x13u;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa0fd  push 0xb759b0 */
+    /* 005aa0fd  push 0xb759b0  ; "ReloadTimeSecondary" */
     t = 0xb759b0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa102  lea ecx, [esp + 0x10] */
+    /* 005aa102  lea ecx, [esp + 0x10]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 005aa106  mov dword ptr [esp + 0x28], 0xf */
+    /* 005aa106  mov dword ptr [esp + 0x28], 0xf  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0xfu;
-    /* 005aa10e  mov dword ptr [esp + 0x24], ebx */
+    /* 005aa10e  mov dword ptr [esp + 0x24], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = ebx;
-    /* 005aa112  mov byte ptr [esp + 0x14], bl */
+    /* 005aa112  mov byte ptr [esp + 0x14], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = LO8(ebx);
-    /* 005aa116  call 0x401ae0 */
+    /* 005aa116  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005aa080_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 005aa11b  lea eax, [esp + 0x24] */
+    /* 005aa11b  lea eax, [esp + 0x24]  ; &var_20 */
     eax = (uint32_t)(esp + 0x00000024u);
     /* 005aa11f  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa120  lea ecx, [esp + 0xc] */
+    /* 005aa120  lea ecx, [esp + 0xc]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x0000000cu);
     /* 005aa124  push ecx */
     t = ecx;
@@ -236,16 +242,16 @@ R_5:
     /* 005aa125  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005aa128  lea edx, [esi + 0xc] */
+    /* 005aa128  lea edx, [esi + 0xc]  ; field ReloadTimeSecondary (menu data, meme_registerFloatRef) */
     edx = (uint32_t)(esi + 0x0000000cu);
-    /* 005aa12b  call 0x4c5a90 */
+    /* 005aa12b  call 0x4c5a90  ; meme_registerFloatRef */
     t = 0x004c5a90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005aa080_6;
     c->eip = t;
     goto out;
 R_6:
-    /* 005aa130  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 005aa130  cmp dword ptr [esp + 0x20], 0x10  ; var_24 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
@@ -261,14 +267,14 @@ R_6:
     ebx = t;
     /* 005aa137  jb 0x5aa146 */
     if (cf) goto L_005aa146;
-    /* 005aa139  mov edx, dword ptr [esp + 4] */
+    /* 005aa139  mov edx, dword ptr [esp + 4]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 005aa13d  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa13e  call 0x403680 */
+    /* 005aa13e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005aa080_7;
@@ -282,7 +288,7 @@ R_7:
     F_ADD(32, a, b, r);
     esp = r;
 L_005aa146:
-    /* 005aa146  cmp dword ptr [esp + 0x34], 0x10 */
+    /* 005aa146  cmp dword ptr [esp + 0x34], 0x10  ; var_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     a = M32(ea);
     b = 0x10u;
@@ -290,14 +296,14 @@ L_005aa146:
     F_SUB(32, a, b, r);
     /* 005aa14b  jb 0x5aa15a */
     if (cf) goto L_005aa15a;
-    /* 005aa14d  mov eax, dword ptr [esp + 0x20] */
+    /* 005aa14d  mov eax, dword ptr [esp + 0x20]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000020u);
     eax = M32(ea);
     /* 005aa151  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa152  call 0x403680 */
+    /* 005aa152  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005aa080_8;
@@ -311,12 +317,12 @@ R_8:
     F_ADD(32, a, b, r);
     esp = r;
 L_005aa15a:
-    /* 005aa15a  mov ecx, dword ptr [esp + 0x38] */
+    /* 005aa15a  mov ecx, dword ptr [esp + 0x38]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000038u);
     ecx = M32(ea);
     /* 005aa15e  mov al, 1 */
     SET8L(eax, 0x1u);
-    /* 005aa160  call 0x7c2019 */
+    /* 005aa160  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005aa080_9;
@@ -340,7 +346,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0077a260  dice::bf::menu::ReloadBar  (virtual method) */
+/* 0077a260  ReloadBar::vf5  (virtual method)
+ * class: dice::bf::menu::ReloadBar
+ */
 BFV_L1_ENTRY(bfv_client_l1_0077a260, bfv_client_l1_body_0077a260);
 void bfv_client_l1_body_0077a260(struct bfv_cpu *c)
 {
@@ -353,10 +361,10 @@ void bfv_client_l1_body_0077a260(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 0077a262  mov dword ptr [ecx + 8], eax */
+    /* 0077a262  mov dword ptr [ecx + 8], eax  ; field ReloadTime */
     ea = (uint32_t)(ecx + 0x00000008u);
     M32(ea) = eax;
-    /* 0077a265  mov dword ptr [ecx + 0xc], eax */
+    /* 0077a265  mov dword ptr [ecx + 0xc], eax  ; field ReloadTimeSecondary */
     ea = (uint32_t)(ecx + 0x0000000cu);
     M32(ea) = eax;
     /* 0077a268  ret */

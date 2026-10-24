@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f2030  dice::bf::ai::BAPIWChange  (vtable store) */
+/* 009f2030  BAPIWChange::BAPIWChange  (vtable store)
+ * class: dice::bf::ai::BAPIWChange
+ * called by: BBPChange::buildPlan, BBPChangeLandingCraft::buildPlan, BBPChangeTeleport::buildPlan
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f2030, bfv_client_l1_body_009f2030);
 BFV_L1_RESUME(bfv_client_l1r_009f2030_1, bfv_client_l1_body_009f2030, 1);
 void bfv_client_l1_body_009f2030(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_009f2030(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009f2030  mov eax, dword ptr [esp + 0xc] */
+    /* 009f2030  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 009f2034  push esi */
@@ -28,7 +31,7 @@ void bfv_client_l1_body_009f2030(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f2035  mov esi, ecx */
     esi = ecx;
-    /* 009f2037  mov ecx, dword ptr [esp + 0xc] */
+    /* 009f2037  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009f203b  push eax */
@@ -41,7 +44,7 @@ void bfv_client_l1_body_009f2030(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f203d  mov ecx, esi */
     ecx = esi;
-    /* 009f203f  call 0xa0a6c0 */
+    /* 009f203f  call 0xa0a6c0  ; BAPInfoWrapper::ctor_dtor */
     t = 0x00a0a6c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f2030_1;
@@ -51,10 +54,10 @@ R_1:
     /* 009f2044  mov eax, dword ptr [esi + 0x18] */
     ea = (uint32_t)(esi + 0x00000018u);
     eax = M32(ea);
-    /* 009f2047  mov edx, dword ptr [esp + 8] */
+    /* 009f2047  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
-    /* 009f204b  mov dword ptr [esi], 0xbfa7d4 */
+    /* 009f204b  mov dword ptr [esi], 0xbfa7d4  ; vtable BAPIWChange */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfa7d4u;
     /* 009f2051  mov dword ptr [esi + 0x20], edx */
@@ -80,7 +83,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f2060  dice::bf::ai::BAPIWChange  (virtual method) */
+/* 009f2060  BAPIWChange::deleting_dtor  (virtual method)
+ * overrides: BotScript::vf1  (55 classes implement it)
+ * class: dice::bf::ai::BAPIWChange
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f2060, bfv_client_l1_body_009f2060);
 BFV_L1_RESUME(bfv_client_l1r_009f2060_1, bfv_client_l1_body_009f2060, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f2060_2, bfv_client_l1_body_009f2060, 2);
@@ -110,7 +116,7 @@ void bfv_client_l1_body_009f2060(struct bfv_cpu *c)
     /* 009f2066  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 009f2068  mov dword ptr [esi], 0xbfa7d4 */
+    /* 009f2068  mov dword ptr [esi], 0xbfa7d4  ; vtable BAPIWChange */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfa7d4u;
     /* 009f206e  je 0x9f2077 */
@@ -133,14 +139,14 @@ R_1:
 L_009f2077:
     /* 009f2077  mov ecx, esi */
     ecx = esi;
-    /* 009f2079  call 0xa0a9d0 */
+    /* 009f2079  call 0xa0a9d0  ; BAPStatement::~BAPStatement */
     t = 0x00a0a9d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f2060_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009f207e  test byte ptr [esp + 8], 1 */
+    /* 009f207e  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -150,9 +156,9 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f2086  mov ecx, 0xe0ff78 */
+    /* 009f2086  mov ecx, 0xe0ff78  ; g_MemoryPoolNull_BAPIWChange */
     ecx = 0xe0ff78u;
-    /* 009f208b  call 0x412fc0 */
+    /* 009f208b  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f2060_3;

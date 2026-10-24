@@ -1,0 +1,8 @@
+## file
+Plan action that switches the bot to the weapon stored in the statement (this+0x1c) by pressing the matching weapon-select control.
+
+## 009f59b0
+Destructor: restores the base vtables, counts the destruction in g_bapaDestroyedCount and returns the object to its memory pool when bit 0 of the flag argument is set.
+
+## 009f59f0
+Resolves the bot's own object and its weapon interface (directly at +0x34, or through the vehicle seat found with ai_00970270 for objects with bit 30 of +4 set); if there is none it finishes (flag = 0, done = 1). The control block is at bot+4: the 64-bit mask at +0xe0/+0xe4 says which controls are enabled and float slots hold the control values. While the current weapon (weapon interface slot 0x10) differs from this+0x1c it clears the fire controls at +0x20, +0x5c and +0x60, sets the weapon-select control (index taken from +0x50 of the wanted weapon template, only when below 0x37) to 1.0, and reports flag = 1, done = 0. Once the weapon matches, it releases that control and the fire controls, sets flag = 1 and done = the weapon's ready state (slot 0x5c). When the weapon is not ready and its magazine list is empty it presses the control at +0x60 (1.0), which the code uses for reload.

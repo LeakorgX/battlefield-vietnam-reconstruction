@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00791d20  dice::bf::ai::TaskAStarLocalSearch  (vtable store) */
+/* 00791d20  TaskAStarLocalSearch::~TaskAStarLocalSearch  (vtable store)
+ * class: dice::bf::ai::TaskAStarLocalSearch
+ * called by: AStarType::~AStarType
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791d20, bfv_server_l1_body_00791d20);
 void bfv_server_l1_body_00791d20(struct bfv_cpu *c)
 {
@@ -14,22 +17,22 @@ void bfv_server_l1_body_00791d20(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00791d20  cmp dword ptr [0xc31d98], ecx */
+    /* 00791d20  cmp dword ptr [0xc31d98], ecx  ; g_pTaskAStarLocalSearch_00c31d98 */
     ea = (uint32_t)(0x00c31d98u);
     a = M32(ea);
     b = ecx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00791d26  mov dword ptr [ecx], 0x8731e0 */
+    /* 00791d26  mov dword ptr [ecx], 0x8731e0  ; vtable TaskAStarLocalSearch */
     ea = (uint32_t)(ecx);
     M32(ea) = 0x8731e0u;
     /* 00791d2c  jne 0x791d38 */
     if (!zf) goto L_00791d38;
-    /* 00791d2e  mov dword ptr [0xc31d98], 0 */
+    /* 00791d2e  mov dword ptr [0xc31d98], 0  ; g_pTaskAStarLocalSearch_00c31d98 */
     ea = (uint32_t)(0x00c31d98u);
     M32(ea) = 0x0u;
 L_00791d38:
-    /* 00791d38  jmp 0x791c60 */
+    /* 00791d38  jmp 0x791c60  ; Task::ctor_dtor */
     c->eip = 0x00791c60u;
     goto out;
 out: __attribute__((unused));
@@ -39,7 +42,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00791dc0  dice::bf::ai::TaskAStarLocalSearch  (virtual method) */
+/* 00791dc0  TaskAStarLocalSearch::execute  (virtual method)
+ * overrides: Task::execute  (8 classes implement it)
+ * class: dice::bf::ai::TaskAStarLocalSearch
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791dc0, bfv_server_l1_body_00791dc0);
 BFV_L1_RESUME(bfv_server_l1r_00791dc0_1, bfv_server_l1_body_00791dc0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00791dc0_2, bfv_server_l1_body_00791dc0, 2);
@@ -74,17 +80,17 @@ void bfv_server_l1_body_00791dc0(struct bfv_cpu *c)
     /* 00791dc6  mov ecx, dword ptr [esi + 0x14] */
     ea = (uint32_t)(esi + 0x00000014u);
     ecx = M32(ea);
-    /* 00791dc9  call 0x7bec90 */
+    /* 00791dc9  call 0x7bec90  ; ai_007bec90 */
     t = 0x007bec90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791dc0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00791dce  fstp qword ptr [esp + 8] */
+    /* 00791dce  fstp qword ptr [esp + 8]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00791dd2  mov eax, dword ptr [0xc31d98] */
+    /* 00791dd2  mov eax, dword ptr [0xc31d98]  ; g_pTaskAStarLocalSearch_00c31d98 */
     ea = (uint32_t)(0x00c31d98u);
     eax = M32(ea);
     /* 00791dd7  test eax, eax */
@@ -107,7 +113,7 @@ L_00791ddf:
     /* 00791de1  mov dl, byte ptr [esi + 0x38] */
     ea = (uint32_t)(esi + 0x00000038u);
     SET8L(edx, M8(ea));
-    /* 00791de4  lea eax, [esp + 8] */
+    /* 00791de4  lea eax, [esp + 8]  ; &var_8 */
     eax = (uint32_t)(esp + 0x00000008u);
     /* 00791de8  push eax */
     t = eax;
@@ -116,7 +122,7 @@ L_00791ddf:
     /* 00791de9  mov eax, dword ptr [esi + 0x3c] */
     ea = (uint32_t)(esi + 0x0000003cu);
     eax = M32(ea);
-    /* 00791dec  lea ecx, [esp + 0xb] */
+    /* 00791dec  lea ecx, [esp + 0xb]  ; &var_9 */
     ecx = (uint32_t)(esp + 0x0000000bu);
     /* 00791df0  push ecx */
     t = ecx;
@@ -132,17 +138,17 @@ L_00791ddf:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00791df8  mov dword ptr [0xc31d98], esi */
+    /* 00791df8  mov dword ptr [0xc31d98], esi  ; g_pTaskAStarLocalSearch_00c31d98 */
     ea = (uint32_t)(0x00c31d98u);
     M32(ea) = esi;
-    /* 00791dfe  call 0x7bd990 */
+    /* 00791dfe  call 0x7bd990  ; ai_007bd990 */
     t = 0x007bd990u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791dc0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00791e03  mov cl, byte ptr [esp + 7] */
+    /* 00791e03  mov cl, byte ptr [esp + 7]  ; var_9 */
     ea = (uint32_t)(esp + 0x00000007u);
     SET8L(ecx, M8(ea));
     /* 00791e07  test cl, cl */
@@ -157,7 +163,7 @@ R_2:
     ea = (uint32_t)(esi + 0x00000034u);
     M32(ea) = 0x1u;
 L_00791e15:
-    /* 00791e15  fld qword ptr [0x807350] */
+    /* 00791e15  fld qword ptr [0x807350]  ; = 0.0 */
     ea = (uint32_t)(0x00807350u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00791e1b  sub esp, 8 */
@@ -168,10 +174,10 @@ L_00791e15:
     esp = r;
     /* 00791e1e  mov ecx, esi */
     ecx = esi;
-    /* 00791e20  fstp qword ptr [esp] */
+    /* 00791e20  fstp qword ptr [esp]  ; var_18 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00791e23  call 0x791cb0 */
+    /* 00791e23  call 0x791cb0  ; Task_00791cb0 */
     t = 0x00791cb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791dc0_3;
@@ -204,7 +210,7 @@ L_00791e2d:
     /* 00791e34  mov dword ptr [ecx], 0xffffffff */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xffffffffu;
-    /* 00791e3a  mov dword ptr [0xc31d98], 0 */
+    /* 00791e3a  mov dword ptr [0xc31d98], 0  ; g_pTaskAStarLocalSearch_00c31d98 */
     ea = (uint32_t)(0x00c31d98u);
     M32(ea) = 0x0u;
     /* 00791e44  pop esi */
@@ -250,7 +256,7 @@ L_00791e49:
     M32(esp) = t;
     /* 00791e59  mov ecx, 0xc334e0 */
     ecx = 0xc334e0u;
-    /* 00791e5e  call 0x7bd040 */
+    /* 00791e5e  call 0x7bd040  ; ai_007bd040 */
     t = 0x007bd040u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791dc0_4;
@@ -263,7 +269,7 @@ R_4:
     /* 00791e66  mov dword ptr [ecx], eax */
     ea = (uint32_t)(ecx);
     M32(ea) = eax;
-    /* 00791e68  mov dword ptr [0xc31d98], 0 */
+    /* 00791e68  mov dword ptr [0xc31d98], 0  ; g_pTaskAStarLocalSearch_00c31d98 */
     ea = (uint32_t)(0x00c31d98u);
     M32(ea) = 0x0u;
     /* 00791e72  pop esi */
@@ -287,7 +293,7 @@ L_00791e77:
     /* 00791e7a  mov dword ptr [edx], 0 */
     ea = (uint32_t)(edx);
     M32(ea) = 0x0u;
-    /* 00791e80  mov dword ptr [0xc31d98], 0 */
+    /* 00791e80  mov dword ptr [0xc31d98], 0  ; g_pTaskAStarLocalSearch_00c31d98 */
     ea = (uint32_t)(0x00c31d98u);
     M32(ea) = 0x0u;
     /* 00791e8a  pop esi */

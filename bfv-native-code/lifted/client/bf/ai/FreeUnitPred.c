@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00963e10  dice::bf::ai::FreeUnitPred  (virtual method) */
+/* 00963e10  FreeUnitPred::vf0  (virtual method)
+ * class: dice::bf::ai::FreeUnitPred
+ */
 BFV_L1_ENTRY(bfv_client_l1_00963e10, bfv_client_l1_body_00963e10);
 BFV_L1_RESUME(bfv_client_l1r_00963e10_1, bfv_client_l1_body_00963e10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00963e10_2, bfv_client_l1_body_00963e10, 2);
@@ -35,7 +37,7 @@ void bfv_client_l1_body_00963e10(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00963e12  mov edi, dword ptr [esp + 0xc] */
+    /* 00963e12  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 00963e16  mov eax, dword ptr [edi + 0x10] */
@@ -130,7 +132,7 @@ void bfv_client_l1_body_00963e10(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 00963e5e  mov dword ptr [esp + 0x10], eax */
+    /* 00963e5e  mov dword ptr [esp + 0x10], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
 L_00963e62:
@@ -175,7 +177,7 @@ L_00963e70:
 R_2:
     /* 00963e80  mov ecx, eax */
     ecx = eax;
-    /* 00963e82  call 0x9d8100 */
+    /* 00963e82  call 0x9d8100  ; bfv_artillery_component_test */
     t = 0x009d8100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00963e10_3;
@@ -196,7 +198,7 @@ R_3:
     /* 00963e90  mov esi, dword ptr [ebx + 4] */
     ea = (uint32_t)(ebx + 0x00000004u);
     esi = M32(ea);
-    /* 00963e93  lea eax, [esp + 0x10] */
+    /* 00963e93  lea eax, [esp + 0x10]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 00963e97  push eax */
     t = eax;
@@ -248,7 +250,7 @@ L_00963eaf:
     ecx = r;
     /* 00963eb7  je 0x963ed2 */
     if (zf) goto L_00963ed2;
-    /* 00963eb9  mov edx, dword ptr [0xe0cd58] */
+    /* 00963eb9  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 00963ebf  mov edx, dword ptr [edx] */
@@ -355,7 +357,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00964970  dice::bf::ai::FreeUnitPred  (vtable store) */
+/* 00964970  FreeUnitPred::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::FreeUnitPred
+ * called by: ai_00930cf0, BFEnvironment::vf48
+ */
 BFV_L1_ENTRY(bfv_client_l1_00964970, bfv_client_l1_body_00964970);
 BFV_L1_RESUME(bfv_client_l1r_00964970_1, bfv_client_l1_body_00964970, 1);
 BFV_L1_RESUME(bfv_client_l1r_00964970_2, bfv_client_l1_body_00964970, 2);
@@ -384,7 +389,7 @@ void bfv_client_l1_body_00964970(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00964978  mov esi, dword ptr [0xe0ef54] */
+    /* 00964978  mov esi, dword ptr [0xe0ef54]  ; g_pIAIEnvironment_00e0ef54 */
     ea = (uint32_t)(0x00e0ef54u);
     esi = M32(ea);
     /* 0096497e  push edi */
@@ -412,7 +417,7 @@ void bfv_client_l1_body_00964970(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0096498e  mov dword ptr [esp + 0x18], 0xbf3444 */
+    /* 0096498e  mov dword ptr [esp + 0x18], 0xbf3444  ; vtable FreeUnitPred */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0xbf3444u;
     /* 00964996  mov dword ptr [esp + 0x1c], eax */
@@ -425,7 +430,7 @@ void bfv_client_l1_body_00964970(struct bfv_cpu *c)
     ecx = (uint32_t)(ecx + eax * 8u + 0x0000007cu);
     /* 009649a0  lea edx, [esp + 0x20] */
     edx = (uint32_t)(esp + 0x00000020u);
-    /* 009649a4  call 0x97f080 */
+    /* 009649a4  call 0x97f080  ; ai_0097f080 */
     t = 0x0097f080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00964970_1;
@@ -445,7 +450,7 @@ R_1:
     M32(esp) = t;
     /* 009649af  mov ecx, esi */
     ecx = esi;
-    /* 009649b1  call dword ptr [edi + 0x40] */
+    /* 009649b1  call dword ptr [edi + 0x40]  ; -> IAIEnvironment::vf16 = BFEnvironment::vf16 */
     ea = (uint32_t)(edi + 0x00000040u);
     t = M32(ea);
     esp -= 4;

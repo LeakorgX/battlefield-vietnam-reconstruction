@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00478cd0  dice::bf::menu::MenuModule  (virtual method) */
+/* 00478cd0  MenuModule::vf6  (virtual method)
+ * class: dice::bf::menu::MenuModule
+ */
 BFV_L1_ENTRY(bfv_server_l1_00478cd0, bfv_server_l1_body_00478cd0);
 BFV_L1_RESUME(bfv_server_l1r_00478cd0_1, bfv_server_l1_body_00478cd0, 1);
 void bfv_server_l1_body_00478cd0(struct bfv_cpu *c)
@@ -19,13 +21,13 @@ void bfv_server_l1_body_00478cd0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00478cd0  push 0xbe8d8c */
+    /* 00478cd0  push 0xbe8d8c  ; g_consoleCommands_Game_00be8d8c */
     t = 0xbe8d8cu;
     esp -= 4;
     M32(esp) = t;
     /* 00478cd5  mov ecx, 0xbdb488 */
     ecx = 0xbdb488u;
-    /* 00478cda  call 0x41ac00 */
+    /* 00478cda  call 0x41ac00  ; sub_0041ac00 */
     t = 0x0041ac00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00478cd0_1;
@@ -45,7 +47,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00478cf0  dice::bf::menu::MenuModule  (virtual method) */
+/* 00478cf0  MenuModule::vf7  (virtual method)
+ * class: dice::bf::menu::MenuModule
+ */
 BFV_L1_ENTRY(bfv_server_l1_00478cf0, bfv_server_l1_body_00478cf0);
 BFV_L1_RESUME(bfv_server_l1r_00478cf0_1, bfv_server_l1_body_00478cf0, 1);
 void bfv_server_l1_body_00478cf0(struct bfv_cpu *c)
@@ -59,13 +63,13 @@ void bfv_server_l1_body_00478cf0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00478cf0  push 0xbe8d8c */
+    /* 00478cf0  push 0xbe8d8c  ; g_consoleCommands_Game_00be8d8c */
     t = 0xbe8d8cu;
     esp -= 4;
     M32(esp) = t;
     /* 00478cf5  mov ecx, 0xbdb488 */
     ecx = 0xbdb488u;
-    /* 00478cfa  call 0x6af790 */
+    /* 00478cfa  call 0x6af790  ; stub_return_false_1args_006af790 */
     t = 0x006af790u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00478cf0_1;

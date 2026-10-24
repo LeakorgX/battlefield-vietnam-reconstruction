@@ -1,0 +1,7 @@
+## file
+BAPBoleanOp is the base of the boolean plan conditions (And, Or, Not): a
+condition with a std::list of child conditions at this+8.
+
+## 009f1c50
+Deleting destructor: clears and frees the child list, resets the vtable to
+BAPCondition and frees the object when bit 0 of the argument is set.

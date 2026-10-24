@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00584370  dice::ref2::world::?A0x10c76ce7::DrawVisiblePredicate  (virtual method) */
+/* 00584370  DrawVisiblePredicate::vf3  (virtual method)
+ * overrides: ObjectFlagPredicator::vf3  (4 classes implement it)
+ * class: dice::ref2::world::?A0x10c76ce7::DrawVisiblePredicate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00584370, bfv_client_l1_body_00584370);
 void bfv_client_l1_body_00584370(struct bfv_cpu *c)
 {
@@ -28,7 +31,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006916d0  dice::ref2::world::?A0x10c76ce7::DrawVisiblePredicate  (virtual method) */
+/* 006916d0  DrawVisiblePredicate::vf0  (virtual method)
+ * overrides: ObjectFlagPredicator::vf0  (4 classes implement it)
+ * class: dice::ref2::world::?A0x10c76ce7::DrawVisiblePredicate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006916d0, bfv_client_l1_body_006916d0);
 BFV_L1_RESUME(bfv_client_l1r_006916d0_1, bfv_client_l1_body_006916d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006916d0_2, bfv_client_l1_body_006916d0, 2);
@@ -68,7 +74,7 @@ void bfv_client_l1_body_006916d0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006916d2  mov esi, dword ptr [esp + 0xc] */
+    /* 006916d2  mov esi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 006916d6  push esi */
@@ -77,7 +83,7 @@ void bfv_client_l1_body_006916d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006916d7  mov ebp, ecx */
     ebp = ecx;
-    /* 006916d9  call 0x673ff0 */
+    /* 006916d9  call 0x673ff0  ; ObjectFlagPredicator::vf0 */
     t = 0x00673ff0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006916d0_1;
@@ -104,7 +110,7 @@ R_1:
     if (zf) goto L_0069179e;
     /* 006916f9  mov ecx, esi */
     ecx = esi;
-    /* 006916fb  call 0x66b190 */
+    /* 006916fb  call 0x66b190  ; world::Object::getRoot */
     t = 0x0066b190u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006916d0_2;
@@ -138,7 +144,7 @@ R_3:
     if (!zf) goto L_00691793;
     /* 00691717  mov ecx, esi */
     ecx = esi;
-    /* 00691719  call 0x66b190 */
+    /* 00691719  call 0x66b190  ; world::Object::getRoot */
     t = 0x0066b190u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006916d0_4;
@@ -166,7 +172,7 @@ R_5:
     if (!zf) goto L_00691786;
     /* 0069172b  mov ecx, esi */
     ecx = esi;
-    /* 0069172d  call 0x66b190 */
+    /* 0069172d  call 0x66b190  ; world::Object::getRoot */
     t = 0x0066b190u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006916d0_6;
@@ -233,13 +239,13 @@ R_9:
     /* 00691756  fld dword ptr [edi + 4] */
     ea = (uint32_t)(edi + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00691759  fadd dword ptr [0xb555ac] */
+    /* 00691759  fadd dword ptr [0xb555ac]  ; = 2.0f */
     ea = (uint32_t)(0x00b555acu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0069175f  mov esi, dword ptr [ebx + 8] */
     ea = (uint32_t)(ebx + 0x00000008u);
     esi = M32(ea);
-    /* 00691762  mov ecx, dword ptr [0xda21a0] */
+    /* 00691762  mov ecx, dword ptr [0xda21a0]  ; g_pTerrain */
     ea = (uint32_t)(0x00da21a0u);
     ecx = M32(ea);
     /* 00691768  mov eax, dword ptr [eax] */
@@ -252,7 +258,7 @@ R_9:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0069176d  fstp dword ptr [esp + 0x18] */
+    /* 0069176d  fstp dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00691771  push eax */
@@ -267,7 +273,7 @@ R_9:
     c->eip = t;
     goto out;
 R_10:
-    /* 00691775  fcomp dword ptr [esp + 0x14] */
+    /* 00691775  fcomp dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00691779  pop edi */

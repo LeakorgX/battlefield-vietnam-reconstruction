@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005a1320  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 005a1320  SimpleLineGraphBase::vf3  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a1320, bfv_client_l1_body_005a1320);
 void bfv_client_l1_body_005a1320(struct bfv_cpu *c)
 {
@@ -14,16 +16,16 @@ void bfv_client_l1_body_005a1320(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005a1320  mov eax, dword ptr [esp + 4] */
+    /* 005a1320  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005a1324  mov edx, dword ptr [esp + 8] */
+    /* 005a1324  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 005a1328  mov dword ptr [ecx + 0x18], eax */
     ea = (uint32_t)(ecx + 0x00000018u);
     M32(ea) = eax;
-    /* 005a132b  mov eax, dword ptr [esp + 0xc] */
+    /* 005a132b  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 005a132f  mov dword ptr [ecx + 0x1c], edx */
@@ -43,7 +45,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0095b900  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 0095b900  SimpleLineGraphBase::vf11  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ * called by: Cmd_AiStrategy_setIsAbortCondition::execute, Cmd_WeaponTemplate_healing::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_0095b900, bfv_client_l1_body_0095b900);
 void bfv_client_l1_body_0095b900(struct bfv_cpu *c)
 {
@@ -52,7 +57,7 @@ void bfv_client_l1_body_0095b900(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0095b900  mov al, byte ptr [esp + 4] */
+    /* 0095b900  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 0095b904  mov byte ptr [ecx + 4], al */
@@ -69,7 +74,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a57240  dice::ref2::rend::SimpleLineGraphBase  (vtable store) */
+/* 00a57240  SimpleLineGraphBase::ctor_dtor  (vtable store)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a57240, bfv_client_l1_body_00a57240);
 BFV_L1_RESUME(bfv_client_l1r_00a57240_1, bfv_client_l1_body_00a57240, 1);
 void bfv_client_l1_body_00a57240(struct bfv_cpu *c)
@@ -83,7 +90,7 @@ void bfv_client_l1_body_00a57240(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00a57240  mov dword ptr [ecx], 0xc02ecc */
+    /* 00a57240  mov dword ptr [ecx], 0xc02ecc  ; vtable SimpleLineGraphBase */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xc02eccu;
     /* 00a57246  mov ecx, dword ptr [ecx + 0x28] */
@@ -98,7 +105,7 @@ void bfv_client_l1_body_00a57240(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a5724e  call 0x403680 */
+    /* 00a5724e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a57240_1;
@@ -121,7 +128,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a57260  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 00a57260  SimpleLineGraphBase::vf0  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ * called by: SimpleLineGraphD3D::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a57260, bfv_client_l1_body_00a57260);
 void bfv_client_l1_body_00a57260(struct bfv_cpu *c)
 {
@@ -130,7 +140,7 @@ void bfv_client_l1_body_00a57260(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00a57260  fld dword ptr [esp + 4] */
+    /* 00a57260  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a57264  fcomp dword ptr [ecx + 0x44] */
@@ -143,7 +153,7 @@ void bfv_client_l1_body_00a57260(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 00a5726c  jp 0xa57299 */
     if (pf) goto L_00a57299;
-    /* 00a5726e  mov eax, dword ptr [esp + 4] */
+    /* 00a5726e  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00a57272  mov dword ptr [ecx + 0x44], eax */
@@ -173,7 +183,7 @@ L_00a57284:
     /* 00a57284  mov edx, dword ptr [ecx + 0x28] */
     ea = (uint32_t)(ecx + 0x00000028u);
     edx = M32(ea);
-    /* 00a57287  fld dword ptr [esp + 4] */
+    /* 00a57287  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a5728b  fstp dword ptr [edx + eax*4] */
@@ -197,7 +207,7 @@ L_00a57284:
     /* 00a57297  jmp 0xa572d3 */
     goto L_00a572d3;
 L_00a57299:
-    /* 00a57299  fld dword ptr [esp + 4] */
+    /* 00a57299  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a5729d  fcomp dword ptr [ecx + 0x48] */
@@ -210,7 +220,7 @@ L_00a57299:
     F_LOGIC(8, r);
     /* 00a572a5  jne 0xa572d7 */
     if (!zf) goto L_00a572d7;
-    /* 00a572a7  mov eax, dword ptr [esp + 4] */
+    /* 00a572a7  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00a572ab  mov dword ptr [ecx + 0x48], eax */
@@ -242,7 +252,7 @@ L_00a572c0:
     /* 00a572c0  mov edx, dword ptr [ecx + 0x28] */
     ea = (uint32_t)(ecx + 0x00000028u);
     edx = M32(ea);
-    /* 00a572c3  fld dword ptr [esp + 4] */
+    /* 00a572c3  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a572c7  fstp dword ptr [edx + eax*4] */
@@ -271,7 +281,7 @@ L_00a572d7:
     /* 00a572d7  movsx eax, word ptr [ecx + 0x42] */
     ea = (uint32_t)(ecx + 0x00000042u);
     eax = (uint32_t)(int32_t)(int16_t)M16(ea);
-    /* 00a572db  fld dword ptr [esp + 4] */
+    /* 00a572db  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a572df  mov edx, dword ptr [ecx + 0x28] */
@@ -320,7 +330,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a57300  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 00a57300  SimpleLineGraphBase::vf1  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a57300, bfv_client_l1_body_00a57300);
 void bfv_client_l1_body_00a57300(struct bfv_cpu *c)
 {
@@ -329,7 +341,7 @@ void bfv_client_l1_body_00a57300(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00a57300  mov eax, dword ptr [esp + 4] */
+    /* 00a57300  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00a57304  mov edx, dword ptr [eax + 4] */
@@ -403,7 +415,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a57340  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 00a57340  SimpleLineGraphBase::vf4_setByte_24h  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a57340, bfv_client_l1_body_00a57340);
 void bfv_client_l1_body_00a57340(struct bfv_cpu *c)
 {
@@ -412,7 +426,7 @@ void bfv_client_l1_body_00a57340(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a57340  mov al, byte ptr [esp + 4] */
+    /* 00a57340  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 00a57344  mov byte ptr [ecx + 0x24], al */
@@ -429,7 +443,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a57350  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 00a57350  SimpleLineGraphBase::vf5  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ * called by: SimpleLineGraphD3D::vf5
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a57350, bfv_client_l1_body_00a57350);
 void bfv_client_l1_body_00a57350(struct bfv_cpu *c)
 {
@@ -438,10 +455,10 @@ void bfv_client_l1_body_00a57350(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a57350  mov eax, dword ptr [esp + 4] */
+    /* 00a57350  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00a57354  mov edx, dword ptr [esp + 8] */
+    /* 00a57354  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00a57358  mov dword ptr [ecx + 0x38], eax */
@@ -461,7 +478,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a57370  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 00a57370  SimpleLineGraphBase::vf6  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a57370, bfv_client_l1_body_00a57370);
 void bfv_client_l1_body_00a57370(struct bfv_cpu *c)
 {
@@ -470,10 +489,10 @@ void bfv_client_l1_body_00a57370(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 00a57370  fld dword ptr [esp + 4] */
+    /* 00a57370  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a57374  fcomp dword ptr [esp + 8] */
+    /* 00a57374  fcomp dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a57378  fnstsw ax */
@@ -492,10 +511,10 @@ void bfv_client_l1_body_00a57370(struct bfv_cpu *c)
     esp += 12;
     goto out;
 L_00a57384:
-    /* 00a57384  mov eax, dword ptr [esp + 4] */
+    /* 00a57384  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00a57388  mov edx, dword ptr [esp + 8] */
+    /* 00a57388  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00a5738c  mov dword ptr [ecx + 0x30], eax */
@@ -517,7 +536,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a573a0  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 00a573a0  SimpleLineGraphBase::vf7_setByte_40h  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ * called by: BotMain_helper_009aff20
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a573a0, bfv_client_l1_body_00a573a0);
 void bfv_client_l1_body_00a573a0(struct bfv_cpu *c)
 {
@@ -526,7 +548,7 @@ void bfv_client_l1_body_00a573a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a573a0  mov al, byte ptr [esp + 4] */
+    /* 00a573a0  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 00a573a4  mov byte ptr [ecx + 0x40], al */
@@ -543,7 +565,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a573b0  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 00a573b0  SimpleLineGraphBase::vf8  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a573b0, bfv_client_l1_body_00a573b0);
 void bfv_client_l1_body_00a573b0(struct bfv_cpu *c)
 {
@@ -552,7 +576,7 @@ void bfv_client_l1_body_00a573b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00a573b0  mov al, byte ptr [esp + 4] */
+    /* 00a573b0  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 00a573b4  cmp al, 0xa */
@@ -587,7 +611,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a573d0  dice::ref2::rend::SimpleLineGraphBase  (virtual method) */
+/* 00a573d0  SimpleLineGraphBase::vf9  (virtual method)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a573d0, bfv_client_l1_body_00a573d0);
 void bfv_client_l1_body_00a573d0(struct bfv_cpu *c)
 {
@@ -616,7 +642,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a573f0  dice::ref2::rend::SimpleLineGraphBase  (vtable store) */
+/* 00a573f0  SimpleLineGraphBase::SimpleLineGraphBase  (vtable store)
+ * class: dice::ref2::rend::SimpleLineGraphBase
+ * called by: SimpleLineGraphD3D::SimpleLineGraphD3D
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a573f0, bfv_client_l1_body_00a573f0);
 BFV_L1_RESUME(bfv_client_l1r_00a573f0_1, bfv_client_l1_body_00a573f0, 1);
 void bfv_client_l1_body_00a573f0(struct bfv_cpu *c)
@@ -646,7 +675,7 @@ void bfv_client_l1_body_00a573f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a573f6  mov esi, ecx */
     esi = ecx;
-    /* 00a573f8  mov dword ptr [esi], 0xc02ecc */
+    /* 00a573f8  mov dword ptr [esi], 0xc02ecc  ; vtable SimpleLineGraphBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc02eccu;
     /* 00a573fe  mov byte ptr [esi + 4], bl */
@@ -664,7 +693,7 @@ void bfv_client_l1_body_00a573f0(struct bfv_cpu *c)
     /* 00a5740a  mov byte ptr [esi + 0x1b], al */
     ea = (uint32_t)(esi + 0x0000001bu);
     M8(ea) = LO8(eax);
-    /* 00a5740d  mov ax, word ptr [esp + 0xc] */
+    /* 00a5740d  mov ax, word ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     SET16(eax, M16(ea));
     /* 00a57412  mov byte ptr [esi + 0x1e], bl */
@@ -722,7 +751,7 @@ void bfv_client_l1_body_00a573f0(struct bfv_cpu *c)
     /* 00a5743f  mov word ptr [esi + 0x42], bx */
     ea = (uint32_t)(esi + 0x00000042u);
     M16(ea) = LO16(ebx);
-    /* 00a57443  call 0x403610 */
+    /* 00a57443  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a573f0_1;

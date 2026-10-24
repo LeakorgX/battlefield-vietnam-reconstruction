@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0057ddc0  dice::ref2::world::SimpleObject  (virtual method) */
+/* 0057ddc0  SimpleObject::vf54  (virtual method)
+ * class: dice::ref2::world::SimpleObject
+ * called by: SimpleObject::~SimpleObject, SimpleObject::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057ddc0, bfv_server_l1_body_0057ddc0);
 BFV_L1_RESUME(bfv_server_l1r_0057ddc0_1, bfv_server_l1_body_0057ddc0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057ddc0_2, bfv_server_l1_body_0057ddc0, 2);
@@ -35,13 +38,13 @@ void bfv_server_l1_body_0057ddc0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0057ddc1  mov esi, ecx */
     esi = ecx;
-    /* 0057ddc3  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057ddc3  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
     /* 0057ddc9  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0057ddcb  call dword ptr [eax + 0xd8] */
+    /* 0057ddcb  call dword ptr [eax + 0xd8]  ; -> Armor::vf54 */
     ea = (uint32_t)(eax + 0x000000d8u);
     t = M32(ea);
     esp -= 4;
@@ -70,7 +73,7 @@ R_1:
     M32(esp) = t;
     /* 0057ddde  mov ecx, esi */
     ecx = esi;
-    /* 0057dde0  call dword ptr [edx + 0x24] */
+    /* 0057dde0  call dword ptr [edx + 0x24]  ; -> SimpleObject::vf9 = Object::getComponent */
     ea = (uint32_t)(edx + 0x00000024u);
     t = M32(ea);
     esp -= 4;
@@ -83,7 +86,7 @@ R_2:
     F_LOGIC(32, r);
     /* 0057dde5  je 0x57ddf3 */
     if (zf) goto L_0057ddf3;
-    /* 0057dde7  mov ecx, dword ptr [0xc0d228] */
+    /* 0057dde7  mov ecx, dword ptr [0xc0d228]  ; g_pMaterialManager_00c0d228 */
     ea = (uint32_t)(0x00c0d228u);
     ecx = M32(ea);
     /* 0057dded  mov eax, dword ptr [ecx] */
@@ -93,7 +96,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057ddf0  call dword ptr [eax + 0x14] */
+    /* 0057ddf0  call dword ptr [eax + 0x14]  ; -> MaterialManager::vf5 = BotMain::vf53_get_30h (returns this+0x30) */
     ea = (uint32_t)(eax + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -102,13 +105,13 @@ R_2:
     goto out;
 R_3:
 L_0057ddf3:
-    /* 0057ddf3  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057ddf3  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
     /* 0057ddf9  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 0057ddfb  call dword ptr [edx + 0xd8] */
+    /* 0057ddfb  call dword ptr [edx + 0xd8]  ; -> Armor::vf54 */
     ea = (uint32_t)(edx + 0x000000d8u);
     t = M32(ea);
     esp -= 4;
@@ -137,7 +140,7 @@ R_4:
     M32(esp) = t;
     /* 0057de0e  mov ecx, esi */
     ecx = esi;
-    /* 0057de10  call dword ptr [edx + 0x24] */
+    /* 0057de10  call dword ptr [edx + 0x24]  ; -> SimpleObject::vf9 = Object::getComponent */
     ea = (uint32_t)(edx + 0x00000024u);
     t = M32(ea);
     esp -= 4;
@@ -150,7 +153,7 @@ R_5:
     F_LOGIC(32, r);
     /* 0057de15  je 0x57de23 */
     if (zf) goto L_0057de23;
-    /* 0057de17  mov ecx, dword ptr [0xc0d228] */
+    /* 0057de17  mov ecx, dword ptr [0xc0d228]  ; g_pMaterialManager_00c0d228 */
     ea = (uint32_t)(0x00c0d228u);
     ecx = M32(ea);
     /* 0057de1d  mov eax, dword ptr [ecx] */
@@ -160,7 +163,7 @@ R_5:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057de20  call dword ptr [eax + 0x1c] */
+    /* 0057de20  call dword ptr [eax + 0x1c]  ; -> MaterialManager::vf7 */
     ea = (uint32_t)(eax + 0x0000001cu);
     t = M32(ea);
     esp -= 4;
@@ -184,7 +187,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0057de30  dice::ref2::world::SimpleObject  (virtual method) */
+/* 0057de30  SimpleObject::handleDamage  (virtual method)
+ * class: dice::ref2::world::SimpleObject
+ * called by: BFSoldier::handleDamage
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057de30, bfv_server_l1_body_0057de30);
 BFV_L1_RESUME(bfv_server_l1r_0057de30_1, bfv_server_l1_body_0057de30, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057de30_2, bfv_server_l1_body_0057de30, 2);
@@ -200,7 +206,7 @@ void bfv_server_l1_body_0057de30(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 0057de30  call 0x4c80e0 */
+    /* 0057de30  call 0x4c80e0  ; Object_findAncestorWithInterface_c4a4 */
     t = 0x004c80e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057de30_1;
@@ -214,10 +220,10 @@ R_1:
     F_LOGIC(32, r);
     /* 0057de39  je 0x57de5e */
     if (zf) goto L_0057de5e;
-    /* 0057de3b  fld dword ptr [esp + 4] */
+    /* 0057de3b  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057de3f  fcomp dword ptr [0x851bcc] */
+    /* 0057de3f  fcomp dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057de45  fnstsw ax */
@@ -235,7 +241,7 @@ R_1:
     c->eip = M32(ea);
     goto out;
 L_0057de51:
-    /* 0057de51  fld dword ptr [esp + 4] */
+    /* 0057de51  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057de55  push ecx */
@@ -244,7 +250,7 @@ L_0057de51:
     M32(esp) = t;
     /* 0057de56  fchs */
     __asm__ volatile(".intel_syntax noprefix\n\tfchs\n\t.att_syntax prefix");
-    /* 0057de58  fstp dword ptr [esp] */
+    /* 0057de58  fstp dword ptr [esp]  ; var_4 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057de5b  call dword ptr [eax + 0x28] */
@@ -267,7 +273,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0057de70  dice::ref2::world::SimpleObject  (virtual method) */
+/* 0057de70  SimpleObject::handleEvent  (virtual method)
+ * overrides: Object::handleEvent  (47 classes implement it)
+ * class: dice::ref2::world::SimpleObject
+ * called by: MusicPlayer::handleEvent, Bundle::handleEvent, Winch::handleEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057de70, bfv_server_l1_body_0057de70);
 BFV_L1_RESUME(bfv_server_l1r_0057de70_1, bfv_server_l1_body_0057de70, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057de70_2, bfv_server_l1_body_0057de70, 2);
@@ -295,7 +305,7 @@ void bfv_server_l1_body_0057de70(struct bfv_cpu *c)
     case 8: goto R_8;
     default: break;
     }
-    /* 0057de70  mov eax, dword ptr [esp + 4] */
+    /* 0057de70  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0057de74  sub eax, 0x13 */
@@ -326,7 +336,7 @@ void bfv_server_l1_body_0057de70(struct bfv_cpu *c)
     eax = r;
     /* 0057de84  jne 0x57ded3 */
     if (!zf) goto L_0057ded3;
-    /* 0057de86  mov ecx, dword ptr [0x860514] */
+    /* 0057de86  mov ecx, dword ptr [0x860514]  ; interfaceID(AIObject) */
     ea = (uint32_t)(0x00860514u);
     ecx = M32(ea);
     /* 0057de8c  mov eax, dword ptr [esi] */
@@ -349,7 +359,7 @@ void bfv_server_l1_body_0057de70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0057de95  mov ecx, esi */
     ecx = esi;
-    /* 0057de97  call dword ptr [eax + 0x20] */
+    /* 0057de97  call dword ptr [eax + 0x20]  ; -> SimpleObject::vf8 = Object::setComponent */
     ea = (uint32_t)(eax + 0x00000020u);
     t = M32(ea);
     esp -= 4;
@@ -359,7 +369,7 @@ void bfv_server_l1_body_0057de70(struct bfv_cpu *c)
 R_1:
     /* 0057de9a  mov ecx, esi */
     ecx = esi;
-    /* 0057de9c  call 0x4c80e0 */
+    /* 0057de9c  call 0x4c80e0  ; Object_findAncestorWithInterface_c4a4 */
     t = 0x004c80e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057de70_2;
@@ -413,7 +423,7 @@ R_3:
     M32(esp) = t;
     /* 0057decd  mov ecx, esi */
     ecx = esi;
-    /* 0057decf  call dword ptr [eax + 0x28] */
+    /* 0057decf  call dword ptr [eax + 0x28]  ; -> SimpleObject::vf10 = Object::changeFlags */
     ea = (uint32_t)(eax + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -438,7 +448,7 @@ L_0057ded3:
 L_0057ded7:
     /* 0057ded7  mov ecx, esi */
     ecx = esi;
-    /* 0057ded9  call 0x4c80e0 */
+    /* 0057ded9  call 0x4c80e0  ; Object_findAncestorWithInterface_c4a4 */
     t = 0x004c80e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057de70_5;
@@ -485,7 +495,7 @@ R_6:
 L_0057df02:
     /* 0057df02  mov ecx, esi */
     ecx = esi;
-    /* 0057df04  call 0x4c80e0 */
+    /* 0057df04  call 0x4c80e0  ; Object_findAncestorWithInterface_c4a4 */
     t = 0x004c80e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057de70_7;
@@ -536,7 +546,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0057df30  dice::ref2::world::SimpleObject  (vtable store) */
+/* 0057df30  SimpleObject::~SimpleObject  (vtable store)
+ * class: dice::ref2::world::SimpleObject
+ * called by: Emitter::deleting_dtor, IBase::~IBase, BFSoldier::~BFSoldier, MusicPlayer::~MusicPlayer, ClusterProjectile::deleting_dtor, Projectile::deleting_dtor (+10 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057df30, bfv_server_l1_body_0057df30);
 BFV_L1_RESUME(bfv_server_l1r_0057df30_1, bfv_server_l1_body_0057df30, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057df30_2, bfv_server_l1_body_0057df30, 2);
@@ -569,7 +582,7 @@ void bfv_server_l1_body_0057df30(struct bfv_cpu *c)
     /* 0057df34  mov edi, dword ptr [esi + 0x4c] */
     ea = (uint32_t)(esi + 0x0000004cu);
     edi = M32(ea);
-    /* 0057df37  mov dword ptr [esi], 0x838564 */
+    /* 0057df37  mov dword ptr [esi], 0x838564  ; vtable SimpleObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0x838564u;
     /* 0057df3d  mov eax, dword ptr [edi] */
@@ -581,7 +594,7 @@ void bfv_server_l1_body_0057df30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0057df40  mov ecx, edi */
     ecx = edi;
-    /* 0057df42  call dword ptr [eax + 0x70] */
+    /* 0057df42  call dword ptr [eax + 0x70]  ; -> SimpleObjectTemplate::vf28 */
     ea = (uint32_t)(eax + 0x00000070u);
     t = M32(ea);
     esp -= 4;
@@ -598,7 +611,7 @@ R_1:
     M32(esp) = t;
     /* 0057df48  mov ecx, edi */
     ecx = edi;
-    /* 0057df4a  call dword ptr [edx + 0x68] */
+    /* 0057df4a  call dword ptr [edx + 0x68]  ; -> SimpleObjectTemplate::vf26 */
     ea = (uint32_t)(edx + 0x00000068u);
     t = M32(ea);
     esp -= 4;
@@ -606,7 +619,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 0057df4d  mov eax, dword ptr [0x860514] */
+    /* 0057df4d  mov eax, dword ptr [0x860514]  ; interfaceID(AIObject) */
     ea = (uint32_t)(0x00860514u);
     eax = M32(ea);
     /* 0057df52  push 0 */
@@ -619,7 +632,7 @@ R_2:
     M32(esp) = t;
     /* 0057df55  mov ecx, esi */
     ecx = esi;
-    /* 0057df57  call 0x57da50 */
+    /* 0057df57  call 0x57da50  ; Object::setComponent */
     t = 0x0057da50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057df30_3;
@@ -628,7 +641,7 @@ R_2:
 R_3:
     /* 0057df5c  mov ecx, esi */
     ecx = esi;
-    /* 0057df5e  call 0x57ddc0 */
+    /* 0057df5e  call 0x57ddc0  ; SimpleObject::vf54 */
     t = 0x0057ddc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057df30_4;
@@ -645,7 +658,7 @@ R_4:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 0057df67  jmp 0x57d940 */
+    /* 0057df67  jmp 0x57d940  ; Object::~Object */
     c->eip = 0x0057d940u;
     goto out;
 out: __attribute__((unused));
@@ -655,7 +668,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0057df70  dice::ref2::world::SimpleObject  (virtual method) */
+/* 0057df70  SimpleObject::init  (virtual method)
+ * overrides: Object::init  (47 classes implement it)
+ * class: dice::ref2::world::SimpleObject
+ * called by: BFSpawnPoint::init, Emitter::init, FreeCamera::init, BFSoldier::init, Projectile::init, PlayerControlObject::init (+10 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057df70, bfv_server_l1_body_0057df70);
 BFV_L1_RESUME(bfv_server_l1r_0057df70_1, bfv_server_l1_body_0057df70, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057df70_2, bfv_server_l1_body_0057df70, 2);
@@ -689,14 +706,14 @@ void bfv_server_l1_body_0057df70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0057df71  mov esi, ecx */
     esi = ecx;
-    /* 0057df73  call 0x57c0e0 */
+    /* 0057df73  call 0x57c0e0  ; Object::init */
     t = 0x0057c0e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057df70_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0057df78  mov ecx, dword ptr [0x829150] */
+    /* 0057df78  mov ecx, dword ptr [0x829150]  ; interfaceID(BFSoldier|FreeCamera|PlayerControlObject) */
     ea = (uint32_t)(0x00829150u);
     ecx = M32(ea);
     /* 0057df7e  mov eax, dword ptr [esi] */
@@ -708,7 +725,7 @@ R_1:
     M32(esp) = t;
     /* 0057df81  mov ecx, esi */
     ecx = esi;
-    /* 0057df83  call dword ptr [eax + 0xc] */
+    /* 0057df83  call dword ptr [eax + 0xc]  ; -> SimpleObject::vf3 = Object::queryInterface */
     ea = (uint32_t)(eax + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -741,13 +758,13 @@ R_2:
     goto out;
 R_3:
 L_0057df96:
-    /* 0057df96  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057df96  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
     /* 0057df9c  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0057df9e  call dword ptr [eax + 0xd8] */
+    /* 0057df9e  call dword ptr [eax + 0xd8]  ; -> Armor::vf54 */
     ea = (uint32_t)(eax + 0x000000d8u);
     t = M32(ea);
     esp -= 4;
@@ -774,7 +791,7 @@ R_4:
     edx = r;
     /* 0057dfb1  mov ecx, esi */
     ecx = esi;
-    /* 0057dfb3  call 0x564790 */
+    /* 0057dfb3  call 0x564790  ; SimpleObject::sub_00564790 */
     t = 0x00564790u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057df70_5;
@@ -804,7 +821,7 @@ R_6:
     F_LOGIC(32, r);
     /* 0057dfc5  jbe 0x57dfd3 */
     if ((cf | zf)) goto L_0057dfd3;
-    /* 0057dfc7  mov ecx, dword ptr [0xc0d228] */
+    /* 0057dfc7  mov ecx, dword ptr [0xc0d228]  ; g_pMaterialManager_00c0d228 */
     ea = (uint32_t)(0x00c0d228u);
     ecx = M32(ea);
     /* 0057dfcd  mov eax, dword ptr [ecx] */
@@ -814,7 +831,7 @@ R_6:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057dfd0  call dword ptr [eax + 0x18] */
+    /* 0057dfd0  call dword ptr [eax + 0x18]  ; -> MaterialManager::vf6 */
     ea = (uint32_t)(eax + 0x00000018u);
     t = M32(ea);
     esp -= 4;
@@ -823,7 +840,7 @@ R_6:
     goto out;
 R_7:
 L_0057dfd3:
-    /* 0057dfd3  mov eax, dword ptr [0x860518] */
+    /* 0057dfd3  mov eax, dword ptr [0x860518]  ; interfaceID(Weapon) */
     ea = (uint32_t)(0x00860518u);
     eax = M32(ea);
     /* 0057dfd8  mov edx, dword ptr [esi] */
@@ -839,7 +856,7 @@ L_0057dfd3:
     M32(esp) = t;
     /* 0057dfdc  mov ecx, esi */
     ecx = esi;
-    /* 0057dfde  call dword ptr [edx + 0x24] */
+    /* 0057dfde  call dword ptr [edx + 0x24]  ; -> SimpleObject::vf9 = Object::getComponent */
     ea = (uint32_t)(edx + 0x00000024u);
     t = M32(ea);
     esp -= 4;
@@ -877,7 +894,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0057dff0  dice::ref2::world::SimpleObject  (virtual method) */
+/* 0057dff0  SimpleObject::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::world::SimpleObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057dff0, bfv_server_l1_body_0057dff0);
 BFV_L1_RESUME(bfv_server_l1r_0057dff0_1, bfv_server_l1_body_0057dff0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057dff0_2, bfv_server_l1_body_0057dff0, 2);
@@ -914,7 +934,7 @@ void bfv_server_l1_body_0057dff0(struct bfv_cpu *c)
     /* 0057dff4  mov edi, dword ptr [esi + 0x4c] */
     ea = (uint32_t)(esi + 0x0000004cu);
     edi = M32(ea);
-    /* 0057dff7  mov dword ptr [esi], 0x838564 */
+    /* 0057dff7  mov dword ptr [esi], 0x838564  ; vtable SimpleObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0x838564u;
     /* 0057dffd  mov eax, dword ptr [edi] */
@@ -926,7 +946,7 @@ void bfv_server_l1_body_0057dff0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0057e000  mov ecx, edi */
     ecx = edi;
-    /* 0057e002  call dword ptr [eax + 0x70] */
+    /* 0057e002  call dword ptr [eax + 0x70]  ; -> SimpleObjectTemplate::vf28 */
     ea = (uint32_t)(eax + 0x00000070u);
     t = M32(ea);
     esp -= 4;
@@ -943,7 +963,7 @@ R_1:
     M32(esp) = t;
     /* 0057e008  mov ecx, edi */
     ecx = edi;
-    /* 0057e00a  call dword ptr [edx + 0x68] */
+    /* 0057e00a  call dword ptr [edx + 0x68]  ; -> SimpleObjectTemplate::vf26 */
     ea = (uint32_t)(edx + 0x00000068u);
     t = M32(ea);
     esp -= 4;
@@ -951,7 +971,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 0057e00d  mov eax, dword ptr [0x860514] */
+    /* 0057e00d  mov eax, dword ptr [0x860514]  ; interfaceID(AIObject) */
     ea = (uint32_t)(0x00860514u);
     eax = M32(ea);
     /* 0057e012  push 0 */
@@ -964,7 +984,7 @@ R_2:
     M32(esp) = t;
     /* 0057e015  mov ecx, esi */
     ecx = esi;
-    /* 0057e017  call 0x57da50 */
+    /* 0057e017  call 0x57da50  ; Object::setComponent */
     t = 0x0057da50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057dff0_3;
@@ -973,7 +993,7 @@ R_2:
 R_3:
     /* 0057e01c  mov ecx, esi */
     ecx = esi;
-    /* 0057e01e  call 0x57ddc0 */
+    /* 0057e01e  call 0x57ddc0  ; SimpleObject::vf54 */
     t = 0x0057ddc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057dff0_4;
@@ -982,14 +1002,14 @@ R_3:
 R_4:
     /* 0057e023  mov ecx, esi */
     ecx = esi;
-    /* 0057e025  call 0x57d940 */
+    /* 0057e025  call 0x57d940  ; Object::~Object */
     t = 0x0057d940u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057dff0_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 0057e02a  test byte ptr [esp + 0xc], 1 */
+    /* 0057e02a  test byte ptr [esp + 0xc], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -999,7 +1019,7 @@ R_5:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e032  call 0x403df0 */
+    /* 0057e032  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057dff0_6;
@@ -1034,7 +1054,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0057e050  (between same file) */
+/* 0057e050  SimpleObject::sub_0057e050  (between same file)
+ * class: dice::ref2::world::SimpleObject
+ * called by: Projectile::onHit, SimpleObject::update
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057e050, bfv_server_l1_body_0057e050);
 BFV_L1_RESUME(bfv_server_l1r_0057e050_1, bfv_server_l1_body_0057e050, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057e050_2, bfv_server_l1_body_0057e050, 2);
@@ -1071,7 +1094,7 @@ void bfv_server_l1_body_0057e050(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e059  call dword ptr [eax + 0x34] */
+    /* 0057e059  call dword ptr [eax + 0x34]  ; -> SimpleObject::vf13 = Object::getWorldPosition */
     ea = (uint32_t)(eax + 0x00000034u);
     t = M32(ea);
     esp -= 4;
@@ -1088,10 +1111,10 @@ R_1:
     /* 0057e061  mov eax, dword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     eax = M32(ea);
-    /* 0057e064  mov dword ptr [esp + 0xc], ecx */
+    /* 0057e064  mov dword ptr [esp + 0xc], ecx  ; var_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = ecx;
-    /* 0057e068  mov ecx, dword ptr [0xc0f118] */
+    /* 0057e068  mov ecx, dword ptr [0xc0f118]  ; g_pTerrain */
     ea = (uint32_t)(0x00c0f118u);
     ecx = M32(ea);
     /* 0057e06e  mov edi, dword ptr [ecx] */
@@ -1113,7 +1136,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 0057e075  fsubr dword ptr [esp + 0xc] */
+    /* 0057e075  fsubr dword ptr [esp + 0xc]  ; var_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfsubr dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e079  mov ecx, dword ptr [esi + 0x64] */
@@ -1123,7 +1146,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 0057e07d  fcomp dword ptr [0x8148e0] */
+    /* 0057e07d  fcomp dword ptr [0x8148e0]  ; = 0.5f */
     ea = (uint32_t)(0x008148e0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e083  pop esi */
@@ -1186,7 +1209,7 @@ R_3:
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
     /* 0057e0b2  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
-    /* 0057e0b4  fcomp dword ptr [0x8148e0] */
+    /* 0057e0b4  fcomp dword ptr [0x8148e0]  ; = 0.5f */
     ea = (uint32_t)(0x008148e0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e0ba  fnstsw ax */
@@ -1230,7 +1253,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0057e0d0  dice::ref2::world::SimpleObject  (virtual method) */
+/* 0057e0d0  SimpleObject::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::SimpleObject
+ * called by: BFSoldier::update, PlayerControlObject::update, RotationalBundle::update
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057e0d0, bfv_server_l1_body_0057e0d0);
 BFV_L1_RESUME(bfv_server_l1r_0057e0d0_1, bfv_server_l1_body_0057e0d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057e0d0_2, bfv_server_l1_body_0057e0d0, 2);
@@ -1272,7 +1299,7 @@ void bfv_server_l1_body_0057e0d0(struct bfv_cpu *c)
     case 15: goto R_15;
     default: break;
     }
-    /* 0057e0d0  test byte ptr [esp + 8], 4 */
+    /* 0057e0d0  test byte ptr [esp + 8], 4  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x4u) & 0xffu;
     F_LOGIC(8, r);
@@ -1310,10 +1337,10 @@ void bfv_server_l1_body_0057e0d0(struct bfv_cpu *c)
     t = 0xc4a4u;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e0f0  mov dword ptr [esp + 0x20], ebp */
+    /* 0057e0f0  mov dword ptr [esp + 0x20], ebp  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = ebp;
-    /* 0057e0f4  call dword ptr [eax + 0x24] */
+    /* 0057e0f4  call dword ptr [eax + 0x24]  ; -> SimpleObject::vf9 = Object::getComponent */
     ea = (uint32_t)(eax + 0x00000024u);
     t = M32(ea);
     esp -= 4;
@@ -1334,7 +1361,7 @@ R_1:
     F_SUB(32, a, b, r);
     /* 0057e0fd  je 0x57e116 */
     if (zf) goto L_0057e116;
-    /* 0057e0ff  mov eax, dword ptr [esp + 0x14] */
+    /* 0057e0ff  mov eax, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 0057e103  mov edx, dword ptr [edi] */
@@ -1400,10 +1427,10 @@ L_0057e123:
     F_SUB(8, a, b, r);
     /* 0057e141  je 0x57e2e0 */
     if (zf) goto L_0057e2e0;
-    /* 0057e147  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057e147  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
-    /* 0057e14d  mov eax, dword ptr [0x80ba88] */
+    /* 0057e14d  mov eax, dword ptr [0x80ba88]  ; interfaceID(GameServer) */
     ea = (uint32_t)(0x0080ba88u);
     eax = M32(ea);
     /* 0057e152  mov edx, dword ptr [ecx] */
@@ -1413,7 +1440,7 @@ L_0057e123:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e155  call dword ptr [edx + 0xc] */
+    /* 0057e155  call dword ptr [edx + 0xc]  ; -> Armor::vf3 = Armor::queryInterface */
     ea = (uint32_t)(edx + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -1437,10 +1464,10 @@ R_3:
     /* 0057e15f  jne 0x57e2eb */
     if (!zf) goto L_0057e2eb;
 L_0057e165:
-    /* 0057e165  fld dword ptr [esi + 0x148] */
+    /* 0057e165  fld dword ptr [esi + 0x148]  ; field ObjectTemplate.timeToLiveAfterDeath */
     ea = (uint32_t)(esi + 0x00000148u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057e16b  fcomp dword ptr [0x851bcc] */
+    /* 0057e16b  fcomp dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e171  fnstsw ax */
@@ -1450,16 +1477,16 @@ L_0057e165:
     F_LOGIC(8, r);
     /* 0057e176  jne 0x57e2cd */
     if (!zf) goto L_0057e2cd;
-    /* 0057e17c  fld dword ptr [esi + 0x148] */
+    /* 0057e17c  fld dword ptr [esi + 0x148]  ; field ObjectTemplate.timeToLiveAfterDeath */
     ea = (uint32_t)(esi + 0x00000148u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057e182  fsub dword ptr [esp + 0x14] */
+    /* 0057e182  fsub dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057e186  fst dword ptr [esi + 0x148] */
+    /* 0057e186  fst dword ptr [esi + 0x148]  ; field ObjectTemplate.timeToLiveAfterDeath */
     ea = (uint32_t)(esi + 0x00000148u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057e18c  fcomp dword ptr [0x851bcc] */
+    /* 0057e18c  fcomp dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e192  fnstsw ax */
@@ -1482,7 +1509,7 @@ L_0057e165:
     M32(esp) = t;
     /* 0057e19e  mov ecx, esi */
     ecx = esi;
-    /* 0057e1a0  call dword ptr [edx + 0xa0] */
+    /* 0057e1a0  call dword ptr [edx + 0xa0]  ; -> SimpleObject::vf40 = SimpleObject::handleEvent */
     ea = (uint32_t)(edx + 0x000000a0u);
     t = M32(ea);
     esp -= 4;
@@ -1524,7 +1551,7 @@ R_5:
     M32(esp) = t;
     /* 0057e1be  mov ecx, edi */
     ecx = edi;
-    /* 0057e1c0  fstp dword ptr [esp] */
+    /* 0057e1c0  fstp dword ptr [esp]  ; var_14 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e1c3  call dword ptr [ebp + 0x1c] */
@@ -1535,7 +1562,7 @@ R_5:
     c->eip = t;
     goto out;
 R_6:
-    /* 0057e1c6  mov eax, dword ptr [esp + 0x18] */
+    /* 0057e1c6  mov eax, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 0057e1ca  mov byte ptr [esi + 0x14c], bl */
@@ -1544,7 +1571,7 @@ R_6:
     /* 0057e1d0  mov ecx, dword ptr [eax + 0x11c] */
     ea = (uint32_t)(eax + 0x0000011cu);
     ecx = M32(ea);
-    /* 0057e1d6  mov dword ptr [esi + 0x148], ecx */
+    /* 0057e1d6  mov dword ptr [esi + 0x148], ecx  ; field ObjectTemplate.timeToLiveAfterDeath */
     ea = (uint32_t)(esi + 0x00000148u);
     M32(ea) = ecx;
     /* 0057e1dc  mov byte ptr [esi + 0x13e], bl */
@@ -1570,7 +1597,7 @@ L_0057e1ea:
     /* 0057e1fc  fsub dword ptr [ebp + 0x124] */
     ea = (uint32_t)(ebp + 0x00000124u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057e202  fcom dword ptr [esi + 0x148] */
+    /* 0057e202  fcom dword ptr [esi + 0x148]  ; field ObjectTemplate.timeToLiveAfterDeath */
     ea = (uint32_t)(esi + 0x00000148u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcom dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e208  fnstsw ax */
@@ -1580,20 +1607,20 @@ L_0057e1ea:
     F_LOGIC(8, r);
     /* 0057e20d  jne 0x57e2e9 */
     if (!zf) goto L_0057e2e9;
-    /* 0057e213  fld dword ptr [esi + 0x148] */
+    /* 0057e213  fld dword ptr [esi + 0x148]  ; field ObjectTemplate.timeToLiveAfterDeath */
     ea = (uint32_t)(esi + 0x00000148u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e219  fdiv st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv st(1)\n\t.att_syntax prefix");
-    /* 0057e21b  fstp dword ptr [esp + 0x14] */
+    /* 0057e21b  fstp dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e21f  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
-    /* 0057e221  fld dword ptr [esp + 0x14] */
+    /* 0057e221  fld dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057e225  fcomp dword ptr [0x851bcc] */
+    /* 0057e225  fcomp dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e22b  fnstsw ax */
@@ -1603,10 +1630,10 @@ L_0057e1ea:
     F_LOGIC(8, r);
     /* 0057e230  jne 0x57e2eb */
     if (!zf) goto L_0057e2eb;
-    /* 0057e236  fld dword ptr [esp + 0x14] */
+    /* 0057e236  fld dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057e23a  fcomp dword ptr [0x809264] */
+    /* 0057e23a  fcomp dword ptr [0x809264]  ; = 1.0f */
     ea = (uint32_t)(0x00809264u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e240  fnstsw ax */
@@ -1616,14 +1643,14 @@ L_0057e1ea:
     F_LOGIC(8, r);
     /* 0057e245  jne 0x57e24f */
     if (!zf) goto L_0057e24f;
-    /* 0057e247  mov dword ptr [esp + 0x14], 0x3f800000 */
+    /* 0057e247  mov dword ptr [esp + 0x14], 0x3f800000  ; arg_0, 1.0f */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x3f800000u;
 L_0057e24f:
-    /* 0057e24f  mov eax, dword ptr [0x829144] */
+    /* 0057e24f  mov eax, dword ptr [0x829144]  ; PlayerControlObjectTemplate::classID */
     ea = (uint32_t)(0x00829144u);
     eax = M32(ea);
-    /* 0057e254  mov edx, dword ptr [0x8207d4] */
+    /* 0057e254  mov edx, dword ptr [0x8207d4]  ; LodObjectTemplate::classID */
     ea = (uint32_t)(0x008207d4u);
     edx = M32(ea);
     /* 0057e25a  push eax */
@@ -1635,7 +1662,7 @@ L_0057e24f:
     /* 0057e25d  mov dword ptr [0xc0ed74], 1 */
     ea = (uint32_t)(0x00c0ed74u);
     M32(ea) = 0x1u;
-    /* 0057e267  call 0x422140 */
+    /* 0057e267  call 0x422140  ; SimpleObject::sub_00422140 */
     t = 0x00422140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e0d0_7;
@@ -1675,7 +1702,7 @@ R_8:
     /* 0057e27e  jmp 0x57e29b */
     goto L_0057e29b;
 L_0057e280:
-    /* 0057e280  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057e280  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
     /* 0057e286  mov edx, dword ptr [ecx] */
@@ -1685,7 +1712,7 @@ L_0057e280:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e289  call dword ptr [edx + 0x58] */
+    /* 0057e289  call dword ptr [edx + 0x58]  ; -> Armor::vf22 = Armor::vf22_getByte_e0h (returns this+0xe0) */
     ea = (uint32_t)(edx + 0x00000058u);
     t = M32(ea);
     esp -= 4;
@@ -1733,7 +1760,7 @@ L_0057e29b:
     F_SUB(32, a, b, r);
     /* 0057e29d  je 0x57e2c5 */
     if (zf) goto L_0057e2c5;
-    /* 0057e29f  mov edx, dword ptr [0x8488dc] */
+    /* 0057e29f  mov edx, dword ptr [0x8488dc]  ; interfaceID(AnimatedMesh|StandardMesh) */
     ea = (uint32_t)(0x008488dcu);
     edx = M32(ea);
     /* 0057e2a5  mov eax, dword ptr [ecx] */
@@ -1758,7 +1785,7 @@ R_10:
     F_SUB(32, a, b, r);
     /* 0057e2ad  je 0x57e2c5 */
     if (zf) goto L_0057e2c5;
-    /* 0057e2af  mov ecx, dword ptr [esp + 0x14] */
+    /* 0057e2af  mov ecx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0057e2b3  mov edx, dword ptr [eax] */
@@ -1778,7 +1805,7 @@ R_10:
     c->eip = t;
     goto out;
 R_11:
-    /* 0057e2bb  mov edx, dword ptr [esp + 0x14] */
+    /* 0057e2bb  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0057e2bf  mov dword ptr [esi + 0x150], edx */
@@ -1791,7 +1818,7 @@ L_0057e2c5:
     /* 0057e2cb  jmp 0x57e2eb */
     goto L_0057e2eb;
 L_0057e2cd:
-    /* 0057e2cd  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057e2cd  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
     /* 0057e2d3  mov eax, dword ptr [ecx] */
@@ -1801,7 +1828,7 @@ L_0057e2cd:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e2d6  call dword ptr [eax + 0x58] */
+    /* 0057e2d6  call dword ptr [eax + 0x58]  ; -> Armor::vf22 = Armor::vf22_getByte_e0h (returns this+0xe0) */
     ea = (uint32_t)(eax + 0x00000058u);
     t = M32(ea);
     esp -= 4;
@@ -1849,7 +1876,7 @@ L_0057e2eb:
     if (zf) goto L_0057e31d;
     /* 0057e2f3  mov ecx, esi */
     ecx = esi;
-    /* 0057e2f5  call 0x57e050 */
+    /* 0057e2f5  call 0x57e050  ; SimpleObject::sub_0057e050 */
     t = 0x0057e050u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e0d0_13;
@@ -1870,11 +1897,11 @@ R_13:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e303  push 0x40000000 */
+    /* 0057e303  push 0x40000000  ; 2.0f */
     t = 0x40000000u;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e308  call dword ptr [edx + 0x28] */
+    /* 0057e308  call dword ptr [edx + 0x28]  ; -> SimpleObject::vf10 = Object::changeFlags */
     ea = (uint32_t)(edx + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -1906,7 +1933,7 @@ L_0057e312:
     /* 0057e312  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 0057e314  push 0x40000000 */
+    /* 0057e314  push 0x40000000  ; 2.0f */
     t = 0x40000000u;
     esp -= 4;
     M32(esp) = t;
@@ -1914,7 +1941,7 @@ L_0057e312:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e31a  call dword ptr [eax + 0x28] */
+    /* 0057e31a  call dword ptr [eax + 0x28]  ; -> SimpleObject::vf10 = Object::changeFlags */
     ea = (uint32_t)(eax + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -1951,7 +1978,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0057e330  dice::ref2::world::SimpleObject  (vtable store) */
+/* 0057e330  SimpleObject::SimpleObject  (vtable store)
+ * class: dice::ref2::world::SimpleObject
+ * called by: BFSpawnPoint::BFSpawnPoint, Emitter::Emitter, MusicPlayer::MusicPlayer, SimpleObjectTemplate::createObject, ObjectSpawner::ObjectSpawner, SupplyDepot::SupplyDepot (+7 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057e330, bfv_server_l1_body_0057e330);
 BFV_L1_RESUME(bfv_server_l1r_0057e330_1, bfv_server_l1_body_0057e330, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057e330_2, bfv_server_l1_body_0057e330, 2);
@@ -2025,7 +2055,7 @@ void bfv_server_l1_body_0057e330(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e334  mov edi, dword ptr [esp + 0x14] */
+    /* 0057e334  mov edi, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 0057e338  push edi */
@@ -2034,14 +2064,14 @@ void bfv_server_l1_body_0057e330(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0057e339  mov esi, ecx */
     esi = ecx;
-    /* 0057e33b  call 0x57dbf0 */
+    /* 0057e33b  call 0x57dbf0  ; Object::Object */
     t = 0x0057dbf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0057e340  mov dword ptr [esi], 0x838564 */
+    /* 0057e340  mov dword ptr [esi], 0x838564  ; vtable SimpleObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0x838564u;
     /* 0057e346  mov ebx, 1 */
@@ -2052,7 +2082,7 @@ R_1:
     /* 0057e351  mov eax, dword ptr [edi + 0xf0] */
     ea = (uint32_t)(edi + 0x000000f0u);
     eax = M32(ea);
-    /* 0057e357  mov dword ptr [esi + 0x138], eax */
+    /* 0057e357  mov dword ptr [esi + 0x138], eax  ; field ObjectTemplate.material */
     ea = (uint32_t)(esi + 0x00000138u);
     M32(ea) = eax;
     /* 0057e35d  mov byte ptr [esi + 0x13c], 0 */
@@ -2073,22 +2103,22 @@ R_1:
     /* 0057e37c  mov byte ptr [esi + 0x13f], 0 */
     ea = (uint32_t)(esi + 0x0000013fu);
     M8(ea) = 0x0u;
-    /* 0057e383  mov dword ptr [esi + 0x140], 0x40a00000 */
+    /* 0057e383  mov dword ptr [esi + 0x140], 0x40a00000  ; 5.0f */
     ea = (uint32_t)(esi + 0x00000140u);
     M32(ea) = 0x40a00000u;
-    /* 0057e38d  mov dword ptr [esi + 0x144], 0xbf800000 */
+    /* 0057e38d  mov dword ptr [esi + 0x144], 0xbf800000  ; -1.0f */
     ea = (uint32_t)(esi + 0x00000144u);
     M32(ea) = 0xbf800000u;
     /* 0057e397  mov eax, dword ptr [edi + 0x11c] */
     ea = (uint32_t)(edi + 0x0000011cu);
     eax = M32(ea);
-    /* 0057e39d  mov dword ptr [esi + 0x148], eax */
+    /* 0057e39d  mov dword ptr [esi + 0x148], eax  ; field ObjectTemplate.timeToLiveAfterDeath */
     ea = (uint32_t)(esi + 0x00000148u);
     M32(ea) = eax;
     /* 0057e3a3  mov byte ptr [esi + 0x14c], 0 */
     ea = (uint32_t)(esi + 0x0000014cu);
     M8(ea) = 0x0u;
-    /* 0057e3aa  mov dword ptr [esi + 0x150], 0x3f800000 */
+    /* 0057e3aa  mov dword ptr [esi + 0x150], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esi + 0x00000150u);
     M32(ea) = 0x3f800000u;
     /* 0057e3b4  mov byte ptr [esi + 0x154], 0 */
@@ -2114,7 +2144,7 @@ R_2:
     /* 0057e3c3  mov eax, dword ptr [edi + 0xdc] */
     ea = (uint32_t)(edi + 0x000000dcu);
     eax = M32(ea);
-    /* 0057e3c9  mov dword ptr [esi + 0xfc], eax */
+    /* 0057e3c9  mov dword ptr [esi + 0xfc], eax  ; field ObjectTemplate.physicsFrequency */
     ea = (uint32_t)(esi + 0x000000fcu);
     M32(ea) = eax;
     /* 0057e3cf  test byte ptr [edi + 0xd8], 2 */
@@ -2133,7 +2163,7 @@ R_2:
     M32(esp) = t;
     /* 0057e3df  mov ecx, esi */
     ecx = esi;
-    /* 0057e3e1  call 0x57c210 */
+    /* 0057e3e1  call 0x57c210  ; Object::changeFlags */
     t = 0x0057c210u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_3;
@@ -2174,7 +2204,7 @@ R_4:
     M32(esp) = t;
     /* 0057e3fb  mov ecx, esi */
     ecx = esi;
-    /* 0057e3fd  call 0x57c210 */
+    /* 0057e3fd  call 0x57c210  ; Object::changeFlags */
     t = 0x0057c210u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_5;
@@ -2188,13 +2218,13 @@ L_0057e402:
     F_LOGIC(8, r);
     /* 0057e409  je 0x57e42b */
     if (zf) goto L_0057e42b;
-    /* 0057e40b  mov ecx, dword ptr [0xc0dbf8] */
+    /* 0057e40b  mov ecx, dword ptr [0xc0dbf8]  ; g_pDecalManager_00c0dbf8 */
     ea = (uint32_t)(0x00c0dbf8u);
     ecx = M32(ea);
     /* 0057e411  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0057e413  call dword ptr [eax + 0x10] */
+    /* 0057e413  call dword ptr [eax + 0x10]  ; -> DecalManager::vf4 */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -2202,7 +2232,7 @@ L_0057e402:
     c->eip = t;
     goto out;
 R_6:
-    /* 0057e416  mov ecx, dword ptr [0x820714] */
+    /* 0057e416  mov ecx, dword ptr [0x820714]  ; interfaceID(DecalEmitter) */
     ea = (uint32_t)(0x00820714u);
     ecx = M32(ea);
     /* 0057e41c  push eax */
@@ -2215,7 +2245,7 @@ R_6:
     M32(esp) = t;
     /* 0057e41e  mov ecx, esi */
     ecx = esi;
-    /* 0057e420  call 0x57da50 */
+    /* 0057e420  call 0x57da50  ; Object::setComponent */
     t = 0x0057da50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_7;
@@ -2238,7 +2268,7 @@ L_0057e42b:
     edx = (uint32_t)(edi + 0x00000080u);
     /* 0057e43b  mov ecx, esi */
     ecx = esi;
-    /* 0057e43d  call 0x564710 */
+    /* 0057e43d  call 0x564710  ; SimpleObject::sub_00564710 */
     t = 0x00564710u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_8;
@@ -2264,7 +2294,7 @@ L_0057e442:
     M32(esp) = t;
     /* 0057e453  mov ecx, esi */
     ecx = esi;
-    /* 0057e455  call 0x57c210 */
+    /* 0057e455  call 0x57c210  ; Object::changeFlags */
     t = 0x0057c210u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_9;
@@ -2290,7 +2320,7 @@ L_0057e45a:
     M32(esp) = t;
     /* 0057e46b  mov ecx, esi */
     ecx = esi;
-    /* 0057e46d  call 0x57c210 */
+    /* 0057e46d  call 0x57c210  ; Object::changeFlags */
     t = 0x0057c210u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_10;
@@ -2315,13 +2345,13 @@ R_10:
     goto out;
 R_11:
 L_0057e47a:
-    /* 0057e47a  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057e47a  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
     /* 0057e480  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0057e482  call dword ptr [eax + 0xd8] */
+    /* 0057e482  call dword ptr [eax + 0xd8]  ; -> Armor::vf54 */
     ea = (uint32_t)(eax + 0x000000d8u);
     t = M32(ea);
     esp -= 4;
@@ -2334,7 +2364,7 @@ R_12:
     F_LOGIC(8, r);
     /* 0057e48a  je 0x57e540 */
     if (zf) goto L_0057e540;
-    /* 0057e490  mov eax, dword ptr [0xc1d338] */
+    /* 0057e490  mov eax, dword ptr [0xc1d338]  ; g_pIAIMain_00c1d338 */
     ea = (uint32_t)(0x00c1d338u);
     eax = M32(ea);
     /* 0057e495  test eax, eax */
@@ -2381,17 +2411,17 @@ R_12:
     /* 0057e4c9  mov byte ptr [ecx + 4], 0 */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = 0x0u;
-    /* 0057e4cd  call 0x401e20 */
+    /* 0057e4cd  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_13;
     c->eip = t;
     goto out;
 R_13:
-    /* 0057e4d2  mov ecx, dword ptr [0xc312e4] */
+    /* 0057e4d2  mov ecx, dword ptr [0xc312e4]  ; g_pAITemplateManager_00c312e4 */
     ea = (uint32_t)(0x00c312e4u);
     ecx = M32(ea);
-    /* 0057e4d8  call 0x6f8860 */
+    /* 0057e4d8  call 0x6f8860  ; ai_006f8860 */
     t = 0x006f8860u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_14;
@@ -2416,14 +2446,14 @@ R_14:
     M32(esp) = t;
     /* 0057e4e6  mov ecx, eax */
     ecx = eax;
-    /* 0057e4e8  call 0x6fb090 */
+    /* 0057e4e8  call 0x6fb090  ; SimpleObject::constructor_helper_006fb090 */
     t = 0x006fb090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_15;
     c->eip = t;
     goto out;
 R_15:
-    /* 0057e4ed  mov ecx, dword ptr [0x860514] */
+    /* 0057e4ed  mov ecx, dword ptr [0x860514]  ; interfaceID(AIObject) */
     ea = (uint32_t)(0x00860514u);
     ecx = M32(ea);
     /* 0057e4f3  push eax */
@@ -2436,7 +2466,7 @@ R_15:
     M32(esp) = t;
     /* 0057e4f5  mov ecx, esi */
     ecx = esi;
-    /* 0057e4f7  call 0x57da50 */
+    /* 0057e4f7  call 0x57da50  ; Object::setComponent */
     t = 0x0057da50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_16;
@@ -2446,14 +2476,14 @@ R_16:
     /* 0057e4fc  jmp 0x57e540 */
     goto L_0057e540;
 L_0057e4fe:
-    /* 0057e4fe  mov ecx, dword ptr [0xc312e8] */
+    /* 0057e4fe  mov ecx, dword ptr [0xc312e8]  ; g_pWeaponTemplateManager_00c312e8 */
     ea = (uint32_t)(0x00c312e8u);
     ecx = M32(ea);
     /* 0057e504  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e505  call 0x6f9be0 */
+    /* 0057e505  call 0x6f9be0  ; WeaponTemplateManager::sub_006f9be0 */
     t = 0x006f9be0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_17;
@@ -2475,14 +2505,14 @@ R_17:
     M32(esp) = t;
     /* 0057e510  mov ecx, eax */
     ecx = eax;
-    /* 0057e512  call 0x6faf00 */
+    /* 0057e512  call 0x6faf00  ; SimpleObject::constructor_helper_006faf00 */
     t = 0x006faf00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_18;
     c->eip = t;
     goto out;
 R_18:
-    /* 0057e517  mov edx, dword ptr [0x860518] */
+    /* 0057e517  mov edx, dword ptr [0x860518]  ; interfaceID(Weapon) */
     ea = (uint32_t)(0x00860518u);
     edx = M32(ea);
     /* 0057e51d  push eax */
@@ -2495,7 +2525,7 @@ R_18:
     M32(esp) = t;
     /* 0057e51f  mov ecx, esi */
     ecx = esi;
-    /* 0057e521  call 0x57da50 */
+    /* 0057e521  call 0x57da50  ; Object::setComponent */
     t = 0x0057da50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_19;
@@ -2505,7 +2535,7 @@ R_19:
     /* 0057e526  jmp 0x57e540 */
     goto L_0057e540;
 L_0057e528:
-    /* 0057e528  mov ebx, dword ptr [0xc312e0] */
+    /* 0057e528  mov ebx, dword ptr [0xc312e0]  ; g_pKitTemplateManager_00c312e0 */
     ea = (uint32_t)(0x00c312e0u);
     ebx = M32(ea);
     /* 0057e52e  sub esp, 0x1c */
@@ -2520,7 +2550,7 @@ L_0057e528:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e534  call 0x403b00 */
+    /* 0057e534  call 0x403b00  ; std::string::string_copy */
     t = 0x00403b00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_20;
@@ -2529,7 +2559,7 @@ L_0057e528:
 R_20:
     /* 0057e539  mov ecx, ebx */
     ecx = ebx;
-    /* 0057e53b  call 0x6f6d70 */
+    /* 0057e53b  call 0x6f6d70  ; KitTemplateManager::sub_006f6d70 */
     t = 0x006f6d70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e330_21;
@@ -2537,13 +2567,13 @@ R_20:
     goto out;
 R_21:
 L_0057e540:
-    /* 0057e540  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057e540  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
     /* 0057e546  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0057e548  call dword ptr [eax + 0xd8] */
+    /* 0057e548  call dword ptr [eax + 0xd8]  ; -> Armor::vf54 */
     ea = (uint32_t)(eax + 0x000000d8u);
     t = M32(ea);
     esp -= 4;
@@ -2564,7 +2594,7 @@ R_22:
     F_LOGIC(8, r);
     /* 0057e55a  je 0x57e56f */
     if (zf) goto L_0057e56f;
-    /* 0057e55c  mov ecx, dword ptr [0xc0d228] */
+    /* 0057e55c  mov ecx, dword ptr [0xc0d228]  ; g_pMaterialManager_00c0d228 */
     ea = (uint32_t)(0x00c0d228u);
     ecx = M32(ea);
     /* 0057e562  mov edx, dword ptr [ecx] */
@@ -2584,7 +2614,7 @@ R_22:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e56c  call dword ptr [edx + 0x10] */
+    /* 0057e56c  call dword ptr [edx + 0x10]  ; -> MaterialManager::vf4 = MaterialManager::setMaterial */
     ea = (uint32_t)(edx + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -2622,7 +2652,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0057e580  dice::ref2::world::SimpleObject  (virtual method) */
+/* 0057e580  SimpleObject::createNetworkable  (virtual method)
+ * overrides: Object::createNetworkable  (47 classes implement it)
+ * class: dice::ref2::world::SimpleObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057e580, bfv_server_l1_body_0057e580);
 BFV_L1_RESUME(bfv_server_l1r_0057e580_1, bfv_server_l1_body_0057e580, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057e580_2, bfv_server_l1_body_0057e580, 2);
@@ -2655,7 +2688,7 @@ void bfv_server_l1_body_0057e580(struct bfv_cpu *c)
     /* 0057e58a  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0057e58c  call dword ptr [eax + 0x50] */
+    /* 0057e58c  call dword ptr [eax + 0x50]  ; -> SimpleObjectTemplate::vf20 = NetworkManager::vf26_addressOf_20h (returns &this+0x20) */
     ea = (uint32_t)(eax + 0x00000050u);
     t = M32(ea);
     esp -= 4;
@@ -2684,7 +2717,7 @@ R_1:
     M32(esp) = t;
     /* 0057e59c  mov ecx, eax */
     ecx = eax;
-    /* 0057e59e  call 0x401220 */
+    /* 0057e59e  call 0x401220  ; std::string::compare_chars */
     t = 0x00401220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e580_2;
@@ -2705,7 +2738,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 0057e5b0  jmp 0x581f00 */
+    /* 0057e5b0  jmp 0x581f00  ; Object::attachNetworkable */
     c->eip = 0x00581f00u;
     goto out;
 L_0057e5b5:
@@ -2724,7 +2757,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0057e5c0  dice::ref2::world::SimpleObject  (virtual method) */
+/* 0057e5c0  SimpleObject::onHit  (virtual method)
+ * overrides: Object::onHit  (47 classes implement it)
+ * class: dice::ref2::world::SimpleObject
+ * called by: BFSoldier::onHit, Projectile::onHit, PlayerControlObject::onHit
+ */
 BFV_L1_ENTRY(bfv_server_l1_0057e5c0, bfv_server_l1_body_0057e5c0);
 BFV_L1_RESUME(bfv_server_l1r_0057e5c0_1, bfv_server_l1_body_0057e5c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0057e5c0_2, bfv_server_l1_body_0057e5c0, 2);
@@ -2839,7 +2876,7 @@ void bfv_server_l1_body_0057e5c0(struct bfv_cpu *c)
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0057e5d3  mov edi, ecx */
     edi = ecx;
-    /* 0057e5d5  call 0x63db2d */
+    /* 0057e5d5  call 0x63db2d  ; crt_0063db2d */
     t = 0x0063db2du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_1;
@@ -2869,7 +2906,7 @@ R_1:
     /* 0057e5e7  fstp qword ptr [esp] */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057e5ea  call 0x63db2d */
+    /* 0057e5ea  call 0x63db2d  ; crt_0063db2d */
     t = 0x0063db2du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_2;
@@ -2899,7 +2936,7 @@ R_2:
     /* 0057e5fc  fstp qword ptr [esp] */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0057e5ff  call 0x63db2d */
+    /* 0057e5ff  call 0x63db2d  ; crt_0063db2d */
     t = 0x0063db2du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_3;
@@ -2923,10 +2960,10 @@ L_0057e607:
     F_SUB(32, a, b, r);
     /* 0057e60e  jne 0x57e683 */
     if (!zf) goto L_0057e683;
-    /* 0057e610  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057e610  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
-    /* 0057e616  mov edx, dword ptr [0x80ba88] */
+    /* 0057e616  mov edx, dword ptr [0x80ba88]  ; interfaceID(GameServer) */
     ea = (uint32_t)(0x0080ba88u);
     edx = M32(ea);
     /* 0057e61c  mov eax, dword ptr [ecx] */
@@ -2936,7 +2973,7 @@ L_0057e607:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e61f  call dword ptr [eax + 0xc] */
+    /* 0057e61f  call dword ptr [eax + 0xc]  ; -> Armor::vf3 = Armor::queryInterface */
     ea = (uint32_t)(eax + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -3089,7 +3126,7 @@ L_0057e683:
     F_LOGIC(32, r);
     /* 0057e6a4  je 0x57e6b9 */
     if (zf) goto L_0057e6b9;
-    /* 0057e6a6  mov eax, dword ptr [0x820798] */
+    /* 0057e6a6  mov eax, dword ptr [0x820798]  ; ProjectileTemplate::classID */
     ea = (uint32_t)(0x00820798u);
     eax = M32(ea);
     /* 0057e6ab  mov edx, dword ptr [ecx] */
@@ -3121,7 +3158,7 @@ L_0057e6b9:
     F_LOGIC(32, r);
     /* 0057e6be  je 0x57e6d3 */
     if (zf) goto L_0057e6d3;
-    /* 0057e6c0  mov eax, dword ptr [0x820814] */
+    /* 0057e6c0  mov eax, dword ptr [0x820814]  ; WireLinkTemplate::classID */
     ea = (uint32_t)(0x00820814u);
     eax = M32(ea);
     /* 0057e6c5  mov edx, dword ptr [ecx] */
@@ -3147,7 +3184,7 @@ R_7:
 L_0057e6d3:
     /* 0057e6d3  mov ecx, edi */
     ecx = edi;
-    /* 0057e6d5  call 0x4c80e0 */
+    /* 0057e6d5  call 0x4c80e0  ; Object_findAncestorWithInterface_c4a4 */
     t = 0x004c80e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_8;
@@ -3163,7 +3200,7 @@ R_8:
     if (zf) goto L_0057e872;
     /* 0057e6e4  mov ecx, edi */
     ecx = edi;
-    /* 0057e6e6  call 0x564460 */
+    /* 0057e6e6  call 0x564460  ; world::Object::getRoot */
     t = 0x00564460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_9;
@@ -3175,7 +3212,7 @@ R_9:
     /* 0057e6ed  mov dword ptr [esp + 0x20], eax */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = eax;
-    /* 0057e6f1  call 0x437e80 */
+    /* 0057e6f1  call 0x437e80  ; IObject_findPlayerControlObject */
     t = 0x00437e80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_10;
@@ -3211,7 +3248,7 @@ R_10:
     c->eip = t;
     goto out;
 R_11:
-    /* 0057e710  cmp eax, dword ptr [0x820790] */
+    /* 0057e710  cmp eax, dword ptr [0x820790]  ; BFSoldierTemplate::classID */
     ea = (uint32_t)(0x00820790u);
     a = eax;
     b = M32(ea);
@@ -3244,7 +3281,7 @@ L_0057e718:
     c->eip = t;
     goto out;
 R_12:
-    /* 0057e728  cmp eax, dword ptr [0x8207f4] */
+    /* 0057e728  cmp eax, dword ptr [0x8207f4]  ; ObstacleTemplate::classID */
     ea = (uint32_t)(0x008207f4u);
     a = eax;
     b = M32(ea);
@@ -3336,7 +3373,7 @@ R_14:
     c->eip = t;
     goto out;
 R_15:
-    /* 0057e762  mov ecx, dword ptr [0xbecc5c] */
+    /* 0057e762  mov ecx, dword ptr [0xbecc5c]  ; g_pObjectManager_00becc5c */
     ea = (uint32_t)(0x00becc5cu);
     ecx = M32(ea);
     /* 0057e768  mov edx, dword ptr [ecx] */
@@ -3365,11 +3402,11 @@ R_16:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e779  push 0x905bb0 */
+    /* 0057e779  push 0x905bb0  ; typeid(ObjectSpawner) */
     t = 0x905bb0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e77e  push 0x8e6fcc */
+    /* 0057e77e  push 0x8e6fcc  ; typeid(IObject) */
     t = 0x8e6fccu;
     esp -= 4;
     M32(esp) = t;
@@ -3381,7 +3418,7 @@ R_16:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e786  call 0x63cbf8 */
+    /* 0057e786  call 0x63cbf8  ; __RTDynamicCast */
     t = 0x0063cbf8u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_17;
@@ -3405,7 +3442,7 @@ R_17:
     /* 0057e797  mov dword ptr [esp + 0x20], edx */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = edx;
-    /* 0057e79b  call 0x56f340 */
+    /* 0057e79b  call 0x56f340  ; SimpleObject::onHit_helper_0056f340 */
     t = 0x0056f340u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_18;
@@ -3422,7 +3459,7 @@ R_18:
     if (!zf) goto L_0057e7ba;
     /* 0057e7a6  mov ecx, ebx */
     ecx = ebx;
-    /* 0057e7a8  call 0x564460 */
+    /* 0057e7a8  call 0x564460  ; world::Object::getRoot */
     t = 0x00564460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_19;
@@ -3433,7 +3470,7 @@ R_19:
     ecx = esi;
     /* 0057e7af  mov ebx, eax */
     ebx = eax;
-    /* 0057e7b1  call 0x564460 */
+    /* 0057e7b1  call 0x564460  ; world::Object::getRoot */
     t = 0x00564460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0057e5c0_20;
@@ -3506,7 +3543,7 @@ R_23:
     /* 0057e7e2  mov ecx, dword ptr [edi + 0x4c] */
     ea = (uint32_t)(edi + 0x0000004cu);
     ecx = M32(ea);
-    /* 0057e7e5  mov eax, dword ptr [0x820798] */
+    /* 0057e7e5  mov eax, dword ptr [0x820798]  ; ProjectileTemplate::classID */
     ea = (uint32_t)(0x00820798u);
     eax = M32(ea);
     /* 0057e7ea  mov edx, dword ptr [ecx] */
@@ -3516,7 +3553,7 @@ R_23:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e7ed  call dword ptr [edx + 0x2c] */
+    /* 0057e7ed  call dword ptr [edx + 0x2c]  ; -> SimpleObjectTemplate::vf11 = SimpleObjectTemplate::castTo */
     ea = (uint32_t)(edx + 0x0000002cu);
     t = M32(ea);
     esp -= 4;
@@ -3524,7 +3561,7 @@ R_23:
     c->eip = t;
     goto out;
 R_24:
-    /* 0057e7f0  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057e7f0  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
     /* 0057e7f6  mov edx, dword ptr [ecx] */
@@ -3575,7 +3612,7 @@ R_24:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e813  call dword ptr [edx + 0x34] */
+    /* 0057e813  call dword ptr [edx + 0x34]  ; -> Armor::vf13 = MaterialManager::set_40h */
     ea = (uint32_t)(edx + 0x00000034u);
     t = M32(ea);
     esp -= 4;
@@ -3623,7 +3660,7 @@ L_0057e818:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e82b  call dword ptr [edx + 0x38] */
+    /* 0057e82b  call dword ptr [edx + 0x38]  ; -> Armor::vf14 = AIScriptManager::vf29_get_40h (returns this+0x40) */
     ea = (uint32_t)(edx + 0x00000038u);
     t = M32(ea);
     esp -= 4;
@@ -3677,7 +3714,7 @@ L_0057e850:
     edx = M32(ea);
     /* 0057e852  mov ecx, edi */
     ecx = edi;
-    /* 0057e854  call dword ptr [edx + 0x34] */
+    /* 0057e854  call dword ptr [edx + 0x34]  ; -> SimpleObject::vf13 = Object::getWorldPosition */
     ea = (uint32_t)(edx + 0x00000034u);
     t = M32(ea);
     esp -= 4;
@@ -3737,7 +3774,7 @@ L_0057e872:
     /* 0057e872  mov ecx, dword ptr [edi + 0x4c] */
     ea = (uint32_t)(edi + 0x0000004cu);
     ecx = M32(ea);
-    /* 0057e875  mov eax, dword ptr [0x820798] */
+    /* 0057e875  mov eax, dword ptr [0x820798]  ; ProjectileTemplate::classID */
     ea = (uint32_t)(0x00820798u);
     eax = M32(ea);
     /* 0057e87a  mov edx, dword ptr [ecx] */
@@ -3747,7 +3784,7 @@ L_0057e872:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e87d  call dword ptr [edx + 0x2c] */
+    /* 0057e87d  call dword ptr [edx + 0x2c]  ; -> SimpleObjectTemplate::vf11 = SimpleObjectTemplate::castTo */
     ea = (uint32_t)(edx + 0x0000002cu);
     t = M32(ea);
     esp -= 4;
@@ -3763,7 +3800,7 @@ R_31:
     /* 0057e884  mov eax, dword ptr [esp + 0x30] */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
-    /* 0057e888  mov ecx, dword ptr [0xbdb7a8] */
+    /* 0057e888  mov ecx, dword ptr [0xbdb7a8]  ; g_pGame */
     ea = (uint32_t)(0x00bdb7a8u);
     ecx = M32(ea);
     /* 0057e88e  mov edx, dword ptr [ecx] */
@@ -3806,7 +3843,7 @@ R_31:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0057e8a3  call dword ptr [edx + 0x34] */
+    /* 0057e8a3  call dword ptr [edx + 0x34]  ; -> Armor::vf13 = MaterialManager::set_40h */
     ea = (uint32_t)(edx + 0x00000034u);
     t = M32(ea);
     esp -= 4;

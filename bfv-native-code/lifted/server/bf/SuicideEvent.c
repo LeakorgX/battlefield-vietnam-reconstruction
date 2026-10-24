@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 004c16a0  dice::bf::SuicideEvent  (vtable store) */
+/* 004c16a0  SuicideEvent::create  (vtable store)
+ * class: dice::bf::SuicideEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c16a0, bfv_server_l1_body_004c16a0);
 BFV_L1_RESUME(bfv_server_l1r_004c16a0_1, bfv_server_l1_body_004c16a0, 1);
 void bfv_server_l1_body_004c16a0(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_server_l1_body_004c16a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c16a0  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c16a0  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c16a6  mov eax, dword ptr [ecx] */
@@ -53,7 +55,7 @@ R_1:
     /* 004c16b8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c16bf  mov dword ptr [eax], 0x81f7cc */
+    /* 004c16bf  mov dword ptr [eax], 0x81f7cc  ; vtable SuicideEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f7ccu;
     /* 004c16c5  ret */
@@ -76,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c16f0  dice::bf::SuicideEvent  (vtable store) */
+/* 004c16f0  SuicideEvent::create  (vtable store)
+ * class: dice::bf::SuicideEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c16f0, bfv_server_l1_body_004c16f0);
 BFV_L1_RESUME(bfv_server_l1r_004c16f0_1, bfv_server_l1_body_004c16f0, 1);
 void bfv_server_l1_body_004c16f0(struct bfv_cpu *c)
@@ -90,7 +94,7 @@ void bfv_server_l1_body_004c16f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c16f0  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c16f0  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c16f6  mov eax, dword ptr [ecx] */
@@ -124,7 +128,7 @@ R_1:
     /* 004c1708  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c170f  mov dword ptr [eax], 0x81f7cc */
+    /* 004c170f  mov dword ptr [eax], 0x81f7cc  ; vtable SuicideEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f7ccu;
     /* 004c1715  jmp 0x4c1719 */
@@ -135,7 +139,7 @@ L_004c1717:
     F_LOGIC(32, r);
     eax = r;
 L_004c1719:
-    /* 004c1719  mov ecx, dword ptr [esp + 4] */
+    /* 004c1719  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 004c171d  push esi */
@@ -177,7 +181,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004c1850  dice::bf::SuicideEvent  (vtable store) */
+/* 004c1850  SuicideEvent::SuicideEvent  (vtable store)
+ * class: dice::bf::SuicideEvent
+ * called by: DatabaseCompleteAckEvent::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c1850, bfv_server_l1_body_004c1850);
 void bfv_server_l1_body_004c1850(struct bfv_cpu *c)
 {
@@ -191,7 +198,7 @@ void bfv_server_l1_body_004c1850(struct bfv_cpu *c)
     /* 004c1852  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c1859  mov dword ptr [eax], 0x81f7cc */
+    /* 004c1859  mov dword ptr [eax], 0x81f7cc  ; vtable SuicideEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f7ccu;
     /* 004c185f  ret */
@@ -205,7 +212,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c4100  dice::bf::SuicideEvent  (virtual method) */
+/* 004c4100  SuicideEvent::writeToStream  (virtual method)
+ * class: dice::bf::SuicideEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c4100, bfv_server_l1_body_004c4100);
 BFV_L1_RESUME(bfv_server_l1r_004c4100_1, bfv_server_l1_body_004c4100, 1);
 BFV_L1_RESUME(bfv_server_l1r_004c4100_2, bfv_server_l1_body_004c4100, 2);
@@ -272,7 +281,7 @@ L_004c4106:
     edx = M32(ea);
     /* 004c4118  mov ecx, eax */
     ecx = eax;
-    /* 004c411a  call dword ptr [edx] */
+    /* 004c411a  call dword ptr [edx]  ; -> SuicideEvent::vf0 */
     ea = (uint32_t)(edx);
     t = M32(ea);
     esp -= 4;
@@ -298,7 +307,7 @@ R_1:
     M32(esp) = t;
     /* 004c412a  mov ecx, esi */
     ecx = esi;
-    /* 004c412c  call 0x4871a0 */
+    /* 004c412c  call 0x4871a0  ; BitStream::writeBits */
     t = 0x004871a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c4100_2;

@@ -5,253 +5,9 @@
 #include "l1.h"
 
 
-/* 008dfae0  dice::bf::ai::IBotManager  (vtable store) */
-BFV_L1_ENTRY(bfv_client_l1_008dfae0, bfv_client_l1_body_008dfae0);
-BFV_L1_RESUME(bfv_client_l1r_008dfae0_1, bfv_client_l1_body_008dfae0, 1);
-BFV_L1_RESUME(bfv_client_l1r_008dfae0_2, bfv_client_l1_body_008dfae0, 2);
-BFV_L1_RESUME(bfv_client_l1r_008dfae0_3, bfv_client_l1_body_008dfae0, 3);
-void bfv_client_l1_body_008dfae0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, n, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    default: break;
-    }
-    /* 008dfae0  sub esp, 0xc */
-    a = esp;
-    b = 0xcu;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    esp = r;
-    /* 008dfae3  mov eax, dword ptr [0xcff7cc] */
-    ea = (uint32_t)(0x00cff7ccu);
-    eax = M32(ea);
-    /* 008dfae8  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 008dfae9  mov esi, ecx */
-    esi = ecx;
-    /* 008dfaeb  mov dword ptr [esp + 0xc], eax */
-    ea = (uint32_t)(esp + 0x0000000cu);
-    M32(ea) = eax;
-    /* 008dfaef  xor ecx, ecx */
-    r = 0;
-    F_LOGIC(32, r);
-    ecx = r;
-    /* 008dfaf1  lea eax, [esi + 0x16] */
-    eax = (uint32_t)(esi + 0x00000016u);
-L_008dfaf4:
-    /* 008dfaf4  mov dl, byte ptr [eax - 2] */
-    ea = (uint32_t)(eax + 0xfffffffeu);
-    SET8L(edx, M8(ea));
-    /* 008dfaf7  mov byte ptr [esp + ecx + 4], dl */
-    ea = (uint32_t)(esp + ecx + 0x00000004u);
-    M8(ea) = LO8(edx);
-    /* 008dfafb  mov dl, byte ptr [eax - 1] */
-    ea = (uint32_t)(eax + 0xffffffffu);
-    SET8L(edx, M8(ea));
-    /* 008dfafe  mov byte ptr [esp + ecx + 5], dl */
-    ea = (uint32_t)(esp + ecx + 0x00000005u);
-    M8(ea) = LO8(edx);
-    /* 008dfb02  mov dl, byte ptr [eax] */
-    ea = (uint32_t)(eax);
-    SET8L(edx, M8(ea));
-    /* 008dfb04  mov byte ptr [esp + ecx + 6], dl */
-    ea = (uint32_t)(esp + ecx + 0x00000006u);
-    M8(ea) = LO8(edx);
-    /* 008dfb08  mov dl, byte ptr [eax + 1] */
-    ea = (uint32_t)(eax + 0x00000001u);
-    SET8L(edx, M8(ea));
-    /* 008dfb0b  mov byte ptr [esp + ecx + 7], dl */
-    ea = (uint32_t)(esp + ecx + 0x00000007u);
-    M8(ea) = LO8(edx);
-    /* 008dfb0f  add ecx, 4 */
-    a = ecx;
-    b = 0x4u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    ecx = r;
-    /* 008dfb12  add eax, 4 */
-    a = eax;
-    b = 0x4u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    eax = r;
-    /* 008dfb15  cmp ecx, 8 */
-    a = ecx;
-    b = 0x8u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 008dfb18  jb 0x8dfaf4 */
-    if (cf) goto L_008dfaf4;
-    /* 008dfb1a  mov ecx, dword ptr [esi + 0x14] */
-    ea = (uint32_t)(esi + 0x00000014u);
-    ecx = M32(ea);
-    /* 008dfb1d  shr ecx, 3 */
-    n = 0x3u & 31u;
-    if (n) {
-        a = ecx;
-        r = n < 32 ? a >> n : 0u;
-        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
-        of = SIGN(32, a);
-        F_SZP(32, r); af = 0;
-        ecx = r;
-    }
-    /* 008dfb20  and ecx, 0x3f */
-    r = (ecx & 0x3fu) & 0xffffffffu;
-    F_LOGIC(32, r);
-    ecx = r;
-    /* 008dfb23  cmp ecx, 0x38 */
-    a = ecx;
-    b = 0x38u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 008dfb26  mov eax, 0x38 */
-    eax = 0x38u;
-    /* 008dfb2b  jb 0x8dfb32 */
-    if (cf) goto L_008dfb32;
-    /* 008dfb2d  mov eax, 0x78 */
-    eax = 0x78u;
-L_008dfb32:
-    /* 008dfb32  sub eax, ecx */
-    a = eax;
-    b = ecx;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    eax = r;
-    /* 008dfb34  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 008dfb35  push 0xd13928 */
-    t = 0xd13928u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 008dfb3a  mov ecx, esi */
-    ecx = esi;
-    /* 008dfb3c  call 0x8dfa20 */
-    t = 0x008dfa20u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfae0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 008dfb41  push 8 */
-    t = 0x8u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 008dfb43  lea eax, [esp + 8] */
-    eax = (uint32_t)(esp + 0x00000008u);
-    /* 008dfb47  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 008dfb48  mov ecx, esi */
-    ecx = esi;
-    /* 008dfb4a  call 0x8dfa20 */
-    t = 0x008dfa20u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfae0_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 008dfb4f  mov ecx, dword ptr [esp + 0x14] */
-    ea = (uint32_t)(esp + 0x00000014u);
-    ecx = M32(ea);
-    /* 008dfb53  lea eax, [esi + 6] */
-    eax = (uint32_t)(esi + 0x00000006u);
-    /* 008dfb56  inc ecx */
-    a = ecx;
-    r = (a + 1u) & 0xffffffffu;
-    F_INC(32, a, r);
-    ecx = r;
-    /* 008dfb57  mov esi, 4 */
-    esi = 0x4u;
-    /* 008dfb5c  lea esp, [esp] */
-    esp = (uint32_t)(esp);
-L_008dfb60:
-    /* 008dfb60  mov dl, byte ptr [eax - 2] */
-    ea = (uint32_t)(eax + 0xfffffffeu);
-    SET8L(edx, M8(ea));
-    /* 008dfb63  mov byte ptr [ecx - 1], dl */
-    ea = (uint32_t)(ecx + 0xffffffffu);
-    M8(ea) = LO8(edx);
-    /* 008dfb66  mov dl, byte ptr [eax - 1] */
-    ea = (uint32_t)(eax + 0xffffffffu);
-    SET8L(edx, M8(ea));
-    /* 008dfb69  mov byte ptr [ecx], dl */
-    ea = (uint32_t)(ecx);
-    M8(ea) = LO8(edx);
-    /* 008dfb6b  mov dl, byte ptr [eax] */
-    ea = (uint32_t)(eax);
-    SET8L(edx, M8(ea));
-    /* 008dfb6d  mov byte ptr [ecx + 1], dl */
-    ea = (uint32_t)(ecx + 0x00000001u);
-    M8(ea) = LO8(edx);
-    /* 008dfb70  mov dl, byte ptr [eax + 1] */
-    ea = (uint32_t)(eax + 0x00000001u);
-    SET8L(edx, M8(ea));
-    /* 008dfb73  mov byte ptr [ecx + 2], dl */
-    ea = (uint32_t)(ecx + 0x00000002u);
-    M8(ea) = LO8(edx);
-    /* 008dfb76  add eax, 4 */
-    a = eax;
-    b = 0x4u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    eax = r;
-    /* 008dfb79  add ecx, 4 */
-    a = ecx;
-    b = 0x4u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    ecx = r;
-    /* 008dfb7c  dec esi */
-    a = esi;
-    r = (a - 1u) & 0xffffffffu;
-    F_DEC(32, a, r);
-    esi = r;
-    /* 008dfb7d  jne 0x8dfb60 */
-    if (!zf) goto L_008dfb60;
-    /* 008dfb7f  mov ecx, dword ptr [esp + 0xc] */
-    ea = (uint32_t)(esp + 0x0000000cu);
-    ecx = M32(ea);
-    /* 008dfb83  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 008dfb84  call 0x7c2019 */
-    t = 0x007c2019u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfae0_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 008dfb89  add esp, 0xc */
-    a = esp;
-    b = 0xcu;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-    /* 008dfb8c  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 008dfbb0  dice::bf::ai::IBotManager  (virtual method) */
+/* 008dfbb0  IBotManager::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IBotManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dfbb0, bfv_client_l1_body_008dfbb0);
 BFV_L1_RESUME(bfv_client_l1r_008dfbb0_1, bfv_client_l1_body_008dfbb0, 1);
 void bfv_client_l1_body_008dfbb0(struct bfv_cpu *c)
@@ -265,7 +21,7 @@ void bfv_client_l1_body_008dfbb0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 008dfbb0  test byte ptr [esp + 4], 1 */
+    /* 008dfbb0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -275,10 +31,10 @@ void bfv_client_l1_body_008dfbb0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008dfbb6  mov esi, ecx */
     esi = ecx;
-    /* 008dfbb8  mov dword ptr [esi], 0xbe11a4 */
+    /* 008dfbb8  mov dword ptr [esi], 0xbe11a4  ; vtable IBotManager */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe11a4u;
-    /* 008dfbbe  mov dword ptr [0xdfa8c8], 0 */
+    /* 008dfbbe  mov dword ptr [0xdfa8c8], 0  ; g_pIBotManager_00dfa8c8 */
     ea = (uint32_t)(0x00dfa8c8u);
     M32(ea) = 0x0u;
     /* 008dfbc8  je 0x8dfbd3 */
@@ -287,7 +43,7 @@ void bfv_client_l1_body_008dfbb0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008dfbcb  call 0x403680 */
+    /* 008dfbcb  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfbb0_1;
@@ -310,6 +66,37 @@ L_008dfbd3:
     /* 008dfbd6  ret 4 */
     c->eip = M32(esp);
     esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 008dfbe0  IBotManager::IBotManager  (vtable store)
+ * class: dice::bf::ai::IBotManager
+ * called by: BotManager::ctor_dtor
+ */
+BFV_L1_ENTRY(bfv_client_l1_008dfbe0, bfv_client_l1_body_008dfbe0);
+void bfv_client_l1_body_008dfbe0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t ea;
+    /* 008dfbe0  mov eax, ecx */
+    eax = ecx;
+    /* 008dfbe2  mov dword ptr [eax], 0xbe11a4  ; vtable IBotManager */
+    ea = (uint32_t)(eax);
+    M32(ea) = 0xbe11a4u;
+    /* 008dfbe8  mov dword ptr [0xdfa8c8], eax  ; g_pIBotManager_00dfa8c8 */
+    ea = (uint32_t)(0x00dfa8c8u);
+    M32(ea) = eax;
+    /* 008dfbed  ret */
+    c->eip = M32(esp);
+    esp += 4;
     goto out;
 out: __attribute__((unused));
     c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;

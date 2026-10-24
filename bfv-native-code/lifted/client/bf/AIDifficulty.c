@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0052f6b0  dice::bf::AIDifficulty  (vtable store) */
+/* 0052f6b0  AIDifficulty::create  (vtable store)
+ * class: dice::bf::AIDifficulty
+ * also entered at 0052f6f0: AIDifficulty::vf0, BotSpawnGroup::vf0, BotTeamSpawnGroup::vf0, NbrOfPlayersPerTeam::vf0 (+5 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0052f6b0, bfv_client_l1_body_0052f6b0);
 BFV_L1_RESUME(bfv_client_l1r_0052f6b0_1, bfv_client_l1_body_0052f6b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0052f6b0_2, bfv_client_l1_body_0052f6b0, 2);
@@ -37,7 +40,7 @@ void bfv_client_l1_body_0052f6b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0052f6b4  mov edi, ecx */
     edi = ecx;
-    /* 0052f6b6  call 0x403610 */
+    /* 0052f6b6  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f6b0_1;
@@ -63,14 +66,14 @@ R_1:
     M32(esp) = t;
     /* 0052f6c6  mov ecx, esi */
     ecx = esi;
-    /* 0052f6c8  call 0x5c9950 */
+    /* 0052f6c8  call 0x5c9950  ; SubChallenge::SubChallenge */
     t = 0x005c9950u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f6b0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0052f6cd  mov dword ptr [esi], 0xb64b48 */
+    /* 0052f6cd  mov dword ptr [esi], 0xb64b48  ; vtable AIDifficulty */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb64b48u;
     /* 0052f6d3  jmp 0x52f6d7 */
@@ -81,7 +84,7 @@ L_0052f6d5:
     F_LOGIC(32, r);
     esi = r;
 L_0052f6d7:
-    /* 0052f6d7  mov ecx, dword ptr [esp + 0x14] */
+    /* 0052f6d7  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0052f6db  test ecx, ecx */
@@ -99,7 +102,7 @@ L_0052f6d7:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0052f6e6  call 0x414f50 */
+    /* 0052f6e6  call 0x414f50  ; std::string::assign_cstr */
     t = 0x00414f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f6b0_3;
@@ -126,7 +129,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005c9880  dice::bf::AIDifficulty  (virtual method) */
+/* 005c9880  AIDifficulty::apply  (virtual method)
+ * overrides: SubChallenge::apply  (23 classes implement it)
+ * class: dice::bf::AIDifficulty
+ */
 BFV_L1_ENTRY(bfv_client_l1_005c9880, bfv_client_l1_body_005c9880);
 BFV_L1_RESUME(bfv_client_l1r_005c9880_1, bfv_client_l1_body_005c9880, 1);
 void bfv_client_l1_body_005c9880(struct bfv_cpu *c)
@@ -143,7 +149,7 @@ void bfv_client_l1_body_005c9880(struct bfv_cpu *c)
     /* 005c9880  mov eax, dword ptr [ecx + 0x48] */
     ea = (uint32_t)(ecx + 0x00000048u);
     eax = M32(ea);
-    /* 005c9883  mov ecx, dword ptr [0xd5dc38] */
+    /* 005c9883  mov ecx, dword ptr [0xd5dc38]  ; g_pMenuManager_00d5dc38 */
     ea = (uint32_t)(0x00d5dc38u);
     ecx = M32(ea);
     /* 005c9889  mov ecx, dword ptr [ecx + 0x28] */
@@ -153,7 +159,7 @@ void bfv_client_l1_body_005c9880(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c988d  call 0x57c820 */
+    /* 005c988d  call 0x57c820  ; AIDifficulty::apply_helper_0057c820 */
     t = 0x0057c820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c9880_1;

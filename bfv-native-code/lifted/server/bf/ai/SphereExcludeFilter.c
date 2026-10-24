@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00781e00  dice::bf::ai::?A0xdaa11c90::SphereExcludeFilter  (virtual method) */
+/* 00781e00  SphereExcludeFilter::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xdaa11c90::SphereExcludeFilter
+ */
 BFV_L1_ENTRY(bfv_server_l1_00781e00, bfv_server_l1_body_00781e00);
 BFV_L1_RESUME(bfv_server_l1r_00781e00_1, bfv_server_l1_body_00781e00, 1);
 BFV_L1_RESUME(bfv_server_l1r_00781e00_2, bfv_server_l1_body_00781e00, 2);
@@ -21,7 +23,7 @@ void bfv_server_l1_body_00781e00(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00781e00  mov eax, dword ptr [esp + 4] */
+    /* 00781e00  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00781e04  push ebx */
@@ -82,7 +84,7 @@ R_1:
     /* 00781e2a  fld dword ptr [eax + 0x14] */
     ea = (uint32_t)(eax + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00781e2d  fcomp qword ptr [0x80a240] */
+    /* 00781e2d  fcomp qword ptr [0x80a240]  ; = 0.1 */
     ea = (uint32_t)(0x0080a240u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00781e33  fnstsw ax */

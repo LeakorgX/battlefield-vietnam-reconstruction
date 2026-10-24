@@ -1,0 +1,5 @@
+## file
+Factory that builds the infantry take-cover behaviour.
+
+## 00941100
+vf0: when the type name equals "BBPTakeCoverInfantry" it allocates a 0x20-byte parameter object, otherwise null. Allocates a 0x40-byte behaviour (constructed by 009ab150) with a copy of the passed-in list, then frees the passed-in list.

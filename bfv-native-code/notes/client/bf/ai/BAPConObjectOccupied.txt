@@ -1,0 +1,9 @@
+## file
+BAPConObjectOccupied is a bot action-plan condition that tests the vehicle
+object named by the handle at this+8 through one of its world components.
+
+## 009f2580
+evaluate: false when the handle is stale or 0 or the object has no interface
+at object+0x30. Otherwise gets component 3 of the underlying world object
+(interface +4, its +0x20 part, slot 0xa0 with argument 3) and returns the
+result of bfv_artillery_component_test on it.

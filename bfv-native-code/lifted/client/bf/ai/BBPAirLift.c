@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00983220  dice::bf::ai::BBPAirLift  (vtable store) */
+/* 00983220  BBPAirLift::BBPAirLift  (vtable store)
+ * class: dice::bf::ai::BBPAirLift
+ * called by: BBCreateFunctionAirLift::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00983220, bfv_client_l1_body_00983220);
 BFV_L1_RESUME(bfv_client_l1r_00983220_1, bfv_client_l1_body_00983220, 1);
 void bfv_client_l1_body_00983220(struct bfv_cpu *c)
@@ -25,20 +28,20 @@ void bfv_client_l1_body_00983220(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00983221  mov esi, ecx */
     esi = ecx;
-    /* 00983223  call 0x9ee4a0 */
+    /* 00983223  call 0x9ee4a0  ; BBPPattern::BBPPattern */
     t = 0x009ee4a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00983220_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00983228  mov eax, dword ptr [esp + 8] */
+    /* 00983228  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0098322c  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 0098322f  mov dword ptr [esi], 0xbf57ec */
+    /* 0098322f  mov dword ptr [esi], 0xbf57ec  ; vtable BBPAirLift */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf57ecu;
     /* 00983235  mov eax, esi */

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005d70f0  dice::OnlyANameWrapper  (virtual method) */
+/* 005d70f0  OnlyANameWrapper::vf11  (virtual method)
+ * overrides: Wrapper::vf11  (5 classes implement it)
+ * class: dice::OnlyANameWrapper
+ */
 BFV_L1_ENTRY(bfv_server_l1_005d70f0, bfv_server_l1_body_005d70f0);
 void bfv_server_l1_body_005d70f0(struct bfv_cpu *c)
 {
@@ -28,7 +31,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0062d060  dice::OnlyANameWrapper  (virtual method) */
+/* 0062d060  OnlyANameWrapper::deleting_dtor  (virtual method)
+ * overrides: Wrapper::vf0  (5 classes implement it)
+ * class: dice::OnlyANameWrapper
+ */
 BFV_L1_ENTRY(bfv_server_l1_0062d060, bfv_server_l1_body_0062d060);
 BFV_L1_RESUME(bfv_server_l1r_0062d060_1, bfv_server_l1_body_0062d060, 1);
 BFV_L1_RESUME(bfv_server_l1r_0062d060_2, bfv_server_l1_body_0062d060, 2);
@@ -65,7 +71,7 @@ void bfv_server_l1_body_0062d060(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0062d06d  call 0x403df0 */
+    /* 0062d06d  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0062d060_1;
@@ -92,11 +98,11 @@ L_0062d075:
     /* 0062d081  mov byte ptr [esi + 0x10], al */
     ea = (uint32_t)(esi + 0x00000010u);
     M8(ea) = LO8(eax);
-    /* 0062d084  test byte ptr [esp + 8], 1 */
+    /* 0062d084  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0062d089  mov dword ptr [esi], 0x8184c4 */
+    /* 0062d089  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8184c4u;
     /* 0062d08f  je 0x62d09a */
@@ -105,7 +111,7 @@ L_0062d075:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0062d092  call 0x403df0 */
+    /* 0062d092  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0062d060_2;

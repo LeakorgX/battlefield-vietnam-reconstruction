@@ -46,6 +46,11 @@ Before starting parallel parts, link each target's verifier blob once with a sin
   up to 0x100, at most 0xf00) through `BFV_L1_ENTRY_DEEP`/`BFV_L1_RESUME_DEEP`.
   Deeper functions are rejected (`stack_too_deep`). G stays below one page so a
   stub never skips the stack guard page.
+- **Frame restarts.** `lea esp, [ebp+d]` with an untracked EBP leaves the body
+  through a resume stub, which rebuilds the C frame below the new ESP. The
+  trampoline's continuation word sits at ESP-4, so for
+  `lea esp, [ebp+4]; mov ebp, [ebp]` (which reads the saved EBP from that same
+  word) the body leaves after the load instead (client d3dx `0081c8c6`).
 - **Exits.** Direct jumps out of the function, falling through into the next
   indexed entry (shared tail code) and reaching a trap instruction all leave the
   C body and continue natively at that address.
@@ -83,7 +88,7 @@ and the unhandled instructions above.
   The only guest-stack word written on the way out is `final ESP - 4`, which is
   where the native `ret` leaves its return address anyway.
 
-## Verifier (`tools/verify_lifted.py`, VERIFIER 13)
+## Verifier (`tools/verify_lifted.py`, VERIFIER 23)
 
 The verifier runs the original function and the compiled lifted body on two
 Unicorn machines from the same random state. It compares:
@@ -108,8 +113,11 @@ States and isolation:
   budget is retried once with a frame-like stack (`frame_state`). A native run
   that still exceeds its budget or leaves the function is skipped without
   running the lifted body.
-- Only `.text` is executable, so random pointers into data fault instead of
-  executing it. The whole scratch code page is reset before every run.
+- Only the code sections are executable, so random pointers into data fault
+  instead of executing it. Code sections are every section marked executable:
+  `.text`, the client's `.ctfsnd`, and the 1.21 patch code in the raw slack of
+  the 9-byte `.tls` section (0xe23018..0xe231a0), which the loader maps with
+  its page. The whole scratch code page is reset before every run.
 - Every indirect call the function makes into `.text` is opaque on both
   machines (recorded with target, registers and arguments, then it returns a
   fixed value), like the stubbed direct callees. Real code reached through a
@@ -126,6 +134,25 @@ States and isolation:
   the same state; the lifted events must start with the whole native trace.
 - A direct call of the function to itself is opaque on both machines too
   (recursion would otherwise run native code on one side and C on the other).
+
+- Both machines use unicorn's Phenom CPU model (`UC_CPU_X86_PHENOM`) with
+  CR4 = 0x200, so 3DNow! (d3dx and the client's vector code) runs instead of
+  faulting, and SSE stays enabled.
+- `pushad` events are reordered to the CPU's order: unicorn stores EDI first,
+  at the lowest address; the CPU and the lifted body store EAX first.
+- A native call made from a lifted body (EXIT_TO, resume stubs) gets the
+  callee's register ABI from the native machine's map, so ECX/EDX are
+  poisoned (0x5a5a5a5b) after it exactly when they are on the native side.
+- Running out of opaque calls (64) counts as running out of budget, not as a
+  mismatch.
+- The instruction budget is counted in the block hook (instructions per block,
+  cached), not with `emu_start`'s `count`. The count adds a code hook on every
+  instruction, and with it unicorn 2.1.4 loses the lazy flags of the
+  instruction before a `rep` string instruction whose first access faults into
+  a lazily mapped page: `cmp; rep movsd; jb` then falls through natively
+  (client `00ab4d24`). As before, the budget applies per `emu_start`.
+- With `VCORE_WHY=<file>` the C++ core appends, per non-passed function, the
+  native run errors that kept its states from completing.
 
 A function passes when every completed state matches and at least one state
 completed, or, with no completed state, when every prefix matches and at least
@@ -149,6 +176,19 @@ anonymous namespace), its name and argument types from the constructor's
 strings, its handler methods, and the direct calls from those handlers that
 fewer than nine commands share (the game function it reaches, when it is not
 inlined).
+
+Names and notes (listed in [MODDING.md](MODDING.md)) are comments only.
+`build.py` compares `code_sha256` (the C without comments and blank space) with
+the lift, so renaming and annotating never counts as an edit. Moving functions
+between files changes link order and so the EXE hash, not the code. The
+evidence comes from `tools/game_names.py`:
+- console command categories, by replaying the C++ static initializers;
+- class IDs, from `mov eax, [id]; ret` methods;
+- fields and methods that command handlers get or set, from a small symbolic
+  evaluator over each function (`this`, arguments, globals, loads, calls);
+- `this` types, propagated through direct calls;
+- singleton pointers;
+- virtual-call targets of objects of known class.
 
 ## Build integration (`tools/build.py`)
 

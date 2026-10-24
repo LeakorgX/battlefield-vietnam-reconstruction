@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006fb300  dice::ref2::world::Spring  (virtual method) */
+/* 006fb300  Spring::init  (virtual method)
+ * overrides: Object::init  (47 classes implement it)
+ * class: dice::ref2::world::Spring
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fb300, bfv_client_l1_body_006fb300);
 BFV_L1_RESUME(bfv_client_l1r_006fb300_1, bfv_client_l1_body_006fb300, 1);
 BFV_L1_RESUME(bfv_client_l1r_006fb300_2, bfv_client_l1_body_006fb300, 2);
@@ -41,7 +44,7 @@ void bfv_client_l1_body_006fb300(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006fb302  mov esi, ecx */
     esi = ecx;
-    /* 006fb304  call 0x66c890 */
+    /* 006fb304  call 0x66c890  ; SimpleObject::init */
     t = 0x0066c890u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fb300_1;
@@ -64,7 +67,7 @@ R_1:
     M32(esp) = t;
     /* 006fb312  mov ecx, esi */
     ecx = esi;
-    /* 006fb314  call dword ptr [edx + 0x24] */
+    /* 006fb314  call dword ptr [edx + 0x24]  ; -> Spring::vf9 = Object::getComponent */
     ea = (uint32_t)(edx + 0x00000024u);
     t = M32(ea);
     esp -= 4;
@@ -84,7 +87,7 @@ R_2:
     eax = M32(ea);
     /* 006fb31f  mov ecx, esi */
     ecx = esi;
-    /* 006fb321  call dword ptr [eax + 0x6c] */
+    /* 006fb321  call dword ptr [eax + 0x6c]  ; -> Spring::vf27 = Object::getPosition */
     ea = (uint32_t)(eax + 0x0000006cu);
     t = M32(ea);
     esp -= 4;
@@ -98,7 +101,7 @@ R_3:
     M32(esp) = t;
     /* 006fb325  mov ecx, edi */
     ecx = edi;
-    /* 006fb327  call 0x6fb640 */
+    /* 006fb327  call 0x6fb640  ; Spring::init_helper_006fb640 */
     t = 0x006fb640u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fb300_4;
@@ -111,7 +114,7 @@ L_006fb32c:
     edx = M32(ea);
     /* 006fb32e  mov ecx, esi */
     ecx = esi;
-    /* 006fb330  call dword ptr [edx + 0x7c] */
+    /* 006fb330  call dword ptr [edx + 0x7c]  ; -> Spring::vf31 = PlayerManager::getLocalPlayer (returns this+0x54) */
     ea = (uint32_t)(edx + 0x0000007cu);
     t = M32(ea);
     esp -= 4;
@@ -126,7 +129,7 @@ R_5:
     F_LOGIC(32, r);
     /* 006fb337  je 0x6fb369 */
     if (zf) goto L_006fb369;
-    /* 006fb339  lea esp, [esp] */
+    /* 006fb339  lea esp, [esp]  ; &var_8 */
     esp = (uint32_t)(esp);
 L_006fb340:
     /* 006fb340  mov ecx, dword ptr [esi + 0x4c] */
@@ -148,7 +151,7 @@ L_006fb340:
     c->eip = t;
     goto out;
 R_6:
-    /* 006fb34c  cmp eax, dword ptr [0xb77e7c] */
+    /* 006fb34c  cmp eax, dword ptr [0xb77e7c]  ; EffectBundleTemplate::classID */
     ea = (uint32_t)(0x00b77e7cu);
     a = eax;
     b = M32(ea);
@@ -206,7 +209,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006fb370  dice::ref2::world::Spring  (virtual method) */
+/* 006fb370  Spring::onHit  (virtual method)
+ * overrides: Object::onHit  (47 classes implement it)
+ * class: dice::ref2::world::Spring
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fb370, bfv_client_l1_body_006fb370);
 void bfv_client_l1_body_006fb370(struct bfv_cpu *c)
 {
@@ -215,7 +221,7 @@ void bfv_client_l1_body_006fb370(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006fb370  mov eax, dword ptr [esp + 0x18] */
+    /* 006fb370  mov eax, dword ptr [esp + 0x18]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 006fb374  mov byte ptr [ecx + 0x160], 1 */
@@ -224,10 +230,10 @@ void bfv_client_l1_body_006fb370(struct bfv_cpu *c)
     /* 006fb37b  mov dword ptr [ecx + 0x168], eax */
     ea = (uint32_t)(ecx + 0x00000168u);
     M32(ea) = eax;
-    /* 006fb381  mov dword ptr [esp + 0x18], eax */
+    /* 006fb381  mov dword ptr [esp + 0x18], eax  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = eax;
-    /* 006fb385  jmp 0x66d180 */
+    /* 006fb385  jmp 0x66d180  ; SimpleObject::onHit */
     c->eip = 0x0066d180u;
     goto out;
 out: __attribute__((unused));
@@ -237,7 +243,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006fb390  dice::ref2::world::Spring  (vtable store) */
+/* 006fb390  Spring::Spring  (vtable store)
+ * class: dice::ref2::world::Spring
+ * called by: SpringTemplate::createObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fb390, bfv_client_l1_body_006fb390);
 BFV_L1_RESUME(bfv_client_l1r_006fb390_1, bfv_client_l1_body_006fb390, 1);
 BFV_L1_RESUME(bfv_client_l1r_006fb390_2, bfv_client_l1_body_006fb390, 2);
@@ -253,7 +262,7 @@ void bfv_client_l1_body_006fb390(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 006fb390  mov eax, dword ptr [esp + 4] */
+    /* 006fb390  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006fb394  push esi */
@@ -266,7 +275,7 @@ void bfv_client_l1_body_006fb390(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006fb396  mov esi, ecx */
     esi = ecx;
-    /* 006fb398  call 0x69fb50 */
+    /* 006fb398  call 0x69fb50  ; Bundle::Bundle */
     t = 0x0069fb50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fb390_1;
@@ -297,7 +306,7 @@ R_1:
     M32(esp) = t;
     /* 006fb3b4  mov ecx, esi */
     ecx = esi;
-    /* 006fb3b6  mov dword ptr [esi], 0xba4d5c */
+    /* 006fb3b6  mov dword ptr [esi], 0xba4d5c  ; vtable Spring */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba4d5cu;
     /* 006fb3bc  mov dword ptr [esi + 0x84], 0xba4d44 */
@@ -315,7 +324,7 @@ R_1:
     /* 006fb3d8  mov dword ptr [esi + 0x164], eax */
     ea = (uint32_t)(esi + 0x00000164u);
     M32(ea) = eax;
-    /* 006fb3de  call 0x6843e0 */
+    /* 006fb3de  call 0x6843e0  ; Object::changeFlags */
     t = 0x006843e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fb390_2;
@@ -339,7 +348,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006fb3f0  dice::ref2::world::Spring  (virtual method) */
+/* 006fb3f0  Spring::handleEvent  (virtual method)
+ * overrides: Object::handleEvent  (47 classes implement it)
+ * class: dice::ref2::world::Spring
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fb3f0, bfv_client_l1_body_006fb3f0);
 BFV_L1_RESUME(bfv_client_l1r_006fb3f0_1, bfv_client_l1_body_006fb3f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006fb3f0_2, bfv_client_l1_body_006fb3f0, 2);
@@ -367,7 +379,7 @@ void bfv_client_l1_body_006fb3f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006fb3f1  mov esi, ecx */
     esi = ecx;
-    /* 006fb3f3  mov ecx, dword ptr [esp + 8] */
+    /* 006fb3f3  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006fb3f7  mov eax, ecx */
@@ -395,7 +407,7 @@ void bfv_client_l1_body_006fb3f0(struct bfv_cpu *c)
     eax = r;
     /* 006fb404  je 0x6fb417 */
     if (zf) goto L_006fb417;
-    /* 006fb406  mov eax, dword ptr [esp + 0xc] */
+    /* 006fb406  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 006fb40a  push eax */
@@ -408,7 +420,7 @@ void bfv_client_l1_body_006fb3f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006fb40c  mov ecx, esi */
     ecx = esi;
-    /* 006fb40e  call 0x69fc70 */
+    /* 006fb40e  call 0x69fc70  ; Bundle::handleEvent */
     t = 0x0069fc70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fb3f0_1;
@@ -426,7 +438,7 @@ R_1:
 L_006fb417:
     /* 006fb417  mov ecx, esi */
     ecx = esi;
-    /* 006fb419  call 0x583d20 */
+    /* 006fb419  call 0x583d20  ; Object_findAncestorWithInterface_c4a4 */
     t = 0x00583d20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fb3f0_2;
@@ -465,7 +477,7 @@ R_3:
     /* 006fb43a  fld dword ptr [esi + 0xe4] */
     ea = (uint32_t)(esi + 0x000000e4u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006fb440  fmul dword ptr [0xb55318] */
+    /* 006fb440  fmul dword ptr [0xb55318]  ; = 0.25f */
     ea = (uint32_t)(0x00b55318u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006fb446  fstp dword ptr [esi + 0xe4] */
@@ -474,7 +486,7 @@ R_3:
     /* 006fb44c  fld dword ptr [esi + 0xe0] */
     ea = (uint32_t)(esi + 0x000000e0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006fb452  fmul dword ptr [0xb55318] */
+    /* 006fb452  fmul dword ptr [0xb55318]  ; = 0.25f */
     ea = (uint32_t)(0x00b55318u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006fb458  fstp dword ptr [esi + 0xe0] */
@@ -489,7 +501,7 @@ R_3:
     esp += 12;
     goto out;
 L_006fb462:
-    /* 006fb462  mov eax, dword ptr [esp + 0xc] */
+    /* 006fb462  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 006fb466  push eax */
@@ -505,7 +517,7 @@ L_006fb462:
     /* 006fb46b  mov byte ptr [esi + 0x162], 0 */
     ea = (uint32_t)(esi + 0x00000162u);
     M8(ea) = 0x0u;
-    /* 006fb472  call 0x69fc70 */
+    /* 006fb472  call 0x69fc70  ; Bundle::handleEvent */
     t = 0x0069fc70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fb3f0_4;
@@ -521,7 +533,7 @@ R_4:
     esp += 12;
     goto out;
 L_006fb47b:
-    /* 006fb47b  mov ecx, dword ptr [esp + 0xc] */
+    /* 006fb47b  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 006fb47f  push ecx */
@@ -537,7 +549,7 @@ L_006fb47b:
     /* 006fb484  mov byte ptr [esi + 0x162], 1 */
     ea = (uint32_t)(esi + 0x00000162u);
     M8(ea) = 0x1u;
-    /* 006fb48b  call 0x69fc70 */
+    /* 006fb48b  call 0x69fc70  ; Bundle::handleEvent */
     t = 0x0069fc70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fb3f0_5;
@@ -560,7 +572,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006fb4a0  dice::ref2::world::Spring  (virtual method) */
+/* 006fb4a0  Spring::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::Spring
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fb4a0, bfv_client_l1_body_006fb4a0);
 BFV_L1_RESUME(bfv_client_l1r_006fb4a0_1, bfv_client_l1_body_006fb4a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006fb4a0_2, bfv_client_l1_body_006fb4a0, 2);
@@ -601,7 +616,7 @@ void bfv_client_l1_body_006fb4a0(struct bfv_cpu *c)
     /* 006fb4a4  mov eax, dword ptr [edi] */
     ea = (uint32_t)(edi);
     eax = M32(ea);
-    /* 006fb4a6  call dword ptr [eax + 0x7c] */
+    /* 006fb4a6  call dword ptr [eax + 0x7c]  ; -> Spring::vf31 = PlayerManager::getLocalPlayer (returns this+0x54) */
     ea = (uint32_t)(eax + 0x0000007cu);
     t = M32(ea);
     esp -= 4;
@@ -657,7 +672,7 @@ R_1:
     M32(esp) = t;
     /* 006fb4df  mov ecx, edi */
     ecx = edi;
-    /* 006fb4e1  call dword ptr [edx + 0x7c] */
+    /* 006fb4e1  call dword ptr [edx + 0x7c]  ; -> Spring::vf31 = PlayerManager::getLocalPlayer (returns this+0x54) */
     ea = (uint32_t)(edx + 0x0000007cu);
     t = M32(ea);
     esp -= 4;
@@ -696,7 +711,7 @@ L_006fb4f0:
     c->eip = t;
     goto out;
 R_3:
-    /* 006fb502  cmp eax, dword ptr [0xb77e7c] */
+    /* 006fb502  cmp eax, dword ptr [0xb77e7c]  ; EffectBundleTemplate::classID */
     ea = (uint32_t)(0x00b77e7cu);
     a = eax;
     b = M32(ea);
@@ -920,7 +935,7 @@ L_006fb5a9:
     edx = M32(ea);
     /* 006fb5b8  mov ecx, edi */
     ecx = edi;
-    /* 006fb5ba  call dword ptr [edx + 0x7c] */
+    /* 006fb5ba  call dword ptr [edx + 0x7c]  ; -> Spring::vf31 = PlayerManager::getLocalPlayer (returns this+0x54) */
     ea = (uint32_t)(edx + 0x0000007cu);
     t = M32(ea);
     esp -= 4;
@@ -955,7 +970,7 @@ L_006fb5c3:
     c->eip = t;
     goto out;
 R_7:
-    /* 006fb5cf  cmp eax, dword ptr [0xb77e7c] */
+    /* 006fb5cf  cmp eax, dword ptr [0xb77e7c]  ; EffectBundleTemplate::classID */
     ea = (uint32_t)(0x00b77e7cu);
     a = eax;
     b = M32(ea);
@@ -1026,7 +1041,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006fb600  dice::ref2::world::Spring  (virtual method) */
+/* 006fb600  Spring::createNetworkable  (virtual method)
+ * overrides: Object::createNetworkable  (47 classes implement it)
+ * class: dice::ref2::world::Spring
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fb600, bfv_client_l1_body_006fb600);
 BFV_L1_RESUME(bfv_client_l1r_006fb600_1, bfv_client_l1_body_006fb600, 1);
 BFV_L1_RESUME(bfv_client_l1r_006fb600_2, bfv_client_l1_body_006fb600, 2);
@@ -1059,7 +1077,7 @@ void bfv_client_l1_body_006fb600(struct bfv_cpu *c)
     /* 006fb60a  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 006fb60c  call dword ptr [eax + 0x50] */
+    /* 006fb60c  call dword ptr [eax + 0x50]  ; -> SpringTemplate::vf20 = ObjectTemplateManager::vf27_addressOf_24h (returns &this+0x24) */
     ea = (uint32_t)(eax + 0x00000050u);
     t = M32(ea);
     esp -= 4;
@@ -1088,7 +1106,7 @@ R_1:
     M32(esp) = t;
     /* 006fb61c  mov ecx, eax */
     ecx = eax;
-    /* 006fb61e  call 0x4038f0 */
+    /* 006fb61e  call 0x4038f0  ; std::string::compare_chars */
     t = 0x004038f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fb600_2;
@@ -1109,7 +1127,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 006fb630  jmp 0x69faa0 */
+    /* 006fb630  jmp 0x69faa0  ; Object::attachNetworkable */
     c->eip = 0x0069faa0u;
     goto out;
 L_006fb635:

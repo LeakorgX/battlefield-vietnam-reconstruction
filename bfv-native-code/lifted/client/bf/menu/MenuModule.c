@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 004ae8b0  dice::bf::menu::MenuModule  (virtual method) */
+/* 004ae8b0  MenuModule::vf6  (virtual method)
+ * class: dice::bf::menu::MenuModule
+ */
 BFV_L1_ENTRY(bfv_client_l1_004ae8b0, bfv_client_l1_body_004ae8b0);
 BFV_L1_RESUME(bfv_client_l1r_004ae8b0_1, bfv_client_l1_body_004ae8b0, 1);
 void bfv_client_l1_body_004ae8b0(struct bfv_cpu *c)
@@ -19,13 +21,13 @@ void bfv_client_l1_body_004ae8b0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004ae8b0  push 0xd5f75c */
+    /* 004ae8b0  push 0xd5f75c  ; g_consoleCommands_Game_00d5f75c */
     t = 0xd5f75cu;
     esp -= 4;
     M32(esp) = t;
     /* 004ae8b5  mov ecx, 0xd442ec */
     ecx = 0xd442ecu;
-    /* 004ae8ba  call 0x41b040 */
+    /* 004ae8ba  call 0x41b040  ; sub_0041b040 */
     t = 0x0041b040u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004ae8b0_1;
@@ -45,7 +47,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004ae8d0  dice::bf::menu::MenuModule  (virtual method) */
+/* 004ae8d0  MenuModule::vf7  (virtual method)
+ * class: dice::bf::menu::MenuModule
+ */
 BFV_L1_ENTRY(bfv_client_l1_004ae8d0, bfv_client_l1_body_004ae8d0);
 BFV_L1_RESUME(bfv_client_l1r_004ae8d0_1, bfv_client_l1_body_004ae8d0, 1);
 void bfv_client_l1_body_004ae8d0(struct bfv_cpu *c)
@@ -59,13 +63,13 @@ void bfv_client_l1_body_004ae8d0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004ae8d0  push 0xd5f75c */
+    /* 004ae8d0  push 0xd5f75c  ; g_consoleCommands_Game_00d5f75c */
     t = 0xd5f75cu;
     esp -= 4;
     M32(esp) = t;
     /* 004ae8d5  mov ecx, 0xd442ec */
     ecx = 0xd442ecu;
-    /* 004ae8da  call 0x5f89e0 */
+    /* 004ae8da  call 0x5f89e0  ; stub_return_false_1args_005f89e0 */
     t = 0x005f89e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004ae8d0_1;

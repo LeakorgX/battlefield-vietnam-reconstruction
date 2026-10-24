@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006b4870  dice::ref2::world::LensFlareTemplate  (virtual method) */
+/* 006b4870  LensFlareTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::LensFlareTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4870, bfv_client_l1_body_006b4870);
 BFV_L1_RESUME(bfv_client_l1r_006b4870_1, bfv_client_l1_body_006b4870, 1);
 BFV_L1_RESUME(bfv_client_l1r_006b4870_2, bfv_client_l1_body_006b4870, 2);
@@ -31,7 +34,7 @@ void bfv_client_l1_body_006b4870(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006b4876  mov esi, ecx */
     esi = ecx;
-    /* 006b4878  call 0x403610 */
+    /* 006b4878  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4870_1;
@@ -55,7 +58,7 @@ R_1:
     M32(esp) = t;
     /* 006b4885  mov ecx, eax */
     ecx = eax;
-    /* 006b4887  call 0x6b44b0 */
+    /* 006b4887  call 0x6b44b0  ; LensFlare::LensFlare */
     t = 0x006b44b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4870_2;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b48a0  (between same file) */
+/* 006b48a0  LensFlareTemplate::setCoronaCount  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setCoronaCount::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b48a0, bfv_client_l1_body_006b48a0);
 void bfv_client_l1_body_006b48a0(struct bfv_cpu *c)
 {
@@ -99,7 +105,7 @@ void bfv_client_l1_body_006b48a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 006b48a0  mov eax, dword ptr [ecx + 0x1d4] */
+    /* 006b48a0  mov eax, dword ptr [ecx + 0x1d4]  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(ecx + 0x000001d4u);
     eax = M32(ea);
     /* 006b48a6  test eax, eax */
@@ -107,10 +113,10 @@ void bfv_client_l1_body_006b48a0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b48a8  jg 0x6b48b4 */
     if (!(zf | (sf != of))) goto L_006b48b4;
-    /* 006b48aa  mov eax, dword ptr [esp + 4] */
+    /* 006b48aa  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006b48ae  mov dword ptr [ecx + 0x1d4], eax */
+    /* 006b48ae  mov dword ptr [ecx + 0x1d4], eax  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(ecx + 0x000001d4u);
     M32(ea) = eax;
 L_006b48b4:
@@ -125,7 +131,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b48d0  (between same file) */
+/* 006b48d0  LensFlareTemplate::setFlareSize  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setFlareSize::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b48d0, bfv_client_l1_body_006b48d0);
 void bfv_client_l1_body_006b48d0(struct bfv_cpu *c)
 {
@@ -134,7 +143,7 @@ void bfv_client_l1_body_006b48d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b48d0  mov eax, dword ptr [esp + 8] */
+    /* 006b48d0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b48d4  test eax, eax */
@@ -142,7 +151,7 @@ void bfv_client_l1_body_006b48d0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b48d6  jl 0x6b48fb */
     if ((sf != of)) goto L_006b48fb;
-    /* 006b48d8  cmp eax, dword ptr [ecx + 0x1cc] */
+    /* 006b48d8  cmp eax, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     a = eax;
     b = M32(ea);
@@ -158,7 +167,7 @@ void bfv_client_l1_body_006b48d0(struct bfv_cpu *c)
     edx = M32(ea);
     /* 006b48e9  lea eax, [ecx + eax*4] */
     eax = (uint32_t)(ecx + eax * 4u);
-    /* 006b48ec  mov eax, dword ptr [esp + 4] */
+    /* 006b48ec  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006b48f0  mov ecx, dword ptr [eax] */
@@ -185,7 +194,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4900  (between same file) */
+/* 006b4900  LensFlareTemplate::setFlareSize2  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setFlareSize2::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4900, bfv_client_l1_body_006b4900);
 void bfv_client_l1_body_006b4900(struct bfv_cpu *c)
 {
@@ -194,7 +206,7 @@ void bfv_client_l1_body_006b4900(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b4900  mov eax, dword ptr [esp + 8] */
+    /* 006b4900  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b4904  test eax, eax */
@@ -202,7 +214,7 @@ void bfv_client_l1_body_006b4900(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4906  jl 0x6b492b */
     if ((sf != of)) goto L_006b492b;
-    /* 006b4908  cmp eax, dword ptr [ecx + 0x1cc] */
+    /* 006b4908  cmp eax, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     a = eax;
     b = M32(ea);
@@ -218,7 +230,7 @@ void bfv_client_l1_body_006b4900(struct bfv_cpu *c)
     edx = M32(ea);
     /* 006b4919  lea eax, [ecx + eax*4] */
     eax = (uint32_t)(ecx + eax * 4u);
-    /* 006b491c  mov eax, dword ptr [esp + 4] */
+    /* 006b491c  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006b4920  mov ecx, dword ptr [eax] */
@@ -245,7 +257,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4930  (between same file) */
+/* 006b4930  LensFlareTemplate::setFlareRot  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setFlareRot::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4930, bfv_client_l1_body_006b4930);
 void bfv_client_l1_body_006b4930(struct bfv_cpu *c)
 {
@@ -254,7 +269,7 @@ void bfv_client_l1_body_006b4930(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b4930  mov eax, dword ptr [esp + 8] */
+    /* 006b4930  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b4934  test eax, eax */
@@ -262,7 +277,7 @@ void bfv_client_l1_body_006b4930(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4936  jl 0x6b4956 */
     if ((sf != of)) goto L_006b4956;
-    /* 006b4938  cmp eax, dword ptr [ecx + 0x1cc] */
+    /* 006b4938  cmp eax, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     a = eax;
     b = M32(ea);
@@ -278,7 +293,7 @@ void bfv_client_l1_body_006b4930(struct bfv_cpu *c)
     edx = M32(ea);
     /* 006b4949  lea eax, [ecx + eax*4] */
     eax = (uint32_t)(ecx + eax * 4u);
-    /* 006b494c  mov eax, dword ptr [esp + 4] */
+    /* 006b494c  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006b4950  mov dword ptr [edx + 0x84], eax */
@@ -296,7 +311,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4960  (between same file) */
+/* 006b4960  LensFlareTemplate::setFlareColor  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setFlareColor::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4960, bfv_client_l1_body_006b4960);
 void bfv_client_l1_body_006b4960(struct bfv_cpu *c)
 {
@@ -305,7 +323,7 @@ void bfv_client_l1_body_006b4960(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b4960  mov eax, dword ptr [esp + 0x14] */
+    /* 006b4960  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 006b4964  test eax, eax */
@@ -313,7 +331,7 @@ void bfv_client_l1_body_006b4960(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4966  jl 0x6b499a */
     if ((sf != of)) goto L_006b499a;
-    /* 006b4968  cmp eax, dword ptr [ecx + 0x1cc] */
+    /* 006b4968  cmp eax, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     a = eax;
     b = M32(ea);
@@ -329,10 +347,10 @@ void bfv_client_l1_body_006b4960(struct bfv_cpu *c)
     edx = M32(ea);
     /* 006b4979  lea eax, [ecx + eax*4] */
     eax = (uint32_t)(ecx + eax * 4u);
-    /* 006b497c  mov eax, dword ptr [esp + 4] */
+    /* 006b497c  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006b4980  mov ecx, dword ptr [esp + 8] */
+    /* 006b4980  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006b4984  add edx, 0x3c */
@@ -344,13 +362,13 @@ void bfv_client_l1_body_006b4960(struct bfv_cpu *c)
     /* 006b4987  mov dword ptr [edx], eax */
     ea = (uint32_t)(edx);
     M32(ea) = eax;
-    /* 006b4989  mov eax, dword ptr [esp + 0xc] */
+    /* 006b4989  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 006b498d  mov dword ptr [edx + 4], ecx */
     ea = (uint32_t)(edx + 0x00000004u);
     M32(ea) = ecx;
-    /* 006b4990  mov ecx, dword ptr [esp + 0x10] */
+    /* 006b4990  mov ecx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 006b4994  mov dword ptr [edx + 8], eax */
@@ -371,7 +389,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b49a0  (between same file) */
+/* 006b49a0  LensFlareTemplate::setFlareColor2  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setFlareColor2::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b49a0, bfv_client_l1_body_006b49a0);
 void bfv_client_l1_body_006b49a0(struct bfv_cpu *c)
 {
@@ -380,7 +401,7 @@ void bfv_client_l1_body_006b49a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b49a0  mov eax, dword ptr [esp + 0x14] */
+    /* 006b49a0  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 006b49a4  test eax, eax */
@@ -388,7 +409,7 @@ void bfv_client_l1_body_006b49a0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b49a6  jl 0x6b49da */
     if ((sf != of)) goto L_006b49da;
-    /* 006b49a8  cmp eax, dword ptr [ecx + 0x1cc] */
+    /* 006b49a8  cmp eax, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     a = eax;
     b = M32(ea);
@@ -404,10 +425,10 @@ void bfv_client_l1_body_006b49a0(struct bfv_cpu *c)
     edx = M32(ea);
     /* 006b49b9  lea eax, [ecx + eax*4] */
     eax = (uint32_t)(ecx + eax * 4u);
-    /* 006b49bc  mov eax, dword ptr [esp + 4] */
+    /* 006b49bc  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006b49c0  mov ecx, dword ptr [esp + 8] */
+    /* 006b49c0  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006b49c4  add edx, 0x4c */
@@ -419,13 +440,13 @@ void bfv_client_l1_body_006b49a0(struct bfv_cpu *c)
     /* 006b49c7  mov dword ptr [edx], eax */
     ea = (uint32_t)(edx);
     M32(ea) = eax;
-    /* 006b49c9  mov eax, dword ptr [esp + 0xc] */
+    /* 006b49c9  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 006b49cd  mov dword ptr [edx + 4], ecx */
     ea = (uint32_t)(edx + 0x00000004u);
     M32(ea) = ecx;
-    /* 006b49d0  mov ecx, dword ptr [esp + 0x10] */
+    /* 006b49d0  mov ecx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 006b49d4  mov dword ptr [edx + 8], eax */
@@ -446,7 +467,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b49e0  (between same file) */
+/* 006b49e0  LensFlareTemplate::setFlareFadeAngleFactor  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setFlareFadeAngleFactor::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b49e0, bfv_client_l1_body_006b49e0);
 void bfv_client_l1_body_006b49e0(struct bfv_cpu *c)
 {
@@ -455,7 +479,7 @@ void bfv_client_l1_body_006b49e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b49e0  mov eax, dword ptr [esp + 8] */
+    /* 006b49e0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b49e4  test eax, eax */
@@ -463,7 +487,7 @@ void bfv_client_l1_body_006b49e0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b49e6  jl 0x6b4a06 */
     if ((sf != of)) goto L_006b4a06;
-    /* 006b49e8  cmp eax, dword ptr [ecx + 0x1cc] */
+    /* 006b49e8  cmp eax, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     a = eax;
     b = M32(ea);
@@ -479,7 +503,7 @@ void bfv_client_l1_body_006b49e0(struct bfv_cpu *c)
     edx = M32(ea);
     /* 006b49f9  lea eax, [ecx + eax*4] */
     eax = (uint32_t)(ecx + eax * 4u);
-    /* 006b49fc  mov eax, dword ptr [esp + 4] */
+    /* 006b49fc  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006b4a00  mov dword ptr [edx + 0x8c], eax */
@@ -497,7 +521,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4a10  (between same file) */
+/* 006b4a10  LensFlareTemplate::setCoronaSize  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setCoronaSize::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4a10, bfv_client_l1_body_006b4a10);
 void bfv_client_l1_body_006b4a10(struct bfv_cpu *c)
 {
@@ -506,7 +533,7 @@ void bfv_client_l1_body_006b4a10(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b4a10  mov eax, dword ptr [esp + 8] */
+    /* 006b4a10  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b4a14  test eax, eax */
@@ -514,7 +541,7 @@ void bfv_client_l1_body_006b4a10(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4a16  jl 0x6b4a43 */
     if ((sf != of)) goto L_006b4a43;
-    /* 006b4a18  cmp eax, dword ptr [ecx + 0x1d4] */
+    /* 006b4a18  cmp eax, dword ptr [ecx + 0x1d4]  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(ecx + 0x000001d4u);
     a = eax;
     b = M32(ea);
@@ -522,7 +549,7 @@ void bfv_client_l1_body_006b4a10(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006b4a1e  jge 0x6b4a43 */
     if ((sf == of)) goto L_006b4a43;
-    /* 006b4a20  mov edx, dword ptr [ecx + 0x1cc] */
+    /* 006b4a20  mov edx, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     edx = M32(ea);
     /* 006b4a26  add edx, eax */
@@ -539,7 +566,7 @@ void bfv_client_l1_body_006b4a10(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 006b4a31  lea eax, [eax + edx*4] */
     eax = (uint32_t)(eax + edx * 4u);
-    /* 006b4a34  mov eax, dword ptr [esp + 4] */
+    /* 006b4a34  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006b4a38  mov edx, dword ptr [eax] */
@@ -566,7 +593,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4a50  (between same file) */
+/* 006b4a50  LensFlareTemplate::setCoronaSize2  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setCoronaSize2::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4a50, bfv_client_l1_body_006b4a50);
 void bfv_client_l1_body_006b4a50(struct bfv_cpu *c)
 {
@@ -575,7 +605,7 @@ void bfv_client_l1_body_006b4a50(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b4a50  mov eax, dword ptr [esp + 8] */
+    /* 006b4a50  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b4a54  test eax, eax */
@@ -583,7 +613,7 @@ void bfv_client_l1_body_006b4a50(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4a56  jl 0x6b4a83 */
     if ((sf != of)) goto L_006b4a83;
-    /* 006b4a58  cmp eax, dword ptr [ecx + 0x1d4] */
+    /* 006b4a58  cmp eax, dword ptr [ecx + 0x1d4]  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(ecx + 0x000001d4u);
     a = eax;
     b = M32(ea);
@@ -591,7 +621,7 @@ void bfv_client_l1_body_006b4a50(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006b4a5e  jge 0x6b4a83 */
     if ((sf == of)) goto L_006b4a83;
-    /* 006b4a60  mov edx, dword ptr [ecx + 0x1cc] */
+    /* 006b4a60  mov edx, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     edx = M32(ea);
     /* 006b4a66  add edx, eax */
@@ -608,7 +638,7 @@ void bfv_client_l1_body_006b4a50(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 006b4a71  lea eax, [eax + edx*4] */
     eax = (uint32_t)(eax + edx * 4u);
-    /* 006b4a74  mov eax, dword ptr [esp + 4] */
+    /* 006b4a74  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006b4a78  mov edx, dword ptr [eax] */
@@ -635,7 +665,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4a90  (between same file) */
+/* 006b4a90  LensFlareTemplate::setCoronaRot  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setCoronaRot::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4a90, bfv_client_l1_body_006b4a90);
 void bfv_client_l1_body_006b4a90(struct bfv_cpu *c)
 {
@@ -644,7 +677,7 @@ void bfv_client_l1_body_006b4a90(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b4a90  mov eax, dword ptr [esp + 8] */
+    /* 006b4a90  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b4a94  test eax, eax */
@@ -652,7 +685,7 @@ void bfv_client_l1_body_006b4a90(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4a96  jl 0x6b4abe */
     if ((sf != of)) goto L_006b4abe;
-    /* 006b4a98  cmp eax, dword ptr [ecx + 0x1d4] */
+    /* 006b4a98  cmp eax, dword ptr [ecx + 0x1d4]  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(ecx + 0x000001d4u);
     a = eax;
     b = M32(ea);
@@ -660,7 +693,7 @@ void bfv_client_l1_body_006b4a90(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006b4a9e  jge 0x6b4abe */
     if ((sf == of)) goto L_006b4abe;
-    /* 006b4aa0  mov edx, dword ptr [ecx + 0x1cc] */
+    /* 006b4aa0  mov edx, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     edx = M32(ea);
     /* 006b4aa6  add edx, eax */
@@ -677,7 +710,7 @@ void bfv_client_l1_body_006b4a90(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 006b4ab1  lea eax, [eax + edx*4] */
     eax = (uint32_t)(eax + edx * 4u);
-    /* 006b4ab4  mov edx, dword ptr [esp + 4] */
+    /* 006b4ab4  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 006b4ab8  mov dword ptr [ecx + 0x84], edx */
@@ -695,7 +728,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4ad0  (between same file) */
+/* 006b4ad0  LensFlareTemplate::setCoronaColor  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setCoronaColor::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4ad0, bfv_client_l1_body_006b4ad0);
 void bfv_client_l1_body_006b4ad0(struct bfv_cpu *c)
 {
@@ -704,7 +740,7 @@ void bfv_client_l1_body_006b4ad0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b4ad0  mov eax, dword ptr [esp + 0x14] */
+    /* 006b4ad0  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 006b4ad4  test eax, eax */
@@ -712,7 +748,7 @@ void bfv_client_l1_body_006b4ad0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4ad6  jl 0x6b4b12 */
     if ((sf != of)) goto L_006b4b12;
-    /* 006b4ad8  cmp eax, dword ptr [ecx + 0x1d4] */
+    /* 006b4ad8  cmp eax, dword ptr [ecx + 0x1d4]  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(ecx + 0x000001d4u);
     a = eax;
     b = M32(ea);
@@ -720,7 +756,7 @@ void bfv_client_l1_body_006b4ad0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006b4ade  jge 0x6b4b12 */
     if ((sf == of)) goto L_006b4b12;
-    /* 006b4ae0  mov edx, dword ptr [ecx + 0x1cc] */
+    /* 006b4ae0  mov edx, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     edx = M32(ea);
     /* 006b4ae6  add edx, eax */
@@ -737,10 +773,10 @@ void bfv_client_l1_body_006b4ad0(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 006b4af1  lea eax, [eax + edx*4] */
     eax = (uint32_t)(eax + edx * 4u);
-    /* 006b4af4  mov edx, dword ptr [esp + 4] */
+    /* 006b4af4  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
-    /* 006b4af8  mov eax, dword ptr [esp + 8] */
+    /* 006b4af8  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b4afc  add ecx, 0x3c */
@@ -752,13 +788,13 @@ void bfv_client_l1_body_006b4ad0(struct bfv_cpu *c)
     /* 006b4aff  mov dword ptr [ecx], edx */
     ea = (uint32_t)(ecx);
     M32(ea) = edx;
-    /* 006b4b01  mov edx, dword ptr [esp + 0xc] */
+    /* 006b4b01  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 006b4b05  mov dword ptr [ecx + 4], eax */
     ea = (uint32_t)(ecx + 0x00000004u);
     M32(ea) = eax;
-    /* 006b4b08  mov eax, dword ptr [esp + 0x10] */
+    /* 006b4b08  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 006b4b0c  mov dword ptr [ecx + 8], edx */
@@ -779,7 +815,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4b20  (between same file) */
+/* 006b4b20  LensFlareTemplate::setCoronaColor2  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setCoronaColor2::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4b20, bfv_client_l1_body_006b4b20);
 void bfv_client_l1_body_006b4b20(struct bfv_cpu *c)
 {
@@ -788,7 +827,7 @@ void bfv_client_l1_body_006b4b20(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b4b20  mov eax, dword ptr [esp + 0x14] */
+    /* 006b4b20  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 006b4b24  test eax, eax */
@@ -796,7 +835,7 @@ void bfv_client_l1_body_006b4b20(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4b26  jl 0x6b4b62 */
     if ((sf != of)) goto L_006b4b62;
-    /* 006b4b28  cmp eax, dword ptr [ecx + 0x1d4] */
+    /* 006b4b28  cmp eax, dword ptr [ecx + 0x1d4]  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(ecx + 0x000001d4u);
     a = eax;
     b = M32(ea);
@@ -804,7 +843,7 @@ void bfv_client_l1_body_006b4b20(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006b4b2e  jge 0x6b4b62 */
     if ((sf == of)) goto L_006b4b62;
-    /* 006b4b30  mov edx, dword ptr [ecx + 0x1cc] */
+    /* 006b4b30  mov edx, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     edx = M32(ea);
     /* 006b4b36  add edx, eax */
@@ -821,10 +860,10 @@ void bfv_client_l1_body_006b4b20(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 006b4b41  lea eax, [eax + edx*4] */
     eax = (uint32_t)(eax + edx * 4u);
-    /* 006b4b44  mov edx, dword ptr [esp + 4] */
+    /* 006b4b44  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
-    /* 006b4b48  mov eax, dword ptr [esp + 8] */
+    /* 006b4b48  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b4b4c  add ecx, 0x4c */
@@ -836,13 +875,13 @@ void bfv_client_l1_body_006b4b20(struct bfv_cpu *c)
     /* 006b4b4f  mov dword ptr [ecx], edx */
     ea = (uint32_t)(ecx);
     M32(ea) = edx;
-    /* 006b4b51  mov edx, dword ptr [esp + 0xc] */
+    /* 006b4b51  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 006b4b55  mov dword ptr [ecx + 4], eax */
     ea = (uint32_t)(ecx + 0x00000004u);
     M32(ea) = eax;
-    /* 006b4b58  mov eax, dword ptr [esp + 0x10] */
+    /* 006b4b58  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 006b4b5c  mov dword ptr [ecx + 8], edx */
@@ -863,7 +902,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4b70  (between same file) */
+/* 006b4b70  LensFlareTemplate::setCoronaFadeAngleFactor  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setCoronaFadeAngleFactor::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4b70, bfv_client_l1_body_006b4b70);
 void bfv_client_l1_body_006b4b70(struct bfv_cpu *c)
 {
@@ -872,7 +914,7 @@ void bfv_client_l1_body_006b4b70(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006b4b70  mov eax, dword ptr [esp + 8] */
+    /* 006b4b70  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006b4b74  test eax, eax */
@@ -880,7 +922,7 @@ void bfv_client_l1_body_006b4b70(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4b76  jl 0x6b4b9e */
     if ((sf != of)) goto L_006b4b9e;
-    /* 006b4b78  cmp eax, dword ptr [ecx + 0x1d4] */
+    /* 006b4b78  cmp eax, dword ptr [ecx + 0x1d4]  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(ecx + 0x000001d4u);
     a = eax;
     b = M32(ea);
@@ -888,7 +930,7 @@ void bfv_client_l1_body_006b4b70(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006b4b7e  jge 0x6b4b9e */
     if ((sf == of)) goto L_006b4b9e;
-    /* 006b4b80  mov edx, dword ptr [ecx + 0x1cc] */
+    /* 006b4b80  mov edx, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     edx = M32(ea);
     /* 006b4b86  add edx, eax */
@@ -905,7 +947,7 @@ void bfv_client_l1_body_006b4b70(struct bfv_cpu *c)
     ecx = M32(ea);
     /* 006b4b91  lea eax, [eax + edx*4] */
     eax = (uint32_t)(eax + edx * 4u);
-    /* 006b4b94  mov edx, dword ptr [esp + 4] */
+    /* 006b4b94  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 006b4b98  mov dword ptr [ecx + 0x8c], edx */
@@ -923,7 +965,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4bb0  dice::ref2::world::LensFlareTemplate  (vtable store) */
+/* 006b4bb0  LensFlareTemplate::~LensFlareTemplate  (vtable store)
+ * class: dice::ref2::world::LensFlareTemplate
+ * also entered at 006b4c70: LensFlareTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4bb0, bfv_client_l1_body_006b4bb0);
 BFV_L1_RESUME(bfv_client_l1r_006b4bb0_1, bfv_client_l1_body_006b4bb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006b4bb0_2, bfv_client_l1_body_006b4bb0, 2);
@@ -972,7 +1017,7 @@ void bfv_client_l1_body_006b4bb0(struct bfv_cpu *c)
     b = eax;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 006b4bc5  mov dword ptr [esi], 0xb993ec */
+    /* 006b4bc5  mov dword ptr [esi], 0xb993ec  ; vtable LensFlareTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb993ecu;
     /* 006b4bcb  mov dword ptr [esi + 4], 0xb993d0 */
@@ -987,7 +1032,7 @@ void bfv_client_l1_body_006b4bb0(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4bdc  lea esp, [esp] */
+    /* 006b4bdc  lea esp, [esp]  ; &var_10 */
     esp = (uint32_t)(esp);
 L_006b4be0:
     /* 006b4be0  mov ebp, dword ptr [edi] */
@@ -1002,7 +1047,7 @@ L_006b4be0:
     if (zf) goto L_006b4bf6;
     /* 006b4be6  mov ecx, ebp */
     ecx = ebp;
-    /* 006b4be8  call 0x6b3f70 */
+    /* 006b4be8  call 0x6b3f70  ; LensFlareTemplate::destructor_helper_006b3f70 */
     t = 0x006b3f70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4bb0_1;
@@ -1013,7 +1058,7 @@ R_1:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4bee  call 0x403680 */
+    /* 006b4bee  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4bb0_2;
@@ -1063,7 +1108,7 @@ L_006b4c04:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4c14  call 0x403680 */
+    /* 006b4c14  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4bb0_3;
@@ -1100,7 +1145,7 @@ L_006b4c1c:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4c3d  call 0x403680 */
+    /* 006b4c3d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4bb0_4;
@@ -1137,7 +1182,7 @@ L_006b4c45:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 006b4c5c  jmp 0x6960f0 */
+    /* 006b4c5c  jmp 0x6960f0  ; SimpleObjectTemplate::~SimpleObjectTemplate */
     c->eip = 0x006960f0u;
     goto out;
 out: __attribute__((unused));
@@ -1147,7 +1192,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4c80  dice::ref2::world::LensFlareTemplate  (virtual method) */
+/* 006b4c80  LensFlareTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::LensFlareTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4c80, bfv_client_l1_body_006b4c80);
 void bfv_client_l1_body_006b4c80(struct bfv_cpu *c)
 {
@@ -1156,12 +1204,12 @@ void bfv_client_l1_body_006b4c80(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 006b4c80  mov edx, dword ptr [0xb77e90] */
+    /* 006b4c80  mov edx, dword ptr [0xb77e90]  ; LensFlareTemplate::classID */
     ea = (uint32_t)(0x00b77e90u);
     edx = M32(ea);
     /* 006b4c86  mov eax, ecx */
     eax = ecx;
-    /* 006b4c88  mov ecx, dword ptr [esp + 4] */
+    /* 006b4c88  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006b4c8c  cmp ecx, edx */
@@ -1171,7 +1219,7 @@ void bfv_client_l1_body_006b4c80(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006b4c8e  je 0x6b4caa */
     if (zf) goto L_006b4caa;
-    /* 006b4c90  cmp ecx, dword ptr [0xb77ea0] */
+    /* 006b4c90  cmp ecx, dword ptr [0xb77ea0]  ; SimpleObjectTemplate::classID */
     ea = (uint32_t)(0x00b77ea0u);
     a = ecx;
     b = M32(ea);
@@ -1183,7 +1231,7 @@ void bfv_client_l1_body_006b4c80(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4c99  mov esi, dword ptr [0xb77e68] */
+    /* 006b4c99  mov esi, dword ptr [0xb77e68]  ; ObjectTemplate::classID */
     ea = (uint32_t)(0x00b77e68u);
     esi = M32(ea);
     /* 006b4c9f  xor edx, edx */
@@ -1222,7 +1270,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4cb0  (between same file) */
+/* 006b4cb0  LensFlareTemplate::deleting_dtor_adjustor4_006b4cb0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4cb0, bfv_client_l1_body_006b4cb0);
 void bfv_client_l1_body_006b4cb0(struct bfv_cpu *c)
 {
@@ -1237,7 +1286,7 @@ void bfv_client_l1_body_006b4cb0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006b4cb3  jmp 0x6b4cd0 */
+    /* 006b4cb3  jmp 0x6b4cd0  ; LensFlareTemplate::deleting_dtor */
     c->eip = 0x006b4cd0u;
     goto out;
 out: __attribute__((unused));
@@ -1247,7 +1296,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4cc0  (between same file) */
+/* 006b4cc0  LensFlareTemplate::deleting_dtor_adjustor120_006b4cc0  (between same file)
+ * also entered at 006b4cd0: LensFlareTemplate::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4cc0, bfv_client_l1_body_006b4cc0);
 void bfv_client_l1_body_006b4cc0(struct bfv_cpu *c)
 {
@@ -1262,7 +1313,7 @@ void bfv_client_l1_body_006b4cc0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006b4cc3  jmp 0x6b4cd0 */
+    /* 006b4cc3  jmp 0x6b4cd0  ; LensFlareTemplate::deleting_dtor */
     c->eip = 0x006b4cd0u;
     goto out;
 out: __attribute__((unused));
@@ -1272,8 +1323,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4cf0  (between same file)
- * strings: "texture/" */
+/* 006b4cf0  LensFlareTemplate::setFlareTexture  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * strings: "texture/"
+ * called by: Cmd_ObjectTemplate_setFlareTexture::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4cf0, bfv_client_l1_body_006b4cf0);
 BFV_L1_RESUME(bfv_client_l1r_006b4cf0_1, bfv_client_l1_body_006b4cf0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006b4cf0_2, bfv_client_l1_body_006b4cf0, 2);
@@ -1323,7 +1377,7 @@ void bfv_client_l1_body_006b4cf0(struct bfv_cpu *c)
     esi = ecx;
     /* 006b4cfc  jl 0x6b4dc7 */
     if ((sf != of)) goto L_006b4dc7;
-    /* 006b4d02  cmp edx, dword ptr [esi + 0x1cc] */
+    /* 006b4d02  cmp edx, dword ptr [esi + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(esi + 0x000001ccu);
     a = edx;
     b = M32(ea);
@@ -1399,7 +1453,7 @@ L_006b4d27:
     ecx = r;
     /* 006b4d45  lea edx, [esp + 0x44] */
     edx = (uint32_t)(esp + 0x00000044u);
-    /* 006b4d49  call 0x41f430 */
+    /* 006b4d49  call 0x41f430  ; string_iequals */
     t = 0x0041f430u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4cf0_1;
@@ -1411,7 +1465,7 @@ R_1:
     F_LOGIC(8, r);
     /* 006b4d50  jne 0x6b4dc6 */
     if (!zf) goto L_006b4dc6;
-    /* 006b4d52  mov eax, dword ptr [0xe122c8] */
+    /* 006b4d52  mov eax, dword ptr [0xe122c8]  ; g_pTextureManager */
     ea = (uint32_t)(0x00e122c8u);
     eax = M32(ea);
     /* 006b4d57  push ebp */
@@ -1434,7 +1488,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4d66  push 0xb45ba8 */
+    /* 006b4d66  push 0xb45ba8  ; "texture/" */
     t = 0xb45ba8u;
     esp -= 4;
     M32(esp) = t;
@@ -1446,7 +1500,7 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     edi = r;
-    /* 006b4d71  call 0x402100 */
+    /* 006b4d71  call 0x402100  ; std::string::string_cstr */
     t = 0x00402100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4cf0_2;
@@ -1463,14 +1517,14 @@ R_2:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4d7c  call 0x4104a0 */
+    /* 006b4d7c  call 0x4104a0  ; std::operator_plus_string_string */
     t = 0x004104a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4cf0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 006b4d81  mov ecx, dword ptr [0xe122c8] */
+    /* 006b4d81  mov ecx, dword ptr [0xe122c8]  ; g_pTextureManager */
     ea = (uint32_t)(0x00e122c8u);
     ecx = M32(ea);
     /* 006b4d87  add esp, 0xc */
@@ -1498,7 +1552,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4d91  call 0x882e50 */
+    /* 006b4d91  call 0x882e50  ; sub_00882e50 */
     t = 0x00882e50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4cf0_5;
@@ -1507,7 +1561,7 @@ R_4:
 R_5:
     /* 006b4d96  lea ecx, [esp + 0x10] */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 006b4d9a  call 0x5a7c60 */
+    /* 006b4d9a  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4cf0_6;
@@ -1516,7 +1570,7 @@ R_5:
 R_6:
     /* 006b4d9f  lea ecx, [esp + 0x2c] */
     ecx = (uint32_t)(esp + 0x0000002cu);
-    /* 006b4da3  call 0x5a7c60 */
+    /* 006b4da3  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4cf0_7;
@@ -1555,7 +1609,7 @@ R_7:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 006b4dbf  call 0x4019f0 */
+    /* 006b4dbf  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4cf0_8;
@@ -1595,7 +1649,7 @@ L_006b4dc7:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4dd4  call 0x403680 */
+    /* 006b4dd4  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4cf0_9;
@@ -1626,7 +1680,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4df0  (between same file) */
+/* 006b4df0  LensFlareTemplate::setLensFlareCount  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * called by: Cmd_ObjectTemplate_setLensFlareCount::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4df0, bfv_client_l1_body_006b4df0);
 void bfv_client_l1_body_006b4df0(struct bfv_cpu *c)
 {
@@ -1635,7 +1692,7 @@ void bfv_client_l1_body_006b4df0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 006b4df0  mov eax, dword ptr [ecx + 0x1cc] */
+    /* 006b4df0  mov eax, dword ptr [ecx + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     eax = M32(ea);
     /* 006b4df6  test eax, eax */
@@ -1643,10 +1700,10 @@ void bfv_client_l1_body_006b4df0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006b4df8  jne 0x6b4e04 */
     if (!zf) goto L_006b4e04;
-    /* 006b4dfa  mov eax, dword ptr [esp + 4] */
+    /* 006b4dfa  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006b4dfe  mov dword ptr [ecx + 0x1cc], eax */
+    /* 006b4dfe  mov dword ptr [ecx + 0x1cc], eax  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(ecx + 0x000001ccu);
     M32(ea) = eax;
 L_006b4e04:
@@ -1661,8 +1718,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4e10  (between same file)
- * strings: "texture/" */
+/* 006b4e10  LensFlareTemplate::setCoronaTexture  (between same file)
+ * class: dice::ref2::world::LensFlareTemplate
+ * strings: "texture/"
+ * called by: Cmd_ObjectTemplate_setCoronaTexture::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4e10, bfv_client_l1_body_006b4e10);
 BFV_L1_RESUME(bfv_client_l1r_006b4e10_1, bfv_client_l1_body_006b4e10, 1);
 BFV_L1_RESUME(bfv_client_l1r_006b4e10_2, bfv_client_l1_body_006b4e10, 2);
@@ -1718,7 +1778,7 @@ void bfv_client_l1_body_006b4e10(struct bfv_cpu *c)
     ebp = 0x10u;
     /* 006b4e22  jl 0x6b4f03 */
     if ((sf != of)) goto L_006b4f03;
-    /* 006b4e28  cmp eax, dword ptr [esi + 0x1d4] */
+    /* 006b4e28  cmp eax, dword ptr [esi + 0x1d4]  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(esi + 0x000001d4u);
     a = eax;
     b = M32(ea);
@@ -1726,7 +1786,7 @@ void bfv_client_l1_body_006b4e10(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006b4e2e  jge 0x6b4f03 */
     if ((sf == of)) goto L_006b4f03;
-    /* 006b4e34  add eax, dword ptr [esi + 0x1cc] */
+    /* 006b4e34  add eax, dword ptr [esi + 0x1cc]  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(esi + 0x000001ccu);
     a = eax;
     b = M32(ea);
@@ -1759,7 +1819,7 @@ void bfv_client_l1_body_006b4e10(struct bfv_cpu *c)
     ecx = r;
     /* 006b4e50  lea edx, [esp + 0x48] */
     edx = (uint32_t)(esp + 0x00000048u);
-    /* 006b4e54  call 0x41f430 */
+    /* 006b4e54  call 0x41f430  ; string_iequals */
     t = 0x0041f430u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4e10_1;
@@ -1774,7 +1834,7 @@ R_1:
     /* 006b4e61  mov ebp, dword ptr [esi + 0x1c0] */
     ea = (uint32_t)(esi + 0x000001c0u);
     ebp = M32(ea);
-    /* 006b4e67  mov eax, dword ptr [0xe122c8] */
+    /* 006b4e67  mov eax, dword ptr [0xe122c8]  ; g_pTextureManager */
     ea = (uint32_t)(0x00e122c8u);
     eax = M32(ea);
     /* 006b4e6c  push ebx */
@@ -1790,7 +1850,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4e74  push 0xb45ba8 */
+    /* 006b4e74  push 0xb45ba8  ; "texture/" */
     t = 0xb45ba8u;
     esp -= 4;
     M32(esp) = t;
@@ -1802,7 +1862,7 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ebp = r;
-    /* 006b4e7f  call 0x402100 */
+    /* 006b4e7f  call 0x402100  ; std::string::string_cstr */
     t = 0x00402100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4e10_2;
@@ -1819,14 +1879,14 @@ R_2:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4e8a  call 0x4104a0 */
+    /* 006b4e8a  call 0x4104a0  ; std::operator_plus_string_string */
     t = 0x004104a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4e10_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 006b4e8f  mov ecx, dword ptr [0xe122c8] */
+    /* 006b4e8f  mov ecx, dword ptr [0xe122c8]  ; g_pTextureManager */
     ea = (uint32_t)(0x00e122c8u);
     ecx = M32(ea);
     /* 006b4e95  add esp, 0xc */
@@ -1854,7 +1914,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4ea0  call 0x882e50 */
+    /* 006b4ea0  call 0x882e50  ; sub_00882e50 */
     t = 0x00882e50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4e10_5;
@@ -1880,7 +1940,7 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4eb7  call 0x403680 */
+    /* 006b4eb7  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4e10_6;
@@ -1924,7 +1984,7 @@ L_006b4ebf:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4ede  call 0x403680 */
+    /* 006b4ede  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4e10_7;
@@ -1970,7 +2030,7 @@ L_006b4ee6:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 006b4efc  call 0x4019f0 */
+    /* 006b4efc  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4e10_8;
@@ -2012,7 +2072,7 @@ L_006b4f03:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4f12  call 0x403680 */
+    /* 006b4f12  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4e10_9;
@@ -2043,7 +2103,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4f20  dice::ref2::world::LensFlareTemplate  (vtable store) */
+/* 006b4f20  LensFlareTemplate::LensFlareTemplate  (vtable store)
+ * class: dice::ref2::world::LensFlareTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4f20, bfv_client_l1_body_006b4f20);
 BFV_L1_RESUME(bfv_client_l1r_006b4f20_1, bfv_client_l1_body_006b4f20, 1);
 void bfv_client_l1_body_006b4f20(struct bfv_cpu *c)
@@ -2063,7 +2125,7 @@ void bfv_client_l1_body_006b4f20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006b4f21  mov esi, ecx */
     esi = ecx;
-    /* 006b4f23  call 0x696290 */
+    /* 006b4f23  call 0x696290  ; SimpleObjectTemplate::SimpleObjectTemplate */
     t = 0x00696290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4f20_1;
@@ -2074,7 +2136,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 006b4f2a  mov dword ptr [esi], 0xb993ec */
+    /* 006b4f2a  mov dword ptr [esi], 0xb993ec  ; vtable LensFlareTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb993ecu;
     /* 006b4f30  mov dword ptr [esi + 4], 0xb993d0 */
@@ -2092,7 +2154,7 @@ R_1:
     /* 006b4f4a  mov dword ptr [esi + 0x1c8], eax */
     ea = (uint32_t)(esi + 0x000001c8u);
     M32(ea) = eax;
-    /* 006b4f50  mov dword ptr [esi + 0x1e0], 0x41700000 */
+    /* 006b4f50  mov dword ptr [esi + 0x1e0], 0x41700000  ; 15.0f */
     ea = (uint32_t)(esi + 0x000001e0u);
     M32(ea) = 0x41700000u;
     /* 006b4f5a  mov dword ptr [esi + 0x1f8], eax */
@@ -2104,16 +2166,16 @@ R_1:
     /* 006b4f6a  mov byte ptr [esi + 0x1e8], al */
     ea = (uint32_t)(esi + 0x000001e8u);
     M8(ea) = LO8(eax);
-    /* 006b4f70  mov dword ptr [esi + 0x1cc], eax */
+    /* 006b4f70  mov dword ptr [esi + 0x1cc], eax  ; field ObjectTemplate.getNumFlares */
     ea = (uint32_t)(esi + 0x000001ccu);
     M32(ea) = eax;
-    /* 006b4f76  mov dword ptr [esi + 0x1d4], eax */
+    /* 006b4f76  mov dword ptr [esi + 0x1d4], eax  ; field ObjectTemplate.getNumCoronas */
     ea = (uint32_t)(esi + 0x000001d4u);
     M32(ea) = eax;
     /* 006b4f7c  mov dword ptr [esi + 0x1d0], eax */
     ea = (uint32_t)(esi + 0x000001d0u);
     M32(ea) = eax;
-    /* 006b4f82  mov dword ptr [esi + 0x1d8], eax */
+    /* 006b4f82  mov dword ptr [esi + 0x1d8], eax  ; field ObjectTemplate.getTotSprites */
     ea = (uint32_t)(esi + 0x000001d8u);
     M32(ea) = eax;
     /* 006b4f88  mov byte ptr [esi + 0x1dc], al */

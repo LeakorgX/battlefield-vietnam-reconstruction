@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0098eea0  dice::bf::ai::BBPGotoWaypoint  (virtual method) */
+/* 0098eea0  BBPGotoWaypoint::deleting_dtor  (virtual method)
+ * overrides: BBPPattern::vf4  (33 classes implement it)
+ * class: dice::bf::ai::BBPGotoWaypoint
+ */
 BFV_L1_ENTRY(bfv_client_l1_0098eea0, bfv_client_l1_body_0098eea0);
 BFV_L1_RESUME(bfv_client_l1r_0098eea0_1, bfv_client_l1_body_0098eea0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0098eea0_2, bfv_client_l1_body_0098eea0, 2);
@@ -29,10 +32,10 @@ void bfv_client_l1_body_0098eea0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0098eea1  mov esi, ecx */
     esi = ecx;
-    /* 0098eea3  mov dword ptr [esi], 0xbf5e9c */
+    /* 0098eea3  mov dword ptr [esi], 0xbf5e9c  ; vtable BBPGotoWaypoint */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf5e9cu;
-    /* 0098eea9  call 0x9ee450 */
+    /* 0098eea9  call 0x9ee450  ; BBPPattern::~BBPPattern */
     t = 0x009ee450u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0098eea0_1;
@@ -41,14 +44,14 @@ void bfv_client_l1_body_0098eea0(struct bfv_cpu *c)
 R_1:
     /* 0098eeae  mov ecx, esi */
     ecx = esi;
-    /* 0098eeb0  call 0x9ee450 */
+    /* 0098eeb0  call 0x9ee450  ; BBPPattern::~BBPPattern */
     t = 0x009ee450u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0098eea0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0098eeb5  test byte ptr [esp + 8], 1 */
+    /* 0098eeb5  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -58,7 +61,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0098eebd  call 0x403680 */
+    /* 0098eebd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0098eea0_3;

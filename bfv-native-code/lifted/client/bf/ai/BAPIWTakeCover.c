@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f9f20  dice::bf::ai::BAPIWTakeCover  (vtable store) */
+/* 009f9f20  BAPIWTakeCover::BAPIWTakeCover  (vtable store)
+ * class: dice::bf::ai::BAPIWTakeCover
+ * called by: BBPTakeCover::buildPlan, BBPTakeCoverInfantry::buildPlan
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f9f20, bfv_client_l1_body_009f9f20);
 BFV_L1_RESUME(bfv_client_l1r_009f9f20_1, bfv_client_l1_body_009f9f20, 1);
 void bfv_client_l1_body_009f9f20(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_009f9f20(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009f9f20  mov eax, dword ptr [esp + 0xc] */
+    /* 009f9f20  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 009f9f24  push esi */
@@ -28,7 +31,7 @@ void bfv_client_l1_body_009f9f20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f9f25  mov esi, ecx */
     esi = ecx;
-    /* 009f9f27  mov ecx, dword ptr [esp + 0xc] */
+    /* 009f9f27  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009f9f2b  push eax */
@@ -41,17 +44,17 @@ void bfv_client_l1_body_009f9f20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f9f2d  mov ecx, esi */
     ecx = esi;
-    /* 009f9f2f  call 0xa0a6c0 */
+    /* 009f9f2f  call 0xa0a6c0  ; BAPInfoWrapper::ctor_dtor */
     t = 0x00a0a6c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f9f20_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009f9f34  mov eax, dword ptr [esp + 8] */
+    /* 009f9f34  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 009f9f38  mov dword ptr [esi], 0xbfc65c */
+    /* 009f9f38  mov dword ptr [esi], 0xbfc65c  ; vtable BAPIWTakeCover */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfc65cu;
     /* 009f9f3e  mov ecx, dword ptr [eax] */
@@ -100,7 +103,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f9f70  dice::bf::ai::BAPIWTakeCover  (vtable store) */
+/* 009f9f70  BAPIWTakeCover::BAPIWTakeCover  (vtable store)
+ * class: dice::bf::ai::BAPIWTakeCover
+ * called by: BBPTakeCover::buildPlan, BBPTakeCoverInfantry::buildPlan
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f9f70, bfv_client_l1_body_009f9f70);
 BFV_L1_RESUME(bfv_client_l1r_009f9f70_1, bfv_client_l1_body_009f9f70, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f9f70_2, bfv_client_l1_body_009f9f70, 2);
@@ -116,7 +122,7 @@ void bfv_client_l1_body_009f9f70(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 009f9f70  mov eax, dword ptr [esp + 0xc] */
+    /* 009f9f70  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 009f9f74  push esi */
@@ -125,7 +131,7 @@ void bfv_client_l1_body_009f9f70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f9f75  mov esi, ecx */
     esi = ecx;
-    /* 009f9f77  mov ecx, dword ptr [esp + 0xc] */
+    /* 009f9f77  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009f9f7b  push eax */
@@ -138,14 +144,14 @@ void bfv_client_l1_body_009f9f70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f9f7d  mov ecx, esi */
     ecx = esi;
-    /* 009f9f7f  call 0xa0a6c0 */
+    /* 009f9f7f  call 0xa0a6c0  ; BAPInfoWrapper::ctor_dtor */
     t = 0x00a0a6c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f9f70_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009f9f84  mov eax, dword ptr [esp + 8] */
+    /* 009f9f84  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 009f9f88  mov ecx, eax */
@@ -154,7 +160,7 @@ R_1:
     r = (ecx & 0xffffu) & 0xffffffffu;
     F_LOGIC(32, r);
     ecx = r;
-    /* 009f9f90  mov dword ptr [esi], 0xbfc65c */
+    /* 009f9f90  mov dword ptr [esi], 0xbfc65c  ; vtable BAPIWTakeCover */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfc65cu;
     /* 009f9f96  mov dword ptr [esi + 0x2c], eax */
@@ -165,7 +171,7 @@ R_1:
     M8(ea) = 0x1u;
     /* 009f9f9d  je 0x9f9fd2 */
     if (zf) goto L_009f9fd2;
-    /* 009f9f9f  mov edx, dword ptr [0xe0cd58] */
+    /* 009f9f9f  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 009f9fa5  mov edx, dword ptr [edx] */
@@ -254,7 +260,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f9fe0  dice::bf::ai::BAPIWTakeCover  (virtual method) */
+/* 009f9fe0  BAPIWTakeCover::deleting_dtor  (virtual method)
+ * overrides: BotScript::vf1  (55 classes implement it)
+ * class: dice::bf::ai::BAPIWTakeCover
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f9fe0, bfv_client_l1_body_009f9fe0);
 BFV_L1_RESUME(bfv_client_l1r_009f9fe0_1, bfv_client_l1_body_009f9fe0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f9fe0_2, bfv_client_l1_body_009f9fe0, 2);
@@ -284,7 +293,7 @@ void bfv_client_l1_body_009f9fe0(struct bfv_cpu *c)
     /* 009f9fe6  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 009f9fe8  mov dword ptr [esi], 0xbfc65c */
+    /* 009f9fe8  mov dword ptr [esi], 0xbfc65c  ; vtable BAPIWTakeCover */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfc65cu;
     /* 009f9fee  je 0x9f9ff7 */
@@ -307,14 +316,14 @@ R_1:
 L_009f9ff7:
     /* 009f9ff7  mov ecx, esi */
     ecx = esi;
-    /* 009f9ff9  call 0xa0a9d0 */
+    /* 009f9ff9  call 0xa0a9d0  ; BAPStatement::~BAPStatement */
     t = 0x00a0a9d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f9fe0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009f9ffe  test byte ptr [esp + 8], 1 */
+    /* 009f9ffe  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -324,9 +333,9 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009fa006  mov ecx, 0xe10e80 */
+    /* 009fa006  mov ecx, 0xe10e80  ; g_MemoryPoolNull_BAPIWTakeCover */
     ecx = 0xe10e80u;
-    /* 009fa00b  call 0x412fc0 */
+    /* 009fa00b  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f9fe0_3;

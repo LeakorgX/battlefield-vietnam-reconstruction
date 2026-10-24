@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006f6970  dice::ref2::world::LodObject  (virtual method) */
+/* 006f6970  LodObject::vf7  (virtual method)
+ * class: dice::ref2::world::LodObject
+ * also entered at 006f69b0: LodObject::vf4
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6970, bfv_client_l1_body_006f6970);
 BFV_L1_RESUME(bfv_client_l1r_006f6970_1, bfv_client_l1_body_006f6970, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f6970_2, bfv_client_l1_body_006f6970, 2);
@@ -27,7 +30,7 @@ void bfv_client_l1_body_006f6970(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006f6971  mov esi, ecx */
     esi = ecx;
-    /* 006f6973  mov ecx, dword ptr [0xd9ef20] */
+    /* 006f6973  mov ecx, dword ptr [0xd9ef20]  ; g_pLodSelectorTemplateManager */
     ea = (uint32_t)(0x00d9ef20u);
     ecx = M32(ea);
     /* 006f6979  test ecx, ecx */
@@ -35,7 +38,7 @@ void bfv_client_l1_body_006f6970(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006f697b  je 0x6f69a5 */
     if (zf) goto L_006f69a5;
-    /* 006f697d  mov edx, dword ptr [esp + 8] */
+    /* 006f697d  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 006f6981  mov eax, dword ptr [ecx] */
@@ -113,7 +116,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006f69c0  (between same file) */
+/* 006f69c0  LodObject_006f69c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f69c0, bfv_client_l1_body_006f69c0);
 BFV_L1_RESUME(bfv_client_l1r_006f69c0_1, bfv_client_l1_body_006f69c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f69c0_2, bfv_client_l1_body_006f69c0, 2);
@@ -238,7 +242,7 @@ L_006f6a04:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 006f6a07  jmp 0x684390 */
+    /* 006f6a07  jmp 0x684390  ; Object::remove */
     c->eip = 0x00684390u;
     goto out;
 out: __attribute__((unused));
@@ -248,7 +252,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6a10  (between same file) */
+/* 006f6a10  LodObject_006f6a10  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6a10, bfv_client_l1_body_006f6a10);
 BFV_L1_RESUME(bfv_client_l1r_006f6a10_1, bfv_client_l1_body_006f6a10, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f6a10_2, bfv_client_l1_body_006f6a10, 2);
@@ -372,7 +377,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6a70  (between same file) */
+/* 006f6a70  LodObject_006f6a70  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6a70, bfv_client_l1_body_006f6a70);
 BFV_L1_RESUME(bfv_client_l1r_006f6a70_1, bfv_client_l1_body_006f6a70, 1);
 void bfv_client_l1_body_006f6a70(struct bfv_cpu *c)
@@ -519,7 +525,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6ac0  dice::ref2::world::LodObject  (virtual method) */
+/* 006f6ac0  LodObject::vf6  (virtual method)
+ * class: dice::ref2::world::LodObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6ac0, bfv_client_l1_body_006f6ac0);
 BFV_L1_RESUME(bfv_client_l1r_006f6ac0_1, bfv_client_l1_body_006f6ac0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f6ac0_2, bfv_client_l1_body_006f6ac0, 2);
@@ -541,7 +549,7 @@ void bfv_client_l1_body_006f6ac0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006f6ac1  mov esi, dword ptr [esp + 8] */
+    /* 006f6ac1  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 006f6ac5  mov eax, dword ptr [esi + 0x1d8] */
@@ -603,7 +611,7 @@ R_2:
     M32(esp) = t;
     /* 006f6aeb  mov ecx, edi */
     ecx = edi;
-    /* 006f6aed  call dword ptr [ebx + 0x1c] */
+    /* 006f6aed  call dword ptr [ebx + 0x1c]  ; -> LodObject::vf7 */
     ea = (uint32_t)(ebx + 0x0000001cu);
     t = M32(ea);
     esp -= 4;
@@ -635,7 +643,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6b00  (between same file) */
+/* 006f6b00  LodObject_006f6b00  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6b00, bfv_client_l1_body_006f6b00);
 BFV_L1_RESUME(bfv_client_l1r_006f6b00_1, bfv_client_l1_body_006f6b00, 1);
 void bfv_client_l1_body_006f6b00(struct bfv_cpu *c)
@@ -721,7 +730,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6b40  (between same file) */
+/* 006f6b40  LodObject_006f6b40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6b40, bfv_client_l1_body_006f6b40);
 BFV_L1_RESUME(bfv_client_l1r_006f6b40_1, bfv_client_l1_body_006f6b40, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f6b40_2, bfv_client_l1_body_006f6b40, 2);
@@ -916,7 +926,7 @@ R_3:
 L_006f6bb4:
     /* 006f6bb4  mov ecx, esi */
     ecx = esi;
-    /* 006f6bb6  call 0x684330 */
+    /* 006f6bb6  call 0x684330  ; Projectile::sub_00684330 */
     t = 0x00684330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6b40_4;
@@ -966,7 +976,7 @@ R_4:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006f6bcf  call 0x7c16f0 */
+    /* 006f6bcf  call 0x7c16f0  ; memcpy */
     t = 0x007c16f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6b40_5;
@@ -1205,7 +1215,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6c60  (between same file) */
+/* 006f6c60  LodObject_006f6c60  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6c60, bfv_client_l1_body_006f6c60);
 BFV_L1_RESUME(bfv_client_l1r_006f6c60_1, bfv_client_l1_body_006f6c60, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f6c60_2, bfv_client_l1_body_006f6c60, 2);
@@ -1239,7 +1250,7 @@ void bfv_client_l1_body_006f6c60(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006f6c61  mov eax, dword ptr [esp + 8] */
+    /* 006f6c61  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006f6c65  push ebx */
@@ -1260,10 +1271,10 @@ void bfv_client_l1_body_006f6c60(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006f6c6b  mov dword ptr [esp + 0x10], ebp */
+    /* 006f6c6b  mov dword ptr [esp + 0x10], ebp  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ebp;
-    /* 006f6c6f  call 0x4f9050 */
+    /* 006f6c6f  call 0x4f9050  ; Object::vf42_setByte_110h */
     t = 0x004f9050u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6c60_1;
@@ -1273,7 +1284,7 @@ R_1:
     /* 006f6c74  mov ecx, dword ptr [ebp + 0x4c] */
     ea = (uint32_t)(ebp + 0x0000004cu);
     ecx = M32(ea);
-    /* 006f6c77  mov eax, dword ptr [0xb77e34] */
+    /* 006f6c77  mov eax, dword ptr [0xb77e34]  ; interfaceID(LodObjectTemplate) */
     ea = (uint32_t)(0x00b77e34u);
     eax = M32(ea);
     /* 006f6c7c  mov edx, dword ptr [ecx] */
@@ -1430,7 +1441,7 @@ R_8:
     /* 006f6cea  jmp 0x6f6cfb */
     goto L_006f6cfb;
 L_006f6cec:
-    /* 006f6cec  mov ecx, dword ptr [esp + 0x18] */
+    /* 006f6cec  mov ecx, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 006f6cf0  mov eax, dword ptr [esi] */
@@ -1459,7 +1470,7 @@ L_006f6cfb:
     F_LOGIC(32, r);
     /* 006f6d00  jne 0x6f6ca0 */
     if (!zf) goto L_006f6ca0;
-    /* 006f6d02  mov ebp, dword ptr [esp + 0x10] */
+    /* 006f6d02  mov ebp, dword ptr [esp + 0x10]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
 L_006f6d06:
@@ -1511,7 +1522,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6d20  (between same file) */
+/* 006f6d20  LodObject::LodObject  (between same file)
+ * class: dice::ref2::world::LodObject
+ * called by: LodObjectTemplate::createObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6d20, bfv_client_l1_body_006f6d20);
 BFV_L1_RESUME(bfv_client_l1r_006f6d20_1, bfv_client_l1_body_006f6d20, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f6d20_2, bfv_client_l1_body_006f6d20, 2);
@@ -1527,7 +1541,7 @@ void bfv_client_l1_body_006f6d20(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 006f6d20  mov eax, dword ptr [esp + 4] */
+    /* 006f6d20  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006f6d24  push esi */
@@ -1548,17 +1562,17 @@ void bfv_client_l1_body_006f6d20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006f6d2c  mov ecx, edi */
     ecx = edi;
-    /* 006f6d2e  mov dword ptr [esi], 0xba43fc */
+    /* 006f6d2e  mov dword ptr [esi], 0xba43fc  ; vtable ILodObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba43fcu;
-    /* 006f6d34  call 0x69fb50 */
+    /* 006f6d34  call 0x69fb50  ; Bundle::Bundle */
     t = 0x0069fb50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6d20_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006f6d39  mov dword ptr [esi], 0xba4518 */
+    /* 006f6d39  mov dword ptr [esi], 0xba4518  ; vtable LodObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba4518u;
     /* 006f6d3f  mov dword ptr [edi], 0xba4434 */
@@ -1592,7 +1606,7 @@ R_1:
     /* 006f6d6c  mov dword ptr [esi + 0x178], eax */
     ea = (uint32_t)(esi + 0x00000178u);
     M32(ea) = eax;
-    /* 006f6d72  call 0x66edf0 */
+    /* 006f6d72  call 0x66edf0  ; ObjectManager_0066edf0 */
     t = 0x0066edf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6d20_2;
@@ -1620,7 +1634,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6d80  dice::ref2::world::LodObject  (virtual method) */
+/* 006f6d80  LodObject::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::LodObject
+ * also entered at 006f6de0: LodObject::vf5
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6d80, bfv_client_l1_body_006f6d80);
 void bfv_client_l1_body_006f6d80(struct bfv_cpu *c)
 {
@@ -1629,12 +1647,12 @@ void bfv_client_l1_body_006f6d80(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006f6d80  mov edx, dword ptr [0xb42718] */
+    /* 006f6d80  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 006f6d86  mov eax, ecx */
     eax = ecx;
-    /* 006f6d88  mov ecx, dword ptr [esp + 4] */
+    /* 006f6d88  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006f6d8c  cmp ecx, edx */
@@ -1644,7 +1662,7 @@ void bfv_client_l1_body_006f6d80(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006f6d8e  je 0x6f6dc0 */
     if (zf) goto L_006f6dc0;
-    /* 006f6d90  cmp ecx, dword ptr [0xb77e30] */
+    /* 006f6d90  cmp ecx, dword ptr [0xb77e30]  ; interfaceID(LodObject) */
     ea = (uint32_t)(0x00b77e30u);
     a = ecx;
     b = M32(ea);
@@ -1652,7 +1670,7 @@ void bfv_client_l1_body_006f6d80(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006f6d96  je 0x6f6dc0 */
     if (zf) goto L_006f6dc0;
-    /* 006f6d98  cmp ecx, dword ptr [0xb77da0] */
+    /* 006f6d98  cmp ecx, dword ptr [0xb77da0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00b77da0u);
     a = ecx;
     b = M32(ea);
@@ -1676,7 +1694,7 @@ void bfv_client_l1_body_006f6d80(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006f6daa:
-    /* 006f6daa  cmp ecx, dword ptr [0xbdb000] */
+    /* 006f6daa  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);
@@ -1716,7 +1734,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006f6e90  dice::ref2::world::LodObject  (virtual method) */
+/* 006f6e90  LodObject::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::LodObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f6e90, bfv_client_l1_body_006f6e90);
 BFV_L1_RESUME(bfv_client_l1r_006f6e90_1, bfv_client_l1_body_006f6e90, 1);
 BFV_L1_RESUME(bfv_client_l1r_006f6e90_2, bfv_client_l1_body_006f6e90, 2);
@@ -1742,7 +1763,7 @@ void bfv_client_l1_body_006f6e90(struct bfv_cpu *c)
     esi = ecx;
     /* 006f6e93  lea ecx, [esi + 0x168] */
     ecx = (uint32_t)(esi + 0x00000168u);
-    /* 006f6e99  call 0x490610 */
+    /* 006f6e99  call 0x490610  ; bfv_query_vector_destroy */
     t = 0x00490610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6e90_1;
@@ -1764,18 +1785,18 @@ L_006f6ea7:
     F_LOGIC(32, r);
     ecx = r;
 L_006f6ea9:
-    /* 006f6ea9  call 0x66c820 */
+    /* 006f6ea9  call 0x66c820  ; SimpleObject::~SimpleObject */
     t = 0x0066c820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6e90_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 006f6eae  test byte ptr [esp + 8], 1 */
+    /* 006f6eae  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 006f6eb3  mov dword ptr [esi], 0xb4274c */
+    /* 006f6eb3  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 006f6eb9  je 0x6f6ec4 */
@@ -1784,7 +1805,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006f6ebc  call 0x403680 */
+    /* 006f6ebc  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006f6e90_3;

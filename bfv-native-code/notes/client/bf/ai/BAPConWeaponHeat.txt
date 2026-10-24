@@ -1,0 +1,10 @@
+## file
+BAPConWeaponHeat is a bot action-plan condition with hysteresis on weapon heat:
+it turns false when the heat reaches the high limit and true again only when it
+falls to the low limit.
+
+## 009f7880
+evaluate: reads the heat (slot 0x64 of the weapon object at this+8, its +8).
+While the overheated flag this+0x14 is set, returns false until heat <=
+this+0x10, then clears the flag and returns true. Without the flag, returns
+true while heat < this+0xc; otherwise sets the flag and returns false.

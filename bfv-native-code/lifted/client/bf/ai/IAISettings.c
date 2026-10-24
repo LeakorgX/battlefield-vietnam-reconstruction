@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0092af30  dice::bf::ai::IAISettings  (virtual method) */
+/* 0092af30  IAISettings::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAISettings
+ */
 BFV_L1_ENTRY(bfv_client_l1_0092af30, bfv_client_l1_body_0092af30);
 BFV_L1_RESUME(bfv_client_l1r_0092af30_1, bfv_client_l1_body_0092af30, 1);
 void bfv_client_l1_body_0092af30(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_0092af30(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0092af30  test byte ptr [esp + 4], 1 */
+    /* 0092af30  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,10 +31,10 @@ void bfv_client_l1_body_0092af30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0092af36  mov esi, ecx */
     esi = ecx;
-    /* 0092af38  mov dword ptr [esi], 0xbeeaac */
+    /* 0092af38  mov dword ptr [esi], 0xbeeaac  ; vtable IAISettings */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbeeaacu;
-    /* 0092af3e  mov dword ptr [0xe0eb20], 0 */
+    /* 0092af3e  mov dword ptr [0xe0eb20], 0  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     M32(ea) = 0x0u;
     /* 0092af48  je 0x92af53 */
@@ -41,7 +43,7 @@ void bfv_client_l1_body_0092af30(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0092af4b  call 0x403680 */
+    /* 0092af4b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0092af30_1;
@@ -72,7 +74,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0092af60  dice::bf::ai::IAISettings  (vtable store) */
+/* 0092af60  IAISettings::IAISettings  (vtable store)
+ * class: dice::bf::ai::IAISettings
+ * called by: AISettings::AISettings
+ */
 BFV_L1_ENTRY(bfv_client_l1_0092af60, bfv_client_l1_body_0092af60);
 void bfv_client_l1_body_0092af60(struct bfv_cpu *c)
 {
@@ -83,10 +88,10 @@ void bfv_client_l1_body_0092af60(struct bfv_cpu *c)
     uint32_t ea;
     /* 0092af60  mov eax, ecx */
     eax = ecx;
-    /* 0092af62  mov dword ptr [eax], 0xbeeaac */
+    /* 0092af62  mov dword ptr [eax], 0xbeeaac  ; vtable IAISettings */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbeeaacu;
-    /* 0092af68  mov dword ptr [0xe0eb20], eax */
+    /* 0092af68  mov dword ptr [0xe0eb20], eax  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     M32(ea) = eax;
     /* 0092af6d  ret */

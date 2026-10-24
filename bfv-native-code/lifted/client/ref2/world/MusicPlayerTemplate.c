@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0064f8d0  dice::ref2::world::MusicPlayerTemplate  (vtable store) */
+/* 0064f8d0  MusicPlayerTemplate::MusicPlayerTemplate  (vtable store)
+ * class: dice::ref2::world::MusicPlayerTemplate
+ * called by: world_Custom_helper_006f68f0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064f8d0, bfv_client_l1_body_0064f8d0);
 BFV_L1_RESUME(bfv_client_l1r_0064f8d0_1, bfv_client_l1_body_0064f8d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0064f8d0_2, bfv_client_l1_body_0064f8d0, 2);
@@ -27,14 +30,14 @@ void bfv_client_l1_body_0064f8d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0064f8d1  mov esi, ecx */
     esi = ecx;
-    /* 0064f8d3  call 0x696290 */
+    /* 0064f8d3  call 0x696290  ; SimpleObjectTemplate::SimpleObjectTemplate */
     t = 0x00696290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064f8d0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0064f8d8  mov dword ptr [esi], 0xb8d8fc */
+    /* 0064f8d8  mov dword ptr [esi], 0xb8d8fc  ; vtable MusicPlayerTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb8d8fcu;
     /* 0064f8de  mov dword ptr [esi + 4], 0xb8d8e4 */
@@ -69,7 +72,7 @@ R_1:
     /* 0064f90f  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 0064f912  call 0x401ae0 */
+    /* 0064f912  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064f8d0_2;
@@ -102,7 +105,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0064f940  dice::ref2::world::MusicPlayerTemplate  (virtual method) */
+/* 0064f940  MusicPlayerTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::MusicPlayerTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064f940, bfv_client_l1_body_0064f940);
 void bfv_client_l1_body_0064f940(struct bfv_cpu *c)
 {
@@ -111,12 +117,12 @@ void bfv_client_l1_body_0064f940(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 0064f940  mov edx, dword ptr [0xb42718] */
+    /* 0064f940  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 0064f946  mov eax, ecx */
     eax = ecx;
-    /* 0064f948  mov ecx, dword ptr [esp + 4] */
+    /* 0064f948  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0064f94c  cmp ecx, edx */
@@ -130,7 +136,7 @@ void bfv_client_l1_body_0064f940(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0064f951  mov esi, dword ptr [0xb77d80] */
+    /* 0064f951  mov esi, dword ptr [0xb77d80]  ; interfaceID(ObjectTemplate) */
     ea = (uint32_t)(0x00b77d80u);
     esi = M32(ea);
     /* 0064f957  xor edx, edx */
@@ -169,7 +175,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0064f970  dice::ref2::world::MusicPlayerTemplate  (virtual method) */
+/* 0064f970  MusicPlayerTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::MusicPlayerTemplate
+ * also entered at 0064f9a0: MusicPlayerTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064f970, bfv_client_l1_body_0064f970);
 BFV_L1_RESUME(bfv_client_l1r_0064f970_1, bfv_client_l1_body_0064f970, 1);
 BFV_L1_RESUME(bfv_client_l1r_0064f970_2, bfv_client_l1_body_0064f970, 2);
@@ -195,7 +205,7 @@ void bfv_client_l1_body_0064f970(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0064f976  mov esi, ecx */
     esi = ecx;
-    /* 0064f978  call 0x403610 */
+    /* 0064f978  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064f970_1;
@@ -219,7 +229,7 @@ R_1:
     M32(esp) = t;
     /* 0064f985  mov ecx, eax */
     ecx = eax;
-    /* 0064f987  call 0x6687d0 */
+    /* 0064f987  call 0x6687d0  ; MusicPlayer::MusicPlayer */
     t = 0x006687d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064f970_2;
@@ -254,7 +264,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0064f9b0  dice::ref2::world::MusicPlayerTemplate  (virtual method) */
+/* 0064f9b0  MusicPlayerTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::MusicPlayerTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064f9b0, bfv_client_l1_body_0064f9b0);
 void bfv_client_l1_body_0064f9b0(struct bfv_cpu *c)
 {
@@ -263,12 +276,12 @@ void bfv_client_l1_body_0064f9b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 0064f9b0  mov edx, dword ptr [0xb77f60] */
+    /* 0064f9b0  mov edx, dword ptr [0xb77f60]  ; MusicPlayerTemplate::classID */
     ea = (uint32_t)(0x00b77f60u);
     edx = M32(ea);
     /* 0064f9b6  mov eax, ecx */
     eax = ecx;
-    /* 0064f9b8  mov ecx, dword ptr [esp + 4] */
+    /* 0064f9b8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0064f9bc  cmp ecx, edx */
@@ -278,7 +291,7 @@ void bfv_client_l1_body_0064f9b0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0064f9be  je 0x64f9da */
     if (zf) goto L_0064f9da;
-    /* 0064f9c0  cmp ecx, dword ptr [0xb77ea0] */
+    /* 0064f9c0  cmp ecx, dword ptr [0xb77ea0]  ; SimpleObjectTemplate::classID */
     ea = (uint32_t)(0x00b77ea0u);
     a = ecx;
     b = M32(ea);
@@ -290,7 +303,7 @@ void bfv_client_l1_body_0064f9b0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0064f9c9  mov esi, dword ptr [0xb77e68] */
+    /* 0064f9c9  mov esi, dword ptr [0xb77e68]  ; ObjectTemplate::classID */
     ea = (uint32_t)(0x00b77e68u);
     esi = M32(ea);
     /* 0064f9cf  xor edx, edx */
@@ -329,7 +342,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0064f9e0  (between same file) */
+/* 0064f9e0  MusicPlayerTemplate::deleting_dtor_adjustor4_0064f9e0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064f9e0, bfv_client_l1_body_0064f9e0);
 void bfv_client_l1_body_0064f9e0(struct bfv_cpu *c)
 {
@@ -344,7 +358,7 @@ void bfv_client_l1_body_0064f9e0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0064f9e3  jmp 0x64fa10 */
+    /* 0064f9e3  jmp 0x64fa10  ; MusicPlayerTemplate::deleting_dtor */
     c->eip = 0x0064fa10u;
     goto out;
 out: __attribute__((unused));
@@ -354,7 +368,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0064f9f0  (between same file) */
+/* 0064f9f0  MusicPlayerTemplate::queryInterface_adjustor4_0064f9f0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064f9f0, bfv_client_l1_body_0064f9f0);
 void bfv_client_l1_body_0064f9f0(struct bfv_cpu *c)
 {
@@ -369,7 +384,7 @@ void bfv_client_l1_body_0064f9f0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0064f9f3  jmp 0x64f940 */
+    /* 0064f9f3  jmp 0x64f940  ; MusicPlayerTemplate::queryInterface */
     c->eip = 0x0064f940u;
     goto out;
 out: __attribute__((unused));
@@ -379,7 +394,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0064fa00  (between same file) */
+/* 0064fa00  MusicPlayerTemplate::deleting_dtor_adjustor120_0064fa00  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064fa00, bfv_client_l1_body_0064fa00);
 void bfv_client_l1_body_0064fa00(struct bfv_cpu *c)
 {
@@ -394,7 +410,7 @@ void bfv_client_l1_body_0064fa00(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0064fa03  jmp 0x64fa10 */
+    /* 0064fa03  jmp 0x64fa10  ; MusicPlayerTemplate::deleting_dtor */
     c->eip = 0x0064fa10u;
     goto out;
 out: __attribute__((unused));
@@ -404,7 +420,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0064fa10  dice::ref2::world::MusicPlayerTemplate  (virtual method) */
+/* 0064fa10  MusicPlayerTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::MusicPlayerTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064fa10, bfv_client_l1_body_0064fa10);
 BFV_L1_RESUME(bfv_client_l1r_0064fa10_1, bfv_client_l1_body_0064fa10, 1);
 BFV_L1_RESUME(bfv_client_l1r_0064fa10_2, bfv_client_l1_body_0064fa10, 2);
@@ -430,7 +449,7 @@ void bfv_client_l1_body_0064fa10(struct bfv_cpu *c)
     esi = ecx;
     /* 0064fa13  lea ecx, [esi + 0x1c0] */
     ecx = (uint32_t)(esi + 0x000001c0u);
-    /* 0064fa19  call 0x5a7c60 */
+    /* 0064fa19  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064fa10_1;
@@ -439,14 +458,14 @@ void bfv_client_l1_body_0064fa10(struct bfv_cpu *c)
 R_1:
     /* 0064fa1e  mov ecx, esi */
     ecx = esi;
-    /* 0064fa20  call 0x6960f0 */
+    /* 0064fa20  call 0x6960f0  ; SimpleObjectTemplate::~SimpleObjectTemplate */
     t = 0x006960f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064fa10_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0064fa25  test byte ptr [esp + 8], 1 */
+    /* 0064fa25  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -456,7 +475,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0064fa2d  call 0x403680 */
+    /* 0064fa2d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064fa10_3;

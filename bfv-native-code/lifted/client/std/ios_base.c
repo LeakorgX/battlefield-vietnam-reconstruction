@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007c0810  (called from this file only) */
+/* 007c0810  ios_base::destructor_helper_007c0810  (called from this file only)
+ * class: std::ios_base
+ * called by: ios_base::destructor_helper_007c0883
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c0810, bfv_client_l1_body_007c0810);
 BFV_L1_RESUME(bfv_client_l1r_007c0810_1, bfv_client_l1_body_007c0810, 1);
 void bfv_client_l1_body_007c0810(struct bfv_cpu *c)
@@ -91,7 +94,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007c0883  (called from this file only) */
+/* 007c0883  ios_base::destructor_helper_007c0883  (called from this file only)
+ * class: std::ios_base
+ * called by: ios_base::~ios_base
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c0883, bfv_client_l1_body_007c0883);
 BFV_L1_RESUME(bfv_client_l1r_007c0883_1, bfv_client_l1_body_007c0883, 1);
 BFV_L1_RESUME(bfv_client_l1r_007c0883_2, bfv_client_l1_body_007c0883, 2);
@@ -123,7 +129,7 @@ void bfv_client_l1_body_007c0883(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007c0887  mov esi, ecx */
     esi = ecx;
-    /* 007c0889  call 0x7c0810 */
+    /* 007c0889  call 0x7c0810  ; ios_base::destructor_helper_007c0810 */
     t = 0x007c0810u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c0883_1;
@@ -146,7 +152,7 @@ L_007c0895:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007c0898  call 0x403680 */
+    /* 007c0898  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c0883_2;
@@ -186,7 +192,7 @@ L_007c08af:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007c08b2  call 0x403680 */
+    /* 007c08b2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c0883_3;
@@ -229,7 +235,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007c08c5  std::ios_base  (vtable store) */
+/* 007c08c5  ios_base::~ios_base  (vtable store)
+ * class: std::ios_base
+ * called by: Cmd_Debug_turnOnAllDebug::parseArg, basic_ios<char>::basic_ios_00404f10, Cmd_Debug_turnOffAllDebug::parseArg, Cmd_Debug_turnOnDebug::parseArg, Cmd_Debug_turnOffDebug::parseArg, Cmd_Debug_outputLoadStats::parseArg (+2219 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c08c5, bfv_client_l1_body_007c08c5);
 BFV_L1_RESUME(bfv_client_l1r_007c08c5_1, bfv_client_l1_body_007c08c5, 1);
 BFV_L1_RESUME(bfv_client_l1r_007c08c5_2, bfv_client_l1_body_007c08c5, 2);
@@ -259,7 +268,7 @@ void bfv_client_l1_body_007c08c5(struct bfv_cpu *c)
     /* 007c08cb  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007c08cd  mov dword ptr [esi], 0xb444b8 */
+    /* 007c08cd  mov dword ptr [esi], 0xb444b8  ; vtable ios_base */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb444b8u;
     /* 007c08d3  jbe 0x7c08e7 */
@@ -284,7 +293,7 @@ void bfv_client_l1_body_007c08c5(struct bfv_cpu *c)
 L_007c08e7:
     /* 007c08e7  mov ecx, esi */
     ecx = esi;
-    /* 007c08e9  call 0x7c0883 */
+    /* 007c08e9  call 0x7c0883  ; ios_base::destructor_helper_007c0883 */
     t = 0x007c0883u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c08c5_1;
@@ -301,7 +310,7 @@ R_1:
     if (zf) goto L_007c0903;
     /* 007c08f5  mov ecx, esi */
     ecx = esi;
-    /* 007c08f7  call 0x401080 */
+    /* 007c08f7  call 0x401080  ; std::locale::facet_release */
     t = 0x00401080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c08c5_2;
@@ -312,7 +321,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c08fd  call 0x403680 */
+    /* 007c08fd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c08c5_3;

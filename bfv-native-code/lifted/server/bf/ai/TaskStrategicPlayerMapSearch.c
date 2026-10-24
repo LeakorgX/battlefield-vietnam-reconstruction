@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00791ff0  dice::bf::ai::TaskStrategicPlayerMapSearch  (virtual method)
- * strings: "TaskAStarStrategicSearch" */
+/* 00791ff0  TaskStrategicPlayerMapSearch::execute  (virtual method)
+ * overrides: Task::execute  (8 classes implement it)
+ * class: dice::bf::ai::TaskStrategicPlayerMapSearch
+ * strings: "TaskAStarStrategicSearch"
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791ff0, bfv_server_l1_body_00791ff0);
 BFV_L1_RESUME(bfv_server_l1r_00791ff0_1, bfv_server_l1_body_00791ff0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00791ff0_2, bfv_server_l1_body_00791ff0, 2);
@@ -71,14 +74,14 @@ void bfv_server_l1_body_00791ff0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00792015  mov ecx, edi */
     ecx = edi;
-    /* 00792017  call 0x799370 */
+    /* 00792017  call 0x799370  ; AStarLocalSearch_00799370 */
     t = 0x00799370u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791ff0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0079201c  fld qword ptr [0x807350] */
+    /* 0079201c  fld qword ptr [0x807350]  ; = 0.0 */
     ea = (uint32_t)(0x00807350u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00792022  mov ecx, dword ptr [esi + 0x16c] */
@@ -109,7 +112,7 @@ R_1:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00792040  fstp qword ptr [esp] */
+    /* 00792040  fstp qword ptr [esp]  ; var_18 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00792043  mov byte ptr [eax + 0x38], cl */
@@ -124,7 +127,7 @@ R_1:
     M32(esp) = t;
     /* 0079204a  mov ecx, esi */
     ecx = esi;
-    /* 0079204c  mov dword ptr [eax + 0x10], 0x877e54 */
+    /* 0079204c  mov dword ptr [eax + 0x10], 0x877e54  ; "TaskAStarStrategicSearch" */
     ea = (uint32_t)(eax + 0x00000010u);
     M32(ea) = 0x877e54u;
     /* 00792053  mov dword ptr [eax + 0x3c], edi */
@@ -139,7 +142,7 @@ R_1:
     /* 0079205c  mov dword ptr [eax + 0x34], 2 */
     ea = (uint32_t)(eax + 0x00000034u);
     M32(ea) = 0x2u;
-    /* 00792063  call 0x791c90 */
+    /* 00792063  call 0x791c90  ; Task_00791c90 */
     t = 0x00791c90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791ff0_2;

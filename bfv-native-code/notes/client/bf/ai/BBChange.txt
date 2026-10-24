@@ -1,0 +1,5 @@
+## file
+Behaviour that decides whether the bot should change to another vehicle or seat. Per-bot arrays (index from bot slot 0xdc): weights at +0x1c, chosen handles at +8, changed flags at +0x24.
+
+## 009856f0
+evaluate: first splits two preferences from bot slots 0x164 and 0x168 into a pair that sums to 1 (both positive: each divided by their sum; only one positive: 1 and 0; neither: 0.5 each). Reads AISettings grid values 0x5c, 0x5d, 0x58 and 0x56 for the bot (a set 0x58 sets the scale to 70, a set 0x56 is cleared and sets 100). When the bot is already in a vehicle it scores staying there with ai_009f01f0 times 1.25, scaled by helper 00984f80, and keeps or drops the current choice; the stored weight is aiCurveTable_lookup(score / best * 0.5) * input * 4. Otherwise it walks the candidate vehicles, skips ineligible or occupied ones (helpers 009850e0 with a 0.7071 cosine limit and 00985090), scales each score by distance (a squared distance up to 144 counts as close) and keeps the best. Returns the stored weight, or 0 after clearing it.

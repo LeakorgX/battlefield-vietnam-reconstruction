@@ -1,0 +1,20 @@
+## file
+BAPCombinerParallel runs all its child statements in each update. The children
+are in the list at this+0x18 (head this+0x1c); the list at this+0x30 (head
+this+0x34) holds one done byte per child. The children's control-lock masks
+(vf2) are ORed into this+8/+0xc so two children that lock the same control
+are not both run in one update.
+
+## 009f0730
+execute(bot, &flag, &done): calls bot slot 0xd8, starts with done = this+0x28
+and flag = 1, then walks the children. A child whose lock masks overlap the
+masks already used in this update is skipped. Each other child is run through
+the bot's runner; flag stays 1 only while every child reports flag with its
+done, and each child's done byte is saved in the done list. With this+0x28 set
+the combiner is done only when every run child is done; with it clear it is
+done as soon as one is.
+
+## 009f0860
+Adds a child: makes this its parent, appends it to the child list, ORs its
+lock masks (child slot 8) into this+8/+0xc and appends a done byte (0) to the
+list at this+0x30.

@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00ac0700  dice::meme::SoundAction  (virtual method)
- * strings: "Sound" */
+/* 00ac0700  SoundAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::SoundAction
+ * strings: "Sound"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac0700, bfv_client_l1_body_00ac0700);
 BFV_L1_RESUME(bfv_client_l1r_00ac0700_1, bfv_client_l1_body_00ac0700, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac0700_2, bfv_client_l1_body_00ac0700, 2);
@@ -26,7 +29,7 @@ void bfv_client_l1_body_00ac0700(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac0701  mov ebx, dword ptr [esp + 8] */
+    /* 00ac0701  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00ac0705  push esi */
@@ -37,7 +40,7 @@ void bfv_client_l1_body_00ac0700(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac0707  mov edi, dword ptr [esp + 0x14] */
+    /* 00ac0707  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 00ac070b  push edi */
@@ -50,7 +53,7 @@ void bfv_client_l1_body_00ac0700(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00ac070d  mov esi, ecx */
     esi = ecx;
-    /* 00ac070f  call 0xa7d100 */
+    /* 00ac070f  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0700_1;
@@ -82,11 +85,11 @@ L_00ac071e:
     /* 00ac071e  mov eax, dword ptr [edi] */
     ea = (uint32_t)(edi);
     eax = M32(ea);
-    /* 00ac0720  push 0xb53e70 */
+    /* 00ac0720  push 0xb53e70  ; "Sound" */
     t = 0xb53e70u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac0725  add esi, 8 */
+    /* 00ac0725  add esi, 8  ; field Sound (serialized) */
     a = esi;
     b = 0x8u;
     r = (a + b) & 0xffffffffu;
@@ -138,7 +141,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac0740  dice::meme::SoundAction  (virtual method) */
+/* 00ac0740  SoundAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::SoundAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac0740, bfv_client_l1_body_00ac0740);
 BFV_L1_RESUME(bfv_client_l1r_00ac0740_1, bfv_client_l1_body_00ac0740, 1);
 void bfv_client_l1_body_00ac0740(struct bfv_cpu *c)
@@ -152,7 +158,7 @@ void bfv_client_l1_body_00ac0740(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00ac0740  mov eax, dword ptr [ecx + 8] */
+    /* 00ac0740  mov eax, dword ptr [ecx + 8]  ; field Sound */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
     /* 00ac0743  test eax, eax */
@@ -160,13 +166,13 @@ void bfv_client_l1_body_00ac0740(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00ac0745  je 0xac0759 */
     if (zf) goto L_00ac0759;
-    /* 00ac0747  mov ecx, dword ptr [esp + 4] */
+    /* 00ac0747  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00ac074b  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 00ac074d  push 0x3f800000 */
+    /* 00ac074d  push 0x3f800000  ; 1.0f */
     t = 0x3f800000u;
     esp -= 4;
     M32(esp) = t;
@@ -198,7 +204,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac0840  dice::meme::SoundAction  (vtable store) */
+/* 00ac0840  SoundAction::create  (vtable store)
+ * class: dice::meme::SoundAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac0840, bfv_client_l1_body_00ac0840);
 BFV_L1_RESUME(bfv_client_l1r_00ac0840_1, bfv_client_l1_body_00ac0840, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac0840_2, bfv_client_l1_body_00ac0840, 2);
@@ -222,7 +230,7 @@ void bfv_client_l1_body_00ac0840(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac0843  call 0x403610 */
+    /* 00ac0843  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0840_1;
@@ -244,14 +252,14 @@ R_1:
     if (zf) goto L_00ac0869;
     /* 00ac0851  mov ecx, esi */
     ecx = esi;
-    /* 00ac0853  call 0x874870 */
+    /* 00ac0853  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0840_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac0858  mov dword ptr [esi], 0xc0fbd4 */
+    /* 00ac0858  mov dword ptr [esi], 0xc0fbd4  ; vtable SoundAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0fbd4u;
     /* 00ac085e  mov dword ptr [esi + 8], 0 */
@@ -287,8 +295,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac08b0  dice::meme::SoundAction  (virtual method)
- * strings: "dice::meme::SoundAction" */
+/* 00ac08b0  SoundAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::SoundAction
+ * strings: "dice::meme::SoundAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac08b0, bfv_client_l1_body_00ac08b0);
 BFV_L1_RESUME(bfv_client_l1r_00ac08b0_1, bfv_client_l1_body_00ac08b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac08b0_2, bfv_client_l1_body_00ac08b0, 2);
@@ -319,27 +330,27 @@ void bfv_client_l1_body_00ac08b0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac08c5  push 0xc0fc6c */
+    /* 00ac08c5  push 0xc0fc6c  ; "dice::meme::SoundAction" */
     t = 0xc0fc6cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac08ca  mov ecx, 0xe214f8 */
+    /* 00ac08ca  mov ecx, 0xe214f8  ; g_RuntimeClass_SoundAction */
     ecx = 0xe214f8u;
-    /* 00ac08cf  call 0x875490 */
+    /* 00ac08cf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac08b0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac08d4  push 0xb41bb0 */
+    /* 00ac08d4  push 0xb41bb0  ; bfv_client_global_store_00b41bb0 */
     t = 0xb41bb0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac08d9  mov dword ptr [0xe214f8], 0xc0fb88 */
+    /* 00ac08d9  mov dword ptr [0xe214f8], 0xc0fb88  ; g_RuntimeClass_SoundAction */
     ea = (uint32_t)(0x00e214f8u);
     M32(ea) = 0xc0fb88u;
-    /* 00ac08e3  call 0x7c2cd2 */
+    /* 00ac08e3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac08b0_2;
@@ -353,7 +364,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac08eb:
-    /* 00ac08eb  mov eax, 0xe214f8 */
+    /* 00ac08eb  mov eax, 0xe214f8  ; g_RuntimeClass_SoundAction */
     eax = 0xe214f8u;
     /* 00ac08f0  ret */
     c->eip = M32(esp);

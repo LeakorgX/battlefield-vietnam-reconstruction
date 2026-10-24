@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0086e3d0  dice::meme::MultiplyVertexColorEffect  (virtual method) */
+/* 0086e3d0  MultiplyVertexColorEffect::vf18  (virtual method)
+ * overrides: Effect::vf18  (18 classes implement it)
+ * class: dice::meme::MultiplyVertexColorEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e3d0, bfv_client_l1_body_0086e3d0);
 void bfv_client_l1_body_0086e3d0(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_client_l1_body_0086e3d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0086e3d0  mov eax, dword ptr [esp + 0x14] */
+    /* 0086e3d0  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 0086e3d4  fld dword ptr [ecx + 8] */
@@ -161,10 +164,10 @@ void bfv_client_l1_body_0086e3d0(struct bfv_cpu *c)
     /* 0086e470  fstp dword ptr [eax + 0x88] */
     ea = (uint32_t)(eax + 0x00000088u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0086e476  mov dword ptr [esp + 0x14], eax */
+    /* 0086e476  mov dword ptr [esp + 0x14], eax  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
-    /* 0086e47a  jmp 0x875660 */
+    /* 0086e47a  jmp 0x875660  ; Effect::vf18 */
     c->eip = 0x00875660u;
     goto out;
 out: __attribute__((unused));
@@ -174,7 +177,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086e480  dice::meme::MultiplyVertexColorEffect  (virtual method) */
+/* 0086e480  MultiplyVertexColorEffect::vf19  (virtual method)
+ * overrides: Effect::vf19  (18 classes implement it)
+ * class: dice::meme::MultiplyVertexColorEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e480, bfv_client_l1_body_0086e480);
 void bfv_client_l1_body_0086e480(struct bfv_cpu *c)
 {
@@ -183,7 +189,7 @@ void bfv_client_l1_body_0086e480(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0086e480  mov eax, dword ptr [esp + 0xc] */
+    /* 0086e480  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0086e484  fld dword ptr [ecx + 8] */
@@ -330,10 +336,10 @@ void bfv_client_l1_body_0086e480(struct bfv_cpu *c)
     /* 0086e520  fstp dword ptr [eax + 0x88] */
     ea = (uint32_t)(eax + 0x00000088u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0086e526  mov dword ptr [esp + 0xc], eax */
+    /* 0086e526  mov dword ptr [esp + 0xc], eax  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = eax;
-    /* 0086e52a  jmp 0x875690 */
+    /* 0086e52a  jmp 0x875690  ; Effect::vf19 */
     c->eip = 0x00875690u;
     goto out;
 out: __attribute__((unused));
@@ -343,8 +349,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086e8a0  dice::meme::MultiplyVertexColorEffect  (virtual method)
- * strings: "dice::meme::MultiplyVertexColorEffect" */
+/* 0086e8a0  MultiplyVertexColorEffect::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::MultiplyVertexColorEffect
+ * strings: "dice::meme::MultiplyVertexColorEffect"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e8a0, bfv_client_l1_body_0086e8a0);
 BFV_L1_RESUME(bfv_client_l1r_0086e8a0_1, bfv_client_l1_body_0086e8a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086e8a0_2, bfv_client_l1_body_0086e8a0, 2);
@@ -375,13 +384,13 @@ void bfv_client_l1_body_0086e8a0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0086e8b5  push 0xbd4620 */
+    /* 0086e8b5  push 0xbd4620  ; "dice::meme::MultiplyVertexColorEffect" */
     t = 0xbd4620u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086e8ba  mov ecx, 0xdf64a8 */
+    /* 0086e8ba  mov ecx, 0xdf64a8  ; g_RuntimeClass_MultiplyVertexColorEffect */
     ecx = 0xdf64a8u;
-    /* 0086e8bf  call 0x875490 */
+    /* 0086e8bf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e8a0_1;
@@ -392,10 +401,10 @@ R_1:
     t = 0xb3acd0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086e8c9  mov dword ptr [0xdf64a8], 0xbd44dc */
+    /* 0086e8c9  mov dword ptr [0xdf64a8], 0xbd44dc  ; g_RuntimeClass_MultiplyVertexColorEffect */
     ea = (uint32_t)(0x00df64a8u);
     M32(ea) = 0xbd44dcu;
-    /* 0086e8d3  call 0x7c2cd2 */
+    /* 0086e8d3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e8a0_2;
@@ -409,7 +418,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0086e8db:
-    /* 0086e8db  mov eax, 0xdf64a8 */
+    /* 0086e8db  mov eax, 0xdf64a8  ; g_RuntimeClass_MultiplyVertexColorEffect */
     eax = 0xdf64a8u;
     /* 0086e8e0  ret */
     c->eip = M32(esp);
@@ -422,7 +431,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086e8f0  dice::meme::MultiplyVertexColorEffect  (vtable store) */
+/* 0086e8f0  MultiplyVertexColorEffect::create  (vtable store)
+ * class: dice::meme::MultiplyVertexColorEffect
+ * also entered at 0086e920: MovingOutIterator::vf1
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e8f0, bfv_client_l1_body_0086e8f0);
 BFV_L1_RESUME(bfv_client_l1r_0086e8f0_1, bfv_client_l1_body_0086e8f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086e8f0_2, bfv_client_l1_body_0086e8f0, 2);
@@ -446,7 +458,7 @@ void bfv_client_l1_body_0086e8f0(struct bfv_cpu *c)
     t = 0x48u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086e8f3  call 0x403610 */
+    /* 0086e8f3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e8f0_1;
@@ -468,14 +480,14 @@ R_1:
     if (zf) goto L_0086e912;
     /* 0086e901  mov ecx, esi */
     ecx = esi;
-    /* 0086e903  call 0x86e6c0 */
+    /* 0086e903  call 0x86e6c0  ; VertexColorEffect::VertexColorEffect */
     t = 0x0086e6c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e8f0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0086e908  mov dword ptr [esi], 0xbd464c */
+    /* 0086e908  mov dword ptr [esi], 0xbd464c  ; vtable MultiplyVertexColorEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd464cu;
     /* 0086e90e  mov eax, esi */

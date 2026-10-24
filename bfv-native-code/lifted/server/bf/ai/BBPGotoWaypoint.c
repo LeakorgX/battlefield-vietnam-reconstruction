@@ -5,8 +5,10 @@
 #include "l1.h"
 
 
-/* 0073a590  dice::bf::ai::BBPGotoWaypoint  (vtable store)
- * strings: "false" */
+/* 0073a590  BBPGotoWaypoint::~BBPGotoWaypoint  (vtable store)
+ * class: dice::bf::ai::BBPGotoWaypoint
+ * strings: "false"
+ */
 BFV_L1_ENTRY(bfv_server_l1_0073a590, bfv_server_l1_body_0073a590);
 BFV_L1_RESUME(bfv_server_l1r_0073a590_1, bfv_server_l1_body_0073a590, 1);
 BFV_L1_RESUME(bfv_server_l1r_0073a590_2, bfv_server_l1_body_0073a590, 2);
@@ -42,14 +44,14 @@ void bfv_server_l1_body_0073a590(struct bfv_cpu *c)
     t = 0x8742b0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0073a59a  push 0x807318 */
+    /* 0073a59a  push 0x807318  ; "false" */
     t = 0x807318u;
     esp -= 4;
     M32(esp) = t;
-    /* 0073a59f  mov dword ptr [esi], 0x87420c */
+    /* 0073a59f  mov dword ptr [esi], 0x87420c  ; vtable BBPGotoWaypoint */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87420cu;
-    /* 0073a5a5  call 0x7e06a2 */
+    /* 0073a5a5  call 0x7e06a2  ; crt_Program_007e06a2 */
     t = 0x007e06a2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0073a590_1;
@@ -64,7 +66,7 @@ R_1:
     esp = r;
     /* 0073a5ad  mov ecx, esi */
     ecx = esi;
-    /* 0073a5af  call 0x7a21a0 */
+    /* 0073a5af  call 0x7a21a0  ; BBPPattern::~BBPPattern */
     t = 0x007a21a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0073a590_2;
@@ -73,7 +75,7 @@ R_1:
 R_2:
     /* 0073a5b4  mov ecx, esi */
     ecx = esi;
-    /* 0073a5b6  call 0x7a21a0 */
+    /* 0073a5b6  call 0x7a21a0  ; BBPPattern::~BBPPattern */
     t = 0x007a21a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0073a590_3;
@@ -88,14 +90,14 @@ R_3:
     t = 0x8742b0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0073a5c2  push 0x807318 */
+    /* 0073a5c2  push 0x807318  ; "false" */
     t = 0x807318u;
     esp -= 4;
     M32(esp) = t;
-    /* 0073a5c7  mov dword ptr [esi], 0x87420c */
+    /* 0073a5c7  mov dword ptr [esi], 0x87420c  ; vtable BBPGotoWaypoint */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87420cu;
-    /* 0073a5cd  call 0x7e06a2 */
+    /* 0073a5cd  call 0x7e06a2  ; crt_Program_007e06a2 */
     t = 0x007e06a2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0073a590_4;
@@ -110,7 +112,7 @@ R_4:
     esp = r;
     /* 0073a5d5  mov ecx, esi */
     ecx = esi;
-    /* 0073a5d7  call 0x7a21a0 */
+    /* 0073a5d7  call 0x7a21a0  ; BBPPattern::~BBPPattern */
     t = 0x007a21a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0073a590_5;
@@ -123,7 +125,7 @@ R_5:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 0073a5df  jmp 0x7a21a0 */
+    /* 0073a5df  jmp 0x7a21a0  ; BBPPattern::~BBPPattern */
     c->eip = 0x007a21a0u;
     goto out;
 out: __attribute__((unused));

@@ -1,0 +1,5 @@
+## file
+Plan builder for using a teleport.
+
+## 009897f0
+buildPlan: clears the current plan and records the change target with bot slot 0x190. Builds a parallel plan of BAPICChangeVehicle and a BAPATrigger wrapped in a BAPIWChange. In the other branch it queries IAIMain::vf13 for the target and adds a 2.0-second wait (BAPFlowCWait with BAPConTime 2.0) after the change.

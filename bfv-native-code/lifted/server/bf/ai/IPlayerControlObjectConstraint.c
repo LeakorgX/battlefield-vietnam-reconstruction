@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00781990  dice::bf::ai::?A0xdaa11c90::IPlayerControlObjectConstraint  (virtual method) */
+/* 00781990  IPlayerControlObjectConstraint::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xdaa11c90::IPlayerControlObjectConstraint
+ */
 BFV_L1_ENTRY(bfv_server_l1_00781990, bfv_server_l1_body_00781990);
 BFV_L1_RESUME(bfv_server_l1r_00781990_1, bfv_server_l1_body_00781990, 1);
 void bfv_server_l1_body_00781990(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_server_l1_body_00781990(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00781990  mov eax, dword ptr [esp + 4] */
+    /* 00781990  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00781994  mov ecx, dword ptr [eax + 0x4c] */
@@ -36,7 +38,7 @@ void bfv_server_l1_body_00781990(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0078199c  sub eax, dword ptr [0x829144] */
+    /* 0078199c  sub eax, dword ptr [0x829144]  ; PlayerControlObjectTemplate::classID */
     ea = (uint32_t)(0x00829144u);
     a = eax;
     b = M32(ea);

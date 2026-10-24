@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 005605e0  dice::meme::BfTransformNode  (virtual method)
- * strings: "Height", "Width", "Transformed node" */
+/* 005605e0  BfTransformNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::BfTransformNode
+ * strings: "Height", "Width", "Transformed node"
+ */
 BFV_L1_ENTRY(bfv_client_l1_005605e0, bfv_client_l1_body_005605e0);
 BFV_L1_RESUME(bfv_client_l1r_005605e0_1, bfv_client_l1_body_005605e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005605e0_2, bfv_client_l1_body_005605e0, 2);
@@ -40,14 +43,14 @@ void bfv_client_l1_body_005605e0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 005605e1  mov ebx, dword ptr [esp + 8] */
+    /* 005605e1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 005605e5  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005605e6  mov esi, dword ptr [esp + 0x10] */
+    /* 005605e6  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 005605ea  push edi */
@@ -64,7 +67,7 @@ void bfv_client_l1_body_005605e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005605ed  mov edi, ecx */
     edi = ecx;
-    /* 005605ef  call 0x873f50 */
+    /* 005605ef  call 0x873f50  ; Node::serialize */
     t = 0x00873f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005605e0_1;
@@ -195,11 +198,11 @@ R_3:
     F_LOGIC(8, r);
     /* 00560634  je 0x560616 */
     if (zf) goto L_00560616;
-    /* 00560636  push 0xb6af3c */
+    /* 00560636  push 0xb6af3c  ; "Height" */
     t = 0xb6af3cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0056063b  push 0xb6af44 */
+    /* 0056063b  push 0xb6af44  ; "Width" */
     t = 0xb6af44u;
     esp -= 4;
     M32(esp) = t;
@@ -209,7 +212,7 @@ R_3:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00560644  call 0x8757a0 */
+    /* 00560644  call 0x8757a0  ; meme_008757a0 */
     t = 0x008757a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005605e0_4;
@@ -228,7 +231,7 @@ R_4:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560651  push 0xb6b94c */
+    /* 00560651  push 0xb6b94c  ; "Transformed node" */
     t = 0xb6b94cu;
     esp -= 4;
     M32(esp) = t;
@@ -394,8 +397,12 @@ out: __attribute__((unused));
 }
 
 
-/* 00560a40  dice::meme::BfTransformNode  (virtual method)
- * strings: "dice::meme::BfTransformNode" */
+/* 00560a40  BfTransformNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BfTransformNode
+ * strings: "dice::meme::BfTransformNode"
+ * also entered at 00560a90: BfAddSubNextEffectNode::vf2, BfTransformNode::vf2, BfTransformNodeSize::vf2
+ */
 BFV_L1_ENTRY(bfv_client_l1_00560a40, bfv_client_l1_body_00560a40);
 BFV_L1_RESUME(bfv_client_l1r_00560a40_1, bfv_client_l1_body_00560a40, 1);
 BFV_L1_RESUME(bfv_client_l1r_00560a40_2, bfv_client_l1_body_00560a40, 2);
@@ -426,13 +433,13 @@ void bfv_client_l1_body_00560a40(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00560a55  push 0xb6ba84 */
+    /* 00560a55  push 0xb6ba84  ; "dice::meme::BfTransformNode" */
     t = 0xb6ba84u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560a5a  mov ecx, 0xd734fc */
+    /* 00560a5a  mov ecx, 0xd734fc  ; g_RuntimeClass_BfTransformNode */
     ecx = 0xd734fcu;
-    /* 00560a5f  call 0x875490 */
+    /* 00560a5f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560a40_1;
@@ -443,10 +450,10 @@ R_1:
     t = 0xb301f0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560a69  mov dword ptr [0xd734fc], 0xb6b96c */
+    /* 00560a69  mov dword ptr [0xd734fc], 0xb6b96c  ; g_RuntimeClass_BfTransformNode */
     ea = (uint32_t)(0x00d734fcu);
     M32(ea) = 0xb6b96cu;
-    /* 00560a73  call 0x7c2cd2 */
+    /* 00560a73  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560a40_2;
@@ -460,7 +467,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00560a7b:
-    /* 00560a7b  mov eax, 0xd734fc */
+    /* 00560a7b  mov eax, 0xd734fc  ; g_RuntimeClass_BfTransformNode */
     eax = 0xd734fcu;
     /* 00560a80  ret */
     c->eip = M32(esp);
@@ -473,7 +480,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00560af0  dice::meme::BfTransformNode  (vtable store) */
+/* 00560af0  BfTransformNode::create  (vtable store)
+ * class: dice::meme::BfTransformNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00560af0, bfv_client_l1_body_00560af0);
 BFV_L1_RESUME(bfv_client_l1r_00560af0_1, bfv_client_l1_body_00560af0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00560af0_2, bfv_client_l1_body_00560af0, 2);
@@ -501,7 +510,7 @@ void bfv_client_l1_body_00560af0(struct bfv_cpu *c)
     t = 0x54u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560af4  call 0x403610 */
+    /* 00560af4  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560af0_1;
@@ -529,7 +538,7 @@ R_1:
     if (zf) goto L_00560b41;
     /* 00560b04  mov ecx, esi */
     ecx = esi;
-    /* 00560b06  call 0x8723b0 */
+    /* 00560b06  call 0x8723b0  ; TransformNode::TransformNode */
     t = 0x008723b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560af0_2;
@@ -539,7 +548,7 @@ R_2:
     /* 00560b0b  mov dword ptr [esi + 0x28], edi */
     ea = (uint32_t)(esi + 0x00000028u);
     M32(ea) = edi;
-    /* 00560b0e  mov dword ptr [esi], 0xb6baa4 */
+    /* 00560b0e  mov dword ptr [esi], 0xb6baa4  ; vtable BfTransformNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6baa4u;
     /* 00560b14  mov dword ptr [esi + 0x2c], edi */

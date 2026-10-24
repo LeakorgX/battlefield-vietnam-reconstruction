@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 008dfc10  dice::bf::ai::IAIMain  (virtual method) */
+/* 008dfc10  IAIMain::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAIMain
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dfc10, bfv_client_l1_body_008dfc10);
 BFV_L1_RESUME(bfv_client_l1r_008dfc10_1, bfv_client_l1_body_008dfc10, 1);
 void bfv_client_l1_body_008dfc10(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_008dfc10(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 008dfc10  test byte ptr [esp + 4], 1 */
+    /* 008dfc10  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,10 +31,10 @@ void bfv_client_l1_body_008dfc10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008dfc16  mov esi, ecx */
     esi = ecx;
-    /* 008dfc18  mov dword ptr [esi], 0xbe1224 */
+    /* 008dfc18  mov dword ptr [esi], 0xbe1224  ; vtable IAIMain */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe1224u;
-    /* 008dfc1e  mov dword ptr [0xdfa8cc], 0 */
+    /* 008dfc1e  mov dword ptr [0xdfa8cc], 0  ; g_pIAIMain_00dfa8cc */
     ea = (uint32_t)(0x00dfa8ccu);
     M32(ea) = 0x0u;
     /* 008dfc28  je 0x8dfc33 */
@@ -41,7 +43,7 @@ void bfv_client_l1_body_008dfc10(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008dfc2b  call 0x403680 */
+    /* 008dfc2b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfc10_1;
@@ -64,6 +66,37 @@ L_008dfc33:
     /* 008dfc36  ret 4 */
     c->eip = M32(esp);
     esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 008dfc40  IAIMain::IAIMain  (vtable store)
+ * class: dice::bf::ai::IAIMain
+ * called by: AIMain::AIMain
+ */
+BFV_L1_ENTRY(bfv_client_l1_008dfc40, bfv_client_l1_body_008dfc40);
+void bfv_client_l1_body_008dfc40(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t ea;
+    /* 008dfc40  mov eax, ecx */
+    eax = ecx;
+    /* 008dfc42  mov dword ptr [eax], 0xbe1224  ; vtable IAIMain */
+    ea = (uint32_t)(eax);
+    M32(ea) = 0xbe1224u;
+    /* 008dfc48  mov dword ptr [0xdfa8cc], eax  ; g_pIAIMain_00dfa8cc */
+    ea = (uint32_t)(0x00dfa8ccu);
+    M32(ea) = eax;
+    /* 008dfc4d  ret */
+    c->eip = M32(esp);
+    esp += 4;
     goto out;
 out: __attribute__((unused));
     c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;

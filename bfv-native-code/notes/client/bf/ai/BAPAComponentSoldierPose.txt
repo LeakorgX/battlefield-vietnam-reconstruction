@@ -1,0 +1,14 @@
+## file
+Component that chooses the soldier pose (stand, crouch, prone) for a bot. Fields: +0xc and +0x18 are distance limits, +0x1c the minimum time between pose changes, +0x20 the time of the last change, +0x14 the chosen pose.
+
+## 00956350
+Returns the float at this+0x18. The same code is shared by many classes through identical-code folding.
+
+## 0095af10
+Returns the float at this+0x1c. Shared code; one of its users is the console getter AiStrategy.getPrerequisiteWeight.
+
+## 0095bcd0
+Returns the float at this+0xc. Shared code; it is also used as IAITimer::vf1 (the AI clock) and by AITools.pathfindingGoalRadius.
+
+## 00a0a860
+vf14: picks a pose. Does nothing until at least this+0x1c time has passed since the last change at this+0x20 (argument 2 is the current time). Then stores the time and chooses: the value at this+0x10 when argument 0 is greater than this+0xc, otherwise the default pose when argument 1 is below this+0x18. If cover data is given it compares two IAIEnvironment queries (vf44 and vf38) at the position: when the difference is above 0.4 the pose becomes 1, otherwise when it is above 0 the pose becomes 2.

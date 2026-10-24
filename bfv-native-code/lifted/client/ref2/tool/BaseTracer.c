@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 007addb0  dice::ref2::tool::BaseTracer  (vtable store) */
+/* 007addb0  BaseTracer::BaseTracer  (vtable store)
+ * class: dice::ref2::tool::BaseTracer
+ * also entered at 007ade30: BaseTracer::vf0
+ * called by: RayTracer::RayTracer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007addb0, bfv_client_l1_body_007addb0);
 BFV_L1_RESUME(bfv_client_l1r_007addb0_1, bfv_client_l1_body_007addb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007addb0_2, bfv_client_l1_body_007addb0, 2);
@@ -35,7 +39,7 @@ void bfv_client_l1_body_007addb0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007addb4  mov esi, ecx */
     esi = ecx;
-    /* 007addb6  mov dword ptr [esi], 0xbb6300 */
+    /* 007addb6  mov dword ptr [esi], 0xbb6300  ; vtable BaseTracer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbb6300u;
     /* 007addbc  mov dword ptr [esi + 8], ebp */
@@ -67,7 +71,7 @@ void bfv_client_l1_body_007addb0(struct bfv_cpu *c)
     /* 007addd4  mov dword ptr [esi + 0x24], ebp */
     ea = (uint32_t)(esi + 0x00000024u);
     M32(ea) = ebp;
-    /* 007addd7  call 0x71c870 */
+    /* 007addd7  call 0x71c870  ; std::_Tree::_Buynode_head_44_0071c870 */
     t = 0x0071c870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007addb0_1;
@@ -105,7 +109,7 @@ R_1:
     edi = (uint32_t)(esi + 0x00000034u);
     /* 007addfa  mov ecx, edi */
     ecx = edi;
-    /* 007addfc  call 0x71c870 */
+    /* 007addfc  call 0x71c870  ; std::_Tree::_Buynode_head_44_0071c870 */
     t = 0x0071c870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007addb0_2;

@@ -5,7 +5,61 @@
 #include "l1.h"
 
 
-/* 00982590  dice::bf::ai::AITemplateArmament  (virtual method) */
+/* 00982550  AITemplateArmament::AITemplateArmament  (vtable store)
+ * class: dice::bf::ai::AITemplateArmament
+ * also entered at 00982570: AITemplateArmament::vf0, AITemplateControlInfo::vf0, AITemplateMobile::vf0, AITemplatePhysical::vf0 (+1 more)
+ * called by: AITemplatePlugInManager::create
+ */
+BFV_L1_ENTRY(bfv_client_l1_00982550, bfv_client_l1_body_00982550);
+void bfv_client_l1_body_00982550(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t r, ea;
+    /* 00982550  mov eax, ecx */
+    eax = ecx;
+    /* 00982552  xor ecx, ecx */
+    r = 0;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 00982554  mov dword ptr [eax], 0xbf56dc  ; vtable AITemplateArmament */
+    ea = (uint32_t)(eax);
+    M32(ea) = 0xbf56dcu;
+    /* 0098255a  mov byte ptr [eax + 4], cl */
+    ea = (uint32_t)(eax + 0x00000004u);
+    M8(ea) = LO8(ecx);
+    /* 0098255d  mov byte ptr [eax + 5], cl */
+    ea = (uint32_t)(eax + 0x00000005u);
+    M8(ea) = LO8(ecx);
+    /* 00982560  mov byte ptr [eax + 6], cl */
+    ea = (uint32_t)(eax + 0x00000006u);
+    M8(ea) = LO8(ecx);
+    /* 00982563  mov dword ptr [eax + 8], ecx */
+    ea = (uint32_t)(eax + 0x00000008u);
+    M32(ea) = ecx;
+    /* 00982566  mov dword ptr [eax + 0xc], ecx */
+    ea = (uint32_t)(eax + 0x0000000cu);
+    M32(ea) = ecx;
+    /* 00982569  mov dword ptr [eax + 0x10], ecx */
+    ea = (uint32_t)(eax + 0x00000010u);
+    M32(ea) = ecx;
+    /* 0098256c  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00982590  AITemplateArmament::createObjectPlugIn  (virtual method)
+ * overrides: AITemplatePlugIn::createObjectPlugIn  (8 classes implement it)
+ * class: dice::bf::ai::AITemplateArmament
+ */
 BFV_L1_ENTRY(bfv_client_l1_00982590, bfv_client_l1_body_00982590);
 BFV_L1_RESUME(bfv_client_l1r_00982590_1, bfv_client_l1_body_00982590, 1);
 BFV_L1_RESUME(bfv_client_l1r_00982590_2, bfv_client_l1_body_00982590, 2);
@@ -39,9 +93,9 @@ void bfv_client_l1_body_00982590(struct bfv_cpu *c)
     t = 0x2cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0098259c  mov ecx, 0xe0fbb8 */
+    /* 0098259c  mov ecx, 0xe0fbb8  ; g_MemoryPoolNull_AIObjectArmament */
     ecx = 0xe0fbb8u;
-    /* 009825a1  call 0x412ee0 */
+    /* 009825a1  call 0x412ee0  ; MemoryPool::alloc_debug */
     t = 0x00412ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982590_1;
@@ -53,7 +107,7 @@ R_1:
     F_LOGIC(32, r);
     /* 009825a8  je 0x9825bb */
     if (zf) goto L_009825bb;
-    /* 009825aa  mov ecx, dword ptr [esp + 8] */
+    /* 009825aa  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 009825ae  push esi */
@@ -66,7 +120,7 @@ R_1:
     M32(esp) = t;
     /* 009825b0  mov ecx, eax */
     ecx = eax;
-    /* 009825b2  call 0x9ed1d0 */
+    /* 009825b2  call 0x9ed1d0  ; AIObjectArmament::AIObjectArmament */
     t = 0x009ed1d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982590_2;

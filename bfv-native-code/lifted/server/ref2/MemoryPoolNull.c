@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00404250  dice::ref2::MemoryPoolNull  (virtual method) */
+/* 00404250  MemoryPoolNull::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::MemoryPoolNull
+ */
 BFV_L1_ENTRY(bfv_server_l1_00404250, bfv_server_l1_body_00404250);
 void bfv_server_l1_body_00404250(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_00404250(struct bfv_cpu *c)
     uint32_t a, b, r, ea;
     /* 00404250  mov eax, ecx */
     eax = ecx;
-    /* 00404252  mov ecx, dword ptr [esp + 4] */
+    /* 00404252  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00404256  cmp ecx, 1 */
@@ -58,7 +61,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00404270  dice::ref2::MemoryPoolNull  (virtual method) */
+/* 00404270  MemoryPoolNull::alloc  (virtual method)
+ * identified: same code as client 0x0076fca0: (size); plain operator_new
+ * class: dice::ref2::MemoryPoolNull
+ * also entered at 00404280: MemoryPoolNull::vf7
+ */
 BFV_L1_ENTRY(bfv_server_l1_00404270, bfv_server_l1_body_00404270);
 BFV_L1_RESUME(bfv_server_l1r_00404270_1, bfv_server_l1_body_00404270, 1);
 void bfv_server_l1_body_00404270(struct bfv_cpu *c)
@@ -72,14 +79,14 @@ void bfv_server_l1_body_00404270(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00404270  mov eax, dword ptr [esp + 4] */
+    /* 00404270  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00404274  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00404275  call 0x403d80 */
+    /* 00404275  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00404270_1;
@@ -103,7 +110,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00404290  dice::ref2::MemoryPoolNull  (virtual method) */
+/* 00404290  MemoryPool::alloc_debug  (virtual method)
+ * identified: same code as client 0x00412ee0: (size, file, line); forwards to alloc(size) (vtable +0x14). Called with ecx = a global pool
+ * class: dice::ref2::MemoryPoolNull
+ * called by: SimpleObject::constructor_helper_006faf00, SimpleObject::constructor_helper_006fb090, AITemplateMobile::createObjectPlugIn, AIObjectPhysical::createInformationPlugIn, AIObjectSecondaryReal::createInformation, AIObjectSecondaryShared::createInformation (+118 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00404290, bfv_server_l1_body_00404290);
 BFV_L1_RESUME(bfv_server_l1r_00404290_1, bfv_server_l1_body_00404290, 1);
 void bfv_server_l1_body_00404290(struct bfv_cpu *c)
@@ -117,7 +128,7 @@ void bfv_server_l1_body_00404290(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00404290  mov edx, dword ptr [esp + 4] */
+    /* 00404290  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00404294  mov eax, dword ptr [ecx] */
@@ -127,7 +138,7 @@ void bfv_server_l1_body_00404290(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00404297  call dword ptr [eax + 0x14] */
+    /* 00404297  call dword ptr [eax + 0x14]  ; -> MemoryPoolNull::vf5 = MemoryPoolNull::alloc */
     ea = (uint32_t)(eax + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -146,7 +157,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004042a0  dice::ref2::MemoryPoolNull  (virtual method) */
+/* 004042a0  MemoryPool::free_debug  (virtual method)
+ * identified: same code as client 0x00412ef0: (ptr, file, line); forwards to free(ptr) (vtable +0x1c)
+ * class: dice::ref2::MemoryPoolNull
+ */
 BFV_L1_ENTRY(bfv_server_l1_004042a0, bfv_server_l1_body_004042a0);
 BFV_L1_RESUME(bfv_server_l1r_004042a0_1, bfv_server_l1_body_004042a0, 1);
 void bfv_server_l1_body_004042a0(struct bfv_cpu *c)
@@ -160,7 +174,7 @@ void bfv_server_l1_body_004042a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004042a0  mov edx, dword ptr [esp + 4] */
+    /* 004042a0  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 004042a4  mov eax, dword ptr [ecx] */
@@ -170,7 +184,7 @@ void bfv_server_l1_body_004042a0(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 004042a7  call dword ptr [eax + 0x1c] */
+    /* 004042a7  call dword ptr [eax + 0x1c]  ; -> MemoryPoolNull::vf7 = 0x00404280 */
     ea = (uint32_t)(eax + 0x0000001cu);
     t = M32(ea);
     esp -= 4;

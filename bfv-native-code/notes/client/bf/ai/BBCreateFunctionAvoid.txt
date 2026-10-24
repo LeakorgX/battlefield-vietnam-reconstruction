@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBAvoid behaviour with a collision-avoidance parameter object.
+
+## 00940660
+vf0: picks the parameter object by type name: "BBPAvoidCollision2d", "BBPAvoidCollision3d" or "BBPAvoidCollisionInfantery" (each 0x20 bytes); null when none matches. Allocates a 0x40-byte BBAvoid with a copy of the passed-in list and that parameter, then frees the passed-in list.

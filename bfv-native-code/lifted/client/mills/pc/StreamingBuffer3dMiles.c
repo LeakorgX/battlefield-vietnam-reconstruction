@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007789d0  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 007789d0  StreamingBuffer3dMiles::isPlaying  (virtual method)
+ * overrides: IBuffer::isPlaying  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007789d0, bfv_client_l1_body_007789d0);
 BFV_L1_RESUME(bfv_client_l1r_007789d0_1, bfv_client_l1_body_007789d0, 1);
 void bfv_client_l1_body_007789d0(struct bfv_cpu *c)
@@ -33,7 +36,7 @@ void bfv_client_l1_body_007789d0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 007789dd  call 0x775d80 */
+    /* 007789dd  call 0x775d80  ; Buffer3dMiles::isPlaying */
     t = 0x00775d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007789d0_1;
@@ -67,7 +70,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007789f0  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 007789f0  StreamingBuffer3dMiles::isLooping  (virtual method)
+ * overrides: IBuffer::isLooping  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007789f0, bfv_client_l1_body_007789f0);
 void bfv_client_l1_body_007789f0(struct bfv_cpu *c)
 {
@@ -82,7 +88,7 @@ void bfv_client_l1_body_007789f0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 007789f3  jmp 0x7754c0 */
+    /* 007789f3  jmp 0x7754c0  ; Buffer3dMiles::isLooping */
     c->eip = 0x007754c0u;
     goto out;
 out: __attribute__((unused));
@@ -92,7 +98,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778a00  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778a00  StreamingBuffer3dMiles::setVolume  (virtual method)
+ * overrides: IBuffer::setVolume  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778a00, bfv_client_l1_body_00778a00);
 void bfv_client_l1_body_00778a00(struct bfv_cpu *c)
 {
@@ -107,7 +116,7 @@ void bfv_client_l1_body_00778a00(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778a03  jmp 0x775750 */
+    /* 00778a03  jmp 0x775750  ; Buffer3dMiles::setVolume */
     c->eip = 0x00775750u;
     goto out;
 out: __attribute__((unused));
@@ -117,7 +126,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778a10  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778a10  StreamingBuffer3dMiles::setPitch  (virtual method)
+ * overrides: IBuffer::setPitch  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778a10, bfv_client_l1_body_00778a10);
 void bfv_client_l1_body_00778a10(struct bfv_cpu *c)
 {
@@ -132,7 +144,7 @@ void bfv_client_l1_body_00778a10(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778a13  jmp 0x7757c0 */
+    /* 00778a13  jmp 0x7757c0  ; Buffer3dMiles::setPitch */
     c->eip = 0x007757c0u;
     goto out;
 out: __attribute__((unused));
@@ -142,7 +154,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778a20  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778a20  StreamingBuffer3dMiles::vf21  (virtual method)
+ * overrides: IStreamingBuffer3d::vf21  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778a20, bfv_client_l1_body_00778a20);
 void bfv_client_l1_body_00778a20(struct bfv_cpu *c)
 {
@@ -157,7 +172,7 @@ void bfv_client_l1_body_00778a20(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778a23  jmp 0x776d50 */
+    /* 00778a23  jmp 0x776d50  ; Buffer3dMiles::vf21 */
     c->eip = 0x00776d50u;
     goto out;
 out: __attribute__((unused));
@@ -167,7 +182,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778a30  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778a30  StreamingBuffer3dMiles::vf22  (virtual method)
+ * overrides: IStreamingBuffer3d::vf22  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778a30, bfv_client_l1_body_00778a30);
 void bfv_client_l1_body_00778a30(struct bfv_cpu *c)
 {
@@ -182,7 +200,7 @@ void bfv_client_l1_body_00778a30(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778a33  jmp 0x776ff0 */
+    /* 00778a33  jmp 0x776ff0  ; Buffer3dMiles::vf22 */
     c->eip = 0x00776ff0u;
     goto out;
 out: __attribute__((unused));
@@ -192,7 +210,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778a40  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778a40  StreamingBuffer3dMiles::getPlaybackRate  (virtual method)
+ * overrides: IBuffer::getPlaybackRate  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778a40, bfv_client_l1_body_00778a40);
 BFV_L1_RESUME(bfv_client_l1r_00778a40_1, bfv_client_l1_body_00778a40, 1);
 void bfv_client_l1_body_00778a40(struct bfv_cpu *c)
@@ -221,7 +242,7 @@ void bfv_client_l1_body_00778a40(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778a4b  call dword ptr [0xb42560] */
+    /* 00778a4b  call dword ptr [0xb42560]  ; MSS32!_AIL_3D_sample_playback_rate@4 */
     ea = (uint32_t)(0x00b42560u);
     t = M32(ea);
     esp -= 4;
@@ -248,7 +269,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778a60  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778a60  StreamingBuffer3dMiles::vf26  (virtual method)
+ * overrides: IStreamingBuffer3d::vf26  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778a60, bfv_client_l1_body_00778a60);
 void bfv_client_l1_body_00778a60(struct bfv_cpu *c)
 {
@@ -263,7 +287,7 @@ void bfv_client_l1_body_00778a60(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778a63  jmp 0x7754e0 */
+    /* 00778a63  jmp 0x7754e0  ; Buffer3dMiles::vf26 */
     c->eip = 0x007754e0u;
     goto out;
 out: __attribute__((unused));
@@ -273,7 +297,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778a70  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778a70  StreamingBuffer3dMiles::vf14  (virtual method)
+ * overrides: IBuffer::vf14  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778a70, bfv_client_l1_body_00778a70);
 BFV_L1_RESUME(bfv_client_l1r_00778a70_1, bfv_client_l1_body_00778a70, 1);
 void bfv_client_l1_body_00778a70(struct bfv_cpu *c)
@@ -294,7 +321,7 @@ void bfv_client_l1_body_00778a70(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778a74  call dword ptr [0xb42564] */
+    /* 00778a74  call dword ptr [0xb42564]  ; MSS32!_AIL_3D_sample_length@4 */
     ea = (uint32_t)(0x00b42564u);
     t = M32(ea);
     esp -= 4;
@@ -313,7 +340,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778a80  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778a80  StreamingBuffer3dMiles::setPosition  (virtual method)
+ * overrides: IBuffer::setPosition  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778a80, bfv_client_l1_body_00778a80);
 void bfv_client_l1_body_00778a80(struct bfv_cpu *c)
 {
@@ -328,7 +358,7 @@ void bfv_client_l1_body_00778a80(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778a83  jmp 0x775db0 */
+    /* 00778a83  jmp 0x775db0  ; Buffer3dMiles::setPosition */
     c->eip = 0x00775db0u;
     goto out;
 out: __attribute__((unused));
@@ -338,7 +368,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778a90  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778a90  StreamingBuffer3dMiles::getPosition  (virtual method)
+ * overrides: IBuffer::getPosition  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778a90, bfv_client_l1_body_00778a90);
 BFV_L1_RESUME(bfv_client_l1r_00778a90_1, bfv_client_l1_body_00778a90, 1);
 void bfv_client_l1_body_00778a90(struct bfv_cpu *c)
@@ -359,7 +392,7 @@ void bfv_client_l1_body_00778a90(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778a94  call dword ptr [0xb425d4] */
+    /* 00778a94  call dword ptr [0xb425d4]  ; MSS32!_AIL_3D_sample_offset@4 */
     ea = (uint32_t)(0x00b425d4u);
     t = M32(ea);
     esp -= 4;
@@ -378,7 +411,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778aa0  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778aa0  StreamingBuffer3dMiles::vf28  (virtual method)
+ * overrides: IStreamingBuffer3d::vf28  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778aa0, bfv_client_l1_body_00778aa0);
 void bfv_client_l1_body_00778aa0(struct bfv_cpu *c)
 {
@@ -393,7 +429,7 @@ void bfv_client_l1_body_00778aa0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778aa3  jmp 0x775870 */
+    /* 00778aa3  jmp 0x775870  ; Buffer3dMiles::vf28 */
     c->eip = 0x00775870u;
     goto out;
 out: __attribute__((unused));
@@ -403,7 +439,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778ab0  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778ab0  StreamingBuffer3dMiles::vf29  (virtual method)
+ * overrides: IStreamingBuffer3d::vf29  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778ab0, bfv_client_l1_body_00778ab0);
 void bfv_client_l1_body_00778ab0(struct bfv_cpu *c)
 {
@@ -418,7 +457,7 @@ void bfv_client_l1_body_00778ab0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778ab3  jmp 0x775520 */
+    /* 00778ab3  jmp 0x775520  ; Buffer3dMiles::vf29 */
     c->eip = 0x00775520u;
     goto out;
 out: __attribute__((unused));
@@ -428,7 +467,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00778ac0  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778ac0  StreamingBuffer3dMiles::vf30  (virtual method)
+ * overrides: IStreamingBuffer3d::vf30  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ * also entered at 00778ad0: StreamingBuffer3dMiles::vf31
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778ac0, bfv_client_l1_body_00778ac0);
 void bfv_client_l1_body_00778ac0(struct bfv_cpu *c)
 {
@@ -443,7 +486,7 @@ void bfv_client_l1_body_00778ac0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778ac3  jmp 0x775de0 */
+    /* 00778ac3  jmp 0x775de0  ; Buffer3dMiles::vf30 */
     c->eip = 0x00775de0u;
     goto out;
 out: __attribute__((unused));
@@ -453,7 +496,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778ae0  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778ae0  StreamingBuffer3dMiles::vf32  (virtual method)
+ * overrides: IStreamingBuffer3d::vf32  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778ae0, bfv_client_l1_body_00778ae0);
 void bfv_client_l1_body_00778ae0(struct bfv_cpu *c)
 {
@@ -468,7 +514,7 @@ void bfv_client_l1_body_00778ae0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778ae3  jmp 0x775890 */
+    /* 00778ae3  jmp 0x775890  ; Buffer3dMiles::vf32 */
     c->eip = 0x00775890u;
     goto out;
 out: __attribute__((unused));
@@ -478,7 +524,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778af0  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778af0  StreamingBuffer3dMiles::vf34  (virtual method)
+ * overrides: IStreamingBuffer3d::vf34  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778af0, bfv_client_l1_body_00778af0);
 void bfv_client_l1_body_00778af0(struct bfv_cpu *c)
 {
@@ -493,7 +542,7 @@ void bfv_client_l1_body_00778af0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778af3  jmp 0x775630 */
+    /* 00778af3  jmp 0x775630  ; Buffer3dMiles::vf34 */
     c->eip = 0x00775630u;
     goto out;
 out: __attribute__((unused));
@@ -503,7 +552,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b00  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778b00  StreamingBuffer3dMiles::vf35  (virtual method)
+ * overrides: IStreamingBuffer3d::vf35  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b00, bfv_client_l1_body_00778b00);
 void bfv_client_l1_body_00778b00(struct bfv_cpu *c)
 {
@@ -518,7 +570,7 @@ void bfv_client_l1_body_00778b00(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778b03  jmp 0x775690 */
+    /* 00778b03  jmp 0x775690  ; Buffer3dMiles::vf35 */
     c->eip = 0x00775690u;
     goto out;
 out: __attribute__((unused));
@@ -528,7 +580,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b10  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778b10  StreamingBuffer3dMiles::vf36  (virtual method)
+ * overrides: IStreamingBuffer3d::vf36  (2 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b10, bfv_client_l1_body_00778b10);
 void bfv_client_l1_body_00778b10(struct bfv_cpu *c)
 {
@@ -543,7 +598,7 @@ void bfv_client_l1_body_00778b10(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778b13  jmp 0x7756f0 */
+    /* 00778b13  jmp 0x7756f0  ; Buffer3dMiles::vf36 */
     c->eip = 0x007756f0u;
     goto out;
 out: __attribute__((unused));
@@ -553,7 +608,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b20  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778b20  StreamingBuffer3dMiles::vf20  (virtual method)
+ * overrides: IBuffer::vf20  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b20, bfv_client_l1_body_00778b20);
 void bfv_client_l1_body_00778b20(struct bfv_cpu *c)
 {
@@ -568,7 +626,7 @@ void bfv_client_l1_body_00778b20(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00778b23  jmp 0x7761d0 */
+    /* 00778b23  jmp 0x7761d0  ; Buffer3dMiles::vf20 */
     c->eip = 0x007761d0u;
     goto out;
 out: __attribute__((unused));
@@ -578,7 +636,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b30  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778b30  StreamingBuffer3dMiles::vf19_set_ch_to_0x30000  (virtual method)
+ * overrides: IBuffer::vf19  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b30, bfv_client_l1_body_00778b30);
 void bfv_client_l1_body_00778b30(struct bfv_cpu *c)
 {
@@ -601,7 +662,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b40  (between same file) */
+/* 00778b40  StreamingBuffer3dMiles::deleting_dtor_adjustor8_00778b40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b40, bfv_client_l1_body_00778b40);
 void bfv_client_l1_body_00778b40(struct bfv_cpu *c)
 {
@@ -616,7 +678,7 @@ void bfv_client_l1_body_00778b40(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778b43  jmp 0x7797f0 */
+    /* 00778b43  jmp 0x7797f0  ; StreamingBuffer3dMiles::deleting_dtor */
     c->eip = 0x007797f0u;
     goto out;
 out: __attribute__((unused));
@@ -626,7 +688,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b50  (between same file) */
+/* 00778b50  StreamingBuffer2dMiles::vf4_adjustor8_00778b50  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b50, bfv_client_l1_body_00778b50);
 void bfv_client_l1_body_00778b50(struct bfv_cpu *c)
 {
@@ -641,7 +704,7 @@ void bfv_client_l1_body_00778b50(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778b53  jmp 0x772240 */
+    /* 00778b53  jmp 0x772240  ; StreamingBuffer2dMiles::vf4 */
     c->eip = 0x00772240u;
     goto out;
 out: __attribute__((unused));
@@ -651,7 +714,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b60  (between same file) */
+/* 00778b60  InformationReal::vf2_adjustor8_00778b60  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b60, bfv_client_l1_body_00778b60);
 void bfv_client_l1_body_00778b60(struct bfv_cpu *c)
 {
@@ -666,7 +730,7 @@ void bfv_client_l1_body_00778b60(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778b63  jmp 0x9ec230 */
+    /* 00778b63  jmp 0x9ec230  ; InformationReal::vf2 */
     c->eip = 0x009ec230u;
     goto out;
 out: __attribute__((unused));
@@ -676,7 +740,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b70  (between same file) */
+/* 00778b70  StreamingBuffer3dMiles::isPlaying_adjustor8_00778b70  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b70, bfv_client_l1_body_00778b70);
 void bfv_client_l1_body_00778b70(struct bfv_cpu *c)
 {
@@ -691,7 +756,7 @@ void bfv_client_l1_body_00778b70(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778b73  jmp 0x7789d0 */
+    /* 00778b73  jmp 0x7789d0  ; StreamingBuffer3dMiles::isPlaying */
     c->eip = 0x007789d0u;
     goto out;
 out: __attribute__((unused));
@@ -701,7 +766,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b80  (between same file) */
+/* 00778b80  StreamingBuffer3dMiles::isLooping_adjustor8_00778b80  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b80, bfv_client_l1_body_00778b80);
 void bfv_client_l1_body_00778b80(struct bfv_cpu *c)
 {
@@ -716,7 +782,7 @@ void bfv_client_l1_body_00778b80(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778b83  jmp 0x7789f0 */
+    /* 00778b83  jmp 0x7789f0  ; StreamingBuffer3dMiles::isLooping */
     c->eip = 0x007789f0u;
     goto out;
 out: __attribute__((unused));
@@ -726,7 +792,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778b90  (between same file) */
+/* 00778b90  StreamingBuffer3dMiles::setVolume_adjustor8_00778b90  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778b90, bfv_client_l1_body_00778b90);
 void bfv_client_l1_body_00778b90(struct bfv_cpu *c)
 {
@@ -741,7 +808,7 @@ void bfv_client_l1_body_00778b90(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778b93  jmp 0x778a00 */
+    /* 00778b93  jmp 0x778a00  ; StreamingBuffer3dMiles::setVolume */
     c->eip = 0x00778a00u;
     goto out;
 out: __attribute__((unused));
@@ -751,7 +818,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778ba0  (between same file) */
+/* 00778ba0  StreamingBuffer3dMiles::setPitch_adjustor8_00778ba0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778ba0, bfv_client_l1_body_00778ba0);
 void bfv_client_l1_body_00778ba0(struct bfv_cpu *c)
 {
@@ -766,7 +834,7 @@ void bfv_client_l1_body_00778ba0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778ba3  jmp 0x778a10 */
+    /* 00778ba3  jmp 0x778a10  ; StreamingBuffer3dMiles::setPitch */
     c->eip = 0x00778a10u;
     goto out;
 out: __attribute__((unused));
@@ -776,7 +844,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778bb0  (between same file) */
+/* 00778bb0  Armor::get_44h_adjustor8_00778bb0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778bb0, bfv_client_l1_body_00778bb0);
 void bfv_client_l1_body_00778bb0(struct bfv_cpu *c)
 {
@@ -791,7 +860,7 @@ void bfv_client_l1_body_00778bb0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778bb3  jmp 0x6f39a0 */
+    /* 00778bb3  jmp 0x6f39a0  ; Armor::get_44h */
     c->eip = 0x006f39a0u;
     goto out;
 out: __attribute__((unused));
@@ -801,7 +870,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778bc0  (between same file) */
+/* 00778bc0  Buffer2dMiles::get_14h_adjustor8_00778bc0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778bc0, bfv_client_l1_body_00778bc0);
 void bfv_client_l1_body_00778bc0(struct bfv_cpu *c)
 {
@@ -816,7 +886,7 @@ void bfv_client_l1_body_00778bc0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778bc3  jmp 0x774720 */
+    /* 00778bc3  jmp 0x774720  ; Buffer2dMiles::get_14h */
     c->eip = 0x00774720u;
     goto out;
 out: __attribute__((unused));
@@ -826,7 +896,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778bd0  (between same file) */
+/* 00778bd0  StreamingBuffer3dMiles::getPlaybackRate_adjustor8_00778bd0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778bd0, bfv_client_l1_body_00778bd0);
 void bfv_client_l1_body_00778bd0(struct bfv_cpu *c)
 {
@@ -841,7 +912,7 @@ void bfv_client_l1_body_00778bd0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778bd3  jmp 0x778a40 */
+    /* 00778bd3  jmp 0x778a40  ; StreamingBuffer3dMiles::getPlaybackRate */
     c->eip = 0x00778a40u;
     goto out;
 out: __attribute__((unused));
@@ -851,7 +922,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778be0  (between same file) */
+/* 00778be0  StreamingBuffer3dMiles::vf14_adjustor8_00778be0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778be0, bfv_client_l1_body_00778be0);
 void bfv_client_l1_body_00778be0(struct bfv_cpu *c)
 {
@@ -866,7 +938,7 @@ void bfv_client_l1_body_00778be0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778be3  jmp 0x778a70 */
+    /* 00778be3  jmp 0x778a70  ; StreamingBuffer3dMiles::vf14 */
     c->eip = 0x00778a70u;
     goto out;
 out: __attribute__((unused));
@@ -876,7 +948,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778bf0  (between same file) */
+/* 00778bf0  StreamingBuffer3dMiles::setPosition_adjustor8_00778bf0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778bf0, bfv_client_l1_body_00778bf0);
 void bfv_client_l1_body_00778bf0(struct bfv_cpu *c)
 {
@@ -891,7 +964,7 @@ void bfv_client_l1_body_00778bf0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778bf3  jmp 0x778a80 */
+    /* 00778bf3  jmp 0x778a80  ; StreamingBuffer3dMiles::setPosition */
     c->eip = 0x00778a80u;
     goto out;
 out: __attribute__((unused));
@@ -901,7 +974,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c00  (between same file) */
+/* 00778c00  StreamingBuffer3dMiles::getPosition_adjustor8_00778c00  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c00, bfv_client_l1_body_00778c00);
 void bfv_client_l1_body_00778c00(struct bfv_cpu *c)
 {
@@ -916,7 +990,7 @@ void bfv_client_l1_body_00778c00(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c03  jmp 0x778a90 */
+    /* 00778c03  jmp 0x778a90  ; StreamingBuffer3dMiles::getPosition */
     c->eip = 0x00778a90u;
     goto out;
 out: __attribute__((unused));
@@ -926,7 +1000,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c10  (between same file) */
+/* 00778c10  StreamingBuffer2dMilesAsync::vf17_adjustor8_00778c10  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c10, bfv_client_l1_body_00778c10);
 void bfv_client_l1_body_00778c10(struct bfv_cpu *c)
 {
@@ -941,7 +1016,7 @@ void bfv_client_l1_body_00778c10(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c13  jmp 0x777a30 */
+    /* 00778c13  jmp 0x777a30  ; StreamingBuffer2dMilesAsync::vf17 */
     c->eip = 0x00777a30u;
     goto out;
 out: __attribute__((unused));
@@ -951,7 +1026,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c20  (between same file) */
+/* 00778c20  BotMain::vf79_get_ch_adjustor8_00778c20  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c20, bfv_client_l1_body_00778c20);
 void bfv_client_l1_body_00778c20(struct bfv_cpu *c)
 {
@@ -966,7 +1042,7 @@ void bfv_client_l1_body_00778c20(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c23  jmp 0x6f29e0 */
+    /* 00778c23  jmp 0x6f29e0  ; BotMain::vf79_get_ch */
     c->eip = 0x006f29e0u;
     goto out;
 out: __attribute__((unused));
@@ -976,7 +1052,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c30  (between same file) */
+/* 00778c30  StreamingBuffer3dMiles::vf19_set_ch_to_0x30000_adjustor8_00778c30  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c30, bfv_client_l1_body_00778c30);
 void bfv_client_l1_body_00778c30(struct bfv_cpu *c)
 {
@@ -991,7 +1068,7 @@ void bfv_client_l1_body_00778c30(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c33  jmp 0x778b30 */
+    /* 00778c33  jmp 0x778b30  ; StreamingBuffer3dMiles::vf19_set_ch_to_0x30000 */
     c->eip = 0x00778b30u;
     goto out;
 out: __attribute__((unused));
@@ -1001,7 +1078,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c40  (between same file) */
+/* 00778c40  StreamingBuffer3dMiles::vf20_adjustor8_00778c40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c40, bfv_client_l1_body_00778c40);
 void bfv_client_l1_body_00778c40(struct bfv_cpu *c)
 {
@@ -1016,7 +1094,7 @@ void bfv_client_l1_body_00778c40(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c43  jmp 0x778b20 */
+    /* 00778c43  jmp 0x778b20  ; StreamingBuffer3dMiles::vf20 */
     c->eip = 0x00778b20u;
     goto out;
 out: __attribute__((unused));
@@ -1026,7 +1104,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c50  (between same file) */
+/* 00778c50  StreamingBuffer3dMiles::vf21_adjustor8_00778c50  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c50, bfv_client_l1_body_00778c50);
 void bfv_client_l1_body_00778c50(struct bfv_cpu *c)
 {
@@ -1041,7 +1120,7 @@ void bfv_client_l1_body_00778c50(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c53  jmp 0x778a20 */
+    /* 00778c53  jmp 0x778a20  ; StreamingBuffer3dMiles::vf21 */
     c->eip = 0x00778a20u;
     goto out;
 out: __attribute__((unused));
@@ -1051,7 +1130,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c60  (between same file) */
+/* 00778c60  StreamingBuffer3dMiles::vf22_adjustor8_00778c60  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c60, bfv_client_l1_body_00778c60);
 void bfv_client_l1_body_00778c60(struct bfv_cpu *c)
 {
@@ -1066,7 +1146,7 @@ void bfv_client_l1_body_00778c60(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c63  jmp 0x778a30 */
+    /* 00778c63  jmp 0x778a30  ; StreamingBuffer3dMiles::vf22 */
     c->eip = 0x00778a30u;
     goto out;
 out: __attribute__((unused));
@@ -1076,7 +1156,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c70  (between same file) */
+/* 00778c70  Listener3dMiles::vf31_addressOf_58h_adjustor8_00778c70  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c70, bfv_client_l1_body_00778c70);
 void bfv_client_l1_body_00778c70(struct bfv_cpu *c)
 {
@@ -1091,7 +1172,7 @@ void bfv_client_l1_body_00778c70(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c73  jmp 0x5f4bf0 */
+    /* 00778c73  jmp 0x5f4bf0  ; Listener3dMiles::vf31_addressOf_58h */
     c->eip = 0x005f4bf0u;
     goto out;
 out: __attribute__((unused));
@@ -1101,7 +1182,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c80  (between same file) */
+/* 00778c80  TextureManager::vf32_addressOf_64h_adjustor8_00778c80  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c80, bfv_client_l1_body_00778c80);
 void bfv_client_l1_body_00778c80(struct bfv_cpu *c)
 {
@@ -1116,7 +1198,7 @@ void bfv_client_l1_body_00778c80(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c83  jmp 0xa54420 */
+    /* 00778c83  jmp 0xa54420  ; TextureManager::vf32_addressOf_64h */
     c->eip = 0x00a54420u;
     goto out;
 out: __attribute__((unused));
@@ -1126,7 +1208,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778c90  (between same file) */
+/* 00778c90  StandardMeshRenderer::get_70h_adjustor8_00778c90  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778c90, bfv_client_l1_body_00778c90);
 void bfv_client_l1_body_00778c90(struct bfv_cpu *c)
 {
@@ -1141,7 +1224,7 @@ void bfv_client_l1_body_00778c90(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778c93  jmp 0x7265f0 */
+    /* 00778c93  jmp 0x7265f0  ; StandardMeshRenderer::get_70h */
     c->eip = 0x007265f0u;
     goto out;
 out: __attribute__((unused));
@@ -1151,7 +1234,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778ca0  (between same file) */
+/* 00778ca0  StreamingBuffer3dMiles::vf26_adjustor8_00778ca0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778ca0, bfv_client_l1_body_00778ca0);
 void bfv_client_l1_body_00778ca0(struct bfv_cpu *c)
 {
@@ -1166,7 +1250,7 @@ void bfv_client_l1_body_00778ca0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778ca3  jmp 0x778a60 */
+    /* 00778ca3  jmp 0x778a60  ; StreamingBuffer3dMiles::vf26 */
     c->eip = 0x00778a60u;
     goto out;
 out: __attribute__((unused));
@@ -1176,7 +1260,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778cb0  (between same file) */
+/* 00778cb0  StandardMeshRenderer::get_74h_adjustor8_00778cb0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778cb0, bfv_client_l1_body_00778cb0);
 void bfv_client_l1_body_00778cb0(struct bfv_cpu *c)
 {
@@ -1191,7 +1276,7 @@ void bfv_client_l1_body_00778cb0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778cb3  jmp 0x726610 */
+    /* 00778cb3  jmp 0x726610  ; StandardMeshRenderer::get_74h */
     c->eip = 0x00726610u;
     goto out;
 out: __attribute__((unused));
@@ -1201,7 +1286,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778cc0  (between same file) */
+/* 00778cc0  StreamingBuffer3dMiles::vf28_adjustor8_00778cc0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778cc0, bfv_client_l1_body_00778cc0);
 void bfv_client_l1_body_00778cc0(struct bfv_cpu *c)
 {
@@ -1216,7 +1302,7 @@ void bfv_client_l1_body_00778cc0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778cc3  jmp 0x778aa0 */
+    /* 00778cc3  jmp 0x778aa0  ; StreamingBuffer3dMiles::vf28 */
     c->eip = 0x00778aa0u;
     goto out;
 out: __attribute__((unused));
@@ -1226,7 +1312,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778cd0  (between same file) */
+/* 00778cd0  StreamingBuffer3dMiles::vf29_adjustor8_00778cd0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778cd0, bfv_client_l1_body_00778cd0);
 void bfv_client_l1_body_00778cd0(struct bfv_cpu *c)
 {
@@ -1241,7 +1328,7 @@ void bfv_client_l1_body_00778cd0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778cd3  jmp 0x778ab0 */
+    /* 00778cd3  jmp 0x778ab0  ; StreamingBuffer3dMiles::vf29 */
     c->eip = 0x00778ab0u;
     goto out;
 out: __attribute__((unused));
@@ -1251,7 +1338,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778ce0  (between same file) */
+/* 00778ce0  StreamingBuffer3dMiles::vf30_adjustor8_00778ce0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778ce0, bfv_client_l1_body_00778ce0);
 void bfv_client_l1_body_00778ce0(struct bfv_cpu *c)
 {
@@ -1266,7 +1354,7 @@ void bfv_client_l1_body_00778ce0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778ce3  jmp 0x778ac0 */
+    /* 00778ce3  jmp 0x778ac0  ; StreamingBuffer3dMiles::vf30 */
     c->eip = 0x00778ac0u;
     goto out;
 out: __attribute__((unused));
@@ -1276,7 +1364,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778cf0  (between same file) */
+/* 00778cf0  StreamingBuffer3dMiles::vf31_adjustor8_00778cf0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778cf0, bfv_client_l1_body_00778cf0);
 void bfv_client_l1_body_00778cf0(struct bfv_cpu *c)
 {
@@ -1291,7 +1380,7 @@ void bfv_client_l1_body_00778cf0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778cf3  jmp 0x778ad0 */
+    /* 00778cf3  jmp 0x778ad0  ; StreamingBuffer3dMiles::vf31 */
     c->eip = 0x00778ad0u;
     goto out;
 out: __attribute__((unused));
@@ -1301,7 +1390,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778d00  (between same file) */
+/* 00778d00  StreamingBuffer3dMiles::vf32_adjustor8_00778d00  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778d00, bfv_client_l1_body_00778d00);
 void bfv_client_l1_body_00778d00(struct bfv_cpu *c)
 {
@@ -1316,7 +1406,7 @@ void bfv_client_l1_body_00778d00(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778d03  jmp 0x778ae0 */
+    /* 00778d03  jmp 0x778ae0  ; StreamingBuffer3dMiles::vf32 */
     c->eip = 0x00778ae0u;
     goto out;
 out: __attribute__((unused));
@@ -1326,7 +1416,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778d10  (between same file) */
+/* 00778d10  PhysicsNode::vf54_adjustor8_00778d10  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778d10, bfv_client_l1_body_00778d10);
 void bfv_client_l1_body_00778d10(struct bfv_cpu *c)
 {
@@ -1341,7 +1432,7 @@ void bfv_client_l1_body_00778d10(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778d13  jmp 0x6827e0 */
+    /* 00778d13  jmp 0x6827e0  ; PhysicsNode::vf54 */
     c->eip = 0x006827e0u;
     goto out;
 out: __attribute__((unused));
@@ -1351,7 +1442,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778d20  (between same file) */
+/* 00778d20  StreamingBuffer3dMiles::vf34_adjustor8_00778d20  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778d20, bfv_client_l1_body_00778d20);
 void bfv_client_l1_body_00778d20(struct bfv_cpu *c)
 {
@@ -1366,7 +1458,7 @@ void bfv_client_l1_body_00778d20(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778d23  jmp 0x778af0 */
+    /* 00778d23  jmp 0x778af0  ; StreamingBuffer3dMiles::vf34 */
     c->eip = 0x00778af0u;
     goto out;
 out: __attribute__((unused));
@@ -1376,7 +1468,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778d30  (between same file) */
+/* 00778d30  StreamingBuffer3dMiles::vf35_adjustor8_00778d30  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778d30, bfv_client_l1_body_00778d30);
 void bfv_client_l1_body_00778d30(struct bfv_cpu *c)
 {
@@ -1391,7 +1484,7 @@ void bfv_client_l1_body_00778d30(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778d33  jmp 0x778b00 */
+    /* 00778d33  jmp 0x778b00  ; StreamingBuffer3dMiles::vf35 */
     c->eip = 0x00778b00u;
     goto out;
 out: __attribute__((unused));
@@ -1401,7 +1494,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00778d40  (between same file) */
+/* 00778d40  StreamingBuffer3dMiles::vf36_adjustor8_00778d40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778d40, bfv_client_l1_body_00778d40);
 void bfv_client_l1_body_00778d40(struct bfv_cpu *c)
 {
@@ -1416,7 +1510,7 @@ void bfv_client_l1_body_00778d40(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00778d43  jmp 0x778b10 */
+    /* 00778d43  jmp 0x778b10  ; StreamingBuffer3dMiles::vf36 */
     c->eip = 0x00778b10u;
     goto out;
 out: __attribute__((unused));
@@ -1426,7 +1520,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778d90  (between same file) */
+/* 00778d90  StreamingBuffer3dMiles::play_helper_00778d90  (between same file)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ * called by: StreamingBuffer3dMiles::play
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778d90, bfv_client_l1_body_00778d90);
 BFV_L1_RESUME(bfv_client_l1r_00778d90_1, bfv_client_l1_body_00778d90, 1);
 BFV_L1_RESUME(bfv_client_l1r_00778d90_2, bfv_client_l1_body_00778d90, 2);
@@ -1458,7 +1555,7 @@ void bfv_client_l1_body_00778d90(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00778d9a  jne 0x778dfb */
     if (!zf) goto L_00778dfb;
-    /* 00778d9c  mov eax, dword ptr [esp + 8] */
+    /* 00778d9c  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00778da0  push eax */
@@ -1467,7 +1564,7 @@ void bfv_client_l1_body_00778d90(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00778da1  mov ecx, 0xcfac80 */
     ecx = 0xcfac80u;
-    /* 00778da6  call 0x7720e0 */
+    /* 00778da6  call 0x7720e0  ; pc_007720e0 */
     t = 0x007720e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778d90_1;
@@ -1527,7 +1624,7 @@ L_00778dbd:
     /* 00778dcd  mov dword ptr [esi + 0x118], eax */
     ea = (uint32_t)(esi + 0x00000118u);
     M32(ea) = eax;
-    /* 00778dd3  call 0x771e70 */
+    /* 00778dd3  call 0x771e70  ; pc_00771e70 */
     t = 0x00771e70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778d90_2;
@@ -1546,7 +1643,7 @@ R_2:
     /* 00778de4  mov dword ptr [esi + 0x10c], eax */
     ea = (uint32_t)(esi + 0x0000010cu);
     M32(ea) = eax;
-    /* 00778dea  call 0x771e70 */
+    /* 00778dea  call 0x771e70  ; pc_00771e70 */
     t = 0x00771e70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778d90_3;
@@ -1581,7 +1678,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778e10  (between same file) */
+/* 00778e10  StreamingBuffer3dMiles::sub_00778e10  (between same file)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ * called by: StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_helper_00779140, StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_007792b0, StreamingBuffer3dMiles::ASI_error_00779580
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778e10, bfv_client_l1_body_00778e10);
 BFV_L1_RESUME(bfv_client_l1r_00778e10_1, bfv_client_l1_body_00778e10, 1);
 void bfv_client_l1_body_00778e10(struct bfv_cpu *c)
@@ -1667,7 +1767,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778e50  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 00778e50  StreamingBuffer3dMiles::stop  (virtual method)
+ * overrides: IBuffer::stop  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778e50, bfv_client_l1_body_00778e50);
 BFV_L1_RESUME(bfv_client_l1r_00778e50_1, bfv_client_l1_body_00778e50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00778e50_2, bfv_client_l1_body_00778e50, 2);
@@ -1712,7 +1815,7 @@ void bfv_client_l1_body_00778e50(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778e68  call dword ptr [0xb4245c] */
+    /* 00778e68  call dword ptr [0xb4245c]  ; MSS32!_AIL_end_3D_sample@4 */
     ea = (uint32_t)(0x00b4245cu);
     t = M32(ea);
     esp -= 4;
@@ -1722,7 +1825,7 @@ void bfv_client_l1_body_00778e50(struct bfv_cpu *c)
 R_1:
     /* 00778e6e  lea ecx, [esi + 8] */
     ecx = (uint32_t)(esi + 0x00000008u);
-    /* 00778e71  call 0x775420 */
+    /* 00778e71  call 0x775420  ; Buffer3dMiles::releaseHandle */
     t = 0x00775420u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778e50_2;
@@ -1730,7 +1833,7 @@ R_1:
     goto out;
 R_2:
 L_00778e76:
-    /* 00778e76  mov cl, byte ptr [esp + 8] */
+    /* 00778e76  mov cl, byte ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(ecx, M8(ea));
     /* 00778e7a  mov al, 1 */
@@ -1767,7 +1870,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00778ea0  (between same file) */
+/* 00778ea0  StreamingBuffer3dMiles_calls__AIL_set_3D_sample_info_8_00778ea0  (between same file)
+ * called by: StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_007792b0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778ea0, bfv_client_l1_body_00778ea0);
 BFV_L1_RESUME(bfv_client_l1r_00778ea0_1, bfv_client_l1_body_00778ea0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00778ea0_2, bfv_client_l1_body_00778ea0, 2);
@@ -1823,7 +1928,7 @@ void bfv_client_l1_body_00778ea0(struct bfv_cpu *c)
     esi = (uint32_t)(ebx + 0x00000018u);
     /* 00778eb4  mov ecx, 9 */
     ecx = 0x9u;
-    /* 00778eb9  lea edi, [esp + 0xc] */
+    /* 00778eb9  lea edi, [esp + 0xc]  ; &var_24 */
     edi = (uint32_t)(esp + 0x0000000cu);
     /* 00778ebd  rep movsd dword ptr es:[edi], dword ptr [esi] */
     while (ecx) {
@@ -1835,9 +1940,9 @@ void bfv_client_l1_body_00778ea0(struct bfv_cpu *c)
     /* 00778ebf  mov ecx, dword ptr [ebx + 0x10c] */
     ea = (uint32_t)(ebx + 0x0000010cu);
     ecx = M32(ea);
-    /* 00778ec5  lea eax, [esp + 0xc] */
+    /* 00778ec5  lea eax, [esp + 0xc]  ; &var_24 */
     eax = (uint32_t)(esp + 0x0000000cu);
-    /* 00778ec9  mov dword ptr [esp + 0x10], ecx */
+    /* 00778ec9  mov dword ptr [esp + 0x10], ecx  ; var_20 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ecx;
     /* 00778ecd  mov ecx, dword ptr [ebx + 0x10] */
@@ -1867,10 +1972,10 @@ void bfv_client_l1_body_00778ea0(struct bfv_cpu *c)
     /* 00778edb  mov byte ptr [ebx + 0x108], 1 */
     ea = (uint32_t)(ebx + 0x00000108u);
     M8(ea) = 0x1u;
-    /* 00778ee2  mov dword ptr [esp + 0x1c], edx */
+    /* 00778ee2  mov dword ptr [esp + 0x1c], edx  ; var_1c */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = edx;
-    /* 00778ee6  call dword ptr [0xb425d8] */
+    /* 00778ee6  call dword ptr [0xb425d8]  ; MSS32!_AIL_set_3D_sample_info@8 */
     ea = (uint32_t)(0x00b425d8u);
     t = M32(ea);
     esp -= 4;
@@ -1954,7 +2059,7 @@ L_00778f06:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778f21  call dword ptr [0xb4257c] */
+    /* 00778f21  call dword ptr [0xb4257c]  ; MSS32!_AIL_set_3D_sample_loop_block@12 */
     ea = (uint32_t)(0x00b4257cu);
     t = M32(ea);
     esp -= 4;
@@ -1985,7 +2090,7 @@ R_2:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00778f39  call dword ptr [0xb42460] */
+    /* 00778f39  call dword ptr [0xb42460]  ; MSS32!_AIL_set_3D_sample_loop_count@8 */
     ea = (uint32_t)(0x00b42460u);
     t = M32(ea);
     esp -= 4;
@@ -2011,7 +2116,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778f54  call dword ptr [0xb42578] */
+    /* 00778f54  call dword ptr [0xb42578]  ; MSS32!_AIL_start_3D_sample@4 */
     ea = (uint32_t)(0x00b42578u);
     t = M32(ea);
     esp -= 4;
@@ -2059,7 +2164,7 @@ L_00778f63:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00778f6b  call dword ptr [0xb4257c] */
+    /* 00778f6b  call dword ptr [0xb4257c]  ; MSS32!_AIL_set_3D_sample_loop_block@12 */
     ea = (uint32_t)(0x00b4257cu);
     t = M32(ea);
     esp -= 4;
@@ -2078,7 +2183,7 @@ R_5:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00778f77  call dword ptr [0xb42460] */
+    /* 00778f77  call dword ptr [0xb42460]  ; MSS32!_AIL_set_3D_sample_loop_count@8 */
     ea = (uint32_t)(0x00b42460u);
     t = M32(ea);
     esp -= 4;
@@ -2093,7 +2198,7 @@ R_6:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00778f81  call dword ptr [0xb42578] */
+    /* 00778f81  call dword ptr [0xb42578]  ; MSS32!_AIL_start_3D_sample@4 */
     ea = (uint32_t)(0x00b42578u);
     t = M32(ea);
     esp -= 4;
@@ -2132,7 +2237,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00778f90  (between same file) */
+/* 00778f90  StreamingBuffer3dMiles::sub_00778f90  (between same file)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ * called by: StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_007792b0, StreamingBuffer3dMiles::play
+ */
 BFV_L1_ENTRY(bfv_client_l1_00778f90, bfv_client_l1_body_00778f90);
 BFV_L1_RESUME(bfv_client_l1r_00778f90_1, bfv_client_l1_body_00778f90, 1);
 BFV_L1_RESUME(bfv_client_l1r_00778f90_2, bfv_client_l1_body_00778f90, 2);
@@ -2187,7 +2295,7 @@ L_00778fa3:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 00778fa5  mov ebp, dword ptr [esp + 0x10] */
+    /* 00778fa5  mov ebp, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 00778fa9  mov dword ptr [esi + ebp*4 + 0x12c], 1 */
@@ -2430,7 +2538,7 @@ L_0077904d:
     edx = r;
     /* 00779057  mov ecx, edi */
     ecx = edi;
-    /* 00779059  call 0x55a020 */
+    /* 00779059  call 0x55a020  ; meme_0055a020 */
     t = 0x0055a020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00778f90_2;
@@ -2635,7 +2743,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00779100  (between same file) */
+/* 00779100  StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_helper_00779100  (between same file)
+ * called by: StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_007792b0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00779100, bfv_client_l1_body_00779100);
 BFV_L1_RESUME(bfv_client_l1r_00779100_1, bfv_client_l1_body_00779100, 1);
 void bfv_client_l1_body_00779100(struct bfv_cpu *c)
@@ -2657,7 +2767,7 @@ void bfv_client_l1_body_00779100(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00779108  jne 0x779139 */
     if (!zf) goto L_00779139;
-    /* 0077910a  mov eax, dword ptr [esp + 4] */
+    /* 0077910a  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0077910e  mov eax, dword ptr [ecx + eax*4 + 0x12c] */
@@ -2726,7 +2836,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00779140  (between same file) */
+/* 00779140  StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_helper_00779140  (between same file)
+ * called by: StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_007792b0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00779140, bfv_client_l1_body_00779140);
 BFV_L1_RESUME(bfv_client_l1r_00779140_1, bfv_client_l1_body_00779140, 1);
 BFV_L1_RESUME(bfv_client_l1r_00779140_2, bfv_client_l1_body_00779140, 2);
@@ -2764,7 +2876,7 @@ void bfv_client_l1_body_00779140(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 0077914b  je 0x77916c */
     if (zf) goto L_0077916c;
-    /* 0077914d  mov eax, dword ptr [esp + 8] */
+    /* 0077914d  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00779151  cmp dword ptr [esi + eax*4 + 0x12c], 1 */
@@ -2894,7 +3006,7 @@ L_0077919b:
     F_LOGIC(8, r);
     /* 007791c1  jne 0x77927c */
     if (!zf) goto L_0077927c;
-    /* 007791c7  mov edx, dword ptr [esp + 0x14] */
+    /* 007791c7  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 007791cb  mov ebx, dword ptr [esi + edx*4 + 0x10c] */
@@ -2937,7 +3049,7 @@ L_0077919b:
     /* 007791ec  mov byte ptr [esi + 0x109], 1 */
     ea = (uint32_t)(esi + 0x00000109u);
     M8(ea) = 0x1u;
-    /* 007791f3  call 0x778e10 */
+    /* 007791f3  call 0x778e10  ; StreamingBuffer3dMiles::sub_00778e10 */
     t = 0x00778e10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779140_3;
@@ -3114,7 +3226,7 @@ L_0077925d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00779265  mov eax, dword ptr [esp + 0x18] */
+    /* 00779265  mov eax, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00779269  mov ecx, dword ptr [esi + eax*4 + 0x10c] */
@@ -3125,7 +3237,7 @@ L_0077925d:
     SET16(edx, ((uint32_t)(int32_t)(int8_t)M8(ea)) & 0xffffu);
     /* 00779275  mov ecx, ebx */
     ecx = ebx;
-    /* 00779277  call 0x55a020 */
+    /* 00779277  call 0x55a020  ; meme_0055a020 */
     t = 0x0055a020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779140_6;
@@ -3133,7 +3245,7 @@ L_0077925d:
     goto out;
 R_6:
 L_0077927c:
-    /* 0077927c  mov edx, dword ptr [esp + 0x14] */
+    /* 0077927c  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
 L_00779280:
@@ -3184,7 +3296,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007792b0  (between same file) */
+/* 007792b0  StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_007792b0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007792b0, bfv_client_l1_body_007792b0);
 BFV_L1_RESUME(bfv_client_l1r_007792b0_1, bfv_client_l1_body_007792b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007792b0_2, bfv_client_l1_body_007792b0, 2);
@@ -3264,7 +3377,7 @@ void bfv_client_l1_body_007792b0(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x00000004u);
     /* 007792d3  mov ecx, edi */
     ecx = edi;
-    /* 007792d5  call 0x775d80 */
+    /* 007792d5  call 0x775d80  ; Buffer3dMiles::isPlaying */
     t = 0x00775d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_1;
@@ -3296,7 +3409,7 @@ R_1:
     M32(esp) = t;
     /* 007792ed  mov ecx, esi */
     ecx = esi;
-    /* 007792ef  call 0x779100 */
+    /* 007792ef  call 0x779100  ; StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_helper_00779100 */
     t = 0x00779100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_2;
@@ -3314,7 +3427,7 @@ R_2:
     M32(esp) = t;
     /* 007792fe  mov ecx, esi */
     ecx = esi;
-    /* 00779300  call 0x779140 */
+    /* 00779300  call 0x779140  ; StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_helper_00779140 */
     t = 0x00779140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_3;
@@ -3328,7 +3441,7 @@ R_3:
     if (zf) goto L_00779491;
     /* 0077930d  mov ecx, edi */
     ecx = edi;
-    /* 0077930f  call 0x776b70 */
+    /* 0077930f  call 0x776b70  ; Buffer3dMiles::calls__AIL_allocate_3D_sample_handle_4_00776b70 */
     t = 0x00776b70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_4;
@@ -3337,7 +3450,7 @@ R_3:
 R_4:
     /* 00779314  mov ecx, edi */
     ecx = edi;
-    /* 00779316  call 0x7755b0 */
+    /* 00779316  call 0x7755b0  ; Buffer3dMiles::sub_007755b0 */
     t = 0x007755b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_5;
@@ -3346,7 +3459,7 @@ R_4:
 R_5:
     /* 0077931b  mov ecx, esi */
     ecx = esi;
-    /* 0077931d  call 0x778ea0 */
+    /* 0077931d  call 0x778ea0  ; StreamingBuffer3dMiles_calls__AIL_set_3D_sample_info_8_00778ea0 */
     t = 0x00778ea0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_6;
@@ -3365,7 +3478,7 @@ R_6:
     /* 00779330  mov dword ptr [esi + 0x12c], 3 */
     ea = (uint32_t)(esi + 0x0000012cu);
     M32(ea) = 0x3u;
-    /* 0077933a  call 0x778f90 */
+    /* 0077933a  call 0x778f90  ; StreamingBuffer3dMiles::sub_00778f90 */
     t = 0x00778f90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_7;
@@ -3396,7 +3509,7 @@ L_00779342:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00779347  call dword ptr [0xb425d4] */
+    /* 00779347  call dword ptr [0xb425d4]  ; MSS32!_AIL_3D_sample_offset@4 */
     ea = (uint32_t)(0x00b425d4u);
     t = M32(ea);
     esp -= 4;
@@ -3424,7 +3537,7 @@ R_8:
     if (zf) goto L_00779376;
     /* 00779367  lea ecx, [esi - 4] */
     ecx = (uint32_t)(esi + 0xfffffffcu);
-    /* 0077936a  call 0x778e10 */
+    /* 0077936a  call 0x778e10  ; StreamingBuffer3dMiles::sub_00778e10 */
     t = 0x00778e10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_9;
@@ -3545,7 +3658,7 @@ L_007793c7:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 007793d6  call dword ptr [0xb42460] */
+    /* 007793d6  call dword ptr [0xb42460]  ; MSS32!_AIL_set_3D_sample_loop_count@8 */
     ea = (uint32_t)(0x00b42460u);
     t = M32(ea);
     esp -= 4;
@@ -3620,7 +3733,7 @@ L_007793f8:
     M32(esp) = t;
     /* 0077940f  mov ecx, edi */
     ecx = edi;
-    /* 00779411  call 0x779100 */
+    /* 00779411  call 0x779100  ; StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_helper_00779100 */
     t = 0x00779100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_14;
@@ -3638,7 +3751,7 @@ R_14:
     M32(esp) = t;
     /* 0077941c  mov ecx, edi */
     ecx = edi;
-    /* 0077941e  call 0x779140 */
+    /* 0077941e  call 0x779140  ; StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_helper_00779140 */
     t = 0x00779140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_15;
@@ -3662,7 +3775,7 @@ R_15:
     /* 00779435  mov dword ptr [edi + 0x130], ebx */
     ea = (uint32_t)(edi + 0x00000130u);
     M32(ea) = ebx;
-    /* 0077943b  call 0x778f90 */
+    /* 0077943b  call 0x778f90  ; StreamingBuffer3dMiles::sub_00778f90 */
     t = 0x00778f90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_16;
@@ -3723,7 +3836,7 @@ L_00779445:
     M32(esp) = t;
     /* 0077945e  mov ecx, esi */
     ecx = esi;
-    /* 00779460  call 0x779100 */
+    /* 00779460  call 0x779100  ; StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_helper_00779100 */
     t = 0x00779100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_17;
@@ -3741,7 +3854,7 @@ R_17:
     M32(esp) = t;
     /* 0077946b  mov ecx, esi */
     ecx = esi;
-    /* 0077946d  call 0x779140 */
+    /* 0077946d  call 0x779140  ; StreamingBuffer3dMiles_calls__AIL_3D_sample_offset_4_helper_00779140 */
     t = 0x00779140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_18;
@@ -3765,7 +3878,7 @@ R_18:
     /* 00779484  mov dword ptr [esi + 0x12c], ebx */
     ea = (uint32_t)(esi + 0x0000012cu);
     M32(ea) = ebx;
-    /* 0077948a  call 0x778f90 */
+    /* 0077948a  call 0x778f90  ; StreamingBuffer3dMiles::sub_00778f90 */
     t = 0x00778f90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007792b0_19;
@@ -3803,7 +3916,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007794a0  (between same file) */
+/* 007794a0  StreamingBuffer3dMiles::stop_adjustor8_007794a0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007794a0, bfv_client_l1_body_007794a0);
 void bfv_client_l1_body_007794a0(struct bfv_cpu *c)
 {
@@ -3818,7 +3932,7 @@ void bfv_client_l1_body_007794a0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 007794a3  jmp 0x778e50 */
+    /* 007794a3  jmp 0x778e50  ; StreamingBuffer3dMiles::stop */
     c->eip = 0x00778e50u;
     goto out;
 out: __attribute__((unused));
@@ -3828,7 +3942,11 @@ out: __attribute__((unused));
 }
 
 
-/* 007794b0  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 007794b0  StreamingBuffer3dMiles::releaseHandle  (virtual method)
+ * overrides: IBuffer::releaseHandle  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ * called by: StreamingBuffer3dMiles::~StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007794b0, bfv_client_l1_body_007794b0);
 BFV_L1_RESUME(bfv_client_l1r_007794b0_1, bfv_client_l1_body_007794b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007794b0_2, bfv_client_l1_body_007794b0, 2);
@@ -3885,7 +4003,7 @@ void bfv_client_l1_body_007794b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007794cb  mov ecx, 0xcfac80 */
     ecx = 0xcfac80u;
-    /* 007794d0  call 0x771d40 */
+    /* 007794d0  call 0x771d40  ; pc_00771d40 */
     t = 0x00771d40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007794b0_1;
@@ -4050,7 +4168,7 @@ L_00779566:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 0077956b  jmp 0x775420 */
+    /* 0077956b  jmp 0x775420  ; Buffer3dMiles::releaseHandle */
     c->eip = 0x00775420u;
     goto out;
 L_00779570:
@@ -4077,8 +4195,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00779580  (between same file)
- * strings: "ASI codec", "ASI_error", "ASI_stream_open", "ASI_stream_close" */
+/* 00779580  StreamingBuffer3dMiles::ASI_error_00779580  (between same file)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ * strings: "ASI codec", "ASI_error", "ASI_stream_open", "ASI_stream_close"
+ * called by: StreamingBuffer3dMiles::play
+ */
 BFV_L1_ENTRY(bfv_client_l1_00779580, bfv_client_l1_body_00779580);
 BFV_L1_RESUME(bfv_client_l1r_00779580_1, bfv_client_l1_body_00779580, 1);
 BFV_L1_RESUME(bfv_client_l1r_00779580_2, bfv_client_l1_body_00779580, 2);
@@ -4139,7 +4260,7 @@ void bfv_client_l1_body_00779580(struct bfv_cpu *c)
     /* 00779594  mov ebp, dword ptr [esi + 0x100] */
     ea = (uint32_t)(esi + 0x00000100u);
     ebp = M32(ea);
-    /* 0077959a  mov ecx, dword ptr [0xdf7148] */
+    /* 0077959a  mov ecx, dword ptr [0xdf7148]  ; g_pFileManager */
     ea = (uint32_t)(0x00df7148u);
     ecx = M32(ea);
     /* 007795a0  mov eax, dword ptr [ecx] */
@@ -4174,7 +4295,7 @@ void bfv_client_l1_body_00779580(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 007795b4  call dword ptr [eax + 0x10] */
+    /* 007795b4  call dword ptr [eax + 0x10]  ; -> FileManager::vf4 = FileManager::openFile */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -4231,7 +4352,7 @@ L_007795d1:
     F_SUB(32, a, b, r);
     /* 007795d7  jne 0x7795ed */
     if (!zf) goto L_007795ed;
-    /* 007795d9  mov ecx, dword ptr [0xbdafb8] */
+    /* 007795d9  mov ecx, dword ptr [0xbdafb8]  ; interfaceID(BufferedStream|MemStream|Win32FileStream) */
     ea = (uint32_t)(0x00bdafb8u);
     ecx = M32(ea);
     /* 007795df  mov edx, dword ptr [eax] */
@@ -4269,7 +4390,7 @@ L_007795ed:
     /* 007795f9  mov dword ptr [0xde5a10], eax */
     ea = (uint32_t)(0x00de5a10u);
     M32(ea) = eax;
-    /* 007795fe  call 0x778e10 */
+    /* 007795fe  call 0x778e10  ; StreamingBuffer3dMiles::sub_00778e10 */
     t = 0x00778e10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779580_3;
@@ -4287,7 +4408,7 @@ L_00779603:
     F_SUB(32, a, b, r);
     /* 0077960b  je 0x7796bc */
     if (zf) goto L_007796bc;
-    /* 00779611  mov ebp, dword ptr [0xb4258c] */
+    /* 00779611  mov ebp, dword ptr [0xb4258c]  ; MSS32!RIB_request_interface */
     ea = (uint32_t)(0x00b4258cu);
     ebp = M32(ea);
     /* 00779617  push ebx */
@@ -4296,10 +4417,10 @@ L_00779603:
     M32(esp) = t;
     /* 00779618  lea ecx, [esi + 0x144] */
     ecx = (uint32_t)(esi + 0x00000144u);
-    /* 0077961e  mov dword ptr [esp + 0x38], ecx */
+    /* 0077961e  mov dword ptr [esp + 0x38], ecx  ; var_18 */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = ecx;
-    /* 00779622  lea ecx, [esp + 0x10] */
+    /* 00779622  lea ecx, [esp + 0x10]  ; &var_40 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 00779626  push ecx */
     t = ecx;
@@ -4311,10 +4432,10 @@ L_00779603:
     M32(esp) = t;
     /* 00779629  lea edx, [esi + 0x134] */
     edx = (uint32_t)(esi + 0x00000134u);
-    /* 0077962f  mov dword ptr [esp + 0x20], edx */
+    /* 0077962f  mov dword ptr [esp + 0x20], edx  ; var_38 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = edx;
-    /* 00779633  push 0xbaf958 */
+    /* 00779633  push 0xbaf958  ; "ASI codec" */
     t = 0xbaf958u;
     esp -= 4;
     M32(esp) = t;
@@ -4326,46 +4447,46 @@ L_00779603:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00779645  mov dword ptr [esp + 0x20], edi */
+    /* 00779645  mov dword ptr [esp + 0x20], edi  ; var_40 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = edi;
-    /* 00779649  mov dword ptr [esp + 0x24], 0xbaf94c */
+    /* 00779649  mov dword ptr [esp + 0x24], 0xbaf94c  ; var_3c, "ASI_error" */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = 0xbaf94cu;
-    /* 00779651  mov dword ptr [esp + 0x2c], edi */
+    /* 00779651  mov dword ptr [esp + 0x2c], edi  ; var_34 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = edi;
-    /* 00779655  mov dword ptr [esp + 0x30], edi */
+    /* 00779655  mov dword ptr [esp + 0x30], edi  ; var_30 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 00779659  mov dword ptr [esp + 0x34], 0xbaf93c */
+    /* 00779659  mov dword ptr [esp + 0x34], 0xbaf93c  ; var_2c, "ASI_stream_open" */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = 0xbaf93cu;
-    /* 00779661  mov dword ptr [esp + 0x38], ebx */
+    /* 00779661  mov dword ptr [esp + 0x38], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = ebx;
-    /* 00779665  mov dword ptr [esp + 0x3c], edi */
+    /* 00779665  mov dword ptr [esp + 0x3c], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x0000003cu);
     M32(ea) = edi;
-    /* 00779669  mov dword ptr [esp + 0x40], edi */
+    /* 00779669  mov dword ptr [esp + 0x40], edi  ; var_20 */
     ea = (uint32_t)(esp + 0x00000040u);
     M32(ea) = edi;
-    /* 0077966d  mov dword ptr [esp + 0x44], 0xbaf928 */
+    /* 0077966d  mov dword ptr [esp + 0x44], 0xbaf928  ; var_1c, "ASI_stream_close" */
     ea = (uint32_t)(esp + 0x00000044u);
     M32(ea) = 0xbaf928u;
-    /* 00779675  mov dword ptr [esp + 0x4c], edi */
+    /* 00779675  mov dword ptr [esp + 0x4c], edi  ; var_14 */
     ea = (uint32_t)(esp + 0x0000004cu);
     M32(ea) = edi;
-    /* 00779679  mov dword ptr [esp + 0x50], edi */
+    /* 00779679  mov dword ptr [esp + 0x50], edi  ; var_10 */
     ea = (uint32_t)(esp + 0x00000050u);
     M32(ea) = edi;
-    /* 0077967d  mov dword ptr [esp + 0x54], 0xbaf914 */
+    /* 0077967d  mov dword ptr [esp + 0x54], 0xbaf914  ; var_c, "ASI_stream_process" */
     ea = (uint32_t)(esp + 0x00000054u);
     M32(ea) = 0xbaf914u;
-    /* 00779685  mov dword ptr [esp + 0x58], edx */
+    /* 00779685  mov dword ptr [esp + 0x58], edx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000058u);
     M32(ea) = edx;
-    /* 00779689  mov dword ptr [esp + 0x5c], edi */
+    /* 00779689  mov dword ptr [esp + 0x5c], edi  ; var_4 */
     ea = (uint32_t)(esp + 0x0000005cu);
     M32(ea) = edi;
     /* 0077968d  call ebp */
@@ -4378,7 +4499,7 @@ R_4:
     /* 0077968f  mov eax, dword ptr [esi + 0x100] */
     ea = (uint32_t)(esi + 0x00000100u);
     eax = M32(ea);
-    /* 00779695  lea edx, [esp + 0x20] */
+    /* 00779695  lea edx, [esp + 0x20]  ; &var_30 */
     edx = (uint32_t)(esp + 0x00000020u);
     /* 00779699  push edx */
     t = edx;
@@ -4388,7 +4509,7 @@ R_4:
     t = 0x3u;
     esp -= 4;
     M32(esp) = t;
-    /* 0077969c  push 0xbaf908 */
+    /* 0077969c  push 0xbaf908  ; "ASI stream" */
     t = 0xbaf908u;
     esp -= 4;
     M32(esp) = t;
@@ -4469,7 +4590,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007796d0  dice::mills::pc::StreamingBuffer3dMiles  (virtual method) */
+/* 007796d0  StreamingBuffer3dMiles::play  (virtual method)
+ * overrides: IBuffer::play  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007796d0, bfv_client_l1_body_007796d0);
 BFV_L1_RESUME(bfv_client_l1r_007796d0_1, bfv_client_l1_body_007796d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007796d0_2, bfv_client_l1_body_007796d0, 2);
@@ -4520,7 +4644,7 @@ void bfv_client_l1_body_007796d0(struct bfv_cpu *c)
     /* 007796e7  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 007796e9  call dword ptr [eax + 0x48] */
+    /* 007796e9  call dword ptr [eax + 0x48]  ; -> StreamingBuffer3dMiles::vf18 = BotMain::vf79_get_ch (returns this+0xc) */
     ea = (uint32_t)(eax + 0x00000048u);
     t = M32(ea);
     esp -= 4;
@@ -4545,7 +4669,7 @@ L_007796f9:
     edx = M32(ea);
     /* 007796fb  mov ecx, esi */
     ecx = esi;
-    /* 007796fd  call dword ptr [edx + 0x48] */
+    /* 007796fd  call dword ptr [edx + 0x48]  ; -> StreamingBuffer3dMiles::vf18 = BotMain::vf79_get_ch (returns this+0xc) */
     ea = (uint32_t)(edx + 0x00000048u);
     t = M32(ea);
     esp -= 4;
@@ -4591,7 +4715,7 @@ R_2:
     if (!zf) goto L_0077973b;
     /* 00779725  mov ecx, esi */
     ecx = esi;
-    /* 00779727  call 0x779580 */
+    /* 00779727  call 0x779580  ; StreamingBuffer3dMiles::ASI_error_00779580 */
     t = 0x00779580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007796d0_3;
@@ -4625,7 +4749,7 @@ L_0077973b:
     eax = M32(ea);
     /* 0077973d  mov ecx, esi */
     ecx = esi;
-    /* 0077973f  call dword ptr [eax + 0x48] */
+    /* 0077973f  call dword ptr [eax + 0x48]  ; -> StreamingBuffer3dMiles::vf18 = BotMain::vf79_get_ch (returns this+0xc) */
     ea = (uint32_t)(eax + 0x00000048u);
     t = M32(ea);
     esp -= 4;
@@ -4643,7 +4767,7 @@ R_4:
     M32(esp) = t;
     /* 00779748  mov ecx, esi */
     ecx = esi;
-    /* 0077974a  call 0x778d90 */
+    /* 0077974a  call 0x778d90  ; StreamingBuffer3dMiles::play_helper_00778d90 */
     t = 0x00778d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007796d0_5;
@@ -4692,7 +4816,7 @@ R_5:
     /* 00779784  mov dword ptr [esi + 0x130], 3 */
     ea = (uint32_t)(esi + 0x00000130u);
     M32(ea) = 0x3u;
-    /* 0077978e  call 0x778f90 */
+    /* 0077978e  call 0x778f90  ; StreamingBuffer3dMiles::sub_00778f90 */
     t = 0x00778f90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007796d0_6;
@@ -4723,7 +4847,7 @@ L_0077979e:
     /* 007797aa  mov dword ptr [esi + 0x12c], 3 */
     ea = (uint32_t)(esi + 0x0000012cu);
     M32(ea) = 0x3u;
-    /* 007797b4  call 0x778f90 */
+    /* 007797b4  call 0x778f90  ; StreamingBuffer3dMiles::sub_00778f90 */
     t = 0x00778f90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007796d0_7;
@@ -4751,7 +4875,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007797d0  (between same file) */
+/* 007797d0  StreamingBuffer3dMiles::play_adjustor8_007797d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007797d0, bfv_client_l1_body_007797d0);
 void bfv_client_l1_body_007797d0(struct bfv_cpu *c)
 {
@@ -4766,7 +4891,7 @@ void bfv_client_l1_body_007797d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 007797d3  jmp 0x7796d0 */
+    /* 007797d3  jmp 0x7796d0  ; StreamingBuffer3dMiles::play */
     c->eip = 0x007796d0u;
     goto out;
 out: __attribute__((unused));
@@ -4776,7 +4901,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007797e0  (between same file) */
+/* 007797e0  StreamingBuffer3dMiles::releaseHandle_adjustor8_007797e0  (between same file)
+ * also entered at 007797f0: StreamingBuffer3dMiles::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_007797e0, bfv_client_l1_body_007797e0);
 void bfv_client_l1_body_007797e0(struct bfv_cpu *c)
 {
@@ -4791,7 +4918,7 @@ void bfv_client_l1_body_007797e0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 007797e3  jmp 0x7794b0 */
+    /* 007797e3  jmp 0x7794b0  ; StreamingBuffer3dMiles::releaseHandle */
     c->eip = 0x007794b0u;
     goto out;
 out: __attribute__((unused));
@@ -4801,7 +4928,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00779810  (between same file) */
+/* 00779810  StreamingBuffer3dMiles::~StreamingBuffer3dMiles  (between same file)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00779810, bfv_client_l1_body_00779810);
 BFV_L1_RESUME(bfv_client_l1r_00779810_1, bfv_client_l1_body_00779810, 1);
 BFV_L1_RESUME(bfv_client_l1r_00779810_2, bfv_client_l1_body_00779810, 2);
@@ -4831,7 +4960,7 @@ void bfv_client_l1_body_00779810(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00779814  lea edi, [esi + 8] */
     edi = (uint32_t)(esi + 0x00000008u);
-    /* 00779817  mov dword ptr [esi], 0xbafaf4 */
+    /* 00779817  mov dword ptr [esi], 0xbafaf4  ; vtable StreamingBuffer3dMiles */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbafaf4u;
     /* 0077981d  mov dword ptr [esi + 4], 0xbafaec */
@@ -4840,7 +4969,7 @@ void bfv_client_l1_body_00779810(struct bfv_cpu *c)
     /* 00779824  mov dword ptr [edi], 0xbafa54 */
     ea = (uint32_t)(edi);
     M32(ea) = 0xbafa54u;
-    /* 0077982a  call 0x7794b0 */
+    /* 0077982a  call 0x7794b0  ; StreamingBuffer3dMiles::releaseHandle */
     t = 0x007794b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779810_1;
@@ -4862,7 +4991,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0077983f  call 0x403680 */
+    /* 0077983f  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779810_2;
@@ -4891,7 +5020,7 @@ L_00779847:
     /* 0077985b  mov byte ptr [esi + 0xd0], al */
     ea = (uint32_t)(esi + 0x000000d0u);
     M8(ea) = LO8(eax);
-    /* 00779861  call 0x776ab0 */
+    /* 00779861  call 0x776ab0  ; Buffer3dMiles::~Buffer3dMiles */
     t = 0x00776ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779810_3;
@@ -4902,7 +5031,7 @@ R_3:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 00779867  mov dword ptr [esi], 0xbaf374 */
+    /* 00779867  mov dword ptr [esi], 0xbaf374  ; vtable IBuffer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbaf374u;
     /* 0077986d  pop esi */
@@ -4920,8 +5049,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00779870  dice::mills::pc::StreamingBuffer3dMiles  (virtual method)
- * strings: "Output file types", "Input file types", "ASI codec" */
+/* 00779870  StreamingBuffer3dMiles::load  (virtual method)
+ * overrides: IBuffer::load  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer3dMiles
+ * strings: "Output file types", "Input file types", "ASI codec"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00779870, bfv_client_l1_body_00779870);
 BFV_L1_RESUME(bfv_client_l1r_00779870_1, bfv_client_l1_body_00779870, 1);
 BFV_L1_RESUME(bfv_client_l1r_00779870_2, bfv_client_l1_body_00779870, 2);
@@ -4988,7 +5120,7 @@ void bfv_client_l1_body_00779870(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00779877  mov edi, dword ptr [esp + 0x8c] */
+    /* 00779877  mov edi, dword ptr [esp + 0x8c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000008cu);
     edi = M32(ea);
     /* 0077987e  push -1 */
@@ -5011,7 +5143,7 @@ void bfv_client_l1_body_00779870(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00779886  lea ecx, [esi + 0xcc] */
     ecx = (uint32_t)(esi + 0x000000ccu);
-    /* 0077988c  call 0x4019f0 */
+    /* 0077988c  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_1;
@@ -5030,18 +5162,18 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00779895  lea ecx, [esp + 0x24] */
+    /* 00779895  lea ecx, [esp + 0x24]  ; &var_70 */
     ecx = (uint32_t)(esp + 0x00000024u);
-    /* 00779899  mov dword ptr [esp + 0x3c], 0xf */
+    /* 00779899  mov dword ptr [esp + 0x3c], 0xf  ; var_58 */
     ea = (uint32_t)(esp + 0x0000003cu);
     M32(ea) = 0xfu;
-    /* 007798a1  mov dword ptr [esp + 0x38], ebx */
+    /* 007798a1  mov dword ptr [esp + 0x38], ebx  ; var_5c */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = ebx;
-    /* 007798a5  mov byte ptr [esp + 0x28], bl */
+    /* 007798a5  mov byte ptr [esp + 0x28], bl  ; var_6c */
     ea = (uint32_t)(esp + 0x00000028u);
     M8(ea) = LO8(ebx);
-    /* 007798a9  call 0x4019f0 */
+    /* 007798a9  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_2;
@@ -5054,14 +5186,14 @@ R_2:
     t = 0xffffffffu;
     esp -= 4;
     M32(esp) = t;
-    /* 007798b5  mov dword ptr [esp + 0x3c], eax */
+    /* 007798b5  mov dword ptr [esp + 0x3c], eax  ; var_50 */
     ea = (uint32_t)(esp + 0x0000003cu);
     M32(ea) = eax;
     /* 007798b9  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 007798ba  lea eax, [esp + 0x20] */
+    /* 007798ba  lea eax, [esp + 0x20]  ; &var_70 */
     eax = (uint32_t)(esp + 0x00000020u);
     /* 007798be  mov ebp, 0xf */
     ebp = 0xfu;
@@ -5069,43 +5201,43 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007798c4  lea ecx, [esp + 0x48] */
+    /* 007798c4  lea ecx, [esp + 0x48]  ; &var_4c */
     ecx = (uint32_t)(esp + 0x00000048u);
-    /* 007798c8  mov dword ptr [esp + 0x40], ebx */
+    /* 007798c8  mov dword ptr [esp + 0x40], ebx  ; var_54 */
     ea = (uint32_t)(esp + 0x00000040u);
     M32(ea) = ebx;
-    /* 007798cc  mov dword ptr [esp + 0x60], ebp */
+    /* 007798cc  mov dword ptr [esp + 0x60], ebp  ; var_34 */
     ea = (uint32_t)(esp + 0x00000060u);
     M32(ea) = ebp;
-    /* 007798d0  mov dword ptr [esp + 0x5c], ebx */
+    /* 007798d0  mov dword ptr [esp + 0x5c], ebx  ; var_38 */
     ea = (uint32_t)(esp + 0x0000005cu);
     M32(ea) = ebx;
-    /* 007798d4  mov byte ptr [esp + 0x4c], bl */
+    /* 007798d4  mov byte ptr [esp + 0x4c], bl  ; var_48 */
     ea = (uint32_t)(esp + 0x0000004cu);
     M8(ea) = LO8(ebx);
-    /* 007798d8  call 0x4019f0 */
+    /* 007798d8  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 007798dd  mov ecx, dword ptr [esp + 0x34] */
+    /* 007798dd  mov ecx, dword ptr [esp + 0x34]  ; var_54 */
     ea = (uint32_t)(esp + 0x00000034u);
     ecx = M32(ea);
-    /* 007798e1  mov edx, dword ptr [esp + 0x38] */
+    /* 007798e1  mov edx, dword ptr [esp + 0x38]  ; var_50 */
     ea = (uint32_t)(esp + 0x00000038u);
     edx = M32(ea);
-    /* 007798e5  mov dword ptr [esp + 0x58], ecx */
+    /* 007798e5  mov dword ptr [esp + 0x58], ecx  ; var_30 */
     ea = (uint32_t)(esp + 0x00000058u);
     M32(ea) = ecx;
-    /* 007798e9  lea eax, [esp + 0x3c] */
+    /* 007798e9  lea eax, [esp + 0x3c]  ; &var_4c */
     eax = (uint32_t)(esp + 0x0000003cu);
     /* 007798ed  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007798ee  lea ecx, [esp + 0x14] */
+    /* 007798ee  lea ecx, [esp + 0x14]  ; &var_78 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 007798f2  push ecx */
     t = ecx;
@@ -5113,17 +5245,17 @@ R_3:
     M32(esp) = t;
     /* 007798f3  mov ecx, 0xde5a50 */
     ecx = 0xde5a50u;
-    /* 007798f8  mov dword ptr [esp + 0x64], edx */
+    /* 007798f8  mov dword ptr [esp + 0x64], edx  ; var_2c */
     ea = (uint32_t)(esp + 0x00000064u);
     M32(ea) = edx;
-    /* 007798fc  call 0x777240 */
+    /* 007798fc  call 0x777240  ; Buffer3dMiles_00777240 */
     t = 0x00777240u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 00779901  cmp dword ptr [esp + 0x54], 0x10 */
+    /* 00779901  cmp dword ptr [esp + 0x54], 0x10  ; var_34 */
     ea = (uint32_t)(esp + 0x00000054u);
     a = M32(ea);
     b = 0x10u;
@@ -5131,14 +5263,14 @@ R_4:
     F_SUB(32, a, b, r);
     /* 00779906  jb 0x779915 */
     if (cf) goto L_00779915;
-    /* 00779908  mov edx, dword ptr [esp + 0x40] */
+    /* 00779908  mov edx, dword ptr [esp + 0x40]  ; var_48 */
     ea = (uint32_t)(esp + 0x00000040u);
     edx = M32(ea);
     /* 0077990c  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0077990d  call 0x403680 */
+    /* 0077990d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_5;
@@ -5152,31 +5284,31 @@ R_5:
     F_ADD(32, a, b, r);
     esp = r;
 L_00779915:
-    /* 00779915  cmp dword ptr [esp + 0x30], 0x10 */
+    /* 00779915  cmp dword ptr [esp + 0x30], 0x10  ; var_58 */
     ea = (uint32_t)(esp + 0x00000030u);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 0077991a  mov dword ptr [esp + 0x54], ebp */
+    /* 0077991a  mov dword ptr [esp + 0x54], ebp  ; var_34 */
     ea = (uint32_t)(esp + 0x00000054u);
     M32(ea) = ebp;
-    /* 0077991e  mov dword ptr [esp + 0x50], ebx */
+    /* 0077991e  mov dword ptr [esp + 0x50], ebx  ; var_38 */
     ea = (uint32_t)(esp + 0x00000050u);
     M32(ea) = ebx;
-    /* 00779922  mov byte ptr [esp + 0x40], bl */
+    /* 00779922  mov byte ptr [esp + 0x40], bl  ; var_48 */
     ea = (uint32_t)(esp + 0x00000040u);
     M8(ea) = LO8(ebx);
     /* 00779926  jb 0x779935 */
     if (cf) goto L_00779935;
-    /* 00779928  mov eax, dword ptr [esp + 0x1c] */
+    /* 00779928  mov eax, dword ptr [esp + 0x1c]  ; var_6c */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 0077992c  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0077992d  call 0x403680 */
+    /* 0077992d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_6;
@@ -5190,7 +5322,7 @@ R_6:
     F_ADD(32, a, b, r);
     esp = r;
 L_00779935:
-    /* 00779935  mov ecx, dword ptr [esp + 0x10] */
+    /* 00779935  mov ecx, dword ptr [esp + 0x10]  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 00779939  mov edx, dword ptr [esi + 0x118] */
@@ -5208,47 +5340,47 @@ L_00779935:
     r = 0;
     F_LOGIC(32, r);
     edx = r;
-    /* 0077994f  mov dword ptr [esp + 0x60], edx */
+    /* 0077994f  mov dword ptr [esp + 0x60], edx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000060u);
     M32(ea) = edx;
-    /* 00779953  mov dword ptr [esp + 0x64], edx */
+    /* 00779953  mov dword ptr [esp + 0x64], edx  ; var_24 */
     ea = (uint32_t)(esp + 0x00000064u);
     M32(ea) = edx;
-    /* 00779957  mov dword ptr [esp + 0x68], edx */
+    /* 00779957  mov dword ptr [esp + 0x68], edx  ; var_20 */
     ea = (uint32_t)(esp + 0x00000068u);
     M32(ea) = edx;
-    /* 0077995b  mov dword ptr [esp + 0x6c], edx */
+    /* 0077995b  mov dword ptr [esp + 0x6c], edx  ; var_1c */
     ea = (uint32_t)(esp + 0x0000006cu);
     M32(ea) = edx;
-    /* 0077995f  mov dword ptr [esp + 0x70], edx */
+    /* 0077995f  mov dword ptr [esp + 0x70], edx  ; var_18 */
     ea = (uint32_t)(esp + 0x00000070u);
     M32(ea) = edx;
-    /* 00779963  mov dword ptr [esp + 0x74], edx */
+    /* 00779963  mov dword ptr [esp + 0x74], edx  ; var_14 */
     ea = (uint32_t)(esp + 0x00000074u);
     M32(ea) = edx;
-    /* 00779967  mov dword ptr [esp + 0x78], edx */
+    /* 00779967  mov dword ptr [esp + 0x78], edx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000078u);
     M32(ea) = edx;
-    /* 0077996b  mov dword ptr [esp + 0x7c], edx */
+    /* 0077996b  mov dword ptr [esp + 0x7c], edx  ; var_c */
     ea = (uint32_t)(esp + 0x0000007cu);
     M32(ea) = edx;
-    /* 0077996f  mov dword ptr [esp + 0x80], edx */
+    /* 0077996f  mov dword ptr [esp + 0x80], edx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000080u);
     M32(ea) = edx;
     /* 00779976  mov dword ptr [0xde5a08], ecx */
     ea = (uint32_t)(0x00de5a08u);
     M32(ea) = ecx;
-    /* 0077997c  mov dword ptr [esp + 0x84], edx */
+    /* 0077997c  mov dword ptr [esp + 0x84], edx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000084u);
     M32(ea) = edx;
-    /* 00779983  lea edx, [esp + 0x60] */
+    /* 00779983  lea edx, [esp + 0x60]  ; &var_28 */
     edx = (uint32_t)(esp + 0x00000060u);
     /* 00779987  mov ecx, edi */
     ecx = edi;
-    /* 00779989  mov dword ptr [esp + 0x80], 0xffffffff */
+    /* 00779989  mov dword ptr [esp + 0x80], 0xffffffff  ; var_8 */
     ea = (uint32_t)(esp + 0x00000080u);
     M32(ea) = 0xffffffffu;
-    /* 00779994  call 0x772e80 */
+    /* 00779994  call 0x772e80  ; pc_00772e80 */
     t = 0x00772e80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_7;
@@ -5290,7 +5422,7 @@ R_7:
     esp += 8;
     goto out;
 L_007799ae:
-    /* 007799ae  mov eax, dword ptr [esp + 0x84] */
+    /* 007799ae  mov eax, dword ptr [esp + 0x84]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000084u);
     eax = M32(ea);
     /* 007799b5  mov ecx, 1 */
@@ -5304,9 +5436,9 @@ L_007799ae:
     if (zf) goto L_00779adc;
     /* 007799c2  mov edx, edi */
     edx = edi;
-    /* 007799c4  lea ecx, [esp + 0x3c] */
+    /* 007799c4  lea ecx, [esp + 0x3c]  ; &var_4c */
     ecx = (uint32_t)(esp + 0x0000003cu);
-    /* 007799c8  call 0x41f920 */
+    /* 007799c8  call 0x41f920  ; sub_0041f920 */
     t = 0x0041f920u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_8;
@@ -5321,28 +5453,28 @@ R_8:
     t = 0xbaf98cu;
     esp -= 4;
     M32(esp) = t;
-    /* 007799d4  lea ecx, [esp + 0x20] */
+    /* 007799d4  lea ecx, [esp + 0x20]  ; &var_70 */
     ecx = (uint32_t)(esp + 0x00000020u);
-    /* 007799d8  mov dword ptr [esp + 0x38], ebp */
+    /* 007799d8  mov dword ptr [esp + 0x38], ebp  ; var_58 */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = ebp;
-    /* 007799dc  mov dword ptr [esp + 0x34], ebx */
+    /* 007799dc  mov dword ptr [esp + 0x34], ebx  ; var_5c */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = ebx;
-    /* 007799e0  mov byte ptr [esp + 0x24], bl */
+    /* 007799e0  mov byte ptr [esp + 0x24], bl  ; var_6c */
     ea = (uint32_t)(esp + 0x00000024u);
     M8(ea) = LO8(ebx);
-    /* 007799e4  call 0x401ae0 */
+    /* 007799e4  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_9;
     c->eip = t;
     goto out;
 R_9:
-    /* 007799e9  mov eax, dword ptr [esp + 0x30] */
+    /* 007799e9  mov eax, dword ptr [esp + 0x30]  ; var_58 */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
-    /* 007799ed  mov ecx, dword ptr [esp + 0x1c] */
+    /* 007799ed  mov ecx, dword ptr [esp + 0x1c]  ; var_6c */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 007799f1  mov edi, 0x10 */
@@ -5354,28 +5486,28 @@ R_9:
     F_SUB(32, a, b, r);
     /* 007799f8  jae 0x7799fe */
     if (!cf) goto L_007799fe;
-    /* 007799fa  lea ecx, [esp + 0x1c] */
+    /* 007799fa  lea ecx, [esp + 0x1c]  ; &var_6c */
     ecx = (uint32_t)(esp + 0x0000001cu);
 L_007799fe:
-    /* 007799fe  cmp dword ptr [esp + 0x54], edi */
+    /* 007799fe  cmp dword ptr [esp + 0x54], edi  ; var_34 */
     ea = (uint32_t)(esp + 0x00000054u);
     a = M32(ea);
     b = edi;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00779a02  mov eax, dword ptr [esp + 0x40] */
+    /* 00779a02  mov eax, dword ptr [esp + 0x40]  ; var_48 */
     ea = (uint32_t)(esp + 0x00000040u);
     eax = M32(ea);
     /* 00779a06  jae 0x779a0c */
     if (!cf) goto L_00779a0c;
-    /* 00779a08  lea eax, [esp + 0x40] */
+    /* 00779a08  lea eax, [esp + 0x40]  ; &var_48 */
     eax = (uint32_t)(esp + 0x00000040u);
 L_00779a0c:
     /* 00779a0c  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00779a0d  push 0xbaf978 */
+    /* 00779a0d  push 0xbaf978  ; "Output file types" */
     t = 0xbaf978u;
     esp -= 4;
     M32(esp) = t;
@@ -5383,15 +5515,15 @@ L_00779a0c:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00779a13  push 0xbaf964 */
+    /* 00779a13  push 0xbaf964  ; "Input file types" */
     t = 0xbaf964u;
     esp -= 4;
     M32(esp) = t;
-    /* 00779a18  push 0xbaf958 */
+    /* 00779a18  push 0xbaf958  ; "ASI codec" */
     t = 0xbaf958u;
     esp -= 4;
     M32(esp) = t;
-    /* 00779a1d  call dword ptr [0xb425dc] */
+    /* 00779a1d  call dword ptr [0xb425dc]  ; MSS32!_RIB_find_files_provider@20 */
     ea = (uint32_t)(0x00b425dcu);
     t = M32(ea);
     esp -= 4;
@@ -5409,7 +5541,7 @@ R_10:
     M32(ea) = eax;
     /* 00779a2b  jne 0x779a6b */
     if (!zf) goto L_00779a6b;
-    /* 00779a2d  cmp dword ptr [esp + 0x30], edi */
+    /* 00779a2d  cmp dword ptr [esp + 0x30], edi  ; var_58 */
     ea = (uint32_t)(esp + 0x00000030u);
     a = M32(ea);
     b = edi;
@@ -5417,14 +5549,14 @@ R_10:
     F_SUB(32, a, b, r);
     /* 00779a31  jb 0x779a40 */
     if (cf) goto L_00779a40;
-    /* 00779a33  mov eax, dword ptr [esp + 0x1c] */
+    /* 00779a33  mov eax, dword ptr [esp + 0x1c]  ; var_6c */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 00779a37  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00779a38  call 0x403680 */
+    /* 00779a38  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_11;
@@ -5438,31 +5570,31 @@ R_11:
     F_ADD(32, a, b, r);
     esp = r;
 L_00779a40:
-    /* 00779a40  cmp dword ptr [esp + 0x54], edi */
+    /* 00779a40  cmp dword ptr [esp + 0x54], edi  ; var_34 */
     ea = (uint32_t)(esp + 0x00000054u);
     a = M32(ea);
     b = edi;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00779a44  mov dword ptr [esp + 0x30], ebp */
+    /* 00779a44  mov dword ptr [esp + 0x30], ebp  ; var_58 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = ebp;
-    /* 00779a48  mov dword ptr [esp + 0x2c], ebx */
+    /* 00779a48  mov dword ptr [esp + 0x2c], ebx  ; var_5c */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 00779a4c  mov byte ptr [esp + 0x1c], bl */
+    /* 00779a4c  mov byte ptr [esp + 0x1c], bl  ; var_6c */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
     /* 00779a50  jb 0x779a5f */
     if (cf) goto L_00779a5f;
-    /* 00779a52  mov ecx, dword ptr [esp + 0x40] */
+    /* 00779a52  mov ecx, dword ptr [esp + 0x40]  ; var_48 */
     ea = (uint32_t)(esp + 0x00000040u);
     ecx = M32(ea);
     /* 00779a56  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00779a57  call 0x403680 */
+    /* 00779a57  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_12;
@@ -5507,16 +5639,16 @@ L_00779a5f:
     esp += 8;
     goto out;
 L_00779a6b:
-    /* 00779a6b  mov eax, dword ptr [esp + 0x78] */
+    /* 00779a6b  mov eax, dword ptr [esp + 0x78]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000078u);
     eax = M32(ea);
-    /* 00779a6f  imul eax, dword ptr [esp + 0x70] */
+    /* 00779a6f  imul eax, dword ptr [esp + 0x70]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000070u);
     p = (int64_t)(int32_t)eax * (int64_t)(int32_t)M32(ea);
     r = (uint32_t)p & 0xffffffffu;
     cf = of = p != (int64_t)(int32_t)r;
     eax = r;
-    /* 00779a74  imul eax, dword ptr [esp + 0x74] */
+    /* 00779a74  imul eax, dword ptr [esp + 0x74]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000074u);
     p = (int64_t)(int32_t)eax * (int64_t)(int32_t)M32(ea);
     r = (uint32_t)p & 0xffffffffu;
@@ -5535,24 +5667,24 @@ L_00779a6b:
         F_SZP(32, r); af = 0;
         edx = r;
     }
-    /* 00779a81  mov dword ptr [esp + 0x10], edx */
+    /* 00779a81  mov dword ptr [esp + 0x10], edx  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
-    /* 00779a85  lea ecx, [esp + 0x18] */
+    /* 00779a85  lea ecx, [esp + 0x18]  ; &var_70 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 00779a89  fild dword ptr [esp + 0x10] */
+    /* 00779a89  fild dword ptr [esp + 0x10]  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00779a8d  mov dword ptr [esp + 0x10], eax */
+    /* 00779a8d  mov dword ptr [esp + 0x10], eax  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 00779a91  fild dword ptr [esp + 0x10] */
+    /* 00779a91  fild dword ptr [esp + 0x10]  ; var_78 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00779a95  fmul dword ptr [esp + 0x60] */
+    /* 00779a95  fmul dword ptr [esp + 0x60]  ; var_28 */
     ea = (uint32_t)(esp + 0x00000060u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00779a99  fmul dword ptr [0xb55de0] */
+    /* 00779a99  fmul dword ptr [0xb55de0]  ; = 0.125f */
     ea = (uint32_t)(0x00b55de0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00779a9f  fcompp */
@@ -5564,16 +5696,16 @@ L_00779a6b:
     F_LOGIC(8, r);
     /* 00779aa6  jp 0x779ac2 */
     if (pf) goto L_00779ac2;
-    /* 00779aa8  call 0x5a7c60 */
+    /* 00779aa8  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_13;
     c->eip = t;
     goto out;
 R_13:
-    /* 00779aad  lea ecx, [esp + 0x3c] */
+    /* 00779aad  lea ecx, [esp + 0x3c]  ; &var_4c */
     ecx = (uint32_t)(esp + 0x0000003cu);
-    /* 00779ab1  call 0x5a7c60 */
+    /* 00779ab1  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_14;
@@ -5618,16 +5750,16 @@ L_00779ac2:
     /* 00779ac9  mov dword ptr [esi + 0x20], ebx */
     ea = (uint32_t)(esi + 0x00000020u);
     M32(ea) = ebx;
-    /* 00779acc  call 0x5a7c60 */
+    /* 00779acc  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_15;
     c->eip = t;
     goto out;
 R_15:
-    /* 00779ad1  lea ecx, [esp + 0x3c] */
+    /* 00779ad1  lea ecx, [esp + 0x3c]  ; &var_4c */
     ecx = (uint32_t)(esp + 0x0000003cu);
-    /* 00779ad5  call 0x5a7c60 */
+    /* 00779ad5  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00779870_16;
@@ -5640,7 +5772,7 @@ L_00779adc:
     /* 00779adc  mov edx, dword ptr [esi + 0x118] */
     ea = (uint32_t)(esi + 0x00000118u);
     edx = M32(ea);
-    /* 00779ae2  mov eax, dword ptr [esp + 0x64] */
+    /* 00779ae2  mov eax, dword ptr [esp + 0x64]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000064u);
     eax = M32(ea);
     /* 00779ae6  shl edx, 1 */
@@ -5667,31 +5799,31 @@ L_00779adc:
     ea = (uint32_t)(esi + 0x00000020u);
     M32(ea) = eax;
 L_00779af2:
-    /* 00779af2  mov eax, dword ptr [esp + 0x74] */
+    /* 00779af2  mov eax, dword ptr [esp + 0x74]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000074u);
     eax = M32(ea);
-    /* 00779af6  mov ecx, dword ptr [esp + 0x78] */
+    /* 00779af6  mov ecx, dword ptr [esp + 0x78]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000078u);
     ecx = M32(ea);
-    /* 00779afa  mov edx, dword ptr [esp + 0x70] */
+    /* 00779afa  mov edx, dword ptr [esp + 0x70]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000070u);
     edx = M32(ea);
     /* 00779afe  mov dword ptr [esi + 0x24], eax */
     ea = (uint32_t)(esi + 0x00000024u);
     M32(ea) = eax;
-    /* 00779b01  mov eax, dword ptr [esp + 0x68] */
+    /* 00779b01  mov eax, dword ptr [esp + 0x68]  ; var_20 */
     ea = (uint32_t)(esp + 0x00000068u);
     eax = M32(ea);
     /* 00779b05  mov dword ptr [esi + 0x28], ecx */
     ea = (uint32_t)(esi + 0x00000028u);
     M32(ea) = ecx;
-    /* 00779b08  mov ecx, dword ptr [esp + 0x7c] */
+    /* 00779b08  mov ecx, dword ptr [esp + 0x7c]  ; var_c */
     ea = (uint32_t)(esp + 0x0000007cu);
     ecx = M32(ea);
     /* 00779b0c  mov dword ptr [esi + 0x2c], edx */
     ea = (uint32_t)(esi + 0x0000002cu);
     M32(ea) = edx;
-    /* 00779b0f  mov edx, dword ptr [esp + 0x80] */
+    /* 00779b0f  mov edx, dword ptr [esp + 0x80]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000080u);
     edx = M32(ea);
     /* 00779b16  pop edi */

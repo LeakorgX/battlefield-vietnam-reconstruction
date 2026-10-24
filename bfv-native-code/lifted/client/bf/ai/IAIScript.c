@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a09d90  dice::bf::ai::IAIScript  (vtable store) */
+/* 00a09d90  IAIScript::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::IAIScript
+ * called by: AIScript::~AIScript
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09d90, bfv_client_l1_body_00a09d90);
 BFV_L1_RESUME(bfv_client_l1r_00a09d90_1, bfv_client_l1_body_00a09d90, 1);
 void bfv_client_l1_body_00a09d90(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_client_l1_body_00a09d90(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a09d91  mov esi, ecx */
     esi = ecx;
-    /* 00a09d93  mov dword ptr [esi], 0xbfcde8 */
+    /* 00a09d93  mov dword ptr [esi], 0xbfcde8  ; vtable IAIScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfcde8u;
     /* 00a09d99  cmp dword ptr [esi + 0x1c], 0x10 */
@@ -43,7 +46,7 @@ void bfv_client_l1_body_00a09d90(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a09da3  call 0x403680 */
+    /* 00a09da3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a09d90_1;
@@ -85,7 +88,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09dc0  dice::bf::ai::IAIScript  (virtual method) */
+/* 00a09dc0  IAIScript::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAIScript
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09dc0, bfv_client_l1_body_00a09dc0);
 BFV_L1_RESUME(bfv_client_l1r_00a09dc0_1, bfv_client_l1_body_00a09dc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a09dc0_2, bfv_client_l1_body_00a09dc0, 2);
@@ -107,7 +112,7 @@ void bfv_client_l1_body_00a09dc0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a09dc1  mov esi, ecx */
     esi = ecx;
-    /* 00a09dc3  mov dword ptr [esi], 0xbfcde8 */
+    /* 00a09dc3  mov dword ptr [esi], 0xbfcde8  ; vtable IAIScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfcde8u;
     /* 00a09dc9  cmp dword ptr [esi + 0x1c], 0x10 */
@@ -125,7 +130,7 @@ void bfv_client_l1_body_00a09dc0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a09dd3  call 0x403680 */
+    /* 00a09dd3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a09dc0_1;
@@ -152,7 +157,7 @@ L_00a09ddb:
     /* 00a09de7  mov byte ptr [esi + 8], al */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = LO8(eax);
-    /* 00a09dea  test byte ptr [esp + 8], 1 */
+    /* 00a09dea  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -162,7 +167,7 @@ L_00a09ddb:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a09df2  call 0x403680 */
+    /* 00a09df2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a09dc0_2;
@@ -193,7 +198,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a09e00  dice::bf::ai::IAIScript  (vtable store) */
+/* 00a09e00  IAIScript::IAIScript  (vtable store)
+ * class: dice::bf::ai::IAIScript
+ * called by: AIScript::AIScript
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a09e00, bfv_client_l1_body_00a09e00);
 BFV_L1_RESUME(bfv_client_l1r_00a09e00_1, bfv_client_l1_body_00a09e00, 1);
 void bfv_client_l1_body_00a09e00(struct bfv_cpu *c)
@@ -219,7 +227,7 @@ void bfv_client_l1_body_00a09e00(struct bfv_cpu *c)
     eax = r;
     /* 00a09e05  lea ecx, [esi + 4] */
     ecx = (uint32_t)(esi + 0x00000004u);
-    /* 00a09e08  mov dword ptr [esi], 0xbfcde8 */
+    /* 00a09e08  mov dword ptr [esi], 0xbfcde8  ; vtable IAIScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfcde8u;
     /* 00a09e0e  push -1 */
@@ -239,14 +247,14 @@ void bfv_client_l1_body_00a09e00(struct bfv_cpu *c)
     /* 00a09e1b  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 00a09e1e  mov eax, dword ptr [esp + 0x10] */
+    /* 00a09e1e  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00a09e22  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a09e23  call 0x4019f0 */
+    /* 00a09e23  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a09e00_1;

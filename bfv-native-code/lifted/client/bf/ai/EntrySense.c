@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009b6560  (source path) */
+/* 009b6560  AIConsole::ctor_dtor_helper_009b6560  (source path)
+ * also entered at 009b6570: EntrySense::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b6560, bfv_client_l1_body_009b6560);
 void bfv_client_l1_body_009b6560(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_009b6560(struct bfv_cpu *c)
     uint32_t ea;
     /* 009b6560  mov eax, ecx */
     eax = ecx;
-    /* 009b6562  mov dword ptr [eax], 0xbf6d8c */
+    /* 009b6562  mov dword ptr [eax], 0xbf6d8c  ; vtable EntrySense */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf6d8cu;
     /* 009b6568  ret */

@@ -1,0 +1,19 @@
+## file
+BAPFlowCWhile is the plan statement "while condition do body": condition at
+this+0x18, body statement at this+0x20.
+
+## 009ee630
+vf2: forwards to the body's vf2 (its control-lock masks).
+
+## 009ee6f0
+execute(bot, &flag, &done): calls bot slot 0xd8. When the stop flag this+0x24
+is set it clears it and reports flag = done = 1. When this+0x25 is set the
+condition is tested first; false ends the loop with flag = done = 1. Then runs
+the body through the bot's runner. With this+0x26 set, this+0x25 takes the
+body's done value (the condition is re-tested only after the body finishes);
+with it clear this+0x25 is set (re-tested every run). While it loops it
+reports done = 0.
+
+## 009ee7c0
+destroy: deletes the condition (slot 8) and the body (slot 4), counts the
+destroyed statement and frees it to its pool when asked.

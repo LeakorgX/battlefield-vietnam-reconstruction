@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005a00e0  dice::bf::menu::CrossHair  (vtable store) */
+/* 005a00e0  CrossHair::CrossHair  (vtable store)
+ * class: dice::bf::menu::CrossHair
+ * called by: HudManager::HudManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a00e0, bfv_client_l1_body_005a00e0);
 void bfv_client_l1_body_005a00e0(struct bfv_cpu *c)
 {
@@ -20,13 +23,13 @@ void bfv_client_l1_body_005a00e0(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 005a00e4  mov dword ptr [eax], 0xb74064 */
+    /* 005a00e4  mov dword ptr [eax], 0xb74064  ; vtable CrossHair */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb74064u;
     /* 005a00ea  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 005a00ed  mov byte ptr [eax + 8], 1 */
+    /* 005a00ed  mov byte ptr [eax + 8], 1  ; field ShowCrossHair */
     ea = (uint32_t)(eax + 0x00000008u);
     M8(ea) = 0x1u;
     /* 005a00f1  mov dword ptr [eax + 0x24], ecx */
@@ -40,13 +43,13 @@ void bfv_client_l1_body_005a00e0(struct bfv_cpu *c)
     /* 005a00fc  mov byte ptr [eax + 0x14], cl */
     ea = (uint32_t)(eax + 0x00000014u);
     M8(ea) = LO8(ecx);
-    /* 005a00ff  mov dword ptr [eax + 0x30], ecx */
+    /* 005a00ff  mov dword ptr [eax + 0x30], ecx  ; field ScopeIndex */
     ea = (uint32_t)(eax + 0x00000030u);
     M32(ea) = ecx;
-    /* 005a0102  mov dword ptr [eax + 0x3c], 0x40a00000 */
+    /* 005a0102  mov dword ptr [eax + 0x3c], 0x40a00000  ; 5.0f */
     ea = (uint32_t)(eax + 0x0000003cu);
     M32(ea) = 0x40a00000u;
-    /* 005a0109  mov dword ptr [eax + 0x40], 0x40a00000 */
+    /* 005a0109  mov dword ptr [eax + 0x40], 0x40a00000  ; 5.0f */
     ea = (uint32_t)(eax + 0x00000040u);
     M32(ea) = 0x40a00000u;
     /* 005a0110  mov dword ptr [eax + 0x5c], edx */
@@ -81,7 +84,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005a0130  (between same file) */
+/* 005a0130  CrossHair::~CrossHair  (between same file)
+ * class: dice::bf::menu::CrossHair
+ * also entered at 005a01b0: CrossHair::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a0130, bfv_client_l1_body_005a0130);
 BFV_L1_RESUME(bfv_client_l1r_005a0130_1, bfv_client_l1_body_005a0130, 1);
 BFV_L1_RESUME(bfv_client_l1r_005a0130_2, bfv_client_l1_body_005a0130, 2);
@@ -109,7 +115,7 @@ void bfv_client_l1_body_005a0130(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005a0132  mov esi, ecx */
     esi = ecx;
-    /* 005a0134  mov dword ptr [esi], 0xb74064 */
+    /* 005a0134  mov dword ptr [esi], 0xb74064  ; vtable CrossHair */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb74064u;
     /* 005a013a  cmp dword ptr [esi + 0x7c], 0x10 */
@@ -127,7 +133,7 @@ void bfv_client_l1_body_005a0130(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0144  call 0x403680 */
+    /* 005a0144  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0130_1;
@@ -169,7 +175,7 @@ L_005a014c:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0165  call 0x403680 */
+    /* 005a0165  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0130_2;
@@ -207,7 +213,7 @@ L_005a016d:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0184  call 0x403680 */
+    /* 005a0184  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a0130_3;
@@ -230,7 +236,7 @@ L_005a018c:
     /* 005a0196  mov byte ptr [esi + 0x14], bl */
     ea = (uint32_t)(esi + 0x00000014u);
     M8(ea) = LO8(ebx);
-    /* 005a0199  mov dword ptr [esi], 0xb53ea8 */
+    /* 005a0199  mov dword ptr [esi], 0xb53ea8  ; vtable IMenuObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb53ea8u;
     /* 005a019f  pop esi */
@@ -252,8 +258,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005a01d0  dice::bf::menu::CrossHair  (virtual method)
- * strings: "CrossHair", "SniperSight", "ScopeIcon", "SightIcon" */
+/* 005a01d0  CrossHair::registerMenuData  (virtual method)
+ * overrides: IMenuObject::registerMenuData  (36 classes implement it)
+ * class: dice::bf::menu::CrossHair
+ * strings: "CrossHair", "SniperSight", "ScopeIcon", "SightIcon"
+ */
 BFV_L1_ENTRY(bfv_client_l1_005a01d0, bfv_client_l1_body_005a01d0);
 BFV_L1_RESUME(bfv_client_l1r_005a01d0_1, bfv_client_l1_body_005a01d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005a01d0_2, bfv_client_l1_body_005a01d0, 2);
@@ -355,7 +364,7 @@ void bfv_client_l1_body_005a01d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 005a01d3  mov eax, dword ptr [0xcff7cc] */
+    /* 005a01d3  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 005a01d8  push ebx */
@@ -386,7 +395,7 @@ void bfv_client_l1_body_005a01d0(struct bfv_cpu *c)
     ebx = r;
     /* 005a01e2  mov ebp, 0xf */
     ebp = 0xfu;
-    /* 005a01e7  push 0xb5e464 */
+    /* 005a01e7  push 0xb5e464  ; "CrossHair" */
     t = 0xb5e464u;
     esp -= 4;
     M32(esp) = t;
@@ -404,7 +413,7 @@ void bfv_client_l1_body_005a01d0(struct bfv_cpu *c)
     /* 005a01fc  mov byte ptr [esp + 0x38], bl */
     ea = (uint32_t)(esp + 0x00000038u);
     M8(ea) = LO8(ebx);
-    /* 005a0200  call 0x401ae0 */
+    /* 005a0200  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_1;
@@ -415,7 +424,7 @@ R_1:
     t = 0xbu;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0207  push 0xb740e4 */
+    /* 005a0207  push 0xb740e4  ; "SniperSight" */
     t = 0xb740e4u;
     esp -= 4;
     M32(esp) = t;
@@ -430,7 +439,7 @@ R_1:
     /* 005a0218  mov byte ptr [esp + 0x1c], bl */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a021c  call 0x401ae0 */
+    /* 005a021c  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_2;
@@ -452,9 +461,9 @@ R_2:
     /* 005a022b  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 005a022e  lea edx, [esi + 0x84] */
+    /* 005a022e  lea edx, [esi + 0x84]  ; field SniperSight (menu data, meme_registerBoolRef) */
     edx = (uint32_t)(esi + 0x00000084u);
-    /* 005a0234  call 0x487df0 */
+    /* 005a0234  call 0x487df0  ; meme_registerBoolRef */
     t = 0x00487df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_3;
@@ -480,7 +489,7 @@ R_3:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a024b  call 0x403680 */
+    /* 005a024b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_4;
@@ -498,7 +507,7 @@ L_005a0253:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0254  call 0x403610 */
+    /* 005a0254  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_5;
@@ -529,7 +538,7 @@ R_5:
     /* 005a0265  mov edx, dword ptr [esi + 0x48] */
     ea = (uint32_t)(esi + 0x00000048u);
     edx = M32(ea);
-    /* 005a0268  push 0xb740d8 */
+    /* 005a0268  push 0xb740d8  ; "ScopeIcon" */
     t = 0xb740d8u;
     esp -= 4;
     M32(esp) = t;
@@ -539,7 +548,7 @@ R_5:
     M32(esp) = t;
     /* 005a026e  mov ecx, eax */
     ecx = eax;
-    /* 005a0270  call 0x8696a0 */
+    /* 005a0270  call 0x8696a0  ; StringData::StringData */
     t = 0x008696a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_6;
@@ -551,7 +560,7 @@ R_6:
 L_005a0277:
     /* 005a0277  lea edx, [esi + 0x48] */
     edx = (uint32_t)(esi + 0x00000048u);
-    /* 005a027a  push 0xb740d8 */
+    /* 005a027a  push 0xb740d8  ; "ScopeIcon" */
     t = 0xb740d8u;
     esp -= 4;
     M32(esp) = t;
@@ -561,7 +570,7 @@ L_005a0277:
     M32(esp) = t;
     /* 005a0280  mov ecx, eax */
     ecx = eax;
-    /* 005a0282  call 0x8696a0 */
+    /* 005a0282  call 0x8696a0  ; StringData::StringData */
     t = 0x008696a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_7;
@@ -601,7 +610,7 @@ L_005a028b:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a02a1  call 0x403680 */
+    /* 005a02a1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_8;
@@ -637,7 +646,7 @@ R_8:
     /* 005a02af  mov ecx, dword ptr [esp + 0x38] */
     ea = (uint32_t)(esp + 0x00000038u);
     ecx = M32(ea);
-    /* 005a02b3  call 0x7c2019 */
+    /* 005a02b3  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_9;
@@ -680,7 +689,7 @@ L_005a02ca:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a02cf  call 0x868e00 */
+    /* 005a02cf  call 0x868e00  ; meme::System::registerObject_thunk_00868e00 */
     t = 0x00868e00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_10;
@@ -691,7 +700,7 @@ R_10:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005a02d5  call 0x403610 */
+    /* 005a02d5  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_11;
@@ -722,7 +731,7 @@ R_11:
     /* 005a02e6  mov ecx, dword ptr [esi + 0x68] */
     ea = (uint32_t)(esi + 0x00000068u);
     ecx = M32(ea);
-    /* 005a02e9  push 0xb740cc */
+    /* 005a02e9  push 0xb740cc  ; "SightIcon" */
     t = 0xb740ccu;
     esp -= 4;
     M32(esp) = t;
@@ -732,7 +741,7 @@ R_11:
     M32(esp) = t;
     /* 005a02ef  mov ecx, eax */
     ecx = eax;
-    /* 005a02f1  call 0x8696a0 */
+    /* 005a02f1  call 0x8696a0  ; StringData::StringData */
     t = 0x008696a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_12;
@@ -744,7 +753,7 @@ R_12:
 L_005a02f8:
     /* 005a02f8  lea ecx, [esi + 0x68] */
     ecx = (uint32_t)(esi + 0x00000068u);
-    /* 005a02fb  push 0xb740cc */
+    /* 005a02fb  push 0xb740cc  ; "SightIcon" */
     t = 0xb740ccu;
     esp -= 4;
     M32(esp) = t;
@@ -754,7 +763,7 @@ L_005a02f8:
     M32(esp) = t;
     /* 005a0301  mov ecx, eax */
     ecx = eax;
-    /* 005a0303  call 0x8696a0 */
+    /* 005a0303  call 0x8696a0  ; StringData::StringData */
     t = 0x008696a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_13;
@@ -794,7 +803,7 @@ L_005a030c:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0325  call 0x403680 */
+    /* 005a0325  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_14;
@@ -830,7 +839,7 @@ R_14:
     /* 005a0333  mov ecx, dword ptr [esp + 0x38] */
     ea = (uint32_t)(esp + 0x00000038u);
     ecx = M32(ea);
-    /* 005a0337  call 0x7c2019 */
+    /* 005a0337  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_15;
@@ -873,7 +882,7 @@ L_005a034e:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0353  call 0x868e00 */
+    /* 005a0353  call 0x868e00  ; meme::System::registerObject_thunk_00868e00 */
     t = 0x00868e00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_16;
@@ -884,7 +893,7 @@ R_16:
     t = 0xau;
     esp -= 4;
     M32(esp) = t;
-    /* 005a035a  push 0xb740c0 */
+    /* 005a035a  push 0xb740c0  ; "ScopeIndex" */
     t = 0xb740c0u;
     esp -= 4;
     M32(esp) = t;
@@ -899,7 +908,7 @@ R_16:
     /* 005a036b  mov byte ptr [esp + 0x1c], bl */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a036f  call 0x401ae0 */
+    /* 005a036f  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_17;
@@ -921,9 +930,9 @@ R_17:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0381  lea edx, [esi + 0x30] */
+    /* 005a0381  lea edx, [esi + 0x30]  ; field ScopeIndex (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x00000030u);
-    /* 005a0384  call 0x4c5a10 */
+    /* 005a0384  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_18;
@@ -945,7 +954,7 @@ R_18:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0394  call 0x403680 */
+    /* 005a0394  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_19;
@@ -963,7 +972,7 @@ L_005a039c:
     t = 0x6u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a039e  push 0xb6beb8 */
+    /* 005a039e  push 0xb6beb8  ; "Radius" */
     t = 0xb6beb8u;
     esp -= 4;
     M32(esp) = t;
@@ -978,7 +987,7 @@ L_005a039c:
     /* 005a03af  mov byte ptr [esp + 0x1c], bl */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a03b3  call 0x401ae0 */
+    /* 005a03b3  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_20;
@@ -1000,9 +1009,9 @@ R_20:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a03c5  lea edx, [esi + 0x34] */
+    /* 005a03c5  lea edx, [esi + 0x34]  ; field Radius (menu data, meme_registerFloatRef) */
     edx = (uint32_t)(esi + 0x00000034u);
-    /* 005a03c8  call 0x4c5a90 */
+    /* 005a03c8  call 0x4c5a90  ; meme_registerFloatRef */
     t = 0x004c5a90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_21;
@@ -1024,7 +1033,7 @@ R_21:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a03d8  call 0x403680 */
+    /* 005a03d8  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_22;
@@ -1042,7 +1051,7 @@ L_005a03e0:
     t = 0x9u;
     esp -= 4;
     M32(esp) = t;
-    /* 005a03e2  push 0xb6be8c */
+    /* 005a03e2  push 0xb6be8c  ; "Deviation" */
     t = 0xb6be8cu;
     esp -= 4;
     M32(esp) = t;
@@ -1057,7 +1066,7 @@ L_005a03e0:
     /* 005a03f3  mov byte ptr [esp + 0x1c], bl */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a03f7  call 0x401ae0 */
+    /* 005a03f7  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_23;
@@ -1079,9 +1088,9 @@ R_23:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0409  lea edx, [esi + 0x38] */
+    /* 005a0409  lea edx, [esi + 0x38]  ; field Deviation (menu data, meme_registerFloatRef) */
     edx = (uint32_t)(esi + 0x00000038u);
-    /* 005a040c  call 0x4c5a90 */
+    /* 005a040c  call 0x4c5a90  ; meme_registerFloatRef */
     t = 0x004c5a90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_24;
@@ -1103,7 +1112,7 @@ R_24:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a041c  call 0x403680 */
+    /* 005a041c  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_25;
@@ -1121,7 +1130,7 @@ L_005a0424:
     t = 0xdu;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0426  push 0xb740b0 */
+    /* 005a0426  push 0xb740b0  ; "ShowCrossHair" */
     t = 0xb740b0u;
     esp -= 4;
     M32(esp) = t;
@@ -1136,7 +1145,7 @@ L_005a0424:
     /* 005a0437  mov byte ptr [esp + 0x1c], bl */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a043b  call 0x401ae0 */
+    /* 005a043b  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_26;
@@ -1158,9 +1167,9 @@ R_26:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a044d  lea edx, [esi + 8] */
+    /* 005a044d  lea edx, [esi + 8]  ; field ShowCrossHair (menu data, meme_registerBoolRef) */
     edx = (uint32_t)(esi + 0x00000008u);
-    /* 005a0450  call 0x487df0 */
+    /* 005a0450  call 0x487df0  ; meme_registerBoolRef */
     t = 0x00487df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_27;
@@ -1182,7 +1191,7 @@ R_27:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0460  call 0x403680 */
+    /* 005a0460  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_28;
@@ -1200,7 +1209,7 @@ L_005a0468:
     t = 0xdu;
     esp -= 4;
     M32(esp) = t;
-    /* 005a046a  push 0xb740a0 */
+    /* 005a046a  push 0xb740a0  ; "CrossHairType" */
     t = 0xb740a0u;
     esp -= 4;
     M32(esp) = t;
@@ -1215,7 +1224,7 @@ L_005a0468:
     /* 005a047b  mov byte ptr [esp + 0x1c], bl */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 005a047f  call 0x401ae0 */
+    /* 005a047f  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_29;
@@ -1237,9 +1246,9 @@ R_29:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0491  lea edx, [esi + 0xc] */
+    /* 005a0491  lea edx, [esi + 0xc]  ; field CrossHairType (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x0000000cu);
-    /* 005a0494  call 0x4c5a10 */
+    /* 005a0494  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_30;
@@ -1261,7 +1270,7 @@ R_30:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a04a4  call 0x403680 */
+    /* 005a04a4  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_31;
@@ -1279,7 +1288,7 @@ L_005a04ac:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005a04ad  call 0x403610 */
+    /* 005a04ad  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_32;
@@ -1310,7 +1319,7 @@ R_32:
     /* 005a04be  mov edx, dword ptr [esi + 0x14] */
     ea = (uint32_t)(esi + 0x00000014u);
     edx = M32(ea);
-    /* 005a04c1  push 0xb74090 */
+    /* 005a04c1  push 0xb74090  ; "CrossHairIcon" */
     t = 0xb74090u;
     esp -= 4;
     M32(esp) = t;
@@ -1320,7 +1329,7 @@ R_32:
     M32(esp) = t;
     /* 005a04c7  mov ecx, eax */
     ecx = eax;
-    /* 005a04c9  call 0x8696a0 */
+    /* 005a04c9  call 0x8696a0  ; StringData::StringData */
     t = 0x008696a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_33;
@@ -1332,7 +1341,7 @@ R_33:
 L_005a04d0:
     /* 005a04d0  lea edx, [esi + 0x14] */
     edx = (uint32_t)(esi + 0x00000014u);
-    /* 005a04d3  push 0xb74090 */
+    /* 005a04d3  push 0xb74090  ; "CrossHairIcon" */
     t = 0xb74090u;
     esp -= 4;
     M32(esp) = t;
@@ -1342,7 +1351,7 @@ L_005a04d0:
     M32(esp) = t;
     /* 005a04d9  mov ecx, eax */
     ecx = eax;
-    /* 005a04db  call 0x8696a0 */
+    /* 005a04db  call 0x8696a0  ; StringData::StringData */
     t = 0x008696a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_34;
@@ -1382,7 +1391,7 @@ L_005a04e4:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a04f6  call 0x403680 */
+    /* 005a04f6  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_35;
@@ -1419,7 +1428,7 @@ L_005a04fe:
     /* 005a0504  mov ecx, dword ptr [esp + 0x38] */
     ea = (uint32_t)(esp + 0x00000038u);
     ecx = M32(ea);
-    /* 005a0508  call 0x7c2019 */
+    /* 005a0508  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_36;
@@ -1462,20 +1471,20 @@ L_005a051f:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a0524  call 0x868e00 */
+    /* 005a0524  call 0x868e00  ; meme::System::registerObject_thunk_00868e00 */
     t = 0x00868e00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_37;
     c->eip = t;
     goto out;
 R_37:
-    /* 005a0529  push 0xb74080 */
+    /* 005a0529  push 0xb74080  ; "ShowCenterPoint" */
     t = 0xb74080u;
     esp -= 4;
     M32(esp) = t;
     /* 005a052e  lea ecx, [esp + 0x14] */
     ecx = (uint32_t)(esp + 0x00000014u);
-    /* 005a0532  call 0x402100 */
+    /* 005a0532  call 0x402100  ; std::string::string_cstr */
     t = 0x00402100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_38;
@@ -1499,7 +1508,7 @@ R_38:
     ecx = M32(ea);
     /* 005a0544  lea edx, [esi + 0x85] */
     edx = (uint32_t)(esi + 0x00000085u);
-    /* 005a054a  call 0x487df0 */
+    /* 005a054a  call 0x487df0  ; meme_registerBoolRef */
     t = 0x00487df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_39;
@@ -1521,7 +1530,7 @@ R_39:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005a055a  call 0x403680 */
+    /* 005a055a  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_40;
@@ -1550,7 +1559,7 @@ L_005a0562:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005a056d  call 0x403680 */
+    /* 005a056d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_41;
@@ -1585,7 +1594,7 @@ L_005a0575:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 005a057f  call 0x7c2019 */
+    /* 005a057f  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005a01d0_42;

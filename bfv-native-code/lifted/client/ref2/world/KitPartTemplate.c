@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 006d6fd0  dice::ref2::world::KitPartTemplate  (virtual method) */
+/* 006d6fd0  KitPartTemplate::getBoneName  (virtual method)
+ * class: dice::ref2::world::KitPartTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d6fd0, bfv_client_l1_body_006d6fd0);
 BFV_L1_RESUME(bfv_client_l1r_006d6fd0_1, bfv_client_l1_body_006d6fd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d6fd0_2, bfv_client_l1_body_006d6fd0, 2);
@@ -32,7 +34,7 @@ void bfv_client_l1_body_006d6fd0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006d6fda  call 0x730c90 */
+    /* 006d6fda  call 0x730c90  ; KitPartTemplate::sub_00730c90 */
     t = 0x00730c90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d6fd0_1;
@@ -41,7 +43,7 @@ void bfv_client_l1_body_006d6fd0(struct bfv_cpu *c)
 R_1:
     /* 006d6fdf  mov ecx, eax */
     ecx = eax;
-    /* 006d6fe1  call 0x730be0 */
+    /* 006d6fe1  call 0x730be0  ; KitPartTemplate::vf34_helper_00730be0 */
     t = 0x00730be0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d6fd0_2;
@@ -59,7 +61,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006d6ff0  dice::ref2::world::KitPartTemplate  (virtual method) */
+/* 006d6ff0  KitPartTemplate::setBoneName  (virtual method)
+ * class: dice::ref2::world::KitPartTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d6ff0, bfv_client_l1_body_006d6ff0);
 BFV_L1_RESUME(bfv_client_l1r_006d6ff0_1, bfv_client_l1_body_006d6ff0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d6ff0_2, bfv_client_l1_body_006d6ff0, 2);
@@ -81,7 +85,7 @@ void bfv_client_l1_body_006d6ff0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006d6ff1  lea eax, [esp + 8] */
+    /* 006d6ff1  lea eax, [esp + 8]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x00000008u);
     /* 006d6ff5  push eax */
     t = eax;
@@ -89,7 +93,7 @@ void bfv_client_l1_body_006d6ff0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006d6ff6  mov esi, ecx */
     esi = ecx;
-    /* 006d6ff8  call 0x730c90 */
+    /* 006d6ff8  call 0x730c90  ; KitPartTemplate::sub_00730c90 */
     t = 0x00730c90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d6ff0_1;
@@ -98,7 +102,7 @@ void bfv_client_l1_body_006d6ff0(struct bfv_cpu *c)
 R_1:
     /* 006d6ffd  mov ecx, eax */
     ecx = eax;
-    /* 006d6fff  call 0x730d00 */
+    /* 006d6fff  call 0x730d00  ; sub_00730d00 */
     t = 0x00730d00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d6ff0_2;
@@ -108,7 +112,7 @@ R_2:
     /* 006d7004  mov word ptr [esi + 0x1d8], ax */
     ea = (uint32_t)(esi + 0x000001d8u);
     M16(ea) = LO16(eax);
-    /* 006d700b  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 006d700b  cmp dword ptr [esp + 0x20], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
@@ -120,14 +124,14 @@ R_2:
     esi = t;
     /* 006d7011  jb 0x6d701e */
     if (cf) goto L_006d701e;
-    /* 006d7013  mov ecx, dword ptr [esp + 8] */
+    /* 006d7013  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006d7017  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006d7018  call 0x403680 */
+    /* 006d7018  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d6ff0_3;
@@ -150,7 +154,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006d7030  (between same file) */
+/* 006d7030  BFSoldier::vf60_helper_006d7030  (between same file)
+ * called by: BFSoldier::vf60
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d7030, bfv_client_l1_body_006d7030);
 BFV_L1_RESUME(bfv_client_l1r_006d7030_1, bfv_client_l1_body_006d7030, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d7030_2, bfv_client_l1_body_006d7030, 2);
@@ -170,7 +176,7 @@ void bfv_client_l1_body_006d7030(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006d7031  mov eax, dword ptr [esp + 8] */
+    /* 006d7031  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006d7035  push esi */
@@ -186,13 +192,13 @@ void bfv_client_l1_body_006d7030(struct bfv_cpu *c)
     /* 006d7039  mov edi, dword ptr [esi + 0x4c] */
     ea = (uint32_t)(esi + 0x0000004cu);
     edi = M32(ea);
-    /* 006d703c  lea ecx, [esp + 0x10] */
+    /* 006d703c  lea ecx, [esp + 0x10]  ; &arg_0 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 006d7040  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006d7041  lea edx, [esp + 0xc] */
+    /* 006d7041  lea edx, [esp + 0xc]  ; &var_4 */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 006d7045  push edx */
     t = edx;
@@ -203,14 +209,14 @@ void bfv_client_l1_body_006d7030(struct bfv_cpu *c)
     /* 006d704c  mov dword ptr [esi + 0x160], eax */
     ea = (uint32_t)(esi + 0x00000160u);
     M32(ea) = eax;
-    /* 006d7052  call 0x495000 */
+    /* 006d7052  call 0x495000  ; std::_Tree::find_00495000 */
     t = 0x00495000u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d7030_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006d7057  mov eax, dword ptr [esp + 8] */
+    /* 006d7057  mov eax, dword ptr [esp + 8]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 006d705b  cmp eax, dword ptr [edi + 0x1e4] */
@@ -225,7 +231,7 @@ R_1:
     edx = (uint32_t)(eax + 0x00000010u);
     /* 006d7066  mov ecx, esi */
     ecx = esi;
-    /* 006d7068  call 0x66b440 */
+    /* 006d7068  call 0x66b440  ; SimpleObject::sub_0066b440 */
     t = 0x0066b440u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d7030_2;
@@ -256,7 +262,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d7080  dice::ref2::world::KitPartTemplate  (virtual method) */
+/* 006d7080  KitPartTemplate::postLoad  (virtual method)
+ * overrides: ObjectTemplate::postLoad  (47 classes implement it)
+ * class: dice::ref2::world::KitPartTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d7080, bfv_client_l1_body_006d7080);
 BFV_L1_RESUME(bfv_client_l1r_006d7080_1, bfv_client_l1_body_006d7080, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d7080_2, bfv_client_l1_body_006d7080, 2);
@@ -286,7 +295,7 @@ void bfv_client_l1_body_006d7080(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006d7082  mov esi, ecx */
     esi = ecx;
-    /* 006d7084  call 0x6a46f0 */
+    /* 006d7084  call 0x6a46f0  ; BundleTemplate::postLoad */
     t = 0x006a46f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d7080_1;
@@ -322,13 +331,13 @@ L_006d7090:
     b = ecx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 006d709a  mov dword ptr [esp + 4], eax */
+    /* 006d709a  mov dword ptr [esp + 4], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
     /* 006d709e  je 0x6d70cf */
     if (zf) goto L_006d70cf;
 L_006d70a0:
-    /* 006d70a0  mov ecx, dword ptr [0xda21a8] */
+    /* 006d70a0  mov ecx, dword ptr [0xda21a8]  ; g_pGeometryTemplateManager */
     ea = (uint32_t)(0x00da21a8u);
     ecx = M32(ea);
     /* 006d70a6  mov edx, dword ptr [ecx] */
@@ -371,16 +380,16 @@ R_2:
     goto out;
 R_3:
 L_006d70ba:
-    /* 006d70ba  lea ecx, [esp + 4] */
+    /* 006d70ba  lea ecx, [esp + 4]  ; &var_4 */
     ecx = (uint32_t)(esp + 0x00000004u);
-    /* 006d70be  call 0x504c00 */
+    /* 006d70be  call 0x504c00  ; std::_Tree::iterator::_Inc_2d */
     t = 0x00504c00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d7080_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 006d70c3  mov eax, dword ptr [esp + 4] */
+    /* 006d70c3  mov eax, dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006d70c7  cmp eax, dword ptr [esi + 0x1e4] */
@@ -413,7 +422,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d70e0  dice::ref2::world::KitPartTemplate  (vtable store) */
+/* 006d70e0  KitPartTemplate::KitPartTemplate  (vtable store)
+ * class: dice::ref2::world::KitPartTemplate
+ * also entered at 006d7140: KitPartTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d70e0, bfv_client_l1_body_006d70e0);
 BFV_L1_RESUME(bfv_client_l1r_006d70e0_1, bfv_client_l1_body_006d70e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d70e0_2, bfv_client_l1_body_006d70e0, 2);
@@ -439,7 +451,7 @@ void bfv_client_l1_body_006d70e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006d70e2  mov esi, ecx */
     esi = ecx;
-    /* 006d70e4  call 0x6a52c0 */
+    /* 006d70e4  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
     t = 0x006a52c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d70e0_1;
@@ -450,7 +462,7 @@ R_1:
     edi = (uint32_t)(esi + 0x000001e0u);
     /* 006d70ef  mov ecx, edi */
     ecx = edi;
-    /* 006d70f1  mov dword ptr [esi], 0xb9e784 */
+    /* 006d70f1  mov dword ptr [esi], 0xb9e784  ; vtable KitPartTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9e784u;
     /* 006d70f7  mov dword ptr [esi + 4], 0xb9e768 */
@@ -462,7 +474,7 @@ R_1:
     /* 006d7105  mov dword ptr [esi + 0x1bc], 0xb9e730 */
     ea = (uint32_t)(esi + 0x000001bcu);
     M32(ea) = 0xb9e730u;
-    /* 006d710f  call 0x4243e0 */
+    /* 006d710f  call 0x4243e0  ; std::_Tree::_Buynode_head_48_004243e0 */
     t = 0x004243e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d70e0_2;
@@ -517,7 +529,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d7150  dice::ref2::world::KitPartTemplate  (virtual method) */
+/* 006d7150  KitPartTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::KitPartTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d7150, bfv_client_l1_body_006d7150);
 void bfv_client_l1_body_006d7150(struct bfv_cpu *c)
 {
@@ -526,10 +541,10 @@ void bfv_client_l1_body_006d7150(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006d7150  mov eax, dword ptr [esp + 4] */
+    /* 006d7150  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006d7154  cmp eax, dword ptr [0xb77f0c] */
+    /* 006d7154  cmp eax, dword ptr [0xb77f0c]  ; KitPartTemplate::classID */
     ea = (uint32_t)(0x00b77f0cu);
     a = eax;
     b = M32(ea);
@@ -544,10 +559,10 @@ void bfv_client_l1_body_006d7150(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006d7161:
-    /* 006d7161  mov dword ptr [esp + 4], eax */
+    /* 006d7161  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006d7165  jmp 0x6a4250 */
+    /* 006d7165  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));
@@ -557,7 +572,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d7170  dice::ref2::world::KitPartTemplate  (virtual method) */
+/* 006d7170  KitPartTemplate::vf35_getWord_1d8h  (virtual method)
+ * class: dice::ref2::world::KitPartTemplate
+ * also entered at 006d7180: KitPartTemplate::vf37
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d7170, bfv_client_l1_body_006d7170);
 void bfv_client_l1_body_006d7170(struct bfv_cpu *c)
 {
@@ -580,7 +598,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d7190  (between same file) */
+/* 006d7190  KitPartTemplate::deleting_dtor_adjustor4_006d7190  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d7190, bfv_client_l1_body_006d7190);
 void bfv_client_l1_body_006d7190(struct bfv_cpu *c)
 {
@@ -595,7 +614,7 @@ void bfv_client_l1_body_006d7190(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d7193  jmp 0x6d7200 */
+    /* 006d7193  jmp 0x6d7200  ; KitPartTemplate::deleting_dtor */
     c->eip = 0x006d7200u;
     goto out;
 out: __attribute__((unused));
@@ -605,7 +624,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d71a0  (between same file) */
+/* 006d71a0  KitPartTemplate::deleting_dtor_adjustor120_006d71a0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d71a0, bfv_client_l1_body_006d71a0);
 void bfv_client_l1_body_006d71a0(struct bfv_cpu *c)
 {
@@ -620,7 +640,7 @@ void bfv_client_l1_body_006d71a0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d71a3  jmp 0x6d7200 */
+    /* 006d71a3  jmp 0x6d7200  ; KitPartTemplate::deleting_dtor */
     c->eip = 0x006d7200u;
     goto out;
 out: __attribute__((unused));
@@ -630,7 +650,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d71b0  (between same file) */
+/* 006d71b0  KitPartTemplate::deleting_dtor_adjustor444_006d71b0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d71b0, bfv_client_l1_body_006d71b0);
 void bfv_client_l1_body_006d71b0(struct bfv_cpu *c)
 {
@@ -645,7 +666,7 @@ void bfv_client_l1_body_006d71b0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d71b6  jmp 0x6d7200 */
+    /* 006d71b6  jmp 0x6d7200  ; KitPartTemplate::deleting_dtor */
     c->eip = 0x006d7200u;
     goto out;
 out: __attribute__((unused));
@@ -655,7 +676,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d71c0  dice::ref2::world::KitPartTemplate  (virtual method) */
+/* 006d71c0  KitPartTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::KitPartTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d71c0, bfv_client_l1_body_006d71c0);
 BFV_L1_RESUME(bfv_client_l1r_006d71c0_1, bfv_client_l1_body_006d71c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d71c0_2, bfv_client_l1_body_006d71c0, 2);
@@ -685,7 +709,7 @@ void bfv_client_l1_body_006d71c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006d71c7  mov edi, ecx */
     edi = ecx;
-    /* 006d71c9  call 0x403610 */
+    /* 006d71c9  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d71c0_1;
@@ -711,7 +735,7 @@ R_1:
     M32(esp) = t;
     /* 006d71d8  mov ecx, esi */
     ecx = esi;
-    /* 006d71da  call 0x69fb50 */
+    /* 006d71da  call 0x69fb50  ; Bundle::Bundle */
     t = 0x0069fb50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d71c0_2;
@@ -722,7 +746,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 006d71e0  mov dword ptr [esi], 0xb9e64c */
+    /* 006d71e0  mov dword ptr [esi], 0xb9e64c  ; vtable KitPart */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9e64cu;
     /* 006d71e6  mov dword ptr [esi + 0x84], 0xb9e634 */
@@ -762,7 +786,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d7200  dice::ref2::world::KitPartTemplate  (virtual method) */
+/* 006d7200  KitPartTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::KitPartTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d7200, bfv_client_l1_body_006d7200);
 BFV_L1_RESUME(bfv_client_l1r_006d7200_1, bfv_client_l1_body_006d7200, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d7200_2, bfv_client_l1_body_006d7200, 2);
@@ -788,7 +815,7 @@ void bfv_client_l1_body_006d7200(struct bfv_cpu *c)
     esi = ecx;
     /* 006d7203  lea ecx, [esi + 0x1e0] */
     ecx = (uint32_t)(esi + 0x000001e0u);
-    /* 006d7209  call 0x43c400 */
+    /* 006d7209  call 0x43c400  ; std::_Tree::_Tidy_0043c400 */
     t = 0x0043c400u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d7200_1;
@@ -797,14 +824,14 @@ void bfv_client_l1_body_006d7200(struct bfv_cpu *c)
 R_1:
     /* 006d720e  mov ecx, esi */
     ecx = esi;
-    /* 006d7210  call 0x6a4480 */
+    /* 006d7210  call 0x6a4480  ; BundleTemplate::~BundleTemplate */
     t = 0x006a4480u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d7200_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 006d7215  test byte ptr [esp + 8], 1 */
+    /* 006d7215  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -814,7 +841,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006d721d  call 0x403680 */
+    /* 006d721d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d7200_3;
@@ -845,7 +872,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00730be0  (called from this file only) */
+/* 00730be0  KitPartTemplate::vf34_helper_00730be0  (called from this file only)
+ * called by: KitPartTemplate::getBoneName
+ */
 BFV_L1_ENTRY(bfv_client_l1_00730be0, bfv_client_l1_body_00730be0);
 void bfv_client_l1_body_00730be0(struct bfv_cpu *c)
 {
@@ -934,7 +963,7 @@ L_00730bec:
     esp += 4;
     esi = t;
 L_00730c06:
-    /* 00730c06  movsx edx, word ptr [esp + 8] */
+    /* 00730c06  movsx edx, word ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = (uint32_t)(int32_t)(int16_t)M16(ea);
     /* 00730c0b  cmp edx, eax */

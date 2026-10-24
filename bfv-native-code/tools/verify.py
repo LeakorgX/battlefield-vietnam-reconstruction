@@ -53,6 +53,15 @@ from verify_candidate_setup import compare as compare_candidate_setup
 from verify_scalar_vector_math import compare_scalar_vector_math
 from verify_aim_limits import compare_aim_limits
 from verify_aim_geometry import compare_aim_geometry
+from verify_aimer import compare_aimer
+from verify_astar_strategic import compare_astar_strategic
+from verify_astar_local import compare_astar_local
+from verify_astar_local_cells import compare_astar_local_cells
+from verify_task_scheduler import compare_task_scheduler
+from verify_astar_setup import compare_astar_setup
+from verify_search_task import compare_search_task
+from verify_task_queue import compare_task_queue
+from verify_searcher import compare_searcher,compare_searcher_heap,compare_searcher_output
 from verify_affine_matrix import compare_affine_matrix
 from verify_constant_returns import compare_constant_returns
 from verify_word_getters import compare_word_getters
@@ -65,9 +74,9 @@ from verify_global_stores import compare_global_stores
 from verify_collision import compare_collision, compare_dispatcher
 
 
-def verify(target):
+def verify(target,work_name=None):
     spec=TARGETS[target]
-    work=PROJECT/'build'/target
+    work=PROJECT/'build'/(work_name.replace('{target}',target) if work_name else target)
     manifest=json.loads((work/'manifest.json').read_text())
     original=(GAME/spec['file']).read_bytes()
     edited=Path(manifest['output']).read_bytes()
@@ -159,6 +168,31 @@ def verify(target):
     print(f'{target}: checking artillery aiming geometry and candidate gate',flush=True)
     aim_geometry_comparisons=compare_aim_geometry(original,original_pe,edited,edited_pe,spec,symbols)
     print(f'{target}: {len(aim_geometry_comparisons)} aiming geometry/gate comparisons passed',flush=True)
+    print(f'{target}: checking Aimer tracking, prediction and ballistic solve',flush=True)
+    aimer_comparisons=compare_aimer(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(aimer_comparisons)} Aimer comparisons passed',flush=True)
+    print(f'{target}: checking strategic A* neighbour expansion and grid queries',flush=True)
+    astar_strategic_comparisons=compare_astar_strategic(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(astar_strategic_comparisons)} strategic A* comparisons passed',flush=True)
+    print(f'{target}: checking local A* estimate, goal test and end points',flush=True)
+    astar_local_comparisons=compare_astar_local(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(astar_local_comparisons)} local A* comparisons passed',flush=True)
+    astar_local_cell_comparisons=compare_astar_local_cells(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(astar_local_cell_comparisons)} local A* cell comparisons passed',flush=True)
+    task_scheduler_comparisons=compare_task_scheduler(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(task_scheduler_comparisons)} task scheduler comparisons passed',flush=True)
+    astar_setup_comparisons=compare_astar_setup(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(astar_setup_comparisons)} strategic search setup/run comparisons passed',flush=True)
+    search_task_comparisons=compare_search_task(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(search_task_comparisons)} search task execute comparisons passed',flush=True)
+    task_queue_comparisons=compare_task_queue(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(task_queue_comparisons)} task queue comparisons passed',flush=True)
+    searcher_comparisons=compare_searcher(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(searcher_comparisons)} searcher step comparisons passed',flush=True)
+    searcher_heap_comparisons=compare_searcher_heap(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(searcher_heap_comparisons)} searcher heap helper comparisons passed',flush=True)
+    searcher_output_comparisons=compare_searcher_output(original,original_pe,edited,edited_pe,spec,symbols)
+    print(f'{target}: {len(searcher_output_comparisons)} searcher alloc and path output comparisons passed',flush=True)
     print(f'{target}: {len(aim_comparisons)} aiming-limit comparisons passed',flush=True)
     print(f'{target}: checking affine matrix composition',flush=True)
     matrix_comparisons=compare_affine_matrix(original,original_pe,edited,edited_pe,spec,symbols)
@@ -278,6 +312,50 @@ def verify(target):
     report['aim_geometry_cases']=len(aim_geometry_comparisons)
     report['aim_geometry']=aim_geometry_comparisons
     report['passed']+=len(aim_geometry_comparisons)
+    report['aimer_cases']=len(aimer_comparisons)
+    report['aimer']=aimer_comparisons
+    report['passed']+=len(aimer_comparisons)
+    report['scope']+=' Aimer target tracking, position prediction, projectile offset and the iterative ballistic solve execute original/reconstructed entries with the retained _ftol2 and _finite runtime, comparing returns, object and output memory, trace ring, ABI and x87 status across drag, high-arc, search-width, aliasing, non-finite and precision/rounding cases.'
+    report['astar_strategic_cases']=len(astar_strategic_comparisons)
+    report['astar_strategic']=astar_strategic_comparisons
+    report['passed']+=len(astar_strategic_comparisons)
+    report['astar_local_cases']=len(astar_local_comparisons)
+    report['astar_local']=astar_local_comparisons
+    report['passed']+=len(astar_local_comparisons)
+    report['astar_local_cell_cases']=len(astar_local_cell_comparisons)
+    report['astar_local_cells']=astar_local_cell_comparisons
+    report['passed']+=len(astar_local_cell_comparisons)
+    report['scope']+=' Local A* search estimate, goal test (all goal modes, goal-cell snapping) and start/goal end points execute original/reconstructed entries on random search objects, nodes overlapping the search fields, float bit patterns (NaN, infinity, denormal) and a stubbed layer lookup and terrain height, comparing EAX, the whole arena, the stub logs, ABI and x87 control, tag and non-condition status across rounding modes.'
+    report['scope']+=' Local A* successor cells (add_cell and the keep-out variant) execute original/reconstructed entries on random search objects with stubbed blocked tests, terrain surface and estimate, recursive splits down to the default layer, keep-out areas, bounds and the expanded node placed among the output nodes, comparing the whole arena, ESP, saved registers and the FPU control, tag and status words.'
+    report['scope']+=' Strategic A* neighbour expansion (vf2/vf3/vf4/vf6/vf7, the step and bounds helpers) and the strategic-grid cell, link and point queries execute original/reconstructed entries on random grids, masks, row shifts, layers, bounds, blocked costs and a recording slot-3 visitor that may move the point, comparing EAX, the whole arena, grid masks, ABI and x87 control, tag and non-condition status across rounding modes.'
+    report['task_scheduler_cases']=len(task_scheduler_comparisons)
+    report['task_scheduler']=task_scheduler_comparisons
+    report['passed']+=len(task_scheduler_comparisons)
+    report['astar_setup_cases']=len(astar_setup_comparisons)
+    report['astar_setup']=astar_setup_comparisons
+    report['passed']+=len(astar_setup_comparisons)
+    report['search_task_cases']=len(search_task_comparisons)
+    report['search_task']=search_task_comparisons
+    report['passed']+=len(search_task_comparisons)
+    report['task_queue_cases']=len(task_queue_comparisons)
+    report['task_queue']=task_queue_comparisons
+    report['passed']+=len(task_queue_comparisons)
+    report['searcher_cases']=len(searcher_comparisons)
+    report['searcher']=searcher_comparisons
+    report['passed']+=len(searcher_comparisons)
+    report['searcher_heap_cases']=len(searcher_heap_comparisons)
+    report['searcher_heap']=searcher_heap_comparisons
+    report['passed']+=len(searcher_heap_comparisons)
+    report['searcher_output_cases']=len(searcher_output_comparisons)
+    report['searcher_output']=searcher_output_comparisons
+    report['passed']+=len(searcher_output_comparisons)
+    report['scope']+=' The A* searcher reset, node alloc and path output routines (path copy, path into a ring and its extension, closed-list points) execute original/reconstructed entries directly on random parent chains, closed lists, node vectors and rings (including negative capacities and out-of-range indexes), with the ring extension nested natively and the pool allocator, free and vector push_back and resize as logged models, comparing EAX, the call log, the arena, ABI and x87 control, tag and non-condition status across rounding modes.'
+    report['scope']+=' The A* searcher heap helpers (push, update, pop with its sift-down, closed-list removal) execute original/reconstructed entries directly on random heaps, open and closed hashes and closed lists, nested natively, with the game random generator live for equal totals and a modelled vector push_back, comparing the push_back and generator call log, the arena, the generator state, ABI and x87 control, tag and non-condition status across rounding modes (EAX, ECX and EDX are reloaded by every caller).'
+    report['scope']+=' The A* searcher step executes original/reconstructed entries on a stub searcher with stubbed reset, node alloc, heap push, pop and update, closed-list removal (each verified directly below), problem methods, timer and log (fresh and resumed searches, successors on a small grid so open and closed matches and reopenings occur, deadlines crossed or NaN), comparing EAX, the stub call log, the arena, ABI and x87 control, tag and non-condition status across rounding modes.'
+    report['scope']+=' Task unschedule, Task queue, TaskPlayerMapSearch::execute, TaskStrategicPlayerMapSearch::execute, TaskStrategicSearch::execute, TaskGetStrategicCellInfoNo::execute, the strategic cell distance and the cell query and strategic player map search inits execute original/reconstructed entries with stubbed scheduler add and remove, Task::sleep, search prepare, finish and setup, cell query and player map init, layer point, height and distance calls on a stub strategic grid (some rewrite the task), comparing EAX, the stub call log, the arena, ABI and x87 control, tag and non-condition status across rounding modes.'
+    report['scope']+=' TaskAStarLocalSearch::execute and TaskAStarStrategicSearch::execute execute original/reconstructed entries with a stubbed time left, Task::sleep, searcher step and path copy (some steps rewrite the task and the current-task slot), comparing EAX, the stub call log, the task and result words, both current-task slots, ABI and x87 control, tag and non-condition status across rounding modes.'
+    report['scope']+=' The strategic search setup, bit set init and search run (disc mask) execute original/reconstructed entries with stubbed grid queries, cell lookups, listeners, A* engine and operator new/delete, comparing EAX, the stub call log with mask contents, the whole arena, ABI and x87 control, tag and non-condition status across rounding modes.'
+    report['scope']+=' The AI task scheduler (Task::sleep, task-tree removal, scheduler add/remove and slice time left) executes original/reconstructed entries on random task trees, sequels, delays (including -1 and non-finite) and a stubbed getTimeSeconds, comparing EAX, the 80-bit time-left result, the whole arena, ABI and x87 control, tag and non-condition status across rounding modes.'
     report['scope']+=' Artillery position transforms, vector differences, world/component position helpers and the post-weapon aiming gate compared through original continuations. Math, aliasing, callback order, dynamic pointers, x87 state and gate branches execute; object methods and selected aim-direction services remain controlled dependencies. Complete trajectory and firing behavior remain unverified.'
     report['matrix_cases']=len(matrix_comparisons)
     report['matrix']=matrix_comparisons
@@ -436,6 +514,7 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--game-dir',type=Path,default=GAME)
     parser.add_argument("--target",choices=("client","server","both"),default="both")
+    parser.add_argument('--work',help='build work directory name, e.g. {target}-custom for --output builds')
     args=parser.parse_args()
     GAME=args.game_dir.resolve()
-    for target in ('client','server') if args.target=='both' else (args.target,): verify(target)
+    for target in ('client','server') if args.target=='both' else (args.target,): verify(target,args.work)

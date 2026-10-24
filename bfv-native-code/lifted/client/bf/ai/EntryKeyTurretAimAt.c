@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009b6c40  dice::bf::ai::EntryKeyTurretAimAt  (vtable store) */
+/* 009b6c40  EntryKeyTurretAimAt::EntryKeyTurretAimAt  (vtable store)
+ * class: dice::bf::ai::EntryKeyTurretAimAt
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b6c40, bfv_client_l1_body_009b6c40);
 void bfv_client_l1_body_009b6c40(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_009b6c40(struct bfv_cpu *c)
     uint32_t ea;
     /* 009b6c40  mov eax, ecx */
     eax = ecx;
-    /* 009b6c42  mov dword ptr [eax], 0xbf6efc */
+    /* 009b6c42  mov dword ptr [eax], 0xbf6efc  ; vtable EntryKeyTurretAimAt */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf6efcu;
     /* 009b6c48  ret */
@@ -30,7 +33,9 @@ out: __attribute__((unused));
 }
 
 
-/* 009b6c50  (between same file) */
+/* 009b6c50  AIDebugRenderer_helper_009b6c50  (between same file)
+ * called by: AIDebugRenderer_helper_009cbb60
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b6c50, bfv_client_l1_body_009b6c50);
 BFV_L1_RESUME(bfv_client_l1r_009b6c50_1, bfv_client_l1_body_009b6c50, 1);
 BFV_L1_RESUME(bfv_client_l1r_009b6c50_2, bfv_client_l1_body_009b6c50, 2);
@@ -88,15 +93,15 @@ void bfv_client_l1_body_009b6c50(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 009b6c6e  mov dword ptr [ebp - 0x10], esp */
+    /* 009b6c6e  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 009b6c71  mov esi, ecx */
     esi = ecx;
-    /* 009b6c73  mov dword ptr [ebp - 0x14], esi */
+    /* 009b6c73  mov dword ptr [ebp - 0x14], esi  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = esi;
-    /* 009b6c76  call 0x518170 */
+    /* 009b6c76  call 0x518170  ; std::list::_Buyheadnode_20_00518170 */
     t = 0x00518170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b6c50_1;
@@ -109,10 +114,10 @@ R_1:
     /* 009b6c7e  mov dword ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 009b6c85  mov dword ptr [ebp - 4], 0 */
+    /* 009b6c85  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
-    /* 009b6c8c  mov eax, dword ptr [ebp + 8] */
+    /* 009b6c8c  mov eax, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     eax = M32(ea);
     /* 009b6c8f  mov eax, dword ptr [eax + 4] */
@@ -120,37 +125,37 @@ R_1:
     eax = M32(ea);
     /* 009b6c92  mov ecx, eax */
     ecx = eax;
-    /* 009b6c94  mov dword ptr [ebp - 0x18], ecx */
+    /* 009b6c94  mov dword ptr [ebp - 0x18], ecx  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = ecx;
-    /* 009b6c97  mov dword ptr [ebp - 0x1c], ecx */
+    /* 009b6c97  mov dword ptr [ebp - 0x1c], ecx  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = ecx;
-    /* 009b6c9a  mov dword ptr [ebp - 0x20], eax */
+    /* 009b6c9a  mov dword ptr [ebp - 0x20], eax  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = eax;
     /* 009b6c9d  mov eax, dword ptr [eax] */
     ea = (uint32_t)(eax);
     eax = M32(ea);
-    /* 009b6c9f  mov dword ptr [ebp - 0x24], eax */
+    /* 009b6c9f  mov dword ptr [ebp - 0x24], eax  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = eax;
-    /* 009b6ca2  mov dword ptr [ebp - 0x28], eax */
+    /* 009b6ca2  mov dword ptr [ebp - 0x28], eax  ; var_2c */
     ea = (uint32_t)(ebp + 0xffffffd8u);
     M32(ea) = eax;
     /* 009b6ca5  mov edx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     edx = M32(ea);
-    /* 009b6ca8  mov dword ptr [ebp - 0x2c], edx */
+    /* 009b6ca8  mov dword ptr [ebp - 0x2c], edx  ; var_30 */
     ea = (uint32_t)(ebp + 0xffffffd4u);
     M32(ea) = edx;
     /* 009b6cab  mov edx, dword ptr [edx] */
     ea = (uint32_t)(edx);
     edx = M32(ea);
-    /* 009b6cad  mov dword ptr [ebp - 0x30], edx */
+    /* 009b6cad  mov dword ptr [ebp - 0x30], edx  ; var_34 */
     ea = (uint32_t)(ebp + 0xffffffd0u);
     M32(ea) = edx;
-    /* 009b6cb0  mov dword ptr [ebp - 0x34], edx */
+    /* 009b6cb0  mov dword ptr [ebp - 0x34], edx  ; var_38 */
     ea = (uint32_t)(ebp + 0xffffffccu);
     M32(ea) = edx;
     /* 009b6cb3  push ecx */
@@ -167,19 +172,19 @@ R_1:
     M32(esp) = t;
     /* 009b6cb6  mov ecx, esi */
     ecx = esi;
-    /* 009b6cb8  call 0x9b2990 */
+    /* 009b6cb8  call 0x9b2990  ; EntryKeyTurretAimAt_helper_009b2990 */
     t = 0x009b2990u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b6c50_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009b6cbd  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 009b6cbd  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 009b6cc4  mov eax, esi */
     eax = esi;
-    /* 009b6cc6  mov ecx, dword ptr [ebp - 0xc] */
+    /* 009b6cc6  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 009b6cc9  mov dword ptr fs:[0], ecx */
@@ -214,7 +219,9 @@ out: __attribute__((unused));
 }
 
 
-/* 009b6cd9  (source path) */
+/* 009b6cd9  AIDebugRenderer_helper_009b6c50_catch_009b6cd9  (source path)
+ * also entered at 009b6cf0: EntryKeyTurretAimAt::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b6cd9, bfv_client_l1_body_009b6cd9);
 BFV_L1_RESUME(bfv_client_l1r_009b6cd9_1, bfv_client_l1_body_009b6cd9, 1);
 BFV_L1_RESUME(bfv_client_l1r_009b6cd9_2, bfv_client_l1_body_009b6cd9, 2);
@@ -233,7 +240,7 @@ void bfv_client_l1_body_009b6cd9(struct bfv_cpu *c)
     /* 009b6cd9  mov ecx, dword ptr [ebp - 0x14] */
     ea = (uint32_t)(ebp + 0xffffffecu);
     ecx = M32(ea);
-    /* 009b6cdc  call 0x9ed520 */
+    /* 009b6cdc  call 0x9ed520  ; std::vector::_Tidy */
     t = 0x009ed520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b6cd9_1;
@@ -248,7 +255,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 009b6ce5  call 0x7c1fae */
+    /* 009b6ce5  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b6cd9_2;

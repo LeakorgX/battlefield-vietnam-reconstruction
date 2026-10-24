@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00639433  (called from this file only) */
+/* 00639433  ios_base::destructor_helper_00639433  (called from this file only)
+ * class: std::ios_base
+ * called by: ios_base::destructor_helper_006394a6
+ */
 BFV_L1_ENTRY(bfv_server_l1_00639433, bfv_server_l1_body_00639433);
 BFV_L1_RESUME(bfv_server_l1r_00639433_1, bfv_server_l1_body_00639433, 1);
 void bfv_server_l1_body_00639433(struct bfv_cpu *c)
@@ -91,7 +94,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006394a6  (called from this file only) */
+/* 006394a6  ios_base::destructor_helper_006394a6  (called from this file only)
+ * class: std::ios_base
+ * called by: ios_base::~ios_base
+ */
 BFV_L1_ENTRY(bfv_server_l1_006394a6, bfv_server_l1_body_006394a6);
 BFV_L1_RESUME(bfv_server_l1r_006394a6_1, bfv_server_l1_body_006394a6, 1);
 BFV_L1_RESUME(bfv_server_l1r_006394a6_2, bfv_server_l1_body_006394a6, 2);
@@ -123,7 +129,7 @@ void bfv_server_l1_body_006394a6(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006394aa  mov esi, ecx */
     esi = ecx;
-    /* 006394ac  call 0x639433 */
+    /* 006394ac  call 0x639433  ; ios_base::destructor_helper_00639433 */
     t = 0x00639433u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006394a6_1;
@@ -146,7 +152,7 @@ L_006394b8:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006394bb  call 0x403df0 */
+    /* 006394bb  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006394a6_2;
@@ -186,7 +192,7 @@ L_006394d2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006394d5  call 0x403df0 */
+    /* 006394d5  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006394a6_3;
@@ -229,7 +235,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006394e8  std::ios_base  (vtable store) */
+/* 006394e8  ios_base::~ios_base  (vtable store)
+ * class: std::ios_base
+ * called by: Cmd_Debug_turnOnAllDebug::parseArg, basic_ios<char>::basic_ios_004054a0, Cmd_Debug_turnOffAllDebug::parseArg, Cmd_Debug_turnOnDebug::parseArg, Cmd_Debug_turnOffDebug::parseArg, Cmd_Debug_outputLoadStats::parseArg (+1643 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_006394e8, bfv_server_l1_body_006394e8);
 BFV_L1_RESUME(bfv_server_l1r_006394e8_1, bfv_server_l1_body_006394e8, 1);
 BFV_L1_RESUME(bfv_server_l1r_006394e8_2, bfv_server_l1_body_006394e8, 2);
@@ -259,7 +268,7 @@ void bfv_server_l1_body_006394e8(struct bfv_cpu *c)
     /* 006394ee  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 006394f0  mov dword ptr [esi], 0x8091b0 */
+    /* 006394f0  mov dword ptr [esi], 0x8091b0  ; vtable ios_base */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8091b0u;
     /* 006394f6  jbe 0x63950a */
@@ -284,7 +293,7 @@ void bfv_server_l1_body_006394e8(struct bfv_cpu *c)
 L_0063950a:
     /* 0063950a  mov ecx, esi */
     ecx = esi;
-    /* 0063950c  call 0x6394a6 */
+    /* 0063950c  call 0x6394a6  ; ios_base::destructor_helper_006394a6 */
     t = 0x006394a6u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006394e8_1;
@@ -301,7 +310,7 @@ R_1:
     if (zf) goto L_00639526;
     /* 00639518  mov ecx, esi */
     ecx = esi;
-    /* 0063951a  call 0x401080 */
+    /* 0063951a  call 0x401080  ; std::locale::facet_release */
     t = 0x00401080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006394e8_2;
@@ -312,7 +321,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00639520  call 0x403df0 */
+    /* 00639520  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006394e8_3;

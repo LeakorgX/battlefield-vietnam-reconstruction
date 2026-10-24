@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0049e530  dice::bf::GMEnableObject  (virtual method) */
+/* 0049e530  GMEnableObject::vf4_setByte_20h  (virtual method)
+ * class: dice::bf::GMEnableObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049e530, bfv_server_l1_body_0049e530);
 void bfv_server_l1_body_0049e530(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_server_l1_body_0049e530(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0049e530  mov al, byte ptr [esp + 4] */
+    /* 0049e530  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 0049e534  mov byte ptr [ecx + 0x20], al */
@@ -31,7 +33,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a7d0  dice::bf::GMEnableObject  (virtual method) */
+/* 0072a7d0  GMEnableObject::vf3_getByte_20h  (virtual method)
+ * class: dice::bf::GMEnableObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a7d0, bfv_server_l1_body_0072a7d0);
 void bfv_server_l1_body_0072a7d0(struct bfv_cpu *c)
 {

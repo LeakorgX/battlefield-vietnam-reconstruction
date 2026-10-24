@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 009f4160  (source path) */
+/* 009f4160  ControlFunctions_009f4160  (source path)
+ * called by: BBPAvoidCollisionInfantery::BBPAvoidCollisionInfantery, BBPAvoidCollision3d::BBPAvoidCollision3d, BBPAvoidCollision2d::BBPAvoidCollision2d
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f4160, bfv_client_l1_body_009f4160);
 BFV_L1_RESUME(bfv_client_l1r_009f4160_1, bfv_client_l1_body_009f4160, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f4160_2, bfv_client_l1_body_009f4160, 2);
@@ -37,23 +39,23 @@ void bfv_client_l1_body_009f4160(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f4161  mov esi, ecx */
     esi = ecx;
-    /* 009f4163  call 0x9ee4a0 */
+    /* 009f4163  call 0x9ee4a0  ; BBPPattern::BBPPattern */
     t = 0x009ee4a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4160_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009f4168  mov dword ptr [esi], 0xbfb354 */
+    /* 009f4168  mov dword ptr [esi], 0xbfb354  ; vtable BBPAvoidCollision */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfb354u;
-    /* 009f416e  mov ecx, dword ptr [0xe0eb20] */
+    /* 009f416e  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 009f4174  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 009f4176  call dword ptr [eax + 4] */
+    /* 009f4176  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -75,7 +77,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f417d  call 0x403610 */
+    /* 009f417d  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4160_3;
@@ -85,7 +87,7 @@ R_3:
     /* 009f4182  mov dword ptr [esi + 0xc], eax */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = eax;
-    /* 009f4185  mov ecx, dword ptr [0xe0eb20] */
+    /* 009f4185  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 009f418b  mov edx, dword ptr [ecx] */
@@ -97,7 +99,7 @@ R_3:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 009f4190  call dword ptr [edx + 4] */
+    /* 009f4190  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -121,7 +123,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f419a  call 0x403610 */
+    /* 009f419a  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4160_5;
@@ -131,7 +133,7 @@ R_5:
     /* 009f419f  mov dword ptr [esi + 0x10], eax */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = eax;
-    /* 009f41a2  mov ecx, dword ptr [0xe0eb20] */
+    /* 009f41a2  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 009f41a8  mov edx, dword ptr [ecx] */
@@ -143,7 +145,7 @@ R_5:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 009f41ad  call dword ptr [edx + 4] */
+    /* 009f41ad  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -165,7 +167,7 @@ R_6:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f41b4  call 0x403610 */
+    /* 009f41b4  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4160_7;
@@ -198,7 +200,9 @@ out: __attribute__((unused));
 }
 
 
-/* 009f4570  (source path) */
+/* 009f4570  BBPAvoidCollisionInfantery::buildPlan_helper_009f4570  (source path)
+ * called by: BBPAvoidCollisionInfantery::buildPlan
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f4570, bfv_client_l1_body_009f4570);
 void bfv_client_l1_body_009f4570(struct bfv_cpu *c)
 {
@@ -207,14 +211,14 @@ void bfv_client_l1_body_009f4570(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, r, ea;
-    /* 009f4570  mov eax, dword ptr [0xdfa918] */
+    /* 009f4570  mov eax, dword ptr [0xdfa918]  ; g_traceRing_index */
     ea = (uint32_t)(0x00dfa918u);
     eax = M32(ea);
     /* 009f4575  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f4576  mov esi, dword ptr [0xd1a088] */
+    /* 009f4576  mov esi, dword ptr [0xd1a088]  ; g_traceRing_mask */
     ea = (uint32_t)(0x00d1a088u);
     esi = M32(ea);
     /* 009f457c  inc eax */
@@ -226,13 +230,13 @@ void bfv_client_l1_body_009f4570(struct bfv_cpu *c)
     r = (eax & esi) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 009f457f  mov dword ptr [0xdfa918], eax */
+    /* 009f457f  mov dword ptr [0xdfa918], eax  ; g_traceRing_index */
     ea = (uint32_t)(0x00dfa918u);
     M32(ea) = eax;
-    /* 009f4584  mov dword ptr [eax*4 + 0xdfa8f8], 0xbfb398 */
+    /* 009f4584  mov dword ptr [eax*4 + 0xdfa8f8], 0xbfb398  ; g_traceRing_file */
     ea = (uint32_t)(eax * 4u + 0x00dfa8f8u);
     M32(ea) = 0xbfb398u;
-    /* 009f458f  mov dword ptr [eax*4 + 0xdfa8d8], 0x2fa */
+    /* 009f458f  mov dword ptr [eax*4 + 0xdfa8d8], 0x2fa  ; g_traceRing_line */
     ea = (uint32_t)(eax * 4u + 0x00dfa8d8u);
     M32(ea) = 0x2fau;
     /* 009f459a  fld dword ptr [edx] */
@@ -265,7 +269,7 @@ void bfv_client_l1_body_009f4570(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 009f45b1  jp 0x9f45d4 */
     if (pf) goto L_009f45d4;
-    /* 009f45b3  mov edx, dword ptr [esp + 4] */
+    /* 009f45b3  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 009f45b7  fld dword ptr [edx] */

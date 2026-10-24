@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 006e8dd0  dice::ref2::menu::FontRenderer  (virtual method) */
+/* 006e8dd0  FontRenderer::vf2_get_g_00b44444  (virtual method)
+ * class: dice::ref2::menu::FontRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e8dd0, bfv_client_l1_body_006e8dd0);
 void bfv_client_l1_body_006e8dd0(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_006e8dd0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006e8dd0  fld dword ptr [0xb44444] */
+    /* 006e8dd0  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006e8dd6  ret */
@@ -28,7 +30,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007011b0  dice::ref2::menu::FontRenderer  (virtual method) */
+/* 007011b0  FontRenderer::vf4  (virtual method)
+ * class: dice::ref2::menu::FontRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007011b0, bfv_client_l1_body_007011b0);
 void bfv_client_l1_body_007011b0(struct bfv_cpu *c)
 {
@@ -37,7 +41,7 @@ void bfv_client_l1_body_007011b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007011b0  fld dword ptr [0xb44444] */
+    /* 007011b0  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007011b6  ret 8 */
@@ -51,7 +55,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008831a0  dice::ref2::menu::FontRenderer  (vtable store) */
+/* 008831a0  FontRenderer::ctor_dtor  (vtable store)
+ * class: dice::ref2::menu::FontRenderer
+ * called by: DifFontRenderer::deleting_dtor, Ref2FontRenderer::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_008831a0, bfv_client_l1_body_008831a0);
 BFV_L1_RESUME(bfv_client_l1r_008831a0_1, bfv_client_l1_body_008831a0, 1);
 void bfv_client_l1_body_008831a0(struct bfv_cpu *c)
@@ -71,7 +78,7 @@ void bfv_client_l1_body_008831a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008831a1  mov esi, ecx */
     esi = ecx;
-    /* 008831a3  mov dword ptr [esi], 0xbd8440 */
+    /* 008831a3  mov dword ptr [esi], 0xbd8440  ; vtable FontRenderer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd8440u;
     /* 008831a9  cmp dword ptr [esi + 0x1c], 0x10 */
@@ -89,7 +96,7 @@ void bfv_client_l1_body_008831a0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008831b3  call 0x403680 */
+    /* 008831b3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008831a0_1;
@@ -131,7 +138,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008831d0  dice::ref2::menu::FontRenderer  (virtual method) */
+/* 008831d0  FontRenderer::deleting_dtor  (virtual method)
+ * class: dice::ref2::menu::FontRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_008831d0, bfv_client_l1_body_008831d0);
 BFV_L1_RESUME(bfv_client_l1r_008831d0_1, bfv_client_l1_body_008831d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008831d0_2, bfv_client_l1_body_008831d0, 2);
@@ -153,7 +162,7 @@ void bfv_client_l1_body_008831d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008831d1  mov esi, ecx */
     esi = ecx;
-    /* 008831d3  mov dword ptr [esi], 0xbd8440 */
+    /* 008831d3  mov dword ptr [esi], 0xbd8440  ; vtable FontRenderer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd8440u;
     /* 008831d9  cmp dword ptr [esi + 0x1c], 0x10 */
@@ -171,7 +180,7 @@ void bfv_client_l1_body_008831d0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008831e3  call 0x403680 */
+    /* 008831e3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008831d0_1;
@@ -198,7 +207,7 @@ L_008831eb:
     /* 008831f7  mov byte ptr [esi + 8], al */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = LO8(eax);
-    /* 008831fa  test byte ptr [esp + 8], 1 */
+    /* 008831fa  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -208,7 +217,7 @@ L_008831eb:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00883202  call 0x403680 */
+    /* 00883202  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008831d0_2;
@@ -239,7 +248,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00883210  dice::ref2::menu::FontRenderer  (vtable store) */
+/* 00883210  FontRenderer::FontRenderer  (vtable store)
+ * class: dice::ref2::menu::FontRenderer
+ * called by: DifFontRenderer::DifFontRenderer, Ref2FontRenderer::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_00883210, bfv_client_l1_body_00883210);
 BFV_L1_RESUME(bfv_client_l1r_00883210_1, bfv_client_l1_body_00883210, 1);
 void bfv_client_l1_body_00883210(struct bfv_cpu *c)
@@ -267,12 +279,12 @@ void bfv_client_l1_body_00883210(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00883215  mov edi, dword ptr [esp + 0x10] */
+    /* 00883215  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 00883219  lea ecx, [esi + 4] */
     ecx = (uint32_t)(esi + 0x00000004u);
-    /* 0088321c  mov dword ptr [esi], 0xbd8440 */
+    /* 0088321c  mov dword ptr [esi], 0xbd8440  ; vtable FontRenderer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd8440u;
     /* 00883222  mov eax, edi */
@@ -288,7 +300,7 @@ void bfv_client_l1_body_00883210(struct bfv_cpu *c)
     M8(ea) = 0x0u;
     /* 00883236  lea ebp, [eax + 1] */
     ebp = (uint32_t)(eax + 0x00000001u);
-    /* 00883239  lea esp, [esp] */
+    /* 00883239  lea esp, [esp]  ; &var_c */
     esp = (uint32_t)(esp);
 L_00883240:
     /* 00883240  mov dl, byte ptr [eax] */
@@ -318,7 +330,7 @@ L_00883240:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0088324b  call 0x401ae0 */
+    /* 0088324b  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00883210_1;

@@ -1,0 +1,8 @@
+## file
+Plan statement that computes an aim direction for the bot's weapon and writes it into the control output.
+
+## 009f7f10
+Destructor: restores the base vtables, counts the destruction in g_bapaDestroyedCount and returns the object to its memory pool when bit 0 of the flag argument is set.
+
+## 009f7f50
+Resolves the target handle at this+0xa0 and its weapon interface (+0x38 / +0x34); if anything is missing it finishes at once (flag = 0, done = 1). Otherwise it looks up the weapon object and projectile data, stores the muzzle speed (slot 0x3c) times IAIEnvironment::vf56 times 0.9 as the projectile speed, and gets the target point from the info entry at bot slot 0x88 (falling back to the target position). Relative position and relative velocity of target and shooter go to Aimer_00a02a70, which solves the lead; Aimer_00a02db0 then turns it into a direction with lead time AI time + 0.1 and a 0.5 factor. The result is written to the vector at this+0x98 + 8 and a byte at this+0x9c + 8. Sets flag = 1 and done = not this+0xa8, and returns 1.

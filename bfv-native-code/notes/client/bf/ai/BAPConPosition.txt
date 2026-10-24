@@ -1,0 +1,8 @@
+## file
+Plan condition: true when the bot's own object is within a radius of a stored point.
+
+## 009f28f0
+Resolves the bot's own object (bot slot 0xcc); a stale object gives true. Squared distance from its position (slot 0x18) to the point pointed to by this+8 is compared with this+0xc, which is therefore a squared radius. When this+0x10 is set only x and z are used, otherwise all three axes.
+
+## 009f28a0
+Destructor (vf2): frees the point buffer at this+8 with operator_delete, restores the BAPCondition vtable and returns the object to its memory pool when bit 0 of the flag argument is set.

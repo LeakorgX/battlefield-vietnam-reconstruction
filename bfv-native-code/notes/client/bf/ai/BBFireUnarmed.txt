@@ -1,0 +1,5 @@
+## file
+Behaviour that scores firing, unarmed variant.
+
+## 009836f0
+evaluate: when the behaviour is not usable it clears the per-bot state and returns 0. Reads an IAISettings vf31 value, the bot's vehicle and position, and builds a query of nearby objects (bfv_query_vector_append). Uses a factor of 0.75 when the bot's position is inside a region from the global list (bfv_region_contains_point3), otherwise 1.0. For each candidate with a positive score it resolves the target (bfv_event_interface 2) and measures the offset from the bot.

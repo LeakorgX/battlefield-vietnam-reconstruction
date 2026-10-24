@@ -1,0 +1,11 @@
+## file
+Plan action that sends a message.
+
+## 009f8720
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.
+
+## 009f87b0
+Destructor: releases the owned object at this+0x1c, restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.
+
+## 009f8800
+vf5: jumps into the middle of the next function at 0x009f8812.

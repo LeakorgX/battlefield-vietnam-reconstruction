@@ -1,0 +1,5 @@
+## file
+Turn action that turns the bot (this+0x38) towards another object (handle at this+0x3c).
+
+## 009f6a40
+vf6: when the target handle at this+0x3c is stale it reports not valid and returns (1, 0, 0). Otherwise it returns the target position minus the bot object's position, not normalized.

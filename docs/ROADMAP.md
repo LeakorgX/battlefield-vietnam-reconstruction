@@ -11,13 +11,14 @@ It does not estimate completion dates or remaining effort.
 Done: whole-image rebuild from symbolic assembly plus the C payload,
 byte-identical for client and server ([STATIC-RECOMP](STATIC-RECOMP.md)).
 
-Next, in order:
+Done since: references symbolized and data sections labelled (`--symbolic`).
+Size-changing edits relink and are gated (`--grow-text`, `--grow-at`,
+`--insert`/`--replace`). PE headers and the import/export tables are
+assembled from generated source (`headers.s`, `import_source`).
 
-1. Symbolize absolute code and data references (immediates, displacements,
-   jump tables, vtables, pointers in data) and emit labelled data sections.
-2. Allow size-changing edits; relink and re-verify identity for unchanged source.
-3. Generate PE headers and imports from source instead of the original image.
-4. Progressively replace assembly with readable C, subsystem by subsystem,
+Next:
+
+1. Progressively replace assembly with readable C, subsystem by subsystem,
    using the evidence rules in AGENTS.md. This is what the milestones below measure.
 
 ## Milestone 0 — establish the reference
@@ -51,6 +52,19 @@ guessed stack cleanup, invented layouts or silently missing dependencies.
   validation now compile from C.
   Recover artillery target selection, aiming, trajectory/drop handling, firing
   conditions and entry/exit behavior from actual code and traces.
+- The bot Aimer (target tracking, prediction, projectile offset and ballistic
+  solve) now compiles from C ([AIMER](modules/AIMER.md)).
+- The strategic A* neighbour expansion and the strategic-grid queries it uses
+  now compile from C ([ASTAR-STRATEGIC](modules/ASTAR-STRATEGIC.md)), as do the
+  search setup and the run that builds its disc mask. The A* searcher's loop,
+  heap, node alloc and path output compile from C too
+  ([ASTAR-SEARCHER](modules/ASTAR-SEARCHER.md)); the local search problem
+  remains native.
+- The AI task scheduler's queueing, removal, sleep and slice timing now
+  compile from C ([TASK-SCHEDULER](modules/TASK-SCHEDULER.md)), as do the local
+  and strategic A* search tasks' `execute`, task unschedule and queue, and the
+  player map, strategic search and cell query tasks' `execute`. The run loop and the other task
+  `execute` methods remain native.
 - Recover bailout table initialization and replace vehicle candidate evaluation
   with validated source. Bailout numerical helpers now compile from reconstructed C.
 

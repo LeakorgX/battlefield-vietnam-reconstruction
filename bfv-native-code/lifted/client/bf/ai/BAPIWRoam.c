@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009f9e00  dice::bf::ai::BAPIWRoam  (vtable store) */
+/* 009f9e00  BAPIWRoam::BAPIWRoam  (vtable store)
+ * class: dice::bf::ai::BAPIWRoam
+ * also entered at 009f9e30: AIObjectArmament::vf1, AITemplateArmament::vf2, BAPConAnd::vf1, BAPIWRoam::vf6 (+20 more)
+ * called by: BBPRoam3d::buildPlan
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f9e00, bfv_client_l1_body_009f9e00);
 BFV_L1_RESUME(bfv_client_l1r_009f9e00_1, bfv_client_l1_body_009f9e00, 1);
 void bfv_client_l1_body_009f9e00(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_client_l1_body_009f9e00(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009f9e00  mov eax, dword ptr [esp + 0xc] */
+    /* 009f9e00  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 009f9e04  push esi */
@@ -28,7 +32,7 @@ void bfv_client_l1_body_009f9e00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f9e05  mov esi, ecx */
     esi = ecx;
-    /* 009f9e07  mov ecx, dword ptr [esp + 0xc] */
+    /* 009f9e07  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009f9e0b  push eax */
@@ -41,7 +45,7 @@ void bfv_client_l1_body_009f9e00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f9e0d  mov ecx, esi */
     ecx = esi;
-    /* 009f9e0f  call 0xa0a6c0 */
+    /* 009f9e0f  call 0xa0a6c0  ; BAPInfoWrapper::ctor_dtor */
     t = 0x00a0a6c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f9e00_1;
@@ -51,10 +55,10 @@ R_1:
     /* 009f9e14  mov eax, dword ptr [esi + 0x18] */
     ea = (uint32_t)(esi + 0x00000018u);
     eax = M32(ea);
-    /* 009f9e17  mov edx, dword ptr [esp + 8] */
+    /* 009f9e17  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
-    /* 009f9e1b  mov dword ptr [esi], 0xbfc59c */
+    /* 009f9e1b  mov dword ptr [esi], 0xbfc59c  ; vtable BAPIWRoam */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfc59cu;
     /* 009f9e21  mov dword ptr [esi + 0x20], edx */
@@ -80,7 +84,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f9e40  dice::bf::ai::BAPIWRoam  (virtual method) */
+/* 009f9e40  BAPIWRoam::deleting_dtor  (virtual method)
+ * overrides: BotScript::vf1  (55 classes implement it)
+ * class: dice::bf::ai::BAPIWRoam
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f9e40, bfv_client_l1_body_009f9e40);
 BFV_L1_RESUME(bfv_client_l1r_009f9e40_1, bfv_client_l1_body_009f9e40, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f9e40_2, bfv_client_l1_body_009f9e40, 2);
@@ -110,7 +117,7 @@ void bfv_client_l1_body_009f9e40(struct bfv_cpu *c)
     /* 009f9e46  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 009f9e48  mov dword ptr [esi], 0xbfc59c */
+    /* 009f9e48  mov dword ptr [esi], 0xbfc59c  ; vtable BAPIWRoam */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfc59cu;
     /* 009f9e4e  je 0x9f9e57 */
@@ -133,14 +140,14 @@ R_1:
 L_009f9e57:
     /* 009f9e57  mov ecx, esi */
     ecx = esi;
-    /* 009f9e59  call 0xa0a9d0 */
+    /* 009f9e59  call 0xa0a9d0  ; BAPStatement::~BAPStatement */
     t = 0x00a0a9d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f9e40_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009f9e5e  test byte ptr [esp + 8], 1 */
+    /* 009f9e5e  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -150,9 +157,9 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f9e66  mov ecx, 0xe10e00 */
+    /* 009f9e66  mov ecx, 0xe10e00  ; g_MemoryPoolNull_BAPIWRoam */
     ecx = 0xe10e00u;
-    /* 009f9e6b  call 0x412fc0 */
+    /* 009f9e6b  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f9e40_3;

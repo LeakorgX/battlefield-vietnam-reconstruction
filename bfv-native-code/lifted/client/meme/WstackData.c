@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00875b20  dice::meme::WstackData  (virtual method) */
+/* 00875b20  WstackData::getChar  (virtual method)
+ * overrides: Data::getChar  (41 classes implement it)
+ * class: dice::meme::WstackData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00875b20, bfv_client_l1_body_00875b20);
 void bfv_client_l1_body_00875b20(struct bfv_cpu *c)
 {
@@ -17,7 +20,7 @@ void bfv_client_l1_body_00875b20(struct bfv_cpu *c)
     /* 00875b20  mov eax, dword ptr [ecx + 0xc] */
     ea = (uint32_t)(ecx + 0x0000000cu);
     eax = M32(ea);
-    /* 00875b23  mov ecx, dword ptr [esp + 8] */
+    /* 00875b23  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00875b27  movzx eax, word ptr [eax + ecx*2] */
@@ -34,7 +37,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00875bc0  dice::meme::WstackData  (vtable store) */
+/* 00875bc0  WstackData::~WstackData  (vtable store)
+ * class: dice::meme::WstackData
+ * called by: BfNewCreditsListNode::draw
+ */
 BFV_L1_ENTRY(bfv_client_l1_00875bc0, bfv_client_l1_body_00875bc0);
 BFV_L1_RESUME(bfv_client_l1r_00875bc0_1, bfv_client_l1_body_00875bc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00875bc0_2, bfv_client_l1_body_00875bc0, 2);
@@ -64,7 +70,7 @@ void bfv_client_l1_body_00875bc0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00875bc4  mov ebx, dword ptr [esp + 0x24] */
+    /* 00875bc4  mov ebx, dword ptr [esp + 0x24]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000024u);
     ebx = M32(ea);
     /* 00875bc8  test ebx, ebx */
@@ -89,7 +95,7 @@ void bfv_client_l1_body_00875bc0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00875bd4  jne 0x875bdd */
     if (!zf) goto L_00875bdd;
-    /* 00875bd6  call 0xa64cc0 */
+    /* 00875bd6  call 0xa64cc0  ; Envelope::vf2_get_24h */
     t = 0x00a64cc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00875bc0_1;
@@ -103,26 +109,26 @@ L_00875bdd:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00875bdf  lea ecx, [esp + 0x10] */
+    /* 00875bdf  lea ecx, [esp + 0x10]  ; &var_10 */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 00875be3  call 0x874530 */
+    /* 00875be3  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00875bc0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00875be8  mov ecx, dword ptr [esp + 0x28] */
+    /* 00875be8  mov ecx, dword ptr [esp + 0x28]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000028u);
     ecx = M32(ea);
-    /* 00875bec  mov edx, dword ptr [esp + 0x24] */
+    /* 00875bec  mov edx, dword ptr [esp + 0x24]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000024u);
     edx = M32(ea);
     /* 00875bf0  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00875bf1  mov ecx, dword ptr [esp + 0x24] */
+    /* 00875bf1  mov ecx, dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     ecx = M32(ea);
     /* 00875bf5  push edx */
@@ -137,16 +143,16 @@ R_2:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00875bf9  lea edx, [esp + 0x1c] */
+    /* 00875bf9  lea edx, [esp + 0x1c]  ; &var_10 */
     edx = (uint32_t)(esp + 0x0000001cu);
     /* 00875bfd  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00875bfe  mov dword ptr [esp + 0x20], 0xbd6f14 */
+    /* 00875bfe  mov dword ptr [esp + 0x20], 0xbd6f14  ; var_10, vtable WstackData */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0xbd6f14u;
-    /* 00875c06  mov dword ptr [esp + 0x2c], ebx */
+    /* 00875c06  mov dword ptr [esp + 0x2c], ebx  ; var_4 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
     /* 00875c0a  mov eax, dword ptr [esi] */
@@ -166,9 +172,9 @@ R_2:
     c->eip = t;
     goto out;
 R_3:
-    /* 00875c12  lea ecx, [esp + 0xc] */
+    /* 00875c12  lea ecx, [esp + 0xc]  ; &var_10 */
     ecx = (uint32_t)(esp + 0x0000000cu);
-    /* 00875c16  call 0x874550 */
+    /* 00875c16  call 0x874550  ; Data::~Data */
     t = 0x00874550u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00875bc0_4;

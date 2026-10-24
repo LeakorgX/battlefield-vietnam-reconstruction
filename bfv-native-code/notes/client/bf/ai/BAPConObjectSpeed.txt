@@ -1,0 +1,9 @@
+## file
+BAPConObjectSpeed is a bot action-plan condition: true while the object named
+by the handle at this+8 moves slower than the limit at this+0xc.
+
+## 009f4040
+evaluate: false when the handle is stale or 0. When bit 2 of object+0x10 is
+clear (the object has no mobile part) returns true. Otherwise asks the
+object's interface at object+0x2c for its speed (slot 0x1c) and returns true
+when speed < this+0xc.

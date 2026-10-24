@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0069d7b0  dice::ref2::world::SpriteParticleNew  (vtable store) */
+/* 0069d7b0  SpriteParticleNew::SpriteParticleNew  (vtable store)
+ * class: dice::ref2::world::SpriteParticleNew
+ * called by: SpriteParticleNewTemplate::createObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_0069d7b0, bfv_client_l1_body_0069d7b0);
 BFV_L1_RESUME(bfv_client_l1r_0069d7b0_1, bfv_client_l1_body_0069d7b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0069d7b0_2, bfv_client_l1_body_0069d7b0, 2);
@@ -33,7 +36,7 @@ void bfv_client_l1_body_0069d7b0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0069d7b2  mov edi, dword ptr [esp + 0xc] */
+    /* 0069d7b2  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 0069d7b6  push edi */
@@ -42,14 +45,14 @@ void bfv_client_l1_body_0069d7b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0069d7b7  mov esi, ecx */
     esi = ecx;
-    /* 0069d7b9  call 0x686070 */
+    /* 0069d7b9  call 0x686070  ; world_00686070 */
     t = 0x00686070u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069d7b0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0069d7be  mov dword ptr [esi], 0xb94944 */
+    /* 0069d7be  mov dword ptr [esi], 0xb94944  ; vtable SpriteParticleNew */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb94944u;
     /* 0069d7c4  mov dword ptr [esi + 0x84], 0xb9492c */
@@ -58,7 +61,7 @@ R_1:
     /* 0069d7ce  mov dword ptr [esi + 0x138], 0 */
     ea = (uint32_t)(esi + 0x00000138u);
     M32(ea) = 0x0u;
-    /* 0069d7d8  mov dword ptr [esi + 0x13c], 0x3f800000 */
+    /* 0069d7d8  mov dword ptr [esi + 0x13c], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esi + 0x0000013cu);
     M32(ea) = 0x3f800000u;
     /* 0069d7e2  mov byte ptr [esi + 0x140], 0 */
@@ -81,7 +84,7 @@ R_2:
     /* 0069d7f4  mov dword ptr [esi + 0x138], eax */
     ea = (uint32_t)(esi + 0x00000138u);
     M32(ea) = eax;
-    /* 0069d7fa  mov ecx, dword ptr [0xba5a68] */
+    /* 0069d7fa  mov ecx, dword ptr [0xba5a68]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00ba5a68u);
     ecx = M32(ea);
     /* 0069d800  push eax */
@@ -94,7 +97,7 @@ R_2:
     M32(esp) = t;
     /* 0069d802  mov ecx, esi */
     ecx = esi;
-    /* 0069d804  call 0x685ed0 */
+    /* 0069d804  call 0x685ed0  ; Object::setComponent */
     t = 0x00685ed0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069d7b0_3;
@@ -111,7 +114,7 @@ R_3:
     M32(esp) = t;
     /* 0069d80d  mov ecx, esi */
     ecx = esi;
-    /* 0069d80f  call 0x6843e0 */
+    /* 0069d80f  call 0x6843e0  ; Object::changeFlags */
     t = 0x006843e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069d7b0_4;
@@ -139,7 +142,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0069d820  dice::ref2::world::SpriteParticleNew  (virtual method) */
+/* 0069d820  SpriteParticleNew::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::SpriteParticleNew
+ */
 BFV_L1_ENTRY(bfv_client_l1_0069d820, bfv_client_l1_body_0069d820);
 BFV_L1_RESUME(bfv_client_l1r_0069d820_1, bfv_client_l1_body_0069d820, 1);
 BFV_L1_RESUME(bfv_client_l1r_0069d820_2, bfv_client_l1_body_0069d820, 2);
@@ -185,7 +191,7 @@ void bfv_client_l1_body_0069d820(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 0069d82b  je 0x69d8c3 */
     if (zf) goto L_0069d8c3;
-    /* 0069d831  call 0x970720 */
+    /* 0069d831  call 0x970720  ; BotMain::vf15 */
     t = 0x00970720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069d820_1;
@@ -197,7 +203,7 @@ R_1:
     F_LOGIC(32, r);
     /* 0069d838  jbe 0x69d880 */
     if ((cf | zf)) goto L_0069d880;
-    /* 0069d83a  mov eax, dword ptr [esp + 8] */
+    /* 0069d83a  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0069d83e  mov ecx, dword ptr [esi + 0x138] */
@@ -211,7 +217,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0069d846  call 0x720950 */
+    /* 0069d846  call 0x720950  ; SpriteParticleNew::update_helper_00720950 */
     t = 0x00720950u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069d820_2;
@@ -224,7 +230,7 @@ R_2:
     /* 0069d851  mov edi, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edi = M32(ea);
-    /* 0069d853  call 0x71ff20 */
+    /* 0069d853  call 0x71ff20  ; PhysicsNode::vf35_addressOf_34h */
     t = 0x0071ff20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069d820_3;
@@ -237,7 +243,7 @@ R_3:
     M32(esp) = t;
     /* 0069d859  mov ecx, esi */
     ecx = esi;
-    /* 0069d85b  call dword ptr [edi + 0x40] */
+    /* 0069d85b  call dword ptr [edi + 0x40]  ; -> SpriteParticleNew::vf16 = Object::setWorldMatrix */
     ea = (uint32_t)(edi + 0x00000040u);
     t = M32(ea);
     esp -= 4;
@@ -275,7 +281,7 @@ R_5:
     M32(esp) = t;
     /* 0069d878  mov ecx, esi */
     ecx = esi;
-    /* 0069d87a  call dword ptr [eax + 0x28] */
+    /* 0069d87a  call dword ptr [eax + 0x28]  ; -> SpriteParticleNew::vf10 = Object::changeFlags */
     ea = (uint32_t)(eax + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -303,7 +309,7 @@ L_0069d880:
     M32(esp) = t;
     /* 0069d889  mov ecx, esi */
     ecx = esi;
-    /* 0069d88b  call dword ptr [edx + 0x28] */
+    /* 0069d88b  call dword ptr [edx + 0x28]  ; -> SpriteParticleNew::vf10 = Object::changeFlags */
     ea = (uint32_t)(edx + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -323,7 +329,7 @@ L_0069d88e:
     /* 0069d898  mov ecx, dword ptr [esi + 0x138] */
     ea = (uint32_t)(esi + 0x00000138u);
     ecx = M32(ea);
-    /* 0069d89e  call 0x970720 */
+    /* 0069d89e  call 0x970720  ; BotMain::vf15 */
     t = 0x00970720u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069d820_8;
@@ -354,7 +360,7 @@ R_9:
     edx = M32(ea);
     /* 0069d8b4  mov ecx, esi */
     ecx = esi;
-    /* 0069d8b6  call dword ptr [edx + 0x14] */
+    /* 0069d8b6  call dword ptr [edx + 0x14]  ; -> SpriteParticleNew::vf5 = Object::deinit */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -381,7 +387,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069d8d0  (between same file) */
+/* 0069d8d0  Emitter::update_helper_0069d8d0  (between same file)
+ * called by: Emitter::update
+ */
 BFV_L1_ENTRY(bfv_client_l1_0069d8d0, bfv_client_l1_body_0069d8d0);
 void bfv_client_l1_body_0069d8d0(struct bfv_cpu *c)
 {
@@ -398,7 +406,7 @@ void bfv_client_l1_body_0069d8d0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 0069d8d8  je 0x69d8df */
     if (zf) goto L_0069d8df;
-    /* 0069d8da  jmp 0x7211a0 */
+    /* 0069d8da  jmp 0x7211a0  ; ParticleSystem_007211a0 */
     c->eip = 0x007211a0u;
     goto out;
 L_0069d8df:
@@ -413,7 +421,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0069d900  (between same file) */
+/* 0069d900  SpriteParticleNew::deleting_dtor_adjustor132_0069d900  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0069d900, bfv_client_l1_body_0069d900);
 void bfv_client_l1_body_0069d900(struct bfv_cpu *c)
 {
@@ -428,7 +437,7 @@ void bfv_client_l1_body_0069d900(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0069d906  jmp 0x69d910 */
+    /* 0069d906  jmp 0x69d910  ; SpriteParticleNew::deleting_dtor */
     c->eip = 0x0069d910u;
     goto out;
 out: __attribute__((unused));
@@ -438,7 +447,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0069d910  dice::ref2::world::SpriteParticleNew  (virtual method) */
+/* 0069d910  SpriteParticleNew::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::SpriteParticleNew
+ */
 BFV_L1_ENTRY(bfv_client_l1_0069d910, bfv_client_l1_body_0069d910);
 BFV_L1_RESUME(bfv_client_l1r_0069d910_1, bfv_client_l1_body_0069d910, 1);
 BFV_L1_RESUME(bfv_client_l1r_0069d910_2, bfv_client_l1_body_0069d910, 2);
@@ -468,7 +480,7 @@ void bfv_client_l1_body_0069d910(struct bfv_cpu *c)
     /* 0069d919  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 0069d91b  mov dword ptr [esi], 0xb94944 */
+    /* 0069d91b  mov dword ptr [esi], 0xb94944  ; vtable SpriteParticleNew */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb94944u;
     /* 0069d921  mov dword ptr [esi + 0x84], 0xb9492c */
@@ -490,20 +502,20 @@ R_1:
 L_0069d932:
     /* 0069d932  mov ecx, esi */
     ecx = esi;
-    /* 0069d934  call 0x685db0 */
+    /* 0069d934  call 0x685db0  ; Object::~Object */
     t = 0x00685db0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0069d910_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0069d939  test byte ptr [esp + 8], 1 */
+    /* 0069d939  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
     /* 0069d93e  je 0x69d94c */
     if (zf) goto L_0069d94c;
-    /* 0069d940  mov ecx, dword ptr [0xda0b30] */
+    /* 0069d940  mov ecx, dword ptr [0xda0b30]  ; g_pMemoryPool_00da0b30 */
     ea = (uint32_t)(0x00da0b30u);
     ecx = M32(ea);
     /* 0069d946  mov edx, dword ptr [ecx] */
@@ -513,7 +525,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0069d949  call dword ptr [edx + 0x1c] */
+    /* 0069d949  call dword ptr [edx + 0x1c]  ; -> MemoryPool::vf7 = MemoryPool::free */
     ea = (uint32_t)(edx + 0x0000001cu);
     t = M32(ea);
     esp -= 4;

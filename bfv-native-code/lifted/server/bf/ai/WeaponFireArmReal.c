@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0072a5a0  dice::bf::ai::WeaponFireArmReal  (vtable store) */
+/* 0072a5a0  WeaponFireArmReal::WeaponFireArmReal  (vtable store)
+ * class: dice::bf::ai::WeaponFireArmReal
+ * called by: SimpleObject::constructor_helper_006faf00
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a5a0, bfv_server_l1_body_0072a5a0);
 BFV_L1_RESUME(bfv_server_l1r_0072a5a0_1, bfv_server_l1_body_0072a5a0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072a5a0_2, bfv_server_l1_body_0072a5a0, 2);
@@ -21,7 +24,7 @@ void bfv_server_l1_body_0072a5a0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 0072a5a0  mov eax, dword ptr [esp + 8] */
+    /* 0072a5a0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0072a5a4  push esi */
@@ -32,7 +35,7 @@ void bfv_server_l1_body_0072a5a0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072a5a6  mov edi, dword ptr [esp + 0xc] */
+    /* 0072a5a6  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 0072a5aa  push edi */
@@ -45,14 +48,14 @@ void bfv_server_l1_body_0072a5a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0072a5ac  mov esi, ecx */
     esi = ecx;
-    /* 0072a5ae  call 0x79e6c0 */
+    /* 0072a5ae  call 0x79e6c0  ; WeaponFireArm::WeaponFireArm */
     t = 0x0079e6c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072a5a0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0072a5b3  mov dword ptr [esi], 0x87327c */
+    /* 0072a5b3  mov dword ptr [esi], 0x87327c  ; vtable WeaponFireArmReal */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87327cu;
     /* 0072a5b9  mov dword ptr [esi + 0x14], edi */
@@ -106,7 +109,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a6a0  dice::bf::ai::WeaponFireArmReal  (virtual method) */
+/* 0072a6a0  WeaponFireArmReal::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::bf::ai::WeaponFireArmReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a6a0, bfv_server_l1_body_0072a6a0);
 BFV_L1_RESUME(bfv_server_l1r_0072a6a0_1, bfv_server_l1_body_0072a6a0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072a6a0_2, bfv_server_l1_body_0072a6a0, 2);
@@ -128,17 +134,17 @@ void bfv_server_l1_body_0072a6a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0072a6a1  mov esi, ecx */
     esi = ecx;
-    /* 0072a6a3  mov dword ptr [esi], 0x87327c */
+    /* 0072a6a3  mov dword ptr [esi], 0x87327c  ; vtable WeaponFireArmReal */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87327cu;
-    /* 0072a6a9  call 0x79e6f0 */
+    /* 0072a6a9  call 0x79e6f0  ; WeaponFireArm::~WeaponFireArm */
     t = 0x0079e6f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072a6a0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0072a6ae  test byte ptr [esp + 8], 1 */
+    /* 0072a6ae  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -148,9 +154,9 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072a6b6  mov ecx, 0xc314f8 */
+    /* 0072a6b6  mov ecx, 0xc314f8  ; g_MemoryPoolNull_WeaponFireArmReal */
     ecx = 0xc314f8u;
-    /* 0072a6bb  call 0x413600 */
+    /* 0072a6bb  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072a6a0_2;
@@ -175,7 +181,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a6d0  dice::bf::ai::WeaponFireArmReal  (virtual method) */
+/* 0072a6d0  WeaponFireArmReal::vf9_onField_14h_callVirtual_vf55  (virtual method)
+ * overrides: Weapon::vf9  (7 classes implement it)
+ * class: dice::bf::ai::WeaponFireArmReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a6d0, bfv_server_l1_body_0072a6d0);
 void bfv_server_l1_body_0072a6d0(struct bfv_cpu *c)
 {
@@ -201,7 +210,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a6f0  dice::bf::ai::WeaponFireArmReal  (virtual method) */
+/* 0072a6f0  WeaponFireArmReal::vf13  (virtual method)
+ * overrides: Weapon::vf13  (7 classes implement it)
+ * class: dice::bf::ai::WeaponFireArmReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a6f0, bfv_server_l1_body_0072a6f0);
 BFV_L1_RESUME(bfv_server_l1r_0072a6f0_1, bfv_server_l1_body_0072a6f0, 1);
 void bfv_server_l1_body_0072a6f0(struct bfv_cpu *c)
@@ -225,7 +237,7 @@ void bfv_server_l1_body_0072a6f0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072a6f6  mov esi, dword ptr [esp + 8] */
+    /* 0072a6f6  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 0072a6fa  push esi */
@@ -257,7 +269,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a710  dice::bf::ai::WeaponFireArmReal  (virtual method) */
+/* 0072a710  WeaponFireArmReal::vf14_onField_14h_callVirtual_vf61  (virtual method)
+ * overrides: Weapon::vf14  (7 classes implement it)
+ * class: dice::bf::ai::WeaponFireArmReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a710, bfv_server_l1_body_0072a710);
 void bfv_server_l1_body_0072a710(struct bfv_cpu *c)
 {
@@ -283,7 +298,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a720  dice::bf::ai::WeaponFireArmReal  (virtual method) */
+/* 0072a720  WeaponFireArmReal::vf23_onField_14h_callVirtual_vf65  (virtual method)
+ * overrides: Weapon::vf23  (7 classes implement it)
+ * class: dice::bf::ai::WeaponFireArmReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a720, bfv_server_l1_body_0072a720);
 void bfv_server_l1_body_0072a720(struct bfv_cpu *c)
 {
@@ -309,7 +327,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a730  dice::bf::ai::WeaponFireArmReal  (virtual method) */
+/* 0072a730  WeaponFireArmReal::vf25_get_14h_2cch  (virtual method)
+ * overrides: Weapon::vf25  (7 classes implement it)
+ * class: dice::bf::ai::WeaponFireArmReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a730, bfv_server_l1_body_0072a730);
 void bfv_server_l1_body_0072a730(struct bfv_cpu *c)
 {
@@ -335,7 +356,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a740  dice::bf::ai::WeaponFireArmReal  (virtual method) */
+/* 0072a740  WeaponFireArmReal::vf27  (virtual method)
+ * overrides: Weapon::vf27  (7 classes implement it)
+ * class: dice::bf::ai::WeaponFireArmReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a740, bfv_server_l1_body_0072a740);
 void bfv_server_l1_body_0072a740(struct bfv_cpu *c)
 {
@@ -347,7 +371,7 @@ void bfv_server_l1_body_0072a740(struct bfv_cpu *c)
     /* 0072a740  mov ecx, dword ptr [ecx + 0x14] */
     ea = (uint32_t)(ecx + 0x00000014u);
     ecx = M32(ea);
-    /* 0072a743  jmp 0x571710 */
+    /* 0072a743  jmp 0x571710  ; FireArms_setByte_329h_00571710 */
     c->eip = 0x00571710u;
     goto out;
 out: __attribute__((unused));
@@ -357,7 +381,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a750  dice::bf::ai::WeaponFireArmReal  (virtual method) */
+/* 0072a750  WeaponFireArmReal::vf28  (virtual method)
+ * overrides: Weapon::vf28  (7 classes implement it)
+ * class: dice::bf::ai::WeaponFireArmReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a750, bfv_server_l1_body_0072a750);
 void bfv_server_l1_body_0072a750(struct bfv_cpu *c)
 {
@@ -369,7 +396,7 @@ void bfv_server_l1_body_0072a750(struct bfv_cpu *c)
     /* 0072a750  mov ecx, dword ptr [ecx + 0x14] */
     ea = (uint32_t)(ecx + 0x00000014u);
     ecx = M32(ea);
-    /* 0072a753  jmp 0x571720 */
+    /* 0072a753  jmp 0x571720  ; FireArms_getByte_329h_00571720 */
     c->eip = 0x00571720u;
     goto out;
 out: __attribute__((unused));
@@ -379,7 +406,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a760  dice::bf::ai::WeaponFireArmReal  (virtual method) */
+/* 0072a760  WeaponFireArmReal::vf10  (virtual method)
+ * overrides: Weapon::vf10  (7 classes implement it)
+ * class: dice::bf::ai::WeaponFireArmReal
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a760, bfv_server_l1_body_0072a760);
 BFV_L1_RESUME(bfv_server_l1r_0072a760_1, bfv_server_l1_body_0072a760, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072a760_2, bfv_server_l1_body_0072a760, 2);

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 006326c0  dice::ref2::tool::ObjectModule  (virtual method) */
+/* 006326c0  ObjectModule::vf6  (virtual method)
+ * class: dice::ref2::tool::ObjectModule
+ */
 BFV_L1_ENTRY(bfv_server_l1_006326c0, bfv_server_l1_body_006326c0);
 BFV_L1_RESUME(bfv_server_l1r_006326c0_1, bfv_server_l1_body_006326c0, 1);
 void bfv_server_l1_body_006326c0(struct bfv_cpu *c)
@@ -19,13 +21,13 @@ void bfv_server_l1_body_006326c0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 006326c0  push 0xc15ca0 */
+    /* 006326c0  push 0xc15ca0  ; g_consoleCommands_Object */
     t = 0xc15ca0u;
     esp -= 4;
     M32(esp) = t;
     /* 006326c5  mov ecx, 0xbdb488 */
     ecx = 0xbdb488u;
-    /* 006326ca  call 0x41ac00 */
+    /* 006326ca  call 0x41ac00  ; sub_0041ac00 */
     t = 0x0041ac00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006326c0_1;
@@ -45,7 +47,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006326e0  dice::ref2::tool::ObjectModule  (virtual method) */
+/* 006326e0  ObjectModule::vf7  (virtual method)
+ * class: dice::ref2::tool::ObjectModule
+ */
 BFV_L1_ENTRY(bfv_server_l1_006326e0, bfv_server_l1_body_006326e0);
 BFV_L1_RESUME(bfv_server_l1r_006326e0_1, bfv_server_l1_body_006326e0, 1);
 void bfv_server_l1_body_006326e0(struct bfv_cpu *c)
@@ -59,13 +63,13 @@ void bfv_server_l1_body_006326e0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 006326e0  push 0xc15ca0 */
+    /* 006326e0  push 0xc15ca0  ; g_consoleCommands_Object */
     t = 0xc15ca0u;
     esp -= 4;
     M32(esp) = t;
     /* 006326e5  mov ecx, 0xbdb488 */
     ecx = 0xbdb488u;
-    /* 006326ea  call 0x6af790 */
+    /* 006326ea  call 0x6af790  ; stub_return_false_1args_006af790 */
     t = 0x006af790u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006326e0_1;

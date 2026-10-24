@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006bda50  dice::ref2::world::FloatingBundleTemplate  (virtual method) */
+/* 006bda50  FloatingBundleTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::FloatingBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006bda50, bfv_client_l1_body_006bda50);
 BFV_L1_RESUME(bfv_client_l1r_006bda50_1, bfv_client_l1_body_006bda50, 1);
 BFV_L1_RESUME(bfv_client_l1r_006bda50_2, bfv_client_l1_body_006bda50, 2);
@@ -31,7 +34,7 @@ void bfv_client_l1_body_006bda50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006bda56  mov esi, ecx */
     esi = ecx;
-    /* 006bda58  call 0x403610 */
+    /* 006bda58  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006bda50_1;
@@ -55,7 +58,7 @@ R_1:
     M32(esp) = t;
     /* 006bda65  mov ecx, eax */
     ecx = eax;
-    /* 006bda67  call 0x6fadd0 */
+    /* 006bda67  call 0x6fadd0  ; FloatingBundle::FloatingBundle */
     t = 0x006fadd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006bda50_2;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006bda80  dice::ref2::world::FloatingBundleTemplate  (virtual method) */
+/* 006bda80  FloatingBundleTemplate::createPhysicsNode  (virtual method)
+ * overrides: SimpleObjectTemplate::createPhysicsNode  (44 classes implement it)
+ * class: dice::ref2::world::FloatingBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006bda80, bfv_client_l1_body_006bda80);
 BFV_L1_RESUME(bfv_client_l1r_006bda80_1, bfv_client_l1_body_006bda80, 1);
 BFV_L1_RESUME(bfv_client_l1r_006bda80_2, bfv_client_l1_body_006bda80, 2);
@@ -155,7 +161,7 @@ R_1:
     /* 006bda9c  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 006bda9e  mov ebx, dword ptr [esp + 0x10] */
+    /* 006bda9e  mov ebx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
     /* 006bdaa2  je 0x6bdab1 */
@@ -170,7 +176,7 @@ R_1:
     M32(esp) = t;
     /* 006bdaa6  mov ecx, eax */
     ecx = eax;
-    /* 006bdaa8  call 0x6fafe0 */
+    /* 006bdaa8  call 0x6fafe0  ; PhysicsFloatingBundle::PhysicsFloatingBundle */
     t = 0x006fafe0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006bda80_2;
@@ -240,7 +246,7 @@ R_3:
     c->eip = t;
     goto out;
 R_4:
-    /* 006bdae1  mov ecx, dword ptr [0xd7d008] */
+    /* 006bdae1  mov ecx, dword ptr [0xd7d008]  ; g_pPhysicsNodeManager */
     ea = (uint32_t)(0x00d7d008u);
     ecx = M32(ea);
     /* 006bdae7  mov edx, dword ptr [ecx] */
@@ -250,7 +256,7 @@ R_4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006bdaea  call dword ptr [edx + 0x10] */
+    /* 006bdaea  call dword ptr [edx + 0x10]  ; -> PhysicsNodeManager::vf4 */
     ea = (uint32_t)(edx + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -281,7 +287,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006bdb00  dice::ref2::world::FloatingBundleTemplate  (vtable store) */
+/* 006bdb00  FloatingBundleTemplate::FloatingBundleTemplate  (vtable store)
+ * class: dice::ref2::world::FloatingBundleTemplate
+ * also entered at 006bdb60: FloatingBundleTemplate::getClassID
+ * called by: ObjectCreatorWrapper<FloatingBundleTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_006bdb00, bfv_client_l1_body_006bdb00);
 BFV_L1_RESUME(bfv_client_l1r_006bdb00_1, bfv_client_l1_body_006bdb00, 1);
 void bfv_client_l1_body_006bdb00(struct bfv_cpu *c)
@@ -301,7 +311,7 @@ void bfv_client_l1_body_006bdb00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006bdb01  mov esi, ecx */
     esi = ecx;
-    /* 006bdb03  call 0x6a8240 */
+    /* 006bdb03  call 0x6a8240  ; RotationalBundleTemplate::RotationalBundleTemplate */
     t = 0x006a8240u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006bdb00_1;
@@ -318,7 +328,7 @@ R_1:
     /* 006bdb18  mov dword ptr [esi + 0x244], eax */
     ea = (uint32_t)(esi + 0x00000244u);
     M32(ea) = eax;
-    /* 006bdb1e  mov dword ptr [esi], 0xb9b63c */
+    /* 006bdb1e  mov dword ptr [esi], 0xb9b63c  ; vtable FloatingBundleTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9b63cu;
     /* 006bdb24  mov dword ptr [esi + 4], 0xb9b624 */
@@ -336,7 +346,7 @@ R_1:
     /* 006bdb46  mov dword ptr [esi + 0x23c], ecx */
     ea = (uint32_t)(esi + 0x0000023cu);
     M32(ea) = ecx;
-    /* 006bdb4c  mov dword ptr [esi + 0x248], 0x43c80000 */
+    /* 006bdb4c  mov dword ptr [esi + 0x248], 0x43c80000  ; 400.0f */
     ea = (uint32_t)(esi + 0x00000248u);
     M32(ea) = 0x43c80000u;
     /* 006bdb56  mov dword ptr [esi + 0x24c], ecx */
@@ -359,7 +369,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006bdb70  dice::ref2::world::FloatingBundleTemplate  (virtual method) */
+/* 006bdb70  FloatingBundleTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::FloatingBundleTemplate
+ * also entered at 006bdb90: BundleTemplate::vf0, CameraTemplate::vf0, FireArmsBundleTemplate::vf0, FloatingBundleTemplate::vf0 (+7 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006bdb70, bfv_client_l1_body_006bdb70);
 void bfv_client_l1_body_006bdb70(struct bfv_cpu *c)
 {
@@ -368,10 +382,10 @@ void bfv_client_l1_body_006bdb70(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006bdb70  mov eax, dword ptr [esp + 4] */
+    /* 006bdb70  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006bdb74  cmp eax, dword ptr [0xb77e8c] */
+    /* 006bdb74  cmp eax, dword ptr [0xb77e8c]  ; FloatingBundleTemplate::classID */
     ea = (uint32_t)(0x00b77e8cu);
     a = eax;
     b = M32(ea);
@@ -386,10 +400,10 @@ void bfv_client_l1_body_006bdb70(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006bdb81:
-    /* 006bdb81  mov dword ptr [esp + 4], eax */
+    /* 006bdb81  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006bdb85  jmp 0x6a8170 */
+    /* 006bdb85  jmp 0x6a8170  ; RotationalBundleTemplate::castTo */
     c->eip = 0x006a8170u;
     goto out;
 out: __attribute__((unused));

@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBMoveToFixed behaviour; it takes no parameter object.
+
+## 0093f8b0
+vf0: allocates a 0x34-byte BBMoveToFixed for the bot and returns it, then frees the passed-in list.

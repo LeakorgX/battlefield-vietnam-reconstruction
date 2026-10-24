@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00869c40  dice::meme::ClipNode  (virtual method) */
+/* 00869c40  ClipNode::traverse  (virtual method)
+ * overrides: Node::traverse  (83 classes implement it)
+ * class: dice::meme::ClipNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00869c40, bfv_client_l1_body_00869c40);
 void bfv_client_l1_body_00869c40(struct bfv_cpu *c)
 {
@@ -24,16 +27,16 @@ void bfv_client_l1_body_00869c40(struct bfv_cpu *c)
     if (zf) goto L_00869c5a;
     /* 00869c47  mov ecx, eax */
     ecx = eax;
-    /* 00869c49  mov eax, dword ptr [esp + 0xc] */
+    /* 00869c49  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00869c4d  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 00869c4f  mov dword ptr [esp + 0x10], eax */
+    /* 00869c4f  mov dword ptr [esp + 0x10], eax  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 00869c53  mov dword ptr [esp + 0xc], eax */
+    /* 00869c53  mov dword ptr [esp + 0xc], eax  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = eax;
     /* 00869c57  jmp dword ptr [edx + 0x58] */
@@ -52,7 +55,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00869c60  (between same file) */
+/* 00869c60  ClassTemplate<ClipNode,Node>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00869c60, bfv_client_l1_body_00869c60);
 void bfv_client_l1_body_00869c60(struct bfv_cpu *c)
 {
@@ -78,7 +82,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00869c70  (between same file) */
+/* 00869c70  ClassTemplate<ClipNode,Node>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00869c70, bfv_client_l1_body_00869c70);
 void bfv_client_l1_body_00869c70(struct bfv_cpu *c)
 {
@@ -104,8 +109,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00869c90  dice::meme::ClipNode  (virtual method)
- * strings: "dice::meme::ClipNode" */
+/* 00869c90  ClipNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::ClipNode
+ * strings: "dice::meme::ClipNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00869c90, bfv_client_l1_body_00869c90);
 BFV_L1_RESUME(bfv_client_l1r_00869c90_1, bfv_client_l1_body_00869c90, 1);
 BFV_L1_RESUME(bfv_client_l1r_00869c90_2, bfv_client_l1_body_00869c90, 2);
@@ -136,13 +144,13 @@ void bfv_client_l1_body_00869c90(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00869ca5  push 0xbd2594 */
+    /* 00869ca5  push 0xbd2594  ; "dice::meme::ClipNode" */
     t = 0xbd2594u;
     esp -= 4;
     M32(esp) = t;
-    /* 00869caa  mov ecx, 0xdf60ac */
+    /* 00869caa  mov ecx, 0xdf60ac  ; g_RuntimeClass_ClipNode */
     ecx = 0xdf60acu;
-    /* 00869caf  call 0x875490 */
+    /* 00869caf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00869c90_1;
@@ -153,10 +161,10 @@ R_1:
     t = 0xb3aa80u;
     esp -= 4;
     M32(esp) = t;
-    /* 00869cb9  mov dword ptr [0xdf60ac], 0xbd2574 */
+    /* 00869cb9  mov dword ptr [0xdf60ac], 0xbd2574  ; g_RuntimeClass_ClipNode */
     ea = (uint32_t)(0x00df60acu);
     M32(ea) = 0xbd2574u;
-    /* 00869cc3  call 0x7c2cd2 */
+    /* 00869cc3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00869c90_2;
@@ -170,7 +178,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00869ccb:
-    /* 00869ccb  mov eax, 0xdf60ac */
+    /* 00869ccb  mov eax, 0xdf60ac  ; g_RuntimeClass_ClipNode */
     eax = 0xdf60acu;
     /* 00869cd0  ret */
     c->eip = M32(esp);
@@ -183,7 +191,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00869ce0  dice::meme::ClipNode  (vtable store) */
+/* 00869ce0  ClipNode::create  (vtable store)
+ * class: dice::meme::ClipNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00869ce0, bfv_client_l1_body_00869ce0);
 BFV_L1_RESUME(bfv_client_l1r_00869ce0_1, bfv_client_l1_body_00869ce0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00869ce0_2, bfv_client_l1_body_00869ce0, 2);
@@ -207,7 +217,7 @@ void bfv_client_l1_body_00869ce0(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00869ce3  call 0x403610 */
+    /* 00869ce3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00869ce0_1;
@@ -229,14 +239,14 @@ R_1:
     if (zf) goto L_00869d02;
     /* 00869cf1  mov ecx, esi */
     ecx = esi;
-    /* 00869cf3  call 0x873d90 */
+    /* 00869cf3  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00869ce0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00869cf8  mov dword ptr [esi], 0xbd25b4 */
+    /* 00869cf8  mov dword ptr [esi], 0xbd25b4  ; vtable ClipNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd25b4u;
     /* 00869cfe  mov eax, esi */

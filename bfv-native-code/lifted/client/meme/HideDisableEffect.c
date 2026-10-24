@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00883f10  dice::meme::HideDisableEffect  (virtual method) */
+/* 00883f10  HideDisableEffect::vf18  (virtual method)
+ * overrides: Effect::vf18  (18 classes implement it)
+ * class: dice::meme::HideDisableEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00883f10, bfv_client_l1_body_00883f10);
 void bfv_client_l1_body_00883f10(struct bfv_cpu *c)
 {
@@ -14,10 +17,10 @@ void bfv_client_l1_body_00883f10(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 00883f10  fld dword ptr [0xb44444] */
+    /* 00883f10  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00883f16  mov edx, dword ptr [esp + 0x18] */
+    /* 00883f16  mov edx, dword ptr [esp + 0x18]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     edx = M32(ea);
     /* 00883f1a  fld dword ptr [edx + 0x14] */
@@ -39,10 +42,10 @@ void bfv_client_l1_body_00883f10(struct bfv_cpu *c)
     esp += 28;
     goto out;
 L_00883f2b:
-    /* 00883f2b  mov dword ptr [esp + 0x18], edx */
+    /* 00883f2b  mov dword ptr [esp + 0x18], edx  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = edx;
-    /* 00883f2f  jmp 0x875660 */
+    /* 00883f2f  jmp 0x875660  ; Effect::vf18 */
     c->eip = 0x00875660u;
     goto out;
 out: __attribute__((unused));
@@ -52,7 +55,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00883f40  dice::meme::HideDisableEffect  (virtual method) */
+/* 00883f40  HideDisableEffect::vf19  (virtual method)
+ * overrides: Effect::vf19  (18 classes implement it)
+ * class: dice::meme::HideDisableEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00883f40, bfv_client_l1_body_00883f40);
 void bfv_client_l1_body_00883f40(struct bfv_cpu *c)
 {
@@ -61,10 +67,10 @@ void bfv_client_l1_body_00883f40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 00883f40  fld dword ptr [0xb44444] */
+    /* 00883f40  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00883f46  mov edx, dword ptr [esp + 0x10] */
+    /* 00883f46  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00883f4a  fld dword ptr [edx + 0x14] */
@@ -86,10 +92,10 @@ void bfv_client_l1_body_00883f40(struct bfv_cpu *c)
     esp += 20;
     goto out;
 L_00883f5b:
-    /* 00883f5b  mov dword ptr [esp + 0x10], edx */
+    /* 00883f5b  mov dword ptr [esp + 0x10], edx  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
-    /* 00883f5f  jmp 0x875690 */
+    /* 00883f5f  jmp 0x875690  ; Effect::vf19 */
     c->eip = 0x00875690u;
     goto out;
 out: __attribute__((unused));
@@ -99,7 +105,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00883f70  (between same file) */
+/* 00883f70  ClassTemplate<HideDisableEffect,Effect>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00883f70, bfv_client_l1_body_00883f70);
 void bfv_client_l1_body_00883f70(struct bfv_cpu *c)
 {
@@ -125,7 +132,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00883f80  (between same file) */
+/* 00883f80  ClassTemplate<HideDisableEffect,Effect>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00883f80, bfv_client_l1_body_00883f80);
 void bfv_client_l1_body_00883f80(struct bfv_cpu *c)
 {
@@ -151,8 +159,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00883fa0  dice::meme::HideDisableEffect  (virtual method)
- * strings: "dice::meme::HideDisableEffect" */
+/* 00883fa0  HideDisableEffect::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::HideDisableEffect
+ * strings: "dice::meme::HideDisableEffect"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00883fa0, bfv_client_l1_body_00883fa0);
 BFV_L1_RESUME(bfv_client_l1r_00883fa0_1, bfv_client_l1_body_00883fa0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00883fa0_2, bfv_client_l1_body_00883fa0, 2);
@@ -183,13 +194,13 @@ void bfv_client_l1_body_00883fa0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00883fb5  push 0xbd87d8 */
+    /* 00883fb5  push 0xbd87d8  ; "dice::meme::HideDisableEffect" */
     t = 0xbd87d8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00883fba  mov ecx, 0xdf6ef4 */
+    /* 00883fba  mov ecx, 0xdf6ef4  ; g_RuntimeClass_HideDisableEffect */
     ecx = 0xdf6ef4u;
-    /* 00883fbf  call 0x875490 */
+    /* 00883fbf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00883fa0_1;
@@ -200,10 +211,10 @@ R_1:
     t = 0xb3b120u;
     esp -= 4;
     M32(esp) = t;
-    /* 00883fc9  mov dword ptr [0xdf6ef4], 0xbd87b8 */
+    /* 00883fc9  mov dword ptr [0xdf6ef4], 0xbd87b8  ; g_RuntimeClass_HideDisableEffect */
     ea = (uint32_t)(0x00df6ef4u);
     M32(ea) = 0xbd87b8u;
-    /* 00883fd3  call 0x7c2cd2 */
+    /* 00883fd3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00883fa0_2;
@@ -217,7 +228,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00883fdb:
-    /* 00883fdb  mov eax, 0xdf6ef4 */
+    /* 00883fdb  mov eax, 0xdf6ef4  ; g_RuntimeClass_HideDisableEffect */
     eax = 0xdf6ef4u;
     /* 00883fe0  ret */
     c->eip = M32(esp);
@@ -230,7 +241,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00883ff0  dice::meme::HideDisableEffect  (vtable store) */
+/* 00883ff0  HideDisableEffect::create  (vtable store)
+ * class: dice::meme::HideDisableEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_00883ff0, bfv_client_l1_body_00883ff0);
 BFV_L1_RESUME(bfv_client_l1r_00883ff0_1, bfv_client_l1_body_00883ff0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00883ff0_2, bfv_client_l1_body_00883ff0, 2);
@@ -254,7 +267,7 @@ void bfv_client_l1_body_00883ff0(struct bfv_cpu *c)
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00883ff3  call 0x403610 */
+    /* 00883ff3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00883ff0_1;
@@ -276,14 +289,14 @@ R_1:
     if (zf) goto L_00884012;
     /* 00884001  mov ecx, esi */
     ecx = esi;
-    /* 00884003  call 0x874870 */
+    /* 00884003  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00883ff0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00884008  mov dword ptr [esi], 0xbd87fc */
+    /* 00884008  mov dword ptr [esi], 0xbd87fc  ; vtable HideDisableEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd87fcu;
     /* 0088400e  mov eax, esi */

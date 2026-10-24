@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009b5fe0  (source path) */
+/* 009b5fe0  AIConsole::ctor_dtor_helper_009b5fe0  (source path)
+ * also entered at 009b5ff0: EntryMoveToLight::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b5fe0, bfv_client_l1_body_009b5fe0);
 void bfv_client_l1_body_009b5fe0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_009b5fe0(struct bfv_cpu *c)
     uint32_t ea;
     /* 009b5fe0  mov eax, ecx */
     eax = ecx;
-    /* 009b5fe2  mov dword ptr [eax], 0xbf6c9c */
+    /* 009b5fe2  mov dword ptr [eax], 0xbf6c9c  ; vtable EntryMoveToLight */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf6c9cu;
     /* 009b5fe8  ret */

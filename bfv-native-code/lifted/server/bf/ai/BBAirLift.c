@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0072d090  dice::bf::ai::BBAirLift  (vtable store) */
+/* 0072d090  BBAirLift::BBAirLift  (vtable store)
+ * class: dice::bf::ai::BBAirLift
+ * called by: BBCreateFunctionAirLift::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072d090, bfv_server_l1_body_0072d090);
 BFV_L1_RESUME(bfv_server_l1r_0072d090_1, bfv_server_l1_body_0072d090, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072d090_2, bfv_server_l1_body_0072d090, 2);
@@ -39,7 +42,7 @@ void bfv_server_l1_body_0072d090(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0072d091  mov esi, ecx */
     esi = ecx;
-    /* 0072d093  mov ecx, dword ptr [0xc3117c] */
+    /* 0072d093  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0072d099  mov eax, dword ptr [ecx] */
@@ -49,7 +52,7 @@ void bfv_server_l1_body_0072d090(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072d09c  call dword ptr [eax + 4] */
+    /* 0072d09c  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -77,7 +80,7 @@ R_1:
     M32(esp) = t;
     /* 0072d0aa  mov ecx, esi */
     ecx = esi;
-    /* 0072d0ac  call 0x7a2020 */
+    /* 0072d0ac  call 0x7a2020  ; BotBehaviour::BotBehaviour */
     t = 0x007a2020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072d090_2;
@@ -93,7 +96,7 @@ R_2:
     /* 0072d0b9  mov edx, dword ptr [esp + 0x14] */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
-    /* 0072d0bd  mov dword ptr [esi], 0x873ad4 */
+    /* 0072d0bd  mov dword ptr [esi], 0x873ad4  ; vtable BBAirLift */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873ad4u;
     /* 0072d0c3  mov byte ptr [esi + 4], al */
@@ -105,13 +108,13 @@ R_2:
     /* 0072d0c9  mov dword ptr [esi + 0xc], edx */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = edx;
-    /* 0072d0cc  mov ecx, dword ptr [0xc3117c] */
+    /* 0072d0cc  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0072d0d2  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0072d0d4  call dword ptr [eax + 4] */
+    /* 0072d0d4  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -133,7 +136,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0072d0db  call 0x403d80 */
+    /* 0072d0db  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072d090_4;
@@ -143,7 +146,7 @@ R_4:
     /* 0072d0e0  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 0072d0e3  mov ecx, dword ptr [0xc3117c] */
+    /* 0072d0e3  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0072d0e9  mov edx, dword ptr [ecx] */
@@ -155,7 +158,7 @@ R_4:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 0072d0ee  call dword ptr [edx + 4] */
+    /* 0072d0ee  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -177,7 +180,7 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0072d0f5  call 0x403d80 */
+    /* 0072d0f5  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072d090_6;
@@ -187,7 +190,7 @@ R_6:
     /* 0072d0fa  mov dword ptr [esi + 0x30], eax */
     ea = (uint32_t)(esi + 0x00000030u);
     M32(ea) = eax;
-    /* 0072d0fd  mov ecx, dword ptr [0xc3117c] */
+    /* 0072d0fd  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0072d103  mov eax, dword ptr [ecx] */
@@ -203,7 +206,7 @@ R_6:
     r = 0;
     F_LOGIC(32, r);
     edi = r;
-    /* 0072d10a  call dword ptr [eax + 4] */
+    /* 0072d10a  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -235,7 +238,7 @@ L_0072d111:
     /* 0072d128  mov dword ptr [eax + edi*4], 0xffffffff */
     ea = (uint32_t)(eax + edi * 4u);
     M32(ea) = 0xffffffffu;
-    /* 0072d12f  mov ecx, dword ptr [0xc3117c] */
+    /* 0072d12f  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0072d135  mov edx, dword ptr [ecx] */
@@ -246,7 +249,7 @@ L_0072d111:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 0072d138  call dword ptr [edx + 4] */
+    /* 0072d138  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -283,7 +286,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072d150  dice::bf::ai::BBAirLift  (virtual method) */
+/* 0072d150  BBAirLift::evaluate  (virtual method)
+ * overrides: BotBehaviour::evaluate  (22 classes implement it)
+ * class: dice::bf::ai::BBAirLift
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072d150, bfv_server_l1_body_0072d150);
 void bfv_server_l1_body_0072d150(struct bfv_cpu *c)
 {
@@ -292,7 +298,7 @@ void bfv_server_l1_body_0072d150(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0072d150  fld dword ptr [0x851bcc] */
+    /* 0072d150  fld dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0072d156  ret 0xc */
@@ -306,7 +312,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072d160  dice::bf::ai::BBAirLift  (virtual method) */
+/* 0072d160  BBAirLift::deleting_dtor  (virtual method)
+ * overrides: UrgencyGenerator::vf0  (24 classes implement it)
+ * class: dice::bf::ai::BBAirLift
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072d160, bfv_server_l1_body_0072d160);
 BFV_L1_RESUME(bfv_server_l1r_0072d160_1, bfv_server_l1_body_0072d160, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072d160_2, bfv_server_l1_body_0072d160, 2);
@@ -339,10 +348,10 @@ void bfv_server_l1_body_0072d160(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0072d167  mov dword ptr [esi], 0x873ad4 */
+    /* 0072d167  mov dword ptr [esi], 0x873ad4  ; vtable BBAirLift */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873ad4u;
-    /* 0072d16d  call 0x403df0 */
+    /* 0072d16d  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072d160_1;
@@ -356,7 +365,7 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0072d176  call 0x403df0 */
+    /* 0072d176  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072d160_2;
@@ -371,14 +380,14 @@ R_2:
     esp = r;
     /* 0072d17e  mov ecx, esi */
     ecx = esi;
-    /* 0072d180  call 0x7a1fa0 */
+    /* 0072d180  call 0x7a1fa0  ; BotBehaviour::~BotBehaviour */
     t = 0x007a1fa0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072d160_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 0072d185  test byte ptr [esp + 8], 1 */
+    /* 0072d185  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -388,7 +397,7 @@ R_3:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072d18d  call 0x403df0 */
+    /* 0072d18d  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072d160_4;

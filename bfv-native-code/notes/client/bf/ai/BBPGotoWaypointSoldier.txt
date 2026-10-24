@@ -1,0 +1,5 @@
+## file
+Plan builder for soldiers following waypoints.
+
+## 0098efc0
+buildPlan: compares the soldier position with the current waypoint (squared distance against (scalar * 4) squared); when close it advances the waypoint (ai_00972d50). Clears the current plan and builds a serial plan of a BAPConPosition (radius at least 50) and a BAPAMoveToFinding towards the waypoint.

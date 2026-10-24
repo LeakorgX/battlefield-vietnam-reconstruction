@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005addd0  dice::bf::DatabaseCompleteAckEvent  (vtable store) */
+/* 005addd0  DatabaseCompleteAckEvent::create  (vtable store)
+ * class: dice::bf::DatabaseCompleteAckEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005addd0, bfv_client_l1_body_005addd0);
 BFV_L1_RESUME(bfv_client_l1r_005addd0_1, bfv_client_l1_body_005addd0, 1);
 void bfv_client_l1_body_005addd0(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_005addd0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005addd0  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005addd0  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005addd6  mov eax, dword ptr [ecx] */
@@ -53,7 +55,7 @@ R_1:
     /* 005adde8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005addef  mov dword ptr [eax], 0xb61eb8 */
+    /* 005addef  mov dword ptr [eax], 0xb61eb8  ; vtable DatabaseCompleteAckEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb61eb8u;
     /* 005addf5  ret */
@@ -76,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ade00  dice::bf::DatabaseCompleteAckEvent  (vtable store) */
+/* 005ade00  DatabaseCompleteAckEvent::create  (vtable store)
+ * class: dice::bf::DatabaseCompleteAckEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ade00, bfv_client_l1_body_005ade00);
 BFV_L1_RESUME(bfv_client_l1r_005ade00_1, bfv_client_l1_body_005ade00, 1);
 BFV_L1_RESUME(bfv_client_l1r_005ade00_2, bfv_client_l1_body_005ade00, 2);
@@ -92,7 +96,7 @@ void bfv_client_l1_body_005ade00(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 005ade00  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ade00  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ade06  mov eax, dword ptr [ecx] */
@@ -131,14 +135,14 @@ R_1:
     if (zf) goto L_005ade2c;
     /* 005ade1b  mov ecx, esi */
     ecx = esi;
-    /* 005ade1d  call 0x522fc0 */
+    /* 005ade1d  call 0x522fc0  ; SuicideEvent::SuicideEvent */
     t = 0x00522fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005ade00_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005ade22  mov dword ptr [esi], 0xb61eb8 */
+    /* 005ade22  mov dword ptr [esi], 0xb61eb8  ; vtable DatabaseCompleteAckEvent */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb61eb8u;
     /* 005ade28  mov eax, esi */
@@ -151,7 +155,7 @@ L_005ade2c:
     F_LOGIC(32, r);
     eax = r;
 L_005ade2e:
-    /* 005ade2e  mov ecx, dword ptr [esp + 8] */
+    /* 005ade2e  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 005ade32  mov esi, dword ptr [ecx] */

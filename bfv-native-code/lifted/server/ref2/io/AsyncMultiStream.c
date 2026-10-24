@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0069e4e0  dice::ref2::io::AsyncMultiStream  (virtual method) */
+/* 0069e4e0  AsyncMultiStream::vf4  (virtual method)
+ * class: dice::ref2::io::AsyncMultiStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069e4e0, bfv_server_l1_body_0069e4e0);
 void bfv_server_l1_body_0069e4e0(struct bfv_cpu *c)
 {
@@ -50,7 +52,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069e500  (between same file) */
+/* 0069e500  std::vector_24::size_0069e500  (between same file)
+ * called by: world_00567c70, FlatLZOReadStream_0069b9f0, AsyncMultiStream_helper_0069e9b0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069e500, bfv_server_l1_body_0069e500);
 void bfv_server_l1_body_0069e500(struct bfv_cpu *c)
 {
@@ -128,7 +132,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069e520  dice::ref2::io::AsyncMultiStream  (virtual method) */
+/* 0069e520  AsyncMultiStream::vf9  (virtual method)
+ * class: dice::ref2::io::AsyncMultiStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069e520, bfv_server_l1_body_0069e520);
 void bfv_server_l1_body_0069e520(struct bfv_cpu *c)
 {
@@ -206,7 +212,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069e6f0  dice::ref2::io::AsyncMultiStream  (virtual method) */
+/* 0069e6f0  AsyncMultiStream::vf10  (virtual method)
+ * class: dice::ref2::io::AsyncMultiStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069e6f0, bfv_server_l1_body_0069e6f0);
 BFV_L1_RESUME(bfv_server_l1r_0069e6f0_1, bfv_server_l1_body_0069e6f0, 1);
 void bfv_server_l1_body_0069e6f0(struct bfv_cpu *c)
@@ -220,7 +228,7 @@ void bfv_server_l1_body_0069e6f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0069e6f0  mov eax, dword ptr [esp + 4] */
+    /* 0069e6f0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0069e6f4  mov ecx, dword ptr [ecx + 0xc] */
@@ -255,7 +263,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069e710  dice::ref2::io::AsyncMultiStream  (virtual method) */
+/* 0069e710  AsyncMultiStream::vf11  (virtual method)
+ * class: dice::ref2::io::AsyncMultiStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069e710, bfv_server_l1_body_0069e710);
 void bfv_server_l1_body_0069e710(struct bfv_cpu *c)
 {
@@ -264,7 +274,7 @@ void bfv_server_l1_body_0069e710(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0069e710  mov eax, dword ptr [esp + 4] */
+    /* 0069e710  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0069e714  mov ecx, dword ptr [ecx + 0xc] */
@@ -288,7 +298,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069ece0  dice::ref2::io::AsyncMultiStream  (virtual method) */
+/* 0069ece0  AsyncMultiStream::vf6  (virtual method)
+ * class: dice::ref2::io::AsyncMultiStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069ece0, bfv_server_l1_body_0069ece0);
 BFV_L1_RESUME(bfv_server_l1r_0069ece0_1, bfv_server_l1_body_0069ece0, 1);
 void bfv_server_l1_body_0069ece0(struct bfv_cpu *c)
@@ -365,7 +377,7 @@ void bfv_server_l1_body_0069ece0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     eax = r;
-    /* 0069ed01  mov dword ptr [esp + 4], eax */
+    /* 0069ed01  mov dword ptr [esp + 4], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
     /* 0069ed05  jne 0x69ed0c */
@@ -394,7 +406,7 @@ L_0069ed0c:
     M32(esp) = t;
     /* 0069ed0e  mov ecx, esi */
     ecx = esi;
-    /* 0069ed10  call 0x69e8d0 */
+    /* 0069ed10  call 0x69e8d0  ; AsyncMultiStream::sub_0069e8d0 */
     t = 0x0069e8d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0069ece0_1;
@@ -425,7 +437,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069ed20  (between same file) */
+/* 0069ed20  AsyncMultiStream_0069ed20  (between same file)
+ * called by: io_0069edc0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069ed20, bfv_server_l1_body_0069ed20);
 BFV_L1_RESUME(bfv_server_l1r_0069ed20_1, bfv_server_l1_body_0069ed20, 1);
 void bfv_server_l1_body_0069ed20(struct bfv_cpu *c)
@@ -444,7 +458,7 @@ void bfv_server_l1_body_0069ed20(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0069ed21  mov ebx, dword ptr [esp + 0xc] */
+    /* 0069ed21  mov ebx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ebx = M32(ea);
     /* 0069ed25  push esi */
@@ -509,7 +523,7 @@ void bfv_server_l1_body_0069ed20(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     eax = r;
-    /* 0069ed46  mov dword ptr [esp + 0x14], eax */
+    /* 0069ed46  mov dword ptr [esp + 0x14], eax  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
     /* 0069ed4a  jne 0x69ed50 */
@@ -566,7 +580,7 @@ L_0069ed50:
     F_ADD(32, a, b, r);
     esi = r;
 L_0069ed65:
-    /* 0069ed65  mov ecx, dword ptr [esp + 0x18] */
+    /* 0069ed65  mov ecx, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 0069ed69  push ecx */
@@ -583,7 +597,7 @@ L_0069ed65:
     M32(esp) = t;
     /* 0069ed6d  mov ecx, edi */
     ecx = edi;
-    /* 0069ed6f  call 0x69e9b0 */
+    /* 0069ed6f  call 0x69e9b0  ; AsyncMultiStream_helper_0069e9b0 */
     t = 0x0069e9b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0069ed20_1;
@@ -601,7 +615,7 @@ R_1:
     edi = t;
     /* 0069ed7b  lea ecx, [eax + edx*8] */
     ecx = (uint32_t)(eax + edx * 8u);
-    /* 0069ed7e  mov eax, dword ptr [esp + 0xc] */
+    /* 0069ed7e  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0069ed82  pop esi */
@@ -626,7 +640,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0069ed90  dice::ref2::io::AsyncMultiStream  (virtual method) */
+/* 0069ed90  AsyncMultiStream::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::io::AsyncMultiStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069ed90, bfv_server_l1_body_0069ed90);
 void bfv_server_l1_body_0069ed90(struct bfv_cpu *c)
 {
@@ -635,12 +652,12 @@ void bfv_server_l1_body_0069ed90(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 0069ed90  mov edx, dword ptr [0x807430] */
+    /* 0069ed90  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 0069ed96  mov eax, ecx */
     eax = ecx;
-    /* 0069ed98  mov ecx, dword ptr [esp + 4] */
+    /* 0069ed98  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0069ed9c  cmp ecx, edx */
@@ -650,7 +667,7 @@ void bfv_server_l1_body_0069ed90(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0069ed9e  je 0x69edba */
     if (zf) goto L_0069edba;
-    /* 0069eda0  cmp ecx, dword ptr [0x85a5ec] */
+    /* 0069eda0  cmp ecx, dword ptr [0x85a5ec]  ; interfaceID(AsyncMultiStream) */
     ea = (uint32_t)(0x0085a5ecu);
     a = ecx;
     b = M32(ea);
@@ -701,7 +718,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069ef20  dice::ref2::io::AsyncMultiStream  (virtual method) */
+/* 0069ef20  AsyncMultiStream::vf7  (virtual method)
+ * class: dice::ref2::io::AsyncMultiStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069ef20, bfv_server_l1_body_0069ef20);
 BFV_L1_RESUME(bfv_server_l1r_0069ef20_1, bfv_server_l1_body_0069ef20, 1);
 void bfv_server_l1_body_0069ef20(struct bfv_cpu *c)
@@ -743,10 +762,10 @@ void bfv_server_l1_body_0069ef20(struct bfv_cpu *c)
     esp += 16;
     goto out;
 L_0069ef35:
-    /* 0069ef35  mov eax, dword ptr [esp + 0x1c] */
+    /* 0069ef35  mov eax, dword ptr [esp + 0x1c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
-    /* 0069ef39  mov edx, dword ptr [esp + 0x20] */
+    /* 0069ef39  mov edx, dword ptr [esp + 0x20]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     edx = M32(ea);
     /* 0069ef3d  push esi */
@@ -755,12 +774,12 @@ L_0069ef35:
     M32(esp) = t;
     /* 0069ef3e  lea esi, [ecx + 8] */
     esi = (uint32_t)(ecx + 0x00000008u);
-    /* 0069ef41  lea ecx, [esp + 4] */
+    /* 0069ef41  lea ecx, [esp + 4]  ; &var_18 */
     ecx = (uint32_t)(esp + 0x00000004u);
-    /* 0069ef45  mov dword ptr [esp + 8], eax */
+    /* 0069ef45  mov dword ptr [esp + 8], eax  ; var_14 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = eax;
-    /* 0069ef49  mov eax, dword ptr [esp + 0x28] */
+    /* 0069ef49  mov eax, dword ptr [esp + 0x28]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 0069ef4d  push ecx */
@@ -769,22 +788,22 @@ L_0069ef35:
     M32(esp) = t;
     /* 0069ef4e  mov ecx, esi */
     ecx = esi;
-    /* 0069ef50  mov dword ptr [esp + 8], 0 */
+    /* 0069ef50  mov dword ptr [esp + 8], 0  ; var_18 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 0069ef58  mov dword ptr [esp + 0x18], 0 */
+    /* 0069ef58  mov dword ptr [esp + 0x18], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x0u;
-    /* 0069ef60  mov byte ptr [esp + 0x1c], 1 */
+    /* 0069ef60  mov byte ptr [esp + 0x1c], 1  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = 0x1u;
-    /* 0069ef65  mov dword ptr [esp + 0x10], edx */
+    /* 0069ef65  mov dword ptr [esp + 0x10], edx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
-    /* 0069ef69  mov dword ptr [esp + 0x14], eax */
+    /* 0069ef69  mov dword ptr [esp + 0x14], eax  ; var_c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
-    /* 0069ef6d  call 0x69edc0 */
+    /* 0069ef6d  call 0x69edc0  ; io_0069edc0 */
     t = 0x0069edc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0069ef20_1;
@@ -889,7 +908,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0069efa0  dice::ref2::io::AsyncMultiStream  (virtual method) */
+/* 0069efa0  AsyncMultiStream::vf8  (virtual method)
+ * class: dice::ref2::io::AsyncMultiStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_0069efa0, bfv_server_l1_body_0069efa0);
 BFV_L1_RESUME(bfv_server_l1r_0069efa0_1, bfv_server_l1_body_0069efa0, 1);
 void bfv_server_l1_body_0069efa0(struct bfv_cpu *c)
@@ -931,10 +952,10 @@ void bfv_server_l1_body_0069efa0(struct bfv_cpu *c)
     esp += 16;
     goto out;
 L_0069efb5:
-    /* 0069efb5  mov eax, dword ptr [esp + 0x1c] */
+    /* 0069efb5  mov eax, dword ptr [esp + 0x1c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
-    /* 0069efb9  mov edx, dword ptr [esp + 0x20] */
+    /* 0069efb9  mov edx, dword ptr [esp + 0x20]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     edx = M32(ea);
     /* 0069efbd  push esi */
@@ -943,12 +964,12 @@ L_0069efb5:
     M32(esp) = t;
     /* 0069efbe  lea esi, [ecx + 8] */
     esi = (uint32_t)(ecx + 0x00000008u);
-    /* 0069efc1  lea ecx, [esp + 4] */
+    /* 0069efc1  lea ecx, [esp + 4]  ; &var_18 */
     ecx = (uint32_t)(esp + 0x00000004u);
-    /* 0069efc5  mov dword ptr [esp + 8], eax */
+    /* 0069efc5  mov dword ptr [esp + 8], eax  ; var_14 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = eax;
-    /* 0069efc9  mov eax, dword ptr [esp + 0x28] */
+    /* 0069efc9  mov eax, dword ptr [esp + 0x28]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 0069efcd  push ecx */
@@ -957,22 +978,22 @@ L_0069efb5:
     M32(esp) = t;
     /* 0069efce  mov ecx, esi */
     ecx = esi;
-    /* 0069efd0  mov dword ptr [esp + 8], 0 */
+    /* 0069efd0  mov dword ptr [esp + 8], 0  ; var_18 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 0069efd8  mov dword ptr [esp + 0x18], 0 */
+    /* 0069efd8  mov dword ptr [esp + 0x18], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x0u;
-    /* 0069efe0  mov byte ptr [esp + 0x1c], 0 */
+    /* 0069efe0  mov byte ptr [esp + 0x1c], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = 0x0u;
-    /* 0069efe5  mov dword ptr [esp + 0x10], edx */
+    /* 0069efe5  mov dword ptr [esp + 0x10], edx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
-    /* 0069efe9  mov dword ptr [esp + 0x14], eax */
+    /* 0069efe9  mov dword ptr [esp + 0x14], eax  ; var_c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
-    /* 0069efed  call 0x69edc0 */
+    /* 0069efed  call 0x69edc0  ; io_0069edc0 */
     t = 0x0069edc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0069efa0_1;

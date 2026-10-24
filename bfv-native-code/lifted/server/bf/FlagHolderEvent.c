@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 004c11d0  dice::bf::FlagHolderEvent  (vtable store) */
+/* 004c11d0  FlagHolderEvent::create  (vtable store)
+ * class: dice::bf::FlagHolderEvent
+ * also entered at 004c1200: BAPANotifyBot::vf3, BAPConOr::vf1, FlagHolderEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c11d0, bfv_server_l1_body_004c11d0);
 BFV_L1_RESUME(bfv_server_l1r_004c11d0_1, bfv_server_l1_body_004c11d0, 1);
 void bfv_server_l1_body_004c11d0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_004c11d0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c11d0  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c11d0  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c11d6  mov eax, dword ptr [ecx] */
@@ -53,7 +56,7 @@ R_1:
     /* 004c11e8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c11ef  mov dword ptr [eax], 0x81f708 */
+    /* 004c11ef  mov dword ptr [eax], 0x81f708  ; vtable FlagHolderEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f708u;
     /* 004c11f5  ret */
@@ -76,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c1210  dice::bf::FlagHolderEvent  (vtable store) */
+/* 004c1210  FlagHolderEvent::create  (vtable store)
+ * class: dice::bf::FlagHolderEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c1210, bfv_server_l1_body_004c1210);
 BFV_L1_RESUME(bfv_server_l1r_004c1210_1, bfv_server_l1_body_004c1210, 1);
 void bfv_server_l1_body_004c1210(struct bfv_cpu *c)
@@ -90,7 +95,7 @@ void bfv_server_l1_body_004c1210(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c1210  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c1210  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c1216  mov eax, dword ptr [ecx] */
@@ -124,7 +129,7 @@ R_1:
     /* 004c1228  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c122f  mov dword ptr [eax], 0x81f708 */
+    /* 004c122f  mov dword ptr [eax], 0x81f708  ; vtable FlagHolderEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f708u;
     /* 004c1235  jmp 0x4c1239 */
@@ -135,7 +140,7 @@ L_004c1237:
     F_LOGIC(32, r);
     eax = r;
 L_004c1239:
-    /* 004c1239  mov ecx, dword ptr [esp + 4] */
+    /* 004c1239  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 004c123d  push esi */

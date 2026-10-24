@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a6bf0  dice::bf::ai::BAPICChangeVehicle  (virtual method) */
+/* 007a6bf0  BAPICChangeVehicle::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPICChangeVehicle
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6bf0, bfv_server_l1_body_007a6bf0);
 BFV_L1_RESUME(bfv_server_l1r_007a6bf0_1, bfv_server_l1_body_007a6bf0, 1);
 void bfv_server_l1_body_007a6bf0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_007a6bf0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a6bf0  mov al, byte ptr [esp + 4] */
+    /* 007a6bf0  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 007a6bf4  push esi */
@@ -28,10 +31,10 @@ void bfv_server_l1_body_007a6bf0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a6bf5  mov esi, ecx */
     esi = ecx;
-    /* 007a6bf7  mov dword ptr [esi], 0x874498 */
+    /* 007a6bf7  mov dword ptr [esi], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874498u;
-    /* 007a6bfd  mov ecx, dword ptr [0xc32a44] */
+    /* 007a6bfd  mov ecx, dword ptr [0xc32a44]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     ecx = M32(ea);
     /* 007a6c03  inc ecx */
@@ -42,10 +45,10 @@ void bfv_server_l1_body_007a6bf0(struct bfv_cpu *c)
     /* 007a6c04  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 007a6c06  mov dword ptr [0xc32a44], ecx */
+    /* 007a6c06  mov dword ptr [0xc32a44], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     M32(ea) = ecx;
-    /* 007a6c0c  mov dword ptr [esi], 0x87448c */
+    /* 007a6c0c  mov dword ptr [esi], 0x87448c  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87448cu;
     /* 007a6c12  je 0x7a6c1f */
@@ -54,9 +57,9 @@ void bfv_server_l1_body_007a6bf0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a6c15  mov ecx, 0xc32600 */
+    /* 007a6c15  mov ecx, 0xc32600  ; g_MemoryPoolNull_BAPICChangeVehicle */
     ecx = 0xc32600u;
-    /* 007a6c1a  call 0x413600 */
+    /* 007a6c1a  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a6bf0_1;
@@ -81,7 +84,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a6c30  dice::bf::ai::BAPICChangeVehicle  (virtual method) */
+/* 007a6c30  BAPICChangeVehicle::execute  (virtual method)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPICChangeVehicle
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a6c30, bfv_server_l1_body_007a6c30);
 BFV_L1_RESUME(bfv_server_l1r_007a6c30_1, bfv_server_l1_body_007a6c30, 1);
 void bfv_server_l1_body_007a6c30(struct bfv_cpu *c)
@@ -97,7 +103,7 @@ void bfv_server_l1_body_007a6c30(struct bfv_cpu *c)
     }
     /* 007a6c30  mov eax, ecx */
     eax = ecx;
-    /* 007a6c32  mov ecx, dword ptr [esp + 4] */
+    /* 007a6c32  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007a6c36  mov eax, dword ptr [eax + 0x18] */
@@ -118,10 +124,10 @@ void bfv_server_l1_body_007a6c30(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 007a6c42  mov ecx, dword ptr [esp + 8] */
+    /* 007a6c42  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 007a6c46  mov edx, dword ptr [esp + 0xc] */
+    /* 007a6c46  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 007a6c4a  mov byte ptr [ecx], 1 */

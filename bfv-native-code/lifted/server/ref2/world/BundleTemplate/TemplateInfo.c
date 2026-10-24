@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005819d0  dice::ref2::world::BundleTemplate::TemplateInfo  (vtable store) */
+/* 005819d0  TemplateInfo::~TemplateInfo  (vtable store)
+ * class: dice::ref2::world::BundleTemplate::TemplateInfo
+ */
 BFV_L1_ENTRY(bfv_server_l1_005819d0, bfv_server_l1_body_005819d0);
 BFV_L1_RESUME(bfv_server_l1r_005819d0_1, bfv_server_l1_body_005819d0, 1);
 void bfv_server_l1_body_005819d0(struct bfv_cpu *c)
@@ -25,7 +27,7 @@ void bfv_server_l1_body_005819d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005819d1  mov esi, ecx */
     esi = ecx;
-    /* 005819d3  mov dword ptr [esi], 0x83948c */
+    /* 005819d3  mov dword ptr [esi], 0x83948c  ; vtable TemplateInfo */
     ea = (uint32_t)(esi);
     M32(ea) = 0x83948cu;
     /* 005819d9  cmp dword ptr [esi + 0x1c], 0x10 */
@@ -43,7 +45,7 @@ void bfv_server_l1_body_005819d0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005819e3  call 0x403df0 */
+    /* 005819e3  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005819d0_1;
@@ -85,7 +87,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00581a00  dice::ref2::world::BundleTemplate::TemplateInfo  (virtual method) */
+/* 00581a00  TemplateInfo::deleting_dtor  (virtual method)
+ * class: dice::ref2::world::BundleTemplate::TemplateInfo
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581a00, bfv_server_l1_body_00581a00);
 BFV_L1_RESUME(bfv_server_l1r_00581a00_1, bfv_server_l1_body_00581a00, 1);
 BFV_L1_RESUME(bfv_server_l1r_00581a00_2, bfv_server_l1_body_00581a00, 2);
@@ -107,7 +111,7 @@ void bfv_server_l1_body_00581a00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00581a01  mov esi, ecx */
     esi = ecx;
-    /* 00581a03  mov dword ptr [esi], 0x83948c */
+    /* 00581a03  mov dword ptr [esi], 0x83948c  ; vtable TemplateInfo */
     ea = (uint32_t)(esi);
     M32(ea) = 0x83948cu;
     /* 00581a09  cmp dword ptr [esi + 0x1c], 0x10 */
@@ -125,7 +129,7 @@ void bfv_server_l1_body_00581a00(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00581a13  call 0x403df0 */
+    /* 00581a13  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581a00_1;
@@ -152,7 +156,7 @@ L_00581a1b:
     /* 00581a27  mov byte ptr [esi + 8], al */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = LO8(eax);
-    /* 00581a2a  test byte ptr [esp + 8], 1 */
+    /* 00581a2a  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -162,7 +166,7 @@ L_00581a1b:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00581a32  call 0x403df0 */
+    /* 00581a32  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581a00_2;
@@ -193,7 +197,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00586a20  dice::ref2::world::BundleTemplate::TemplateInfo  (vtable store) */
+/* 00586a20  TemplateInfo::TemplateInfo  (vtable store)
+ * class: dice::ref2::world::BundleTemplate::TemplateInfo
+ * called by: EffectInfo::EffectInfo, EffectInfo::create, world_00587160, ObjectCreatorWrapper<TemplateInfo>::create, world_AnimatedBlueTeamFlag_005b6c00
+ */
 BFV_L1_ENTRY(bfv_server_l1_00586a20, bfv_server_l1_body_00586a20);
 BFV_L1_RESUME(bfv_server_l1r_00586a20_1, bfv_server_l1_body_00586a20, 1);
 BFV_L1_RESUME(bfv_server_l1r_00586a20_2, bfv_server_l1_body_00586a20, 2);
@@ -209,7 +216,7 @@ void bfv_server_l1_body_00586a20(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00586a20  mov eax, dword ptr [esp + 4] */
+    /* 00586a20  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00586a24  push ebx */
@@ -244,7 +251,7 @@ void bfv_server_l1_body_00586a20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00586a30  lea ecx, [ebp + 4] */
     ecx = (uint32_t)(ebp + 0x00000004u);
-    /* 00586a33  mov dword ptr [ebp], 0x83948c */
+    /* 00586a33  mov dword ptr [ebp], 0x83948c  ; vtable TemplateInfo */
     ea = (uint32_t)(ebp);
     M32(ea) = 0x83948cu;
     /* 00586a3a  push ebx */
@@ -264,7 +271,7 @@ void bfv_server_l1_body_00586a20(struct bfv_cpu *c)
     /* 00586a46  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 00586a49  call 0x401e20 */
+    /* 00586a49  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00586a20_1;
@@ -280,7 +287,7 @@ R_1:
     /* 00586a54  mov dword ptr [ebp + 0x28], esi */
     ea = (uint32_t)(ebp + 0x00000028u);
     M32(ea) = esi;
-    /* 00586a57  call 0x4018c0 */
+    /* 00586a57  call 0x4018c0  ; Matrix4::identity */
     t = 0x004018c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00586a20_2;

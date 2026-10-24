@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a6dc30  dice::ref2::rend::RaShaderPPLSTs1DifLmp  (virtual method) */
+/* 00a6dc30  RaShaderPPLSTs1DifLmp::vf7  (virtual method)
+ * overrides: RaShader::vf7  (19 classes implement it)
+ * class: dice::ref2::rend::RaShaderPPLSTs1DifLmp
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a6dc30, bfv_client_l1_body_00a6dc30);
 BFV_L1_RESUME(bfv_client_l1r_00a6dc30_1, bfv_client_l1_body_00a6dc30, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a6dc30_2, bfv_client_l1_body_00a6dc30, 2);
@@ -43,7 +46,7 @@ void bfv_client_l1_body_00a6dc30(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a6dc3b  mov edi, dword ptr [esp + 0xc] */
+    /* 00a6dc3b  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 00a6dc3f  mov ecx, dword ptr [edi + 4] */
@@ -69,7 +72,7 @@ void bfv_client_l1_body_00a6dc30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a6dc51  mov ecx, esi */
     ecx = esi;
-    /* 00a6dc53  call 0xa4bb50 */
+    /* 00a6dc53  call 0xa4bb50  ; RaShader_00a4bb50 */
     t = 0x00a4bb50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6dc30_1;
@@ -82,14 +85,14 @@ R_1:
     /* 00a6dc5b  mov eax, dword ptr [edx + 0x70] */
     ea = (uint32_t)(edx + 0x00000070u);
     eax = M32(ea);
-    /* 00a6dc5e  mov ecx, dword ptr [0xe20b10] */
+    /* 00a6dc5e  mov ecx, dword ptr [0xe20b10]  ; g_pShaderManager */
     ea = (uint32_t)(0x00e20b10u);
     ecx = M32(ea);
     /* 00a6dc64  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a6dc65  call 0xa48ea0 */
+    /* 00a6dc65  call 0xa48ea0  ; ShaderManager::sub_00a48ea0 */
     t = 0x00a48ea0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6dc30_2;
@@ -116,7 +119,7 @@ R_2:
     M32(esp) = t;
     /* 00a6dc73  mov ecx, esi */
     ecx = esi;
-    /* 00a6dc75  call 0xa4bb40 */
+    /* 00a6dc75  call 0xa4bb40  ; RaShader_00a4bb40 */
     t = 0x00a4bb40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6dc30_3;
@@ -129,7 +132,7 @@ R_3:
     M32(esp) = t;
     /* 00a6dc7b  mov ecx, esi */
     ecx = esi;
-    /* 00a6dc7d  call 0xa4b650 */
+    /* 00a6dc7d  call 0xa4b650  ; RaShader_00a4b650 */
     t = 0x00a4b650u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6dc30_4;
@@ -156,7 +159,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a6dc90  dice::ref2::rend::RaShaderPPLSTs1DifLmp  (virtual method) */
+/* 00a6dc90  RaShaderPPLSTs1DifLmp::vf8  (virtual method)
+ * overrides: RaShader::vf8  (19 classes implement it)
+ * class: dice::ref2::rend::RaShaderPPLSTs1DifLmp
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a6dc90, bfv_client_l1_body_00a6dc90);
 BFV_L1_RESUME(bfv_client_l1r_00a6dc90_1, bfv_client_l1_body_00a6dc90, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a6dc90_2, bfv_client_l1_body_00a6dc90, 2);
@@ -200,7 +206,7 @@ void bfv_client_l1_body_00a6dc90(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a6dca2  mov edi, dword ptr [esp + 0x1c] */
+    /* 00a6dca2  mov edi, dword ptr [esp + 0x1c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000001cu);
     edi = M32(ea);
     /* 00a6dca6  mov ecx, dword ptr [edi + 4] */
@@ -226,7 +232,7 @@ void bfv_client_l1_body_00a6dc90(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a6dcb5  mov ecx, esi */
     ecx = esi;
-    /* 00a6dcb7  call 0xa4bb50 */
+    /* 00a6dcb7  call 0xa4bb50  ; RaShader_00a4bb50 */
     t = 0x00a4bb50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6dc90_1;
@@ -239,7 +245,7 @@ R_1:
     M32(esp) = t;
     /* 00a6dcbd  mov ecx, esi */
     ecx = esi;
-    /* 00a6dcbf  call 0xa4bf90 */
+    /* 00a6dcbf  call 0xa4bf90  ; RaShader::vf8 */
     t = 0x00a4bf90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6dc90_2;
@@ -252,7 +258,7 @@ R_2:
     M32(esp) = t;
     /* 00a6dcc5  mov ecx, esi */
     ecx = esi;
-    /* 00a6dcc7  call 0xa4b5a0 */
+    /* 00a6dcc7  call 0xa4b5a0  ; RaShader_00a4b5a0 */
     t = 0x00a4b5a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6dc90_3;
@@ -265,7 +271,7 @@ R_3:
     /* 00a6dccf  fld dword ptr [eax + 0x4c] */
     ea = (uint32_t)(eax + 0x0000004cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6dcd2  mov ecx, dword ptr [0xe20b10] */
+    /* 00a6dcd2  mov ecx, dword ptr [0xe20b10]  ; g_pShaderManager */
     ea = (uint32_t)(0x00e20b10u);
     ecx = M32(ea);
     /* 00a6dcd8  fmul dword ptr [ecx + 0x130] */
@@ -283,7 +289,7 @@ R_3:
     /* 00a6dcea  fadd dword ptr [eax + 0x68] */
     ea = (uint32_t)(eax + 0x00000068u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6dced  fmul dword ptr [0xb44e48] */
+    /* 00a6dced  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a6dcf3  fld dword ptr [eax + 0x44] */
@@ -295,7 +301,7 @@ R_3:
     /* 00a6dcfc  fadd dword ptr [eax + 0x64] */
     ea = (uint32_t)(eax + 0x00000064u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6dcff  fmul dword ptr [0xb44e48] */
+    /* 00a6dcff  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a6dd05  fld dword ptr [eax + 0x40] */
@@ -304,7 +310,7 @@ R_3:
     /* 00a6dd08  fmul dword ptr [ecx + 0x124] */
     ea = (uint32_t)(ecx + 0x00000124u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6dd0e  lea ecx, [esp + 8] */
+    /* 00a6dd0e  lea ecx, [esp + 8]  ; &var_10 */
     ecx = (uint32_t)(esp + 0x00000008u);
     /* 00a6dd12  push ecx */
     t = ecx;
@@ -327,19 +333,19 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a6dd21  fmul dword ptr [0xb44e48] */
+    /* 00a6dd21  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6dd27  fstp dword ptr [esp + 0x14] */
+    /* 00a6dd27  fstp dword ptr [esp + 0x14]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6dd2b  fstp dword ptr [esp + 0x18] */
+    /* 00a6dd2b  fstp dword ptr [esp + 0x18]  ; var_c */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6dd2f  fstp dword ptr [esp + 0x1c] */
+    /* 00a6dd2f  fstp dword ptr [esp + 0x1c]  ; var_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6dd33  fstp dword ptr [esp + 0x20] */
+    /* 00a6dd33  fstp dword ptr [esp + 0x20]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a6dd37  mov edx, dword ptr [eax] */
@@ -379,7 +385,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a6dd50  dice::ref2::rend::RaShaderPPLSTs1DifLmp  (vtable store) */
+/* 00a6dd50  RaShaderPPLSTs1DifLmp::RaShaderPPLSTs1DifLmp  (vtable store)
+ * class: dice::ref2::rend::RaShaderPPLSTs1DifLmp
+ * called by: RaShaderManagerBase_blending_00a3a730
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a6dd50, bfv_client_l1_body_00a6dd50);
 BFV_L1_RESUME(bfv_client_l1r_00a6dd50_1, bfv_client_l1_body_00a6dd50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a6dd50_2, bfv_client_l1_body_00a6dd50, 2);
@@ -401,10 +410,10 @@ void bfv_client_l1_body_00a6dd50(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00a6dd53  mov eax, dword ptr [esp + 0x44] */
+    /* 00a6dd53  mov eax, dword ptr [esp + 0x44]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000044u);
     eax = M32(ea);
-    /* 00a6dd57  mov edx, dword ptr [esp + 0x3c] */
+    /* 00a6dd57  mov edx, dword ptr [esp + 0x3c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000003cu);
     edx = M32(ea);
     /* 00a6dd5b  push esi */
@@ -413,7 +422,7 @@ void bfv_client_l1_body_00a6dd50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a6dd5c  mov esi, ecx */
     esi = ecx;
-    /* 00a6dd5e  mov ecx, dword ptr [esp + 0x44] */
+    /* 00a6dd5e  mov ecx, dword ptr [esp + 0x44]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000044u);
     ecx = M32(ea);
     /* 00a6dd62  push eax */
@@ -430,7 +439,7 @@ void bfv_client_l1_body_00a6dd50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a6dd65  mov ecx, esi */
     ecx = esi;
-    /* 00a6dd67  call 0xa6de60 */
+    /* 00a6dd67  call 0xa6de60  ; RaShaderPPLSTs1Dif::RaShaderPPLSTs1Dif */
     t = 0x00a6de60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6dd50_1;
@@ -445,87 +454,87 @@ R_1:
     ecx = 0x1u;
     /* 00a6dd73  mov dl, 2 */
     SET8L(edx, 0x2u);
-    /* 00a6dd75  mov word ptr [esp + 4], ax */
+    /* 00a6dd75  mov word ptr [esp + 4], ax  ; var_38 */
     ea = (uint32_t)(esp + 0x00000004u);
     M16(ea) = LO16(eax);
-    /* 00a6dd7a  mov word ptr [esp + 6], ax */
+    /* 00a6dd7a  mov word ptr [esp + 6], ax  ; var_36 */
     ea = (uint32_t)(esp + 0x00000006u);
     M16(ea) = LO16(eax);
-    /* 00a6dd7f  mov byte ptr [esp + 9], al */
+    /* 00a6dd7f  mov byte ptr [esp + 9], al  ; var_33 */
     ea = (uint32_t)(esp + 0x00000009u);
     M8(ea) = LO8(eax);
-    /* 00a6dd83  mov byte ptr [esp + 0xa], al */
+    /* 00a6dd83  mov byte ptr [esp + 0xa], al  ; var_32 */
     ea = (uint32_t)(esp + 0x0000000au);
     M8(ea) = LO8(eax);
-    /* 00a6dd87  mov byte ptr [esp + 0xb], al */
+    /* 00a6dd87  mov byte ptr [esp + 0xb], al  ; var_31 */
     ea = (uint32_t)(esp + 0x0000000bu);
     M8(ea) = LO8(eax);
-    /* 00a6dd8b  mov word ptr [esp + 0xc], ax */
+    /* 00a6dd8b  mov word ptr [esp + 0xc], ax  ; var_30 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M16(ea) = LO16(eax);
-    /* 00a6dd90  mov byte ptr [esp + 0x11], al */
+    /* 00a6dd90  mov byte ptr [esp + 0x11], al  ; var_2b */
     ea = (uint32_t)(esp + 0x00000011u);
     M8(ea) = LO8(eax);
-    /* 00a6dd94  mov byte ptr [esp + 0x13], al */
+    /* 00a6dd94  mov byte ptr [esp + 0x13], al  ; var_29 */
     ea = (uint32_t)(esp + 0x00000013u);
     M8(ea) = LO8(eax);
-    /* 00a6dd98  mov word ptr [esp + 0x14], ax */
+    /* 00a6dd98  mov word ptr [esp + 0x14], ax  ; var_28 */
     ea = (uint32_t)(esp + 0x00000014u);
     M16(ea) = LO16(eax);
-    /* 00a6dd9d  mov byte ptr [esp + 0x19], al */
+    /* 00a6dd9d  mov byte ptr [esp + 0x19], al  ; var_23 */
     ea = (uint32_t)(esp + 0x00000019u);
     M8(ea) = LO8(eax);
-    /* 00a6dda1  mov byte ptr [esp + 0x1b], al */
+    /* 00a6dda1  mov byte ptr [esp + 0x1b], al  ; var_21 */
     ea = (uint32_t)(esp + 0x0000001bu);
     M8(ea) = LO8(eax);
-    /* 00a6dda5  mov word ptr [esp + 0x1e], ax */
+    /* 00a6dda5  mov word ptr [esp + 0x1e], ax  ; var_1e */
     ea = (uint32_t)(esp + 0x0000001eu);
     M16(ea) = LO16(eax);
-    /* 00a6ddaa  mov byte ptr [esp + 0x21], al */
+    /* 00a6ddaa  mov byte ptr [esp + 0x21], al  ; var_1b */
     ea = (uint32_t)(esp + 0x00000021u);
     M8(ea) = LO8(eax);
-    /* 00a6ddae  mov byte ptr [esp + 0x29], al */
+    /* 00a6ddae  mov byte ptr [esp + 0x29], al  ; var_13 */
     ea = (uint32_t)(esp + 0x00000029u);
     M8(ea) = LO8(eax);
-    /* 00a6ddb2  mov byte ptr [esp + 0x2b], al */
+    /* 00a6ddb2  mov byte ptr [esp + 0x2b], al  ; var_11 */
     ea = (uint32_t)(esp + 0x0000002bu);
     M8(ea) = LO8(eax);
-    /* 00a6ddb6  mov byte ptr [esp + 0x31], al */
+    /* 00a6ddb6  mov byte ptr [esp + 0x31], al  ; var_b */
     ea = (uint32_t)(esp + 0x00000031u);
     M8(ea) = LO8(eax);
-    /* 00a6ddba  mov byte ptr [esp + 0x33], al */
+    /* 00a6ddba  mov byte ptr [esp + 0x33], al  ; var_9 */
     ea = (uint32_t)(esp + 0x00000033u);
     M8(ea) = LO8(eax);
-    /* 00a6ddbe  mov word ptr [esp + 0x36], ax */
+    /* 00a6ddbe  mov word ptr [esp + 0x36], ax  ; var_6 */
     ea = (uint32_t)(esp + 0x00000036u);
     M16(ea) = LO16(eax);
-    /* 00a6ddc3  mov byte ptr [esp + 0x39], al */
+    /* 00a6ddc3  mov byte ptr [esp + 0x39], al  ; var_3 */
     ea = (uint32_t)(esp + 0x00000039u);
     M8(ea) = LO8(eax);
-    /* 00a6ddc7  mov byte ptr [esp + 0x3a], al */
+    /* 00a6ddc7  mov byte ptr [esp + 0x3a], al  ; var_2 */
     ea = (uint32_t)(esp + 0x0000003au);
     M8(ea) = LO8(eax);
-    /* 00a6ddcb  mov byte ptr [esp + 0x3b], al */
+    /* 00a6ddcb  mov byte ptr [esp + 0x3b], al  ; var_1 */
     ea = (uint32_t)(esp + 0x0000003bu);
     M8(ea) = LO8(eax);
-    /* 00a6ddcf  lea eax, [esp + 4] */
+    /* 00a6ddcf  lea eax, [esp + 4]  ; &var_38 */
     eax = (uint32_t)(esp + 0x00000004u);
-    /* 00a6ddd3  mov byte ptr [esp + 0x18], cl */
+    /* 00a6ddd3  mov byte ptr [esp + 0x18], cl  ; var_24 */
     ea = (uint32_t)(esp + 0x00000018u);
     M8(ea) = LO8(ecx);
-    /* 00a6ddd7  mov word ptr [esp + 0x1c], cx */
+    /* 00a6ddd7  mov word ptr [esp + 0x1c], cx  ; var_20 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M16(ea) = LO16(ecx);
-    /* 00a6dddc  mov byte ptr [esp + 0x20], cl */
+    /* 00a6dddc  mov byte ptr [esp + 0x20], cl  ; var_1c */
     ea = (uint32_t)(esp + 0x00000020u);
     M8(ea) = LO8(ecx);
-    /* 00a6dde0  mov byte ptr [esp + 0x23], cl */
+    /* 00a6dde0  mov byte ptr [esp + 0x23], cl  ; var_19 */
     ea = (uint32_t)(esp + 0x00000023u);
     M8(ea) = LO8(ecx);
-    /* 00a6dde4  mov word ptr [esp + 0x24], cx */
+    /* 00a6dde4  mov word ptr [esp + 0x24], cx  ; var_18 */
     ea = (uint32_t)(esp + 0x00000024u);
     M16(ea) = LO16(ecx);
-    /* 00a6dde9  mov word ptr [esp + 0x2c], cx */
+    /* 00a6dde9  mov word ptr [esp + 0x2c], cx  ; var_10 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M16(ea) = LO16(ecx);
     /* 00a6ddee  push eax */
@@ -534,55 +543,55 @@ R_1:
     M32(esp) = t;
     /* 00a6ddef  mov ecx, esi */
     ecx = esi;
-    /* 00a6ddf1  mov dword ptr [esi], 0xc0656c */
+    /* 00a6ddf1  mov dword ptr [esi], 0xc0656c  ; vtable RaShaderPPLSTs1DifLmp */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0656cu;
-    /* 00a6ddf7  mov byte ptr [esp + 0xc], dl */
+    /* 00a6ddf7  mov byte ptr [esp + 0xc], dl  ; var_34 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M8(ea) = LO8(edx);
-    /* 00a6ddfb  mov word ptr [esp + 0x12], 0xc */
+    /* 00a6ddfb  mov word ptr [esp + 0x12], 0xc  ; var_2e */
     ea = (uint32_t)(esp + 0x00000012u);
     M16(ea) = 0xcu;
-    /* 00a6de02  mov byte ptr [esp + 0x14], dl */
+    /* 00a6de02  mov byte ptr [esp + 0x14], dl  ; var_2c */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = LO8(edx);
-    /* 00a6de06  mov byte ptr [esp + 0x16], 3 */
+    /* 00a6de06  mov byte ptr [esp + 0x16], 3  ; var_2a */
     ea = (uint32_t)(esp + 0x00000016u);
     M8(ea) = 0x3u;
-    /* 00a6de0b  mov word ptr [esp + 0x1a], 0x18 */
+    /* 00a6de0b  mov word ptr [esp + 0x1a], 0x18  ; var_26 */
     ea = (uint32_t)(esp + 0x0000001au);
     M16(ea) = 0x18u;
-    /* 00a6de12  mov byte ptr [esp + 0x1e], 5 */
+    /* 00a6de12  mov byte ptr [esp + 0x1e], 5  ; var_22 */
     ea = (uint32_t)(esp + 0x0000001eu);
     M8(ea) = 0x5u;
-    /* 00a6de17  mov byte ptr [esp + 0x26], 5 */
+    /* 00a6de17  mov byte ptr [esp + 0x26], 5  ; var_1a */
     ea = (uint32_t)(esp + 0x00000026u);
     M8(ea) = 0x5u;
-    /* 00a6de1c  mov word ptr [esp + 0x2a], 8 */
+    /* 00a6de1c  mov word ptr [esp + 0x2a], 8  ; var_16 */
     ea = (uint32_t)(esp + 0x0000002au);
     M16(ea) = 0x8u;
-    /* 00a6de23  mov byte ptr [esp + 0x2c], dl */
+    /* 00a6de23  mov byte ptr [esp + 0x2c], dl  ; var_14 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M8(ea) = LO8(edx);
-    /* 00a6de27  mov byte ptr [esp + 0x2e], 6 */
+    /* 00a6de27  mov byte ptr [esp + 0x2e], 6  ; var_12 */
     ea = (uint32_t)(esp + 0x0000002eu);
     M8(ea) = 0x6u;
-    /* 00a6de2c  mov word ptr [esp + 0x32], 0x14 */
+    /* 00a6de2c  mov word ptr [esp + 0x32], 0x14  ; var_e */
     ea = (uint32_t)(esp + 0x00000032u);
     M16(ea) = 0x14u;
-    /* 00a6de33  mov byte ptr [esp + 0x34], dl */
+    /* 00a6de33  mov byte ptr [esp + 0x34], dl  ; var_c */
     ea = (uint32_t)(esp + 0x00000034u);
     M8(ea) = LO8(edx);
-    /* 00a6de37  mov byte ptr [esp + 0x36], 7 */
+    /* 00a6de37  mov byte ptr [esp + 0x36], 7  ; var_a */
     ea = (uint32_t)(esp + 0x00000036u);
     M8(ea) = 0x7u;
-    /* 00a6de3c  mov word ptr [esp + 0x38], 0xff */
+    /* 00a6de3c  mov word ptr [esp + 0x38], 0xff  ; var_8 */
     ea = (uint32_t)(esp + 0x00000038u);
     M16(ea) = 0xffu;
-    /* 00a6de43  mov byte ptr [esp + 0x3c], 0x11 */
+    /* 00a6de43  mov byte ptr [esp + 0x3c], 0x11  ; var_4 */
     ea = (uint32_t)(esp + 0x0000003cu);
     M8(ea) = 0x11u;
-    /* 00a6de48  call 0xa4b520 */
+    /* 00a6de48  call 0xa4b520  ; RaShader_00a4b520 */
     t = 0x00a4b520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6dd50_2;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0086b470  dice::meme::Effect  (vtable store) */
+/* 0086b470  Effect::Effect  (vtable store)
+ * class: dice::meme::Effect
+ * called by: AlphaFadeEffect::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086b470, bfv_client_l1_body_0086b470);
 BFV_L1_RESUME(bfv_client_l1r_0086b470_1, bfv_client_l1_body_0086b470, 1);
 void bfv_client_l1_body_0086b470(struct bfv_cpu *c)
@@ -25,14 +28,14 @@ void bfv_client_l1_body_0086b470(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086b471  mov esi, ecx */
     esi = ecx;
-    /* 0086b473  call 0x874870 */
+    /* 0086b473  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086b470_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0086b478  mov dword ptr [esi], 0xbd3114 */
+    /* 0086b478  mov dword ptr [esi], 0xbd3114  ; vtable Effect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd3114u;
     /* 0086b47e  mov eax, esi */
@@ -52,7 +55,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00875660  dice::meme::Effect  (virtual method) */
+/* 00875660  Effect::vf18  (virtual method)
+ * class: dice::meme::Effect
+ * called by: BfMultiplyColorEffect::vf18, BfMultiplyColorEffect2::vf18, RotateEffect::vf18, RotateAroundCoordinateEffect::vf18, VariableColorEffect::vf18, SinMoveEffect::vf18 (+1 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00875660, bfv_client_l1_body_00875660);
 BFV_L1_RESUME(bfv_client_l1r_00875660_1, bfv_client_l1_body_00875660, 1);
 void bfv_client_l1_body_00875660(struct bfv_cpu *c)
@@ -66,37 +72,37 @@ void bfv_client_l1_body_00875660(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00875660  mov eax, dword ptr [esp + 0x18] */
+    /* 00875660  mov eax, dword ptr [esp + 0x18]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00875664  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 00875666  mov edx, dword ptr [esp + 0x14] */
+    /* 00875666  mov edx, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
-    /* 0087566a  mov eax, dword ptr [esp + 0x10] */
+    /* 0087566a  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 0087566e  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087566f  mov edx, dword ptr [esp + 0x10] */
+    /* 0087566f  mov edx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00875673  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00875674  mov eax, dword ptr [esp + 0x10] */
+    /* 00875674  mov eax, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00875678  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00875679  mov edx, dword ptr [esp + 0x10] */
+    /* 00875679  mov edx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 0087567d  push eax */
@@ -107,7 +113,7 @@ void bfv_client_l1_body_00875660(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087567f  call 0x875580 */
+    /* 0087567f  call 0x875580  ; meme::Node::dispatchUpB */
     t = 0x00875580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00875660_1;
@@ -125,7 +131,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00875690  dice::meme::Effect  (virtual method) */
+/* 00875690  Effect::vf19  (virtual method)
+ * class: dice::meme::Effect
+ * called by: BfMultiplyColorEffect::vf19, BfMultiplyColorEffect2::vf19, RotateEffect::vf19, RotateAroundCoordinateEffect::vf19, VariableColorEffect::vf19, MoveEffect::vf19 (+1 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00875690, bfv_client_l1_body_00875690);
 BFV_L1_RESUME(bfv_client_l1r_00875690_1, bfv_client_l1_body_00875690, 1);
 void bfv_client_l1_body_00875690(struct bfv_cpu *c)
@@ -139,23 +148,23 @@ void bfv_client_l1_body_00875690(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00875690  mov eax, dword ptr [esp + 0x10] */
+    /* 00875690  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 00875694  mov edx, dword ptr [esp + 0xc] */
+    /* 00875694  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00875698  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 0087569a  mov eax, dword ptr [esp + 8] */
+    /* 0087569a  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0087569e  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0087569f  mov edx, dword ptr [esp + 8] */
+    /* 0087569f  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 008756a3  push eax */
@@ -166,7 +175,7 @@ void bfv_client_l1_body_00875690(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008756a5  call 0x8755e0 */
+    /* 008756a5  call 0x8755e0  ; meme::Node::dispatchUpA */
     t = 0x008755e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00875690_1;
@@ -184,7 +193,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008756b0  dice::meme::Effect  (vtable store) */
+/* 008756b0  Effect::create  (vtable store)
+ * class: dice::meme::Effect
+ */
 BFV_L1_ENTRY(bfv_client_l1_008756b0, bfv_client_l1_body_008756b0);
 BFV_L1_RESUME(bfv_client_l1r_008756b0_1, bfv_client_l1_body_008756b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008756b0_2, bfv_client_l1_body_008756b0, 2);
@@ -208,7 +219,7 @@ void bfv_client_l1_body_008756b0(struct bfv_cpu *c)
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 008756b3  call 0x403610 */
+    /* 008756b3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008756b0_1;
@@ -230,14 +241,14 @@ R_1:
     if (zf) goto L_008756d2;
     /* 008756c1  mov ecx, esi */
     ecx = esi;
-    /* 008756c3  call 0x874870 */
+    /* 008756c3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008756b0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 008756c8  mov dword ptr [esi], 0xbd3114 */
+    /* 008756c8  mov dword ptr [esi], 0xbd3114  ; vtable Effect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd3114u;
     /* 008756ce  mov eax, esi */
@@ -270,8 +281,12 @@ out: __attribute__((unused));
 }
 
 
-/* 008756e0  dice::meme::Effect  (virtual method)
- * strings: "dice::meme::Effect" */
+/* 008756e0  Effect::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::Effect
+ * strings: "dice::meme::Effect"
+ * called by: ClearStream::vf28
+ */
 BFV_L1_ENTRY(bfv_client_l1_008756e0, bfv_client_l1_body_008756e0);
 BFV_L1_RESUME(bfv_client_l1r_008756e0_1, bfv_client_l1_body_008756e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008756e0_2, bfv_client_l1_body_008756e0, 2);
@@ -302,13 +317,13 @@ void bfv_client_l1_body_008756e0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 008756f5  push 0xbd6e1c */
+    /* 008756f5  push 0xbd6e1c  ; "dice::meme::Effect" */
     t = 0xbd6e1cu;
     esp -= 4;
     M32(esp) = t;
-    /* 008756fa  mov ecx, 0xdf6918 */
+    /* 008756fa  mov ecx, 0xdf6918  ; g_RuntimeClass_Effect */
     ecx = 0xdf6918u;
-    /* 008756ff  call 0x875490 */
+    /* 008756ff  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008756e0_1;
@@ -319,10 +334,10 @@ R_1:
     t = 0xb3af50u;
     esp -= 4;
     M32(esp) = t;
-    /* 00875709  mov dword ptr [0xdf6918], 0xbd6dfc */
+    /* 00875709  mov dword ptr [0xdf6918], 0xbd6dfc  ; g_RuntimeClass_Effect */
     ea = (uint32_t)(0x00df6918u);
     M32(ea) = 0xbd6dfcu;
-    /* 00875713  call 0x7c2cd2 */
+    /* 00875713  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008756e0_2;
@@ -336,7 +351,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0087571b:
-    /* 0087571b  mov eax, 0xdf6918 */
+    /* 0087571b  mov eax, 0xdf6918  ; g_RuntimeClass_Effect */
     eax = 0xdf6918u;
     /* 00875720  ret */
     c->eip = M32(esp);

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00a7ee80  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ee80  XRenderStats::vf10  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ee80, bfv_client_l1_body_00a7ee80);
 void bfv_client_l1_body_00a7ee80(struct bfv_cpu *c)
 {
@@ -13,7 +15,7 @@ void bfv_client_l1_body_00a7ee80(struct bfv_cpu *c)
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
-    /* 00a7ee80  jmp 0xa7eaf0 */
+    /* 00a7ee80  jmp 0xa7eaf0  ; bfv_client_read_global_00a7eaf0 */
     c->eip = 0x00a7eaf0u;
     goto out;
 out: __attribute__((unused));
@@ -23,7 +25,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ee90  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ee90  XRenderStats::vf11  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ee90, bfv_client_l1_body_00a7ee90);
 void bfv_client_l1_body_00a7ee90(struct bfv_cpu *c)
 {
@@ -31,7 +35,7 @@ void bfv_client_l1_body_00a7ee90(struct bfv_cpu *c)
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
-    /* 00a7ee90  jmp 0xa7eae0 */
+    /* 00a7ee90  jmp 0xa7eae0  ; bfv_client_read_global_00a7eae0 */
     c->eip = 0x00a7eae0u;
     goto out;
 out: __attribute__((unused));
@@ -41,7 +45,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7eea0  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7eea0  XRenderStats::vf13  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7eea0, bfv_client_l1_body_00a7eea0);
 void bfv_client_l1_body_00a7eea0(struct bfv_cpu *c)
 {
@@ -50,13 +56,13 @@ void bfv_client_l1_body_00a7eea0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7eea0  mov eax, dword ptr [0xe122c4] */
+    /* 00a7eea0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7eea5  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7eeab  jmp 0x6fc8b0 */
+    /* 00a7eeab  jmp 0x6fc8b0  ; WrapperBase::vf1_get_20h */
     c->eip = 0x006fc8b0u;
     goto out;
 out: __attribute__((unused));
@@ -66,7 +72,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7eeb0  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7eeb0  XRenderStats::vf14  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7eeb0, bfv_client_l1_body_00a7eeb0);
 void bfv_client_l1_body_00a7eeb0(struct bfv_cpu *c)
 {
@@ -75,13 +83,13 @@ void bfv_client_l1_body_00a7eeb0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7eeb0  mov eax, dword ptr [0xe122c4] */
+    /* 00a7eeb0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7eeb5  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7eebb  jmp 0xa64cc0 */
+    /* 00a7eebb  jmp 0xa64cc0  ; Envelope::vf2_get_24h */
     c->eip = 0x00a64cc0u;
     goto out;
 out: __attribute__((unused));
@@ -91,7 +99,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7eec0  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7eec0  XRenderStats::vf15  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7eec0, bfv_client_l1_body_00a7eec0);
 void bfv_client_l1_body_00a7eec0(struct bfv_cpu *c)
 {
@@ -100,13 +110,13 @@ void bfv_client_l1_body_00a7eec0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7eec0  mov eax, dword ptr [0xe122c4] */
+    /* 00a7eec0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7eec5  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7eecb  jmp 0xa64d40 */
+    /* 00a7eecb  jmp 0xa64d40  ; MemTexture3D::vf9_get_28h */
     c->eip = 0x00a64d40u;
     goto out;
 out: __attribute__((unused));
@@ -116,7 +126,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7eed0  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7eed0  XRenderStats::vf16  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7eed0, bfv_client_l1_body_00a7eed0);
 void bfv_client_l1_body_00a7eed0(struct bfv_cpu *c)
 {
@@ -125,13 +137,13 @@ void bfv_client_l1_body_00a7eed0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7eed0  mov eax, dword ptr [0xe122c4] */
+    /* 00a7eed0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7eed5  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7eedb  jmp 0x956100 */
+    /* 00a7eedb  jmp 0x956100  ; AISettings::vf13_get_2ch */
     c->eip = 0x00956100u;
     goto out;
 out: __attribute__((unused));
@@ -141,7 +153,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7eee0  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7eee0  XRenderStats::vf17  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7eee0, bfv_client_l1_body_00a7eee0);
 void bfv_client_l1_body_00a7eee0(struct bfv_cpu *c)
 {
@@ -150,13 +164,13 @@ void bfv_client_l1_body_00a7eee0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7eee0  mov eax, dword ptr [0xe122c4] */
+    /* 00a7eee0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7eee5  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7eeeb  jmp 0x956120 */
+    /* 00a7eeeb  jmp 0x956120  ; BotMain::vf53_get_30h */
     c->eip = 0x00956120u;
     goto out;
 out: __attribute__((unused));
@@ -166,7 +180,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7eef0  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7eef0  XRenderStats::vf18  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7eef0, bfv_client_l1_body_00a7eef0);
 void bfv_client_l1_body_00a7eef0(struct bfv_cpu *c)
 {
@@ -175,13 +191,13 @@ void bfv_client_l1_body_00a7eef0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7eef0  mov eax, dword ptr [0xe122c4] */
+    /* 00a7eef0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7eef5  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7eefb  jmp 0xa5e2b0 */
+    /* 00a7eefb  jmp 0xa5e2b0  ; MaterialManager::vf15_get_34h */
     c->eip = 0x00a5e2b0u;
     goto out;
 out: __attribute__((unused));
@@ -191,7 +207,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef00  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef00  XRenderStats::vf19  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef00, bfv_client_l1_body_00a7ef00);
 void bfv_client_l1_body_00a7ef00(struct bfv_cpu *c)
 {
@@ -200,13 +218,13 @@ void bfv_client_l1_body_00a7ef00(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef00  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef00  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef05  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef0b  jmp 0xa5e2c0 */
+    /* 00a7ef0b  jmp 0xa5e2c0  ; MaterialManager::vf13_get_38h */
     c->eip = 0x00a5e2c0u;
     goto out;
 out: __attribute__((unused));
@@ -216,7 +234,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef10  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef10  XRenderStats::vf20  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef10, bfv_client_l1_body_00a7ef10);
 void bfv_client_l1_body_00a7ef10(struct bfv_cpu *c)
 {
@@ -225,13 +245,13 @@ void bfv_client_l1_body_00a7ef10(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef10  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef10  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef15  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef1b  jmp 0x73eae0 */
+    /* 00a7ef1b  jmp 0x73eae0  ; WrapperExeception::vf2_get_3ch */
     c->eip = 0x0073eae0u;
     goto out;
 out: __attribute__((unused));
@@ -241,7 +261,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef20  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef20  XRenderStats::vf22  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef20, bfv_client_l1_body_00a7ef20);
 void bfv_client_l1_body_00a7ef20(struct bfv_cpu *c)
 {
@@ -250,13 +272,13 @@ void bfv_client_l1_body_00a7ef20(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef20  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef20  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef25  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef2b  jmp 0x6f39d0 */
+    /* 00a7ef2b  jmp 0x6f39d0  ; BotMain::vf56_get_4ch */
     c->eip = 0x006f39d0u;
     goto out;
 out: __attribute__((unused));
@@ -266,7 +288,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef30  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef30  XRenderStats::vf23  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef30, bfv_client_l1_body_00a7ef30);
 void bfv_client_l1_body_00a7ef30(struct bfv_cpu *c)
 {
@@ -275,13 +299,13 @@ void bfv_client_l1_body_00a7ef30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef30  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef30  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef35  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef3b  jmp 0x59ac60 */
+    /* 00a7ef3b  jmp 0x59ac60  ; AIPathfinding::vf5_get_50h */
     c->eip = 0x0059ac60u;
     goto out;
 out: __attribute__((unused));
@@ -291,7 +315,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef40  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef40  XRenderStats::vf24  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef40, bfv_client_l1_body_00a7ef40);
 void bfv_client_l1_body_00a7ef40(struct bfv_cpu *c)
 {
@@ -300,13 +326,13 @@ void bfv_client_l1_body_00a7ef40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef40  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef40  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef45  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef4b  jmp 0xa5c730 */
+    /* 00a7ef4b  jmp 0xa5c730  ; AIScriptManager::vf29_get_40h */
     c->eip = 0x00a5c730u;
     goto out;
 out: __attribute__((unused));
@@ -316,7 +342,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef50  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef50  XRenderStats::vf25  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef50, bfv_client_l1_body_00a7ef50);
 void bfv_client_l1_body_00a7ef50(struct bfv_cpu *c)
 {
@@ -325,13 +353,13 @@ void bfv_client_l1_body_00a7ef50(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef50  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef50  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef55  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef5b  jmp 0x6ddbc0 */
+    /* 00a7ef5b  jmp 0x6ddbc0  ; ProximityGroup::vf5_get_44h */
     c->eip = 0x006ddbc0u;
     goto out;
 out: __attribute__((unused));
@@ -341,7 +369,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef60  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef60  XRenderStats::vf26  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef60, bfv_client_l1_body_00a7ef60);
 void bfv_client_l1_body_00a7ef60(struct bfv_cpu *c)
 {
@@ -350,13 +380,13 @@ void bfv_client_l1_body_00a7ef60(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef60  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef60  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef65  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef6b  jmp 0x6a4100 */
+    /* 00a7ef6b  jmp 0x6a4100  ; Tone::vf23_get_48h */
     c->eip = 0x006a4100u;
     goto out;
 out: __attribute__((unused));
@@ -366,7 +396,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef70  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef70  XRenderStats::vf27  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef70, bfv_client_l1_body_00a7ef70);
 void bfv_client_l1_body_00a7ef70(struct bfv_cpu *c)
 {
@@ -375,13 +407,13 @@ void bfv_client_l1_body_00a7ef70(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef70  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef70  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef75  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef7b  jmp 0x5842b0 */
+    /* 00a7ef7b  jmp 0x5842b0  ; PlayerManager::getLocalPlayer */
     c->eip = 0x005842b0u;
     goto out;
 out: __attribute__((unused));
@@ -391,7 +423,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef80  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef80  XRenderStats::vf28  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef80, bfv_client_l1_body_00a7ef80);
 void bfv_client_l1_body_00a7ef80(struct bfv_cpu *c)
 {
@@ -400,13 +434,13 @@ void bfv_client_l1_body_00a7ef80(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef80  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef80  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef85  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef8b  jmp 0xa50af0 */
+    /* 00a7ef8b  jmp 0xa50af0  ; OldConsole::vf26_get_58h */
     c->eip = 0x00a50af0u;
     goto out;
 out: __attribute__((unused));
@@ -416,7 +450,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ef90  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7ef90  XRenderStats::vf29  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ef90, bfv_client_l1_body_00a7ef90);
 void bfv_client_l1_body_00a7ef90(struct bfv_cpu *c)
 {
@@ -425,13 +461,13 @@ void bfv_client_l1_body_00a7ef90(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7ef90  mov eax, dword ptr [0xe122c4] */
+    /* 00a7ef90  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7ef95  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7ef9b  jmp 0x59ac80 */
+    /* 00a7ef9b  jmp 0x59ac80  ; PatchWaterCell::vf4_get_5ch */
     c->eip = 0x0059ac80u;
     goto out;
 out: __attribute__((unused));
@@ -441,7 +477,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7efa0  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7efa0  XRenderStats::vf30  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7efa0, bfv_client_l1_body_00a7efa0);
 void bfv_client_l1_body_00a7efa0(struct bfv_cpu *c)
 {
@@ -450,13 +488,13 @@ void bfv_client_l1_body_00a7efa0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7efa0  mov eax, dword ptr [0xe122c4] */
+    /* 00a7efa0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7efa5  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7efab  jmp 0xa50980 */
+    /* 00a7efab  jmp 0xa50980  ; PatchWaterCell::vf3_get_60h */
     c->eip = 0x00a50980u;
     goto out;
 out: __attribute__((unused));
@@ -466,7 +504,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7efb0  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7efb0  XRenderStats::vf31  (virtual method)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7efb0, bfv_client_l1_body_00a7efb0);
 void bfv_client_l1_body_00a7efb0(struct bfv_cpu *c)
 {
@@ -475,13 +515,13 @@ void bfv_client_l1_body_00a7efb0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a7efb0  mov eax, dword ptr [0xe122c4] */
+    /* 00a7efb0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a7efb5  mov ecx, dword ptr [eax + 0xd0] */
     ea = (uint32_t)(eax + 0x000000d0u);
     ecx = M32(ea);
-    /* 00a7efbb  jmp 0x70a3f0 */
+    /* 00a7efbb  jmp 0x70a3f0  ; StandardMeshBlockImpl::vf9_get_64h */
     c->eip = 0x0070a3f0u;
     goto out;
 out: __attribute__((unused));
@@ -491,7 +531,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7efe0  dice::ref2::rend::NullDRenderer::XRenderStats  (vtable store) */
+/* 00a7efe0  XRenderStats::XRenderStats  (vtable store)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ * called by: NullDRenderer::NullDRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7efe0, bfv_client_l1_body_00a7efe0);
 void bfv_client_l1_body_00a7efe0(struct bfv_cpu *c)
 {
@@ -502,7 +545,7 @@ void bfv_client_l1_body_00a7efe0(struct bfv_cpu *c)
     uint32_t ea;
     /* 00a7efe0  mov eax, ecx */
     eax = ecx;
-    /* 00a7efe2  mov dword ptr [eax], 0xc06fa4 */
+    /* 00a7efe2  mov dword ptr [eax], 0xc06fa4  ; vtable XRenderStats */
     ea = (uint32_t)(eax);
     M32(ea) = 0xc06fa4u;
     /* 00a7efe8  mov byte ptr [eax + 8], 1 */
@@ -519,7 +562,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7eff0  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7eff0  XRenderStats::addRef  (virtual method)
+ * overrides: IBase::addRef  (395 classes implement it)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7eff0, bfv_client_l1_body_00a7eff0);
 void bfv_client_l1_body_00a7eff0(struct bfv_cpu *c)
 {
@@ -548,7 +594,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7f000  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7f000  XRenderStats::release  (virtual method)
+ * overrides: IBase::release  (395 classes implement it)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7f000, bfv_client_l1_body_00a7f000);
 void bfv_client_l1_body_00a7f000(struct bfv_cpu *c)
 {
@@ -577,7 +626,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7f010  dice::ref2::rend::NullDRenderer::XRenderStats  (virtual method) */
+/* 00a7f010  XRenderStats::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::rend::NullDRenderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7f010, bfv_client_l1_body_00a7f010);
 void bfv_client_l1_body_00a7f010(struct bfv_cpu *c)
 {

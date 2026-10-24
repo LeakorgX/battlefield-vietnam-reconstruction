@@ -1,0 +1,5 @@
+## file
+Plan builder for a soldier scouting.
+
+## 00993c60
+buildPlan: keeps the current plan when the soldier already faces the stored direction (dot product above 0.95), otherwise clears it. Builds a serial plan of BAPAResetControls (1, x, 1) and a parallel part of BAPICScout, BAPALookInDir towards the stored direction, a BAPASense with a BAPCConLookDeviation (10 times a setting) and a BAPASoldierPose.

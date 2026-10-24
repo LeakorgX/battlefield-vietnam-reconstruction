@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0063aa5e  exception  (vtable store) */
+/* 0063aa5e  exception::exception  (vtable store)
+ * class: exception
+ * called by: logic_error::logic_error, std::_Tree::erase_0040fa20, std::_Tree::_Insert_00410c30, std::_Tree::erase_00410f80, std::_Tree::erase_00411f40, std::_Tree::_Insert_00412290 (+164 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0063aa5e, bfv_server_l1_body_0063aa5e);
 void bfv_server_l1_body_0063aa5e(struct bfv_cpu *c)
 {
@@ -26,7 +29,7 @@ void bfv_server_l1_body_0063aa5e(struct bfv_cpu *c)
     r = (M32(ea) & 0x0u) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0063aa68  mov dword ptr [eax], 0x851640 */
+    /* 0063aa68  mov dword ptr [eax], 0x851640  ; vtable exception */
     ea = (uint32_t)(eax);
     M32(ea) = 0x851640u;
     /* 0063aa6e  ret */
@@ -40,7 +43,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0063aa6f  exception  (vtable store) */
+/* 0063aa6f  exception::exception  (vtable store)
+ * class: exception
+ * called by: bad_cast::bad_cast
+ */
 BFV_L1_ENTRY(bfv_server_l1_0063aa6f, bfv_server_l1_body_0063aa6f);
 BFV_L1_RESUME(bfv_server_l1r_0063aa6f_1, bfv_server_l1_body_0063aa6f, 1);
 BFV_L1_RESUME(bfv_server_l1r_0063aa6f_2, bfv_server_l1_body_0063aa6f, 2);
@@ -71,7 +77,7 @@ void bfv_server_l1_body_0063aa6f(struct bfv_cpu *c)
     edi = M32(ea);
     /* 0063aa75  mov esi, ecx */
     esi = ecx;
-    /* 0063aa77  mov dword ptr [esi], 0x851640 */
+    /* 0063aa77  mov dword ptr [esi], 0x851640  ; vtable exception */
     ea = (uint32_t)(esi);
     M32(ea) = 0x851640u;
     /* 0063aa7d  push dword ptr [edi] */
@@ -79,7 +85,7 @@ void bfv_server_l1_body_0063aa6f(struct bfv_cpu *c)
     t = M32(ea);
     esp -= 4;
     M32(esp) = t;
-    /* 0063aa7f  call 0x63ffb0 */
+    /* 0063aa7f  call 0x63ffb0  ; strlen */
     t = 0x0063ffb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063aa6f_1;
@@ -95,7 +101,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0063aa86  call 0x63b271 */
+    /* 0063aa86  call 0x63b271  ; malloc */
     t = 0x0063b271u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063aa6f_2;
@@ -127,7 +133,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0063aa97  call 0x641830 */
+    /* 0063aa97  call 0x641830  ; strcpy */
     t = 0x00641830u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063aa6f_3;
@@ -167,7 +173,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0063aaac  exception  (vtable store) */
+/* 0063aaac  exception::exception  (vtable store)
+ * class: exception
+ * called by: runtime_error::runtime_error
+ */
 BFV_L1_ENTRY(bfv_server_l1_0063aaac, bfv_server_l1_body_0063aaac);
 BFV_L1_RESUME(bfv_server_l1r_0063aaac_1, bfv_server_l1_body_0063aaac, 1);
 BFV_L1_RESUME(bfv_server_l1r_0063aaac_2, bfv_server_l1_body_0063aaac, 2);
@@ -198,7 +207,7 @@ void bfv_server_l1_body_0063aaac(struct bfv_cpu *c)
     /* 0063aab0  mov edi, dword ptr [esp + 0xc] */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
-    /* 0063aab4  mov dword ptr [esi], 0x851640 */
+    /* 0063aab4  mov dword ptr [esi], 0x851640  ; vtable exception */
     ea = (uint32_t)(esi);
     M32(ea) = 0x851640u;
     /* 0063aaba  mov eax, dword ptr [edi + 8] */
@@ -217,7 +226,7 @@ void bfv_server_l1_body_0063aaac(struct bfv_cpu *c)
     t = M32(ea);
     esp -= 4;
     M32(esp) = t;
-    /* 0063aac7  call 0x63ffb0 */
+    /* 0063aac7  call 0x63ffb0  ; strlen */
     t = 0x0063ffb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063aaac_1;
@@ -233,7 +242,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0063aace  call 0x63b271 */
+    /* 0063aace  call 0x63b271  ; malloc */
     t = 0x0063b271u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063aaac_2;
@@ -265,7 +274,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0063aae0  call 0x641830 */
+    /* 0063aae0  call 0x641830  ; strcpy */
     t = 0x00641830u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063aaac_3;
@@ -311,7 +320,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0063aaf6  exception  (vtable store) */
+/* 0063aaf6  exception::~exception  (vtable store)
+ * class: exception
+ * called by: logic_error::deleting_dtor, exception::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_0063aaf6, bfv_server_l1_body_0063aaf6);
 BFV_L1_RESUME(bfv_server_l1r_0063aaf6_1, bfv_server_l1_body_0063aaf6, 1);
 void bfv_server_l1_body_0063aaf6(struct bfv_cpu *c)
@@ -331,7 +343,7 @@ void bfv_server_l1_body_0063aaf6(struct bfv_cpu *c)
     b = 0x0u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 0063aafa  mov dword ptr [ecx], 0x851640 */
+    /* 0063aafa  mov dword ptr [ecx], 0x851640  ; vtable exception */
     ea = (uint32_t)(ecx);
     M32(ea) = 0x851640u;
     /* 0063ab00  je 0x63ab0b */
@@ -341,7 +353,7 @@ void bfv_server_l1_body_0063aaf6(struct bfv_cpu *c)
     t = M32(ea);
     esp -= 4;
     M32(esp) = t;
-    /* 0063ab05  call 0x63b0bc */
+    /* 0063ab05  call 0x63b0bc  ; free */
     t = 0x0063b0bcu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063aaf6_1;
@@ -364,8 +376,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0063ab0c  exception  (virtual method)
- * strings: "Unknown exception" */
+/* 0063ab0c  exception::vf1  (virtual method)
+ * class: exception
+ * strings: "Unknown exception"
+ */
 BFV_L1_ENTRY(bfv_server_l1_0063ab0c, bfv_server_l1_body_0063ab0c);
 void bfv_server_l1_body_0063ab0c(struct bfv_cpu *c)
 {
@@ -382,7 +396,7 @@ void bfv_server_l1_body_0063ab0c(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 0063ab11  jne 0x63ab18 */
     if (!zf) goto L_0063ab18;
-    /* 0063ab13  mov eax, 0x851648 */
+    /* 0063ab13  mov eax, 0x851648  ; "Unknown exception" */
     eax = 0x851648u;
 L_0063ab18:
     /* 0063ab18  ret */
@@ -396,7 +410,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0063abc1  exception  (virtual method) */
+/* 0063abc1  exception::deleting_dtor  (virtual method)
+ * class: exception
+ */
 BFV_L1_ENTRY(bfv_server_l1_0063abc1, bfv_server_l1_body_0063abc1);
 BFV_L1_RESUME(bfv_server_l1r_0063abc1_1, bfv_server_l1_body_0063abc1, 1);
 BFV_L1_RESUME(bfv_server_l1r_0063abc1_2, bfv_server_l1_body_0063abc1, 2);
@@ -418,14 +434,14 @@ void bfv_server_l1_body_0063abc1(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0063abc2  mov esi, ecx */
     esi = ecx;
-    /* 0063abc4  call 0x63aaf6 */
+    /* 0063abc4  call 0x63aaf6  ; exception::~exception */
     t = 0x0063aaf6u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063abc1_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0063abc9  test byte ptr [esp + 8], 1 */
+    /* 0063abc9  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -435,7 +451,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0063abd1  call 0x403df0 */
+    /* 0063abd1  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063abc1_2;

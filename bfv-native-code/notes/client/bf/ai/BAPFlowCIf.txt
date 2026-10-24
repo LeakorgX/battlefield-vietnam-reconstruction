@@ -1,0 +1,22 @@
+## file
+BAPFlowCIf is the plan statement "if condition then A else B": condition at
+this+0x18, then-branch at this+0x20, else-branch at this+0x24. this+0x28 is the
+branch being run.
+
+## 009f2ef0
+vf2: the union (OR) of the control-lock masks of both branches.
+
+## 009f2fa0
+execute(bot, &flag, &done): when no branch is running, or this+0x2c asks to
+re-test every run, evaluates the condition and picks the then- or else-branch.
+With no branch to run it reports flag = done = 1. Otherwise calls bot slot
+0xd8 and runs the chosen branch through the bot's runner; when the branch
+reports done the choice is cleared so the next run tests the condition again.
+
+## 009f3060
+vf5 (debug text): "If, currently executing Then block..." or "... Else
+block..." while a branch runs, otherwise "If, now about to test condition...".
+
+## 009f3170
+destroy: deletes the condition and both branches, counts the destroyed
+statement and frees it to its pool when asked.

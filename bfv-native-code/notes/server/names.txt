@@ -1,0 +1,43 @@
+# Shared names for the server's readable C (applied by tools/comment_l2.py).
+#
+#   Class::vfN = name: what it does        a virtual method (slot N)
+#   Class+0x1c = name: what it holds       a field of the class
+#
+# A name also holds for every subclass (lifted/server/CLASSES.tsv). Classes
+# are matched by their last name component. Name only what the code shows;
+# say how you know in the text when it isn't obvious. Addresses are server
+# addresses; the same names in notes/client/names.txt were checked against
+# the same instructions here.
+
+# ---- AI: behaviours (BotBehaviour::BotBehaviour 007a2020 allocates the arrays)
+BotBehaviour+0x10 = scripts: std::list head (+0x14 node, +0x18 size)
+BotBehaviour+0x1c = weights: per-bot float array
+BotBehaviour+0x24 = perBotFlags: per-bot byte array, starts at 1
+BotBehaviour+0x28 = perBotValues: per-bot float array, starts at 1e-5
+
+# ---- AI: services
+IAITimer::vf1 = aiTime: the AI clock (AIMain's 007c04c0 returns the float at +0xc)
+
+# ---- AI: settings. AISettings::AISettings (00713a10) puts IAISettingsModifier
+# at +4 (vtable 00870764), so a modifier slot that writes its this+N writes
+# AISettings+N+4. The getters are folded with unrelated one-line methods,
+# which is why their implementations carry other classes' names.
+IAISettings::vf1 = getMaxNBots: returns +0x8, which setMaxNBots (modifier vf1, 00713490) writes
+IAISettings::vf2 = getNBehaviours: returns +0x10, which setNBehaviours (modifier vf3, 007134b0) writes
+IAISettings::vf3 = getWorldMapSize0: returns +0x14, the first argument of setWorldMapSize (modifier vf12, 00712fa0)
+IAISettings::vf4 = getWorldMapSize1: returns +0x18, the second argument of setWorldMapSize (modifier vf12)
+AISettings+0x8 = maxNBots: set by AiSettings.setMaxNBots; the constructor starts it at -1
+AISettings+0x10 = nBehaviours: set by AiSettings.setNBehaviours; starts at -1
+AISettings+0x14 = worldMapSize0: first value of AiSettings.setWorldMapSize
+AISettings+0x18 = worldMapSize1: second value of AiSettings.setWorldMapSize
+
+# ---- World: the objects the console commands work on (Object.active
+# 00632e80 calls ObjectManager vf23, ObjectTemplate.active 00634690 calls
+# ObjectTemplateManager vf18, Player.active 004eaa20 calls PlayerManager vf23).
+ObjectManager::vf23 = getActiveObject: returns +0x1c
+ObjectManager+0x1c = activeObject: the object the Object.* commands edit
+ObjectTemplateManager::vf18 = getActiveTemplate: returns +0x48
+ObjectTemplateManager+0x48 = activeTemplate: the template the ObjectTemplate.* commands edit
+PlayerManager::vf23 = getActivePlayer: returns +0x8 (Player.active)
+PlayerManager::vf24 = setActivePlayer: writes +0x8, the field getActivePlayer returns
+PlayerManager+0x8 = activePlayer: the player the Player.* commands work on

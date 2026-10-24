@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005b6720  dice::ref2::world::FlagTemplate  (vtable store) */
+/* 005b6720  FlagTemplate::FlagTemplate  (vtable store)
+ * class: dice::ref2::world::FlagTemplate
+ * also entered at 005b6770: FlagTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b6720, bfv_server_l1_body_005b6720);
 BFV_L1_RESUME(bfv_server_l1r_005b6720_1, bfv_server_l1_body_005b6720, 1);
 void bfv_server_l1_body_005b6720(struct bfv_cpu *c)
@@ -25,14 +28,14 @@ void bfv_server_l1_body_005b6720(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b6721  mov esi, ecx */
     esi = ecx;
-    /* 005b6723  call 0x5b0c70 */
+    /* 005b6723  call 0x5b0c70  ; ItemTemplate::ItemTemplate */
     t = 0x005b0c70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b6720_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005b6728  mov dword ptr [esi], 0x841e34 */
+    /* 005b6728  mov dword ptr [esi], 0x841e34  ; vtable FlagTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x841e34u;
     /* 005b672e  mov dword ptr [esi + 0x74], 0x841e28 */
@@ -44,7 +47,7 @@ R_1:
     /* 005b673f  mov dword ptr [esi + 0x1ac], 0x841dd8 */
     ea = (uint32_t)(esi + 0x000001acu);
     M32(ea) = 0x841dd8u;
-    /* 005b6749  mov dword ptr [esi + 0x1cc], 0xbf800000 */
+    /* 005b6749  mov dword ptr [esi + 0x1cc], 0xbf800000  ; field ObjectTemplate.timeToReSpawn, -1.0f */
     ea = (uint32_t)(esi + 0x000001ccu);
     M32(ea) = 0xbf800000u;
     /* 005b6753  mov dword ptr [esi + 0x1b8], 7 */
@@ -67,7 +70,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b6780  dice::ref2::world::FlagTemplate  (virtual method) */
+/* 005b6780  FlagTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::FlagTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b6780, bfv_server_l1_body_005b6780);
 void bfv_server_l1_body_005b6780(struct bfv_cpu *c)
 {
@@ -76,12 +82,12 @@ void bfv_server_l1_body_005b6780(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005b6780  mov edx, dword ptr [0x8207ac] */
+    /* 005b6780  mov edx, dword ptr [0x8207ac]  ; FlagTemplate::classID */
     ea = (uint32_t)(0x008207acu);
     edx = M32(ea);
     /* 005b6786  mov eax, ecx */
     eax = ecx;
-    /* 005b6788  mov ecx, dword ptr [esp + 4] */
+    /* 005b6788  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005b678c  cmp ecx, edx */
@@ -91,7 +97,7 @@ void bfv_server_l1_body_005b6780(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005b678e  je 0x5b67a3 */
     if (zf) goto L_005b67a3;
-    /* 005b6790  cmp ecx, dword ptr [0x82078c] */
+    /* 005b6790  cmp ecx, dword ptr [0x82078c]  ; ItemTemplate::classID */
     ea = (uint32_t)(0x0082078cu);
     a = ecx;
     b = M32(ea);
@@ -99,12 +105,12 @@ void bfv_server_l1_body_005b6780(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005b6796  je 0x5b67a3 */
     if (zf) goto L_005b67a3;
-    /* 005b6798  mov dword ptr [esp + 4], ecx */
+    /* 005b6798  mov dword ptr [esp + 4], ecx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = ecx;
     /* 005b679c  mov ecx, eax */
     ecx = eax;
-    /* 005b679e  jmp 0x586630 */
+    /* 005b679e  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 L_005b67a3:
@@ -119,7 +125,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005b67b0  (between same file) */
+/* 005b67b0  FlagTemplate::deleting_dtor_adjustor116_005b67b0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b67b0, bfv_server_l1_body_005b67b0);
 void bfv_server_l1_body_005b67b0(struct bfv_cpu *c)
 {
@@ -134,7 +141,7 @@ void bfv_server_l1_body_005b67b0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005b67b3  jmp 0x5b67e0 */
+    /* 005b67b3  jmp 0x5b67e0  ; FlagTemplate::deleting_dtor */
     c->eip = 0x005b67e0u;
     goto out;
 out: __attribute__((unused));
@@ -144,7 +151,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005b67c0  (between same file) */
+/* 005b67c0  FlagTemplate::deleting_dtor_adjustor400_005b67c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b67c0, bfv_server_l1_body_005b67c0);
 void bfv_server_l1_body_005b67c0(struct bfv_cpu *c)
 {
@@ -159,7 +167,7 @@ void bfv_server_l1_body_005b67c0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005b67c6  jmp 0x5b67e0 */
+    /* 005b67c6  jmp 0x5b67e0  ; FlagTemplate::deleting_dtor */
     c->eip = 0x005b67e0u;
     goto out;
 out: __attribute__((unused));
@@ -169,7 +177,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005b67d0  (between same file) */
+/* 005b67d0  FlagTemplate::deleting_dtor_adjustor428_005b67d0  (between same file)
+ * also entered at 005b67e0: FlagTemplate::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b67d0, bfv_server_l1_body_005b67d0);
 void bfv_server_l1_body_005b67d0(struct bfv_cpu *c)
 {
@@ -184,7 +194,7 @@ void bfv_server_l1_body_005b67d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005b67d6  jmp 0x5b67e0 */
+    /* 005b67d6  jmp 0x5b67e0  ; FlagTemplate::deleting_dtor */
     c->eip = 0x005b67e0u;
     goto out;
 out: __attribute__((unused));
@@ -194,7 +204,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b6800  dice::ref2::world::FlagTemplate  (virtual method) */
+/* 005b6800  FlagTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::FlagTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b6800, bfv_server_l1_body_005b6800);
 BFV_L1_RESUME(bfv_server_l1r_005b6800_1, bfv_server_l1_body_005b6800, 1);
 BFV_L1_RESUME(bfv_server_l1r_005b6800_2, bfv_server_l1_body_005b6800, 2);
@@ -220,7 +233,7 @@ void bfv_server_l1_body_005b6800(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b6806  mov esi, ecx */
     esi = ecx;
-    /* 005b6808  call 0x403d80 */
+    /* 005b6808  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b6800_1;
@@ -244,7 +257,7 @@ R_1:
     M32(esp) = t;
     /* 005b6815  mov ecx, eax */
     ecx = eax;
-    /* 005b6817  call 0x5b6680 */
+    /* 005b6817  call 0x5b6680  ; Flag::Flag */
     t = 0x005b6680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b6800_2;

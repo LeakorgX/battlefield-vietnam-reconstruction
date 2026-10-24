@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00762f60  dice::ref2::geom::PatchCellBlock  (virtual method) */
+/* 00762f60  PatchCellBlock::vf3  (virtual method)
+ * overrides: RaStreamData::vf3  (8 classes implement it)
+ * class: dice::ref2::geom::PatchCellBlock
+ */
 BFV_L1_ENTRY(bfv_client_l1_00762f60, bfv_client_l1_body_00762f60);
 BFV_L1_RESUME(bfv_client_l1r_00762f60_1, bfv_client_l1_body_00762f60, 1);
 void bfv_client_l1_body_00762f60(struct bfv_cpu *c)
@@ -29,11 +32,11 @@ void bfv_client_l1_body_00762f60(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00762f6b  push 0xcfa6b8 */
+    /* 00762f6b  push 0xcfa6b8  ; typeid(PCDX8VertexBlock) */
     t = 0xcfa6b8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00762f70  push 0xcfa68c */
+    /* 00762f70  push 0xcfa68c  ; typeid(IVertexBlock) */
     t = 0xcfa68cu;
     esp -= 4;
     M32(esp) = t;
@@ -45,7 +48,7 @@ void bfv_client_l1_body_00762f60(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00762f78  call 0x7c334d */
+    /* 00762f78  call 0x7c334d  ; __RTDynamicCast */
     t = 0x007c334du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00762f60_1;
@@ -72,7 +75,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00762f90  dice::ref2::geom::PatchCellBlock  (virtual method) */
+/* 00762f90  PatchCellBlock::vf4  (virtual method)
+ * overrides: RaStreamData::vf4  (8 classes implement it)
+ * class: dice::ref2::geom::PatchCellBlock
+ */
 BFV_L1_ENTRY(bfv_client_l1_00762f90, bfv_client_l1_body_00762f90);
 void bfv_client_l1_body_00762f90(struct bfv_cpu *c)
 {
@@ -97,7 +103,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00762fa0  dice::ref2::geom::PatchCellBlock  (virtual method) */
+/* 00762fa0  PatchCellBlock::vf8  (virtual method)
+ * overrides: RaStreamData::vf8  (8 classes implement it)
+ * class: dice::ref2::geom::PatchCellBlock
+ */
 BFV_L1_ENTRY(bfv_client_l1_00762fa0, bfv_client_l1_body_00762fa0);
 BFV_L1_RESUME(bfv_client_l1r_00762fa0_1, bfv_client_l1_body_00762fa0, 1);
 void bfv_client_l1_body_00762fa0(struct bfv_cpu *c)
@@ -121,11 +130,11 @@ void bfv_client_l1_body_00762fa0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00762fab  push 0xcfa714 */
+    /* 00762fab  push 0xcfa714  ; typeid(PCDX8IndexBlock) */
     t = 0xcfa714u;
     esp -= 4;
     M32(esp) = t;
-    /* 00762fb0  push 0xcfa6e8 */
+    /* 00762fb0  push 0xcfa6e8  ; typeid(IIndexBlock) */
     t = 0xcfa6e8u;
     esp -= 4;
     M32(esp) = t;
@@ -137,7 +146,7 @@ void bfv_client_l1_body_00762fa0(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00762fb8  call 0x7c334d */
+    /* 00762fb8  call 0x7c334d  ; __RTDynamicCast */
     t = 0x007c334du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00762fa0_1;
@@ -166,7 +175,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00762fd0  dice::ref2::geom::PatchCellBlock  (virtual method) */
+/* 00762fd0  PatchCellBlock::vf7  (virtual method)
+ * overrides: RaStreamData::vf7  (8 classes implement it)
+ * class: dice::ref2::geom::PatchCellBlock
+ */
 BFV_L1_ENTRY(bfv_client_l1_00762fd0, bfv_client_l1_body_00762fd0);
 BFV_L1_RESUME(bfv_client_l1r_00762fd0_1, bfv_client_l1_body_00762fd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00762fd0_2, bfv_client_l1_body_00762fd0, 2);
@@ -192,11 +204,11 @@ void bfv_client_l1_body_00762fd0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00762fdb  push 0xcfa6b8 */
+    /* 00762fdb  push 0xcfa6b8  ; typeid(PCDX8VertexBlock) */
     t = 0xcfa6b8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00762fe0  push 0xcfa68c */
+    /* 00762fe0  push 0xcfa68c  ; typeid(IVertexBlock) */
     t = 0xcfa68cu;
     esp -= 4;
     M32(esp) = t;
@@ -208,7 +220,7 @@ void bfv_client_l1_body_00762fd0(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00762fe8  call 0x7c334d */
+    /* 00762fe8  call 0x7c334d  ; __RTDynamicCast */
     t = 0x007c334du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00762fd0_1;
@@ -245,7 +257,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00763000  (between same file) */
+/* 00763000  PatchCellBlock_00763000  (between same file)
+ * called by: geom_00763d20
+ */
 BFV_L1_ENTRY(bfv_client_l1_00763000, bfv_client_l1_body_00763000);
 void bfv_client_l1_body_00763000(struct bfv_cpu *c)
 {
@@ -254,7 +268,7 @@ void bfv_client_l1_body_00763000(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00763000  mov eax, dword ptr [esp + 4] */
+    /* 00763000  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00763004  cmp dword ptr [ecx + 0xbc], eax */
@@ -361,7 +375,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00763090  (between same file) */
+/* 00763090  PatchCellBlock_00763090  (between same file)
+ * also entered at 00763100: PatchCellBlock::vf0
+ * called by: geom_00763d20
+ */
 BFV_L1_ENTRY(bfv_client_l1_00763090, bfv_client_l1_body_00763090);
 void bfv_client_l1_body_00763090(struct bfv_cpu *c)
 {
@@ -373,7 +390,7 @@ void bfv_client_l1_body_00763090(struct bfv_cpu *c)
     /* 00763090  mov eax, dword ptr [ecx + 0xc0] */
     ea = (uint32_t)(ecx + 0x000000c0u);
     eax = M32(ea);
-    /* 00763096  mov edx, dword ptr [esp + 4] */
+    /* 00763096  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 0076309a  cmp eax, edx */
@@ -381,7 +398,7 @@ void bfv_client_l1_body_00763090(struct bfv_cpu *c)
     b = edx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 0076309c  mov eax, dword ptr [esp + 0x10] */
+    /* 0076309c  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 007630a0  je 0x7630d0 */
@@ -425,13 +442,13 @@ L_007630c5:
     esp += 4;
     esi = t;
 L_007630d0:
-    /* 007630d0  mov edx, dword ptr [esp + 8] */
+    /* 007630d0  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007630d4  mov dword ptr [ecx + 0xd8], edx */
     ea = (uint32_t)(ecx + 0x000000d8u);
     M32(ea) = edx;
-    /* 007630da  mov edx, dword ptr [esp + 0xc] */
+    /* 007630da  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 007630de  mov dword ptr [ecx + 0xdc], edx */
@@ -454,7 +471,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00763120  (between same file) */
+/* 00763120  PatchCellBlock_00763120  (between same file)
+ * called by: PatchTerrain::sub_00721980
+ */
 BFV_L1_ENTRY(bfv_client_l1_00763120, bfv_client_l1_body_00763120);
 BFV_L1_RESUME(bfv_client_l1r_00763120_1, bfv_client_l1_body_00763120, 1);
 BFV_L1_RESUME(bfv_client_l1r_00763120_2, bfv_client_l1_body_00763120, 2);
@@ -616,7 +635,7 @@ L_0076317d:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0076317e  call 0x403680 */
+    /* 0076317e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00763120_4;
@@ -657,7 +676,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00763190  dice::ref2::geom::PatchCellBlock  (vtable store) */
+/* 00763190  PatchCellBlock::PatchCellBlock  (vtable store)
+ * class: dice::ref2::geom::PatchCellBlock
+ * called by: geom_PatchCellCache_00763ad0, geom_00763ca0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00763190, bfv_client_l1_body_00763190);
 BFV_L1_RESUME(bfv_client_l1r_00763190_1, bfv_client_l1_body_00763190, 1);
 void bfv_client_l1_body_00763190(struct bfv_cpu *c)
@@ -679,20 +701,20 @@ void bfv_client_l1_body_00763190(struct bfv_cpu *c)
     esi = ecx;
     /* 00763193  lea ecx, [esi + 4] */
     ecx = (uint32_t)(esi + 0x00000004u);
-    /* 00763196  mov dword ptr [esi], 0xbaec98 */
+    /* 00763196  mov dword ptr [esi], 0xbaec98  ; vtable PatchCellBlock */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbaec98u;
-    /* 0076319c  call 0x731b10 */
+    /* 0076319c  call 0x731b10  ; sub_00731b10 */
     t = 0x00731b10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00763190_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007631a1  mov ecx, dword ptr [esp + 8] */
+    /* 007631a1  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 007631a5  mov eax, dword ptr [esp + 0xc] */
+    /* 007631a5  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 007631a9  mov dword ptr [esi + 0xb0], ecx */
@@ -728,7 +750,7 @@ L_007631cb:
     ea = (uint32_t)(ecx + 0x00000004u);
     M32(ea) = esi;
 L_007631ce:
-    /* 007631ce  mov eax, dword ptr [esp + 0x14] */
+    /* 007631ce  mov eax, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 007631d2  mov dword ptr [esi + 0xb8], edx */
@@ -737,7 +759,7 @@ L_007631ce:
     /* 007631d8  mov dword ptr [ecx], esi */
     ea = (uint32_t)(ecx);
     M32(ea) = esi;
-    /* 007631da  mov ecx, dword ptr [esp + 0x10] */
+    /* 007631da  mov ecx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 007631de  mov dword ptr [esi + 0xcc], eax */

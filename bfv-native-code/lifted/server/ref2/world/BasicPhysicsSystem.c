@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005cf6f0  dice::ref2::world::BasicPhysicsSystem  (virtual method) */
+/* 005cf6f0  BasicPhysicsSystem::vf7  (virtual method)
+ * class: dice::ref2::world::BasicPhysicsSystem
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cf6f0, bfv_server_l1_body_005cf6f0);
 void bfv_server_l1_body_005cf6f0(struct bfv_cpu *c)
 {
@@ -14,10 +16,10 @@ void bfv_server_l1_body_005cf6f0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005cf6f0  mov eax, dword ptr [esp + 4] */
+    /* 005cf6f0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005cf6f4  mov edx, dword ptr [esp + 8] */
+    /* 005cf6f4  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 005cf6f8  add ecx, 0xc */
@@ -29,7 +31,7 @@ void bfv_server_l1_body_005cf6f0(struct bfv_cpu *c)
     /* 005cf6fb  mov dword ptr [ecx], eax */
     ea = (uint32_t)(ecx);
     M32(ea) = eax;
-    /* 005cf6fd  mov eax, dword ptr [esp + 0xc] */
+    /* 005cf6fd  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 005cf701  mov dword ptr [ecx + 4], edx */
@@ -49,7 +51,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005cf710  dice::ref2::world::BasicPhysicsSystem  (virtual method) */
+/* 005cf710  BasicPhysicsSystem::vf8  (virtual method)
+ * class: dice::ref2::world::BasicPhysicsSystem
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cf710, bfv_server_l1_body_005cf710);
 void bfv_server_l1_body_005cf710(struct bfv_cpu *c)
 {
@@ -58,7 +62,7 @@ void bfv_server_l1_body_005cf710(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 005cf710  mov eax, dword ptr [esp + 4] */
+    /* 005cf710  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005cf714  add ecx, 0x18 */
@@ -106,7 +110,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005cf730  dice::ref2::world::BasicPhysicsSystem  (virtual method) */
+/* 005cf730  BasicPhysicsSystem::set_30h  (virtual method)
+ * class: dice::ref2::world::BasicPhysicsSystem
+ * called by: Cmd_AiScript_setMinDistance::execute
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cf730, bfv_server_l1_body_005cf730);
 void bfv_server_l1_body_005cf730(struct bfv_cpu *c)
 {
@@ -115,7 +122,7 @@ void bfv_server_l1_body_005cf730(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005cf730  mov eax, dword ptr [esp + 4] */
+    /* 005cf730  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005cf734  mov dword ptr [ecx + 0x30], eax */
@@ -132,7 +139,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005cf740  dice::ref2::world::BasicPhysicsSystem  (virtual method) */
+/* 005cf740  BasicPhysicsSystem::get_30h  (virtual method)
+ * class: dice::ref2::world::BasicPhysicsSystem
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cf740, bfv_server_l1_body_005cf740);
 void bfv_server_l1_body_005cf740(struct bfv_cpu *c)
 {
@@ -155,7 +164,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005cf750  dice::ref2::world::BasicPhysicsSystem  (vtable store) */
+/* 005cf750  BasicPhysicsSystem::BasicPhysicsSystem  (vtable store)
+ * class: dice::ref2::world::BasicPhysicsSystem
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cf750, bfv_server_l1_body_005cf750);
 void bfv_server_l1_body_005cf750(struct bfv_cpu *c)
 {
@@ -166,7 +177,7 @@ void bfv_server_l1_body_005cf750(struct bfv_cpu *c)
     uint32_t r, ea;
     /* 005cf750  mov eax, ecx */
     eax = ecx;
-    /* 005cf752  mov dword ptr [eax], 0x846b94 */
+    /* 005cf752  mov dword ptr [eax], 0x846b94  ; vtable BasicPhysicsSystem */
     ea = (uint32_t)(eax);
     M32(ea) = 0x846b94u;
     /* 005cf758  mov dword ptr [eax + 4], 1 */
@@ -176,7 +187,7 @@ void bfv_server_l1_body_005cf750(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 005cf761  mov dword ptr [eax + 8], 0xc16bae14 */
+    /* 005cf761  mov dword ptr [eax + 8], 0xc16bae14  ; -14.73f */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0xc16bae14u;
     /* 005cf768  mov dword ptr [eax + 0xc], ecx */
@@ -206,7 +217,7 @@ void bfv_server_l1_body_005cf750(struct bfv_cpu *c)
     /* 005cf780  mov dword ptr [eax + 0x2c], ecx */
     ea = (uint32_t)(eax + 0x0000002cu);
     M32(ea) = ecx;
-    /* 005cf783  mov dword ptr [eax + 0x30], 0x447a0000 */
+    /* 005cf783  mov dword ptr [eax + 0x30], 0x447a0000  ; 1000.0f */
     ea = (uint32_t)(eax + 0x00000030u);
     M32(ea) = 0x447a0000u;
     /* 005cf78a  ret */
@@ -220,7 +231,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005cf790  dice::ref2::world::BasicPhysicsSystem  (virtual method) */
+/* 005cf790  BasicPhysicsSystem::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::world::BasicPhysicsSystem
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cf790, bfv_server_l1_body_005cf790);
 void bfv_server_l1_body_005cf790(struct bfv_cpu *c)
 {
@@ -229,12 +243,12 @@ void bfv_server_l1_body_005cf790(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 005cf790  mov edx, dword ptr [0x807430] */
+    /* 005cf790  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 005cf796  mov eax, ecx */
     eax = ecx;
-    /* 005cf798  mov ecx, dword ptr [esp + 4] */
+    /* 005cf798  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005cf79c  cmp ecx, edx */
@@ -287,7 +301,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005cf7c0  dice::ref2::world::BasicPhysicsSystem  (virtual method) */
+/* 005cf7c0  BasicPhysicsSystem::vf11  (virtual method)
+ * class: dice::ref2::world::BasicPhysicsSystem
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cf7c0, bfv_server_l1_body_005cf7c0);
 BFV_L1_RESUME(bfv_server_l1r_005cf7c0_1, bfv_server_l1_body_005cf7c0, 1);
 void bfv_server_l1_body_005cf7c0(struct bfv_cpu *c)
@@ -311,7 +327,7 @@ void bfv_server_l1_body_005cf7c0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005cf7c9  mov esi, dword ptr [esp + 8] */
+    /* 005cf7c9  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 005cf7cd  push esi */

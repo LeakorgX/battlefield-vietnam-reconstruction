@@ -1,0 +1,11 @@
+## file
+BAPFlowCWait is the plan statement "wait until": it does nothing but report
+done when its condition (this+0x18) becomes true.
+
+## 009f2b40
+execute(bot, &flag, &done): evaluates the condition at this+0x18, stores the
+result in done and sets flag to 1.
+
+## 009f2be0
+destroy: deletes the condition at this+0x18 (its slot 8), counts the
+destroyed statement and frees it to its memory pool when asked.

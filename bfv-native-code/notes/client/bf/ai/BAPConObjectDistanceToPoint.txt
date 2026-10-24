@@ -1,0 +1,5 @@
+## file
+Plan condition: compares the distance from an object to a fixed point against a band.
+
+## 009f6e20
+Resolves the object handle at this+8; a stale handle gives true. Takes the object position (slot 0x18), or the point from its +0x2c interface when this+0x14 is set, and the squared distance to the stored point at this+0x18..+0x20. When this+0x15 is set it uses ai_0097f050, the 2D (x/z) variant. True when the squared distance lies in [this+0xc, this+0x10]; both bounds are squared distances.

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0086e140  dice::meme::VertexColorEffect  (virtual method) */
+/* 0086e140  VertexColorEffect::vf18  (virtual method)
+ * overrides: Effect::vf18  (18 classes implement it)
+ * class: dice::meme::VertexColorEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e140, bfv_client_l1_body_0086e140);
 void bfv_client_l1_body_0086e140(struct bfv_cpu *c)
 {
@@ -17,7 +20,7 @@ void bfv_client_l1_body_0086e140(struct bfv_cpu *c)
     /* 0086e140  mov edx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     edx = M32(ea);
-    /* 0086e143  mov eax, dword ptr [esp + 0x14] */
+    /* 0086e143  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 0086e147  mov dword ptr [eax + 0x28], edx */
@@ -113,10 +116,10 @@ void bfv_client_l1_body_0086e140(struct bfv_cpu *c)
     /* 0086e1a7  mov dword ptr [eax + 0x88], edx */
     ea = (uint32_t)(eax + 0x00000088u);
     M32(ea) = edx;
-    /* 0086e1ad  mov dword ptr [esp + 0x14], eax */
+    /* 0086e1ad  mov dword ptr [esp + 0x14], eax  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
-    /* 0086e1b1  jmp 0x875660 */
+    /* 0086e1b1  jmp 0x875660  ; Effect::vf18 */
     c->eip = 0x00875660u;
     goto out;
 out: __attribute__((unused));
@@ -126,7 +129,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086e1c0  dice::meme::VertexColorEffect  (virtual method) */
+/* 0086e1c0  VertexColorEffect::vf19  (virtual method)
+ * overrides: Effect::vf19  (18 classes implement it)
+ * class: dice::meme::VertexColorEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e1c0, bfv_client_l1_body_0086e1c0);
 void bfv_client_l1_body_0086e1c0(struct bfv_cpu *c)
 {
@@ -138,7 +144,7 @@ void bfv_client_l1_body_0086e1c0(struct bfv_cpu *c)
     /* 0086e1c0  mov edx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     edx = M32(ea);
-    /* 0086e1c3  mov eax, dword ptr [esp + 0xc] */
+    /* 0086e1c3  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0086e1c7  mov dword ptr [eax + 0x28], edx */
@@ -234,10 +240,10 @@ void bfv_client_l1_body_0086e1c0(struct bfv_cpu *c)
     /* 0086e227  mov dword ptr [eax + 0x88], edx */
     ea = (uint32_t)(eax + 0x00000088u);
     M32(ea) = edx;
-    /* 0086e22d  mov dword ptr [esp + 0xc], eax */
+    /* 0086e22d  mov dword ptr [esp + 0xc], eax  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = eax;
-    /* 0086e231  jmp 0x875690 */
+    /* 0086e231  jmp 0x875690  ; Effect::vf19 */
     c->eip = 0x00875690u;
     goto out;
 out: __attribute__((unused));
@@ -247,8 +253,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086e240  dice::meme::VertexColorEffect  (virtual method)
- * strings: "Top left red", "Top left green", "Top left blue", "Top left alpha" */
+/* 0086e240  VertexColorEffect::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::VertexColorEffect
+ * strings: "Top left red", "Top left green", "Top left blue", "Top left alpha"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e240, bfv_client_l1_body_0086e240);
 BFV_L1_RESUME(bfv_client_l1r_0086e240_1, bfv_client_l1_body_0086e240, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086e240_2, bfv_client_l1_body_0086e240, 2);
@@ -294,14 +303,14 @@ void bfv_client_l1_body_0086e240(struct bfv_cpu *c)
     case 17: goto R_17;
     default: break;
     }
-    /* 0086e240  mov eax, dword ptr [esp + 4] */
+    /* 0086e240  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0086e244  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086e245  mov esi, dword ptr [esp + 0xc] */
+    /* 0086e245  mov esi, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 0086e249  push edi */
@@ -318,7 +327,7 @@ void bfv_client_l1_body_0086e240(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086e24c  mov edi, ecx */
     edi = ecx;
-    /* 0086e24e  call 0xa7d100 */
+    /* 0086e24e  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e240_1;
@@ -351,7 +360,7 @@ L_0086e25e:
     /* 0086e25e  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e260  push 0xbd4438 */
+    /* 0086e260  push 0xbd4438  ; "Top left red" */
     t = 0xbd4438u;
     esp -= 4;
     M32(esp) = t;
@@ -379,7 +388,7 @@ R_2:
     /* 0086e272  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e274  push 0xbd4428 */
+    /* 0086e274  push 0xbd4428  ; "Top left green" */
     t = 0xbd4428u;
     esp -= 4;
     M32(esp) = t;
@@ -407,7 +416,7 @@ R_3:
     /* 0086e286  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e288  push 0xbd4418 */
+    /* 0086e288  push 0xbd4418  ; "Top left blue" */
     t = 0xbd4418u;
     esp -= 4;
     M32(esp) = t;
@@ -435,7 +444,7 @@ R_4:
     /* 0086e29a  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e29c  push 0xbd4408 */
+    /* 0086e29c  push 0xbd4408  ; "Top left alpha" */
     t = 0xbd4408u;
     esp -= 4;
     M32(esp) = t;
@@ -463,7 +472,7 @@ R_5:
     /* 0086e2ae  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e2b0  push 0xbd43f8 */
+    /* 0086e2b0  push 0xbd43f8  ; "Top right red" */
     t = 0xbd43f8u;
     esp -= 4;
     M32(esp) = t;
@@ -491,7 +500,7 @@ R_6:
     /* 0086e2c2  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e2c4  push 0xbd43e8 */
+    /* 0086e2c4  push 0xbd43e8  ; "Top right green" */
     t = 0xbd43e8u;
     esp -= 4;
     M32(esp) = t;
@@ -519,7 +528,7 @@ R_7:
     /* 0086e2d6  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e2d8  push 0xbd43d8 */
+    /* 0086e2d8  push 0xbd43d8  ; "Top right blue" */
     t = 0xbd43d8u;
     esp -= 4;
     M32(esp) = t;
@@ -547,7 +556,7 @@ R_8:
     /* 0086e2ee  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e2f0  push 0xbd43c8 */
+    /* 0086e2f0  push 0xbd43c8  ; "Top right alpha" */
     t = 0xbd43c8u;
     esp -= 4;
     M32(esp) = t;
@@ -575,7 +584,7 @@ R_9:
     /* 0086e306  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e308  push 0xbd43b4 */
+    /* 0086e308  push 0xbd43b4  ; "Bottom right red" */
     t = 0xbd43b4u;
     esp -= 4;
     M32(esp) = t;
@@ -603,7 +612,7 @@ R_10:
     /* 0086e31e  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e320  push 0xbd43a0 */
+    /* 0086e320  push 0xbd43a0  ; "Bottom right green" */
     t = 0xbd43a0u;
     esp -= 4;
     M32(esp) = t;
@@ -631,7 +640,7 @@ R_11:
     /* 0086e336  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e338  push 0xbd438c */
+    /* 0086e338  push 0xbd438c  ; "Bottom right blue" */
     t = 0xbd438cu;
     esp -= 4;
     M32(esp) = t;
@@ -659,7 +668,7 @@ R_12:
     /* 0086e34e  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e350  push 0xbd4378 */
+    /* 0086e350  push 0xbd4378  ; "Bottom right alpha" */
     t = 0xbd4378u;
     esp -= 4;
     M32(esp) = t;
@@ -687,7 +696,7 @@ R_13:
     /* 0086e366  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e368  push 0xbd4368 */
+    /* 0086e368  push 0xbd4368  ; "Bottom left red" */
     t = 0xbd4368u;
     esp -= 4;
     M32(esp) = t;
@@ -715,7 +724,7 @@ R_14:
     /* 0086e37e  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e380  push 0xbd4354 */
+    /* 0086e380  push 0xbd4354  ; "Bottom left green" */
     t = 0xbd4354u;
     esp -= 4;
     M32(esp) = t;
@@ -743,7 +752,7 @@ R_15:
     /* 0086e396  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e398  push 0xbd4340 */
+    /* 0086e398  push 0xbd4340  ; "Bottom left blue" */
     t = 0xbd4340u;
     esp -= 4;
     M32(esp) = t;
@@ -771,7 +780,7 @@ R_16:
     /* 0086e3ae  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0086e3b0  push 0xbd432c */
+    /* 0086e3b0  push 0xbd432c  ; "Bottom left alpha" */
     t = 0xbd432cu;
     esp -= 4;
     M32(esp) = t;
@@ -819,7 +828,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086e6c0  dice::meme::VertexColorEffect  (vtable store) */
+/* 0086e6c0  VertexColorEffect::VertexColorEffect  (vtable store)
+ * class: dice::meme::VertexColorEffect
+ * called by: MultiplyVertexColorEffect::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e6c0, bfv_client_l1_body_0086e6c0);
 BFV_L1_RESUME(bfv_client_l1r_0086e6c0_1, bfv_client_l1_body_0086e6c0, 1);
 void bfv_client_l1_body_0086e6c0(struct bfv_cpu *c)
@@ -839,14 +851,14 @@ void bfv_client_l1_body_0086e6c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086e6c1  mov esi, ecx */
     esi = ecx;
-    /* 0086e6c3  call 0x874870 */
+    /* 0086e6c3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e6c0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0086e6c8  mov dword ptr [esi], 0xbd4504 */
+    /* 0086e6c8  mov dword ptr [esi], 0xbd4504  ; vtable VertexColorEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd4504u;
     /* 0086e6ce  mov ecx, 0x3f800000 */
@@ -936,8 +948,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086e850  dice::meme::VertexColorEffect  (virtual method)
- * strings: "dice::meme::VertexColorEffect" */
+/* 0086e850  VertexColorEffect::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::VertexColorEffect
+ * strings: "dice::meme::VertexColorEffect"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e850, bfv_client_l1_body_0086e850);
 BFV_L1_RESUME(bfv_client_l1r_0086e850_1, bfv_client_l1_body_0086e850, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086e850_2, bfv_client_l1_body_0086e850, 2);
@@ -968,13 +983,13 @@ void bfv_client_l1_body_0086e850(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0086e865  push 0xbd4600 */
+    /* 0086e865  push 0xbd4600  ; "dice::meme::VertexColorEffect" */
     t = 0xbd4600u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086e86a  mov ecx, 0xdf6494 */
+    /* 0086e86a  mov ecx, 0xdf6494  ; g_RuntimeClass_VertexColorEffect */
     ecx = 0xdf6494u;
-    /* 0086e86f  call 0x875490 */
+    /* 0086e86f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e850_1;
@@ -985,10 +1000,10 @@ R_1:
     t = 0xb3acc0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086e879  mov dword ptr [0xdf6494], 0xbd44b8 */
+    /* 0086e879  mov dword ptr [0xdf6494], 0xbd44b8  ; g_RuntimeClass_VertexColorEffect */
     ea = (uint32_t)(0x00df6494u);
     M32(ea) = 0xbd44b8u;
-    /* 0086e883  call 0x7c2cd2 */
+    /* 0086e883  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e850_2;
@@ -1002,7 +1017,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0086e88b:
-    /* 0086e88b  mov eax, 0xdf6494 */
+    /* 0086e88b  mov eax, 0xdf6494  ; g_RuntimeClass_VertexColorEffect */
     eax = 0xdf6494u;
     /* 0086e890  ret */
     c->eip = M32(esp);

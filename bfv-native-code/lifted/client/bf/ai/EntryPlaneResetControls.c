@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009b95c0  (source path) */
+/* 009b95c0  AIConsole::ctor_dtor_helper_009b95c0  (source path)
+ * also entered at 009b95d0: EntryPlaneResetControls::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b95c0, bfv_client_l1_body_009b95c0);
 void bfv_client_l1_body_009b95c0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_009b95c0(struct bfv_cpu *c)
     uint32_t ea;
     /* 009b95c0  mov eax, ecx */
     eax = ecx;
-    /* 009b95c2  mov dword ptr [eax], 0xbf7564 */
+    /* 009b95c2  mov dword ptr [eax], 0xbf7564  ; vtable EntryPlaneResetControls */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf7564u;
     /* 009b95c8  ret */

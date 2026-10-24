@@ -1,0 +1,8 @@
+## file
+Behaviour that scores firing at an enemy from a ground vehicle.
+
+## 00995210
+evaluate: when the parameter object says the behaviour is not usable it clears the per-bot state and returns 0. Reads the AI time and, when more than 60 seconds have passed since the last cleanup (stored at +0x34), erases the stored tree entries. Reads the bot's vehicle, seat and position, then compares two IAIEnvironment values (vf44 minus vf38); when the difference is above 0.75 it marks the bot, resets its handle to -1 and returns 0. Otherwise it goes on to score the targets.
+
+## 009a2980
+vf13: forwards a request for this bot to the stored plan builder (this+0xc slot 0x14) with the bot's per-bot index.

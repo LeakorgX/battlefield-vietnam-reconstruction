@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007c0988  std::ios_base::failure  (virtual method) */
+/* 007c0988  failure::deleting_dtor  (virtual method)
+ * overrides: exception::vf0  (9 classes implement it)
+ * class: std::ios_base::failure
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c0988, bfv_client_l1_body_007c0988);
 BFV_L1_RESUME(bfv_client_l1r_007c0988_1, bfv_client_l1_body_007c0988, 1);
 BFV_L1_RESUME(bfv_client_l1r_007c0988_2, bfv_client_l1_body_007c0988, 2);
@@ -27,14 +30,14 @@ void bfv_client_l1_body_007c0988(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007c0989  mov esi, ecx */
     esi = ecx;
-    /* 007c098b  call 0x7c09a4 */
+    /* 007c098b  call 0x7c09a4  ; failure::~failure */
     t = 0x007c09a4u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c0988_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007c0990  test byte ptr [esp + 8], 1 */
+    /* 007c0990  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -44,7 +47,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c0998  call 0x403680 */
+    /* 007c0998  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c0988_2;
@@ -73,7 +76,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007c09a4  std::ios_base::failure  (vtable store) */
+/* 007c09a4  failure::~failure  (vtable store)
+ * class: std::ios_base::failure
+ * called by: failure::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c09a4, bfv_client_l1_body_007c09a4);
 void bfv_client_l1_body_007c09a4(struct bfv_cpu *c)
 {
@@ -82,10 +88,10 @@ void bfv_client_l1_body_007c09a4(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007c09a4  mov dword ptr [ecx], 0xbb6e3c */
+    /* 007c09a4  mov dword ptr [ecx], 0xbb6e3c  ; vtable failure */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbb6e3cu;
-    /* 007c09aa  jmp 0x7c0905 */
+    /* 007c09aa  jmp 0x7c0905  ; runtime_error::~runtime_error */
     c->eip = 0x007c0905u;
     goto out;
 out: __attribute__((unused));
@@ -95,8 +101,12 @@ out: __attribute__((unused));
 }
 
 
-/* 007c09af  std::ios_base::failure  (vtable store)
- * strings: "ios_base::badbit set", "ios_base::failbit set", "ios_base::eofbit set" */
+/* 007c09af  std::ios_base::clear  (vtable store)
+ * identified: (iostate, bool reraise); called as clear(0) by _Init and clear(state|badbit) by init; throws failure
+ * class: std::ios_base::failure
+ * strings: "ios_base::badbit set", "ios_base::failbit set", "ios_base::eofbit set"
+ * called by: std::operator_write_cstr_catch_004016ae, facet_004016d9, std::ostream::operator_write_int_catch_00401949, facet_00401977, std::istream::operator_read_long_catch_00405066, sub_00405091 (+1082 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c09af, bfv_client_l1_body_007c09af);
 BFV_L1_RESUME(bfv_client_l1r_007c09af_1, bfv_client_l1_body_007c09af, 1);
 BFV_L1_RESUME(bfv_client_l1r_007c09af_2, bfv_client_l1_body_007c09af, 2);
@@ -124,7 +134,7 @@ void bfv_client_l1_body_007c09af(struct bfv_cpu *c)
     }
     /* 007c09af  mov eax, 0xac7686 */
     eax = 0xac7686u;
-    /* 007c09b4  call 0x7c77bc */
+    /* 007c09b4  call 0x7c77bc  ; _EH_prolog */
     t = 0x007c77bcu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c09af_1;
@@ -184,13 +194,13 @@ L_007c09e1:
     F_LOGIC(8, r);
     /* 007c09e4  je 0x7c0a13 */
     if (zf) goto L_007c0a13;
-    /* 007c09e6  push 0xbb6e74 */
+    /* 007c09e6  push 0xbb6e74  ; "ios_base::badbit set" */
     t = 0xbb6e74u;
     esp -= 4;
     M32(esp) = t;
     /* 007c09eb  lea ecx, [ebp - 0x50] */
     ecx = (uint32_t)(ebp + 0xffffffb0u);
-    /* 007c09ee  call 0x402100 */
+    /* 007c09ee  call 0x402100  ; std::string::string_cstr */
     t = 0x00402100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c09af_2;
@@ -209,14 +219,14 @@ L_007c09f6:
     M32(esp) = t;
     /* 007c09fa  lea ecx, [ebp - 0x34] */
     ecx = (uint32_t)(ebp + 0xffffffccu);
-    /* 007c09fd  call 0x7c094c */
+    /* 007c09fd  call 0x7c094c  ; runtime_error::runtime_error */
     t = 0x007c094cu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c09af_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 007c0a02  mov dword ptr [ebp - 0x34], 0xbb6e3c */
+    /* 007c0a02  mov dword ptr [ebp - 0x34], 0xbb6e3c  ; vtable failure */
     ea = (uint32_t)(ebp + 0xffffffccu);
     M32(ea) = 0xbb6e3cu;
     /* 007c0a09  push 0xc945cc */
@@ -241,13 +251,13 @@ L_007c0a13:
     F_LOGIC(8, r);
     /* 007c0a18  je 0x7c0a30 */
     if (zf) goto L_007c0a30;
-    /* 007c0a1a  push 0xbb6e5c */
+    /* 007c0a1a  push 0xbb6e5c  ; "ios_base::failbit set" */
     t = 0xbb6e5cu;
     esp -= 4;
     M32(esp) = t;
     /* 007c0a1f  lea ecx, [ebp - 0x50] */
     ecx = (uint32_t)(ebp + 0xffffffb0u);
-    /* 007c0a22  call 0x402100 */
+    /* 007c0a22  call 0x402100  ; std::string::string_cstr */
     t = 0x00402100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c09af_4;
@@ -260,13 +270,13 @@ R_4:
     /* 007c0a2e  jmp 0x7c09f6 */
     goto L_007c09f6;
 L_007c0a30:
-    /* 007c0a30  push 0xbb6e44 */
+    /* 007c0a30  push 0xbb6e44  ; "ios_base::eofbit set" */
     t = 0xbb6e44u;
     esp -= 4;
     M32(esp) = t;
     /* 007c0a35  lea ecx, [ebp - 0x94] */
     ecx = (uint32_t)(ebp + 0xffffff6cu);
-    /* 007c0a3b  call 0x402100 */
+    /* 007c0a3b  call 0x402100  ; std::string::string_cstr */
     t = 0x00402100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c09af_5;
@@ -284,14 +294,14 @@ R_5:
     /* 007c0a4a  mov dword ptr [ebp - 4], ebx */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = ebx;
-    /* 007c0a4d  call 0x7c094c */
+    /* 007c0a4d  call 0x7c094c  ; runtime_error::runtime_error */
     t = 0x007c094cu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c09af_6;
     c->eip = t;
     goto out;
 R_6:
-    /* 007c0a52  mov dword ptr [ebp - 0x78], 0xbb6e3c */
+    /* 007c0a52  mov dword ptr [ebp - 0x78], 0xbb6e3c  ; vtable failure */
     ea = (uint32_t)(ebp + 0xffffff88u);
     M32(ea) = 0xbb6e3cu;
     /* 007c0a59  push 0xc945cc */
@@ -306,7 +316,7 @@ L_007c0a61:
     esp -= 4;
     M32(esp) = t;
 L_007c0a62:
-    /* 007c0a62  call 0x7c1fae */
+    /* 007c0a62  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c09af_7;

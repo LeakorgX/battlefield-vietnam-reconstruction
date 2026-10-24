@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00639778  std::out_of_range  (vtable store)
- * strings: "invalid string position" */
+/* 00639778  out_of_range::ctor_dtor  (vtable store)
+ * class: std::out_of_range
+ * strings: "invalid string position"
+ * called by: std::string::compare_chars, std::string::erase, std::string::append_substr, std::string::assign_substr, sub_00403500, sub_004226b0 (+7 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00639778, bfv_server_l1_body_00639778);
 BFV_L1_RESUME(bfv_server_l1r_00639778_1, bfv_server_l1_body_00639778, 1);
 BFV_L1_RESUME(bfv_server_l1r_00639778_2, bfv_server_l1_body_00639778, 2);
@@ -28,7 +31,7 @@ void bfv_server_l1_body_00639778(struct bfv_cpu *c)
     }
     /* 00639778  mov eax, 0x7e2e2a */
     eax = 0x7e2e2au;
-    /* 0063977d  call 0x64003c */
+    /* 0063977d  call 0x64003c  ; _EH_prolog */
     t = 0x0064003cu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639778_1;
@@ -41,13 +44,13 @@ R_1:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00639785  push 0x8514a0 */
+    /* 00639785  push 0x8514a0  ; "invalid string position" */
     t = 0x8514a0u;
     esp -= 4;
     M32(esp) = t;
     /* 0063978a  lea ecx, [ebp - 0x28] */
     ecx = (uint32_t)(ebp + 0xffffffd8u);
-    /* 0063978d  call 0x402650 */
+    /* 0063978d  call 0x402650  ; std::string::string_cstr */
     t = 0x00402650u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639778_2;
@@ -67,7 +70,7 @@ R_2:
     M32(esp) = t;
     /* 0063979a  lea ecx, [ebp - 0x50] */
     ecx = (uint32_t)(ebp + 0xffffffb0u);
-    /* 0063979d  call 0x403b60 */
+    /* 0063979d  call 0x403b60  ; logic_error::logic_error */
     t = 0x00403b60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639778_3;
@@ -84,10 +87,10 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006397ab  mov dword ptr [ebp - 0x50], 0x807500 */
+    /* 006397ab  mov dword ptr [ebp - 0x50], 0x807500  ; vtable out_of_range */
     ea = (uint32_t)(ebp + 0xffffffb0u);
     M32(ea) = 0x807500u;
-    /* 006397b2  call 0x63a98e */
+    /* 006397b2  call 0x63a98e  ; _CxxThrowException */
     t = 0x0063a98eu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639778_4;

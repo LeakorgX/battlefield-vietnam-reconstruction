@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00abf470  dice::meme::NotEqualData  (virtual method) */
+/* 00abf470  NotEqualData::getFloat  (virtual method)
+ * overrides: Data::getFloat  (41 classes implement it)
+ * class: dice::meme::NotEqualData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abf470, bfv_client_l1_body_00abf470);
 BFV_L1_RESUME(bfv_client_l1r_00abf470_1, bfv_client_l1_body_00abf470, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abf470_2, bfv_client_l1_body_00abf470, 2);
@@ -56,7 +59,7 @@ void bfv_client_l1_body_00abf470(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00abf48a  mov edi, dword ptr [esp + 0xc] */
+    /* 00abf48a  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 00abf48e  push edi */
@@ -71,7 +74,7 @@ void bfv_client_l1_body_00abf470(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 00abf492  fstp dword ptr [esp + 0xc] */
+    /* 00abf492  fstp dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abf496  mov edx, dword ptr [esi] */
@@ -91,7 +94,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 00abf49e  fld dword ptr [esp + 0xc] */
+    /* 00abf49e  fld dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abf4a2  fucompp */
@@ -111,7 +114,7 @@ R_2:
     F_LOGIC(8, r);
     /* 00abf4ab  jnp 0xabf4b6 */
     if (!pf) goto L_00abf4b6;
-    /* 00abf4ad  fld dword ptr [0xb4456c] */
+    /* 00abf4ad  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abf4b3  ret 4 */
@@ -119,7 +122,7 @@ R_2:
     esp += 8;
     goto out;
 L_00abf4b6:
-    /* 00abf4b6  fld dword ptr [0xb44444] */
+    /* 00abf4b6  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00abf4bc  ret 4 */
@@ -133,7 +136,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00abf820  dice::meme::NotEqualData  (vtable store) */
+/* 00abf820  NotEqualData::create  (vtable store)
+ * class: dice::meme::NotEqualData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abf820, bfv_client_l1_body_00abf820);
 BFV_L1_RESUME(bfv_client_l1r_00abf820_1, bfv_client_l1_body_00abf820, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abf820_2, bfv_client_l1_body_00abf820, 2);
@@ -157,7 +162,7 @@ void bfv_client_l1_body_00abf820(struct bfv_cpu *c)
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abf823  call 0x403610 */
+    /* 00abf823  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abf820_1;
@@ -183,7 +188,7 @@ R_1:
     M32(esp) = t;
     /* 00abf833  mov ecx, esi */
     ecx = esi;
-    /* 00abf835  call 0x874530 */
+    /* 00abf835  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abf820_2;
@@ -196,7 +201,7 @@ R_2:
     /* 00abf841  mov dword ptr [esi + 0x10], 0 */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 00abf848  mov dword ptr [esi], 0xc0f374 */
+    /* 00abf848  mov dword ptr [esi], 0xc0f374  ; vtable NotEqualData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0f374u;
     /* 00abf84e  mov eax, esi */
@@ -229,8 +234,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00abfc10  dice::meme::NotEqualData  (virtual method)
- * strings: "dice::meme::NotEqualData" */
+/* 00abfc10  NotEqualData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::NotEqualData
+ * strings: "dice::meme::NotEqualData"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00abfc10, bfv_client_l1_body_00abfc10);
 BFV_L1_RESUME(bfv_client_l1r_00abfc10_1, bfv_client_l1_body_00abfc10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00abfc10_2, bfv_client_l1_body_00abfc10, 2);
@@ -261,27 +269,27 @@ void bfv_client_l1_body_00abfc10(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00abfc25  push 0xc0f7d8 */
+    /* 00abfc25  push 0xc0f7d8  ; "dice::meme::NotEqualData" */
     t = 0xc0f7d8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abfc2a  mov ecx, 0xe213d0 */
+    /* 00abfc2a  mov ecx, 0xe213d0  ; g_RuntimeClass_NotEqualData */
     ecx = 0xe213d0u;
-    /* 00abfc2f  call 0x875490 */
+    /* 00abfc2f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abfc10_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00abfc34  push 0xb41b00 */
+    /* 00abfc34  push 0xb41b00  ; bfv_client_global_store_00b41b00 */
     t = 0xb41b00u;
     esp -= 4;
     M32(esp) = t;
-    /* 00abfc39  mov dword ptr [0xe213d0], 0xc0f34c */
+    /* 00abfc39  mov dword ptr [0xe213d0], 0xc0f34c  ; g_RuntimeClass_NotEqualData */
     ea = (uint32_t)(0x00e213d0u);
     M32(ea) = 0xc0f34cu;
-    /* 00abfc43  call 0x7c2cd2 */
+    /* 00abfc43  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00abfc10_2;
@@ -295,7 +303,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00abfc4b:
-    /* 00abfc4b  mov eax, 0xe213d0 */
+    /* 00abfc4b  mov eax, 0xe213d0  ; g_RuntimeClass_NotEqualData */
     eax = 0xe213d0u;
     /* 00abfc50  ret */
     c->eip = M32(esp);

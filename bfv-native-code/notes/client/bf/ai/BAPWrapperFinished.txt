@@ -1,0 +1,16 @@
+## file
+BAPWrapperFinished runs a child statement (this+0x18) and then reports a fixed
+done value (this+0x1c) instead of the child's.
+
+## 009f82f0
+execute(bot, &flag, &done): runs the child, when there is one, through the
+bot's runner (bot+0xa8, slot 4), then overwrites done with this+0x1c.
+
+## 009f8340
+Constructor(child, doneValue): counts the statement in g_bapCreatedCount,
+stores the child at this+0x18 and the done value at this+0x1c, and makes this
+the child's parent (child+4).
+
+## 009f8390
+destroy: deletes the child statement (its slot 4), counts the destroyed
+statement and frees it to its pool when asked.

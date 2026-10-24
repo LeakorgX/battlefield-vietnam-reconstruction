@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00774980  dice::bf::ai::SCArea  (virtual method) */
+/* 00774980  SCArea::vf2  (virtual method)
+ * overrides: StrategyCondition::vf2  (5 classes implement it)
+ * class: dice::bf::ai::SCArea
+ */
 BFV_L1_ENTRY(bfv_server_l1_00774980, bfv_server_l1_body_00774980);
 BFV_L1_RESUME(bfv_server_l1r_00774980_1, bfv_server_l1_body_00774980, 1);
 BFV_L1_RESUME(bfv_server_l1r_00774980_2, bfv_server_l1_body_00774980, 2);
@@ -33,7 +36,7 @@ void bfv_server_l1_body_00774980(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00774982  mov edi, ecx */
     edi = ecx;
-    /* 00774984  call 0x70e230 */
+    /* 00774984  call 0x70e230  ; bfv_server_read_global_0070e230 */
     t = 0x0070e230u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00774980_1;
@@ -49,7 +52,7 @@ R_1:
     M32(esp) = t;
     /* 0077498d  mov ecx, eax */
     ecx = eax;
-    /* 0077498f  call 0x70e480 */
+    /* 0077498f  call 0x70e480  ; std::vector_ptr::atOrNull */
     t = 0x0070e480u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00774980_2;
@@ -76,7 +79,7 @@ R_3:
     F_LOGIC(32, r);
     /* 0077499f  je 0x7749ac */
     if (zf) goto L_007749ac;
-    /* 007749a1  fld dword ptr [0x817648] */
+    /* 007749a1  fld dword ptr [0x817648]  ; = -1.0f */
     ea = (uint32_t)(0x00817648u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007749a7  pop edi */
@@ -92,7 +95,7 @@ R_3:
     esp += 16;
     goto out;
 L_007749ac:
-    /* 007749ac  mov eax, dword ptr [esp + 0x14] */
+    /* 007749ac  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 007749b0  mov ecx, dword ptr [esi + eax*4 + 0x70] */
@@ -106,7 +109,7 @@ L_007749ac:
     F_SUB(32, a, b, r);
     /* 007749b7  jne 0x7749c4 */
     if (!zf) goto L_007749c4;
-    /* 007749b9  fld dword ptr [0x809264] */
+    /* 007749b9  fld dword ptr [0x809264]  ; = 1.0f */
     ea = (uint32_t)(0x00809264u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007749bf  pop edi */
@@ -122,7 +125,7 @@ L_007749ac:
     esp += 16;
     goto out;
 L_007749c4:
-    /* 007749c4  fld dword ptr [0x817648] */
+    /* 007749c4  fld dword ptr [0x817648]  ; = -1.0f */
     ea = (uint32_t)(0x00817648u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007749ca  pop edi */
@@ -144,7 +147,11 @@ out: __attribute__((unused));
 }
 
 
-/* 007749d0  (between same file) */
+/* 007749d0  SCArea::~SCArea  (between same file)
+ * class: dice::bf::ai::SCArea
+ * also entered at 00774a30: AIObjectUnit::vf1, AIStrategicObject::vf1, AITemplateUnit::vf2, BAPCConBombPrecision3d::vf1 (+12 more)
+ * also entered at 00774a40: SCArea::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_007749d0, bfv_server_l1_body_007749d0);
 BFV_L1_RESUME(bfv_server_l1r_007749d0_1, bfv_server_l1_body_007749d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007749d0_2, bfv_server_l1_body_007749d0, 2);
@@ -170,7 +177,7 @@ void bfv_server_l1_body_007749d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007749d2  mov esi, ecx */
     esi = ecx;
-    /* 007749d4  mov dword ptr [esi], 0x87674c */
+    /* 007749d4  mov dword ptr [esi], 0x87674c  ; vtable SCArea */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87674cu;
     /* 007749da  cmp dword ptr [esi + 0x58], 0x10 */
@@ -188,7 +195,7 @@ void bfv_server_l1_body_007749d0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007749e4  call 0x403df0 */
+    /* 007749e4  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007749d0_1;
@@ -215,7 +222,7 @@ L_007749ec:
     /* 007749f8  mov byte ptr [esi + 0x44], bl */
     ea = (uint32_t)(esi + 0x00000044u);
     M8(ea) = LO8(ebx);
-    /* 007749fb  mov dword ptr [esi], 0x871794 */
+    /* 007749fb  mov dword ptr [esi], 0x871794  ; vtable StrategyCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x871794u;
     /* 00774a01  cmp dword ptr [esi + 0x38], 0x10 */
@@ -233,7 +240,7 @@ L_007749ec:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00774a0b  call 0x403df0 */
+    /* 00774a0b  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007749d0_2;
@@ -275,7 +282,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00774a60  dice::bf::ai::SCArea  (vtable store) */
+/* 00774a60  SCArea::SCArea  (vtable store)
+ * class: dice::bf::ai::SCArea
+ * called by: AiStrategy::createAreaCondition
+ */
 BFV_L1_ENTRY(bfv_server_l1_00774a60, bfv_server_l1_body_00774a60);
 BFV_L1_RESUME(bfv_server_l1r_00774a60_1, bfv_server_l1_body_00774a60, 1);
 BFV_L1_RESUME(bfv_server_l1r_00774a60_2, bfv_server_l1_body_00774a60, 2);
@@ -291,7 +301,7 @@ void bfv_server_l1_body_00774a60(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00774a60  mov eax, dword ptr [esp + 4] */
+    /* 00774a60  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00774a64  push esi */
@@ -324,17 +334,17 @@ void bfv_server_l1_body_00774a60(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00774a70  mov esi, ecx */
     esi = ecx;
-    /* 00774a72  call 0x7184d0 */
+    /* 00774a72  call 0x7184d0  ; StrategyCondition::StrategyCondition */
     t = 0x007184d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00774a60_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00774a77  mov ecx, dword ptr [esp + 0x10] */
+    /* 00774a77  mov ecx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00774a7b  mov edx, dword ptr [esp + 0xc] */
+    /* 00774a7b  mov edx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00774a7f  mov dword ptr [esi + 0x3c], ecx */
@@ -346,7 +356,7 @@ R_1:
     M32(esp) = t;
     /* 00774a84  lea ecx, [esi + 0x40] */
     ecx = (uint32_t)(esi + 0x00000040u);
-    /* 00774a87  mov dword ptr [esi], 0x87674c */
+    /* 00774a87  mov dword ptr [esi], 0x87674c  ; vtable SCArea */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87674cu;
     /* 00774a8d  push 0 */
@@ -366,14 +376,14 @@ R_1:
     /* 00774a9e  mov byte ptr [ecx + 4], 0 */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = 0x0u;
-    /* 00774aa2  call 0x401e20 */
+    /* 00774aa2  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00774a60_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00774aa7  mov eax, dword ptr [esp + 0x14] */
+    /* 00774aa7  mov eax, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00774aab  mov dword ptr [esi + 0x5c], eax */

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00503390  dice::ref2::tool::RayTracer  (virtual method) */
+/* 00503390  RayTracer::release  (virtual method)
+ * overrides: IBase::release  (395 classes implement it)
+ * class: dice::ref2::tool::RayTracer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00503390, bfv_client_l1_body_00503390);
 BFV_L1_RESUME(bfv_client_l1r_00503390_1, bfv_client_l1_body_00503390, 1);
 void bfv_client_l1_body_00503390(struct bfv_cpu *c)
@@ -50,7 +53,7 @@ void bfv_client_l1_body_00503390(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 005033a4  call dword ptr [eax] */
+    /* 005033a4  call dword ptr [eax]  ; -> RayTracer::vf0 = RayTracer::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;
@@ -76,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007abcf0  dice::ref2::tool::RayTracer  (vtable store) */
+/* 007abcf0  RayTracer::~RayTracer  (vtable store)
+ * class: dice::ref2::tool::RayTracer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007abcf0, bfv_client_l1_body_007abcf0);
 BFV_L1_RESUME(bfv_client_l1r_007abcf0_1, bfv_client_l1_body_007abcf0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007abcf0_2, bfv_client_l1_body_007abcf0, 2);
@@ -108,7 +113,7 @@ void bfv_client_l1_body_007abcf0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007abcf2  mov esi, ecx */
     esi = ecx;
-    /* 007abcf4  mov dword ptr [esi], 0xbb6314 */
+    /* 007abcf4  mov dword ptr [esi], 0xbb6314  ; vtable RayTracer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbb6314u;
     /* 007abcfa  mov ecx, dword ptr [esi + 0x88] */
@@ -177,7 +182,7 @@ L_007abd1b:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007abd23  call 0x403680 */
+    /* 007abd23  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007abcf0_3;
@@ -225,7 +230,7 @@ L_007abd2b:
     M32(esp) = t;
     /* 007abd43  mov ecx, edi */
     ecx = edi;
-    /* 007abd45  call 0x7a9b50 */
+    /* 007abd45  call 0x7a9b50  ; sub_007a9b50 */
     t = 0x007a9b50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007abcf0_4;
@@ -239,7 +244,7 @@ R_4:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 007abd4e  call 0x403680 */
+    /* 007abd4e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007abcf0_5;
@@ -276,7 +281,7 @@ L_007abd56:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 007abd64  jmp 0x7abac0 */
+    /* 007abd64  jmp 0x7abac0  ; BaseTracer::~BaseTracer */
     c->eip = 0x007abac0u;
     goto out;
 out: __attribute__((unused));
@@ -286,7 +291,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007abd70  dice::ref2::tool::RayTracer  (virtual method) */
+/* 007abd70  RayTracer::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::tool::RayTracer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007abd70, bfv_client_l1_body_007abd70);
 void bfv_client_l1_body_007abd70(struct bfv_cpu *c)
 {
@@ -295,14 +303,14 @@ void bfv_client_l1_body_007abd70(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 007abd70  mov edx, dword ptr [esp + 4] */
+    /* 007abd70  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 007abd74  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007abd75  mov esi, dword ptr [0xb42718] */
+    /* 007abd75  mov esi, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     esi = M32(ea);
     /* 007abd7b  xor eax, eax */
@@ -340,7 +348,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007abd90  dice::ref2::tool::RayTracer  (virtual method) */
+/* 007abd90  RayTracer::addRef  (virtual method)
+ * overrides: IBase::addRef  (395 classes implement it)
+ * class: dice::ref2::tool::RayTracer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007abd90, bfv_client_l1_body_007abd90);
 void bfv_client_l1_body_007abd90(struct bfv_cpu *c)
 {
@@ -371,7 +382,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007ade50  dice::ref2::tool::RayTracer  (vtable store) */
+/* 007ade50  RayTracer::RayTracer  (vtable store)
+ * class: dice::ref2::tool::RayTracer
+ * also entered at 007adeb0: RayTracer::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_007ade50, bfv_client_l1_body_007ade50);
 BFV_L1_RESUME(bfv_client_l1r_007ade50_1, bfv_client_l1_body_007ade50, 1);
 void bfv_client_l1_body_007ade50(struct bfv_cpu *c)
@@ -391,7 +405,7 @@ void bfv_client_l1_body_007ade50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007ade51  mov esi, ecx */
     esi = ecx;
-    /* 007ade53  call 0x7addb0 */
+    /* 007ade53  call 0x7addb0  ; BaseTracer::BaseTracer */
     t = 0x007addb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007ade50_1;
@@ -402,7 +416,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 007ade5a  mov dword ptr [esi], 0xbb6314 */
+    /* 007ade5a  mov dword ptr [esi], 0xbb6314  ; vtable RayTracer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbb6314u;
     /* 007ade60  mov dword ptr [esi + 0x40], 1 */
@@ -423,13 +437,13 @@ R_1:
     /* 007ade73  mov byte ptr [esi + 0x5c], al */
     ea = (uint32_t)(esi + 0x0000005cu);
     M8(ea) = LO8(eax);
-    /* 007ade76  mov dword ptr [esi + 0x58], 0xbf800000 */
+    /* 007ade76  mov dword ptr [esi + 0x58], 0xbf800000  ; -1.0f */
     ea = (uint32_t)(esi + 0x00000058u);
     M32(ea) = 0xbf800000u;
     /* 007ade7d  mov dword ptr [esi + 0x60], 0x10 */
     ea = (uint32_t)(esi + 0x00000060u);
     M32(ea) = 0x10u;
-    /* 007ade84  mov dword ptr [esi + 0x64], 0x3d4ccccd */
+    /* 007ade84  mov dword ptr [esi + 0x64], 0x3d4ccccd  ; 0.05f */
     ea = (uint32_t)(esi + 0x00000064u);
     M32(ea) = 0x3d4ccccdu;
     /* 007ade8b  mov dword ptr [esi + 0x6c], eax */

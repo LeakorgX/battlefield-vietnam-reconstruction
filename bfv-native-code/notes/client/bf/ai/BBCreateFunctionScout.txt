@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBScout behaviour.
+
+## 00940970
+vf0: picks the parameter object by type name: "BBPScout" or "BBPScoutInfantery" (0x10 bytes each); null when neither matches. Allocates a 0x44-byte BBScout with a copy of the passed-in list, then frees the passed-in list.

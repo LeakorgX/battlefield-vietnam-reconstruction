@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00695510  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 00695510  Win32FileStream::seek  (virtual method)
+ * overrides: INonlinearStream::seek  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_00695510, bfv_server_l1_body_00695510);
 BFV_L1_RESUME(bfv_server_l1r_00695510_1, bfv_server_l1_body_00695510, 1);
 void bfv_server_l1_body_00695510(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_00695510(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00695510  mov eax, dword ptr [esp + 4] */
+    /* 00695510  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00695514  sub eax, 0 */
@@ -66,7 +69,7 @@ L_00695531:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00695535  mov eax, dword ptr [esp + 0x10] */
+    /* 00695535  mov eax, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00695539  push 0 */
@@ -81,7 +84,7 @@ L_00695531:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0069553d  call dword ptr [0x8071a8] */
+    /* 0069553d  call dword ptr [0x8071a8]  ; KERNEL32!SetFilePointer */
     ea = (uint32_t)(0x008071a8u);
     t = M32(ea);
     esp -= 4;
@@ -129,7 +132,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00695560  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 00695560  Win32FileStream::tell  (virtual method)
+ * overrides: INonlinearStream::tell  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_00695560, bfv_server_l1_body_00695560);
 BFV_L1_RESUME(bfv_server_l1r_00695560_1, bfv_server_l1_body_00695560, 1);
 void bfv_server_l1_body_00695560(struct bfv_cpu *c)
@@ -162,7 +168,7 @@ void bfv_server_l1_body_00695560(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0069556a  call dword ptr [0x8071a8] */
+    /* 0069556a  call dword ptr [0x8071a8]  ; KERNEL32!SetFilePointer */
     ea = (uint32_t)(0x008071a8u);
     t = M32(ea);
     esp -= 4;
@@ -201,7 +207,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00695580  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 00695580  Win32FileStream::getSize  (virtual method)
+ * overrides: INonlinearStream::getSize  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_00695580, bfv_server_l1_body_00695580);
 BFV_L1_RESUME(bfv_server_l1r_00695580_1, bfv_server_l1_body_00695580, 1);
 void bfv_server_l1_body_00695580(struct bfv_cpu *c)
@@ -226,7 +235,7 @@ void bfv_server_l1_body_00695580(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00695586  call dword ptr [0x807084] */
+    /* 00695586  call dword ptr [0x807084]  ; KERNEL32!GetFileSize */
     ea = (uint32_t)(0x00807084u);
     t = M32(ea);
     esp -= 4;
@@ -265,7 +274,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006955a0  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 006955a0  Win32FileStream::skip  (virtual method)
+ * overrides: INonlinearStream::skip  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_006955a0, bfv_server_l1_body_006955a0);
 BFV_L1_RESUME(bfv_server_l1r_006955a0_1, bfv_server_l1_body_006955a0, 1);
 void bfv_server_l1_body_006955a0(struct bfv_cpu *c)
@@ -279,7 +291,7 @@ void bfv_server_l1_body_006955a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 006955a0  mov edx, dword ptr [esp + 4] */
+    /* 006955a0  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 006955a4  mov eax, dword ptr [ecx] */
@@ -293,7 +305,7 @@ void bfv_server_l1_body_006955a0(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 006955a9  call dword ptr [eax + 0x2c] */
+    /* 006955a9  call dword ptr [eax + 0x2c]  ; -> Win32FileStream::vf11 = Win32FileStream::seek */
     ea = (uint32_t)(eax + 0x0000002cu);
     t = M32(ea);
     esp -= 4;
@@ -312,7 +324,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006955b0  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 006955b0  Win32FileStream::getBytesLeft  (virtual method)
+ * overrides: INonlinearStream::getBytesLeft  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_006955b0, bfv_server_l1_body_006955b0);
 BFV_L1_RESUME(bfv_server_l1r_006955b0_1, bfv_server_l1_body_006955b0, 1);
 BFV_L1_RESUME(bfv_server_l1r_006955b0_2, bfv_server_l1_body_006955b0, 2);
@@ -341,7 +356,7 @@ void bfv_server_l1_body_006955b0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006955b6  call dword ptr [eax + 0x34] */
+    /* 006955b6  call dword ptr [eax + 0x34]  ; -> Win32FileStream::vf13 = Win32FileStream::getSize */
     ea = (uint32_t)(eax + 0x00000034u);
     t = M32(ea);
     esp -= 4;
@@ -356,7 +371,7 @@ R_1:
     ecx = esi;
     /* 006955bd  mov edi, eax */
     edi = eax;
-    /* 006955bf  call dword ptr [edx + 0x30] */
+    /* 006955bf  call dword ptr [edx + 0x30]  ; -> Win32FileStream::vf12 = Win32FileStream::tell */
     ea = (uint32_t)(edx + 0x00000030u);
     t = M32(ea);
     esp -= 4;
@@ -391,7 +406,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006955d0  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 006955d0  Win32FileStream::canRead  (virtual method)
+ * overrides: INonlinearStream::canRead  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_006955d0, bfv_server_l1_body_006955d0);
 void bfv_server_l1_body_006955d0(struct bfv_cpu *c)
 {
@@ -437,7 +455,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006955f0  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 006955f0  Win32FileStream::canWrite  (virtual method)
+ * overrides: INonlinearStream::canWrite  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_006955f0, bfv_server_l1_body_006955f0);
 void bfv_server_l1_body_006955f0(struct bfv_cpu *c)
 {
@@ -485,7 +506,109 @@ out: __attribute__((unused));
 }
 
 
-/* 00695a50  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 00695a00  Win32FileStream::Win32FileStream  (vtable store)
+ * class: dice::ref2::io::Win32FileStream
+ * called by: Win32FileSystem::vf4
+ */
+BFV_L1_ENTRY(bfv_server_l1_00695a00, bfv_server_l1_body_00695a00);
+BFV_L1_RESUME(bfv_server_l1r_00695a00_1, bfv_server_l1_body_00695a00, 1);
+void bfv_server_l1_body_00695a00(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    default: break;
+    }
+    /* 00695a00  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00695a01  mov esi, ecx */
+    esi = ecx;
+    /* 00695a03  mov ecx, dword ptr [esp + 8]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000008u);
+    ecx = M32(ea);
+    /* 00695a07  mov dword ptr [esi + 4], 0x85f934  ; vtable IAsyncStream */
+    ea = (uint32_t)(esi + 0x00000004u);
+    M32(ea) = 0x85f934u;
+    /* 00695a0e  mov dword ptr [esi], 0x85f9b4  ; vtable Win32FileStream */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x85f9b4u;
+    /* 00695a14  mov dword ptr [esi + 4], 0x85f974 */
+    ea = (uint32_t)(esi + 0x00000004u);
+    M32(ea) = 0x85f974u;
+    /* 00695a1b  mov eax, 1 */
+    eax = 0x1u;
+    /* 00695a20  mov dword ptr [esi + 8], eax */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M32(ea) = eax;
+    /* 00695a23  mov dword ptr [esi + 0xc], eax */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = eax;
+    /* 00695a26  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 00695a28  mov dword ptr [esi + 0x10], eax */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = eax;
+    /* 00695a2b  mov dword ptr [esi + 0x14], eax */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = eax;
+    /* 00695a2e  mov byte ptr [esi + 0x18], al */
+    ea = (uint32_t)(esi + 0x00000018u);
+    M8(ea) = LO8(eax);
+    /* 00695a31  mov dword ptr [esi + 0x34], 0xf */
+    ea = (uint32_t)(esi + 0x00000034u);
+    M32(ea) = 0xfu;
+    /* 00695a38  mov dword ptr [esi + 0x30], eax */
+    ea = (uint32_t)(esi + 0x00000030u);
+    M32(ea) = eax;
+    /* 00695a3b  mov byte ptr [esi + 0x20], al */
+    ea = (uint32_t)(esi + 0x00000020u);
+    M8(ea) = LO8(eax);
+    /* 00695a3e  mov dword ptr [esi + 0x3c], eax */
+    ea = (uint32_t)(esi + 0x0000003cu);
+    M32(ea) = eax;
+    /* 00695a41  mov dword ptr [esi + 0x40], ecx */
+    ea = (uint32_t)(esi + 0x00000040u);
+    M32(ea) = ecx;
+    /* 00695a44  mov eax, dword ptr [ecx] */
+    ea = (uint32_t)(ecx);
+    eax = M32(ea);
+    /* 00695a46  call dword ptr [eax + 4] */
+    ea = (uint32_t)(eax + 0x00000004u);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00695a00_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 00695a49  mov eax, esi */
+    eax = esi;
+    /* 00695a4b  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 00695a4c  ret 4 */
+    c->eip = M32(esp);
+    esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00695a50  Win32FileStream::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_00695a50, bfv_server_l1_body_00695a50);
 void bfv_server_l1_body_00695a50(struct bfv_cpu *c)
 {
@@ -494,12 +617,12 @@ void bfv_server_l1_body_00695a50(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00695a50  mov edx, dword ptr [0x807430] */
+    /* 00695a50  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 00695a56  mov eax, ecx */
     eax = ecx;
-    /* 00695a58  mov ecx, dword ptr [esp + 4] */
+    /* 00695a58  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00695a5c  cmp ecx, edx */
@@ -517,7 +640,7 @@ void bfv_server_l1_body_00695a50(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00695a66  je 0x695a84 */
     if (zf) goto L_00695a84;
-    /* 00695a68  cmp ecx, dword ptr [0x85a5e4] */
+    /* 00695a68  cmp ecx, dword ptr [0x85a5e4]  ; interfaceID(BufferedStream|MemStream|Win32FileStream) */
     ea = (uint32_t)(0x0085a5e4u);
     a = ecx;
     b = M32(ea);
@@ -525,7 +648,7 @@ void bfv_server_l1_body_00695a50(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00695a6e  je 0x695a84 */
     if (zf) goto L_00695a84;
-    /* 00695a70  cmp ecx, dword ptr [0x85a5e8] */
+    /* 00695a70  cmp ecx, dword ptr [0x85a5e8]  ; interfaceID(BufferedStream|MemStream|Win32FileStream) */
     ea = (uint32_t)(0x0085a5e8u);
     a = ecx;
     b = M32(ea);
@@ -565,7 +688,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00695dd0  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 00695dd0  Win32FileStream::read  (virtual method)
+ * overrides: INonlinearStream::read  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ * called by: Win32FileSystem::vf9
+ */
 BFV_L1_ENTRY(bfv_server_l1_00695dd0, bfv_server_l1_body_00695dd0);
 BFV_L1_RESUME(bfv_server_l1r_00695dd0_1, bfv_server_l1_body_00695dd0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00695dd0_2, bfv_server_l1_body_00695dd0, 2);
@@ -581,7 +708,7 @@ void bfv_server_l1_body_00695dd0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00695dd0  mov eax, dword ptr [esp + 8] */
+    /* 00695dd0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00695dd4  test eax, eax */
@@ -603,14 +730,14 @@ void bfv_server_l1_body_00695dd0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00695ddf  je 0x695e04 */
     if (zf) goto L_00695e04;
-    /* 00695de1  mov edx, dword ptr [esp + 8] */
+    /* 00695de1  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00695de5  push 0 */
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00695de7  lea ecx, [esp + 0x10] */
+    /* 00695de7  lea ecx, [esp + 0x10]  ; &arg_4 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 00695deb  push ecx */
     t = ecx;
@@ -631,10 +758,10 @@ void bfv_server_l1_body_00695dd0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00695df2  mov dword ptr [esp + 0x20], 0 */
+    /* 00695df2  mov dword ptr [esp + 0x20], 0  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0x0u;
-    /* 00695dfa  call dword ptr [0x8071c0] */
+    /* 00695dfa  call dword ptr [0x8071c0]  ; KERNEL32!ReadFile */
     ea = (uint32_t)(0x008071c0u);
     t = M32(ea);
     esp -= 4;
@@ -661,7 +788,7 @@ L_00695e04:
     esp += 12;
     goto out;
 L_00695e0a:
-    /* 00695e0a  mov eax, dword ptr [esp + 0xc] */
+    /* 00695e0a  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00695e0e  add dword ptr [esi + 0x38], eax */
@@ -671,21 +798,21 @@ L_00695e0a:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     M32(ea) = r;
-    /* 00695e11  mov ecx, dword ptr [0xbdb500] */
+    /* 00695e11  mov ecx, dword ptr [0xbdb500]  ; g_pLoadStats */
     ea = (uint32_t)(0x00bdb500u);
     ecx = M32(ea);
     /* 00695e17  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00695e18  call 0x41b9a0 */
+    /* 00695e18  call 0x41b9a0  ; io_0041b9a0 */
     t = 0x0041b9a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00695dd0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00695e1d  mov eax, dword ptr [esp + 0xc] */
+    /* 00695e1d  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00695e21  pop esi */
@@ -703,7 +830,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00695e30  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 00695e30  Win32FileStream::write  (virtual method)
+ * overrides: INonlinearStream::write  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ */
 BFV_L1_ENTRY(bfv_server_l1_00695e30, bfv_server_l1_body_00695e30);
 BFV_L1_RESUME(bfv_server_l1r_00695e30_1, bfv_server_l1_body_00695e30, 1);
 void bfv_server_l1_body_00695e30(struct bfv_cpu *c)
@@ -717,7 +847,7 @@ void bfv_server_l1_body_00695e30(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00695e30  mov eax, dword ptr [esp + 8] */
+    /* 00695e30  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00695e34  test eax, eax */
@@ -739,14 +869,14 @@ void bfv_server_l1_body_00695e30(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00695e40  je 0x695e75 */
     if (zf) goto L_00695e75;
-    /* 00695e42  mov edx, dword ptr [esp + 8] */
+    /* 00695e42  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00695e46  push 0 */
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00695e48  lea ecx, [esp + 0x10] */
+    /* 00695e48  lea ecx, [esp + 0x10]  ; &arg_4 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 00695e4c  push ecx */
     t = ecx;
@@ -767,10 +897,10 @@ void bfv_server_l1_body_00695e30(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00695e53  mov dword ptr [esp + 0x20], 0 */
+    /* 00695e53  mov dword ptr [esp + 0x20], 0  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0x0u;
-    /* 00695e5b  call dword ptr [0x807194] */
+    /* 00695e5b  call dword ptr [0x807194]  ; KERNEL32!WriteFile */
     ea = (uint32_t)(0x00807194u);
     t = M32(ea);
     esp -= 4;
@@ -786,7 +916,7 @@ R_1:
     /* 00695e65  mov ecx, dword ptr [esi + 0x38] */
     ea = (uint32_t)(esi + 0x00000038u);
     ecx = M32(ea);
-    /* 00695e68  mov eax, dword ptr [esp + 0xc] */
+    /* 00695e68  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 00695e6c  add ecx, eax */
@@ -826,7 +956,155 @@ out: __attribute__((unused));
 }
 
 
-/* 00697e50  dice::ref2::io::Win32FileStream  (virtual method) */
+/* 00697de0  Win32FileStream::Win32FileStream  (vtable store)
+ * class: dice::ref2::io::Win32FileStream
+ * called by: Win32FileStream::clone
+ */
+BFV_L1_ENTRY(bfv_server_l1_00697de0, bfv_server_l1_body_00697de0);
+BFV_L1_RESUME(bfv_server_l1r_00697de0_1, bfv_server_l1_body_00697de0, 1);
+BFV_L1_RESUME(bfv_server_l1r_00697de0_2, bfv_server_l1_body_00697de0, 2);
+void bfv_server_l1_body_00697de0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 00697de0  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00697de1  mov esi, ecx */
+    esi = ecx;
+    /* 00697de3  mov dword ptr [esi + 4], 0x85f934  ; vtable IAsyncStream */
+    ea = (uint32_t)(esi + 0x00000004u);
+    M32(ea) = 0x85f934u;
+    /* 00697dea  mov dword ptr [esi], 0x85f9b4  ; vtable Win32FileStream */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x85f9b4u;
+    /* 00697df0  mov dword ptr [esi + 4], 0x85f974 */
+    ea = (uint32_t)(esi + 0x00000004u);
+    M32(ea) = 0x85f974u;
+    /* 00697df7  mov eax, 1 */
+    eax = 0x1u;
+    /* 00697dfc  mov dword ptr [esi + 8], eax */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M32(ea) = eax;
+    /* 00697dff  mov dword ptr [esi + 0xc], eax */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = eax;
+    /* 00697e02  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 00697e04  mov dword ptr [esi + 0x10], eax */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = eax;
+    /* 00697e07  mov dword ptr [esi + 0x14], eax */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = eax;
+    /* 00697e0a  mov byte ptr [esi + 0x18], al */
+    ea = (uint32_t)(esi + 0x00000018u);
+    M8(ea) = LO8(eax);
+    /* 00697e0d  mov dword ptr [esi + 0x30], eax */
+    ea = (uint32_t)(esi + 0x00000030u);
+    M32(ea) = eax;
+    /* 00697e10  mov dword ptr [esi + 0x34], 0xf */
+    ea = (uint32_t)(esi + 0x00000034u);
+    M32(ea) = 0xfu;
+    /* 00697e17  mov byte ptr [esi + 0x20], al */
+    ea = (uint32_t)(esi + 0x00000020u);
+    M8(ea) = LO8(eax);
+    /* 00697e1a  mov dword ptr [esi + 0x38], eax */
+    ea = (uint32_t)(esi + 0x00000038u);
+    M32(ea) = eax;
+    /* 00697e1d  mov eax, dword ptr [esp + 8]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000008u);
+    eax = M32(ea);
+    /* 00697e21  mov ecx, dword ptr [eax + 0x40] */
+    ea = (uint32_t)(eax + 0x00000040u);
+    ecx = M32(ea);
+    /* 00697e24  mov dword ptr [esi + 0x40], ecx */
+    ea = (uint32_t)(esi + 0x00000040u);
+    M32(ea) = ecx;
+    /* 00697e27  mov edx, dword ptr [eax + 0x3c] */
+    ea = (uint32_t)(eax + 0x0000003cu);
+    edx = M32(ea);
+    /* 00697e2a  mov ecx, dword ptr [eax + 0xc] */
+    ea = (uint32_t)(eax + 0x0000000cu);
+    ecx = M32(ea);
+    /* 00697e2d  push edx */
+    t = edx;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00697e2e  push ecx */
+    t = ecx;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00697e2f  push 2 */
+    t = 0x2u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00697e31  add eax, 0x1c */
+    a = eax;
+    b = 0x1cu;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 00697e34  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00697e35  mov ecx, esi */
+    ecx = esi;
+    /* 00697e37  call 0x697280  ; Win32FileStream::sub_00697280 */
+    t = 0x00697280u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00697de0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 00697e3c  mov ecx, dword ptr [esi + 0x40] */
+    ea = (uint32_t)(esi + 0x00000040u);
+    ecx = M32(ea);
+    /* 00697e3f  mov edx, dword ptr [ecx] */
+    ea = (uint32_t)(ecx);
+    edx = M32(ea);
+    /* 00697e41  call dword ptr [edx + 4] */
+    ea = (uint32_t)(edx + 0x00000004u);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00697de0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 00697e44  mov eax, esi */
+    eax = esi;
+    /* 00697e46  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 00697e47  ret 4 */
+    c->eip = M32(esp);
+    esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00697e50  Win32FileStream::clone  (virtual method)
+ * overrides: INonlinearStream::clone  (5 classes implement it)
+ * class: dice::ref2::io::Win32FileStream
+ * also entered at 00697e90: Win32FileSystem::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_00697e50, bfv_server_l1_body_00697e50);
 BFV_L1_RESUME(bfv_server_l1r_00697e50_1, bfv_server_l1_body_00697e50, 1);
 BFV_L1_RESUME(bfv_server_l1r_00697e50_2, bfv_server_l1_body_00697e50, 2);
@@ -856,7 +1134,7 @@ void bfv_server_l1_body_00697e50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00697e53  mov esi, ecx */
     esi = ecx;
-    /* 00697e55  call 0x403d80 */
+    /* 00697e55  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00697e50_1;
@@ -880,7 +1158,7 @@ R_1:
     M32(esp) = t;
     /* 00697e62  mov ecx, eax */
     ecx = eax;
-    /* 00697e64  call 0x697de0 */
+    /* 00697e64  call 0x697de0  ; Win32FileStream::Win32FileStream */
     t = 0x00697de0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00697e50_2;
@@ -899,7 +1177,7 @@ R_2:
     M32(esp) = t;
     /* 00697e72  mov ecx, eax */
     ecx = eax;
-    /* 00697e74  call dword ptr [edx + 0xc] */
+    /* 00697e74  call dword ptr [edx + 0xc]  ; -> Win32FileStream::vf3 = Win32FileStream::queryInterface */
     ea = (uint32_t)(edx + 0x0000000cu);
     t = M32(ea);
     esp -= 4;

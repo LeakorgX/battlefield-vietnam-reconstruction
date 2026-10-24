@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009827f0  dice::bf::ai::AITemplatePhysical  (vtable store) */
+/* 009827f0  AITemplatePhysical::AITemplatePhysical  (vtable store)
+ * class: dice::bf::ai::AITemplatePhysical
+ * called by: AITemplatePlugInManager::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_009827f0, bfv_client_l1_body_009827f0);
 void bfv_client_l1_body_009827f0(struct bfv_cpu *c)
 {
@@ -20,7 +23,7 @@ void bfv_client_l1_body_009827f0(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 009827f4  mov dword ptr [eax], 0xbf5714 */
+    /* 009827f4  mov dword ptr [eax], 0xbf5714  ; vtable AITemplatePhysical */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf5714u;
     /* 009827fa  mov dword ptr [eax + 4], ecx */
@@ -55,7 +58,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00982810  dice::bf::ai::AITemplatePhysical  (virtual method) */
+/* 00982810  AITemplatePhysical::createObjectPlugIn  (virtual method)
+ * overrides: AITemplatePlugIn::createObjectPlugIn  (8 classes implement it)
+ * class: dice::bf::ai::AITemplatePhysical
+ */
 BFV_L1_ENTRY(bfv_client_l1_00982810, bfv_client_l1_body_00982810);
 BFV_L1_RESUME(bfv_client_l1r_00982810_1, bfv_client_l1_body_00982810, 1);
 BFV_L1_RESUME(bfv_client_l1r_00982810_2, bfv_client_l1_body_00982810, 2);
@@ -89,9 +95,9 @@ void bfv_client_l1_body_00982810(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 0098281c  mov ecx, 0xe0ef08 */
+    /* 0098281c  mov ecx, 0xe0ef08  ; g_MemoryPool_AIObjectPhysical */
     ecx = 0xe0ef08u;
-    /* 00982821  call 0x412ee0 */
+    /* 00982821  call 0x412ee0  ; MemoryPool::alloc_debug */
     t = 0x00412ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982810_1;
@@ -103,7 +109,7 @@ R_1:
     F_LOGIC(32, r);
     /* 00982828  je 0x98283b */
     if (zf) goto L_0098283b;
-    /* 0098282a  mov ecx, dword ptr [esp + 8] */
+    /* 0098282a  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 0098282e  push esi */
@@ -116,7 +122,7 @@ R_1:
     M32(esp) = t;
     /* 00982830  mov ecx, eax */
     ecx = eax;
-    /* 00982832  call 0x97ccb0 */
+    /* 00982832  call 0x97ccb0  ; AIObjectPhysical::AIObjectPhysical */
     t = 0x0097ccb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982810_2;

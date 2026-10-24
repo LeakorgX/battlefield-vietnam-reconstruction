@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008718b0  dice::meme::SetVariableSinusAction  (virtual method) */
+/* 008718b0  SetVariableSinusAction::vf11  (virtual method)
+ * overrides: Object::vf11  (205 classes implement it)
+ * class: dice::meme::SetVariableSinusAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_008718b0, bfv_client_l1_body_008718b0);
 BFV_L1_RESUME(bfv_client_l1r_008718b0_1, bfv_client_l1_body_008718b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008718b0_2, bfv_client_l1_body_008718b0, 2);
@@ -29,7 +32,7 @@ void bfv_client_l1_body_008718b0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008718b2  mov edi, dword ptr [esp + 0xc] */
+    /* 008718b2  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 008718b6  push 0xbd5a68 */
@@ -42,7 +45,7 @@ void bfv_client_l1_body_008718b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008718bc  mov esi, ecx */
     esi = ecx;
-    /* 008718be  call 0x868ab0 */
+    /* 008718be  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008718b0_1;
@@ -61,7 +64,7 @@ R_1:
     M32(esp) = t;
     /* 008718c7  mov ecx, esi */
     ecx = esi;
-    /* 008718c9  call 0x9831c0 */
+    /* 008718c9  call 0x9831c0  ; stub_return_true_1args_009831c0 */
     t = 0x009831c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008718b0_2;
@@ -87,7 +90,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008718e0  dice::meme::SetVariableSinusAction  (virtual method) */
+/* 008718e0  SetVariableSinusAction::vf14  (virtual method)
+ * overrides: Object::vf14  (205 classes implement it)
+ * class: dice::meme::SetVariableSinusAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_008718e0, bfv_client_l1_body_008718e0);
 BFV_L1_RESUME(bfv_client_l1r_008718e0_1, bfv_client_l1_body_008718e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008718e0_2, bfv_client_l1_body_008718e0, 2);
@@ -111,7 +117,7 @@ void bfv_client_l1_body_008718e0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008718e2  mov edi, dword ptr [esp + 0xc] */
+    /* 008718e2  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 008718e6  push 0xbd5a68 */
@@ -124,14 +130,14 @@ void bfv_client_l1_body_008718e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008718ec  mov esi, ecx */
     esi = ecx;
-    /* 008718ee  call 0x868ab0 */
+    /* 008718ee  call 0x868ab0  ; System_00868ab0 */
     t = 0x00868ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008718e0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008718f3  mov eax, dword ptr [esp + 0x18] */
+    /* 008718f3  mov eax, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 008718f7  add esp, 8 */
@@ -150,7 +156,7 @@ R_1:
     M32(esp) = t;
     /* 008718fc  mov ecx, esi */
     ecx = esi;
-    /* 008718fe  call 0x874b30 */
+    /* 008718fe  call 0x874b30  ; Object::vf12 */
     t = 0x00874b30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008718e0_2;
@@ -176,8 +182,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00871f00  dice::meme::SetVariableSinusAction  (virtual method)
- * strings: "dice::meme::SetVariableSinusAction" */
+/* 00871f00  SetVariableSinusAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::SetVariableSinusAction
+ * strings: "dice::meme::SetVariableSinusAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871f00, bfv_client_l1_body_00871f00);
 BFV_L1_RESUME(bfv_client_l1r_00871f00_1, bfv_client_l1_body_00871f00, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871f00_2, bfv_client_l1_body_00871f00, 2);
@@ -208,13 +217,13 @@ void bfv_client_l1_body_00871f00(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00871f15  push 0xbd5df8 */
+    /* 00871f15  push 0xbd5df8  ; "dice::meme::SetVariableSinusAction" */
     t = 0xbd5df8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871f1a  mov ecx, 0xdf6744 */
+    /* 00871f1a  mov ecx, 0xdf6744  ; g_RuntimeClass_SetVariableSinusAction */
     ecx = 0xdf6744u;
-    /* 00871f1f  call 0x875490 */
+    /* 00871f1f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871f00_1;
@@ -225,10 +234,10 @@ R_1:
     t = 0xb3ae50u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871f29  mov dword ptr [0xdf6744], 0xbd5ba8 */
+    /* 00871f29  mov dword ptr [0xdf6744], 0xbd5ba8  ; g_RuntimeClass_SetVariableSinusAction */
     ea = (uint32_t)(0x00df6744u);
     M32(ea) = 0xbd5ba8u;
-    /* 00871f33  call 0x7c2cd2 */
+    /* 00871f33  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871f00_2;
@@ -242,7 +251,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00871f3b:
-    /* 00871f3b  mov eax, 0xdf6744 */
+    /* 00871f3b  mov eax, 0xdf6744  ; g_RuntimeClass_SetVariableSinusAction */
     eax = 0xdf6744u;
     /* 00871f40  ret */
     c->eip = M32(esp);
@@ -255,7 +264,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00871fa0  dice::meme::SetVariableSinusAction  (vtable store) */
+/* 00871fa0  SetVariableSinusAction::create  (vtable store)
+ * class: dice::meme::SetVariableSinusAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871fa0, bfv_client_l1_body_00871fa0);
 BFV_L1_RESUME(bfv_client_l1r_00871fa0_1, bfv_client_l1_body_00871fa0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871fa0_2, bfv_client_l1_body_00871fa0, 2);
@@ -279,7 +290,7 @@ void bfv_client_l1_body_00871fa0(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871fa3  call 0x403610 */
+    /* 00871fa3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871fa0_1;
@@ -301,14 +312,14 @@ R_1:
     if (zf) goto L_00871fc2;
     /* 00871fb1  mov ecx, esi */
     ecx = esi;
-    /* 00871fb3  call 0x871be0 */
+    /* 00871fb3  call 0x871be0  ; SetVariableSineAction::SetVariableSineAction */
     t = 0x00871be0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871fa0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00871fb8  mov dword ptr [esi], 0xbd5e44 */
+    /* 00871fb8  mov dword ptr [esi], 0xbd5e44  ; vtable SetVariableSinusAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd5e44u;
     /* 00871fbe  mov eax, esi */

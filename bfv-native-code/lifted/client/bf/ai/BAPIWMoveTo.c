@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009f48d0  dice::bf::ai::BAPIWMoveTo  (vtable store) */
+/* 009f48d0  BAPIWMoveTo::BAPIWMoveTo  (vtable store)
+ * class: dice::bf::ai::BAPIWMoveTo
+ * called by: BBPGotoWaypointSoldier::buildPlan, BBPGotoWaypoint2d::buildPlan
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f48d0, bfv_client_l1_body_009f48d0);
 BFV_L1_RESUME(bfv_client_l1r_009f48d0_1, bfv_client_l1_body_009f48d0, 1);
 void bfv_client_l1_body_009f48d0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_009f48d0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009f48d0  mov eax, dword ptr [esp + 0xc] */
+    /* 009f48d0  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 009f48d4  push esi */
@@ -28,7 +31,7 @@ void bfv_client_l1_body_009f48d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f48d5  mov esi, ecx */
     esi = ecx;
-    /* 009f48d7  mov ecx, dword ptr [esp + 0xc] */
+    /* 009f48d7  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009f48db  push eax */
@@ -41,17 +44,17 @@ void bfv_client_l1_body_009f48d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f48dd  mov ecx, esi */
     ecx = esi;
-    /* 009f48df  call 0xa0a6c0 */
+    /* 009f48df  call 0xa0a6c0  ; BAPInfoWrapper::ctor_dtor */
     t = 0x00a0a6c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f48d0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009f48e4  mov eax, dword ptr [esp + 8] */
+    /* 009f48e4  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 009f48e8  mov dword ptr [esi], 0xbfb404 */
+    /* 009f48e8  mov dword ptr [esi], 0xbfb404  ; vtable BAPIWMoveTo */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfb404u;
     /* 009f48ee  mov ecx, dword ptr [eax] */
@@ -97,7 +100,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f4910  dice::bf::ai::BAPIWMoveTo  (virtual method) */
+/* 009f4910  BAPIWMoveTo::deleting_dtor  (virtual method)
+ * overrides: BotScript::vf1  (55 classes implement it)
+ * class: dice::bf::ai::BAPIWMoveTo
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f4910, bfv_client_l1_body_009f4910);
 BFV_L1_RESUME(bfv_client_l1r_009f4910_1, bfv_client_l1_body_009f4910, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f4910_2, bfv_client_l1_body_009f4910, 2);
@@ -127,7 +133,7 @@ void bfv_client_l1_body_009f4910(struct bfv_cpu *c)
     /* 009f4916  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 009f4918  mov dword ptr [esi], 0xbfb404 */
+    /* 009f4918  mov dword ptr [esi], 0xbfb404  ; vtable BAPIWMoveTo */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfb404u;
     /* 009f491e  je 0x9f4927 */
@@ -150,14 +156,14 @@ R_1:
 L_009f4927:
     /* 009f4927  mov ecx, esi */
     ecx = esi;
-    /* 009f4929  call 0xa0a9d0 */
+    /* 009f4929  call 0xa0a9d0  ; BAPStatement::~BAPStatement */
     t = 0x00a0a9d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4910_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009f492e  test byte ptr [esp + 8], 1 */
+    /* 009f492e  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -167,9 +173,9 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f4936  mov ecx, 0xe104f8 */
+    /* 009f4936  mov ecx, 0xe104f8  ; g_MemoryPoolNull_BAPIWMoveTo */
     ecx = 0xe104f8u;
-    /* 009f493b  call 0x412fc0 */
+    /* 009f493b  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f4910_3;

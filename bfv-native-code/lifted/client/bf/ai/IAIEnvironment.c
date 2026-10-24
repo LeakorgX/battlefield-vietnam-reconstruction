@@ -5,155 +5,9 @@
 #include "l1.h"
 
 
-/* 0097efa0  dice::bf::ai::IAIEnvironment  (vtable store) */
-BFV_L1_ENTRY(bfv_client_l1_0097efa0, bfv_client_l1_body_0097efa0);
-BFV_L1_RESUME(bfv_client_l1r_0097efa0_1, bfv_client_l1_body_0097efa0, 1);
-BFV_L1_RESUME(bfv_client_l1r_0097efa0_2, bfv_client_l1_body_0097efa0, 2);
-BFV_L1_RESUME(bfv_client_l1r_0097efa0_3, bfv_client_l1_body_0097efa0, 3);
-void bfv_client_l1_body_0097efa0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    default: break;
-    }
-    /* 0097efa0  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0097efa1  mov eax, ecx */
-    eax = ecx;
-    /* 0097efa3  or edi, 0xffffffff */
-    r = (edi | 0xffffffffu) & 0xffffffffu;
-    F_LOGIC(32, r);
-    edi = r;
-    /* 0097efa6  cmp eax, -1 */
-    a = eax;
-    b = 0xffffffffu;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 0097efa9  je 0x97efdb */
-    if (zf) goto L_0097efdb;
-    /* 0097efab  mov ecx, dword ptr [0xd7d01c] */
-    ea = (uint32_t)(0x00d7d01cu);
-    ecx = M32(ea);
-    /* 0097efb1  mov edx, dword ptr [ecx] */
-    ea = (uint32_t)(ecx);
-    edx = M32(ea);
-    /* 0097efb3  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0097efb4  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0097efb5  call dword ptr [edx + 0x1c] */
-    ea = (uint32_t)(edx + 0x0000001cu);
-    t = M32(ea);
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097efa0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 0097efb8  mov esi, eax */
-    esi = eax;
-    /* 0097efba  mov eax, dword ptr [esi] */
-    ea = (uint32_t)(esi);
-    eax = M32(ea);
-    /* 0097efbc  mov ecx, esi */
-    ecx = esi;
-    /* 0097efbe  call dword ptr [eax + 0x38] */
-    ea = (uint32_t)(eax + 0x00000038u);
-    t = M32(ea);
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097efa0_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 0097efc1  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 0097efc3  je 0x97efdf */
-    if (zf) goto L_0097efdf;
-    /* 0097efc5  mov ecx, dword ptr [eax + 0x5c] */
-    ea = (uint32_t)(eax + 0x0000005cu);
-    ecx = M32(ea);
-    /* 0097efc8  test ecx, ecx */
-    r = (ecx & ecx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 0097efca  je 0x97efdf */
-    if (zf) goto L_0097efdf;
-    /* 0097efcc  mov esi, dword ptr [esi + 0xc0] */
-    ea = (uint32_t)(esi + 0x000000c0u);
-    esi = M32(ea);
-    /* 0097efd2  mov edx, dword ptr [ecx] */
-    ea = (uint32_t)(ecx);
-    edx = M32(ea);
-    /* 0097efd4  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0097efd5  call dword ptr [edx + 0x5c] */
-    ea = (uint32_t)(edx + 0x0000005cu);
-    t = M32(ea);
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097efa0_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 0097efd8  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 0097efd9  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 0097efda  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-L_0097efdb:
-    /* 0097efdb  mov eax, edi */
-    eax = edi;
-    /* 0097efdd  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 0097efde  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-L_0097efdf:
-    /* 0097efdf  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 0097efe0  mov eax, edi */
-    eax = edi;
-    /* 0097efe2  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 0097efe3  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 0097f010  dice::bf::ai::IAIEnvironment  (virtual method) */
+/* 0097f010  IAIEnvironment::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAIEnvironment
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097f010, bfv_client_l1_body_0097f010);
 BFV_L1_RESUME(bfv_client_l1r_0097f010_1, bfv_client_l1_body_0097f010, 1);
 void bfv_client_l1_body_0097f010(struct bfv_cpu *c)
@@ -167,7 +21,7 @@ void bfv_client_l1_body_0097f010(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0097f010  test byte ptr [esp + 4], 1 */
+    /* 0097f010  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -177,10 +31,10 @@ void bfv_client_l1_body_0097f010(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0097f016  mov esi, ecx */
     esi = ecx;
-    /* 0097f018  mov dword ptr [esi], 0xbf4cac */
+    /* 0097f018  mov dword ptr [esi], 0xbf4cac  ; vtable IAIEnvironment */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf4cacu;
-    /* 0097f01e  mov dword ptr [0xe0ef54], 0 */
+    /* 0097f01e  mov dword ptr [0xe0ef54], 0  ; g_pIAIEnvironment_00e0ef54 */
     ea = (uint32_t)(0x00e0ef54u);
     M32(ea) = 0x0u;
     /* 0097f028  je 0x97f033 */
@@ -189,7 +43,7 @@ void bfv_client_l1_body_0097f010(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0097f02b  call 0x403680 */
+    /* 0097f02b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097f010_1;
@@ -220,7 +74,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0097f040  dice::bf::ai::IAIEnvironment  (vtable store) */
+/* 0097f040  IAIEnvironment::IAIEnvironment  (vtable store)
+ * class: dice::bf::ai::IAIEnvironment
+ * called by: BFEnvironment::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097f040, bfv_client_l1_body_0097f040);
 void bfv_client_l1_body_0097f040(struct bfv_cpu *c)
 {
@@ -231,10 +88,10 @@ void bfv_client_l1_body_0097f040(struct bfv_cpu *c)
     uint32_t ea;
     /* 0097f040  mov eax, ecx */
     eax = ecx;
-    /* 0097f042  mov dword ptr [eax], 0xbf4cac */
+    /* 0097f042  mov dword ptr [eax], 0xbf4cac  ; vtable IAIEnvironment */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf4cacu;
-    /* 0097f048  mov dword ptr [0xe0ef54], eax */
+    /* 0097f048  mov dword ptr [0xe0ef54], eax  ; g_pIAIEnvironment_00e0ef54 */
     ea = (uint32_t)(0x00e0ef54u);
     M32(ea) = eax;
     /* 0097f04d  ret */

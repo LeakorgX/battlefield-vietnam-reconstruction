@@ -1,0 +1,8 @@
+## file
+Behaviour for idling. It always has a weight.
+
+## 009841b0
+vf8 (also entered at 009841d0 as vf0): sets this bot's weight in the array at this+0x1c to 1.0.
+
+## 00984200
+evaluate: asks the parameter object (vf5) and the plan builder; when allowed it marks the per-bot flag (BBPPattern vf3), calls BBIdle_evaluate_helper_00984540 with 50.0 and marks the flag again on success. Stores the passed-in weight for this bot and returns it.

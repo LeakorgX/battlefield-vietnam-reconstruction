@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00663fb0  dice::ref2::io::NullCacheManager  (virtual method) */
+/* 00663fb0  NullCacheManager::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::io::NullCacheManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_00663fb0, bfv_server_l1_body_00663fb0);
 void bfv_server_l1_body_00663fb0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_server_l1_body_00663fb0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00663fb0  mov edx, dword ptr [0x807430] */
+    /* 00663fb0  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 00663fb6  mov eax, ecx */
     eax = ecx;
-    /* 00663fb8  mov ecx, dword ptr [esp + 4] */
+    /* 00663fb8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00663fbc  cmp ecx, edx */

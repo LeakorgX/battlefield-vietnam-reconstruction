@@ -1,0 +1,18 @@
+## file
+BAPCombinerSerial runs its child statements one after another. The children are
+in the list at this+0x18 (head this+0x1c); this+0x24 is the current one.
+
+## 009eea30
+vf2: the control-lock masks of the current child (its vf2).
+
+## 009eeba0
+execute(bot, &flag, &done): an empty list reports flag = done = 1. Otherwise
+calls bot slot 0xd8 and runs the current child through the bot's runner. With
+this+0x28 set it moves to the next child only when the child reports done, and
+reports done itself (restarting at the first child) after the last one. With
+this+0x28 clear it moves to the next child after every run and reports done
+when the child was done or the list wrapped.
+
+## 009eed20
+Adds a child: makes this its parent (child+4), appends it to the list and
+restarts at the first child.

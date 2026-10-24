@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a64d90  dice::ref2::rend::MemTexture2D  (virtual method) */
+/* 00a64d90  MemTexture2D::vf11  (virtual method)
+ * class: dice::ref2::rend::MemTexture2D
+ * called by: rend_00a556f0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a64d90, bfv_client_l1_body_00a64d90);
 BFV_L1_RESUME(bfv_client_l1r_00a64d90_1, bfv_client_l1_body_00a64d90, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a64d90_2, bfv_client_l1_body_00a64d90, 2);
@@ -127,7 +130,7 @@ L_00a64dbd:
     /* 00a64dcd  mov edx, dword ptr [0xbfe564] */
     ea = (uint32_t)(0x00bfe564u);
     edx = M32(ea);
-    /* 00a64dd3  mov ecx, dword ptr [0xd440e0] */
+    /* 00a64dd3  mov ecx, dword ptr [0xd440e0]  ; g_classManager */
     ea = (uint32_t)(0x00d440e0u);
     ecx = M32(ea);
     /* 00a64dd9  mov eax, dword ptr [ecx] */
@@ -141,14 +144,14 @@ L_00a64dbd:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a64dde  mov edx, dword ptr [0xbfe5f0] */
+    /* 00a64dde  mov edx, dword ptr [0xbfe5f0]  ; classID(dice.ref2.rend.TextureConverter.Standard) */
     ea = (uint32_t)(0x00bfe5f0u);
     edx = M32(ea);
     /* 00a64de4  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a64de5  call dword ptr [eax + 0x2c] */
+    /* 00a64de5  call dword ptr [eax + 0x2c]  ; -> ClassManager::vf11 = ClassManager::createObject */
     ea = (uint32_t)(eax + 0x0000002cu);
     t = M32(ea);
     esp -= 4;
@@ -232,7 +235,7 @@ R_2:
     /* 00a64e19  mov dword ptr [esp + 0x14], eax */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
-    /* 00a64e1d  call 0xa4ae40 */
+    /* 00a64e1d  call 0xa4ae40  ; rend::vertexElementSize */
     t = 0x00a4ae40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64d90_3;
@@ -276,7 +279,7 @@ R_3:
     /* 00a64e30  mov dword ptr [esp + 0x20], eax */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = eax;
-    /* 00a64e34  call 0xa64d00 */
+    /* 00a64e34  call 0xa64d00  ; MemTexture2D::vf11_helper_00a64d00 */
     t = 0x00a64d00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64d90_4;
@@ -301,7 +304,7 @@ R_4:
     /* 00a64e48  mov dword ptr [esp + 0x28], ebp */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = ebp;
-    /* 00a64e4c  call 0xa64ce0 */
+    /* 00a64e4c  call 0xa64ce0  ; MemTexture2D::vf11_helper_00a64ce0 */
     t = 0x00a64ce0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64d90_5;
@@ -312,7 +315,7 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a64e52  call 0x403610 */
+    /* 00a64e52  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64d90_6;
@@ -359,7 +362,7 @@ R_7:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a64e73  call 0x403680 */
+    /* 00a64e73  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64d90_8;
@@ -421,7 +424,7 @@ L_00a64e8e:
     M32(esp) = t;
     /* 00a64e8f  mov ecx, esi */
     ecx = esi;
-    /* 00a64e91  call 0xa64d00 */
+    /* 00a64e91  call 0xa64d00  ; MemTexture2D::vf11_helper_00a64d00 */
     t = 0x00a64d00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64d90_10;
@@ -434,7 +437,7 @@ R_10:
     /* 00a64e98  mov ecx, dword ptr [esi + 0x14] */
     ea = (uint32_t)(esi + 0x00000014u);
     ecx = M32(ea);
-    /* 00a64e9b  call 0xa4ae40 */
+    /* 00a64e9b  call 0xa4ae40  ; rend::vertexElementSize */
     t = 0x00a4ae40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64d90_11;
@@ -508,7 +511,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a64ec0  dice::ref2::rend::MemTexture2D  (virtual method) */
+/* 00a64ec0  MemTexture2D::vf16  (virtual method)
+ * class: dice::ref2::rend::MemTexture2D
+ * called by: rend_00a556f0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a64ec0, bfv_client_l1_body_00a64ec0);
 BFV_L1_RESUME(bfv_client_l1r_00a64ec0_1, bfv_client_l1_body_00a64ec0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a64ec0_2, bfv_client_l1_body_00a64ec0, 2);
@@ -545,7 +551,7 @@ void bfv_client_l1_body_00a64ec0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a64ecb  call 0x403680 */
+    /* 00a64ecb  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64ec0_1;
@@ -559,19 +565,19 @@ R_1:
     F_ADD(32, a, b, r);
     esp = r;
 L_00a64ed3:
-    /* 00a64ed3  mov eax, dword ptr [esp + 8] */
+    /* 00a64ed3  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 00a64ed7  mov ecx, dword ptr [esp + 0x14] */
+    /* 00a64ed7  mov ecx, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
-    /* 00a64edb  mov edx, dword ptr [esp + 0xc] */
+    /* 00a64edb  mov edx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00a64edf  mov dword ptr [esi + 0x1c], eax */
     ea = (uint32_t)(esi + 0x0000001cu);
     M32(ea) = eax;
-    /* 00a64ee2  mov eax, dword ptr [esp + 0x10] */
+    /* 00a64ee2  mov eax, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00a64ee6  mov dword ptr [esi + 0x14], ecx */
@@ -583,7 +589,7 @@ L_00a64ed3:
     /* 00a64eec  mov dword ptr [esi + 0x24], eax */
     ea = (uint32_t)(esi + 0x00000024u);
     M32(ea) = eax;
-    /* 00a64eef  call 0xa4ae40 */
+    /* 00a64eef  call 0xa4ae40  ; rend::vertexElementSize */
     t = 0x00a4ae40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64ec0_2;
@@ -637,7 +643,7 @@ R_2:
     /* 00a64f06  mov dword ptr [esi + 0x28], eax */
     ea = (uint32_t)(esi + 0x00000028u);
     M32(ea) = eax;
-    /* 00a64f09  call 0x403610 */
+    /* 00a64f09  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a64ec0_3;
@@ -670,7 +676,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a65000  dice::ref2::rend::MemTexture2D  (virtual method) */
+/* 00a65000  MemTexture2D::castTo  (virtual method)
+ * overrides: IBase::vf3  (395 classes implement it)
+ * class: dice::ref2::rend::MemTexture2D
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a65000, bfv_client_l1_body_00a65000);
 void bfv_client_l1_body_00a65000(struct bfv_cpu *c)
 {
@@ -679,12 +688,12 @@ void bfv_client_l1_body_00a65000(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00a65000  mov edx, dword ptr [0xb42718] */
+    /* 00a65000  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00a65006  mov eax, ecx */
     eax = ecx;
-    /* 00a65008  mov ecx, dword ptr [esp + 4] */
+    /* 00a65008  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00a6500c  cmp ecx, edx */
@@ -702,7 +711,7 @@ void bfv_client_l1_body_00a65000(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00a65016  je 0xa65032 */
     if (zf) goto L_00a65032;
-    /* 00a65018  cmp ecx, dword ptr [0xbfe530] */
+    /* 00a65018  cmp ecx, dword ptr [0xbfe530]  ; Texture2DInfo::classID */
     ea = (uint32_t)(0x00bfe530u);
     a = ecx;
     b = M32(ea);
@@ -753,7 +762,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a65080  dice::ref2::rend::MemTexture2D  (virtual method) */
+/* 00a65080  MemTexture2D::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::rend::MemTexture2D
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a65080, bfv_client_l1_body_00a65080);
 BFV_L1_RESUME(bfv_client_l1r_00a65080_1, bfv_client_l1_body_00a65080, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a65080_2, bfv_client_l1_body_00a65080, 2);
@@ -781,7 +793,7 @@ void bfv_client_l1_body_00a65080(struct bfv_cpu *c)
     /* 00a65086  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00a65088  mov dword ptr [esi], 0xc05c54 */
+    /* 00a65088  mov dword ptr [esi], 0xc05c54  ; vtable MemTexture2D */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc05c54u;
     /* 00a6508e  je 0xa65099 */
@@ -790,7 +802,7 @@ void bfv_client_l1_body_00a65080(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a65091  call 0x403680 */
+    /* 00a65091  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a65080_1;
@@ -804,11 +816,11 @@ R_1:
     F_ADD(32, a, b, r);
     esp = r;
 L_00a65099:
-    /* 00a65099  test byte ptr [esp + 8], 1 */
+    /* 00a65099  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 00a6509e  mov dword ptr [esi], 0xb4274c */
+    /* 00a6509e  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 00a650a4  je 0xa650af */
@@ -817,7 +829,7 @@ L_00a65099:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a650a7  call 0x403680 */
+    /* 00a650a7  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a65080_2;
@@ -848,7 +860,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a650f0  dice::ref2::rend::MemTexture2D  (vtable store) */
+/* 00a650f0  MemTexture2D::MemTexture2D  (vtable store)
+ * class: dice::ref2::rend::MemTexture2D
+ * called by: rend_00a556f0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a650f0, bfv_client_l1_body_00a650f0);
 void bfv_client_l1_body_00a650f0(struct bfv_cpu *c)
 {
@@ -861,7 +876,7 @@ void bfv_client_l1_body_00a650f0(struct bfv_cpu *c)
     eax = ecx;
     /* 00a650f2  mov ecx, 1 */
     ecx = 0x1u;
-    /* 00a650f7  mov dword ptr [eax], 0xc05c54 */
+    /* 00a650f7  mov dword ptr [eax], 0xc05c54  ; vtable MemTexture2D */
     ea = (uint32_t)(eax);
     M32(ea) = 0xc05c54u;
     /* 00a650fd  mov dword ptr [eax + 0x10], ecx */

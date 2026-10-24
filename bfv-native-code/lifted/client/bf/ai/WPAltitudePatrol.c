@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009b2ca0  dice::bf::ai::WPAltitudePatrol  (virtual method) */
+/* 009b2ca0  WPAltitudePatrol::getTarget  (virtual method)
+ * overrides: WaypointList::getTarget  (10 classes implement it)
+ * class: dice::bf::ai::WPAltitudePatrol
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2ca0, bfv_client_l1_body_009b2ca0);
 void bfv_client_l1_body_009b2ca0(struct bfv_cpu *c)
 {
@@ -20,7 +23,7 @@ void bfv_client_l1_body_009b2ca0(struct bfv_cpu *c)
     /* 009b2ca3  mov eax, dword ptr [eax] */
     ea = (uint32_t)(eax);
     eax = M32(ea);
-    /* 009b2ca5  mov ecx, dword ptr [esp + 4] */
+    /* 009b2ca5  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 009b2ca9  add eax, 8 */
@@ -60,7 +63,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009b2cd0  dice::bf::ai::WPAltitudePatrol  (virtual method) */
+/* 009b2cd0  WPAltitudePatrol::vf0  (virtual method)
+ * overrides: WaypointList::vf0  (10 classes implement it)
+ * class: dice::bf::ai::WPAltitudePatrol
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2cd0, bfv_client_l1_body_009b2cd0);
 BFV_L1_RESUME(bfv_client_l1r_009b2cd0_1, bfv_client_l1_body_009b2cd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009b2cd0_2, bfv_client_l1_body_009b2cd0, 2);
@@ -92,10 +98,10 @@ void bfv_client_l1_body_009b2cd0(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x00000018u);
     /* 009b2cd7  mov ecx, edi */
     ecx = edi;
-    /* 009b2cd9  mov dword ptr [esi], 0xbf696c */
+    /* 009b2cd9  mov dword ptr [esi], 0xbf696c  ; vtable WPAltitudePatrol */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf696cu;
-    /* 009b2cdf  call 0xa825e0 */
+    /* 009b2cdf  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2cd0_1;
@@ -109,14 +115,14 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009b2ce8  call 0x403680 */
+    /* 009b2ce8  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2cd0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009b2ced  mov al, byte ptr [esp + 0x10] */
+    /* 009b2ced  mov al, byte ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     SET8L(eax, M8(ea));
     /* 009b2cf1  add esp, 4 */
@@ -131,7 +137,7 @@ R_2:
     /* 009b2cf6  mov dword ptr [edi + 4], 0 */
     ea = (uint32_t)(edi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 009b2cfd  mov dword ptr [esi], 0xbf6864 */
+    /* 009b2cfd  mov dword ptr [esi], 0xbf6864  ; vtable WaypointList */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf6864u;
     /* 009b2d03  je 0x9b2d0e */
@@ -140,7 +146,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009b2d06  call 0x403680 */
+    /* 009b2d06  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2cd0_3;
@@ -175,7 +181,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009b2d20  dice::bf::ai::WPAltitudePatrol  (vtable store) */
+/* 009b2d20  WPAltitudePatrol::WPAltitudePatrol  (vtable store)
+ * class: dice::bf::ai::WPAltitudePatrol
+ * called by: botSetWaypoints_Patrol3d, SCMove::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2d20, bfv_client_l1_body_009b2d20);
 BFV_L1_RESUME(bfv_client_l1r_009b2d20_1, bfv_client_l1_body_009b2d20, 1);
 BFV_L1_RESUME(bfv_client_l1r_009b2d20_2, bfv_client_l1_body_009b2d20, 2);
@@ -195,10 +204,10 @@ void bfv_client_l1_body_009b2d20(struct bfv_cpu *c)
     case 4: goto R_4;
     default: break;
     }
-    /* 009b2d20  mov eax, dword ptr [esp + 4] */
+    /* 009b2d20  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 009b2d24  mov edx, dword ptr [esp + 0xc] */
+    /* 009b2d24  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 009b2d28  push ebx */
@@ -211,7 +220,7 @@ void bfv_client_l1_body_009b2d20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009b2d2a  mov esi, ecx */
     esi = ecx;
-    /* 009b2d2c  mov ecx, dword ptr [esp + 0x10] */
+    /* 009b2d2c  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 009b2d30  push edi */
@@ -225,7 +234,7 @@ void bfv_client_l1_body_009b2d20(struct bfv_cpu *c)
     /* 009b2d33  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 009b2d36  mov eax, dword ptr [esp + 0x1c] */
+    /* 009b2d36  mov eax, dword ptr [esp + 0x1c]  ; arg_c */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 009b2d3a  mov dword ptr [esi + 0xc], ecx */
@@ -247,7 +256,7 @@ void bfv_client_l1_body_009b2d20(struct bfv_cpu *c)
     /* 009b2d4c  mov byte ptr [esi + 7], bl */
     ea = (uint32_t)(esi + 0x00000007u);
     M8(ea) = LO8(ebx);
-    /* 009b2d4f  mov dword ptr [esi], 0xbf696c */
+    /* 009b2d4f  mov dword ptr [esi], 0xbf696c  ; vtable WPAltitudePatrol */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf696cu;
     /* 009b2d55  mov dword ptr [esi + 0x10], edx */
@@ -256,7 +265,7 @@ void bfv_client_l1_body_009b2d20(struct bfv_cpu *c)
     /* 009b2d58  mov dword ptr [esi + 0x14], eax */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = eax;
-    /* 009b2d5b  call 0x518170 */
+    /* 009b2d5b  call 0x518170  ; std::list::_Buyheadnode_20_00518170 */
     t = 0x00518170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2d20_1;
@@ -271,14 +280,14 @@ R_1:
     /* 009b2d65  mov dword ptr [edi + 8], ebx */
     ea = (uint32_t)(edi + 0x00000008u);
     M32(ea) = ebx;
-    /* 009b2d68  call 0xa825e0 */
+    /* 009b2d68  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2d20_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009b2d6d  mov ecx, dword ptr [esp + 0x20] */
+    /* 009b2d6d  mov ecx, dword ptr [esp + 0x20]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000020u);
     ecx = M32(ea);
     /* 009b2d71  mov eax, dword ptr [ecx + 4] */
@@ -323,7 +332,7 @@ L_009b2d80:
     M32(esp) = t;
     /* 009b2d8c  mov ecx, edi */
     ecx = edi;
-    /* 009b2d8e  call 0x5b55d0 */
+    /* 009b2d8e  call 0x5b55d0  ; std::list_12::_Buynode */
     t = 0x005b55d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2d20_3;
@@ -336,20 +345,20 @@ R_3:
     M32(esp) = t;
     /* 009b2d95  mov ecx, edi */
     ecx = edi;
-    /* 009b2d97  mov dword ptr [esp + 0x18], eax */
+    /* 009b2d97  mov dword ptr [esp + 0x18], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = eax;
-    /* 009b2d9b  call 0x9e5540 */
+    /* 009b2d9b  call 0x9e5540  ; std::list::_Incsize_009e5540 */
     t = 0x009e5540u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2d20_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 009b2da0  mov eax, dword ptr [esp + 0x14] */
+    /* 009b2da0  mov eax, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
-    /* 009b2da4  mov edx, dword ptr [esp + 0x24] */
+    /* 009b2da4  mov edx, dword ptr [esp + 0x24]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     edx = M32(ea);
     /* 009b2da8  mov dword ptr [ebp + 4], eax */
@@ -402,7 +411,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009b2dc0  dice::bf::ai::WPAltitudePatrol  (virtual method) */
+/* 009b2dc0  WPAltitudePatrol::update  (virtual method)
+ * overrides: WaypointList::update  (10 classes implement it)
+ * class: dice::bf::ai::WPAltitudePatrol
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2dc0, bfv_client_l1_body_009b2dc0);
 BFV_L1_RESUME(bfv_client_l1r_009b2dc0_1, bfv_client_l1_body_009b2dc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009b2dc0_2, bfv_client_l1_body_009b2dc0, 2);
@@ -432,7 +444,7 @@ void bfv_client_l1_body_009b2dc0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 009b2dc8  je 0x9b2dd4 */
     if (zf) goto L_009b2dd4;
-    /* 009b2dca  fld dword ptr [0xb44444] */
+    /* 009b2dca  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009b2dd0  pop esi */
@@ -450,7 +462,7 @@ L_009b2dd4:
     /* 009b2dd7  mov eax, dword ptr [eax] */
     ea = (uint32_t)(eax);
     eax = M32(ea);
-    /* 009b2dd9  mov edx, dword ptr [esp + 8] */
+    /* 009b2dd9  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 009b2ddd  fld dword ptr [edx] */
@@ -529,7 +541,7 @@ L_009b2dd4:
     M32(esp) = t;
     /* 009b2e20  mov ecx, edi */
     ecx = edi;
-    /* 009b2e22  call 0x5bb270 */
+    /* 009b2e22  call 0x5bb270  ; bf_005bb270 */
     t = 0x005bb270u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2dc0_1;
@@ -538,7 +550,7 @@ L_009b2dd4:
 R_1:
     /* 009b2e27  mov ecx, edi */
     ecx = edi;
-    /* 009b2e29  call 0x65a6b0 */
+    /* 009b2e29  call 0x65a6b0  ; BFSoldier_0065a6b0 */
     t = 0x0065a6b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2dc0_2;
@@ -553,7 +565,7 @@ R_2:
     esp += 4;
     edi = t;
 L_009b2e33:
-    /* 009b2e33  fld dword ptr [0xb4456c] */
+    /* 009b2e33  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009b2e39  pop esi */

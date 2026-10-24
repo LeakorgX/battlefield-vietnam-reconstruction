@@ -1,0 +1,5 @@
+## file
+Behaviour that decides whether the bot should board or leave a landing craft. Uses the same per-bot weight arrays as the other behaviours.
+
+## 00988020
+evaluate: when the parameter object says not usable it clears the weight and returns it. Otherwise splits the bot's slot 0x164 and 0x168 preferences into a pair summing to 1 (0.5 each when neither is positive), reads the bot's own and vehicle handles and the IAIEnvironment vf13 and vf14 values, and picks fixed factors (1.0, 0.5, 0.25, 1.5) depending on whether the bot is in a vehicle and whether that vehicle has an artillery component (bfv_artillery_component_test). Walks the candidate craft list to pick the best and stores the weight.

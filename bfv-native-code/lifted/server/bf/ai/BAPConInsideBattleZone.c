@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007ad7b0  dice::bf::ai::BAPConInsideBattleZone  (vtable store) */
+/* 007ad7b0  BAPConInsideBattleZone::BAPConInsideBattleZone  (vtable store)
+ * class: dice::bf::ai::BAPConInsideBattleZone
+ */
 BFV_L1_ENTRY(bfv_server_l1_007ad7b0, bfv_server_l1_body_007ad7b0);
 void bfv_server_l1_body_007ad7b0(struct bfv_cpu *c)
 {
@@ -16,13 +18,13 @@ void bfv_server_l1_body_007ad7b0(struct bfv_cpu *c)
     uint32_t ea;
     /* 007ad7b0  mov eax, ecx */
     eax = ecx;
-    /* 007ad7b2  mov ecx, dword ptr [esp + 4] */
+    /* 007ad7b2  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007ad7b6  mov dword ptr [eax + 4], 0 */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 007ad7bd  mov dword ptr [eax], 0x87ab84 */
+    /* 007ad7bd  mov dword ptr [eax], 0x87ab84  ; vtable BAPConInsideBattleZone */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87ab84u;
     /* 007ad7c3  mov dword ptr [eax + 8], ecx */
@@ -39,7 +41,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007ad7d0  dice::bf::ai::BAPConInsideBattleZone  (virtual method) */
+/* 007ad7d0  BAPConInsideBattleZone::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConInsideBattleZone
+ */
 BFV_L1_ENTRY(bfv_server_l1_007ad7d0, bfv_server_l1_body_007ad7d0);
 BFV_L1_RESUME(bfv_server_l1r_007ad7d0_1, bfv_server_l1_body_007ad7d0, 1);
 void bfv_server_l1_body_007ad7d0(struct bfv_cpu *c)
@@ -53,7 +58,7 @@ void bfv_server_l1_body_007ad7d0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007ad7d0  test byte ptr [esp + 4], 1 */
+    /* 007ad7d0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -63,7 +68,7 @@ void bfv_server_l1_body_007ad7d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007ad7d6  mov esi, ecx */
     esi = ecx;
-    /* 007ad7d8  mov dword ptr [esi], 0x873c74 */
+    /* 007ad7d8  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 007ad7de  je 0x7ad7eb */
@@ -72,9 +77,9 @@ void bfv_server_l1_body_007ad7d0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007ad7e1  mov ecx, 0xc331c8 */
+    /* 007ad7e1  mov ecx, 0xc331c8  ; g_MemoryPoolNull_BAPConInsideBattleZone */
     ecx = 0xc331c8u;
-    /* 007ad7e6  call 0x413600 */
+    /* 007ad7e6  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007ad7d0_1;
@@ -99,7 +104,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007ad800  dice::bf::ai::BAPConInsideBattleZone  (virtual method) */
+/* 007ad800  BAPConInsideBattleZone::evaluate  (virtual method)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConInsideBattleZone
+ */
 BFV_L1_ENTRY(bfv_server_l1_007ad800, bfv_server_l1_body_007ad800);
 BFV_L1_RESUME(bfv_server_l1r_007ad800_1, bfv_server_l1_body_007ad800, 1);
 BFV_L1_RESUME(bfv_server_l1r_007ad800_2, bfv_server_l1_body_007ad800, 2);
@@ -139,7 +147,7 @@ void bfv_server_l1_body_007ad800(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007ad803  mov edi, ecx */
     edi = ecx;
-    /* 007ad805  mov ecx, dword ptr [esp + 0x10] */
+    /* 007ad805  mov ecx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 007ad809  mov eax, dword ptr [ecx] */
@@ -161,7 +169,7 @@ R_1:
     ecx = r;
     /* 007ad819  je 0x7ad834 */
     if (zf) goto L_007ad834;
-    /* 007ad81b  mov edx, dword ptr [0xc2f7c0] */
+    /* 007ad81b  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 007ad821  mov edx, dword ptr [edx] */
@@ -227,7 +235,7 @@ R_2:
     /* 007ad849  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 007ad84b  mov ebx, dword ptr [0xc3117c] */
+    /* 007ad84b  mov ebx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ebx = M32(ea);
     /* 007ad851  push ebp */
@@ -251,7 +259,7 @@ R_3:
     eax = M32(ea);
     /* 007ad85b  mov ecx, ebx */
     ecx = ebx;
-    /* 007ad85d  call dword ptr [eax + 0xc] */
+    /* 007ad85d  call dword ptr [eax + 0xc]  ; -> IAISettings::vf3 = NetworkableInfo::get_14h (returns this+0x14) */
     ea = (uint32_t)(eax + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -305,7 +313,7 @@ R_5:
     /* 007ad882  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 007ad884  mov ebx, dword ptr [0xc3117c] */
+    /* 007ad884  mov ebx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ebx = M32(ea);
     /* 007ad88a  mov ecx, esi */
@@ -325,7 +333,7 @@ R_6:
     ecx = ebx;
     /* 007ad893  mov esi, eax */
     esi = eax;
-    /* 007ad895  call dword ptr [edx + 0x10] */
+    /* 007ad895  call dword ptr [edx + 0x10]  ; -> IAISettings::vf4 = BAPAComponentSoldierPose::get_18h (returns this+0x18) */
     ea = (uint32_t)(edx + 0x00000010u);
     t = M32(ea);
     esp -= 4;

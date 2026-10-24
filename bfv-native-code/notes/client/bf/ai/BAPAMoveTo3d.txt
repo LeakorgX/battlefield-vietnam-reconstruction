@@ -1,0 +1,8 @@
+## file
+Base plan action for 3D movement (aircraft and helicopters).
+
+## 009ee880
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.
+
+## 009ee9e0
+Destructor: releases the owned object at this+0x2c (its slot 8 with 1), restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.

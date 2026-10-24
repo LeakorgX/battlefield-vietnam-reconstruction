@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00701240  dice::ref2::geom::NullHeightMap  (virtual method) */
+/* 00701240  NullHeightMap::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::geom::NullHeightMap
+ */
 BFV_L1_ENTRY(bfv_client_l1_00701240, bfv_client_l1_body_00701240);
 void bfv_client_l1_body_00701240(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_00701240(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00701240  mov edx, dword ptr [0xb42718] */
+    /* 00701240  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00701246  mov eax, ecx */
     eax = ecx;
-    /* 00701248  mov ecx, dword ptr [esp + 4] */
+    /* 00701248  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0070124c  cmp ecx, edx */
@@ -33,7 +36,7 @@ void bfv_client_l1_body_00701240(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     edx = r;
-    /* 00701252  cmp ecx, 0x6fb4f5fd */
+    /* 00701252  cmp ecx, 0x6fb4f5fd  ; interfaceID(HeightMap) */
     a = ecx;
     b = 0x6fb4f5fdu;
     r = (a - b) & 0xffffffffu;

@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00560b50  dice::meme::BfAnimationNode  (virtual method)
- * strings: "Picture name (without extension)", "Frames", "Start", "Looping" */
+/* 00560b50  BfAnimationNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::BfAnimationNode
+ * strings: "Picture name (without extension)", "Frames", "Start", "Looping"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00560b50, bfv_client_l1_body_00560b50);
 BFV_L1_RESUME(bfv_client_l1r_00560b50_1, bfv_client_l1_body_00560b50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00560b50_2, bfv_client_l1_body_00560b50, 2);
@@ -32,14 +35,14 @@ void bfv_client_l1_body_00560b50(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00560b51  mov ebx, dword ptr [esp + 8] */
+    /* 00560b51  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00560b55  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00560b56  mov esi, dword ptr [esp + 0x10] */
+    /* 00560b56  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00560b5a  push edi */
@@ -56,7 +59,7 @@ void bfv_client_l1_body_00560b50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00560b5d  mov edi, ecx */
     edi = ecx;
-    /* 00560b5f  call 0x873f50 */
+    /* 00560b5f  call 0x873f50  ; Node::serialize */
     t = 0x00873f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560b50_1;
@@ -97,7 +100,7 @@ L_00560b70:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560b74  push 0xb6bbac */
+    /* 00560b74  push 0xb6bbac  ; "Picture name (without extension)" */
     t = 0xb6bbacu;
     esp -= 4;
     M32(esp) = t;
@@ -129,11 +132,11 @@ R_2:
     /* 00560b87  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00560b89  push 0xb6bba4 */
+    /* 00560b89  push 0xb6bba4  ; "Frames" */
     t = 0xb6bba4u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560b8e  lea eax, [edi + 0x10] */
+    /* 00560b8e  lea eax, [edi + 0x10]  ; field Frames (serialized) */
     eax = (uint32_t)(edi + 0x00000010u);
     /* 00560b91  push eax */
     t = eax;
@@ -157,11 +160,11 @@ R_3:
     /* 00560b9b  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00560b9d  push 0xb6bb9c */
+    /* 00560b9d  push 0xb6bb9c  ; "Start" */
     t = 0xb6bb9cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00560ba2  lea eax, [edi + 0x14] */
+    /* 00560ba2  lea eax, [edi + 0x14]  ; field Start (serialized) */
     eax = (uint32_t)(edi + 0x00000014u);
     /* 00560ba5  push eax */
     t = eax;
@@ -185,11 +188,11 @@ R_4:
     /* 00560baf  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00560bb1  push 0xb6bb94 */
+    /* 00560bb1  push 0xb6bb94  ; "Looping" */
     t = 0xb6bb94u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560bb6  add edi, 0x15 */
+    /* 00560bb6  add edi, 0x15  ; field Looping (serialized) */
     a = edi;
     b = 0x15u;
     r = (a + b) & 0xffffffffu;
@@ -237,8 +240,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00560be0  dice::meme::BfAnimationNode  (virtual method)
- * strings: "_%d.tga" */
+/* 00560be0  BfAnimationNode::update  (virtual method)
+ * overrides: Node::update  (83 classes implement it)
+ * class: dice::meme::BfAnimationNode
+ * strings: "_%d.tga"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00560be0, bfv_client_l1_body_00560be0);
 BFV_L1_RESUME(bfv_client_l1r_00560be0_1, bfv_client_l1_body_00560be0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00560be0_2, bfv_client_l1_body_00560be0, 2);
@@ -270,7 +276,7 @@ void bfv_client_l1_body_00560be0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00560be6  mov eax, dword ptr [0xcff7cc] */
+    /* 00560be6  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 00560beb  push esi */
@@ -282,7 +288,7 @@ void bfv_client_l1_body_00560be0(struct bfv_cpu *c)
     /* 00560bee  mov ecx, dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     ecx = M32(ea);
-    /* 00560bf1  mov dword ptr [esp + 0x94], eax */
+    /* 00560bf1  mov dword ptr [esp + 0x94], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000094u);
     M32(ea) = eax;
     /* 00560bf8  xor eax, eax */
@@ -296,7 +302,7 @@ void bfv_client_l1_body_00560be0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00560bfc  je 0x560c03 */
     if (zf) goto L_00560c03;
-    /* 00560bfe  cmp byte ptr [esi + 0x14], al */
+    /* 00560bfe  cmp byte ptr [esi + 0x14], al  ; field Start */
     ea = (uint32_t)(esi + 0x00000014u);
     a = M8(ea);
     b = LO8(eax);
@@ -311,10 +317,10 @@ L_00560c03:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 00560c06  mov ecx, dword ptr [esp + 0x90] */
+    /* 00560c06  mov ecx, dword ptr [esp + 0x90]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000090u);
     ecx = M32(ea);
-    /* 00560c0d  call 0x7c2019 */
+    /* 00560c0d  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560be0_1;
@@ -339,7 +345,7 @@ L_00560c1b:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00560c1f  cmp edx, dword ptr [esi + 0x10] */
+    /* 00560c1f  cmp edx, dword ptr [esi + 0x10]  ; field Frames */
     ea = (uint32_t)(esi + 0x00000010u);
     a = edx;
     b = M32(ea);
@@ -347,7 +353,7 @@ L_00560c1b:
     F_SUB(32, a, b, r);
     /* 00560c22  jle 0x560c48 */
     if ((zf | (sf != of))) goto L_00560c48;
-    /* 00560c24  cmp byte ptr [esi + 0x15], al */
+    /* 00560c24  cmp byte ptr [esi + 0x15], al  ; field Looping */
     ea = (uint32_t)(esi + 0x00000015u);
     a = M8(ea);
     b = LO8(eax);
@@ -358,7 +364,7 @@ L_00560c1b:
     M32(ea) = eax;
     /* 00560c2a  jne 0x560c48 */
     if (!zf) goto L_00560c48;
-    /* 00560c2c  mov byte ptr [esi + 0x14], al */
+    /* 00560c2c  mov byte ptr [esi + 0x14], al  ; field Start */
     ea = (uint32_t)(esi + 0x00000014u);
     M8(ea) = LO8(eax);
     /* 00560c2f  pop edi */
@@ -373,10 +379,10 @@ L_00560c1b:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 00560c33  mov ecx, dword ptr [esp + 0x90] */
+    /* 00560c33  mov ecx, dword ptr [esp + 0x90]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000090u);
     ecx = M32(ea);
-    /* 00560c3a  call 0x7c2019 */
+    /* 00560c3a  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560be0_2;
@@ -394,14 +400,14 @@ R_2:
     esp += 20;
     goto out;
 L_00560c48:
-    /* 00560c48  mov edi, dword ptr [esp + 0xa0] */
+    /* 00560c48  mov edi, dword ptr [esp + 0xa0]  ; arg_0 */
     ea = (uint32_t)(esp + 0x000000a0u);
     edi = M32(ea);
     /* 00560c4f  push 0x80 */
     t = 0x80u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560c54  lea eax, [esp + 0x1c] */
+    /* 00560c54  lea eax, [esp + 0x1c]  ; &var_84 */
     eax = (uint32_t)(esp + 0x0000001cu);
     /* 00560c58  push eax */
     t = eax;
@@ -411,7 +417,7 @@ L_00560c48:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00560c5a  call 0x8746c0 */
+    /* 00560c5a  call 0x8746c0  ; Data_008746c0 */
     t = 0x008746c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560be0_3;
@@ -425,9 +431,9 @@ R_3:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00560c63  lea edx, [esp + 0xc] */
+    /* 00560c63  lea edx, [esp + 0xc]  ; &var_94 */
     edx = (uint32_t)(esp + 0x0000000cu);
-    /* 00560c67  push 0xb6bbd0 */
+    /* 00560c67  push 0xb6bbd0  ; "_%d.tga" */
     t = 0xb6bbd0u;
     esp -= 4;
     M32(esp) = t;
@@ -435,7 +441,7 @@ R_3:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00560c6d  call 0x7c21e4 */
+    /* 00560c6d  call 0x7c21e4  ; sprintf */
     t = 0x007c21e4u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560be0_4;
@@ -448,11 +454,11 @@ R_4:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 00560c75  lea edx, [esp + 8] */
+    /* 00560c75  lea edx, [esp + 8]  ; &var_94 */
     edx = (uint32_t)(esp + 0x00000008u);
-    /* 00560c79  lea ecx, [esp + 0x18] */
+    /* 00560c79  lea ecx, [esp + 0x18]  ; &var_84 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 00560c7d  call 0x877650 */
+    /* 00560c7d  call 0x877650  ; meme_00877650 */
     t = 0x00877650u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560be0_5;
@@ -462,7 +468,7 @@ R_5:
     /* 00560c82  mov eax, dword ptr [edi] */
     ea = (uint32_t)(edi);
     eax = M32(ea);
-    /* 00560c84  lea ecx, [esp + 0x18] */
+    /* 00560c84  lea ecx, [esp + 0x18]  ; &var_84 */
     ecx = (uint32_t)(esp + 0x00000018u);
     /* 00560c88  push ecx */
     t = ecx;
@@ -481,7 +487,7 @@ R_6:
     /* 00560c91  mov edx, dword ptr [esi + 0x18] */
     ea = (uint32_t)(esi + 0x00000018u);
     edx = M32(ea);
-    /* 00560c94  mov ecx, dword ptr [esp + 0x98] */
+    /* 00560c94  mov ecx, dword ptr [esp + 0x98]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000098u);
     ecx = M32(ea);
     /* 00560c9b  mov dword ptr [esi + edx*4 + 0x1c], eax */
@@ -503,7 +509,7 @@ R_6:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 00560ca6  call 0x7c2019 */
+    /* 00560ca6  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560be0_7;
@@ -527,7 +533,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00560cc0  (between same file) */
+/* 00560cc0  ClassTemplate<BfAnimationNode,Node>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00560cc0, bfv_client_l1_body_00560cc0);
 void bfv_client_l1_body_00560cc0(struct bfv_cpu *c)
 {
@@ -553,7 +560,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00560cd0  (between same file) */
+/* 00560cd0  ClassTemplate<BfAnimationNode,Node>::decInstanceCount  (between same file)
+ * also entered at 00560cf0: BfAnimationNode::vf2
+ */
 BFV_L1_ENTRY(bfv_client_l1_00560cd0, bfv_client_l1_body_00560cd0);
 void bfv_client_l1_body_00560cd0(struct bfv_cpu *c)
 {
@@ -579,7 +588,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00560d00  dice::meme::BfAnimationNode  (vtable store) */
+/* 00560d00  BfAnimationNode::create  (vtable store)
+ * class: dice::meme::BfAnimationNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00560d00, bfv_client_l1_body_00560d00);
 BFV_L1_RESUME(bfv_client_l1r_00560d00_1, bfv_client_l1_body_00560d00, 1);
 BFV_L1_RESUME(bfv_client_l1r_00560d00_2, bfv_client_l1_body_00560d00, 2);
@@ -607,7 +618,7 @@ void bfv_client_l1_body_00560d00(struct bfv_cpu *c)
     t = 0x6cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00560d04  call 0x403610 */
+    /* 00560d04  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560d00_1;
@@ -635,7 +646,7 @@ R_1:
     if (zf) goto L_00560d48;
     /* 00560d14  mov ecx, esi */
     ecx = esi;
-    /* 00560d16  call 0x873d90 */
+    /* 00560d16  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560d00_2;
@@ -657,7 +668,7 @@ R_2:
     /* 00560d27  mov dword ptr [esi + 0x18], ebx */
     ea = (uint32_t)(esi + 0x00000018u);
     M32(ea) = ebx;
-    /* 00560d2a  mov dword ptr [esi], 0xb6bc04 */
+    /* 00560d2a  mov dword ptr [esi], 0xb6bc04  ; vtable BfAnimationNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6bc04u;
     /* 00560d30  xor eax, eax */
@@ -719,8 +730,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00560d50  dice::meme::BfAnimationNode  (virtual method)
- * strings: "dice::meme::BfAnimationNode" */
+/* 00560d50  BfAnimationNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BfAnimationNode
+ * strings: "dice::meme::BfAnimationNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00560d50, bfv_client_l1_body_00560d50);
 BFV_L1_RESUME(bfv_client_l1r_00560d50_1, bfv_client_l1_body_00560d50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00560d50_2, bfv_client_l1_body_00560d50, 2);
@@ -751,13 +765,13 @@ void bfv_client_l1_body_00560d50(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00560d65  push 0xb6bcd4 */
+    /* 00560d65  push 0xb6bcd4  ; "dice::meme::BfAnimationNode" */
     t = 0xb6bcd4u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560d6a  mov ecx, 0xd73530 */
+    /* 00560d6a  mov ecx, 0xd73530  ; g_RuntimeClass_BfAnimationNode */
     ecx = 0xd73530u;
-    /* 00560d6f  call 0x875490 */
+    /* 00560d6f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560d50_1;
@@ -768,10 +782,10 @@ R_1:
     t = 0xb30210u;
     esp -= 4;
     M32(esp) = t;
-    /* 00560d79  mov dword ptr [0xd73530], 0xb6bbdc */
+    /* 00560d79  mov dword ptr [0xd73530], 0xb6bbdc  ; g_RuntimeClass_BfAnimationNode */
     ea = (uint32_t)(0x00d73530u);
     M32(ea) = 0xb6bbdcu;
-    /* 00560d83  call 0x7c2cd2 */
+    /* 00560d83  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00560d50_2;
@@ -785,7 +799,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00560d8b:
-    /* 00560d8b  mov eax, 0xd73530 */
+    /* 00560d8b  mov eax, 0xd73530  ; g_RuntimeClass_BfAnimationNode */
     eax = 0xd73530u;
     /* 00560d90  ret */
     c->eip = M32(esp);

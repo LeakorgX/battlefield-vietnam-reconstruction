@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a0a050  dice::bf::ai::IPIArmamentReal  (vtable store) */
+/* 00a0a050  IPIArmamentReal::IPIArmamentReal  (vtable store)
+ * class: dice::bf::ai::IPIArmamentReal
+ * called by: AIObjectArmament::createInformationPlugIn
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a050, bfv_client_l1_body_00a0a050);
 void bfv_client_l1_body_00a0a050(struct bfv_cpu *c)
 {
@@ -16,10 +19,10 @@ void bfv_client_l1_body_00a0a050(struct bfv_cpu *c)
     uint32_t ea;
     /* 00a0a050  mov eax, ecx */
     eax = ecx;
-    /* 00a0a052  mov ecx, dword ptr [esp + 4] */
+    /* 00a0a052  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00a0a056  mov dword ptr [eax], 0xbfcf34 */
+    /* 00a0a056  mov dword ptr [eax], 0xbfcf34  ; vtable IPIArmamentReal */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbfcf34u;
     /* 00a0a05c  mov dword ptr [eax + 4], ecx */
@@ -36,7 +39,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a070  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a070  IPIArmamentReal::vf2  (virtual method)
+ * overrides: InformationPlugIn::vf2  (10 classes implement it)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a070, bfv_client_l1_body_00a0a070);
 BFV_L1_RESUME(bfv_client_l1r_00a0a070_1, bfv_client_l1_body_00a0a070, 1);
 void bfv_client_l1_body_00a0a070(struct bfv_cpu *c)
@@ -53,7 +59,7 @@ void bfv_client_l1_body_00a0a070(struct bfv_cpu *c)
     /* 00a0a070  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 00a0a072  call dword ptr [eax + 0xc] */
+    /* 00a0a072  call dword ptr [eax + 0xc]  ; -> IPIArmamentReal::vf3 = stub_noop_0args_00726570 */
     ea = (uint32_t)(eax + 0x0000000cu);
     t = M32(ea);
     esp -= 4;
@@ -72,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a080  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a080  IPIArmamentReal::vf7  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a080, bfv_client_l1_body_00a0a080);
 BFV_L1_RESUME(bfv_client_l1r_00a0a080_1, bfv_client_l1_body_00a0a080, 1);
 void bfv_client_l1_body_00a0a080(struct bfv_cpu *c)
@@ -124,7 +132,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a0a0  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a0a0  IPIArmamentReal::vf10  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a0a0, bfv_client_l1_body_00a0a0a0);
 BFV_L1_RESUME(bfv_client_l1r_00a0a0a0_1, bfv_client_l1_body_00a0a0a0, 1);
 void bfv_client_l1_body_00a0a0a0(struct bfv_cpu *c)
@@ -176,7 +186,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a0c0  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a0c0  IPIArmamentReal::vf12  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a0c0, bfv_client_l1_body_00a0a0c0);
 BFV_L1_RESUME(bfv_client_l1r_00a0a0c0_1, bfv_client_l1_body_00a0a0c0, 1);
 void bfv_client_l1_body_00a0a0c0(struct bfv_cpu *c)
@@ -229,7 +241,7 @@ R_1:
     /* 00a0a0d9  mov esi, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     esi = M32(ea);
-    /* 00a0a0db  mov eax, dword ptr [esp + 8] */
+    /* 00a0a0db  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00a0a0df  mov edx, eax */
@@ -264,7 +276,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a100  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a100  IPIArmamentReal::vf11  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a100, bfv_client_l1_body_00a0a100);
 BFV_L1_RESUME(bfv_client_l1r_00a0a100_1, bfv_client_l1_body_00a0a100, 1);
 void bfv_client_l1_body_00a0a100(struct bfv_cpu *c)
@@ -316,7 +330,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a120  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a120  IPIArmamentReal::vf4  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a120, bfv_client_l1_body_00a0a120);
 BFV_L1_RESUME(bfv_client_l1r_00a0a120_1, bfv_client_l1_body_00a0a120, 1);
 void bfv_client_l1_body_00a0a120(struct bfv_cpu *c)
@@ -353,7 +369,7 @@ void bfv_client_l1_body_00a0a120(struct bfv_cpu *c)
 R_1:
     /* 00a0a130  mov ecx, eax */
     ecx = eax;
-    /* 00a0a132  jmp 0x9eccc0 */
+    /* 00a0a132  jmp 0x9eccc0  ; AIObjectArmament_009eccc0 */
     c->eip = 0x009eccc0u;
     goto out;
 out: __attribute__((unused));
@@ -363,7 +379,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a140  (between same file) */
+/* 00a0a140  IPIArmamentReal::vf5_helper_00a0a140  (between same file)
+ * called by: IPIArmamentReal::vf5
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a140, bfv_client_l1_body_00a0a140);
 BFV_L1_RESUME(bfv_client_l1r_00a0a140_1, bfv_client_l1_body_00a0a140, 1);
 void bfv_client_l1_body_00a0a140(struct bfv_cpu *c)
@@ -397,7 +415,7 @@ void bfv_client_l1_body_00a0a140(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 00a0a14b  cmp dword ptr [esp + 0xc], eax */
+    /* 00a0a14b  cmp dword ptr [esp + 0xc], eax  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     a = M32(ea);
     b = eax;
@@ -405,7 +423,7 @@ R_1:
     F_SUB(32, a, b, r);
     /* 00a0a14f  jne 0xa0a17a */
     if (!zf) goto L_00a0a17a;
-    /* 00a0a151  mov edx, dword ptr [esp + 8] */
+    /* 00a0a151  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00a0a155  test edx, edx */
@@ -478,7 +496,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a180  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a180  IPIArmamentReal::deleting_dtor  (virtual method)
+ * overrides: InformationPlugIn::vf0  (10 classes implement it)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a180, bfv_client_l1_body_00a0a180);
 BFV_L1_RESUME(bfv_client_l1r_00a0a180_1, bfv_client_l1_body_00a0a180, 1);
 void bfv_client_l1_body_00a0a180(struct bfv_cpu *c)
@@ -492,7 +513,7 @@ void bfv_client_l1_body_00a0a180(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00a0a180  test byte ptr [esp + 4], 1 */
+    /* 00a0a180  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -502,7 +523,7 @@ void bfv_client_l1_body_00a0a180(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a0a186  mov esi, ecx */
     esi = ecx;
-    /* 00a0a188  mov dword ptr [esi], 0xbf7ea4 */
+    /* 00a0a188  mov dword ptr [esi], 0xbf7ea4  ; vtable InformationPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7ea4u;
     /* 00a0a18e  je 0xa0a19b */
@@ -511,9 +532,9 @@ void bfv_client_l1_body_00a0a180(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a0a191  mov ecx, 0xe12168 */
+    /* 00a0a191  mov ecx, 0xe12168  ; g_MemoryPoolNull_IPIArmamentReal */
     ecx = 0xe12168u;
-    /* 00a0a196  call 0x412fc0 */
+    /* 00a0a196  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a180_1;
@@ -538,7 +559,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a1b0  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a1b0  IPIArmamentReal::vf6  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a1b0, bfv_client_l1_body_00a0a1b0);
 BFV_L1_RESUME(bfv_client_l1r_00a0a1b0_1, bfv_client_l1_body_00a0a1b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a0a1b0_2, bfv_client_l1_body_00a0a1b0, 2);
@@ -584,7 +607,7 @@ void bfv_client_l1_body_00a0a1b0(struct bfv_cpu *c)
 R_1:
     /* 00a0a1c5  mov ecx, eax */
     ecx = eax;
-    /* 00a0a1c7  call 0xa0a1d0 */
+    /* 00a0a1c7  call 0xa0a1d0  ; IPIArmamentReal::vf6_helper_00a0a1d0 */
     t = 0x00a0a1d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a1b0_2;
@@ -602,7 +625,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a1d0  (between same file) */
+/* 00a0a1d0  IPIArmamentReal::vf6_helper_00a0a1d0  (between same file)
+ * called by: IPIArmamentReal::vf6
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a1d0, bfv_client_l1_body_00a0a1d0);
 void bfv_client_l1_body_00a0a1d0(struct bfv_cpu *c)
 {
@@ -615,7 +640,7 @@ void bfv_client_l1_body_00a0a1d0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a0a1d1  mov esi, dword ptr [esp + 8] */
+    /* 00a0a1d1  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 00a0a1d5  test esi, esi */
@@ -692,7 +717,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a200  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a200  IPIArmamentReal::vf8  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a200, bfv_client_l1_body_00a0a200);
 BFV_L1_RESUME(bfv_client_l1r_00a0a200_1, bfv_client_l1_body_00a0a200, 1);
 void bfv_client_l1_body_00a0a200(struct bfv_cpu *c)
@@ -729,7 +756,7 @@ void bfv_client_l1_body_00a0a200(struct bfv_cpu *c)
 R_1:
     /* 00a0a210  mov ecx, eax */
     ecx = eax;
-    /* 00a0a212  jmp 0x9ecc10 */
+    /* 00a0a212  jmp 0x9ecc10  ; AIObjectArmament_009ecc10 */
     c->eip = 0x009ecc10u;
     goto out;
 out: __attribute__((unused));
@@ -739,7 +766,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a220  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a220  IPIArmamentReal::vf9  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a220, bfv_client_l1_body_00a0a220);
 BFV_L1_RESUME(bfv_client_l1r_00a0a220_1, bfv_client_l1_body_00a0a220, 1);
 void bfv_client_l1_body_00a0a220(struct bfv_cpu *c)
@@ -776,7 +805,7 @@ void bfv_client_l1_body_00a0a220(struct bfv_cpu *c)
 R_1:
     /* 00a0a230  mov ecx, eax */
     ecx = eax;
-    /* 00a0a232  jmp 0x9ecad0 */
+    /* 00a0a232  jmp 0x9ecad0  ; BotManager_bm_decisionMaking_helper_009ecad0 */
     c->eip = 0x009ecad0u;
     goto out;
 out: __attribute__((unused));
@@ -786,7 +815,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a240  (between same file) */
+/* 00a0a240  IPIArmamentKnown::~IPIArmamentKnown  (between same file)
+ * class: dice::bf::ai::IPIArmamentKnown
+ * called by: IPIArmamentKnown::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a240, bfv_client_l1_body_00a0a240);
 BFV_L1_RESUME(bfv_client_l1r_00a0a240_1, bfv_client_l1_body_00a0a240, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a0a240_2, bfv_client_l1_body_00a0a240, 2);
@@ -823,7 +855,7 @@ void bfv_client_l1_body_00a0a240(struct bfv_cpu *c)
     b = eax;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00a0a24c  mov dword ptr [esi], 0xbfcfa4 */
+    /* 00a0a24c  mov dword ptr [esi], 0xbfcfa4  ; vtable IPIArmamentKnown */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfcfa4u;
     /* 00a0a252  je 0xa0a26a */
@@ -882,7 +914,7 @@ L_00a0a26a:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a0a272  call 0x403680 */
+    /* 00a0a272  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a240_2;
@@ -909,7 +941,7 @@ L_00a0a27a:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 00a0a290  mov dword ptr [esi], 0xbf7ea4 */
+    /* 00a0a290  mov dword ptr [esi], 0xbf7ea4  ; vtable InformationPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7ea4u;
     /* 00a0a296  pop esi */
@@ -927,7 +959,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a2a0  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a2a0  IPIArmamentReal::vf14  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a2a0, bfv_client_l1_body_00a0a2a0);
 BFV_L1_RESUME(bfv_client_l1r_00a0a2a0_1, bfv_client_l1_body_00a0a2a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a0a2a0_2, bfv_client_l1_body_00a0a2a0, 2);
@@ -980,7 +1014,7 @@ void bfv_client_l1_body_00a0a2a0(struct bfv_cpu *c)
 R_1:
     /* 00a0a2ba  mov ecx, eax */
     ecx = eax;
-    /* 00a0a2bc  call 0x9ecb30 */
+    /* 00a0a2bc  call 0x9ecb30  ; IPIArmamentReal::vf14_helper_009ecb30 */
     t = 0x009ecb30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a2a0_2;
@@ -998,7 +1032,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a0a2d0  dice::bf::ai::IPIArmamentReal  (virtual method) */
+/* 00a0a2d0  IPIArmamentReal::vf5  (virtual method)
+ * class: dice::bf::ai::IPIArmamentReal
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a0a2d0, bfv_client_l1_body_00a0a2d0);
 BFV_L1_RESUME(bfv_client_l1r_00a0a2d0_1, bfv_client_l1_body_00a0a2d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a0a2d0_2, bfv_client_l1_body_00a0a2d0, 2);
@@ -1051,7 +1087,7 @@ void bfv_client_l1_body_00a0a2d0(struct bfv_cpu *c)
 R_1:
     /* 00a0a2ea  mov ecx, eax */
     ecx = eax;
-    /* 00a0a2ec  call 0xa0a140 */
+    /* 00a0a2ec  call 0xa0a140  ; IPIArmamentReal::vf5_helper_00a0a140 */
     t = 0x00a0a140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a0a2d0_2;

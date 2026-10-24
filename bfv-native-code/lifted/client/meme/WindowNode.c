@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00ac29f0  dice::meme::WindowNode  (virtual method)
- * strings: "dice::meme::WindowNode" */
+/* 00ac29f0  WindowNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::WindowNode
+ * strings: "dice::meme::WindowNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac29f0, bfv_client_l1_body_00ac29f0);
 BFV_L1_RESUME(bfv_client_l1r_00ac29f0_1, bfv_client_l1_body_00ac29f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac29f0_2, bfv_client_l1_body_00ac29f0, 2);
@@ -37,27 +40,27 @@ void bfv_client_l1_body_00ac29f0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac2a05  push 0xc108d0 */
+    /* 00ac2a05  push 0xc108d0  ; "dice::meme::WindowNode" */
     t = 0xc108d0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2a0a  mov ecx, 0xe21728 */
+    /* 00ac2a0a  mov ecx, 0xe21728  ; g_RuntimeClass_WindowNode */
     ecx = 0xe21728u;
-    /* 00ac2a0f  call 0x875490 */
+    /* 00ac2a0f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac29f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac2a14  push 0xb41cf0 */
+    /* 00ac2a14  push 0xb41cf0  ; bfv_client_global_store_00b41cf0 */
     t = 0xb41cf0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2a19  mov dword ptr [0xe21728], 0xc1088c */
+    /* 00ac2a19  mov dword ptr [0xe21728], 0xc1088c  ; g_RuntimeClass_WindowNode */
     ea = (uint32_t)(0x00e21728u);
     M32(ea) = 0xc1088cu;
-    /* 00ac2a23  call 0x7c2cd2 */
+    /* 00ac2a23  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac29f0_2;
@@ -71,7 +74,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac2a2b:
-    /* 00ac2a2b  mov eax, 0xe21728 */
+    /* 00ac2a2b  mov eax, 0xe21728  ; g_RuntimeClass_WindowNode */
     eax = 0xe21728u;
     /* 00ac2a30  ret */
     c->eip = M32(esp);
@@ -84,7 +87,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2a90  dice::meme::WindowNode  (vtable store) */
+/* 00ac2a90  WindowNode::create  (vtable store)
+ * class: dice::meme::WindowNode
+ * also entered at 00ac2ac0: BfPictureButtonNode::vf2, BfVariablePictureNode::vf2, DataBaseCompleteEvent::vf0, DragWindowNode::vf2 (+3 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2a90, bfv_client_l1_body_00ac2a90);
 BFV_L1_RESUME(bfv_client_l1r_00ac2a90_1, bfv_client_l1_body_00ac2a90, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2a90_2, bfv_client_l1_body_00ac2a90, 2);
@@ -108,7 +114,7 @@ void bfv_client_l1_body_00ac2a90(struct bfv_cpu *c)
     t = 0x28u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2a93  call 0x403610 */
+    /* 00ac2a93  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2a90_1;
@@ -130,14 +136,14 @@ R_1:
     if (zf) goto L_00ac2ab2;
     /* 00ac2aa1  mov ecx, esi */
     ecx = esi;
-    /* 00ac2aa3  call 0x8723b0 */
+    /* 00ac2aa3  call 0x8723b0  ; TransformNode::TransformNode */
     t = 0x008723b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2a90_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac2aa8  mov dword ptr [esi], 0xc1090c */
+    /* 00ac2aa8  mov dword ptr [esi], 0xc1090c  ; vtable WindowNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc1090cu;
     /* 00ac2aae  mov eax, esi */

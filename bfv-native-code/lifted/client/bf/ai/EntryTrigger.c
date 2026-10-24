@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009b75e0  (source path) */
+/* 009b75e0  AIConsole::ctor_dtor_helper_009b75e0  (source path)
+ * also entered at 009b75f0: EntryTrigger::execute
+ * also entered at 009b78d0: EntrySendMessage::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b75e0, bfv_client_l1_body_009b75e0);
 void bfv_client_l1_body_009b75e0(struct bfv_cpu *c)
 {
@@ -16,7 +20,7 @@ void bfv_client_l1_body_009b75e0(struct bfv_cpu *c)
     uint32_t ea;
     /* 009b75e0  mov eax, ecx */
     eax = ecx;
-    /* 009b75e2  mov dword ptr [eax], 0xbf6ff4 */
+    /* 009b75e2  mov dword ptr [eax], 0xbf6ff4  ; vtable EntryTrigger */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf6ff4u;
     /* 009b75e8  ret */

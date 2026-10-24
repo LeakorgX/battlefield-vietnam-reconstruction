@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 004be3d0  dice::ref2::world::BFSoundEngineModule  (virtual method) */
+/* 004be3d0  BFSoundEngineModule::vf6  (virtual method)
+ * class: dice::ref2::world::BFSoundEngineModule
+ */
 BFV_L1_ENTRY(bfv_client_l1_004be3d0, bfv_client_l1_body_004be3d0);
 BFV_L1_RESUME(bfv_client_l1r_004be3d0_1, bfv_client_l1_body_004be3d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_004be3d0_2, bfv_client_l1_body_004be3d0, 2);
@@ -21,20 +23,20 @@ void bfv_client_l1_body_004be3d0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 004be3d0  push 0xd64c20 */
+    /* 004be3d0  push 0xd64c20  ; g_consoleCommands_PitchBend */
     t = 0xd64c20u;
     esp -= 4;
     M32(esp) = t;
     /* 004be3d5  mov ecx, 0xd442ec */
     ecx = 0xd442ecu;
-    /* 004be3da  call 0x41b040 */
+    /* 004be3da  call 0x41b040  ; sub_0041b040 */
     t = 0x0041b040u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004be3d0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 004be3df  call 0x596da0 */
+    /* 004be3df  call 0x596da0  ; BFSoundEngineModule::vf6_helper_00596da0 */
     t = 0x00596da0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004be3d0_2;
@@ -54,7 +56,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004be3f0  dice::ref2::world::BFSoundEngineModule  (virtual method) */
+/* 004be3f0  BFSoundEngineModule::vf7  (virtual method)
+ * class: dice::ref2::world::BFSoundEngineModule
+ */
 BFV_L1_ENTRY(bfv_client_l1_004be3f0, bfv_client_l1_body_004be3f0);
 BFV_L1_RESUME(bfv_client_l1r_004be3f0_1, bfv_client_l1_body_004be3f0, 1);
 void bfv_client_l1_body_004be3f0(struct bfv_cpu *c)
@@ -68,13 +72,13 @@ void bfv_client_l1_body_004be3f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004be3f0  push 0xd64c20 */
+    /* 004be3f0  push 0xd64c20  ; g_consoleCommands_PitchBend */
     t = 0xd64c20u;
     esp -= 4;
     M32(esp) = t;
     /* 004be3f5  mov ecx, 0xd442ec */
     ecx = 0xd442ecu;
-    /* 004be3fa  call 0x5f89e0 */
+    /* 004be3fa  call 0x5f89e0  ; stub_return_false_1args_005f89e0 */
     t = 0x005f89e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004be3f0_1;
@@ -94,7 +98,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00596da0  (called from this file only) */
+/* 00596da0  BFSoundEngineModule::vf6_helper_00596da0  (called from this file only)
+ * called by: BFSoundEngineModule::vf6
+ */
 BFV_L1_ENTRY(bfv_client_l1_00596da0, bfv_client_l1_body_00596da0);
 void bfv_client_l1_body_00596da0(struct bfv_cpu *c)
 {
@@ -102,7 +108,7 @@ void bfv_client_l1_body_00596da0(struct bfv_cpu *c)
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
-    /* 00596da0  jmp 0x595b40 */
+    /* 00596da0  jmp 0x595b40  ; sub_sound_00595b40 */
     c->eip = 0x00595b40u;
     goto out;
 out: __attribute__((unused));

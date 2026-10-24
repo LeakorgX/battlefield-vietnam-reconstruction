@@ -1,0 +1,5 @@
+## file
+Behaviour that decides whether the bot should use a teleport (a vehicle change that moves it elsewhere). Uses the same per-bot weight arrays as the other behaviours.
+
+## 00988f60
+evaluate: same opening as BBChangeLandingCraft: clears and returns when the parameter says not usable, otherwise splits the bot's slot 0x164 and 0x168 preferences into a pair summing to 1 (0.5 each when neither is positive), resolves the bot's object and vehicle, then walks the candidate list and stores the best weight.

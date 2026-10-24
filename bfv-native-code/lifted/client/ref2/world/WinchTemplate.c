@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006db4f0  dice::ref2::world::WinchTemplate  (virtual method) */
+/* 006db4f0  WinchTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::WinchTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006db4f0, bfv_client_l1_body_006db4f0);
 BFV_L1_RESUME(bfv_client_l1r_006db4f0_1, bfv_client_l1_body_006db4f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006db4f0_2, bfv_client_l1_body_006db4f0, 2);
@@ -31,7 +34,7 @@ void bfv_client_l1_body_006db4f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006db4f6  mov esi, ecx */
     esi = ecx;
-    /* 006db4f8  call 0x403610 */
+    /* 006db4f8  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006db4f0_1;
@@ -55,7 +58,7 @@ R_1:
     M32(esp) = t;
     /* 006db505  mov ecx, eax */
     ecx = eax;
-    /* 006db507  call 0x6fd700 */
+    /* 006db507  call 0x6fd700  ; Winch::Winch */
     t = 0x006fd700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006db4f0_2;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006db520  dice::ref2::world::WinchTemplate  (virtual method) */
+/* 006db520  WinchTemplate::createPhysicsNode  (virtual method)
+ * overrides: SimpleObjectTemplate::createPhysicsNode  (44 classes implement it)
+ * class: dice::ref2::world::WinchTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006db520, bfv_client_l1_body_006db520);
 BFV_L1_RESUME(bfv_client_l1r_006db520_1, bfv_client_l1_body_006db520, 1);
 BFV_L1_RESUME(bfv_client_l1r_006db520_2, bfv_client_l1_body_006db520, 2);
@@ -157,7 +163,7 @@ R_1:
     /* 006db53c  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 006db53e  mov edi, dword ptr [esp + 0x10] */
+    /* 006db53e  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 006db542  je 0x6db550 */
@@ -168,7 +174,7 @@ R_1:
     M32(esp) = t;
     /* 006db545  mov ecx, eax */
     ecx = eax;
-    /* 006db547  call 0x6fe2d0 */
+    /* 006db547  call 0x6fe2d0  ; PhysicsWinch::PhysicsWinch */
     t = 0x006fe2d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006db520_2;
@@ -191,7 +197,7 @@ L_006db552:
     M32(esp) = t;
     /* 006db553  mov ecx, esi */
     ecx = esi;
-    /* 006db555  call 0x6fe2b0 */
+    /* 006db555  call 0x6fe2b0  ; WinchTemplate::createPhysicsNode_helper_006fe2b0 */
     t = 0x006fe2b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006db520_3;
@@ -239,7 +245,7 @@ R_4:
     c->eip = t;
     goto out;
 R_5:
-    /* 006db571  mov ecx, dword ptr [0xd7d008] */
+    /* 006db571  mov ecx, dword ptr [0xd7d008]  ; g_pPhysicsNodeManager */
     ea = (uint32_t)(0x00d7d008u);
     ecx = M32(ea);
     /* 006db577  mov edx, dword ptr [ecx] */
@@ -249,7 +255,7 @@ R_5:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006db57a  call dword ptr [edx + 0x10] */
+    /* 006db57a  call dword ptr [edx + 0x10]  ; -> PhysicsNodeManager::vf4 */
     ea = (uint32_t)(edx + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -280,7 +286,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006db590  dice::ref2::world::WinchTemplate  (vtable store) */
+/* 006db590  WinchTemplate::~WinchTemplate  (vtable store)
+ * class: dice::ref2::world::WinchTemplate
+ * also entered at 006db5f0: WinchTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_006db590, bfv_client_l1_body_006db590);
 BFV_L1_RESUME(bfv_client_l1r_006db590_1, bfv_client_l1_body_006db590, 1);
 void bfv_client_l1_body_006db590(struct bfv_cpu *c)
@@ -300,7 +309,7 @@ void bfv_client_l1_body_006db590(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006db591  mov esi, ecx */
     esi = ecx;
-    /* 006db593  mov dword ptr [esi], 0xb9fdb4 */
+    /* 006db593  mov dword ptr [esi], 0xb9fdb4  ; vtable WinchTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9fdb4u;
     /* 006db599  mov dword ptr [esi + 4], 0xb9fd9c */
@@ -327,7 +336,7 @@ void bfv_client_l1_body_006db590(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006db5c1  call 0x403680 */
+    /* 006db5c1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006db590_1;
@@ -360,7 +369,7 @@ L_006db5c9:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 006db5e4  jmp 0x6a4480 */
+    /* 006db5e4  jmp 0x6a4480  ; BundleTemplate::~BundleTemplate */
     c->eip = 0x006a4480u;
     goto out;
 out: __attribute__((unused));
@@ -370,7 +379,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006db600  dice::ref2::world::WinchTemplate  (virtual method) */
+/* 006db600  WinchTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::WinchTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006db600, bfv_client_l1_body_006db600);
 void bfv_client_l1_body_006db600(struct bfv_cpu *c)
 {
@@ -379,10 +391,10 @@ void bfv_client_l1_body_006db600(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006db600  mov eax, dword ptr [esp + 4] */
+    /* 006db600  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006db604  cmp eax, dword ptr [0xb77f54] */
+    /* 006db604  cmp eax, dword ptr [0xb77f54]  ; WinchTemplate::classID */
     ea = (uint32_t)(0x00b77f54u);
     a = eax;
     b = M32(ea);
@@ -397,10 +409,10 @@ void bfv_client_l1_body_006db600(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006db611:
-    /* 006db611  mov dword ptr [esp + 4], eax */
+    /* 006db611  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006db615  jmp 0x6a4250 */
+    /* 006db615  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));
@@ -410,7 +422,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006db6a0  dice::ref2::world::WinchTemplate  (vtable store) */
+/* 006db6a0  WinchTemplate::WinchTemplate  (vtable store)
+ * class: dice::ref2::world::WinchTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006db6a0, bfv_client_l1_body_006db6a0);
 BFV_L1_RESUME(bfv_client_l1r_006db6a0_1, bfv_client_l1_body_006db6a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006db6a0_2, bfv_client_l1_body_006db6a0, 2);
@@ -436,14 +450,14 @@ void bfv_client_l1_body_006db6a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006db6a2  mov esi, ecx */
     esi = ecx;
-    /* 006db6a4  call 0x6a52c0 */
+    /* 006db6a4  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
     t = 0x006a52c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006db6a0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006db6a9  mov dword ptr [esi], 0xb9fdb4 */
+    /* 006db6a9  mov dword ptr [esi], 0xb9fdb4  ; vtable WinchTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9fdb4u;
     /* 006db6af  mov dword ptr [esi + 4], 0xb9fd9c */
@@ -480,7 +494,7 @@ R_1:
     eax = 0xfu;
     /* 006db6f5  lea ecx, [esi + 0x200] */
     ecx = (uint32_t)(esi + 0x00000200u);
-    /* 006db6fb  mov dword ptr [esi + 0x1ec], 0x461c4000 */
+    /* 006db6fb  mov dword ptr [esi + 0x1ec], 0x461c4000  ; 10000.0f */
     ea = (uint32_t)(esi + 0x000001ecu);
     M32(ea) = 0x461c4000u;
     /* 006db705  mov dword ptr [esi + 0x1f0], ebx */
@@ -512,7 +526,7 @@ R_1:
     /* 006db731  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 006db734  call 0x401ae0 */
+    /* 006db734  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006db6a0_2;
@@ -555,7 +569,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006db760  dice::ref2::world::WinchTemplate  (virtual method) */
+/* 006db760  WinchTemplate::postLoad  (virtual method)
+ * overrides: ObjectTemplate::postLoad  (47 classes implement it)
+ * class: dice::ref2::world::WinchTemplate
+ * also entered at 006db7a0: HookTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_006db760, bfv_client_l1_body_006db760);
 BFV_L1_RESUME(bfv_client_l1r_006db760_1, bfv_client_l1_body_006db760, 1);
 BFV_L1_RESUME(bfv_client_l1r_006db760_2, bfv_client_l1_body_006db760, 2);
@@ -579,7 +597,7 @@ void bfv_client_l1_body_006db760(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006db761  mov esi, ecx */
     esi = ecx;
-    /* 006db763  call 0x6a46f0 */
+    /* 006db763  call 0x6a46f0  ; BundleTemplate::postLoad */
     t = 0x006a46f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006db760_1;
@@ -608,7 +626,7 @@ L_006db76e:
     F_LOGIC(32, r);
     /* 006db776  je 0x6db795 */
     if (zf) goto L_006db795;
-    /* 006db778  mov ecx, dword ptr [0xd7d018] */
+    /* 006db778  mov ecx, dword ptr [0xd7d018]  ; g_pObjectTemplateManager */
     ea = (uint32_t)(0x00d7d018u);
     ecx = M32(ea);
     /* 006db77e  mov eax, dword ptr [ecx] */
@@ -624,7 +642,7 @@ L_006db76e:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006db787  call dword ptr [eax + 0x30] */
+    /* 006db787  call dword ptr [eax + 0x30]  ; -> ObjectTemplateManager::vf12 = ObjectTemplateManager::getTemplate */
     ea = (uint32_t)(eax + 0x00000030u);
     t = M32(ea);
     esp -= 4;

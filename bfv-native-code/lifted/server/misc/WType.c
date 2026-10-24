@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00409fd0  dice::WType  (virtual method) */
+/* 00409fd0  stub_return_false_0args_00409fd0  (virtual method)
+ * class: dice::WType
+ */
 BFV_L1_ENTRY(bfv_server_l1_00409fd0, bfv_server_l1_body_00409fd0);
 void bfv_server_l1_body_00409fd0(struct bfv_cpu *c)
 {
@@ -29,7 +31,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00497360  dice::WType  (virtual method) */
+/* 00497360  WType::vf1  (virtual method)
+ * class: dice::WType
+ */
 BFV_L1_ENTRY(bfv_server_l1_00497360, bfv_server_l1_body_00497360);
 BFV_L1_RESUME(bfv_server_l1r_00497360_1, bfv_server_l1_body_00497360, 1);
 void bfv_server_l1_body_00497360(struct bfv_cpu *c)
@@ -46,7 +50,7 @@ void bfv_server_l1_body_00497360(struct bfv_cpu *c)
     /* 00497360  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 00497362  call dword ptr [eax + 0x14] */
+    /* 00497362  call dword ptr [eax + 0x14]  ; -> WType::vf5 = _purecall */
     ea = (uint32_t)(eax + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -56,7 +60,7 @@ void bfv_server_l1_body_00497360(struct bfv_cpu *c)
 R_1:
     /* 00497365  mov ecx, eax */
     ecx = eax;
-    /* 00497367  jmp 0x63da55 */
+    /* 00497367  jmp 0x63da55  ; type_info::name */
     c->eip = 0x0063da55u;
     goto out;
 out: __attribute__((unused));
@@ -66,7 +70,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00497370  dice::WType  (virtual method) */
+/* 00497370  WType::isKindOf  (virtual method)
+ * class: dice::WType
+ */
 BFV_L1_ENTRY(bfv_server_l1_00497370, bfv_server_l1_body_00497370);
 BFV_L1_RESUME(bfv_server_l1r_00497370_1, bfv_server_l1_body_00497370, 1);
 BFV_L1_RESUME(bfv_server_l1r_00497370_2, bfv_server_l1_body_00497370, 2);
@@ -92,7 +98,7 @@ void bfv_server_l1_body_00497370(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00497377  call dword ptr [edx + 0x14] */
+    /* 00497377  call dword ptr [edx + 0x14]  ; -> WType::vf5 = _purecall */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -102,7 +108,7 @@ void bfv_server_l1_body_00497370(struct bfv_cpu *c)
 R_1:
     /* 0049737a  mov ecx, eax */
     ecx = eax;
-    /* 0049737c  call 0x63a46f */
+    /* 0049737c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00497370_2;
@@ -137,33 +143,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0049aca0  dice::WType  (vtable store) */
-BFV_L1_ENTRY(bfv_server_l1_0049aca0, bfv_server_l1_body_0049aca0);
-void bfv_server_l1_body_0049aca0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t ea;
-    /* 0049aca0  fld qword ptr [0x807350] */
-    ea = (uint32_t)(0x00807350u);
-    __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0049aca6  fstp qword ptr [ecx + 8] */
-    ea = (uint32_t)(ecx + 0x00000008u);
-    __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0049aca9  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 00654d20  dice::WType  (vtable store) */
+/* 00654d20  WType::~WType  (vtable store)
+ * class: dice::WType
+ */
 BFV_L1_ENTRY(bfv_server_l1_00654d20, bfv_server_l1_body_00654d20);
 BFV_L1_RESUME(bfv_server_l1r_00654d20_1, bfv_server_l1_body_00654d20, 1);
 void bfv_server_l1_body_00654d20(struct bfv_cpu *c)
@@ -198,7 +180,7 @@ void bfv_server_l1_body_00654d20(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00654d2d  call 0x403df0 */
+    /* 00654d2d  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00654d20_1;
@@ -225,7 +207,7 @@ L_00654d35:
     /* 00654d41  mov byte ptr [esi + 8], al */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = LO8(eax);
-    /* 00654d44  mov dword ptr [esi], 0x818484 */
+    /* 00654d44  mov dword ptr [esi], 0x818484  ; vtable WType */
     ea = (uint32_t)(esi);
     M32(ea) = 0x818484u;
     /* 00654d4a  pop esi */

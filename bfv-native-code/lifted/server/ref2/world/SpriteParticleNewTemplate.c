@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 004beb40  dice::ref2::world::SpriteParticleNewTemplate  (virtual method) */
+/* 004beb40  SpriteParticleNewTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::world::SpriteParticleNewTemplate
+ * also entered at 004beb70: BFSpawnPointTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_004beb40, bfv_server_l1_body_004beb40);
 void bfv_server_l1_body_004beb40(struct bfv_cpu *c)
 {
@@ -14,12 +18,12 @@ void bfv_server_l1_body_004beb40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 004beb40  mov edx, dword ptr [0x807430] */
+    /* 004beb40  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 004beb46  mov eax, ecx */
     eax = ecx;
-    /* 004beb48  mov ecx, dword ptr [esp + 4] */
+    /* 004beb48  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 004beb4c  cmp ecx, edx */
@@ -33,7 +37,7 @@ void bfv_server_l1_body_004beb40(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 004beb51  mov esi, dword ptr [0x820638] */
+    /* 004beb51  mov esi, dword ptr [0x820638]  ; interfaceID(BundleTemplate) */
     ea = (uint32_t)(0x00820638u);
     esi = M32(ea);
     /* 004beb57  xor edx, edx */
@@ -72,7 +76,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00581040  dice::ref2::world::SpriteParticleNewTemplate  (virtual method) */
+/* 00581040  SpriteParticleNewTemplate::postLoad  (virtual method)
+ * overrides: ObjectTemplate::postLoad  (47 classes implement it)
+ * class: dice::ref2::world::SpriteParticleNewTemplate
+ * also entered at 00581090: SpriteParticleNewTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581040, bfv_server_l1_body_00581040);
 BFV_L1_RESUME(bfv_server_l1r_00581040_1, bfv_server_l1_body_00581040, 1);
 BFV_L1_RESUME(bfv_server_l1r_00581040_2, bfv_server_l1_body_00581040, 2);
@@ -100,7 +108,7 @@ void bfv_server_l1_body_00581040(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00581041  mov esi, ecx */
     esi = ecx;
-    /* 00581043  call 0x55bb20 */
+    /* 00581043  call 0x55bb20  ; ObjectTemplate::postLoad */
     t = 0x0055bb20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581040_1;
@@ -165,7 +173,7 @@ R_2:
     edi = M32(ea);
     /* 0058106b  mov ecx, esi */
     ecx = esi;
-    /* 0058106d  call dword ptr [edx + 0x18] */
+    /* 0058106d  call dword ptr [edx + 0x18]  ; -> SpriteParticleNewTemplate::vf6 = GMObject::vf1 */
     ea = (uint32_t)(edx + 0x00000018u);
     t = M32(ea);
     esp -= 4;
@@ -225,7 +233,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005810a0  dice::ref2::world::SpriteParticleNewTemplate  (virtual method) */
+/* 005810a0  SpriteParticleNewTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::SpriteParticleNewTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005810a0, bfv_server_l1_body_005810a0);
 void bfv_server_l1_body_005810a0(struct bfv_cpu *c)
 {
@@ -234,12 +245,12 @@ void bfv_server_l1_body_005810a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 005810a0  mov edx, dword ptr [0x8207b8] */
+    /* 005810a0  mov edx, dword ptr [0x8207b8]  ; SpriteParticleNewTemplate::classID */
     ea = (uint32_t)(0x008207b8u);
     edx = M32(ea);
     /* 005810a6  mov eax, ecx */
     eax = ecx;
-    /* 005810a8  mov ecx, dword ptr [esp + 4] */
+    /* 005810a8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005810ac  cmp ecx, edx */
@@ -253,7 +264,7 @@ void bfv_server_l1_body_005810a0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005810b1  mov esi, dword ptr [0x820720] */
+    /* 005810b1  mov esi, dword ptr [0x820720]  ; ObjectTemplate::classID */
     ea = (uint32_t)(0x00820720u);
     esi = M32(ea);
     /* 005810b7  xor edx, edx */
@@ -292,7 +303,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005810d0  dice::ref2::world::SpriteParticleNewTemplate  (virtual method) */
+/* 005810d0  SpriteParticleNewTemplate::release  (virtual method)
+ * overrides: IBase::release  (301 classes implement it)
+ * class: dice::ref2::world::SpriteParticleNewTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005810d0, bfv_server_l1_body_005810d0);
 BFV_L1_RESUME(bfv_server_l1r_005810d0_1, bfv_server_l1_body_005810d0, 1);
 void bfv_server_l1_body_005810d0(struct bfv_cpu *c)
@@ -337,7 +351,7 @@ void bfv_server_l1_body_005810d0(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 005810e4  call dword ptr [eax] */
+    /* 005810e4  call dword ptr [eax]  ; -> SpriteParticleNewTemplate::vf0 = SpriteParticleNewTemplate::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;
@@ -363,7 +377,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005810f0  dice::ref2::world::SpriteParticleNewTemplate  (virtual method) */
+/* 005810f0  SpriteParticleNewTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::SpriteParticleNewTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005810f0, bfv_server_l1_body_005810f0);
 BFV_L1_RESUME(bfv_server_l1r_005810f0_1, bfv_server_l1_body_005810f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005810f0_2, bfv_server_l1_body_005810f0, 2);
@@ -389,7 +406,7 @@ void bfv_server_l1_body_005810f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005810f3  mov esi, ecx */
     esi = ecx;
-    /* 005810f5  mov ecx, dword ptr [0xc0d978] */
+    /* 005810f5  mov ecx, dword ptr [0xc0d978]  ; g_pMemoryPool_00c0d978 */
     ea = (uint32_t)(0x00c0d978u);
     ecx = M32(ea);
     /* 005810fb  mov eax, dword ptr [ecx] */
@@ -403,7 +420,7 @@ void bfv_server_l1_body_005810f0(struct bfv_cpu *c)
     t = 0x140u;
     esp -= 4;
     M32(esp) = t;
-    /* 00581107  call dword ptr [eax + 0x10] */
+    /* 00581107  call dword ptr [eax + 0x10]  ; -> MemoryPool::vf4 = MemoryPool::alloc_debug */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -422,7 +439,7 @@ R_1:
     M32(esp) = t;
     /* 0058110f  mov ecx, eax */
     ecx = eax;
-    /* 00581111  call 0x580ec0 */
+    /* 00581111  call 0x580ec0  ; SpriteParticleNew::SpriteParticleNew */
     t = 0x00580ec0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005810f0_2;
@@ -457,7 +474,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00581120  dice::ref2::world::SpriteParticleNewTemplate  (vtable store) */
+/* 00581120  SpriteParticleNewTemplate::SpriteParticleNewTemplate  (vtable store)
+ * class: dice::ref2::world::SpriteParticleNewTemplate
+ * called by: ObjectCreatorWrapper<SpriteParticleNewTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581120, bfv_server_l1_body_00581120);
 BFV_L1_RESUME(bfv_server_l1r_00581120_1, bfv_server_l1_body_00581120, 1);
 BFV_L1_RESUME(bfv_server_l1r_00581120_2, bfv_server_l1_body_00581120, 2);
@@ -481,7 +501,7 @@ void bfv_server_l1_body_00581120(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00581121  mov esi, ecx */
     esi = ecx;
-    /* 00581123  call 0x55bf00 */
+    /* 00581123  call 0x55bf00  ; ObjectTemplate::ObjectTemplate */
     t = 0x0055bf00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581120_1;
@@ -490,7 +510,7 @@ void bfv_server_l1_body_00581120(struct bfv_cpu *c)
 R_1:
     /* 00581128  mov eax, 1 */
     eax = 0x1u;
-    /* 0058112d  mov dword ptr [esi], 0x839324 */
+    /* 0058112d  mov dword ptr [esi], 0x839324  ; vtable SpriteParticleNewTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x839324u;
     /* 00581133  mov dword ptr [esi + 0x74], eax */
@@ -503,7 +523,7 @@ R_1:
     /* 0058113b  mov byte ptr [esi + 0x78], al */
     ea = (uint32_t)(esi + 0x00000078u);
     M8(ea) = LO8(eax);
-    /* 0058113e  call 0x403d80 */
+    /* 0058113e  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581120_2;
@@ -523,7 +543,7 @@ R_2:
     if (zf) goto L_00581158;
     /* 0058114a  mov ecx, eax */
     ecx = eax;
-    /* 0058114c  call 0x5f5fd0 */
+    /* 0058114c  call 0x5f5fd0  ; ParticleSystemTemplate::ParticleSystemTemplate */
     t = 0x005f5fd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581120_3;
@@ -568,7 +588,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00581170  dice::ref2::world::SpriteParticleNewTemplate  (virtual method) */
+/* 00581170  SpriteParticleNewTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::world::SpriteParticleNewTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581170, bfv_server_l1_body_00581170);
 BFV_L1_RESUME(bfv_server_l1r_00581170_1, bfv_server_l1_body_00581170, 1);
 BFV_L1_RESUME(bfv_server_l1r_00581170_2, bfv_server_l1_body_00581170, 2);
@@ -598,7 +621,7 @@ void bfv_server_l1_body_00581170(struct bfv_cpu *c)
     /* 00581176  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00581178  mov dword ptr [esi], 0x839324 */
+    /* 00581178  mov dword ptr [esi], 0x839324  ; vtable SpriteParticleNewTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x839324u;
     /* 0058117e  je 0x581185 */
@@ -617,14 +640,14 @@ R_1:
 L_00581185:
     /* 00581185  mov ecx, esi */
     ecx = esi;
-    /* 00581187  call 0x55bfc0 */
+    /* 00581187  call 0x55bfc0  ; IBase::~IBase */
     t = 0x0055bfc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581170_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0058118c  test byte ptr [esp + 8], 1 */
+    /* 0058118c  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -634,7 +657,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00581194  call 0x403df0 */
+    /* 00581194  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581170_3;
@@ -665,7 +688,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005955c0  dice::ref2::world::SpriteParticleNewTemplate  (virtual method) */
+/* 005955c0  SpriteParticleNewTemplate::addRef  (virtual method)
+ * overrides: IBase::addRef  (301 classes implement it)
+ * class: dice::ref2::world::SpriteParticleNewTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005955c0, bfv_server_l1_body_005955c0);
 void bfv_server_l1_body_005955c0(struct bfv_cpu *c)
 {

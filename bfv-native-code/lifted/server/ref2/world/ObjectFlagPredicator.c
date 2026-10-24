@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00564070  dice::ref2::world::ObjectFlagPredicator  (vtable store) */
+/* 00564070  ObjectFlagPredicator::ObjectFlagPredicator  (vtable store)
+ * class: dice::ref2::world::ObjectFlagPredicator
+ * called by: bf_004c9410, bf_004c94d0, GameServer::vf15, BFSoldier_beginRepair_00551cc0, BFSoldier_beginMedPack_00552210, BFSoldier::vf64 (+7 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564070, bfv_server_l1_body_00564070);
 void bfv_server_l1_body_00564070(struct bfv_cpu *c)
 {
@@ -16,10 +19,10 @@ void bfv_server_l1_body_00564070(struct bfv_cpu *c)
     uint32_t ea;
     /* 00564070  mov eax, ecx */
     eax = ecx;
-    /* 00564072  mov ecx, dword ptr [esp + 4] */
+    /* 00564072  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00564076  mov dword ptr [eax], 0x83702c */
+    /* 00564076  mov dword ptr [eax], 0x83702c  ; vtable ObjectFlagPredicator */
     ea = (uint32_t)(eax);
     M32(ea) = 0x83702cu;
     /* 0056407c  mov dword ptr [eax + 4], ecx */
@@ -36,7 +39,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00564090  dice::ref2::world::ObjectFlagPredicator  (virtual method) */
+/* 00564090  ObjectFlagPredicator::vf0  (virtual method)
+ * class: dice::ref2::world::ObjectFlagPredicator
+ * called by: ObjectDropKitPredicator::vf0, CullPredicator::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_00564090, bfv_server_l1_body_00564090);
 void bfv_server_l1_body_00564090(struct bfv_cpu *c)
 {
@@ -45,7 +51,7 @@ void bfv_server_l1_body_00564090(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, c0, ea;
-    /* 00564090  mov eax, dword ptr [esp + 4] */
+    /* 00564090  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00564094  mov eax, dword ptr [eax + 4] */

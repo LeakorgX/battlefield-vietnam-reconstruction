@@ -5,8 +5,12 @@
 #include "l1.h"
 
 
-/* 0046b9d0  dice::bf::TourOfDuty  (vtable store)
- * strings: "DefaultTourOfDuty.wst", "TourOfDuty.wst" */
+/* 0046b9d0  TourOfDuty::TourOfDuty  (vtable store)
+ * class: dice::bf::TourOfDuty
+ * strings: "DefaultTourOfDuty.wst", "TourOfDuty.wst"
+ * also entered at 0046ba80: TourOfDuty::vf0
+ * called by: Setup_insignia_helper_0046c150, ObjectCreatorWrapper<TourOfDuty>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_0046b9d0, bfv_server_l1_body_0046b9d0);
 BFV_L1_RESUME(bfv_server_l1r_0046b9d0_1, bfv_server_l1_body_0046b9d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0046b9d0_2, bfv_server_l1_body_0046b9d0, 2);
@@ -52,22 +56,22 @@ void bfv_server_l1_body_0046b9d0(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ebx = r;
-    /* 0046b9db  push 0x813e20 */
+    /* 0046b9db  push 0x813e20  ; "DefaultTourOfDuty.wst" */
     t = 0x813e20u;
     esp -= 4;
     M32(esp) = t;
-    /* 0046b9e0  lea ecx, [esp + 0x2c] */
+    /* 0046b9e0  lea ecx, [esp + 0x2c]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x0000002cu);
-    /* 0046b9e4  mov dword ptr [esp + 0x44], 0xf */
+    /* 0046b9e4  mov dword ptr [esp + 0x44], 0xf  ; var_4 */
     ea = (uint32_t)(esp + 0x00000044u);
     M32(ea) = 0xfu;
-    /* 0046b9ec  mov dword ptr [esp + 0x40], ebx */
+    /* 0046b9ec  mov dword ptr [esp + 0x40], ebx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000040u);
     M32(ea) = ebx;
-    /* 0046b9f0  mov byte ptr [esp + 0x30], bl */
+    /* 0046b9f0  mov byte ptr [esp + 0x30], bl  ; var_18 */
     ea = (uint32_t)(esp + 0x00000030u);
     M8(ea) = LO8(ebx);
-    /* 0046b9f4  call 0x402020 */
+    /* 0046b9f4  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046b9d0_1;
@@ -78,35 +82,35 @@ R_1:
     t = 0xeu;
     esp -= 4;
     M32(esp) = t;
-    /* 0046b9fb  push 0x813e10 */
+    /* 0046b9fb  push 0x813e10  ; "TourOfDuty.wst" */
     t = 0x813e10u;
     esp -= 4;
     M32(esp) = t;
-    /* 0046ba00  lea ecx, [esp + 0x10] */
+    /* 0046ba00  lea ecx, [esp + 0x10]  ; &var_38 */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 0046ba04  mov dword ptr [esp + 0x28], 0xf */
+    /* 0046ba04  mov dword ptr [esp + 0x28], 0xf  ; var_20 */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0xfu;
-    /* 0046ba0c  mov dword ptr [esp + 0x24], ebx */
+    /* 0046ba0c  mov dword ptr [esp + 0x24], ebx  ; var_24 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = ebx;
-    /* 0046ba10  mov byte ptr [esp + 0x14], bl */
+    /* 0046ba10  mov byte ptr [esp + 0x14], bl  ; var_34 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = LO8(ebx);
-    /* 0046ba14  call 0x402020 */
+    /* 0046ba14  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046b9d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0046ba19  lea eax, [esp + 0x24] */
+    /* 0046ba19  lea eax, [esp + 0x24]  ; &var_1c */
     eax = (uint32_t)(esp + 0x00000024u);
     /* 0046ba1d  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0046ba1e  lea ecx, [esp + 0xc] */
+    /* 0046ba1e  lea ecx, [esp + 0xc]  ; &var_38 */
     ecx = (uint32_t)(esp + 0x0000000cu);
     /* 0046ba22  push ecx */
     t = ecx;
@@ -114,14 +118,14 @@ R_2:
     M32(esp) = t;
     /* 0046ba23  mov ecx, esi */
     ecx = esi;
-    /* 0046ba25  call 0x485480 */
+    /* 0046ba25  call 0x485480  ; GameMode::GameMode */
     t = 0x00485480u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046b9d0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 0046ba2a  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 0046ba2a  cmp dword ptr [esp + 0x20], 0x10  ; var_20 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
@@ -129,14 +133,14 @@ R_3:
     F_SUB(32, a, b, r);
     /* 0046ba2f  jb 0x46ba3e */
     if (cf) goto L_0046ba3e;
-    /* 0046ba31  mov edx, dword ptr [esp + 0xc] */
+    /* 0046ba31  mov edx, dword ptr [esp + 0xc]  ; var_34 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 0046ba35  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0046ba36  call 0x403df0 */
+    /* 0046ba36  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046b9d0_4;
@@ -150,31 +154,31 @@ R_4:
     F_ADD(32, a, b, r);
     esp = r;
 L_0046ba3e:
-    /* 0046ba3e  cmp dword ptr [esp + 0x3c], 0x10 */
+    /* 0046ba3e  cmp dword ptr [esp + 0x3c], 0x10  ; var_4 */
     ea = (uint32_t)(esp + 0x0000003cu);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 0046ba43  mov dword ptr [esp + 0x20], 0xf */
+    /* 0046ba43  mov dword ptr [esp + 0x20], 0xf  ; var_20 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0xfu;
-    /* 0046ba4b  mov dword ptr [esp + 0x1c], ebx */
+    /* 0046ba4b  mov dword ptr [esp + 0x1c], ebx  ; var_24 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = ebx;
-    /* 0046ba4f  mov byte ptr [esp + 0xc], bl */
+    /* 0046ba4f  mov byte ptr [esp + 0xc], bl  ; var_34 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M8(ea) = LO8(ebx);
     /* 0046ba53  jb 0x46ba62 */
     if (cf) goto L_0046ba62;
-    /* 0046ba55  mov eax, dword ptr [esp + 0x28] */
+    /* 0046ba55  mov eax, dword ptr [esp + 0x28]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 0046ba59  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0046ba5a  call 0x403df0 */
+    /* 0046ba5a  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046b9d0_5;
@@ -188,7 +192,7 @@ R_5:
     F_ADD(32, a, b, r);
     esp = r;
 L_0046ba62:
-    /* 0046ba62  mov dword ptr [esi], 0x813df4 */
+    /* 0046ba62  mov dword ptr [esi], 0x813df4  ; vtable TourOfDuty */
     ea = (uint32_t)(esi);
     M32(ea) = 0x813df4u;
     /* 0046ba68  mov dword ptr [esi + 0x60], ebx */
@@ -227,7 +231,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0046baa0  dice::bf::TourOfDuty  (virtual method) */
+/* 0046baa0  TourOfDuty::vf4  (virtual method)
+ * overrides: GameMode::vf4  (5 classes implement it)
+ * class: dice::bf::TourOfDuty
+ */
 BFV_L1_ENTRY(bfv_server_l1_0046baa0, bfv_server_l1_body_0046baa0);
 BFV_L1_RESUME(bfv_server_l1r_0046baa0_1, bfv_server_l1_body_0046baa0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0046baa0_2, bfv_server_l1_body_0046baa0, 2);
@@ -253,7 +260,7 @@ void bfv_server_l1_body_0046baa0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0046baa2  mov edi, dword ptr [esp + 0x10] */
+    /* 0046baa2  mov edi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 0046baa6  push edi */
@@ -262,7 +269,7 @@ void bfv_server_l1_body_0046baa0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0046baa7  mov esi, ecx */
     esi = ecx;
-    /* 0046baa9  call 0x4b2bb0 */
+    /* 0046baa9  call 0x4b2bb0  ; TourOfDuty::sub_004b2bb0 */
     t = 0x004b2bb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046baa0_1;
@@ -275,14 +282,14 @@ R_1:
     M32(esp) = t;
     /* 0046baaf  mov ecx, esi */
     ecx = esi;
-    /* 0046bab1  call 0x4b2bb0 */
+    /* 0046bab1  call 0x4b2bb0  ; TourOfDuty::sub_004b2bb0 */
     t = 0x004b2bb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046baa0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0046bab6  mov ecx, dword ptr [esp + 0x14] */
+    /* 0046bab6  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0046baba  mov edx, eax */
@@ -293,7 +300,7 @@ R_2:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     edx = r;
-    /* 0046babf  call 0x46bb00 */
+    /* 0046babf  call 0x46bb00  ; TourOfDuty_0046bb00 */
     t = 0x0046bb00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046baa0_3;
@@ -305,7 +312,7 @@ R_3:
     F_LOGIC(32, r);
     /* 0046bac6  je 0x46baef */
     if (zf) goto L_0046baef;
-    /* 0046bac8  mov ecx, dword ptr [esp + 0xc] */
+    /* 0046bac8  mov ecx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 0046bacc  and ecx, 0x80000003 */
@@ -389,7 +396,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0046bb00  (between same file) */
+/* 0046bb00  TourOfDuty_0046bb00  (between same file)
+ * called by: TourOfDuty::vf4, TourOfDuty::vf5, Evolution_00484610, bf_004b2480, bf_MENU_RANDOM_helper_004b2680, bf_MENU_RANDOM_004b2940
+ */
 BFV_L1_ENTRY(bfv_server_l1_0046bb00, bfv_server_l1_body_0046bb00);
 BFV_L1_RESUME(bfv_server_l1r_0046bb00_1, bfv_server_l1_body_0046bb00, 1);
 BFV_L1_RESUME(bfv_server_l1r_0046bb00_2, bfv_server_l1_body_0046bb00, 2);
@@ -425,7 +434,7 @@ void bfv_server_l1_body_0046bb00(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     esi = r;
-    /* 0046bb09  lea esp, [esp] */
+    /* 0046bb09  lea esp, [esp]  ; &var_c */
     esp = (uint32_t)(esp);
 L_0046bb10:
     /* 0046bb10  mov ecx, dword ptr [edi + 4] */
@@ -480,7 +489,7 @@ R_1:
     edx = eax;
     /* 0046bb2d  mov ecx, ebx */
     ecx = ebx;
-    /* 0046bb2f  call 0x41f1e0 */
+    /* 0046bb2f  call 0x41f1e0  ; string_iequals */
     t = 0x0041f1e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046bb00_2;
@@ -552,7 +561,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0046bb50  dice::bf::TourOfDuty  (virtual method) */
+/* 0046bb50  TourOfDuty::vf5  (virtual method)
+ * overrides: GameMode::vf5  (5 classes implement it)
+ * class: dice::bf::TourOfDuty
+ */
 BFV_L1_ENTRY(bfv_server_l1_0046bb50, bfv_server_l1_body_0046bb50);
 BFV_L1_RESUME(bfv_server_l1r_0046bb50_1, bfv_server_l1_body_0046bb50, 1);
 BFV_L1_RESUME(bfv_server_l1r_0046bb50_2, bfv_server_l1_body_0046bb50, 2);
@@ -580,7 +592,7 @@ void bfv_server_l1_body_0046bb50(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0046bb52  mov edi, dword ptr [esp + 0xc] */
+    /* 0046bb52  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 0046bb56  push edi */
@@ -589,7 +601,7 @@ void bfv_server_l1_body_0046bb50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0046bb57  mov esi, ecx */
     esi = ecx;
-    /* 0046bb59  call 0x4b2bb0 */
+    /* 0046bb59  call 0x4b2bb0  ; TourOfDuty::sub_004b2bb0 */
     t = 0x004b2bb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046bb50_1;
@@ -602,14 +614,14 @@ R_1:
     M32(esp) = t;
     /* 0046bb5f  mov ecx, esi */
     ecx = esi;
-    /* 0046bb61  call 0x4b2bb0 */
+    /* 0046bb61  call 0x4b2bb0  ; TourOfDuty::sub_004b2bb0 */
     t = 0x004b2bb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046bb50_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0046bb66  mov ecx, dword ptr [esp + 0x10] */
+    /* 0046bb66  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 0046bb6a  mov edx, eax */
@@ -620,7 +632,7 @@ R_2:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     edx = r;
-    /* 0046bb6f  call 0x46bb00 */
+    /* 0046bb6f  call 0x46bb00  ; TourOfDuty_0046bb00 */
     t = 0x0046bb00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0046bb50_3;
@@ -680,7 +692,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004b2b70  dice::bf::TourOfDuty  (vtable store) */
+/* 004b2b70  TourOfDuty::~TourOfDuty  (vtable store)
+ * class: dice::bf::TourOfDuty
+ */
 BFV_L1_ENTRY(bfv_server_l1_004b2b70, bfv_server_l1_body_004b2b70);
 BFV_L1_RESUME(bfv_server_l1r_004b2b70_1, bfv_server_l1_body_004b2b70, 1);
 void bfv_server_l1_body_004b2b70(struct bfv_cpu *c)
@@ -700,7 +714,7 @@ void bfv_server_l1_body_004b2b70(struct bfv_cpu *c)
     M32(esp) = t;
     /* 004b2b71  mov esi, ecx */
     esi = ecx;
-    /* 004b2b73  mov dword ptr [esi], 0x813df4 */
+    /* 004b2b73  mov dword ptr [esi], 0x813df4  ; vtable TourOfDuty */
     ea = (uint32_t)(esi);
     M32(ea) = 0x813df4u;
     /* 004b2b79  mov eax, dword ptr [esi + 0x60] */
@@ -715,7 +729,7 @@ void bfv_server_l1_body_004b2b70(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004b2b81  call 0x403df0 */
+    /* 004b2b81  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2b70_1;
@@ -744,7 +758,7 @@ L_004b2b89:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 004b2ba1  jmp 0x4853f0 */
+    /* 004b2ba1  jmp 0x4853f0  ; GameMode::~GameMode */
     c->eip = 0x004853f0u;
     goto out;
 out: __attribute__((unused));
@@ -754,7 +768,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004b2bb0  (between same file) */
+/* 004b2bb0  TourOfDuty::sub_004b2bb0  (between same file)
+ * class: dice::bf::TourOfDuty
+ * called by: TourOfDuty::vf4, TourOfDuty::vf5, TourOfDuty::vf2, GameServer::roundInit_004d2190
+ */
 BFV_L1_ENTRY(bfv_server_l1_004b2bb0, bfv_server_l1_body_004b2bb0);
 BFV_L1_RESUME(bfv_server_l1r_004b2bb0_1, bfv_server_l1_body_004b2bb0, 1);
 void bfv_server_l1_body_004b2bb0(struct bfv_cpu *c)
@@ -772,7 +789,7 @@ void bfv_server_l1_body_004b2bb0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 004b2bb1  mov ebx, dword ptr [esp + 8] */
+    /* 004b2bb1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 004b2bb5  push esi */
@@ -916,7 +933,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004b2c10  (between same file) */
+/* 004b2c10  GameServer::roundInit_helper_004b2c10  (between same file)
+ * called by: GameServer::roundInit_004d2190
+ */
 BFV_L1_ENTRY(bfv_server_l1_004b2c10, bfv_server_l1_body_004b2c10);
 BFV_L1_RESUME(bfv_server_l1r_004b2c10_1, bfv_server_l1_body_004b2c10, 1);
 void bfv_server_l1_body_004b2c10(struct bfv_cpu *c)
@@ -951,7 +970,7 @@ void bfv_server_l1_body_004b2c10(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 004b2c1a  je 0x4b2c35 */
     if (zf) goto L_004b2c35;
-    /* 004b2c1c  lea esp, [esp] */
+    /* 004b2c1c  lea esp, [esp]  ; &var_8 */
     esp = (uint32_t)(esp);
 L_004b2c20:
     /* 004b2c20  mov ecx, dword ptr [esi] */
@@ -1027,7 +1046,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004b2c50  dice::bf::TourOfDuty  (virtual method) */
+/* 004b2c50  TourOfDuty::vf2  (virtual method)
+ * overrides: GameMode::vf2  (5 classes implement it)
+ * class: dice::bf::TourOfDuty
+ */
 BFV_L1_ENTRY(bfv_server_l1_004b2c50, bfv_server_l1_body_004b2c50);
 BFV_L1_RESUME(bfv_server_l1r_004b2c50_1, bfv_server_l1_body_004b2c50, 1);
 BFV_L1_RESUME(bfv_server_l1r_004b2c50_2, bfv_server_l1_body_004b2c50, 2);
@@ -1079,7 +1101,7 @@ void bfv_server_l1_body_004b2c50(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 004b2c54  mov ebp, dword ptr [esp + 0x24] */
+    /* 004b2c54  mov ebp, dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     ebp = M32(ea);
     /* 004b2c58  push esi */
@@ -1102,30 +1124,30 @@ void bfv_server_l1_body_004b2c50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 004b2c63  mov ecx, ebp */
     ecx = ebp;
-    /* 004b2c65  call 0x402020 */
+    /* 004b2c65  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 004b2c6a  mov ecx, dword ptr [0xbdb5c4] */
+    /* 004b2c6a  mov ecx, dword ptr [0xbdb5c4]  ; g_setup */
     ea = (uint32_t)(0x00bdb5c4u);
     ecx = M32(ea);
-    /* 004b2c70  lea eax, [esp + 0xc] */
+    /* 004b2c70  lea eax, [esp + 0xc]  ; &var_1c */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 004b2c74  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004b2c75  call 0x425140 */
+    /* 004b2c75  call 0x425140  ; sub_00425140 */
     t = 0x00425140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 004b2c7a  mov ecx, dword ptr [esp + 0x34] */
+    /* 004b2c7a  mov ecx, dword ptr [esp + 0x34]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     ecx = M32(ea);
     /* 004b2c7e  push ecx */
@@ -1136,7 +1158,7 @@ R_2:
     ecx = edi;
     /* 004b2c81  mov esi, eax */
     esi = eax;
-    /* 004b2c83  call 0x4b2bb0 */
+    /* 004b2c83  call 0x4b2bb0  ; TourOfDuty::sub_004b2bb0 */
     t = 0x004b2bb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_3;
@@ -1153,7 +1175,7 @@ R_3:
     edx = r;
     /* 004b2c8d  mov ecx, esi */
     ecx = esi;
-    /* 004b2c8f  call 0x4843e0 */
+    /* 004b2c8f  call 0x4843e0  ; bf_004843e0 */
     t = 0x004843e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_4;
@@ -1215,7 +1237,7 @@ L_004b2cb4:
     /* 004b2cb4  test al, al */
     r = (LO8(eax) & LO8(eax)) & 0xffu;
     F_LOGIC(8, r);
-    /* 004b2cb6  mov eax, dword ptr [esp + 0x24] */
+    /* 004b2cb6  mov eax, dword ptr [esp + 0x24]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000024u);
     eax = M32(ea);
     /* 004b2cba  push ebx */
@@ -1231,14 +1253,14 @@ L_004b2cb4:
     F_SUB(32, a, b, r);
     /* 004b2cc1  jb 0x4b2cd0 */
     if (cf) goto L_004b2cd0;
-    /* 004b2cc3  mov ecx, dword ptr [esp + 0x14] */
+    /* 004b2cc3  mov ecx, dword ptr [esp + 0x14]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 004b2cc7  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 004b2cc8  call 0x403df0 */
+    /* 004b2cc8  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_7;
@@ -1267,7 +1289,7 @@ L_004b2cd0:
     M32(esp) = t;
     /* 004b2cd7  mov ecx, edi */
     ecx = edi;
-    /* 004b2cd9  call 0x4b2bb0 */
+    /* 004b2cd9  call 0x4b2bb0  ; TourOfDuty::sub_004b2bb0 */
     t = 0x004b2bb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_8;
@@ -1302,7 +1324,7 @@ R_8:
     M32(esp) = t;
     /* 004b2cf2  mov ecx, esi */
     ecx = esi;
-    /* 004b2cf4  call 0x401220 */
+    /* 004b2cf4  call 0x401220  ; std::string::compare_chars */
     t = 0x00401220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_9;
@@ -1328,7 +1350,7 @@ R_9:
     M32(esp) = t;
     /* 004b2d02  mov ecx, ebp */
     ecx = ebp;
-    /* 004b2d04  call 0x401e20 */
+    /* 004b2d04  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_10;
@@ -1339,7 +1361,7 @@ L_004b2d09:
     /* 004b2d09  mov eax, dword ptr [edi + 0x60] */
     ea = (uint32_t)(edi + 0x00000060u);
     eax = M32(ea);
-    /* 004b2d0c  mov ecx, dword ptr [esp + 0x34] */
+    /* 004b2d0c  mov ecx, dword ptr [esp + 0x34]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     ecx = M32(ea);
     /* 004b2d10  mov edx, dword ptr [eax + ecx*4 - 4] */
@@ -1347,10 +1369,10 @@ L_004b2d09:
     edx = M32(ea);
     /* 004b2d14  lea eax, [eax + ecx*4 - 4] */
     eax = (uint32_t)(eax + ecx * 4u + 0xfffffffcu);
-    /* 004b2d18  mov ecx, dword ptr [esp + 0x30] */
+    /* 004b2d18  mov ecx, dword ptr [esp + 0x30]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000030u);
     ecx = M32(ea);
-    /* 004b2d1c  call 0x4843e0 */
+    /* 004b2d1c  call 0x4843e0  ; bf_004843e0 */
     t = 0x004843e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_11;
@@ -1405,7 +1427,7 @@ L_004b2d3b:
     edx = M32(ea);
     /* 004b2d3d  mov ecx, edi */
     ecx = edi;
-    /* 004b2d3f  call dword ptr [edx + 4] */
+    /* 004b2d3f  call dword ptr [edx + 4]  ; -> TourOfDuty::vf1 = GameMode::vf1 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -1435,7 +1457,7 @@ L_004b2d42:
     M32(esp) = t;
     /* 004b2d4f  mov ecx, ebp */
     ecx = ebp;
-    /* 004b2d51  call 0x401220 */
+    /* 004b2d51  call 0x401220  ; std::string::compare_chars */
     t = 0x00401220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004b2c50_15;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006eab20  dice::ref2::world::?A0xaf2ed43a::PortalObjectsPred  (virtual method) */
+/* 006eab20  PortalObjectsPred::vf0  (virtual method)
+ * class: dice::ref2::world::?A0xaf2ed43a::PortalObjectsPred
+ * also entered at 006eab40: AIPredWrapper::vf1, PortalObjectsPred::vf1, Predicator::vf1, SphereExcludeFilter::vf1
+ */
 BFV_L1_ENTRY(bfv_client_l1_006eab20, bfv_client_l1_body_006eab20);
 BFV_L1_RESUME(bfv_client_l1r_006eab20_1, bfv_client_l1_body_006eab20, 1);
 void bfv_client_l1_body_006eab20(struct bfv_cpu *c)
@@ -22,7 +25,7 @@ void bfv_client_l1_body_006eab20(struct bfv_cpu *c)
     /* 006eab20  mov eax, dword ptr [0xb8f640] */
     ea = (uint32_t)(0x00b8f640u);
     eax = M32(ea);
-    /* 006eab25  mov ecx, dword ptr [esp + 4] */
+    /* 006eab25  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006eab29  mov edx, dword ptr [ecx] */

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0071f940  dice::ref2::geom::UnderGrowthManager  (virtual method) */
+/* 0071f940  UnderGrowthManager::vf5  (virtual method)
+ * overrides: GrowthManager::vf5  (3 classes implement it)
+ * class: dice::ref2::geom::UnderGrowthManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071f940, bfv_client_l1_body_0071f940);
 BFV_L1_RESUME(bfv_client_l1r_0071f940_1, bfv_client_l1_body_0071f940, 1);
 void bfv_client_l1_body_0071f940(struct bfv_cpu *c)
@@ -28,7 +31,7 @@ void bfv_client_l1_body_0071f940(struct bfv_cpu *c)
     /* 0071f943  fld dword ptr [esi + 0x28] */
     ea = (uint32_t)(esi + 0x00000028u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0071f946  fld dword ptr [esp + 8] */
+    /* 0071f946  fld dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0071f94a  fucompp */
@@ -40,14 +43,14 @@ void bfv_client_l1_body_0071f940(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 0071f951  jnp 0x71f961 */
     if (!pf) goto L_0071f961;
-    /* 0071f953  mov eax, dword ptr [esp + 8] */
+    /* 0071f953  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0071f957  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0071f958  call 0x75e1a0 */
+    /* 0071f958  call 0x75e1a0  ; GrowthManager::vf5 */
     t = 0x0075e1a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071f940_1;
@@ -73,7 +76,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0071f970  dice::ref2::geom::UnderGrowthManager  (virtual method) */
+/* 0071f970  UnderGrowthManager::vf7_set_38h_to_1  (virtual method)
+ * overrides: GrowthManager::vf7  (3 classes implement it)
+ * class: dice::ref2::geom::UnderGrowthManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071f970, bfv_client_l1_body_0071f970);
 void bfv_client_l1_body_0071f970(struct bfv_cpu *c)
 {
@@ -96,7 +102,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0071fda0  dice::ref2::geom::UnderGrowthManager  (virtual method) */
+/* 0071fda0  UnderGrowthManager::vf3  (virtual method)
+ * overrides: GrowthManager::vf3  (3 classes implement it)
+ * class: dice::ref2::geom::UnderGrowthManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071fda0, bfv_client_l1_body_0071fda0);
 BFV_L1_RESUME(bfv_client_l1r_0071fda0_1, bfv_client_l1_body_0071fda0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0071fda0_2, bfv_client_l1_body_0071fda0, 2);
@@ -121,7 +130,7 @@ void bfv_client_l1_body_0071fda0(struct bfv_cpu *c)
     /* 0071fda3  fld dword ptr [esi + 0x24] */
     ea = (uint32_t)(esi + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0071fda6  fld dword ptr [esp + 8] */
+    /* 0071fda6  fld dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0071fdaa  fucompp */
@@ -133,14 +142,14 @@ void bfv_client_l1_body_0071fda0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 0071fdb1  jnp 0x71fde1 */
     if (!pf) goto L_0071fde1;
-    /* 0071fdb3  mov eax, dword ptr [esp + 8] */
+    /* 0071fdb3  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0071fdb7  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0071fdb8  call 0x75e110 */
+    /* 0071fdb8  call 0x75e110  ; GrowthManager::vf3 */
     t = 0x0075e110u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fda0_1;
@@ -159,10 +168,10 @@ R_1:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 0071fdc9  fstp qword ptr [esp] */
+    /* 0071fdc9  fstp qword ptr [esp]  ; var_c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0071fdcc  call 0x7c4740 */
+    /* 0071fdcc  call 0x7c4740  ; floor */
     t = 0x007c4740u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fda0_2;
@@ -200,7 +209,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0071fdf0  dice::ref2::geom::UnderGrowthManager  (virtual method) */
+/* 0071fdf0  UnderGrowthManager::createUnderGrowthPatch  (virtual method)
+ * overrides: GrowthManager::vf10  (3 classes implement it)
+ * class: dice::ref2::geom::UnderGrowthManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071fdf0, bfv_client_l1_body_0071fdf0);
 BFV_L1_RESUME(bfv_client_l1r_0071fdf0_1, bfv_client_l1_body_0071fdf0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0071fdf0_2, bfv_client_l1_body_0071fdf0, 2);
@@ -220,7 +232,7 @@ void bfv_client_l1_body_0071fdf0(struct bfv_cpu *c)
     t = 0x1b8u;
     esp -= 4;
     M32(esp) = t;
-    /* 0071fdf5  call 0x403610 */
+    /* 0071fdf5  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fdf0_1;
@@ -240,7 +252,7 @@ R_1:
     if (zf) goto L_0071fe12;
     /* 0071fe01  mov ecx, eax */
     ecx = eax;
-    /* 0071fe03  call 0x71f980 */
+    /* 0071fe03  call 0x71f980  ; UnderGrowthPatch::UnderGrowthPatch */
     t = 0x0071f980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fdf0_2;
@@ -278,8 +290,12 @@ out: __attribute__((unused));
 }
 
 
-/* 0071fe20  dice::ref2::geom::UnderGrowthManager  (vtable store)
- * strings: "level/growth/underGrowthMap" */
+/* 0071fe20  UnderGrowthManager::UnderGrowthManager  (vtable store)
+ * class: dice::ref2::geom::UnderGrowthManager
+ * strings: "level/growth/underGrowthMap"
+ * also entered at 0071fe90: GrowthManager::vf0, UnderGrowthManager::vf0
+ * called by: ServerService_HeightMap_00426b10
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071fe20, bfv_client_l1_body_0071fe20);
 BFV_L1_RESUME(bfv_client_l1r_0071fe20_1, bfv_client_l1_body_0071fe20, 1);
 BFV_L1_RESUME(bfv_client_l1r_0071fe20_2, bfv_client_l1_body_0071fe20, 2);
@@ -305,7 +321,7 @@ void bfv_client_l1_body_0071fe20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0071fe21  mov esi, ecx */
     esi = ecx;
-    /* 0071fe23  call 0x7600e0 */
+    /* 0071fe23  call 0x7600e0  ; GrowthManager::GrowthManager */
     t = 0x007600e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fe20_1;
@@ -316,19 +332,19 @@ R_1:
     t = 0x1bu;
     esp -= 4;
     M32(esp) = t;
-    /* 0071fe2a  push 0xbaa1e8 */
+    /* 0071fe2a  push 0xbaa1e8  ; "level/growth/underGrowthMap" */
     t = 0xbaa1e8u;
     esp -= 4;
     M32(esp) = t;
     /* 0071fe2f  lea ecx, [esi + 0x68] */
     ecx = (uint32_t)(esi + 0x00000068u);
-    /* 0071fe32  mov dword ptr [esi], 0xbaa1ac */
+    /* 0071fe32  mov dword ptr [esi], 0xbaa1ac  ; vtable UnderGrowthManager */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbaa1acu;
-    /* 0071fe38  mov dword ptr [esi + 0x94], 0x43800000 */
+    /* 0071fe38  mov dword ptr [esi + 0x94], 0x43800000  ; 256.0f */
     ea = (uint32_t)(esi + 0x00000094u);
     M32(ea) = 0x43800000u;
-    /* 0071fe42  call 0x401ae0 */
+    /* 0071fe42  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fe20_2;
@@ -346,13 +362,13 @@ R_2:
     M32(ea) = 0xau;
     /* 0071fe55  je 0x71fe87 */
     if (zf) goto L_0071fe87;
-    /* 0071fe57  push 0x428c0000 */
+    /* 0071fe57  push 0x428c0000  ; 70.0f */
     t = 0x428c0000u;
     esp -= 4;
     M32(esp) = t;
     /* 0071fe5c  mov ecx, esi */
     ecx = esi;
-    /* 0071fe5e  call 0x75e110 */
+    /* 0071fe5e  call 0x75e110  ; GrowthManager::vf3 */
     t = 0x0075e110u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fe20_3;
@@ -371,10 +387,10 @@ R_3:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 0071fe6f  fstp qword ptr [esp] */
+    /* 0071fe6f  fstp qword ptr [esp]  ; var_c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0071fe72  call 0x7c4740 */
+    /* 0071fe72  call 0x7c4740  ; floor */
     t = 0x007c4740u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fe20_4;

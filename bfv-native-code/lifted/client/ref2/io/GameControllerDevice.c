@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 008dcae0  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcae0  GameControllerDevice::vf5  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcae0, bfv_client_l1_body_008dcae0);
 BFV_L1_RESUME(bfv_client_l1r_008dcae0_1, bfv_client_l1_body_008dcae0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008dcae0_2, bfv_client_l1_body_008dcae0, 2);
@@ -35,7 +37,7 @@ void bfv_client_l1_body_008dcae0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008dcae3  mov edi, dword ptr [esp + 0x10] */
+    /* 008dcae3  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 008dcae7  test edi, edi */
@@ -55,7 +57,7 @@ void bfv_client_l1_body_008dcae0(struct bfv_cpu *c)
     t = 0x5u;
     esp -= 4;
     M32(esp) = t;
-    /* 008dcaf4  call dword ptr [0xb4236c] */
+    /* 008dcaf4  call dword ptr [0xb4236c]  ; USER32!GetFocus */
     ea = (uint32_t)(0x00b4236cu);
     t = M32(ea);
     esp -= 4;
@@ -87,7 +89,7 @@ L_008dcb01:
     t = 0x6u;
     esp -= 4;
     M32(esp) = t;
-    /* 008dcb08  call dword ptr [0xb4236c] */
+    /* 008dcb08  call dword ptr [0xb4236c]  ; USER32!GetFocus */
     ea = (uint32_t)(0x00b4236cu);
     t = M32(ea);
     esp -= 4;
@@ -169,7 +171,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcb30  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcb30  GameControllerDevice::vf7  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcb30, bfv_client_l1_body_008dcb30);
 BFV_L1_RESUME(bfv_client_l1r_008dcb30_1, bfv_client_l1_body_008dcb30, 1);
 void bfv_client_l1_body_008dcb30(struct bfv_cpu *c)
@@ -262,7 +266,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcb60  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcb60  GameControllerDevice::vf8  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcb60, bfv_client_l1_body_008dcb60);
 BFV_L1_RESUME(bfv_client_l1r_008dcb60_1, bfv_client_l1_body_008dcb60, 1);
 void bfv_client_l1_body_008dcb60(struct bfv_cpu *c)
@@ -338,7 +344,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcbe0  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcbe0  GameControllerDevice::vf13  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcbe0, bfv_client_l1_body_008dcbe0);
 void bfv_client_l1_body_008dcbe0(struct bfv_cpu *c)
 {
@@ -347,7 +355,7 @@ void bfv_client_l1_body_008dcbe0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dcbe0  mov eax, dword ptr [esp + 4] */
+    /* 008dcbe0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcbe4  cmp eax, dword ptr [ecx + 0x38] */
@@ -358,7 +366,7 @@ void bfv_client_l1_body_008dcbe0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008dcbe7  jg 0x8dcbf4 */
     if (!(zf | (sf != of))) goto L_008dcbf4;
-    /* 008dcbe9  mov dl, byte ptr [esp + 8] */
+    /* 008dcbe9  mov dl, byte ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(edx, M8(ea));
     /* 008dcbed  mov byte ptr [eax + ecx + 0x84], dl */
@@ -376,7 +384,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcc00  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcc00  GameControllerDevice::vf14  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcc00, bfv_client_l1_body_008dcc00);
 void bfv_client_l1_body_008dcc00(struct bfv_cpu *c)
 {
@@ -385,7 +395,7 @@ void bfv_client_l1_body_008dcc00(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dcc00  mov eax, dword ptr [esp + 4] */
+    /* 008dcc00  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcc04  cmp eax, dword ptr [ecx + 0x38] */
@@ -419,7 +429,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcc20  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcc20  GameControllerDevice::vf17  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcc20, bfv_client_l1_body_008dcc20);
 void bfv_client_l1_body_008dcc20(struct bfv_cpu *c)
 {
@@ -428,7 +440,7 @@ void bfv_client_l1_body_008dcc20(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dcc20  mov eax, dword ptr [esp + 4] */
+    /* 008dcc20  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcc24  cmp eax, dword ptr [ecx + 0x38] */
@@ -439,7 +451,7 @@ void bfv_client_l1_body_008dcc20(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008dcc27  jg 0x8dcc31 */
     if (!(zf | (sf != of))) goto L_008dcc31;
-    /* 008dcc29  fld dword ptr [esp + 8] */
+    /* 008dcc29  fld dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dcc2d  fstp dword ptr [ecx + eax*4 + 0x64] */
@@ -457,7 +469,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcc40  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcc40  GameControllerDevice::vf18  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcc40, bfv_client_l1_body_008dcc40);
 void bfv_client_l1_body_008dcc40(struct bfv_cpu *c)
 {
@@ -466,7 +480,7 @@ void bfv_client_l1_body_008dcc40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dcc40  mov eax, dword ptr [esp + 4] */
+    /* 008dcc40  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcc44  cmp eax, dword ptr [ecx + 0x38] */
@@ -477,7 +491,7 @@ void bfv_client_l1_body_008dcc40(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008dcc47  jle 0x8dcc52 */
     if ((zf | (sf != of))) goto L_008dcc52;
-    /* 008dcc49  fld dword ptr [0xb44444] */
+    /* 008dcc49  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dcc4f  ret 4 */
@@ -499,7 +513,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcc60  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcc60  GameControllerDevice::vf15  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcc60, bfv_client_l1_body_008dcc60);
 void bfv_client_l1_body_008dcc60(struct bfv_cpu *c)
 {
@@ -508,7 +524,7 @@ void bfv_client_l1_body_008dcc60(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dcc60  mov eax, dword ptr [esp + 4] */
+    /* 008dcc60  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcc64  cmp eax, dword ptr [ecx + 0x38] */
@@ -519,7 +535,7 @@ void bfv_client_l1_body_008dcc60(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008dcc67  jg 0x8dcc71 */
     if (!(zf | (sf != of))) goto L_008dcc71;
-    /* 008dcc69  fld dword ptr [esp + 8] */
+    /* 008dcc69  fld dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dcc6d  fstp dword ptr [ecx + eax*4 + 0x44] */
@@ -537,7 +553,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcc80  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcc80  GameControllerDevice::vf16  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcc80, bfv_client_l1_body_008dcc80);
 void bfv_client_l1_body_008dcc80(struct bfv_cpu *c)
 {
@@ -546,7 +564,7 @@ void bfv_client_l1_body_008dcc80(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dcc80  mov eax, dword ptr [esp + 4] */
+    /* 008dcc80  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcc84  cmp eax, dword ptr [ecx + 0x38] */
@@ -557,7 +575,7 @@ void bfv_client_l1_body_008dcc80(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008dcc87  jle 0x8dcc92 */
     if ((zf | (sf != of))) goto L_008dcc92;
-    /* 008dcc89  fld dword ptr [0xb44444] */
+    /* 008dcc89  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dcc8f  ret 4 */
@@ -579,7 +597,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcca0  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcca0  GameControllerDevice::vf12  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcca0, bfv_client_l1_body_008dcca0);
 void bfv_client_l1_body_008dcca0(struct bfv_cpu *c)
 {
@@ -588,7 +608,7 @@ void bfv_client_l1_body_008dcca0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 008dcca0  mov eax, dword ptr [esp + 4] */
+    /* 008dcca0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcca4  mov dl, byte ptr [eax + ecx + 0x84] */
@@ -624,7 +644,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dccd0  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dccd0  GameControllerDevice::vf19  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dccd0, bfv_client_l1_body_008dccd0);
 void bfv_client_l1_body_008dccd0(struct bfv_cpu *c)
 {
@@ -668,7 +690,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008dccf0  (between same file) */
+/* 008dccf0  GameControllerDevice_calls_GetFocus_008dccf0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dccf0, bfv_client_l1_body_008dccf0);
 BFV_L1_RESUME(bfv_client_l1r_008dccf0_1, bfv_client_l1_body_008dccf0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008dccf0_2, bfv_client_l1_body_008dccf0, 2);
@@ -694,7 +717,7 @@ void bfv_client_l1_body_008dccf0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008dccf4  mov ebx, dword ptr [esp + 0x24] */
+    /* 008dccf4  mov ebx, dword ptr [esp + 0x24]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000024u);
     ebx = M32(ea);
     /* 008dccf8  push esi */
@@ -708,7 +731,7 @@ void bfv_client_l1_body_008dccf0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008dccfc  call dword ptr [0xb4236c] */
+    /* 008dccfc  call dword ptr [0xb4236c]  ; USER32!GetFocus */
     ea = (uint32_t)(0x00b4236cu);
     t = M32(ea);
     esp -= 4;
@@ -716,13 +739,13 @@ void bfv_client_l1_body_008dccf0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 008dcd02  mov edi, dword ptr [esp + 0x28] */
+    /* 008dcd02  mov edi, dword ptr [esp + 0x28]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000028u);
     edi = M32(ea);
     /* 008dcd06  mov eax, dword ptr [edi + 0x18] */
     ea = (uint32_t)(edi + 0x00000018u);
     eax = M32(ea);
-    /* 008dcd09  lea edx, [esp + 0xc] */
+    /* 008dcd09  lea edx, [esp + 0xc]  ; &var_18 */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 008dcd0d  push edx */
     t = edx;
@@ -732,22 +755,22 @@ R_1:
     t = 0x4u;
     esp -= 4;
     M32(esp) = t;
-    /* 008dcd10  mov dword ptr [esp + 0x14], 0x18 */
+    /* 008dcd10  mov dword ptr [esp + 0x14], 0x18  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x18u;
-    /* 008dcd18  mov dword ptr [esp + 0x18], 0x10 */
+    /* 008dcd18  mov dword ptr [esp + 0x18], 0x10  ; var_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x10u;
-    /* 008dcd20  mov dword ptr [esp + 0x20], 2 */
+    /* 008dcd20  mov dword ptr [esp + 0x20], 2  ; var_c */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0x2u;
-    /* 008dcd28  mov dword ptr [esp + 0x1c], eax */
+    /* 008dcd28  mov dword ptr [esp + 0x1c], eax  ; var_10 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = eax;
-    /* 008dcd2c  mov dword ptr [esp + 0x24], 0xfffffc18 */
+    /* 008dcd2c  mov dword ptr [esp + 0x24], 0xfffffc18  ; var_8 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = 0xfffffc18u;
-    /* 008dcd34  mov dword ptr [esp + 0x28], 0x3e8 */
+    /* 008dcd34  mov dword ptr [esp + 0x28], 0x3e8  ; var_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0x3e8u;
     /* 008dcd3c  mov ecx, dword ptr [esi] */
@@ -1049,7 +1072,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dce10  (between same file) */
+/* 008dce10  GameControllerDevice::~GameControllerDevice  (between same file)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dce10, bfv_client_l1_body_008dce10);
 BFV_L1_RESUME(bfv_client_l1r_008dce10_1, bfv_client_l1_body_008dce10, 1);
 BFV_L1_RESUME(bfv_client_l1r_008dce10_2, bfv_client_l1_body_008dce10, 2);
@@ -1081,7 +1106,7 @@ void bfv_client_l1_body_008dce10(struct bfv_cpu *c)
     /* 008dce16  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 008dce18  mov dword ptr [esi], 0xbe102c */
+    /* 008dce18  mov dword ptr [esi], 0xbe102c  ; vtable GameControllerDevice */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe102cu;
     /* 008dce1e  je 0x8dce30 */
@@ -1090,7 +1115,7 @@ void bfv_client_l1_body_008dce10(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008dce21  call 0x403680 */
+    /* 008dce21  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dce10_1;
@@ -1182,7 +1207,7 @@ R_4:
     ea = (uint32_t)(esi + 0x000000acu);
     M32(ea) = 0x0u;
 L_008dce71:
-    /* 008dce71  mov dword ptr [esi], 0xb4274c */
+    /* 008dce71  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 008dce77  pop esi */
@@ -1200,7 +1225,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008dce80  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dce80  GameControllerDevice::vf10  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ * also entered at 008dcea0: GameControllerDevice::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dce80, bfv_client_l1_body_008dce80);
 void bfv_client_l1_body_008dce80(struct bfv_cpu *c)
 {
@@ -1247,7 +1275,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcec0  dice::ref2::io::GameControllerDevice  (vtable store) */
+/* 008dcec0  GameControllerDevice::GameControllerDevice  (vtable store)
+ * class: dice::ref2::io::GameControllerDevice
+ * called by: DX8InputDeviceManager::vf4
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcec0, bfv_client_l1_body_008dcec0);
 void bfv_client_l1_body_008dcec0(struct bfv_cpu *c)
 {
@@ -1266,7 +1297,7 @@ void bfv_client_l1_body_008dcec0(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ebx = r;
-    /* 008dcec5  mov dword ptr [eax], 0xbe102c */
+    /* 008dcec5  mov dword ptr [eax], 0xbe102c  ; vtable GameControllerDevice */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbe102cu;
     /* 008dcecb  mov dword ptr [eax + 4], 1 */
@@ -1293,13 +1324,13 @@ void bfv_client_l1_body_008dcec0(struct bfv_cpu *c)
     edx = r;
     /* 008dcee6  lea ecx, [eax + 0x44] */
     ecx = (uint32_t)(eax + 0x00000044u);
-    /* 008dcee9  lea esp, [esp] */
+    /* 008dcee9  lea esp, [esp]  ; &var_4 */
     esp = (uint32_t)(esp);
 L_008dcef0:
     /* 008dcef0  mov dword ptr [ecx - 0x2c], ebx */
     ea = (uint32_t)(ecx + 0xffffffd4u);
     M32(ea) = ebx;
-    /* 008dcef3  mov dword ptr [ecx], 0x3f800000 */
+    /* 008dcef3  mov dword ptr [ecx], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(ecx);
     M32(ea) = 0x3f800000u;
     /* 008dcef9  mov dword ptr [ecx + 0x20], ebx */
@@ -1359,7 +1390,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcf40  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcf40  GameControllerDevice::vf24  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcf40, bfv_client_l1_body_008dcf40);
 void bfv_client_l1_body_008dcf40(struct bfv_cpu *c)
 {
@@ -1368,7 +1401,7 @@ void bfv_client_l1_body_008dcf40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008dcf40  mov eax, dword ptr [esp + 4] */
+    /* 008dcf40  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 008dcf44  cmp eax, dword ptr [ecx + 0xa8] */
@@ -1402,7 +1435,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dcf60  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dcf60  GameControllerDevice::vf9  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dcf60, bfv_client_l1_body_008dcf60);
 BFV_L1_RESUME(bfv_client_l1r_008dcf60_1, bfv_client_l1_body_008dcf60, 1);
 BFV_L1_RESUME(bfv_client_l1r_008dcf60_2, bfv_client_l1_body_008dcf60, 2);
@@ -1434,7 +1469,7 @@ void bfv_client_l1_body_008dcf60(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 008dcf66  mov eax, dword ptr [0xcff7cc] */
+    /* 008dcf66  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 008dcf6b  push ebp */
@@ -1558,7 +1593,7 @@ R_3:
     /* 008dcfb7  mov ecx, dword ptr [esp + 0x118] */
     ea = (uint32_t)(esp + 0x00000118u);
     ecx = M32(ea);
-    /* 008dcfbe  call 0x7c2019 */
+    /* 008dcfbe  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dcf60_4;
@@ -1614,7 +1649,7 @@ R_5:
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dcfef  mov edi, 1 */
     edi = 0x1u;
-    /* 008dcff4  fmul dword ptr [0xb556dc] */
+    /* 008dcff4  fmul dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dcffa  fmul dword ptr [esi + 0x44] */
@@ -1638,7 +1673,7 @@ L_008dd000:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 008dd00e  fmul dword ptr [0xb556dc] */
+    /* 008dd00e  fmul dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd014  fmul dword ptr [esi + edi*4 + 0x40] */
@@ -1662,7 +1697,7 @@ L_008dd01c:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 008dd02a  fmul dword ptr [0xb556dc] */
+    /* 008dd02a  fmul dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd030  fmul dword ptr [esi + edi*4 + 0x40] */
@@ -1686,7 +1721,7 @@ L_008dd038:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 008dd046  fmul dword ptr [0xb556dc] */
+    /* 008dd046  fmul dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd04c  fmul dword ptr [esi + edi*4 + 0x40] */
@@ -1710,7 +1745,7 @@ L_008dd054:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 008dd062  fmul dword ptr [0xb556dc] */
+    /* 008dd062  fmul dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd068  fmul dword ptr [esi + edi*4 + 0x40] */
@@ -1734,7 +1769,7 @@ L_008dd070:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 008dd07e  fmul dword ptr [0xb556dc] */
+    /* 008dd07e  fmul dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd084  fmul dword ptr [esi + edi*4 + 0x40] */
@@ -1760,7 +1795,7 @@ L_008dd08c:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 008dd099  fmul dword ptr [0xb556dc] */
+    /* 008dd099  fmul dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd09f  fmul dword ptr [esi + edi*4 + 0x40] */
@@ -1781,7 +1816,7 @@ L_008dd0a7:
     /* 008dd0b0  fild dword ptr [esp + 0x30] */
     ea = (uint32_t)(esp + 0x00000030u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008dd0b4  fmul dword ptr [0xb556dc] */
+    /* 008dd0b4  fmul dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 008dd0ba  fmul dword ptr [esi + edi*4 + 0x44] */
@@ -2401,7 +2436,7 @@ L_008dd2a0:
     t = M32(esp);
     esp += 4;
     ebp = t;
-    /* 008dd2aa  call 0x7c2019 */
+    /* 008dd2aa  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dcf60_7;
@@ -2425,7 +2460,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008dd300  dice::ref2::io::GameControllerDevice  (virtual method) */
+/* 008dd300  GameControllerDevice::vf26  (virtual method)
+ * class: dice::ref2::io::GameControllerDevice
+ */
 BFV_L1_ENTRY(bfv_client_l1_008dd300, bfv_client_l1_body_008dd300);
 BFV_L1_RESUME(bfv_client_l1r_008dd300_1, bfv_client_l1_body_008dd300, 1);
 BFV_L1_RESUME(bfv_client_l1r_008dd300_2, bfv_client_l1_body_008dd300, 2);
@@ -2455,7 +2492,7 @@ void bfv_client_l1_body_008dd300(struct bfv_cpu *c)
     case 9: goto R_9;
     default: break;
     }
-    /* 008dd300  mov eax, dword ptr [0xdf7150] */
+    /* 008dd300  mov eax, dword ptr [0xdf7150]  ; g_pInputDeviceManager */
     ea = (uint32_t)(0x00df7150u);
     eax = M32(ea);
     /* 008dd305  sub esp, 0x30 */
@@ -2493,7 +2530,7 @@ void bfv_client_l1_body_008dd300(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd318  call dword ptr [0xb420f8] */
+    /* 008dd318  call dword ptr [0xb420f8]  ; KERNEL32!GetModuleHandleA */
     ea = (uint32_t)(0x00b420f8u);
     t = M32(ea);
     esp -= 4;
@@ -2523,7 +2560,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd331  call 0xa9048a */
+    /* 008dd331  call 0xa9048a  ; io_thunk_DirectInput8Create_00a9048a */
     t = 0x00a9048au;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dd300_2;
@@ -2687,7 +2724,7 @@ R_5:
     M32(esp) = t;
     /* 008dd3cd  mov ecx, esi */
     ecx = esi;
-    /* 008dd3cf  call dword ptr [eax + 0x14] */
+    /* 008dd3cf  call dword ptr [eax + 0x14]  ; -> GameControllerDevice::vf5 */
     ea = (uint32_t)(eax + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -2704,7 +2741,7 @@ R_6:
     t = 0x2cu;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd3d8  call 0x403610 */
+    /* 008dd3d8  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dd300_7;
@@ -2794,7 +2831,7 @@ R_8:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008dd420  push 0x8dccf0 */
+    /* 008dd420  push 0x8dccf0  ; GameControllerDevice_calls_GetFocus_008dccf0 */
     t = 0x8dccf0u;
     esp -= 4;
     M32(esp) = t;

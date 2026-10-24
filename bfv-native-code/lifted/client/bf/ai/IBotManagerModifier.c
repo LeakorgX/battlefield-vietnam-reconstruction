@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 009639e0  dice::bf::ai::IBotManagerModifier  (virtual method) */
+/* 009639e0  IBotManagerModifier::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IBotManagerModifier
+ */
 BFV_L1_ENTRY(bfv_client_l1_009639e0, bfv_client_l1_body_009639e0);
 BFV_L1_RESUME(bfv_client_l1r_009639e0_1, bfv_client_l1_body_009639e0, 1);
 void bfv_client_l1_body_009639e0(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_009639e0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009639e0  test byte ptr [esp + 4], 1 */
+    /* 009639e0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,10 +31,10 @@ void bfv_client_l1_body_009639e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009639e6  mov esi, ecx */
     esi = ecx;
-    /* 009639e8  mov dword ptr [esi], 0xbf3364 */
+    /* 009639e8  mov dword ptr [esi], 0xbf3364  ; vtable IBotManagerModifier */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf3364u;
-    /* 009639ee  mov dword ptr [0xe0ee10], 0 */
+    /* 009639ee  mov dword ptr [0xe0ee10], 0  ; g_pIBotManagerModifier_00e0ee10 */
     ea = (uint32_t)(0x00e0ee10u);
     M32(ea) = 0x0u;
     /* 009639f8  je 0x963a03 */
@@ -41,7 +43,7 @@ void bfv_client_l1_body_009639e0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009639fb  call 0x403680 */
+    /* 009639fb  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009639e0_1;
@@ -72,7 +74,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00963a10  dice::bf::ai::IBotManagerModifier  (vtable store) */
+/* 00963a10  IBotManagerModifier::IBotManagerModifier  (vtable store)
+ * class: dice::bf::ai::IBotManagerModifier
+ * called by: BotManager::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_00963a10, bfv_client_l1_body_00963a10);
 void bfv_client_l1_body_00963a10(struct bfv_cpu *c)
 {
@@ -83,10 +88,10 @@ void bfv_client_l1_body_00963a10(struct bfv_cpu *c)
     uint32_t ea;
     /* 00963a10  mov eax, ecx */
     eax = ecx;
-    /* 00963a12  mov dword ptr [eax], 0xbf3364 */
+    /* 00963a12  mov dword ptr [eax], 0xbf3364  ; vtable IBotManagerModifier */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf3364u;
-    /* 00963a18  mov dword ptr [0xe0ee10], eax */
+    /* 00963a18  mov dword ptr [0xe0ee10], eax  ; g_pIBotManagerModifier_00e0ee10 */
     ea = (uint32_t)(0x00e0ee10u);
     M32(ea) = eax;
     /* 00963a1d  ret */

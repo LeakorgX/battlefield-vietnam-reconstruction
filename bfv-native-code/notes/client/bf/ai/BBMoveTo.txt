@@ -1,0 +1,8 @@
+## file
+Behaviour that scores moving to a strategic goal.
+
+## 0098e9e0
+evaluate: when not usable it clears the per-bot state and returns the stored weight. Builds a weight from the AISettings grid (FloatGrid_get rows 0x5d, 0x5c and 0x8 for this bot). When row 8 is non-zero it looks up the player (PlayerManager getPlayerFromId) and creates a WPMoveTo waypoint (8.0) and hands it to the bot. When the row 0x5c value is non-zero it resolves the object, sets 80.0 at +0xc of it and adds a WPCloseTo waypoint (1.0, 180.0). Returns the weight stored for the bot.
+
+## 0098e9c0
+Calls tool_007b3560 and sets the byte it returns to 1.

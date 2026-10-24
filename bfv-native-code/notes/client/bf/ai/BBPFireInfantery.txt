@@ -1,0 +1,32 @@
+## file
+Plan builder for a soldier firing at a target, including picking a firing position next to cover.
+
+## 00996e40
+vf5: records a fire request for this bot (index from bot slot 0xdc): stores the two arguments in the per-bot arrays at this+0xc and this+0x10. When a new record is needed it also resets the bot's entry in the array at this+0x20 (three values set, the last to 10.0) and sets the per-bot handle at this+0x1c to -1. Always sets the per-bot flag to 1.
+
+## 00997cd0
+2D linear interpolation: returns t * a + (1 - t) * b for the two points, with t the first argument.
+
+## 00997e50
+Picks a firing spot at a cover object: takes the cover point (AIObjectCover_009ed3b0) and its direction (AIObjectCover_009ed3a0) in world space through the object's matrix, steps out along the direction by the given distance, draws the result with the debug renderer (red, 10.0), snaps it to the path grid (IAIPathfinding::vf21 and vf19) and blends between the two points with a random factor (Random_next scaled by 2^-24). Writes the point (y = 0) and the normalized direction to the outputs.
+
+## 00998190
+Inserts a key into the sorted tree (std map) unless an equal key is already there; returns the node and whether it was inserted.
+
+## 00998300
+BAPVariable<uint> constructor helper: allocates a 0x10-byte variable record (vtable 0x00bf61f8) and appends it to the owner's variable list.
+
+## 00998370
+Checks a list of query points against the soldier's position: transforms each of up to 12 offsets (table at 0x00bf6238) through the object's matrix and tests the distance against the per-entry limit (table at 0x00bf622c), also using IAIEnvironment::vf20. Writes whether a usable point was found and its index; returns 0 when the list is empty.
+
+## 00998590
+Builds the firing part of the soldier plan: a parallel combiner with a BAPASoldierPose (crouch or stand: compared with IAIMain::vf29 against 0.2), a fire condition built from BAPConObjectHealth (target alive), BAPConAnd, BAPConNot and BAPConOr, a BAPConWeaponMagAmmo check shared through BAPConSharedCondition when the weapon has a magazine, and a BAPConWeaponHeat check (0.8 and 0.5) when the weapon can overheat (slot 0x68).
+
+## 00999480
+Scores the cover objects around the soldier: for each cover point it computes the world position and direction (5 units back along the direction), its distance from the soldier and from the target plus the two cover sizes (AIObjectCover_009ed3c0 and 009ed3d0), and inserts the score into a sorted tree. Clears the tree at the end.
+
+## 00999880
+buildPlan helper: stamps the bot's AI time (bfv_client_set_word_00970ce0), finds the vehicle seat and the soldier position (control 5 and 2). The engagement distance is the weapon's minimum range +0x28 plus min(50, half the range span). When the soldier is within 5 units (squared 25) of the chosen point it uses that point. Builds BAPVariable<Weapon*>, BAPVariable<uint> and BAPVariable<bool> variables for the plan.
+
+## 0099b060
+buildPlan: finds the soldier's seat and the target (bfv_object_lookup, bfv_event_interface 1 and 3, IPIUnit_009dd080 for the target unit), checks the target info entry (slot 0x88) and builds the full soldier fire plan with the helpers above. The format string "playerStats.setTotBulletsGivingDamage %s %d" sits in the same data area.

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005c8ae0  dice::bf::DownloadManager::_DownloadManagerEvent  (vtable store) */
+/* 005c8ae0  _DownloadManagerEvent::_DownloadManagerEvent  (vtable store)
+ * class: dice::bf::DownloadManager::_DownloadManagerEvent
+ * called by: DownloadManager::vf8
+ */
 BFV_L1_ENTRY(bfv_client_l1_005c8ae0, bfv_client_l1_body_005c8ae0);
 BFV_L1_RESUME(bfv_client_l1r_005c8ae0_1, bfv_client_l1_body_005c8ae0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005c8ae0_2, bfv_client_l1_body_005c8ae0, 2);
@@ -83,7 +86,7 @@ void bfv_client_l1_body_005c8ae0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005c8ae9  mov ebp, ecx */
     ebp = ecx;
-    /* 005c8aeb  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005c8aeb  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005c8af1  mov eax, dword ptr [ecx] */
@@ -117,7 +120,7 @@ R_1:
     /* 005c8b0a  mov dword ptr [ebx + 8], edi */
     ea = (uint32_t)(ebx + 0x00000008u);
     M32(ea) = edi;
-    /* 005c8b0d  mov dword ptr [ebx], 0xb76aac */
+    /* 005c8b0d  mov dword ptr [ebx], 0xb76aac  ; vtable _DownloadManagerEvent */
     ea = (uint32_t)(ebx);
     M32(ea) = 0xb76aacu;
     /* 005c8b13  cmp dword ptr [ebp + 0x88], edi */
@@ -237,14 +240,14 @@ L_005c8b43:
     M32(esp) = t;
     /* 005c8b85  lea ecx, [esp + 0x14] */
     ecx = (uint32_t)(esp + 0x00000014u);
-    /* 005c8b89  call 0x402100 */
+    /* 005c8b89  call 0x402100  ; std::string::string_cstr */
     t = 0x00402100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005c8b8e  mov ecx, dword ptr [0xdf7148] */
+    /* 005c8b8e  mov ecx, dword ptr [0xdf7148]  ; g_pFileManager */
     ea = (uint32_t)(0x00df7148u);
     ecx = M32(ea);
     /* 005c8b94  mov eax, dword ptr [ecx] */
@@ -268,7 +271,7 @@ R_2:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c8b9f  call dword ptr [eax + 0x10] */
+    /* 005c8b9f  call dword ptr [eax + 0x10]  ; -> FileManager::vf4 = FileManager::openFile */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -280,7 +283,7 @@ R_3:
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 005c8ba6  mov esi, eax */
     esi = eax;
-    /* 005c8ba8  call 0x5a7c60 */
+    /* 005c8ba8  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_4;
@@ -323,7 +326,7 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c8bd5  call 0x403610 */
+    /* 005c8bd5  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_6;
@@ -528,7 +531,7 @@ L_005c8c59:
     /* 005c8c6b  mov dword ptr [ebx + 0x14], edx */
     ea = (uint32_t)(ebx + 0x00000014u);
     M32(ea) = edx;
-    /* 005c8c6e  call 0x54d470 */
+    /* 005c8c6e  call 0x54d470  ; bf_0054d470 */
     t = 0x0054d470u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_10;
@@ -541,7 +544,7 @@ R_10:
     M32(esp) = t;
     /* 005c8c74  mov ecx, ebx */
     ecx = ebx;
-    /* 005c8c76  call 0x5c8a30 */
+    /* 005c8c76  call 0x5c8a30  ; sub_005c8a30 */
     t = 0x005c8a30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_11;
@@ -555,7 +558,7 @@ R_11:
     if (!zf) goto L_005c8ca1;
     /* 005c8c7f  mov ecx, esi */
     ecx = esi;
-    /* 005c8c81  call 0x54d4b0 */
+    /* 005c8c81  call 0x54d4b0  ; bf_0054d4b0 */
     t = 0x0054d4b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_12;
@@ -789,7 +792,7 @@ L_005c8d17:
     }
     /* 005c8d43  mov ecx, edx */
     ecx = edx;
-    /* 005c8d45  call 0x54d470 */
+    /* 005c8d45  call 0x54d470  ; bf_0054d470 */
     t = 0x0054d470u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_14;
@@ -805,7 +808,7 @@ R_14:
     M32(esp) = t;
     /* 005c8d4f  mov ecx, ebx */
     ecx = ebx;
-    /* 005c8d51  call 0x5c8a30 */
+    /* 005c8d51  call 0x5c8a30  ; sub_005c8a30 */
     t = 0x005c8a30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_15;
@@ -819,7 +822,7 @@ R_15:
     if (!zf) goto L_005c8d76;
     /* 005c8d5a  mov ecx, esi */
     ecx = esi;
-    /* 005c8d5c  call 0x54d4b0 */
+    /* 005c8d5c  call 0x54d4b0  ; bf_0054d4b0 */
     t = 0x0054d4b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_16;
@@ -934,7 +937,7 @@ L_005c8d90:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c8db5  call 0x403680 */
+    /* 005c8db5  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_18;
@@ -959,7 +962,7 @@ L_005c8dc9:
     /* 005c8dcc  mov dword ptr [ebp + 0x88], edi */
     ea = (uint32_t)(ebp + 0x00000088u);
     M32(ea) = edi;
-    /* 005c8dd2  call 0x5c81c0 */
+    /* 005c8dd2  call 0x5c81c0  ; _DownloadManagerEvent::constructor_helper_005c81c0 */
     t = 0x005c81c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c8ae0_19;

@@ -5,7 +5,91 @@
 #include "l1.h"
 
 
-/* 00653cd0  dice::ref2::world::LodObjectTemplate  (virtual method) */
+/* 00653c70  LodObjectTemplate::LodObjectTemplate  (vtable store)
+ * class: dice::ref2::world::LodObjectTemplate
+ */
+BFV_L1_ENTRY(bfv_client_l1_00653c70, bfv_client_l1_body_00653c70);
+BFV_L1_RESUME(bfv_client_l1r_00653c70_1, bfv_client_l1_body_00653c70, 1);
+void bfv_client_l1_body_00653c70(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    default: break;
+    }
+    /* 00653c70  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00653c71  mov esi, ecx */
+    esi = ecx;
+    /* 00653c73  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
+    t = 0x006a52c0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00653c70_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 00653c78  mov dword ptr [esi + 0x1d8], 0xb8e7ec  ; vtable ILodObjectTemplate */
+    ea = (uint32_t)(esi + 0x000001d8u);
+    M32(ea) = 0xb8e7ecu;
+    /* 00653c82  mov dword ptr [esi], 0xb8e884  ; vtable LodObjectTemplate */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0xb8e884u;
+    /* 00653c88  mov dword ptr [esi + 4], 0xb8e86c */
+    ea = (uint32_t)(esi + 0x00000004u);
+    M32(ea) = 0xb8e86cu;
+    /* 00653c8f  mov dword ptr [esi + 0x78], 0xb8e860 */
+    ea = (uint32_t)(esi + 0x00000078u);
+    M32(ea) = 0xb8e860u;
+    /* 00653c96  mov dword ptr [esi + 0x1bc], 0xb8e834 */
+    ea = (uint32_t)(esi + 0x000001bcu);
+    M32(ea) = 0xb8e834u;
+    /* 00653ca0  mov dword ptr [esi + 0x1d8], 0xb8e810 */
+    ea = (uint32_t)(esi + 0x000001d8u);
+    M32(ea) = 0xb8e810u;
+    /* 00653caa  mov dword ptr [esi + 0x1dc], 1 */
+    ea = (uint32_t)(esi + 0x000001dcu);
+    M32(ea) = 0x1u;
+    /* 00653cb4  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 00653cb6  mov dword ptr [esi + 0x1f4], eax */
+    ea = (uint32_t)(esi + 0x000001f4u);
+    M32(ea) = eax;
+    /* 00653cbc  mov dword ptr [esi + 0x1f8], 0xf */
+    ea = (uint32_t)(esi + 0x000001f8u);
+    M32(ea) = 0xfu;
+    /* 00653cc6  mov byte ptr [esi + 0x1e4], al */
+    ea = (uint32_t)(esi + 0x000001e4u);
+    M8(ea) = LO8(eax);
+    /* 00653ccc  mov eax, esi */
+    eax = esi;
+    /* 00653cce  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 00653ccf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00653cd0  LodObjectTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::LodObjectTemplate
+ * also entered at 00653d20: LodObjectTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_00653cd0, bfv_client_l1_body_00653cd0);
 void bfv_client_l1_body_00653cd0(struct bfv_cpu *c)
 {
@@ -14,12 +98,12 @@ void bfv_client_l1_body_00653cd0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00653cd0  mov edx, dword ptr [0xb42718] */
+    /* 00653cd0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00653cd6  mov eax, ecx */
     eax = ecx;
-    /* 00653cd8  mov ecx, dword ptr [esp + 4] */
+    /* 00653cd8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00653cdc  cmp ecx, edx */
@@ -29,7 +113,7 @@ void bfv_client_l1_body_00653cd0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00653cde  je 0x653d10 */
     if (zf) goto L_00653d10;
-    /* 00653ce0  cmp ecx, dword ptr [0xb77d80] */
+    /* 00653ce0  cmp ecx, dword ptr [0xb77d80]  ; interfaceID(ObjectTemplate) */
     ea = (uint32_t)(0x00b77d80u);
     a = ecx;
     b = M32(ea);
@@ -37,7 +121,7 @@ void bfv_client_l1_body_00653cd0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00653ce6  je 0x653d10 */
     if (zf) goto L_00653d10;
-    /* 00653ce8  cmp ecx, dword ptr [0xbdb000] */
+    /* 00653ce8  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);
@@ -61,7 +145,7 @@ void bfv_client_l1_body_00653cd0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_00653cfa:
-    /* 00653cfa  cmp ecx, dword ptr [0xb77e34] */
+    /* 00653cfa  cmp ecx, dword ptr [0xb77e34]  ; interfaceID(LodObjectTemplate) */
     ea = (uint32_t)(0x00b77e34u);
     a = ecx;
     b = M32(ea);
@@ -101,7 +185,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00653d30  (between same file) */
+/* 00653d30  LodObjectTemplate::deleting_dtor_adjustor4_00653d30  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00653d30, bfv_client_l1_body_00653d30);
 void bfv_client_l1_body_00653d30(struct bfv_cpu *c)
 {
@@ -116,7 +201,7 @@ void bfv_client_l1_body_00653d30(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00653d33  jmp 0x653df0 */
+    /* 00653d33  jmp 0x653df0  ; LodObjectTemplate::deleting_dtor */
     c->eip = 0x00653df0u;
     goto out;
 out: __attribute__((unused));
@@ -126,7 +211,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00653d40  (between same file) */
+/* 00653d40  LodObjectTemplate::queryInterface_adjustor4_00653d40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00653d40, bfv_client_l1_body_00653d40);
 void bfv_client_l1_body_00653d40(struct bfv_cpu *c)
 {
@@ -141,7 +227,7 @@ void bfv_client_l1_body_00653d40(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00653d43  jmp 0x653cd0 */
+    /* 00653d43  jmp 0x653cd0  ; LodObjectTemplate::queryInterface */
     c->eip = 0x00653cd0u;
     goto out;
 out: __attribute__((unused));
@@ -151,7 +237,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00653d50  (between same file) */
+/* 00653d50  LodObjectTemplate::deleting_dtor_adjustor120_00653d50  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00653d50, bfv_client_l1_body_00653d50);
 void bfv_client_l1_body_00653d50(struct bfv_cpu *c)
 {
@@ -166,7 +253,7 @@ void bfv_client_l1_body_00653d50(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00653d53  jmp 0x653df0 */
+    /* 00653d53  jmp 0x653df0  ; LodObjectTemplate::deleting_dtor */
     c->eip = 0x00653df0u;
     goto out;
 out: __attribute__((unused));
@@ -176,7 +263,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00653d60  (between same file) */
+/* 00653d60  LodObjectTemplate::deleting_dtor_adjustor444_00653d60  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00653d60, bfv_client_l1_body_00653d60);
 void bfv_client_l1_body_00653d60(struct bfv_cpu *c)
 {
@@ -191,7 +279,7 @@ void bfv_client_l1_body_00653d60(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00653d66  jmp 0x653df0 */
+    /* 00653d66  jmp 0x653df0  ; LodObjectTemplate::deleting_dtor */
     c->eip = 0x00653df0u;
     goto out;
 out: __attribute__((unused));
@@ -201,7 +289,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00653d70  (between same file) */
+/* 00653d70  LodObjectTemplate::queryInterface_adjustor444_00653d70  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00653d70, bfv_client_l1_body_00653d70);
 void bfv_client_l1_body_00653d70(struct bfv_cpu *c)
 {
@@ -216,7 +305,7 @@ void bfv_client_l1_body_00653d70(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00653d76  jmp 0x653cd0 */
+    /* 00653d76  jmp 0x653cd0  ; LodObjectTemplate::queryInterface */
     c->eip = 0x00653cd0u;
     goto out;
 out: __attribute__((unused));
@@ -226,7 +315,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00653d80  (between same file) */
+/* 00653d80  LodObjectTemplate::deleting_dtor_adjustor472_00653d80  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00653d80, bfv_client_l1_body_00653d80);
 void bfv_client_l1_body_00653d80(struct bfv_cpu *c)
 {
@@ -241,7 +331,7 @@ void bfv_client_l1_body_00653d80(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00653d86  jmp 0x653df0 */
+    /* 00653d86  jmp 0x653df0  ; LodObjectTemplate::deleting_dtor */
     c->eip = 0x00653df0u;
     goto out;
 out: __attribute__((unused));
@@ -251,7 +341,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00653d90  (between same file) */
+/* 00653d90  LodObjectTemplate::queryInterface_adjustor472_00653d90  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00653d90, bfv_client_l1_body_00653d90);
 void bfv_client_l1_body_00653d90(struct bfv_cpu *c)
 {
@@ -266,7 +357,7 @@ void bfv_client_l1_body_00653d90(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 00653d96  jmp 0x653cd0 */
+    /* 00653d96  jmp 0x653cd0  ; LodObjectTemplate::queryInterface */
     c->eip = 0x00653cd0u;
     goto out;
 out: __attribute__((unused));
@@ -276,7 +367,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00653df0  dice::ref2::world::LodObjectTemplate  (virtual method) */
+/* 00653df0  LodObjectTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::LodObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00653df0, bfv_client_l1_body_00653df0);
 BFV_L1_RESUME(bfv_client_l1r_00653df0_1, bfv_client_l1_body_00653df0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00653df0_2, bfv_client_l1_body_00653df0, 2);
@@ -302,7 +396,7 @@ void bfv_client_l1_body_00653df0(struct bfv_cpu *c)
     esi = ecx;
     /* 00653df3  lea ecx, [esi + 0x1e0] */
     ecx = (uint32_t)(esi + 0x000001e0u);
-    /* 00653df9  call 0x5a7c60 */
+    /* 00653df9  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00653df0_1;
@@ -326,17 +420,17 @@ L_00653e0a:
 L_00653e0c:
     /* 00653e0c  mov ecx, esi */
     ecx = esi;
-    /* 00653e0e  mov dword ptr [eax], 0xb4274c */
+    /* 00653e0e  mov dword ptr [eax], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb4274cu;
-    /* 00653e14  call 0x6a4480 */
+    /* 00653e14  call 0x6a4480  ; BundleTemplate::~BundleTemplate */
     t = 0x006a4480u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00653df0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00653e19  test byte ptr [esp + 8], 1 */
+    /* 00653e19  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -346,7 +440,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00653e21  call 0x403680 */
+    /* 00653e21  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00653df0_3;
@@ -377,7 +471,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006672c0  dice::ref2::world::LodObjectTemplate  (virtual method) */
+/* 006672c0  LodObjectTemplate::release  (virtual method)
+ * overrides: IBase::release  (395 classes implement it)
+ * class: dice::ref2::world::LodObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006672c0, bfv_client_l1_body_006672c0);
 BFV_L1_RESUME(bfv_client_l1r_006672c0_1, bfv_client_l1_body_006672c0, 1);
 void bfv_client_l1_body_006672c0(struct bfv_cpu *c)
@@ -422,7 +519,7 @@ void bfv_client_l1_body_006672c0(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 006672da  call dword ptr [eax] */
+    /* 006672da  call dword ptr [eax]  ; -> LodObjectTemplate::vf0 = LodObjectTemplate::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;
@@ -448,7 +545,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d6ab0  dice::ref2::world::LodObjectTemplate  (virtual method) */
+/* 006d6ab0  LodObjectTemplate::addRef  (virtual method)
+ * overrides: IBase::addRef  (395 classes implement it)
+ * class: dice::ref2::world::LodObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d6ab0, bfv_client_l1_body_006d6ab0);
 void bfv_client_l1_body_006d6ab0(struct bfv_cpu *c)
 {
@@ -479,7 +579,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e9ee0  dice::ref2::world::LodObjectTemplate  (virtual method) */
+/* 006e9ee0  LodObjectTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::LodObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e9ee0, bfv_client_l1_body_006e9ee0);
 BFV_L1_RESUME(bfv_client_l1r_006e9ee0_1, bfv_client_l1_body_006e9ee0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006e9ee0_2, bfv_client_l1_body_006e9ee0, 2);
@@ -513,7 +616,7 @@ void bfv_client_l1_body_006e9ee0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006e9ee7  mov edi, ecx */
     edi = ecx;
-    /* 006e9ee9  call 0x403610 */
+    /* 006e9ee9  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e9ee0_1;
@@ -537,7 +640,7 @@ R_1:
     M32(esp) = t;
     /* 006e9ef6  mov ecx, eax */
     ecx = eax;
-    /* 006e9ef8  call 0x6f6d20 */
+    /* 006e9ef8  call 0x6f6d20  ; LodObject::LodObject */
     t = 0x006f6d20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e9ee0_2;
@@ -572,7 +675,7 @@ L_006e9f0c:
     M32(esp) = t;
     /* 006e9f0d  mov ecx, edi */
     ecx = edi;
-    /* 006e9f0f  call 0x6a4870 */
+    /* 006e9f0f  call 0x6a4870  ; BundleTemplate::vf31 */
     t = 0x006a4870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e9ee0_3;
@@ -617,7 +720,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006e9f30  dice::ref2::world::LodObjectTemplate  (virtual method) */
+/* 006e9f30  LodObjectTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::LodObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e9f30, bfv_client_l1_body_006e9f30);
 void bfv_client_l1_body_006e9f30(struct bfv_cpu *c)
 {
@@ -626,10 +732,10 @@ void bfv_client_l1_body_006e9f30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006e9f30  mov eax, dword ptr [esp + 4] */
+    /* 006e9f30  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006e9f34  cmp eax, dword ptr [0xb77f1c] */
+    /* 006e9f34  cmp eax, dword ptr [0xb77f1c]  ; LodObjectTemplate::classID */
     ea = (uint32_t)(0x00b77f1cu);
     a = eax;
     b = M32(ea);
@@ -644,10 +750,10 @@ void bfv_client_l1_body_006e9f30(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006e9f41:
-    /* 006e9f41  mov dword ptr [esp + 4], eax */
+    /* 006e9f41  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006e9f45  jmp 0x6a4250 */
+    /* 006e9f45  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));

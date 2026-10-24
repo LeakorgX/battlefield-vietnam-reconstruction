@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 004853c0  dice::bf::LogService  (virtual method) */
+/* 004853c0  LogService::vf2  (virtual method)
+ * overrides: ServerService::vf2  (5 classes implement it)
+ * class: dice::bf::LogService
+ */
 BFV_L1_ENTRY(bfv_server_l1_004853c0, bfv_server_l1_body_004853c0);
 BFV_L1_RESUME(bfv_server_l1r_004853c0_1, bfv_server_l1_body_004853c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_004853c0_2, bfv_server_l1_body_004853c0, 2);
@@ -21,7 +24,7 @@ void bfv_server_l1_body_004853c0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 004853c0  mov edx, dword ptr [esp + 8] */
+    /* 004853c0  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 004853c4  push esi */
@@ -32,7 +35,7 @@ void bfv_server_l1_body_004853c0(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 004853c6  mov edx, dword ptr [esp + 0x10] */
+    /* 004853c6  mov edx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 004853ca  mov esi, ecx */
@@ -55,9 +58,9 @@ void bfv_server_l1_body_004853c0(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 004853d4  lea ecx, [esp + 0x1c] */
+    /* 004853d4  lea ecx, [esp + 0x1c]  ; &arg_4 */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 004853d8  call 0x485350 */
+    /* 004853d8  call 0x485350  ; LogService::vf2_helper_00485350 */
     t = 0x00485350u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004853c0_1;
@@ -66,7 +69,7 @@ void bfv_server_l1_body_004853c0(struct bfv_cpu *c)
 R_1:
     /* 004853dd  lea ecx, [esi + 0x24] */
     ecx = (uint32_t)(esi + 0x00000024u);
-    /* 004853e0  call 0x68b530 */
+    /* 004853e0  call 0x68b530  ; std::list::clear */
     t = 0x0068b530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004853c0_2;
@@ -90,7 +93,12 @@ out: __attribute__((unused));
 }
 
 
-/* 004c16d0  dice::bf::LogService  (virtual method) */
+/* 004c16d0  stub_return_true_1args_004c16d0  (virtual method)
+ * overrides: ServerService::vf1  (5 classes implement it)
+ * class: dice::bf::LogService
+ * also entered at 004c16e0: SuicideEvent::vf0
+ * called by: AnimationStateMachine::saveAnimationCache
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c16d0, bfv_server_l1_body_004c16d0);
 void bfv_server_l1_body_004c16d0(struct bfv_cpu *c)
 {
@@ -111,8 +119,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007e5070  dice::bf::LogService  (vtable store)
- * strings: "LogService" */
+/* 007e5070  LogService::ctor_dtor  (vtable store)
+ * class: dice::bf::LogService
+ * strings: "LogService"
+ */
 BFV_L1_ENTRY(bfv_server_l1_007e5070, bfv_server_l1_body_007e5070);
 BFV_L1_RESUME(bfv_server_l1r_007e5070_1, bfv_server_l1_body_007e5070, 1);
 BFV_L1_RESUME(bfv_server_l1r_007e5070_2, bfv_server_l1_body_007e5070, 2);
@@ -144,37 +154,37 @@ void bfv_server_l1_body_007e5070(struct bfv_cpu *c)
     t = 0xau;
     esp -= 4;
     M32(esp) = t;
-    /* 007e5075  push 0x80b620 */
+    /* 007e5075  push 0x80b620  ; "LogService" */
     t = 0x80b620u;
     esp -= 4;
     M32(esp) = t;
-    /* 007e507a  lea ecx, [esp + 8] */
+    /* 007e507a  lea ecx, [esp + 8]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000008u);
-    /* 007e507e  mov dword ptr [esp + 0x20], 0xf */
+    /* 007e507e  mov dword ptr [esp + 0x20], 0xf  ; var_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0xfu;
-    /* 007e5086  mov dword ptr [esp + 0x1c], 0 */
+    /* 007e5086  mov dword ptr [esp + 0x1c], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = 0x0u;
-    /* 007e508e  mov byte ptr [esp + 0xc], 0 */
+    /* 007e508e  mov byte ptr [esp + 0xc], 0  ; var_18 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M8(ea) = 0x0u;
-    /* 007e5093  call 0x402020 */
+    /* 007e5093  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007e5070_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007e5098  lea eax, [esp] */
+    /* 007e5098  lea eax, [esp]  ; &var_1c */
     eax = (uint32_t)(esp);
     /* 007e509b  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007e509c  mov ecx, 0xbdb654 */
+    /* 007e509c  mov ecx, 0xbdb654  ; g_ServerService_00bdb654 */
     ecx = 0xbdb654u;
-    /* 007e50a1  call 0x67b880 */
+    /* 007e50a1  call 0x67b880  ; ServerService::ServerService */
     t = 0x0067b880u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007e5070_2;
@@ -183,10 +193,10 @@ R_1:
 R_2:
     /* 007e50a6  mov ecx, 0xbdb678 */
     ecx = 0xbdb678u;
-    /* 007e50ab  mov dword ptr [0xbdb654], 0x80ae1c */
+    /* 007e50ab  mov dword ptr [0xbdb654], 0x80ae1c  ; g_ServerService_00bdb654, vtable LogService */
     ea = (uint32_t)(0x00bdb654u);
     M32(ea) = 0x80ae1cu;
-    /* 007e50b5  call 0x422bf0 */
+    /* 007e50b5  call 0x422bf0  ; std::list::_Buyheadnode_36_00422bf0 */
     t = 0x00422bf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007e5070_3;
@@ -196,7 +206,7 @@ R_3:
     /* 007e50ba  mov dword ptr [0xbdb67c], eax */
     ea = (uint32_t)(0x00bdb67cu);
     M32(ea) = eax;
-    /* 007e50bf  cmp dword ptr [esp + 0x18], 0x10 */
+    /* 007e50bf  cmp dword ptr [esp + 0x18], 0x10  ; var_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     a = M32(ea);
     b = 0x10u;
@@ -207,14 +217,14 @@ R_3:
     M32(ea) = 0x0u;
     /* 007e50ce  jb 0x7e50dd */
     if (cf) goto L_007e50dd;
-    /* 007e50d0  mov ecx, dword ptr [esp + 4] */
+    /* 007e50d0  mov ecx, dword ptr [esp + 4]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007e50d4  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 007e50d5  call 0x403df0 */
+    /* 007e50d5  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007e5070_4;
@@ -232,7 +242,7 @@ L_007e50dd:
     t = 0x7f7350u;
     esp -= 4;
     M32(esp) = t;
-    /* 007e50e2  call 0x63b363 */
+    /* 007e50e2  call 0x63b363  ; atexit */
     t = 0x0063b363u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007e5070_5;

@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00ac43c0  dice::meme::NavigateTreeObject  (virtual method)
- * strings: "Description", "Action" */
+/* 00ac43c0  NavigateTreeObject::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::NavigateTreeObject
+ * strings: "Description", "Action"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac43c0, bfv_client_l1_body_00ac43c0);
 BFV_L1_RESUME(bfv_client_l1r_00ac43c0_1, bfv_client_l1_body_00ac43c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac43c0_2, bfv_client_l1_body_00ac43c0, 2);
@@ -28,14 +31,14 @@ void bfv_client_l1_body_00ac43c0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac43c1  mov ebx, dword ptr [esp + 8] */
+    /* 00ac43c1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00ac43c5  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac43c6  mov esi, dword ptr [esp + 0x10] */
+    /* 00ac43c6  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00ac43ca  push edi */
@@ -52,7 +55,7 @@ void bfv_client_l1_body_00ac43c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00ac43cd  mov edi, ecx */
     edi = ecx;
-    /* 00ac43cf  call 0xa7d100 */
+    /* 00ac43cf  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac43c0_1;
@@ -93,11 +96,11 @@ L_00ac43e0:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac43e4  push 0xc110b0 */
+    /* 00ac43e4  push 0xc110b0  ; "Description" */
     t = 0xc110b0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac43e9  lea ecx, [edi + 0x18] */
+    /* 00ac43e9  lea ecx, [edi + 0x18]  ; field Description (serialized) */
     ecx = (uint32_t)(edi + 0x00000018u);
     /* 00ac43ec  push ecx */
     t = ecx;
@@ -129,11 +132,11 @@ R_2:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac43fb  push 0xb6af4c */
+    /* 00ac43fb  push 0xb6af4c  ; "Action" */
     t = 0xb6af4cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac4400  add edi, 0x1c */
+    /* 00ac4400  add edi, 0x1c  ; field Action (serialized) */
     a = edi;
     b = 0x1cu;
     r = (a + b) & 0xffffffffu;

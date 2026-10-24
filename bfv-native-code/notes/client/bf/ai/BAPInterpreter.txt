@@ -1,0 +1,11 @@
+## file
+BAPInterpreter keeps a table of control locks for the action-plan statements:
+for each control index (given by the statement's slot 8) three slots (0..2)
+record which statement holds it, and a bit mask per slot (array at this+8)
+records which controls are locked. this+4 is the number of controls.
+
+## 009be170
+vf1: tail call into the lock routine ai_009bdf60 starting at slot 0 for the
+statement passed in. That routine fails when the control index is out of range
+or the first slot is taken; otherwise it fills the free slots from there up to
+slot 2, setting the control's bit in each slot's mask.

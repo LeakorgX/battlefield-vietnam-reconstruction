@@ -1,0 +1,11 @@
+## file
+Plan builder for firing from a ground vehicle at the chosen target.
+
+## 0099d520
+BAPVariable<float> constructor helper: allocates a 0x10-byte variable record (vtable 0x00bf62c4, owner this, the two arguments at +8 and +0xc) from the BAPVariable pool and appends it to the owner's variable list.
+
+## 0099d590
+buildPlan: releases the bot's control locks (BotMain_sub_00973470 with 1, 0, 1), finds the vehicle seat (ai_00970270) and the chosen target from the bot's info entry (slot 0x88). Measures the distance from the bot to the target and picks a weapon with ai_009f38d0 (falls back to the parameter's slot 0x2c when it returns -1). Branches on whether that distance exceeds 0.95 times the +0x2c value of the info entry; in that branch it queries the component data (bfv_component_query_data, bfv_query_vector_append) before building the aim and fire plan.
+
+## 009a16c0
+vf5: forwards to BBPFire2d_sub_0099d310.

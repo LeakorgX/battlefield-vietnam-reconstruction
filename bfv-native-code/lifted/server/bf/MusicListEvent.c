@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 004c24c0  dice::bf::MusicListEvent  (vtable store) */
+/* 004c24c0  MusicListEvent::create  (vtable store)
+ * class: dice::bf::MusicListEvent
+ * also entered at 004c24f0: BAPICTurnLock::vf3, MusicListEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c24c0, bfv_server_l1_body_004c24c0);
 BFV_L1_RESUME(bfv_server_l1r_004c24c0_1, bfv_server_l1_body_004c24c0, 1);
 void bfv_server_l1_body_004c24c0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_004c24c0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c24c0  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c24c0  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c24c6  mov eax, dword ptr [ecx] */
@@ -53,7 +56,7 @@ R_1:
     /* 004c24d8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c24df  mov dword ptr [eax], 0x81f8e4 */
+    /* 004c24df  mov dword ptr [eax], 0x81f8e4  ; vtable MusicListEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f8e4u;
     /* 004c24e5  ret */
@@ -76,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c2500  dice::bf::MusicListEvent  (vtable store) */
+/* 004c2500  MusicListEvent::create  (vtable store)
+ * class: dice::bf::MusicListEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c2500, bfv_server_l1_body_004c2500);
 BFV_L1_RESUME(bfv_server_l1r_004c2500_1, bfv_server_l1_body_004c2500, 1);
 void bfv_server_l1_body_004c2500(struct bfv_cpu *c)
@@ -90,7 +95,7 @@ void bfv_server_l1_body_004c2500(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c2500  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c2500  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c2506  mov eax, dword ptr [ecx] */
@@ -124,7 +129,7 @@ R_1:
     /* 004c2518  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c251f  mov dword ptr [eax], 0x81f8e4 */
+    /* 004c251f  mov dword ptr [eax], 0x81f8e4  ; vtable MusicListEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f8e4u;
     /* 004c2525  jmp 0x4c2529 */
@@ -135,7 +140,7 @@ L_004c2527:
     F_LOGIC(32, r);
     eax = r;
 L_004c2529:
-    /* 004c2529  mov ecx, dword ptr [esp + 4] */
+    /* 004c2529  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 004c252d  push esi */
@@ -189,7 +194,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c57f0  dice::bf::MusicListEvent  (virtual method) */
+/* 004c57f0  MusicListEvent::readFromStream  (virtual method)
+ * class: dice::bf::MusicListEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c57f0, bfv_server_l1_body_004c57f0);
 BFV_L1_RESUME(bfv_server_l1r_004c57f0_1, bfv_server_l1_body_004c57f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_004c57f0_2, bfv_server_l1_body_004c57f0, 2);
@@ -217,7 +224,7 @@ void bfv_server_l1_body_004c57f0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 004c57f3  mov esi, dword ptr [esp + 0x10] */
+    /* 004c57f3  mov esi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 004c57f7  push edi */
@@ -228,7 +235,7 @@ void bfv_server_l1_body_004c57f0(struct bfv_cpu *c)
     t = 0x20u;
     esp -= 4;
     M32(esp) = t;
-    /* 004c57fa  lea eax, [esp + 0x10] */
+    /* 004c57fa  lea eax, [esp + 0x10]  ; &var_4 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 004c57fe  mov edi, ecx */
     edi = ecx;
@@ -242,24 +249,24 @@ void bfv_server_l1_body_004c57f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 004c5803  mov ecx, esi */
     ecx = esi;
-    /* 004c5805  mov dword ptr [esp + 0x14], ebx */
+    /* 004c5805  mov dword ptr [esp + 0x14], ebx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = ebx;
-    /* 004c5809  call 0x4870c0 */
+    /* 004c5809  call 0x4870c0  ; BitStream::readBits */
     t = 0x004870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c57f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 004c580e  mov ecx, dword ptr [esp + 0xc] */
+    /* 004c580e  mov ecx, dword ptr [esp + 0xc]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 004c5812  push 8 */
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 004c5814  lea edx, [esp + 0x18] */
+    /* 004c5814  lea edx, [esp + 0x18]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000018u);
     /* 004c5818  mov dword ptr [edi + 0xd], ecx */
     ea = (uint32_t)(edi + 0x0000000du);
@@ -270,17 +277,17 @@ R_1:
     M32(esp) = t;
     /* 004c581c  mov ecx, esi */
     ecx = esi;
-    /* 004c581e  mov dword ptr [esp + 0x1c], ebx */
+    /* 004c581e  mov dword ptr [esp + 0x1c], ebx  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = ebx;
-    /* 004c5822  call 0x4870c0 */
+    /* 004c5822  call 0x4870c0  ; BitStream::readBits */
     t = 0x004870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c57f0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 004c5827  mov al, byte ptr [esp + 0x14] */
+    /* 004c5827  mov al, byte ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     SET8L(eax, M8(ea));
     /* 004c582b  mov byte ptr [edi + 0xc], al */
@@ -354,7 +361,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c5850  dice::bf::MusicListEvent  (virtual method) */
+/* 004c5850  MusicListEvent::writeToStream  (virtual method)
+ * class: dice::bf::MusicListEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c5850, bfv_server_l1_body_004c5850);
 BFV_L1_RESUME(bfv_server_l1r_004c5850_1, bfv_server_l1_body_004c5850, 1);
 BFV_L1_RESUME(bfv_server_l1r_004c5850_2, bfv_server_l1_body_004c5850, 2);
@@ -429,7 +438,7 @@ L_004c5857:
     edx = M32(ea);
     /* 004c5869  mov ecx, edi */
     ecx = edi;
-    /* 004c586b  call dword ptr [edx] */
+    /* 004c586b  call dword ptr [edx]  ; -> MusicListEvent::vf0 */
     ea = (uint32_t)(edx);
     t = M32(ea);
     esp -= 4;
@@ -455,7 +464,7 @@ R_1:
     M32(esp) = t;
     /* 004c587b  mov ecx, esi */
     ecx = esi;
-    /* 004c587d  call 0x4871a0 */
+    /* 004c587d  call 0x4871a0  ; BitStream::writeBits */
     t = 0x004871a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c5850_2;
@@ -480,7 +489,7 @@ R_2:
     M32(esp) = t;
     /* 004c5890  mov ecx, esi */
     ecx = esi;
-    /* 004c5892  call 0x4871a0 */
+    /* 004c5892  call 0x4871a0  ; BitStream::writeBits */
     t = 0x004871a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c5850_3;
@@ -505,7 +514,7 @@ R_3:
     /* 004c58a4  mov dword ptr [esp + 0x18], eax */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = eax;
-    /* 004c58a8  call 0x4871a0 */
+    /* 004c58a8  call 0x4871a0  ; BitStream::writeBits */
     t = 0x004871a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004c5850_4;

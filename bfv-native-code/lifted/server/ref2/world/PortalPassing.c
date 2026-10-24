@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005de600  dice::ref2::world::PortalPassing  (vtable store) */
+/* 005de600  PortalPassing::PortalPassing  (vtable store)
+ * class: dice::ref2::world::PortalPassing
+ * called by: PortalManager::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005de600, bfv_server_l1_body_005de600);
 BFV_L1_RESUME(bfv_server_l1r_005de600_1, bfv_server_l1_body_005de600, 1);
 BFV_L1_RESUME(bfv_server_l1r_005de600_2, bfv_server_l1_body_005de600, 2);
@@ -29,10 +32,10 @@ void bfv_server_l1_body_005de600(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005de601  mov ebx, ecx */
     ebx = ecx;
-    /* 005de603  mov ecx, dword ptr [esp + 8] */
+    /* 005de603  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 005de607  mov dword ptr [ebx], 0x848834 */
+    /* 005de607  mov dword ptr [ebx], 0x848834  ; vtable PortalPassing */
     ea = (uint32_t)(ebx);
     M32(ea) = 0x848834u;
     /* 005de60d  mov dword ptr [ebx + 4], 1 */
@@ -59,7 +62,7 @@ void bfv_server_l1_body_005de600(struct bfv_cpu *c)
     /* 005de622  mov ecx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     ecx = M32(ea);
-    /* 005de625  mov edx, dword ptr [esp + 0x10] */
+    /* 005de625  mov edx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 005de629  push esi */
@@ -91,7 +94,7 @@ void bfv_server_l1_body_005de600(struct bfv_cpu *c)
     /* 005de63c  mov dword ptr [edi + 0xc], ebp */
     ea = (uint32_t)(edi + 0x0000000cu);
     M32(ea) = ebp;
-    /* 005de63f  mov dword ptr [esp + 0x18], 2 */
+    /* 005de63f  mov dword ptr [esp + 0x18], 2  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x2u;
 L_005de647:
@@ -99,7 +102,7 @@ L_005de647:
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 005de649  call 0x403d80 */
+    /* 005de649  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005de600_1;
@@ -123,7 +126,7 @@ R_1:
     if (zf) goto L_005de67b;
     /* 005de657  mov ecx, esi */
     ecx = esi;
-    /* 005de659  call 0x5c7870 */
+    /* 005de659  call 0x5c7870  ; std::_Tree::_Buynode_head_20_005c7870 */
     t = 0x005c7870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005de600_2;
@@ -173,7 +176,7 @@ L_005de67d:
     b = ebp;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 005de682  mov dword ptr [esp + 0x14], esi */
+    /* 005de682  mov dword ptr [esp + 0x14], esi  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = esi;
     /* 005de686  jne 0x5de68c */
@@ -259,7 +262,7 @@ L_005de6b1:
     /* 005de6b1  mov eax, dword ptr [edi + 8] */
     ea = (uint32_t)(edi + 0x00000008u);
     eax = M32(ea);
-    /* 005de6b4  lea ecx, [esp + 0x14] */
+    /* 005de6b4  lea ecx, [esp + 0x14]  ; &arg_0 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 005de6b8  push ecx */
     t = ecx;
@@ -275,7 +278,7 @@ L_005de6b1:
     M32(esp) = t;
     /* 005de6bc  mov ecx, edi */
     ecx = edi;
-    /* 005de6be  call 0x5c83c0 */
+    /* 005de6be  call 0x5c83c0  ; PortalManager_005c83c0 */
     t = 0x005c83c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005de600_3;
@@ -283,7 +286,7 @@ L_005de6b1:
     goto out;
 R_3:
 L_005de6c3:
-    /* 005de6c3  dec dword ptr [esp + 0x18] */
+    /* 005de6c3  dec dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     a = M32(ea);
     r = (a - 1u) & 0xffffffffu;
@@ -320,7 +323,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005de6e0  dice::ref2::world::PortalPassing  (virtual method) */
+/* 005de6e0  PortalPassing::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::world::PortalPassing
+ */
 BFV_L1_ENTRY(bfv_server_l1_005de6e0, bfv_server_l1_body_005de6e0);
 void bfv_server_l1_body_005de6e0(struct bfv_cpu *c)
 {
@@ -329,12 +335,12 @@ void bfv_server_l1_body_005de6e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 005de6e0  mov edx, dword ptr [0x807430] */
+    /* 005de6e0  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 005de6e6  mov eax, ecx */
     eax = ecx;
-    /* 005de6e8  mov ecx, dword ptr [esp + 4] */
+    /* 005de6e8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005de6ec  cmp ecx, edx */
@@ -387,7 +393,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0068ee90  dice::ref2::world::PortalPassing  (virtual method) */
+/* 0068ee90  PortalPassing::vf6  (virtual method)
+ * class: dice::ref2::world::PortalPassing
+ * called by: Cmd_AILandingZone_maxCorner::execute, AIStrategicArea::saveAll, AILandingZoneManager::listZones
+ */
 BFV_L1_ENTRY(bfv_server_l1_0068ee90, bfv_server_l1_body_0068ee90);
 void bfv_server_l1_body_0068ee90(struct bfv_cpu *c)
 {

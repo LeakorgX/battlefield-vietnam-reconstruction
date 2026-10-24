@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00872c10  dice::meme::TextNode  (virtual method) */
+/* 00872c10  TextNode::draw  (virtual method)
+ * overrides: Node::draw  (83 classes implement it)
+ * class: dice::meme::TextNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00872c10, bfv_client_l1_body_00872c10);
 BFV_L1_RESUME(bfv_client_l1r_00872c10_1, bfv_client_l1_body_00872c10, 1);
 void bfv_client_l1_body_00872c10(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_00872c10(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00872c10  mov eax, dword ptr [ecx + 0x10] */
+    /* 00872c10  mov eax, dword ptr [ecx + 0x10]  ; field String */
     ea = (uint32_t)(ecx + 0x00000010u);
     eax = M32(ea);
     /* 00872c13  test eax, eax */
@@ -27,7 +30,7 @@ void bfv_client_l1_body_00872c10(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00872c15  je 0x872c35 */
     if (zf) goto L_00872c35;
-    /* 00872c17  mov edx, dword ptr [esp + 0x10] */
+    /* 00872c17  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00872c1b  push 0 */
@@ -38,31 +41,31 @@ void bfv_client_l1_body_00872c10(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c1e  mov eax, dword ptr [esp + 0x1c] */
+    /* 00872c1e  mov eax, dword ptr [esp + 0x1c]  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 00872c22  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c23  mov eax, dword ptr [esp + 0x18] */
+    /* 00872c23  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 00872c27  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c28  mov edx, dword ptr [ecx + 0xc] */
+    /* 00872c28  mov edx, dword ptr [ecx + 0xc]  ; field Style */
     ea = (uint32_t)(ecx + 0x0000000cu);
     edx = M32(ea);
-    /* 00872c2b  mov ecx, dword ptr [esp + 0x14] */
+    /* 00872c2b  mov ecx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 00872c2f  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c30  call 0x875b80 */
+    /* 00872c30  call 0x875b80  ; meme_00875b80 */
     t = 0x00875b80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00872c10_1;
@@ -81,8 +84,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00872c40  dice::meme::TextNode  (virtual method)
- * strings: "String", "Style" */
+/* 00872c40  TextNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::TextNode
+ * strings: "String", "Style"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00872c40, bfv_client_l1_body_00872c40);
 BFV_L1_RESUME(bfv_client_l1r_00872c40_1, bfv_client_l1_body_00872c40, 1);
 BFV_L1_RESUME(bfv_client_l1r_00872c40_2, bfv_client_l1_body_00872c40, 2);
@@ -104,14 +110,14 @@ void bfv_client_l1_body_00872c40(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c41  mov ebx, dword ptr [esp + 8] */
+    /* 00872c41  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00872c45  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c46  mov esi, dword ptr [esp + 0x10] */
+    /* 00872c46  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00872c4a  push edi */
@@ -128,7 +134,7 @@ void bfv_client_l1_body_00872c40(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00872c4d  mov edi, ecx */
     edi = ecx;
-    /* 00872c4f  call 0x873f50 */
+    /* 00872c4f  call 0x873f50  ; Node::serialize */
     t = 0x00873f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00872c40_1;
@@ -169,11 +175,11 @@ L_00872c60:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c64  push 0xb69b54 */
+    /* 00872c64  push 0xb69b54  ; "String" */
     t = 0xb69b54u;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c69  lea ecx, [edi + 0x10] */
+    /* 00872c69  lea ecx, [edi + 0x10]  ; field String (serialized) */
     ecx = (uint32_t)(edi + 0x00000010u);
     /* 00872c6c  push ecx */
     t = ecx;
@@ -205,11 +211,11 @@ R_2:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c7b  push 0xb69b4c */
+    /* 00872c7b  push 0xb69b4c  ; "Style" */
     t = 0xb69b4cu;
     esp -= 4;
     M32(esp) = t;
-    /* 00872c80  add edi, 0xc */
+    /* 00872c80  add edi, 0xc  ; field Style (serialized) */
     a = edi;
     b = 0xcu;
     r = (a + b) & 0xffffffffu;
@@ -261,7 +267,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00872ca0  (between same file) */
+/* 00872ca0  ClassTemplate<TextNode,Node>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00872ca0, bfv_client_l1_body_00872ca0);
 void bfv_client_l1_body_00872ca0(struct bfv_cpu *c)
 {
@@ -287,7 +294,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00872cb0  (between same file) */
+/* 00872cb0  ClassTemplate<TextNode,Node>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00872cb0, bfv_client_l1_body_00872cb0);
 void bfv_client_l1_body_00872cb0(struct bfv_cpu *c)
 {
@@ -313,7 +321,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00872cd0  dice::meme::TextNode  (vtable store) */
+/* 00872cd0  TextNode::create  (vtable store)
+ * class: dice::meme::TextNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00872cd0, bfv_client_l1_body_00872cd0);
 BFV_L1_RESUME(bfv_client_l1r_00872cd0_1, bfv_client_l1_body_00872cd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00872cd0_2, bfv_client_l1_body_00872cd0, 2);
@@ -337,7 +347,7 @@ void bfv_client_l1_body_00872cd0(struct bfv_cpu *c)
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 00872cd3  call 0x403610 */
+    /* 00872cd3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00872cd0_1;
@@ -359,14 +369,14 @@ R_1:
     if (zf) goto L_00872d00;
     /* 00872ce1  mov ecx, esi */
     ecx = esi;
-    /* 00872ce3  call 0x873d90 */
+    /* 00872ce3  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00872cd0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00872ce8  mov dword ptr [esi], 0xbd620c */
+    /* 00872ce8  mov dword ptr [esi], 0xbd620c  ; vtable TextNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd620cu;
     /* 00872cee  mov dword ptr [esi + 0xc], 0 */
@@ -405,8 +415,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00872d10  dice::meme::TextNode  (virtual method)
- * strings: "dice::meme::TextNode" */
+/* 00872d10  TextNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::TextNode
+ * strings: "dice::meme::TextNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00872d10, bfv_client_l1_body_00872d10);
 BFV_L1_RESUME(bfv_client_l1r_00872d10_1, bfv_client_l1_body_00872d10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00872d10_2, bfv_client_l1_body_00872d10, 2);
@@ -437,13 +450,13 @@ void bfv_client_l1_body_00872d10(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00872d25  push 0xbd62dc */
+    /* 00872d25  push 0xbd62dc  ; "dice::meme::TextNode" */
     t = 0xbd62dcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00872d2a  mov ecx, 0xdf67e4 */
+    /* 00872d2a  mov ecx, 0xdf67e4  ; g_RuntimeClass_TextNode */
     ecx = 0xdf67e4u;
-    /* 00872d2f  call 0x875490 */
+    /* 00872d2f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00872d10_1;
@@ -454,10 +467,10 @@ R_1:
     t = 0xb3aea0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00872d39  mov dword ptr [0xdf67e4], 0xbd61e4 */
+    /* 00872d39  mov dword ptr [0xdf67e4], 0xbd61e4  ; g_RuntimeClass_TextNode */
     ea = (uint32_t)(0x00df67e4u);
     M32(ea) = 0xbd61e4u;
-    /* 00872d43  call 0x7c2cd2 */
+    /* 00872d43  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00872d10_2;
@@ -471,7 +484,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00872d4b:
-    /* 00872d4b  mov eax, 0xdf67e4 */
+    /* 00872d4b  mov eax, 0xdf67e4  ; g_RuntimeClass_TextNode */
     eax = 0xdf67e4u;
     /* 00872d50  ret */
     c->eip = M32(esp);

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a9610  dice::bf::ai::BAPConObjectValidYawAiming  (vtable store) */
+/* 007a9610  BAPConObjectValidYawAiming::BAPConObjectValidYawAiming  (vtable store)
+ * class: dice::bf::ai::BAPConObjectValidYawAiming
+ * called by: BBPFireInfantery_00744030, BBPFire2dDriver::buildPlan
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9610, bfv_server_l1_body_007a9610);
 BFV_L1_RESUME(bfv_server_l1r_007a9610_1, bfv_server_l1_body_007a9610, 1);
 void bfv_server_l1_body_007a9610(struct bfv_cpu *c)
@@ -19,10 +22,10 @@ void bfv_server_l1_body_007a9610(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a9610  mov eax, dword ptr [esp + 0x10] */
+    /* 007a9610  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 007a9614  mov edx, dword ptr [esp + 8] */
+    /* 007a9614  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007a9618  push esi */
@@ -33,12 +36,12 @@ void bfv_server_l1_body_007a9610(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007a961a  mov eax, dword ptr [esp + 0xc] */
+    /* 007a961a  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 007a961e  mov esi, ecx */
     esi = ecx;
-    /* 007a9620  mov ecx, dword ptr [esp + 0x14] */
+    /* 007a9620  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 007a9624  push ecx */
@@ -55,14 +58,14 @@ void bfv_server_l1_body_007a9610(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a9627  mov ecx, esi */
     ecx = esi;
-    /* 007a9629  call 0x7ab860 */
+    /* 007a9629  call 0x7ab860  ; BAPConObjectValidAiming::BAPConObjectValidAiming */
     t = 0x007ab860u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9610_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007a962e  mov dword ptr [esi], 0x87a02c */
+    /* 007a962e  mov dword ptr [esi], 0x87a02c  ; vtable BAPConObjectValidYawAiming */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87a02cu;
     /* 007a9634  mov eax, esi */
@@ -82,7 +85,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a9640  dice::bf::ai::BAPConObjectValidYawAiming  (vtable store) */
+/* 007a9640  BAPConObjectValidYawAiming::BAPConObjectValidYawAiming  (vtable store)
+ * class: dice::bf::ai::BAPConObjectValidYawAiming
+ * called by: BBPScout::buildPlan
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9640, bfv_server_l1_body_007a9640);
 BFV_L1_RESUME(bfv_server_l1r_007a9640_1, bfv_server_l1_body_007a9640, 1);
 void bfv_server_l1_body_007a9640(struct bfv_cpu *c)
@@ -96,10 +102,10 @@ void bfv_server_l1_body_007a9640(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a9640  mov eax, dword ptr [esp + 0xc] */
+    /* 007a9640  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
-    /* 007a9644  mov edx, dword ptr [esp + 4] */
+    /* 007a9644  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 007a9648  push esi */
@@ -108,7 +114,7 @@ void bfv_server_l1_body_007a9640(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a9649  mov esi, ecx */
     esi = ecx;
-    /* 007a964b  mov ecx, dword ptr [esp + 0xc] */
+    /* 007a964b  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 007a964f  push eax */
@@ -125,14 +131,14 @@ void bfv_server_l1_body_007a9640(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a9652  mov ecx, esi */
     ecx = esi;
-    /* 007a9654  call 0x7ab820 */
+    /* 007a9654  call 0x7ab820  ; BAPConObjectValidAiming::BAPConObjectValidAiming */
     t = 0x007ab820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9640_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007a9659  mov dword ptr [esi], 0x87a02c */
+    /* 007a9659  mov dword ptr [esi], 0x87a02c  ; vtable BAPConObjectValidYawAiming */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87a02cu;
     /* 007a965f  mov eax, esi */
@@ -152,7 +158,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a9670  dice::bf::ai::BAPConObjectValidYawAiming  (virtual method) */
+/* 007a9670  BAPConObjectValidYawAiming::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectValidYawAiming
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9670, bfv_server_l1_body_007a9670);
 BFV_L1_RESUME(bfv_server_l1r_007a9670_1, bfv_server_l1_body_007a9670, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a9670_2, bfv_server_l1_body_007a9670, 2);
@@ -174,14 +183,14 @@ void bfv_server_l1_body_007a9670(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a9671  mov esi, ecx */
     esi = ecx;
-    /* 007a9673  call 0x7a95f0 */
+    /* 007a9673  call 0x7a95f0  ; BAPCondition::~BAPCondition */
     t = 0x007a95f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9670_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007a9678  test byte ptr [esp + 8], 1 */
+    /* 007a9678  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -191,9 +200,9 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a9680  mov ecx, 0xc32bc8 */
+    /* 007a9680  mov ecx, 0xc32bc8  ; g_MemoryPoolNull_BAPConObjectValidYawAiming */
     ecx = 0xc32bc8u;
-    /* 007a9685  call 0x413600 */
+    /* 007a9685  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9670_2;
@@ -218,7 +227,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a9690  dice::bf::ai::BAPConObjectValidYawAiming  (virtual method) */
+/* 007a9690  BAPConObjectValidYawAiming::evaluate  (virtual method)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectValidYawAiming
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9690, bfv_server_l1_body_007a9690);
 BFV_L1_RESUME(bfv_server_l1r_007a9690_1, bfv_server_l1_body_007a9690, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a9690_2, bfv_server_l1_body_007a9690, 2);
@@ -252,10 +264,10 @@ void bfv_server_l1_body_007a9690(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a9695  mov edi, dword ptr [esp + 0x18] */
+    /* 007a9695  mov edi, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     edi = M32(ea);
-    /* 007a9699  lea eax, [esp + 8] */
+    /* 007a9699  lea eax, [esp + 8]  ; &var_c */
     eax = (uint32_t)(esp + 0x00000008u);
     /* 007a969d  push eax */
     t = eax;
@@ -267,7 +279,7 @@ void bfv_server_l1_body_007a9690(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a969f  mov esi, ecx */
     esi = ecx;
-    /* 007a96a1  call 0x7ab8d0 */
+    /* 007a96a1  call 0x7ab8d0  ; BAPConObjectValidAiming::sub_007ab8d0 */
     t = 0x007ab8d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9690_1;
@@ -330,7 +342,7 @@ L_007a96c4:
     ecx = r;
     /* 007a96cc  je 0x7a96e7 */
     if (zf) goto L_007a96e7;
-    /* 007a96ce  mov edx, dword ptr [0xc2f7c0] */
+    /* 007a96ce  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 007a96d4  mov edx, dword ptr [edx] */
@@ -394,7 +406,7 @@ L_007a96f7:
     /* 007a96fd  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 007a96ff  lea edx, [esp + 8] */
+    /* 007a96ff  lea edx, [esp + 8]  ; &var_c */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 007a9703  push edx */
     t = edx;
@@ -414,7 +426,7 @@ L_007a96f7:
 R_3:
     /* 007a970c  mov ecx, eax */
     ecx = eax;
-    /* 007a970e  call 0x78e3d0 */
+    /* 007a970e  call 0x78e3d0  ; bfv_aim_within_limits */
     t = 0x0078e3d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9690_4;

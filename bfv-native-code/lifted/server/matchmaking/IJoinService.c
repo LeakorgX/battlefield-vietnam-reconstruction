@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00422190  dice::matchmaking::IJoinService  (vtable store) */
+/* 00422190  IJoinService::IJoinService  (vtable store)
+ * class: dice::matchmaking::IJoinService
+ */
 BFV_L1_ENTRY(bfv_server_l1_00422190, bfv_server_l1_body_00422190);
 void bfv_server_l1_body_00422190(struct bfv_cpu *c)
 {
@@ -16,7 +18,7 @@ void bfv_server_l1_body_00422190(struct bfv_cpu *c)
     uint32_t ea;
     /* 00422190  mov eax, ecx */
     eax = ecx;
-    /* 00422192  mov dword ptr [eax], 0x809ac0 */
+    /* 00422192  mov dword ptr [eax], 0x809ac0  ; vtable IJoinService */
     ea = (uint32_t)(eax);
     M32(ea) = 0x809ac0u;
     /* 00422198  ret */
@@ -30,7 +32,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004221a0  dice::matchmaking::IJoinService  (vtable store) */
+/* 004221a0  IJoinService::IJoinService  (vtable store)
+ * class: dice::matchmaking::IJoinService
+ */
 BFV_L1_ENTRY(bfv_server_l1_004221a0, bfv_server_l1_body_004221a0);
 void bfv_server_l1_body_004221a0(struct bfv_cpu *c)
 {
@@ -41,10 +45,10 @@ void bfv_server_l1_body_004221a0(struct bfv_cpu *c)
     uint32_t ea;
     /* 004221a0  mov eax, ecx */
     eax = ecx;
-    /* 004221a2  mov ecx, dword ptr [esp + 4] */
+    /* 004221a2  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 004221a6  mov dword ptr [eax], 0x809ac0 */
+    /* 004221a6  mov dword ptr [eax], 0x809ac0  ; vtable IJoinService */
     ea = (uint32_t)(eax);
     M32(ea) = 0x809ac0u;
     /* 004221ac  mov edx, dword ptr [ecx + 4] */
@@ -64,7 +68,8 @@ out: __attribute__((unused));
 }
 
 
-/* 004221c0  (between same file) */
+/* 004221c0  IJoinService_004221c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_004221c0, bfv_server_l1_body_004221c0);
 void bfv_server_l1_body_004221c0(struct bfv_cpu *c)
 {
@@ -75,7 +80,7 @@ void bfv_server_l1_body_004221c0(struct bfv_cpu *c)
     uint32_t ea;
     /* 004221c0  mov eax, ecx */
     eax = ecx;
-    /* 004221c2  mov ecx, dword ptr [esp + 4] */
+    /* 004221c2  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 004221c6  mov edx, dword ptr [ecx + 4] */
@@ -95,7 +100,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004221d0  dice::matchmaking::IJoinService  (virtual method) */
+/* 004221d0  IJoinService::vf0  (virtual method)
+ * overrides: IService::vf0  (5 classes implement it)
+ * class: dice::matchmaking::IJoinService
+ */
 BFV_L1_ENTRY(bfv_server_l1_004221d0, bfv_server_l1_body_004221d0);
 BFV_L1_RESUME(bfv_server_l1r_004221d0_1, bfv_server_l1_body_004221d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_004221d0_2, bfv_server_l1_body_004221d0, 2);
@@ -111,7 +119,7 @@ void bfv_server_l1_body_004221d0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 004221d0  mov dl, byte ptr [esp + 4] */
+    /* 004221d0  mov dl, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(edx, M8(ea));
     /* 004221d4  test dl, 2 */
@@ -162,7 +170,7 @@ L_004221f0:
     r = (a - 1u) & 0xffffffffu;
     F_DEC(32, a, r);
     ecx = r;
-    /* 004221f4  mov dword ptr [eax], 0x809ab0 */
+    /* 004221f4  mov dword ptr [eax], 0x809ab0  ; vtable IService */
     ea = (uint32_t)(eax);
     M32(ea) = 0x809ab0u;
     /* 004221fa  jne 0x4221f0 */
@@ -177,7 +185,7 @@ L_004221fc:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00422202  call 0x403df0 */
+    /* 00422202  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004221d0_1;
@@ -209,7 +217,7 @@ L_00422211:
     /* 00422211  test dl, 1 */
     r = (LO8(edx) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 00422214  mov dword ptr [esi], 0x809ab0 */
+    /* 00422214  mov dword ptr [esi], 0x809ab0  ; vtable IService */
     ea = (uint32_t)(esi);
     M32(ea) = 0x809ab0u;
     /* 0042221a  je 0x422225 */
@@ -218,7 +226,7 @@ L_00422211:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0042221d  call 0x403df0 */
+    /* 0042221d  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004221d0_2;

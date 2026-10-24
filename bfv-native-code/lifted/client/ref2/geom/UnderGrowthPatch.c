@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 0071f980  dice::ref2::geom::UnderGrowthPatch  (vtable store)
- * strings: "StandardMesh/undergrowth/undergrowth" */
+/* 0071f980  UnderGrowthPatch::UnderGrowthPatch  (vtable store)
+ * class: dice::ref2::geom::UnderGrowthPatch
+ * strings: "StandardMesh/undergrowth/undergrowth"
+ * called by: UnderGrowthManager::createUnderGrowthPatch
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071f980, bfv_client_l1_body_0071f980);
 BFV_L1_RESUME(bfv_client_l1r_0071f980_1, bfv_client_l1_body_0071f980, 1);
 BFV_L1_RESUME(bfv_client_l1r_0071f980_2, bfv_client_l1_body_0071f980, 2);
@@ -66,7 +69,7 @@ void bfv_client_l1_body_0071f980(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0071f993  mov ebp, ecx */
     ebp = ecx;
-    /* 0071f995  call 0xa4c220 */
+    /* 0071f995  call 0xa4c220  ; RaStreamDataEditable::RaStreamDataEditable */
     t = 0x00a4c220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071f980_1;
@@ -77,7 +80,7 @@ R_1:
     esi = (uint32_t)(ebp + 0x0000018cu);
     /* 0071f9a0  mov ecx, esi */
     ecx = esi;
-    /* 0071f9a2  call 0x75e3a0 */
+    /* 0071f9a2  call 0x75e3a0  ; GrowthPatch::GrowthPatch */
     t = 0x0075e3a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071f980_2;
@@ -94,13 +97,13 @@ R_2:
     ebx = r;
     /* 0071f9ab  mov edi, 0xf */
     edi = 0xfu;
-    /* 0071f9b0  push 0xbaa17c */
+    /* 0071f9b0  push 0xbaa17c  ; "StandardMesh/undergrowth/undergrowth" */
     t = 0xbaa17cu;
     esp -= 4;
     M32(esp) = t;
     /* 0071f9b5  lea ecx, [esp + 0x18] */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0071f9b9  mov dword ptr [ebp], 0xbaa134 */
+    /* 0071f9b9  mov dword ptr [ebp], 0xbaa134  ; vtable UnderGrowthPatch */
     ea = (uint32_t)(ebp);
     M32(ea) = 0xbaa134u;
     /* 0071f9c0  mov dword ptr [esi], 0xbaa110 */
@@ -115,14 +118,14 @@ R_2:
     /* 0071f9ce  mov byte ptr [esp + 0x1c], bl */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0071f9d2  call 0x401ae0 */
+    /* 0071f9d2  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071f980_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 0071f9d7  mov ecx, dword ptr [0xe122cc] */
+    /* 0071f9d7  mov ecx, dword ptr [0xe122cc]  ; g_pShaderManager */
     ea = (uint32_t)(0x00e122ccu);
     ecx = M32(ea);
     /* 0071f9dd  mov eax, dword ptr [ecx] */
@@ -132,11 +135,11 @@ R_3:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0071f9e0  push 0xcf4208 */
+    /* 0071f9e0  push 0xcf4208  ; typeid(RaShaderSettings) */
     t = 0xcf4208u;
     esp -= 4;
     M32(esp) = t;
-    /* 0071f9e5  push 0xcf25c4 */
+    /* 0071f9e5  push 0xcf25c4  ; typeid(IShader) */
     t = 0xcf25c4u;
     esp -= 4;
     M32(esp) = t;
@@ -150,7 +153,7 @@ R_3:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0071f9f0  call dword ptr [eax + 0x10] */
+    /* 0071f9f0  call dword ptr [eax + 0x10]  ; -> ShaderManager::vf4 */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -162,7 +165,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0071f9f4  call 0x7c334d */
+    /* 0071f9f4  call 0x7c334d  ; __RTDynamicCast */
     t = 0x007c334du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071f980_5;
@@ -194,7 +197,7 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0071fa0c  call 0x403680 */
+    /* 0071fa0c  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071f980_6;
@@ -263,7 +266,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0071fa40  (between same file) */
+/* 0071fa40  UnderGrowthPatch::deleting_dtor_adjustor396_0071fa40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071fa40, bfv_client_l1_body_0071fa40);
 void bfv_client_l1_body_0071fa40(struct bfv_cpu *c)
 {
@@ -278,7 +282,7 @@ void bfv_client_l1_body_0071fa40(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0071fa46  jmp 0x71fa50 */
+    /* 0071fa46  jmp 0x71fa50  ; UnderGrowthPatch::deleting_dtor */
     c->eip = 0x0071fa50u;
     goto out;
 out: __attribute__((unused));
@@ -288,7 +292,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0071fa50  dice::ref2::geom::UnderGrowthPatch  (virtual method) */
+/* 0071fa50  UnderGrowthPatch::deleting_dtor  (virtual method)
+ * overrides: RaStreamData::vf0  (8 classes implement it)
+ * class: dice::ref2::geom::UnderGrowthPatch
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071fa50, bfv_client_l1_body_0071fa50);
 BFV_L1_RESUME(bfv_client_l1r_0071fa50_1, bfv_client_l1_body_0071fa50, 1);
 BFV_L1_RESUME(bfv_client_l1r_0071fa50_2, bfv_client_l1_body_0071fa50, 2);
@@ -327,7 +334,7 @@ L_0071fa5f:
     F_LOGIC(32, r);
     ecx = r;
 L_0071fa61:
-    /* 0071fa61  call 0x75e100 */
+    /* 0071fa61  call 0x75e100  ; GrowthPatch::~GrowthPatch */
     t = 0x0075e100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fa50_1;
@@ -336,14 +343,14 @@ L_0071fa61:
 R_1:
     /* 0071fa66  mov ecx, esi */
     ecx = esi;
-    /* 0071fa68  call 0x70a330 */
+    /* 0071fa68  call 0x70a330  ; RaStreamData::ctor_dtor */
     t = 0x0070a330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fa50_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0071fa6d  test byte ptr [esp + 8], 1 */
+    /* 0071fa6d  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -353,7 +360,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0071fa75  call 0x403680 */
+    /* 0071fa75  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0071fa50_3;

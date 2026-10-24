@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006a5690  dice::ref2::world::Camera  (virtual method) */
+/* 006a5690  Camera::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::Camera
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a5690, bfv_client_l1_body_006a5690);
 BFV_L1_RESUME(bfv_client_l1r_006a5690_1, bfv_client_l1_body_006a5690, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a5690_2, bfv_client_l1_body_006a5690, 2);
@@ -25,7 +28,7 @@ void bfv_client_l1_body_006a5690(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 006a5691  mov ebx, dword ptr [esp + 0xc] */
+    /* 006a5691  mov ebx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ebx = M32(ea);
     /* 006a5695  test bl, 4 */
@@ -50,13 +53,13 @@ void bfv_client_l1_body_006a5690(struct bfv_cpu *c)
     /* 006a56a9  fld dword ptr [esi + 0x1ac] */
     ea = (uint32_t)(esi + 0x000001acu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a56af  fsub dword ptr [esp + 0xc] */
+    /* 006a56af  fsub dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a56b3  fst dword ptr [esi + 0x1ac] */
     ea = (uint32_t)(esi + 0x000001acu);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a56b9  fcomp dword ptr [0xb44444] */
+    /* 006a56b9  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a56bf  fnstsw ax */
@@ -66,7 +69,7 @@ void bfv_client_l1_body_006a5690(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 006a56c4  jp 0x6a56cb */
     if (pf) goto L_006a56cb;
-    /* 006a56c6  call 0x6a5580 */
+    /* 006a56c6  call 0x6a5580  ; Camera::sub_006a5580 */
     t = 0x006a5580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a5690_1;
@@ -74,7 +77,7 @@ void bfv_client_l1_body_006a5690(struct bfv_cpu *c)
     goto out;
 R_1:
 L_006a56cb:
-    /* 006a56cb  mov eax, dword ptr [esp + 0xc] */
+    /* 006a56cb  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 006a56cf  push ebx */
@@ -87,7 +90,7 @@ L_006a56cb:
     M32(esp) = t;
     /* 006a56d1  mov ecx, esi */
     ecx = esi;
-    /* 006a56d3  call 0x6f8cf0 */
+    /* 006a56d3  call 0x6f8cf0  ; RotationalBundle::update */
     t = 0x006f8cf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a5690_2;
@@ -114,7 +117,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006a56e0  (between same file) */
+/* 006a56e0  std::list::_Buyheadnode_24_006a56e0  (between same file)
+ * called by: CameraTemplate::createObject_helper_006a6750
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a56e0, bfv_client_l1_body_006a56e0);
 BFV_L1_RESUME(bfv_client_l1r_006a56e0_1, bfv_client_l1_body_006a56e0, 1);
 void bfv_client_l1_body_006a56e0(struct bfv_cpu *c)
@@ -170,14 +175,14 @@ void bfv_client_l1_body_006a56e0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006a56fe  mov dword ptr [ebp - 0x10], esp */
+    /* 006a56fe  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 006a5701  push 0x18 */
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 006a5703  call 0x403610 */
+    /* 006a5703  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a56e0_1;
@@ -190,16 +195,16 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 006a570b  mov dword ptr [ebp - 0x14], eax */
+    /* 006a570b  mov dword ptr [ebp - 0x14], eax  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = eax;
-    /* 006a570e  mov dword ptr [ebp - 4], 0 */
+    /* 006a570e  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
-    /* 006a5715  mov dword ptr [ebp - 0x18], eax */
+    /* 006a5715  mov dword ptr [ebp - 0x18], eax  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = eax;
-    /* 006a5718  mov dword ptr [ebp - 0x1c], eax */
+    /* 006a5718  mov dword ptr [ebp - 0x1c], eax  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = eax;
     /* 006a571b  test eax, eax */
@@ -211,15 +216,15 @@ R_1:
     ea = (uint32_t)(eax);
     M32(ea) = eax;
 L_006a5721:
-    /* 006a5721  mov dword ptr [ebp - 0x20], 1 */
+    /* 006a5721  mov dword ptr [ebp - 0x20], 1  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = 0x1u;
     /* 006a5728  lea ecx, [eax + 4] */
     ecx = (uint32_t)(eax + 0x00000004u);
-    /* 006a572b  mov dword ptr [ebp - 0x24], ecx */
+    /* 006a572b  mov dword ptr [ebp - 0x24], ecx  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = ecx;
-    /* 006a572e  mov dword ptr [ebp - 0x28], ecx */
+    /* 006a572e  mov dword ptr [ebp - 0x28], ecx  ; var_2c */
     ea = (uint32_t)(ebp + 0xffffffd8u);
     M32(ea) = ecx;
     /* 006a5731  test ecx, ecx */
@@ -231,10 +236,10 @@ L_006a5721:
     ea = (uint32_t)(ecx);
     M32(ea) = eax;
 L_006a5737:
-    /* 006a5737  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 006a5737  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
-    /* 006a573e  mov ecx, dword ptr [ebp - 0xc] */
+    /* 006a573e  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 006a5741  mov dword ptr fs:[0], ecx */
@@ -269,7 +274,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a574f  (between same file) */
+/* 006a574f  Camera_helper_006a56e0_catch_006a574f  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a574f, bfv_client_l1_body_006a574f);
 BFV_L1_RESUME(bfv_client_l1r_006a574f_1, bfv_client_l1_body_006a574f, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a574f_2, bfv_client_l1_body_006a574f, 2);
@@ -292,7 +298,7 @@ void bfv_client_l1_body_006a574f(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006a5753  call 0x403680 */
+    /* 006a5753  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a574f_1;
@@ -313,7 +319,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 006a575f  call 0x7c1fae */
+    /* 006a575f  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a574f_2;
@@ -329,7 +335,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006a5770  (between same file) */
+/* 006a5770  std::list::_Buynode_24_006a5770  (between same file)
+ * called by: world_006a7060
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a5770, bfv_client_l1_body_006a5770);
 BFV_L1_RESUME(bfv_client_l1r_006a5770_1, bfv_client_l1_body_006a5770, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a5770_2, bfv_client_l1_body_006a5770, 2);
@@ -387,14 +395,14 @@ void bfv_client_l1_body_006a5770(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006a578e  mov dword ptr [ebp - 0x10], esp */
+    /* 006a578e  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 006a5791  push 0x18 */
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 006a5793  call 0x403610 */
+    /* 006a5793  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a5770_1;
@@ -409,13 +417,13 @@ R_1:
     esp = r;
     /* 006a579b  mov esi, eax */
     esi = eax;
-    /* 006a579d  mov dword ptr [ebp - 0x14], esi */
+    /* 006a579d  mov dword ptr [ebp - 0x14], esi  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = esi;
-    /* 006a57a0  mov dword ptr [ebp - 4], 0 */
+    /* 006a57a0  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
-    /* 006a57a7  mov dword ptr [ebp - 0x18], esi */
+    /* 006a57a7  mov dword ptr [ebp - 0x18], esi  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = esi;
     /* 006a57aa  test esi, esi */
@@ -423,21 +431,21 @@ R_1:
     F_LOGIC(32, r);
     /* 006a57ac  je 0x6a57c1 */
     if (zf) goto L_006a57c1;
-    /* 006a57ae  mov eax, dword ptr [ebp + 0x10] */
+    /* 006a57ae  mov eax, dword ptr [ebp + 0x10]  ; arg_8 */
     ea = (uint32_t)(ebp + 0x00000010u);
     eax = M32(ea);
     /* 006a57b1  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006a57b2  mov ecx, dword ptr [ebp + 0xc] */
+    /* 006a57b2  mov ecx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     ecx = M32(ea);
     /* 006a57b5  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006a57b6  mov edx, dword ptr [ebp + 8] */
+    /* 006a57b6  mov edx, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     edx = M32(ea);
     /* 006a57b9  push edx */
@@ -446,7 +454,7 @@ R_1:
     M32(esp) = t;
     /* 006a57ba  mov ecx, esi */
     ecx = esi;
-    /* 006a57bc  call 0x6a55e0 */
+    /* 006a57bc  call 0x6a55e0  ; world_006a55e0 */
     t = 0x006a55e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a5770_2;
@@ -454,12 +462,12 @@ R_1:
     goto out;
 R_2:
 L_006a57c1:
-    /* 006a57c1  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 006a57c1  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 006a57c8  mov eax, esi */
     eax = esi;
-    /* 006a57ca  mov ecx, dword ptr [ebp - 0xc] */
+    /* 006a57ca  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 006a57cd  mov dword ptr fs:[0], ecx */
@@ -494,7 +502,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a57dd  (between same file) */
+/* 006a57dd  Camera_006a5770_catch_006a57dd  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a57dd, bfv_client_l1_body_006a57dd);
 BFV_L1_RESUME(bfv_client_l1r_006a57dd_1, bfv_client_l1_body_006a57dd, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a57dd_2, bfv_client_l1_body_006a57dd, 2);
@@ -517,7 +526,7 @@ void bfv_client_l1_body_006a57dd(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006a57e1  call 0x403680 */
+    /* 006a57e1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a57dd_1;
@@ -538,7 +547,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 006a57ed  call 0x7c1fae */
+    /* 006a57ed  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a57dd_2;
@@ -554,7 +563,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a5800  dice::ref2::world::Camera  (virtual method) */
+/* 006a5800  Camera::handleInput  (virtual method)
+ * overrides: Object::handleInput  (47 classes implement it)
+ * class: dice::ref2::world::Camera
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a5800, bfv_client_l1_body_006a5800);
 BFV_L1_RESUME(bfv_client_l1r_006a5800_1, bfv_client_l1_body_006a5800, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a5800_2, bfv_client_l1_body_006a5800, 2);
@@ -576,7 +588,7 @@ void bfv_client_l1_body_006a5800(struct bfv_cpu *c)
     case 5: goto R_5;
     default: break;
     }
-    /* 006a5800  mov edx, dword ptr [esp + 8] */
+    /* 006a5800  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 006a5804  sub esp, 0xc */
@@ -608,7 +620,7 @@ void bfv_client_l1_body_006a5800(struct bfv_cpu *c)
     /* 006a581f  mov ecx, dword ptr [edx + 0xe0] */
     ea = (uint32_t)(edx + 0x000000e0u);
     ecx = M32(ea);
-    /* 006a5825  mov dword ptr [esp + 8], eax */
+    /* 006a5825  mov dword ptr [esp + 8], eax  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = eax;
     /* 006a5829  push esi */
@@ -638,7 +650,7 @@ void bfv_client_l1_body_006a5800(struct bfv_cpu *c)
     /* 006a5838  fld dword ptr [edx + 0x28] */
     ea = (uint32_t)(edx + 0x00000028u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a583b  fcomp dword ptr [0xb44e48] */
+    /* 006a583b  fcomp dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a5841  fnstsw ax */
@@ -666,7 +678,7 @@ L_006a5848:
     /* 006a5858  fld dword ptr [edx + 0x24] */
     ea = (uint32_t)(edx + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a585b  fcomp dword ptr [0xb44e48] */
+    /* 006a585b  fcomp dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a5861  fnstsw ax */
@@ -679,7 +691,7 @@ L_006a5848:
 L_006a586c:
     /* 006a586c  mov ecx, edi */
     ecx = edi;
-    /* 006a586e  call 0x6a5580 */
+    /* 006a586e  call 0x6a5580  ; Camera::sub_006a5580 */
     t = 0x006a5580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a5800_1;
@@ -729,7 +741,7 @@ L_006a587a:
     /* 006a5899  fld dword ptr [edx + 0x2c] */
     ea = (uint32_t)(edx + 0x0000002cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a589c  fcomp dword ptr [0xb44e48] */
+    /* 006a589c  fcomp dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a58a2  fnstsw ax */
@@ -739,7 +751,7 @@ L_006a587a:
     F_LOGIC(8, r);
     /* 006a58a7  jne 0x6a58c2 */
     if (!zf) goto L_006a58c2;
-    /* 006a58a9  mov ecx, dword ptr [esp + 0x1c] */
+    /* 006a58a9  mov ecx, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 006a58ad  push ecx */
@@ -750,7 +762,7 @@ L_006a587a:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006a58af  mov edx, dword ptr [esp + 0x1c] */
+    /* 006a58af  mov edx, dword ptr [esp + 0x1c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000001cu);
     edx = M32(ea);
     /* 006a58b3  push edx */
@@ -759,7 +771,7 @@ L_006a587a:
     M32(esp) = t;
     /* 006a58b4  mov ecx, edi */
     ecx = edi;
-    /* 006a58b6  call 0x6f8ab0 */
+    /* 006a58b6  call 0x6f8ab0  ; RotationalBundle::handleInput */
     t = 0x006f8ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a5800_2;
@@ -781,16 +793,16 @@ R_2:
     esp += 16;
     goto out;
 L_006a58c2:
-    /* 006a58c2  mov dword ptr [esp + 4], 0 */
+    /* 006a58c2  mov dword ptr [esp + 4], 0  ; var_c */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 006a58ca  mov ecx, dword ptr [esp + 4] */
+    /* 006a58ca  mov ecx, dword ptr [esp + 4]  ; var_c */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 006a58ce  mov dword ptr [esp + 8], 0 */
+    /* 006a58ce  mov dword ptr [esp + 8], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 006a58d6  mov edx, dword ptr [esp + 8] */
+    /* 006a58d6  mov edx, dword ptr [esp + 8]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 006a58da  lea eax, [edi + 0x16c] */
@@ -801,25 +813,25 @@ L_006a58c2:
     /* 006a58e2  mov dword ptr [eax + 4], edx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = edx;
-    /* 006a58e5  mov dword ptr [esp + 0xc], 0 */
+    /* 006a58e5  mov dword ptr [esp + 0xc], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = 0x0u;
-    /* 006a58ed  mov ecx, dword ptr [esp + 0xc] */
+    /* 006a58ed  mov ecx, dword ptr [esp + 0xc]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 006a58f1  mov dword ptr [eax + 8], ecx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = ecx;
-    /* 006a58f4  mov dword ptr [esp + 4], 0 */
+    /* 006a58f4  mov dword ptr [esp + 4], 0  ; var_c */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 006a58fc  mov eax, dword ptr [esp + 4] */
+    /* 006a58fc  mov eax, dword ptr [esp + 4]  ; var_c */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006a5900  mov dword ptr [esp + 8], 0 */
+    /* 006a5900  mov dword ptr [esp + 8], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 006a5908  mov ecx, dword ptr [esp + 8] */
+    /* 006a5908  mov ecx, dword ptr [esp + 8]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006a590c  lea edx, [edi + 0x178] */
@@ -832,10 +844,10 @@ L_006a58c2:
     M32(ea) = ecx;
     /* 006a5917  lea ecx, [edi + 0x160] */
     ecx = (uint32_t)(edi + 0x00000160u);
-    /* 006a591d  mov dword ptr [esp + 0xc], 0 */
+    /* 006a591d  mov dword ptr [esp + 0xc], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = 0x0u;
-    /* 006a5925  mov eax, dword ptr [esp + 0xc] */
+    /* 006a5925  mov eax, dword ptr [esp + 0xc]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 006a5929  mov dword ptr [edx + 8], eax */
@@ -844,7 +856,7 @@ L_006a58c2:
     /* 006a592c  fld dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a592e  fmul dword ptr [0xb55584] */
+    /* 006a592e  fmul dword ptr [0xb55584]  ; = 0.75f */
     ea = (uint32_t)(0x00b55584u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a5934  mov edx, ecx */
@@ -852,7 +864,7 @@ L_006a58c2:
     /* 006a5936  mov eax, dword ptr [edx] */
     ea = (uint32_t)(edx);
     eax = M32(ea);
-    /* 006a5938  mov dword ptr [esp + 4], eax */
+    /* 006a5938  mov dword ptr [esp + 4], eax  ; var_c */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
     /* 006a593c  mov eax, dword ptr [edx + 4] */
@@ -867,19 +879,19 @@ L_006a58c2:
     /* 006a5944  fld dword ptr [ecx + 4] */
     ea = (uint32_t)(ecx + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a5947  mov dword ptr [esp + 8], eax */
+    /* 006a5947  mov dword ptr [esp + 8], eax  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = eax;
-    /* 006a594b  fmul dword ptr [0xb55584] */
+    /* 006a594b  fmul dword ptr [0xb55584]  ; = 0.75f */
     ea = (uint32_t)(0x00b55584u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a5951  lea eax, [esp + 4] */
+    /* 006a5951  lea eax, [esp + 4]  ; &var_c */
     eax = (uint32_t)(esp + 0x00000004u);
     /* 006a5955  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006a5956  mov dword ptr [esp + 0x10], edx */
+    /* 006a5956  mov dword ptr [esp + 0x10], edx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
     /* 006a595a  fstp dword ptr [ecx + 4] */
@@ -888,13 +900,13 @@ L_006a58c2:
     /* 006a595d  fld dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a5960  fmul dword ptr [0xb55584] */
+    /* 006a5960  fmul dword ptr [0xb55584]  ; = 0.75f */
     ea = (uint32_t)(0x00b55584u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a5966  fstp dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a5969  call 0x413f60 */
+    /* 006a5969  call 0x413f60  ; Vec3::operator== */
     t = 0x00413f60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a5800_3;
@@ -908,7 +920,7 @@ R_3:
     if (zf) goto L_006a5992;
     /* 006a5972  mov ecx, edi */
     ecx = edi;
-    /* 006a5974  call 0x6f90d0 */
+    /* 006a5974  call 0x6f90d0  ; Camera::sub_006f90d0 */
     t = 0x006f90d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a5800_4;
@@ -930,10 +942,10 @@ R_4:
     esp += 16;
     goto out;
 L_006a5980:
-    /* 006a5980  mov ecx, dword ptr [esp + 0x1c] */
+    /* 006a5980  mov ecx, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
-    /* 006a5984  mov eax, dword ptr [esp + 0x14] */
+    /* 006a5984  mov eax, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 006a5988  push ecx */
@@ -950,7 +962,7 @@ L_006a5980:
     M32(esp) = t;
     /* 006a598b  mov ecx, edi */
     ecx = edi;
-    /* 006a598d  call 0x6f8ab0 */
+    /* 006a598d  call 0x6f8ab0  ; RotationalBundle::handleInput */
     t = 0x006f8ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a5800_5;
@@ -979,7 +991,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6040  dice::ref2::world::Camera  (virtual method) */
+/* 006a6040  Camera::handleEvent  (virtual method)
+ * overrides: Object::handleEvent  (47 classes implement it)
+ * class: dice::ref2::world::Camera
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6040, bfv_client_l1_body_006a6040);
 BFV_L1_RESUME(bfv_client_l1r_006a6040_1, bfv_client_l1_body_006a6040, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a6040_2, bfv_client_l1_body_006a6040, 2);
@@ -1011,14 +1026,14 @@ void bfv_client_l1_body_006a6040(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 006a6041  mov ebx, dword ptr [esp + 0xc] */
+    /* 006a6041  mov ebx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ebx = M32(ea);
     /* 006a6045  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 006a6046  mov ebp, dword ptr [esp + 0xc] */
+    /* 006a6046  mov ebp, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ebp = M32(ea);
     /* 006a604a  push esi */
@@ -1054,7 +1069,7 @@ void bfv_client_l1_body_006a6040(struct bfv_cpu *c)
     /* 006a605b  mov byte ptr [esi + 0x239], 0 */
     ea = (uint32_t)(esi + 0x00000239u);
     M8(ea) = 0x0u;
-    /* 006a6062  call 0x6a5f40 */
+    /* 006a6062  call 0x6a5f40  ; Camera::handleEvent_helper_006a5f40 */
     t = 0x006a5f40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6040_1;
@@ -1071,7 +1086,7 @@ R_1:
     M32(esp) = t;
     /* 006a6069  mov ecx, esi */
     ecx = esi;
-    /* 006a606b  call 0x69fc70 */
+    /* 006a606b  call 0x69fc70  ; Bundle::handleEvent */
     t = 0x0069fc70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6040_2;
@@ -1145,7 +1160,7 @@ R_4:
     /* 006a6097  mov byte ptr [esi + 0x239], 1 */
     ea = (uint32_t)(esi + 0x00000239u);
     M8(ea) = 0x1u;
-    /* 006a609e  call 0xa825e0 */
+    /* 006a609e  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6040_5;
@@ -1155,7 +1170,7 @@ R_5:
 L_006a60a3:
     /* 006a60a3  mov ecx, esi */
     ecx = esi;
-    /* 006a60a5  call 0x6a5580 */
+    /* 006a60a5  call 0x6a5580  ; Camera::sub_006a5580 */
     t = 0x006a5580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6040_6;
@@ -1206,7 +1221,7 @@ L_006a60c9:
     M32(esp) = t;
     /* 006a60cb  mov ecx, esi */
     ecx = esi;
-    /* 006a60cd  call 0x69fc70 */
+    /* 006a60cd  call 0x69fc70  ; Bundle::handleEvent */
     t = 0x0069fc70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6040_8;
@@ -1240,7 +1255,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006a60e0  (between same file) */
+/* 006a60e0  Camera_helper_006a60e0  (between same file)
+ * called by: Camera_006a6240
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a60e0, bfv_client_l1_body_006a60e0);
 BFV_L1_RESUME(bfv_client_l1r_006a60e0_1, bfv_client_l1_body_006a60e0, 1);
 void bfv_client_l1_body_006a60e0(struct bfv_cpu *c)
@@ -1301,7 +1318,7 @@ L_006a60f4:
     /* 006a60fa  fld dword ptr [edx + 0x14] */
     ea = (uint32_t)(edx + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a60fd  fcomp dword ptr [esp + 0x2c] */
+    /* 006a60fd  fcomp dword ptr [esp + 0x2c]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000002cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6101  fnstsw ax */
@@ -1346,7 +1363,7 @@ L_006a60f4:
     /* 006a6121  mov dword ptr [ecx + 4], edx */
     ea = (uint32_t)(ecx + 0x00000004u);
     M32(ea) = edx;
-    /* 006a6124  call 0x403680 */
+    /* 006a6124  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a60e0_1;
@@ -1408,18 +1425,18 @@ L_006a6145:
     b = M32(ea);
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 006a615b  mov dword ptr [esp + 0x18], edx */
+    /* 006a615b  mov dword ptr [esp + 0x18], edx  ; var_c */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = edx;
-    /* 006a615f  mov dword ptr [esp + 0x1c], edi */
+    /* 006a615f  mov dword ptr [esp + 0x1c], edi  ; var_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = edi;
-    /* 006a6163  mov dword ptr [esp + 0x20], ebx */
+    /* 006a6163  mov dword ptr [esp + 0x20], ebx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = ebx;
     /* 006a6167  je 0x6a6226 */
     if (zf) goto L_006a6226;
-    /* 006a616d  fld dword ptr [esp + 0x2c] */
+    /* 006a616d  fld dword ptr [esp + 0x2c]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000002cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6171  lea edx, [ecx + 8] */
@@ -1432,7 +1449,7 @@ L_006a6145:
     /* 006a6178  fld dword ptr [ecx + 0x14] */
     ea = (uint32_t)(ecx + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a617b  mov dword ptr [esp + 0xc], eax */
+    /* 006a617b  mov dword ptr [esp + 0xc], eax  ; var_18 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = eax;
     /* 006a617f  fsub st(2) */
@@ -1445,15 +1462,15 @@ L_006a6145:
     edx = M32(ea);
     /* 006a6187  fdivp st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfdivp st(1)\n\t.att_syntax prefix");
-    /* 006a6189  mov dword ptr [esp + 0x10], eax */
+    /* 006a6189  mov dword ptr [esp + 0x10], eax  ; var_14 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 006a618d  mov dword ptr [esp + 0x14], edx */
+    /* 006a618d  mov dword ptr [esp + 0x14], edx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
     /* 006a6191  fstp st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(1)\n\t.att_syntax prefix");
-    /* 006a6193  fcom dword ptr [0xb44444] */
+    /* 006a6193  fcom dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcom dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6199  fnstsw ax */
@@ -1465,21 +1482,21 @@ L_006a6145:
     if (pf) goto L_006a61a8;
     /* 006a61a0  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
-    /* 006a61a2  fld dword ptr [0xb44444] */
+    /* 006a61a2  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_006a61a8:
-    /* 006a61a8  fld dword ptr [0xb4456c] */
+    /* 006a61a8  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a61ae  mov eax, dword ptr [esp + 0x28] */
+    /* 006a61ae  mov eax, dword ptr [esp + 0x28]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 006a61b2  fsub st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfsub st(1)\n\t.att_syntax prefix");
     /* 006a61b4  mov ecx, eax */
     ecx = eax;
-    /* 006a61b6  fld dword ptr [esp + 0x18] */
+    /* 006a61b6  fld dword ptr [esp + 0x18]  ; var_c */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a61ba  pop edi */
@@ -1496,83 +1513,83 @@ L_006a61a8:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 006a61bf  fstp dword ptr [esp + 0xc] */
+    /* 006a61bf  fstp dword ptr [esp + 0xc]  ; var_c */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a61c3  fld dword ptr [esp + 0x10] */
+    /* 006a61c3  fld dword ptr [esp + 0x10]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a61c7  fmul st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
-    /* 006a61c9  fstp dword ptr [esp + 0x10] */
+    /* 006a61c9  fstp dword ptr [esp + 0x10]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a61cd  fld dword ptr [esp + 0x14] */
+    /* 006a61cd  fld dword ptr [esp + 0x14]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a61d1  fmul st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
-    /* 006a61d3  fstp dword ptr [esp + 0x14] */
+    /* 006a61d3  fstp dword ptr [esp + 0x14]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a61d7  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
-    /* 006a61d9  fld dword ptr [esp] */
+    /* 006a61d9  fld dword ptr [esp]  ; var_18 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a61dc  fmul st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
-    /* 006a61de  fstp dword ptr [esp] */
+    /* 006a61de  fstp dword ptr [esp]  ; var_18 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a61e1  fld dword ptr [esp + 4] */
+    /* 006a61e1  fld dword ptr [esp + 4]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a61e5  fmul st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
-    /* 006a61e7  fstp dword ptr [esp + 4] */
+    /* 006a61e7  fstp dword ptr [esp + 4]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a61eb  fmul dword ptr [esp + 8] */
+    /* 006a61eb  fmul dword ptr [esp + 8]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a61ef  fld dword ptr [esp] */
+    /* 006a61ef  fld dword ptr [esp]  ; var_18 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a61f2  fadd dword ptr [esp + 0xc] */
+    /* 006a61f2  fadd dword ptr [esp + 0xc]  ; var_c */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a61f6  fstp dword ptr [esp] */
+    /* 006a61f6  fstp dword ptr [esp]  ; var_18 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a61f9  mov edx, dword ptr [esp] */
+    /* 006a61f9  mov edx, dword ptr [esp]  ; var_18 */
     ea = (uint32_t)(esp);
     edx = M32(ea);
-    /* 006a61fc  fld dword ptr [esp + 4] */
+    /* 006a61fc  fld dword ptr [esp + 4]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6200  mov dword ptr [ecx], edx */
     ea = (uint32_t)(ecx);
     M32(ea) = edx;
-    /* 006a6202  fadd dword ptr [esp + 0x10] */
+    /* 006a6202  fadd dword ptr [esp + 0x10]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6206  fstp dword ptr [esp + 4] */
+    /* 006a6206  fstp dword ptr [esp + 4]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a620a  mov edx, dword ptr [esp + 4] */
+    /* 006a620a  mov edx, dword ptr [esp + 4]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 006a620e  mov dword ptr [ecx + 4], edx */
     ea = (uint32_t)(ecx + 0x00000004u);
     M32(ea) = edx;
-    /* 006a6211  fadd dword ptr [esp + 0x14] */
+    /* 006a6211  fadd dword ptr [esp + 0x14]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6215  fstp dword ptr [esp + 8] */
+    /* 006a6215  fstp dword ptr [esp + 8]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6219  mov edx, dword ptr [esp + 8] */
+    /* 006a6219  mov edx, dword ptr [esp + 8]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 006a621d  mov dword ptr [ecx + 8], edx */
@@ -1589,7 +1606,7 @@ L_006a61a8:
     esp += 12;
     goto out;
 L_006a6226:
-    /* 006a6226  mov eax, dword ptr [esp + 0x28] */
+    /* 006a6226  mov eax, dword ptr [esp + 0x28]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 006a622a  fstp st(0) */
@@ -1634,7 +1651,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6240  (between same file) */
+/* 006a6240  Camera_006a6240  (between same file)
+ * called by: world_006a70f0
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6240, bfv_client_l1_body_006a6240);
 BFV_L1_RESUME(bfv_client_l1r_006a6240_1, bfv_client_l1_body_006a6240, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a6240_2, bfv_client_l1_body_006a6240, 2);
@@ -1664,7 +1683,7 @@ void bfv_client_l1_body_006a6240(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 006a6243  mov eax, dword ptr [esp + 0x34] */
+    /* 006a6243  mov eax, dword ptr [esp + 0x34]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000034u);
     eax = M32(ea);
     /* 006a6247  push esi */
@@ -1677,7 +1696,7 @@ void bfv_client_l1_body_006a6240(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006a624b  lea ecx, [esp + 0x2c] */
+    /* 006a624b  lea ecx, [esp + 0x2c]  ; &var_c */
     ecx = (uint32_t)(esp + 0x0000002cu);
     /* 006a624f  push ecx */
     t = ecx;
@@ -1685,7 +1704,7 @@ void bfv_client_l1_body_006a6240(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006a6250  mov ecx, esi */
     ecx = esi;
-    /* 006a6252  call 0x6a60e0 */
+    /* 006a6252  call 0x6a60e0  ; Camera_helper_006a60e0 */
     t = 0x006a60e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6240_1;
@@ -1698,7 +1717,7 @@ R_1:
     /* 006a6259  mov ecx, dword ptr [eax + 4] */
     ea = (uint32_t)(eax + 0x00000004u);
     ecx = M32(ea);
-    /* 006a625c  mov dword ptr [esp + 4], edx */
+    /* 006a625c  mov dword ptr [esp + 4], edx  ; var_30 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = edx;
     /* 006a6260  mov edx, dword ptr [eax + 8] */
@@ -1707,12 +1726,12 @@ R_1:
     /* 006a6263  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 006a6265  mov dword ptr [esp + 8], ecx */
+    /* 006a6265  mov dword ptr [esp + 8], ecx  ; var_2c */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = ecx;
     /* 006a6269  mov ecx, esi */
     ecx = esi;
-    /* 006a626b  mov dword ptr [esp + 0xc], edx */
+    /* 006a626b  mov dword ptr [esp + 0xc], edx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = edx;
     /* 006a626f  call dword ptr [eax + 0x34] */
@@ -1732,7 +1751,7 @@ R_2:
     /* 006a6277  mov eax, dword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     eax = M32(ea);
-    /* 006a627a  mov dword ptr [esp + 0x18], eax */
+    /* 006a627a  mov dword ptr [esp + 0x18], eax  ; var_1c */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = eax;
     /* 006a627e  mov eax, dword ptr [esi + 0x1a8] */
@@ -1743,10 +1762,10 @@ R_2:
     b = 0xcu;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 006a6287  mov dword ptr [esp + 0x10], ecx */
+    /* 006a6287  mov dword ptr [esp + 0x10], ecx  ; var_24 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ecx;
-    /* 006a628b  mov dword ptr [esp + 0x14], edx */
+    /* 006a628b  mov dword ptr [esp + 0x14], edx  ; var_20 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
     /* 006a628f  je 0x6a62c7 */
@@ -1758,37 +1777,37 @@ R_2:
     F_SUB(32, a, b, r);
     /* 006a6294  je 0x6a62c7 */
     if (zf) goto L_006a62c7;
-    /* 006a6296  fld dword ptr [esp + 4] */
+    /* 006a6296  fld dword ptr [esp + 4]  ; var_30 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a629a  fsub dword ptr [esp + 0x10] */
+    /* 006a629a  fsub dword ptr [esp + 0x10]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a629e  fld dword ptr [esp + 8] */
+    /* 006a629e  fld dword ptr [esp + 8]  ; var_2c */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62a2  fsub dword ptr [esp + 0x14] */
+    /* 006a62a2  fsub dword ptr [esp + 0x14]  ; var_20 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62a6  fstp dword ptr [esp + 0x20] */
+    /* 006a62a6  fstp dword ptr [esp + 0x20]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62aa  fld dword ptr [esp + 0xc] */
+    /* 006a62aa  fld dword ptr [esp + 0xc]  ; var_28 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62ae  fsub dword ptr [esp + 0x18] */
+    /* 006a62ae  fsub dword ptr [esp + 0x18]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62b2  fstp dword ptr [esp + 0x24] */
+    /* 006a62b2  fstp dword ptr [esp + 0x24]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62b6  mov ecx, dword ptr [esp + 0x24] */
+    /* 006a62b6  mov ecx, dword ptr [esp + 0x24]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     ecx = M32(ea);
-    /* 006a62ba  fld dword ptr [esp + 0x20] */
+    /* 006a62ba  fld dword ptr [esp + 0x20]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62be  mov dword ptr [esp + 0x24], ecx */
+    /* 006a62be  mov dword ptr [esp + 0x24], ecx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = ecx;
     /* 006a62c2  jmp 0x6a639f */
@@ -1796,7 +1815,7 @@ R_2:
 L_006a62c7:
     /* 006a62c7  mov ecx, esi */
     ecx = esi;
-    /* 006a62c9  call 0x66b190 */
+    /* 006a62c9  call 0x66b190  ; world::Object::getRoot */
     t = 0x0066b190u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6240_3;
@@ -1816,43 +1835,43 @@ R_3:
     c->eip = t;
     goto out;
 R_4:
-    /* 006a62d5  fmul dword ptr [0xb95668] */
+    /* 006a62d5  fmul dword ptr [0xb95668]  ; = 1.2f */
     ea = (uint32_t)(0x00b95668u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62db  fstp dword ptr [esp + 0x38] */
+    /* 006a62db  fstp dword ptr [esp + 0x38]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62df  fld dword ptr [esp + 4] */
+    /* 006a62df  fld dword ptr [esp + 4]  ; var_30 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62e3  fsub dword ptr [esp + 0x10] */
+    /* 006a62e3  fsub dword ptr [esp + 0x10]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62e7  fld dword ptr [esp + 8] */
+    /* 006a62e7  fld dword ptr [esp + 8]  ; var_2c */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62eb  fsub dword ptr [esp + 0x14] */
+    /* 006a62eb  fsub dword ptr [esp + 0x14]  ; var_20 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62ef  fstp dword ptr [esp + 0x20] */
+    /* 006a62ef  fstp dword ptr [esp + 0x20]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62f3  fld dword ptr [esp + 0xc] */
+    /* 006a62f3  fld dword ptr [esp + 0xc]  ; var_28 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62f7  fsub dword ptr [esp + 0x18] */
+    /* 006a62f7  fsub dword ptr [esp + 0x18]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62fb  fst dword ptr [esp + 0x24] */
+    /* 006a62fb  fst dword ptr [esp + 0x24]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a62ff  fmul dword ptr [esp + 0x24] */
+    /* 006a62ff  fmul dword ptr [esp + 0x24]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6303  fld dword ptr [esp + 0x20] */
+    /* 006a6303  fld dword ptr [esp + 0x20]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6307  fmul dword ptr [esp + 0x20] */
+    /* 006a6307  fmul dword ptr [esp + 0x20]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a630b  faddp st(1) */
@@ -1865,7 +1884,7 @@ R_4:
     __asm__ volatile(".intel_syntax noprefix\n\tfaddp st(1)\n\t.att_syntax prefix");
     /* 006a6313  fsqrt */
     __asm__ volatile(".intel_syntax noprefix\n\tfsqrt\n\t.att_syntax prefix");
-    /* 006a6315  fcom qword ptr [0xb69cc0] */
+    /* 006a6315  fcom qword ptr [0xb69cc0]  ; = 0.01 */
     ea = (uint32_t)(0x00b69cc0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcom qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a631b  fnstsw ax */
@@ -1875,23 +1894,23 @@ R_4:
     F_LOGIC(8, r);
     /* 006a6320  jne 0x6a633c */
     if (!zf) goto L_006a633c;
-    /* 006a6322  fld dword ptr [esp + 0x38] */
+    /* 006a6322  fld dword ptr [esp + 0x38]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6326  fdiv st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv st(1)\n\t.att_syntax prefix");
-    /* 006a6328  fstp dword ptr [esp + 0x38] */
+    /* 006a6328  fstp dword ptr [esp + 0x38]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a632c  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
-    /* 006a632e  fmul dword ptr [esp + 0x38] */
+    /* 006a632e  fmul dword ptr [esp + 0x38]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6332  fld dword ptr [esp + 0x20] */
+    /* 006a6332  fld dword ptr [esp + 0x20]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6336  fmul dword ptr [esp + 0x38] */
+    /* 006a6336  fmul dword ptr [esp + 0x38]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a633a  jmp 0x6a6371 */
@@ -1930,7 +1949,7 @@ R_5:
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6352  fchs */
     __asm__ volatile(".intel_syntax noprefix\n\tfchs\n\t.att_syntax prefix");
-    /* 006a6354  fstp dword ptr [esp + 0x20] */
+    /* 006a6354  fstp dword ptr [esp + 0x20]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6358  fld dword ptr [eax + 8] */
@@ -1938,133 +1957,133 @@ R_5:
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a635b  fchs */
     __asm__ volatile(".intel_syntax noprefix\n\tfchs\n\t.att_syntax prefix");
-    /* 006a635d  fstp dword ptr [esp + 0x24] */
+    /* 006a635d  fstp dword ptr [esp + 0x24]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6361  fmul dword ptr [esp + 0x38] */
+    /* 006a6361  fmul dword ptr [esp + 0x38]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6365  fld dword ptr [esp + 0x20] */
+    /* 006a6365  fld dword ptr [esp + 0x20]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6369  fmul dword ptr [esp + 0x38] */
+    /* 006a6369  fmul dword ptr [esp + 0x38]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a636d  fst dword ptr [esp + 0x2c] */
+    /* 006a636d  fst dword ptr [esp + 0x2c]  ; var_8 */
     ea = (uint32_t)(esp + 0x0000002cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_006a6371:
-    /* 006a6371  fld dword ptr [esp + 0x24] */
+    /* 006a6371  fld dword ptr [esp + 0x24]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6375  fmul dword ptr [esp + 0x38] */
+    /* 006a6375  fmul dword ptr [esp + 0x38]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6379  fstp dword ptr [esp + 0x24] */
+    /* 006a6379  fstp dword ptr [esp + 0x24]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a637d  fld st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfld st(1)\n\t.att_syntax prefix");
-    /* 006a637f  fadd dword ptr [esp + 0x10] */
+    /* 006a637f  fadd dword ptr [esp + 0x10]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6383  fld st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfld st(1)\n\t.att_syntax prefix");
-    /* 006a6385  fadd dword ptr [esp + 0x14] */
+    /* 006a6385  fadd dword ptr [esp + 0x14]  ; var_20 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6389  fxch st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfxch st(1)\n\t.att_syntax prefix");
-    /* 006a638b  fstp dword ptr [esp + 4] */
+    /* 006a638b  fstp dword ptr [esp + 4]  ; var_30 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a638f  fstp dword ptr [esp + 8] */
+    /* 006a638f  fstp dword ptr [esp + 8]  ; var_2c */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6393  fld dword ptr [esp + 0x24] */
+    /* 006a6393  fld dword ptr [esp + 0x24]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6397  fadd dword ptr [esp + 0x18] */
+    /* 006a6397  fadd dword ptr [esp + 0x18]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a639b  fstp dword ptr [esp + 0xc] */
+    /* 006a639b  fstp dword ptr [esp + 0xc]  ; var_28 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_006a639f:
-    /* 006a639f  mov esi, dword ptr [esp + 0x3c] */
+    /* 006a639f  mov esi, dword ptr [esp + 0x3c]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000003cu);
     esi = M32(ea);
     /* 006a63a3  fxch st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfxch st(1)\n\t.att_syntax prefix");
-    /* 006a63a5  fmul dword ptr [0xb5456c] */
+    /* 006a63a5  fmul dword ptr [0xb5456c]  ; = -1.0f */
     ea = (uint32_t)(0x00b5456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a63ab  lea ecx, [esp + 0x10] */
+    /* 006a63ab  lea ecx, [esp + 0x10]  ; &var_24 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 006a63af  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006a63b0  lea edx, [esp + 0x20] */
+    /* 006a63b0  lea edx, [esp + 0x20]  ; &var_18 */
     edx = (uint32_t)(esp + 0x00000020u);
-    /* 006a63b4  fstp dword ptr [esp + 0x20] */
+    /* 006a63b4  fstp dword ptr [esp + 0x20]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a63b8  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 006a63b9  lea edx, [esp + 0x30] */
+    /* 006a63b9  lea edx, [esp + 0x30]  ; &var_c */
     edx = (uint32_t)(esp + 0x00000030u);
-    /* 006a63bd  fmul dword ptr [0xb5456c] */
+    /* 006a63bd  fmul dword ptr [0xb5456c]  ; = -1.0f */
     ea = (uint32_t)(0x00b5456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a63c3  mov ecx, esi */
     ecx = esi;
-    /* 006a63c5  mov dword ptr [esp + 0x18], 0 */
+    /* 006a63c5  mov dword ptr [esp + 0x18], 0  ; var_24 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x0u;
-    /* 006a63cd  mov dword ptr [esp + 0x1c], 0x3f800000 */
+    /* 006a63cd  mov dword ptr [esp + 0x1c], 0x3f800000  ; var_20, 1.0f */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = 0x3f800000u;
-    /* 006a63d5  fstp dword ptr [esp + 0x28] */
+    /* 006a63d5  fstp dword ptr [esp + 0x28]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000028u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a63d9  mov dword ptr [esp + 0x20], 0 */
+    /* 006a63d9  mov dword ptr [esp + 0x20], 0  ; var_1c */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = 0x0u;
-    /* 006a63e1  fld dword ptr [esp + 0x2c] */
+    /* 006a63e1  fld dword ptr [esp + 0x2c]  ; var_10 */
     ea = (uint32_t)(esp + 0x0000002cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a63e5  mov dword ptr [esp + 0x30], 0 */
+    /* 006a63e5  mov dword ptr [esp + 0x30], 0  ; var_c */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = 0x0u;
-    /* 006a63ed  fmul dword ptr [0xb5456c] */
+    /* 006a63ed  fmul dword ptr [0xb5456c]  ; = -1.0f */
     ea = (uint32_t)(0x00b5456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a63f3  mov dword ptr [esp + 0x34], 0 */
+    /* 006a63f3  mov dword ptr [esp + 0x34], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = 0x0u;
-    /* 006a63fb  mov dword ptr [esp + 0x38], 0 */
+    /* 006a63fb  mov dword ptr [esp + 0x38], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = 0x0u;
-    /* 006a6403  fstp dword ptr [esp + 0x2c] */
+    /* 006a6403  fstp dword ptr [esp + 0x2c]  ; var_10 */
     ea = (uint32_t)(esp + 0x0000002cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006a6407  call 0x5b5e10 */
+    /* 006a6407  call 0x5b5e10  ; bf_005b5e10 */
     t = 0x005b5e10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6240_6;
     c->eip = t;
     goto out;
 R_6:
-    /* 006a640c  mov eax, dword ptr [esp + 4] */
+    /* 006a640c  mov eax, dword ptr [esp + 4]  ; var_30 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006a6410  mov ecx, dword ptr [esp + 8] */
+    /* 006a6410  mov ecx, dword ptr [esp + 8]  ; var_2c */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 006a6414  mov edx, dword ptr [esp + 0xc] */
+    /* 006a6414  mov edx, dword ptr [esp + 0xc]  ; var_28 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 006a6418  add esi, 0x30 */
@@ -2103,7 +2122,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6430  (between same file) */
+/* 006a6430  Camera_006a6430  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6430, bfv_client_l1_body_006a6430);
 BFV_L1_RESUME(bfv_client_l1r_006a6430_1, bfv_client_l1_body_006a6430, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a6430_2, bfv_client_l1_body_006a6430, 2);
@@ -2189,7 +2209,7 @@ R_2:
     /* 006a6465  mov ebp, dword ptr [ebp + 8] */
     ea = (uint32_t)(ebp + 0x00000008u);
     ebp = M32(ea);
-    /* 006a6468  mov ecx, dword ptr [0xda21a0] */
+    /* 006a6468  mov ecx, dword ptr [0xda21a0]  ; g_pTerrain */
     ea = (uint32_t)(0x00da21a0u);
     ecx = M32(ea);
     /* 006a646e  mov eax, dword ptr [eax] */
@@ -2214,7 +2234,7 @@ R_2:
     c->eip = t;
     goto out;
 R_3:
-    /* 006a6477  fstp dword ptr [esp + 0x10] */
+    /* 006a6477  fstp dword ptr [esp + 0x10]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a647b  mov edx, dword ptr [edi] */
@@ -2230,7 +2250,7 @@ R_3:
     c->eip = t;
     goto out;
 R_4:
-    /* 006a6482  fld dword ptr [esp + 0x10] */
+    /* 006a6482  fld dword ptr [esp + 0x10]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6486  fsub dword ptr [ebx + 0x25c] */
@@ -2246,7 +2266,7 @@ R_4:
     F_LOGIC(8, r);
     /* 006a6494  jne 0x6a64aa */
     if (!zf) goto L_006a64aa;
-    /* 006a6496  mov ebp, dword ptr [esp + 0x24] */
+    /* 006a6496  mov ebp, dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     ebp = M32(ea);
     /* 006a649a  test ebp, ebp */
@@ -2286,7 +2306,7 @@ L_006a649e:
     esp += 16;
     goto out;
 L_006a64aa:
-    /* 006a64aa  mov ebp, dword ptr [esp + 0x24] */
+    /* 006a64aa  mov ebp, dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     ebp = M32(ea);
 L_006a64ae:
@@ -2311,7 +2331,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6750  (between same file) */
+/* 006a6750  CameraTemplate::createObject_helper_006a6750  (between same file)
+ * called by: CameraTemplate::createObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6750, bfv_client_l1_body_006a6750);
 BFV_L1_RESUME(bfv_client_l1r_006a6750_1, bfv_client_l1_body_006a6750, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a6750_2, bfv_client_l1_body_006a6750, 2);
@@ -2377,7 +2399,7 @@ void bfv_client_l1_body_006a6750(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006a6757  mov edi, dword ptr [esp + 0x20] */
+    /* 006a6757  mov edi, dword ptr [esp + 0x20]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     edi = M32(ea);
     /* 006a675b  push edi */
@@ -2386,17 +2408,17 @@ void bfv_client_l1_body_006a6750(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006a675c  mov ebp, ecx */
     ebp = ecx;
-    /* 006a675e  call 0x6f8a00 */
+    /* 006a675e  call 0x6f8a00  ; RotationalBundle::RotationalBundle */
     t = 0x006f8a00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6750_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006a6763  mov dword ptr [ebp + 0x1a0], 0xb79b94 */
+    /* 006a6763  mov dword ptr [ebp + 0x1a0], 0xb79b94  ; vtable ICameraObject */
     ea = (uint32_t)(ebp + 0x000001a0u);
     M32(ea) = 0xb79b94u;
-    /* 006a676d  mov dword ptr [ebp], 0xb956ec */
+    /* 006a676d  mov dword ptr [ebp], 0xb956ec  ; vtable Camera */
     ea = (uint32_t)(ebp);
     M32(ea) = 0xb956ecu;
     /* 006a6774  mov dword ptr [ebp + 0x84], 0xb956d0 */
@@ -2416,13 +2438,13 @@ R_1:
     esi = (uint32_t)(ebp + 0x0000023cu);
     /* 006a679a  mov ecx, esi */
     ecx = esi;
-    /* 006a679c  mov dword ptr [ebp + 0x1ac], 0xbf800000 */
+    /* 006a679c  mov dword ptr [ebp + 0x1ac], 0xbf800000  ; -1.0f */
     ea = (uint32_t)(ebp + 0x000001acu);
     M32(ea) = 0xbf800000u;
-    /* 006a67a6  mov dword ptr [ebp + 0x1f0], 0x3e99999a */
+    /* 006a67a6  mov dword ptr [ebp + 0x1f0], 0x3e99999a  ; 0.3f */
     ea = (uint32_t)(ebp + 0x000001f0u);
     M32(ea) = 0x3e99999au;
-    /* 006a67b0  mov dword ptr [ebp + 0x1f4], 0x41000000 */
+    /* 006a67b0  mov dword ptr [ebp + 0x1f4], 0x41000000  ; 8.0f */
     ea = (uint32_t)(ebp + 0x000001f4u);
     M32(ea) = 0x41000000u;
     /* 006a67ba  mov byte ptr [ebp + 0x238], bl */
@@ -2431,7 +2453,7 @@ R_1:
     /* 006a67c0  mov byte ptr [ebp + 0x239], bl */
     ea = (uint32_t)(ebp + 0x00000239u);
     M8(ea) = LO8(ebx);
-    /* 006a67c6  call 0x6a56e0 */
+    /* 006a67c6  call 0x6a56e0  ; std::list::_Buyheadnode_24_006a56e0 */
     t = 0x006a56e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6750_2;
@@ -2453,7 +2475,7 @@ R_2:
     /* 006a67dd  mov dword ptr [ebp + 0x24c], eax */
     ea = (uint32_t)(ebp + 0x0000024cu);
     M32(ea) = eax;
-    /* 006a67e3  call 0x425320 */
+    /* 006a67e3  call 0x425320  ; Matrix4::identity */
     t = 0x00425320u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6750_3;
@@ -2511,7 +2533,7 @@ R_3:
     c->eip = t;
     goto out;
 R_4:
-    /* 006a682d  mov dword ptr [esp + 0x20], eax */
+    /* 006a682d  mov dword ptr [esp + 0x20], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = eax;
     /* 006a6831  mov eax, dword ptr [esi] */
@@ -2527,13 +2549,13 @@ R_4:
     c->eip = t;
     goto out;
 R_5:
-    /* 006a6838  mov ecx, dword ptr [0xda21a0] */
+    /* 006a6838  mov ecx, dword ptr [0xda21a0]  ; g_pTerrain */
     ea = (uint32_t)(0x00da21a0u);
     ecx = M32(ea);
     /* 006a683e  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 006a6840  mov ecx, dword ptr [esp + 0x20] */
+    /* 006a6840  mov ecx, dword ptr [esp + 0x20]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     ecx = M32(ea);
     /* 006a6844  mov ecx, dword ptr [ecx + 8] */
@@ -2546,7 +2568,7 @@ R_5:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006a684a  mov ecx, dword ptr [0xda21a0] */
+    /* 006a684a  mov ecx, dword ptr [0xda21a0]  ; g_pTerrain */
     ea = (uint32_t)(0x00da21a0u);
     ecx = M32(ea);
     /* 006a6850  push eax */
@@ -2561,7 +2583,7 @@ R_5:
     c->eip = t;
     goto out;
 R_6:
-    /* 006a6854  fstp dword ptr [esp + 0x20] */
+    /* 006a6854  fstp dword ptr [esp + 0x20]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6858  mov edx, dword ptr [esi] */
@@ -2577,7 +2599,7 @@ R_6:
     c->eip = t;
     goto out;
 R_7:
-    /* 006a685f  fld dword ptr [esp + 0x20] */
+    /* 006a685f  fld dword ptr [esp + 0x20]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006a6863  fsub dword ptr [edi + 0x25c] */
@@ -2608,7 +2630,7 @@ L_006a687c:
     edi = ebp;
     /* 006a688a  mov ecx, ebp */
     ecx = ebp;
-    /* 006a688c  call 0x6a5c40 */
+    /* 006a688c  call 0x6a5c40  ; Camera_helper_006a5c40 */
     t = 0x006a5c40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6750_8;
@@ -2636,7 +2658,7 @@ R_8:
     if (zf) goto L_006a691d;
     /* 006a68ad  mov ecx, edi */
     ecx = edi;
-    /* 006a68af  call 0x49a980 */
+    /* 006a68af  call 0x49a980  ; IObject_findPlayerControlObject */
     t = 0x0049a980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6750_9;
@@ -2686,7 +2708,7 @@ R_10:
     c->eip = t;
     goto out;
 R_11:
-    /* 006a68cd  cmp eax, dword ptr [0xb77ed8] */
+    /* 006a68cd  cmp eax, dword ptr [0xb77ed8]  ; BFSoldierTemplate::classID */
     ea = (uint32_t)(0x00b77ed8u);
     a = eax;
     b = M32(ea);
@@ -2720,7 +2742,7 @@ R_11:
     M32(esp) = t;
     /* 006a68e4  mov ecx, edi */
     ecx = edi;
-    /* 006a68e6  call 0x65b0b0 */
+    /* 006a68e6  call 0x65b0b0  ; BFSoldier_0065b0b0 */
     t = 0x0065b0b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6750_12;
@@ -2754,7 +2776,7 @@ L_006a68eb:
     c->eip = t;
     goto out;
 R_13:
-    /* 006a68fc  cmp eax, dword ptr [0xb77ed8] */
+    /* 006a68fc  cmp eax, dword ptr [0xb77ed8]  ; BFSoldierTemplate::classID */
     ea = (uint32_t)(0x00b77ed8u);
     a = eax;
     b = M32(ea);
@@ -2791,7 +2813,7 @@ R_13:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006a6918  call 0x65b0b0 */
+    /* 006a6918  call 0x65b0b0  ; BFSoldier_0065b0b0 */
     t = 0x0065b0b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6750_14;
@@ -2831,10 +2853,10 @@ L_006a691d:
     /* 006a6958  mov dword ptr [ebp + 0x220], esi */
     ea = (uint32_t)(ebp + 0x00000220u);
     M32(ea) = esi;
-    /* 006a695e  mov dword ptr [esp + 0x10], 0 */
+    /* 006a695e  mov dword ptr [esp + 0x10], 0  ; var_c */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 006a6966  mov edx, dword ptr [esp + 0x10] */
+    /* 006a6966  mov edx, dword ptr [esp + 0x10]  ; var_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 006a696a  lea ecx, [ebp + 0x228] */
@@ -2842,28 +2864,28 @@ L_006a691d:
     /* 006a6970  mov dword ptr [ecx], edx */
     ea = (uint32_t)(ecx);
     M32(ea) = edx;
-    /* 006a6972  mov dword ptr [esp + 0x14], 0 */
+    /* 006a6972  mov dword ptr [esp + 0x14], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x0u;
-    /* 006a697a  mov eax, dword ptr [esp + 0x14] */
+    /* 006a697a  mov eax, dword ptr [esp + 0x14]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 006a697e  mov dword ptr [ecx + 4], eax */
     ea = (uint32_t)(ecx + 0x00000004u);
     M32(ea) = eax;
-    /* 006a6981  mov dword ptr [esp + 0x18], 0 */
+    /* 006a6981  mov dword ptr [esp + 0x18], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x0u;
-    /* 006a6989  mov edx, dword ptr [esp + 0x18] */
+    /* 006a6989  mov edx, dword ptr [esp + 0x18]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     edx = M32(ea);
     /* 006a698d  mov dword ptr [ecx + 8], edx */
     ea = (uint32_t)(ecx + 0x00000008u);
     M32(ea) = edx;
-    /* 006a6990  mov dword ptr [esp + 0x10], 0 */
+    /* 006a6990  mov dword ptr [esp + 0x10], 0  ; var_c */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 006a6998  mov ecx, dword ptr [esp + 0x10] */
+    /* 006a6998  mov ecx, dword ptr [esp + 0x10]  ; var_c */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 006a699c  lea eax, [ebp + 0x268] */
@@ -2871,28 +2893,28 @@ L_006a691d:
     /* 006a69a2  mov dword ptr [eax], ecx */
     ea = (uint32_t)(eax);
     M32(ea) = ecx;
-    /* 006a69a4  mov dword ptr [esp + 0x14], 0 */
+    /* 006a69a4  mov dword ptr [esp + 0x14], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x0u;
-    /* 006a69ac  mov edx, dword ptr [esp + 0x14] */
+    /* 006a69ac  mov edx, dword ptr [esp + 0x14]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 006a69b0  mov dword ptr [eax + 4], edx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = edx;
-    /* 006a69b3  mov dword ptr [esp + 0x18], 0xbf800000 */
+    /* 006a69b3  mov dword ptr [esp + 0x18], 0xbf800000  ; var_4, -1.0f */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0xbf800000u;
-    /* 006a69bb  mov ecx, dword ptr [esp + 0x18] */
+    /* 006a69bb  mov ecx, dword ptr [esp + 0x18]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 006a69bf  mov dword ptr [eax + 8], ecx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = ecx;
-    /* 006a69c2  mov dword ptr [esp + 0x10], 0 */
+    /* 006a69c2  mov dword ptr [esp + 0x10], 0  ; var_c */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 006a69ca  mov eax, dword ptr [esp + 0x10] */
+    /* 006a69ca  mov eax, dword ptr [esp + 0x10]  ; var_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 006a69ce  lea edx, [ebp + 0x25c] */
@@ -2900,16 +2922,16 @@ L_006a691d:
     /* 006a69d4  mov dword ptr [edx], eax */
     ea = (uint32_t)(edx);
     M32(ea) = eax;
-    /* 006a69d6  mov dword ptr [esp + 0x14], 0 */
+    /* 006a69d6  mov dword ptr [esp + 0x14], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x0u;
-    /* 006a69de  mov ecx, dword ptr [esp + 0x14] */
+    /* 006a69de  mov ecx, dword ptr [esp + 0x14]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
-    /* 006a69e2  mov dword ptr [esp + 0x18], 0 */
+    /* 006a69e2  mov dword ptr [esp + 0x18], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x0u;
-    /* 006a69ea  mov eax, dword ptr [esp + 0x18] */
+    /* 006a69ea  mov eax, dword ptr [esp + 0x18]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 006a69ee  mov dword ptr [edx + 4], ecx */
@@ -2918,7 +2940,7 @@ L_006a691d:
     /* 006a69f1  mov dword ptr [edx + 8], eax */
     ea = (uint32_t)(edx + 0x00000008u);
     M32(ea) = eax;
-    /* 006a69f4  call 0x425320 */
+    /* 006a69f4  call 0x425320  ; Matrix4::identity */
     t = 0x00425320u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6750_15;
@@ -2949,7 +2971,7 @@ R_15:
     M32(esp) = t;
     /* 006a6a06  lea ecx, [ebp + 0x274] */
     ecx = (uint32_t)(ebp + 0x00000274u);
-    /* 006a6a0c  call 0x686a40 */
+    /* 006a6a0c  call 0x686a40  ; Projectile_00686a40 */
     t = 0x00686a40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6750_16;
@@ -2994,7 +3016,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6a30  dice::ref2::world::Camera  (virtual method) */
+/* 006a6a30  Camera::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::Camera
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6a30, bfv_client_l1_body_006a6a30);
 void bfv_client_l1_body_006a6a30(struct bfv_cpu *c)
 {
@@ -3003,12 +3028,12 @@ void bfv_client_l1_body_006a6a30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006a6a30  mov edx, dword ptr [0xb42718] */
+    /* 006a6a30  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 006a6a36  mov eax, ecx */
     eax = ecx;
-    /* 006a6a38  mov ecx, dword ptr [esp + 4] */
+    /* 006a6a38  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006a6a3c  cmp ecx, edx */
@@ -3018,7 +3043,7 @@ void bfv_client_l1_body_006a6a30(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006a6a3e  je 0x6a6a72 */
     if (zf) goto L_006a6a72;
-    /* 006a6a40  cmp ecx, dword ptr [0xb77da0] */
+    /* 006a6a40  cmp ecx, dword ptr [0xb77da0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00b77da0u);
     a = ecx;
     b = M32(ea);
@@ -3026,7 +3051,7 @@ void bfv_client_l1_body_006a6a30(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006a6a46  je 0x6a6a72 */
     if (zf) goto L_006a6a72;
-    /* 006a6a48  cmp ecx, dword ptr [0xb77d8c] */
+    /* 006a6a48  cmp ecx, dword ptr [0xb77d8c]  ; interfaceID(Camera|FreeCamera) */
     ea = (uint32_t)(0x00b77d8cu);
     a = ecx;
     b = M32(ea);
@@ -3050,7 +3075,7 @@ void bfv_client_l1_body_006a6a30(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006a6a5c:
-    /* 006a6a5c  cmp ecx, dword ptr [0xbdb000] */
+    /* 006a6a5c  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);
@@ -3090,7 +3115,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6a80  (between same file) */
+/* 006a6a80  Camera_getByte_124h_006a6a80  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6a80, bfv_client_l1_body_006a6a80);
 void bfv_client_l1_body_006a6a80(struct bfv_cpu *c)
 {
@@ -3113,7 +3139,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6a90  (between same file) */
+/* 006a6a90  Camera_setByte_124h_006a6a90  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6a90, bfv_client_l1_body_006a6a90);
 void bfv_client_l1_body_006a6a90(struct bfv_cpu *c)
 {
@@ -3122,7 +3149,7 @@ void bfv_client_l1_body_006a6a90(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006a6a90  mov al, byte ptr [esp + 4] */
+    /* 006a6a90  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 006a6a94  mov byte ptr [ecx + 0x124], al */
@@ -3139,7 +3166,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6aa0  (between same file) */
+/* 006a6aa0  Camera_getByte_98h_006a6aa0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6aa0, bfv_client_l1_body_006a6aa0);
 void bfv_client_l1_body_006a6aa0(struct bfv_cpu *c)
 {
@@ -3162,7 +3190,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6ab0  (between same file) */
+/* 006a6ab0  Camera_006a6ab0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6ab0, bfv_client_l1_body_006a6ab0);
 BFV_L1_RESUME(bfv_client_l1r_006a6ab0_1, bfv_client_l1_body_006a6ab0, 1);
 void bfv_client_l1_body_006a6ab0(struct bfv_cpu *c)
@@ -3213,7 +3242,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6ae0  (between same file) */
+/* 006a6ae0  Camera_006a6ae0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6ae0, bfv_client_l1_body_006a6ae0);
 void bfv_client_l1_body_006a6ae0(struct bfv_cpu *c)
 {
@@ -3234,7 +3264,7 @@ void bfv_client_l1_body_006a6ae0(struct bfv_cpu *c)
     edi = (uint32_t)(ecx + 0x000000d4u);
     /* 006a6ae8  mov ecx, 0x10 */
     ecx = 0x10u;
-    /* 006a6aed  lea esi, [esp + 0xc] */
+    /* 006a6aed  lea esi, [esp + 0xc]  ; &arg_0 */
     esi = (uint32_t)(esp + 0x0000000cu);
     /* 006a6af1  rep movsd dword ptr es:[edi], dword ptr [esi] */
     while (ecx) {
@@ -3262,7 +3292,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6b10  (between same file) */
+/* 006a6b10  Camera::deleting_dtor_adjustor132_006a6b10  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6b10, bfv_client_l1_body_006a6b10);
 void bfv_client_l1_body_006a6b10(struct bfv_cpu *c)
 {
@@ -3277,7 +3308,7 @@ void bfv_client_l1_body_006a6b10(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006a6b16  jmp 0x6a6bc0 */
+    /* 006a6b16  jmp 0x6a6bc0  ; Camera::deleting_dtor */
     c->eip = 0x006a6bc0u;
     goto out;
 out: __attribute__((unused));
@@ -3287,7 +3318,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6b20  (between same file) */
+/* 006a6b20  Camera::queryInterface_adjustor132_006a6b20  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6b20, bfv_client_l1_body_006a6b20);
 void bfv_client_l1_body_006a6b20(struct bfv_cpu *c)
 {
@@ -3302,7 +3334,7 @@ void bfv_client_l1_body_006a6b20(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006a6b26  jmp 0x6a6a30 */
+    /* 006a6b26  jmp 0x6a6a30  ; Camera::queryInterface */
     c->eip = 0x006a6a30u;
     goto out;
 out: __attribute__((unused));
@@ -3312,7 +3344,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6b30  (between same file) */
+/* 006a6b30  Camera::deleting_dtor_adjustor416_006a6b30  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6b30, bfv_client_l1_body_006a6b30);
 void bfv_client_l1_body_006a6b30(struct bfv_cpu *c)
 {
@@ -3327,7 +3360,7 @@ void bfv_client_l1_body_006a6b30(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006a6b36  jmp 0x6a6bc0 */
+    /* 006a6b36  jmp 0x6a6bc0  ; Camera::deleting_dtor */
     c->eip = 0x006a6bc0u;
     goto out;
 out: __attribute__((unused));
@@ -3337,7 +3370,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6b40  (between same file) */
+/* 006a6b40  Camera::queryInterface_adjustor416_006a6b40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6b40, bfv_client_l1_body_006a6b40);
 void bfv_client_l1_body_006a6b40(struct bfv_cpu *c)
 {
@@ -3352,7 +3386,7 @@ void bfv_client_l1_body_006a6b40(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006a6b46  jmp 0x6a6a30 */
+    /* 006a6b46  jmp 0x6a6a30  ; Camera::queryInterface */
     c->eip = 0x006a6a30u;
     goto out;
 out: __attribute__((unused));
@@ -3362,7 +3396,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6b50  dice::ref2::world::Camera  (virtual method) */
+/* 006a6b50  Camera::addRef  (virtual method)
+ * overrides: IBase::addRef  (395 classes implement it)
+ * class: dice::ref2::world::Camera
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6b50, bfv_client_l1_body_006a6b50);
 void bfv_client_l1_body_006a6b50(struct bfv_cpu *c)
 {
@@ -3393,7 +3430,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6b60  dice::ref2::world::Camera  (virtual method) */
+/* 006a6b60  Camera::release  (virtual method)
+ * overrides: IBase::release  (395 classes implement it)
+ * class: dice::ref2::world::Camera
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6b60, bfv_client_l1_body_006a6b60);
 BFV_L1_RESUME(bfv_client_l1r_006a6b60_1, bfv_client_l1_body_006a6b60, 1);
 void bfv_client_l1_body_006a6b60(struct bfv_cpu *c)
@@ -3438,7 +3478,7 @@ void bfv_client_l1_body_006a6b60(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 006a6b7a  call dword ptr [eax] */
+    /* 006a6b7a  call dword ptr [eax]  ; -> Camera::vf0 = Camera::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;
@@ -3464,7 +3504,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6b80  (between same file) */
+/* 006a6b80  Camera::addRef_adjustor132_006a6b80  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6b80, bfv_client_l1_body_006a6b80);
 void bfv_client_l1_body_006a6b80(struct bfv_cpu *c)
 {
@@ -3479,7 +3520,7 @@ void bfv_client_l1_body_006a6b80(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006a6b86  jmp 0x6a6b50 */
+    /* 006a6b86  jmp 0x6a6b50  ; Camera::addRef */
     c->eip = 0x006a6b50u;
     goto out;
 out: __attribute__((unused));
@@ -3489,7 +3530,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6b90  (between same file) */
+/* 006a6b90  Camera::release_adjustor132_006a6b90  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6b90, bfv_client_l1_body_006a6b90);
 void bfv_client_l1_body_006a6b90(struct bfv_cpu *c)
 {
@@ -3504,7 +3546,7 @@ void bfv_client_l1_body_006a6b90(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006a6b96  jmp 0x6a6b60 */
+    /* 006a6b96  jmp 0x6a6b60  ; Camera::release */
     c->eip = 0x006a6b60u;
     goto out;
 out: __attribute__((unused));
@@ -3514,7 +3556,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6ba0  (between same file) */
+/* 006a6ba0  Camera::addRef_adjustor416_006a6ba0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6ba0, bfv_client_l1_body_006a6ba0);
 void bfv_client_l1_body_006a6ba0(struct bfv_cpu *c)
 {
@@ -3529,7 +3572,7 @@ void bfv_client_l1_body_006a6ba0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006a6ba6  jmp 0x6a6b50 */
+    /* 006a6ba6  jmp 0x6a6b50  ; Camera::addRef */
     c->eip = 0x006a6b50u;
     goto out;
 out: __attribute__((unused));
@@ -3539,7 +3582,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6bb0  (between same file) */
+/* 006a6bb0  Camera::release_adjustor416_006a6bb0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6bb0, bfv_client_l1_body_006a6bb0);
 void bfv_client_l1_body_006a6bb0(struct bfv_cpu *c)
 {
@@ -3554,7 +3598,7 @@ void bfv_client_l1_body_006a6bb0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006a6bb6  jmp 0x6a6b60 */
+    /* 006a6bb6  jmp 0x6a6b60  ; Camera::release */
     c->eip = 0x006a6b60u;
     goto out;
 out: __attribute__((unused));
@@ -3564,7 +3608,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006a6bc0  dice::ref2::world::Camera  (virtual method) */
+/* 006a6bc0  Camera::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::Camera
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a6bc0, bfv_client_l1_body_006a6bc0);
 BFV_L1_RESUME(bfv_client_l1r_006a6bc0_1, bfv_client_l1_body_006a6bc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a6bc0_2, bfv_client_l1_body_006a6bc0, 2);
@@ -3590,7 +3637,7 @@ void bfv_client_l1_body_006a6bc0(struct bfv_cpu *c)
     esi = ecx;
     /* 006a6bc3  lea ecx, [esi + 0x23c] */
     ecx = (uint32_t)(esi + 0x0000023cu);
-    /* 006a6bc9  call 0x9ed520 */
+    /* 006a6bc9  call 0x9ed520  ; std::vector::_Tidy */
     t = 0x009ed520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6bc0_1;
@@ -3614,17 +3661,17 @@ L_006a6bda:
 L_006a6bdc:
     /* 006a6bdc  mov ecx, esi */
     ecx = esi;
-    /* 006a6bde  mov dword ptr [eax], 0xb4274c */
+    /* 006a6bde  mov dword ptr [eax], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb4274cu;
-    /* 006a6be4  call 0x66c820 */
+    /* 006a6be4  call 0x66c820  ; SimpleObject::~SimpleObject */
     t = 0x0066c820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6bc0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 006a6be9  test byte ptr [esp + 8], 1 */
+    /* 006a6be9  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -3634,7 +3681,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006a6bf1  call 0x403680 */
+    /* 006a6bf1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a6bc0_3;

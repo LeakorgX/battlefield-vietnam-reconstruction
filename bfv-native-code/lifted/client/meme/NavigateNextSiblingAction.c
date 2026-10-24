@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00ac1ba0  dice::meme::NavigateNextSiblingAction  (virtual method) */
+/* 00ac1ba0  NavigateNextSiblingAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::NavigateNextSiblingAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac1ba0, bfv_client_l1_body_00ac1ba0);
 BFV_L1_RESUME(bfv_client_l1r_00ac1ba0_1, bfv_client_l1_body_00ac1ba0, 1);
 void bfv_client_l1_body_00ac1ba0(struct bfv_cpu *c)
@@ -27,7 +30,7 @@ void bfv_client_l1_body_00ac1ba0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00ac1ba5  je 0xac1bac */
     if (zf) goto L_00ac1bac;
-    /* 00ac1ba7  call 0xac41f0 */
+    /* 00ac1ba7  call 0xac41f0  ; NavigateNextSiblingAction::execute_helper_00ac41f0 */
     t = 0x00ac41f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac1ba0_1;
@@ -50,8 +53,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2040  dice::meme::NavigateNextSiblingAction  (virtual method)
- * strings: "dice::meme::NavigateNextSiblingAction" */
+/* 00ac2040  NavigateNextSiblingAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::NavigateNextSiblingAction
+ * strings: "dice::meme::NavigateNextSiblingAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2040, bfv_client_l1_body_00ac2040);
 BFV_L1_RESUME(bfv_client_l1r_00ac2040_1, bfv_client_l1_body_00ac2040, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2040_2, bfv_client_l1_body_00ac2040, 2);
@@ -82,27 +88,27 @@ void bfv_client_l1_body_00ac2040(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac2055  push 0xc10298 */
+    /* 00ac2055  push 0xc10298  ; "dice::meme::NavigateNextSiblingAction" */
     t = 0xc10298u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac205a  mov ecx, 0xe215dc */
+    /* 00ac205a  mov ecx, 0xe215dc  ; g_RuntimeClass_NavigateNextSiblingAction */
     ecx = 0xe215dcu;
-    /* 00ac205f  call 0x875490 */
+    /* 00ac205f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2040_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac2064  push 0xb41c20 */
+    /* 00ac2064  push 0xb41c20  ; bfv_client_global_store_00b41c20 */
     t = 0xb41c20u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2069  mov dword ptr [0xe215dc], 0xc10058 */
+    /* 00ac2069  mov dword ptr [0xe215dc], 0xc10058  ; g_RuntimeClass_NavigateNextSiblingAction */
     ea = (uint32_t)(0x00e215dcu);
     M32(ea) = 0xc10058u;
-    /* 00ac2073  call 0x7c2cd2 */
+    /* 00ac2073  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2040_2;
@@ -116,7 +122,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac207b:
-    /* 00ac207b  mov eax, 0xe215dc */
+    /* 00ac207b  mov eax, 0xe215dc  ; g_RuntimeClass_NavigateNextSiblingAction */
     eax = 0xe215dcu;
     /* 00ac2080  ret */
     c->eip = M32(esp);
@@ -129,7 +135,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac23b0  dice::meme::NavigateNextSiblingAction  (vtable store) */
+/* 00ac23b0  NavigateNextSiblingAction::create  (vtable store)
+ * class: dice::meme::NavigateNextSiblingAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac23b0, bfv_client_l1_body_00ac23b0);
 BFV_L1_RESUME(bfv_client_l1r_00ac23b0_1, bfv_client_l1_body_00ac23b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac23b0_2, bfv_client_l1_body_00ac23b0, 2);
@@ -153,7 +161,7 @@ void bfv_client_l1_body_00ac23b0(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac23b3  call 0x403610 */
+    /* 00ac23b3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac23b0_1;
@@ -175,7 +183,7 @@ R_1:
     if (zf) goto L_00ac23d9;
     /* 00ac23c1  mov ecx, esi */
     ecx = esi;
-    /* 00ac23c3  call 0x874870 */
+    /* 00ac23c3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac23b0_2;
@@ -185,7 +193,7 @@ R_2:
     /* 00ac23c8  mov dword ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 00ac23cf  mov dword ptr [esi], 0xc10444 */
+    /* 00ac23cf  mov dword ptr [esi], 0xc10444  ; vtable NavigateNextSiblingAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc10444u;
     /* 00ac23d5  mov eax, esi */

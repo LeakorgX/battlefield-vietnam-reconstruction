@@ -23,8 +23,9 @@ BINARIES = {
     '86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d':
         dict(bailout=0x72eef0, interpreter=0x774ff0, pool=0xc2f7c0),
 }
-ARENA = 0x02000000
-STACK = 0x03000000
+# Above the edited images, which grow past 0x02000000 with the lifted C payload.
+ARENA = 0x60000000
+STACK = 0x61000000
 
 
 def load_machine(image: bytes, pe):

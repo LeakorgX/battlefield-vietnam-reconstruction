@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a02000  dice::bf::ai::UrgencyMerger  (virtual method) */
+/* 00a02000  UrgencyMerger::vf1  (virtual method)
+ * overrides: UrgencyGenerator::vf1  (24 classes implement it)
+ * class: dice::bf::ai::UrgencyMerger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a02000, bfv_client_l1_body_00a02000);
 void bfv_client_l1_body_00a02000(struct bfv_cpu *c)
 {
@@ -32,7 +35,7 @@ void bfv_client_l1_body_00a02000(struct bfv_cpu *c)
     c->eip = M32(ea);
     goto out;
 L_00a0200e:
-    /* 00a0200e  fld dword ptr [0xb44444] */
+    /* 00a0200e  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a02014  ret 4 */
@@ -46,7 +49,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a02020  dice::bf::ai::UrgencyMerger  (virtual method) */
+/* 00a02020  UrgencyMerger::vf2  (virtual method)
+ * overrides: UrgencyGenerator::vf2  (24 classes implement it)
+ * class: dice::bf::ai::UrgencyMerger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a02020, bfv_client_l1_body_00a02020);
 void bfv_client_l1_body_00a02020(struct bfv_cpu *c)
 {
@@ -73,7 +79,7 @@ void bfv_client_l1_body_00a02020(struct bfv_cpu *c)
     c->eip = M32(ea);
     goto out;
 L_00a0202e:
-    /* 00a0202e  fld dword ptr [0xb44444] */
+    /* 00a0202e  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a02034  ret 4 */
@@ -87,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a02040  dice::bf::ai::UrgencyMerger  (virtual method) */
+/* 00a02040  UrgencyMerger::vf4  (virtual method)
+ * overrides: UrgencyGenerator::vf4  (24 classes implement it)
+ * class: dice::bf::ai::UrgencyMerger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a02040, bfv_client_l1_body_00a02040);
 BFV_L1_RESUME(bfv_client_l1r_00a02040_1, bfv_client_l1_body_00a02040, 1);
 void bfv_client_l1_body_00a02040(struct bfv_cpu *c)
@@ -105,7 +114,7 @@ void bfv_client_l1_body_00a02040(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a02041  mov ebx, dword ptr [esp + 8] */
+    /* 00a02041  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00a02045  push esi */
@@ -220,7 +229,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a02090  dice::bf::ai::UrgencyMerger  (virtual method) */
+/* 00a02090  UrgencyMerger::vf5  (virtual method)
+ * overrides: UrgencyGenerator::vf5  (24 classes implement it)
+ * class: dice::bf::ai::UrgencyMerger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a02090, bfv_client_l1_body_00a02090);
 BFV_L1_RESUME(bfv_client_l1r_00a02090_1, bfv_client_l1_body_00a02090, 1);
 void bfv_client_l1_body_00a02090(struct bfv_cpu *c)
@@ -238,14 +250,14 @@ void bfv_client_l1_body_00a02090(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a02091  mov ebx, dword ptr [esp + 0x10] */
+    /* 00a02091  mov ebx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
     /* 00a02095  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 00a02096  mov ebp, dword ptr [esp + 0x10] */
+    /* 00a02096  mov ebp, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 00a0209a  push esi */
@@ -294,7 +306,7 @@ L_00a020a2:
     /* 00a020b6  mov ecx, dword ptr [edx + esi*4] */
     ea = (uint32_t)(edx + esi * 4u);
     ecx = M32(ea);
-    /* 00a020b9  mov edx, dword ptr [esp + 0x14] */
+    /* 00a020b9  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 00a020bd  mov eax, dword ptr [ecx] */
@@ -373,7 +385,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a020e0  dice::bf::ai::UrgencyMerger  (virtual method) */
+/* 00a020e0  UrgencyMerger::vf6  (virtual method)
+ * overrides: UrgencyGenerator::vf6  (24 classes implement it)
+ * class: dice::bf::ai::UrgencyMerger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a020e0, bfv_client_l1_body_00a020e0);
 BFV_L1_RESUME(bfv_client_l1r_00a020e0_1, bfv_client_l1_body_00a020e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a020e0_2, bfv_client_l1_body_00a020e0, 2);
@@ -393,14 +408,14 @@ void bfv_client_l1_body_00a020e0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a020e1  mov ebx, dword ptr [esp + 8] */
+    /* 00a020e1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00a020e5  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 00a020e6  mov ebp, dword ptr [esp + 0x14] */
+    /* 00a020e6  mov ebp, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ebp = M32(ea);
     /* 00a020ea  push esi */
@@ -451,7 +466,7 @@ L_00a020f2:
     /* 00a02106  mov ecx, dword ptr [edx + esi*4] */
     ea = (uint32_t)(edx + esi * 4u);
     ecx = M32(ea);
-    /* 00a02109  mov edx, dword ptr [esp + 0x18] */
+    /* 00a02109  mov edx, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     edx = M32(ea);
     /* 00a0210d  mov eax, dword ptr [ecx] */
@@ -550,7 +565,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a02140  dice::bf::ai::UrgencyMerger  (virtual method) */
+/* 00a02140  UrgencyMerger::vf8  (virtual method)
+ * overrides: UrgencyGenerator::vf8  (24 classes implement it)
+ * class: dice::bf::ai::UrgencyMerger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a02140, bfv_client_l1_body_00a02140);
 BFV_L1_RESUME(bfv_client_l1r_00a02140_1, bfv_client_l1_body_00a02140, 1);
 void bfv_client_l1_body_00a02140(struct bfv_cpu *c)
@@ -590,7 +608,7 @@ void bfv_client_l1_body_00a02140(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a0214e  mov ebx, dword ptr [esp + 0x10] */
+    /* 00a0214e  mov ebx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
 L_00a02152:
@@ -665,7 +683,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a02180  dice::bf::ai::UrgencyMerger  (vtable store) */
+/* 00a02180  UrgencyMerger::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::UrgencyMerger
+ * called by: BotManager_Idle_009c0a70, BotManager_Idle_009c0f90, BotManager::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a02180, bfv_client_l1_body_00a02180);
 void bfv_client_l1_body_00a02180(struct bfv_cpu *c)
 {
@@ -674,21 +695,21 @@ void bfv_client_l1_body_00a02180(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a02180  mov edx, dword ptr [esp + 8] */
+    /* 00a02180  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00a02184  mov eax, ecx */
     eax = ecx;
-    /* 00a02186  mov ecx, dword ptr [esp + 4] */
+    /* 00a02186  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00a0218a  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 00a0218d  mov ecx, dword ptr [esp + 0xc] */
+    /* 00a0218d  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 00a02191  mov dword ptr [eax], 0xbfcb04 */
+    /* 00a02191  mov dword ptr [eax], 0xbfcb04  ; vtable UrgencyMerger */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbfcb04u;
     /* 00a02197  mov dword ptr [eax + 8], edx */
@@ -711,7 +732,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a021b0  dice::bf::ai::UrgencyMerger  (virtual method) */
+/* 00a021b0  UrgencyMerger::vf3  (virtual method)
+ * overrides: UrgencyGenerator::vf3  (24 classes implement it)
+ * class: dice::bf::ai::UrgencyMerger
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a021b0, bfv_client_l1_body_00a021b0);
 BFV_L1_RESUME(bfv_client_l1r_00a021b0_1, bfv_client_l1_body_00a021b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a021b0_2, bfv_client_l1_body_00a021b0, 2);
@@ -800,7 +824,7 @@ R_1:
     /* 00a021e7  jmp 0xa021ef */
     goto L_00a021ef;
 L_00a021e9:
-    /* 00a021e9  fld dword ptr [0xb44444] */
+    /* 00a021e9  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_00a021ef:

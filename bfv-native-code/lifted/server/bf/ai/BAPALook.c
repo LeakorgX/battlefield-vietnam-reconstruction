@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007c0700  (source path) */
+/* 007c0700  BAPALook::execute  (source path)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPALook
+ */
 BFV_L1_ENTRY(bfv_server_l1_007c0700, bfv_server_l1_body_007c0700);
 void bfv_server_l1_body_007c0700(struct bfv_cpu *c)
 {
@@ -14,10 +17,10 @@ void bfv_server_l1_body_007c0700(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, r, ea;
-    /* 007c0700  mov eax, dword ptr [0xc1d380] */
+    /* 007c0700  mov eax, dword ptr [0xc1d380]  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     eax = M32(ea);
-    /* 007c0705  mov ecx, dword ptr [0x934448] */
+    /* 007c0705  mov ecx, dword ptr [0x934448]  ; g_traceRing_mask */
     ea = (uint32_t)(0x00934448u);
     ecx = M32(ea);
     /* 007c070b  inc eax */
@@ -29,19 +32,19 @@ void bfv_server_l1_body_007c0700(struct bfv_cpu *c)
     r = (eax & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 007c070e  mov ecx, dword ptr [esp + 0xc] */
+    /* 007c070e  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 007c0712  mov dword ptr [0xc1d380], eax */
+    /* 007c0712  mov dword ptr [0xc1d380], eax  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     M32(ea) = eax;
-    /* 007c0717  mov dword ptr [eax*4 + 0xc1d360], 0x87bbd8 */
+    /* 007c0717  mov dword ptr [eax*4 + 0xc1d360], 0x87bbd8  ; g_traceRing_file */
     ea = (uint32_t)(eax * 4u + 0x00c1d360u);
     M32(ea) = 0x87bbd8u;
-    /* 007c0722  mov dword ptr [eax*4 + 0xc1d340], 0x38 */
+    /* 007c0722  mov dword ptr [eax*4 + 0xc1d340], 0x38  ; g_traceRing_line */
     ea = (uint32_t)(eax * 4u + 0x00c1d340u);
     M32(ea) = 0x38u;
-    /* 007c072d  mov eax, dword ptr [esp + 8] */
+    /* 007c072d  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007c0731  mov byte ptr [eax], 0 */

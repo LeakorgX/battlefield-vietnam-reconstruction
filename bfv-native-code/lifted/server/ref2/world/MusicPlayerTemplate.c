@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00548c90  dice::ref2::world::MusicPlayerTemplate  (vtable store) */
+/* 00548c90  MusicPlayerTemplate::MusicPlayerTemplate  (vtable store)
+ * class: dice::ref2::world::MusicPlayerTemplate
+ * called by: CustomPlaylistPlayer::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00548c90, bfv_server_l1_body_00548c90);
 BFV_L1_RESUME(bfv_server_l1r_00548c90_1, bfv_server_l1_body_00548c90, 1);
 BFV_L1_RESUME(bfv_server_l1r_00548c90_2, bfv_server_l1_body_00548c90, 2);
@@ -27,14 +30,14 @@ void bfv_server_l1_body_00548c90(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00548c91  mov esi, ecx */
     esi = ecx;
-    /* 00548c93  call 0x56aae0 */
+    /* 00548c93  call 0x56aae0  ; SimpleObjectTemplate::SimpleObjectTemplate */
     t = 0x0056aae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00548c90_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00548c98  mov dword ptr [esi], 0x834eec */
+    /* 00548c98  mov dword ptr [esi], 0x834eec  ; vtable MusicPlayerTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x834eecu;
     /* 00548c9e  mov dword ptr [esi + 0x74], 0x834ee0 */
@@ -66,7 +69,7 @@ R_1:
     /* 00548cc8  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 00548ccb  call 0x402020 */
+    /* 00548ccb  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00548c90_2;
@@ -99,7 +102,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00548cf0  dice::ref2::world::MusicPlayerTemplate  (virtual method) */
+/* 00548cf0  MusicPlayerTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::MusicPlayerTemplate
+ * also entered at 00548d20: MusicPlayerTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_00548cf0, bfv_server_l1_body_00548cf0);
 BFV_L1_RESUME(bfv_server_l1r_00548cf0_1, bfv_server_l1_body_00548cf0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00548cf0_2, bfv_server_l1_body_00548cf0, 2);
@@ -125,7 +132,7 @@ void bfv_server_l1_body_00548cf0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00548cf6  mov esi, ecx */
     esi = ecx;
-    /* 00548cf8  call 0x403d80 */
+    /* 00548cf8  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00548cf0_1;
@@ -149,7 +156,7 @@ R_1:
     M32(esp) = t;
     /* 00548d05  mov ecx, eax */
     ecx = eax;
-    /* 00548d07  call 0x565250 */
+    /* 00548d07  call 0x565250  ; MusicPlayer::MusicPlayer */
     t = 0x00565250u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00548cf0_2;
@@ -184,7 +191,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00548d30  dice::ref2::world::MusicPlayerTemplate  (virtual method) */
+/* 00548d30  MusicPlayerTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::MusicPlayerTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00548d30, bfv_server_l1_body_00548d30);
 void bfv_server_l1_body_00548d30(struct bfv_cpu *c)
 {
@@ -193,12 +203,12 @@ void bfv_server_l1_body_00548d30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00548d30  mov edx, dword ptr [0x820818] */
+    /* 00548d30  mov edx, dword ptr [0x820818]  ; MusicPlayerTemplate::classID */
     ea = (uint32_t)(0x00820818u);
     edx = M32(ea);
     /* 00548d36  mov eax, ecx */
     eax = ecx;
-    /* 00548d38  mov ecx, dword ptr [esp + 4] */
+    /* 00548d38  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00548d3c  cmp ecx, edx */
@@ -208,7 +218,7 @@ void bfv_server_l1_body_00548d30(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00548d3e  je 0x548d5a */
     if (zf) goto L_00548d5a;
-    /* 00548d40  cmp ecx, dword ptr [0x820758] */
+    /* 00548d40  cmp ecx, dword ptr [0x820758]  ; SimpleObjectTemplate::classID */
     ea = (uint32_t)(0x00820758u);
     a = ecx;
     b = M32(ea);
@@ -220,7 +230,7 @@ void bfv_server_l1_body_00548d30(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00548d49  mov esi, dword ptr [0x820720] */
+    /* 00548d49  mov esi, dword ptr [0x820720]  ; ObjectTemplate::classID */
     ea = (uint32_t)(0x00820720u);
     esi = M32(ea);
     /* 00548d4f  xor edx, edx */
@@ -259,7 +269,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00548d90  dice::ref2::world::MusicPlayerTemplate  (virtual method) */
+/* 00548d90  MusicPlayerTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::world::MusicPlayerTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00548d90, bfv_server_l1_body_00548d90);
 BFV_L1_RESUME(bfv_server_l1r_00548d90_1, bfv_server_l1_body_00548d90, 1);
 BFV_L1_RESUME(bfv_server_l1r_00548d90_2, bfv_server_l1_body_00548d90, 2);
@@ -285,7 +298,7 @@ void bfv_server_l1_body_00548d90(struct bfv_cpu *c)
     esi = ecx;
     /* 00548d93  lea ecx, [esi + 0x194] */
     ecx = (uint32_t)(esi + 0x00000194u);
-    /* 00548d99  call 0x414b80 */
+    /* 00548d99  call 0x414b80  ; std::string::_Tidy */
     t = 0x00414b80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00548d90_1;
@@ -294,14 +307,14 @@ void bfv_server_l1_body_00548d90(struct bfv_cpu *c)
 R_1:
     /* 00548d9e  mov ecx, esi */
     ecx = esi;
-    /* 00548da0  call 0x56a950 */
+    /* 00548da0  call 0x56a950  ; SimpleObjectTemplate::~SimpleObjectTemplate */
     t = 0x0056a950u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00548d90_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00548da5  test byte ptr [esp + 8], 1 */
+    /* 00548da5  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -311,7 +324,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00548dad  call 0x403df0 */
+    /* 00548dad  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00548d90_3;

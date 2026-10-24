@@ -1,0 +1,9 @@
+## file
+BAPConObjectLineOfFire is a bot action-plan condition: true when the bot's
+information about the target at this+8 says the line of fire is free.
+
+## 009f6ff0
+evaluate(bot): calls bot slot 0xd8 and resolves the bot's own object (bot slot
+0xcc) and the target handle at this+8; false when either is gone. Asks the bot
+for its information entry about the target (bot slot 0x88) and returns true
+when the entry exists and its byte at +0x14 is 0.

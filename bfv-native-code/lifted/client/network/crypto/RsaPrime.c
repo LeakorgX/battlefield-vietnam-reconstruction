@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008de500  dice::network::crypto::RsaPrime  (vtable store) */
+/* 008de500  RsaPrime::RsaPrime  (vtable store)
+ * class: dice::network::crypto::RsaPrime
+ * called by: Rsa::Rsa
+ */
 BFV_L1_ENTRY(bfv_client_l1_008de500, bfv_client_l1_body_008de500);
 void bfv_client_l1_body_008de500(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_008de500(struct bfv_cpu *c)
     uint32_t ea;
     /* 008de500  mov eax, ecx */
     eax = ecx;
-    /* 008de502  mov dword ptr [eax], 0xbe1174 */
+    /* 008de502  mov dword ptr [eax], 0xbe1174  ; vtable RsaPrime */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbe1174u;
     /* 008de508  ret */
@@ -30,7 +33,11 @@ out: __attribute__((unused));
 }
 
 
-/* 008de510  dice::network::crypto::RsaPrime  (vtable store) */
+/* 008de510  RsaPrime::~RsaPrime  (vtable store)
+ * class: dice::network::crypto::RsaPrime
+ * also entered at 008de520: RsaPrime::vf0
+ * called by: Rsa::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_008de510, bfv_client_l1_body_008de510);
 void bfv_client_l1_body_008de510(struct bfv_cpu *c)
 {
@@ -39,7 +46,7 @@ void bfv_client_l1_body_008de510(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 008de510  mov dword ptr [ecx], 0xbe1174 */
+    /* 008de510  mov dword ptr [ecx], 0xbe1174  ; vtable RsaPrime */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbe1174u;
     /* 008de516  ret */

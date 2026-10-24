@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009b2a70  dice::bf::ai::WPPatrol  (virtual method) */
+/* 009b2a70  WPPatrol::getTarget  (virtual method)
+ * overrides: WaypointList::getTarget  (10 classes implement it)
+ * class: dice::bf::ai::WPPatrol
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2a70, bfv_client_l1_body_009b2a70);
 void bfv_client_l1_body_009b2a70(struct bfv_cpu *c)
 {
@@ -20,7 +23,7 @@ void bfv_client_l1_body_009b2a70(struct bfv_cpu *c)
     /* 009b2a73  mov eax, dword ptr [eax] */
     ea = (uint32_t)(eax);
     eax = M32(ea);
-    /* 009b2a75  mov ecx, dword ptr [esp + 4] */
+    /* 009b2a75  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 009b2a79  add eax, 8 */
@@ -60,7 +63,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009b2aa0  dice::bf::ai::WPPatrol  (virtual method) */
+/* 009b2aa0  WPPatrol::vf0  (virtual method)
+ * overrides: WaypointList::vf0  (10 classes implement it)
+ * class: dice::bf::ai::WPPatrol
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2aa0, bfv_client_l1_body_009b2aa0);
 BFV_L1_RESUME(bfv_client_l1r_009b2aa0_1, bfv_client_l1_body_009b2aa0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009b2aa0_2, bfv_client_l1_body_009b2aa0, 2);
@@ -92,10 +98,10 @@ void bfv_client_l1_body_009b2aa0(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x00000010u);
     /* 009b2aa7  mov ecx, edi */
     ecx = edi;
-    /* 009b2aa9  mov dword ptr [esi], 0xbf692c */
+    /* 009b2aa9  mov dword ptr [esi], 0xbf692c  ; vtable WPPatrol */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf692cu;
-    /* 009b2aaf  call 0xa825e0 */
+    /* 009b2aaf  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2aa0_1;
@@ -109,14 +115,14 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009b2ab8  call 0x403680 */
+    /* 009b2ab8  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2aa0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009b2abd  mov al, byte ptr [esp + 0x10] */
+    /* 009b2abd  mov al, byte ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     SET8L(eax, M8(ea));
     /* 009b2ac1  add esp, 4 */
@@ -131,7 +137,7 @@ R_2:
     /* 009b2ac6  mov dword ptr [edi + 4], 0 */
     ea = (uint32_t)(edi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 009b2acd  mov dword ptr [esi], 0xbf6864 */
+    /* 009b2acd  mov dword ptr [esi], 0xbf6864  ; vtable WaypointList */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf6864u;
     /* 009b2ad3  je 0x9b2ade */
@@ -140,7 +146,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009b2ad6  call 0x403680 */
+    /* 009b2ad6  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2aa0_3;
@@ -175,7 +181,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009b2af0  dice::bf::ai::WPPatrol  (vtable store) */
+/* 009b2af0  WPPatrol::WPPatrol  (vtable store)
+ * class: dice::bf::ai::WPPatrol
+ * called by: botSetWaypoints_Patrol, SCMove::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2af0, bfv_client_l1_body_009b2af0);
 BFV_L1_RESUME(bfv_client_l1r_009b2af0_1, bfv_client_l1_body_009b2af0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009b2af0_2, bfv_client_l1_body_009b2af0, 2);
@@ -199,14 +208,14 @@ void bfv_client_l1_body_009b2af0(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009b2af1  fld dword ptr [0xb5bdf8] */
+    /* 009b2af1  fld dword ptr [0xb5bdf8]  ; = 5.0f */
     ea = (uint32_t)(0x00b5bdf8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009b2af7  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 009b2af8  fcomp dword ptr [esp + 0xc] */
+    /* 009b2af8  fcomp dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009b2afc  push ebp */
@@ -229,7 +238,7 @@ void bfv_client_l1_body_009b2af0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 009b2b05  mov dword ptr [esp + 0x10], ebp */
+    /* 009b2b05  mov dword ptr [esp + 0x10], ebp  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ebp;
     /* 009b2b09  test ah, 5 */
@@ -247,22 +256,22 @@ void bfv_client_l1_body_009b2af0(struct bfv_cpu *c)
     /* 009b2b16  mov byte ptr [ebp + 7], bl */
     ea = (uint32_t)(ebp + 0x00000007u);
     M8(ea) = LO8(ebx);
-    /* 009b2b19  mov dword ptr [ebp], 0xbf692c */
+    /* 009b2b19  mov dword ptr [ebp], 0xbf692c  ; vtable WPPatrol */
     ea = (uint32_t)(ebp);
     M32(ea) = 0xbf692cu;
     /* 009b2b20  jp 0x9b2b28 */
     if (pf) goto L_009b2b28;
-    /* 009b2b22  fld dword ptr [esp + 0x18] */
+    /* 009b2b22  fld dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009b2b26  jmp 0x9b2b2e */
     goto L_009b2b2e;
 L_009b2b28:
-    /* 009b2b28  fld dword ptr [0xb5bdf8] */
+    /* 009b2b28  fld dword ptr [0xb5bdf8]  ; = 5.0f */
     ea = (uint32_t)(0x00b5bdf8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_009b2b2e:
-    /* 009b2b2e  mov eax, dword ptr [esp + 0x1c] */
+    /* 009b2b2e  mov eax, dword ptr [esp + 0x1c]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 009b2b32  fstp dword ptr [ebp + 8] */
@@ -275,7 +284,7 @@ L_009b2b2e:
     /* 009b2b3a  mov dword ptr [ebp + 0xc], eax */
     ea = (uint32_t)(ebp + 0x0000000cu);
     M32(ea) = eax;
-    /* 009b2b3d  call 0x518170 */
+    /* 009b2b3d  call 0x518170  ; std::list::_Buyheadnode_20_00518170 */
     t = 0x00518170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2af0_1;
@@ -290,14 +299,14 @@ R_1:
     /* 009b2b47  mov dword ptr [esi + 8], ebx */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = ebx;
-    /* 009b2b4a  call 0xa825e0 */
+    /* 009b2b4a  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2af0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009b2b4f  mov ecx, dword ptr [esp + 0x20] */
+    /* 009b2b4f  mov ecx, dword ptr [esp + 0x20]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000020u);
     ecx = M32(ea);
     /* 009b2b53  mov eax, dword ptr [ecx + 4] */
@@ -313,7 +322,7 @@ R_2:
     F_SUB(32, a, b, r);
     /* 009b2b5a  je 0x9b2b9d */
     if (zf) goto L_009b2b9d;
-    /* 009b2b5c  lea esp, [esp] */
+    /* 009b2b5c  lea esp, [esp]  ; &var_14 */
     esp = (uint32_t)(esp);
 L_009b2b60:
     /* 009b2b60  mov ebx, dword ptr [esi + 4] */
@@ -338,7 +347,7 @@ L_009b2b60:
     M32(esp) = t;
     /* 009b2b6c  mov ecx, esi */
     ecx = esi;
-    /* 009b2b6e  call 0x5b55d0 */
+    /* 009b2b6e  call 0x5b55d0  ; std::list_12::_Buynode */
     t = 0x005b55d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2af0_3;
@@ -353,14 +362,14 @@ R_3:
     ecx = esi;
     /* 009b2b77  mov ebp, eax */
     ebp = eax;
-    /* 009b2b79  call 0x9e5540 */
+    /* 009b2b79  call 0x9e5540  ; std::list::_Incsize_009e5540 */
     t = 0x009e5540u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2af0_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 009b2b7e  mov edx, dword ptr [esp + 0x20] */
+    /* 009b2b7e  mov edx, dword ptr [esp + 0x20]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000020u);
     edx = M32(ea);
     /* 009b2b82  mov dword ptr [ebx + 4], ebp */
@@ -383,7 +392,7 @@ R_4:
     F_SUB(32, a, b, r);
     /* 009b2b8f  jne 0x9b2b60 */
     if (!zf) goto L_009b2b60;
-    /* 009b2b91  mov eax, dword ptr [esp + 0x10] */
+    /* 009b2b91  mov eax, dword ptr [esp + 0x10]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 009b2b95  pop edi */
@@ -444,7 +453,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009b2bb0  dice::bf::ai::WPPatrol  (virtual method) */
+/* 009b2bb0  WPPatrol::update  (virtual method)
+ * overrides: WaypointList::update  (10 classes implement it)
+ * class: dice::bf::ai::WPPatrol
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2bb0, bfv_client_l1_body_009b2bb0);
 BFV_L1_RESUME(bfv_client_l1r_009b2bb0_1, bfv_client_l1_body_009b2bb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009b2bb0_2, bfv_client_l1_body_009b2bb0, 2);
@@ -482,7 +494,7 @@ void bfv_client_l1_body_009b2bb0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 009b2bb9  je 0x9b2bc6 */
     if (zf) goto L_009b2bc6;
-    /* 009b2bbb  fld dword ptr [0xb44444] */
+    /* 009b2bbb  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009b2bc1  pop ebp */
@@ -504,28 +516,28 @@ L_009b2bc6:
     /* 009b2bc9  mov ecx, dword ptr [ebp + 0x14] */
     ea = (uint32_t)(ebp + 0x00000014u);
     ecx = M32(ea);
-    /* 009b2bcc  mov dword ptr [esp + 4], eax */
+    /* 009b2bcc  mov dword ptr [esp + 4], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
     /* 009b2bd0  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 009b2bd2  mov ecx, dword ptr [esp + 0xc] */
+    /* 009b2bd2  mov ecx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009b2bd6  lea edx, [eax + 8] */
     edx = (uint32_t)(eax + 0x00000008u);
-    /* 009b2bd9  call 0x97f050 */
+    /* 009b2bd9  call 0x97f050  ; ai_0097f050 */
     t = 0x0097f050u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2bb0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009b2bde  fld dword ptr [esp + 4] */
+    /* 009b2bde  fld dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 009b2be2  fmul dword ptr [esp + 4] */
+    /* 009b2be2  fmul dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009b2be6  fcompp */
@@ -583,7 +595,7 @@ R_1:
     M32(esp) = t;
     /* 009b2c06  mov ecx, esi */
     ecx = esi;
-    /* 009b2c08  call 0x5b55d0 */
+    /* 009b2c08  call 0x5b55d0  ; std::list_12::_Buynode */
     t = 0x005b55d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2bb0_2;
@@ -598,7 +610,7 @@ R_2:
     ecx = esi;
     /* 009b2c11  mov ebx, eax */
     ebx = eax;
-    /* 009b2c13  call 0x9e5540 */
+    /* 009b2c13  call 0x9e5540  ; std::list::_Incsize_009e5540 */
     t = 0x009e5540u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2bb0_3;
@@ -649,7 +661,7 @@ R_3:
     /* 009b2c36  mov dword ptr [edx + 4], ecx */
     ea = (uint32_t)(edx + 0x00000004u);
     M32(ea) = ecx;
-    /* 009b2c39  call 0x403680 */
+    /* 009b2c39  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009b2bb0_4;
@@ -690,7 +702,7 @@ L_009b2c48:
     esp += 4;
     ebx = t;
 L_009b2c4f:
-    /* 009b2c4f  fld dword ptr [0xb4456c] */
+    /* 009b2c4f  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009b2c55  pop ebp */

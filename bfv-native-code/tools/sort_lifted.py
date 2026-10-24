@@ -9,6 +9,9 @@ executable:
    its namespaces, e.g. ``dice::bf::ai::EntryPlaneRoll``); a method shared by
    several vtables goes to the class with the fewest bases;
 3. *vtable store*: it writes exactly one class's vtable (constructor/destructor);
+   *library strings / library run*: a statically linked library's own messages
+   mark its code (``lib/``); the game pads functions to 16 bytes and the
+   libraries do not, so unpadded neighbours of library code join it;
 4. *between same file / same folder*: MSVC keeps each object file's code
    together, so unknown functions between two anchors of one file (folder) go
    to that file (to ``misc.c`` of that folder);
@@ -26,13 +29,18 @@ import argparse
 import bisect
 import collections
 import hashlib
+import itertools
 import json
+import os
 import re
 import struct
 from pathlib import Path
 import pefile
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_OP_IMM, CS_OP_MEM
+from capstone.x86 import X86_REG_CL, X86_REG_CX, X86_REG_EAX, X86_REG_ECX
 from build import PROJECT, GAME, TARGETS
+import game_names
+import known_names
 
 MAX_PER_FILE = 500  # same bound as lift_c.SHARD: one translation unit stays within 32-bit cc1's memory
 HEADER = ('/* L1 lifted C: a verified, instruction-by-instruction translation of the original\n'
@@ -95,22 +103,554 @@ def rtti_classes(im):
         k = i + 1
         while k < len(words) and text[0] <= words[k] < text[1] and (k == i + 1 or words[k] not in cols):
             f = words[k]
-            if f not in owners or bases < owners[f][1]: owners[f] = (cls, bases)
+            if f not in owners or bases < owners[f][1]: owners[f] = (cls, bases, k - i - 1)
             k += 1
     return owners, vtables
 
 
-def homes(im, entries, md):
+def every_vtable(im):
+    """{(class, offset in the object): vtable} for primary and secondary vtables,
+    and {function: classes whose vtables list it}."""
+    tds = {}
+    for m in re.finditer(rb'\.\?A[VU][ -~]+?@@\x00', im.img):
+        raw = m.group()[4:-3].decode()
+        if not raw.startswith('?$'): tds[im.base + m.start() - 8] = '::'.join(reversed(raw.split('@')))
+    lo, hi = im.sections['.rdata']
+    words = struct.unpack_from(f'<{(hi - lo) // 4}I', im.img, lo - im.base)
+    cols = {lo + 4 * i: (tds[words[i + 3]], words[i + 1]) for i in range(len(words) - 5) if words[i] == 0 and words[i + 3] in tds}
+    text = im.sections['.text']
+    at, listed = {}, collections.defaultdict(set)
+    for i, w in enumerate(words[:-1]):
+        if w not in cols: continue
+        at.setdefault(cols[w], lo + 4 * i + 4)
+        k = i + 1
+        while k < len(words) and text[0] <= words[k] < text[1] and (k == i + 1 or words[k] not in cols):
+            listed[words[k]].add(cols[w][0]); k += 1
+    return at, listed
+
+
+def base_offsets(im):
+    """{class: {base: offset of the base in the class}} from the RTTI base class
+    descriptors (every base, not only those at offset 0)."""
+    tds = {}
+    for m in re.finditer(rb'\.\?A[VU][ -~]+?@@\x00', im.img):
+        raw = m.group()[4:-3].decode()
+        if not raw.startswith('?$'): tds[im.base + m.start() - 8] = '::'.join(reversed(raw.split('@')))
+    lo, hi = im.sections['.rdata']
+    words = struct.unpack_from(f'<{(hi - lo) // 4}I', im.img, lo - im.base)
+    out = {}
+    for i in range(len(words) - 5):
+        if words[i] != 0 or words[i + 3] not in tds or tds[words[i + 3]] in out: continue
+        chd = words[i + 4]
+        if not im.inside(chd, '.rdata'): continue
+        n, arr = im.dword(chd + 8), im.dword(chd + 12)
+        if not im.inside(arr, '.rdata'): continue
+        mine = {}
+        for k in range(min(n, 64)):
+            bcd = im.dword(arr + 4 * k)
+            if not im.inside(bcd, '.rdata') or im.dword(bcd + 12) != 0xffffffff: continue  # skip virtual bases
+            b = tds.get(im.dword(bcd))
+            if b: mine.setdefault(b, im.dword(bcd + 8))
+        out[tds[words[i + 3]]] = mine
+    return out
+
+
+def template_slots(im):
+    """{function: name} for the virtual methods of template class instances
+    (meme::ClassTemplate<T>, FunctionWrapper<...>, Dyn_Cast<...>, ...), which
+    rtti_classes leaves out. A function in one vtable slot gets
+    `Template<Args>::slot`; one shared by several instances of the same
+    template in the same slot gets `Template<*>::slot`."""
+    tds = {}
+    for m in re.finditer(rb'\.\?A[VU]\?\$([ -~]+?)@@\x00', im.img):
+        raw = m.group(1).decode()
+        t, rest = raw.split('@', 1)
+        args = re.findall(r'(?:^|@)(?:P[ABE]*)?[VU]([A-Za-z_]\w*)@', rest)[:2]
+        tds[im.base + m.start() - 8] = (t, f'{t}<{",".join(args) or "..."}>')
+    lo, hi = im.sections['.rdata']
+    words = struct.unpack_from(f'<{(hi - lo) // 4}I', im.img, lo - im.base)
+    every = {im.base + m.start() - 8 for m in re.finditer(rb'\.\?A[VU][ -~]+?@@\x00', im.img)}
+    cols = {lo + 4 * i for i in range(len(words) - 5) if words[i] == 0 and words[i + 1] == 0 and words[i + 3] in every}
+    text = im.sections['.text']
+    uses = collections.defaultdict(set)  # function: {(template, instance, slot)}
+    for i, w in enumerate(words[:-1]):
+        if w not in cols: continue
+        td = im.dword(w + 12)
+        k = i + 1
+        while k < len(words) and text[0] <= words[k] < text[1] and (k == i + 1 or words[k] not in cols):
+            uses[words[k]].add(tds.get(td, (None, None)) + (k - i - 1,)); k += 1
+    out = {}
+    for f, us in uses.items():
+        if any(t is None for t, _, _ in us) or len({(t, s) for t, _, s in us}) != 1: continue
+        t, inst, s = next(iter(us))
+        slot = TEMPLATE_SLOT_NAMES.get((t, s), f'vf{s}')
+        out[f] = f'{inst}::{slot}' if len(us) == 1 else f'{t}<*>::{slot}'
+    return out
+
+
+# meme::ClassTemplate<T, Base> is the runtime class record of meme class T;
+# every one of the 202 client instances has these slot shapes.
+TEMPLATE_SLOT_NAMES = {
+    ('ClassTemplate', 1): 'getBaseClass',      # the static record of Base, built on first use
+    ('ClassTemplate', 2): 'createInstance',    # operator_new(sizeof T) + T's constructor
+    ('ClassTemplate', 3): 'getDescription',    # help text, or 0
+    ('ClassTemplate', 4): 'incInstanceCount',  # ++count
+    ('ClassTemplate', 5): 'decInstanceCount',  # --count
+    ('ClassTemplate', 6): 'getInstanceCount',
+    ('ClassTemplate', 7): 'getInstanceSize',   # sizeof T
+    # meme type wrappers: `mov eax, type descriptor; ret` in every instance
+    ('WTypePtr', 5): 'getPointerType',         # typeid(T *)
+    ('WTypePtr', 11): 'getType',               # typeid(T)
+    ('WTypePtr', 6): 'clone',                  # new copy (operator_new(0xc), own vtable)
+    ('WTypePtr', 12): 'isKindOf',              # (const type_info &) -> 1 when it equals typeid(T) or a base's
+    ('ObjectCreatorWrapper', 7): 'getPointerType',
+    ('ObjectCreatorWrapper', 9): 'getType',
+    ('Dyn_Cast', 0): 'cast',                   # __RTDynamicCast(object, 0, Virtual_Class, typeid(T), 0)
+}
+
+
+# Virtual methods named by what every implementation does, keyed by the class
+# that introduces the slot. Each implementation of the slot gets the name.
+SLOT_NAMES = {
+    # File, memory and archive streams; Win32FileStream calls ReadFile,
+    # WriteFile, SetFilePointer and GetFileSize, MemStream copies its buffer
+    ('dice::ref2::io::INonlinearStream', 4): 'read',  # (void *buffer, size) -> bytes read
+    ('dice::ref2::io::INonlinearStream', 5): 'write',  # (const void *buffer, size) -> bytes written
+    ('dice::ref2::io::INonlinearStream', 6): 'skip',  # (bytes): seek(1 = current, bytes)
+    ('dice::ref2::io::INonlinearStream', 7): 'getBytesLeft',  # getSize() - tell()
+    ('dice::ref2::io::INonlinearStream', 8): 'clone',  # Win32FileStream: a new stream on the same file
+    ('dice::ref2::io::INonlinearStream', 9): 'canRead',  # mode 0 (read) or 1 (read/write)
+    ('dice::ref2::io::INonlinearStream', 10): 'canWrite',  # mode 2 (write) or 1 (read/write)
+    ('dice::ref2::io::INonlinearStream', 11): 'seek',  # (origin 0 begin / 1 current / 2 end, offset) -> bool
+    ('dice::ref2::io::INonlinearStream', 12): 'tell',  # SetFilePointer(h, 0, 0, FILE_CURRENT)
+    ('dice::ref2::io::INonlinearStream', 13): 'getSize',  # GetFileSize
+    # Miles sound buffers (2D/3D samples and streams): the Miles call each
+    # implementation makes (AIL_*_sample_* / AIL_*_stream_*)
+    ('dice::mills::IBuffer', 1): 'load',  # (file name): keeps the name; samples read the WAV header
+    ('dice::mills::IBuffer', 2): 'play',  # allocates/opens the handle, sets loops and volume, AIL_start_*
+    ('dice::mills::IBuffer', 3): 'stop',  # keeps the position, AIL_end_sample / AIL_close_stream
+    ('dice::mills::IBuffer', 6): 'isPlaying',  # AIL_*_status
+    ('dice::mills::IBuffer', 7): 'isLooping',  # AIL_*_loop_count
+    ('dice::mills::IBuffer', 8): 'releaseHandle',  # AIL_release_*_handle / AIL_close_stream
+    ('dice::mills::IBuffer', 9): 'setVolume',  # (float) clamped, AIL_set_*_volume(_pan)
+    ('dice::mills::IBuffer', 10): 'setPitch',  # (float) AIL_set_*_playback_rate from a pow of the value
+    ('dice::mills::IBuffer', 13): 'getPlaybackRate',  # AIL_*_playback_rate
+    ('dice::mills::IBuffer', 15): 'setPosition',  # AIL_set_sample_position / _3D_sample_offset / _stream_position
+    ('dice::mills::IBuffer', 16): 'getPosition',  # AIL_sample_position / _3D_sample_offset / _stream_position
+    # [ref count]++ / --, deleting itself at 0 (vf0 with 1)
+    ('dice::ref2::IBase', 1): 'addRef',
+    ('dice::ref2::IBase', 2): 'release',
+    # (interface id): this when the id is IBase (1) or one the class implements, else 0
+    ('dice::ref2::IBase', 3): 'queryInterface',
+    # returns the class's static RuntimeClass, built on first use from the class name
+    ('dice::meme::RuntimeObject', 1): 'getRuntimeClass',
+    # operator_new and the constructor of the object class the template makes
+    ('dice::ref2::world::ObjectTemplate', 12): 'createObject',
+    # (context, archive): base class first, then every member with its name
+    # through the archive (vtable +0x6c strings, +0x88 object pointers, ...)
+    ('dice::meme::Object', 13): 'serialize',
+    # (a, b, c, d) -> bool: what the menu action does (call a function, set a path, ...)
+    ('dice::meme::Action', 17): 'execute',
+    # (context, bool *finished, bool *succeeded) -> bool: one step of a bot action plan
+    ('dice::bf::ai::BotScript', 0): 'execute',
+    # (context) -> bool; BAPConOr is true when any child's evaluate is
+    ('dice::bf::ai::BAPCondition', 0): 'evaluate',
+    # publishes the object's fields to the menu scripts (meme_registerIntRef, ...)
+    ('dice::bf::menu::IMenuObject', 2): 'registerMenuData',
+    # publishes the object's callbacks to the menu scripts (new meme Function objects)
+    ('dice::bf::menu::IMenuObject', 3): 'registerMenuFunctions',
+    # (index, float): BoolData stores value == 1.0
+    ('dice::meme::Data', 20): 'setFloat',
+    # (index, const char *): BoolData stores value == "true"
+    ('dice::meme::Data', 22): 'setString',
+    # (index) -> float: BoolData returns 1.0 or 0.0
+    ('dice::meme::Data', 24): 'getFloat',
+    # (float seconds, flags) -> per-frame step of a world object (ret 8)
+    ('dice::ref2::world::Object', 20): 'update',
+    # lea eax, [ecx + 0xe4]: the name string slot 12 (setName) writes
+    ('dice::ref2::world::Object', 11): 'getName',
+    # +0x54, the list changeChildFlags walks (+0x50 parent, +0x58 next sibling)
+    ('dice::ref2::world::Object', 31): 'getFirstChild',
+    # (float x): the Object.handleDamage console command; finds the Armor
+    # interface up the parents, x > 0 subtracts hit points, else adds -x
+    ('dice::ref2::world::SimpleObject', 53): 'handleDamage',
+    # (a, b, c, float seconds) -> bool: per-frame step of a menu node
+    ('dice::meme::Node', 27): 'update',
+    ('dice::bf::ai::AITemplatePlugIn', 1): 'createObjectPlugIn',  # allocates the matching AIObject plug-in (AITemplateUnit -> AIObjectUnit)
+    ('dice::bf::ai::AIObjectPlugIn', 2): 'createInformationPlugIn',  # allocates the matching IPI plug-in (AIObjectUnit -> IPIUnit)
+    ('dice::bf::ai::Task', 1): 'execute',  # the A* search tasks run their search here
+    ('dice::bf::ai::WaypointList', 1): 'update',  # (position, ...): advances along the list, returns a float (WPEmpty: 0.0)
+    ('dice::bf::ai::WaypointList', 2): 'getTarget',  # (Vec3 *out): copies the current waypoint position; false when there is none
+    ('dice::ref2::world::Object', 39): 'handleInput',  # Hook/Engine/Winch read their PlayerInput values here
+    ('dice::bf::ai::BAPEntry', 1): 'execute',  # one entry of an AI action plan runs (move to, soldier pose, ...)
+    # AI script parsing: SFIf keeps the condition (+0x14), then (+0xc) and
+    # else (+0x10); SFSerial a vector of statements
+    ('dice::bf::ai::IAIScriptStatement', 2): 'isValid',  # SFIf: condition and a branch; SFSerial: 2+ statements
+    ('dice::bf::ai::IAIScriptStatement', 5): 'addChild',  # (statement) -> bool: SFIf fills then, then else; SFSerial push_back
+    ('dice::bf::ai::IAIScriptStatement', 8): 'getChild',  # (index) -> statement or 0
+    ('dice::bf::ai::IAIScriptStatement', 6): 'execute',  # runs one step; SFParallel reports "Parallel statement is empty."
+    ('dice::ref2::world::Object', 4): 'init',  # SupplyDepot/Flag/ObjectSpawner: base init, then register with the object manager
+    ('dice::ref2::world::Object', 5): 'deinit',  # SupplyDepot: unregister from the object manager, then base
+    # () -> bool, latched at +0xc: MinWeaponKill (kills with the weapon >= the
+    # goal at +0x64), MinVehicleDestroyed, ControlPointCapture (the point's
+    # team is the player's)
+    ('dice::bf::SubChallenge', 2): 'isGoalReached',
+    # () -> bool, must stay true: PlayerDeathLimit (deaths <= the limit at
+    # +0x48), TeamMateDeathLimit, MaxVehicleDestroyed, ControlPointDefense
+    ('dice::bf::SubChallenge', 3): 'isWithinLimits',
+    # (side): the side at +8 indexes the per-side handles at +0x30 (bounded by
+    # IAISettings::getNSides); passed on to the object's plug-ins
+    ('dice::bf::ai::AIObject', 8): 'setSide',
+    # allocates the object's physics node from the template (PointPhysicsNode,
+    # PhysicsEngine, PhysicsSpring, PhysicsWing, PhysicsWinch, ...)
+    ('dice::ref2::world::SimpleObjectTemplate', 25): 'createPhysicsNode',
+    # (side, ...): when the side has no information handle at +0x30, allocates
+    # InformationReal (its own side) or InformationKnown from the memory pool
+    ('dice::bf::ai::AIObject', 21): 'createInformation',
+    # allocates the helicopter moves (Stabilize, Forward, Left, Right, Stop, Default, ...)
+    ('dice::bf::ai::GenericMoveControl', 1): 'createMoves',
+    # Menu script streams over a file stream (+8 in IStream, +4 in OStream);
+    # Proxy streams forward to the same slot of another meme stream
+    ('dice::meme::IStream', 36): 'skip',  # (bytes): INonlinearStream::skip
+    ('dice::meme::IStream', 37): 'read',  # (buffer, size): INonlinearStream::read
+    ('dice::meme::IStream', 39): 'setPosition',  # (offset): INonlinearStream::seek(0, offset)
+    ('dice::meme::OStream', 35): 'write',  # (buffer, size): INonlinearStream::write
+    ('dice::meme::OStream', 38): 'setPosition',  # (offset): INonlinearStream::seek(0, offset)
+    # (team 1 or 2) -> const std::string *: the strings slots 28 and 30
+    # (setTeamInsignia, setTeamInsigniaName) assign (+0x68/+0x84, +0xa0/+0xbc)
+    ('dice::bf::Game', 29): 'getTeamInsignia',
+    ('dice::bf::Game', 31): 'getTeamInsigniaName',
+    ('dice::bf::SubChallenge', 1): 'apply',  # TimeLimit sets the game time limit; NoBotRespawningForTeam turns off respawning
+    ('dice::meme::Node', 22): 'traverse',  # ClipNode/CullNode/FocusNode pass it on to their child node
+    ('dice::meme::Node', 28): 'draw',  # BfButtonNode builds a textured quad from its rect and draws it
+    # (a, b, const Event *): switch over the event type (1-21); 1 calls
+    # onMouseDown, 2 onMouseUp, the others slots 33-50
+    ('dice::meme::Node', 29): 'handleEvent',
+    ('dice::meme::Node', 23): 'updateTree',  # (a, b, c, d): update, then the same on the node at +8 while update returns true
+    ('dice::meme::Node', 31): 'onMouseDown',  # DragWindowNode: button 1 stores the mouse position and starts dragging
+    ('dice::meme::Node', 32): 'onMouseUp',  # DragWindowNode: button 1 stops dragging
+    # runs the destructor chain and always frees the statement (to its memory pool)
+    ('dice::bf::ai::BotScript', 1): 'destroy',
+    # allocates the BAP statements (conditions, actions, combiners) of the behaviour's plan
+    ('dice::bf::ai::BBPPattern', 0): 'buildPlan',
+    # () -> float: how much the bot wants this behaviour now (BBAirLift: 0.0)
+    ('dice::bf::ai::BotBehaviour', 9): 'evaluate',
+    # (?, index) -> char: character `index` of the value as text (BoolData: "true"/"false")
+    ('dice::meme::Data', 26): 'getChar',
+    # writes the object's replicated state (BitStream::writeBits)
+    ('dice::ref2::world::NetworkableBase', 7): 'writeState',
+    # reads it back on the other side (BitStream::readBits)
+    ('dice::ref2::world::NetworkableBase', 8): 'readState',
+    # (object): keeps the owning world object at +0x40 and allocates the state history
+    ('dice::ref2::world::NetworkableBase', 4): 'attachToObject',
+    # advances the 16-entry history ring index at +0x2c and marks the changed bits
+    ('dice::ref2::world::NetworkableBase', 6): 'nextHistoryFrame',
+    # World objects keep their parent at +0x50, first child at +0x54, next
+    # sibling at +0x58, local matrix at [+0x8c] and world matrix at +0x94; the
+    # world matrix is rebuilt from the parent when flag 0x40000 is set.
+    ('dice::ref2::world::Object', 6): 'remove',  # leaves the parent, removes the children, clears flags 0x4e0d
+    ('dice::ref2::world::Object', 8): 'setComponent',  # (component, interface ID): stores a plug-in object (network, physics, ...)
+    ('dice::ref2::world::Object', 9): 'getComponent',  # (interface ID) -> the plug-in object stored for that interface, or 0
+    ('dice::ref2::world::Object', 10): 'changeFlags',  # (set mask, clear mask) on the flags at +4
+    ('dice::ref2::world::Object', 12): 'setName',  # (std::string) the name at +0xe4
+    ('dice::ref2::world::Object', 13): 'getWorldPosition',  # -> Vec3 * (+0xc4, the translation of the world matrix)
+    ('dice::ref2::world::Object', 14): 'setWorldPosition',  # (const Vec3 *): converted into the parent space
+    ('dice::ref2::world::Object', 15): 'getWorldMatrix',  # -> Mat4 * (+0x94)
+    ('dice::ref2::world::Object', 16): 'setWorldMatrix',  # (const Mat4 *): converted into the parent space
+    ('dice::ref2::world::Object', 21): 'onHit',  # (const Vec3 *position, ..., type): BFSoldier plays the Explosion* animations
+    ('dice::ref2::world::Object', 27): 'getPosition',  # -> Vec3 * (translation of the local matrix)
+    ('dice::ref2::world::Object', 28): 'setPosition',  # (const Vec3 *) local position, then marks the transform changed
+    ('dice::ref2::world::Object', 29): 'getMatrix',  # -> Mat4 * (local matrix)
+    ('dice::ref2::world::Object', 30): 'setMatrix',  # (const Mat4 *) local matrix, then marks the transform changed
+    ('dice::ref2::world::Object', 32): 'addChild',  # (Object *): sets its parent and links it into the child list
+    ('dice::ref2::world::Object', 33): 'removeChild',  # (Object *child)
+    ('dice::ref2::world::Object', 34): 'setNextSibling',  # (Object *) when there is none yet
+    ('dice::ref2::world::Object', 35): 'removeNextSibling',  # (Object *)
+    ('dice::ref2::world::Object', 36): 'setParent',  # (Object *): leaves the old parent first
+    ('dice::ref2::world::Object', 40): 'handleEvent',  # (int event, int arg): Bundle passes it on to its children
+    ('dice::ref2::world::Object', 49): 'createNetworkable',  # when the template has a network name: attaches the class's networkable component
+    ('dice::ref2::world::Object', 52): 'changeChildFlags',  # (set mask, clear mask) on every child
+    # (): runs once (sets flag 0x80): looks up the templates, geometry and
+    # sounds the template refers to by name after all templates are loaded
+    ('dice::ref2::world::ObjectTemplate', 13): 'postLoad',
+    # Slots each subclass adds itself (the base vtable is shorter), keyed by the
+    # root class: every network event reads its fields from a BitStream in vf4
+    # (BitStream::readBits) and writes them in vf5 (BitStream::writeBits)
+    ('dice::bf::GameEvent', 4): 'readFromStream',
+    ('dice::bf::GameEvent', 5): 'writeToStream',
+}
+
+
+def eh_funclets(im, starts):
+    """{funclet: (parent function, 'catch' | 'unwind')} from the MSVC C++
+    exception tables: each `__ehhandler` stub (`mov eax, FuncInfo; jmp
+    __CxxFrameHandler`) is pushed by exactly one function; its FuncInfo lists
+    the unwind actions and the catch blocks of that function."""
+    tlo, thi = im.sections['.text']
+    text = im.img[tlo - im.base:thi - im.base]
+    out = {}
+    for m in re.finditer(rb'\xb8(....)\xe9', text, re.S):
+        fi = struct.unpack('<I', m.group(1))[0]
+        if not im.inside(fi, '.rdata') or im.dword(fi) not in (0x19930520, 0x19930521, 0x19930522): continue
+        stub = tlo + m.start()
+        key = struct.pack('<I', stub)
+        users = set()
+        for op in (b'\x68', b'\xb8'):  # push imm32 / mov eax, imm32 (_EH_prolog)
+            k = text.find(op + key)
+            while k >= 0:
+                i = bisect.bisect_right(starts, tlo + k) - 1
+                if i >= 0: users.add(starts[i])
+                k = text.find(op + key, k + 1)
+        if len(users) != 1: continue
+        parent = users.pop()
+        for k in range(min(im.dword(fi + 4), 4096)):
+            act = im.dword(im.dword(fi + 8) + 8 * k + 4)
+            if act: out.setdefault(act, (parent, 'unwind'))
+        tmap = im.dword(fi + 16)
+        for t in range(min(im.dword(fi + 12), 512)):
+            hal = im.dword(tmap + 20 * t + 16)
+            for c in range(min(im.dword(tmap + 20 * t + 12), 64)):
+                h = im.dword(hal + 16 * c + 12)
+                if h: out.setdefault(h, (parent, 'catch'))
+    return {f: v for f, v in out.items() if f != v[0]}
+
+
+def static_strings(im, md, atexit):
+    """{destructor: (kind, first element, count, push address, literal)} for
+    static strings and arrays: the initializer registers a destructor with
+    atexit. Kinds:
+      string        `static std::string s = "..."` (count 0; the literal is
+                    the one assigned just before the atexit call)
+      string_array  `std::string x[N]` (0x1c bytes each)
+      string_string_int_array  {std::string, std::string, int} (0x3c)
+      vector_array  `std::vector<T> x[N]` (0x10)
+    Array destructors walk backwards from the end (`mov esi, end; mov edi, N`)."""
+    out = {}
+    for m in re.finditer(rb'\x68(.{4})\xe8(.{4})', im.img, re.S):
+        va = im.base + m.start()
+        if not im.inside(va, '.text') or va + 10 + struct.unpack('<i', m.group(2))[0] != atexit: continue
+        d = struct.unpack('<I', m.group(1))[0]
+        if not im.inside(d, '.text'): continue
+        txt = '; '.join(f'{i.mnemonic} {i.op_str}' for i in itertools.islice(md.disasm(im.img[d - im.base:d - im.base + 80], d), 20))
+        r = re.match(r'cmp dword ptr \[(0x[0-9a-f]+)\], 0x10; jb 0x[0-9a-f]+; mov eax, dword ptr \[(0x[0-9a-f]+)\]; push eax; call 0x[0-9a-f]+; '
+                     r'add esp, 4; xor eax, eax; mov dword ptr \[\1\], 0xf; ', txt)
+        if r and int(r.group(1), 16) == int(r.group(2), 16) + 0x14:
+            g = int(r.group(1), 16) - 0x18
+            k = im.img.rfind(b'\xb9' + struct.pack('<I', g), va - im.base - 64, va - im.base)
+            lit = k >= 5 and im.img[k - 5] == 0x68 and im.dword(im.base + k - 4)
+            o = lit and lit - im.base
+            lit = o and 0 < o < len(im.img) and im.img[o:im.img.find(b'\0', o, o + 81)].decode('latin-1')
+            out[d] = ('string', g, 0, va, lit if lit and lit.isprintable() else None)
+            continue
+        r = re.match(r'push ebx; push esi; push edi; mov esi, (0x[0-9a-f]+); mov e(?:di|bx), (0x[0-9a-f]+|\d+); xor e(?:di|bx), e(?:di|bx); nop ; '
+                     r'mov eax, dword ptr \[esi - (0x1c|0x10|0x3c)\]; sub esi, \3; ', txt)
+        if not r: continue
+        end, n, size = (int(x, 0) for x in r.groups())
+        strings = 'cmp eax, 0x10; jb ' in txt and re.search(r'mov dword ptr \[esi\], 0xf; ', txt)
+        if size == 0x1c and strings:
+            out[d] = ('string_array', end - n * size - 0x18, n, va, None)  # capacity (+0x18) is read first
+        elif size == 0x3c and strings:  # the second string's capacity (+0x34) is read first
+            out[d] = ('string_string_int_array', end - n * size - 0x34, n, va, None)
+        elif size == 0x10 and re.search(r'mov dword ptr \[esi\], e(?:di|bx); mov dword ptr \[esi \+ 4\], e(?:di|bx); mov dword ptr \[esi \+ 8\], e(?:di|bx); ', txt):
+            out[d] = ('vector_array', end - n * size - 4, n, va, None)  # first (+4), last, end are cleared
+    return out
+
+
+MSVC_TYPES = {'C': 'schar', 'D': 'char', 'E': 'uchar', 'F': 'short', 'G': 'ushort', 'H': 'int', 'I': 'uint',
+              'J': 'long', 'K': 'ulong', 'M': 'float', 'N': 'double', 'O': 'ldouble', 'X': 'void',
+              '_N': 'bool', '_J': 'int64', '_K': 'uint64', '_W': 'wchar_t'}
+
+
+def msvc_name(s, i, refs=None):
+    """(fragments, next index) of a decorated MSVC qualified name at s[i:]
+    (innermost first); a template fragment carries its arguments, e.g.
+    `?$basic_ios@DU?$char_traits@D@std@@@std@@` -> ['basic_ios<char>', 'std'].
+    Standard character traits and allocator arguments are left out. `refs`
+    is the back-reference table (digits 0-9 repeat earlier names)."""
+    refs = [] if refs is None else refs
+    frags = []
+    while s[i] != '@':
+        if s[i].isdigit():
+            frags.append(refs[int(s[i])]); i += 1; continue
+        if s.startswith('?$', i):
+            j = s.index('@', i); name = s[i + 2:j]; i = j + 1; args = []; inner = [name]
+            while s[i] != '@':
+                t, i = msvc_type(s, i, inner); args.append(t)
+            i += 1
+            args = [t for t in args if not re.match(r'(char_traits|allocator)<', t)]
+            if name == 'basic_string' and args[:1] in (['char'], ['ushort'], ['wchar_t']):
+                f = 'string' if args[0] == 'char' else 'wstring'
+            else:
+                f = f'{name}<{",".join(args)}>'
+        else:
+            j = s.index('@', i); f = s[i:j]; i = j + 1
+        frags.append(f)
+        if f not in refs and len(refs) < 10: refs.append(f)
+    return frags, i + 1
+
+
+def msvc_type(s, i, refs):
+    """(type, next index) of a decorated template argument type."""
+    if s[i] == '_' and s[i:i + 2] in MSVC_TYPES: return MSVC_TYPES[s[i:i + 2]], i + 2
+    if s[i] in MSVC_TYPES: return MSVC_TYPES[s[i]], i + 1
+    if s.startswith('$$C', i): return msvc_type(s, i + 4, refs)
+    if s.startswith('?A', i): return msvc_type(s, i + 2, refs)  # class returned by value
+    if s.startswith('P6', i): return 'fn*', msvc_signature(s, i + 2, refs)
+    if s.startswith('P8', i):
+        f, i = msvc_name(s, i + 2, refs); return f'{f[0]}::*', msvc_signature(s, i + 1, refs)
+    if s[i] in 'PQ' and s[i + 1] in 'ABCD': t, i = msvc_type(s, i + 2, refs); return t + '*', i
+    if s[i] == 'A' and s[i + 1] in 'ABCD': t, i = msvc_type(s, i + 2, refs); return t + '&', i
+    if s[i] in 'VUT': f, i = msvc_name(s, i + 1, refs); return f[0], i
+    if s.startswith('W4', i): f, i = msvc_name(s, i + 2, refs); return f[0], i
+    raise ValueError(s[i:])
+
+
+def msvc_signature(s, i, refs):
+    """Next index after a function signature: calling convention, return
+    type, parameters (`X` for none, else ending with `@`) and `Z`."""
+    _, i = msvc_type(s, i + 1, refs)
+    if s[i] == 'X': i += 1
+    else:
+        while s[i] not in '@Z': _, i = msvc_type(s, i, refs)
+        if s[i] == '@': i += 1
+    if s[i] != 'Z': raise ValueError(s[i:])
+    return i + 1
+
+
+def template_instances(im):
+    """{primary vtable: 'Template<Args>'} for template class instances."""
+    tds = {}
+    for m in re.finditer(rb'\.\?A[VU]\?\$([ -~]+?)@@\x00', im.img):
+        t = m.group(1).decode().split('@', 1)[0]
+        try:
+            full = msvc_name('?$' + m.group(1).decode() + '@@', 0)[0][0]
+        except (IndexError, KeyError, ValueError):
+            full = None
+        if full and len(full) > 60 and full.startswith(t + "<") and full.endswith(">"):  # keep the leading arguments that fit: Wrapper<GameMode*,GameModeManager,...>
+            args, depth, part = [], 0, ''
+            for c in full[len(t) + 1:-1]:
+                depth += (c == '<') - (c == '>')
+                if c == ',' and depth == 0: args.append(part); part = ''
+                else: part += c
+            keep = []
+            for x in args + [part]:
+                if len(t) + len(','.join(keep + [x])) + 6 > 60: break
+                keep.append(x)
+            full = f'{t}<{",".join(keep)},...>' if keep else None
+        tds[im.base + m.start() - 8] = full or f'{t}<...>'
+    lo, hi = im.sections['.rdata']
+    words = struct.unpack_from(f'<{(hi - lo) // 4}I', im.img, lo - im.base)
+    cols = {lo + 4 * i: tds[words[i + 3]] for i in range(len(words) - 5) if words[i] == 0 and words[i + 1] == 0 and words[i + 3] in tds}
+    return {lo + 4 * k + 4: cols[w] for k, w in enumerate(words[:-1]) if w in cols}
+
+
+def template_vtables(im):
+    """{primary vtable: [non-template classes on its primary base chain]} for
+    template instances, which rtti_classes leaves out."""
+    lo, hi = im.sections['.rdata']
+    words = struct.unpack_from(f'<{(hi - lo) // 4}I', im.img, lo - im.base)
+    tds = {im.base + m.start() - 8 for m in re.finditer(rb'\.\?A[VU]\?\$[ -~]+?@@\x00', im.img)}
+    cols = {lo + 4 * i: words[i + 4] for i in range(len(words) - 5)
+            if not words[i] and not words[i + 1] and words[i + 3] in tds}
+    refs = collections.defaultdict(list)
+    for k, w in enumerate(words):
+        if w in cols: refs[w].append(lo + 4 * k)
+    out = {}
+    for col, chd in cols.items():
+        if len(refs[col]) != 1 or not im.inside(chd, '.rdata'): continue
+        chain = []
+        for k in range(min(im.dword(chd + 8), 64)):
+            bcd = im.dword(im.dword(chd + 12) + 4 * k)
+            if im.dword(bcd + 8) or im.dword(bcd + 12) != 0xffffffff: continue
+            raw = im.img[im.dword(bcd) + 8 - im.base:].split(b'\0', 1)[0].decode('latin-1')
+            if raw.startswith('.?A') and not raw.startswith(('.?AV?$', '.?AU?$')):
+                chain.append('::'.join(reversed(raw[4:-2].split('@'))))
+        out[refs[col][0] + 4] = chain
+    return out
+
+
+def slot_introducers(im, vtables):
+    """{(class, slot): (introducing class, implementations)} along the primary base chains."""
+    lo, hi = im.sections['.text']
+    size = {}
+    for vt in vtables:
+        k = 0
+        while lo <= im.dword(vt + 4 * k) < hi and (k == 0 or vt + 4 * k not in vtables): k += 1
+        size[vt] = k
+    cls_vt = {}
+    for vt, c in vtables.items(): cls_vt.setdefault(c, vt)
+    chains = {}
+    for vt, c in vtables.items():
+        chd = im.dword(im.dword(vt - 4) + 16)
+        if not im.inside(chd, '.rdata'): continue
+        chain = []
+        for i in range(min(im.dword(chd + 8), 64)):
+            bcd = im.dword(im.dword(chd + 12) + 4 * i)
+            if im.dword(bcd + 8) or im.dword(bcd + 12) != 0xffffffff: continue  # not on the primary chain
+            raw = im.img[im.dword(bcd) + 8 - im.base:].split(b'\0', 1)[0].decode('latin-1')
+            if raw.startswith('.?A') and not raw.startswith('.?AV?$') and not raw.startswith('.?AU?$'):
+                chain.append('::'.join(reversed(raw[4:-2].split('@'))))
+        chains[vt] = chain
+    intro, count = {}, collections.Counter()
+    for vt, c in vtables.items():
+        for k in range(size[vt]):
+            owner = next((a for a in reversed(chains.get(vt, [])) if a in cls_vt and size[cls_vt[a]] > k), c)
+            intro[(c, k)] = owner; count[(owner, k)] += 1
+    return {key: (o, count[(o, key[1])]) for key, o in intro.items()}
+
+
+# Message strings of the statically linked libraries (lib/<name>.c).
+LIBRARIES = [
+    ('d3dx', r'ID3DX|^D3DX[:9 ]|D3DXERR|Software\\Microsoft\\Direct3D|^[vp]s_\d_\d$|^(?:vs|ps)\.\d\.\d$|too many nested #includes|preprocessor'
+             r'|macro redefinition|error X%u|^unexpected #|BLENDWEIGHT|BLENDINDICES|centroid|instructions are not allowed'
+             r'|invalid register|comment continues past|decimal value truncated|missing implementation|l-value expected'),
+    ('zlib', r'zlib error|invalid literal/length code|oversubscribed|incorrect header check|invalid distance|invalid block type|need dictionary'),
+    ('libpng', r'^PNG_|png_|libpng|IHDR|IDAT|IEND|PLTE|tRNS|gAMA|zTXt|Call to NULL (?:write|read) function|paletted images'),
+    ('crt', r'^R60\d\d|`template-parameter|`anonymous namespace|runtime error|CorExitProcess|GetProcessWindowStation'
+            r'|^__based\(|`vftable|^e\+000$|^(?:a?sin|a?cos|a?tan|atan2|exp|log|log10|pow|sqrt|fmod|floor|ceil|_hypot|ldexp|frexp|modf)$'
+            r'|1#QNAN|1#INF|1#IND|^\(null\)$|Runtime Error|<program name unknown>|mscoree|GetLastActivePopup|CONOUT\$'
+            r'|^SunMonTue|^JanFebMar|Visual C\+\+|^ \?\?$|^TZ$|^_nextafter$'),
+]
+
+
+PRIMITIVES = {'C': 'signed char', 'D': 'char', 'E': 'unsigned char', 'F': 'short', 'G': 'unsigned short', 'H': 'int',
+              'I': 'unsigned int', 'J': 'long', 'K': 'unsigned long', 'M': 'float', 'N': 'double', 'O': 'long double',
+              '_N': 'bool', '_J': '__int64', '_K': 'unsigned __int64', 'X': 'void', '_W': 'wchar_t'}
+
+
+def rtti_type_name(raw, commands={}):
+    """Readable name of an RTTI type descriptor name without its leading '.':
+    '?AVNametags@bf@dice@@' -> Nametags, 'PAV...' -> pointer, '_N' -> bool."""
+    m = re.fullmatch(r'(P[AB]|\?A)(?:[VU]|W4)(.+)@@|(P[AB])?(\w+)', raw)
+    if not m: return raw
+    kind, cls, ptr, prim = m.groups()
+    if cls is not None:
+        ptr = kind if kind != '?A' else None
+        if cls.startswith('?$'):  # template: name<...>
+            base = cls[2:].split('@')[0] + '<...>'
+        else:
+            base = short('::'.join(reversed(cls.split('@'))), commands)
+    elif prim in PRIMITIVES:
+        base = PRIMITIVES[prim]
+    else:
+        return raw
+    return base + ({'PA': '*', 'PB': ' const*'}.get(ptr, ''))
+
+
+def homes(im, entries, md, chained=None):
     """{address: (folder, file, class or '', evidence)} for every catalog entry."""
     starts = sorted(int(e['address'], 16) for e in entries)
     known = set(starts)
     text_lo = im.sections['.text'][0]
     code = im.img[text_lo - im.base:im.sections['.text'][1] - im.base]
-    def referencing(va):
+    size = {int(e['address'], 16): len(e['native_body']) // 2 for e in entries}
+    def owner(i, strict=True):  # the entry whose body holds code offset i (strict: not unindexed code after it)
+        k = bisect.bisect_right(starts, text_lo + i) - 1
+        return starts[k] if k >= 0 and (not strict or text_lo + i + 4 <= starts[k] + size[starts[k]]) else None
+    def referencing(va, strict=True):
         pat = struct.pack('<I', va); i = code.find(pat)
         while i >= 0:
-            k = bisect.bisect_right(starts, text_lo + i) - 1
-            if k >= 0: yield starts[k]
+            if (f := owner(i, strict)) is not None: yield f
             i = code.find(pat, i + 1)
     home = {}
     owners, vtables = rtti_classes(im)
@@ -127,16 +667,52 @@ def homes(im, entries, md):
         parts = m.group(1).decode().split('\\')
         folder = by_name.get(parts[-1]) or '/'.join(
             [{'battlefield': 'bf', 'engine': 'ref2'}.get(parts[0].lower(), parts[0]), *parts[1:-1]])
-        for f in referencing(im.base + m.start()):
+        for f in referencing(im.base + m.start(), strict=False):  # asserts sit in cold code after the body
             if f in known: home.setdefault(f, (folder, parts[-1], '', 'source path'))
-    for f, (cls, _) in owners.items():
+    for f, (cls, *_) in owners.items():
         if f in known and f not in home: home[f] = (*place(cls), cls, 'virtual method')
-    stores = collections.defaultdict(set)
+    stores = collections.defaultdict(set); primary = collections.defaultdict(set)
     for vt, cls in vtables.items():
         for f in referencing(vt): stores[f].add(cls)
+        pat = struct.pack('<I', vt); i = code.find(pat)
+        while i >= 0:  # mov dword ptr [reg], vt: the vtable at offset 0 (multiple inheritance stores more)
+            if i >= 2 and code[i - 2] == 0xc7 and code[i - 1] in (0, 1, 2, 3, 6, 7) and (f := owner(i)) is not None:
+                primary[f].add(cls)
+            i = code.find(pat, i + 1)
+    chain = base_offsets(im)
     for f, classes in stores.items():
+        if f not in home and len(classes) > 1 and len(primary[f]) == 1: classes = primary[f]
+        # A constructor (destructor) with an inlined base constructor stores
+        # every vtable of one base chain at [reg]: it is named after the most
+        # derived class (its file stays where the rules below put it).
+        if f not in home and len(classes) > 1 and len(primary[f]) > 1 and chained is not None:
+            top = [c for c in primary[f] if all(chain.get(c, {}).get(b) == 0 for b in primary[f] if b != c)]
+            if len(top) == 1: chained[f] = top[0]
         if f not in home and len(classes) == 1:
-            cls = next(iter(classes)); home[f] = (*place(cls), cls, 'vtable store')
+            cls = next(iter(classes))
+            # A console command's constructor stores its vtable at [reg]; any
+            # other match is the same four bytes inside another instruction
+            # (`lea eax, [esp + 0xb8]` encodes 84 24 b8 00 = vtable 0xb82484).
+            if '::ConsoleClass' in cls and cls not in primary[f]: continue
+            home[f] = (*place(cls), cls, 'vtable store')
+    # Statically linked libraries: their own message strings mark them. The
+    # linker keeps each library's code together, so the runs below fill the
+    # code between two marked functions of the same library.
+    by_entry = {int(e['address'], 16): e for e in entries}
+    for a in starts:
+        if a in home: continue
+        for s in strings_used(im, md, by_entry[a], limit=8):
+            lib = next((name for name, rx in LIBRARIES if re.search(rx, s)), None)
+            if lib: home[a] = ('lib', lib, '', 'library strings'); break
+    # The game's own code pads every function to 16 bytes; the libraries were
+    # built without padding. Code that directly follows (or precedes) a library
+    # function without padding belongs to the same library.
+    end = {a: a + len(by_entry[a]['native_body']) // 2 for a in starts}
+    for order in (starts, starts[::-1]):
+        for x, a in zip(order, order[1:]):
+            if a in home or x not in home or home[x][0] != 'lib': continue
+            lo, hi = min(x, a), max(x, a)
+            if end[lo] == hi and hi % 16: home[a] = (*home[x][:2], '', 'library run')
     for key, same in ((lambda h: h[:2], True), (lambda h: h[0], False)):
         anchors = [a for a in starts if a in home]
         for x, y in zip(anchors, anchors[1:]):
@@ -194,37 +770,1997 @@ def safe(name):
     return re.sub(r'[^A-Za-z0-9_]', '_', name)
 
 
+STL = {'map/set<T> too long': 'std_tree_insert', 'invalid map/set<T> iterator': 'std_tree_iterator',
+       'list<T> too long': 'std_list_insert', 'vector<T> too long': 'std_vector_insert', 'deque<T> too long': 'std_deque_insert',
+       'string too long': 'std_string_grow', 'invalid string position': 'std_string_range', 'bad cast': 'std_bad_cast'}
+
+
+def string_hint(strs):
+    """A short name part from the strings a function uses: the Standard Library
+    error it reports, else the first identifier, console name or file name,
+    else the first words of a message. '' when nothing fits."""
+    for s in strs:
+        if s.strip() in STL: return STL[s.strip()]
+    for s in strs:
+        s = s.strip()
+        if ' ' in s or len(s) > 60: continue
+        if re.fullmatch(r'[\w.:/\\-]*[A-Za-z]{3}[\w.:/\\-]*', s):
+            if re.search(r'[/\\]', s): s = re.split(r'[/\\]', s.rstrip('/\\'))[-1]
+            return re.sub(r'\W+', '_', s).strip('_')[:40]
+    for s in strs:
+        words = re.findall(r'(?<![%\w])[A-Za-z][A-Za-z]{2,}', s)[:3]
+        if words and max(map(len, words)) >= 4: return '_'.join(words)[:40]
+    return ''
+
+
+def imports(im):
+    """{IAT slot address: 'DLL!Function'}."""
+    im.pe.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_IMPORT']])
+    out = {}
+    for d in getattr(im.pe, 'DIRECTORY_ENTRY_IMPORT', []):
+        dll = d.dll.decode().rsplit('.', 1)[0].upper()
+        for imp in d.imports:
+            out[imp.address] = f'{dll}!' + (imp.name.decode() if imp.name else f'#{imp.ordinal}')
+    return out
+
+
+def short(cls, commands):
+    """Class name without namespaces; a console command class is Cmd_<command>."""
+    if cls in commands: return 'Cmd_' + safe(commands[cls])
+    return [p for p in cls.split('::') if not p.startswith('?A0x')][-1]
+
+
+def global_objects(im, vtables, classes):
+    """{address: class} for objects in data whose class the code shows: a vtable
+    stored straight into the address, or the address passed as `this` (ecx)
+    to a constructor or method of one class."""
+    lo, hi = im.sections['.text']
+    code = im.img[lo - im.base:hi - im.base]
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    found = {}
+    store = re.compile(r'^dword ptr \[(0x[0-9a-f]+)\], (0x[0-9a-f]+)$')
+    off, ecx = 0, None
+    while off < len(code):
+        start = off
+        for addr, size, mn, ops in md.disasm_lite(code[off:], lo + off):
+            off = addr + size - lo
+            if mn == 'push': continue  # arguments pushed between `mov ecx` and the call
+            if mn == 'mov':
+                m = store.match(ops)
+                if m and int(m.group(2), 16) in vtables: found.setdefault(int(m.group(1), 16), vtables[int(m.group(2), 16)])
+                ecx = int(ops[5:], 16) if ops.startswith('ecx, 0x') else None
+                continue
+            if mn == 'call' and ecx is not None and ops.startswith('0x') and int(ops, 16) in classes \
+                    and not im.inside(ecx, '.text') and not im.inside(ecx, '.rdata'):
+                found.setdefault(ecx, classes[int(ops, 16)])
+            ecx = None
+        if off == start: off += 1  # undecodable byte (data in .text)
+    return {a: c for a, c in found.items() if any(im.inside(a, s) for s in im.sections if s not in ('.text', '.rdata', '.rsrc'))}
+
+
+INSN = re.compile(r'^(    /\* [0-9a-f]{8}  )(.*?)(  ; .*?)?( \*/)$', re.M)
+HEX = re.compile(r'0x[0-9a-f]+')
+
+
+def clean(s):
+    """Text safe inside a C block comment (no nesting, no trigraphs)."""
+    return s.replace('*/', '* /').replace('/*', '/ *').replace('??', '? ?')
+
+
+def annotate(text, label, extra={}):
+    """Append names to the instruction comments of a function text ('  ; name');
+    replaces earlier notes. extra: {address: [names]} (stack variables).
+    Comments only: the code is unchanged."""
+    def note(m):
+        notes = list(extra.get(m.group(1)[7:15], []))
+        for h in HEX.findall(m.group(2)):
+            n = label(int(h, 16), m.group(2))
+            if n and n not in notes: notes.append(n)
+        return m.group(1) + m.group(2) + ('  ; ' + clean(', '.join(notes)) if notes else '') + m.group(4)
+    return INSN.sub(note, text)
+
+
+def float_value(v, insn):
+    """'4.0f' for a 32-bit immediate stored to memory or pushed that reads as a
+    short float (at most 6 significant digits, 1e-4..1e7), else None."""
+    if '[' in insn.split(', ')[-1] or not (insn.startswith(('mov dword ptr [', 'push ')) and insn.endswith(f'0x{v:x}')): return None
+    if v < 0x38000000 or 0x80000000 <= v < 0xb8000000: return None
+    f = struct.unpack('<f', struct.pack('<I', v))[0]
+    if not 1e-4 <= abs(f) <= 1e7: return None
+    for digits in range(1, 7):
+        t = float(f'{f:.{digits}g}')
+        if struct.pack('<f', t) == struct.pack('<I', v): return f'{t!r}f'.replace('e+0', 'e').replace('e-0', 'e-')
+    return None
+
+
+def constant_value(im, v, insn):
+    """'= 0.5f' (float), '= 0.5' (double) or '= 3' (integer) for a read-only
+    constant a floating-point instruction loads from [v], else None."""
+    m = insn.split(' ', 1)[0]
+    if f'[0x{v:x}]' not in insn or not im.inside(v, '.rdata'): return None
+    if not (m.startswith('f') or re.fullmatch(r'\w+s[sd]', m)): return None
+    size = 8 if 'qword ptr' in insn else 4 if 'dword ptr' in insn else 2 if 'word ptr' in insn and m.startswith('fi') else 0
+    if not size: return None
+    raw = im.img[v - im.base:v - im.base + size]
+    if m.startswith('fi'): return '= ' + str(int.from_bytes(raw, 'little', signed=True))
+    f = struct.unpack('<f' if size == 4 else '<d', raw)[0]
+    if f != f or abs(f) == float('inf'): return None
+    for digits in range(1, 18):
+        t = float(f'{f:.{digits}g}')
+        try:
+            if struct.pack('<f' if size == 4 else '<d', t) == raw: return f'= {t!r}' + ('f' if size == 4 else '')
+        except OverflowError:
+            continue
+    return None
+
+
+def ret_pops(insns):
+    """Bytes a function's `ret N` pops, when all its returns agree."""
+    pops = {i.operands[0].imm if i.operands else 0 for i in insns if i.mnemonic == 'ret'}
+    return pops.pop() if len(pops) == 1 else None
+
+
+def interface_notes(insns, interfaces):
+    """{address: ['IDirect3DDevice9::SetRenderState']} for calls through the
+    vtable of a global COM interface pointer (known_names.INTERFACES), followed
+    through registers in straight-line code."""
+    held, vt, out, pushed = {}, {}, {}, []
+    for i in insns:
+        ops = i.op_str
+        if i.mnemonic == 'push': pushed.append(int(ops, 16) if re.fullmatch(r'0x[0-9a-f]+|\d', ops) else None)
+        if i.mnemonic == 'call' and (m := re.fullmatch(r'dword ptr \[(e\w\w)(?: \+ (0x[0-9a-f]+))?\]', ops)) and m.group(1) in vt:
+            iface, methods = vt[m.group(1)]
+            k = int(m.group(2) or '0', 16) // 4
+            if k < len(methods):
+                note = f'{iface}::{methods[k]}'
+                arg, prefix, values = known_names.D3D9_ENUM_ARGS.get(methods[k], (None, '', {}))
+                args = pushed[-2::-1]  # the last push is `this`
+                if arg is not None and arg < len(args) and args[arg] in values: note += f'({prefix}{values[args[arg]]})'
+                out[f'{i.address:08x}'] = [note]
+        if i.mnemonic == 'call': pushed = []
+        read, written = i.regs_access()
+        names = {i.reg_name(r) for r in written}
+        if i.mnemonic == 'call': names |= {'eax', 'ecx', 'edx'}
+        new_held = new_vt = None
+        if i.mnemonic == 'mov' and (m := re.fullmatch(r'(e\w\w), dword ptr \[(0x[0-9a-f]+)\]', ops)) and int(m.group(2), 16) in interfaces:
+            new_held = (m.group(1), interfaces[int(m.group(2), 16)])
+        elif i.mnemonic == 'mov' and (m := re.fullmatch(r'(e\w\w), dword ptr \[(e\w\w)\]', ops)) and m.group(2) in held:
+            new_vt = (m.group(1), held[m.group(2)])
+        elif i.mnemonic == 'mov' and (m := re.fullmatch(r'(e\w\w), (e\w\w)', ops)):
+            if m.group(2) in held: new_held = (m.group(1), held[m.group(2)])
+            if m.group(2) in vt: new_vt = (m.group(1), vt[m.group(2)])
+        for r in names: held.pop(r, None); vt.pop(r, None)
+        if new_held: held[new_held[0]] = new_held[1]
+        if new_vt: vt[new_vt[0]] = new_vt[1]
+    return out
+
+
+def stack_vars(insns, pops):
+    """{address: [names]} for stack operands: arg_<n> (n bytes above the return
+    address: arg_0 is the first argument), var_<n> (n bytes below it) and
+    retaddr. ESP (and an EBP frame) is tracked from the entry; after a call the
+    callee pops its known `ret N`, nothing when the caller cleans up (`add esp`
+    follows), else the arguments pushed since the last call. Any disagreement
+    (two paths joining at different depths, a `ret` not at depth 0, an untracked
+    ESP write) drops the whole function: no names rather than wrong ones."""
+    index = {i.address: i for i in insns}
+    order = [i.address for i in insns]
+    after = dict(zip(order, order[1:]))
+    state = {order[0]: (0, None, 0)}; work = [order[0]]; out = {}
+    first_write = {}  # a push of a register the function has not written yet saves it: not an argument
+    for i in insns:
+        for r in i.regs_access()[1]: first_write.setdefault(i.reg_name(r), i.address)
+    def slot(off):
+        return 'retaddr' if off == 0 else f'arg_{off - 4:x}' if off > 0 else f'var_{-off:x}'
+    while work:
+        a = work.pop(); sp, bp, pend = state[a]; i = index[a]; m = i.mnemonic; ops = i.operands
+        reg = lambda n: len(ops) > n and ops[n].type == 1 and i.reg_name(ops[n].reg)  # CS_OP_REG
+        names = []
+        for op in ops:
+            if op.type == CS_OP_MEM and op.mem.index == 0 and op.mem.base:
+                base = i.reg_name(op.mem.base)
+                off = sp if base == 'esp' else bp if base == 'ebp' else None
+                if off is not None: names.append(('&' if m == 'lea' else '') + slot(off + op.mem.disp))
+        if names: out[f'{a:08x}'] = names
+        written = {i.reg_name(r) for r in i.regs_access()[1]}
+        nexts = []
+        if m in ('push', 'pushfd'):
+            sp -= 4
+            if not (reg(0) in ('ebx', 'esi', 'edi', 'ebp') and first_write.get(reg(0), 1 << 32) > a): pend += 4
+        elif m == 'pushal': sp -= 32
+        elif m == 'popal': sp += 32
+        elif m in ('pop', 'popfd'):
+            if reg(0) == 'esp': return {}
+            sp += 4; pend = max(0, pend - 4)
+            if reg(0) == 'ebp': bp = None
+        elif m in ('sub', 'add') and reg(0) == 'esp':
+            if ops[1].type != CS_OP_IMM: return {}
+            d = ops[1].imm if m == 'add' else -ops[1].imm
+            sp += d; pend = max(0, pend + d) if d > 0 else 0
+        elif m == 'mov' and reg(0) == 'ebp' and reg(1) == 'esp': bp = sp
+        elif m == 'mov' and reg(0) == 'esp' and reg(1) == 'ebp':
+            if bp is None: return {}
+            sp = bp
+        elif m == 'lea' and reg(0) in ('esp', 'ebp') and ops[1].mem.index == 0 and i.reg_name(ops[1].mem.base) in ('esp', 'ebp'):
+            src = sp if i.reg_name(ops[1].mem.base) == 'esp' else bp
+            if src is None: return {}
+            if reg(0) == 'esp': sp = src + ops[1].mem.disp
+            else: bp = src + ops[1].mem.disp
+        elif m == 'leave':
+            if bp is None: return {}
+            sp, bp = bp + 4, None
+        elif m == 'call':
+            t = ops[0].imm if ops[0].type == CS_OP_IMM else None
+            n = pops.get(t)
+            if n is None:
+                nx = index.get(after.get(a))
+                n = 0 if nx is not None and nx.mnemonic == 'add' and nx.op_str.startswith('esp, ') else pend
+            sp += n; pend = 0
+        elif 'esp' in written and m not in ('ret', 'call'): return {}
+        elif 'ebp' in written: bp = None
+        if m == 'ret':
+            if sp != 0: return {}
+            continue
+        if m == 'jmp':
+            if ops[0].type == CS_OP_IMM and ops[0].imm in index: nexts = [ops[0].imm]
+        elif m.startswith('j') or m.startswith('loop'):
+            nexts = [after.get(a)] + ([ops[0].imm] if ops[0].type == CS_OP_IMM and ops[0].imm in index else [])
+        elif m not in ('int3', 'hlt', 'ud2'):
+            nexts = [after.get(a)]
+        for n in nexts:
+            if n is None: continue
+            if n in state:
+                if state[n][:2] != (sp, bp): return {}
+            else:
+                state[n] = (sp, bp, pend); work.append(n)
+    return out
+
+
 def layout(target, image, folder):
-    """Rewrite folder (lifted/<target>) into the sorted layout; returns counts by evidence."""
+    """Rewrite folder (lifted/<target>) into the sorted, named layout; returns counts by evidence."""
+    from build import code_sha256, edited
     catalog = json.loads((folder / 'catalog.json').read_text())
     entries = catalog['entries']
     texts = split_texts(folder)
-    bad = [e['address'] for e in entries
-           if hashlib.sha256(texts.get(e['symbol'], '').encode()).hexdigest() != e['c_sha256']]
+    bad = [e['address'] for e in entries if edited(e, texts.get(e['symbol'], ''))]
     if bad or len(texts) != len(entries):
         raise SystemExit(f'{target}: {len(bad)} function texts differ from catalog.json (edited?); '
                          f'{len(texts)} texts for {len(entries)} entries. Nothing was changed.')
+    for e in entries: e.setdefault('code_sha256', code_sha256(texts[e['symbol']]))
     im = Image(image)
     md = Cs(CS_ARCH_X86, CS_MODE_32); md.detail = True
-    home = homes(im, entries, md)
+    chained = {}
+    home = homes(im, entries, md, chained)
+    owners, vtables = rtti_classes(im)
+    strs = {e['address']: strings_used(im, md, e) for e in entries}
+    # Console command classes take the command's name (first string of their constructor).
+    commands, ctor_of = {}, {}
+    for e in entries:
+        _, _, cls, how = home[int(e['address'], 16)]
+        if how == 'vtable store' and '::ConsoleClass' in cls and strs[e['address']] and cls not in commands:
+            commands[cls] = strs[e['address']][0]; ctor_of[cls] = int(e['address'], 16)
+    # Full command names ("ObjectTemplate.repairFactor") from the static initializers.
+    category = game_names.console_categories(im, md, set(ctor_of.values()), sorted(int(e['address'], 16) for e in entries))
+    for cls, c in ctor_of.items():
+        if c in category: commands[cls] = f'{category[c]}.{commands[cls]}'
+    ids = game_names.class_ids(im, owners, md)
+    # Function names.
+    names, classes, hints = {}, {}, {}
+    iat = imports(im)
+    registry = json.loads((PROJECT.parent / 'reports/recovery-registry.json').read_text(encoding='utf-8'))
+    for r in registry:
+        if target in r['addresses']: names[int(r['addresses'][target], 16)] = r['symbol']
+    for e in entries:
+        a = int(e['address'], 16); dir_, file, cls, how = home[a]
+        if a in owners:
+            c, _, slot = owners[a]; names[a] = f'{short(c, commands)}::vf{slot}'; classes[a] = c
+        elif how == 'vtable store':
+            names[a] = f'{short(cls, commands)}::ctor_dtor'; classes[a] = cls
+        elif a in chained:
+            names[a] = f'{short(chained[a], commands)}::ctor_dtor'; classes[a] = chained[a]
+        else:
+            generic = file == 'misc' or file.startswith(('unsorted', 'console_'))
+            stem = dir_.split('/')[-1] if generic and dir_ not in ('misc', 'unsorted') else 'sub' if generic else file
+            hint = string_hint(strs[e['address']])
+            if not hint:  # else the first Windows function it calls
+                api = [iat[int(x, 16)] for x in re.findall(r'^    /\* [0-9a-f]{8}  call dword ptr \[0x([0-9a-f]+)\]', texts[e['symbol']], re.M)
+                       if int(x, 16) in iat]
+                if api: hint = 'calls_' + safe(api[0].split('!')[-1])
+            names[a] = f'{safe(stem)}_{hint}_{a:08x}' if hint and stem != hint else f'{safe(stem)}_{a:08x}'
+            if hint: hints[a] = hint
+    # Destructors: a virtual method that tests bit 0 of its argument before
+    # freeing is a scalar deleting destructor; the vtable-storing function it
+    # calls first is the destructor. A vtable-storing function that returns
+    # `this` is a constructor.
+    text_of = {int(e['address'], 16): texts[e['symbol']] for e in entries}
+    deleting = {a for a in owners if a in text_of and re.search(r'  test byte ptr \[e[sb]p \+ (?:4|8|0xc)\], 1', text_of[a])
+                and len(re.findall(r'^    /\* [0-9a-f]{8}  ', text_of[a], re.M)) <= 80}  # longer: a flags argument (Object::update)
+    deleting |= {a for a in owners if 'deleting_destructor' in names.get(a, '')}
+    for a, (c, _, slot) in owners.items():  # hand-written routines in a vtable
+        if a in names and names[a].startswith('bfv_'): names[a] = f'{short(c, commands)}::vf{slot}'; classes[a] = c
+    for a in deleting:
+        c = owners[a][0]; names[a] = f'{short(c, commands)}::deleting_dtor'; classes[a] = c
+        for i in md.disasm(im.img[a - im.base:a - im.base + 96], a):
+            if i.mnemonic == 'ret': break
+            if i.mnemonic == 'call' and i.operands[0].type == CS_OP_IMM:
+                t = i.operands[0].imm
+                if names.get(t, '').endswith('::ctor_dtor'):
+                    n = short(classes[t], commands); names[t] = f'{n}::~{n}'
+                break
+    hand = known_names.transfer(target, entries, folder.parent)  # tools/known_names.py
+    calls_new = {f'call 0x{a:x}' for a, (n, _) in hand.items() if n == 'operator_new'}
+    for a, n in names.items():
+        if n.endswith('::ctor_dtor') and a in text_of:
+            ins = re.findall(r'^    /\* [0-9a-f]{8}  (.*?)(?:  ; .*?)? \*/', text_of[a], re.M)
+            tail = ins[-6:]
+            # Factory: allocates (operator new, or vf4 of a MemoryPool held in
+            # a global) and stores the vtable into the new block, not into `this`.
+            # A body that starts by copying `this` into eax and returns it is a
+            # constructor.
+            alloc = next((k for k, x in enumerate(ins[:8]) if x in calls_new or re.fullmatch(r'call dword ptr \[e[ad]x \+ 0x10\]', x)
+                          and any(re.fullmatch(r'mov ecx, dword ptr \[0x[0-9a-f]+\]', y) for y in ins[:k])), None)
+            if alloc is not None:
+                regs = {'eax'} | {m.group(1) for x in ins[alloc + 1:alloc + 4] if (m := re.fullmatch(r'mov (e\w\w), eax', x))}
+                if any((m := re.fullmatch(r'mov dword ptr \[(e\w\w)\], 0x[0-9a-f]+', x)) and m.group(1) in regs for x in ins[alloc:alloc + 24]):
+                    k = n[:-len('::ctor_dtor')]; names[a] = f'{k}::create'; continue
+            if any(re.fullmatch(r'mov eax, e(?:si|di|bx|bp|cx)', x) for x in tail) or ins[:1] == ['mov eax, ecx'] and not any(x.startswith('call') for x in ins):
+                k = n[:-len('::ctor_dtor')]; names[a] = f'{k}::{k}'
+            elif (last := [x for x in ins if x.startswith('call 0x')][-1:]) and '::~' in names.get(int(last[0][5:], 16), '')                     and not any(x.startswith('mov eax,') for x in tail):  # ends in a base class destructor
+                k = n[:-len('::ctor_dtor')]; names[a] = f'{k}::~{k}'
+    # Class-ID methods: `mov eax, [id]; ret` returns the class's ID; a short
+    # method that compares its argument with class IDs and returns `this` is the
+    # cast by class ID.
+    for a, (c, *_) in owners.items():
+        if a not in text_of: continue
+        ins = re.findall(r'^    /\* [0-9a-f]{8}  (.*?)(?:  ; .*?)? \*/', text_of[a], re.M)
+        refs = [int(x, 16) in ids for x in re.findall(r'\[0x([0-9a-f]+)\]', '\n'.join(ins))]
+        if len(ins) == 2 and ins[1] == 'ret' and refs == [True]: names[a] = f'{short(c, commands)}::getClassID'
+        elif len(ins) <= 40 and any(refs) and 'mov eax, ecx' in ins and 'ret 4' in ins: names[a] = f'{short(c, commands)}::castTo'
+    # Slot 17 of a console command runs it: [this+0x1c] is 0 to get and 1 to
+    # set, [this+0x20] the argument list and [this+0xa4] the result.
+    # Slot 16 tells whether there is an object to apply the command to (the
+    # active template of the right class, or a non-null current object), slot 18
+    # prints the stored value into a string ([this+0xa0] set: [this+0xa4]), and
+    # slot 19 reads argument number arg_0 from the string arg_4 through an
+    # istringstream and points [this+0x20] at the parsed value.
+    slot_names = {16: 'hasTarget', 17: 'execute', 18: 'valueToString', 19: 'parseArg'}
+    for a, (c, _, slot) in owners.items():
+        if c in commands and slot in slot_names and names.get(a, '').endswith(f'::vf{slot}'):
+            names[a] = names[a][:-len(f'vf{slot}')] + slot_names[slot]
+    introducers = slot_introducers(im, vtables)
+    overrides = {}
+    for a, (c, _, slot) in owners.items():
+        if (c, slot) not in introducers: continue
+        o, n = introducers[(c, slot)]
+        if o != c: overrides[a] = f'{short(o, commands)}::vf{slot}  ({n} classes implement it)'
+        elif (o, slot) not in SLOT_NAMES and (c, 0) in introducers:  # added by the class itself
+            root = introducers[(c, 0)][0]
+            if (root, slot) in SLOT_NAMES and names.get(a, '').endswith(f'::vf{slot}'):
+                names[a] = names[a][:-len(f'vf{slot}')] + SLOT_NAMES[(root, slot)]
+            continue
+        if (o, slot) in SLOT_NAMES and names.get(a, '').endswith(f'::vf{slot}'):
+            names[a] = names[a][:-len(f'vf{slot}')] + SLOT_NAMES[(o, slot)]
+            if o != c: overrides[a] = f'{short(o, commands)}::{SLOT_NAMES[(o, slot)]}  ({n} classes implement it)'
+    # Trivial bodies the linker shares between unrelated vtables (`ret 0x14`,
+    # `mov al, 1; ret 0x10`): named by what they do, not by the first class
+    # whose vtable happened to list them.
+    lo, hi = im.sections['.text']
+    slot_users = collections.defaultdict(set)
+    for vt, c in vtables.items():
+        k = 0
+        while lo <= im.dword(vt + 4 * k) < hi and (k == 0 or vt + 4 * k not in vtables):
+            slot_users[im.dword(vt + 4 * k)].add(c); k += 1
+    stub_forms = [(r'ret(?: (\S+))?', 'stub_noop'), (r'mov al, 1;ret(?: (\S+))?', 'stub_return_true'),
+                  (r'xor al, al;ret(?: (\S+))?', 'stub_return_false'), (r'xor eax, eax;ret(?: (\S+))?', 'stub_return_0'),
+                  (r'mov eax, ecx;ret(?: (\S+))?', 'stub_return_this'), (r'mov eax, 1;ret(?: (\S+))?', 'stub_return_1'),
+                  (r'or eax, 0xffffffff;ret(?: (\S+))?', 'stub_return_minus1')]
+    for a, users in slot_users.items():
+        if len(users) < 2 or a not in text_of: continue
+        body = ';'.join(re.sub(r'  ;.*', '', x[1]) for x in INSN.findall(text_of[a]))
+        for rx, stub in stub_forms:
+            if m := re.fullmatch(rx, body):
+                n = int(m.group(1) or '0', 0) // 4
+                names[a] = f'{stub}_{n}args_{a:08x}'; classes.pop(a, None); break
+    # Stream operators: the first call of parseArg (valueToString) that only
+    # commands of one argument type make reads (writes) that type.
+    arg_type = {}
+    for cls, c in ctor_of.items():
+        types = [s for s in strs[f'{c:08x}'][1:] if s != 'std::string']
+        if len(types) == 1 and types[0] != 'void' and ' ' not in types[0]: arg_type[cls] = types[0]
+    for slot, verb in (('parseArg', 'istream_read'), ('valueToString', 'ostream_write')):
+        firsts = {}
+        for a, (c, _, s) in owners.items():
+            if c in arg_type and names.get(a, '').endswith('::' + slot) and a in text_of:
+                firsts[a] = [int(x, 16) for x in re.findall(r'^    /\* [0-9a-f]{8}  call 0x([0-9a-f]+)', text_of[a], re.M)]
+        used = collections.defaultdict(collections.Counter)
+        for a, calls in firsts.items():
+            for t in set(calls): used[t][arg_type[owners[a][0]].split('::')[-1]] += 1
+        def single(t):  # one type, or one type in all but at most 5% of uses
+            (top, n), total = used[t].most_common(1)[0], sum(used[t].values())
+            return top if n == total or (n >= 20 and n >= 0.95 * total) else None
+        for a, calls in firsts.items():
+            t = next((t for t in calls if single(t) and t not in known_names.KNOWN.get(target, {}) and len(INSN.findall(text_of.get(t, ''))) >= 16), None)
+            if t and re.fullmatch(r'\w+_[0-9a-f]{8}', names.get(t, '')):
+                names[t] = f'{verb}_{safe(single(t))}_{t:08x}'
+    # Hand-identified library and engine routines (tools/known_names.py).
+    known = {a: v for a, v in hand.items() if a in text_of}
+    for a, (n, _) in known.items(): names[a] = n
+    generic = re.compile(r'_[0-9a-f]{8}$')
+    # Other instances of a known standard-library template (another map's
+    # find, another vector's push_back): the same instructions with only the
+    # image addresses (callees, vtables) differing.
+    templates, by_addr = {}, {int(e['address'], 16): e for e in entries}
+    for a, (n, _) in known.items():
+        if n.startswith('std::') and len(INSN.findall(text_of[a])) >= 8:
+            templates.setdefault(known_names.signature(md, bytes.fromhex(by_addr[a]['native_body']), a), set()).add(n)
+    for a, e in by_addr.items():
+        if a in known or not generic.search(names.get(a, '_00000000')): continue
+        n = templates.get(known_names.signature(md, bytes.fromhex(e['native_body']), a))
+        if n and len(n) == 1: names[a] = f'{next(iter(n))}_{a:08x}'
+    for a, text in text_of.items():  # a lone `jmp` forwards to a named function
+        insns = INSN.findall(text)
+        m = len(insns) == 1 and re.fullmatch(r'jmp (0x[0-9a-f]+)', insns[0][1])
+        t = m and int(m.group(1), 16)
+        base = t in names and generic.sub('', names[t])
+        if base and re.search('[A-Z:]', base) and generic.search(names.get(a, '_00000000')):
+            names[a] = f'{base}_thunk_{a:08x}'
+    for a, n in template_slots(im).items():
+        if a in text_of and generic.search(names.get(a, '_00000000')):
+            if re.search(r'  test byte ptr \[e[sb]p \+ (?:4|8|0xc)\], 1', text_of[a]) and \
+               len(re.findall(r'^    /\* [0-9a-f]{8}  ', text_of[a], re.M)) <= 80 and \
+               re.search(r'  ret 4(?:  ; .*?)? \*/', text_of[a]):  # a deleting destructor, as above
+                n = n.rsplit('::', 1)[0] + '::deleting_dtor'
+            names[a] = n
+    # Constructors and destructors of template instances: the one template
+    # vtable stored at [reg]. A body that returns `this` is the constructor.
+    tinst = template_instances(im); made = collections.defaultdict(list)
+    for a in sorted(text_of):
+        if not generic.search(names.get(a, '_00000000')): continue
+        ins = [x[1] for x in INSN.findall(text_of[a])]
+        vts = {int(m.group(1), 16) for x in ins if (m := re.fullmatch(r'mov dword ptr \[e\w\w\], 0x([0-9a-f]+)', x))}
+        found = {tinst[v] for v in vts if v in tinst}
+        if len({f.split('<')[0] for f in found}) == 1 and len(found) > 1: found = {found.pop().split('<')[0] + '<...>'}  # several instances of one template
+        if len(found) != 1 or len(vts) != len([v for v in vts if v in tinst]):
+            # Else only the vtables stored at [this] (ecx, or the register
+            # ecx was copied to first) decide, when they are all template
+            # vtables of one instance: the others belong to member or helper
+            # objects (a WTypeConcrete<int> made with operator new).
+            this = {m.group(1) for x in ins[:8] if (m := re.fullmatch(r'mov (e(?:si|di|bx|bp)), ecx', x))}
+            if not this and not any(x.startswith(('call', 'mov ecx,', 'lea ecx,')) for x in ins): this = {'ecx'}
+            if len(this) != 1 or any(re.fullmatch(rf'(?:mov|lea|xor) {r}, .*', x) for r in this for x in ins[1:]
+                                     if not x.startswith(f'mov {r}, ecx')): continue
+            own = {int(m.group(2), 16) for x in ins if (m := re.fullmatch(r'mov dword ptr \[(e\w\w)\], 0x([0-9a-f]+)', x)) and m.group(1) in this}
+            found = {tinst[v] for v in own if v in tinst}
+            if not own or len(found) != 1 or len(own) != len([v for v in own if v in tinst]): continue
+        if len(ins) > 200: continue
+        inst = found.pop(); t = inst.split('<')[0]
+        ctor = any(re.fullmatch(r'mov eax, e(?:si|di|bx|bp|cx)', x) for x in ins[-6:]) or ins[:1] == ['mov eax, ecx']
+        made[f'{inst}::{t}' if ctor else f'{inst}::ctor_dtor'].append(a)
+    for n, fs in made.items():
+        for a in fs: names[a] = n if len(fs) == 1 else f'{n}_{a:08x}'
+    pops = {}
+    for a, text in text_of.items():
+        r = {int(x or '0', 0) for x in re.findall(r'^    /\* [0-9a-f]{8}  ret(?: (\S+?))?(?:  ; .*?)? \*/', text, re.M)}
+        if len(r) == 1: pops[a] = r.pop()
+    iat = imports(im)
+    def thunk(v):  # jmp dword ptr [IAT]
+        o = v - im.base
+        return 0 <= o < len(im.img) - 6 and im.img[o:o + 2] == b'\xff\x25' and iat.get(struct.unpack_from('<I', im.img, o + 2)[0])
+    object_cls = global_objects(im, vtables, classes)
+    objects = {a: f'g_{short(c, commands)}_{a:08x}' for a, c in object_cls.items()}
+    # A global object constructed with one class-name string (`push "name";
+    # mov ecx, object; call ctor`), e.g. the meme RuntimeClass records.
+    named_by = collections.defaultdict(set)
+    for m in re.finditer(rb'\x68(.{4})\xb9(.{4})\xe8', im.img, re.S):
+        g = struct.unpack('<I', m.group(2))[0]
+        s = g in objects and im.string(struct.unpack('<I', m.group(1))[0])
+        if s and re.fullmatch(r'[\w:]+', s): named_by[g].add(s)
+    for g, ss in named_by.items():
+        if len(ss) == 1: objects[g] = f'g_{short(object_cls[g], commands)}_{safe(short(ss.pop(), commands))}'
+    pointers = {}  # filled below, once `this` types are known
+    for a, n in names.items():  # ClassTemplate<T>::getInstanceCount: mov eax, [count]; ret
+        o = a - im.base
+        if n.startswith('ClassTemplate<') and n.endswith('::getInstanceCount') and im.img[o] == 0xa1 and im.img[o + 5] == 0xc3:
+            pointers[im.dword(a + 1)] = f'g_instanceCount_{n[14:].split(",")[0].split(">")[0]}'
+    registered = {}  # class ID globals by registered class name, filled below
+    id_label = {}  # class or interface ID value: label, filled below
+    # RTTI type descriptors (name at +8): the argument of type_info::name,
+    # dynamic casts and WrapperBase::findInterface.
+    typeids = {}
+    tinfo = collections.Counter(im.dword(im.base + m.start() - 8) for m in re.finditer(rb'\.\?A[VU][ -~]+?@@\x00', im.img))
+    tinfo = tinfo.most_common(1)[0][0] if tinfo else None  # the type_info vtable
+    for m in re.finditer(rb'\.[ -~]{1,200}?\x00', im.img):
+        va = im.base + m.start() - 8
+        if va % 4 or not tinfo or im.dword(va) != tinfo or not im.inside(va, '.data'): continue
+        typeids[va] = rtti_type_name(m.group()[1:-1].decode(), commands)
+    def label(v, insn):
+        if f'[0x{v:x}]' in insn and v in iat: return iat[v]
+        if f'[0x{v:x}]' in insn and v in ids: return short(ids[v], commands) + '::classID'
+        if f'[0x{v:x}]' in insn and v in registered: return f'classID({registered[v]})'
+        if f'[0x{v:x}]' in insn and im.inside(v, '.rdata') and im.dword(v) in id_label: return id_label[im.dword(v)]
+        if insn.startswith(('push ', 'cmp ')) and insn.endswith(f', 0x{v:x}' if insn.startswith('cmp') else f'0x{v:x}') and v >= 0x10000                 and not im.inside(v, '.text') and not im.inside(v, '.rdata') and not im.inside(v, '.data') and v in id_label: return id_label[v]
+        if v in names: return names[v]
+        if v in typeids: return f'typeid({typeids[v]})'
+        if v in vtables: return 'vtable ' + short(vtables[v], commands)
+        if v in objects: return objects[v]
+        if v in pointers: return pointers[v]
+        if im.inside(v, '.text'): return thunk(v) or None
+        k = constant_value(im, v, insn)
+        if k: return k
+        s = im.string(v)
+        if s: return f'"{s if len(s) <= 50 else s[:47] + "..."}"'
+        return float_value(v, insn)
+    # Object fields and methods named by the console commands that get or set them.
+    by_address = {int(e['address'], 16): e for e in entries}
+    def insns_of(a):
+        return list(md.disasm(bytes.fromhex(by_address[a]['native_body']), a)) if a in by_address else []
+    # Class registrations (Module vf4): {class ID, "dice.ref2.world.X.Standard",
+    # factory} records: the class ID global and the factory get that name.
+    for a in by_address:
+        reg = None
+        for i in insns_of(a):
+            ops = f'{i.mnemonic} {i.op_str}'
+            if m := re.fullmatch(r'push (0x[0-9a-f]+)', ops):
+                pn = im.string(int(m.group(1), 16))
+                if pn and re.fullmatch(r'dice\.[\w.]+', pn): reg = pn
+            elif reg and (m := re.fullmatch(r'mov e\w\w, dword ptr \[(0x[0-9a-f]+)\]', ops)):
+                va = int(m.group(1), 16)
+                if im.inside(va, '.rdata') and va not in ids: registered.setdefault(va, reg)
+            elif reg and (m := re.fullmatch(r'mov dword ptr \[esp \+ 0x[0-9a-f]+\], (0x[0-9a-f]+)', ops)):
+                fac = int(m.group(1), 16)
+                if fac in by_address and re.fullmatch(r'\w+_[0-9a-f]{8}', names.get(fac, '_00000000')):
+                    names[fac] = 'create_' + reg.replace('dice.', '', 1).replace('.', '_')
+                reg = None
+    handlers = collections.defaultdict(list)
+    for a, (c, *_) in owners.items():
+        if c in commands and a in by_address: handlers[commands[c]].append(a)
+    fields, methods, variables = game_names.console_fields(handlers, insns_of)
+    for va, cs in variables.items():  # a global only one command gets or sets is that setting
+        if len(cs) == 1 and va not in objects and va not in names and not im.inside(va, '.rdata') and not im.inside(va, '.text'):
+            pointers[va] = 'g_' + safe(next(iter(cs)))
+    # The template commands (ObjectTemplate.*) reach their object through one
+    # function called with a class ID in ecx: it takes the template being
+    # edited from the template manager and casts it to that class (vf11).
+    by_id = collections.Counter(o[1] for o, _ in fields if o[0] == 'call' and o[2] and o[2][0] == 'load'
+                                and o[2][1][0] == 'abs' and o[2][1][1] in ids)
+    template_cast = by_id.most_common(1)[0][0] if by_id and by_id.most_common(1)[0][1] >= 10 else None
+    if template_cast: names[template_cast] = 'getActiveTemplateAs'
+    fields = {k: v for k, v in fields.items() if len(v) <= 3}  # more: shared helper state, not one setting
+    methods = {k: v for k, v in methods.items() if len(v) <= 2}
+    # A field of an object reached by a class-ID cast belongs to that class: it
+    # also names `this + offset` in the methods of the class and its subclasses.
+    bases = game_names.class_bases(im)
+    by_class = collections.defaultdict(dict)
+    for (o, off), c in fields.items():
+        if o[0] == 'call' and o[2] and o[2][0] == 'load' and o[2][1][0] == 'abs' and o[2][1][1] in ids:
+            by_class[ids[o[2][1][1]]].setdefault(off, set()).update(c)
+    # Menu (meme) data bindings: `meme_registerIntRef(system, &this->field,
+    # "Name", "Path")` publishes a field (or a global) to the menu scripts
+    # under that name; the name is the last string assigned before the call.
+    register = {t for t, n in names.items() if n.startswith('meme_register')}
+    assign = {t for t, n in names.items() if n in ('std::string::assign_chars', 'std::string::assign_cstr')}
+    bound = 0; binding_notes = collections.defaultdict(dict); binding_rows = []
+    for a in by_address:
+        this = None; last = None; edx = None
+        for i in insns_of(a):
+            ops = f'{i.mnemonic} {i.op_str}'
+            if re.fullmatch(r'mov (e[sd]i|ebx|ebp), ecx', ops) and this is None: this = i.op_str.split(',')[0]
+            elif m := re.fullmatch(r'push (0x[0-9a-f]+)', ops):
+                s = im.string(int(m.group(1), 16))
+                if s and re.fullmatch(r'\w+', s): last = s
+            elif m := re.fullmatch(r'lea edx, \[(\w+) \+ (0x[0-9a-f]+|\d+)\]', ops): edx = (m.group(1), int(m.group(2), 0), i.address)
+            elif m := re.fullmatch(r'mov edx, (0x[0-9a-f]+)', ops): edx = ('abs', int(m.group(1), 16), i.address)
+            elif i.mnemonic == 'call':
+                t = i.operands[0].imm if i.operands[0].type == 2 else None  # CS_OP_IMM
+                if t in register and last and edx:
+                    if edx[0] == this and a in classes:
+                        by_class[classes[a]].setdefault(edx[1], set()).add(last); bound += 1
+                        binding_notes[a][f'{edx[2]:08x}'] = [f'field {last} (menu data, {names[t]})']
+                        binding_rows.append(f'{short(classes[a], commands)}\t0x{edx[1]:x}\tmenu data\t{last}')
+                    elif edx[0] == 'abs' and edx[1] not in names and edx[1] not in objects and im.inside(edx[1], '.data'):
+                        pointers.setdefault(edx[1], 'g_' + last); bound += 1
+                if t not in assign: last = None
+                edx = None
+    # Menu (meme) functions: `push "Name"; mov ecx, f; call Function::Function;
+    # mov [f], vtable; mov [f + 0xc], this; mov [f + 0x10], callback` registers
+    # the callback under the name the menu scripts call it by.
+    fctor = {t for t, n in names.items() if n == 'Function::Function'}
+    menu_fns = collections.defaultdict(set)
+    for a in by_address:
+        last = None; pending = 0
+        for i in insns_of(a):
+            ops = f'{i.mnemonic} {i.op_str}'
+            if m := re.fullmatch(r'push (0x[0-9a-f]+)', ops):
+                s = im.string(int(m.group(1), 16)); last = s if s and re.fullmatch(r'[A-Za-z]\w*', s) else None
+            elif i.mnemonic == 'call':
+                pending = 6 if last and i.operands[0].type == CS_OP_IMM and i.operands[0].imm in fctor else 0
+                if not pending: last = None
+            elif pending:
+                pending -= 1
+                if m := re.fullmatch(r'mov dword ptr \[e\w\w \+ 0x10\], (0x[0-9a-f]+)', ops):
+                    f = int(m.group(1), 16)
+                    if f in text_of: menu_fns[f].add((short(classes[a], commands) if a in classes else None, last))
+                    last = None; pending = 0
+    for f, regs in menu_fns.items():
+        if len(regs) == 1 and generic.search(names.get(f, '_00000000')):
+            c, s = regs.pop()
+            names[f] = f'{c}::menu_{s}' if c else f'menu_{s}'
+            bound += 1
+    # Menu node serializers (X::serialize): `push "Name"; lea reg, [this + off];
+    # push reg; ...; mov ecx, archive; call [archive vtable + n]` reads or
+    # writes the field under that element name of the menu script.
+    for a in by_address:
+        if not names.get(a, '').endswith('::serialize') or a not in classes: continue
+        this = None; last = None; off = None
+        for i in insns_of(a):
+            ops = f'{i.mnemonic} {i.op_str}'
+            if this is None and (m := re.fullmatch(r'mov (e[sd]i|ebx|ebp), ecx', ops)): this = m.group(1)
+            elif m := re.fullmatch(r'push (0x[0-9a-f]+)', ops):
+                t = im.string(int(m.group(1), 16)); last = t if t and re.fullmatch(r'[A-Za-z]\w*', t) else None; off = None
+            elif this and last and (m := re.fullmatch(rf'lea e\w\w, \[{this} \+ (0x[0-9a-f]+|\d+)\]', ops)): off = (int(m.group(1), 0), i.address)
+            elif this and last and (m := re.fullmatch(rf'add {this}, (0x[0-9a-f]+|\d+)', ops)): off = (int(m.group(1), 0), i.address)
+            elif i.mnemonic == 'call':
+                if off and re.fullmatch(r'dword ptr \[e\w\w \+ 0x[0-9a-f]+\]', i.op_str):
+                    by_class[classes[a]].setdefault(off[0], set()).add(last); bound += 1
+                    binding_notes[a][f'{off[1]:08x}'] = [f'field {last} (serialized)']
+                    binding_rows.append(f'{short(classes[a], commands)}\t0x{off[0]:x}\tserialized\t{last}')
+                last = off = None
+    # Memory pools: `mov ecx, "Name"; ...; call createMemoryPool; mov [global], eax`.
+    pool_factory = {t for t, n in names.items() if n == 'createMemoryPool'}
+    for a in by_address:
+        name = None; made = False
+        for i in insns_of(a):
+            ops = f'{i.mnemonic} {i.op_str}'
+            if m := re.fullmatch(r'mov ecx, (0x[0-9a-f]+)', ops):
+                pn = im.string(int(m.group(1), 16)); name = pn if pn and re.fullmatch(r'\w+', pn) else None
+            elif i.mnemonic == 'call':
+                made = i.operands[0].type == CS_OP_IMM and i.operands[0].imm in pool_factory and name
+                if not made: name = None
+            elif made and (m := re.fullmatch(r'mov dword ptr \[(0x[0-9a-f]+)\], eax', ops)):
+                va = int(m.group(1), 16)
+                if va not in names and va not in objects and im.inside(va, '.data'): pointers.setdefault(va, f'g_pool_{made}')
+                made = False; name = None
+            elif made and X86_REG_EAX in i.regs_access()[1]: made = False
+    # Interfaces a module requires (Module vf5): a request {name, &global,
+    # class ID, interface ID} is pushed for each; the engine stores the
+    # interface found under that name in the global.
+    request = {t for t, n in names.items() if n == 'Module_requestInterface'}
+    for a in by_address:
+        name = None; slot = None
+        for i in insns_of(a):
+            ops = f'{i.mnemonic} {i.op_str}'
+            if m := re.fullmatch(r'push (0x[0-9a-f]+)', ops):
+                pn = im.string(int(m.group(1), 16))
+                if pn and re.fullmatch(r'\w+', pn): name = pn
+            elif m := re.fullmatch(r'mov dword ptr \[esp \+ 0x[0-9a-f]+\], (0x[0-9a-f]+)', ops):
+                va = int(m.group(1), 16)
+                if im.inside(va, '.data') and not im.string(va): slot = va
+            elif i.mnemonic == 'call' and i.operands[0].type == CS_OP_IMM and i.operands[0].imm in request:
+                if name and slot and slot not in names and slot not in objects: pointers.setdefault(slot, f'g_p{name}')
+                name = slot = None
+    for va, (n, _) in known_names.transfer_globals(target, entries, folder.parent).items():  # hand-identified globals
+        objects.pop(va, None); pointers[va] = n
+    # Console command lists: every command constructor appends its `this` to a
+    # static std::list of its source file (`mov eax, [list + 4]` the head node,
+    # then `mov ecx, list; call insert`). Named after the commands' category.
+    lists = collections.defaultdict(collections.Counter)
+    for a in by_address:
+        c = classes.get(a)
+        if c not in commands or not re.fullmatch(r'(\w+)::\1', names.get(a, '')): continue
+        heads = set()
+        for i in insns_of(a):
+            ops = f'{i.mnemonic} {i.op_str}'
+            if m := re.fullmatch(r'mov e\w\w, dword ptr \[(0x[0-9a-f]+)\]', ops): heads.add(int(m.group(1), 16))
+            elif (m := re.fullmatch(r'mov ecx, (0x[0-9a-f]+)', ops)) and int(m.group(1), 16) + 4 in heads:
+                lists[int(m.group(1), 16)][commands[c].split('.')[0]] += 1
+    cats = collections.Counter(n.most_common(1)[0][0] for n in lists.values())
+    for va, n in lists.items():
+        if va in pointers or va in objects or sum(n.values()) < 2: continue
+        cat = safe(n.most_common(1)[0][0])
+        n = f'g_consoleCommands_{cat}' + (f'_{va:08x}' if cats[n.most_common(1)[0][0]] > 1 else '')
+        pointers[va] = n; pointers.setdefault(va + 4, n + '_head')
+    # Profiler timer IDs: `push "name"; push &id; call Profiler::registerTimer`.
+    register = {a for a, (n, _) in hand.items() if n == 'Profiler::registerTimer'}
+    for a in by_address:
+        pushed = []
+        for i in insns_of(a):
+            if i.mnemonic == 'push':
+                pushed = (pushed + [i.operands[0].imm if i.operands[0].type == CS_OP_IMM else None])[-2:]
+            elif i.mnemonic == 'call':
+                if i.operands[0].type == CS_OP_IMM and i.operands[0].imm in register and len(pushed) == 2 and None not in pushed:
+                    tname, va = im.string(pushed[0]), pushed[1]
+                    if tname and im.inside(va, '.data') and va not in pointers and va not in objects:
+                        pointers[va] = f'g_profilerTimer_{safe(tname)}'
+                pushed = []
+    # Interface thunks: `mov ecx, [g_pX]; mov eax, [ecx]; jmp [eax + N]` forwards
+    # to virtual method N of a named global interface.
+    for a in by_address:
+        if not re.fullmatch(r'\w+_[0-9a-f]{8}', names.get(a, '_00000000')): continue
+        ops = [f'{i.mnemonic} {i.op_str}' for i in itertools.islice(insns_of(a), 3)]
+        if len(ops) == 3 and (m := re.fullmatch(r'mov ecx, dword ptr \[(0x[0-9a-f]+)\]', ops[0])) and ops[1] == 'mov eax, dword ptr [ecx]' \
+                and (v := re.fullmatch(r'jmp dword ptr \[eax(?: \+ (0x[0-9a-f]+))?\]', ops[2])) and int(m.group(1), 16) in pointers:
+            names[a] = f'{pointers[int(m.group(1), 16)]}_vf{int(v.group(1) or "0", 16) // 4}'
+    # Template settings copied into the object: the constructor C::C(CTemplate *t)
+    # copies `t + X` (a field a console command such as ObjectTemplate.fireDelay
+    # sets) into `this + Y`; Y is that setting at run time in every method of
+    # C and its subclasses (FireArms + 0x290 = ObjectTemplate.fireDelay).
+    copied = 0; slots = collections.defaultdict(set)  # class: offsets its constructor stores the template at
+    regs32 = ('eax', 'ebx', 'ecx', 'edx', 'esi', 'edi', 'ebp')
+    for a in by_address:
+        c = classes.get(a); n = names.get(a, '')
+        if not c or '::' not in n or n.split('::')[-1] != n.split('::')[-2]: continue
+        tc = c + 'Template'
+        if tc not in bases: continue
+        tf = {}
+        for b in bases.get(tc, {tc}):
+            for off, cs in by_class.get(b, {}).items(): tf.setdefault(off, set()).update(cs)
+        mine = {}; this = None; tmpl = None; pushes = 0; held = {}; fl = None
+        ins = insns_of(a)
+        targets = {int(i.op_str, 16) for i in ins if i.mnemonic.startswith('j') and re.fullmatch(r'0x[0-9a-f]+', i.op_str)}
+        for i in ins:
+            ops = f'{i.mnemonic} {i.op_str}'
+            if i.address in targets: held = {}; fl = None  # reached from another path too
+            if i.mnemonic in ('call', 'ret') or i.mnemonic.startswith('j'):
+                held = {}; fl = None  # this and the template stay in callee-saved registers
+                if i.mnemonic == 'ret': break
+                continue
+            if i.mnemonic == 'push' and tmpl is None: pushes += 1; continue
+            if this is None and (m := re.fullmatch(r'mov (e[sd]i|ebx|ebp), ecx', ops)): this = m.group(1); continue
+            if tmpl is None and (m := re.fullmatch(r'mov (e[sd]i|ebx|ebp), dword ptr \[esp \+ (0x[0-9a-f]+|\d+)\]', ops)) \
+                    and int(m.group(2), 0) == 4 + 4 * pushes and m.group(1) != this:
+                tmpl = m.group(1); continue
+            if tmpl and (m := re.fullmatch(rf'mov (e[a-d]x), dword ptr \[{tmpl} \+ (0x[0-9a-f]+|\d+)\]', ops)):
+                held[m.group(1)] = int(m.group(2), 0); continue
+            if tmpl and (m := re.fullmatch(rf'fld dword ptr \[{tmpl} \+ (0x[0-9a-f]+|\d+)\]', ops)):
+                fl = int(m.group(1), 0); continue
+            if this and tmpl and (m := re.fullmatch(rf'mov dword ptr \[{this} \+ (0x[0-9a-f]+|\d+)\], {tmpl}', ops)):
+                slots[c].add(int(m.group(1), 0)); continue
+            if this and (m := re.fullmatch(rf'mov dword ptr \[{this} \+ (0x[0-9a-f]+|\d+)\], (e[a-d]x)', ops)) and m.group(2) in held:
+                if held[m.group(2)] in tf: mine.setdefault(int(m.group(1), 0), set()).update(tf[held[m.group(2)]])
+                continue
+            if this and fl is not None and (m := re.fullmatch(rf'fstp dword ptr \[{this} \+ (0x[0-9a-f]+|\d+)\]', ops)):
+                if fl in tf: mine.setdefault(int(m.group(1), 0), set()).update(tf[fl])
+                fl = None; continue
+            fl = None
+            dst = i.op_str.split(',')[0].strip()
+            if dst in regs32 and i.mnemonic not in ('push', 'cmp', 'test'):
+                held.pop(dst, None)
+                if dst in (this, tmpl): break  # the register no longer holds the object or the template
+        for off, cs in mine.items():
+            if off not in by_class[c]: by_class[c][off] = set(cs); copied += 1
+    # `this + slot` holds the template in methods of the class and its
+    # subclasses: [this + slot] + X is setting X of the nearest template class.
+    # The Object.template command reads it at the same offset of every world
+    # object (IObject), so that slot holds for all of them.
+    common = {off for (o, off), cs in fields.items() if 'Object.template' in cs}
+    template_of = {}
+    for c in bases:
+        own = {o for b in bases[c] for o in slots.get(b, ())}
+        if len(common) == 1 and 'dice::ref2::world::IObject' in bases[c]: own |= common
+        tcs = [b + 'Template' for b in bases[c] if b + 'Template' in bases]
+        if own and tcs:
+            t = max(tcs, key=lambda t: len(bases[t]))
+            for o in own: template_of[c, o] = t
+    print(f'{target}: {copied} object fields named after the template settings their constructor copies; '
+          f'template pointer known in {len(template_of)} classes')
+    def visible(cls):
+        out = {}
+        for b in bases.get(cls, {cls}):
+            for off, c in by_class.get(b, {}).items(): out.setdefault(off, set()).update(c)
+        return out
+    events = {a: game_names.evaluate(insns_of(a)) for a in by_address}
+    def common_base(cs):
+        common = [c for c in cs if all(c in bases.get(d, {d}) for d in cs)]
+        return common[0] if len(common) == 1 else None
+    # Singleton pointers: a global that methods of one class set to their own
+    # `this`, or to what a constructor of the class returned, points to an
+    # object of that class.
+    pointed = collections.defaultdict(set)
+    ctors = {t for t, n in names.items() if t in classes and n.count('::') == 1 and n.split('::')[0] == n.split('::')[1]}
+    for a in by_address:
+        for _, kind, x, v in events[a]:
+            if kind != 'write' or x[0] != 'abs': continue
+            if v == game_names.THIS and a in classes: pointed[x[1]].add(classes[a])
+            elif v and v[0] == 'call' and v[1] in ctors: pointed[x[1]].add(classes[v[1]])
+    # A global whose value is passed as `this` to methods of known classes
+    # points to the most derived of them (when they form one inheritance chain).
+    called_on = collections.defaultdict(set)
+    for a in by_address:
+        for _, kind, t, ecx in events[a]:
+            if kind == 'call' and t in classes and ecx and ecx[0] == 'load' and ecx[1][0] == 'abs':
+                called_on[ecx[1][1]].add(classes[t])
+    for va, cs in called_on.items():
+        derived = [c for c in cs if all(d in bases.get(c, {c}) for d in cs)]
+        if va not in pointed and len(derived) == 1 and im.inside(va, '.data'): pointed[va].add(derived[0])
+    pointer_class = {}
+    for va, cs in pointed.items():
+        c = common_base(cs)
+        if c and va not in objects and va not in names:
+            pointer_class[va] = c; pointers.setdefault(va, f'g_p{short(c, commands)}_{va:08x}')
+    # An interface pointer named after a class (g_pObjectManager) points to an
+    # object of that class when the class answers queryInterface with its own
+    # `this`, so calls through the pointer reach the class's primary vtable.
+    by_short = collections.defaultdict(set)
+    for c in vtables.values(): by_short[short(c, commands)].add(c)
+    vtable_of = collections.defaultdict(list)
+    for vt, c in vtables.items(): vtable_of[c].append(vt)
+    def own_this(c):
+        qi = im.dword(vtable_of[c][0] + 4 * 3) if len(vtable_of[c]) == 1 else None  # IBase vf3
+        adjusts = r'(?:lea e\w\w, \[ecx \+|add e\w\w, )'  # returns this + offset
+        return bool(qi) and names.get(qi, '').endswith('::queryInterface') and not any(
+            re.match(adjusts, f'{i.mnemonic} {i.op_str}') for i in insns_of(qi))
+    for va, n in list(pointers.items()):
+        cs = by_short.get(n[3:], set())
+        if va in pointer_class or not n.startswith('g_p') or len(cs) != 1: continue
+        c = next(iter(cs))
+        if own_this(c): pointer_class[va] = c
+    def object_class(o, c):
+        # The class of an object value inside a method of class c (or None).
+        if o == game_names.THIS: return c
+        if o and o[0] == 'load' and o[1][0] == 'abs': return pointer_class.get(o[1][1])
+        if o and o[0] == 'abs': return object_cls.get(o[1])
+        if o and o[0] == 'call' and o[1] in ctors: return classes[o[1]]  # a constructor returns `this`
+        if o and o[0] == 'call' and o[1] == template_cast and o[2] and o[2][0] == 'load' and o[2][1][0] == 'abs':
+            return ids.get(o[2][1][1])
+        if o and o[0] == 'load' and o[1][0] == 'add' and o[1][1] == game_names.THIS and (c, o[1][2]) in template_of:
+            return template_of[c, o[1][2]]  # this->template
+        return None
+    # `this` types: a function without a class of its own that is called with
+    # the `this` of a method, or with a singleton, is a method of that class (or
+    # of the common base when objects of several classes are passed).
+    this_class = {a: c for a, c in classes.items() if a in by_address}
+    uses_this = {}
+    def reads_ecx(a):
+        # The function uses the ecx it was called with (a thiscall method), as
+        # opposed to a cdecl routine that ecx happened to hold an object for.
+        # Linear scan to the first write of ecx; a call or jump passes ecx on
+        # when its target reads it.
+        if a in uses_this: return uses_this[a]
+        uses_this[a] = False  # recursion guard
+        for i in insns_of(a):
+            if i.mnemonic in ('push', 'sub') and i.op_str in ('ecx', 'esp, ecx'): continue  # stack reservation
+            read, written = i.regs_access()
+            if X86_REG_ECX in read or X86_REG_CX in read or X86_REG_CL in read: break
+            if i.mnemonic in ('jmp', 'call') and i.operands[0].type == CS_OP_IMM and i.operands[0].imm in by_address and reads_ecx(i.operands[0].imm): break
+            if X86_REG_ECX in written or i.mnemonic == 'call': return False
+        else:
+            return False
+        uses_this[a] = True
+        return True
+    while True:
+        incoming = collections.defaultdict(set)
+        for a in by_address:
+            for _, kind, t, ecx in events[a]:
+                if kind == 'call' and t in by_address and t not in this_class and t not in known and reads_ecx(t):
+                    c = object_class(ecx, this_class.get(a))
+                    if c: incoming[t].add(c)
+        new = {t: c for t, cs in incoming.items() if (c := common_base(cs))}
+        if not new: break
+        this_class.update(new)
+    adopted = 0
+    for a, c in this_class.items():
+        if a not in classes:
+            classes[a] = c; adopted += 1
+            if re.fullmatch(r'\w+_[0-9a-f]{8}', names.get(a, '')): names[a] = f'{short(c, commands)}::{hints.get(a, "sub")}_{a:08x}'
+    # Virtual calls on an object of known class: the function in that class's
+    # vtable (the most derived override may differ at run time).
+    primary = {c: vt for vt, c in vtables.items()}
+    derived_of = collections.defaultdict(set)
+    for d in primary:
+        for b in bases.get(d, ()): derived_of[b].add(d)
+    def slot_of(c, off):
+        vt = primary.get(c)
+        if vt is None or off % 4: return None
+        for k in range(off // 4 + 1):  # stop at the end of the vtable
+            f = im.dword(vt + 4 * k) if im.inside(vt + 4 * k, '.rdata') else 0
+            if not im.inside(f, '.text') or (k and (vt + 4 * k) in vtables): return None
+        return f
+    def virtual_target(c, off):
+        # An abstract slot (_purecall) resolves to the only implementation
+        # among the classes derived from c at offset 0, when there is one.
+        f = slot_of(c, off)
+        if f is None or names.get(f) != '_purecall': return f
+        impl = {slot_of(d, off) for d in derived_of[c] if d != c} - {None, f}
+        return impl.pop() if len(impl) == 1 else f
+    # Accessors: a method that only returns or only stores one named field.
+    accessors = 0
+    for a, c in classes.items():
+        if a not in by_address or not re.fullmatch(r'.*::(?:vf\d+|sub_[0-9a-f]{8})', names.get(a, '')): continue
+        ins = [f'{i.mnemonic} {i.op_str}'.strip() for i in insns_of(a)]
+        if not ins or len(ins) > 3: continue
+        m = (re.fullmatch(r'(?:mov eax|fld) dword ptr \[ecx \+ (0x[0-9a-f]+)\]', ins[0]) and ins[1:] == ['ret'] and ('get', ins[0])) or \
+            (len(ins) == 3 and re.fullmatch(r'mov (e[ad]x), dword ptr \[esp \+ 4\]', ins[0]) and ins[2] == 'ret 4' and
+             re.fullmatch(r'mov dword ptr \[ecx \+ (0x[0-9a-f]+)\], ' + ins[0].split()[1].rstrip(','), ins[1]) and ('set', ins[1]))
+        if not m: continue
+        off = int(re.search(r'\+ (0x[0-9a-f]+)\]', m[1]).group(1), 16)
+        cmds = visible(c).get(off, set())
+        tails = {x.split('.')[-1] for x in cmds}
+        names[a] = f'{short(c, commands)}::{m[0]}_' + (tails.pop() if len(tails) == 1 else f'{off:x}h'); accessors += 1
+    # Forwarders, named after the named function they reach: `this`-adjusting
+    # thunks of multiply-inherited classes (sub ecx, N; jmp f), plain jumps,
+    # calls on a member (mov ecx, [ecx + N]; jmp f), on a global object
+    # (mov ecx, object; jmp f) or on the first argument.
+    def reached(t):
+        b = generic.sub('', names.get(t, ''))
+        return b if re.search('[A-Z:<]', b) and not re.search(r'(?:^|::)(?:sub|unknown)$', b) and b != '_purecall' else None
+    forms = [(r'(?:sub|add) ecx, \w+;jmp (0x[0-9a-f]+)', '{}_adjustor'), (r'jmp (0x[0-9a-f]+)', '{}_thunk'),
+             (r'mov ecx, dword ptr \[ecx(?: \+ (0x[0-9a-f]+))?\];jmp (0x[0-9a-f]+)', '{}_onField{}'),
+             (r'mov ecx, (0x[0-9a-f]+);jmp (0x[0-9a-f]+)', '{}_on_{}'),
+             (r'mov ecx, dword ptr \[esp \+ 4\];call (0x[0-9a-f]+);ret 4', '{}_onArg')]
+    forwarders = set()
+    for _ in range(3):  # chains of forwarders
+        for a in by_address:
+            if a in known or not generic.search(names.get(a, '_00000000')): continue
+            ins = insns_of(a)
+            if len(ins) > 3: continue
+            body = ';'.join(f'{i.mnemonic} {i.op_str}'.strip() for i in ins)
+            for rx, form in forms:
+                m = re.fullmatch(rx, body)
+                if not m: continue
+                b = reached(int(m.groups()[-1], 16))
+                if not b: break
+                if form == '{}_onField{}': extra = f'{int(m.group(1) or "0", 16):x}h'
+                elif form == '{}_on_{}': extra = objects.get(int(m.group(1), 16)) or f'{int(m.group(1), 16):08x}'
+                else: extra = ''
+                names[a] = form.format(b, extra) + f'_{a:08x}'; forwarders.add(a); break
+    # Small bodies named by what they do: getters and setters of `this + N`
+    # (or of a field of a field), field addresses, constant stores, global
+    # getters and virtual calls on `this` or on a member.
+    size = {'dword': '', 'byte': 'Byte', 'word': 'Word'}
+    def field(c, off):
+        tails = {x.split('.')[-1] for x in visible(c).get(off, ())} if c else set()
+        return tails.pop() if len(tails) == 1 else f'{off:x}h'
+    def gname(v):
+        n = names.get(v) or objects.get(v) or pointers.get(v)
+        return re.sub(r'\W', '_', n) if n else f'g_{v:08x}'
+    O = r'(?: \+ (0x[0-9a-f]+))?\]'
+    shape_forms = [
+        (r'(?:mov (?:eax|al|ax)|movzx eax|movsx eax), (dword|byte|word) ptr \[ecx' + O + r';ret', lambda c, m: f'get{size[m[1]]}_{field(c, int(m[2] or "0", 16))}'),
+        (r'fld dword ptr \[ecx' + O + r';ret', lambda c, m: f'getFloat_{field(c, int(m[1] or "0", 16))}'),
+        (r'lea eax, \[ecx' + O + r';ret', lambda c, m: f'addressOf_{field(c, int(m[1] or "0", 16))}'),
+        (r'mov eax, dword ptr \[ecx' + O + r';(?:mov (?:eax|al|ax)|movzx eax|movsx eax|fld|lea eax,) (?:(?:dword|byte|word) ptr )?\[eax' + O + r';ret',
+         lambda c, m: f'get_{field(c, int(m[1] or "0", 16))}_{int(m[2] or "0", 16):x}h'),
+        (r'mov (e[a-d]x|[a-d]l|[a-d]x), (dword|byte|word) ptr \[esp \+ 4\];mov (?:dword|byte|word) ptr \[ecx' + O + r', \1;ret 4',
+         lambda c, m: f'set{size[m[2]]}_{field(c, int(m[3] or "0", 16))}'),
+        (r'fld dword ptr \[esp \+ 4\];fstp dword ptr \[ecx' + O + r';ret 4', lambda c, m: f'setFloat_{field(c, int(m[1] or "0", 16))}'),
+        (r'mov (?:dword|byte|word) ptr \[ecx' + O + r', (0x[0-9a-f]+|\d+);ret', lambda c, m: f'set_{field(c, int(m[1] or "0", 16))}_to_{m[2]}'),
+        (r'(?:mov (?:eax|al|ax)|fld) (?:dword|byte|word) ptr \[(0x[0-9a-f]+)\];ret', lambda c, m: f'get_{gname(int(m[1], 16))}'),
+        (r'mov (e[a-d]x|[a-d]l), (?:dword|byte) ptr \[esp \+ 4\];mov (?:dword|byte) ptr \[(0x[0-9a-f]+)\], \1;ret', lambda c, m: f'set_{gname(int(m[2], 16))}'),
+        (r'mov eax, dword ptr \[ecx\];jmp dword ptr \[eax' + O, lambda c, m: f'callVirtual_vf{int(m[1] or "0", 16) // 4}'),
+        (r'jmp dword ptr \[(0x[0-9a-f]+)\]', lambda c, m: int(m[1], 16) in iat and 'thunk_' + safe(iat[int(m[1], 16)].split('!')[-1])),
+        (r'mov ecx, dword ptr \[ecx' + O + r';mov eax, dword ptr \[ecx\];jmp dword ptr \[eax' + O,
+         lambda c, m: f'onField_{field(c, int(m[1] or "0", 16))}_callVirtual_vf{int(m[2] or "0", 16) // 4}'),
+    ]
+    shaped = set(); shapes = {}  # function: (shape name, form, match)
+    for a in by_address:
+        n = names.get(a, '')
+        plain = re.fullmatch(r'([A-Za-z][A-Za-z0-9]*)_[0-9a-f]{8}', n)  # file or folder prefix (world_0066cdf0)
+        if a in known or a in forwarders or not (plain or re.search(r'(?:^|::)(?:sub|vf\d+)_?[0-9a-f]{0,8}$', n)): continue
+        ins = insns_of(a)
+        if len(ins) > 3: continue
+        body = ';'.join(f'{i.mnemonic} {i.op_str}'.strip() for i in ins)
+        c = classes.get(a)
+        for rx, make in shape_forms:
+            if m := re.fullmatch(rx, body):
+                what = make(c, m)
+                if not what: break
+                if re.search(r'::vf\d+$', n): names[a] = f'{n}_{what}'
+                elif c: names[a] = f'{short(c, commands)}::{what}_{a:08x}'
+                elif plain and plain.group(1) != 'sub': names[a] = f'{plain.group(1)}_{what}_{a:08x}'
+                else: names[a] = f'{what}_{a:08x}'
+                shaped.add(a); shapes[a] = (what, make, m); break
+    # Type-registry getters: `registry->find(&typeid(T))`, else a new
+    # 12-byte type object named after T (the meme/console value types).
+    BASIC = {'M': 'float', 'N': 'double', 'H': 'int', 'I': 'uint', 'J': 'long', 'K': 'ulong', '_N': 'bool', 'D': 'char',
+             'E': 'uchar', 'F': 'short', 'G': 'ushort', '_J': 'int64', '_K': 'uint64', 'X': 'void'}
+    def type_name(td):
+        o = td + 8 - im.base
+        if not 0 <= o < len(im.img) or im.img[o:o + 1] != b'.': return None
+        s = im.img[o + 1:im.img.find(b'\0', o, o + 200)].decode('latin-1')
+        ptr = re.match(r'P[ABQ]', s)
+        if ptr: s = s[2:]
+        if s in BASIC: base = BASIC[s]
+        elif m := re.fullmatch(r'[VU](\?\$)?(\w+)@(.*)', s):
+            base = m[2] + ('_' + '_'.join(BASIC.get(x, x) for x in re.findall(r'_[NJK]|[A-Z]', m[3].split('@')[0])) if m[1] else '')
+        else: return None
+        return base + ('_ptr' if ptr else '')
+    typegetters = 0
+    for a in by_address:
+        n = names.get(a, '')
+        if a in known or not (re.fullmatch(r'[A-Za-z][A-Za-z0-9]*_[0-9a-f]{8}', n) or re.search(r'(?:^|::)sub_[0-9a-f]{8}$', n)): continue
+        ins = insns_of(a)[:4]
+        if len(ins) < 4 or not (ins[0].mnemonic == 'mov' and re.fullmatch(r'ecx, dword ptr \[0x[0-9a-f]+\]', ins[0].op_str)
+                                and ins[1].mnemonic == 'push' and ins[2].mnemonic == 'call' and ins[3].op_str == 'eax, eax'): continue
+        tn = type_name(int(ins[1].op_str, 16)) if ins[1].op_str.startswith('0x') else None
+        if tn: names[a] = f'getTypeObject_{tn}_{a:08x}'; typegetters += 1
+    # Small casts and type tests: a body whose only calls are
+    # __RTDynamicCast(p, 0, typeid(Src), typeid(Dst), 0) is named after the
+    # two types; one whose only calls are type_info::operator== against
+    # pushed type descriptors is named after the types it accepts.
+    casts = typetests = 0
+    def cast_type(td):  # class descriptors (?AV...) by their RTTI name, basic types by type_name
+        t = typeids.get(td)
+        return re.sub(r'_+', '_', safe(t)).strip('_') if t and re.fullmatch(r'[\w:<>, *.]+', t) else type_name(td)
+    for a in by_address:
+        n = names.get(a, '')
+        if a in known or not (re.fullmatch(r'[A-Za-z][A-Za-z0-9]*_[0-9a-f]{8}', n) or re.search(r'(?:^|::)sub_[0-9a-f]{8}$', n)): continue
+        ins = insns_of(a)
+        if not 3 <= len(ins) <= 40: continue
+        if len(ins) == 3 and f'{ins[0].mnemonic} {ins[0].op_str}' == 'mov ecx, dword ptr [esp + 4]' and ins[1].mnemonic == 'call'                 and ins[1].operands[0].type == 2 and ins[1].operands[0].imm not in by_address and ins[2].op_str == '4':
+            # `return handle->get()` where the getter (not indexed on its own)
+            # returns the stored pointer, dynamic_cast when the handle's
+            # flag at +8 is set.
+            t = ins[1].operands[0].imm
+            body = list(itertools.islice(md.disasm(im.img[t - im.base:t - im.base + 64], t), 15))
+            if [i.mnemonic for i in body[:4]] == ['mov', 'test', 'jne', 'ret'] and len(body) == 15 and body[14].mnemonic == 'ret':
+                ins = ins[:2] + body
+        pushed, dyn, eq, other = [], set(), [], False
+        for i in ins:
+            if i.mnemonic == 'push': pushed.append(i.op_str)
+            elif i.mnemonic == 'call':
+                t = i.operands[0].imm if i.operands[0].type == 2 else None
+                tn = names.get(t, '')
+                if tn == '__RTDynamicCast' and len(pushed) >= 4 and pushed[-3].startswith('0x') and pushed[-4].startswith('0x'):
+                    dyn.add((cast_type(int(pushed[-3], 16)), cast_type(int(pushed[-4], 16))))
+                elif tn == 'type_info::operator_eq' and pushed and pushed[-1].startswith('0x'):
+                    eq.append(cast_type(int(pushed[-1], 16)))
+                elif not (t and ins[0].address < t <= ins[-1].address): other = True  # calls into its own merged body are fine
+                pushed = []
+        if other: continue
+        if len(dyn) == 1 and not eq and all(dyn.copy().pop()):
+            src, dst = dyn.pop(); names[a] = f'dynamicCast_{src}_to_{dst}_{a:08x}'; casts += 1
+        elif eq and not dyn and all(eq):
+            ts = list(dict.fromkeys(eq))
+            if len(ts) <= 3: names[a] = f'isType_{"_or_".join(ts)}_{a:08x}'; typetests += 1
+    # std::_Tree::_Erase(node): `while (!node->_Isnil) { _Erase(node->_Right);
+    # next = node->_Left; destroy and delete node; node = next; }`; it calls
+    # itself, tests the _Isnil byte and frees nodes with operator delete.
+    for a in by_address:
+        n = names.get(a, '')
+        if a in known or not (re.fullmatch(r'[A-Za-z][A-Za-z0-9]*_[0-9a-f]{8}', n) or re.search(r'(?:^|::)sub_[0-9a-f]{8}$', n)): continue
+        ins = insns_of(a)
+        if not 10 <= len(ins) <= 60: continue
+        head = ';'.join(f'{i.mnemonic} {i.op_str}' for i in ins[:9])
+        if not re.search(r'mov al, byte ptr \[e[sd]i \+ 0x[0-9a-f]+\];(?:\w+ [^;]*;)?(?:test al, al|cmp al, bl)', head): continue
+        calls = {i.operands[0].imm for i in ins if i.mnemonic == 'call' and i.operands[0].type == 2}
+        right = any(re.fullmatch(r'mov e\wx, dword ptr \[e[sd]i \+ 8\]', f'{i.mnemonic} {i.op_str}') for i in ins)
+        if a in calls and right and any(names.get(t) == 'operator_delete' for t in calls):
+            names[a] = f'std::_Tree::_Erase_{a:08x}'
+    # A virtual slot whose named implementations all have one method name
+    # (OldConsole::execute) gives that name to the other implementations of
+    # the same slot along the base chain.
+    family = collections.defaultdict(set)  # (introducing class, slot): implementations
+    for vt, c in vtables.items():
+        k = 0
+        while lo <= im.dword(vt + 4 * k) < hi and (k == 0 or vt + 4 * k not in vtables):
+            if (c, k) in introducers: family[(introducers[(c, k)][0], k)].add(im.dword(vt + 4 * k))
+            k += 1
+    # Template instances (ListWrapperBase<GameModeManager,GameMode>) join the
+    # family of the slot's introducer among their non-template bases.
+    cls_vt = {}
+    for vt, c in vtables.items(): cls_vt.setdefault(c, vt)
+    def slots(vt):
+        k = 0
+        while lo <= im.dword(vt + 4 * k) < hi and (k == 0 or vt + 4 * k not in vtables): k += 1
+        return k
+    for vt, chain in template_vtables(im).items():
+        for k in range(slots(vt)):
+            o = next((a for a in reversed(chain) if a in cls_vt and slots(cls_vt[a]) > k), None)
+            if o and (o, k) in introducers: family[(introducers[(o, k)][0], k)].add(im.dword(vt + 4 * k))
+    def method(f):
+        m = names.get(f, '').split('::')[-1]
+        if not re.fullmatch(r'[A-Za-z]\w*', m) or generic.search(m) or m.startswith(('vf', 'sub_', 'unknown_', 'stub_')): return None
+        return None if m in ('deleting_dtor', names.get(f, '').split('::')[-2:][0]) else m
+    def inherit():
+        n = 0
+        for (o, k), fs in family.items():
+            ms = {method(f) for f in fs} - {None}
+            if len(ms) != 1: continue
+            m = ms.pop()
+            for f in fs:
+                if names.get(f, '').endswith(f'::vf{k}'):
+                    names[f] = names[f][:-len(f'vf{k}')] + m; n += 1
+        return n
+    inherited = inherit()
+    def trivial(t, c):
+        # What a one-instruction method does (identical ones are folded into
+        # one function, so its own name may belong to an unrelated class).
+        ins = [f'{i.mnemonic} {i.op_str}'.strip() for i in itertools.islice(insns_of(t), 3)]
+        if len(ins) < 2 or not ins[1].startswith('ret'): return ''
+        m = re.fullmatch(r'(mov eax, dword|mov al, byte|fld dword|lea eax,) (?:ptr )?\[ecx(?: \+ (0x[0-9a-f]+))?\]', ins[0])
+        if not m: return ''
+        off = int(m.group(2) or '0', 16)
+        what = '/'.join(sorted(visible(c).get(off, ()))) or f'this+0x{off:x}'
+        return f' (returns {"&" if m.group(1).startswith("lea") else ""}{what})'
+    def field_notes(a, cls):
+        notes = collections.defaultdict(list)
+        mine = visible(cls) if cls else {}
+        own = known_names.FIELDS.get(names.get(a, '').split('::')[0], {}) if '::' in names.get(a, '') else {}
+        for a, kind, x, v in events[a]:
+            if kind in ('read', 'write') and x[0] == 'add' and x[1] == game_names.THIS and x[2] in own:
+                notes[f'{a:08x}'].append('field ' + own[x[2]])
+            elif kind in ('read', 'write') and x[0] == 'add' and x[1] == game_names.THIS and x[2] in mine:
+                notes[f'{a:08x}'].append('field ' + '/'.join(sorted(mine[x[2]])))
+            elif kind in ('read', 'write') and x[0] == 'add' and (x[1], x[2]) in fields:
+                notes[f'{a:08x}'].append('field ' + '/'.join(sorted(fields[x[1], x[2]])))
+            elif kind in ('read', 'write') and x[0] == 'add' and x[1] != game_names.THIS and (k := object_class(x[1], cls)) and x[2] in visible(k):
+                notes[f'{a:08x}'].append('field ' + '/'.join(sorted(visible(k)[x[2]])))
+            elif kind == 'vcall' and x[0] == 'add' and x[1][0] == 'load' and x[1][1][0] == 'add' and x[1][1][2] == 0:
+                if (x[1][1][1], x[2]) in methods:
+                    notes[f'{a:08x}'].append(f'vf{x[2] // 4} of ' + '/'.join(sorted(methods[x[1][1][1], x[2]])))
+                c = object_class(x[1][1][1], cls)
+                t = virtual_target(c, x[2]) if c else None
+                if t:
+                    slot = f'{short(c, commands)}::vf{x[2] // 4}'; impl = names.get(t, f'0x{t:08x}')
+                    notes[f'{a:08x}'].append(f'-> {slot}' + (f' = {impl}' if impl != slot else '') + trivial(t, c))
+        return notes
+    callers = collections.defaultdict(set)
+    for e in entries:
+        a = int(e['address'], 16)
+        for t in re.findall(r'^    /\* [0-9a-f]{8}  call 0x([0-9a-f]+)', texts[e['symbol']], re.M): callers[int(t, 16)].add(a)
+    # Helpers: an unnamed function called from one named function only is a
+    # part of what that function does and is named after it (repeated, so
+    # helpers of helpers too). A class prefix of its own is kept.
+    helpers = set()
+    for _ in range(4):
+        for a in by_address:
+            n = names.get(a, '')
+            m = re.fullmatch(r'(?:(\w+)::)?(?:sub|unknown)_[0-9a-f]{8}|[A-Za-z0-9]+_[0-9a-f]{8}', n)
+            cs = callers[a] - {a}
+            if a in known or a in helpers or not m or len(cs) != 1: continue
+            b = re.sub(r'(?:_helper)+$', '', generic.sub('', names.get(next(iter(cs)), '')))
+            if not re.search('[A-Z:<]', b) or re.search(r'(?:^|::)(?:sub|unknown)$', b): continue
+            if '::' in b:  # Class::~Class -> Class::destructor, Class::Class -> Class::constructor
+                c, f = b.rsplit('::', 1)
+                b = f'{c}::' + ('destructor' if f.startswith('~') else 'constructor' if f == c.split('::')[-1] else f)
+            own = m.group(1)
+            if own: b = f'{own}::' + (b[len(own) + 2:] if b.startswith(own + '::') else b.replace('::', '_'))
+            names[a] = f'{b}_helper_{a:08x}'; helpers.add(a)
+    # A console command whose execute calls one helper of its own: the helper
+    # is what the command does (Game.sayAll -> Game::sayAll, or Class::sayAll
+    # when the helper is a method of a known class); its own helpers follow.
+    taken = set(names.values())
+    only = collections.defaultdict(list)  # caller: helpers called from it alone
+    for h in helpers:
+        if len(callers[h] - {h}) == 1: only[next(iter(callers[h] - {h}))].append(h)
+    for a in by_address:
+        c = classes.get(a)
+        if c not in commands or not names.get(a, '').endswith('::execute'): continue
+        mine = only.get(a, [])
+        if len(mine) != 1: continue
+        h = mine[0]; cat, _, cmd = commands[c].rpartition('.')
+        own = names[h].split('::')[0] if '::' in names[h] and not names[h].startswith('Cmd_') else safe(cat) if cat else ''
+        new = f'{own}::{safe(cmd)}' if own else safe(cmd)
+        if new in taken or not re.fullmatch(r'(?:\w+::)?\w+', new): continue
+        old = names[h]; names[h] = new; taken.add(new)
+        for d in only.get(h, []):
+            if names[d].startswith(re.sub(r'_[0-9a-f]{8}$', '', old)):
+                names[d] = f'{new}_helper_{d:08x}'
+    # Interface methods named by the console commands that call them: an
+    # execute that asks a manager for an interface (queryInterface(ID), slot 3)
+    # and calls one slot of it names that slot after the command
+    # (Game.listPlayers -> GameServer::listPlayers); a get/set command that
+    # calls two slots names the one in its get branch ([this+0x1c] == 0)
+    # getX and the other setX. Every class whose queryInterface hands out
+    # that ID gives its implementation the name; functions the linker shares
+    # with unrelated vtables are left alone.
+    at, listed = every_vtable(im); offsets = base_offsets(im)
+    serves = collections.defaultdict(set)  # interface ID: {(class, vtable)}
+    for a in by_address:
+        c = classes.get(a)
+        if not c or not names.get(a, '').endswith('::queryInterface'): continue
+        ins = insns_of(a)
+        for k, i in enumerate(ins[:-2]):
+            m = re.fullmatch(r'ecx, (?:dword ptr \[(0x[0-9a-f]+)\]|(0x[0-9a-f]+))', i.op_str)
+            if i.mnemonic != 'cmp' or not m or ins[k + 1].mnemonic not in ('je', 'jne'): continue
+            iid = im.dword(int(m.group(1), 16)) if m.group(1) else int(m.group(2), 16)
+            to = int(ins[k + 1].op_str, 16) if ins[k + 1].mnemonic == 'je' else ins[k + 2].address
+            off = 0
+            for x in ins:
+                if x.address < to: continue
+                if x.mnemonic == 'add' and x.op_str.startswith('eax, 0x'): off = int(x.op_str[5:], 16)
+                if x.mnemonic == 'xor' and x.op_str == 'eax, eax': off = None
+                if x.mnemonic == 'ret': break
+            if off is not None and (c, off) in at and not any(cc == c for cc, _ in serves[iid]): serves[iid].add((c, at[(c, off)]))
+    # ID values: a read-only copy of a class ID is that class's ID; any other
+    # value a queryInterface accepts is an interface ID, named after the
+    # classes that hand it out (their nearest common base when there are many).
+    def nearest_common_base(cs):
+        common = set.intersection(*(set(bases.get(d, {d})) for d in cs))
+        top = [c for c in common if not any(c != d and c in bases.get(d, {d}) for d in common)]
+        return top[0] if len(top) == 1 else None
+    for iid, served in serves.items():
+        cs = sorted({c for c, _ in served})
+        if len(cs) <= 3: id_label[iid] = 'interfaceID(' + '|'.join(short(c, commands) for c in cs) + ')'
+        elif b := nearest_common_base(cs): id_label[iid] = f'interfaceID({short(b, commands)})'
+    for v, c in ids.items(): id_label[im.dword(v)] = short(c, commands) + '::classID'
+    def cap(w): return w[:1].upper() + w[1:]
+    wanted = collections.defaultdict(set)  # (interface ID, slot): names
+    id_value = {im.dword(v): c for v, c in ids.items()}  # class ID: class
+    for a in by_address:
+        c = classes.get(a)
+        if c not in commands or not names.get(a, '').endswith('::execute'): continue
+        first, pushed, branch, calls = None, None, 0, []
+        held, table = {}, {}  # register: interface ('iid', ID) or manager pointer ('ptr', global); register: its vtable
+        for i in insns_of(a):
+            ops = f'{i.mnemonic} {i.op_str}'
+            if first is None and re.fullmatch(r'cmp dword ptr \[e\w\w \+ 0x1c\], 1', ops): first = 'set'
+            elif first is None and re.fullmatch(r'mov e\w\w, dword ptr \[e\w\w \+ 0x1c\]', ops): first = 'get'
+            if i.mnemonic == 'push': pushed = int(i.op_str, 16) if i.op_str.startswith('0x') else None; continue
+            if m := re.fullmatch(r'call dword ptr \[(e\w\w)(?: \+ (0x[0-9a-f]+))?\]', ops):
+                slot, on = int(m.group(2) or '0', 16) // 4, table.get(m.group(1))
+                held, table = {r: v for r, v in held.items() if r not in ('eax', 'ecx', 'edx')}, {}
+                if on and slot == 3 and pushed is not None: held['eax'] = ('iid', pushed)
+                elif on and slot != 3: calls.append((branch, on, slot))
+                continue
+            if i.mnemonic == 'ret': branch += 1; held, table = {}, {}; continue
+            if i.mnemonic == 'call' and i.op_str.startswith('0x'):
+                # getActiveTemplateAs(class ID in ecx) returns the template as that class
+                cast = held.get('ecx') if int(i.op_str, 16) == template_cast else None
+                held, table = {r: v for r, v in held.items() if r not in ('eax', 'ecx', 'edx')}, {}
+                if cast and cast[0] == 'id': held['eax'] = ('cls', cast[1])
+                continue
+            if i.mnemonic == 'mov' and (m := re.fullmatch(r'ecx, (?:dword ptr \[(0x[0-9a-f]+)\]|(0x[0-9a-f]+))', i.op_str)):
+                k = int(m.group(1) or m.group(2), 16)
+                c2 = ids.get(k) if m.group(1) else id_value.get(k)
+                held.pop('ecx', None); table.pop('ecx', None)
+                if c2: held['ecx'] = ('id', c2)
+                if c2 or m.group(2): continue
+            m = re.fullmatch(r'(e\w\w), (?:dword ptr \[(0x[0-9a-f]+)\]|dword ptr \[(e\w\w)\]|(e\w\w))', i.op_str) if i.mnemonic == 'mov' else None
+            src = m and (('ptr', int(m.group(2), 16)) if m.group(2) and im.inside(int(m.group(2), 16), '.data') else held.get(m.group(3) or m.group(4)))
+            dst = i.op_str.split(',')[0] if re.match(r'e\w\w\b', i.op_str) and i.mnemonic not in ('cmp', 'test') else None
+            if dst: held.pop(dst, None); table.pop(dst, None)
+            if src: (table if m.group(3) else held)[m.group(1)] = src
+        cmd = safe(commands[c].rpartition('.')[2]); slots = {(d, k) for _, d, k in calls}
+        if len(slots) == 1: wanted[slots.pop()].add(cmd)
+        elif len(slots) == 2 and first and len({d for d, _ in slots}) == 1 and (b0 := [(d, k) for b, d, k in calls if b == 0]):
+            get = b0[0] if first == 'get' else (slots - {b0[0]}).pop()
+            base = cmd[3:] if re.match(r'[gs]et[A-Z]', cmd) else cmd[2:] if re.match(r'is[A-Z]', cmd) else cmd
+            wanted[get].add(cmd if re.match(r'(?:get|is|has)[A-Z]', cmd) else 'get' + cap(base))
+            wanted[(slots - {get}).pop()].add(cmd if re.match(r'set[A-Z]', cmd) else 'set' + cap(base))
+    proposed = collections.defaultdict(set)
+    stored = {}  # global: class of the object a constructor stores in it (`mov [eax], vtable; mov [global], eax`)
+    for a in by_address:
+        ins = [f'{i.mnemonic} {i.op_str}' for i in insns_of(a)]
+        for k, x in enumerate(ins):
+            m = re.fullmatch(r'mov dword ptr \[(e\w\w)\], (0x[0-9a-f]+)', x)
+            if not m or int(m.group(2), 16) not in vtables: continue
+            for y in ins[k + 1:k + 4]:
+                if g := re.fullmatch(rf'mov dword ptr \[(0x[0-9a-f]+)\], {m.group(1)}', y): stored.setdefault(int(g.group(1), 16), vtables[int(m.group(2), 16)])
+    # A global whose object is passed as `this` to methods of one class only
+    # (mov ecx, [global]; call Class::method) holds that class or a subclass.
+    votes = collections.defaultdict(list)
+    for a in by_address:
+        ins = insns_of(a)
+        for k, i in enumerate(ins):
+            m = i.mnemonic == 'mov' and re.fullmatch(r'ecx, dword ptr \[(0x[0-9a-f]+)\]', i.op_str)
+            if not m: continue
+            for j in ins[k + 1:k + 4]:
+                if j.mnemonic == 'call':
+                    t = int(j.op_str, 16) if j.op_str.startswith('0x') else None
+                    if t in classes and t not in shaped and t not in forwarders and len(listed.get(t, ())) <= 1: votes[int(m.group(1), 16)].append(classes[t])
+                    break
+                if j.op_str.startswith('ecx'): break
+    # A global set from a constructor's result (new; Class::Class; mov [global], eax)
+    # holds that class; a global copied from it (mov eax, [g1]; mov [g2], eax) too.
+    made, copies = collections.defaultdict(set), []
+    for f in by_address:
+        ins = insns_of(f)
+        for k, i in enumerate(ins[:-1]):
+            if i.mnemonic == 'call' and i.op_str.startswith('0x') and (t := int(i.op_str, 16)) in classes and \
+                    re.fullmatch(r'(?:\w+::)?(\w+)::\1', names.get(t, '')):
+                for j in ins[k + 1:k + 3]:
+                    if j.mnemonic == 'mov' and (m := re.fullmatch(r'dword ptr \[(0x[0-9a-f]+)\], eax', j.op_str)):
+                        made[int(m.group(1), 16)].add(classes[t]); break
+            if i.mnemonic == 'mov' and (m := re.fullmatch(r'(e\w\w), dword ptr \[(0x[0-9a-f]+)\]', i.op_str)) and ins[k + 1].mnemonic == 'mov' and \
+                    (n := re.fullmatch(rf'dword ptr \[(0x[0-9a-f]+)\], {m.group(1)}', ins[k + 1].op_str)):
+                copies.append((int(m.group(2), 16), int(n.group(1), 16)))
+    for g, cs in made.items():
+        if len(cs) == 1 and g not in stored and im.inside(g, '.data'): stored[g] = next(iter(cs))
+    sources = collections.defaultdict(set)
+    for g1, g2 in copies: sources[g2].add(g1)
+    for g2, g1s in sources.items():
+        cs = {stored.get(g) for g in g1s}
+        if g2 not in stored and len(cs) == 1 and None not in cs and g2 not in made: stored[g2] = cs.pop()
+    for g, cs in votes.items():
+        if len(cs) < 2 or g in stored: continue
+        top = [c for c in set(cs) if all(d in bases.get(c, {c}) for d in cs)]
+        if len(top) == 1: stored[g] = top[0]
+    # Module registrations fill a global with the object that serves an
+    # interface: {&global, interface ID} records built on the stack.
+    wired = collections.defaultdict(set)
+    for f in by_address:
+        ins = insns_of(f)
+        for k, i in enumerate(ins[:-1]):
+            m = i.mnemonic == 'mov' and re.fullmatch(r'dword ptr \[esp \+ (0x[0-9a-f]+)\], (0x[0-9a-f]+)', i.op_str)
+            n = m and ins[k + 1].mnemonic == 'mov' and re.fullmatch(r'dword ptr \[esp \+ (0x[0-9a-f]+)\], (0x[0-9a-f]+)', ins[k + 1].op_str)
+            if n and int(n.group(1), 16) == int(m.group(1), 16) + 4 and im.inside(int(m.group(2), 16), '.data') and int(n.group(2), 16) in serves:
+                wired[int(m.group(2), 16)].add(int(n.group(2), 16))
+    def targets(on):
+        if on[0] == 'ptr' and len(wired.get(on[1], ())) == 1: return serves[next(iter(wired[on[1]]))]
+        if on[0] == 'iid': return serves.get(on[1], ())
+        if on[0] == 'id': return ()
+        c = on[1] if on[0] == 'cls' else pointer_class.get(on[1]) or stored.get(on[1])
+        # every class with c as a base, through the vtable of its c part
+        return [(d, at[(d, bs[c])]) for d, bs in offsets.items() if c in bs and (d, bs[c]) in at] if c else ()
+    for (on, slot), ns in wanted.items():
+        if len(ns) != 1: continue
+        n = next(iter(ns))
+        for c, vt in targets(on):
+            f = im.dword(vt + 4 * slot)
+            if f in by_address and f in listed: proposed[f].add((c, n))
+    # The globals just tied to a class are named after it.
+    tied = len(pointers)
+    for g, c in stored.items():
+        if g not in names and g not in objects: pointers.setdefault(g, f'g_p{short(c, commands)}_{g:08x}')
+    for g, iids in wired.items():
+        cs = {c for c, _ in serves[next(iter(iids))]} if len(iids) == 1 else set()
+        if len(cs) == 1 and g not in names and g not in objects: pointers.setdefault(g, f'g_p{short(cs.pop(), commands)}_{g:08x}')
+    tied = len(pointers) - tied
+    interfaced = 0; cmd_named = []  # (function, class, method) named by a console command
+    unnamed = r'(?:^|::)(?:vf\d+(?:_\w+)?|sub_[0-9a-f]{8}|ctor_dtor|[sg]et_[0-9a-f]+h)$|_[0-9a-f]{8}$'
+    for f, cn in sorted(proposed.items()):
+        if f in known or len({n for _, n in cn}) != 1 or not re.search(unnamed, names.get(f, '')): continue
+        n = next(iter(cn))[1]; mine = {c for c, _ in cn}
+        mine |= {b for d in mine for b in offsets.get(d, ())}  # a base that does not override it
+        own = classes.get(f) if classes.get(f) in mine else next(iter(cn))[0] if len({c for c, _ in cn}) == 1 else None
+        if not own or not listed[f] <= mine: continue
+        new = f'{short(own, commands)}::{n}'
+        if new in taken: continue
+        names[f] = new; taken.add(new); interfaced += 1; cmd_named.append((f, own, n))
+    # A function a console command calls directly that is still unnamed, when
+    # it is the only unnamed one the execute calls and every command calling
+    # it agrees: it does the command (Memory.listAllocations ->
+    # Memory::listAllocations). Shared accessors, forwarders and small shaped
+    # bodies are left alone; at most two callers, so library code stays out.
+    calls_of = collections.defaultdict(set)
+    for t, cs in callers.items():
+        for c in cs: calls_of[c].add(t)
+    direct = collections.defaultdict(set)  # callee: names
+    for a in by_address:
+        c = classes.get(a)
+        if c not in commands or not names.get(a, '').endswith('::execute'): continue
+        cand = [t for t in calls_of[a] if t in by_address and t not in known and t not in helpers and t not in forwarders
+                and t not in shaped and re.search(unnamed, names.get(t, '')) and not names[t].startswith(('stub_', 'std', 'operator', 'string'))
+                and not re.search(r'[sg]et_[0-9a-f]+h$', names[t])]
+        if len(cand) != 1: continue
+        t = cand[0]; cat, _, cmd = commands[c].rpartition('.')
+        own = names[t].split('::')[0] if '::' in names[t] and not names[t].startswith('Cmd_') else safe(cat) if cat else ''
+        direct[t].add(f'{own}::{safe(cmd)}' if own else safe(cmd))
+    commanded = 0
+    for t, ns in sorted(direct.items()):
+        if len(ns) != 1 or len(callers[t] - {t}) > 2: continue
+        new = next(iter(ns))
+        if new in taken or not re.fullmatch(r'(?:\w+::)?\w+', new): continue
+        names[t] = new; taken.add(new); commanded += 1; cmd_named.append((t, classes.get(t), new.split('::')[-1]))
+    # Debug markers around a call ("SAI::chooseStrategy Begin" ... "End"):
+    # the one function called between them is that method.
+    marked = 0
+    for a in by_address:
+        open_, between = None, []
+        for i in insns_of(a):
+            for h in re.findall(r'0x[0-9a-f]{6,}', i.op_str):
+                t = im.string(int(h, 16)) if im.inside(int(h, 16), '.rdata') or im.inside(int(h, 16), '.data') else None
+                m = t and re.fullmatch(r'([A-Z]\w*)::([a-z]\w*?) ?(Begin|End)', t)
+                if not m: continue
+                if m.group(3) == 'Begin': open_, between = m.group(1, 2), []
+                elif open_ == m.group(1, 2):
+                    f = between[0] if len(between) == 1 else None
+                    new = f'{open_[0]}::{open_[1]}'
+                    if f in by_address and f not in known and re.search(unnamed, names.get(f, '')) and new not in taken:
+                        names[f] = new; taken.add(new); marked += 1
+                    open_ = None
+            if open_ and i.mnemonic == 'call':
+                between.append(int(i.op_str, 16) if i.op_str.startswith('0x') else None)
+    inherited += inherit()  # overrides of the slots named just above
+    # A command-named method that only reads or only stores one field of
+    # `this` names that field (Game::setKit stores [this+0x1c]: field kit).
+    learned = 0
+    for f, c, n in cmd_named:
+        if not c: continue
+        ins = [f'{i.mnemonic} {i.op_str}'.strip() for i in insns_of(f)]
+        g = len(ins) == 2 and ins[1] == 'ret' and re.fullmatch(r'(?:mov eax,|movzx eax,|movsx eax,|mov al,|fld) (?:dword|byte|word) ptr \[ecx(?: \+ (0x[0-9a-f]+))?\]', ins[0])
+        st = len(ins) == 3 and ins[2] == 'ret 4' and re.fullmatch(r'(?:mov (e[a-d]x|[a-d]l|[a-d]x), (?:dword|byte|word) ptr|fld dword ptr) \[esp \+ 4\]', ins[0]) and \
+            re.fullmatch(r'(?:mov (?:dword|byte|word) ptr|fstp dword ptr) \[ecx(?: \+ (0x[0-9a-f]+))?\](?:, \w+)?', ins[1])
+        m = g or st
+        if not m or (st and not re.match(r'(?:get|set|is)[A-Z]', n) and not g): continue
+        off = int(m.group(1) or '0', 16) if g else int(st.group(1) or '0', 16)
+        base = re.sub(r'^(?:get|set|is)(?=[A-Z])', '', n); base = base[:1].lower() + base[1:]
+        if off in visible(c) or not re.fullmatch(r'[a-z]\w*', base): continue
+        by_class[c][off] = {f'{short(c, commands)}.{base}'}; learned += 1
+    # Shape names made before the fields and globals above were named.
+    for a, (what, make, m) in shapes.items():
+        now = make(classes.get(a), m)
+        if now and now != what and what in names.get(a, ''): names[a] = names[a].replace(what, now)
+    # Class-specific allocators: `operator new(size, file, line)` forwards to
+    # MemoryPool::alloc_debug of the class's pool; the pool's initializer
+    # stores what createMemoryPool returns.
+    for a, n in list(names.items()):
+        if a not in text_of or not generic.search(n): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.fullmatch(r'mov eax, dword ptr \[esp \+ 4\];push eax;push edx;push ecx;mov ecx, 0x([0-9a-f]+);call 0x([0-9a-f]+);ret 4', body)
+        if m and names.get(int(m.group(2), 16)) == 'MemoryPool::alloc_debug':
+            pool = int(m.group(1), 16); g = objects.get(pool) or pointers.get(pool, '')
+            k = re.fullmatch(r'g_(?:MemoryPool\w*?|pool)_([A-Za-z]\w*)', g)
+            names[a] = f'{k.group(1)}::operator_new_pool' if k and not re.fullmatch(r'[0-9a-f]{8}', k.group(1)) else f'pool_{pool:08x}_alloc'
+            continue
+        m = re.fullmatch(r'push 0;push 0;push 0x[0-9a-f]+;mov edx, 0x[0-9a-f]+;mov ecx, 0x[0-9a-f]+;call 0x([0-9a-f]+);mov dword ptr \[0x([0-9a-f]+)\], eax;ret', body)
+        if m and names.get(int(m.group(1), 16)) == 'createMemoryPool':
+            pool = int(m.group(2), 16)
+            g = objects.get(pool) or pointers.get(pool); names[a] = f'static_init_{g[2:]}' if g else f'static_init_pool_{pool:08x}'
+    # Standard Library tree members (MSVC 7.1 <xtree>), by error string and
+    # shape: _Buynode(left, parent, right, value, color) allocates a node,
+    # _Insert(addleft, where, value) checks max_size ("map/set<T> too long") and
+    # rebalances, erase(where) checks the iterator, unlinks and deletes the node.
+    for a, n in list(names.items()):
+        if a not in text_of or not generic.search(n) or 'std_tree_' not in n: continue
+        ins = [x[1] for x in INSN.findall(text_of[a])]
+        rets = {x for x in ins if x.startswith('ret')}
+        calls = {names.get(int(x[5:], 16), '') for x in ins if re.fullmatch(r'call 0x[0-9a-f]+', x)}
+        if rets == {'ret 0x14'} and len(ins) < 60 and 'operator_new' in calls:
+            names[a] = f'std::_Tree::_Buynode_{a:08x}'
+        elif 'std_tree_insert' in n and rets == {'ret 0x10'} and 100 <= len(ins) <= 200 and '_CxxThrowException' in calls:
+            names[a] = f'std::_Tree::_Insert_{a:08x}'
+        elif 'std_tree_iterator' in n and rets == {'ret 8'} and 200 <= len(ins) <= 300 and {'_CxxThrowException', 'operator_delete'} <= calls:
+            names[a] = f'std::_Tree::erase_{a:08x}'
+    # Inlined lookups on a tree object: the head node is [this + 4], its
+    # parent the root, and every step tests the node's _Isnil byte.
+    #   find(key)         one lower-bound walk, then end() or the node: ret 8 with
+    #                     the hidden iterator pointer
+    #   equal_range(key)  two walks, writes {first, second}
+    #   insert(value)     one walk, then _Insert and pair<iterator, bool>
+    for a, n in list(names.items()):
+        if a not in text_of or not generic.search(n) or n.startswith('std::'): continue
+        ins = [x[1] for x in INSN.findall(text_of[a])]
+        if not 8 <= len(ins) <= 60: continue
+        head = ins[1:3] if ins[0] == 'push ecx' else ins[:2]
+        m = re.fullmatch(r'mov (e\w\w), dword ptr \[ecx \+ 4\]', head[0])
+        if not m or not re.fullmatch(rf'mov e\w\w, dword ptr \[{m.group(1)} \+ 4\]', head[1]): continue
+        nil = {k.group(1) for x in ins for k in [re.search(r'byte ptr \[e\w\w \+ (0x[0-9a-f]+)\]', x)] if k}
+        if len(nil) != 1 or not any(re.fullmatch(r'mov e\w\w, dword ptr \[e\w\w \+ 8\]', x) for x in ins): continue
+        rets = {x for x in ins if x.startswith('ret')}
+        calls = {names.get(int(x[5:], 16), '') for x in ins if re.fullmatch(r'call 0x[0-9a-f]+', x)}
+        walks = sum(bool(re.fullmatch(r'mov e\w\w, dword ptr \[ecx \+ 4\]', x)) for x in ins)
+        if rets != {'ret 8'}: continue
+        if not calls and walks == 2 and any(re.fullmatch(r'mov dword ptr \[eax \+ 4\], e\w\w', x) for x in ins):
+            names[a] = f'std::_Tree::equal_range_{a:08x}'
+        elif not calls and walks == 2:
+            names[a] = f'std::_Tree::find_{a:08x}'
+        elif len(calls) == 1 and next(iter(calls)).startswith('std::_Tree::_Insert_') and 'mov byte ptr [eax + 4], 1' in ins:
+            names[a] = f'std::_Tree::insert_{a:08x}'
+    # catch blocks and unwind actions: <parent>_catch_<address>
+    for a, (p, role) in eh_funclets(im, sorted(text_of)).items():
+        if a in text_of and generic.search(names.get(a, '_00000000')) and p in names:
+            names[a] = f'{names[p]}_{role}_{a:08x}'
+    # Static strings and arrays: the destructor registered with atexit and the
+    # dynamic initializer of a namespace-scope array.
+    ax = [a for a, n in names.items() if n == 'atexit']
+    statics = static_strings(im, md, ax[0]) if len(ax) == 1 else {}
+    starts = sorted(text_of)
+    inits = collections.Counter(starts[bisect.bisect_right(starts, va) - 1] for _, _, _, va, _ in statics.values())
+    lit_count = collections.Counter(safe(t) for _, _, _, _, t in statics.values() if t)
+    for d, (kind, first, n, va, lit) in sorted(statics.items()):
+        if lit and re.fullmatch(r'[\w .:/-]{1,40}', lit):
+            g = f'g_str_{safe(lit)}' + (f'_{first:08x}' if lit_count[safe(lit)] > 1 else '')
+        else:
+            g = f'g_{kind}_{first:08x}'
+        if kind == 'string_string_int_array':
+            # {command, "c_CM..." mode, int} input tables, one copy per
+            # source file: named after the first command.
+            i = starts[bisect.bisect_right(starts, va) - 1]
+            cmds = [im.string(int(m.group(1), 16)) for x in insns_of(i) if (m := re.fullmatch(r'push (0x[0-9a-f]+)', f'{x.mnemonic} {x.op_str}'))]
+            cmds = [t for t in cmds if t and re.fullmatch(r'c_[A-Za-z]\w*', t)]
+            heads = [t for t in cmds if not t.startswith('c_CM')]
+            if heads and len(heads) < len(cmds):
+                g = f'g_inputCommandTable_{heads[0][2:]}_{first:08x}'
+        if first not in objects: pointers.setdefault(first, g)
+        if d in text_of and generic.search(names.get(d, '_00000000')): names[d] = f'atexit_destroy_{pointers.get(first, g)[2:]}'
+        i = starts[bisect.bisect_right(starts, va) - 1]
+        if n and inits[i] == 1 and f'/* {va:08x}  ' in text_of[i] and generic.search(names.get(i, '_00000000')):
+            names[i] = f'static_init_{g[2:]}'
+    # Static std::list / std::map objects: the initializer buys the head node
+    # (+4) and clears the size (+8), then registers the destructor with atexit.
+    for a in sorted(text_of):
+        if not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.fullmatch(r'mov ecx, 0x([0-9a-f]+);call 0x([0-9a-f]+);push 0x([0-9a-f]+);mov dword ptr \[0x([0-9a-f]+)\], eax;'
+                         r'mov dword ptr \[0x([0-9a-f]+)\], 0;call 0x([0-9a-f]+);pop ecx;ret', body)
+        if not m: continue
+        g, f, d, head, size, ax_ = (int(x, 16) for x in m.groups())
+        callee = names.get(f, '')
+        if names.get(ax_) != 'atexit' or head != g + 4 or size != g + 8 or '_Buyheadnode' not in callee: continue
+        kind = 'list' if callee.startswith('std::list') else 'map' if '_Tree' in callee else None
+        if not kind: continue
+        gname = objects.get(g) or pointers.setdefault(g, f'g_{kind}_{g:08x}')
+        names[a] = f'static_init_{gname[2:]}'
+        if d in text_of and generic.search(names.get(d, '_00000000')): names[d] = f'atexit_destroy_{gname[2:]}'
+    # The same for a std::map whose head node is bought by _Buynode_head and
+    # linked to itself inline (isnil = 1; left = parent = right = head).
+    for a in sorted(text_of):
+        if not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.fullmatch(r'mov ecx, 0x([0-9a-f]+);call 0x([0-9a-f]+);mov dword ptr \[0x([0-9a-f]+)\], eax;mov byte ptr \[eax \+ 0x[0-9a-f]+\], 1;'
+                         r'mov eax, dword ptr \[0x\3\];mov dword ptr \[eax \+ 4\], eax;mov eax, dword ptr \[0x\3\];mov dword ptr \[eax\], eax;'
+                         r'mov eax, dword ptr \[0x\3\];mov dword ptr \[eax \+ 8\], eax;push 0x([0-9a-f]+);mov dword ptr \[0x([0-9a-f]+)\], 0;'
+                         r'call 0x([0-9a-f]+);pop ecx;ret', body)
+        if not m: continue
+        g, f, head, d, size, ax_ = (int(x, 16) for x in m.groups())
+        if names.get(ax_) != 'atexit' or head != g + 4 or size != g + 8 or '_Buynode_head' not in names.get(f, ''): continue
+        gname = objects.get(g) or pointers.setdefault(g, f'g_map_{g:08x}')
+        names[a] = f'static_init_{gname[2:]}'
+        if d in text_of and generic.search(names.get(d, '_00000000')): names[d] = f'atexit_destroy_{gname[2:]}'
+    # std::_Tree::erase(first, last): when first == begin() and last == end()
+    # it calls _Erase(root) and resets the head (root = left = right = head,
+    # size = 0); otherwise it erases node by node.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')) or names.get(a, '').startswith('std::'): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.match(r'push ebx;mov ebx, dword ptr \[esp \+ 0x10\];push esi;mov esi, dword ptr \[esp \+ 0x10\];push edi;mov edi, ecx;'
+                     r'mov eax, dword ptr \[edi \+ 4\];cmp esi, dword ptr \[eax\];jne 0x[0-9a-f]+;cmp ebx, eax;jne 0x[0-9a-f]+;'
+                     r'mov eax, dword ptr \[eax \+ 4\];push eax;mov ecx, edi;call 0x([0-9a-f]+);', body)
+        if m and names.get(int(m[1], 16), '').startswith('std::_Tree::_Erase'):
+            names[a] = f'std::_Tree::erase_range_{a:08x}'
+    # std::_Tree::clear(): _Erase(root), then root = left = right = head and
+    # size = 0. erase(first, last) may call it for the begin()..end() case.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')) or names.get(a, '').startswith('std::'): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.match(r'push esi;mov esi, ecx;mov eax, dword ptr \[esi \+ 4\];mov ecx, dword ptr \[eax \+ 4\];push ecx;mov ecx, esi;call 0x([0-9a-f]+);'
+                     r'mov eax, dword ptr \[esi \+ 4\];mov dword ptr \[eax \+ 4\], eax;mov eax, dword ptr \[esi \+ 4\];mov dword ptr \[esi \+ 8\], 0;', body)
+        if m and names.get(int(m[1], 16), '').startswith('std::_Tree::_Erase'):
+            names[a] = f'std::_Tree::clear_{a:08x}'
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')) or names.get(a, '').startswith('std::'): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.match(r'push ebx;mov ebx, dword ptr \[esp \+ 0x10\];push esi;mov esi, ecx;mov eax, dword ptr \[esi \+ 4\];mov ecx, dword ptr \[esp \+ 0x10\];'
+                     r'cmp ecx, dword ptr \[eax\];jne 0x[0-9a-f]+;cmp ebx, eax;jne 0x[0-9a-f]+;mov ecx, esi;call 0x([0-9a-f]+);', body)
+        if m and names.get(int(m[1], 16), '').startswith('std::_Tree::clear'):
+            names[a] = f'std::_Tree::erase_range_{a:08x}'
+    # std::_Tree::~_Tree() / std::list::~list(): erase(begin(), end()), free
+    # the head node, clear head and size.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')) or names.get(a, '').startswith('std::'): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.fullmatch(r'push ecx;push esi;mov esi, ecx;mov eax, dword ptr \[esi \+ 4\];mov ecx, dword ptr \[eax\];push eax;push ecx;'
+                         r'lea eax, \[esp \+ 0xc\];push eax;mov ecx, esi;call 0x([0-9a-f]+);mov ecx, dword ptr \[esi \+ 4\];push ecx;call 0x([0-9a-f]+);'
+                         r'add esp, 4;xor eax, eax;mov dword ptr \[esi \+ 4\], eax;mov dword ptr \[esi \+ 8\], eax;pop esi;pop ecx;ret', body)
+        if not m or names.get(int(m[2], 16)) != 'operator_delete': continue
+        e = names.get(int(m[1], 16), '')
+        if e.startswith('std::_Tree::erase'): names[a] = f'std::_Tree::~_Tree_{a:08x}'
+        elif e.startswith('std::list::erase'): names[a] = f'std::list::~list_{a:08x}'
+    # std::vector<T>::size() / capacity(): 0 for a null first pointer (+4),
+    # else (last (+8) or end (+0xc) - first) / sizeof(T). The element size
+    # is read from the shift or from the magic-number division.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')) or names.get(a, '').startswith('std::'): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.fullmatch(r'mov (e\wx), dword ptr \[ecx \+ 4\];test \1, \1;jne 0x[0-9a-f]+;(?:xor eax, eax;)?ret;'
+                         r'mov (e\wx), dword ptr \[ecx \+ (8|0xc)\];sub \2, \1;(.*);ret', body)
+        if not m: continue
+        tail, n = m[4], None
+        if k := re.fullmatch(rf'sar {m[2]}, (\d+)(?:;mov eax, {m[2]})?', tail):
+            n = 1 << int(k[1])
+        elif k := re.fullmatch(rf'mov eax, 0x([0-9a-f]+);imul {m[2]};(?:add edx, {m[2]};)?sar edx, (\d+);mov eax, edx;shr eax, 0x1f;add eax, edx', tail):
+            mul, sh = int(k[1], 16), int(k[2])
+            d = round(2 ** (32 + sh) / mul)
+            if d > 1 and abs(d * mul - 2 ** (32 + sh)) < 2 ** (32 + sh) // 1000: n = d
+        if not n: continue
+        names[a] = f'std::vector_{"ptr" if n == 4 else n}::{"size" if m[3] == "8" else "capacity"}_{a:08x}'
+    # std::vector<T>::push_back(value): with spare capacity it constructs one
+    # element at last (_Uninit_fill_n(last, 1, value)) and advances last by
+    # sizeof(T); otherwise _Insert_n(end(), 1, value).
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')) or names.get(a, '').startswith('std::'): continue
+        ins = [x[1] for x in INSN.findall(text_of[a])]
+        if len(ins) > 70 or ins[:2] != ['push esi', 'mov esi, ecx']: continue
+        body = ';'.join(ins)
+        m = re.search(r';mov edx, 1;mov ecx, edi;call 0x([0-9a-f]+);add edi, (0x[0-9a-f]+|\d+);mov dword ptr \[esi \+ 8\], edi;pop edi;pop esi;ret 4;'
+                      r'(?:[^;]+;){0,6}?push 1;push e\wx;mov ecx, esi;call 0x([0-9a-f]+);', body)
+        if not m or 'dword ptr [esi + 0xc]' not in body: continue
+        f, n, i_ = int(m[1], 16), int(m[2], 0), int(m[3], 16)
+        v = f'std::vector_{"ptr" if n == 4 else n}'
+        names[a] = f'{v}::push_back_{a:08x}'
+        if f in text_of and generic.search(names.get(f, '_00000000')) and not names.get(f, '').startswith('std::'): names[f] = f'std::_Uninit_fill_n_{n}_{f:08x}'
+        if i_ in text_of and generic.search(names.get(i_, '_00000000')) and not names.get(i_, '').startswith('std::'): names[i_] = f'{v}::_Insert_n_{i_:08x}'
+    # std::vector<T>::resize(count, value) for power-of-two element sizes:
+    # _Insert_n(end(), count - size(), value) when growing, else erase the
+    # tail.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')) or names.get(a, '').startswith('std::'): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.match(r'mov edx, dword ptr \[ecx \+ 4\];test edx, edx;jne 0x[0-9a-f]+;xor eax, eax;jmp 0x[0-9a-f]+;mov eax, dword ptr \[ecx \+ 8\];'
+                     r'sub eax, edx;sar eax, (\d+);push esi;mov esi, dword ptr \[esp \+ 8\];cmp eax, esi;push edi;jae 0x[0-9a-f]+;'
+                     r'(?:[^;]+;){0,8}?lea edi, \[esp \+ 0x10\];push edi;sub esi, eax;push esi;push edx;call 0x([0-9a-f]+);', body)
+        if not m: continue
+        n, i_ = 1 << int(m[1]), int(m[2], 16)
+        v = f'std::vector_{"ptr" if n == 4 else n}'
+        names[a] = f'{v}::resize_{a:08x}'
+        if i_ in text_of and generic.search(names.get(i_, '_00000000')) and not names.get(i_, '').startswith('std::'): names[i_] = f'{v}::_Insert_n_{i_:08x}'
+    # Element-wise copy of plain N-byte records (std::copy / uninitialized_copy
+    # of a POD type): (ecx = first, edx = last, dest) copies dwords and
+    # returns the end of dest.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')) or names.get(a, '').startswith('std::'): continue
+        ins = [x[1] for x in INSN.findall(text_of[a])]
+        if len(ins) > 60 or any(i.startswith('call') for i in ins): continue
+        body = ';'.join(ins)
+        m = re.match(r'cmp ecx, edx;mov eax, dword ptr \[esp \+ 4\];je 0x[0-9a-f]+;push ebx;push esi;push edi;jmp 0x[0-9a-f]+;(?:lea ecx, \[ecx\];)?(.*);'
+                     r'add ecx, (0x[0-9a-f]+|\d+);add eax, \2;cmp ecx, edx;(?:mov dword ptr \[edi \+ (?:0x[0-9a-f]+|\d+)\], e\wx;)?jne 0x[0-9a-f]+;pop edi;pop esi;pop ebx;ret 8', body)
+        if m and all(re.fullmatch(r'mov (?:e\wx|dword ptr \[e\wx(?: \+ \w+)?\]), (?:e\wx|dword ptr \[e\wx(?: \+ \w+)?\])', i) for i in m[1].split(';')):
+            names[a] = f'std::copy_pod_{int(m[2], 0)}_{a:08x}'
+    # The exit destructor of a static std::map calls erase(begin, end) on it,
+    # then frees the head node.
+    for d in sorted(text_of):
+        if not names.get(d, '').startswith('atexit_destroy_map_'): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[d]))
+        m = re.match(r'push ecx;mov eax, dword ptr \[0x([0-9a-f]+)\];mov ecx, dword ptr \[eax\];push eax;push ecx;lea eax, \[esp \+ 8\];push eax;'
+                     r'mov ecx, 0x([0-9a-f]+);call 0x([0-9a-f]+);', body)
+        if not m: continue
+        head, g, x = (int(v, 16) for v in m.groups())
+        if head == g + 4 and x in text_of and generic.search(names.get(x, '_00000000')) and not names.get(x, '').startswith('std::'):
+            names[x] = f'std::_Tree::erase_range_{x:08x}'
+    # Static 4x4 matrices: the dynamic initializer copies the 16 dwords that a
+    # Matrix4 function returns into the global (`static Matrix4 m = f();`).
+    for a in sorted(text_of):
+        if not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.fullmatch(r'push esi;push edi;call 0x([0-9a-f]+);mov ecx, 0x10;mov esi, eax;mov edi, 0x([0-9a-f]+);'
+                         r'rep movsd dword ptr es:\[edi\], dword ptr \[esi\];pop edi;pop esi;ret', body)
+        if not m: continue
+        f, g = (int(x, 16) for x in m.groups())
+        if not names.get(f, '').startswith('Matrix4::'): continue
+        kind = 'identityMatrix' if names[f] == 'Matrix4::identity' else 'Matrix4'
+        gname = objects.get(g) or pointers.setdefault(g, f'g_{kind}_{g:08x}')
+        names[a] = f'static_init_{gname[2:]}'
+    # `atexit(destructor)` registrations of statics that the compiler
+    # zero-initializes: the function only registers the destructor. A
+    # destructor that frees [X] and clears X..X+8 belongs to a std::vector
+    # whose allocator word is at X - 4.
+    for a in sorted(text_of):
+        if not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.match(r'push 0x([0-9a-f]+);call 0x([0-9a-f]+);pop ecx;ret(?:;|$)', body)
+        if not m or names.get(int(m.group(2), 16)) != 'atexit': continue
+        d = int(m.group(1), 16)
+        if not im.inside(d, '.text'): continue
+        dn = names.get(d, '')
+        if dn and not generic.search(dn):
+            names[a] = f'atexit_register_{dn}'
+            continue
+        txt = ';'.join(f'{i.mnemonic} {i.op_str}' for i in itertools.islice(md.disasm(im.img[d - im.base:d - im.base + 64], d), 9))
+        v = re.fullmatch(r'mov eax, dword ptr \[0x([0-9a-f]+)\];test eax, eax;je 0x[0-9a-f]+;push eax;call 0x([0-9a-f]+);add esp, 4;'
+                         r'mov dword ptr \[0x([0-9a-f]+)\], 0;mov dword ptr \[0x([0-9a-f]+)\], 0;mov dword ptr \[0x([0-9a-f]+)\], 0', txt)
+        if v and names.get(int(v.group(2), 16)) == 'operator_delete':
+            x0, x1, x2, x3 = (int(v.group(k), 16) for k in (1, 3, 4, 5))
+            if x0 == x1 and x2 == x0 + 4 and x3 == x0 + 8:
+                gname = objects.get(x0 - 4) or pointers.setdefault(x0 - 4, f'g_vector_{x0 - 4:08x}')
+                names[a] = f'atexit_register_destroy_{gname[2:]}'
+                if d in text_of and generic.search(dn or '_00000000'): names[d] = f'atexit_destroy_{gname[2:]}'
+            continue
+        # Other destructors of zero-initialized statics: a std::string (frees
+        # the buffer when the capacity at +0x18 is 0x10 or more), a global
+        # object (`mov ecx, object; jmp destructor`), an object whose
+        # destructor only restores the base vtable, and an owned pointer
+        # released through its third virtual slot.
+        if v := re.match(r'cmp dword ptr \[0x([0-9a-f]+)\], 0x10;jb 0x[0-9a-f]+;mov eax, dword ptr \[0x([0-9a-f]+)\];push eax;call 0x([0-9a-f]+);', txt):
+            x, b = int(v[1], 16), int(v[2], 16)
+            if x == b + 0x14 and names.get(int(v[3], 16)) == 'operator_delete':
+                gname = objects.get(x - 0x18) or pointers.setdefault(x - 0x18, f'g_string_{x - 0x18:08x}')
+                names[a] = f'atexit_register_destroy_{gname[2:]}'
+        elif v := re.fullmatch(r'mov ecx, 0x([0-9a-f]+);jmp 0x([0-9a-f]+)(?:;.*)?', txt):
+            g, f = int(v[1], 16), int(v[2], 16)
+            fn = names.get(f, '')
+            if g in objects: names[a] = f'atexit_register_destroy_{objects[g][2:]}'
+            elif r := re.fullmatch(r'((?:\w+::)*(\w+))::~\2', fn): names[a] = f'atexit_register_destroy_{r[1].replace("::", "_")}_{g:08x}'
+            else: names[a] = f'atexit_register_destroy_object_{g:08x}'
+        elif v := re.fullmatch(r'mov dword ptr \[0x([0-9a-f]+)\], 0x([0-9a-f]+);ret(?:;.*)?', txt):
+            g, vt = int(v[1], 16), int(v[2], 16)
+            if g in objects: names[a] = f'atexit_register_destroy_{objects[g][2:]}'
+            elif vt in vtables: names[a] = f'atexit_register_destroy_{short(vtables[vt], commands)}_{g:08x}'
+        elif v := re.match(r'mov ecx, dword ptr \[0x([0-9a-f]+)\];test ecx, ecx;je 0x[0-9a-f]+;mov eax, dword ptr \[ecx\];jmp dword ptr \[eax \+ 8\]', txt):
+            g = int(v[1], 16)
+            gname = pointers.get(g) or objects.get(g)
+            names[a] = f'atexit_register_release_{gname[2:] if gname else f"ptr_{g:08x}"}'
+    # Factory methods: a short unnamed method (or virtual slot) whose only
+    # calls are operator new and constructors returns the new object; it is
+    # named after the constructed class (create<Class>), or after the class
+    # name suffix shared by its alternatives (DX8SysmemVertexBlock or
+    # PCDX8VertexBlock: createVertexBlock).
+    for a in sorted(text_of):
+        n = names.get(a, '')
+        if a in known or not (generic.search(n or '_00000000') or re.search(r'::vf\d+$', n)): continue
+        ins = insns_of(a)
+        if not 4 <= len(ins) <= 45: continue
+        calls = [names.get(i.operands[0].imm, '') for i in ins if i.mnemonic == 'call' and i.operands[0].type == 2]
+        if len(calls) != sum(i.mnemonic == 'call' for i in ins) or 'operator_new' not in calls: continue
+        made = []
+        for cn in calls:
+            if cn == 'operator_new': continue
+            m = re.fullmatch(r'(?:\w+::)*(\w+)::(?:\1|ctor\w*|constructor)', cn)
+            if not m: made = None; break
+            made.append(m.group(1))
+        if not made or calls.count('operator_new') != len(made): continue
+        k = os.path.commonprefix([x[::-1] for x in set(made)])[::-1]
+        k = k[next((j for j, ch in enumerate(k) if ch.isupper()), len(k)):]
+        if len(k) < 4: continue
+        c = n.rsplit('::', 1)[0] + '::' if '::' in n else ''
+        names[a] = f'{c}create{k}' if re.search(r'::vf\d+$', n) else f'{c}create{k}_{a:08x}'
+    # std::uninitialized_fill_n(first, count, value, allocator): passes
+    # first in ecx and count in edx to _Uninit_fill_n, which constructs count
+    # copies, and returns first + count * sizeof(T).
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.fullmatch(r'mov eax, dword ptr \[esp \+ 0xc\];push esi;mov esi, dword ptr \[esp \+ 0xc\];push edi;mov edi, dword ptr \[esp \+ 0xc\];'
+                         r'push eax;push ecx;mov ecx, dword ptr \[esp \+ 0x1c\];push ecx;mov edx, esi;mov ecx, edi;call 0x([0-9a-f]+);(.*);pop edi;pop esi;ret 0xc', body)
+        if not m: continue
+        tail = m.group(2)
+        if t := re.fullmatch(r'lea eax, \[edi \+ esi\*([1248])\]', tail): size = int(t[1])
+        elif t := re.fullmatch(r'lea edx, \[esi \+ esi\*([248])\];lea eax, \[edi \+ edx\*([1248])\]', tail): size = (int(t[1]) + 1) * int(t[2])
+        elif t := re.fullmatch(r'mov eax, esi;shl eax, ([1-9]);add eax, edi', tail): size = 1 << int(t[1])
+        elif t := re.fullmatch(r'mov eax, esi;imul eax, eax, (0x[0-9a-f]+|\d+);add eax, edi', tail): size = int(t[1], 0)
+        else: continue
+        f = int(m.group(1), 16)
+        names[a] = f'std::uninitialized_fill_n_{size}_{a:08x}'
+        if f in text_of and generic.search(names.get(f, '_00000000')) and any(re.fullmatch(r'std::allocator\w*::construct', names.get(int(c, 16), '')) for c in re.findall(r'call 0x([0-9a-f]+)', text_of[f])):
+            names[f] = f'std::_Uninit_fill_n_{size}_{f:08x}'
+    # std::_Uninit_fill_n(first = ecx, count = edx, value, allocator) by its
+    # loop: allocator::construct(first, value), --count, first += N.
+    for a in sorted(text_of):
+        n = names.get(a, '_00000000')
+        if a in known or not generic.search(n) or n.startswith('std::'): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        if not body.startswith('push ebp;mov ebp, esp;push -1;') or body.count(';') > 60: continue
+        m = re.search(r';mov edi, edx;mov esi, ecx;mov dword ptr \[ebp - 4\], 0;mov ebx, dword ptr \[ebp \+ 0xc\];(?:nop ;|lea esp, \[esp\];)?test edi, edi;jbe 0x[0-9a-f]+;'
+                      r'mov eax, dword ptr \[ebp \+ 8\];push eax;push esi;mov ecx, ebx;call 0x([0-9a-f]+);dec edi;mov dword ptr \[ebp [-+] (?:0x[0-9a-f]+|\d+)\], edi;'
+                      r'add esi, (0x[0-9a-f]+|\d+);', body)
+        if not m: continue
+        size = int(m[2], 0); names[a] = f'std::_Uninit_fill_n_{size}_{a:08x}'
+        c = int(m[1], 16)
+        if c in text_of and generic.search(names.get(c, '_00000000')) and not names.get(c, '').startswith('std::'): names[c] = f'std::allocator_{size}::construct_{c:08x}'
+    # Container internals by shape:
+    #   std::list::_Insert(where, value): _Buynode(where, where->_Prev, value),
+    #     _Incsize(1), then links the node before where;
+    #   _Tidy of a list or map: erase(begin, end), delete the head node, clear
+    #     the head (+4) and size (+8); a map when that erase reaches _Erase;
+    #   std::vector::_Tidy: _Destroy(first, last), delete first, clear +4..+0xc;
+    #   std::vector::_Buy(n): clears +4..+0xc, returns false for 0, _Xlen
+    #     above max_size (0xffffffff / sizeof(T)), else allocates n elements.
+    def call_names(f):
+        return [names.get(int(c, 16), '') for c in re.findall(r'call 0x([0-9a-f]+)', text_of.get(f, ''))]
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        cn = call_names(a)
+        if len(cn) == 2 and cn[0].startswith('std::list::_Buynode') and cn[1].startswith('std::list::_Incsize') and body.count(';') < 30:
+            names[a] = f'std::list::_Insert_{a:08x}'
+        elif m := re.fullmatch(r'push ecx;push esi;mov esi, ecx;mov eax, dword ptr \[esi \+ 4\];mov ecx, dword ptr \[eax\];push eax;push ecx;'
+                               r'lea eax, \[esp \+ 0xc\];push eax;mov ecx, esi;call 0x([0-9a-f]+);mov ecx, dword ptr \[esi \+ 4\];push ecx;call 0x([0-9a-f]+);'
+                               r'add esp, 4;xor eax, eax;mov dword ptr \[esi \+ 4\], eax;mov dword ptr \[esi \+ 8\], eax;pop esi;pop ecx;ret', body):
+            if names.get(int(m[2], 16)) != 'operator_delete': continue
+            e = int(m[1], 16); en = names.get(e, '')
+            tree = '_Tree' in en or any('_Tree::_Erase' in x for x in call_names(e))
+            lst = en.startswith('std::list') or any(x.startswith('std::list') for x in call_names(e))
+            if tree == lst: continue
+            k = 'std::_Tree' if tree else 'std::list'
+            names[a] = f'{k}::_Tidy_{a:08x}'
+            if e in text_of and generic.search(en or '_00000000'): names[e] = f'{k}::erase_range_{e:08x}'
+        elif m := re.fullmatch(r'push ecx;push esi;mov esi, ecx;mov ecx, dword ptr \[esi \+ 4\];test ecx, ecx;je 0x[0-9a-f]+;mov eax, dword ptr \[esp \+ 4\];'
+                               r'mov edx, dword ptr \[esi \+ 8\];push eax;push esi;call 0x([0-9a-f]+);mov ecx, dword ptr \[esi \+ 4\];push ecx;call 0x([0-9a-f]+);'
+                               r'add esp, 4;mov dword ptr \[esi \+ 4\], 0;mov dword ptr \[esi \+ 8\], 0;mov dword ptr \[esi \+ 0xc\], 0;pop esi;pop ecx;ret', body):
+            if names.get(int(m[2], 16)) == 'operator_delete': names[a] = f'std::vector::_Tidy_{a:08x}'
+        elif m := re.match(r'mov eax, dword ptr \[esp \+ 4\];push esi;mov esi, ecx;xor ecx, ecx;cmp eax, ecx;mov dword ptr \[esi \+ 4\], ecx;'
+                           r'mov dword ptr \[esi \+ 8\], ecx;mov dword ptr \[esi \+ 0xc\], ecx;jne 0x[0-9a-f]+;xor al, al;pop esi;ret 4;cmp eax, (0x[0-9a-f]+);', body):
+            if cn[:2] == ['std::vector::_Xlen', 'operator_new']:
+                names[a] = f'std::vector::_Buy_{round(2 ** 32 / (int(m[1], 16) + 1))}_{a:08x}'
+    # std::_Tree::erase(const key &): equal_range(key), counts the nodes
+    # with iterator::_Inc, erases the range and returns the count.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.fullmatch(r'sub esp, 8;mov eax, dword ptr \[esp \+ 0xc\];push ebx;push ebp;push esi;push edi;mov ebx, ecx;push eax;lea ecx, \[esp \+ 0x14\];'
+                         r'push ecx;mov ecx, ebx;call 0x([0-9a-f]+);mov ebp, dword ptr \[esp \+ 0x10\];mov edi, dword ptr \[esp \+ 0x14\];xor esi, esi;'
+                         r'cmp ebp, edi;mov dword ptr \[esp \+ 0x1c\], ebp;je 0x[0-9a-f]+;(?:lea esp, \[esp\];|nop ;)?lea ecx, \[esp \+ 0x1c\];inc esi;call 0x([0-9a-f]+);'
+                         r'cmp dword ptr \[esp \+ 0x1c\], edi;jne 0x[0-9a-f]+;push edi;push ebp;lea edx, \[esp \+ 0x24\];push edx;mov ecx, ebx;call 0x([0-9a-f]+);'
+                         r'pop edi;mov eax, esi;pop esi;pop ebp;pop ebx;add esp, 8;ret 4', body)
+        if not m: continue
+        names[a] = f'std::_Tree::erase_key_{a:08x}'
+        for t, k in zip((int(x, 16) for x in m.groups()), ('equal_range', 'iterator::_Inc', 'erase_range')):
+            if t in text_of and generic.search(names.get(t, '_00000000')): names[t] = f'std::_Tree::{k}_{t:08x}'
+    # std::_Uninit_copy: constructs each N-byte element at dest with
+    # allocator::construct(dest, src) inside a try block (two register
+    # orders); a short wrapper that only calls it with `ret 0xc` is
+    # std::uninitialized_copy. Bodies identical to the pointer version
+    # (N = 4) were given its name by code identity, so those are renamed too.
+    copies = {}
+    def copy_slot(a):
+        n = names.get(a, '_00000000')
+        return a not in known and (generic.search(n) or n.startswith('std::uninitialized_copy_ptr'))
+    for a in sorted(text_of):
+        if not copy_slot(a): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        if not body.startswith('push ebp;mov ebp, esp;push -1;') or body.count(';') > 60: continue
+        m = re.search(r';cmp esi, dword ptr \[ebp [-+] (?:0x[0-9a-f]+|\d+)\];je 0x[0-9a-f]+;push esi;push edi;mov ecx, ebx;'
+                      r'call 0x([0-9a-f]+);add edi, (0x[0-9a-f]+|\d+);mov dword ptr \[ebp [-+] (?:0x[0-9a-f]+|\d+)\], edi;add esi, \2;', body)
+        if not m or int(m[2], 0) == 4 and names.get(a, '').startswith('std::uninitialized_copy_ptr'): continue
+        n = int(m[2], 0); copies[a] = n
+        names[a] = f'std::_Uninit_copy_{n}_{a:08x}'
+        c = int(m[1], 16)
+        if c in text_of and generic.search(names.get(c, '_00000000')): names[c] = f'std::allocator_{n}::construct_{c:08x}'
+    for a in sorted(text_of):
+        if not copy_slot(a): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        cs = re.findall(r'call 0x([0-9a-f]+)', body)
+        if len(cs) == 1 and int(cs[0], 16) in copies and body.endswith(';ret 0xc') and body.count(';') < 12:
+            names[a] = f'std::uninitialized_copy_{copies[int(cs[0], 16)]}_{a:08x}'
+    # Container node allocators. std::_Tree::_Buynode(left, parent, right,
+    # value, color) allocates a node with operator new inside a try block and
+    # runs the node constructor with the five arguments (`ret 0x14`); the
+    # argument-less form builds the head node (three null links, _Color =
+    # black (1), _Isnil = 0). std::list::insert(where, first, last) calls
+    # std::list::_Insert(where, &node->value) for each source node.
+    def body_of(a): return ';'.join(x[1] for x in INSN.findall(text_of[a]))
+    def node_ctor(c, kind):  # the node constructor stores the links from its first arguments
+        if c not in text_of: return True  # not indexed on its own: keep the operator new evidence
+        b = body_of(c)
+        links = all(re.search(rf'mov dword ptr \[e(?:si|di|ax|bx){o}\], e[a-d]x', b) for o in (('', r' \+ 4', r' \+ 8') if kind == 'tree' else ('', r' \+ 4')))
+        return links and (kind == 'list' or re.search(r'mov byte ptr \[e(?:si|di|ax|bx) \+ 0x[0-9a-f]+\], (?:0|[abcd]l)\b', b))
+    SEH = r'push ebp;mov ebp, esp;push -1;push 0x[0-9a-f]+;mov eax, dword ptr fs:\[0\];push eax;mov dword ptr fs:\[0\], esp;sub esp, 0x[0-9a-f]+;push ebx;push esi;push edi;mov dword ptr \[ebp - 0x10\], esp;'
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')): continue
+        body = body_of(a)
+        m = re.fullmatch(SEH + r'push (0x[0-9a-f]+);call 0x([0-9a-f]+);add esp, 4;mov esi, eax;mov dword ptr \[ebp - 0x14\], esi;mov dword ptr \[ebp - 4\], 0;'
+                         r'mov dword ptr \[ebp - 0x18\], esi;test esi, esi;je 0x[0-9a-f]+;mov eax, dword ptr \[ebp \+ 0x18\];push eax;mov ecx, dword ptr \[ebp \+ 0x14\];push ecx;'
+                         r'mov edx, dword ptr \[ebp \+ 0x10\];push edx;mov eax, dword ptr \[ebp \+ 0xc\];push eax;mov ecx, dword ptr \[ebp \+ 8\];push ecx;mov ecx, esi;call 0x([0-9a-f]+);'
+                         r'mov dword ptr \[ebp - 4\], 0xffffffff;mov eax, esi;mov ecx, dword ptr \[ebp - 0xc\];mov dword ptr fs:\[0\], ecx;pop edi;pop esi;pop ebx;mov esp, ebp;pop ebp;ret 0x14(?:;.*)?', body)
+        if m and names.get(int(m[2], 16)) == 'operator_new' and node_ctor(int(m[3], 16), 'tree'):
+            n = int(m[1], 16); names[a] = f'std::_Tree::_Buynode_{n}_{a:08x}'
+            c = int(m[3], 16)
+            if c in text_of and generic.search(names.get(c, '_00000000')): names[c] = f'std::_Tree::_Node::_Node_{n}_{c:08x}'
+            continue
+        m = re.fullmatch(SEH + r'push (0x[0-9a-f]+);call 0x([0-9a-f]+);add esp, 4;mov esi, eax;mov dword ptr \[ebp - 0x14\], esi;mov dword ptr \[ebp - 4\], 0;'
+                         r'mov dword ptr \[ebp - 0x18\], esi;test esi, esi;je 0x[0-9a-f]+;mov eax, dword ptr \[ebp \+ 0x10\];push eax;mov ecx, dword ptr \[ebp \+ 0xc\];push ecx;'
+                         r'mov edx, dword ptr \[ebp \+ 8\];push edx;mov ecx, esi;call 0x([0-9a-f]+);'
+                         r'mov dword ptr \[ebp - 4\], 0xffffffff;mov eax, esi;mov ecx, dword ptr \[ebp - 0xc\];mov dword ptr fs:\[0\], ecx;pop edi;pop esi;pop ebx;mov esp, ebp;pop ebp;ret 0xc(?:;.*)?', body)
+        if m and names.get(int(m[2], 16)) == 'operator_new' and node_ctor(int(m[3], 16), 'list'):  # std::list::_Buynode(next, prev, value)
+            names[a] = f'std::list::_Buynode_{int(m[1], 16)}_{a:08x}'
+            continue
+        m = re.match(SEH + r'push (0x[0-9a-f]+);call 0x([0-9a-f]+);add esp, 4;mov dword ptr \[ebp - 0x18\], eax;xor edx, edx;mov dword ptr \[ebp - 4\], edx;.*?'
+                     r'mov dword ptr \[ecx\], edx;mov dword ptr \[ebp - 4\], 0xffffffff;mov byte ptr \[eax \+ (0x[0-9a-f]+)\], bl;mov byte ptr \[eax \+ (0x[0-9a-f]+)\], dl;', body)
+        if m and names.get(int(m[2], 16)) == 'operator_new' and 'mov ebx, 1;' in body and int(m[4], 16) == int(m[3], 16) + 1:
+            names[a] = f'std::_Tree::_Buynode_head_{int(m[1], 16)}_{a:08x}'
+            continue
+        m = re.fullmatch(SEH + r'mov edi, ecx;mov dword ptr \[ebp - 0x18\], edi;mov esi, dword ptr \[ebp \+ 0xc\];mov dword ptr \[ebp - 0x14\], esi;mov dword ptr \[ebp - 4\], 0;'
+                         r'mov ebx, dword ptr \[ebp \+ 8\];cmp esi, dword ptr \[ebp \+ 0x10\];je 0x[0-9a-f]+;lea eax, \[esi \+ 8\];push eax;push ebx;mov ecx, edi;call 0x([0-9a-f]+);'
+                         r'mov esi, dword ptr \[esi\];mov dword ptr \[ebp \+ 0xc\], esi;jmp 0x[0-9a-f]+;(?:.*)', body)
+        if m and names.get(int(m[1], 16), '').startswith('std::list::_Insert'):
+            names[a] = f'std::list::insert_range_{a:08x}'
+            continue
+        # Scalar deleting destructor outside any vtable: destroy, then free
+        # when bit 0 of the flags argument is set; returns this.
+        m = re.fullmatch(r'push esi;mov esi, ecx;call 0x([0-9a-f]+);test byte ptr \[esp \+ 8\], 1;je 0x[0-9a-f]+;push esi;call 0x([0-9a-f]+);pop ecx;mov eax, esi;pop esi;ret 4', body)
+        if m and names.get(int(m[2], 16)) == 'operator_delete':
+            d = names.get(int(m[1], 16), '')
+            names[a] = f'{d.rsplit("::", 1)[0]}::deleting_dtor_{a:08x}' if re.fullmatch(r'(\w+)::~\1', d) else f'deleting_dtor_{a:08x}'
+    # Dynamic initializer of a global object: `mov ecx, object; call
+    # Class::Class; push destructor; call atexit; ret`. The registered
+    # function destroys that object at exit.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.match(r'mov ecx, 0x([0-9a-f]+);call 0x([0-9a-f]+);push 0x([0-9a-f]+);call 0x([0-9a-f]+);pop ecx;ret(?:;|$)', body)
+        if not m or names.get(int(m[4], 16)) != 'atexit': continue
+        g, c, d = (int(x, 16) for x in m.group(1, 2, 3))
+        cn = names.get(c, '')
+        if g not in objects or not re.fullmatch(r'(?:\w+::)*(\w+)::\1', cn): continue
+        names[a] = f'static_init_{objects[g][2:]}'
+        if d in text_of and generic.search(names.get(d, '_00000000')): names[d] = f'atexit_destroy_{objects[g][2:]}'
+    # std::list copy constructor: buys the head node (+4), clears the size
+    # (+8) and inserts right.begin()..right.end() (the argument's head at +4)
+    # at begin(); returns this.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        m = re.search(r';mov esi, ecx;mov dword ptr \[ebp - 0x14\], esi;call 0x([0-9a-f]+);mov dword ptr \[esi \+ 4\], eax;mov dword ptr \[esi \+ 8\], 0;'
+                      r'mov dword ptr \[ebp - 4\], 0;mov eax, dword ptr \[ebp \+ 8\];mov eax, dword ptr \[eax \+ 4\];.*;mov ecx, esi;call 0x([0-9a-f]+);'
+                      r'mov dword ptr \[ebp - 4\], 0xffffffff;mov eax, esi;.*;ret 4$', body)
+        if not m or not names.get(int(m[1], 16), '').startswith('std::list::_Buyheadnode') or body.count('call ') != 2: continue
+        names[a] = f'std::list::list_copy_{a:08x}'
+        c = int(m[2], 16)
+        if c in text_of and generic.search(names.get(c, '_00000000')): names[c] = f'std::list::insert_range_{c:08x}'
+    # Red-black tree rotations (node *where): _Lrotate takes the right
+    # child (+8) as pivot and moves its left child (+0) under where;
+    # _Rrotate mirrors it. The pivot's child is tested with its _Isnil byte.
+    # A list head node: operator new(N), then next (+0) and prev (+4) point
+    # to the node itself.
+    for a in sorted(text_of):
+        if a in known or not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        if re.match(r'mov edx, dword ptr \[esp \+ 4\];mov eax, dword ptr \[edx \+ 8\];push ebx;push esi;mov esi, dword ptr \[eax\];mov dword ptr \[edx \+ 8\], esi;'
+                    r'mov esi, dword ptr \[eax\];mov bl, byte ptr \[esi \+ 0x[0-9a-f]+\];test bl, bl;', body):
+            names[a] = f'std::_Tree::_Lrotate_{a:08x}'
+        elif re.match(r'mov edx, dword ptr \[esp \+ 4\];mov eax, dword ptr \[edx\];push ebx;push esi;mov esi, dword ptr \[eax \+ 8\];mov dword ptr \[edx\], esi;'
+                      r'mov esi, dword ptr \[eax \+ 8\];mov bl, byte ptr \[esi \+ 0x[0-9a-f]+\];test bl, bl;', body):
+            names[a] = f'std::_Tree::_Rrotate_{a:08x}'
+        elif (m := re.fullmatch(SEH + r'push (0x[0-9a-f]+);call 0x([0-9a-f]+);add esp, 4;mov dword ptr \[ebp - 0x14\], eax;mov dword ptr \[ebp - 4\], 0;'
+                                r'mov dword ptr \[ebp - 0x18\], eax;mov dword ptr \[ebp - 0x1c\], eax;test eax, eax;je 0x[0-9a-f]+;mov dword ptr \[eax\], eax;'
+                                r'mov dword ptr \[ebp - 0x20\], 1;lea ecx, \[eax \+ 4\];mov dword ptr \[ebp - 0x24\], ecx;mov dword ptr \[ebp - 0x28\], ecx;test ecx, ecx;'
+                                r'je 0x[0-9a-f]+;mov dword ptr \[ecx\], eax;mov dword ptr \[ebp - 4\], 0xffffffff;.*', body)) and names.get(int(m[2], 16)) == 'operator_new':
+            names[a] = f'std::list::_Buyheadnode_{int(m[1], 16)}_{a:08x}'
+    # This-adjusting thunks of secondary vtables: `sub ecx, N; jmp method`.
+    for a in sorted(text_of):
+        if not generic.search(names.get(a, '_00000000')): continue
+        body = ';'.join(x[1] for x in INSN.findall(text_of[a]))
+        if m := re.fullmatch(r'sub ecx, (0x[0-9a-f]+|\d+);jmp 0x([0-9a-f]+)', body):
+            t = int(m.group(2), 16); tn = re.sub(r'_[0-9a-f]{8}$', '', names.get(t, f'sub_{t:08x}'))
+            names[a] = f'{tn}_adjustor{int(m.group(1), 0)}_{a:08x}'
+    # Static RuntimeClass objects of the menu (meme) classes: the dynamic
+    # initializer constructs the global with the class name and registers its
+    # destructor with atexit.
+    rtc = {t for t, n in names.items() if n == 'RuntimeClass::RuntimeClass'}
+    for a in by_address:
+        if not generic.search(names.get(a, '_00000000')) or not rtc: continue
+        ins = insns_of(a)
+        if len(ins) > 14: continue
+        g = None
+        for i in ins:
+            if m := re.fullmatch(r'mov ecx, (0x[0-9a-f]+)', f'{i.mnemonic} {i.op_str}'): g = int(m.group(1), 16)
+            elif i.mnemonic == 'call' and i.operands[0].type == 2 and i.operands[0].imm in rtc: break
+        else:
+            continue
+        gname = objects.get(g) or pointers.get(g)
+        if gname and gname.startswith('g_'): names[a] = f'static_init_{gname[2:]}'
+    # Virtual methods whose entry lies inside another indexed function (the
+    # index merged them, e.g. a two-instruction constructor followed by the
+    # class's execute): noted at the entry instruction and in the header.
+    starts = sorted(text_of)
+    inner = collections.defaultdict(lambda: collections.defaultdict(set))  # function: {entry: {labels}}
+    for vt, c in vtables.items():
+        k = 0
+        while lo <= im.dword(vt + 4 * k) < hi and (k == 0 or vt + 4 * k not in vtables):
+            f = im.dword(vt + 4 * k)
+            i = bisect.bisect_right(starts, f) - 1
+            if f not in text_of and i >= 0:
+                ms = {method(t) for t in family.get((introducers[(c, k)][0], k), ())} - {None} if (c, k) in introducers else set()
+                if (c, k) in introducers and (introducers[(c, k)][0], k) in SLOT_NAMES: ms = {SLOT_NAMES[(introducers[(c, k)][0], k)]}
+                inner[starts[i]][f].add(f'{short(c, commands)}::' + (ms.pop() if len(ms) == 1 else f'vf{k}'))
+            k += 1
     files = collections.defaultdict(list); spelled = {}
     for e in sorted(entries, key=lambda e: int(e['address'], 16)):
         dir_, name, cls, how = home[int(e['address'], 16)]
         rel = '/'.join(safe(p) for p in dir_.split('/')) + '/' + safe(name)
         rel = spelled.setdefault(rel.lower(), rel)  # Windows paths ignore case
         files[rel].append((e, cls, how))
-    out = {}
-    index = ['address\tfile\tclass\tevidence\tstrings']
+    interfaces = known_names.INTERFACES.get(target, {})  # COM interfaces (Direct3D)
+    out = {}; stacked = 0; fielded = 0
+    index = ['address\tfile\tname\tclass\tevidence\tstrings\tcommand']
     for rel, items in files.items():
         for part in range(0, len(items), MAX_PER_FILE):
             name = rel + (f'_{part // MAX_PER_FILE + 1}' if part else '') + '.c'
             body = [HEADER]
             for e, cls, how in items[part:part + MAX_PER_FILE]:
-                strs = strings_used(im, md, e)
-                note = f'/* {e["address"]}' + (f'  {cls}' if cls else '') + f'  ({how})'
-                if strs: note += '\n * strings: ' + ', '.join(f'"{s}"' for s in strs)
-                body += ['', note + ' */', texts[e['symbol']]]
-                index.append('\t'.join([e['address'], name, cls, how, ' | '.join(strs).replace('\t', ' ')]))
+                a = int(e['address'], 16); s = strs[e['address']]
+                cls = classes.get(a, cls)
+                note = [f' {e["address"]}  {names[a]}  ({how})']
+                if a in known: note.append(' * identified: ' + known[a][1])
+                if a in overrides: note.append(' * overrides: ' + overrides[a])
+                if cls: note.append(' * class: ' + cls + (f'  (console command "{commands[cls]}")' if cls in commands else ''))
+                if s: note.append(' * strings: ' + ', '.join(f'"{x}"' for x in s))
+                for f, ls in sorted(inner.get(a, {}).items()):
+                    note.append(f' * also entered at {f:08x}: ' + ', '.join(sorted(ls)[:4]) + (f' (+{len(ls) - 4} more)' if len(ls) > 4 else ''))
+                by = sorted(callers[a])
+                if by: note.append(' * called by: ' + ', '.join(names.get(c, f'{c:08x}') for c in by[:6]) + (f' (+{len(by) - 6} more)' if len(by) > 6 else ''))
+                insns = list(md.disasm(bytes.fromhex(e['native_body']), a))
+                extra = stack_vars(insns, pops)
+                stacked += bool(extra)
+                more = field_notes(a, cls); fielded += bool(more)
+                for k, v in binding_notes.get(a, {}).items(): more[k] = v
+                for f, ls in sorted(inner.get(a, {}).items()):
+                    more[f'{f:08x}'] = more.get(f'{f:08x}', []) + ['entry of ' + ', '.join(sorted(ls)[:4]) + (f' (+{len(ls) - 4} more)' if len(ls) > 4 else '')]
+                for k, v in interface_notes(insns, interfaces).items(): more[k] = more.get(k, []) + v
+                extra = {k: extra.get(k, []) + more.get(k, []) for k in set(extra) | set(more)}
+                body += ['', '/*' + clean('\n'.join(note)) + '\n */', annotate(texts[e['symbol']], label, extra)]
+                index.append('\t'.join([e['address'], name, names[a], cls, how, ' | '.join(s).replace('\t', ' '), commands.get(cls, '')]))
             out[name] = '\n'.join(body)
     for old in folder.rglob('*.c'): old.unlink()
     for d in sorted((p for p in folder.rglob('*') if p.is_dir()), key=lambda p: -len(p.parts)):
@@ -233,26 +2769,72 @@ def layout(target, image, folder):
         path = folder / name; path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(src, encoding='utf-8', newline='\n')
     (folder / 'INDEX.tsv').write_text('\n'.join(index) + '\n', encoding='utf-8', newline='\n')
-    if split_texts(folder) != texts: raise SystemExit(f'{target}: sorted texts differ; restore lifted/ from git')
+    after = split_texts(folder)
+    if len(after) != len(entries) or any(edited(e, after.get(e['symbol'], '')) for e in entries):
+        raise SystemExit(f'{target}: sorted code differs; restore lifted/ from git')
+    (folder / 'catalog.json').write_text(json.dumps(catalog, indent=1) + '\n')
     console_commands(folder)
+    class_table(im, folder)
+    print(f'{target}: {settings_guide(folder)} settings in SETTINGS.md')
+    rows = ['object\toffset\tkind\tcommands']
+    rows += sorted(f'{game_names.describe(o, ids, names, objects | pointers)}\t0x{off:x}\tfield\t' + ' '.join(sorted(c)) for (o, off), c in fields.items())
+    rows += sorted(f'{game_names.describe(o, ids, names, objects | pointers)}\t0x{off:x}\tvf{off // 4}\t' + ' '.join(sorted(c)) for (o, off), c in methods.items())
+    rows += sorted(set(binding_rows))
+    (folder / 'FIELDS.tsv').write_text('\n'.join(rows) + '\n', encoding='utf-8', newline='\n')
+    print(f'{target}: {len(category)} of {len(ctor_of)} console commands with a category; {len(ids)} class IDs; '
+          f'{len(fields)} fields and {len(methods)} methods named, used in {fielded} functions; '
+          f'{adopted} functions adopted as methods by `this`, {accessors} field accessors, {len(forwarders)} forwarders, {len(shaped)} small bodies named by shape, {typegetters} type-registry getters, {inherited} virtual methods named after their slot, {interfaced} interface methods named by console commands, {commanded} functions named by the command that calls them, {learned} fields named by their command accessors, {marked} methods named by their debug markers, {tied} global pointers named by their class, {len(helpers)} helpers named after their caller, {bound} menu data bindings')
+    print(f'{target}: stack variables named in {stacked} of {len(entries)} functions; '
+          f'{sum(n.split("::")[-1].startswith("~") for n in names.values())} destructors, '
+          f'{sum(n.split("::")[0] == n.split("::")[-1] for n in names.values() if "::" in n)} constructors, '
+          f'{len(objects)} global objects, {len(pointers)} named global pointers and settings')
     return collections.Counter(home[int(e['address'], 16)][3] for e in entries), len(out)
+
+
+def class_table(im, folder):
+    """CLASSES.tsv: every RTTI class, its primary vtable, the number of entries
+    in that vtable and its bases at offset 0 of the object, nearest first.
+    comment_l2.py reads it to give subclasses their bases' names.
+    VTABLES.tsv: the function in each slot of those vtables (tools/slot_names.py)."""
+    bases = game_names.class_bases(im)
+    _, vtables = rtti_classes(im)
+    text = im.sections['.text']
+    table = {}
+    for vt, cls in vtables.items():
+        n = 0
+        while text[0] <= im.dword(vt + 4 * n) < text[1]: n += 1
+        table.setdefault(cls, (vt, n))
+    rows = ['class\tvtable\tmethods\tbases']
+    slots = ['class\tslot\tfunction']
+    for cls in sorted(set(bases) | set(table)):
+        vt, n = table.get(cls, (None, 0))
+        up = sorted(bases.get(cls, set()) - {cls}, key=lambda b: (-len(bases.get(b, ())), b))
+        rows.append(f'{cls}\t{vt:08x}\t{n}\t' if vt else f'{cls}\t\t\t')
+        rows[-1] += '; '.join(up)
+        slots += [f'{cls}\t{k}\t{im.dword(vt + 4 * k):08x}' for k in range(n)]
+    (folder / 'CLASSES.tsv').write_text('\n'.join(rows) + '\n', encoding='utf-8', newline='\n')
+    (folder / 'VTABLES.tsv').write_text('\n'.join(slots) + '\n', encoding='utf-8', newline='\n')
+    return len(rows) - 1
 
 
 def console_commands(folder):
     """CONSOLE.tsv from INDEX.tsv: every console command class (an anonymous
     ConsoleClassN), its name and types from the constructor's strings, and the
     virtual methods that run it."""
-    rows = [line.split('\t') for line in (folder / 'INDEX.tsv').read_text(encoding='utf-8').splitlines()[1:]]
+    lines = (folder / 'INDEX.tsv').read_text(encoding='utf-8').splitlines()
+    head = lines[0].split('\t')
+    rows = [dict(zip(head, line.split('\t'))) for line in lines[1:]]
     classes = collections.defaultdict(lambda: dict(ctor=[], methods=[]))
-    for address, file, cls, how, strs in rows:
+    for r in rows:
+        address, file, cls, how, strs = r['address'], r['file'], r['class'], r['evidence'], r['strings']
         if '::ConsoleClass' not in cls: continue
         c = classes[cls]; c['file'] = file
-        if how == 'vtable store' and strs: c['ctor'].append((address, strs.split(' | ')))
+        if how == 'vtable store' and strs: c['ctor'].append((address, strs.split(' | '))); c['full'] = r.get('command') or ''
         elif how == 'virtual method': c['methods'].append(address)
     # The game function a command reaches: a direct call from its handlers that
     # is not shared helper code (argument parsing, strings) used by many commands.
     texts = {k.rsplit('_', 1)[1]: v for k, v in split_texts(folder).items()}
-    calls = {a: set(re.findall(r'^    /\* [0-9a-f]{8}  call 0x([0-9a-f]+) \*/', texts.get(a, ''), re.M))
+    calls = {a: set(re.findall(r'^    /\* [0-9a-f]{8}  call 0x([0-9a-f]+)(?:  ; .*?)? \*/', texts.get(a, ''), re.M))
              for c in classes.values() for a in c['methods']}
     users = collections.Counter(t for cls, c in classes.items() for t in set().union(*[calls[a] for a in c['methods']]))
     out = ['command\ttypes\tfile\tclass\tconstructor\thandlers\tcalls']
@@ -260,11 +2842,55 @@ def console_commands(folder):
         if not c['ctor']: continue
         address, strs = c['ctor'][0]
         reach = sorted(f'{int(t, 16):08x}' for t in set().union(*[calls[a] for a in c['methods']]) if users[t] <= 8)
-        out.append('\t'.join([strs[0], ' '.join(s for s in strs[1:] if s != 'std::string'), c['file'], cls, address,
+        out.append('\t'.join([c.get('full') or strs[0], ' '.join(s for s in strs[1:] if s != 'std::string'), c['file'], cls, address,
                               ' '.join(c['methods']), ' '.join(reach)]))
     out[1:] = sorted(out[1:], key=str.lower)
     (folder / 'CONSOLE.tsv').write_text('\n'.join(out) + '\n', encoding='utf-8', newline='\n')
     return len(out) - 1
+
+
+def settings_guide(folder):
+    """SETTINGS.md from the sorted code: for every console setting
+    (ObjectTemplate.fireDelay, Game.gamePlayMode, ...) the functions whose
+    code reads or writes it, from the `; field` notes, so a modder can go from
+    a setting in the .con scripts to the code that uses it."""
+    head = re.compile(r'^/\* ([0-9a-f]{8})  (\S+)  \(')
+    note = re.compile(r'^    /\* ([0-9a-f]{8})  (\w+) ([^;]*?)  ; .*?\bfield ([\w./]+)')
+    uses = collections.defaultdict(dict)  # setting: {function address: [name, file:line, reads, writes]}
+    for path in sorted(folder.rglob('*.c')):
+        rel = path.relative_to(folder).as_posix(); fn = None
+        for k, line in enumerate(path.read_text(encoding='utf-8').splitlines(), 1):
+            if m := head.match(line): fn = (m.group(1), m.group(2), f'{rel}:{k}'); continue
+            m = note.match(line)
+            if not m or not fn: continue
+            write = m.group(2) in ('mov', 'fstp', 'fst', 'fistp', 'fist', 'inc', 'dec', 'add', 'sub', 'or', 'and', 'xor', 'neg', 'not', 'xchg')                 and 'ptr [' in m.group(3).split(',')[0]
+            for st in m.group(4).split('/'):
+                if '.' not in st: continue
+                u = uses[st].setdefault(fn[0], [fn[1], fn[2], 0, 0]); u[3 if write else 2] += 1
+    out = ['# Settings and the code that uses them', '',
+           'Generated by `tools/sort_lifted.py`; do not edit. Each setting is a console',
+           'command the game scripts (`.con` files) use. Listed under it are the',
+           'functions whose code reads (r) or writes (w) the field that holds it,',
+           'with the file and line of the function in this folder. The command',
+           'handlers themselves (`console_*.c`) are left out. To change how a setting',
+           'behaves, edit one of these functions and rebuild (`tools/build.py`).',
+           'Notes are evidence-based: a setting copied into an object by its',
+           'constructor is followed to that object field.', '']
+    by_cat = collections.defaultdict(list)
+    for st in uses: by_cat[st.split('.')[0]].append(st)
+    for cat in sorted(by_cat, key=str.lower):
+        rows = []
+        for st in sorted(by_cat[cat], key=str.lower):
+            fs = [u for u in uses[st].values() if '/console_' not in '/' + u[1]]
+            if not fs: continue
+            fs.sort(key=lambda u: (u[1].split(':')[0], u[0]))
+            rows.append(f'### {st}')
+            rows += [f'- `{u[0]}` [{u[1]}]({u[1].replace(":", "#L")}) ' + ('r' if u[2] else '') + ('w' if u[3] else '') for u in fs[:30]]
+            if len(fs) > 30: rows.append(f'- ... {len(fs) - 30} more')
+            rows.append('')
+        if rows: out += [f'## {cat}', ''] + rows
+    (folder / 'SETTINGS.md').write_text('\n'.join(out) + '\n', encoding='utf-8', newline='\n')
+    return sum(1 for l in out if l.startswith('### '))
 
 
 def main():
@@ -273,12 +2899,15 @@ def main():
     p.add_argument('--target', choices=['client', 'server', 'both'], default='both')
     p.add_argument('--lifted', type=Path, default=PROJECT / 'lifted')
     p.add_argument('--console-only', action='store_true', help='only rewrite CONSOLE.tsv from INDEX.tsv')
+    p.add_argument('--classes-only', action='store_true', help='only rewrite CLASSES.tsv from the executable')
     args = p.parse_args()
     for target in ['client', 'server'] if args.target == 'both' else [args.target]:
         if args.console_only:
             print(f'{target}: {console_commands(args.lifted / target)} console commands'); continue
         spec = TARGETS[target]; image = (args.game_dir / spec['file']).read_bytes()
         assert hashlib.sha256(image).hexdigest() == spec['sha']
+        if args.classes_only:
+            print(f'{target}: {class_table(Image(image), args.lifted / target)} classes in CLASSES.tsv'); continue
         counts, n = layout(target, image, args.lifted / target)
         print(f'{target}: {sum(counts.values())} functions in {n} files; {dict(counts.most_common())}')
 

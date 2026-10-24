@@ -5,7 +5,97 @@
 #include "l1.h"
 
 
-/* 005aa340  dice::ref2::world::PlayerControlObjectNetworkable  (virtual method) */
+/* 00511cb0  PlayerControlObjectNetworkable::PlayerControlObjectNetworkable  (vtable store)
+ * class: dice::ref2::world::PlayerControlObjectNetworkable
+ */
+BFV_L1_ENTRY(bfv_server_l1_00511cb0, bfv_server_l1_body_00511cb0);
+void bfv_server_l1_body_00511cb0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t r, ea;
+    /* 00511cb0  mov eax, ecx */
+    eax = ecx;
+    /* 00511cb2  xor ecx, ecx */
+    r = 0;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 00511cb4  mov dword ptr [eax + 0x1c], ecx */
+    ea = (uint32_t)(eax + 0x0000001cu);
+    M32(ea) = ecx;
+    /* 00511cb7  mov edx, 1 */
+    edx = 0x1u;
+    /* 00511cbc  mov byte ptr [eax + 0x21], dl */
+    ea = (uint32_t)(eax + 0x00000021u);
+    M8(ea) = LO8(edx);
+    /* 00511cbf  mov byte ptr [eax + 0xc], dl */
+    ea = (uint32_t)(eax + 0x0000000cu);
+    M8(ea) = LO8(edx);
+    /* 00511cc2  mov dword ptr [eax + 0x28], ecx */
+    ea = (uint32_t)(eax + 0x00000028u);
+    M32(ea) = ecx;
+    /* 00511cc5  mov dword ptr [eax + 0x2c], ecx */
+    ea = (uint32_t)(eax + 0x0000002cu);
+    M32(ea) = ecx;
+    /* 00511cc8  mov dword ptr [eax + 0x30], ecx */
+    ea = (uint32_t)(eax + 0x00000030u);
+    M32(ea) = ecx;
+    /* 00511ccb  mov dword ptr [eax + 0x10], 0x3f800000  ; 1.0f */
+    ea = (uint32_t)(eax + 0x00000010u);
+    M32(ea) = 0x3f800000u;
+    /* 00511cd2  mov byte ptr [eax + 0x14], dl */
+    ea = (uint32_t)(eax + 0x00000014u);
+    M8(ea) = LO8(edx);
+    /* 00511cd5  mov word ptr [eax + 4], cx */
+    ea = (uint32_t)(eax + 0x00000004u);
+    M16(ea) = LO16(ecx);
+    /* 00511cd9  mov dword ptr [eax + 8], ecx */
+    ea = (uint32_t)(eax + 0x00000008u);
+    M32(ea) = ecx;
+    /* 00511cdc  mov dword ptr [eax + 0x18], ecx */
+    ea = (uint32_t)(eax + 0x00000018u);
+    M32(ea) = ecx;
+    /* 00511cdf  mov dword ptr [eax + 0x38], 0x8285a4  ; vtable NetworkableObjectBase */
+    ea = (uint32_t)(eax + 0x00000038u);
+    M32(ea) = 0x8285a4u;
+    /* 00511ce6  mov dword ptr [eax + 0x40], ecx */
+    ea = (uint32_t)(eax + 0x00000040u);
+    M32(ea) = ecx;
+    /* 00511ce9  mov dword ptr [eax + 0x3c], 0xffffffff */
+    ea = (uint32_t)(eax + 0x0000003cu);
+    M32(ea) = 0xffffffffu;
+    /* 00511cf0  mov byte ptr [eax + 0x44], cl */
+    ea = (uint32_t)(eax + 0x00000044u);
+    M8(ea) = LO8(ecx);
+    /* 00511cf3  mov dword ptr [eax + 0x48], 0xffffffff */
+    ea = (uint32_t)(eax + 0x00000048u);
+    M32(ea) = 0xffffffffu;
+    /* 00511cfa  mov dword ptr [eax], 0x828784  ; vtable PlayerControlObjectNetworkable */
+    ea = (uint32_t)(eax);
+    M32(ea) = 0x828784u;
+    /* 00511d00  mov dword ptr [eax + 0x38], 0x82876c */
+    ea = (uint32_t)(eax + 0x00000038u);
+    M32(ea) = 0x82876cu;
+    /* 00511d07  mov dword ptr [eax + 0x4c], edx */
+    ea = (uint32_t)(eax + 0x0000004cu);
+    M32(ea) = edx;
+    /* 00511d0a  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 005aa340  PlayerControlObjectNetworkable::attachToObject  (virtual method)
+ * overrides: NetworkableBase::attachToObject  (17 classes implement it)
+ * class: dice::ref2::world::PlayerControlObjectNetworkable
+ */
 BFV_L1_ENTRY(bfv_server_l1_005aa340, bfv_server_l1_body_005aa340);
 BFV_L1_RESUME(bfv_server_l1r_005aa340_1, bfv_server_l1_body_005aa340, 1);
 void bfv_server_l1_body_005aa340(struct bfv_cpu *c)
@@ -19,7 +109,7 @@ void bfv_server_l1_body_005aa340(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005aa340  mov eax, dword ptr [esp + 4] */
+    /* 005aa340  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005aa344  push esi */
@@ -34,14 +124,14 @@ void bfv_server_l1_body_005aa340(struct bfv_cpu *c)
     /* 005aa349  mov dword ptr [esi + 0x40], eax */
     ea = (uint32_t)(esi + 0x00000040u);
     M32(ea) = eax;
-    /* 005aa34c  mov eax, dword ptr [0x85a684] */
+    /* 005aa34c  mov eax, dword ptr [0x85a684]  ; interfaceID(BFSoldierNetworkable|SimpleObjectNetworkable) */
     ea = (uint32_t)(0x0085a684u);
     eax = M32(ea);
     /* 005aa351  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005aa352  call dword ptr [edx + 0xc] */
+    /* 005aa352  call dword ptr [edx + 0xc]  ; -> PlayerControlObjectNetworkable::vf3 = SimpleObjectNetworkable::queryInterface */
     ea = (uint32_t)(edx + 0x0000000cu);
     t = M32(ea);
     esp -= 4;

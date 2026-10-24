@@ -5,7 +5,226 @@
 #include "l1.h"
 
 
-/* 008cf770  dice::ref2::io::BufferedStream  (virtual method) */
+/* 008cf6e0  BufferedStream::~BufferedStream  (vtable store)
+ * class: dice::ref2::io::BufferedStream
+ */
+BFV_L1_ENTRY(bfv_client_l1_008cf6e0, bfv_client_l1_body_008cf6e0);
+BFV_L1_RESUME(bfv_client_l1r_008cf6e0_1, bfv_client_l1_body_008cf6e0, 1);
+BFV_L1_RESUME(bfv_client_l1r_008cf6e0_2, bfv_client_l1_body_008cf6e0, 2);
+BFV_L1_RESUME(bfv_client_l1r_008cf6e0_3, bfv_client_l1_body_008cf6e0, 3);
+BFV_L1_RESUME(bfv_client_l1r_008cf6e0_4, bfv_client_l1_body_008cf6e0, 4);
+BFV_L1_RESUME(bfv_client_l1r_008cf6e0_5, bfv_client_l1_body_008cf6e0, 5);
+BFV_L1_RESUME(bfv_client_l1r_008cf6e0_6, bfv_client_l1_body_008cf6e0, 6);
+void bfv_client_l1_body_008cf6e0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    case 3: goto R_3;
+    case 4: goto R_4;
+    case 5: goto R_5;
+    case 6: goto R_6;
+    default: break;
+    }
+    /* 008cf6e0  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008cf6e1  mov esi, ecx */
+    esi = ecx;
+    /* 008cf6e3  mov eax, dword ptr [esi + 0x30] */
+    ea = (uint32_t)(esi + 0x00000030u);
+    eax = M32(ea);
+    /* 008cf6e6  test eax, eax */
+    r = (eax & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 008cf6e8  mov dword ptr [esi], 0xbe0344  ; vtable BufferedStream */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0xbe0344u;
+    /* 008cf6ee  mov dword ptr [esi + 4], 0xbe0304 */
+    ea = (uint32_t)(esi + 0x00000004u);
+    M32(ea) = 0xbe0304u;
+    /* 008cf6f5  mov dword ptr [esi + 8], 0xbe02c4 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M32(ea) = 0xbe02c4u;
+    /* 008cf6fc  jbe 0x8cf712 */
+    if ((cf | zf)) goto L_008cf712;
+    /* 008cf6fe  mov ecx, dword ptr [esi + 0x10] */
+    ea = (uint32_t)(esi + 0x00000010u);
+    ecx = M32(ea);
+    /* 008cf701  mov edx, dword ptr [ecx] */
+    ea = (uint32_t)(ecx);
+    edx = M32(ea);
+    /* 008cf703  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008cf704  mov eax, dword ptr [esi + 0x38] */
+    ea = (uint32_t)(esi + 0x00000038u);
+    eax = M32(ea);
+    /* 008cf707  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008cf708  call dword ptr [edx + 0x14] */
+    ea = (uint32_t)(edx + 0x00000014u);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008cf6e0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 008cf70b  mov dword ptr [esi + 0x30], 0 */
+    ea = (uint32_t)(esi + 0x00000030u);
+    M32(ea) = 0x0u;
+L_008cf712:
+    /* 008cf712  mov eax, dword ptr [esi + 0x38] */
+    ea = (uint32_t)(esi + 0x00000038u);
+    eax = M32(ea);
+    /* 008cf715  test eax, eax */
+    r = (eax & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 008cf717  je 0x8cf722 */
+    if (zf) goto L_008cf722;
+    /* 008cf719  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008cf71a  call 0x403680  ; operator_delete */
+    t = 0x00403680u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008cf6e0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 008cf71f  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+L_008cf722:
+    /* 008cf722  mov eax, dword ptr [esi + 0x28] */
+    ea = (uint32_t)(esi + 0x00000028u);
+    eax = M32(ea);
+    /* 008cf725  test eax, eax */
+    r = (eax & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 008cf727  je 0x8cf732 */
+    if (zf) goto L_008cf732;
+    /* 008cf729  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008cf72a  call 0x403680  ; operator_delete */
+    t = 0x00403680u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008cf6e0_3;
+    c->eip = t;
+    goto out;
+R_3:
+    /* 008cf72f  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+L_008cf732:
+    /* 008cf732  mov ecx, dword ptr [esi + 0x18] */
+    ea = (uint32_t)(esi + 0x00000018u);
+    ecx = M32(ea);
+    /* 008cf735  test ecx, ecx */
+    r = (ecx & ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 008cf737  je 0x8cf73e */
+    if (zf) goto L_008cf73e;
+    /* 008cf739  mov edx, dword ptr [ecx] */
+    ea = (uint32_t)(ecx);
+    edx = M32(ea);
+    /* 008cf73b  call dword ptr [edx + 8] */
+    ea = (uint32_t)(edx + 0x00000008u);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008cf6e0_4;
+    c->eip = t;
+    goto out;
+R_4:
+L_008cf73e:
+    /* 008cf73e  mov ecx, dword ptr [esi + 0x14] */
+    ea = (uint32_t)(esi + 0x00000014u);
+    ecx = M32(ea);
+    /* 008cf741  test ecx, ecx */
+    r = (ecx & ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 008cf743  je 0x8cf74a */
+    if (zf) goto L_008cf74a;
+    /* 008cf745  mov eax, dword ptr [ecx] */
+    ea = (uint32_t)(ecx);
+    eax = M32(ea);
+    /* 008cf747  call dword ptr [eax + 8] */
+    ea = (uint32_t)(eax + 0x00000008u);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008cf6e0_5;
+    c->eip = t;
+    goto out;
+R_5:
+L_008cf74a:
+    /* 008cf74a  mov ecx, dword ptr [esi + 0x10] */
+    ea = (uint32_t)(esi + 0x00000010u);
+    ecx = M32(ea);
+    /* 008cf74d  test ecx, ecx */
+    r = (ecx & ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 008cf74f  je 0x8cf756 */
+    if (zf) goto L_008cf756;
+    /* 008cf751  mov edx, dword ptr [ecx] */
+    ea = (uint32_t)(ecx);
+    edx = M32(ea);
+    /* 008cf753  call dword ptr [edx + 8] */
+    ea = (uint32_t)(edx + 0x00000008u);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008cf6e0_6;
+    c->eip = t;
+    goto out;
+R_6:
+L_008cf756:
+    /* 008cf756  mov eax, 0xb4274c  ; vtable IBase */
+    eax = 0xb4274cu;
+    /* 008cf75b  mov dword ptr [esi + 8], eax */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M32(ea) = eax;
+    /* 008cf75e  mov dword ptr [esi + 4], eax */
+    ea = (uint32_t)(esi + 0x00000004u);
+    M32(ea) = eax;
+    /* 008cf761  mov dword ptr [esi], eax */
+    ea = (uint32_t)(esi);
+    M32(ea) = eax;
+    /* 008cf763  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 008cf764  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 008cf770  BufferedStream::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::io::BufferedStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf770, bfv_client_l1_body_008cf770);
 void bfv_client_l1_body_008cf770(struct bfv_cpu *c)
 {
@@ -14,12 +233,12 @@ void bfv_client_l1_body_008cf770(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 008cf770  mov edx, dword ptr [0xb42718] */
+    /* 008cf770  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 008cf776  mov eax, ecx */
     eax = ecx;
-    /* 008cf778  mov ecx, dword ptr [esp + 4] */
+    /* 008cf778  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008cf77c  cmp ecx, edx */
@@ -37,7 +256,7 @@ void bfv_client_l1_body_008cf770(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008cf786  je 0x8cf7b6 */
     if (zf) goto L_008cf7b6;
-    /* 008cf788  cmp ecx, dword ptr [0xbdafd0] */
+    /* 008cf788  cmp ecx, dword ptr [0xbdafd0]  ; interfaceID(BufferedStream) */
     ea = (uint32_t)(0x00bdafd0u);
     a = ecx;
     b = M32(ea);
@@ -45,7 +264,7 @@ void bfv_client_l1_body_008cf770(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008cf78e  je 0x8cf7b6 */
     if (zf) goto L_008cf7b6;
-    /* 008cf790  cmp ecx, dword ptr [0xbdafb4] */
+    /* 008cf790  cmp ecx, dword ptr [0xbdafb4]  ; interfaceID(BufferedStream|MemStream|Win32FileStream) */
     ea = (uint32_t)(0x00bdafb4u);
     a = ecx;
     b = M32(ea);
@@ -69,7 +288,7 @@ void bfv_client_l1_body_008cf770(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_008cf7a2:
-    /* 008cf7a2  cmp ecx, dword ptr [0xbdafb8] */
+    /* 008cf7a2  cmp ecx, dword ptr [0xbdafb8]  ; interfaceID(BufferedStream|MemStream|Win32FileStream) */
     ea = (uint32_t)(0x00bdafb8u);
     a = ecx;
     b = M32(ea);
@@ -109,7 +328,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cf7c0  (between same file) */
+/* 008cf7c0  BufferedStream::deleting_dtor_adjustor4_008cf7c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf7c0, bfv_client_l1_body_008cf7c0);
 void bfv_client_l1_body_008cf7c0(struct bfv_cpu *c)
 {
@@ -124,7 +344,7 @@ void bfv_client_l1_body_008cf7c0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 008cf7c3  jmp 0x8cfac0 */
+    /* 008cf7c3  jmp 0x8cfac0  ; BufferedStream::deleting_dtor */
     c->eip = 0x008cfac0u;
     goto out;
 out: __attribute__((unused));
@@ -134,7 +354,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cf7d0  (between same file) */
+/* 008cf7d0  BufferedStream::queryInterface_adjustor4_008cf7d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf7d0, bfv_client_l1_body_008cf7d0);
 void bfv_client_l1_body_008cf7d0(struct bfv_cpu *c)
 {
@@ -149,7 +370,7 @@ void bfv_client_l1_body_008cf7d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 008cf7d3  jmp 0x8cf770 */
+    /* 008cf7d3  jmp 0x8cf770  ; BufferedStream::queryInterface */
     c->eip = 0x008cf770u;
     goto out;
 out: __attribute__((unused));
@@ -159,7 +380,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cf7e0  (between same file) */
+/* 008cf7e0  BufferedStream::deleting_dtor_adjustor8_008cf7e0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf7e0, bfv_client_l1_body_008cf7e0);
 void bfv_client_l1_body_008cf7e0(struct bfv_cpu *c)
 {
@@ -174,7 +396,7 @@ void bfv_client_l1_body_008cf7e0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 008cf7e3  jmp 0x8cfac0 */
+    /* 008cf7e3  jmp 0x8cfac0  ; BufferedStream::deleting_dtor */
     c->eip = 0x008cfac0u;
     goto out;
 out: __attribute__((unused));
@@ -184,7 +406,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cf7f0  (between same file) */
+/* 008cf7f0  BufferedStream::queryInterface_adjustor8_008cf7f0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf7f0, bfv_client_l1_body_008cf7f0);
 void bfv_client_l1_body_008cf7f0(struct bfv_cpu *c)
 {
@@ -199,7 +422,7 @@ void bfv_client_l1_body_008cf7f0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 008cf7f3  jmp 0x8cf770 */
+    /* 008cf7f3  jmp 0x8cf770  ; BufferedStream::queryInterface */
     c->eip = 0x008cf770u;
     goto out;
 out: __attribute__((unused));
@@ -209,7 +432,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008cf800  dice::ref2::io::BufferedStream  (virtual method) */
+/* 008cf800  BufferedStream::vf5  (virtual method)
+ * class: dice::ref2::io::BufferedStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf800, bfv_client_l1_body_008cf800);
 BFV_L1_RESUME(bfv_client_l1r_008cf800_1, bfv_client_l1_body_008cf800, 1);
 BFV_L1_RESUME(bfv_client_l1r_008cf800_2, bfv_client_l1_body_008cf800, 2);
@@ -243,7 +468,7 @@ void bfv_client_l1_body_008cf800(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 008cf80a  mov ebp, dword ptr [esp + 0x10] */
+    /* 008cf80a  mov ebp, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 008cf80e  cmp ebp, ecx */
@@ -290,7 +515,7 @@ L_008cf82a:
     /* 008cf82a  mov ecx, dword ptr [ebx + 0x10] */
     ea = (uint32_t)(ebx + 0x00000010u);
     ecx = M32(ea);
-    /* 008cf82d  mov eax, dword ptr [esp + 0xc] */
+    /* 008cf82d  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 008cf831  mov edx, dword ptr [ecx] */
@@ -375,7 +600,7 @@ L_008cf85c:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008cf860  mov esi, dword ptr [esp + 0x10] */
+    /* 008cf860  mov esi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 008cf864  push edi */
@@ -466,7 +691,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008cf890  dice::ref2::io::BufferedStream  (virtual method) */
+/* 008cf890  BufferedStream::vf6  (virtual method)
+ * class: dice::ref2::io::BufferedStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf890, bfv_client_l1_body_008cf890);
 BFV_L1_RESUME(bfv_client_l1r_008cf890_1, bfv_client_l1_body_008cf890, 1);
 BFV_L1_RESUME(bfv_client_l1r_008cf890_2, bfv_client_l1_body_008cf890, 2);
@@ -531,7 +758,7 @@ L_008cf8ae:
     /* 008cf8b1  mov edx, dword ptr [esi + 0x20] */
     ea = (uint32_t)(esi + 0x00000020u);
     edx = M32(ea);
-    /* 008cf8b4  mov eax, dword ptr [esp + 8] */
+    /* 008cf8b4  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008cf8b8  sub edx, ecx */
@@ -618,7 +845,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cf8f0  (between same file) */
+/* 008cf8f0  BufferedStream_008cf8f0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf8f0, bfv_client_l1_body_008cf8f0);
 BFV_L1_RESUME(bfv_client_l1r_008cf8f0_1, bfv_client_l1_body_008cf8f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008cf8f0_2, bfv_client_l1_body_008cf8f0, 2);
@@ -760,7 +988,7 @@ R_3:
     M32(esp) = t;
     /* 008cf940  mov ecx, 1 */
     ecx = 0x1u;
-    /* 008cf945  call 0x8c2820 */
+    /* 008cf945  call 0x8c2820  ; io_008c2820 */
     t = 0x008c2820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008cf8f0_4;
@@ -860,7 +1088,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cf990  (between same file) */
+/* 008cf990  BufferedStream_008cf990  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf990, bfv_client_l1_body_008cf990);
 BFV_L1_RESUME(bfv_client_l1r_008cf990_1, bfv_client_l1_body_008cf990, 1);
 BFV_L1_RESUME(bfv_client_l1r_008cf990_2, bfv_client_l1_body_008cf990, 2);
@@ -982,7 +1211,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cf9d0  (between same file) */
+/* 008cf9d0  BufferedStream_008cf9d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cf9d0, bfv_client_l1_body_008cf9d0);
 BFV_L1_RESUME(bfv_client_l1r_008cf9d0_1, bfv_client_l1_body_008cf9d0, 1);
 void bfv_client_l1_body_008cf9d0(struct bfv_cpu *c)
@@ -1074,7 +1304,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfa00  (between same file) */
+/* 008cfa00  BufferedStream::vf5_adjustor4_008cfa00  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfa00, bfv_client_l1_body_008cfa00);
 void bfv_client_l1_body_008cfa00(struct bfv_cpu *c)
 {
@@ -1089,7 +1320,7 @@ void bfv_client_l1_body_008cfa00(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 008cfa03  jmp 0x8cf800 */
+    /* 008cfa03  jmp 0x8cf800  ; BufferedStream::vf5 */
     c->eip = 0x008cf800u;
     goto out;
 out: __attribute__((unused));
@@ -1099,7 +1330,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfa10  (between same file) */
+/* 008cfa10  BufferedStream::vf6_adjustor4_008cfa10  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfa10, bfv_client_l1_body_008cfa10);
 void bfv_client_l1_body_008cfa10(struct bfv_cpu *c)
 {
@@ -1114,7 +1346,7 @@ void bfv_client_l1_body_008cfa10(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 008cfa13  jmp 0x8cf890 */
+    /* 008cfa13  jmp 0x8cf890  ; BufferedStream::vf6 */
     c->eip = 0x008cf890u;
     goto out;
 out: __attribute__((unused));
@@ -1124,7 +1356,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfa20  (between same file) */
+/* 008cfa20  BufferedStream::vf5_adjustor8_008cfa20  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfa20, bfv_client_l1_body_008cfa20);
 void bfv_client_l1_body_008cfa20(struct bfv_cpu *c)
 {
@@ -1139,7 +1372,7 @@ void bfv_client_l1_body_008cfa20(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 008cfa23  jmp 0x8cf800 */
+    /* 008cfa23  jmp 0x8cf800  ; BufferedStream::vf5 */
     c->eip = 0x008cf800u;
     goto out;
 out: __attribute__((unused));
@@ -1149,7 +1382,8 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfa30  (between same file) */
+/* 008cfa30  BufferedStream::vf6_adjustor8_008cfa30  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfa30, bfv_client_l1_body_008cfa30);
 void bfv_client_l1_body_008cfa30(struct bfv_cpu *c)
 {
@@ -1164,7 +1398,7 @@ void bfv_client_l1_body_008cfa30(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 008cfa33  jmp 0x8cf890 */
+    /* 008cfa33  jmp 0x8cf890  ; BufferedStream::vf6 */
     c->eip = 0x008cf890u;
     goto out;
 out: __attribute__((unused));
@@ -1174,7 +1408,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfa40  (between same file) */
+/* 008cfa40  BufferedStream::BufferedStream  (vtable store)
+ * class: dice::ref2::io::BufferedStream
+ * also entered at 008cfac0: BufferedStream::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfa40, bfv_client_l1_body_008cfa40);
 BFV_L1_RESUME(bfv_client_l1r_008cfa40_1, bfv_client_l1_body_008cfa40, 1);
 BFV_L1_RESUME(bfv_client_l1r_008cfa40_2, bfv_client_l1_body_008cfa40, 2);
@@ -1200,13 +1437,13 @@ void bfv_client_l1_body_008cfa40(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008cfa43  mov esi, ecx */
     esi = ecx;
-    /* 008cfa45  mov dword ptr [esi + 4], 0xbdfeb0 */
+    /* 008cfa45  mov dword ptr [esi + 4], 0xbdfeb0  ; vtable INonlinearStream */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = 0xbdfeb0u;
-    /* 008cfa4c  mov dword ptr [esi + 8], 0xbe0084 */
+    /* 008cfa4c  mov dword ptr [esi + 8], 0xbe0084  ; vtable IAsyncStream */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0xbe0084u;
-    /* 008cfa53  mov dword ptr [esi], 0xbe0344 */
+    /* 008cfa53  mov dword ptr [esi], 0xbe0344  ; vtable BufferedStream */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe0344u;
     /* 008cfa59  mov dword ptr [esi + 4], 0xbe0304 */
@@ -1260,7 +1497,7 @@ void bfv_client_l1_body_008cfa40(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008cfa98  call 0x403610 */
+    /* 008cfa98  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008cfa40_1;
@@ -1277,7 +1514,7 @@ R_1:
     /* 008cfaa1  mov dword ptr [esi + 0x28], eax */
     ea = (uint32_t)(esi + 0x00000028u);
     M32(ea) = eax;
-    /* 008cfaa4  call 0x403610 */
+    /* 008cfaa4  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008cfa40_2;
@@ -1310,7 +1547,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfae0  dice::ref2::io::BufferedStream  (virtual method) */
+/* 008cfae0  BufferedStream::vf4  (virtual method)
+ * class: dice::ref2::io::BufferedStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfae0, bfv_client_l1_body_008cfae0);
 BFV_L1_RESUME(bfv_client_l1r_008cfae0_1, bfv_client_l1_body_008cfae0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008cfae0_2, bfv_client_l1_body_008cfae0, 2);
@@ -1781,7 +2020,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfbe0  dice::ref2::io::BufferedStream  (virtual method) */
+/* 008cfbe0  BufferedStream::vf7  (virtual method)
+ * class: dice::ref2::io::BufferedStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfbe0, bfv_client_l1_body_008cfbe0);
 BFV_L1_RESUME(bfv_client_l1r_008cfbe0_1, bfv_client_l1_body_008cfbe0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008cfbe0_2, bfv_client_l1_body_008cfbe0, 2);
@@ -1885,7 +2126,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfc10  dice::ref2::io::BufferedStream  (virtual method) */
+/* 008cfc10  BufferedStream::vf9_onField_10h_callVirtual_vf9  (virtual method)
+ * class: dice::ref2::io::BufferedStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfc10, bfv_client_l1_body_008cfc10);
 void bfv_client_l1_body_008cfc10(struct bfv_cpu *c)
 {
@@ -1911,7 +2154,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfc20  dice::ref2::io::BufferedStream  (virtual method) */
+/* 008cfc20  BufferedStream::vf10_onField_10h_callVirtual_vf10  (virtual method)
+ * class: dice::ref2::io::BufferedStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfc20, bfv_client_l1_body_008cfc20);
 void bfv_client_l1_body_008cfc20(struct bfv_cpu *c)
 {
@@ -1937,7 +2182,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008cfc30  dice::ref2::io::BufferedStream  (virtual method) */
+/* 008cfc30  BufferedStream::vf11  (virtual method)
+ * class: dice::ref2::io::BufferedStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008cfc30, bfv_client_l1_body_008cfc30);
 BFV_L1_RESUME(bfv_client_l1r_008cfc30_1, bfv_client_l1_body_008cfc30, 1);
 BFV_L1_RESUME(bfv_client_l1r_008cfc30_2, bfv_client_l1_body_008cfc30, 2);
@@ -2049,7 +2296,7 @@ R_2:
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = ebx;
 L_008cfc5d:
-    /* 008cfc5d  mov edi, dword ptr [esp + 0x10] */
+    /* 008cfc5d  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 008cfc61  mov ecx, edi */
@@ -2108,7 +2355,7 @@ L_008cfc7e:
     F_SUB(32, a, b, r);
     /* 008cfc80  je 0x8cfc93 */
     if (zf) goto L_008cfc93;
-    /* 008cfc82  mov ecx, dword ptr [0xbdafb4] */
+    /* 008cfc82  mov ecx, dword ptr [0xbdafb4]  ; interfaceID(BufferedStream|MemStream|Win32FileStream) */
     ea = (uint32_t)(0x00bdafb4u);
     ecx = M32(ea);
     /* 008cfc88  mov eax, dword ptr [edi] */
@@ -2186,7 +2433,7 @@ L_008cfcae:
     F_SUB(32, a, b, r);
     /* 008cfcb0  je 0x8cfcc2 */
     if (zf) goto L_008cfcc2;
-    /* 008cfcb2  mov eax, dword ptr [0xbdafb8] */
+    /* 008cfcb2  mov eax, dword ptr [0xbdafb8]  ; interfaceID(BufferedStream|MemStream|Win32FileStream) */
     ea = (uint32_t)(0x00bdafb8u);
     eax = M32(ea);
     /* 008cfcb7  mov edx, dword ptr [edi] */

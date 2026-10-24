@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 007ab670  (source path)
- * strings: "c:\bfv_code\main\battlefield\AIBotActionPlan\BAPConObject..." */
+/* 007ab670  BAPConObjectInsideFrustum::evaluate  (source path)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectInsideFrustum
+ * strings: "c:\bfv_code\main\battlefield\AIBotActionPlan\BAPConObject..."
+ */
 BFV_L1_ENTRY(bfv_server_l1_007ab670, bfv_server_l1_body_007ab670);
 BFV_L1_RESUME(bfv_server_l1r_007ab670_1, bfv_server_l1_body_007ab670, 1);
 BFV_L1_RESUME(bfv_server_l1r_007ab670_2, bfv_server_l1_body_007ab670, 2);
@@ -38,7 +41,7 @@ void bfv_server_l1_body_007ab670(struct bfv_cpu *c)
     case 10: goto R_10;
     default: break;
     }
-    /* 007ab670  mov eax, dword ptr [0xc1d380] */
+    /* 007ab670  mov eax, dword ptr [0xc1d380]  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     eax = M32(ea);
     /* 007ab675  push esi */
@@ -54,7 +57,7 @@ void bfv_server_l1_body_007ab670(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007ab67b  mov edi, ecx */
     edi = ecx;
-    /* 007ab67d  mov ecx, dword ptr [0x934448] */
+    /* 007ab67d  mov ecx, dword ptr [0x934448]  ; g_traceRing_mask */
     ea = (uint32_t)(0x00934448u);
     ecx = M32(ea);
     /* 007ab683  inc eax */
@@ -69,13 +72,13 @@ void bfv_server_l1_body_007ab670(struct bfv_cpu *c)
     /* 007ab686  test esi, esi */
     r = (esi & esi) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007ab688  mov dword ptr [0xc1d380], eax */
+    /* 007ab688  mov dword ptr [0xc1d380], eax  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     M32(ea) = eax;
-    /* 007ab68d  mov dword ptr [eax*4 + 0xc1d360], 0x87a510 */
+    /* 007ab68d  mov dword ptr [eax*4 + 0xc1d360], 0x87a510  ; g_traceRing_file, "c:\bfv_code\main\battlefield\AIBotActionPlan\BA..." */
     ea = (uint32_t)(eax * 4u + 0x00c1d360u);
     M32(ea) = 0x87a510u;
-    /* 007ab698  mov dword ptr [eax*4 + 0xc1d340], 0x25 */
+    /* 007ab698  mov dword ptr [eax*4 + 0xc1d340], 0x25  ; g_traceRing_line */
     ea = (uint32_t)(eax * 4u + 0x00c1d340u);
     M32(ea) = 0x25u;
     /* 007ab6a3  jne 0x7ab6ac */
@@ -112,7 +115,7 @@ L_007ab6ac:
     M32(esp) = t;
     /* 007ab6b8  je 0x7ab6d5 */
     if (zf) goto L_007ab6d5;
-    /* 007ab6ba  mov edx, dword ptr [0xc2f7c0] */
+    /* 007ab6ba  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 007ab6c0  mov edx, dword ptr [edx] */
@@ -193,7 +196,7 @@ R_1:
     ecx = r;
     /* 007ab6f0  je 0x7ab70d */
     if (zf) goto L_007ab70d;
-    /* 007ab6f2  mov edx, dword ptr [0xc2f7c0] */
+    /* 007ab6f2  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 007ab6f8  mov edx, dword ptr [edx] */
@@ -287,7 +290,7 @@ L_007ab716:
 R_2:
     /* 007ab738  mov ecx, eax */
     ecx = eax;
-    /* 007ab73a  call 0x727be0 */
+    /* 007ab73a  call 0x727be0  ; ai_00727be0 */
     t = 0x00727be0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007ab670_3;
@@ -321,7 +324,7 @@ R_3:
     /* 007ab754  mov edx, dword ptr [esp + 0x14] */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
-    /* 007ab758  fmul dword ptr [0x836258] */
+    /* 007ab758  fmul dword ptr [0x836258]  ; = 90.0f */
     ea = (uint32_t)(0x00836258u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007ab75e  push edx */
@@ -334,7 +337,7 @@ L_007ab761:
     /* 007ab761  mov eax, dword ptr [esp + 0x14] */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
-    /* 007ab765  fmul dword ptr [0x87a508] */
+    /* 007ab765  fmul dword ptr [0x87a508]  ; = 120.0f */
     ea = (uint32_t)(0x0087a508u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007ab76b  push eax */
@@ -342,11 +345,11 @@ L_007ab761:
     esp -= 4;
     M32(esp) = t;
 L_007ab76c:
-    /* 007ab76c  push 0x3c23d70a */
+    /* 007ab76c  push 0x3c23d70a  ; 0.01f */
     t = 0x3c23d70au;
     esp -= 4;
     M32(esp) = t;
-    /* 007ab771  push 0x3f800000 */
+    /* 007ab771  push 0x3f800000  ; 1.0f */
     t = 0x3f800000u;
     esp -= 4;
     M32(esp) = t;
@@ -359,7 +362,7 @@ L_007ab76c:
     /* 007ab77a  fstp dword ptr [esp] */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007ab77d  call 0x7dbeb0 */
+    /* 007ab77d  call 0x7dbeb0  ; sub_007dbeb0 */
     t = 0x007dbeb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007ab670_4;
@@ -388,7 +391,7 @@ L_007ab782:
 R_5:
     /* 007ab78f  mov ecx, eax */
     ecx = eax;
-    /* 007ab791  call 0x727d50 */
+    /* 007ab791  call 0x727d50  ; bfv_component_query_data */
     t = 0x00727d50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007ab670_6;
@@ -401,7 +404,7 @@ R_6:
     M32(esp) = t;
     /* 007ab797  mov ecx, edi */
     ecx = edi;
-    /* 007ab799  call 0x7dc670 */
+    /* 007ab799  call 0x7dc670  ; sub_007dc670 */
     t = 0x007dc670u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007ab670_7;
@@ -448,7 +451,7 @@ R_9:
     M32(esp) = t;
     /* 007ab7b2  mov ecx, edi */
     ecx = edi;
-    /* 007ab7b4  call 0x768bf0 */
+    /* 007ab7b4  call 0x768bf0  ; BotMain_00768bf0 */
     t = 0x00768bf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007ab670_10;
@@ -482,7 +485,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007ab7c0  dice::bf::ai::BAPConObjectInsideFrustum  (vtable store) */
+/* 007ab7c0  BAPConObjectInsideFrustum::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPConObjectInsideFrustum
+ * called by: BBPFireInfantery_helper_00742d40, BBPFireInfantery_00744030
+ */
 BFV_L1_ENTRY(bfv_server_l1_007ab7c0, bfv_server_l1_body_007ab7c0);
 void bfv_server_l1_body_007ab7c0(struct bfv_cpu *c)
 {
@@ -491,12 +497,12 @@ void bfv_server_l1_body_007ab7c0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007ab7c0  mov edx, dword ptr [esp + 8] */
+    /* 007ab7c0  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007ab7c4  mov eax, ecx */
     eax = ecx;
-    /* 007ab7c6  mov ecx, dword ptr [esp + 4] */
+    /* 007ab7c6  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007ab7ca  mov dword ptr [eax + 4], 0 */
@@ -505,7 +511,7 @@ void bfv_server_l1_body_007ab7c0(struct bfv_cpu *c)
     /* 007ab7d1  mov dword ptr [eax + 8], ecx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = ecx;
-    /* 007ab7d4  mov dword ptr [eax], 0x87a560 */
+    /* 007ab7d4  mov dword ptr [eax], 0x87a560  ; vtable BAPConObjectInsideFrustum */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87a560u;
     /* 007ab7da  mov dword ptr [eax + 0xc], edx */
@@ -525,7 +531,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007ab7f0  dice::bf::ai::BAPConObjectInsideFrustum  (virtual method) */
+/* 007ab7f0  BAPConObjectInsideFrustum::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectInsideFrustum
+ */
 BFV_L1_ENTRY(bfv_server_l1_007ab7f0, bfv_server_l1_body_007ab7f0);
 BFV_L1_RESUME(bfv_server_l1r_007ab7f0_1, bfv_server_l1_body_007ab7f0, 1);
 void bfv_server_l1_body_007ab7f0(struct bfv_cpu *c)
@@ -539,7 +548,7 @@ void bfv_server_l1_body_007ab7f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007ab7f0  test byte ptr [esp + 4], 1 */
+    /* 007ab7f0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -549,7 +558,7 @@ void bfv_server_l1_body_007ab7f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007ab7f6  mov esi, ecx */
     esi = ecx;
-    /* 007ab7f8  mov dword ptr [esi], 0x873c74 */
+    /* 007ab7f8  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 007ab7fe  je 0x7ab80b */
@@ -558,9 +567,9 @@ void bfv_server_l1_body_007ab7f0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007ab801  mov ecx, 0xc32e08 */
+    /* 007ab801  mov ecx, 0xc32e08  ; g_MemoryPoolNull_BAPConObjectInsideFrustum */
     ecx = 0xc32e08u;
-    /* 007ab806  call 0x413600 */
+    /* 007ab806  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007ab7f0_1;

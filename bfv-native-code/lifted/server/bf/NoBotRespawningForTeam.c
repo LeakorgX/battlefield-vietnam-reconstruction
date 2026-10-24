@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0049d3d0  dice::bf::NoBotRespawningForTeam  (vtable store) */
+/* 0049d3d0  NoBotRespawningForTeam::create  (vtable store)
+ * class: dice::bf::NoBotRespawningForTeam
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049d3d0, bfv_server_l1_body_0049d3d0);
 BFV_L1_RESUME(bfv_server_l1r_0049d3d0_1, bfv_server_l1_body_0049d3d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0049d3d0_2, bfv_server_l1_body_0049d3d0, 2);
@@ -37,7 +39,7 @@ void bfv_server_l1_body_0049d3d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0049d3d4  mov edi, ecx */
     edi = ecx;
-    /* 0049d3d6  call 0x403d80 */
+    /* 0049d3d6  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d3d0_1;
@@ -63,14 +65,14 @@ R_1:
     M32(esp) = t;
     /* 0049d3e6  mov ecx, esi */
     ecx = esi;
-    /* 0049d3e8  call 0x4d9170 */
+    /* 0049d3e8  call 0x4d9170  ; SubChallenge::SubChallenge */
     t = 0x004d9170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d3d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0049d3ed  mov dword ptr [esi], 0x81acbc */
+    /* 0049d3ed  mov dword ptr [esi], 0x81acbc  ; vtable NoBotRespawningForTeam */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81acbcu;
     /* 0049d3f3  jmp 0x49d3f7 */
@@ -81,7 +83,7 @@ L_0049d3f5:
     F_LOGIC(32, r);
     esi = r;
 L_0049d3f7:
-    /* 0049d3f7  mov ecx, dword ptr [esp + 0x14] */
+    /* 0049d3f7  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0049d3fb  test ecx, ecx */
@@ -99,7 +101,7 @@ L_0049d3f7:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0049d406  call 0x402690 */
+    /* 0049d406  call 0x402690  ; std::string::assign_cstr */
     t = 0x00402690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d3d0_3;
@@ -126,7 +128,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004d9130  dice::bf::NoBotRespawningForTeam  (virtual method) */
+/* 004d9130  NoBotRespawningForTeam::apply  (virtual method)
+ * overrides: SubChallenge::apply  (23 classes implement it)
+ * class: dice::bf::NoBotRespawningForTeam
+ */
 BFV_L1_ENTRY(bfv_server_l1_004d9130, bfv_server_l1_body_004d9130);
 BFV_L1_RESUME(bfv_server_l1r_004d9130_1, bfv_server_l1_body_004d9130, 1);
 void bfv_server_l1_body_004d9130(struct bfv_cpu *c)
@@ -143,7 +148,7 @@ void bfv_server_l1_body_004d9130(struct bfv_cpu *c)
     /* 004d9130  mov ecx, dword ptr [ecx + 0x48] */
     ea = (uint32_t)(ecx + 0x00000048u);
     ecx = M32(ea);
-    /* 004d9133  mov eax, dword ptr [0xc1d33c] */
+    /* 004d9133  mov eax, dword ptr [0xc1d33c]  ; g_pIAISettingsModifier_00c1d33c */
     ea = (uint32_t)(0x00c1d33cu);
     eax = M32(ea);
     /* 004d9138  mov edx, dword ptr [eax] */
@@ -159,7 +164,7 @@ void bfv_server_l1_body_004d9130(struct bfv_cpu *c)
     M32(esp) = t;
     /* 004d913d  mov ecx, eax */
     ecx = eax;
-    /* 004d913f  call dword ptr [edx + 0x54] */
+    /* 004d913f  call dword ptr [edx + 0x54]  ; vf21 of AiSettings.setRespawnAllowed, -> IAISettingsModifier::vf21 = _purecall */
     ea = (uint32_t)(edx + 0x00000054u);
     t = M32(ea);
     esp -= 4;

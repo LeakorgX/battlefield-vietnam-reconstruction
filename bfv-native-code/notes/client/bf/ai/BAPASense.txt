@@ -1,0 +1,11 @@
+## file
+Plan action that runs a sensor (this+0x18) together with a second object (this+0x1c).
+
+## 009f4f80
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.
+
+## 009f4fc0
+Constructor: clears +4..+0xc, counts the creation in g_bapCreatedCount, stores the two parts at this+0x18 and this+0x1c and the value at this+0x10, and points the +4 back-link of both parts at this object.
+
+## 009f5000
+Destructor: releases the objects at this+0x18 and this+0x1c, restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.

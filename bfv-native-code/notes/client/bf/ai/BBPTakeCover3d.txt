@@ -1,0 +1,5 @@
+## file
+Plan builder for an aircraft evading: rolls to one side and moves away.
+
+## 009af8f0
+buildPlan (the address 009afe00 inside it is shared with the UrgeCurve vf0 entries): clears the current plan, takes the bot position in x/z and picks a side at random (Random_next above 0.5 flips the direction and stores 0 or 1 at +0x10 of the record). The goal is the side direction times 2 times a setting (+0xc). Builds BAPAResetControls and a 0x90-byte BAPARoll3d (angle constant 0x4096cbe4, about 4.71 radians, and a 100.0 value) with a BAPConFalse condition, then a BAPConPosition at the goal.

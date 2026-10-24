@@ -1,0 +1,8 @@
+## file
+Plan builder for firing a gun the driver controls (artillery driver).
+
+## 00544aa0
+Returns the squared 2D length x*x + y*y of the vector at this.
+
+## 009a1730
+buildPlan: releases the bot's control locks, takes the bot and target positions in x/z and the target from the bot's info entry (slot 0x88). Picks a weapon with ai_009f38d0 (falls back to the parameter's slot 0x2c on -1). A flag is set when the 3D distance to the target is less than the weapon's +0x28 value plus 0.5. Transforms the aim point into the vehicle frame (bfv_transform_point) and builds the aim and fire plan.

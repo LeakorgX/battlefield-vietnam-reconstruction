@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00a389e0  dice::ref2::rend::RaShaderManager  (virtual method) */
+/* 00a389e0  RaShaderManager::deleting_dtor  (virtual method)
+ * class: dice::ref2::rend::RaShaderManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a389e0, bfv_client_l1_body_00a389e0);
 BFV_L1_RESUME(bfv_client_l1r_00a389e0_1, bfv_client_l1_body_00a389e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a389e0_2, bfv_client_l1_body_00a389e0, 2);
@@ -27,7 +29,7 @@ void bfv_client_l1_body_00a389e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a389e1  mov esi, ecx */
     esi = ecx;
-    /* 00a389e3  mov dword ptr [esi], 0xc022ec */
+    /* 00a389e3  mov dword ptr [esi], 0xc022ec  ; vtable RaShaderManager */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc022ecu;
     /* 00a389e9  cmp dword ptr [esi + 0x24], 0x10 */
@@ -45,7 +47,7 @@ void bfv_client_l1_body_00a389e0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a389f3  call 0x403680 */
+    /* 00a389f3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a389e0_1;
@@ -72,7 +74,7 @@ L_00a389fb:
     /* 00a38a07  mov byte ptr [esi + 0x10], al */
     ea = (uint32_t)(esi + 0x00000010u);
     M8(ea) = LO8(eax);
-    /* 00a38a0a  test byte ptr [esp + 8], 1 */
+    /* 00a38a0a  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -82,7 +84,7 @@ L_00a389fb:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a38a12  call 0x403680 */
+    /* 00a38a12  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a389e0_2;

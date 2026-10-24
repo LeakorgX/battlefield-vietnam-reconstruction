@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00422230  dice::matchmaking::IHostService  (vtable store) */
+/* 00422230  IHostService::IHostService  (vtable store)
+ * class: dice::matchmaking::IHostService
+ */
 BFV_L1_ENTRY(bfv_server_l1_00422230, bfv_server_l1_body_00422230);
 void bfv_server_l1_body_00422230(struct bfv_cpu *c)
 {
@@ -16,7 +18,7 @@ void bfv_server_l1_body_00422230(struct bfv_cpu *c)
     uint32_t ea;
     /* 00422230  mov eax, ecx */
     eax = ecx;
-    /* 00422232  mov dword ptr [eax], 0x809af8 */
+    /* 00422232  mov dword ptr [eax], 0x809af8  ; vtable IHostService */
     ea = (uint32_t)(eax);
     M32(ea) = 0x809af8u;
     /* 00422238  ret */
@@ -30,7 +32,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00422250  dice::matchmaking::IHostService  (vtable store) */
+/* 00422250  IHostService::IHostService  (vtable store)
+ * class: dice::matchmaking::IHostService
+ */
 BFV_L1_ENTRY(bfv_server_l1_00422250, bfv_server_l1_body_00422250);
 void bfv_server_l1_body_00422250(struct bfv_cpu *c)
 {
@@ -41,7 +45,7 @@ void bfv_server_l1_body_00422250(struct bfv_cpu *c)
     uint32_t ea;
     /* 00422250  mov eax, ecx */
     eax = ecx;
-    /* 00422252  mov dword ptr [eax], 0x809af8 */
+    /* 00422252  mov dword ptr [eax], 0x809af8  ; vtable IHostService */
     ea = (uint32_t)(eax);
     M32(ea) = 0x809af8u;
     /* 00422258  ret 4 */

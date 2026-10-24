@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0059f9b0  dice::bf::menu::VehicleAmmo  (vtable store) */
+/* 0059f9b0  VehicleAmmo::VehicleAmmo  (vtable store)
+ * class: dice::bf::menu::VehicleAmmo
+ * called by: HudManager::HudManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_0059f9b0, bfv_client_l1_body_0059f9b0);
 void bfv_client_l1_body_0059f9b0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_0059f9b0(struct bfv_cpu *c)
     uint32_t r, ea;
     /* 0059f9b0  mov eax, ecx */
     eax = ecx;
-    /* 0059f9b2  mov dword ptr [eax], 0xb73ec4 */
+    /* 0059f9b2  mov dword ptr [eax], 0xb73ec4  ; vtable VehicleAmmo */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb73ec4u;
     /* 0059f9b8  xor ecx, ecx */
@@ -43,7 +46,7 @@ void bfv_client_l1_body_0059f9b0(struct bfv_cpu *c)
     /* 0059f9ce  mov byte ptr [eax + 0x48], cl */
     ea = (uint32_t)(eax + 0x00000048u);
     M8(ea) = LO8(ecx);
-    /* 0059f9d1  mov ecx, dword ptr [esp + 4] */
+    /* 0059f9d1  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0059f9d5  mov dword ptr [eax + 8], ecx */
@@ -60,7 +63,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0059f9e0  (between same file) */
+/* 0059f9e0  VehicleAmmo::~VehicleAmmo  (between same file)
+ * class: dice::bf::menu::VehicleAmmo
+ */
 BFV_L1_ENTRY(bfv_client_l1_0059f9e0, bfv_client_l1_body_0059f9e0);
 BFV_L1_RESUME(bfv_client_l1r_0059f9e0_1, bfv_client_l1_body_0059f9e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0059f9e0_2, bfv_client_l1_body_0059f9e0, 2);
@@ -86,7 +91,7 @@ void bfv_client_l1_body_0059f9e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0059f9e2  mov esi, ecx */
     esi = ecx;
-    /* 0059f9e4  mov dword ptr [esi], 0xb73ec4 */
+    /* 0059f9e4  mov dword ptr [esi], 0xb73ec4  ; vtable VehicleAmmo */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb73ec4u;
     /* 0059f9ea  cmp dword ptr [esi + 0x5c], 0x10 */
@@ -104,7 +109,7 @@ void bfv_client_l1_body_0059f9e0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059f9f4  call 0x403680 */
+    /* 0059f9f4  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059f9e0_1;
@@ -146,7 +151,7 @@ L_0059f9fc:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fa15  call 0x403680 */
+    /* 0059fa15  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059f9e0_2;
@@ -169,7 +174,7 @@ L_0059fa1d:
     /* 0059fa27  mov byte ptr [esi + 0x18], bl */
     ea = (uint32_t)(esi + 0x00000018u);
     M8(ea) = LO8(ebx);
-    /* 0059fa2a  mov dword ptr [esi], 0xb53ea8 */
+    /* 0059fa2a  mov dword ptr [esi], 0xb53ea8  ; vtable IMenuObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb53ea8u;
     /* 0059fa30  pop esi */
@@ -191,7 +196,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0059fa40  (between same file) */
+/* 0059fa40  Vehicle::vf6_helper_0059fa40  (between same file)
+ * also entered at 0059fb70: VehicleAmmo::vf0
+ * called by: Vehicle::vf6
+ */
 BFV_L1_ENTRY(bfv_client_l1_0059fa40, bfv_client_l1_body_0059fa40);
 BFV_L1_RESUME(bfv_client_l1r_0059fa40_1, bfv_client_l1_body_0059fa40, 1);
 BFV_L1_RESUME(bfv_client_l1r_0059fa40_2, bfv_client_l1_body_0059fa40, 2);
@@ -511,7 +519,7 @@ R_5:
     /* 0059fb14  mov ecx, dword ptr [ebp + 8] */
     ea = (uint32_t)(ebp + 0x00000008u);
     ecx = M32(ea);
-    /* 0059fb17  call 0x5843b0 */
+    /* 0059fb17  call 0x5843b0  ; DirectionBar_005843b0 */
     t = 0x005843b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fa40_6;
@@ -585,7 +593,7 @@ L_0059fb24:
     /* 0059fb34  mov ecx, dword ptr [ebp + 8] */
     ea = (uint32_t)(ebp + 0x00000008u);
     ecx = M32(ea);
-    /* 0059fb37  call 0x5843b0 */
+    /* 0059fb37  call 0x5843b0  ; DirectionBar_005843b0 */
     t = 0x005843b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fa40_7;
@@ -687,8 +695,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0059fb90  dice::bf::menu::VehicleAmmo  (virtual method)
- * strings: "Ammo", "NumberOfWeaponIcons", "PrimaryAmmoText", "PrimaryAmmoBar" */
+/* 0059fb90  VehicleAmmo::registerMenuData  (virtual method)
+ * overrides: IMenuObject::registerMenuData  (36 classes implement it)
+ * class: dice::bf::menu::VehicleAmmo
+ * strings: "Ammo", "NumberOfWeaponIcons", "PrimaryAmmoText", "PrimaryAmmoBar"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0059fb90, bfv_client_l1_body_0059fb90);
 BFV_L1_RESUME(bfv_client_l1r_0059fb90_1, bfv_client_l1_body_0059fb90, 1);
 BFV_L1_RESUME(bfv_client_l1r_0059fb90_2, bfv_client_l1_body_0059fb90, 2);
@@ -778,7 +789,7 @@ void bfv_client_l1_body_0059fb90(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 0059fb93  mov eax, dword ptr [0xcff7cc] */
+    /* 0059fb93  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 0059fb98  push ebx */
@@ -809,25 +820,25 @@ void bfv_client_l1_body_0059fb90(struct bfv_cpu *c)
     ebx = r;
     /* 0059fba2  mov edi, 0xf */
     edi = 0xfu;
-    /* 0059fba7  push 0xb73fb8 */
+    /* 0059fba7  push 0xb73fb8  ; "Ammo" */
     t = 0xb73fb8u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fbac  lea ecx, [esp + 0x34] */
+    /* 0059fbac  lea ecx, [esp + 0x34]  ; &var_20 */
     ecx = (uint32_t)(esp + 0x00000034u);
-    /* 0059fbb0  mov dword ptr [esp + 0x50], eax */
+    /* 0059fbb0  mov dword ptr [esp + 0x50], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000050u);
     M32(ea) = eax;
-    /* 0059fbb4  mov dword ptr [esp + 0x4c], edi */
+    /* 0059fbb4  mov dword ptr [esp + 0x4c], edi  ; var_8 */
     ea = (uint32_t)(esp + 0x0000004cu);
     M32(ea) = edi;
-    /* 0059fbb8  mov dword ptr [esp + 0x48], ebx */
+    /* 0059fbb8  mov dword ptr [esp + 0x48], ebx  ; var_c */
     ea = (uint32_t)(esp + 0x00000048u);
     M32(ea) = ebx;
-    /* 0059fbbc  mov byte ptr [esp + 0x38], bl */
+    /* 0059fbbc  mov byte ptr [esp + 0x38], bl  ; var_1c */
     ea = (uint32_t)(esp + 0x00000038u);
     M8(ea) = LO8(ebx);
-    /* 0059fbc0  call 0x401ae0 */
+    /* 0059fbc0  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_1;
@@ -838,35 +849,35 @@ R_1:
     t = 0x13u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fbc7  push 0xb73fa4 */
+    /* 0059fbc7  push 0xb73fa4  ; "NumberOfWeaponIcons" */
     t = 0xb73fa4u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fbcc  lea ecx, [esp + 0x18] */
+    /* 0059fbcc  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fbd0  mov dword ptr [esp + 0x30], edi */
+    /* 0059fbd0  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fbd4  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fbd4  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fbd8  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fbd8  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fbdc  call 0x401ae0 */
+    /* 0059fbdc  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0059fbe1  lea eax, [esp + 0x2c] */
+    /* 0059fbe1  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fbe5  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fbe6  lea ecx, [esp + 0x14] */
+    /* 0059fbe6  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fbea  push ecx */
     t = ecx;
@@ -875,16 +886,16 @@ R_2:
     /* 0059fbeb  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fbee  lea edx, [esi + 0xc] */
+    /* 0059fbee  lea edx, [esi + 0xc]  ; field NumberOfWeaponIcons (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x0000000cu);
-    /* 0059fbf1  call 0x4c5a10 */
+    /* 0059fbf1  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 0059fbf6  mov eax, dword ptr [esp + 0x28] */
+    /* 0059fbf6  mov eax, dword ptr [esp + 0x28]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 0059fbfa  mov ebp, 0x10 */
@@ -896,14 +907,14 @@ R_3:
     F_SUB(32, a, b, r);
     /* 0059fc01  jb 0x59fc10 */
     if (cf) goto L_0059fc10;
-    /* 0059fc03  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fc03  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fc07  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc08  call 0x403680 */
+    /* 0059fc08  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_4;
@@ -921,35 +932,35 @@ L_0059fc10:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc11  push 0xb73f94 */
+    /* 0059fc11  push 0xb73f94  ; "PrimaryAmmoText" */
     t = 0xb73f94u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc16  lea ecx, [esp + 0x18] */
+    /* 0059fc16  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fc1a  mov dword ptr [esp + 0x30], edi */
+    /* 0059fc1a  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fc1e  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fc1e  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fc22  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fc22  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fc26  call 0x401ae0 */
+    /* 0059fc26  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 0059fc2b  lea eax, [esp + 0x2c] */
+    /* 0059fc2b  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fc2f  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc30  lea ecx, [esp + 0x14] */
+    /* 0059fc30  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fc34  push ecx */
     t = ecx;
@@ -958,16 +969,16 @@ R_5:
     /* 0059fc35  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fc38  lea edx, [esi + 0x34] */
+    /* 0059fc38  lea edx, [esi + 0x34]  ; field PrimaryAmmoText (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x00000034u);
-    /* 0059fc3b  call 0x4c5a10 */
+    /* 0059fc3b  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_6;
     c->eip = t;
     goto out;
 R_6:
-    /* 0059fc40  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fc40  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -975,14 +986,14 @@ R_6:
     F_SUB(32, a, b, r);
     /* 0059fc44  jb 0x59fc53 */
     if (cf) goto L_0059fc53;
-    /* 0059fc46  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fc46  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fc4a  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc4b  call 0x403680 */
+    /* 0059fc4b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_7;
@@ -1000,35 +1011,35 @@ L_0059fc53:
     t = 0xeu;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc55  push 0xb73f84 */
+    /* 0059fc55  push 0xb73f84  ; "PrimaryAmmoBar" */
     t = 0xb73f84u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc5a  lea ecx, [esp + 0x18] */
+    /* 0059fc5a  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fc5e  mov dword ptr [esp + 0x30], edi */
+    /* 0059fc5e  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fc62  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fc62  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fc66  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fc66  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fc6a  call 0x401ae0 */
+    /* 0059fc6a  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_8;
     c->eip = t;
     goto out;
 R_8:
-    /* 0059fc6f  lea eax, [esp + 0x2c] */
+    /* 0059fc6f  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fc73  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc74  lea ecx, [esp + 0x14] */
+    /* 0059fc74  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fc78  push ecx */
     t = ecx;
@@ -1037,16 +1048,16 @@ R_8:
     /* 0059fc79  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fc7c  lea edx, [esi + 0x10] */
+    /* 0059fc7c  lea edx, [esi + 0x10]  ; field PrimaryAmmoBar (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x00000010u);
-    /* 0059fc7f  call 0x4c5a10 */
+    /* 0059fc7f  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_9;
     c->eip = t;
     goto out;
 R_9:
-    /* 0059fc84  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fc84  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1054,14 +1065,14 @@ R_9:
     F_SUB(32, a, b, r);
     /* 0059fc88  jb 0x59fc97 */
     if (cf) goto L_0059fc97;
-    /* 0059fc8a  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fc8a  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fc8e  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc8f  call 0x403680 */
+    /* 0059fc8f  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_10;
@@ -1079,35 +1090,35 @@ L_0059fc97:
     t = 0x11u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc99  push 0xb73f70 */
+    /* 0059fc99  push 0xb73f70  ; "RedrawPrimaryAmmo" */
     t = 0xb73f70u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fc9e  lea ecx, [esp + 0x18] */
+    /* 0059fc9e  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fca2  mov dword ptr [esp + 0x30], edi */
+    /* 0059fca2  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fca6  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fca6  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fcaa  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fcaa  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fcae  call 0x401ae0 */
+    /* 0059fcae  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_11;
     c->eip = t;
     goto out;
 R_11:
-    /* 0059fcb3  lea eax, [esp + 0x2c] */
+    /* 0059fcb3  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fcb7  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fcb8  lea ecx, [esp + 0x14] */
+    /* 0059fcb8  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fcbc  push ecx */
     t = ecx;
@@ -1116,16 +1127,16 @@ R_11:
     /* 0059fcbd  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fcc0  lea edx, [esi + 0x38] */
+    /* 0059fcc0  lea edx, [esi + 0x38]  ; field RedrawPrimaryAmmo (menu data, meme_registerBoolRef) */
     edx = (uint32_t)(esi + 0x00000038u);
-    /* 0059fcc3  call 0x487df0 */
+    /* 0059fcc3  call 0x487df0  ; meme_registerBoolRef */
     t = 0x00487df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_12;
     c->eip = t;
     goto out;
 R_12:
-    /* 0059fcc8  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fcc8  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1133,14 +1144,14 @@ R_12:
     F_SUB(32, a, b, r);
     /* 0059fccc  jb 0x59fcdb */
     if (cf) goto L_0059fcdb;
-    /* 0059fcce  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fcce  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fcd2  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fcd3  call 0x403680 */
+    /* 0059fcd3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_13;
@@ -1158,35 +1169,35 @@ L_0059fcdb:
     t = 0xdu;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fcdd  push 0xb73f60 */
+    /* 0059fcdd  push 0xb73f60  ; "SecondaryAmmo" */
     t = 0xb73f60u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fce2  lea ecx, [esp + 0x18] */
+    /* 0059fce2  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fce6  mov dword ptr [esp + 0x30], edi */
+    /* 0059fce6  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fcea  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fcea  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fcee  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fcee  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fcf2  call 0x401ae0 */
+    /* 0059fcf2  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_14;
     c->eip = t;
     goto out;
 R_14:
-    /* 0059fcf7  lea eax, [esp + 0x2c] */
+    /* 0059fcf7  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fcfb  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fcfc  lea ecx, [esp + 0x14] */
+    /* 0059fcfc  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fd00  push ecx */
     t = ecx;
@@ -1195,16 +1206,16 @@ R_14:
     /* 0059fd01  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fd04  lea edx, [esi + 0x3c] */
+    /* 0059fd04  lea edx, [esi + 0x3c]  ; field SecondaryAmmo (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x0000003cu);
-    /* 0059fd07  call 0x4c5a10 */
+    /* 0059fd07  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_15;
     c->eip = t;
     goto out;
 R_15:
-    /* 0059fd0c  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fd0c  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1212,14 +1223,14 @@ R_15:
     F_SUB(32, a, b, r);
     /* 0059fd10  jb 0x59fd1f */
     if (cf) goto L_0059fd1f;
-    /* 0059fd12  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fd12  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fd16  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fd17  call 0x403680 */
+    /* 0059fd17  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_16;
@@ -1237,35 +1248,35 @@ L_0059fd1f:
     t = 0x11u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fd21  push 0xb73f4c */
+    /* 0059fd21  push 0xb73f4c  ; "SecondaryAmmoText" */
     t = 0xb73f4cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fd26  lea ecx, [esp + 0x18] */
+    /* 0059fd26  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fd2a  mov dword ptr [esp + 0x30], edi */
+    /* 0059fd2a  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fd2e  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fd2e  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fd32  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fd32  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fd36  call 0x401ae0 */
+    /* 0059fd36  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_17;
     c->eip = t;
     goto out;
 R_17:
-    /* 0059fd3b  lea eax, [esp + 0x2c] */
+    /* 0059fd3b  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fd3f  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fd40  lea ecx, [esp + 0x14] */
+    /* 0059fd40  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fd44  push ecx */
     t = ecx;
@@ -1274,16 +1285,16 @@ R_17:
     /* 0059fd45  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fd48  lea edx, [esi + 0x64] */
+    /* 0059fd48  lea edx, [esi + 0x64]  ; field SecondaryAmmoText (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x00000064u);
-    /* 0059fd4b  call 0x4c5a10 */
+    /* 0059fd4b  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_18;
     c->eip = t;
     goto out;
 R_18:
-    /* 0059fd50  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fd50  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1291,14 +1302,14 @@ R_18:
     F_SUB(32, a, b, r);
     /* 0059fd54  jb 0x59fd63 */
     if (cf) goto L_0059fd63;
-    /* 0059fd56  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fd56  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fd5a  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fd5b  call 0x403680 */
+    /* 0059fd5b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_19;
@@ -1316,35 +1327,35 @@ L_0059fd63:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fd64  push 0xb73f38 */
+    /* 0059fd64  push 0xb73f38  ; "MaxSecondaryAmmo" */
     t = 0xb73f38u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fd69  lea ecx, [esp + 0x18] */
+    /* 0059fd69  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fd6d  mov dword ptr [esp + 0x30], edi */
+    /* 0059fd6d  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fd71  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fd71  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fd75  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fd75  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fd79  call 0x401ae0 */
+    /* 0059fd79  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_20;
     c->eip = t;
     goto out;
 R_20:
-    /* 0059fd7e  lea eax, [esp + 0x2c] */
+    /* 0059fd7e  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fd82  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fd83  lea ecx, [esp + 0x14] */
+    /* 0059fd83  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fd87  push ecx */
     t = ecx;
@@ -1353,16 +1364,16 @@ R_20:
     /* 0059fd88  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fd8b  lea edx, [esi + 0x68] */
+    /* 0059fd8b  lea edx, [esi + 0x68]  ; field MaxSecondaryAmmo (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x00000068u);
-    /* 0059fd8e  call 0x4c5a10 */
+    /* 0059fd8e  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_21;
     c->eip = t;
     goto out;
 R_21:
-    /* 0059fd93  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fd93  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1370,14 +1381,14 @@ R_21:
     F_SUB(32, a, b, r);
     /* 0059fd97  jb 0x59fda6 */
     if (cf) goto L_0059fda6;
-    /* 0059fd99  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fd99  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fd9d  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fd9e  call 0x403680 */
+    /* 0059fd9e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_22;
@@ -1395,35 +1406,35 @@ L_0059fda6:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fda7  push 0xb73f24 */
+    /* 0059fda7  push 0xb73f24  ; "SecondaryAmmoBar" */
     t = 0xb73f24u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fdac  lea ecx, [esp + 0x18] */
+    /* 0059fdac  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fdb0  mov dword ptr [esp + 0x30], edi */
+    /* 0059fdb0  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fdb4  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fdb4  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fdb8  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fdb8  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fdbc  call 0x401ae0 */
+    /* 0059fdbc  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_23;
     c->eip = t;
     goto out;
 R_23:
-    /* 0059fdc1  lea eax, [esp + 0x2c] */
+    /* 0059fdc1  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fdc5  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fdc6  lea ecx, [esp + 0x14] */
+    /* 0059fdc6  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fdca  push ecx */
     t = ecx;
@@ -1432,16 +1443,16 @@ R_23:
     /* 0059fdcb  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fdce  lea edx, [esi + 0x40] */
+    /* 0059fdce  lea edx, [esi + 0x40]  ; field SecondaryAmmoBar (menu data, meme_registerIntRef) */
     edx = (uint32_t)(esi + 0x00000040u);
-    /* 0059fdd1  call 0x4c5a10 */
+    /* 0059fdd1  call 0x4c5a10  ; meme_registerIntRef */
     t = 0x004c5a10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_24;
     c->eip = t;
     goto out;
 R_24:
-    /* 0059fdd6  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fdd6  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1449,14 +1460,14 @@ R_24:
     F_SUB(32, a, b, r);
     /* 0059fdda  jb 0x59fde9 */
     if (cf) goto L_0059fde9;
-    /* 0059fddc  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fddc  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fde0  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fde1  call 0x403680 */
+    /* 0059fde1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_25;
@@ -1474,35 +1485,35 @@ L_0059fde9:
     t = 0x13u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fdeb  push 0xb73f10 */
+    /* 0059fdeb  push 0xb73f10  ; "RedrawSecondaryAmmo" */
     t = 0xb73f10u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fdf0  lea ecx, [esp + 0x18] */
+    /* 0059fdf0  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fdf4  mov dword ptr [esp + 0x30], edi */
+    /* 0059fdf4  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fdf8  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fdf8  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fdfc  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fdfc  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fe00  call 0x401ae0 */
+    /* 0059fe00  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_26;
     c->eip = t;
     goto out;
 R_26:
-    /* 0059fe05  lea eax, [esp + 0x2c] */
+    /* 0059fe05  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fe09  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fe0a  lea ecx, [esp + 0x14] */
+    /* 0059fe0a  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fe0e  push ecx */
     t = ecx;
@@ -1511,16 +1522,16 @@ R_26:
     /* 0059fe0f  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fe12  lea edx, [esi + 0x6c] */
+    /* 0059fe12  lea edx, [esi + 0x6c]  ; field RedrawSecondaryAmmo (menu data, meme_registerBoolRef) */
     edx = (uint32_t)(esi + 0x0000006cu);
-    /* 0059fe15  call 0x487df0 */
+    /* 0059fe15  call 0x487df0  ; meme_registerBoolRef */
     t = 0x00487df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_27;
     c->eip = t;
     goto out;
 R_27:
-    /* 0059fe1a  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fe1a  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1528,14 +1539,14 @@ R_27:
     F_SUB(32, a, b, r);
     /* 0059fe1e  jb 0x59fe2d */
     if (cf) goto L_0059fe2d;
-    /* 0059fe20  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fe20  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fe24  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fe25  call 0x403680 */
+    /* 0059fe25  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_28;
@@ -1553,35 +1564,35 @@ L_0059fe2d:
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fe2f  push 0xb73ef8 */
+    /* 0059fe2f  push 0xb73ef8  ; "UnlimitedPrimaryAmmo" */
     t = 0xb73ef8u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fe34  lea ecx, [esp + 0x18] */
+    /* 0059fe34  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fe38  mov dword ptr [esp + 0x30], edi */
+    /* 0059fe38  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fe3c  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fe3c  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fe40  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fe40  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fe44  call 0x401ae0 */
+    /* 0059fe44  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_29;
     c->eip = t;
     goto out;
 R_29:
-    /* 0059fe49  lea eax, [esp + 0x2c] */
+    /* 0059fe49  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fe4d  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fe4e  lea ecx, [esp + 0x14] */
+    /* 0059fe4e  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fe52  push ecx */
     t = ecx;
@@ -1590,16 +1601,16 @@ R_29:
     /* 0059fe53  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fe56  lea edx, [esi + 0x6d] */
+    /* 0059fe56  lea edx, [esi + 0x6d]  ; field UnlimitedPrimaryAmmo (menu data, meme_registerBoolRef) */
     edx = (uint32_t)(esi + 0x0000006du);
-    /* 0059fe59  call 0x487df0 */
+    /* 0059fe59  call 0x487df0  ; meme_registerBoolRef */
     t = 0x00487df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_30;
     c->eip = t;
     goto out;
 R_30:
-    /* 0059fe5e  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fe5e  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1607,14 +1618,14 @@ R_30:
     F_SUB(32, a, b, r);
     /* 0059fe62  jb 0x59fe71 */
     if (cf) goto L_0059fe71;
-    /* 0059fe64  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fe64  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059fe68  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fe69  call 0x403680 */
+    /* 0059fe69  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_31;
@@ -1632,35 +1643,35 @@ L_0059fe71:
     t = 0x16u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fe73  push 0xb73ee0 */
+    /* 0059fe73  push 0xb73ee0  ; "UnlimitedSecondaryAmmo" */
     t = 0xb73ee0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fe78  lea ecx, [esp + 0x18] */
+    /* 0059fe78  lea ecx, [esp + 0x18]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 0059fe7c  mov dword ptr [esp + 0x30], edi */
+    /* 0059fe7c  mov dword ptr [esp + 0x30], edi  ; var_24 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = edi;
-    /* 0059fe80  mov dword ptr [esp + 0x2c], ebx */
+    /* 0059fe80  mov dword ptr [esp + 0x2c], ebx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ebx;
-    /* 0059fe84  mov byte ptr [esp + 0x1c], bl */
+    /* 0059fe84  mov byte ptr [esp + 0x1c], bl  ; var_38 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 0059fe88  call 0x401ae0 */
+    /* 0059fe88  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_32;
     c->eip = t;
     goto out;
 R_32:
-    /* 0059fe8d  lea eax, [esp + 0x2c] */
+    /* 0059fe8d  lea eax, [esp + 0x2c]  ; &var_20 */
     eax = (uint32_t)(esp + 0x0000002cu);
     /* 0059fe91  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fe92  lea ecx, [esp + 0x14] */
+    /* 0059fe92  lea ecx, [esp + 0x14]  ; &var_3c */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 0059fe96  push ecx */
     t = ecx;
@@ -1669,16 +1680,16 @@ R_32:
     /* 0059fe97  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0059fe9a  lea edx, [esi + 0x6e] */
+    /* 0059fe9a  lea edx, [esi + 0x6e]  ; field UnlimitedSecondaryAmmo (menu data, meme_registerBoolRef) */
     edx = (uint32_t)(esi + 0x0000006eu);
-    /* 0059fe9d  call 0x487df0 */
+    /* 0059fe9d  call 0x487df0  ; meme_registerBoolRef */
     t = 0x00487df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_33;
     c->eip = t;
     goto out;
 R_33:
-    /* 0059fea2  cmp dword ptr [esp + 0x28], ebp */
+    /* 0059fea2  cmp dword ptr [esp + 0x28], ebp  ; var_24 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = ebp;
@@ -1686,14 +1697,14 @@ R_33:
     F_SUB(32, a, b, r);
     /* 0059fea6  jb 0x59feb5 */
     if (cf) goto L_0059feb5;
-    /* 0059fea8  mov edx, dword ptr [esp + 0x14] */
+    /* 0059fea8  mov edx, dword ptr [esp + 0x14]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0059feac  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fead  call 0x403680 */
+    /* 0059fead  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_34;
@@ -1707,7 +1718,7 @@ R_34:
     F_ADD(32, a, b, r);
     esp = r;
 L_0059feb5:
-    /* 0059feb5  mov eax, dword ptr [esp + 0x44] */
+    /* 0059feb5  mov eax, dword ptr [esp + 0x44]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000044u);
     eax = M32(ea);
     /* 0059feb9  pop edi */
@@ -1733,14 +1744,14 @@ L_0059feb5:
     ebx = t;
     /* 0059febf  jb 0x59fece */
     if (cf) goto L_0059fece;
-    /* 0059fec1  mov eax, dword ptr [esp + 0x20] */
+    /* 0059fec1  mov eax, dword ptr [esp + 0x20]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000020u);
     eax = M32(ea);
     /* 0059fec5  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0059fec6  call 0x403680 */
+    /* 0059fec6  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_35;
@@ -1754,12 +1765,12 @@ R_35:
     F_ADD(32, a, b, r);
     esp = r;
 L_0059fece:
-    /* 0059fece  mov ecx, dword ptr [esp + 0x38] */
+    /* 0059fece  mov ecx, dword ptr [esp + 0x38]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000038u);
     ecx = M32(ea);
     /* 0059fed2  mov al, 1 */
     SET8L(eax, 0x1u);
-    /* 0059fed4  call 0x7c2019 */
+    /* 0059fed4  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059fb90_36;

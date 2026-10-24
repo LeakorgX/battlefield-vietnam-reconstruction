@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00564890  dice::meme::BfColorFillNode  (virtual method)
- * strings: "Picture", "Data", "Maximum value", "Horizontal align" */
+/* 00564890  BfColorFillNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::BfColorFillNode
+ * strings: "Picture", "Data", "Maximum value", "Horizontal align"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00564890, bfv_client_l1_body_00564890);
 BFV_L1_RESUME(bfv_client_l1r_00564890_1, bfv_client_l1_body_00564890, 1);
 BFV_L1_RESUME(bfv_client_l1r_00564890_2, bfv_client_l1_body_00564890, 2);
@@ -42,14 +45,14 @@ void bfv_client_l1_body_00564890(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00564891  mov ebx, dword ptr [esp + 8] */
+    /* 00564891  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00564895  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00564896  mov esi, dword ptr [esp + 0x10] */
+    /* 00564896  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 0056489a  push edi */
@@ -66,7 +69,7 @@ void bfv_client_l1_body_00564890(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0056489d  mov edi, ecx */
     edi = ecx;
-    /* 0056489f  call 0x873f50 */
+    /* 0056489f  call 0x873f50  ; Node::serialize */
     t = 0x00873f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564890_1;
@@ -103,11 +106,11 @@ L_005648b0:
     /* 005648b0  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 005648b2  push 0xb6af68 */
+    /* 005648b2  push 0xb6af68  ; "Picture" */
     t = 0xb6af68u;
     esp -= 4;
     M32(esp) = t;
-    /* 005648b7  lea ecx, [edi + 0x18] */
+    /* 005648b7  lea ecx, [edi + 0x18]  ; field Picture (serialized) */
     ecx = (uint32_t)(edi + 0x00000018u);
     /* 005648ba  push ecx */
     t = ecx;
@@ -139,11 +142,11 @@ R_2:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005648c9  push 0xb6a3f0 */
+    /* 005648c9  push 0xb6a3f0  ; "Data" */
     t = 0xb6a3f0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005648ce  lea eax, [edi + 0x1c] */
+    /* 005648ce  lea eax, [edi + 0x1c]  ; field Data (serialized) */
     eax = (uint32_t)(edi + 0x0000001cu);
     /* 005648d1  push eax */
     t = eax;
@@ -175,7 +178,7 @@ R_3:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005648e0  push 0xb6a3d0 */
+    /* 005648e0  push 0xb6a3d0  ; "Maximum value" */
     t = 0xb6a3d0u;
     esp -= 4;
     M32(esp) = t;
@@ -207,7 +210,7 @@ R_4:
     /* 005648f3  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 005648f5  push 0xb6bfe4 */
+    /* 005648f5  push 0xb6bfe4  ; "Horizontal align" */
     t = 0xb6bfe4u;
     esp -= 4;
     M32(esp) = t;
@@ -235,7 +238,7 @@ R_5:
     /* 00564907  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00564909  push 0xb6bfd8 */
+    /* 00564909  push 0xb6bfd8  ; "Fill order" */
     t = 0xb6bfd8u;
     esp -= 4;
     M32(esp) = t;
@@ -267,7 +270,7 @@ R_6:
     /* 0056491c  mov ebp, dword ptr [esi] */
     ea = (uint32_t)(esi);
     ebp = M32(ea);
-    /* 0056491e  call 0x5651c0 */
+    /* 0056491e  call 0x5651c0  ; BfColorData::getRuntimeClass */
     t = 0x005651c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564890_7;
@@ -278,11 +281,11 @@ R_7:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00564924  push 0xb6c974 */
+    /* 00564924  push 0xb6c974  ; "Color" */
     t = 0xb6c974u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564929  lea ecx, [edi + 0x10] */
+    /* 00564929  lea ecx, [edi + 0x10]  ; field Color (serialized) */
     ecx = (uint32_t)(edi + 0x00000010u);
     /* 0056492c  push ecx */
     t = ecx;
@@ -331,7 +334,7 @@ L_0056493e:
     /* 0056493e  mov ebp, dword ptr [esi] */
     ea = (uint32_t)(esi);
     ebp = M32(ea);
-    /* 00564940  call 0x5651c0 */
+    /* 00564940  call 0x5651c0  ; BfColorData::getRuntimeClass */
     t = 0x005651c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564890_9;
@@ -342,7 +345,7 @@ R_9:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00564946  push 0xb6c968 */
+    /* 00564946  push 0xb6c968  ; "Fill color" */
     t = 0xb6c968u;
     esp -= 4;
     M32(esp) = t;
@@ -402,7 +405,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00564970  (between same file) */
+/* 00564970  BfColorFillNode::draw_helper_00564970  (between same file)
+ * class: dice::meme::BfColorFillNode
+ * called by: BfColorFillNode::draw
+ */
 BFV_L1_ENTRY(bfv_client_l1_00564970, bfv_client_l1_body_00564970);
 void bfv_client_l1_body_00564970(struct bfv_cpu *c)
 {
@@ -419,7 +425,7 @@ void bfv_client_l1_body_00564970(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00564975  jne 0x564980 */
     if (!zf) goto L_00564980;
-    /* 00564977  fld dword ptr [0xb44444] */
+    /* 00564977  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0056497d  ret 0xc */
@@ -435,19 +441,19 @@ L_00564980:
     F_LOGIC(8, r);
     /* 00564985  je 0x56499e */
     if (zf) goto L_0056499e;
-    /* 00564987  mov eax, dword ptr [esp + 4] */
+    /* 00564987  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0056498b  fld dword ptr [eax] */
     ea = (uint32_t)(eax);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0056498d  fsub dword ptr [0xb44a78] */
+    /* 0056498d  fsub dword ptr [0xb44a78]  ; = 4.0f */
     ea = (uint32_t)(0x00b44a78u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564993  fdiv dword ptr [esp + 0xc] */
+    /* 00564993  fdiv dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564997  fmul dword ptr [esp + 8] */
+    /* 00564997  fmul dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0056499b  ret 0xc */
@@ -455,16 +461,16 @@ L_00564980:
     esp += 16;
     goto out;
 L_0056499e:
-    /* 0056499e  mov ecx, dword ptr [esp + 4] */
+    /* 0056499e  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005649a2  fld dword ptr [ecx + 4] */
     ea = (uint32_t)(ecx + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005649a5  fdiv dword ptr [esp + 0xc] */
+    /* 005649a5  fdiv dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005649a9  fmul dword ptr [esp + 8] */
+    /* 005649a9  fmul dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005649ad  ret 0xc */
@@ -478,7 +484,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005649b0  (between same file) */
+/* 005649b0  ClassTemplate<BfColorFillNode,EffectNode>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_005649b0, bfv_client_l1_body_005649b0);
 void bfv_client_l1_body_005649b0(struct bfv_cpu *c)
 {
@@ -504,7 +511,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005649c0  (between same file) */
+/* 005649c0  ClassTemplate<BfColorFillNode,EffectNode>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_005649c0, bfv_client_l1_body_005649c0);
 void bfv_client_l1_body_005649c0(struct bfv_cpu *c)
 {
@@ -530,7 +538,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005649e0  (between same file) */
+/* 005649e0  BfColorFillNode::draw_helper_005649e0  (between same file)
+ * class: dice::meme::BfColorFillNode
+ * called by: BfColorFillNode::draw
+ */
 BFV_L1_ENTRY(bfv_client_l1_005649e0, bfv_client_l1_body_005649e0);
 void bfv_client_l1_body_005649e0(struct bfv_cpu *c)
 {
@@ -548,7 +559,7 @@ void bfv_client_l1_body_005649e0(struct bfv_cpu *c)
     /* 005649e6  test al, al */
     r = (LO8(eax) & LO8(eax)) & 0xffu;
     F_LOGIC(8, r);
-    /* 005649e8  mov eax, dword ptr [esp + 4] */
+    /* 005649e8  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005649ec  je 0x564a25 */
@@ -558,7 +569,7 @@ void bfv_client_l1_body_005649e0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 005649f0  jne 0x564a06 */
     if (!zf) goto L_00564a06;
-    /* 005649f2  fld dword ptr [0xb44444] */
+    /* 005649f2  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005649f8  fld dword ptr [eax + 0xc] */
@@ -580,13 +591,13 @@ L_00564a06:
     /* 00564a06  fld dword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564a09  fsub dword ptr [0xb44a78] */
+    /* 00564a09  fsub dword ptr [0xb44a78]  ; = 4.0f */
     ea = (uint32_t)(0x00b44a78u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564a0f  fdiv dword ptr [esp + 0xc] */
+    /* 00564a0f  fdiv dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564a13  fmul dword ptr [esp + 8] */
+    /* 00564a13  fmul dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00564a17  fld dword ptr [eax + 0xc] */
@@ -613,7 +624,7 @@ L_00564a25:
     /* 00564a29  mov ecx, dword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     ecx = M32(ea);
-    /* 00564a2c  fld dword ptr [0xb44444] */
+    /* 00564a2c  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00564a32  mov dword ptr [eax + 8], ecx */
@@ -633,13 +644,13 @@ L_00564a3b:
     /* 00564a3e  mov ecx, dword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     ecx = M32(ea);
-    /* 00564a41  fdiv dword ptr [esp + 0xc] */
+    /* 00564a41  fdiv dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00564a45  mov dword ptr [eax + 8], ecx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = ecx;
-    /* 00564a48  fmul dword ptr [esp + 8] */
+    /* 00564a48  fmul dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00564a4c  fstp dword ptr [eax + 0xc] */
@@ -656,7 +667,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00564a60  dice::meme::BfColorFillNode  (vtable store) */
+/* 00564a60  BfColorFillNode::create  (vtable store)
+ * class: dice::meme::BfColorFillNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00564a60, bfv_client_l1_body_00564a60);
 BFV_L1_RESUME(bfv_client_l1r_00564a60_1, bfv_client_l1_body_00564a60, 1);
 BFV_L1_RESUME(bfv_client_l1r_00564a60_2, bfv_client_l1_body_00564a60, 2);
@@ -684,7 +697,7 @@ void bfv_client_l1_body_00564a60(struct bfv_cpu *c)
     t = 0x28u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564a64  call 0x403610 */
+    /* 00564a64  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564a60_1;
@@ -716,7 +729,7 @@ R_1:
     M32(esp) = t;
     /* 00564a75  mov ecx, esi */
     ecx = esi;
-    /* 00564a77  call 0x8701a0 */
+    /* 00564a77  call 0x8701a0  ; EffectNode::EffectNode */
     t = 0x008701a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564a60_2;
@@ -750,7 +763,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 00564a94  mov dword ptr [esi], 0xb6c9a4 */
+    /* 00564a94  mov dword ptr [esi], 0xb6c9a4  ; vtable BfColorFillNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6c9a4u;
     /* 00564a9a  mov eax, esi */
@@ -787,8 +800,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00564ab0  dice::meme::BfColorFillNode  (virtual method)
- * strings: "dice::meme::BfColorFillNode" */
+/* 00564ab0  BfColorFillNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BfColorFillNode
+ * strings: "dice::meme::BfColorFillNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00564ab0, bfv_client_l1_body_00564ab0);
 BFV_L1_RESUME(bfv_client_l1r_00564ab0_1, bfv_client_l1_body_00564ab0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00564ab0_2, bfv_client_l1_body_00564ab0, 2);
@@ -819,13 +835,13 @@ void bfv_client_l1_body_00564ab0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00564ac5  push 0xb6ca74 */
+    /* 00564ac5  push 0xb6ca74  ; "dice::meme::BfColorFillNode" */
     t = 0xb6ca74u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564aca  mov ecx, 0xd73664 */
+    /* 00564aca  mov ecx, 0xd73664  ; g_RuntimeClass_BfColorFillNode */
     ecx = 0xd73664u;
-    /* 00564acf  call 0x875490 */
+    /* 00564acf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564ab0_1;
@@ -836,10 +852,10 @@ R_1:
     t = 0xb302c0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564ad9  mov dword ptr [0xd73664], 0xb6c980 */
+    /* 00564ad9  mov dword ptr [0xd73664], 0xb6c980  ; g_RuntimeClass_BfColorFillNode */
     ea = (uint32_t)(0x00d73664u);
     M32(ea) = 0xb6c980u;
-    /* 00564ae3  call 0x7c2cd2 */
+    /* 00564ae3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564ab0_2;
@@ -853,7 +869,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00564aeb:
-    /* 00564aeb  mov eax, 0xd73664 */
+    /* 00564aeb  mov eax, 0xd73664  ; g_RuntimeClass_BfColorFillNode */
     eax = 0xd73664u;
     /* 00564af0  ret */
     c->eip = M32(esp);
@@ -866,7 +882,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00564b00  dice::meme::BfColorFillNode  (virtual method) */
+/* 00564b00  BfColorFillNode::draw  (virtual method)
+ * overrides: Node::draw  (83 classes implement it)
+ * class: dice::meme::BfColorFillNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00564b00, bfv_client_l1_body_00564b00);
 BFV_L1_RESUME(bfv_client_l1r_00564b00_1, bfv_client_l1_body_00564b00, 1);
 BFV_L1_RESUME(bfv_client_l1r_00564b00_2, bfv_client_l1_body_00564b00, 2);
@@ -916,7 +935,7 @@ void bfv_client_l1_body_00564b00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00564b07  mov esi, ecx */
     esi = ecx;
-    /* 00564b09  mov eax, dword ptr [esi + 0x18] */
+    /* 00564b09  mov eax, dword ptr [esi + 0x18]  ; field Picture */
     ea = (uint32_t)(esi + 0x00000018u);
     eax = M32(ea);
     /* 00564b0c  test eax, eax */
@@ -924,7 +943,7 @@ void bfv_client_l1_body_00564b00(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00564b0e  je 0x565038 */
     if (zf) goto L_00565038;
-    /* 00564b14  mov eax, dword ptr [esi + 0x10] */
+    /* 00564b14  mov eax, dword ptr [esi + 0x10]  ; field Color */
     ea = (uint32_t)(esi + 0x00000010u);
     eax = M32(ea);
     /* 00564b17  test eax, eax */
@@ -972,7 +991,7 @@ void bfv_client_l1_body_00564b00(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 00564b45  fcomp dword ptr [0xb44444] */
+    /* 00564b45  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00564b4b  fnstsw ax */
@@ -985,7 +1004,7 @@ R_1:
     /* 00564b56  mov ecx, dword ptr [esp + 0x14c] */
     ea = (uint32_t)(esp + 0x0000014cu);
     ecx = M32(ea);
-    /* 00564b5d  mov eax, dword ptr [esi + 0x10] */
+    /* 00564b5d  mov eax, dword ptr [esi + 0x10]  ; field Color */
     ea = (uint32_t)(esi + 0x00000010u);
     eax = M32(ea);
     /* 00564b60  push ebx */
@@ -1021,45 +1040,45 @@ R_1:
     /* 00564b79  fld dword ptr [edi + 4] */
     ea = (uint32_t)(edi + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564b7c  mov dword ptr [esp + 0x54], 0x3f800000 */
+    /* 00564b7c  mov dword ptr [esp + 0x54], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000054u);
     M32(ea) = 0x3f800000u;
     /* 00564b84  fld st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfld st(0)\n\t.att_syntax prefix");
-    /* 00564b86  mov dword ptr [esp + 0x58], 0x3f800000 */
+    /* 00564b86  mov dword ptr [esp + 0x58], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000058u);
     M32(ea) = 0x3f800000u;
     /* 00564b8e  fadd dword ptr [edi + 0xc] */
     ea = (uint32_t)(edi + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564b91  mov dword ptr [esp + 0x5c], 0x3f800000 */
+    /* 00564b91  mov dword ptr [esp + 0x5c], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x0000005cu);
     M32(ea) = 0x3f800000u;
-    /* 00564b99  mov dword ptr [esp + 0x60], 0x3f800000 */
+    /* 00564b99  mov dword ptr [esp + 0x60], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000060u);
     M32(ea) = 0x3f800000u;
-    /* 00564ba1  mov dword ptr [esp + 0x70], 0x3f800000 */
+    /* 00564ba1  mov dword ptr [esp + 0x70], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000070u);
     M32(ea) = 0x3f800000u;
     /* 00564ba9  fstp dword ptr [esp + 0x10] */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564bad  mov dword ptr [esp + 0x74], 0x3f800000 */
+    /* 00564bad  mov dword ptr [esp + 0x74], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000074u);
     M32(ea) = 0x3f800000u;
     /* 00564bb5  fld dword ptr [edi + 0x10] */
     ea = (uint32_t)(edi + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564bb8  mov dword ptr [esp + 0x78], 0x3f800000 */
+    /* 00564bb8  mov dword ptr [esp + 0x78], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000078u);
     M32(ea) = 0x3f800000u;
     /* 00564bc0  fst dword ptr [esp + 0x14] */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564bc4  mov dword ptr [esp + 0x7c], 0x3f800000 */
+    /* 00564bc4  mov dword ptr [esp + 0x7c], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x0000007cu);
     M32(ea) = 0x3f800000u;
-    /* 00564bcc  mov dword ptr [esp + 0x8c], 0x3f800000 */
+    /* 00564bcc  mov dword ptr [esp + 0x8c], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x0000008cu);
     M32(ea) = 0x3f800000u;
     /* 00564bd7  fld st(3) */
@@ -1067,10 +1086,10 @@ R_1:
     /* 00564bd9  fstp dword ptr [esp + 0x48] */
     ea = (uint32_t)(esp + 0x00000048u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564bdd  mov dword ptr [esp + 0x90], 0x3f800000 */
+    /* 00564bdd  mov dword ptr [esp + 0x90], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000090u);
     M32(ea) = 0x3f800000u;
-    /* 00564be8  mov dword ptr [esp + 0x94], 0x3f800000 */
+    /* 00564be8  mov dword ptr [esp + 0x94], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000094u);
     M32(ea) = 0x3f800000u;
     /* 00564bf3  fld st(1) */
@@ -1078,7 +1097,7 @@ R_1:
     /* 00564bf5  fstp dword ptr [esp + 0x4c] */
     ea = (uint32_t)(esp + 0x0000004cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564bf9  mov dword ptr [esp + 0x98], 0x3f800000 */
+    /* 00564bf9  mov dword ptr [esp + 0x98], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000098u);
     M32(ea) = 0x3f800000u;
     /* 00564c04  mov byte ptr [esp + 0x30], 1 */
@@ -1101,16 +1120,16 @@ R_1:
     /* 00564c24  mov byte ptr [esp + 0x45], 0 */
     ea = (uint32_t)(esp + 0x00000045u);
     M8(ea) = 0x0u;
-    /* 00564c29  mov dword ptr [esp + 0xa8], 0x3f800000 */
+    /* 00564c29  mov dword ptr [esp + 0xa8], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x000000a8u);
     M32(ea) = 0x3f800000u;
-    /* 00564c34  mov dword ptr [esp + 0xac], 0x3f800000 */
+    /* 00564c34  mov dword ptr [esp + 0xac], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x000000acu);
     M32(ea) = 0x3f800000u;
-    /* 00564c3f  mov dword ptr [esp + 0xb0], 0x3f800000 */
+    /* 00564c3f  mov dword ptr [esp + 0xb0], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x000000b0u);
     M32(ea) = 0x3f800000u;
-    /* 00564c4a  mov dword ptr [esp + 0xb4], 0x3f800000 */
+    /* 00564c4a  mov dword ptr [esp + 0xb4], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x000000b4u);
     M32(ea) = 0x3f800000u;
     /* 00564c55  or ecx, 0xffffffff */
@@ -1258,7 +1277,7 @@ R_1:
     /* 00564d24  mov edx, dword ptr [eax + 0xc] */
     ea = (uint32_t)(eax + 0x0000000cu);
     edx = M32(ea);
-    /* 00564d27  mov ecx, dword ptr [esi + 0x18] */
+    /* 00564d27  mov ecx, dword ptr [esi + 0x18]  ; field Picture */
     ea = (uint32_t)(esi + 0x00000018u);
     ecx = M32(ea);
     /* 00564d2a  lea eax, [esp + 0x2c] */
@@ -1281,7 +1300,7 @@ R_1:
     /* 00564d38  mov dword ptr [esp + 0xc0], edx */
     ea = (uint32_t)(esp + 0x000000c0u);
     M32(ea) = edx;
-    /* 00564d3f  call 0x8755e0 */
+    /* 00564d3f  call 0x8755e0  ; meme::Node::dispatchUpA */
     t = 0x008755e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564b00_2;
@@ -1294,7 +1313,7 @@ R_2:
     M32(esp) = t;
     /* 00564d45  lea ecx, [esp + 0x1c] */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 00564d49  call 0x5447c0 */
+    /* 00564d49  call 0x5447c0  ; meme_005447c0 */
     t = 0x005447c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564b00_3;
@@ -1304,7 +1323,7 @@ R_3:
     /* 00564d4e  mov ecx, dword ptr [esi + 0x20] */
     ea = (uint32_t)(esi + 0x00000020u);
     ecx = M32(ea);
-    /* 00564d51  mov edx, dword ptr [esi + 0x1c] */
+    /* 00564d51  mov edx, dword ptr [esi + 0x1c]  ; field Data */
     ea = (uint32_t)(esi + 0x0000001cu);
     edx = M32(ea);
     /* 00564d54  mov eax, dword ptr [ecx] */
@@ -1365,7 +1384,7 @@ R_5:
     M32(esp) = t;
     /* 00564d75  mov ecx, esi */
     ecx = esi;
-    /* 00564d77  call 0x5649e0 */
+    /* 00564d77  call 0x5649e0  ; BfColorFillNode::draw_helper_005649e0 */
     t = 0x005649e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564b00_6;
@@ -1387,7 +1406,7 @@ R_6:
     M32(esp) = t;
     /* 00564d85  je 0x564db3 */
     if (zf) goto L_00564db3;
-    /* 00564d87  mov edx, dword ptr [esi + 0x1c] */
+    /* 00564d87  mov edx, dword ptr [esi + 0x1c]  ; field Data */
     ea = (uint32_t)(esi + 0x0000001cu);
     edx = M32(ea);
     /* 00564d8a  mov eax, dword ptr [ecx] */
@@ -1442,7 +1461,7 @@ R_8:
     M32(esp) = t;
     /* 00564da6  mov ecx, esi */
     ecx = esi;
-    /* 00564da8  call 0x564970 */
+    /* 00564da8  call 0x564970  ; BfColorFillNode::draw_helper_00564970 */
     t = 0x00564970u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564b00_9;
@@ -1455,7 +1474,7 @@ R_9:
     /* 00564db1  jmp 0x564df9 */
     goto L_00564df9;
 L_00564db3:
-    /* 00564db3  mov eax, dword ptr [esi + 0x1c] */
+    /* 00564db3  mov eax, dword ptr [esi + 0x1c]  ; field Data */
     ea = (uint32_t)(esi + 0x0000001cu);
     eax = M32(ea);
     /* 00564db6  mov edx, dword ptr [ecx] */
@@ -1510,7 +1529,7 @@ R_11:
     M32(esp) = t;
     /* 00564dd2  mov ecx, esi */
     ecx = esi;
-    /* 00564dd4  call 0x564970 */
+    /* 00564dd4  call 0x564970  ; BfColorFillNode::draw_helper_00564970 */
     t = 0x00564970u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564b00_12;
@@ -1585,34 +1604,34 @@ L_00564df9:
     /* 00564e1b  fadd dword ptr [edi + 0xc] */
     ea = (uint32_t)(edi + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564e1e  mov dword ptr [esp + 0xe0], 0x3f800000 */
+    /* 00564e1e  mov dword ptr [esp + 0xe0], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x000000e0u);
     M32(ea) = 0x3f800000u;
-    /* 00564e29  mov dword ptr [esp + 0xe4], 0x3f800000 */
+    /* 00564e29  mov dword ptr [esp + 0xe4], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x000000e4u);
     M32(ea) = 0x3f800000u;
-    /* 00564e34  mov dword ptr [esp + 0xe8], 0x3f800000 */
+    /* 00564e34  mov dword ptr [esp + 0xe8], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x000000e8u);
     M32(ea) = 0x3f800000u;
     /* 00564e3f  fstp dword ptr [esp + 0x10] */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564e43  mov dword ptr [esp + 0xec], 0x3f800000 */
+    /* 00564e43  mov dword ptr [esp + 0xec], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x000000ecu);
     M32(ea) = 0x3f800000u;
     /* 00564e4e  fld dword ptr [edi + 0x10] */
     ea = (uint32_t)(edi + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564e51  mov dword ptr [esp + 0xfc], 0x3f800000 */
+    /* 00564e51  mov dword ptr [esp + 0xfc], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x000000fcu);
     M32(ea) = 0x3f800000u;
     /* 00564e5c  fst dword ptr [esp + 0x14] */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564e60  mov dword ptr [esp + 0x100], 0x3f800000 */
+    /* 00564e60  mov dword ptr [esp + 0x100], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000100u);
     M32(ea) = 0x3f800000u;
-    /* 00564e6b  mov dword ptr [esp + 0x104], 0x3f800000 */
+    /* 00564e6b  mov dword ptr [esp + 0x104], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000104u);
     M32(ea) = 0x3f800000u;
     /* 00564e76  fld st(3) */
@@ -1620,10 +1639,10 @@ L_00564df9:
     /* 00564e78  fstp dword ptr [esp + 0xd4] */
     ea = (uint32_t)(esp + 0x000000d4u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564e7f  mov dword ptr [esp + 0x108], 0x3f800000 */
+    /* 00564e7f  mov dword ptr [esp + 0x108], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000108u);
     M32(ea) = 0x3f800000u;
-    /* 00564e8a  mov dword ptr [esp + 0x118], 0x3f800000 */
+    /* 00564e8a  mov dword ptr [esp + 0x118], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000118u);
     M32(ea) = 0x3f800000u;
     /* 00564e95  fld st(1) */
@@ -1631,16 +1650,16 @@ L_00564df9:
     /* 00564e97  fstp dword ptr [esp + 0xd8] */
     ea = (uint32_t)(esp + 0x000000d8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564e9e  mov dword ptr [esp + 0x11c], 0x3f800000 */
+    /* 00564e9e  mov dword ptr [esp + 0x11c], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x0000011cu);
     M32(ea) = 0x3f800000u;
-    /* 00564ea9  mov dword ptr [esp + 0x120], 0x3f800000 */
+    /* 00564ea9  mov dword ptr [esp + 0x120], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000120u);
     M32(ea) = 0x3f800000u;
     /* 00564eb4  fstp dword ptr [esp + 0xdc] */
     ea = (uint32_t)(esp + 0x000000dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00564ebb  mov dword ptr [esp + 0x124], 0x3f800000 */
+    /* 00564ebb  mov dword ptr [esp + 0x124], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000124u);
     M32(ea) = 0x3f800000u;
     /* 00564ec6  mov byte ptr [esp + 0xbc], 1 */
@@ -1660,16 +1679,16 @@ L_00564df9:
     /* 00564eee  mov byte ptr [esp + 0xd1], 0 */
     ea = (uint32_t)(esp + 0x000000d1u);
     M8(ea) = 0x0u;
-    /* 00564ef6  mov dword ptr [esp + 0x134], 0x3f800000 */
+    /* 00564ef6  mov dword ptr [esp + 0x134], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000134u);
     M32(ea) = 0x3f800000u;
-    /* 00564f01  mov dword ptr [esp + 0x138], 0x3f800000 */
+    /* 00564f01  mov dword ptr [esp + 0x138], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000138u);
     M32(ea) = 0x3f800000u;
-    /* 00564f0c  mov dword ptr [esp + 0x13c], 0x3f800000 */
+    /* 00564f0c  mov dword ptr [esp + 0x13c], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x0000013cu);
     M32(ea) = 0x3f800000u;
-    /* 00564f17  mov dword ptr [esp + 0x140], 0x3f800000 */
+    /* 00564f17  mov dword ptr [esp + 0x140], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000140u);
     M32(ea) = 0x3f800000u;
     /* 00564f22  lea edx, [esp + 0x18] */
@@ -1809,7 +1828,7 @@ L_00564df9:
     /* 0056500b  mov dword ptr [esp + 0x13c], edx */
     ea = (uint32_t)(esp + 0x0000013cu);
     M32(ea) = edx;
-    /* 00565012  mov edx, dword ptr [esi + 0x18] */
+    /* 00565012  mov edx, dword ptr [esi + 0x18]  ; field Picture */
     ea = (uint32_t)(esi + 0x00000018u);
     edx = M32(ea);
     /* 00565015  mov eax, dword ptr [eax + 0xc] */
@@ -1835,7 +1854,7 @@ L_00564df9:
     /* 00565029  mov dword ptr [esp + 0x14c], eax */
     ea = (uint32_t)(esp + 0x0000014cu);
     M32(ea) = eax;
-    /* 00565030  call 0x8755e0 */
+    /* 00565030  call 0x8755e0  ; meme::Node::dispatchUpA */
     t = 0x008755e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564b00_13;

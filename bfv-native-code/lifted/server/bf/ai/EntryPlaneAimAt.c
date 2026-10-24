@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00763d20  dice::bf::ai::EntryPlaneAimAt  (vtable store) */
+/* 00763d20  EntryPlaneAimAt::EntryPlaneAimAt  (vtable store)
+ * class: dice::bf::ai::EntryPlaneAimAt
+ * also entered at 00763d30: EntryPlaneAimAt::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00763d20, bfv_server_l1_body_00763d20);
 void bfv_server_l1_body_00763d20(struct bfv_cpu *c)
 {
@@ -16,7 +20,7 @@ void bfv_server_l1_body_00763d20(struct bfv_cpu *c)
     uint32_t ea;
     /* 00763d20  mov eax, ecx */
     eax = ecx;
-    /* 00763d22  mov dword ptr [eax], 0x8759e4 */
+    /* 00763d22  mov dword ptr [eax], 0x8759e4  ; vtable EntryPlaneAimAt */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8759e4u;
     /* 00763d28  ret */

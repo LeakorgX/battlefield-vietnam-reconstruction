@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 005e6840  dice::bf::Linear  (vtable store) */
+/* 005e6840  Linear::Linear  (vtable store)
+ * class: dice::bf::Linear
+ * also entered at 005e6860: Linear::vf0
+ * called by: SoundEffect_helper_005e6800
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6840, bfv_client_l1_body_005e6840);
 BFV_L1_RESUME(bfv_client_l1r_005e6840_1, bfv_client_l1_body_005e6840, 1);
 void bfv_client_l1_body_005e6840(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_client_l1_body_005e6840(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005e6840  mov eax, dword ptr [esp + 4] */
+    /* 005e6840  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005e6844  push esi */
@@ -36,14 +40,14 @@ void bfv_client_l1_body_005e6840(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005e6848  mov esi, ecx */
     esi = ecx;
-    /* 005e684a  call 0x5e6ca0 */
+    /* 005e684a  call 0x5e6ca0  ; Envelope::Envelope */
     t = 0x005e6ca0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e6840_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005e684f  mov dword ptr [esi], 0xb77c44 */
+    /* 005e684f  mov dword ptr [esi], 0xb77c44  ; vtable Linear */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb77c44u;
     /* 005e6855  mov eax, esi */
@@ -63,7 +67,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005e6890  dice::bf::Linear  (virtual method) */
+/* 005e6890  Linear::vf5  (virtual method)
+ * overrides: IEnvelope::vf5  (4 classes implement it)
+ * class: dice::bf::Linear
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6890, bfv_client_l1_body_005e6890);
 BFV_L1_RESUME(bfv_client_l1r_005e6890_1, bfv_client_l1_body_005e6890, 1);
 BFV_L1_RESUME(bfv_client_l1r_005e6890_2, bfv_client_l1_body_005e6890, 2);
@@ -89,7 +96,7 @@ void bfv_client_l1_body_005e6890(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005e6892  mov esi, ecx */
     esi = ecx;
-    /* 005e6894  call 0x5e6b20 */
+    /* 005e6894  call 0x5e6b20  ; Envelope_005e6b20 */
     t = 0x005e6b20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e6890_1;
@@ -101,7 +108,7 @@ R_1:
     edi = M32(ea);
     /* 005e689c  mov ecx, esi */
     ecx = esi;
-    /* 005e689e  call 0x5e6a70 */
+    /* 005e689e  call 0x5e6a70  ; bf_005e6a70 */
     t = 0x005e6a70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e6890_2;

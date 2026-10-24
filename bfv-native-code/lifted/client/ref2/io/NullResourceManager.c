@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 008c2a50  dice::ref2::io::NullResourceManager  (vtable store) */
+/* 008c2a50  NullResourceManager::NullResourceManager  (vtable store)
+ * class: dice::ref2::io::NullResourceManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c2a50, bfv_client_l1_body_008c2a50);
 void bfv_client_l1_body_008c2a50(struct bfv_cpu *c)
 {
@@ -16,7 +18,7 @@ void bfv_client_l1_body_008c2a50(struct bfv_cpu *c)
     uint32_t ea;
     /* 008c2a50  mov eax, ecx */
     eax = ecx;
-    /* 008c2a52  mov dword ptr [eax], 0xbdf834 */
+    /* 008c2a52  mov dword ptr [eax], 0xbdf834  ; vtable NullResourceManager */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbdf834u;
     /* 008c2a58  mov dword ptr [eax + 4], 1 */
@@ -36,7 +38,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008c2a70  dice::ref2::io::NullResourceManager  (virtual method) */
+/* 008c2a70  NullResourceManager::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::io::NullResourceManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_008c2a70, bfv_client_l1_body_008c2a70);
 void bfv_client_l1_body_008c2a70(struct bfv_cpu *c)
 {
@@ -45,12 +50,12 @@ void bfv_client_l1_body_008c2a70(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 008c2a70  mov edx, dword ptr [0xb42718] */
+    /* 008c2a70  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 008c2a76  mov eax, ecx */
     eax = ecx;
-    /* 008c2a78  mov ecx, dword ptr [esp + 4] */
+    /* 008c2a78  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008c2a7c  cmp ecx, edx */
@@ -64,7 +69,7 @@ void bfv_client_l1_body_008c2a70(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008c2a81  mov esi, dword ptr [0xbdb00c] */
+    /* 008c2a81  mov esi, dword ptr [0xbdb00c]  ; interfaceID(ResourceManager) */
     ea = (uint32_t)(0x00bdb00cu);
     esi = M32(ea);
     /* 008c2a87  xor edx, edx */

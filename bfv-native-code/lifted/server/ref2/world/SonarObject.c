@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005b7bc0  dice::ref2::world::SonarObject  (virtual method) */
+/* 005b7bc0  SonarObject::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::SonarObject
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7bc0, bfv_server_l1_body_005b7bc0);
 BFV_L1_RESUME(bfv_server_l1r_005b7bc0_1, bfv_server_l1_body_005b7bc0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005b7bc0_2, bfv_server_l1_body_005b7bc0, 2);
@@ -33,7 +36,7 @@ void bfv_server_l1_body_005b7bc0(struct bfv_cpu *c)
     case 8: goto R_8;
     default: break;
     }
-    /* 005b7bc0  test byte ptr [esp + 8], 4 */
+    /* 005b7bc0  test byte ptr [esp + 8], 4  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x4u) & 0xffu;
     F_LOGIC(8, r);
@@ -97,7 +100,7 @@ R_2:
     c->eip = t;
     goto out;
 R_3:
-    /* 005b7bf3  cmp eax, dword ptr [0x829144] */
+    /* 005b7bf3  cmp eax, dword ptr [0x829144]  ; PlayerControlObjectTemplate::classID */
     ea = (uint32_t)(0x00829144u);
     a = eax;
     b = M32(ea);
@@ -177,7 +180,7 @@ L_005b7c37:
     /* 005b7c37  fld dword ptr [edi + 0x160] */
     ea = (uint32_t)(edi + 0x00000160u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005b7c3d  fcomp dword ptr [0x851bcc] */
+    /* 005b7c3d  fcomp dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005b7c43  fnstsw ax */
@@ -190,13 +193,13 @@ L_005b7c37:
     /* 005b7c4a  fld dword ptr [edi + 0x160] */
     ea = (uint32_t)(edi + 0x00000160u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005b7c50  fsub dword ptr [esp + 0xc] */
+    /* 005b7c50  fsub dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005b7c54  fst dword ptr [edi + 0x160] */
     ea = (uint32_t)(edi + 0x00000160u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005b7c5a  fcomp dword ptr [0x851bcc] */
+    /* 005b7c5a  fcomp dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005b7c60  fnstsw ax */
@@ -224,13 +227,13 @@ L_005b7c71:
     /* 005b7c81  fld dword ptr [edi + 0x15c] */
     ea = (uint32_t)(edi + 0x0000015cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005b7c87  fsub dword ptr [esp + 0xc] */
+    /* 005b7c87  fsub dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005b7c8b  fst dword ptr [edi + 0x15c] */
     ea = (uint32_t)(edi + 0x0000015cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005b7c91  fcomp dword ptr [0x851bcc] */
+    /* 005b7c91  fcomp dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005b7c97  fnstsw ax */
@@ -242,14 +245,14 @@ L_005b7c71:
     if (pf) goto L_005b7caf;
     /* 005b7c9e  mov ecx, edi */
     ecx = edi;
-    /* 005b7ca0  call 0x5b79c0 */
+    /* 005b7ca0  call 0x5b79c0  ; SonarObject::update_helper_005b79c0 */
     t = 0x005b79c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b7bc0_8;
     c->eip = t;
     goto out;
 R_8:
-    /* 005b7ca5  mov dword ptr [edi + 0x15c], 0x3dcccccd */
+    /* 005b7ca5  mov dword ptr [edi + 0x15c], 0x3dcccccd  ; 0.1f */
     ea = (uint32_t)(edi + 0x0000015cu);
     M32(ea) = 0x3dcccccdu;
 L_005b7caf:

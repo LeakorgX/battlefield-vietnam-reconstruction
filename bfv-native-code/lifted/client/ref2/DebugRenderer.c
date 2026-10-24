@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 006f2640  dice::ref2::DebugRenderer  (virtual method) */
+/* 006f2640  stub_noop_6args_006f2640  (virtual method)
+ * class: dice::ref2::DebugRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_006f2640, bfv_client_l1_body_006f2640);
 void bfv_client_l1_body_006f2640(struct bfv_cpu *c)
 {
@@ -24,7 +26,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc8f0  dice::ref2::DebugRenderer  (virtual method) */
+/* 006fc8f0  DebugRenderer::vf2_getByte_ch  (virtual method)
+ * class: dice::ref2::DebugRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc8f0, bfv_client_l1_body_006fc8f0);
 void bfv_client_l1_body_006fc8f0(struct bfv_cpu *c)
 {
@@ -47,7 +51,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a43ea0  dice::ref2::DebugRenderer  (virtual method) */
+/* 00a43ea0  DebugRenderer::vf3  (virtual method)
+ * class: dice::ref2::DebugRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a43ea0, bfv_client_l1_body_00a43ea0);
 void bfv_client_l1_body_00a43ea0(struct bfv_cpu *c)
 {
@@ -68,7 +74,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a43eb0  dice::ref2::DebugRenderer  (virtual method) */
+/* 00a43eb0  DebugRenderer::vf4  (virtual method)
+ * class: dice::ref2::DebugRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a43eb0, bfv_client_l1_body_00a43eb0);
 void bfv_client_l1_body_00a43eb0(struct bfv_cpu *c)
 {
@@ -89,7 +97,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00a43ee0  dice::ref2::DebugRenderer  (virtual method) */
+/* 00a43ee0  DebugRenderer::vf12  (virtual method)
+ * class: dice::ref2::DebugRenderer
+ * also entered at 00a43ef0: DebugRenderer::vf13
+ * also entered at 00a43f00: DebugRenderer::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a43ee0, bfv_client_l1_body_00a43ee0);
 void bfv_client_l1_body_00a43ee0(struct bfv_cpu *c)
 {
@@ -108,7 +120,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a8ab20  dice::ref2::DebugRenderer  (virtual method) */
+/* 00a8ab20  DebugRenderer::vf1_setByte_ch  (virtual method)
+ * class: dice::ref2::DebugRenderer
+ * called by: SoundPatch::vf1_helper_00a8a090
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a8ab20, bfv_client_l1_body_00a8ab20);
 void bfv_client_l1_body_00a8ab20(struct bfv_cpu *c)
 {
@@ -117,7 +132,7 @@ void bfv_client_l1_body_00a8ab20(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a8ab20  mov al, byte ptr [esp + 4] */
+    /* 00a8ab20  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 00a8ab24  mov byte ptr [ecx + 0xc], al */
@@ -134,7 +149,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac3820  dice::ref2::DebugRenderer  (virtual method) */
+/* 00ac3820  stub_return_true_4args_00ac3820  (virtual method)
+ * class: dice::ref2::DebugRenderer
+ * called by: BfVariablePictureNode::update, BfEditNode::update, BfEditNodeInt::update, BfEditNodeNew::update, EditNode::update, ActionNode::update (+2 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac3820, bfv_client_l1_body_00ac3820);
 void bfv_client_l1_body_00ac3820(struct bfv_cpu *c)
 {

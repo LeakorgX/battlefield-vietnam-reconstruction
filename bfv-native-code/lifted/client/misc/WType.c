@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005297e0  dice::WType  (virtual method) */
+/* 005297e0  WType::vf1  (virtual method)
+ * class: dice::WType
+ */
 BFV_L1_ENTRY(bfv_client_l1_005297e0, bfv_client_l1_body_005297e0);
 BFV_L1_RESUME(bfv_client_l1r_005297e0_1, bfv_client_l1_body_005297e0, 1);
 void bfv_client_l1_body_005297e0(struct bfv_cpu *c)
@@ -22,7 +24,7 @@ void bfv_client_l1_body_005297e0(struct bfv_cpu *c)
     /* 005297e0  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 005297e2  call dword ptr [eax + 0x14] */
+    /* 005297e2  call dword ptr [eax + 0x14]  ; -> WType::vf5 = _purecall */
     ea = (uint32_t)(eax + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -32,7 +34,7 @@ void bfv_client_l1_body_005297e0(struct bfv_cpu *c)
 R_1:
     /* 005297e5  mov ecx, eax */
     ecx = eax;
-    /* 005297e7  jmp 0x7c4eab */
+    /* 005297e7  jmp 0x7c4eab  ; type_info::name */
     c->eip = 0x007c4eabu;
     goto out;
 out: __attribute__((unused));
@@ -42,7 +44,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005297f0  dice::WType  (virtual method) */
+/* 005297f0  WType::isKindOf  (virtual method)
+ * class: dice::WType
+ */
 BFV_L1_ENTRY(bfv_client_l1_005297f0, bfv_client_l1_body_005297f0);
 BFV_L1_RESUME(bfv_client_l1r_005297f0_1, bfv_client_l1_body_005297f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005297f0_2, bfv_client_l1_body_005297f0, 2);
@@ -68,7 +72,7 @@ void bfv_client_l1_body_005297f0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005297f7  call dword ptr [edx + 0x14] */
+    /* 005297f7  call dword ptr [edx + 0x14]  ; -> WType::vf5 = _purecall */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -78,7 +82,7 @@ void bfv_client_l1_body_005297f0(struct bfv_cpu *c)
 R_1:
     /* 005297fa  mov ecx, eax */
     ecx = eax;
-    /* 005297fc  call 0x7c1a8f */
+    /* 005297fc  call 0x7c1a8f  ; type_info::operator_eq */
     t = 0x007c1a8fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005297f0_2;
@@ -113,7 +117,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00643610  dice::WType  (virtual method) */
+/* 00643610  stub_return_false_0args_00643610  (virtual method)
+ * class: dice::WType
+ */
 BFV_L1_ENTRY(bfv_client_l1_00643610, bfv_client_l1_body_00643610);
 void bfv_client_l1_body_00643610(struct bfv_cpu *c)
 {
@@ -137,250 +143,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00886320  dice::WType  (vtable store) */
-BFV_L1_ENTRY(bfv_client_l1_00886320, bfv_client_l1_body_00886320);
-BFV_L1_RESUME(bfv_client_l1r_00886320_1, bfv_client_l1_body_00886320, 1);
-BFV_L1_RESUME(bfv_client_l1r_00886320_2, bfv_client_l1_body_00886320, 2);
-BFV_L1_RESUME(bfv_client_l1r_00886320_3, bfv_client_l1_body_00886320, 3);
-BFV_L1_RESUME(bfv_client_l1r_00886320_4, bfv_client_l1_body_00886320, 4);
-BFV_L1_RESUME(bfv_client_l1r_00886320_5, bfv_client_l1_body_00886320, 5);
-void bfv_client_l1_body_00886320(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    case 3: goto R_3;
-    case 4: goto R_4;
-    case 5: goto R_5;
-    default: break;
-    }
-    /* 00886320  sub esp, 0x1c */
-    a = esp;
-    b = 0x1cu;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    esp = r;
-    /* 00886323  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00886324  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00886325  mov edi, dword ptr [esp + 0x28] */
-    ea = (uint32_t)(esp + 0x00000028u);
-    edi = M32(ea);
-    /* 00886329  lea eax, [esp + 0x28] */
-    eax = (uint32_t)(esp + 0x00000028u);
-    /* 0088632d  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0088632e  mov esi, ecx */
-    esi = ecx;
-    /* 00886330  mov ecx, dword ptr [edi] */
-    ea = (uint32_t)(edi);
-    ecx = M32(ea);
-    /* 00886332  mov edx, dword ptr [ecx] */
-    ea = (uint32_t)(ecx);
-    edx = M32(ea);
-    /* 00886334  lea eax, [esp + 0xc] */
-    eax = (uint32_t)(esp + 0x0000000cu);
-    /* 00886338  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00886339  call dword ptr [edx + 0x1c] */
-    ea = (uint32_t)(edx + 0x0000001cu);
-    t = M32(ea);
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00886320_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 0088633c  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0088633d  mov ecx, esi */
-    ecx = esi;
-    /* 0088633f  call 0x8862a0 */
-    t = 0x008862a0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00886320_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 00886344  mov esi, eax */
-    esi = eax;
-    /* 00886346  cmp dword ptr [esp + 0x20], 0x10 */
-    ea = (uint32_t)(esp + 0x00000020u);
-    a = M32(ea);
-    b = 0x10u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 0088634b  jb 0x88635a */
-    if (cf) goto L_0088635a;
-    /* 0088634d  mov ecx, dword ptr [esp + 0xc] */
-    ea = (uint32_t)(esp + 0x0000000cu);
-    ecx = M32(ea);
-    /* 00886351  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00886352  call 0x403680 */
-    t = 0x00403680u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00886320_3;
-    c->eip = t;
-    goto out;
-R_3:
-    /* 00886357  add esp, 4 */
-    a = esp;
-    b = 0x4u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-L_0088635a:
-    /* 0088635a  mov edx, dword ptr [esp + 0x28] */
-    ea = (uint32_t)(esp + 0x00000028u);
-    edx = M32(ea);
-    /* 0088635e  mov eax, dword ptr [edi + 4] */
-    ea = (uint32_t)(edi + 0x00000004u);
-    eax = M32(ea);
-    /* 00886361  sub esi, edx */
-    a = esi;
-    b = edx;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    esi = r;
-    /* 00886363  cmp eax, esi */
-    a = eax;
-    b = esi;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 00886365  jl 0x88636b */
-    if ((sf != of)) goto L_0088636b;
-    /* 00886367  dec eax */
-    a = eax;
-    r = (a - 1u) & 0xffffffffu;
-    F_DEC(32, a, r);
-    eax = r;
-    /* 00886368  mov dword ptr [edi + 4], eax */
-    ea = (uint32_t)(edi + 0x00000004u);
-    M32(ea) = eax;
-L_0088636b:
-    /* 0088636b  mov ecx, dword ptr [edi + 0x1c] */
-    ea = (uint32_t)(edi + 0x0000001cu);
-    ecx = M32(ea);
-    /* 0088636e  test ecx, ecx */
-    r = (ecx & ecx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 00886370  je 0x88639e */
-    if (zf) goto L_0088639e;
-    /* 00886372  mov eax, dword ptr [edi + 0x20] */
-    ea = (uint32_t)(edi + 0x00000020u);
-    eax = M32(ea);
-    /* 00886375  cmp eax, 0x10 */
-    a = eax;
-    b = 0x10u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 00886378  lea esi, [edi + 8] */
-    esi = (uint32_t)(edi + 0x00000008u);
-    /* 0088637b  jb 0x886382 */
-    if (cf) goto L_00886382;
-    /* 0088637d  mov eax, dword ptr [esi + 4] */
-    ea = (uint32_t)(esi + 0x00000004u);
-    eax = M32(ea);
-    /* 00886380  jmp 0x886385 */
-    goto L_00886385;
-L_00886382:
-    /* 00886382  lea eax, [esi + 4] */
-    eax = (uint32_t)(esi + 0x00000004u);
-L_00886385:
-    /* 00886385  cmp byte ptr [eax + ecx], 0x20 */
-    ea = (uint32_t)(eax + ecx);
-    a = M8(ea);
-    b = 0x20u;
-    r = (a - b) & 0xffu;
-    F_SUB(8, a, b, r);
-    /* 00886389  jne 0x886396 */
-    if (!zf) goto L_00886396;
-    /* 0088638b  dec ecx */
-    a = ecx;
-    r = (a - 1u) & 0xffffffffu;
-    F_DEC(32, a, r);
-    ecx = r;
-    /* 0088638c  push 1 */
-    t = 0x1u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0088638e  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0088638f  mov ecx, esi */
-    ecx = esi;
-    /* 00886391  call 0x401280 */
-    t = 0x00401280u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00886320_4;
-    c->eip = t;
-    goto out;
-R_4:
-L_00886396:
-    /* 00886396  mov ecx, dword ptr [edi] */
-    ea = (uint32_t)(edi);
-    ecx = M32(ea);
-    /* 00886398  mov edx, dword ptr [ecx] */
-    ea = (uint32_t)(ecx);
-    edx = M32(ea);
-    /* 0088639a  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0088639b  call dword ptr [edx + 0x20] */
-    ea = (uint32_t)(edx + 0x00000020u);
-    t = M32(ea);
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00886320_5;
-    c->eip = t;
-    goto out;
-R_5:
-L_0088639e:
-    /* 0088639e  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 0088639f  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 008863a0  add esp, 0x1c */
-    a = esp;
-    b = 0x1cu;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-    /* 008863a3  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 008863d0  dice::WType  (vtable store) */
+/* 008863d0  WType::~WType  (vtable store)
+ * class: dice::WType
+ */
 BFV_L1_ENTRY(bfv_client_l1_008863d0, bfv_client_l1_body_008863d0);
 BFV_L1_RESUME(bfv_client_l1r_008863d0_1, bfv_client_l1_body_008863d0, 1);
 void bfv_client_l1_body_008863d0(struct bfv_cpu *c)
@@ -415,7 +180,7 @@ void bfv_client_l1_body_008863d0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008863dd  call 0x403680 */
+    /* 008863dd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008863d0_1;
@@ -442,7 +207,7 @@ L_008863e5:
     /* 008863f1  mov byte ptr [esi + 8], al */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = LO8(eax);
-    /* 008863f4  mov dword ptr [esi], 0xb6234c */
+    /* 008863f4  mov dword ptr [esi], 0xb6234c  ; vtable WType */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6234cu;
     /* 008863fa  pop esi */

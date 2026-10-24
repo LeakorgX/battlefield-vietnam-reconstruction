@@ -1,0 +1,57 @@
+Hand-written notes for readable/client/bf/ai/AIMain.c. tools/comment_l2.py puts
+each block into the comment above the function with that address (## file: the
+top of the file). Write what the code is for; the tool already lists calls,
+fields and formulas. Read the function before writing a note.
+
+## file
+AIMain (dice::bf::ai::AIMain) is the root of the client's AI system. It owns
+one strategic AI per side (createSAI, array at this+0xd0), the AI timer
+(this+0xe4), the debug-drawing flags at this+0xbc..+0xc0 set by the show*
+console commands, the bot camera (index this+0xc4, attached flag this+0xc8)
+and the split of AI time between system components (this+0x30, this+0x38).
+
+## 0095bf10
+Asks the AI timer object at this+0xe4 for the time (tail call into the
+QueryPerformanceCounter timer).
+
+## 0095bfe0
+Console command showAll: sets all five debug-drawing flags (this+0xbc..+0xc0) to
+the argument.
+
+## 0095c010
+Console command showStrategic: sets the strategic debug-drawing flags this+0xbd,
++0xbe and +0xc0 to the argument.
+
+## 0095c030
+Console command showBot: sets the bot debug-drawing flags this+0xbc and +0xbf to the
+argument.
+
+## 0095c060
+Console command attachCameraCycle: when the camera is attached to bots (this+0xc8),
+moves to the next bot (this+0xc4), back to 0 after the last one
+(IBotManager::vf1 is the bot count).
+
+## 0095c600
+Console command createSAI: creates a strategic AI for each side
+(IAISettings::vf14 is the number of sides; the loop runs from 1 to it) with
+createSAI_helper_009cadd0, passing this+0xe0, this+0xdc and the two 32-bit values at
+0xca67a0. vf4 deletes the same array at this+0xd0.
+
+## 0095d150
+Console command setAISystemComponentsQuotient (two unsigned values a, b): the share of AI time for the
+two system components, stored as doubles this+0x30 = a / (a + b) and
+this+0x38 = b / (a + b), the arguments read as unsigned. Does nothing when
+a + b is 0. vf4 resets them to 0.75 and 0.25.
+
+## 0095d1b0
+Console command attachCamera(on): turning the camera on needs at least one bot; with
+none it returns and the flag stays off. With bots, an out-of-range bot index
+(this+0xc4) goes back to 0. Stores the flag at this+0xc8.
+
+## 0095d200
+Resets the AI system: deletes the strategic AI of each side (array at
+this+0xd0) and the timer (this+0xe4), destroys the objects at +0xe8, +0xf0,
++0xfc and +0xec through their virtual destructors, then sets the default
+settings (0.2, 0.75/0.25 time split, 3.0, 32 and 32 at +0xdc/+0xe0). The map
+bit sizes for setAIMapBitSizes are (int)(log2(size) + 0.1) of the two sizes
+from IAISettings::vf3 and vf4.

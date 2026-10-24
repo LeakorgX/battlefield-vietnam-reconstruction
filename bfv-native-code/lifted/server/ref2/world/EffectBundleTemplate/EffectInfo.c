@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00581a40  dice::ref2::world::EffectBundleTemplate::EffectInfo  (vtable store) */
+/* 00581a40  EffectInfo::EffectInfo  (vtable store)
+ * class: dice::ref2::world::EffectBundleTemplate::EffectInfo
+ * also entered at 00581a70: EffectInfo::vf0
+ * called by: ObjectCreatorWrapper<EffectInfo>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581a40, bfv_server_l1_body_00581a40);
 BFV_L1_RESUME(bfv_server_l1r_00581a40_1, bfv_server_l1_body_00581a40, 1);
 void bfv_server_l1_body_00581a40(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_server_l1_body_00581a40(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00581a40  mov eax, dword ptr [esp + 4] */
+    /* 00581a40  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00581a44  push esi */
@@ -32,7 +36,7 @@ void bfv_server_l1_body_00581a40(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00581a46  mov esi, ecx */
     esi = ecx;
-    /* 00581a48  call 0x586a20 */
+    /* 00581a48  call 0x586a20  ; TemplateInfo::TemplateInfo */
     t = 0x00586a20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581a40_1;
@@ -49,7 +53,7 @@ R_1:
     /* 00581a52  mov dword ptr [esi + 0x7c], eax */
     ea = (uint32_t)(esi + 0x0000007cu);
     M32(ea) = eax;
-    /* 00581a55  mov dword ptr [esi], 0x839494 */
+    /* 00581a55  mov dword ptr [esi], 0x839494  ; vtable EffectInfo */
     ea = (uint32_t)(esi);
     M32(ea) = 0x839494u;
     /* 00581a5b  mov eax, esi */
@@ -69,7 +73,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00581e30  dice::ref2::world::EffectBundleTemplate::EffectInfo  (vtable store) */
+/* 00581e30  EffectInfo::create  (vtable store)
+ * class: dice::ref2::world::EffectBundleTemplate::EffectInfo
+ */
 BFV_L1_ENTRY(bfv_server_l1_00581e30, bfv_server_l1_body_00581e30);
 BFV_L1_RESUME(bfv_server_l1r_00581e30_1, bfv_server_l1_body_00581e30, 1);
 BFV_L1_RESUME(bfv_server_l1r_00581e30_2, bfv_server_l1_body_00581e30, 2);
@@ -105,7 +111,7 @@ void bfv_server_l1_body_00581e30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00581e38  mov edi, ecx */
     edi = ecx;
-    /* 00581e3a  call 0x403d80 */
+    /* 00581e3a  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581e30_1;
@@ -125,7 +131,7 @@ R_1:
     F_LOGIC(32, r);
     /* 00581e46  je 0x581e6c */
     if (zf) goto L_00581e6c;
-    /* 00581e48  mov eax, dword ptr [esp + 0x10] */
+    /* 00581e48  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00581e4c  push eax */
@@ -134,14 +140,14 @@ R_1:
     M32(esp) = t;
     /* 00581e4d  mov ecx, esi */
     ecx = esi;
-    /* 00581e4f  call 0x586a20 */
+    /* 00581e4f  call 0x586a20  ; TemplateInfo::TemplateInfo */
     t = 0x00586a20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581e30_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00581e54  mov dword ptr [esi], 0x839494 */
+    /* 00581e54  mov dword ptr [esi], 0x839494  ; vtable EffectInfo */
     ea = (uint32_t)(esi);
     M32(ea) = 0x839494u;
     /* 00581e5a  mov dword ptr [esi + 0x78], 0 */
@@ -168,7 +174,7 @@ L_00581e6e:
     F_LOGIC(32, r);
     /* 00581e73  lea esi, [edi + 8] */
     esi = (uint32_t)(edi + 0x00000008u);
-    /* 00581e76  mov dword ptr [esp + 0x10], ebx */
+    /* 00581e76  mov dword ptr [esp + 0x10], ebx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ebx;
     /* 00581e7a  jne 0x581e80 */
@@ -252,7 +258,7 @@ L_00581ea5:
     /* 00581ea5  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 00581ea8  lea ecx, [esp + 0x10] */
+    /* 00581ea8  lea ecx, [esp + 0x10]  ; &arg_0 */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 00581eac  push ecx */
     t = ecx;
@@ -268,7 +274,7 @@ L_00581ea5:
     M32(esp) = t;
     /* 00581eb0  mov ecx, esi */
     ecx = esi;
-    /* 00581eb2  call 0x581a90 */
+    /* 00581eb2  call 0x581a90  ; sub_00581a90 */
     t = 0x00581a90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00581e30_3;

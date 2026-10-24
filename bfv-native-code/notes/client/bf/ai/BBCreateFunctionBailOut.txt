@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBBailOut behaviour.
+
+## 0093fae0
+vf0: when the type name equals "BBPBailOut" it allocates a 0xc-byte BBPBailOut parameter, otherwise null. Allocates a 0x30-byte BBBailOut and returns it, then frees the passed-in list.

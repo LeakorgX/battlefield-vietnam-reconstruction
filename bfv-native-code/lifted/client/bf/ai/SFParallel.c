@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009dbeb0  dice::bf::ai::SFParallel  (vtable store) */
+/* 009dbeb0  SFParallel::~SFParallel  (vtable store)
+ * class: dice::bf::ai::SFParallel
+ * also entered at 009dbf10: SFParallel::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_009dbeb0, bfv_client_l1_body_009dbeb0);
 BFV_L1_RESUME(bfv_client_l1r_009dbeb0_1, bfv_client_l1_body_009dbeb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009dbeb0_2, bfv_client_l1_body_009dbeb0, 2);
@@ -42,7 +45,7 @@ void bfv_client_l1_body_009dbeb0(struct bfv_cpu *c)
     b = eax;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 009dbebc  mov dword ptr [esi], 0xbf9264 */
+    /* 009dbebc  mov dword ptr [esi], 0xbf9264  ; vtable SFParallel */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf9264u;
     /* 009dbec2  je 0x9dbeda */
@@ -101,7 +104,7 @@ L_009dbeda:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009dbee2  call 0x403680 */
+    /* 009dbee2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009dbeb0_2;
@@ -134,7 +137,7 @@ L_009dbeea:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 009dbf03  jmp 0x96a9d0 */
+    /* 009dbf03  jmp 0x96a9d0  ; IAIScriptFlow::~IAIScriptFlow */
     c->eip = 0x0096a9d0u;
     goto out;
 out: __attribute__((unused));
@@ -144,8 +147,11 @@ out: __attribute__((unused));
 }
 
 
-/* 009dbf30  dice::bf::ai::SFParallel  (virtual method)
- * strings: "Parallel statement is empty." */
+/* 009dbf30  SFParallel::execute  (virtual method)
+ * overrides: IAIScriptStatement::execute  (17 classes implement it)
+ * class: dice::bf::ai::SFParallel
+ * strings: "Parallel statement is empty."
+ */
 BFV_L1_ENTRY(bfv_client_l1_009dbf30, bfv_client_l1_body_009dbf30);
 BFV_L1_RESUME(bfv_client_l1r_009dbf30_1, bfv_client_l1_body_009dbf30, 1);
 void bfv_client_l1_body_009dbf30(struct bfv_cpu *c)
@@ -192,13 +198,13 @@ void bfv_client_l1_body_009dbf30(struct bfv_cpu *c)
     /* 009dbf41  jne 0x9dbf6b */
     if (!zf) goto L_009dbf6b;
 L_009dbf43:
-    /* 009dbf43  mov eax, dword ptr [esp + 4] */
+    /* 009dbf43  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 009dbf47  mov ecx, dword ptr [esp + 8] */
+    /* 009dbf47  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 009dbf4b  mov edx, dword ptr [esp + 0xc] */
+    /* 009dbf4b  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 009dbf4f  mov byte ptr [eax], 1 */
@@ -207,21 +213,21 @@ L_009dbf43:
     /* 009dbf52  mov byte ptr [ecx], 1 */
     ea = (uint32_t)(ecx);
     M8(ea) = 0x1u;
-    /* 009dbf55  mov ecx, dword ptr [esp + 0x18] */
+    /* 009dbf55  mov ecx, dword ptr [esp + 0x18]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 009dbf59  push 0x1c */
     t = 0x1cu;
     esp -= 4;
     M32(esp) = t;
-    /* 009dbf5b  push 0xbf9294 */
+    /* 009dbf5b  push 0xbf9294  ; "Parallel statement is empty." */
     t = 0xbf9294u;
     esp -= 4;
     M32(esp) = t;
     /* 009dbf60  mov byte ptr [edx], 0 */
     ea = (uint32_t)(edx);
     M8(ea) = 0x0u;
-    /* 009dbf63  call 0x401ae0 */
+    /* 009dbf63  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009dbf30_1;
@@ -276,22 +282,22 @@ L_009dbf7e:
     F_SUB(32, a, b, r);
     /* 009dbf81  jae 0x9dbfae */
     if (!cf) goto L_009dbfae;
-    /* 009dbf83  mov eax, dword ptr [esp + 0x10] */
+    /* 009dbf83  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 009dbf87  mov edx, dword ptr [esp + 4] */
+    /* 009dbf87  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 009dbf8b  mov dword ptr [ecx + 0x20], eax */
     ea = (uint32_t)(ecx + 0x00000020u);
     M32(ea) = eax;
-    /* 009dbf8e  mov eax, dword ptr [esp + 8] */
+    /* 009dbf8e  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 009dbf92  mov byte ptr [edx], 0 */
     ea = (uint32_t)(edx);
     M8(ea) = 0x0u;
-    /* 009dbf95  mov edx, dword ptr [esp + 0xc] */
+    /* 009dbf95  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 009dbf99  mov byte ptr [eax], 0 */
@@ -303,7 +309,7 @@ L_009dbf7e:
     /* 009dbf9f  mov eax, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     eax = M32(ea);
-    /* 009dbfa2  mov edx, dword ptr [esp + 0x14] */
+    /* 009dbfa2  mov edx, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 009dbfa6  mov dword ptr [edx], eax */
@@ -320,16 +326,16 @@ L_009dbf7e:
     esp += 28;
     goto out;
 L_009dbfae:
-    /* 009dbfae  mov eax, dword ptr [esp + 4] */
+    /* 009dbfae  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 009dbfb2  mov edx, dword ptr [esp + 0xc] */
+    /* 009dbfb2  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 009dbfb6  mov dword ptr [ecx + 0x1c], 0 */
     ea = (uint32_t)(ecx + 0x0000001cu);
     M32(ea) = 0x0u;
-    /* 009dbfbd  mov ecx, dword ptr [esp + 8] */
+    /* 009dbfbd  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 009dbfc1  mov byte ptr [eax], 1 */
@@ -352,7 +358,9 @@ out: __attribute__((unused));
 }
 
 
-/* 009dbfd0  dice::bf::ai::SFParallel  (vtable store) */
+/* 009dbfd0  SFParallel::SFParallel  (vtable store)
+ * class: dice::bf::ai::SFParallel
+ */
 BFV_L1_ENTRY(bfv_client_l1_009dbfd0, bfv_client_l1_body_009dbfd0);
 BFV_L1_RESUME(bfv_client_l1r_009dbfd0_1, bfv_client_l1_body_009dbfd0, 1);
 void bfv_client_l1_body_009dbfd0(struct bfv_cpu *c)
@@ -372,7 +380,7 @@ void bfv_client_l1_body_009dbfd0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009dbfd1  mov esi, ecx */
     esi = ecx;
-    /* 009dbfd3  call 0x96aa10 */
+    /* 009dbfd3  call 0x96aa10  ; IAIScriptFlow::IAIScriptFlow */
     t = 0x0096aa10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009dbfd0_1;
@@ -383,7 +391,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 009dbfda  mov dword ptr [esi], 0xbf9264 */
+    /* 009dbfda  mov dword ptr [esi], 0xbf9264  ; vtable SFParallel */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf9264u;
     /* 009dbfe0  mov dword ptr [esi + 0x10], eax */

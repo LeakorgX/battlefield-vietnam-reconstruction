@@ -5,56 +5,9 @@
 #include "l1.h"
 
 
-/* 0098a9e0  dice::bf::ai::BotScriptVariable  (vtable store) */
-BFV_L1_ENTRY(bfv_client_l1_0098a9e0, bfv_client_l1_body_0098a9e0);
-BFV_L1_RESUME(bfv_client_l1r_0098a9e0_1, bfv_client_l1_body_0098a9e0, 1);
-void bfv_client_l1_body_0098a9e0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    default: break;
-    }
-    /* 0098a9e0  mov eax, dword ptr [esp + 4] */
-    ea = (uint32_t)(esp + 0x00000004u);
-    eax = M32(ea);
-    /* 0098a9e4  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0098a9e5  push edx */
-    t = edx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0098a9e6  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0098a9e7  mov ecx, 0xe103f8 */
-    ecx = 0xe103f8u;
-    /* 0098a9ec  call 0x412ee0 */
-    t = 0x00412ee0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0098a9e0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 0098a9f1  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 0098aad0  dice::bf::ai::BotScriptVariable  (vtable store) */
+/* 0098aad0  BotScriptVariable::BotScriptVariable  (vtable store)
+ * class: dice::bf::ai::BotScriptVariable
+ */
 BFV_L1_ENTRY(bfv_client_l1_0098aad0, bfv_client_l1_body_0098aad0);
 BFV_L1_RESUME(bfv_client_l1r_0098aad0_1, bfv_client_l1_body_0098aad0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0098aad0_2, bfv_client_l1_body_0098aad0, 2);
@@ -91,7 +44,7 @@ void bfv_client_l1_body_0098aad0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0098aae1  call 0x403680 */
+    /* 0098aae1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0098aad0_1;
@@ -105,11 +58,11 @@ R_1:
     F_ADD(32, a, b, r);
     esp = r;
 L_0098aae9:
-    /* 0098aae9  test byte ptr [esp + 8], 1 */
+    /* 0098aae9  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0098aaee  mov dword ptr [esi], 0xbf5cbc */
+    /* 0098aaee  mov dword ptr [esi], 0xbf5cbc  ; vtable BotScriptVariable */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf5cbcu;
     /* 0098aaf4  je 0x98ab01 */
@@ -118,9 +71,9 @@ L_0098aae9:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0098aaf7  mov ecx, 0xe0f2e0 */
+    /* 0098aaf7  mov ecx, 0xe0f2e0  ; g_MemoryPool_BAPVariable */
     ecx = 0xe0f2e0u;
-    /* 0098aafc  call 0x412fc0 */
+    /* 0098aafc  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0098aad0_2;
@@ -145,7 +98,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0098ab10  dice::bf::ai::BotScriptVariable  (vtable store) */
+/* 0098ab10  BotScriptVariable::BotScriptVariable  (vtable store)
+ * class: dice::bf::ai::BotScriptVariable
+ */
 BFV_L1_ENTRY(bfv_client_l1_0098ab10, bfv_client_l1_body_0098ab10);
 BFV_L1_RESUME(bfv_client_l1r_0098ab10_1, bfv_client_l1_body_0098ab10, 1);
 BFV_L1_RESUME(bfv_client_l1r_0098ab10_2, bfv_client_l1_body_0098ab10, 2);
@@ -182,7 +137,7 @@ void bfv_client_l1_body_0098ab10(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0098ab21  call 0x403680 */
+    /* 0098ab21  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0098ab10_1;
@@ -196,11 +151,11 @@ R_1:
     F_ADD(32, a, b, r);
     esp = r;
 L_0098ab29:
-    /* 0098ab29  test byte ptr [esp + 8], 1 */
+    /* 0098ab29  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0098ab2e  mov dword ptr [esi], 0xbf5cbc */
+    /* 0098ab2e  mov dword ptr [esi], 0xbf5cbc  ; vtable BotScriptVariable */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf5cbcu;
     /* 0098ab34  je 0x98ab41 */
@@ -209,9 +164,9 @@ L_0098ab29:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0098ab37  mov ecx, 0xe0f320 */
+    /* 0098ab37  mov ecx, 0xe0f320  ; g_MemoryPool_BAPVariable */
     ecx = 0xe0f320u;
-    /* 0098ab3c  call 0x412fc0 */
+    /* 0098ab3c  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0098ab10_2;
@@ -236,7 +191,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00994210  dice::bf::ai::BotScriptVariable  (vtable store) */
+/* 00994210  BotScriptVariable::BotScriptVariable  (vtable store)
+ * class: dice::bf::ai::BotScriptVariable
+ */
 BFV_L1_ENTRY(bfv_client_l1_00994210, bfv_client_l1_body_00994210);
 BFV_L1_RESUME(bfv_client_l1r_00994210_1, bfv_client_l1_body_00994210, 1);
 BFV_L1_RESUME(bfv_client_l1r_00994210_2, bfv_client_l1_body_00994210, 2);
@@ -273,7 +230,7 @@ void bfv_client_l1_body_00994210(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00994221  call 0x403680 */
+    /* 00994221  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00994210_1;
@@ -287,11 +244,11 @@ R_1:
     F_ADD(32, a, b, r);
     esp = r;
 L_00994229:
-    /* 00994229  test byte ptr [esp + 8], 1 */
+    /* 00994229  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0099422e  mov dword ptr [esi], 0xbf5cbc */
+    /* 0099422e  mov dword ptr [esi], 0xbf5cbc  ; vtable BotScriptVariable */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf5cbcu;
     /* 00994234  je 0x994241 */
@@ -300,9 +257,9 @@ L_00994229:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00994237  mov ecx, 0xe0f360 */
+    /* 00994237  mov ecx, 0xe0f360  ; g_MemoryPool_BAPVariable */
     ecx = 0xe0f360u;
-    /* 0099423c  call 0x412fc0 */
+    /* 0099423c  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00994210_2;
@@ -327,7 +284,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00994250  dice::bf::ai::BotScriptVariable  (vtable store) */
+/* 00994250  BotScriptVariable::BotScriptVariable  (vtable store)
+ * class: dice::bf::ai::BotScriptVariable
+ */
 BFV_L1_ENTRY(bfv_client_l1_00994250, bfv_client_l1_body_00994250);
 BFV_L1_RESUME(bfv_client_l1r_00994250_1, bfv_client_l1_body_00994250, 1);
 BFV_L1_RESUME(bfv_client_l1r_00994250_2, bfv_client_l1_body_00994250, 2);
@@ -364,7 +323,7 @@ void bfv_client_l1_body_00994250(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00994261  call 0x403680 */
+    /* 00994261  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00994250_1;
@@ -378,11 +337,11 @@ R_1:
     F_ADD(32, a, b, r);
     esp = r;
 L_00994269:
-    /* 00994269  test byte ptr [esp + 8], 1 */
+    /* 00994269  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0099426e  mov dword ptr [esi], 0xbf5cbc */
+    /* 0099426e  mov dword ptr [esi], 0xbf5cbc  ; vtable BotScriptVariable */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf5cbcu;
     /* 00994274  je 0x994281 */
@@ -391,9 +350,9 @@ L_00994269:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00994277  mov ecx, 0xe0f3a0 */
+    /* 00994277  mov ecx, 0xe0f3a0  ; g_MemoryPool_BAPVariable */
     ecx = 0xe0f3a0u;
-    /* 0099427c  call 0x412fc0 */
+    /* 0099427c  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00994250_2;
@@ -418,7 +377,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00997060  dice::bf::ai::BotScriptVariable  (vtable store) */
+/* 00997060  BotScriptVariable::BotScriptVariable  (vtable store)
+ * class: dice::bf::ai::BotScriptVariable
+ */
 BFV_L1_ENTRY(bfv_client_l1_00997060, bfv_client_l1_body_00997060);
 BFV_L1_RESUME(bfv_client_l1r_00997060_1, bfv_client_l1_body_00997060, 1);
 BFV_L1_RESUME(bfv_client_l1r_00997060_2, bfv_client_l1_body_00997060, 2);
@@ -455,7 +416,7 @@ void bfv_client_l1_body_00997060(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00997071  call 0x403680 */
+    /* 00997071  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00997060_1;
@@ -469,11 +430,11 @@ R_1:
     F_ADD(32, a, b, r);
     esp = r;
 L_00997079:
-    /* 00997079  test byte ptr [esp + 8], 1 */
+    /* 00997079  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0099707e  mov dword ptr [esi], 0xbf5cbc */
+    /* 0099707e  mov dword ptr [esi], 0xbf5cbc  ; vtable BotScriptVariable */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf5cbcu;
     /* 00997084  je 0x997091 */
@@ -482,9 +443,9 @@ L_00997079:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00997087  mov ecx, 0xe0f460 */
+    /* 00997087  mov ecx, 0xe0f460  ; g_MemoryPool_BAPVariable */
     ecx = 0xe0f460u;
-    /* 0099708c  call 0x412fc0 */
+    /* 0099708c  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00997060_2;
@@ -509,7 +470,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0099d450  dice::bf::ai::BotScriptVariable  (vtable store) */
+/* 0099d450  BotScriptVariable::BotScriptVariable  (vtable store)
+ * class: dice::bf::ai::BotScriptVariable
+ */
 BFV_L1_ENTRY(bfv_client_l1_0099d450, bfv_client_l1_body_0099d450);
 BFV_L1_RESUME(bfv_client_l1r_0099d450_1, bfv_client_l1_body_0099d450, 1);
 BFV_L1_RESUME(bfv_client_l1r_0099d450_2, bfv_client_l1_body_0099d450, 2);
@@ -546,7 +509,7 @@ void bfv_client_l1_body_0099d450(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0099d461  call 0x403680 */
+    /* 0099d461  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099d450_1;
@@ -560,11 +523,11 @@ R_1:
     F_ADD(32, a, b, r);
     esp = r;
 L_0099d469:
-    /* 0099d469  test byte ptr [esp + 8], 1 */
+    /* 0099d469  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0099d46e  mov dword ptr [esi], 0xbf5cbc */
+    /* 0099d46e  mov dword ptr [esi], 0xbf5cbc  ; vtable BotScriptVariable */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf5cbcu;
     /* 0099d474  je 0x99d481 */
@@ -573,9 +536,9 @@ L_0099d469:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0099d477  mov ecx, 0xe0f4a0 */
+    /* 0099d477  mov ecx, 0xe0f4a0  ; g_MemoryPool_BAPVariable */
     ecx = 0xe0f4a0u;
-    /* 0099d47c  call 0x412fc0 */
+    /* 0099d47c  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0099d450_2;

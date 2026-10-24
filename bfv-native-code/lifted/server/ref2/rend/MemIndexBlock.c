@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007daa70  dice::ref2::rend::MemIndexBlock  (virtual method) */
+/* 007daa70  MemIndexBlock::vf8  (virtual method)
+ * class: dice::ref2::rend::MemIndexBlock
+ */
 BFV_L1_ENTRY(bfv_server_l1_007daa70, bfv_server_l1_body_007daa70);
 void bfv_server_l1_body_007daa70(struct bfv_cpu *c)
 {
@@ -35,7 +37,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007daa80  dice::ref2::rend::MemIndexBlock  (virtual method) */
+/* 007daa80  MemIndexBlock::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::rend::MemIndexBlock
+ */
 BFV_L1_ENTRY(bfv_server_l1_007daa80, bfv_server_l1_body_007daa80);
 void bfv_server_l1_body_007daa80(struct bfv_cpu *c)
 {
@@ -44,12 +49,12 @@ void bfv_server_l1_body_007daa80(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 007daa80  mov edx, dword ptr [0x807430] */
+    /* 007daa80  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 007daa86  mov eax, ecx */
     eax = ecx;
-    /* 007daa88  mov ecx, dword ptr [esp + 4] */
+    /* 007daa88  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007daa8c  cmp ecx, edx */
@@ -59,7 +64,7 @@ void bfv_server_l1_body_007daa80(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 007daa8e  je 0x7daaaa */
     if (zf) goto L_007daaaa;
-    /* 007daa90  cmp ecx, dword ptr [0x87d154] */
+    /* 007daa90  cmp ecx, dword ptr [0x87d154]  ; interfaceID(MemIndexBlock) */
     ea = (uint32_t)(0x0087d154u);
     a = ecx;
     b = M32(ea);
@@ -110,7 +115,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007daab0  (between same file) */
+/* 007daab0  MemIndexBlock::sub_007daab0  (between same file)
+ * class: dice::ref2::rend::MemIndexBlock
+ * called by: MemIndexBlock::vf4, MemIndexBlock::vf6
+ */
 BFV_L1_ENTRY(bfv_server_l1_007daab0, bfv_server_l1_body_007daab0);
 BFV_L1_RESUME(bfv_server_l1r_007daab0_1, bfv_server_l1_body_007daab0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007daab0_2, bfv_server_l1_body_007daab0, 2);
@@ -127,7 +135,7 @@ void bfv_server_l1_body_007daab0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 007daab0  mov eax, dword ptr [esp + 4] */
+    /* 007daab0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 007daab4  push esi */
@@ -167,7 +175,7 @@ void bfv_server_l1_body_007daab0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007daacc  call 0x403df0 */
+    /* 007daacc  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007daab0_1;
@@ -200,7 +208,7 @@ L_007daad4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007daadf  call 0x403d80 */
+    /* 007daadf  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007daab0_2;
@@ -245,7 +253,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007dab00  dice::ref2::rend::MemIndexBlock  (virtual method) */
+/* 007dab00  MemIndexBlock::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::rend::MemIndexBlock
+ */
 BFV_L1_ENTRY(bfv_server_l1_007dab00, bfv_server_l1_body_007dab00);
 BFV_L1_RESUME(bfv_server_l1r_007dab00_1, bfv_server_l1_body_007dab00, 1);
 BFV_L1_RESUME(bfv_server_l1r_007dab00_2, bfv_server_l1_body_007dab00, 2);
@@ -273,7 +284,7 @@ void bfv_server_l1_body_007dab00(struct bfv_cpu *c)
     /* 007dab06  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007dab08  mov dword ptr [esi], 0x87d3ec */
+    /* 007dab08  mov dword ptr [esi], 0x87d3ec  ; vtable MemIndexBlock */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87d3ecu;
     /* 007dab0e  je 0x7dab19 */
@@ -282,7 +293,7 @@ void bfv_server_l1_body_007dab00(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007dab11  call 0x403df0 */
+    /* 007dab11  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007dab00_1;
@@ -296,11 +307,11 @@ R_1:
     F_ADD(32, a, b, r);
     esp = r;
 L_007dab19:
-    /* 007dab19  test byte ptr [esp + 8], 1 */
+    /* 007dab19  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 007dab1e  mov dword ptr [esi], 0x807464 */
+    /* 007dab1e  mov dword ptr [esi], 0x807464  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0x807464u;
     /* 007dab24  je 0x7dab2f */
@@ -309,7 +320,7 @@ L_007dab19:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007dab27  call 0x403df0 */
+    /* 007dab27  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007dab00_2;
@@ -340,7 +351,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007dab40  dice::ref2::rend::MemIndexBlock  (vtable store) */
+/* 007dab40  MemIndexBlock::MemIndexBlock  (vtable store)
+ * class: dice::ref2::rend::MemIndexBlock
+ */
 BFV_L1_ENTRY(bfv_server_l1_007dab40, bfv_server_l1_body_007dab40);
 void bfv_server_l1_body_007dab40(struct bfv_cpu *c)
 {
@@ -355,7 +368,7 @@ void bfv_server_l1_body_007dab40(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 007dab44  mov dword ptr [eax], 0x87d3ec */
+    /* 007dab44  mov dword ptr [eax], 0x87d3ec  ; vtable MemIndexBlock */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87d3ecu;
     /* 007dab4a  mov dword ptr [eax + 4], 1 */
@@ -390,7 +403,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007dab70  dice::ref2::rend::MemIndexBlock  (virtual method) */
+/* 007dab70  MemIndexBlock::vf4  (virtual method)
+ * class: dice::ref2::rend::MemIndexBlock
+ */
 BFV_L1_ENTRY(bfv_server_l1_007dab70, bfv_server_l1_body_007dab70);
 BFV_L1_RESUME(bfv_server_l1r_007dab70_1, bfv_server_l1_body_007dab70, 1);
 void bfv_server_l1_body_007dab70(struct bfv_cpu *c)
@@ -416,14 +431,14 @@ void bfv_server_l1_body_007dab70(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 007dab77  je 0x7dab83 */
     if (zf) goto L_007dab83;
-    /* 007dab79  mov eax, dword ptr [esp + 0x10] */
+    /* 007dab79  mov eax, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 007dab7d  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007dab7e  call 0x7daab0 */
+    /* 007dab7e  call 0x7daab0  ; MemIndexBlock::sub_007daab0 */
     t = 0x007daab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007dab70_1;
@@ -434,10 +449,10 @@ L_007dab83:
     /* 007dab83  mov ecx, dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     ecx = M32(ea);
-    /* 007dab86  mov eax, dword ptr [esp + 0xc] */
+    /* 007dab86  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
-    /* 007dab8a  mov edx, dword ptr [esp + 8] */
+    /* 007dab8a  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007dab8e  add ecx, eax */
@@ -466,7 +481,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007daba0  dice::ref2::rend::MemIndexBlock  (virtual method) */
+/* 007daba0  MemIndexBlock::vf6  (virtual method)
+ * class: dice::ref2::rend::MemIndexBlock
+ */
 BFV_L1_ENTRY(bfv_server_l1_007daba0, bfv_server_l1_body_007daba0);
 BFV_L1_RESUME(bfv_server_l1r_007daba0_1, bfv_server_l1_body_007daba0, 1);
 void bfv_server_l1_body_007daba0(struct bfv_cpu *c)
@@ -485,7 +502,7 @@ void bfv_server_l1_body_007daba0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007daba1  mov esi, dword ptr [esp + 0x10] */
+    /* 007daba1  mov esi, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 007daba5  push edi */
@@ -504,7 +521,7 @@ void bfv_server_l1_body_007daba0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007dabaf  call 0x7daab0 */
+    /* 007dabaf  call 0x7daab0  ; MemIndexBlock::sub_007daab0 */
     t = 0x007daab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007daba0_1;
@@ -530,12 +547,12 @@ L_007dabbf:
     /* 007dabbf  mov edi, dword ptr [edi + 0xc] */
     ea = (uint32_t)(edi + 0x0000000cu);
     edi = M32(ea);
-    /* 007dabc2  mov eax, dword ptr [esp + 0x10] */
+    /* 007dabc2  mov eax, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 007dabc6  mov ecx, esi */
     ecx = esi;
-    /* 007dabc8  mov esi, dword ptr [esp + 0xc] */
+    /* 007dabc8  mov esi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 007dabcc  add edi, eax */
@@ -597,7 +614,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007dabf0  dice::ref2::rend::MemIndexBlock  (virtual method) */
+/* 007dabf0  MemIndexBlock::vf12  (virtual method)
+ * class: dice::ref2::rend::MemIndexBlock
+ */
 BFV_L1_ENTRY(bfv_server_l1_007dabf0, bfv_server_l1_body_007dabf0);
 BFV_L1_RESUME(bfv_server_l1r_007dabf0_1, bfv_server_l1_body_007dabf0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007dabf0_2, bfv_server_l1_body_007dabf0, 2);
@@ -634,7 +653,7 @@ void bfv_server_l1_body_007dabf0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007dabfb  call 0x403df0 */
+    /* 007dabfb  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007dabf0_1;
@@ -654,10 +673,10 @@ R_1:
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = 0x0u;
 L_007dac11:
-    /* 007dac11  mov ecx, dword ptr [esp + 0xc] */
+    /* 007dac11  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 007dac15  mov eax, dword ptr [esp + 0x10] */
+    /* 007dac15  mov eax, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 007dac19  xor edx, edx */
@@ -672,7 +691,7 @@ L_007dac11:
     /* 007dac20  mov dword ptr [esi + 0x10], eax */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = eax;
-    /* 007dac23  mov eax, dword ptr [esp + 8] */
+    /* 007dac23  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007dac27  test al, 2 */
@@ -703,7 +722,7 @@ L_007dac11:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007dac40  call 0x403df0 */
+    /* 007dac40  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007dabf0_2;
@@ -736,7 +755,7 @@ L_007dac48:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007dac53  call 0x403d80 */
+    /* 007dac53  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007dabf0_3;

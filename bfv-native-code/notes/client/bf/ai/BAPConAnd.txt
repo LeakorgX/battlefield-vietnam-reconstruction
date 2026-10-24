@@ -1,0 +1,7 @@
+## file
+BAPConAnd is the boolean AND of a list of bot action-plan conditions (list head
+pointer at this+0xc).
+
+## 009f1ee0
+evaluate(bot): evaluates the child conditions in list order and returns 0 at
+the first false one; returns 1 when all are true or the list is empty.

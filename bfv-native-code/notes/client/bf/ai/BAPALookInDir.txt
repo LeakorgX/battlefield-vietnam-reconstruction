@@ -1,0 +1,5 @@
+## file
+Look action that looks in a fixed direction.
+
+## 009f5410
+vf6: always valid; returns the stored direction at this+0x38..+0x40.

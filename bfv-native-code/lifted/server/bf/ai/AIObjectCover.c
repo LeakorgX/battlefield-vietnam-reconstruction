@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a10f0  dice::bf::ai::AIObjectCover  (vtable store) */
+/* 007a10f0  AIObjectCover::AIObjectCover  (vtable store)
+ * class: dice::bf::ai::AIObjectCover
+ * called by: AITemplateCover::createObjectPlugIn
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a10f0, bfv_server_l1_body_007a10f0);
 void bfv_server_l1_body_007a10f0(struct bfv_cpu *c)
 {
@@ -14,18 +17,18 @@ void bfv_server_l1_body_007a10f0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007a10f0  mov edx, dword ptr [esp + 8] */
+    /* 007a10f0  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007a10f4  mov eax, ecx */
     eax = ecx;
-    /* 007a10f6  mov ecx, dword ptr [esp + 4] */
+    /* 007a10f6  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007a10fa  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 007a10fd  mov dword ptr [eax], 0x87851c */
+    /* 007a10fd  mov dword ptr [eax], 0x87851c  ; vtable AIObjectCover */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87851cu;
     /* 007a1103  mov dword ptr [eax + 8], edx */
@@ -42,7 +45,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1110  (between same file) */
+/* 007a1110  AIObjectCover_007a1110  (between same file)
+ * called by: BBPTakeCoverInfantry::buildPlan_helper_00741560, ai_00741b00, BBPFireInfantery_00742600, BBPFireInfantery_00743c30, DangerObject::ctor_dtor_helper_007559f0, ai_track_00796690
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1110, bfv_server_l1_body_007a1110);
 void bfv_server_l1_body_007a1110(struct bfv_cpu *c)
 {
@@ -54,7 +59,7 @@ void bfv_server_l1_body_007a1110(struct bfv_cpu *c)
     /* 007a1110  mov ecx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     ecx = M32(ea);
-    /* 007a1113  jmp 0x72d050 */
+    /* 007a1113  jmp 0x72d050  ; ai_0072d050 */
     c->eip = 0x0072d050u;
     goto out;
 out: __attribute__((unused));
@@ -64,7 +69,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1120  (between same file) */
+/* 007a1120  AIObjectCover_007a1120  (between same file)
+ * called by: BBPTakeCoverInfantry::buildPlan_helper_00741540, ai_00741b00, BBPFireInfantery_00742600, BBPFireInfantery_00743c30, DangerObject::ctor_dtor_helper_007559f0, ai_track_00796690
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1120, bfv_server_l1_body_007a1120);
 void bfv_server_l1_body_007a1120(struct bfv_cpu *c)
 {
@@ -76,7 +83,7 @@ void bfv_server_l1_body_007a1120(struct bfv_cpu *c)
     /* 007a1120  mov ecx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     ecx = M32(ea);
-    /* 007a1123  jmp 0x72d030 */
+    /* 007a1123  jmp 0x72d030  ; ai_0072d030 */
     c->eip = 0x0072d030u;
     goto out;
 out: __attribute__((unused));
@@ -86,7 +93,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1130  (between same file) */
+/* 007a1130  AIObjectCover_007a1130  (between same file)
+ * called by: BBPTakeCoverInfantry::buildPlan_helper_00741580, BBPFireInfantery_00743c30
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1130, bfv_server_l1_body_007a1130);
 void bfv_server_l1_body_007a1130(struct bfv_cpu *c)
 {
@@ -98,7 +107,7 @@ void bfv_server_l1_body_007a1130(struct bfv_cpu *c)
     /* 007a1130  mov ecx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     ecx = M32(ea);
-    /* 007a1133  jmp 0x72d070 */
+    /* 007a1133  jmp 0x72d070  ; ai_0072d070 */
     c->eip = 0x0072d070u;
     goto out;
 out: __attribute__((unused));
@@ -108,7 +117,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1140  (between same file) */
+/* 007a1140  AIObjectCover_007a1140  (between same file)
+ * called by: BBPTakeCoverInfantry::buildPlan_helper_007415a0, BBPFireInfantery_00743c30
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1140, bfv_server_l1_body_007a1140);
 void bfv_server_l1_body_007a1140(struct bfv_cpu *c)
 {
@@ -120,7 +131,7 @@ void bfv_server_l1_body_007a1140(struct bfv_cpu *c)
     /* 007a1140  mov ecx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     ecx = M32(ea);
-    /* 007a1143  jmp 0x72d080 */
+    /* 007a1143  jmp 0x72d080  ; ai_0072d080 */
     c->eip = 0x0072d080u;
     goto out;
 out: __attribute__((unused));
@@ -130,7 +141,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1150  dice::bf::ai::AIObjectCover  (virtual method) */
+/* 007a1150  AIObjectCover::deleting_dtor  (virtual method)
+ * overrides: AIObjectPlugIn::vf0  (7 classes implement it)
+ * class: dice::bf::ai::AIObjectCover
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1150, bfv_server_l1_body_007a1150);
 BFV_L1_RESUME(bfv_server_l1r_007a1150_1, bfv_server_l1_body_007a1150, 1);
 void bfv_server_l1_body_007a1150(struct bfv_cpu *c)
@@ -144,7 +158,7 @@ void bfv_server_l1_body_007a1150(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a1150  test byte ptr [esp + 4], 1 */
+    /* 007a1150  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -154,7 +168,7 @@ void bfv_server_l1_body_007a1150(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a1156  mov esi, ecx */
     esi = ecx;
-    /* 007a1158  mov dword ptr [esi], 0x872efc */
+    /* 007a1158  mov dword ptr [esi], 0x872efc  ; vtable AIObjectPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0x872efcu;
     /* 007a115e  je 0x7a116b */
@@ -163,9 +177,9 @@ void bfv_server_l1_body_007a1150(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1161  mov ecx, 0xc32000 */
+    /* 007a1161  mov ecx, 0xc32000  ; g_MemoryPoolNull_AIObjectCover */
     ecx = 0xc32000u;
-    /* 007a1166  call 0x413600 */
+    /* 007a1166  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a1150_1;
@@ -190,7 +204,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a1180  dice::bf::ai::AIObjectCover  (virtual method) */
+/* 007a1180  AIObjectCover::vf3  (virtual method)
+ * overrides: AIObjectPlugIn::vf3  (7 classes implement it)
+ * class: dice::bf::ai::AIObjectCover
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a1180, bfv_server_l1_body_007a1180);
 BFV_L1_RESUME(bfv_server_l1r_007a1180_1, bfv_server_l1_body_007a1180, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a1180_2, bfv_server_l1_body_007a1180, 2);
@@ -232,7 +249,7 @@ void bfv_server_l1_body_007a1180(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007a1191  call 0x72ca30 */
+    /* 007a1191  call 0x72ca30  ; ai_a1_aim_0072ca30 */
     t = 0x0072ca30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a1180_1;
@@ -260,7 +277,7 @@ R_2:
     edx = r;
     /* 007a11a0  mov ecx, eax */
     ecx = eax;
-    /* 007a11a2  call 0x564790 */
+    /* 007a11a2  call 0x564790  ; SimpleObject::sub_00564790 */
     t = 0x00564790u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a1180_3;
@@ -297,7 +314,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a11c0  dice::bf::ai::AIObjectCover  (virtual method) */
+/* 007a11c0  AIObjectCover::createInformationPlugIn  (virtual method)
+ * overrides: AIObjectPlugIn::createInformationPlugIn  (7 classes implement it)
+ * class: dice::bf::ai::AIObjectCover
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a11c0, bfv_server_l1_body_007a11c0);
 BFV_L1_RESUME(bfv_server_l1r_007a11c0_1, bfv_server_l1_body_007a11c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a11c0_2, bfv_server_l1_body_007a11c0, 2);
@@ -313,7 +333,7 @@ void bfv_server_l1_body_007a11c0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 007a11c0  mov eax, dword ptr [esp + 4] */
+    /* 007a11c0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 007a11c4  mov ecx, eax */
@@ -328,7 +348,7 @@ void bfv_server_l1_body_007a11c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a11cd  je 0x7a11e8 */
     if (zf) goto L_007a11e8;
-    /* 007a11cf  mov edx, dword ptr [0xc2f7c0] */
+    /* 007a11cf  mov edx, dword ptr [0xc2f7c0]  ; g_pAIHandles */
     ea = (uint32_t)(0x00c2f7c0u);
     edx = M32(ea);
     /* 007a11d5  mov edx, dword ptr [edx] */
@@ -377,9 +397,9 @@ L_007a11ea:
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 007a11f3  mov ecx, 0xc347f8 */
+    /* 007a11f3  mov ecx, 0xc347f8  ; g_MemoryPoolNull_IPICover */
     ecx = 0xc347f8u;
-    /* 007a11f8  call 0x404290 */
+    /* 007a11f8  call 0x404290  ; MemoryPool::alloc_debug */
     t = 0x00404290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a11c0_1;
@@ -397,7 +417,7 @@ R_1:
     M32(esp) = t;
     /* 007a1202  mov ecx, eax */
     ecx = eax;
-    /* 007a1204  call 0x7c02f0 */
+    /* 007a1204  call 0x7c02f0  ; IPICover::IPICover */
     t = 0x007c02f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a11c0_2;

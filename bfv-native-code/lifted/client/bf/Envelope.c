@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 005e6a90  dice::bf::Envelope  (virtual method) */
+/* 005e6a90  Envelope::vf6_setByte_30h  (virtual method)
+ * overrides: IEnvelope::vf6  (4 classes implement it)
+ * class: dice::bf::Envelope
+ * called by: Cmd_Game_setRenderWhenSpawnMenu::execute, Cmd_RayTracer_light_selfShadowing::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6a90, bfv_client_l1_body_005e6a90);
 void bfv_client_l1_body_005e6a90(struct bfv_cpu *c)
 {
@@ -14,7 +18,7 @@ void bfv_client_l1_body_005e6a90(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005e6a90  mov al, byte ptr [esp + 4] */
+    /* 005e6a90  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 005e6a94  mov byte ptr [ecx + 0x30], al */
@@ -31,7 +35,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005e6aa0  dice::bf::Envelope  (virtual method) */
+/* 005e6aa0  Envelope::vf7  (virtual method)
+ * overrides: IEnvelope::vf7  (4 classes implement it)
+ * class: dice::bf::Envelope
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6aa0, bfv_client_l1_body_005e6aa0);
 BFV_L1_RESUME(bfv_client_l1r_005e6aa0_1, bfv_client_l1_body_005e6aa0, 1);
 void bfv_client_l1_body_005e6aa0(struct bfv_cpu *c)
@@ -56,7 +63,7 @@ void bfv_client_l1_body_005e6aa0(struct bfv_cpu *c)
     /* 005e6aa7  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 005e6aa9  call dword ptr [eax + 0x14] */
+    /* 005e6aa9  call dword ptr [eax + 0x14]  ; -> Envelope::vf5 = _purecall */
     ea = (uint32_t)(eax + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -64,7 +71,7 @@ void bfv_client_l1_body_005e6aa0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 005e6aac  fcomp dword ptr [0xb44444] */
+    /* 005e6aac  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005e6ab2  fnstsw ax */
@@ -97,7 +104,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005e6ac0  dice::bf::Envelope  (virtual method) */
+/* 005e6ac0  Envelope::vf3  (virtual method)
+ * overrides: IEnvelope::vf3  (4 classes implement it)
+ * class: dice::bf::Envelope
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6ac0, bfv_client_l1_body_005e6ac0);
 void bfv_client_l1_body_005e6ac0(struct bfv_cpu *c)
 {
@@ -123,7 +133,7 @@ void bfv_client_l1_body_005e6ac0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     eax = r;
-    /* 005e6acc  mov edx, dword ptr [esp + 4] */
+    /* 005e6acc  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 005e6ad0  sar eax, 2 */
@@ -156,7 +166,7 @@ L_005e6adc:
     /* 005e6adc  mov eax, dword ptr [ecx + 0x18] */
     ea = (uint32_t)(ecx + 0x00000018u);
     eax = M32(ea);
-    /* 005e6adf  mov ecx, dword ptr [esp + 8] */
+    /* 005e6adf  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 005e6ae3  lea eax, [eax + edx*4] */
@@ -177,7 +187,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005e6af0  dice::bf::Envelope  (virtual method) */
+/* 005e6af0  Envelope::vf4  (virtual method)
+ * overrides: IEnvelope::vf4  (4 classes implement it)
+ * class: dice::bf::Envelope
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6af0, bfv_client_l1_body_005e6af0);
 void bfv_client_l1_body_005e6af0(struct bfv_cpu *c)
 {
@@ -203,7 +216,7 @@ void bfv_client_l1_body_005e6af0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     eax = r;
-    /* 005e6afc  mov edx, dword ptr [esp + 4] */
+    /* 005e6afc  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 005e6b00  sar eax, 2 */
@@ -236,7 +249,7 @@ L_005e6b0c:
     /* 005e6b0c  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 005e6b0f  mov ecx, dword ptr [esp + 8] */
+    /* 005e6b0f  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 005e6b13  lea eax, [eax + edx*4] */
@@ -257,7 +270,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005e6b20  (between same file) */
+/* 005e6b20  Envelope_005e6b20  (between same file)
+ * called by: Linear::vf5, Ramp::vf5
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6b20, bfv_client_l1_body_005e6b20);
 BFV_L1_RESUME(bfv_client_l1r_005e6b20_1, bfv_client_l1_body_005e6b20, 1);
 void bfv_client_l1_body_005e6b20(struct bfv_cpu *c)
@@ -399,7 +414,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005e6b70  (between same file) */
+/* 005e6b70  Envelope::~Envelope  (between same file)
+ * class: dice::bf::Envelope
+ * also entered at 005e6bf0: Envelope::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6b70, bfv_client_l1_body_005e6b70);
 BFV_L1_RESUME(bfv_client_l1r_005e6b70_1, bfv_client_l1_body_005e6b70, 1);
 BFV_L1_RESUME(bfv_client_l1r_005e6b70_2, bfv_client_l1_body_005e6b70, 2);
@@ -435,7 +453,7 @@ void bfv_client_l1_body_005e6b70(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ebx = r;
-    /* 005e6b77  mov dword ptr [esi], 0xb77cf8 */
+    /* 005e6b77  mov dword ptr [esi], 0xb77cf8  ; vtable Envelope */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb77cf8u;
     /* 005e6b7d  xor edi, edi */
@@ -532,7 +550,7 @@ L_005e6ba8:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005e6bb0  call 0x403680 */
+    /* 005e6bb0  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e6b70_2;
@@ -569,7 +587,7 @@ L_005e6bb8:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005e6bc9  call 0x403680 */
+    /* 005e6bc9  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e6b70_3;
@@ -596,7 +614,7 @@ L_005e6bd1:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 005e6bdb  mov dword ptr [esi], 0xb77cd4 */
+    /* 005e6bdb  mov dword ptr [esi], 0xb77cd4  ; vtable IEnvelope */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb77cd4u;
     /* 005e6be1  pop esi */
@@ -618,7 +636,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005e6c10  (between same file) */
+/* 005e6c10  std::vector_ptr::resize_005e6c10  (between same file)
+ * called by: Envelope::Envelope
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6c10, bfv_client_l1_body_005e6c10);
 BFV_L1_RESUME(bfv_client_l1r_005e6c10_1, bfv_client_l1_body_005e6c10, 1);
 BFV_L1_RESUME(bfv_client_l1r_005e6c10_2, bfv_client_l1_body_005e6c10, 2);
@@ -679,7 +699,7 @@ L_005e6c1f:
         eax = r;
     }
 L_005e6c27:
-    /* 005e6c27  mov edi, dword ptr [esp + 0xc] */
+    /* 005e6c27  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 005e6c2b  cmp eax, edi */
@@ -724,7 +744,7 @@ L_005e6c3f:
     /* 005e6c3f  mov ecx, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     ecx = M32(ea);
-    /* 005e6c42  lea edx, [esp + 0x10] */
+    /* 005e6c42  lea edx, [esp + 0x10]  ; &arg_4 */
     edx = (uint32_t)(esp + 0x00000010u);
     /* 005e6c46  push edx */
     t = edx;
@@ -746,7 +766,7 @@ L_005e6c3f:
     M32(esp) = t;
     /* 005e6c4b  mov ecx, esi */
     ecx = esi;
-    /* 005e6c4d  call 0x5e5e80 */
+    /* 005e6c4d  call 0x5e5e80  ; std::vector_ptr::_Insert_n_005e5e80 */
     t = 0x005e5e80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e6c10_1;
@@ -840,7 +860,7 @@ L_005e6c57:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005e6c81  call 0x7c16f0 */
+    /* 005e6c81  call 0x7c16f0  ; memcpy */
     t = 0x007c16f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e6c10_2;
@@ -882,7 +902,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005e6ca0  dice::bf::Envelope  (vtable store) */
+/* 005e6ca0  Envelope::Envelope  (vtable store)
+ * class: dice::bf::Envelope
+ * called by: Linear::Linear, Ramp::Ramp
+ */
 BFV_L1_ENTRY(bfv_client_l1_005e6ca0, bfv_client_l1_body_005e6ca0);
 BFV_L1_RESUME(bfv_client_l1r_005e6ca0_1, bfv_client_l1_body_005e6ca0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005e6ca0_2, bfv_client_l1_body_005e6ca0, 2);
@@ -898,7 +921,7 @@ void bfv_client_l1_body_005e6ca0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 005e6ca0  mov eax, dword ptr [esp + 4] */
+    /* 005e6ca0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005e6ca4  push ebx */
@@ -909,7 +932,7 @@ void bfv_client_l1_body_005e6ca0(struct bfv_cpu *c)
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 005e6ca6  mov ebp, dword ptr [esp + 0x10] */
+    /* 005e6ca6  mov ebp, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 005e6caa  push esi */
@@ -922,7 +945,7 @@ void bfv_client_l1_body_005e6ca0(struct bfv_cpu *c)
     ebx = r;
     /* 005e6cad  mov esi, ecx */
     esi = ecx;
-    /* 005e6caf  mov dword ptr [esi], 0xb77cf8 */
+    /* 005e6caf  mov dword ptr [esi], 0xb77cf8  ; vtable Envelope */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb77cf8u;
     /* 005e6cb5  push edi */
@@ -962,7 +985,7 @@ void bfv_client_l1_body_005e6ca0(struct bfv_cpu *c)
     /* 005e6cd0  mov dword ptr [esi + 0x2c], eax */
     ea = (uint32_t)(esi + 0x0000002cu);
     M32(ea) = eax;
-    /* 005e6cd3  call 0x5bb2f0 */
+    /* 005e6cd3  call 0x5bb2f0  ; std::vector_ptr::resize_005bb2f0 */
     t = 0x005bb2f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e6ca0_1;
@@ -979,7 +1002,7 @@ R_1:
     M32(esp) = t;
     /* 005e6cda  mov ecx, edi */
     ecx = edi;
-    /* 005e6cdc  call 0x5e6c10 */
+    /* 005e6cdc  call 0x5e6c10  ; std::vector_ptr::resize_005e6c10 */
     t = 0x005e6c10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005e6ca0_2;
@@ -1021,7 +1044,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00a64cc0  dice::bf::Envelope  (virtual method) */
+/* 00a64cc0  Envelope::vf2_get_24h  (virtual method)
+ * overrides: IEnvelope::vf2  (4 classes implement it)
+ * class: dice::bf::Envelope
+ * called by: meme_00875b80, WstackData::~WstackData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a64cc0, bfv_client_l1_body_00a64cc0);
 void bfv_client_l1_body_00a64cc0(struct bfv_cpu *c)
 {

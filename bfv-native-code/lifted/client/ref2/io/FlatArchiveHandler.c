@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008b35e0  dice::ref2::io::FlatArchiveHandler  (virtual method) */
+/* 008b35e0  FlatArchiveHandler::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::io::FlatArchiveHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b35e0, bfv_client_l1_body_008b35e0);
 void bfv_client_l1_body_008b35e0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_008b35e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 008b35e0  mov edx, dword ptr [0xb42718] */
+    /* 008b35e0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 008b35e6  mov eax, ecx */
     eax = ecx;
-    /* 008b35e8  mov ecx, dword ptr [esp + 4] */
+    /* 008b35e8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 008b35ec  cmp ecx, edx */
@@ -29,7 +32,7 @@ void bfv_client_l1_body_008b35e0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008b35ee  je 0x8b360a */
     if (zf) goto L_008b360a;
-    /* 008b35f0  cmp ecx, dword ptr [0xbdafec] */
+    /* 008b35f0  cmp ecx, dword ptr [0xbdafec]  ; interfaceID(FlatArchiveHandler) */
     ea = (uint32_t)(0x00bdafecu);
     a = ecx;
     b = M32(ea);
@@ -80,7 +83,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008d1a30  dice::ref2::io::FlatArchiveHandler  (virtual method) */
+/* 008d1a30  FlatArchiveHandler::vf5  (virtual method)
+ * class: dice::ref2::io::FlatArchiveHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d1a30, bfv_client_l1_body_008d1a30);
 BFV_L1_RESUME(bfv_client_l1r_008d1a30_1, bfv_client_l1_body_008d1a30, 1);
 BFV_L1_RESUME(bfv_client_l1r_008d1a30_2, bfv_client_l1_body_008d1a30, 2);
@@ -128,7 +133,7 @@ void bfv_client_l1_body_008d1a30(struct bfv_cpu *c)
     t = 0xbe04acu;
     esp -= 4;
     M32(esp) = t;
-    /* 008d1a56  mov ecx, 0xdf9fe4 */
+    /* 008d1a56  mov ecx, 0xdf9fe4  ; g_str_RFA */
     ecx = 0xdf9fe4u;
     /* 008d1a5b  mov dword ptr [0xdf9ffc], 0xf */
     ea = (uint32_t)(0x00df9ffcu);
@@ -139,18 +144,18 @@ void bfv_client_l1_body_008d1a30(struct bfv_cpu *c)
     /* 008d1a6a  mov byte ptr [0xdf9fe8], al */
     ea = (uint32_t)(0x00df9fe8u);
     M8(ea) = LO8(eax);
-    /* 008d1a6f  call 0x401ae0 */
+    /* 008d1a6f  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d1a30_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008d1a74  push 0xb3bfb0 */
+    /* 008d1a74  push 0xb3bfb0  ; atexit_destroy_str_RFA */
     t = 0xb3bfb0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008d1a79  call 0x7c2cd2 */
+    /* 008d1a79  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d1a30_2;
@@ -164,7 +169,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_008d1a81:
-    /* 008d1a81  mov eax, 0xdf9fe4 */
+    /* 008d1a81  mov eax, 0xdf9fe4  ; g_str_RFA */
     eax = 0xdf9fe4u;
     /* 008d1a86  ret */
     c->eip = M32(esp);
@@ -177,7 +182,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008d4dd0  dice::ref2::io::FlatArchiveHandler  (virtual method) */
+/* 008d4dd0  FlatArchiveHandler::vf4  (virtual method)
+ * class: dice::ref2::io::FlatArchiveHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d4dd0, bfv_client_l1_body_008d4dd0);
 BFV_L1_RESUME(bfv_client_l1r_008d4dd0_1, bfv_client_l1_body_008d4dd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008d4dd0_2, bfv_client_l1_body_008d4dd0, 2);
@@ -207,7 +214,7 @@ void bfv_client_l1_body_008d4dd0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008d4dd6  mov esi, ecx */
     esi = ecx;
-    /* 008d4dd8  call 0x403610 */
+    /* 008d4dd8  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d4dd0_1;
@@ -231,7 +238,7 @@ R_1:
     M32(esp) = t;
     /* 008d4de5  mov ecx, eax */
     ecx = eax;
-    /* 008d4de7  call 0x8d4600 */
+    /* 008d4de7  call 0x8d4600  ; FlatArchive::FlatArchive */
     t = 0x008d4600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d4dd0_2;
@@ -248,13 +255,13 @@ L_008d4df0:
     F_LOGIC(32, r);
     esi = r;
 L_008d4df2:
-    /* 008d4df2  mov eax, dword ptr [esp + 0x10] */
+    /* 008d4df2  mov eax, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 008d4df6  mov ecx, dword ptr [esp + 0xc] */
+    /* 008d4df6  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 008d4dfa  mov edx, dword ptr [esp + 8] */
+    /* 008d4dfa  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 008d4dfe  push eax */
@@ -271,7 +278,7 @@ L_008d4df2:
     M32(esp) = t;
     /* 008d4e01  mov ecx, esi */
     ecx = esi;
-    /* 008d4e03  call 0x8d4bc0 */
+    /* 008d4e03  call 0x8d4bc0  ; io_Archives_008d4bc0 */
     t = 0x008d4bc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d4dd0_3;

@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0096a9d0  dice::bf::ai::IAIScriptFlow  (vtable store) */
+/* 0096a9d0  IAIScriptFlow::~IAIScriptFlow  (vtable store)
+ * class: dice::bf::ai::IAIScriptFlow
+ * also entered at 0096a9e0: IAIScriptFlow::vf0
+ * called by: SFIf::deleting_dtor, SFWhen::deleting_dtor, SFWhile::deleting_dtor, SFCallSubroutine::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096a9d0, bfv_client_l1_body_0096a9d0);
 void bfv_client_l1_body_0096a9d0(struct bfv_cpu *c)
 {
@@ -14,10 +18,10 @@ void bfv_client_l1_body_0096a9d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0096a9d0  mov dword ptr [ecx], 0xbf370c */
+    /* 0096a9d0  mov dword ptr [ecx], 0xbf370c  ; vtable IAIScriptFlow */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbf370cu;
-    /* 0096a9d6  jmp 0x9d9460 */
+    /* 0096a9d6  jmp 0x9d9460  ; IAIScriptStatement::~IAIScriptStatement */
     c->eip = 0x009d9460u;
     goto out;
 out: __attribute__((unused));
@@ -27,7 +31,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096aa10  dice::bf::ai::IAIScriptFlow  (vtable store) */
+/* 0096aa10  IAIScriptFlow::IAIScriptFlow  (vtable store)
+ * class: dice::bf::ai::IAIScriptFlow
+ * called by: SFIf::SFIf, SFWhen::SFWhen, SFWhile::SFWhile, SFCallSubroutine::SFCallSubroutine, SFSerial::SFSerial, SFParallel::SFParallel
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096aa10, bfv_client_l1_body_0096aa10);
 BFV_L1_RESUME(bfv_client_l1r_0096aa10_1, bfv_client_l1_body_0096aa10, 1);
 void bfv_client_l1_body_0096aa10(struct bfv_cpu *c)
@@ -47,14 +54,14 @@ void bfv_client_l1_body_0096aa10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0096aa11  mov esi, ecx */
     esi = ecx;
-    /* 0096aa13  call 0x9d9490 */
+    /* 0096aa13  call 0x9d9490  ; IAIScriptStatement::IAIScriptStatement */
     t = 0x009d9490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096aa10_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0096aa18  mov dword ptr [esi], 0xbf370c */
+    /* 0096aa18  mov dword ptr [esi], 0xbf370c  ; vtable IAIScriptFlow */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf370cu;
     /* 0096aa1e  mov dword ptr [esi + 8], 0xce6e6b28 */

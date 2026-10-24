@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00560bd0  dice::ref2::tool::TestModifier  (virtual method) */
+/* 00560bd0  stub_noop_5args_00560bd0  (virtual method)
+ * class: dice::ref2::tool::TestModifier
+ */
 BFV_L1_ENTRY(bfv_client_l1_00560bd0, bfv_client_l1_body_00560bd0);
 void bfv_client_l1_body_00560bd0(struct bfv_cpu *c)
 {
@@ -24,7 +26,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007b7e70  dice::ref2::tool::TestModifier  (virtual method) */
+/* 007b7e70  TestModifier::vf4  (virtual method)
+ * class: dice::ref2::tool::TestModifier
+ */
 BFV_L1_ENTRY(bfv_client_l1_007b7e70, bfv_client_l1_body_007b7e70);
 void bfv_client_l1_body_007b7e70(struct bfv_cpu *c)
 {
@@ -33,10 +37,10 @@ void bfv_client_l1_body_007b7e70(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007b7e70  mov eax, dword ptr [esp + 4] */
+    /* 007b7e70  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 007b7e74  mov edx, dword ptr [esp + 8] */
+    /* 007b7e74  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007b7e78  mov dword ptr [ecx + 4], eax */
@@ -56,7 +60,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007b7e90  dice::ref2::tool::TestModifier  (virtual method) */
+/* 007b7e90  TestModifier::vf5  (virtual method)
+ * class: dice::ref2::tool::TestModifier
+ */
 BFV_L1_ENTRY(bfv_client_l1_007b7e90, bfv_client_l1_body_007b7e90);
 BFV_L1_RESUME(bfv_client_l1r_007b7e90_1, bfv_client_l1_body_007b7e90, 1);
 BFV_L1_RESUME(bfv_client_l1r_007b7e90_2, bfv_client_l1_body_007b7e90, 2);
@@ -72,7 +78,7 @@ void bfv_client_l1_body_007b7e90(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 007b7e90  mov al, byte ptr [esp + 4] */
+    /* 007b7e90  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 007b7e94  sub esp, 0xc */
@@ -96,7 +102,7 @@ void bfv_client_l1_body_007b7e90(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007b7e9f  mov esi, dword ptr [esp + 0x28] */
+    /* 007b7e9f  mov esi, dword ptr [esp + 0x28]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000028u);
     esi = M32(ea);
     /* 007b7ea3  mov eax, dword ptr [esi] */
@@ -128,9 +134,9 @@ R_1:
     M32(esp) = t;
     /* 007b7eb2  mov edx, esi */
     edx = esi;
-    /* 007b7eb4  lea ecx, [esp + 0x10] */
+    /* 007b7eb4  lea ecx, [esp + 0x10]  ; &var_c */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 007b7eb8  call 0x7b9320 */
+    /* 007b7eb8  call 0x7b9320  ; tool_007b9320 */
     t = 0x007b9320u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007b7e90_2;
@@ -163,7 +169,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007bce60  dice::ref2::tool::TestModifier  (virtual method) */
+/* 007bce60  TestModifier::vf0  (virtual method)
+ * class: dice::ref2::tool::TestModifier
+ */
 BFV_L1_ENTRY(bfv_client_l1_007bce60, bfv_client_l1_body_007bce60);
 void bfv_client_l1_body_007bce60(struct bfv_cpu *c)
 {

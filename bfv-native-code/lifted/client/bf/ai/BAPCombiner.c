@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009eea40  dice::bf::ai::BAPCombiner  (virtual method) */
+/* 009eea40  BAPCombiner::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPCombiner
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eea40, bfv_client_l1_body_009eea40);
 BFV_L1_RESUME(bfv_client_l1r_009eea40_1, bfv_client_l1_body_009eea40, 1);
 BFV_L1_RESUME(bfv_client_l1r_009eea40_2, bfv_client_l1_body_009eea40, 2);
@@ -37,10 +40,10 @@ void bfv_client_l1_body_009eea40(struct bfv_cpu *c)
     edi = (uint32_t)(esi + 0x00000018u);
     /* 009eea47  mov ecx, edi */
     ecx = edi;
-    /* 009eea49  mov dword ptr [esi], 0xbfa1d4 */
+    /* 009eea49  mov dword ptr [esi], 0xbfa1d4  ; vtable BAPCombiner */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfa1d4u;
-    /* 009eea4f  call 0xa825e0 */
+    /* 009eea4f  call 0xa825e0  ; std::list::clear */
     t = 0x00a825e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eea40_1;
@@ -54,23 +57,23 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009eea58  call 0x403680 */
+    /* 009eea58  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eea40_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009eea5d  mov al, byte ptr [esp + 0x10] */
+    /* 009eea5d  mov al, byte ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     SET8L(eax, M8(ea));
     /* 009eea61  mov dword ptr [edi + 4], 0 */
     ea = (uint32_t)(edi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 009eea68  mov dword ptr [esi], 0xbf60a0 */
+    /* 009eea68  mov dword ptr [esi], 0xbf60a0  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf60a0u;
-    /* 009eea6e  mov ecx, dword ptr [0xe105bc] */
+    /* 009eea6e  mov ecx, dword ptr [0xe105bc]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     ecx = M32(ea);
     /* 009eea74  add esp, 4 */
@@ -87,10 +90,10 @@ R_2:
     /* 009eea78  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 009eea7a  mov dword ptr [0xe105bc], ecx */
+    /* 009eea7a  mov dword ptr [0xe105bc], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00e105bcu);
     M32(ea) = ecx;
-    /* 009eea80  mov dword ptr [esi], 0xbf6094 */
+    /* 009eea80  mov dword ptr [esi], 0xbf6094  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf6094u;
     /* 009eea86  je 0x9eea91 */
@@ -99,7 +102,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009eea89  call 0x403680 */
+    /* 009eea89  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eea40_3;

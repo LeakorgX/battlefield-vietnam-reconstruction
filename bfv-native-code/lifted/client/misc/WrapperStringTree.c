@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00784a80  dice::WrapperStringTree  (vtable store) */
+/* 00784a80  WrapperStringTree::WrapperStringTree  (vtable store)
+ * class: dice::WrapperStringTree
+ * also entered at 00784aa0: WrapperStringTree::vf0, WrapperTree::vf0
+ * called by: sub_0077f3a0, sub_WRAPPER_TREE_0077fc40, sub_All_tests_passed_00780720, sub_00780b80, sub_00780d80
+ */
 BFV_L1_ENTRY(bfv_client_l1_00784a80, bfv_client_l1_body_00784a80);
 BFV_L1_RESUME(bfv_client_l1r_00784a80_1, bfv_client_l1_body_00784a80, 1);
 void bfv_client_l1_body_00784a80(struct bfv_cpu *c)
@@ -19,7 +23,7 @@ void bfv_client_l1_body_00784a80(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00784a80  mov eax, dword ptr [esp + 4] */
+    /* 00784a80  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00784a84  push esi */
@@ -32,14 +36,14 @@ void bfv_client_l1_body_00784a80(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00784a86  mov esi, ecx */
     esi = ecx;
-    /* 00784a88  call 0x784520 */
+    /* 00784a88  call 0x784520  ; WrapperTree::WrapperTree */
     t = 0x00784520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00784a80_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00784a8d  mov dword ptr [esi], 0xbb074c */
+    /* 00784a8d  mov dword ptr [esi], 0xbb074c  ; vtable WrapperStringTree */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbb074cu;
     /* 00784a93  mov eax, esi */

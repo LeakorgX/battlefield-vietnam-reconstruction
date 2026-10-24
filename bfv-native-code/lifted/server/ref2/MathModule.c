@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007db3b0  dice::ref2::MathModule  (virtual method) */
+/* 007db3b0  MathModule::vf6  (virtual method)
+ * class: dice::ref2::MathModule
+ */
 BFV_L1_ENTRY(bfv_server_l1_007db3b0, bfv_server_l1_body_007db3b0);
 BFV_L1_RESUME(bfv_server_l1r_007db3b0_1, bfv_server_l1_body_007db3b0, 1);
 void bfv_server_l1_body_007db3b0(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_server_l1_body_007db3b0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007db3b0  call 0x40a260 */
+    /* 007db3b0  call 0x40a260  ; stub_return_true_0args_0040a260 */
     t = 0x0040a260u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007db3b0_1;
@@ -39,7 +41,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007db3c0  dice::ref2::MathModule  (virtual method) */
+/* 007db3c0  MathModule::vf7  (virtual method)
+ * class: dice::ref2::MathModule
+ */
 BFV_L1_ENTRY(bfv_server_l1_007db3c0, bfv_server_l1_body_007db3c0);
 BFV_L1_RESUME(bfv_server_l1r_007db3c0_1, bfv_server_l1_body_007db3c0, 1);
 void bfv_server_l1_body_007db3c0(struct bfv_cpu *c)
@@ -53,7 +57,7 @@ void bfv_server_l1_body_007db3c0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007db3c0  call 0x79f690 */
+    /* 007db3c0  call 0x79f690  ; stub_noop_0args_0079f690 */
     t = 0x0079f690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007db3c0_1;

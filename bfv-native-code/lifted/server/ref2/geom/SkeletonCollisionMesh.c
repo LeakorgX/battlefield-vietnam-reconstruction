@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00608dd0  dice::ref2::geom::SkeletonCollisionMesh  (virtual method) */
+/* 00608dd0  SkeletonCollisionMesh::vf8  (virtual method)
+ * overrides: IGeometry::vf8  (7 classes implement it)
+ * class: dice::ref2::geom::SkeletonCollisionMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608dd0, bfv_server_l1_body_00608dd0);
 void bfv_server_l1_body_00608dd0(struct bfv_cpu *c)
 {
@@ -35,7 +38,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00608de0  dice::ref2::geom::SkeletonCollisionMesh  (virtual method) */
+/* 00608de0  SkeletonCollisionMesh::vf9  (virtual method)
+ * overrides: IGeometry::vf9  (7 classes implement it)
+ * class: dice::ref2::geom::SkeletonCollisionMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608de0, bfv_server_l1_body_00608de0);
 void bfv_server_l1_body_00608de0(struct bfv_cpu *c)
 {
@@ -64,7 +70,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00608df0  (between same file) */
+/* 00608df0  SkeletonCollisionMesh_00608df0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608df0, bfv_server_l1_body_00608df0);
 void bfv_server_l1_body_00608df0(struct bfv_cpu *c)
 {
@@ -90,7 +97,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00608e00  (between same file) */
+/* 00608e00  SkeletonCollisionMesh_00608e00  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608e00, bfv_server_l1_body_00608e00);
 void bfv_server_l1_body_00608e00(struct bfv_cpu *c)
 {
@@ -119,7 +127,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00608e10  (between same file) */
+/* 00608e10  SkeletonCollisionMesh_00608e10  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608e10, bfv_server_l1_body_00608e10);
 void bfv_server_l1_body_00608e10(struct bfv_cpu *c)
 {
@@ -148,7 +157,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00608e20  (between same file) */
+/* 00608e20  sub_adjustor4_00608e20  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608e20, bfv_server_l1_body_00608e20);
 void bfv_server_l1_body_00608e20(struct bfv_cpu *c)
 {
@@ -173,7 +183,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00608e30  (between same file) */
+/* 00608e30  SkeletonCollisionMesh_00608e30  (between same file)
+ * also entered at 00608e40: SkeletonCollisionMesh::queryInterface
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608e30, bfv_server_l1_body_00608e30);
 void bfv_server_l1_body_00608e30(struct bfv_cpu *c)
 {
@@ -191,12 +203,12 @@ void bfv_server_l1_body_00608e30(struct bfv_cpu *c)
     /* 00608e33  jmp 0x608e40 */
     goto L_00608e40;
 L_00608e40:
-    /* 00608e40  mov edx, dword ptr [0x807430] */
+    /* 00608e40  mov edx, dword ptr [0x807430]  ; entry of SkeletonCollisionMesh::queryInterface, g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 00608e46  mov eax, ecx */
     eax = ecx;
-    /* 00608e48  mov ecx, dword ptr [esp + 4] */
+    /* 00608e48  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00608e4c  cmp ecx, edx */
@@ -206,7 +218,7 @@ L_00608e40:
     F_SUB(32, a, b, r);
     /* 00608e4e  je 0x608e8e */
     if (zf) goto L_00608e8e;
-    /* 00608e50  cmp ecx, dword ptr [0x8488d0] */
+    /* 00608e50  cmp ecx, dword ptr [0x8488d0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x008488d0u);
     a = ecx;
     b = M32(ea);
@@ -214,7 +226,7 @@ L_00608e40:
     F_SUB(32, a, b, r);
     /* 00608e56  je 0x608e8e */
     if (zf) goto L_00608e8e;
-    /* 00608e58  cmp ecx, dword ptr [0x8488c0] */
+    /* 00608e58  cmp ecx, dword ptr [0x8488c0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x008488c0u);
     a = ecx;
     b = M32(ea);
@@ -230,7 +242,7 @@ L_00608e40:
     F_SUB(32, a, b, r);
     /* 00608e66  je 0x608e8e */
     if (zf) goto L_00608e8e;
-    /* 00608e68  cmp ecx, dword ptr [0x8488d4] */
+    /* 00608e68  cmp ecx, dword ptr [0x8488d4]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x008488d4u);
     a = ecx;
     b = M32(ea);
@@ -254,7 +266,7 @@ L_00608e40:
     esp += 8;
     goto out;
 L_00608e7a:
-    /* 00608e7a  cmp ecx, dword ptr [0x8488d8] */
+    /* 00608e7a  cmp ecx, dword ptr [0x8488d8]  ; interfaceID(AnimatedMesh|SimpleCollisionMesh|StandardMesh) */
     ea = (uint32_t)(0x008488d8u);
     a = ecx;
     b = M32(ea);
@@ -294,7 +306,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00608ea0  (between same file) */
+/* 00608ea0  sub_adjustor8_00608ea0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608ea0, bfv_server_l1_body_00608ea0);
 void bfv_server_l1_body_00608ea0(struct bfv_cpu *c)
 {
@@ -319,7 +332,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00608eb0  (between same file) */
+/* 00608eb0  sub_adjustor8_00608eb0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608eb0, bfv_server_l1_body_00608eb0);
 void bfv_server_l1_body_00608eb0(struct bfv_cpu *c)
 {
@@ -344,7 +358,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00608ec0  (between same file) */
+/* 00608ec0  SkeletonCollisionMesh::SkeletonCollisionMesh  (vtable store)
+ * class: dice::ref2::geom::SkeletonCollisionMesh
+ * called by: SkeletonCollisionMeshTemplate::vf7
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608ec0, bfv_server_l1_body_00608ec0);
 void bfv_server_l1_body_00608ec0(struct bfv_cpu *c)
 {
@@ -355,16 +372,16 @@ void bfv_server_l1_body_00608ec0(struct bfv_cpu *c)
     uint32_t r, ea;
     /* 00608ec0  mov eax, ecx */
     eax = ecx;
-    /* 00608ec2  mov ecx, dword ptr [esp + 4] */
+    /* 00608ec2  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00608ec6  mov dword ptr [eax + 4], 0x84898c */
+    /* 00608ec6  mov dword ptr [eax + 4], 0x84898c  ; vtable IVectorCollider */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x84898cu;
-    /* 00608ecd  mov dword ptr [eax + 8], 0x84aa84 */
+    /* 00608ecd  mov dword ptr [eax + 8], 0x84aa84  ; vtable ICollisionMesh */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x84aa84u;
-    /* 00608ed4  mov dword ptr [eax], 0x84e76c */
+    /* 00608ed4  mov dword ptr [eax], 0x84e76c  ; vtable SkeletonCollisionMesh */
     ea = (uint32_t)(eax);
     M32(ea) = 0x84e76cu;
     /* 00608eda  mov dword ptr [eax + 4], 0x84e750 */
@@ -430,7 +447,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00608f30  dice::ref2::geom::SkeletonCollisionMesh  (virtual method) */
+/* 00608f30  SkeletonCollisionMesh::vf17  (virtual method)
+ * class: dice::ref2::geom::SkeletonCollisionMesh
+ * also entered at 00608f40: SkeletonCollisionMesh::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_00608f30, bfv_server_l1_body_00608f30);
 void bfv_server_l1_body_00608f30(struct bfv_cpu *c)
 {
@@ -442,7 +462,7 @@ void bfv_server_l1_body_00608f30(struct bfv_cpu *c)
     /* 00608f30  mov eax, dword ptr [ecx + 0x30] */
     ea = (uint32_t)(ecx + 0x00000030u);
     eax = M32(ea);
-    /* 00608f33  mov edx, dword ptr [esp + 4] */
+    /* 00608f33  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00608f37  mov dword ptr [edx], eax */

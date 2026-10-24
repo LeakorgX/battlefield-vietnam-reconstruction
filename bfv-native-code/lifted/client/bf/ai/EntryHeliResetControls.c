@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009bb000  (source path) */
+/* 009bb000  AIConsole::ctor_dtor_helper_009bb000  (source path)
+ * also entered at 009bb010: EntryHeliResetControls::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bb000, bfv_client_l1_body_009bb000);
 void bfv_client_l1_body_009bb000(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_009bb000(struct bfv_cpu *c)
     uint32_t ea;
     /* 009bb000  mov eax, ecx */
     eax = ecx;
-    /* 009bb002  mov dword ptr [eax], 0xbf779c */
+    /* 009bb002  mov dword ptr [eax], 0xbf779c  ; vtable EntryHeliResetControls */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf779cu;
     /* 009bb008  ret */

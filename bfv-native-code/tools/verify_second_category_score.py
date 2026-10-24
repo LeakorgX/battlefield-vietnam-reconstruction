@@ -113,7 +113,7 @@ def compile_staged(target):
         '-ffreestanding','-fno-builtin','-frounding-math','-fno-stack-protector',
         '-fno-asynchronous-unwind-tables','-fno-unwind-tables','-I',work.parent,
         '-c',PROJECT/'src/artillery_second_category_score.c','-o',obj])
-    (work/'payload.ld').write_text('SECTIONS { . = 0x0200a000; .payload : { *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) } /DISCARD/ : { *(.eh_frame*) *(.comment*) *(.drectve*) } }')
+    (work/'payload.ld').write_text('SECTIONS { . = '+hex(ARENA+0xa000)+'; .payload : { *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) } /DISCARD/ : { *(.eh_frame*) *(.comment*) *(.drectve*) } }')
     command([COMPILERS/'ld.exe','-T',work/'payload.ld','--image-base','0',
         '--entry','_bfv_artillery_second_category_score_bridge','--disable-dynamicbase',
         '--disable-reloc-section','-Map',work/'payload.map','-o',work/'payload.exe',obj])

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0072c500  dice::bf::ai::AITemplateArmament  (vtable store) */
+/* 0072c500  AITemplateArmament::AITemplateArmament  (vtable store)
+ * class: dice::bf::ai::AITemplateArmament
+ * called by: AITemplatePlugInManager::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072c500, bfv_server_l1_body_0072c500);
 void bfv_server_l1_body_0072c500(struct bfv_cpu *c)
 {
@@ -20,7 +23,7 @@ void bfv_server_l1_body_0072c500(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 0072c504  mov dword ptr [eax], 0x873a1c */
+    /* 0072c504  mov dword ptr [eax], 0x873a1c  ; vtable AITemplateArmament */
     ea = (uint32_t)(eax);
     M32(ea) = 0x873a1cu;
     /* 0072c50a  mov byte ptr [eax + 4], cl */
@@ -52,7 +55,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072c520  dice::bf::ai::AITemplateArmament  (virtual method) */
+/* 0072c520  AITemplateArmament::createObjectPlugIn  (virtual method)
+ * overrides: AITemplatePlugIn::createObjectPlugIn  (8 classes implement it)
+ * class: dice::bf::ai::AITemplateArmament
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072c520, bfv_server_l1_body_0072c520);
 BFV_L1_RESUME(bfv_server_l1r_0072c520_1, bfv_server_l1_body_0072c520, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072c520_2, bfv_server_l1_body_0072c520, 2);
@@ -86,9 +92,9 @@ void bfv_server_l1_body_0072c520(struct bfv_cpu *c)
     t = 0x2cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0072c52c  mov ecx, 0xc31f80 */
+    /* 0072c52c  mov ecx, 0xc31f80  ; g_MemoryPoolNull_AIObjectArmament */
     ecx = 0xc31f80u;
-    /* 0072c531  call 0x404290 */
+    /* 0072c531  call 0x404290  ; MemoryPool::alloc_debug */
     t = 0x00404290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072c520_1;
@@ -100,7 +106,7 @@ R_1:
     F_LOGIC(32, r);
     /* 0072c538  je 0x72c54b */
     if (zf) goto L_0072c54b;
-    /* 0072c53a  mov ecx, dword ptr [esp + 8] */
+    /* 0072c53a  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 0072c53e  push esi */
@@ -113,7 +119,7 @@ R_1:
     M32(esp) = t;
     /* 0072c540  mov ecx, eax */
     ecx = eax;
-    /* 0072c542  call 0x7a0f40 */
+    /* 0072c542  call 0x7a0f40  ; AIObjectArmament::AIObjectArmament */
     t = 0x007a0f40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072c520_2;

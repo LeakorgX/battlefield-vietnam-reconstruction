@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 0086c430  dice::meme::CullEventTimeoutActionNode  (virtual method)
- * strings: "Timeout time" */
+/* 0086c430  CullEventTimeoutActionNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::CullEventTimeoutActionNode
+ * strings: "Timeout time"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086c430, bfv_client_l1_body_0086c430);
 BFV_L1_RESUME(bfv_client_l1r_0086c430_1, bfv_client_l1_body_0086c430, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086c430_2, bfv_client_l1_body_0086c430, 2);
@@ -22,7 +25,7 @@ void bfv_client_l1_body_0086c430(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 0086c430  mov eax, dword ptr [esp + 4] */
+    /* 0086c430  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0086c434  push esi */
@@ -33,7 +36,7 @@ void bfv_client_l1_body_0086c430(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086c436  mov edi, dword ptr [esp + 0x10] */
+    /* 0086c436  mov edi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 0086c43a  push edi */
@@ -46,7 +49,7 @@ void bfv_client_l1_body_0086c430(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086c43c  mov esi, ecx */
     esi = ecx;
-    /* 0086c43e  call 0x86c1e0 */
+    /* 0086c43e  call 0x86c1e0  ; CullEventActionNode::serialize */
     t = 0x0086c1e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086c430_1;
@@ -74,7 +77,7 @@ L_0086c44c:
     /* 0086c44c  mov edx, dword ptr [edi] */
     ea = (uint32_t)(edi);
     edx = M32(ea);
-    /* 0086c44e  push 0xb6c4dc */
+    /* 0086c44e  push 0xb6c4dc  ; "Timeout time" */
     t = 0xb6c4dcu;
     esp -= 4;
     M32(esp) = t;
@@ -122,7 +125,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086c470  dice::meme::CullEventTimeoutActionNode  (virtual method) */
+/* 0086c470  CullEventTimeoutActionNode::handleEvent  (virtual method)
+ * overrides: Node::handleEvent  (83 classes implement it)
+ * class: dice::meme::CullEventTimeoutActionNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086c470, bfv_client_l1_body_0086c470);
 BFV_L1_RESUME(bfv_client_l1r_0086c470_1, bfv_client_l1_body_0086c470, 1);
 void bfv_client_l1_body_0086c470(struct bfv_cpu *c)
@@ -136,7 +142,7 @@ void bfv_client_l1_body_0086c470(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0086c470  mov eax, dword ptr [esp + 0x10] */
+    /* 0086c470  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 0086c474  push esi */
@@ -145,17 +151,17 @@ void bfv_client_l1_body_0086c470(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086c475  mov esi, ecx */
     esi = ecx;
-    /* 0086c477  mov edx, dword ptr [esi + 0x10] */
+    /* 0086c477  mov edx, dword ptr [esi + 0x10]  ; field Event */
     ea = (uint32_t)(esi + 0x00000010u);
     edx = M32(ea);
-    /* 0086c47a  mov ecx, dword ptr [esp + 8] */
+    /* 0086c47a  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 0086c47e  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0086c47f  call 0x8784d0 */
+    /* 0086c47f  call 0x8784d0  ; meme_008784d0 */
     t = 0x008784d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086c470_1;
@@ -190,7 +196,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086c4a0  dice::meme::CullEventTimeoutActionNode  (virtual method) */
+/* 0086c4a0  CullEventTimeoutActionNode::update  (virtual method)
+ * overrides: Node::update  (83 classes implement it)
+ * class: dice::meme::CullEventTimeoutActionNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086c4a0, bfv_client_l1_body_0086c4a0);
 BFV_L1_RESUME(bfv_client_l1r_0086c4a0_1, bfv_client_l1_body_0086c4a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086c4a0_2, bfv_client_l1_body_0086c4a0, 2);
@@ -206,7 +215,7 @@ void bfv_client_l1_body_0086c4a0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 0086c4a0  mov eax, dword ptr [esp + 0x10] */
+    /* 0086c4a0  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 0086c4a4  sub esp, 0x14 */
@@ -219,14 +228,14 @@ void bfv_client_l1_body_0086c4a0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0086c4a8  mov ebx, dword ptr [esp + 0x20] */
+    /* 0086c4a8  mov ebx, dword ptr [esp + 0x20]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     ebx = M32(ea);
     /* 0086c4ac  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0086c4ad  mov ebp, dword ptr [esp + 0x20] */
+    /* 0086c4ad  mov ebp, dword ptr [esp + 0x20]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     ebp = M32(ea);
     /* 0086c4b1  push esi */
@@ -237,7 +246,7 @@ void bfv_client_l1_body_0086c4a0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086c4b3  mov edi, dword ptr [esp + 0x30] */
+    /* 0086c4b3  mov edi, dword ptr [esp + 0x30]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000030u);
     edi = M32(ea);
     /* 0086c4b7  push eax */
@@ -258,7 +267,7 @@ void bfv_client_l1_body_0086c4a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086c4bb  mov esi, ecx */
     esi = ecx;
-    /* 0086c4bd  call 0x86be70 */
+    /* 0086c4bd  call 0x86be70  ; ActionNode::update */
     t = 0x0086be70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086c4a0_1;
@@ -297,7 +306,7 @@ R_1:
     esp += 20;
     goto out;
 L_0086c4d0:
-    /* 0086c4d0  fld dword ptr [esp + 0x34] */
+    /* 0086c4d0  fld dword ptr [esp + 0x34]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000034u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0086c4d4  fadd dword ptr [esi + 0x14] */
@@ -316,7 +325,7 @@ L_0086c4d0:
     F_LOGIC(8, r);
     /* 0086c4e2  jne 0x86c50d */
     if (!zf) goto L_0086c50d;
-    /* 0086c4e4  mov ecx, dword ptr [esi + 0xc] */
+    /* 0086c4e4  mov ecx, dword ptr [esi + 0xc]  ; field Action */
     ea = (uint32_t)(esi + 0x0000000cu);
     ecx = M32(ea);
     /* 0086c4e7  xor eax, eax */
@@ -326,25 +335,25 @@ L_0086c4d0:
     /* 0086c4e9  mov dword ptr [esi + 0x14], eax */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = eax;
-    /* 0086c4ec  mov dword ptr [esp + 0x10], eax */
+    /* 0086c4ec  mov dword ptr [esp + 0x10], eax  ; var_14 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = eax;
-    /* 0086c4f0  mov dword ptr [esp + 0x14], eax */
+    /* 0086c4f0  mov dword ptr [esp + 0x14], eax  ; var_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
-    /* 0086c4f4  mov dword ptr [esp + 0x18], eax */
+    /* 0086c4f4  mov dword ptr [esp + 0x18], eax  ; var_c */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = eax;
-    /* 0086c4f8  mov dword ptr [esp + 0x1c], eax */
+    /* 0086c4f8  mov dword ptr [esp + 0x1c], eax  ; var_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = eax;
-    /* 0086c4fc  mov dword ptr [esp + 0x20], eax */
+    /* 0086c4fc  mov dword ptr [esp + 0x20], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = eax;
     /* 0086c500  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 0086c502  lea eax, [esp + 0x10] */
+    /* 0086c502  lea eax, [esp + 0x10]  ; &var_14 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 0086c506  push eax */
     t = eax;
@@ -406,8 +415,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086cac0  dice::meme::CullEventTimeoutActionNode  (virtual method)
- * strings: "dice::meme::CullEventTimeoutActionNode" */
+/* 0086cac0  CullEventTimeoutActionNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::CullEventTimeoutActionNode
+ * strings: "dice::meme::CullEventTimeoutActionNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086cac0, bfv_client_l1_body_0086cac0);
 BFV_L1_RESUME(bfv_client_l1r_0086cac0_1, bfv_client_l1_body_0086cac0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086cac0_2, bfv_client_l1_body_0086cac0, 2);
@@ -438,13 +450,13 @@ void bfv_client_l1_body_0086cac0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0086cad5  push 0xbd3c5c */
+    /* 0086cad5  push 0xbd3c5c  ; "dice::meme::CullEventTimeoutActionNode" */
     t = 0xbd3c5cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cada  mov ecx, 0xdf634c */
+    /* 0086cada  mov ecx, 0xdf634c  ; g_RuntimeClass_CullEventTimeoutActionNode */
     ecx = 0xdf634cu;
-    /* 0086cadf  call 0x875490 */
+    /* 0086cadf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086cac0_1;
@@ -455,10 +467,10 @@ R_1:
     t = 0xb3ac10u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cae9  mov dword ptr [0xdf634c], 0xbd356c */
+    /* 0086cae9  mov dword ptr [0xdf634c], 0xbd356c  ; g_RuntimeClass_CullEventTimeoutActionNode */
     ea = (uint32_t)(0x00df634cu);
     M32(ea) = 0xbd356cu;
-    /* 0086caf3  call 0x7c2cd2 */
+    /* 0086caf3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086cac0_2;
@@ -472,7 +484,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0086cafb:
-    /* 0086cafb  mov eax, 0xdf634c */
+    /* 0086cafb  mov eax, 0xdf634c  ; g_RuntimeClass_CullEventTimeoutActionNode */
     eax = 0xdf634cu;
     /* 0086cb00  ret */
     c->eip = M32(esp);
@@ -485,7 +497,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0086cb10  dice::meme::CullEventTimeoutActionNode  (vtable store) */
+/* 0086cb10  CullEventTimeoutActionNode::create  (vtable store)
+ * class: dice::meme::CullEventTimeoutActionNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086cb10, bfv_client_l1_body_0086cb10);
 BFV_L1_RESUME(bfv_client_l1r_0086cb10_1, bfv_client_l1_body_0086cb10, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086cb10_2, bfv_client_l1_body_0086cb10, 2);
@@ -509,7 +523,7 @@ void bfv_client_l1_body_0086cb10(struct bfv_cpu *c)
     t = 0x1cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0086cb13  call 0x403610 */
+    /* 0086cb13  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086cb10_1;
@@ -531,20 +545,20 @@ R_1:
     if (zf) goto L_0086cb40;
     /* 0086cb21  mov ecx, esi */
     ecx = esi;
-    /* 0086cb23  call 0x86c6c0 */
+    /* 0086cb23  call 0x86c6c0  ; CullEventActionNode::CullEventActionNode */
     t = 0x0086c6c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086cb10_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0086cb28  mov dword ptr [esi], 0xbd3c8c */
+    /* 0086cb28  mov dword ptr [esi], 0xbd3c8c  ; vtable CullEventTimeoutActionNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd3c8cu;
     /* 0086cb2e  mov dword ptr [esi + 0x14], 0 */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = 0x0u;
-    /* 0086cb35  mov dword ptr [esi + 0x18], 0x41f00000 */
+    /* 0086cb35  mov dword ptr [esi + 0x18], 0x41f00000  ; 30.0f */
     ea = (uint32_t)(esi + 0x00000018u);
     M32(ea) = 0x41f00000u;
     /* 0086cb3c  mov eax, esi */

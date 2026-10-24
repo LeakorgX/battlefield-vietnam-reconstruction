@@ -1,0 +1,16 @@
+## file
+BAPConNot is the boolean NOT of a bot action-plan condition. It is a
+BAPBoleanOp with a one-element list of child conditions at this+8 (list head
+pointer at this+0xc).
+
+## 009f3380
+evaluate(bot): evaluates the first child condition in the list and returns 1
+when it is false and 0 when it is true.
+
+## 009f3510
+Constructor from another condition: builds the empty child list, then appends
+the condition passed in and stores this as that condition's parent (child+4).
+
+## 009f3590
+Adds a child condition, only while the child count this+0x10 is 0: stores this
+as the child's parent (child+4) and appends it to the list at this+8.

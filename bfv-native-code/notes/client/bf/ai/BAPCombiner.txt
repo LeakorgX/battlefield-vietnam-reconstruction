@@ -1,0 +1,7 @@
+## file
+BAPCombiner is the base of the plan statements that hold a list of child
+statements (serial and parallel); the list is at this+0x18.
+
+## 009eea40
+destroy: clears and frees the child list, counts the destroyed statement in
+g_bapaDestroyedCount and frees the object when bit 0 of the argument is set.

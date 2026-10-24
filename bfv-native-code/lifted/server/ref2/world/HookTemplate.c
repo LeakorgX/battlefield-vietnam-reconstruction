@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005bcd30  dice::ref2::world::HookTemplate  (virtual method) */
+/* 005bcd30  HookTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::HookTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bcd30, bfv_server_l1_body_005bcd30);
 void bfv_server_l1_body_005bcd30(struct bfv_cpu *c)
 {
@@ -14,10 +17,10 @@ void bfv_server_l1_body_005bcd30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005bcd30  mov eax, dword ptr [esp + 4] */
+    /* 005bcd30  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005bcd34  cmp eax, dword ptr [0x820810] */
+    /* 005bcd34  cmp eax, dword ptr [0x820810]  ; HookTemplate::classID */
     ea = (uint32_t)(0x00820810u);
     a = eax;
     b = M32(ea);
@@ -32,10 +35,10 @@ void bfv_server_l1_body_005bcd30(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005bcd41:
-    /* 005bcd41  mov dword ptr [esp + 4], eax */
+    /* 005bcd41  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005bcd45  jmp 0x586630 */
+    /* 005bcd45  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -45,7 +48,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005bce80  dice::ref2::world::HookTemplate  (vtable store) */
+/* 005bce80  HookTemplate::HookTemplate  (vtable store)
+ * class: dice::ref2::world::HookTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bce80, bfv_server_l1_body_005bce80);
 BFV_L1_RESUME(bfv_server_l1r_005bce80_1, bfv_server_l1_body_005bce80, 1);
 void bfv_server_l1_body_005bce80(struct bfv_cpu *c)
@@ -65,7 +70,7 @@ void bfv_server_l1_body_005bce80(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bce81  mov esi, ecx */
     esi = ecx;
-    /* 005bce83  call 0x5870c0 */
+    /* 005bce83  call 0x5870c0  ; BundleTemplate::BundleTemplate */
     t = 0x005870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bce80_1;
@@ -76,7 +81,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 005bce8a  mov dword ptr [esi], 0x843e64 */
+    /* 005bce8a  mov dword ptr [esi], 0x843e64  ; vtable HookTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x843e64u;
     /* 005bce90  mov dword ptr [esi + 0x74], 0x843e54 */
@@ -123,7 +128,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005bcee0  dice::ref2::world::HookTemplate  (virtual method) */
+/* 005bcee0  HookTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::world::HookTemplate
+ * also entered at 005bcf20: Hook::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bcee0, bfv_server_l1_body_005bcee0);
 BFV_L1_RESUME(bfv_server_l1r_005bcee0_1, bfv_server_l1_body_005bcee0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bcee0_2, bfv_server_l1_body_005bcee0, 2);
@@ -145,7 +154,7 @@ void bfv_server_l1_body_005bcee0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bcee1  mov esi, ecx */
     esi = ecx;
-    /* 005bcee3  mov dword ptr [esi], 0x843e64 */
+    /* 005bcee3  mov dword ptr [esi], 0x843e64  ; vtable HookTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x843e64u;
     /* 005bcee9  mov dword ptr [esi + 0x74], 0x843e54 */
@@ -154,14 +163,14 @@ void bfv_server_l1_body_005bcee0(struct bfv_cpu *c)
     /* 005bcef0  mov dword ptr [esi + 0x190], 0x843e28 */
     ea = (uint32_t)(esi + 0x00000190u);
     M32(ea) = 0x843e28u;
-    /* 005bcefa  call 0x586880 */
+    /* 005bcefa  call 0x586880  ; BundleTemplate::~BundleTemplate */
     t = 0x00586880u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bcee0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005bceff  test byte ptr [esp + 8], 1 */
+    /* 005bceff  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -171,7 +180,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005bcf07  call 0x403df0 */
+    /* 005bcf07  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bcee0_2;
@@ -202,7 +211,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005bd130  dice::ref2::world::HookTemplate  (virtual method) */
+/* 005bd130  HookTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::HookTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bd130, bfv_server_l1_body_005bd130);
 BFV_L1_RESUME(bfv_server_l1r_005bd130_1, bfv_server_l1_body_005bd130, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bd130_2, bfv_server_l1_body_005bd130, 2);
@@ -228,7 +240,7 @@ void bfv_server_l1_body_005bd130(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bd136  mov esi, ecx */
     esi = ecx;
-    /* 005bd138  call 0x403d80 */
+    /* 005bd138  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd130_1;
@@ -252,7 +264,7 @@ R_1:
     M32(esp) = t;
     /* 005bd145  mov ecx, eax */
     ecx = eax;
-    /* 005bd147  call 0x5bcf70 */
+    /* 005bd147  call 0x5bcf70  ; Hook::Hook */
     t = 0x005bcf70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bd130_2;

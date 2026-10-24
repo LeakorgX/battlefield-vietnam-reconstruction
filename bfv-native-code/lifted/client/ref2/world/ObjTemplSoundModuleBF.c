@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0064fef0  dice::ref2::world::ObjTemplSoundModuleBF  (virtual method) */
+/* 0064fef0  ObjTemplSoundModuleBF::vf6  (virtual method)
+ * class: dice::ref2::world::ObjTemplSoundModuleBF
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064fef0, bfv_client_l1_body_0064fef0);
 BFV_L1_RESUME(bfv_client_l1r_0064fef0_1, bfv_client_l1_body_0064fef0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0064fef0_2, bfv_client_l1_body_0064fef0, 2);
@@ -21,20 +23,20 @@ void bfv_client_l1_body_0064fef0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 0064fef0  push 0xd9ee68 */
+    /* 0064fef0  push 0xd9ee68  ; g_consoleCommands_SoldierSound */
     t = 0xd9ee68u;
     esp -= 4;
     M32(esp) = t;
     /* 0064fef5  mov ecx, 0xd442ec */
     ecx = 0xd442ecu;
-    /* 0064fefa  call 0x41b040 */
+    /* 0064fefa  call 0x41b040  ; sub_0041b040 */
     t = 0x0041b040u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064fef0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0064feff  call 0x6e75e0 */
+    /* 0064feff  call 0x6e75e0  ; static_init_pool_SoundObject */
     t = 0x006e75e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064fef0_2;
@@ -54,7 +56,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0064ff10  dice::ref2::world::ObjTemplSoundModuleBF  (virtual method) */
+/* 0064ff10  ObjTemplSoundModuleBF::vf7  (virtual method)
+ * class: dice::ref2::world::ObjTemplSoundModuleBF
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064ff10, bfv_client_l1_body_0064ff10);
 BFV_L1_RESUME(bfv_client_l1r_0064ff10_1, bfv_client_l1_body_0064ff10, 1);
 void bfv_client_l1_body_0064ff10(struct bfv_cpu *c)
@@ -68,13 +72,13 @@ void bfv_client_l1_body_0064ff10(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0064ff10  push 0xd9ee68 */
+    /* 0064ff10  push 0xd9ee68  ; g_consoleCommands_SoldierSound */
     t = 0xd9ee68u;
     esp -= 4;
     M32(esp) = t;
     /* 0064ff15  mov ecx, 0xd442ec */
     ecx = 0xd442ecu;
-    /* 0064ff1a  call 0x5f89e0 */
+    /* 0064ff1a  call 0x5f89e0  ; stub_return_false_1args_005f89e0 */
     t = 0x005f89e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0064ff10_1;
@@ -84,6 +88,60 @@ R_1:
     /* 0064ff1f  mov al, 1 */
     SET8L(eax, 0x1u);
     /* 0064ff21  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 006e75e0  static_init_pool_SoundObject  (called from this file only)
+ * strings: "SoundObject"
+ * called by: ObjTemplSoundModuleBF::vf6
+ */
+BFV_L1_ENTRY(bfv_client_l1_006e75e0, bfv_client_l1_body_006e75e0);
+BFV_L1_RESUME(bfv_client_l1r_006e75e0_1, bfv_client_l1_body_006e75e0, 1);
+void bfv_client_l1_body_006e75e0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    default: break;
+    }
+    /* 006e75e0  push 0 */
+    t = 0x0u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006e75e2  push 0 */
+    t = 0x0u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006e75e4  push 0xc00 */
+    t = 0xc00u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006e75e9  mov edx, 0x18 */
+    edx = 0x18u;
+    /* 006e75ee  mov ecx, 0xba33ac  ; "SoundObject" */
+    ecx = 0xba33acu;
+    /* 006e75f3  call 0x4037a0  ; createMemoryPool */
+    t = 0x004037a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e75e0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 006e75f8  mov dword ptr [0xda1ab0], eax  ; g_pool_SoundObject */
+    ea = (uint32_t)(0x00da1ab0u);
+    M32(ea) = eax;
+    /* 006e75fd  ret */
     c->eip = M32(esp);
     esp += 4;
     goto out;

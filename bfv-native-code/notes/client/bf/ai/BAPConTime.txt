@@ -1,0 +1,17 @@
+## file
+BAPConTime and BAPConRandTime are timer conditions for bot action plans. They
+become true each time the AI time passes a deadline, then set a new one.
+
+## 009f2c70
+BAPConTime::evaluate: on the first call (this+0x10 still 0) sets the deadline
+this+8 = AI time + interval (this+0xc) and marks it started. Returns false
+before the deadline. At or after it returns true and moves the deadline: with
+this+0x11 clear to AI time + interval, with it set to deadline + interval (a
+fixed period that does not drift).
+
+## 009f2d30
+BAPConRandTime::evaluate: like BAPConTime but each interval is random between
+min and max: deadline = AI time + rand * (max this+0xc - min this+0x10) + min,
+with rand the AI random number in 0..1 (IAIMain slot 0x74). Started flag at
+this+0x14. Returns true and sets the next random deadline when the AI time
+reaches the current one.

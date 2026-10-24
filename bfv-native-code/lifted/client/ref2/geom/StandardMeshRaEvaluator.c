@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00747f50  dice::ref2::geom::StandardMeshRaEvaluator  (virtual method) */
+/* 00747f50  StandardMeshRaEvaluator::vf0  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRaEvaluator
+ */
 BFV_L1_ENTRY(bfv_client_l1_00747f50, bfv_client_l1_body_00747f50);
 void bfv_client_l1_body_00747f50(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_00747f50(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 00747f50  mov eax, dword ptr [esp + 4] */
+    /* 00747f50  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00747f54  mov ecx, dword ptr [eax + 0xa4] */
@@ -25,7 +27,7 @@ void bfv_client_l1_body_00747f50(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00747f5c  je 0x747f6d */
     if (zf) goto L_00747f6d;
-    /* 00747f5e  mov ecx, dword ptr [0xe173cc] */
+    /* 00747f5e  mov ecx, dword ptr [0xe173cc]  ; g_pRaShaderWater_00e173cc */
     ea = (uint32_t)(0x00e173ccu);
     ecx = M32(ea);
     /* 00747f64  mov dword ptr [eax + 0xa8], ecx */
@@ -60,7 +62,7 @@ L_00747f6d:
     F_LOGIC(8, r);
     /* 00747f86  je 0x747f97 */
     if (zf) goto L_00747f97;
-    /* 00747f88  mov edx, dword ptr [0xe173b8] */
+    /* 00747f88  mov edx, dword ptr [0xe173b8]  ; g_pRaShaderEnvironment_00e173b8 */
     ea = (uint32_t)(0x00e173b8u);
     edx = M32(ea);
     /* 00747f8e  mov dword ptr [eax + 0xa8], edx */
@@ -71,7 +73,7 @@ L_00747f6d:
     esp += 8;
     goto out;
 L_00747f97:
-    /* 00747f97  mov ecx, dword ptr [0xe17384] */
+    /* 00747f97  mov ecx, dword ptr [0xe17384]  ; g_pRaShaderEnvironment_00e17384 */
     ea = (uint32_t)(0x00e17384u);
     ecx = M32(ea);
     /* 00747f9d  mov dword ptr [eax + 0xa8], ecx */
@@ -96,7 +98,7 @@ L_00747faa:
     F_LOGIC(8, r);
     /* 00747faf  je 0x747fc0 */
     if (zf) goto L_00747fc0;
-    /* 00747fb1  mov edx, dword ptr [0xe1738c] */
+    /* 00747fb1  mov edx, dword ptr [0xe1738c]  ; g_pRaShaderDefault_00e1738c */
     ea = (uint32_t)(0x00e1738cu);
     edx = M32(ea);
     /* 00747fb7  mov dword ptr [eax + 0xa8], edx */
@@ -107,7 +109,7 @@ L_00747faa:
     esp += 8;
     goto out;
 L_00747fc0:
-    /* 00747fc0  mov ecx, dword ptr [0xe17350] */
+    /* 00747fc0  mov ecx, dword ptr [0xe17350]  ; g_pRaShaderDefault_00e17350 */
     ea = (uint32_t)(0x00e17350u);
     ecx = M32(ea);
     /* 00747fc6  mov dword ptr [eax + 0xa8], ecx */
@@ -134,7 +136,7 @@ L_00747fcf:
     F_LOGIC(8, r);
     /* 00747fdb  je 0x747fec */
     if (zf) goto L_00747fec;
-    /* 00747fdd  mov edx, dword ptr [0xe17390] */
+    /* 00747fdd  mov edx, dword ptr [0xe17390]  ; g_pRaShader1Dif_00e17390 */
     ea = (uint32_t)(0x00e17390u);
     edx = M32(ea);
     /* 00747fe3  mov dword ptr [eax + 0xa8], edx */
@@ -145,7 +147,7 @@ L_00747fcf:
     esp += 8;
     goto out;
 L_00747fec:
-    /* 00747fec  mov ecx, dword ptr [0xe17354] */
+    /* 00747fec  mov ecx, dword ptr [0xe17354]  ; g_pRaShader1Dif_00e17354 */
     ea = (uint32_t)(0x00e17354u);
     ecx = M32(ea);
     /* 00747ff2  mov dword ptr [eax + 0xa8], ecx */
@@ -172,7 +174,7 @@ L_00747ffb:
     F_LOGIC(8, r);
     /* 00748007  je 0x748018 */
     if (zf) goto L_00748018;
-    /* 00748009  mov edx, dword ptr [0xe173b4] */
+    /* 00748009  mov edx, dword ptr [0xe173b4]  ; g_pRaShaderPVLPPSMask1Diff_00e173b4 */
     ea = (uint32_t)(0x00e173b4u);
     edx = M32(ea);
     /* 0074800f  mov dword ptr [eax + 0xa8], edx */
@@ -183,7 +185,7 @@ L_00747ffb:
     esp += 8;
     goto out;
 L_00748018:
-    /* 00748018  mov ecx, dword ptr [0xe17380] */
+    /* 00748018  mov ecx, dword ptr [0xe17380]  ; g_pRaShaderPVLPPSMask1Diff_00e17380 */
     ea = (uint32_t)(0x00e17380u);
     ecx = M32(ea);
     /* 0074801e  mov dword ptr [eax + 0xa8], ecx */
@@ -218,7 +220,7 @@ L_00748027:
     F_LOGIC(8, r);
     /* 00748040  je 0x748051 */
     if (zf) goto L_00748051;
-    /* 00748042  mov edx, dword ptr [0xe17398] */
+    /* 00748042  mov edx, dword ptr [0xe17398]  ; g_pRaShaderPVLS1DifLmp_00e17398 */
     ea = (uint32_t)(0x00e17398u);
     edx = M32(ea);
     /* 00748048  mov dword ptr [eax + 0xa8], edx */
@@ -229,7 +231,7 @@ L_00748027:
     esp += 8;
     goto out;
 L_00748051:
-    /* 00748051  mov ecx, dword ptr [0xe17360] */
+    /* 00748051  mov ecx, dword ptr [0xe17360]  ; g_pRaShaderPVLS1DifLmp_00e17360 */
     ea = (uint32_t)(0x00e17360u);
     ecx = M32(ea);
     /* 00748057  mov dword ptr [eax + 0xa8], ecx */
@@ -245,7 +247,7 @@ L_00748060:
     F_LOGIC(8, r);
     /* 00748062  je 0x748073 */
     if (zf) goto L_00748073;
-    /* 00748064  mov edx, dword ptr [0xe17394] */
+    /* 00748064  mov edx, dword ptr [0xe17394]  ; g_pRaShaderPVLS1Dif_00e17394 */
     ea = (uint32_t)(0x00e17394u);
     edx = M32(ea);
     /* 0074806a  mov dword ptr [eax + 0xa8], edx */
@@ -256,7 +258,7 @@ L_00748060:
     esp += 8;
     goto out;
 L_00748073:
-    /* 00748073  mov ecx, dword ptr [0xe1735c] */
+    /* 00748073  mov ecx, dword ptr [0xe1735c]  ; g_pRaShaderPVLS1Dif_00e1735c */
     ea = (uint32_t)(0x00e1735cu);
     ecx = M32(ea);
     /* 00748079  mov dword ptr [eax + 0xa8], ecx */
@@ -280,7 +282,7 @@ L_00748082:
     F_LOGIC(8, r);
     /* 0074808b  je 0x74809c */
     if (zf) goto L_0074809c;
-    /* 0074808d  mov edx, dword ptr [0xe1739c] */
+    /* 0074808d  mov edx, dword ptr [0xe1739c]  ; g_pRaShaderPPLSTs1DifLmp_00e1739c */
     ea = (uint32_t)(0x00e1739cu);
     edx = M32(ea);
     /* 00748093  mov dword ptr [eax + 0xa8], edx */
@@ -291,7 +293,7 @@ L_00748082:
     esp += 8;
     goto out;
 L_0074809c:
-    /* 0074809c  mov ecx, dword ptr [0xe17364] */
+    /* 0074809c  mov ecx, dword ptr [0xe17364]  ; g_pRaShaderPPLSTs1DifLmp_00e17364 */
     ea = (uint32_t)(0x00e17364u);
     ecx = M32(ea);
     /* 007480a2  mov dword ptr [eax + 0xa8], ecx */
@@ -318,7 +320,7 @@ L_007480ab:
     F_LOGIC(8, r);
     /* 007480b7  je 0x7480c8 */
     if (zf) goto L_007480c8;
-    /* 007480b9  mov edx, dword ptr [0xe173a4] */
+    /* 007480b9  mov edx, dword ptr [0xe173a4]  ; g_pRaShaderPPLSWs1Dif_00e173a4 */
     ea = (uint32_t)(0x00e173a4u);
     edx = M32(ea);
     /* 007480bf  mov dword ptr [eax + 0xa8], edx */
@@ -329,7 +331,7 @@ L_007480ab:
     esp += 8;
     goto out;
 L_007480c8:
-    /* 007480c8  mov ecx, dword ptr [0xe1736c] */
+    /* 007480c8  mov ecx, dword ptr [0xe1736c]  ; g_pRaShaderPPLSWs1Dif_00e1736c */
     ea = (uint32_t)(0x00e1736cu);
     ecx = M32(ea);
     /* 007480ce  mov dword ptr [eax + 0xa8], ecx */
@@ -356,7 +358,7 @@ L_007480d7:
     F_LOGIC(8, r);
     /* 007480e3  je 0x7480f4 */
     if (zf) goto L_007480f4;
-    /* 007480e5  mov edx, dword ptr [0xe173bc] */
+    /* 007480e5  mov edx, dword ptr [0xe173bc]  ; g_pRaShaderPPLSTs1Dif_00e173bc */
     ea = (uint32_t)(0x00e173bcu);
     edx = M32(ea);
     /* 007480eb  mov dword ptr [eax + 0xa8], edx */
@@ -367,7 +369,7 @@ L_007480d7:
     esp += 8;
     goto out;
 L_007480f4:
-    /* 007480f4  mov ecx, dword ptr [0xe17388] */
+    /* 007480f4  mov ecx, dword ptr [0xe17388]  ; g_pRaShaderPPLSTs1Dif_00e17388 */
     ea = (uint32_t)(0x00e17388u);
     ecx = M32(ea);
     /* 007480fa  mov dword ptr [eax + 0xa8], ecx */
@@ -383,7 +385,7 @@ L_00748103:
     F_LOGIC(8, r);
     /* 00748105  je 0x748116 */
     if (zf) goto L_00748116;
-    /* 00748107  mov edx, dword ptr [0xe173a0] */
+    /* 00748107  mov edx, dword ptr [0xe173a0]  ; g_pRaShaderPPLSTs1Dif_00e173a0 */
     ea = (uint32_t)(0x00e173a0u);
     edx = M32(ea);
     /* 0074810d  mov dword ptr [eax + 0xa8], edx */
@@ -394,7 +396,7 @@ L_00748103:
     esp += 8;
     goto out;
 L_00748116:
-    /* 00748116  mov ecx, dword ptr [0xe17368] */
+    /* 00748116  mov ecx, dword ptr [0xe17368]  ; g_pRaShaderPPLSTs1Dif_00e17368 */
     ea = (uint32_t)(0x00e17368u);
     ecx = M32(ea);
     /* 0074811c  mov dword ptr [eax + 0xa8], ecx */

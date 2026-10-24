@@ -5,7 +5,14 @@
 #include "l1.h"
 
 
-/* 0052bf70  dice::meme::Iterator  (virtual method) */
+/* 0052bf70  Iterator::vf0  (virtual method)
+ * class: dice::meme::Iterator
+ * also entered at 0052bf80: WTypeVoid::vf1
+ * also entered at 0052bf90: Empty_Type::vf11, OnlyANameWrapper::vf9, TreeWrapper::vf9, WType::vf11 (+5 more)
+ * also entered at 0052bfa0: WTypeVoid::vf3
+ * also entered at 0052bfb0: OnlyANameWrapper::vf8, TreeWrapper::vf8
+ * called by: EventIterator::ctor_dtor, PathNode::updateTree, ToModeIterator::ctor_dtor, ToModeIterator::ctor_dtor, UnicodePressIterator::ctor_dtor, meme_00879980 (+1 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0052bf70, bfv_client_l1_body_0052bf70);
 void bfv_client_l1_body_0052bf70(struct bfv_cpu *c)
 {
@@ -28,7 +35,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00878480  dice::meme::Iterator  (vtable store) */
+/* 00878480  Iterator::Iterator  (vtable store)
+ * class: dice::meme::Iterator
+ * called by: EventIterator::EventIterator, EventIterator::ctor_dtor, PathNode::updateTree, ToModeIterator::ToModeIterator, ToModeIterator::ctor_dtor, ToModeIterator::ctor_dtor (+3 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878480, bfv_client_l1_body_00878480);
 void bfv_client_l1_body_00878480(struct bfv_cpu *c)
 {
@@ -39,10 +49,10 @@ void bfv_client_l1_body_00878480(struct bfv_cpu *c)
     uint32_t ea;
     /* 00878480  mov eax, ecx */
     eax = ecx;
-    /* 00878482  mov ecx, dword ptr [esp + 4] */
+    /* 00878482  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00878486  mov dword ptr [eax], 0xbd714c */
+    /* 00878486  mov dword ptr [eax], 0xbd714c  ; vtable Iterator */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbd714cu;
     /* 0087848c  mov dword ptr [eax + 4], ecx */
@@ -59,7 +69,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008784a0  dice::meme::Iterator  (virtual method) */
+/* 008784a0  Iterator::vf2_callVirtual_vf0  (virtual method)
+ * class: dice::meme::Iterator
+ */
 BFV_L1_ENTRY(bfv_client_l1_008784a0, bfv_client_l1_body_008784a0);
 void bfv_client_l1_body_008784a0(struct bfv_cpu *c)
 {
@@ -82,7 +94,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7ed80  dice::meme::Iterator  (virtual method) */
+/* 00a7ed80  stub_noop_4args_00a7ed80  (virtual method)
+ * class: dice::meme::Iterator
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7ed80, bfv_client_l1_body_00a7ed80);
 void bfv_client_l1_body_00a7ed80(struct bfv_cpu *c)
 {

@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009afe20  dice::bf::ai::UCConstant  (vtable store) */
+/* 009afe20  UCConstant::UCConstant  (vtable store)
+ * class: dice::bf::ai::UCConstant
+ * also entered at 009afe40: UCConstant::vf1
+ * called by: AiSettings::createUCConstant
+ */
 BFV_L1_ENTRY(bfv_client_l1_009afe20, bfv_client_l1_body_009afe20);
 void bfv_client_l1_body_009afe20(struct bfv_cpu *c)
 {
@@ -16,10 +20,10 @@ void bfv_client_l1_body_009afe20(struct bfv_cpu *c)
     uint32_t ea;
     /* 009afe20  mov eax, ecx */
     eax = ecx;
-    /* 009afe22  mov ecx, dword ptr [esp + 4] */
+    /* 009afe22  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 009afe26  mov dword ptr [eax], 0xbf6788 */
+    /* 009afe26  mov dword ptr [eax], 0xbf6788  ; vtable UCConstant */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf6788u;
     /* 009afe2c  mov dword ptr [eax + 4], ecx */

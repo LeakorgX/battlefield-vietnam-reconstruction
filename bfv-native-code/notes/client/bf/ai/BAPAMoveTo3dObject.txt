@@ -1,0 +1,8 @@
+## file
+3D move action towards another object.
+
+## 009f1560
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.
+
+## 009f1710
+Destructor: releases the owned object at this+0x28, restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.

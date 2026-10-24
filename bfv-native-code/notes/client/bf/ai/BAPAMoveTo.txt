@@ -1,0 +1,5 @@
+## file
+Base plan action for moving to a point. Holds a BAPAComponentSoldierPose at this+0x18.
+
+## 009fc8e0
+Destructor: tears down the embedded pose component at this+0x18, restores the base vtables, counts the destruction in g_bapaDestroyedCount and frees the object when bit 0 of the flag argument is set.

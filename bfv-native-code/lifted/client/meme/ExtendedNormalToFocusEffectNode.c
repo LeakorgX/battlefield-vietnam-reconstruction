@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00870800  dice::meme::ExtendedNormalToFocusEffectNode  (virtual method) */
+/* 00870800  ExtendedNormalToFocusEffectNode::traverse  (virtual method)
+ * overrides: Node::traverse  (83 classes implement it)
+ * class: dice::meme::ExtendedNormalToFocusEffectNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00870800, bfv_client_l1_body_00870800);
 BFV_L1_RESUME(bfv_client_l1r_00870800_1, bfv_client_l1_body_00870800, 1);
 void bfv_client_l1_body_00870800(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_00870800(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00870800  mov edx, dword ptr [esp + 8] */
+    /* 00870800  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00870804  sub esp, 0x1c */
@@ -32,7 +35,7 @@ void bfv_client_l1_body_00870800(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00870808  mov esi, dword ptr [ecx + 0xc] */
+    /* 00870808  mov esi, dword ptr [ecx + 0xc]  ; field Effect */
     ea = (uint32_t)(ecx + 0x0000000cu);
     esi = M32(ea);
     /* 0087080b  test esi, esi */
@@ -43,7 +46,7 @@ void bfv_client_l1_body_00870800(struct bfv_cpu *c)
     /* 00870813  fld dword ptr [edx + 4] */
     ea = (uint32_t)(edx + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00870816  fcomp dword ptr [0xb44444] */
+    /* 00870816  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0087081c  fld dword ptr [edx + 4] */
@@ -56,13 +59,13 @@ void bfv_client_l1_body_00870800(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 00870824  jp 0x87082e */
     if (pf) goto L_0087082e;
-    /* 00870826  fadd dword ptr [0xb4456c] */
+    /* 00870826  fadd dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0087082c  fchs */
     __asm__ volatile(".intel_syntax noprefix\n\tfchs\n\t.att_syntax prefix");
 L_0087082e:
-    /* 0087082e  fcomp dword ptr [0xb4456c] */
+    /* 0087082e  fcomp dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00870834  fnstsw ax */
@@ -75,7 +78,7 @@ L_0087082e:
     /* 0087083f  fld dword ptr [edx + 4] */
     ea = (uint32_t)(edx + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00870842  fcomp dword ptr [0xb44444] */
+    /* 00870842  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00870848  fld dword ptr [edx + 4] */
@@ -88,13 +91,13 @@ L_0087082e:
     F_LOGIC(8, r);
     /* 00870850  jp 0x87085a */
     if (pf) goto L_0087085a;
-    /* 00870852  fadd dword ptr [0xb4456c] */
+    /* 00870852  fadd dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00870858  fchs */
     __asm__ volatile(".intel_syntax noprefix\n\tfchs\n\t.att_syntax prefix");
 L_0087085a:
-    /* 0087085a  fcomp dword ptr [0xb555ac] */
+    /* 0087085a  fcomp dword ptr [0xb555ac]  ; = 2.0f */
     ea = (uint32_t)(0x00b555acu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00870860  fnstsw ax */
@@ -107,7 +110,7 @@ L_0087085a:
     /* 00870867  fld dword ptr [edx + 4] */
     ea = (uint32_t)(edx + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0087086a  fcomp dword ptr [0xb44444] */
+    /* 0087086a  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00870870  fld dword ptr [edx + 4] */
@@ -120,13 +123,13 @@ L_0087085a:
     F_LOGIC(8, r);
     /* 00870878  jp 0x870882 */
     if (pf) goto L_00870882;
-    /* 0087087a  fadd dword ptr [0xb4456c] */
+    /* 0087087a  fadd dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00870880  fchs */
     __asm__ volatile(".intel_syntax noprefix\n\tfchs\n\t.att_syntax prefix");
 L_00870882:
-    /* 00870882  fsub dword ptr [0xb4456c] */
+    /* 00870882  fsub dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00870888  fld dword ptr [ecx + 0x10] */
@@ -168,28 +171,28 @@ L_008708a2:
     ea = (uint32_t)(ecx + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsubr dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_008708ad:
-    /* 008708ad  mov eax, dword ptr [esp + 0x34] */
+    /* 008708ad  mov eax, dword ptr [esp + 0x34]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000034u);
     eax = M32(ea);
-    /* 008708b1  fstp dword ptr [esp + 0x1c] */
+    /* 008708b1  fstp dword ptr [esp + 0x1c]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 008708b5  mov dword ptr [esp + 8], esi */
+    /* 008708b5  mov dword ptr [esp + 8], esi  ; var_18 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = esi;
     /* 008708b9  mov esi, dword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     esi = M32(ea);
-    /* 008708bc  mov dword ptr [esp + 0xc], esi */
+    /* 008708bc  mov dword ptr [esp + 0xc], esi  ; var_14 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = esi;
     /* 008708c0  mov esi, dword ptr [eax + 0xc] */
     ea = (uint32_t)(eax + 0x0000000cu);
     esi = M32(ea);
-    /* 008708c3  mov dword ptr [esp + 4], eax */
+    /* 008708c3  mov dword ptr [esp + 4], eax  ; var_1c */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 008708c7  mov dword ptr [esp + 0x10], esi */
+    /* 008708c7  mov dword ptr [esp + 0x10], esi  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = esi;
     /* 008708cb  mov esi, dword ptr [eax + 0x10] */
@@ -198,18 +201,18 @@ L_008708ad:
     /* 008708ce  mov eax, dword ptr [eax + 0x14] */
     ea = (uint32_t)(eax + 0x00000014u);
     eax = M32(ea);
-    /* 008708d1  mov dword ptr [esp + 0x18], eax */
+    /* 008708d1  mov dword ptr [esp + 0x18], eax  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = eax;
-    /* 008708d5  mov dword ptr [esp + 0x14], esi */
+    /* 008708d5  mov dword ptr [esp + 0x14], esi  ; var_c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = esi;
-    /* 008708d9  lea eax, [esp + 4] */
+    /* 008708d9  lea eax, [esp + 4]  ; &var_1c */
     eax = (uint32_t)(esp + 0x00000004u);
     /* 008708dd  jmp 0x8708e3 */
     goto L_008708e3;
 L_008708df:
-    /* 008708df  mov eax, dword ptr [esp + 0x34] */
+    /* 008708df  mov eax, dword ptr [esp + 0x34]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000034u);
     eax = M32(ea);
 L_008708e3:
@@ -217,14 +220,14 @@ L_008708e3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008708e4  mov eax, dword ptr [esp + 0x34] */
+    /* 008708e4  mov eax, dword ptr [esp + 0x34]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000034u);
     eax = M32(ea);
     /* 008708e8  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008708e9  mov eax, dword ptr [esp + 0x34] */
+    /* 008708e9  mov eax, dword ptr [esp + 0x34]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     eax = M32(ea);
     /* 008708ed  push eax */
@@ -235,14 +238,14 @@ L_008708e3:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008708ef  mov edx, dword ptr [esp + 0x34] */
+    /* 008708ef  mov edx, dword ptr [esp + 0x34]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000034u);
     edx = M32(ea);
     /* 008708f3  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008708f4  call 0x873df0 */
+    /* 008708f4  call 0x873df0  ; Node::traverse */
     t = 0x00873df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870800_1;
@@ -270,8 +273,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00870900  dice::meme::ExtendedNormalToFocusEffectNode  (virtual method)
- * strings: "Effect", "Min value", "Max value" */
+/* 00870900  ExtendedNormalToFocusEffectNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::ExtendedNormalToFocusEffectNode
+ * strings: "Effect", "Min value", "Max value"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00870900, bfv_client_l1_body_00870900);
 BFV_L1_RESUME(bfv_client_l1r_00870900_1, bfv_client_l1_body_00870900, 1);
 BFV_L1_RESUME(bfv_client_l1r_00870900_2, bfv_client_l1_body_00870900, 2);
@@ -295,14 +301,14 @@ void bfv_client_l1_body_00870900(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00870901  mov ebx, dword ptr [esp + 8] */
+    /* 00870901  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00870905  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00870906  mov esi, dword ptr [esp + 0x10] */
+    /* 00870906  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 0087090a  push edi */
@@ -319,7 +325,7 @@ void bfv_client_l1_body_00870900(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087090d  mov edi, ecx */
     edi = ecx;
-    /* 0087090f  call 0x873f50 */
+    /* 0087090f  call 0x873f50  ; Node::serialize */
     t = 0x00873f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870900_1;
@@ -338,11 +344,11 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0087091c  push 0xb44c64 */
+    /* 0087091c  push 0xb44c64  ; "Effect" */
     t = 0xb44c64u;
     esp -= 4;
     M32(esp) = t;
-    /* 00870921  lea ecx, [edi + 0xc] */
+    /* 00870921  lea ecx, [edi + 0xc]  ; field Effect (serialized) */
     ecx = (uint32_t)(edi + 0x0000000cu);
     /* 00870924  push ecx */
     t = ecx;
@@ -392,7 +398,7 @@ L_00870937:
     /* 00870937  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00870939  push 0xbd4c9c */
+    /* 00870939  push 0xbd4c9c  ; "Min value" */
     t = 0xbd4c9cu;
     esp -= 4;
     M32(esp) = t;
@@ -420,7 +426,7 @@ R_3:
     /* 0087094b  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 0087094d  push 0xbd4c90 */
+    /* 0087094d  push 0xbd4c90  ; "Max value" */
     t = 0xbd4c90u;
     esp -= 4;
     M32(esp) = t;
@@ -472,7 +478,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00870f10  dice::meme::ExtendedNormalToFocusEffectNode  (vtable store) */
+/* 00870f10  ExtendedNormalToFocusEffectNode::create  (vtable store)
+ * class: dice::meme::ExtendedNormalToFocusEffectNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00870f10, bfv_client_l1_body_00870f10);
 BFV_L1_RESUME(bfv_client_l1r_00870f10_1, bfv_client_l1_body_00870f10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00870f10_2, bfv_client_l1_body_00870f10, 2);
@@ -496,7 +504,7 @@ void bfv_client_l1_body_00870f10(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 00870f13  call 0x403610 */
+    /* 00870f13  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870f10_1;
@@ -518,7 +526,7 @@ R_1:
     if (zf) goto L_00870f47;
     /* 00870f21  mov ecx, esi */
     ecx = esi;
-    /* 00870f23  call 0x873d90 */
+    /* 00870f23  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870f10_2;
@@ -528,13 +536,13 @@ R_2:
     /* 00870f28  mov dword ptr [esi + 0xc], 0 */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = 0x0u;
-    /* 00870f2f  mov dword ptr [esi], 0xbd5444 */
+    /* 00870f2f  mov dword ptr [esi], 0xbd5444  ; vtable ExtendedNormalToFocusEffectNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd5444u;
     /* 00870f35  mov dword ptr [esi + 0x10], 0 */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 00870f3c  mov dword ptr [esi + 0x14], 0x3f800000 */
+    /* 00870f3c  mov dword ptr [esi + 0x14], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = 0x3f800000u;
     /* 00870f43  mov eax, esi */
@@ -567,8 +575,11 @@ out: __attribute__((unused));
 }
 
 
-/* 008711f0  dice::meme::ExtendedNormalToFocusEffectNode  (virtual method)
- * strings: "dice::meme::ExtendedNormalToFocusEffectNode" */
+/* 008711f0  ExtendedNormalToFocusEffectNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::ExtendedNormalToFocusEffectNode
+ * strings: "dice::meme::ExtendedNormalToFocusEffectNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_008711f0, bfv_client_l1_body_008711f0);
 BFV_L1_RESUME(bfv_client_l1r_008711f0_1, bfv_client_l1_body_008711f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008711f0_2, bfv_client_l1_body_008711f0, 2);
@@ -599,13 +610,13 @@ void bfv_client_l1_body_008711f0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00871205  push 0xbd57ec */
+    /* 00871205  push 0xbd57ec  ; "dice::meme::ExtendedNormalToFocusEffectNode" */
     t = 0xbd57ecu;
     esp -= 4;
     M32(esp) = t;
-    /* 0087120a  mov ecx, 0xdf6640 */
+    /* 0087120a  mov ecx, 0xdf6640  ; g_RuntimeClass_ExtendedNormalToFocusEffectNode */
     ecx = 0xdf6640u;
-    /* 0087120f  call 0x875490 */
+    /* 0087120f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008711f0_1;
@@ -616,10 +627,10 @@ R_1:
     t = 0xb3adc0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871219  mov dword ptr [0xdf6640], 0xbd4df0 */
+    /* 00871219  mov dword ptr [0xdf6640], 0xbd4df0  ; g_RuntimeClass_ExtendedNormalToFocusEffectNode */
     ea = (uint32_t)(0x00df6640u);
     M32(ea) = 0xbd4df0u;
-    /* 00871223  call 0x7c2cd2 */
+    /* 00871223  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008711f0_2;
@@ -633,7 +644,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0087122b:
-    /* 0087122b  mov eax, 0xdf6640 */
+    /* 0087122b  mov eax, 0xdf6640  ; g_RuntimeClass_ExtendedNormalToFocusEffectNode */
     eax = 0xdf6640u;
     /* 00871230  ret */
     c->eip = M32(esp);

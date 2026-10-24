@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00895000  dice::ref2::io::NullInputDeviceManager  (virtual method) */
+/* 00895000  NullInputDeviceManager::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::io::NullInputDeviceManager
+ */
 BFV_L1_ENTRY(bfv_client_l1_00895000, bfv_client_l1_body_00895000);
 void bfv_client_l1_body_00895000(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_00895000(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00895000  mov edx, dword ptr [0xb42718] */
+    /* 00895000  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00895006  mov eax, ecx */
     eax = ecx;
-    /* 00895008  mov ecx, dword ptr [esp + 4] */
+    /* 00895008  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0089500c  cmp ecx, edx */

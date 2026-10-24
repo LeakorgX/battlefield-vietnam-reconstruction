@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 009ddf80  dice::bf::ai::IAIMeshLoader  (virtual method) */
+/* 009ddf80  IAIMeshLoader::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAIMeshLoader
+ */
 BFV_L1_ENTRY(bfv_client_l1_009ddf80, bfv_client_l1_body_009ddf80);
 BFV_L1_RESUME(bfv_client_l1r_009ddf80_1, bfv_client_l1_body_009ddf80, 1);
 void bfv_client_l1_body_009ddf80(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_009ddf80(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009ddf80  test byte ptr [esp + 4], 1 */
+    /* 009ddf80  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,10 +31,10 @@ void bfv_client_l1_body_009ddf80(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009ddf86  mov esi, ecx */
     esi = ecx;
-    /* 009ddf88  mov dword ptr [esi], 0xbf974c */
+    /* 009ddf88  mov dword ptr [esi], 0xbf974c  ; vtable IAIMeshLoader */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf974cu;
-    /* 009ddf8e  mov dword ptr [0xe0f9c8], 0 */
+    /* 009ddf8e  mov dword ptr [0xe0f9c8], 0  ; g_pIAIMeshLoader_00e0f9c8 */
     ea = (uint32_t)(0x00e0f9c8u);
     M32(ea) = 0x0u;
     /* 009ddf98  je 0x9ddfa3 */
@@ -41,7 +43,7 @@ void bfv_client_l1_body_009ddf80(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009ddf9b  call 0x403680 */
+    /* 009ddf9b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ddf80_1;
@@ -72,7 +74,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009ddfb0  dice::bf::ai::IAIMeshLoader  (vtable store) */
+/* 009ddfb0  IAIMeshLoader::IAIMeshLoader  (vtable store)
+ * class: dice::bf::ai::IAIMeshLoader
+ * called by: AIMeshLoader::AIMeshLoader
+ */
 BFV_L1_ENTRY(bfv_client_l1_009ddfb0, bfv_client_l1_body_009ddfb0);
 void bfv_client_l1_body_009ddfb0(struct bfv_cpu *c)
 {
@@ -83,10 +88,10 @@ void bfv_client_l1_body_009ddfb0(struct bfv_cpu *c)
     uint32_t ea;
     /* 009ddfb0  mov eax, ecx */
     eax = ecx;
-    /* 009ddfb2  mov dword ptr [eax], 0xbf974c */
+    /* 009ddfb2  mov dword ptr [eax], 0xbf974c  ; vtable IAIMeshLoader */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf974cu;
-    /* 009ddfb8  mov dword ptr [0xe0f9c8], eax */
+    /* 009ddfb8  mov dword ptr [0xe0f9c8], eax  ; g_pIAIMeshLoader_00e0f9c8 */
     ea = (uint32_t)(0x00e0f9c8u);
     M32(ea) = eax;
     /* 009ddfbd  ret */

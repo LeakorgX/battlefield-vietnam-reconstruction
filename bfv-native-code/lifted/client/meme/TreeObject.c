@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006d5470  dice::meme::TreeObject  (virtual method) */
+/* 006d5470  TreeObject::vf12_callVirtual_vf13  (virtual method)
+ * overrides: Object::vf12  (205 classes implement it)
+ * class: dice::meme::TreeObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5470, bfv_client_l1_body_006d5470);
 void bfv_client_l1_body_006d5470(struct bfv_cpu *c)
 {
@@ -28,7 +31,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0087a910  dice::meme::TreeObject  (vtable store) */
+/* 0087a910  TreeObject::TreeObject  (vtable store)
+ * class: dice::meme::TreeObject
+ * called by: NavigateTree::createTreeObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087a910, bfv_client_l1_body_0087a910);
 BFV_L1_RESUME(bfv_client_l1r_0087a910_1, bfv_client_l1_body_0087a910, 1);
 void bfv_client_l1_body_0087a910(struct bfv_cpu *c)
@@ -48,32 +54,32 @@ void bfv_client_l1_body_0087a910(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087a911  mov esi, ecx */
     esi = ecx;
-    /* 0087a913  call 0x874870 */
+    /* 0087a913  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0087a910_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0087a918  mov eax, dword ptr [esp + 0x10] */
+    /* 0087a918  mov eax, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 0087a91c  mov ecx, dword ptr [esp + 0xc] */
+    /* 0087a91c  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 0087a920  mov edx, dword ptr [esp + 0x14] */
+    /* 0087a920  mov edx, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0087a924  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 0087a927  mov eax, dword ptr [esp + 8] */
+    /* 0087a927  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0087a92b  mov dword ptr [esi + 0x14], eax */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = eax;
-    /* 0087a92e  mov dword ptr [esi], 0xbd7a74 */
+    /* 0087a92e  mov dword ptr [esi], 0xbd7a74  ; vtable TreeObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd7a74u;
     /* 0087a934  mov dword ptr [esi + 0xc], ecx */
@@ -99,7 +105,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0087a940  dice::meme::TreeObject  (vtable store) */
+/* 0087a940  TreeObject::~TreeObject  (vtable store)
+ * class: dice::meme::TreeObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_0087a940, bfv_client_l1_body_0087a940);
 void bfv_client_l1_body_0087a940(struct bfv_cpu *c)
 {
@@ -108,10 +116,10 @@ void bfv_client_l1_body_0087a940(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0087a940  mov dword ptr [ecx], 0xbd7a74 */
+    /* 0087a940  mov dword ptr [ecx], 0xbd7a74  ; vtable TreeObject */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbd7a74u;
-    /* 0087a946  jmp 0x874880 */
+    /* 0087a946  jmp 0x874880  ; RuntimeObject::~RuntimeObject */
     c->eip = 0x00874880u;
     goto out;
 out: __attribute__((unused));

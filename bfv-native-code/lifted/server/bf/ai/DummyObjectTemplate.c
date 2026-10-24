@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00707760  dice::bf::ai::DummyObjectTemplate  (virtual method) */
+/* 00707760  DummyObjectTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::bf::ai::DummyObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00707760, bfv_server_l1_body_00707760);
 void bfv_server_l1_body_00707760(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_server_l1_body_00707760(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00707760  mov edx, dword ptr [esp + 4] */
+    /* 00707760  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00707764  push esi */
@@ -59,7 +62,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007077b0  dice::bf::ai::DummyObjectTemplate  (vtable store) */
+/* 007077b0  DummyObjectTemplate::DummyObjectTemplate  (vtable store)
+ * class: dice::bf::ai::DummyObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_007077b0, bfv_server_l1_body_007077b0);
 BFV_L1_RESUME(bfv_server_l1r_007077b0_1, bfv_server_l1_body_007077b0, 1);
 void bfv_server_l1_body_007077b0(struct bfv_cpu *c)
@@ -79,14 +84,14 @@ void bfv_server_l1_body_007077b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007077b1  mov esi, ecx */
     esi = ecx;
-    /* 007077b3  call 0x56aae0 */
+    /* 007077b3  call 0x56aae0  ; SimpleObjectTemplate::SimpleObjectTemplate */
     t = 0x0056aae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007077b0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007077b8  mov dword ptr [esi], 0x86ee74 */
+    /* 007077b8  mov dword ptr [esi], 0x86ee74  ; vtable DummyObjectTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x86ee74u;
     /* 007077be  mov dword ptr [esi + 0x74], 0x86ee64 */
@@ -112,7 +117,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007077f0  dice::bf::ai::DummyObjectTemplate  (virtual method) */
+/* 007077f0  DummyObjectTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::bf::ai::DummyObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_007077f0, bfv_server_l1_body_007077f0);
 BFV_L1_RESUME(bfv_server_l1r_007077f0_1, bfv_server_l1_body_007077f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007077f0_2, bfv_server_l1_body_007077f0, 2);
@@ -142,7 +150,7 @@ void bfv_server_l1_body_007077f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007077f7  mov edi, ecx */
     edi = ecx;
-    /* 007077f9  call 0x403d80 */
+    /* 007077f9  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007077f0_1;
@@ -168,14 +176,14 @@ R_1:
     M32(esp) = t;
     /* 00707808  mov ecx, esi */
     ecx = esi;
-    /* 0070780a  call 0x57e330 */
+    /* 0070780a  call 0x57e330  ; SimpleObject::SimpleObject */
     t = 0x0057e330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007077f0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0070780f  mov dword ptr [esi], 0x86ed84 */
+    /* 0070780f  mov dword ptr [esi], 0x86ed84  ; vtable DummyObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0x86ed84u;
     /* 00707815  pop edi */

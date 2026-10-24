@@ -5,7 +5,182 @@
 #include "l1.h"
 
 
-/* 006d5080  dice::ref2::world::HandFireArmsTemplate  (virtual method) */
+/* 006d4f80  HandFireArmsTemplate::HandFireArmsTemplate  (vtable store)
+ * class: dice::ref2::world::HandFireArmsTemplate
+ */
+BFV_L1_ENTRY(bfv_client_l1_006d4f80, bfv_client_l1_body_006d4f80);
+BFV_L1_RESUME(bfv_client_l1r_006d4f80_1, bfv_client_l1_body_006d4f80, 1);
+BFV_L1_RESUME(bfv_client_l1r_006d4f80_2, bfv_client_l1_body_006d4f80, 2);
+void bfv_client_l1_body_006d4f80(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 006d4f80  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006d4f81  mov esi, ecx */
+    esi = ecx;
+    /* 006d4f83  call 0x67e1e0  ; FireArmsTemplate::FireArmsTemplate */
+    t = 0x0067e1e0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d4f80_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 006d4f88  mov dword ptr [esi + 0x5bc], 0xb9d370  ; vtable IItemTemplate */
+    ea = (uint32_t)(esi + 0x000005bcu);
+    M32(ea) = 0xb9d370u;
+    /* 006d4f92  or eax, 0xffffffff */
+    r = (eax | 0xffffffffu) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 006d4f95  mov dword ptr [esi], 0xb9dbbc  ; vtable HandFireArmsTemplate */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0xb9dbbcu;
+    /* 006d4f9b  mov dword ptr [esi + 4], 0xb9dba0 */
+    ea = (uint32_t)(esi + 0x00000004u);
+    M32(ea) = 0xb9dba0u;
+    /* 006d4fa2  mov dword ptr [esi + 0x78], 0xb9db94 */
+    ea = (uint32_t)(esi + 0x00000078u);
+    M32(ea) = 0xb9db94u;
+    /* 006d4fa9  mov dword ptr [esi + 0x1bc], 0xb9db68 */
+    ea = (uint32_t)(esi + 0x000001bcu);
+    M32(ea) = 0xb9db68u;
+    /* 006d4fb3  mov dword ptr [esi + 0x5bc], 0xb9db44 */
+    ea = (uint32_t)(esi + 0x000005bcu);
+    M32(ea) = 0xb9db44u;
+    /* 006d4fbd  mov dword ptr [esi + 0x5c0], 1 */
+    ea = (uint32_t)(esi + 0x000005c0u);
+    M32(ea) = 0x1u;
+    /* 006d4fc7  mov ecx, 0x3f800000 */
+    ecx = 0x3f800000u;
+    /* 006d4fcc  mov dword ptr [esi + 0x5c4], eax */
+    ea = (uint32_t)(esi + 0x000005c4u);
+    M32(ea) = eax;
+    /* 006d4fd2  mov dword ptr [esi + 0x5c8], eax */
+    ea = (uint32_t)(esi + 0x000005c8u);
+    M32(ea) = eax;
+    /* 006d4fd8  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 006d4fda  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006d4fdb  mov dword ptr [esi + 0x5fc], ecx  ; field ObjectTemplate.setDevMod */
+    ea = (uint32_t)(esi + 0x000005fcu);
+    M32(ea) = ecx;
+    /* 006d4fe1  mov dword ptr [esi + 0x600], ecx */
+    ea = (uint32_t)(esi + 0x00000600u);
+    M32(ea) = ecx;
+    /* 006d4fe7  mov dword ptr [esi + 0x604], ecx */
+    ea = (uint32_t)(esi + 0x00000604u);
+    M32(ea) = ecx;
+    /* 006d4fed  mov dword ptr [esi + 0x608], ecx */
+    ea = (uint32_t)(esi + 0x00000608u);
+    M32(ea) = ecx;
+    /* 006d4ff3  push 2 */
+    t = 0x2u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006d4ff5  mov ecx, esi */
+    ecx = esi;
+    /* 006d4ff7  mov byte ptr [esi + 0x5cc], al */
+    ea = (uint32_t)(esi + 0x000005ccu);
+    M8(ea) = LO8(eax);
+    /* 006d4ffd  mov dword ptr [esi + 0x5d0], eax */
+    ea = (uint32_t)(esi + 0x000005d0u);
+    M32(ea) = eax;
+    /* 006d5003  mov dword ptr [esi + 0x5d4], eax */
+    ea = (uint32_t)(esi + 0x000005d4u);
+    M32(ea) = eax;
+    /* 006d5009  mov dword ptr [esi + 0x5d8], eax */
+    ea = (uint32_t)(esi + 0x000005d8u);
+    M32(ea) = eax;
+    /* 006d500f  mov dword ptr [esi + 0x5dc], eax */
+    ea = (uint32_t)(esi + 0x000005dcu);
+    M32(ea) = eax;
+    /* 006d5015  mov dword ptr [esi + 0x5e0], eax */
+    ea = (uint32_t)(esi + 0x000005e0u);
+    M32(ea) = eax;
+    /* 006d501b  mov dword ptr [esi + 0x5e4], eax */
+    ea = (uint32_t)(esi + 0x000005e4u);
+    M32(ea) = eax;
+    /* 006d5021  mov dword ptr [esi + 0x5e8], eax */
+    ea = (uint32_t)(esi + 0x000005e8u);
+    M32(ea) = eax;
+    /* 006d5027  mov dword ptr [esi + 0x5ec], eax */
+    ea = (uint32_t)(esi + 0x000005ecu);
+    M32(ea) = eax;
+    /* 006d502d  mov dword ptr [esi + 0x5f0], eax */
+    ea = (uint32_t)(esi + 0x000005f0u);
+    M32(ea) = eax;
+    /* 006d5033  mov dword ptr [esi + 0x5f4], eax */
+    ea = (uint32_t)(esi + 0x000005f4u);
+    M32(ea) = eax;
+    /* 006d5039  mov dword ptr [esi + 0x5f8], eax */
+    ea = (uint32_t)(esi + 0x000005f8u);
+    M32(ea) = eax;
+    /* 006d503f  mov dword ptr [esi + 0x60c], eax  ; field ObjectTemplate.healDistance */
+    ea = (uint32_t)(esi + 0x0000060cu);
+    M32(ea) = eax;
+    /* 006d5045  mov dword ptr [esi + 0x610], eax  ; field ObjectTemplate.healFactor */
+    ea = (uint32_t)(esi + 0x00000610u);
+    M32(ea) = eax;
+    /* 006d504b  mov dword ptr [esi + 0x614], eax  ; field ObjectTemplate.selfHealFactor */
+    ea = (uint32_t)(esi + 0x00000614u);
+    M32(ea) = eax;
+    /* 006d5051  mov dword ptr [esi + 0x618], eax  ; field ObjectTemplate.repairFactor */
+    ea = (uint32_t)(esi + 0x00000618u);
+    M32(ea) = eax;
+    /* 006d5057  mov dword ptr [esi + 0x61c], eax  ; field ObjectTemplate.repairDistance */
+    ea = (uint32_t)(esi + 0x0000061cu);
+    M32(ea) = eax;
+    /* 006d505d  mov dword ptr [esi + 0x620], eax  ; field ObjectTemplate.disarmMinesDistance */
+    ea = (uint32_t)(esi + 0x00000620u);
+    M32(ea) = eax;
+    /* 006d5063  call 0x66b6a0  ; ObjectTemplate::vf10 */
+    t = 0x0066b6a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d4f80_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 006d5068  mov dword ptr [esi + 0x3dc], 0x3f000000  ; field ObjectTemplate.delayToUse, 0.5f */
+    ea = (uint32_t)(esi + 0x000003dcu);
+    M32(ea) = 0x3f000000u;
+    /* 006d5072  mov eax, esi */
+    eax = esi;
+    /* 006d5074  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 006d5075  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 006d5080  HandFireArmsTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::HandFireArmsTemplate
+ * also entered at 006d50e0: HandFireArmsTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5080, bfv_client_l1_body_006d5080);
 void bfv_client_l1_body_006d5080(struct bfv_cpu *c)
 {
@@ -14,12 +189,12 @@ void bfv_client_l1_body_006d5080(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006d5080  mov edx, dword ptr [0xb42718] */
+    /* 006d5080  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 006d5086  mov eax, ecx */
     eax = ecx;
-    /* 006d5088  mov ecx, dword ptr [esp + 4] */
+    /* 006d5088  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006d508c  cmp ecx, edx */
@@ -29,7 +204,7 @@ void bfv_client_l1_body_006d5080(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006d508e  je 0x6d50d4 */
     if (zf) goto L_006d50d4;
-    /* 006d5090  cmp ecx, dword ptr [0xb77d80] */
+    /* 006d5090  cmp ecx, dword ptr [0xb77d80]  ; interfaceID(ObjectTemplate) */
     ea = (uint32_t)(0x00b77d80u);
     a = ecx;
     b = M32(ea);
@@ -37,7 +212,7 @@ void bfv_client_l1_body_006d5080(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006d5096  je 0x6d50d4 */
     if (zf) goto L_006d50d4;
-    /* 006d5098  cmp ecx, dword ptr [0xb77d84] */
+    /* 006d5098  cmp ecx, dword ptr [0xb77d84]  ; interfaceID(BundleTemplate) */
     ea = (uint32_t)(0x00b77d84u);
     a = ecx;
     b = M32(ea);
@@ -61,7 +236,7 @@ void bfv_client_l1_body_006d5080(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006d50ac:
-    /* 006d50ac  cmp ecx, dword ptr [0xbdb000] */
+    /* 006d50ac  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);
@@ -85,7 +260,7 @@ L_006d50ac:
     esp += 8;
     goto out;
 L_006d50be:
-    /* 006d50be  cmp ecx, dword ptr [0xb77e1c] */
+    /* 006d50be  cmp ecx, dword ptr [0xb77e1c]  ; interfaceID(HandFireArmsTemplate|ItemTemplate) */
     ea = (uint32_t)(0x00b77e1cu);
     a = ecx;
     b = M32(ea);
@@ -125,7 +300,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d50f0  dice::ref2::world::HandFireArmsTemplate  (virtual method) */
+/* 006d50f0  HandFireArmsTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::HandFireArmsTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d50f0, bfv_client_l1_body_006d50f0);
 void bfv_client_l1_body_006d50f0(struct bfv_cpu *c)
 {
@@ -134,12 +312,12 @@ void bfv_client_l1_body_006d50f0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006d50f0  mov edx, dword ptr [0xb77ee8] */
+    /* 006d50f0  mov edx, dword ptr [0xb77ee8]  ; HandFireArmsTemplate::classID */
     ea = (uint32_t)(0x00b77ee8u);
     edx = M32(ea);
     /* 006d50f6  mov eax, ecx */
     eax = ecx;
-    /* 006d50f8  mov ecx, dword ptr [esp + 4] */
+    /* 006d50f8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006d50fc  cmp ecx, edx */
@@ -149,7 +327,7 @@ void bfv_client_l1_body_006d50f0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006d50fe  je 0x6d511b */
     if (zf) goto L_006d511b;
-    /* 006d5100  cmp ecx, dword ptr [0xb77edc] */
+    /* 006d5100  cmp ecx, dword ptr [0xb77edc]  ; FireArmsTemplate::classID */
     ea = (uint32_t)(0x00b77edcu);
     a = ecx;
     b = M32(ea);
@@ -157,7 +335,7 @@ void bfv_client_l1_body_006d50f0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006d5106  je 0x6d511b */
     if (zf) goto L_006d511b;
-    /* 006d5108  cmp ecx, dword ptr [0xb77ef8] */
+    /* 006d5108  cmp ecx, dword ptr [0xb77ef8]  ; AnimatedBundleTemplate::classID */
     ea = (uint32_t)(0x00b77ef8u);
     a = ecx;
     b = M32(ea);
@@ -165,12 +343,12 @@ void bfv_client_l1_body_006d50f0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006d510e  je 0x6d511b */
     if (zf) goto L_006d511b;
-    /* 006d5110  mov dword ptr [esp + 4], ecx */
+    /* 006d5110  mov dword ptr [esp + 4], ecx  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = ecx;
     /* 006d5114  mov ecx, eax */
     ecx = eax;
-    /* 006d5116  jmp 0x6a4250 */
+    /* 006d5116  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 L_006d511b:
@@ -185,7 +363,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5120  (between same file) */
+/* 006d5120  HandFireArmsTemplate::deleting_dtor_adjustor4_006d5120  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5120, bfv_client_l1_body_006d5120);
 void bfv_client_l1_body_006d5120(struct bfv_cpu *c)
 {
@@ -200,7 +379,7 @@ void bfv_client_l1_body_006d5120(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d5123  jmp 0x6d5250 */
+    /* 006d5123  jmp 0x6d5250  ; HandFireArmsTemplate::deleting_dtor */
     c->eip = 0x006d5250u;
     goto out;
 out: __attribute__((unused));
@@ -210,7 +389,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5130  (between same file) */
+/* 006d5130  HandFireArmsTemplate::queryInterface_adjustor4_006d5130  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5130, bfv_client_l1_body_006d5130);
 void bfv_client_l1_body_006d5130(struct bfv_cpu *c)
 {
@@ -225,7 +405,7 @@ void bfv_client_l1_body_006d5130(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d5133  jmp 0x6d5080 */
+    /* 006d5133  jmp 0x6d5080  ; HandFireArmsTemplate::queryInterface */
     c->eip = 0x006d5080u;
     goto out;
 out: __attribute__((unused));
@@ -235,7 +415,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5140  (between same file) */
+/* 006d5140  HandFireArmsTemplate::deleting_dtor_adjustor120_006d5140  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5140, bfv_client_l1_body_006d5140);
 void bfv_client_l1_body_006d5140(struct bfv_cpu *c)
 {
@@ -250,7 +431,7 @@ void bfv_client_l1_body_006d5140(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d5143  jmp 0x6d5250 */
+    /* 006d5143  jmp 0x6d5250  ; HandFireArmsTemplate::deleting_dtor */
     c->eip = 0x006d5250u;
     goto out;
 out: __attribute__((unused));
@@ -260,7 +441,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5150  (between same file) */
+/* 006d5150  HandFireArmsTemplate::deleting_dtor_adjustor444_006d5150  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5150, bfv_client_l1_body_006d5150);
 void bfv_client_l1_body_006d5150(struct bfv_cpu *c)
 {
@@ -275,7 +457,7 @@ void bfv_client_l1_body_006d5150(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d5156  jmp 0x6d5250 */
+    /* 006d5156  jmp 0x6d5250  ; HandFireArmsTemplate::deleting_dtor */
     c->eip = 0x006d5250u;
     goto out;
 out: __attribute__((unused));
@@ -285,7 +467,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5160  (between same file) */
+/* 006d5160  HandFireArmsTemplate::queryInterface_adjustor444_006d5160  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5160, bfv_client_l1_body_006d5160);
 void bfv_client_l1_body_006d5160(struct bfv_cpu *c)
 {
@@ -300,7 +483,7 @@ void bfv_client_l1_body_006d5160(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d5166  jmp 0x6d5080 */
+    /* 006d5166  jmp 0x6d5080  ; HandFireArmsTemplate::queryInterface */
     c->eip = 0x006d5080u;
     goto out;
 out: __attribute__((unused));
@@ -310,7 +493,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5170  (between same file) */
+/* 006d5170  HandFireArmsTemplate::deleting_dtor_adjustor1468_006d5170  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5170, bfv_client_l1_body_006d5170);
 void bfv_client_l1_body_006d5170(struct bfv_cpu *c)
 {
@@ -325,7 +509,7 @@ void bfv_client_l1_body_006d5170(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d5176  jmp 0x6d5250 */
+    /* 006d5176  jmp 0x6d5250  ; HandFireArmsTemplate::deleting_dtor */
     c->eip = 0x006d5250u;
     goto out;
 out: __attribute__((unused));
@@ -335,7 +519,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5180  (between same file) */
+/* 006d5180  HandFireArmsTemplate::queryInterface_adjustor1468_006d5180  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5180, bfv_client_l1_body_006d5180);
 void bfv_client_l1_body_006d5180(struct bfv_cpu *c)
 {
@@ -350,7 +535,7 @@ void bfv_client_l1_body_006d5180(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d5186  jmp 0x6d5080 */
+    /* 006d5186  jmp 0x6d5080  ; HandFireArmsTemplate::queryInterface */
     c->eip = 0x006d5080u;
     goto out;
 out: __attribute__((unused));
@@ -360,7 +545,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5190  dice::ref2::world::HandFireArmsTemplate  (virtual method) */
+/* 006d5190  HandFireArmsTemplate::addRef  (virtual method)
+ * overrides: IBase::addRef  (395 classes implement it)
+ * class: dice::ref2::world::HandFireArmsTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5190, bfv_client_l1_body_006d5190);
 void bfv_client_l1_body_006d5190(struct bfv_cpu *c)
 {
@@ -391,7 +579,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d51a0  dice::ref2::world::HandFireArmsTemplate  (virtual method) */
+/* 006d51a0  HandFireArmsTemplate::release  (virtual method)
+ * overrides: IBase::release  (395 classes implement it)
+ * class: dice::ref2::world::HandFireArmsTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d51a0, bfv_client_l1_body_006d51a0);
 BFV_L1_RESUME(bfv_client_l1r_006d51a0_1, bfv_client_l1_body_006d51a0, 1);
 void bfv_client_l1_body_006d51a0(struct bfv_cpu *c)
@@ -436,7 +627,7 @@ void bfv_client_l1_body_006d51a0(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 006d51ba  call dword ptr [eax] */
+    /* 006d51ba  call dword ptr [eax]  ; -> HandFireArmsTemplate::vf0 = HandFireArmsTemplate::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;
@@ -462,7 +653,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d51c0  (between same file) */
+/* 006d51c0  HandFireArmsTemplate::addRef_adjustor4_006d51c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d51c0, bfv_client_l1_body_006d51c0);
 void bfv_client_l1_body_006d51c0(struct bfv_cpu *c)
 {
@@ -477,7 +669,7 @@ void bfv_client_l1_body_006d51c0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d51c3  jmp 0x6d5190 */
+    /* 006d51c3  jmp 0x6d5190  ; HandFireArmsTemplate::addRef */
     c->eip = 0x006d5190u;
     goto out;
 out: __attribute__((unused));
@@ -487,7 +679,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d51d0  (between same file) */
+/* 006d51d0  HandFireArmsTemplate::release_adjustor4_006d51d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d51d0, bfv_client_l1_body_006d51d0);
 void bfv_client_l1_body_006d51d0(struct bfv_cpu *c)
 {
@@ -502,7 +695,7 @@ void bfv_client_l1_body_006d51d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d51d3  jmp 0x6d51a0 */
+    /* 006d51d3  jmp 0x6d51a0  ; HandFireArmsTemplate::release */
     c->eip = 0x006d51a0u;
     goto out;
 out: __attribute__((unused));
@@ -512,7 +705,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d51e0  (between same file) */
+/* 006d51e0  HandFireArmsTemplate::addRef_adjustor444_006d51e0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d51e0, bfv_client_l1_body_006d51e0);
 void bfv_client_l1_body_006d51e0(struct bfv_cpu *c)
 {
@@ -527,7 +721,7 @@ void bfv_client_l1_body_006d51e0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d51e6  jmp 0x6d5190 */
+    /* 006d51e6  jmp 0x6d5190  ; HandFireArmsTemplate::addRef */
     c->eip = 0x006d5190u;
     goto out;
 out: __attribute__((unused));
@@ -537,7 +731,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d51f0  (between same file) */
+/* 006d51f0  HandFireArmsTemplate::release_adjustor444_006d51f0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d51f0, bfv_client_l1_body_006d51f0);
 void bfv_client_l1_body_006d51f0(struct bfv_cpu *c)
 {
@@ -552,7 +747,7 @@ void bfv_client_l1_body_006d51f0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d51f6  jmp 0x6d51a0 */
+    /* 006d51f6  jmp 0x6d51a0  ; HandFireArmsTemplate::release */
     c->eip = 0x006d51a0u;
     goto out;
 out: __attribute__((unused));
@@ -562,7 +757,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5200  (between same file) */
+/* 006d5200  HandFireArmsTemplate::addRef_adjustor1468_006d5200  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5200, bfv_client_l1_body_006d5200);
 void bfv_client_l1_body_006d5200(struct bfv_cpu *c)
 {
@@ -577,7 +773,7 @@ void bfv_client_l1_body_006d5200(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d5206  jmp 0x6d5190 */
+    /* 006d5206  jmp 0x6d5190  ; HandFireArmsTemplate::addRef */
     c->eip = 0x006d5190u;
     goto out;
 out: __attribute__((unused));
@@ -587,7 +783,8 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5210  (between same file) */
+/* 006d5210  HandFireArmsTemplate::release_adjustor1468_006d5210  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5210, bfv_client_l1_body_006d5210);
 void bfv_client_l1_body_006d5210(struct bfv_cpu *c)
 {
@@ -602,7 +799,7 @@ void bfv_client_l1_body_006d5210(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 006d5216  jmp 0x6d51a0 */
+    /* 006d5216  jmp 0x6d51a0  ; HandFireArmsTemplate::release */
     c->eip = 0x006d51a0u;
     goto out;
 out: __attribute__((unused));
@@ -612,7 +809,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5220  dice::ref2::world::HandFireArmsTemplate  (virtual method) */
+/* 006d5220  HandFireArmsTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::HandFireArmsTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5220, bfv_client_l1_body_006d5220);
 BFV_L1_RESUME(bfv_client_l1r_006d5220_1, bfv_client_l1_body_006d5220, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d5220_2, bfv_client_l1_body_006d5220, 2);
@@ -638,7 +838,7 @@ void bfv_client_l1_body_006d5220(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006d5226  mov esi, ecx */
     esi = ecx;
-    /* 006d5228  call 0x403610 */
+    /* 006d5228  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d5220_1;
@@ -662,7 +862,7 @@ R_1:
     M32(esp) = t;
     /* 006d5235  mov ecx, eax */
     ecx = eax;
-    /* 006d5237  call 0x6d4330 */
+    /* 006d5237  call 0x6d4330  ; HandFireArms::HandFireArms */
     t = 0x006d4330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d5220_2;
@@ -697,7 +897,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5250  dice::ref2::world::HandFireArmsTemplate  (virtual method) */
+/* 006d5250  HandFireArmsTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::HandFireArmsTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5250, bfv_client_l1_body_006d5250);
 BFV_L1_RESUME(bfv_client_l1r_006d5250_1, bfv_client_l1_body_006d5250, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d5250_2, bfv_client_l1_body_006d5250, 2);
@@ -736,17 +939,17 @@ L_006d525f:
 L_006d5261:
     /* 006d5261  mov ecx, esi */
     ecx = esi;
-    /* 006d5263  mov dword ptr [eax], 0xb4274c */
+    /* 006d5263  mov dword ptr [eax], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb4274cu;
-    /* 006d5269  call 0x67e6f0 */
+    /* 006d5269  call 0x67e6f0  ; HandFireArmsTemplate::deleting_dtor_helper_0067e6f0 */
     t = 0x0067e6f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d5250_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006d526e  test byte ptr [esp + 8], 1 */
+    /* 006d526e  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -756,7 +959,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006d5276  call 0x403680 */
+    /* 006d5276  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d5250_2;

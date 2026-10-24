@@ -5,7 +5,8985 @@
 #include "l1.h"
 
 
-/* 0062cf80  dice::Wrapper  (vtable store) */
+/* 0049bcb0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049bcb0, bfv_server_l1_body_0049bcb0);
+BFV_L1_RESUME(bfv_server_l1r_0049bcb0_1, bfv_server_l1_body_0049bcb0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049bcb0_2, bfv_server_l1_body_0049bcb0, 2);
+void bfv_server_l1_body_0049bcb0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049bcb0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bcb1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bcb2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bcb4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049bcb6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bcb0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049bcbb  mov esi, eax */
+    esi = eax;
+    /* 0049bcbd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049bcc0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049bcc2  je 0x49bd00 */
+    if (zf) goto L_0049bd00;
+    /* 0049bcc4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bcc5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049bcc8  mov ecx, edi */
+    ecx = edi;
+    /* 0049bcca  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049bcd0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bcb0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049bcd5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049bcd9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049bce0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049bce3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049bce4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049bce7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049bcee  mov dword ptr [esi], 0x819df4 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x819df4u;
+    /* 0049bcf4  mov dword ptr [esi + 0xc], 0x819de4 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x819de4u;
+    /* 0049bcfb  mov eax, esi */
+    eax = esi;
+    /* 0049bcfd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bcfe  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bcff  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049bd00:
+    /* 0049bd00  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bd01  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049bd03  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bd04  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049bd10  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049bd10, bfv_server_l1_body_0049bd10);
+BFV_L1_RESUME(bfv_server_l1r_0049bd10_1, bfv_server_l1_body_0049bd10, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049bd10_2, bfv_server_l1_body_0049bd10, 2);
+void bfv_server_l1_body_0049bd10(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049bd10  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bd11  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bd12  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bd14  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049bd16  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bd10_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049bd1b  mov esi, eax */
+    esi = eax;
+    /* 0049bd1d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049bd20  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049bd22  je 0x49bd60 */
+    if (zf) goto L_0049bd60;
+    /* 0049bd24  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bd25  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049bd28  mov ecx, edi */
+    ecx = edi;
+    /* 0049bd2a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049bd30  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bd10_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049bd35  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049bd39  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049bd40  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049bd43  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049bd44  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049bd47  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049bd4e  mov dword ptr [esi], 0x819e40 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x819e40u;
+    /* 0049bd54  mov dword ptr [esi + 0xc], 0x819e30 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x819e30u;
+    /* 0049bd5b  mov eax, esi */
+    eax = esi;
+    /* 0049bd5d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bd5e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bd5f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049bd60:
+    /* 0049bd60  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bd61  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049bd63  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bd64  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049bd70  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049bd70, bfv_server_l1_body_0049bd70);
+BFV_L1_RESUME(bfv_server_l1r_0049bd70_1, bfv_server_l1_body_0049bd70, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049bd70_2, bfv_server_l1_body_0049bd70, 2);
+void bfv_server_l1_body_0049bd70(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049bd70  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bd71  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bd72  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bd74  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049bd76  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bd70_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049bd7b  mov esi, eax */
+    esi = eax;
+    /* 0049bd7d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049bd80  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049bd82  je 0x49bdc0 */
+    if (zf) goto L_0049bdc0;
+    /* 0049bd84  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bd85  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049bd88  mov ecx, edi */
+    ecx = edi;
+    /* 0049bd8a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049bd90  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bd70_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049bd95  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049bd99  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049bda0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049bda3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049bda4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049bda7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049bdae  mov dword ptr [esi], 0x819e8c */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x819e8cu;
+    /* 0049bdb4  mov dword ptr [esi + 0xc], 0x819e7c */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x819e7cu;
+    /* 0049bdbb  mov eax, esi */
+    eax = esi;
+    /* 0049bdbd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bdbe  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bdbf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049bdc0:
+    /* 0049bdc0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bdc1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049bdc3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bdc4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049bdd0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049bdd0, bfv_server_l1_body_0049bdd0);
+BFV_L1_RESUME(bfv_server_l1r_0049bdd0_1, bfv_server_l1_body_0049bdd0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049bdd0_2, bfv_server_l1_body_0049bdd0, 2);
+void bfv_server_l1_body_0049bdd0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049bdd0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bdd1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bdd2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bdd4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049bdd6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bdd0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049bddb  mov esi, eax */
+    esi = eax;
+    /* 0049bddd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049bde0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049bde2  je 0x49be20 */
+    if (zf) goto L_0049be20;
+    /* 0049bde4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bde5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049bde8  mov ecx, edi */
+    ecx = edi;
+    /* 0049bdea  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049bdf0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bdd0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049bdf5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049bdf9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049be00  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049be03  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049be04  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049be07  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049be0e  mov dword ptr [esi], 0x819ed8 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x819ed8u;
+    /* 0049be14  mov dword ptr [esi + 0xc], 0x819ec8 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x819ec8u;
+    /* 0049be1b  mov eax, esi */
+    eax = esi;
+    /* 0049be1d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049be1e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049be1f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049be20:
+    /* 0049be20  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049be21  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049be23  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049be24  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049be30  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049be30, bfv_server_l1_body_0049be30);
+BFV_L1_RESUME(bfv_server_l1r_0049be30_1, bfv_server_l1_body_0049be30, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049be30_2, bfv_server_l1_body_0049be30, 2);
+void bfv_server_l1_body_0049be30(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049be30  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049be31  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049be32  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049be34  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049be36  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049be30_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049be3b  mov esi, eax */
+    esi = eax;
+    /* 0049be3d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049be40  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049be42  je 0x49be80 */
+    if (zf) goto L_0049be80;
+    /* 0049be44  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049be45  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049be48  mov ecx, edi */
+    ecx = edi;
+    /* 0049be4a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049be50  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049be30_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049be55  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049be59  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049be60  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049be63  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049be64  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049be67  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049be6e  mov dword ptr [esi], 0x819f24 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x819f24u;
+    /* 0049be74  mov dword ptr [esi + 0xc], 0x819f14 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x819f14u;
+    /* 0049be7b  mov eax, esi */
+    eax = esi;
+    /* 0049be7d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049be7e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049be7f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049be80:
+    /* 0049be80  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049be81  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049be83  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049be84  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049be90  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049be90, bfv_server_l1_body_0049be90);
+BFV_L1_RESUME(bfv_server_l1r_0049be90_1, bfv_server_l1_body_0049be90, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049be90_2, bfv_server_l1_body_0049be90, 2);
+void bfv_server_l1_body_0049be90(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049be90  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049be91  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049be92  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049be94  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049be96  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049be90_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049be9b  mov esi, eax */
+    esi = eax;
+    /* 0049be9d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049bea0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049bea2  je 0x49bee0 */
+    if (zf) goto L_0049bee0;
+    /* 0049bea4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bea5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049bea8  mov ecx, edi */
+    ecx = edi;
+    /* 0049beaa  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049beb0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049be90_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049beb5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049beb9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049bec0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049bec3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049bec4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049bec7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049bece  mov dword ptr [esi], 0x819f70 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x819f70u;
+    /* 0049bed4  mov dword ptr [esi + 0xc], 0x819f60 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x819f60u;
+    /* 0049bedb  mov eax, esi */
+    eax = esi;
+    /* 0049bedd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bede  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bedf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049bee0:
+    /* 0049bee0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bee1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049bee3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bee4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049bef0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049bef0, bfv_server_l1_body_0049bef0);
+BFV_L1_RESUME(bfv_server_l1r_0049bef0_1, bfv_server_l1_body_0049bef0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049bef0_2, bfv_server_l1_body_0049bef0, 2);
+void bfv_server_l1_body_0049bef0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049bef0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bef1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bef2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bef4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049bef6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bef0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049befb  mov esi, eax */
+    esi = eax;
+    /* 0049befd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049bf00  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049bf02  je 0x49bf40 */
+    if (zf) goto L_0049bf40;
+    /* 0049bf04  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bf05  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049bf08  mov ecx, edi */
+    ecx = edi;
+    /* 0049bf0a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049bf10  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bef0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049bf15  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049bf19  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049bf20  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049bf23  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049bf24  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049bf27  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049bf2e  mov dword ptr [esi], 0x819fbc */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x819fbcu;
+    /* 0049bf34  mov dword ptr [esi + 0xc], 0x819fac */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x819facu;
+    /* 0049bf3b  mov eax, esi */
+    eax = esi;
+    /* 0049bf3d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bf3e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bf3f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049bf40:
+    /* 0049bf40  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bf41  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049bf43  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bf44  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049bf50  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049bf50, bfv_server_l1_body_0049bf50);
+BFV_L1_RESUME(bfv_server_l1r_0049bf50_1, bfv_server_l1_body_0049bf50, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049bf50_2, bfv_server_l1_body_0049bf50, 2);
+void bfv_server_l1_body_0049bf50(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049bf50  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bf51  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bf52  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bf54  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049bf56  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bf50_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049bf5b  mov esi, eax */
+    esi = eax;
+    /* 0049bf5d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049bf60  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049bf62  je 0x49bfa0 */
+    if (zf) goto L_0049bfa0;
+    /* 0049bf64  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bf65  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049bf68  mov ecx, edi */
+    ecx = edi;
+    /* 0049bf6a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049bf70  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bf50_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049bf75  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049bf79  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049bf80  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049bf83  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049bf84  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049bf87  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049bf8e  mov dword ptr [esi], 0x81a008 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a008u;
+    /* 0049bf94  mov dword ptr [esi + 0xc], 0x819ff8 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x819ff8u;
+    /* 0049bf9b  mov eax, esi */
+    eax = esi;
+    /* 0049bf9d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bf9e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bf9f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049bfa0:
+    /* 0049bfa0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bfa1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049bfa3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bfa4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049bfb0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049bfb0, bfv_server_l1_body_0049bfb0);
+BFV_L1_RESUME(bfv_server_l1r_0049bfb0_1, bfv_server_l1_body_0049bfb0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049bfb0_2, bfv_server_l1_body_0049bfb0, 2);
+void bfv_server_l1_body_0049bfb0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049bfb0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bfb1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bfb2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bfb4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049bfb6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bfb0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049bfbb  mov esi, eax */
+    esi = eax;
+    /* 0049bfbd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049bfc0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049bfc2  je 0x49c000 */
+    if (zf) goto L_0049c000;
+    /* 0049bfc4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049bfc5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049bfc8  mov ecx, edi */
+    ecx = edi;
+    /* 0049bfca  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049bfd0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049bfb0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049bfd5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049bfd9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049bfe0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049bfe3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049bfe4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049bfe7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049bfee  mov dword ptr [esi], 0x81a054 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a054u;
+    /* 0049bff4  mov dword ptr [esi + 0xc], 0x81a044 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a044u;
+    /* 0049bffb  mov eax, esi */
+    eax = esi;
+    /* 0049bffd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049bffe  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049bfff  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c000:
+    /* 0049c000  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c001  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c003  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c004  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c010  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c010, bfv_server_l1_body_0049c010);
+BFV_L1_RESUME(bfv_server_l1r_0049c010_1, bfv_server_l1_body_0049c010, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c010_2, bfv_server_l1_body_0049c010, 2);
+void bfv_server_l1_body_0049c010(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c010  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c011  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c012  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c014  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c016  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c010_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c01b  mov esi, eax */
+    esi = eax;
+    /* 0049c01d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c020  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c022  je 0x49c060 */
+    if (zf) goto L_0049c060;
+    /* 0049c024  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c025  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c028  mov ecx, edi */
+    ecx = edi;
+    /* 0049c02a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c030  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c010_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c035  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c039  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c040  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c043  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c044  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c047  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c04e  mov dword ptr [esi], 0x81a0a0 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a0a0u;
+    /* 0049c054  mov dword ptr [esi + 0xc], 0x81a090 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a090u;
+    /* 0049c05b  mov eax, esi */
+    eax = esi;
+    /* 0049c05d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c05e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c05f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c060:
+    /* 0049c060  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c061  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c063  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c064  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c070  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c070, bfv_server_l1_body_0049c070);
+BFV_L1_RESUME(bfv_server_l1r_0049c070_1, bfv_server_l1_body_0049c070, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c070_2, bfv_server_l1_body_0049c070, 2);
+void bfv_server_l1_body_0049c070(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c070  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c071  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c072  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c074  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c076  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c070_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c07b  mov esi, eax */
+    esi = eax;
+    /* 0049c07d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c080  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c082  je 0x49c0c0 */
+    if (zf) goto L_0049c0c0;
+    /* 0049c084  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c085  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c088  mov ecx, edi */
+    ecx = edi;
+    /* 0049c08a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c090  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c070_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c095  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c099  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c0a0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c0a3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c0a4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c0a7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c0ae  mov dword ptr [esi], 0x81a0ec */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a0ecu;
+    /* 0049c0b4  mov dword ptr [esi + 0xc], 0x81a0dc */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a0dcu;
+    /* 0049c0bb  mov eax, esi */
+    eax = esi;
+    /* 0049c0bd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c0be  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c0bf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c0c0:
+    /* 0049c0c0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c0c1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c0c3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c0c4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c0d0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c0d0, bfv_server_l1_body_0049c0d0);
+BFV_L1_RESUME(bfv_server_l1r_0049c0d0_1, bfv_server_l1_body_0049c0d0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c0d0_2, bfv_server_l1_body_0049c0d0, 2);
+void bfv_server_l1_body_0049c0d0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c0d0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c0d1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c0d2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c0d4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c0d6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c0d0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c0db  mov esi, eax */
+    esi = eax;
+    /* 0049c0dd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c0e0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c0e2  je 0x49c120 */
+    if (zf) goto L_0049c120;
+    /* 0049c0e4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c0e5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c0e8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c0ea  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c0f0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c0d0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c0f5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c0f9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c100  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c103  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c104  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c107  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c10e  mov dword ptr [esi], 0x81a138 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a138u;
+    /* 0049c114  mov dword ptr [esi + 0xc], 0x81a128 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a128u;
+    /* 0049c11b  mov eax, esi */
+    eax = esi;
+    /* 0049c11d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c11e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c11f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c120:
+    /* 0049c120  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c121  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c123  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c124  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c130  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c130, bfv_server_l1_body_0049c130);
+BFV_L1_RESUME(bfv_server_l1r_0049c130_1, bfv_server_l1_body_0049c130, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c130_2, bfv_server_l1_body_0049c130, 2);
+void bfv_server_l1_body_0049c130(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c130  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c131  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c132  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c134  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c136  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c130_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c13b  mov esi, eax */
+    esi = eax;
+    /* 0049c13d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c140  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c142  je 0x49c180 */
+    if (zf) goto L_0049c180;
+    /* 0049c144  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c145  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c148  mov ecx, edi */
+    ecx = edi;
+    /* 0049c14a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c150  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c130_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c155  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c159  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c160  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c163  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c164  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c167  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c16e  mov dword ptr [esi], 0x81a184 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a184u;
+    /* 0049c174  mov dword ptr [esi + 0xc], 0x81a174 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a174u;
+    /* 0049c17b  mov eax, esi */
+    eax = esi;
+    /* 0049c17d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c17e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c17f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c180:
+    /* 0049c180  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c181  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c183  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c184  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c190  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c190, bfv_server_l1_body_0049c190);
+BFV_L1_RESUME(bfv_server_l1r_0049c190_1, bfv_server_l1_body_0049c190, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c190_2, bfv_server_l1_body_0049c190, 2);
+void bfv_server_l1_body_0049c190(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c190  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c191  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c192  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c194  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c196  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c190_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c19b  mov esi, eax */
+    esi = eax;
+    /* 0049c19d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c1a0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c1a2  je 0x49c1e0 */
+    if (zf) goto L_0049c1e0;
+    /* 0049c1a4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c1a5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c1a8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c1aa  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c1b0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c190_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c1b5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c1b9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c1c0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c1c3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c1c4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c1c7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c1ce  mov dword ptr [esi], 0x81a1d0 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a1d0u;
+    /* 0049c1d4  mov dword ptr [esi + 0xc], 0x81a1c0 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a1c0u;
+    /* 0049c1db  mov eax, esi */
+    eax = esi;
+    /* 0049c1dd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c1de  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c1df  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c1e0:
+    /* 0049c1e0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c1e1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c1e3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c1e4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c1f0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c1f0, bfv_server_l1_body_0049c1f0);
+BFV_L1_RESUME(bfv_server_l1r_0049c1f0_1, bfv_server_l1_body_0049c1f0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c1f0_2, bfv_server_l1_body_0049c1f0, 2);
+void bfv_server_l1_body_0049c1f0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c1f0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c1f1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c1f2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c1f4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c1f6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c1f0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c1fb  mov esi, eax */
+    esi = eax;
+    /* 0049c1fd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c200  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c202  je 0x49c240 */
+    if (zf) goto L_0049c240;
+    /* 0049c204  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c205  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c208  mov ecx, edi */
+    ecx = edi;
+    /* 0049c20a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c210  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c1f0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c215  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c219  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c220  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c223  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c224  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c227  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c22e  mov dword ptr [esi], 0x81a21c */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a21cu;
+    /* 0049c234  mov dword ptr [esi + 0xc], 0x81a20c */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a20cu;
+    /* 0049c23b  mov eax, esi */
+    eax = esi;
+    /* 0049c23d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c23e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c23f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c240:
+    /* 0049c240  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c241  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c243  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c244  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c250  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c250, bfv_server_l1_body_0049c250);
+BFV_L1_RESUME(bfv_server_l1r_0049c250_1, bfv_server_l1_body_0049c250, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c250_2, bfv_server_l1_body_0049c250, 2);
+void bfv_server_l1_body_0049c250(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c250  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c251  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c252  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c254  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c256  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c250_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c25b  mov esi, eax */
+    esi = eax;
+    /* 0049c25d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c260  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c262  je 0x49c2a0 */
+    if (zf) goto L_0049c2a0;
+    /* 0049c264  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c265  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c268  mov ecx, edi */
+    ecx = edi;
+    /* 0049c26a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c270  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c250_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c275  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c279  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c280  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c283  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c284  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c287  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c28e  mov dword ptr [esi], 0x81a268 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a268u;
+    /* 0049c294  mov dword ptr [esi + 0xc], 0x81a258 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a258u;
+    /* 0049c29b  mov eax, esi */
+    eax = esi;
+    /* 0049c29d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c29e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c29f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c2a0:
+    /* 0049c2a0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c2a1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c2a3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c2a4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c2b0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c2b0, bfv_server_l1_body_0049c2b0);
+BFV_L1_RESUME(bfv_server_l1r_0049c2b0_1, bfv_server_l1_body_0049c2b0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c2b0_2, bfv_server_l1_body_0049c2b0, 2);
+void bfv_server_l1_body_0049c2b0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c2b0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c2b1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c2b2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c2b4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c2b6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c2b0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c2bb  mov esi, eax */
+    esi = eax;
+    /* 0049c2bd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c2c0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c2c2  je 0x49c300 */
+    if (zf) goto L_0049c300;
+    /* 0049c2c4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c2c5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c2c8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c2ca  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c2d0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c2b0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c2d5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c2d9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c2e0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c2e3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c2e4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c2e7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c2ee  mov dword ptr [esi], 0x81a2b4 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a2b4u;
+    /* 0049c2f4  mov dword ptr [esi + 0xc], 0x81a2a4 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a2a4u;
+    /* 0049c2fb  mov eax, esi */
+    eax = esi;
+    /* 0049c2fd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c2fe  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c2ff  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c300:
+    /* 0049c300  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c301  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c303  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c304  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c310  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c310, bfv_server_l1_body_0049c310);
+BFV_L1_RESUME(bfv_server_l1r_0049c310_1, bfv_server_l1_body_0049c310, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c310_2, bfv_server_l1_body_0049c310, 2);
+void bfv_server_l1_body_0049c310(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c310  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c311  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c312  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c314  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c316  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c310_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c31b  mov esi, eax */
+    esi = eax;
+    /* 0049c31d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c320  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c322  je 0x49c360 */
+    if (zf) goto L_0049c360;
+    /* 0049c324  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c325  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c328  mov ecx, edi */
+    ecx = edi;
+    /* 0049c32a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c330  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c310_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c335  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c339  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c340  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c343  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c344  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c347  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c34e  mov dword ptr [esi], 0x81a300 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a300u;
+    /* 0049c354  mov dword ptr [esi + 0xc], 0x81a2f0 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a2f0u;
+    /* 0049c35b  mov eax, esi */
+    eax = esi;
+    /* 0049c35d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c35e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c35f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c360:
+    /* 0049c360  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c361  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c363  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c364  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c370  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c370, bfv_server_l1_body_0049c370);
+BFV_L1_RESUME(bfv_server_l1r_0049c370_1, bfv_server_l1_body_0049c370, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c370_2, bfv_server_l1_body_0049c370, 2);
+void bfv_server_l1_body_0049c370(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c370  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c371  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c372  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c374  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c376  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c370_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c37b  mov esi, eax */
+    esi = eax;
+    /* 0049c37d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c380  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c382  je 0x49c3c0 */
+    if (zf) goto L_0049c3c0;
+    /* 0049c384  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c385  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c388  mov ecx, edi */
+    ecx = edi;
+    /* 0049c38a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c390  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c370_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c395  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c399  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c3a0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c3a3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c3a4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c3a7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c3ae  mov dword ptr [esi], 0x81a34c */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a34cu;
+    /* 0049c3b4  mov dword ptr [esi + 0xc], 0x81a33c */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a33cu;
+    /* 0049c3bb  mov eax, esi */
+    eax = esi;
+    /* 0049c3bd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c3be  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c3bf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c3c0:
+    /* 0049c3c0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c3c1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c3c3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c3c4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c3d0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c3d0, bfv_server_l1_body_0049c3d0);
+BFV_L1_RESUME(bfv_server_l1r_0049c3d0_1, bfv_server_l1_body_0049c3d0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c3d0_2, bfv_server_l1_body_0049c3d0, 2);
+void bfv_server_l1_body_0049c3d0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c3d0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c3d1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c3d2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c3d4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c3d6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c3d0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c3db  mov esi, eax */
+    esi = eax;
+    /* 0049c3dd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c3e0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c3e2  je 0x49c420 */
+    if (zf) goto L_0049c420;
+    /* 0049c3e4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c3e5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c3e8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c3ea  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c3f0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c3d0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c3f5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c3f9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c400  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c403  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c404  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c407  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c40e  mov dword ptr [esi], 0x81a398 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a398u;
+    /* 0049c414  mov dword ptr [esi + 0xc], 0x81a388 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a388u;
+    /* 0049c41b  mov eax, esi */
+    eax = esi;
+    /* 0049c41d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c41e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c41f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c420:
+    /* 0049c420  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c421  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c423  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c424  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c430  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c430, bfv_server_l1_body_0049c430);
+BFV_L1_RESUME(bfv_server_l1r_0049c430_1, bfv_server_l1_body_0049c430, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c430_2, bfv_server_l1_body_0049c430, 2);
+void bfv_server_l1_body_0049c430(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c430  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c431  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c432  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c434  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c436  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c430_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c43b  mov esi, eax */
+    esi = eax;
+    /* 0049c43d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c440  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c442  je 0x49c480 */
+    if (zf) goto L_0049c480;
+    /* 0049c444  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c445  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c448  mov ecx, edi */
+    ecx = edi;
+    /* 0049c44a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c450  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c430_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c455  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c459  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c460  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c463  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c464  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c467  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c46e  mov dword ptr [esi], 0x81a3e4 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a3e4u;
+    /* 0049c474  mov dword ptr [esi + 0xc], 0x81a3d4 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a3d4u;
+    /* 0049c47b  mov eax, esi */
+    eax = esi;
+    /* 0049c47d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c47e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c47f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c480:
+    /* 0049c480  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c481  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c483  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c484  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c490  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c490, bfv_server_l1_body_0049c490);
+BFV_L1_RESUME(bfv_server_l1r_0049c490_1, bfv_server_l1_body_0049c490, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c490_2, bfv_server_l1_body_0049c490, 2);
+void bfv_server_l1_body_0049c490(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c490  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c491  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c492  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c494  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c496  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c490_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c49b  mov esi, eax */
+    esi = eax;
+    /* 0049c49d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c4a0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c4a2  je 0x49c4e0 */
+    if (zf) goto L_0049c4e0;
+    /* 0049c4a4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c4a5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c4a8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c4aa  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c4b0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c490_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c4b5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c4b9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c4c0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c4c3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c4c4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c4c7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c4ce  mov dword ptr [esi], 0x81a430 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a430u;
+    /* 0049c4d4  mov dword ptr [esi + 0xc], 0x81a420 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a420u;
+    /* 0049c4db  mov eax, esi */
+    eax = esi;
+    /* 0049c4dd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c4de  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c4df  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c4e0:
+    /* 0049c4e0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c4e1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c4e3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c4e4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c4f0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c4f0, bfv_server_l1_body_0049c4f0);
+BFV_L1_RESUME(bfv_server_l1r_0049c4f0_1, bfv_server_l1_body_0049c4f0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c4f0_2, bfv_server_l1_body_0049c4f0, 2);
+void bfv_server_l1_body_0049c4f0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c4f0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c4f1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c4f2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c4f4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c4f6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c4f0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c4fb  mov esi, eax */
+    esi = eax;
+    /* 0049c4fd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c500  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c502  je 0x49c540 */
+    if (zf) goto L_0049c540;
+    /* 0049c504  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c505  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c508  mov ecx, edi */
+    ecx = edi;
+    /* 0049c50a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c510  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c4f0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c515  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c519  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c520  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c523  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c524  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c527  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c52e  mov dword ptr [esi], 0x81a47c */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a47cu;
+    /* 0049c534  mov dword ptr [esi + 0xc], 0x81a46c */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a46cu;
+    /* 0049c53b  mov eax, esi */
+    eax = esi;
+    /* 0049c53d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c53e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c53f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c540:
+    /* 0049c540  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c541  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c543  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c544  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c550  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c550, bfv_server_l1_body_0049c550);
+BFV_L1_RESUME(bfv_server_l1r_0049c550_1, bfv_server_l1_body_0049c550, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c550_2, bfv_server_l1_body_0049c550, 2);
+void bfv_server_l1_body_0049c550(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c550  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c551  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c552  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c554  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c556  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c550_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c55b  mov esi, eax */
+    esi = eax;
+    /* 0049c55d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c560  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c562  je 0x49c5a0 */
+    if (zf) goto L_0049c5a0;
+    /* 0049c564  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c565  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c568  mov ecx, edi */
+    ecx = edi;
+    /* 0049c56a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c570  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c550_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c575  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c579  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c580  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c583  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c584  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c587  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c58e  mov dword ptr [esi], 0x81a4c8 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a4c8u;
+    /* 0049c594  mov dword ptr [esi + 0xc], 0x81a4b8 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a4b8u;
+    /* 0049c59b  mov eax, esi */
+    eax = esi;
+    /* 0049c59d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c59e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c59f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c5a0:
+    /* 0049c5a0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c5a1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c5a3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c5a4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c5b0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c5b0, bfv_server_l1_body_0049c5b0);
+BFV_L1_RESUME(bfv_server_l1r_0049c5b0_1, bfv_server_l1_body_0049c5b0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c5b0_2, bfv_server_l1_body_0049c5b0, 2);
+void bfv_server_l1_body_0049c5b0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c5b0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c5b1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c5b2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c5b4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c5b6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c5b0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c5bb  mov esi, eax */
+    esi = eax;
+    /* 0049c5bd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c5c0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c5c2  je 0x49c600 */
+    if (zf) goto L_0049c600;
+    /* 0049c5c4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c5c5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c5c8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c5ca  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c5d0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c5b0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c5d5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c5d9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c5e0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c5e3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c5e4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c5e7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c5ee  mov dword ptr [esi], 0x81a514 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a514u;
+    /* 0049c5f4  mov dword ptr [esi + 0xc], 0x81a504 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a504u;
+    /* 0049c5fb  mov eax, esi */
+    eax = esi;
+    /* 0049c5fd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c5fe  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c5ff  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c600:
+    /* 0049c600  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c601  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c603  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c604  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c610  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c610, bfv_server_l1_body_0049c610);
+BFV_L1_RESUME(bfv_server_l1r_0049c610_1, bfv_server_l1_body_0049c610, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c610_2, bfv_server_l1_body_0049c610, 2);
+void bfv_server_l1_body_0049c610(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c610  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c611  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c612  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c614  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c616  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c610_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c61b  mov esi, eax */
+    esi = eax;
+    /* 0049c61d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c620  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c622  je 0x49c660 */
+    if (zf) goto L_0049c660;
+    /* 0049c624  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c625  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c628  mov ecx, edi */
+    ecx = edi;
+    /* 0049c62a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c630  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c610_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c635  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c639  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c640  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c643  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c644  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c647  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c64e  mov dword ptr [esi], 0x81a560 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a560u;
+    /* 0049c654  mov dword ptr [esi + 0xc], 0x81a550 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a550u;
+    /* 0049c65b  mov eax, esi */
+    eax = esi;
+    /* 0049c65d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c65e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c65f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c660:
+    /* 0049c660  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c661  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c663  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c664  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c670  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c670, bfv_server_l1_body_0049c670);
+BFV_L1_RESUME(bfv_server_l1r_0049c670_1, bfv_server_l1_body_0049c670, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c670_2, bfv_server_l1_body_0049c670, 2);
+void bfv_server_l1_body_0049c670(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c670  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c671  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c672  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c674  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c676  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c670_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c67b  mov esi, eax */
+    esi = eax;
+    /* 0049c67d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c680  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c682  je 0x49c6c0 */
+    if (zf) goto L_0049c6c0;
+    /* 0049c684  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c685  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c688  mov ecx, edi */
+    ecx = edi;
+    /* 0049c68a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c690  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c670_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c695  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c699  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c6a0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c6a3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c6a4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c6a7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c6ae  mov dword ptr [esi], 0x81a5ac */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a5acu;
+    /* 0049c6b4  mov dword ptr [esi + 0xc], 0x81a59c */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a59cu;
+    /* 0049c6bb  mov eax, esi */
+    eax = esi;
+    /* 0049c6bd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c6be  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c6bf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c6c0:
+    /* 0049c6c0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c6c1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c6c3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c6c4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c6d0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c6d0, bfv_server_l1_body_0049c6d0);
+BFV_L1_RESUME(bfv_server_l1r_0049c6d0_1, bfv_server_l1_body_0049c6d0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c6d0_2, bfv_server_l1_body_0049c6d0, 2);
+void bfv_server_l1_body_0049c6d0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c6d0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c6d1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c6d2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c6d4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c6d6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c6d0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c6db  mov esi, eax */
+    esi = eax;
+    /* 0049c6dd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c6e0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c6e2  je 0x49c720 */
+    if (zf) goto L_0049c720;
+    /* 0049c6e4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c6e5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c6e8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c6ea  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c6f0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c6d0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c6f5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c6f9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c700  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c703  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c704  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c707  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c70e  mov dword ptr [esi], 0x81a5f8 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a5f8u;
+    /* 0049c714  mov dword ptr [esi + 0xc], 0x81a5e8 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a5e8u;
+    /* 0049c71b  mov eax, esi */
+    eax = esi;
+    /* 0049c71d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c71e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c71f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c720:
+    /* 0049c720  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c721  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c723  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c724  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c730  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c730, bfv_server_l1_body_0049c730);
+BFV_L1_RESUME(bfv_server_l1r_0049c730_1, bfv_server_l1_body_0049c730, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c730_2, bfv_server_l1_body_0049c730, 2);
+void bfv_server_l1_body_0049c730(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c730  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c731  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c732  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c734  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c736  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c730_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c73b  mov esi, eax */
+    esi = eax;
+    /* 0049c73d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c740  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c742  je 0x49c780 */
+    if (zf) goto L_0049c780;
+    /* 0049c744  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c745  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c748  mov ecx, edi */
+    ecx = edi;
+    /* 0049c74a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c750  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c730_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c755  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c759  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c760  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c763  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c764  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c767  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c76e  mov dword ptr [esi], 0x81a644 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a644u;
+    /* 0049c774  mov dword ptr [esi + 0xc], 0x81a634 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a634u;
+    /* 0049c77b  mov eax, esi */
+    eax = esi;
+    /* 0049c77d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c77e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c77f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c780:
+    /* 0049c780  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c781  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c783  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c784  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c790  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c790, bfv_server_l1_body_0049c790);
+BFV_L1_RESUME(bfv_server_l1r_0049c790_1, bfv_server_l1_body_0049c790, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c790_2, bfv_server_l1_body_0049c790, 2);
+void bfv_server_l1_body_0049c790(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c790  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c791  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c792  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c794  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c796  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c790_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c79b  mov esi, eax */
+    esi = eax;
+    /* 0049c79d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c7a0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c7a2  je 0x49c7e0 */
+    if (zf) goto L_0049c7e0;
+    /* 0049c7a4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c7a5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c7a8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c7aa  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c7b0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c790_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c7b5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c7b9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c7c0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c7c3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c7c4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c7c7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c7ce  mov dword ptr [esi], 0x81a690 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a690u;
+    /* 0049c7d4  mov dword ptr [esi + 0xc], 0x81a680 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a680u;
+    /* 0049c7db  mov eax, esi */
+    eax = esi;
+    /* 0049c7dd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c7de  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c7df  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c7e0:
+    /* 0049c7e0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c7e1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c7e3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c7e4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c7f0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c7f0, bfv_server_l1_body_0049c7f0);
+BFV_L1_RESUME(bfv_server_l1r_0049c7f0_1, bfv_server_l1_body_0049c7f0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c7f0_2, bfv_server_l1_body_0049c7f0, 2);
+void bfv_server_l1_body_0049c7f0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c7f0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c7f1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c7f2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c7f4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c7f6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c7f0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c7fb  mov esi, eax */
+    esi = eax;
+    /* 0049c7fd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c800  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c802  je 0x49c840 */
+    if (zf) goto L_0049c840;
+    /* 0049c804  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c805  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c808  mov ecx, edi */
+    ecx = edi;
+    /* 0049c80a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c810  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c7f0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c815  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c819  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c820  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c823  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c824  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c827  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c82e  mov dword ptr [esi], 0x81a6dc */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a6dcu;
+    /* 0049c834  mov dword ptr [esi + 0xc], 0x81a6cc */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a6ccu;
+    /* 0049c83b  mov eax, esi */
+    eax = esi;
+    /* 0049c83d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c83e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c83f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c840:
+    /* 0049c840  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c841  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c843  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c844  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c850  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c850, bfv_server_l1_body_0049c850);
+BFV_L1_RESUME(bfv_server_l1r_0049c850_1, bfv_server_l1_body_0049c850, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c850_2, bfv_server_l1_body_0049c850, 2);
+void bfv_server_l1_body_0049c850(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c850  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c851  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c852  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c854  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c856  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c850_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c85b  mov esi, eax */
+    esi = eax;
+    /* 0049c85d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c860  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c862  je 0x49c8a0 */
+    if (zf) goto L_0049c8a0;
+    /* 0049c864  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c865  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c868  mov ecx, edi */
+    ecx = edi;
+    /* 0049c86a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c870  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c850_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c875  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c879  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c880  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c883  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c884  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c887  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c88e  mov dword ptr [esi], 0x81a728 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a728u;
+    /* 0049c894  mov dword ptr [esi + 0xc], 0x81a718 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a718u;
+    /* 0049c89b  mov eax, esi */
+    eax = esi;
+    /* 0049c89d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c89e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c89f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c8a0:
+    /* 0049c8a0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c8a1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c8a3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c8a4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c8b0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c8b0, bfv_server_l1_body_0049c8b0);
+BFV_L1_RESUME(bfv_server_l1r_0049c8b0_1, bfv_server_l1_body_0049c8b0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c8b0_2, bfv_server_l1_body_0049c8b0, 2);
+void bfv_server_l1_body_0049c8b0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c8b0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c8b1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c8b2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c8b4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c8b6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c8b0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c8bb  mov esi, eax */
+    esi = eax;
+    /* 0049c8bd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c8c0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c8c2  je 0x49c900 */
+    if (zf) goto L_0049c900;
+    /* 0049c8c4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c8c5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c8c8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c8ca  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c8d0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c8b0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c8d5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c8d9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c8e0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c8e3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c8e4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c8e7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c8ee  mov dword ptr [esi], 0x81a774 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a774u;
+    /* 0049c8f4  mov dword ptr [esi + 0xc], 0x81a764 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a764u;
+    /* 0049c8fb  mov eax, esi */
+    eax = esi;
+    /* 0049c8fd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c8fe  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c8ff  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c900:
+    /* 0049c900  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c901  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c903  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c904  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c910  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c910, bfv_server_l1_body_0049c910);
+BFV_L1_RESUME(bfv_server_l1r_0049c910_1, bfv_server_l1_body_0049c910, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c910_2, bfv_server_l1_body_0049c910, 2);
+void bfv_server_l1_body_0049c910(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c910  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c911  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c912  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c914  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c916  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c910_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c91b  mov esi, eax */
+    esi = eax;
+    /* 0049c91d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c920  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c922  je 0x49c960 */
+    if (zf) goto L_0049c960;
+    /* 0049c924  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c925  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c928  mov ecx, edi */
+    ecx = edi;
+    /* 0049c92a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c930  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c910_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c935  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c939  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c940  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c943  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c944  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c947  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c94e  mov dword ptr [esi], 0x81a7c0 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a7c0u;
+    /* 0049c954  mov dword ptr [esi + 0xc], 0x81a7b0 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a7b0u;
+    /* 0049c95b  mov eax, esi */
+    eax = esi;
+    /* 0049c95d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c95e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c95f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c960:
+    /* 0049c960  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c961  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c963  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c964  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c970  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c970, bfv_server_l1_body_0049c970);
+BFV_L1_RESUME(bfv_server_l1r_0049c970_1, bfv_server_l1_body_0049c970, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c970_2, bfv_server_l1_body_0049c970, 2);
+void bfv_server_l1_body_0049c970(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c970  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c971  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c972  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c974  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c976  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c970_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c97b  mov esi, eax */
+    esi = eax;
+    /* 0049c97d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c980  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c982  je 0x49c9c0 */
+    if (zf) goto L_0049c9c0;
+    /* 0049c984  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c985  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c988  mov ecx, edi */
+    ecx = edi;
+    /* 0049c98a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c990  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c970_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c995  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c999  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049c9a0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049c9a3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049c9a4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049c9a7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049c9ae  mov dword ptr [esi], 0x81a80c */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a80cu;
+    /* 0049c9b4  mov dword ptr [esi + 0xc], 0x81a7fc */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a7fcu;
+    /* 0049c9bb  mov eax, esi */
+    eax = esi;
+    /* 0049c9bd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c9be  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c9bf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049c9c0:
+    /* 0049c9c0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049c9c1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049c9c3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049c9c4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049c9d0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049c9d0, bfv_server_l1_body_0049c9d0);
+BFV_L1_RESUME(bfv_server_l1r_0049c9d0_1, bfv_server_l1_body_0049c9d0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049c9d0_2, bfv_server_l1_body_0049c9d0, 2);
+void bfv_server_l1_body_0049c9d0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049c9d0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c9d1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c9d2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c9d4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049c9d6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c9d0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049c9db  mov esi, eax */
+    esi = eax;
+    /* 0049c9dd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049c9e0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049c9e2  je 0x49ca20 */
+    if (zf) goto L_0049ca20;
+    /* 0049c9e4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049c9e5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049c9e8  mov ecx, edi */
+    ecx = edi;
+    /* 0049c9ea  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049c9f0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049c9d0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049c9f5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049c9f9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049ca00  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049ca03  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049ca04  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049ca07  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049ca0e  mov dword ptr [esi], 0x81a858 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a858u;
+    /* 0049ca14  mov dword ptr [esi + 0xc], 0x81a848 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a848u;
+    /* 0049ca1b  mov eax, esi */
+    eax = esi;
+    /* 0049ca1d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049ca1e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049ca1f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049ca20:
+    /* 0049ca20  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049ca21  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049ca23  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049ca24  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049ca30  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049ca30, bfv_server_l1_body_0049ca30);
+BFV_L1_RESUME(bfv_server_l1r_0049ca30_1, bfv_server_l1_body_0049ca30, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049ca30_2, bfv_server_l1_body_0049ca30, 2);
+void bfv_server_l1_body_0049ca30(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049ca30  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049ca31  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049ca32  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049ca34  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049ca36  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049ca30_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049ca3b  mov esi, eax */
+    esi = eax;
+    /* 0049ca3d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049ca40  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049ca42  je 0x49ca80 */
+    if (zf) goto L_0049ca80;
+    /* 0049ca44  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049ca45  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049ca48  mov ecx, edi */
+    ecx = edi;
+    /* 0049ca4a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049ca50  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049ca30_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049ca55  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049ca59  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049ca60  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049ca63  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049ca64  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049ca67  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049ca6e  mov dword ptr [esi], 0x81a8a4 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a8a4u;
+    /* 0049ca74  mov dword ptr [esi + 0xc], 0x81a894 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a894u;
+    /* 0049ca7b  mov eax, esi */
+    eax = esi;
+    /* 0049ca7d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049ca7e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049ca7f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049ca80:
+    /* 0049ca80  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049ca81  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049ca83  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049ca84  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049ca90  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049ca90, bfv_server_l1_body_0049ca90);
+BFV_L1_RESUME(bfv_server_l1r_0049ca90_1, bfv_server_l1_body_0049ca90, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049ca90_2, bfv_server_l1_body_0049ca90, 2);
+void bfv_server_l1_body_0049ca90(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049ca90  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049ca91  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049ca92  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049ca94  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049ca96  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049ca90_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049ca9b  mov esi, eax */
+    esi = eax;
+    /* 0049ca9d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049caa0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049caa2  je 0x49cae0 */
+    if (zf) goto L_0049cae0;
+    /* 0049caa4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049caa5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049caa8  mov ecx, edi */
+    ecx = edi;
+    /* 0049caaa  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049cab0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049ca90_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049cab5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049cab9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049cac0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049cac3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049cac4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049cac7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049cace  mov dword ptr [esi], 0x81a8f0 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a8f0u;
+    /* 0049cad4  mov dword ptr [esi + 0xc], 0x81a8e0 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a8e0u;
+    /* 0049cadb  mov eax, esi */
+    eax = esi;
+    /* 0049cadd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cade  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cadf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049cae0:
+    /* 0049cae0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cae1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049cae3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cae4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049caf0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049caf0, bfv_server_l1_body_0049caf0);
+BFV_L1_RESUME(bfv_server_l1r_0049caf0_1, bfv_server_l1_body_0049caf0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049caf0_2, bfv_server_l1_body_0049caf0, 2);
+void bfv_server_l1_body_0049caf0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049caf0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049caf1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049caf2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049caf4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049caf6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049caf0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049cafb  mov esi, eax */
+    esi = eax;
+    /* 0049cafd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049cb00  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049cb02  je 0x49cb40 */
+    if (zf) goto L_0049cb40;
+    /* 0049cb04  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cb05  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049cb08  mov ecx, edi */
+    ecx = edi;
+    /* 0049cb0a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049cb10  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049caf0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049cb15  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049cb19  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049cb20  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049cb23  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049cb24  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049cb27  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049cb2e  mov dword ptr [esi], 0x81a93c */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a93cu;
+    /* 0049cb34  mov dword ptr [esi + 0xc], 0x81a92c */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a92cu;
+    /* 0049cb3b  mov eax, esi */
+    eax = esi;
+    /* 0049cb3d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cb3e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cb3f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049cb40:
+    /* 0049cb40  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cb41  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049cb43  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cb44  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049cb50  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049cb50, bfv_server_l1_body_0049cb50);
+BFV_L1_RESUME(bfv_server_l1r_0049cb50_1, bfv_server_l1_body_0049cb50, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049cb50_2, bfv_server_l1_body_0049cb50, 2);
+void bfv_server_l1_body_0049cb50(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049cb50  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cb51  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cb52  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cb54  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049cb56  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049cb50_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049cb5b  mov esi, eax */
+    esi = eax;
+    /* 0049cb5d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049cb60  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049cb62  je 0x49cba0 */
+    if (zf) goto L_0049cba0;
+    /* 0049cb64  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cb65  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049cb68  mov ecx, edi */
+    ecx = edi;
+    /* 0049cb6a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049cb70  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049cb50_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049cb75  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049cb79  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049cb80  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049cb83  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049cb84  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049cb87  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049cb8e  mov dword ptr [esi], 0x81a988 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a988u;
+    /* 0049cb94  mov dword ptr [esi + 0xc], 0x81a978 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a978u;
+    /* 0049cb9b  mov eax, esi */
+    eax = esi;
+    /* 0049cb9d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cb9e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cb9f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049cba0:
+    /* 0049cba0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cba1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049cba3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cba4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049cbb0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049cbb0, bfv_server_l1_body_0049cbb0);
+BFV_L1_RESUME(bfv_server_l1r_0049cbb0_1, bfv_server_l1_body_0049cbb0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049cbb0_2, bfv_server_l1_body_0049cbb0, 2);
+void bfv_server_l1_body_0049cbb0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049cbb0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cbb1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cbb2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cbb4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049cbb6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049cbb0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049cbbb  mov esi, eax */
+    esi = eax;
+    /* 0049cbbd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049cbc0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049cbc2  je 0x49cc00 */
+    if (zf) goto L_0049cc00;
+    /* 0049cbc4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cbc5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049cbc8  mov ecx, edi */
+    ecx = edi;
+    /* 0049cbca  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049cbd0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049cbb0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049cbd5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049cbd9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049cbe0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049cbe3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049cbe4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049cbe7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049cbee  mov dword ptr [esi], 0x81a9d4 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81a9d4u;
+    /* 0049cbf4  mov dword ptr [esi + 0xc], 0x81a9c4 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81a9c4u;
+    /* 0049cbfb  mov eax, esi */
+    eax = esi;
+    /* 0049cbfd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cbfe  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cbff  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049cc00:
+    /* 0049cc00  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cc01  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049cc03  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cc04  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0049cc10  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: bf_enabled_004aacc0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0049cc10, bfv_server_l1_body_0049cc10);
+BFV_L1_RESUME(bfv_server_l1r_0049cc10_1, bfv_server_l1_body_0049cc10, 1);
+BFV_L1_RESUME(bfv_server_l1r_0049cc10_2, bfv_server_l1_body_0049cc10, 2);
+void bfv_server_l1_body_0049cc10(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0049cc10  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cc11  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cc12  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cc14  mov ebp, ecx */
+    ebp = ecx;
+    /* 0049cc16  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049cc10_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0049cc1b  mov esi, eax */
+    esi = eax;
+    /* 0049cc1d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0049cc20  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0049cc22  je 0x49cc60 */
+    if (zf) goto L_0049cc60;
+    /* 0049cc24  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0049cc25  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0049cc28  mov ecx, edi */
+    ecx = edi;
+    /* 0049cc2a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0049cc30  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049cc10_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0049cc35  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0049cc39  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0049cc40  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0049cc43  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0049cc44  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0049cc47  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0049cc4e  mov dword ptr [esi], 0x81aa20 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x81aa20u;
+    /* 0049cc54  mov dword ptr [esi + 0xc], 0x81aa10 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x81aa10u;
+    /* 0049cc5b  mov eax, esi */
+    eax = esi;
+    /* 0049cc5d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cc5e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cc5f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0049cc60:
+    /* 0049cc60  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0049cc61  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0049cc63  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0049cc64  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0058b550  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectTemplateManager_00592100
+ */
+BFV_L1_ENTRY(bfv_server_l1_0058b550, bfv_server_l1_body_0058b550);
+BFV_L1_RESUME(bfv_server_l1r_0058b550_1, bfv_server_l1_body_0058b550, 1);
+BFV_L1_RESUME(bfv_server_l1r_0058b550_2, bfv_server_l1_body_0058b550, 2);
+void bfv_server_l1_body_0058b550(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0058b550  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b551  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b552  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b554  mov ebp, ecx */
+    ebp = ecx;
+    /* 0058b556  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b550_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058b55b  mov esi, eax */
+    esi = eax;
+    /* 0058b55d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0058b560  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0058b562  je 0x58b5a0 */
+    if (zf) goto L_0058b5a0;
+    /* 0058b564  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b565  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0058b568  mov ecx, edi */
+    ecx = edi;
+    /* 0058b56a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0058b570  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b550_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0058b575  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0058b579  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0058b580  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0058b583  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0058b584  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0058b587  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0058b58e  mov dword ptr [esi], 0x83a934 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83a934u;
+    /* 0058b594  mov dword ptr [esi + 0xc], 0x83a924 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83a924u;
+    /* 0058b59b  mov eax, esi */
+    eax = esi;
+    /* 0058b59d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b59e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b59f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0058b5a0:
+    /* 0058b5a0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b5a1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0058b5a3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b5a4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0058b5b0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectTemplateManager_00592100
+ */
+BFV_L1_ENTRY(bfv_server_l1_0058b5b0, bfv_server_l1_body_0058b5b0);
+BFV_L1_RESUME(bfv_server_l1r_0058b5b0_1, bfv_server_l1_body_0058b5b0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0058b5b0_2, bfv_server_l1_body_0058b5b0, 2);
+void bfv_server_l1_body_0058b5b0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0058b5b0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b5b1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b5b2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b5b4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0058b5b6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b5b0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058b5bb  mov esi, eax */
+    esi = eax;
+    /* 0058b5bd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0058b5c0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0058b5c2  je 0x58b600 */
+    if (zf) goto L_0058b600;
+    /* 0058b5c4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b5c5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0058b5c8  mov ecx, edi */
+    ecx = edi;
+    /* 0058b5ca  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0058b5d0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b5b0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0058b5d5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0058b5d9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0058b5e0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0058b5e3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0058b5e4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0058b5e7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0058b5ee  mov dword ptr [esi], 0x83a980 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83a980u;
+    /* 0058b5f4  mov dword ptr [esi + 0xc], 0x83a970 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83a970u;
+    /* 0058b5fb  mov eax, esi */
+    eax = esi;
+    /* 0058b5fd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b5fe  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b5ff  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0058b600:
+    /* 0058b600  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b601  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0058b603  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b604  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0058b610  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectTemplateManager_00592100
+ */
+BFV_L1_ENTRY(bfv_server_l1_0058b610, bfv_server_l1_body_0058b610);
+BFV_L1_RESUME(bfv_server_l1r_0058b610_1, bfv_server_l1_body_0058b610, 1);
+BFV_L1_RESUME(bfv_server_l1r_0058b610_2, bfv_server_l1_body_0058b610, 2);
+void bfv_server_l1_body_0058b610(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0058b610  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b611  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b612  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b614  mov ebp, ecx */
+    ebp = ecx;
+    /* 0058b616  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b610_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058b61b  mov esi, eax */
+    esi = eax;
+    /* 0058b61d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0058b620  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0058b622  je 0x58b660 */
+    if (zf) goto L_0058b660;
+    /* 0058b624  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b625  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0058b628  mov ecx, edi */
+    ecx = edi;
+    /* 0058b62a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0058b630  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b610_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0058b635  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0058b639  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0058b640  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0058b643  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0058b644  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0058b647  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0058b64e  mov dword ptr [esi], 0x83a9cc */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83a9ccu;
+    /* 0058b654  mov dword ptr [esi + 0xc], 0x83a9bc */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83a9bcu;
+    /* 0058b65b  mov eax, esi */
+    eax = esi;
+    /* 0058b65d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b65e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b65f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0058b660:
+    /* 0058b660  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b661  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0058b663  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b664  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0058b670  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectTemplateManager_00592100
+ */
+BFV_L1_ENTRY(bfv_server_l1_0058b670, bfv_server_l1_body_0058b670);
+BFV_L1_RESUME(bfv_server_l1r_0058b670_1, bfv_server_l1_body_0058b670, 1);
+BFV_L1_RESUME(bfv_server_l1r_0058b670_2, bfv_server_l1_body_0058b670, 2);
+void bfv_server_l1_body_0058b670(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0058b670  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b671  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b672  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b674  mov ebp, ecx */
+    ebp = ecx;
+    /* 0058b676  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b670_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058b67b  mov esi, eax */
+    esi = eax;
+    /* 0058b67d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0058b680  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0058b682  je 0x58b6c0 */
+    if (zf) goto L_0058b6c0;
+    /* 0058b684  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b685  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0058b688  mov ecx, edi */
+    ecx = edi;
+    /* 0058b68a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0058b690  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b670_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0058b695  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0058b699  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0058b6a0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0058b6a3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0058b6a4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0058b6a7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0058b6ae  mov dword ptr [esi], 0x83aa18 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83aa18u;
+    /* 0058b6b4  mov dword ptr [esi + 0xc], 0x83aa08 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83aa08u;
+    /* 0058b6bb  mov eax, esi */
+    eax = esi;
+    /* 0058b6bd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b6be  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b6bf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0058b6c0:
+    /* 0058b6c0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b6c1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0058b6c3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b6c4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0058b6d0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectTemplateManager_00592100
+ */
+BFV_L1_ENTRY(bfv_server_l1_0058b6d0, bfv_server_l1_body_0058b6d0);
+BFV_L1_RESUME(bfv_server_l1r_0058b6d0_1, bfv_server_l1_body_0058b6d0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0058b6d0_2, bfv_server_l1_body_0058b6d0, 2);
+void bfv_server_l1_body_0058b6d0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0058b6d0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b6d1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b6d2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b6d4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0058b6d6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b6d0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058b6db  mov esi, eax */
+    esi = eax;
+    /* 0058b6dd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0058b6e0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0058b6e2  je 0x58b720 */
+    if (zf) goto L_0058b720;
+    /* 0058b6e4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b6e5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0058b6e8  mov ecx, edi */
+    ecx = edi;
+    /* 0058b6ea  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0058b6f0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b6d0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0058b6f5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0058b6f9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0058b700  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0058b703  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0058b704  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0058b707  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0058b70e  mov dword ptr [esi], 0x83aa64 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83aa64u;
+    /* 0058b714  mov dword ptr [esi + 0xc], 0x83aa54 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83aa54u;
+    /* 0058b71b  mov eax, esi */
+    eax = esi;
+    /* 0058b71d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b71e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b71f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0058b720:
+    /* 0058b720  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b721  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0058b723  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b724  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0058b730  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectTemplateManager_00592100
+ */
+BFV_L1_ENTRY(bfv_server_l1_0058b730, bfv_server_l1_body_0058b730);
+BFV_L1_RESUME(bfv_server_l1r_0058b730_1, bfv_server_l1_body_0058b730, 1);
+BFV_L1_RESUME(bfv_server_l1r_0058b730_2, bfv_server_l1_body_0058b730, 2);
+void bfv_server_l1_body_0058b730(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0058b730  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b731  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b732  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b734  mov ebp, ecx */
+    ebp = ecx;
+    /* 0058b736  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b730_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058b73b  mov esi, eax */
+    esi = eax;
+    /* 0058b73d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0058b740  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0058b742  je 0x58b780 */
+    if (zf) goto L_0058b780;
+    /* 0058b744  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b745  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0058b748  mov ecx, edi */
+    ecx = edi;
+    /* 0058b74a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0058b750  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b730_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0058b755  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0058b759  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0058b760  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0058b763  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0058b764  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0058b767  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0058b76e  mov dword ptr [esi], 0x83aab0 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83aab0u;
+    /* 0058b774  mov dword ptr [esi + 0xc], 0x83aaa0 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83aaa0u;
+    /* 0058b77b  mov eax, esi */
+    eax = esi;
+    /* 0058b77d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b77e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b77f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0058b780:
+    /* 0058b780  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b781  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0058b783  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b784  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0058b790  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectTemplateManager_00592100
+ */
+BFV_L1_ENTRY(bfv_server_l1_0058b790, bfv_server_l1_body_0058b790);
+BFV_L1_RESUME(bfv_server_l1r_0058b790_1, bfv_server_l1_body_0058b790, 1);
+BFV_L1_RESUME(bfv_server_l1r_0058b790_2, bfv_server_l1_body_0058b790, 2);
+void bfv_server_l1_body_0058b790(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0058b790  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b791  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b792  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b794  mov ebp, ecx */
+    ebp = ecx;
+    /* 0058b796  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b790_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058b79b  mov esi, eax */
+    esi = eax;
+    /* 0058b79d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0058b7a0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0058b7a2  je 0x58b7e0 */
+    if (zf) goto L_0058b7e0;
+    /* 0058b7a4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b7a5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0058b7a8  mov ecx, edi */
+    ecx = edi;
+    /* 0058b7aa  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0058b7b0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b790_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0058b7b5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0058b7b9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0058b7c0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0058b7c3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0058b7c4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0058b7c7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0058b7ce  mov dword ptr [esi], 0x83aafc */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83aafcu;
+    /* 0058b7d4  mov dword ptr [esi + 0xc], 0x83aaec */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83aaecu;
+    /* 0058b7db  mov eax, esi */
+    eax = esi;
+    /* 0058b7dd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b7de  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b7df  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0058b7e0:
+    /* 0058b7e0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b7e1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0058b7e3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b7e4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0058b7f0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectTemplateManager_00592100
+ */
+BFV_L1_ENTRY(bfv_server_l1_0058b7f0, bfv_server_l1_body_0058b7f0);
+BFV_L1_RESUME(bfv_server_l1r_0058b7f0_1, bfv_server_l1_body_0058b7f0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0058b7f0_2, bfv_server_l1_body_0058b7f0, 2);
+void bfv_server_l1_body_0058b7f0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0058b7f0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b7f1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b7f2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b7f4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0058b7f6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b7f0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058b7fb  mov esi, eax */
+    esi = eax;
+    /* 0058b7fd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0058b800  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0058b802  je 0x58b840 */
+    if (zf) goto L_0058b840;
+    /* 0058b804  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b805  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0058b808  mov ecx, edi */
+    ecx = edi;
+    /* 0058b80a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0058b810  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b7f0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0058b815  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0058b819  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0058b820  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0058b823  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0058b824  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0058b827  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0058b82e  mov dword ptr [esi], 0x83ab48 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83ab48u;
+    /* 0058b834  mov dword ptr [esi + 0xc], 0x83ab38 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83ab38u;
+    /* 0058b83b  mov eax, esi */
+    eax = esi;
+    /* 0058b83d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b83e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b83f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0058b840:
+    /* 0058b840  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b841  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0058b843  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b844  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0058b850  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectTemplateManager_00592100
+ */
+BFV_L1_ENTRY(bfv_server_l1_0058b850, bfv_server_l1_body_0058b850);
+BFV_L1_RESUME(bfv_server_l1r_0058b850_1, bfv_server_l1_body_0058b850, 1);
+BFV_L1_RESUME(bfv_server_l1r_0058b850_2, bfv_server_l1_body_0058b850, 2);
+void bfv_server_l1_body_0058b850(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0058b850  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b851  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b852  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b854  mov ebp, ecx */
+    ebp = ecx;
+    /* 0058b856  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b850_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058b85b  mov esi, eax */
+    esi = eax;
+    /* 0058b85d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0058b860  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0058b862  je 0x58b8a0 */
+    if (zf) goto L_0058b8a0;
+    /* 0058b864  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0058b865  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0058b868  mov ecx, edi */
+    ecx = edi;
+    /* 0058b86a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0058b870  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0058b850_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0058b875  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0058b879  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0058b880  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0058b883  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0058b884  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0058b887  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0058b88e  mov dword ptr [esi], 0x83ab94 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83ab94u;
+    /* 0058b894  mov dword ptr [esi + 0xc], 0x83ab84 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83ab84u;
+    /* 0058b89b  mov eax, esi */
+    eax = esi;
+    /* 0058b89d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b89e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b89f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0058b8a0:
+    /* 0058b8a0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0058b8a1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0058b8a3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0058b8a4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 005976e0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EmitterTemplate_0059bad0
+ */
+BFV_L1_ENTRY(bfv_server_l1_005976e0, bfv_server_l1_body_005976e0);
+BFV_L1_RESUME(bfv_server_l1r_005976e0_1, bfv_server_l1_body_005976e0, 1);
+BFV_L1_RESUME(bfv_server_l1r_005976e0_2, bfv_server_l1_body_005976e0, 2);
+void bfv_server_l1_body_005976e0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 005976e0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005976e1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005976e2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005976e4  mov ebp, ecx */
+    ebp = ecx;
+    /* 005976e6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005976e0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 005976eb  mov esi, eax */
+    esi = eax;
+    /* 005976ed  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 005976f0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 005976f2  je 0x597730 */
+    if (zf) goto L_00597730;
+    /* 005976f4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005976f5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 005976f8  mov ecx, edi */
+    ecx = edi;
+    /* 005976fa  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 00597700  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005976e0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 00597705  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 00597709  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 00597710  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 00597713  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 00597714  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 00597717  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0059771e  mov dword ptr [esi], 0x83da28 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83da28u;
+    /* 00597724  mov dword ptr [esi + 0xc], 0x83da18 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83da18u;
+    /* 0059772b  mov eax, esi */
+    eax = esi;
+    /* 0059772d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059772e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059772f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_00597730:
+    /* 00597730  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 00597731  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 00597733  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 00597734  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00597740  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EmitterTemplate_0059bad0
+ */
+BFV_L1_ENTRY(bfv_server_l1_00597740, bfv_server_l1_body_00597740);
+BFV_L1_RESUME(bfv_server_l1r_00597740_1, bfv_server_l1_body_00597740, 1);
+BFV_L1_RESUME(bfv_server_l1r_00597740_2, bfv_server_l1_body_00597740, 2);
+void bfv_server_l1_body_00597740(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 00597740  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597741  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597742  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597744  mov ebp, ecx */
+    ebp = ecx;
+    /* 00597746  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00597740_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0059774b  mov esi, eax */
+    esi = eax;
+    /* 0059774d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 00597750  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 00597752  je 0x597790 */
+    if (zf) goto L_00597790;
+    /* 00597754  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597755  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 00597758  mov ecx, edi */
+    ecx = edi;
+    /* 0059775a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 00597760  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00597740_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 00597765  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 00597769  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 00597770  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 00597773  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 00597774  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 00597777  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0059777e  mov dword ptr [esi], 0x83da74 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83da74u;
+    /* 00597784  mov dword ptr [esi + 0xc], 0x83da64 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83da64u;
+    /* 0059778b  mov eax, esi */
+    eax = esi;
+    /* 0059778d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059778e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059778f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_00597790:
+    /* 00597790  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 00597791  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 00597793  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 00597794  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 005977a0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EmitterTemplate_0059bad0
+ */
+BFV_L1_ENTRY(bfv_server_l1_005977a0, bfv_server_l1_body_005977a0);
+BFV_L1_RESUME(bfv_server_l1r_005977a0_1, bfv_server_l1_body_005977a0, 1);
+BFV_L1_RESUME(bfv_server_l1r_005977a0_2, bfv_server_l1_body_005977a0, 2);
+void bfv_server_l1_body_005977a0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 005977a0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005977a1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005977a2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005977a4  mov ebp, ecx */
+    ebp = ecx;
+    /* 005977a6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005977a0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 005977ab  mov esi, eax */
+    esi = eax;
+    /* 005977ad  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 005977b0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 005977b2  je 0x5977f0 */
+    if (zf) goto L_005977f0;
+    /* 005977b4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005977b5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 005977b8  mov ecx, edi */
+    ecx = edi;
+    /* 005977ba  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 005977c0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005977a0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 005977c5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 005977c9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 005977d0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 005977d3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 005977d4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 005977d7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 005977de  mov dword ptr [esi], 0x83dac0 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83dac0u;
+    /* 005977e4  mov dword ptr [esi + 0xc], 0x83dab0 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83dab0u;
+    /* 005977eb  mov eax, esi */
+    eax = esi;
+    /* 005977ed  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005977ee  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 005977ef  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_005977f0:
+    /* 005977f0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005977f1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 005977f3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 005977f4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00597800  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EmitterTemplate_0059bad0
+ */
+BFV_L1_ENTRY(bfv_server_l1_00597800, bfv_server_l1_body_00597800);
+BFV_L1_RESUME(bfv_server_l1r_00597800_1, bfv_server_l1_body_00597800, 1);
+BFV_L1_RESUME(bfv_server_l1r_00597800_2, bfv_server_l1_body_00597800, 2);
+void bfv_server_l1_body_00597800(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 00597800  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597801  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597802  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597804  mov ebp, ecx */
+    ebp = ecx;
+    /* 00597806  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00597800_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0059780b  mov esi, eax */
+    esi = eax;
+    /* 0059780d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 00597810  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 00597812  je 0x597850 */
+    if (zf) goto L_00597850;
+    /* 00597814  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597815  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 00597818  mov ecx, edi */
+    ecx = edi;
+    /* 0059781a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 00597820  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00597800_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 00597825  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 00597829  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 00597830  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 00597833  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 00597834  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 00597837  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0059783e  mov dword ptr [esi], 0x83db0c */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83db0cu;
+    /* 00597844  mov dword ptr [esi + 0xc], 0x83dafc */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83dafcu;
+    /* 0059784b  mov eax, esi */
+    eax = esi;
+    /* 0059784d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059784e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059784f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_00597850:
+    /* 00597850  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 00597851  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 00597853  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 00597854  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00597860  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EmitterTemplate_0059bad0
+ */
+BFV_L1_ENTRY(bfv_server_l1_00597860, bfv_server_l1_body_00597860);
+BFV_L1_RESUME(bfv_server_l1r_00597860_1, bfv_server_l1_body_00597860, 1);
+BFV_L1_RESUME(bfv_server_l1r_00597860_2, bfv_server_l1_body_00597860, 2);
+void bfv_server_l1_body_00597860(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 00597860  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597861  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597862  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597864  mov ebp, ecx */
+    ebp = ecx;
+    /* 00597866  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00597860_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0059786b  mov esi, eax */
+    esi = eax;
+    /* 0059786d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 00597870  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 00597872  je 0x5978b0 */
+    if (zf) goto L_005978b0;
+    /* 00597874  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00597875  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 00597878  mov ecx, edi */
+    ecx = edi;
+    /* 0059787a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 00597880  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00597860_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 00597885  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 00597889  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 00597890  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 00597893  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 00597894  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 00597897  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0059789e  mov dword ptr [esi], 0x83db58 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83db58u;
+    /* 005978a4  mov dword ptr [esi + 0xc], 0x83db48 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83db48u;
+    /* 005978ab  mov eax, esi */
+    eax = esi;
+    /* 005978ad  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005978ae  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 005978af  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_005978b0:
+    /* 005978b0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005978b1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 005978b3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 005978b4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0059eec0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EngineTemplate_005a1560
+ */
+BFV_L1_ENTRY(bfv_server_l1_0059eec0, bfv_server_l1_body_0059eec0);
+BFV_L1_RESUME(bfv_server_l1r_0059eec0_1, bfv_server_l1_body_0059eec0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0059eec0_2, bfv_server_l1_body_0059eec0, 2);
+void bfv_server_l1_body_0059eec0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0059eec0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059eec1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059eec2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059eec4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0059eec6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059eec0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0059eecb  mov esi, eax */
+    esi = eax;
+    /* 0059eecd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0059eed0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0059eed2  je 0x59ef10 */
+    if (zf) goto L_0059ef10;
+    /* 0059eed4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059eed5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0059eed8  mov ecx, edi */
+    ecx = edi;
+    /* 0059eeda  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0059eee0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059eec0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0059eee5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0059eee9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0059eef0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0059eef3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0059eef4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0059eef7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0059eefe  mov dword ptr [esi], 0x83fbe4 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83fbe4u;
+    /* 0059ef04  mov dword ptr [esi + 0xc], 0x83fbd4 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83fbd4u;
+    /* 0059ef0b  mov eax, esi */
+    eax = esi;
+    /* 0059ef0d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059ef0e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059ef0f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0059ef10:
+    /* 0059ef10  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059ef11  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0059ef13  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059ef14  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0059ef20  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EngineTemplate_005a1560
+ */
+BFV_L1_ENTRY(bfv_server_l1_0059ef20, bfv_server_l1_body_0059ef20);
+BFV_L1_RESUME(bfv_server_l1r_0059ef20_1, bfv_server_l1_body_0059ef20, 1);
+BFV_L1_RESUME(bfv_server_l1r_0059ef20_2, bfv_server_l1_body_0059ef20, 2);
+void bfv_server_l1_body_0059ef20(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0059ef20  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059ef21  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059ef22  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059ef24  mov ebp, ecx */
+    ebp = ecx;
+    /* 0059ef26  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059ef20_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0059ef2b  mov esi, eax */
+    esi = eax;
+    /* 0059ef2d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0059ef30  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0059ef32  je 0x59ef70 */
+    if (zf) goto L_0059ef70;
+    /* 0059ef34  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059ef35  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0059ef38  mov ecx, edi */
+    ecx = edi;
+    /* 0059ef3a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0059ef40  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059ef20_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0059ef45  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0059ef49  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0059ef50  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0059ef53  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0059ef54  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0059ef57  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0059ef5e  mov dword ptr [esi], 0x83fc30 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83fc30u;
+    /* 0059ef64  mov dword ptr [esi + 0xc], 0x83fc20 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83fc20u;
+    /* 0059ef6b  mov eax, esi */
+    eax = esi;
+    /* 0059ef6d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059ef6e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059ef6f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0059ef70:
+    /* 0059ef70  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059ef71  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0059ef73  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059ef74  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0059ef80  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EngineTemplate_005a1560
+ */
+BFV_L1_ENTRY(bfv_server_l1_0059ef80, bfv_server_l1_body_0059ef80);
+BFV_L1_RESUME(bfv_server_l1r_0059ef80_1, bfv_server_l1_body_0059ef80, 1);
+BFV_L1_RESUME(bfv_server_l1r_0059ef80_2, bfv_server_l1_body_0059ef80, 2);
+void bfv_server_l1_body_0059ef80(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0059ef80  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059ef81  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059ef82  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059ef84  mov ebp, ecx */
+    ebp = ecx;
+    /* 0059ef86  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059ef80_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0059ef8b  mov esi, eax */
+    esi = eax;
+    /* 0059ef8d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0059ef90  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0059ef92  je 0x59efd0 */
+    if (zf) goto L_0059efd0;
+    /* 0059ef94  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059ef95  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0059ef98  mov ecx, edi */
+    ecx = edi;
+    /* 0059ef9a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0059efa0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059ef80_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0059efa5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0059efa9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0059efb0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0059efb3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0059efb4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0059efb7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0059efbe  mov dword ptr [esi], 0x83fc7c */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83fc7cu;
+    /* 0059efc4  mov dword ptr [esi + 0xc], 0x83fc6c */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83fc6cu;
+    /* 0059efcb  mov eax, esi */
+    eax = esi;
+    /* 0059efcd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059efce  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059efcf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0059efd0:
+    /* 0059efd0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059efd1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0059efd3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059efd4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0059efe0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EngineTemplate_005a1560
+ */
+BFV_L1_ENTRY(bfv_server_l1_0059efe0, bfv_server_l1_body_0059efe0);
+BFV_L1_RESUME(bfv_server_l1r_0059efe0_1, bfv_server_l1_body_0059efe0, 1);
+BFV_L1_RESUME(bfv_server_l1r_0059efe0_2, bfv_server_l1_body_0059efe0, 2);
+void bfv_server_l1_body_0059efe0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0059efe0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059efe1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059efe2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059efe4  mov ebp, ecx */
+    ebp = ecx;
+    /* 0059efe6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059efe0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0059efeb  mov esi, eax */
+    esi = eax;
+    /* 0059efed  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0059eff0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0059eff2  je 0x59f030 */
+    if (zf) goto L_0059f030;
+    /* 0059eff4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059eff5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0059eff8  mov ecx, edi */
+    ecx = edi;
+    /* 0059effa  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0059f000  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059efe0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0059f005  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0059f009  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0059f010  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0059f013  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0059f014  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0059f017  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0059f01e  mov dword ptr [esi], 0x83fcc8 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83fcc8u;
+    /* 0059f024  mov dword ptr [esi + 0xc], 0x83fcb8 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83fcb8u;
+    /* 0059f02b  mov eax, esi */
+    eax = esi;
+    /* 0059f02d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059f02e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059f02f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0059f030:
+    /* 0059f030  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059f031  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0059f033  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059f034  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0059f040  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_EngineTemplate_005a1560
+ */
+BFV_L1_ENTRY(bfv_server_l1_0059f040, bfv_server_l1_body_0059f040);
+BFV_L1_RESUME(bfv_server_l1r_0059f040_1, bfv_server_l1_body_0059f040, 1);
+BFV_L1_RESUME(bfv_server_l1r_0059f040_2, bfv_server_l1_body_0059f040, 2);
+void bfv_server_l1_body_0059f040(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0059f040  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059f041  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059f042  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059f044  mov ebp, ecx */
+    ebp = ecx;
+    /* 0059f046  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059f040_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0059f04b  mov esi, eax */
+    esi = eax;
+    /* 0059f04d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0059f050  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0059f052  je 0x59f090 */
+    if (zf) goto L_0059f090;
+    /* 0059f054  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0059f055  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0059f058  mov ecx, edi */
+    ecx = edi;
+    /* 0059f05a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0059f060  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0059f040_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0059f065  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0059f069  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0059f070  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0059f073  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0059f074  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0059f077  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0059f07e  mov dword ptr [esi], 0x83fd14 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x83fd14u;
+    /* 0059f084  mov dword ptr [esi + 0xc], 0x83fd04 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x83fd04u;
+    /* 0059f08b  mov eax, esi */
+    eax = esi;
+    /* 0059f08d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059f08e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059f08f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0059f090:
+    /* 0059f090  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0059f091  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0059f093  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0059f094  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 005be550  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectWrapperManager_005c5010
+ */
+BFV_L1_ENTRY(bfv_server_l1_005be550, bfv_server_l1_body_005be550);
+BFV_L1_RESUME(bfv_server_l1r_005be550_1, bfv_server_l1_body_005be550, 1);
+BFV_L1_RESUME(bfv_server_l1r_005be550_2, bfv_server_l1_body_005be550, 2);
+void bfv_server_l1_body_005be550(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 005be550  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005be551  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005be552  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005be554  mov ebp, ecx */
+    ebp = ecx;
+    /* 005be556  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005be550_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 005be55b  mov esi, eax */
+    esi = eax;
+    /* 005be55d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 005be560  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 005be562  je 0x5be5a0 */
+    if (zf) goto L_005be5a0;
+    /* 005be564  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005be565  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 005be568  mov ecx, edi */
+    ecx = edi;
+    /* 005be56a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 005be570  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005be550_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 005be575  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 005be579  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 005be580  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 005be583  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 005be584  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 005be587  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 005be58e  mov dword ptr [esi], 0x844874 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x844874u;
+    /* 005be594  mov dword ptr [esi + 0xc], 0x844864 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x844864u;
+    /* 005be59b  mov eax, esi */
+    eax = esi;
+    /* 005be59d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005be59e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 005be59f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_005be5a0:
+    /* 005be5a0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005be5a1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 005be5a3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 005be5a4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 005be5b0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_objectWrapperManager_005c5010
+ */
+BFV_L1_ENTRY(bfv_server_l1_005be5b0, bfv_server_l1_body_005be5b0);
+BFV_L1_RESUME(bfv_server_l1r_005be5b0_1, bfv_server_l1_body_005be5b0, 1);
+BFV_L1_RESUME(bfv_server_l1r_005be5b0_2, bfv_server_l1_body_005be5b0, 2);
+void bfv_server_l1_body_005be5b0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 005be5b0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005be5b1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005be5b2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005be5b4  mov ebp, ecx */
+    ebp = ecx;
+    /* 005be5b6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005be5b0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 005be5bb  mov esi, eax */
+    esi = eax;
+    /* 005be5bd  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 005be5c0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 005be5c2  je 0x5be600 */
+    if (zf) goto L_005be600;
+    /* 005be5c4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005be5c5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 005be5c8  mov ecx, edi */
+    ecx = edi;
+    /* 005be5ca  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 005be5d0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005be5b0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 005be5d5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 005be5d9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 005be5e0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 005be5e3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 005be5e4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 005be5e7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 005be5ee  mov dword ptr [esi], 0x8448c0 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8448c0u;
+    /* 005be5f4  mov dword ptr [esi + 0xc], 0x8448b0 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8448b0u;
+    /* 005be5fb  mov eax, esi */
+    eax = esi;
+    /* 005be5fd  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005be5fe  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 005be5ff  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_005be600:
+    /* 005be600  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005be601  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 005be603  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 005be604  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 006043a0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_underGrowth_00606eb0
+ */
+BFV_L1_ENTRY(bfv_server_l1_006043a0, bfv_server_l1_body_006043a0);
+BFV_L1_RESUME(bfv_server_l1r_006043a0_1, bfv_server_l1_body_006043a0, 1);
+BFV_L1_RESUME(bfv_server_l1r_006043a0_2, bfv_server_l1_body_006043a0, 2);
+void bfv_server_l1_body_006043a0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 006043a0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006043a1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006043a2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006043a4  mov ebp, ecx */
+    ebp = ecx;
+    /* 006043a6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006043a0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 006043ab  mov esi, eax */
+    esi = eax;
+    /* 006043ad  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 006043b0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 006043b2  je 0x6043f0 */
+    if (zf) goto L_006043f0;
+    /* 006043b4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006043b5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 006043b8  mov ecx, edi */
+    ecx = edi;
+    /* 006043ba  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 006043c0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006043a0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 006043c5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 006043c9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 006043d0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 006043d3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 006043d4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 006043d7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 006043de  mov dword ptr [esi], 0x84d7ec */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x84d7ecu;
+    /* 006043e4  mov dword ptr [esi + 0xc], 0x84d7dc */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x84d7dcu;
+    /* 006043eb  mov eax, esi */
+    eax = esi;
+    /* 006043ed  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 006043ee  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 006043ef  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_006043f0:
+    /* 006043f0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 006043f1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 006043f3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 006043f4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0060da00  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_StandardMeshTemplate_0060e6a0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0060da00, bfv_server_l1_body_0060da00);
+BFV_L1_RESUME(bfv_server_l1r_0060da00_1, bfv_server_l1_body_0060da00, 1);
+BFV_L1_RESUME(bfv_server_l1r_0060da00_2, bfv_server_l1_body_0060da00, 2);
+void bfv_server_l1_body_0060da00(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0060da00  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0060da01  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0060da02  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0060da04  mov ebp, ecx */
+    ebp = ecx;
+    /* 0060da06  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060da00_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0060da0b  mov esi, eax */
+    esi = eax;
+    /* 0060da0d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0060da10  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0060da12  je 0x60da50 */
+    if (zf) goto L_0060da50;
+    /* 0060da14  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0060da15  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0060da18  mov ecx, edi */
+    ecx = edi;
+    /* 0060da1a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0060da20  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060da00_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0060da25  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0060da29  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0060da30  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0060da33  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0060da34  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0060da37  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0060da3e  mov dword ptr [esi], 0x84ebb4 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x84ebb4u;
+    /* 0060da44  mov dword ptr [esi + 0xc], 0x84eba4 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x84eba4u;
+    /* 0060da4b  mov eax, esi */
+    eax = esi;
+    /* 0060da4d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0060da4e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0060da4f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0060da50:
+    /* 0060da50  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0060da51  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0060da53  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0060da54  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0060da60  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: sub_StandardMeshTemplate_0060e6a0
+ */
+BFV_L1_ENTRY(bfv_server_l1_0060da60, bfv_server_l1_body_0060da60);
+BFV_L1_RESUME(bfv_server_l1r_0060da60_1, bfv_server_l1_body_0060da60, 1);
+BFV_L1_RESUME(bfv_server_l1r_0060da60_2, bfv_server_l1_body_0060da60, 2);
+void bfv_server_l1_body_0060da60(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 0060da60  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0060da61  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0060da62  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0060da64  mov ebp, ecx */
+    ebp = ecx;
+    /* 0060da66  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060da60_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0060da6b  mov esi, eax */
+    esi = eax;
+    /* 0060da6d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0060da70  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0060da72  je 0x60dab0 */
+    if (zf) goto L_0060dab0;
+    /* 0060da74  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0060da75  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 0060da78  mov ecx, edi */
+    ecx = edi;
+    /* 0060da7a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 0060da80  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060da60_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0060da85  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 0060da89  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 0060da90  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 0060da93  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0060da94  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 0060da97  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0060da9e  mov dword ptr [esi], 0x84ec00 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x84ec00u;
+    /* 0060daa4  mov dword ptr [esi + 0xc], 0x84ebf0 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x84ebf0u;
+    /* 0060daab  mov eax, esi */
+    eax = esi;
+    /* 0060daad  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0060daae  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0060daaf  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_0060dab0:
+    /* 0060dab0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0060dab1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 0060dab3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0060dab4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0062cf80  Wrapper::~Wrapper  (vtable store)
+ * class: dice::Wrapper
+ */
 BFV_L1_ENTRY(bfv_server_l1_0062cf80, bfv_server_l1_body_0062cf80);
 BFV_L1_RESUME(bfv_server_l1r_0062cf80_1, bfv_server_l1_body_0062cf80, 1);
 void bfv_server_l1_body_0062cf80(struct bfv_cpu *c)
@@ -40,7 +9018,7 @@ void bfv_server_l1_body_0062cf80(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0062cf8d  call 0x403df0 */
+    /* 0062cf8d  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0062cf80_1;
@@ -67,7 +9045,7 @@ L_0062cf95:
     /* 0062cfa1  mov byte ptr [esi + 0x10], al */
     ea = (uint32_t)(esi + 0x00000010u);
     M8(ea) = LO8(eax);
-    /* 0062cfa4  mov dword ptr [esi], 0x8184c4 */
+    /* 0062cfa4  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8184c4u;
     /* 0062cfaa  pop esi */
@@ -75,6 +9053,278 @@ L_0062cf95:
     esp += 4;
     esi = t;
     /* 0062cfab  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 006548a0  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: Test_Struct_Inh::create
+ */
+BFV_L1_ENTRY(bfv_server_l1_006548a0, bfv_server_l1_body_006548a0);
+BFV_L1_RESUME(bfv_server_l1r_006548a0_1, bfv_server_l1_body_006548a0, 1);
+BFV_L1_RESUME(bfv_server_l1r_006548a0_2, bfv_server_l1_body_006548a0, 2);
+void bfv_server_l1_body_006548a0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 006548a0  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006548a1  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006548a2  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006548a4  mov ebp, ecx */
+    ebp = ecx;
+    /* 006548a6  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006548a0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 006548ab  mov esi, eax */
+    esi = eax;
+    /* 006548ad  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 006548b0  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 006548b2  je 0x6548f0 */
+    if (zf) goto L_006548f0;
+    /* 006548b4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006548b5  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 006548b8  mov ecx, edi */
+    ecx = edi;
+    /* 006548ba  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 006548c0  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006548a0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 006548c5  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 006548c9  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 006548d0  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 006548d3  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 006548d4  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 006548d7  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 006548de  mov dword ptr [esi], 0x858998 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x858998u;
+    /* 006548e4  mov dword ptr [esi + 0xc], 0x858988 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x858988u;
+    /* 006548eb  mov eax, esi */
+    eax = esi;
+    /* 006548ed  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 006548ee  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 006548ef  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_006548f0:
+    /* 006548f0  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 006548f1  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 006548f3  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 006548f4  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00654900  Wrapper::create  (vtable store)
+ * class: dice::Wrapper
+ * called by: Test_Struct_Inh::create
+ */
+BFV_L1_ENTRY(bfv_server_l1_00654900, bfv_server_l1_body_00654900);
+BFV_L1_RESUME(bfv_server_l1r_00654900_1, bfv_server_l1_body_00654900, 1);
+BFV_L1_RESUME(bfv_server_l1r_00654900_2, bfv_server_l1_body_00654900, 2);
+void bfv_server_l1_body_00654900(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 00654900  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00654901  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00654902  push 0x18 */
+    t = 0x18u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00654904  mov ebp, ecx */
+    ebp = ecx;
+    /* 00654906  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00654900_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0065490b  mov esi, eax */
+    esi = eax;
+    /* 0065490d  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 00654910  test esi, esi */
+    r = (esi & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 00654912  je 0x654950 */
+    if (zf) goto L_00654950;
+    /* 00654914  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00654915  lea edi, [esi + 4] */
+    edi = (uint32_t)(esi + 0x00000004u);
+    /* 00654918  mov ecx, edi */
+    ecx = edi;
+    /* 0065491a  mov dword ptr [esi], 0x8184c4  ; vtable Wrapper */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8184c4u;
+    /* 00654920  call 0x62b4a0  ; Wrapper::Flags::Flags */
+    t = 0x0062b4a0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00654900_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 00654925  mov byte ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M8(ea) = 0x0u;
+    /* 00654929  mov dword ptr [esi + 0xc], 0x8190a4  ; vtable ObjectCreator */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8190a4u;
+    /* 00654930  or byte ptr [edi], 0x26 */
+    ea = (uint32_t)(edi);
+    r = (M8(ea) | 0x26u) & 0xffu;
+    F_LOGIC(8, r);
+    M8(ea) = r;
+    /* 00654933  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 00654934  mov dword ptr [esi + 0x10], ebp */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = ebp;
+    /* 00654937  mov dword ptr [esi + 0x14], 0 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x0u;
+    /* 0065493e  mov dword ptr [esi], 0x8589e4 */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x8589e4u;
+    /* 00654944  mov dword ptr [esi + 0xc], 0x8589d4 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x8589d4u;
+    /* 0065494b  mov eax, esi */
+    eax = esi;
+    /* 0065494d  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0065494e  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 0065494f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+L_00654950:
+    /* 00654950  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 00654951  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 00654953  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 00654954  ret */
     c->eip = M32(esp);
     esp += 4;
     goto out;

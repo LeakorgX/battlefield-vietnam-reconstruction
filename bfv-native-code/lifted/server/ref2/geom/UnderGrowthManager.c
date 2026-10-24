@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005f59b0  dice::ref2::geom::UnderGrowthManager  (virtual method) */
+/* 005f59b0  UnderGrowthManager::vf4  (virtual method)
+ * overrides: GrowthManager::vf4  (3 classes implement it)
+ * class: dice::ref2::geom::UnderGrowthManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005f59b0, bfv_server_l1_body_005f59b0);
 BFV_L1_RESUME(bfv_server_l1r_005f59b0_1, bfv_server_l1_body_005f59b0, 1);
 void bfv_server_l1_body_005f59b0(struct bfv_cpu *c)
@@ -28,7 +31,7 @@ void bfv_server_l1_body_005f59b0(struct bfv_cpu *c)
     /* 005f59b3  fld dword ptr [esi + 0x28] */
     ea = (uint32_t)(esi + 0x00000028u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005f59b6  fld dword ptr [esp + 8] */
+    /* 005f59b6  fld dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005f59ba  fucompp */
@@ -40,14 +43,14 @@ void bfv_server_l1_body_005f59b0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 005f59c1  jnp 0x5f59d1 */
     if (!pf) goto L_005f59d1;
-    /* 005f59c3  mov eax, dword ptr [esp + 8] */
+    /* 005f59c3  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 005f59c7  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005f59c8  call 0x618590 */
+    /* 005f59c8  call 0x618590  ; GrowthManager::vf4 */
     t = 0x00618590u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005f59b0_1;
@@ -73,7 +76,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005f59e0  dice::ref2::geom::UnderGrowthManager  (virtual method) */
+/* 005f59e0  UnderGrowthManager::vf6_set_38h_to_1  (virtual method)
+ * overrides: GrowthManager::vf6  (3 classes implement it)
+ * class: dice::ref2::geom::UnderGrowthManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005f59e0, bfv_server_l1_body_005f59e0);
 void bfv_server_l1_body_005f59e0(struct bfv_cpu *c)
 {
@@ -96,7 +102,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005f59f0  dice::ref2::geom::UnderGrowthManager  (virtual method) */
+/* 005f59f0  UnderGrowthManager::vf2  (virtual method)
+ * overrides: GrowthManager::vf2  (3 classes implement it)
+ * class: dice::ref2::geom::UnderGrowthManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005f59f0, bfv_server_l1_body_005f59f0);
 BFV_L1_RESUME(bfv_server_l1r_005f59f0_1, bfv_server_l1_body_005f59f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005f59f0_2, bfv_server_l1_body_005f59f0, 2);
@@ -121,7 +130,7 @@ void bfv_server_l1_body_005f59f0(struct bfv_cpu *c)
     /* 005f59f3  fld dword ptr [esi + 0x24] */
     ea = (uint32_t)(esi + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005f59f6  fld dword ptr [esp + 8] */
+    /* 005f59f6  fld dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005f59fa  fucompp */
@@ -133,14 +142,14 @@ void bfv_server_l1_body_005f59f0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 005f5a01  jnp 0x5f5a31 */
     if (!pf) goto L_005f5a31;
-    /* 005f5a03  mov eax, dword ptr [esp + 8] */
+    /* 005f5a03  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 005f5a07  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005f5a08  call 0x618560 */
+    /* 005f5a08  call 0x618560  ; GrowthManager::vf2 */
     t = 0x00618560u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005f59f0_1;
@@ -159,10 +168,10 @@ R_1:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 005f5a19  fstp qword ptr [esp] */
+    /* 005f5a19  fstp qword ptr [esp]  ; var_c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005f5a1c  call 0x63d500 */
+    /* 005f5a1c  call 0x63d500  ; floor */
     t = 0x0063d500u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005f59f0_2;
@@ -200,8 +209,13 @@ out: __attribute__((unused));
 }
 
 
-/* 005f5a40  dice::ref2::geom::UnderGrowthManager  (vtable store)
- * strings: "level/growth/underGrowthMap" */
+/* 005f5a40  UnderGrowthManager::UnderGrowthManager  (vtable store)
+ * class: dice::ref2::geom::UnderGrowthManager
+ * strings: "level/growth/underGrowthMap"
+ * also entered at 005f5ab0: GrowthManager::vf0, UnderGrowthManager::vf0
+ * also entered at 005f5ad0: ParticleSystemTemplate::vf4
+ * called by: Setup_HeightMap_00424f10
+ */
 BFV_L1_ENTRY(bfv_server_l1_005f5a40, bfv_server_l1_body_005f5a40);
 BFV_L1_RESUME(bfv_server_l1r_005f5a40_1, bfv_server_l1_body_005f5a40, 1);
 BFV_L1_RESUME(bfv_server_l1r_005f5a40_2, bfv_server_l1_body_005f5a40, 2);
@@ -227,7 +241,7 @@ void bfv_server_l1_body_005f5a40(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005f5a41  mov esi, ecx */
     esi = ecx;
-    /* 005f5a43  call 0x619040 */
+    /* 005f5a43  call 0x619040  ; GrowthManager::GrowthManager */
     t = 0x00619040u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005f5a40_1;
@@ -238,19 +252,19 @@ R_1:
     t = 0x1bu;
     esp -= 4;
     M32(esp) = t;
-    /* 005f5a4a  push 0x84c0c8 */
+    /* 005f5a4a  push 0x84c0c8  ; "level/growth/underGrowthMap" */
     t = 0x84c0c8u;
     esp -= 4;
     M32(esp) = t;
     /* 005f5a4f  lea ecx, [esi + 0x64] */
     ecx = (uint32_t)(esi + 0x00000064u);
-    /* 005f5a52  mov dword ptr [esi], 0x84c0a0 */
+    /* 005f5a52  mov dword ptr [esi], 0x84c0a0  ; vtable UnderGrowthManager */
     ea = (uint32_t)(esi);
     M32(ea) = 0x84c0a0u;
-    /* 005f5a58  mov dword ptr [esi + 0x90], 0x43800000 */
+    /* 005f5a58  mov dword ptr [esi + 0x90], 0x43800000  ; 256.0f */
     ea = (uint32_t)(esi + 0x00000090u);
     M32(ea) = 0x43800000u;
-    /* 005f5a62  call 0x402020 */
+    /* 005f5a62  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005f5a40_2;
@@ -268,13 +282,13 @@ R_2:
     M32(ea) = 0xau;
     /* 005f5a75  je 0x5f5aa7 */
     if (zf) goto L_005f5aa7;
-    /* 005f5a77  push 0x428c0000 */
+    /* 005f5a77  push 0x428c0000  ; 70.0f */
     t = 0x428c0000u;
     esp -= 4;
     M32(esp) = t;
     /* 005f5a7c  mov ecx, esi */
     ecx = esi;
-    /* 005f5a7e  call 0x618560 */
+    /* 005f5a7e  call 0x618560  ; GrowthManager::vf2 */
     t = 0x00618560u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005f5a40_3;
@@ -293,10 +307,10 @@ R_3:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 005f5a8f  fstp qword ptr [esp] */
+    /* 005f5a8f  fstp qword ptr [esp]  ; var_c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 005f5a92  call 0x63d500 */
+    /* 005f5a92  call 0x63d500  ; floor */
     t = 0x0063d500u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005f5a40_4;

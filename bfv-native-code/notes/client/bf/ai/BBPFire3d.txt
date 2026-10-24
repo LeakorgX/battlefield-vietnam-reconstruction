@@ -1,0 +1,14 @@
+## file
+Plan builder for firing from an aircraft.
+
+## 009a5760
+vf5 (also entered at 009a57c0 as vf4): records a fire request for this bot: sets the per-bot flag to 1, stores the two values in the per-bot arrays and keeps their low bytes at this+0x14 and this+0x15.
+
+## 009a57f0
+Builds the attack plan for a target: clears the old plan, finds the vehicle seat and builds a serial plan. The first part is a parallel plan of BAPAResetControls and a BAPATrigger. When the weapon has a magazine (slot 0x58) it adds a BAPFlowCIf on BAPConWeaponMagAmmo that triggers control 0x18 (mask 0x1000000). Then adds the move and aim actions with a 50.0 radius.
+
+## 009a5f40
+Helper for buildPlan: finds the vehicle seat and the target position, reads two IAISettings vf3 values and asks the bot manager (IBotManager::vf4) for the target, then dispatches on the attack type through a jump table at 009a7814.
+
+## 009a7830
+buildPlan: releases the bot's control locks (0, 1, 1), checks that the bot is in a vehicle and that the target is visible (bfv_event_interface 2, slot 0x1c with 7), picks a weapon with BBPFire3d_buildPlan_helper_009f39d0 (parameter slot 0x2c on -1). The approach length is 2 * (own size + target size). When the target has a bounding box it uses the mean of its three extents ((max - min) / 3) as a size, then builds the attack plan.

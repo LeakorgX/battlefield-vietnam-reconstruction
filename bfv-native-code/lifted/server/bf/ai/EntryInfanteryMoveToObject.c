@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00762790  (source path) */
+/* 00762790  AIConsole::ctor_dtor_helper_00762790  (source path)
+ * also entered at 007627a0: EntryInfanteryMoveToObject::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00762790, bfv_server_l1_body_00762790);
 void bfv_server_l1_body_00762790(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_00762790(struct bfv_cpu *c)
     uint32_t ea;
     /* 00762790  mov eax, ecx */
     eax = ecx;
-    /* 00762792  mov dword ptr [eax], 0x8755f4 */
+    /* 00762792  mov dword ptr [eax], 0x8755f4  ; vtable EntryInfanteryMoveToObject */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8755f4u;
     /* 00762798  ret */

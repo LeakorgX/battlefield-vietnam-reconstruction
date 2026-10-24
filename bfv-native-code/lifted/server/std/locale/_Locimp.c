@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006391a3  (called from this file only) */
+/* 006391a3  _Locimp::~_Locimp  (called from this file only)
+ * class: std::locale::_Locimp
+ * called by: _Locimp::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_006391a3, bfv_server_l1_body_006391a3);
 BFV_L1_RESUME(bfv_server_l1r_006391a3_1, bfv_server_l1_body_006391a3, 1);
 BFV_L1_RESUME(bfv_server_l1r_006391a3_2, bfv_server_l1_body_006391a3, 2);
@@ -33,7 +36,7 @@ void bfv_server_l1_body_006391a3(struct bfv_cpu *c)
     }
     /* 006391a3  mov eax, 0x7e2d75 */
     eax = 0x7e2d75u;
-    /* 006391a8  call 0x64003c */
+    /* 006391a8  call 0x64003c  ; _EH_prolog */
     t = 0x0064003cu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006391a3_1;
@@ -61,7 +64,7 @@ R_1:
     /* 006391b3  mov dword ptr [ebp - 0x14], esi */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = esi;
-    /* 006391b6  mov dword ptr [esi], 0x851434 */
+    /* 006391b6  mov dword ptr [esi], 0x851434  ; vtable _Locimp */
     ea = (uint32_t)(esi);
     M32(ea) = 0x851434u;
     /* 006391bc  push 0 */
@@ -73,7 +76,7 @@ R_1:
     /* 006391c1  mov dword ptr [ebp - 4], 1 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x1u;
-    /* 006391c8  call 0x639042 */
+    /* 006391c8  call 0x639042  ; std::_Lockit::_Lockit */
     t = 0x00639042u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006391a3_2;
@@ -105,7 +108,7 @@ L_006391d6:
     F_LOGIC(32, r);
     /* 006391df  je 0x6391f2 */
     if (zf) goto L_006391f2;
-    /* 006391e1  call 0x401030 */
+    /* 006391e1  call 0x401030  ; sub_00401030 */
     t = 0x00401030u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006391a3_3;
@@ -145,7 +148,7 @@ L_006391f2:
     t = M32(ea);
     esp -= 4;
     M32(esp) = t;
-    /* 006391f9  call 0x63b0bc */
+    /* 006391f9  call 0x63b0bc  ; free */
     t = 0x0063b0bcu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006391a3_5;
@@ -161,7 +164,7 @@ R_5:
     /* 00639202  mov byte ptr [ebp - 4], 1 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M8(ea) = 0x1u;
-    /* 00639206  call 0x639065 */
+    /* 00639206  call 0x639065  ; std::_Lockit::~_Lockit */
     t = 0x00639065u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006391a3_6;
@@ -178,7 +181,7 @@ R_6:
     M32(esp) = t;
     /* 0063920f  lea ecx, [esi + 0x18] */
     ecx = (uint32_t)(esi + 0x00000018u);
-    /* 00639212  call 0x4013f0 */
+    /* 00639212  call 0x4013f0  ; std::string::_Tidy_n */
     t = 0x004013f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006391a3_7;
@@ -188,7 +191,7 @@ R_7:
     /* 00639217  mov ecx, dword ptr [ebp - 0xc] */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
-    /* 0063921a  mov dword ptr [esi], 0x8072b8 */
+    /* 0063921a  mov dword ptr [esi], 0x8072b8  ; vtable facet */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8072b8u;
     /* 00639220  pop edi */
@@ -217,7 +220,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00639282  std::locale::_Locimp  (virtual method) */
+/* 00639282  _Locimp::deleting_dtor  (virtual method)
+ * overrides: facet::vf0  (2 classes implement it)
+ * class: std::locale::_Locimp
+ */
 BFV_L1_ENTRY(bfv_server_l1_00639282, bfv_server_l1_body_00639282);
 BFV_L1_RESUME(bfv_server_l1r_00639282_1, bfv_server_l1_body_00639282, 1);
 BFV_L1_RESUME(bfv_server_l1r_00639282_2, bfv_server_l1_body_00639282, 2);
@@ -239,14 +245,14 @@ void bfv_server_l1_body_00639282(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00639283  mov esi, ecx */
     esi = ecx;
-    /* 00639285  call 0x6391a3 */
+    /* 00639285  call 0x6391a3  ; _Locimp::~_Locimp */
     t = 0x006391a3u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639282_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0063928a  test byte ptr [esp + 8], 1 */
+    /* 0063928a  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -256,7 +262,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00639292  call 0x403df0 */
+    /* 00639292  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639282_2;
@@ -285,7 +291,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0063929e  std::locale::_Locimp  (vtable store) */
+/* 0063929e  _Locimp::_Locimp  (vtable store)
+ * class: std::locale::_Locimp
+ * called by: std::locale::_Init
+ */
 BFV_L1_ENTRY(bfv_server_l1_0063929e, bfv_server_l1_body_0063929e);
 BFV_L1_RESUME(bfv_server_l1r_0063929e_1, bfv_server_l1_body_0063929e, 1);
 BFV_L1_RESUME(bfv_server_l1r_0063929e_2, bfv_server_l1_body_0063929e, 2);
@@ -303,7 +312,7 @@ void bfv_server_l1_body_0063929e(struct bfv_cpu *c)
     }
     /* 0063929e  mov eax, 0x7e2d87 */
     eax = 0x7e2d87u;
-    /* 006392a3  call 0x64003c */
+    /* 006392a3  call 0x64003c  ; _EH_prolog */
     t = 0x0064003cu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063929e_1;
@@ -351,13 +360,13 @@ R_1:
     M32(esp) = t;
     /* 006392cc  lea ecx, [esi + 0x18] */
     ecx = (uint32_t)(esi + 0x00000018u);
-    /* 006392cf  mov dword ptr [esi], 0x851434 */
+    /* 006392cf  mov dword ptr [esi], 0x851434  ; vtable _Locimp */
     ea = (uint32_t)(esi);
     M32(ea) = 0x851434u;
     /* 006392d5  mov byte ptr [esi + 0x14], al */
     ea = (uint32_t)(esi + 0x00000014u);
     M8(ea) = LO8(eax);
-    /* 006392d8  call 0x402650 */
+    /* 006392d8  call 0x402650  ; std::string::string_cstr */
     t = 0x00402650u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063929e_2;

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00726560  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726560  StandardMeshRenderer::vf4  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726560, bfv_client_l1_body_00726560);
 void bfv_client_l1_body_00726560(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_00726560(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00726560  fld dword ptr [esp + 4] */
+    /* 00726560  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00726564  fadd dword ptr [ecx + 0x78] */
@@ -34,7 +36,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726580  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726580  StandardMeshRenderer::vf11_setByte_6ch  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726580, bfv_client_l1_body_00726580);
 void bfv_client_l1_body_00726580(struct bfv_cpu *c)
 {
@@ -43,7 +47,7 @@ void bfv_client_l1_body_00726580(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00726580  mov al, byte ptr [esp + 4] */
+    /* 00726580  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 00726584  mov byte ptr [ecx + 0x6c], al */
@@ -60,7 +64,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726590  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726590  StandardMeshRenderer::vf12_getByte_6ch  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726590, bfv_client_l1_body_00726590);
 void bfv_client_l1_body_00726590(struct bfv_cpu *c)
 {
@@ -83,7 +89,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007265a0  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 007265a0  StandardMeshRenderer::vf13_setByte_6dh  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007265a0, bfv_client_l1_body_007265a0);
 void bfv_client_l1_body_007265a0(struct bfv_cpu *c)
 {
@@ -92,7 +100,7 @@ void bfv_client_l1_body_007265a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007265a0  mov al, byte ptr [esp + 4] */
+    /* 007265a0  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 007265a4  mov byte ptr [ecx + 0x6d], al */
@@ -109,7 +117,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007265b0  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 007265b0  StandardMeshRenderer::vf14_getByte_6dh  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007265b0, bfv_client_l1_body_007265b0);
 void bfv_client_l1_body_007265b0(struct bfv_cpu *c)
 {
@@ -132,7 +142,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007265c0  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 007265c0  StandardMeshRenderer::vf15_setByte_6eh  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007265c0, bfv_client_l1_body_007265c0);
 void bfv_client_l1_body_007265c0(struct bfv_cpu *c)
 {
@@ -141,7 +153,7 @@ void bfv_client_l1_body_007265c0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 007265c0  mov al, byte ptr [esp + 4] */
+    /* 007265c0  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 007265c4  mov byte ptr [ecx + 0x6e], al */
@@ -158,7 +170,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007265d0  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 007265d0  StandardMeshRenderer::vf16_getByte_6eh  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007265d0, bfv_client_l1_body_007265d0);
 void bfv_client_l1_body_007265d0(struct bfv_cpu *c)
 {
@@ -181,7 +195,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007265f0  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 007265f0  StandardMeshRenderer::get_70h  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007265f0, bfv_client_l1_body_007265f0);
 void bfv_client_l1_body_007265f0(struct bfv_cpu *c)
 {
@@ -204,7 +220,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726600  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726600  StandardMeshRenderer::set_74h  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726600, bfv_client_l1_body_00726600);
 void bfv_client_l1_body_00726600(struct bfv_cpu *c)
 {
@@ -213,7 +231,7 @@ void bfv_client_l1_body_00726600(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00726600  mov eax, dword ptr [esp + 4] */
+    /* 00726600  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00726604  mov dword ptr [ecx + 0x74], eax */
@@ -230,7 +248,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726610  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726610  StandardMeshRenderer::get_74h  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726610, bfv_client_l1_body_00726610);
 void bfv_client_l1_body_00726610(struct bfv_cpu *c)
 {
@@ -253,7 +273,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726620  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726620  StandardMeshRenderer::vf21  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726620, bfv_client_l1_body_00726620);
 void bfv_client_l1_body_00726620(struct bfv_cpu *c)
 {
@@ -262,7 +284,7 @@ void bfv_client_l1_body_00726620(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00726620  mov eax, dword ptr [esp + 4] */
+    /* 00726620  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00726624  mov edx, dword ptr [eax] */
@@ -300,7 +322,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726640  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726640  StandardMeshRenderer::vf23  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726640, bfv_client_l1_body_00726640);
 void bfv_client_l1_body_00726640(struct bfv_cpu *c)
 {
@@ -309,7 +333,7 @@ void bfv_client_l1_body_00726640(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00726640  mov eax, dword ptr [esp + 4] */
+    /* 00726640  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00726644  mov edx, dword ptr [eax] */
@@ -347,7 +371,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726660  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726660  StandardMeshRenderer::vf27  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726660, bfv_client_l1_body_00726660);
 void bfv_client_l1_body_00726660(struct bfv_cpu *c)
 {
@@ -356,7 +382,7 @@ void bfv_client_l1_body_00726660(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00726660  mov eax, dword ptr [esp + 4] */
+    /* 00726660  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00726664  mov edx, dword ptr [eax] */
@@ -394,7 +420,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726690  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726690  StandardMeshRenderer::vf29  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726690, bfv_client_l1_body_00726690);
 void bfv_client_l1_body_00726690(struct bfv_cpu *c)
 {
@@ -403,7 +431,7 @@ void bfv_client_l1_body_00726690(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00726690  mov eax, dword ptr [esp + 4] */
+    /* 00726690  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00726694  mov edx, dword ptr [eax] */
@@ -429,7 +457,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007266b0  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 007266b0  StandardMeshRenderer::reloadLightmaps  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_007266b0, bfv_client_l1_body_007266b0);
 BFV_L1_RESUME(bfv_client_l1r_007266b0_1, bfv_client_l1_body_007266b0, 1);
 void bfv_client_l1_body_007266b0(struct bfv_cpu *c)
@@ -452,7 +482,7 @@ void bfv_client_l1_body_007266b0(struct bfv_cpu *c)
     /* 007266b3  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 007266b5  call dword ptr [eax + 0x84] */
+    /* 007266b5  call dword ptr [eax + 0x84]  ; -> StandardMeshRenderer::vf33 */
     ea = (uint32_t)(eax + 0x00000084u);
     t = M32(ea);
     esp -= 4;
@@ -480,7 +510,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007266d0  (between same file) */
+/* 007266d0  StandardMeshRenderer_007266d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007266d0, bfv_client_l1_body_007266d0);
 BFV_L1_RESUME(bfv_client_l1r_007266d0_1, bfv_client_l1_body_007266d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007266d0_2, bfv_client_l1_body_007266d0, 2);
@@ -504,7 +535,7 @@ void bfv_client_l1_body_007266d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007266d1  mov esi, ecx */
     esi = ecx;
-    /* 007266d3  mov ecx, dword ptr [0xe122c4] */
+    /* 007266d3  mov ecx, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     ecx = M32(ea);
     /* 007266d9  mov eax, dword ptr [ecx] */
@@ -575,7 +606,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726710  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726710  StandardMeshRenderer::vf33  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726710, bfv_client_l1_body_00726710);
 BFV_L1_RESUME(bfv_client_l1r_00726710_1, bfv_client_l1_body_00726710, 1);
 void bfv_client_l1_body_00726710(struct bfv_cpu *c)
@@ -610,7 +643,7 @@ void bfv_client_l1_body_00726710(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0072671a  je 0x726731 */
     if (zf) goto L_00726731;
-    /* 0072671c  lea esp, [esp] */
+    /* 0072671c  lea esp, [esp]  ; &var_8 */
     esp = (uint32_t)(esp);
 L_00726720:
     /* 00726720  mov ecx, dword ptr [esi] */
@@ -666,7 +699,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726740  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726740  StandardMeshRenderer::vf36  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726740, bfv_client_l1_body_00726740);
 BFV_L1_RESUME(bfv_client_l1r_00726740_1, bfv_client_l1_body_00726740, 1);
 void bfv_client_l1_body_00726740(struct bfv_cpu *c)
@@ -701,7 +736,7 @@ void bfv_client_l1_body_00726740(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0072674a  je 0x726761 */
     if (zf) goto L_00726761;
-    /* 0072674c  lea esp, [esp] */
+    /* 0072674c  lea esp, [esp]  ; &var_8 */
     esp = (uint32_t)(esp);
 L_00726750:
     /* 00726750  mov ecx, dword ptr [esi] */
@@ -754,7 +789,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726770  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726770  StandardMeshRenderer::vf8  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726770, bfv_client_l1_body_00726770);
 BFV_L1_RESUME(bfv_client_l1r_00726770_1, bfv_client_l1_body_00726770, 1);
 void bfv_client_l1_body_00726770(struct bfv_cpu *c)
@@ -864,7 +901,7 @@ L_00726790:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007267a1  call 0x7c16f0 */
+    /* 007267a1  call 0x7c16f0  ; memcpy */
     t = 0x007c16f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726770_1;
@@ -905,7 +942,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007267c0  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 007267c0  StandardMeshRenderer::vf32  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ * also entered at 00726920: StandardMeshRenderer::vf34
+ */
 BFV_L1_ENTRY_DEEP(bfv_client_l1_007267c0, bfv_client_l1_body_007267c0, 0x500);
 BFV_L1_RESUME_DEEP(bfv_client_l1r_007267c0_1, bfv_client_l1_body_007267c0, 1, 0x500);
 BFV_L1_RESUME_DEEP(bfv_client_l1r_007267c0_2, bfv_client_l1_body_007267c0, 2, 0x500);
@@ -963,7 +1003,7 @@ void bfv_client_l1_body_007267c0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 007267d1  je 0x72690d */
     if (zf) goto L_0072690d;
-    /* 007267d7  mov ecx, dword ptr [0xe122c8] */
+    /* 007267d7  mov ecx, dword ptr [0xe122c8]  ; g_pTextureManager */
     ea = (uint32_t)(0x00e122c8u);
     ecx = M32(ea);
     /* 007267dd  mov eax, dword ptr [ecx] */
@@ -985,7 +1025,7 @@ void bfv_client_l1_body_007267c0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 007267e8  mov ecx, dword ptr [0xe122c4] */
+    /* 007267e8  mov ecx, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     ecx = M32(ea);
     /* 007267ee  mov edx, dword ptr [ecx] */
@@ -995,7 +1035,7 @@ R_1:
     t = 0xau;
     esp -= 4;
     M32(esp) = t;
-    /* 007267f2  mov byte ptr [esp + 0xc], al */
+    /* 007267f2  mov byte ptr [esp + 0xc], al  ; var_420 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M8(ea) = LO8(eax);
     /* 007267f6  call dword ptr [edx + 0x14c] */
@@ -1019,31 +1059,31 @@ R_2:
     t = 0xbaa52cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0072680b  lea ecx, [esp + 0x14] */
+    /* 0072680b  lea ecx, [esp + 0x14]  ; &var_41c */
     ecx = (uint32_t)(esp + 0x00000014u);
-    /* 0072680f  mov dword ptr [esp + 0x2c], 0xf */
+    /* 0072680f  mov dword ptr [esp + 0x2c], 0xf  ; var_404 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = 0xfu;
-    /* 00726817  mov dword ptr [esp + 0x28], 0 */
+    /* 00726817  mov dword ptr [esp + 0x28], 0  ; var_408 */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0x0u;
-    /* 0072681f  mov byte ptr [esp + 0x18], al */
+    /* 0072681f  mov byte ptr [esp + 0x18], al  ; var_418 */
     ea = (uint32_t)(esp + 0x00000018u);
     M8(ea) = LO8(eax);
-    /* 00726823  call 0x401ae0 */
+    /* 00726823  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007267c0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 00726828  mov ecx, dword ptr [0xe122c8] */
+    /* 00726828  mov ecx, dword ptr [0xe122c8]  ; g_pTextureManager */
     ea = (uint32_t)(0x00e122c8u);
     ecx = M32(ea);
     /* 0072682e  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 00726830  lea edx, [esp + 0xc] */
+    /* 00726830  lea edx, [esp + 0xc]  ; &var_41c */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 00726834  push edx */
     t = edx;
@@ -1059,7 +1099,7 @@ R_3:
 R_4:
     /* 00726838  mov esi, eax */
     esi = eax;
-    /* 0072683a  cmp dword ptr [esp + 0x24], 0x10 */
+    /* 0072683a  cmp dword ptr [esp + 0x24], 0x10  ; var_404 */
     ea = (uint32_t)(esp + 0x00000024u);
     a = M32(ea);
     b = 0x10u;
@@ -1067,14 +1107,14 @@ R_4:
     F_SUB(32, a, b, r);
     /* 0072683f  jb 0x72684e */
     if (cf) goto L_0072684e;
-    /* 00726841  mov eax, dword ptr [esp + 0x10] */
+    /* 00726841  mov eax, dword ptr [esp + 0x10]  ; var_418 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00726845  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00726846  call 0x403680 */
+    /* 00726846  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007267c0_5;
@@ -1093,7 +1133,7 @@ L_0072684e:
     F_LOGIC(32, r);
     /* 00726850  je 0x7268d9 */
     if (zf) goto L_007268d9;
-    /* 00726856  call 0xa3fd30 */
+    /* 00726856  call 0xa3fd30  ; bfv_client_read_global_00a3fd30 */
     t = 0x00a3fd30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007267c0_6;
@@ -1103,7 +1143,7 @@ R_6:
     /* 0072685b  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 0072685d  lea edx, [esp + 0x28] */
+    /* 0072685d  lea edx, [esp + 0x28]  ; &var_400 */
     edx = (uint32_t)(esp + 0x00000028u);
     /* 00726861  push edx */
     t = edx;
@@ -1127,7 +1167,7 @@ R_6:
 R_7:
     /* 0072686b  mov eax, 0xde41d1 */
     eax = 0xde41d1u;
-    /* 00726870  lea ecx, [esp + 0x29] */
+    /* 00726870  lea ecx, [esp + 0x29]  ; &var_3ff */
     ecx = (uint32_t)(esp + 0x00000029u);
 L_00726874:
     /* 00726874  mov dl, byte ptr [ecx + 1] */
@@ -1170,7 +1210,7 @@ L_00726874:
     /* 00726891  mov dword ptr [esi + 8], 0xde41d0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0xde41d0u;
-    /* 00726898  mov ecx, dword ptr [0xe122c8] */
+    /* 00726898  mov ecx, dword ptr [0xe122c8]  ; g_pTextureManager */
     ea = (uint32_t)(0x00e122c8u);
     ecx = M32(ea);
     /* 0072689e  mov eax, dword ptr [ecx] */
@@ -1188,7 +1228,7 @@ L_00726874:
     c->eip = t;
     goto out;
 R_8:
-    /* 007268a5  mov ecx, dword ptr [0xe122c4] */
+    /* 007268a5  mov ecx, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     ecx = M32(ea);
     /* 007268ab  mov edx, dword ptr [ecx] */
@@ -1209,7 +1249,7 @@ R_9:
     /* 007268b5  test al, al */
     r = (LO8(eax) & LO8(eax)) & 0xffu;
     F_LOGIC(8, r);
-    /* 007268b7  mov ecx, dword ptr [0xe122c8] */
+    /* 007268b7  mov ecx, dword ptr [0xe122c8]  ; g_pTextureManager */
     ea = (uint32_t)(0x00e122c8u);
     ecx = M32(ea);
     /* 007268bd  je 0x7268cd */
@@ -1299,10 +1339,10 @@ R_12:
     /* 007268f0  jne 0x7268e1 */
     if (!zf) goto L_007268e1;
 L_007268f2:
-    /* 007268f2  mov ecx, dword ptr [0xe122c8] */
+    /* 007268f2  mov ecx, dword ptr [0xe122c8]  ; g_pTextureManager */
     ea = (uint32_t)(0x00e122c8u);
     ecx = M32(ea);
-    /* 007268f8  mov eax, dword ptr [esp + 8] */
+    /* 007268f8  mov eax, dword ptr [esp + 8]  ; var_420 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007268fc  mov edx, dword ptr [ecx] */
@@ -1349,7 +1389,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726b20  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726b20  StandardMeshRenderer::vf10  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726b20, bfv_client_l1_body_00726b20);
 BFV_L1_RESUME(bfv_client_l1r_00726b20_1, bfv_client_l1_body_00726b20, 1);
 void bfv_client_l1_body_00726b20(struct bfv_cpu *c)
@@ -1459,7 +1501,7 @@ L_00726b40:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00726b51  call 0x7c16f0 */
+    /* 00726b51  call 0x7c16f0  ; memcpy */
     t = 0x007c16f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726b20_1;
@@ -1500,7 +1542,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726b70  (between same file) */
+/* 00726b70  std::vector_ptr::_Insert_n_00726b70  (between same file)
+ * called by: StandardMeshRenderer::vf7, StandardMeshRenderer::vf9
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726b70, bfv_client_l1_body_00726b70);
 BFV_L1_RESUME(bfv_client_l1r_00726b70_1, bfv_client_l1_body_00726b70, 1);
 BFV_L1_RESUME(bfv_client_l1r_00726b70_2, bfv_client_l1_body_00726b70, 2);
@@ -1566,18 +1610,18 @@ void bfv_client_l1_body_00726b70(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00726b8e  mov dword ptr [ebp - 0x10], esp */
+    /* 00726b8e  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 00726b91  mov esi, ecx */
     esi = ecx;
-    /* 00726b93  mov eax, dword ptr [ebp + 0x10] */
+    /* 00726b93  mov eax, dword ptr [ebp + 0x10]  ; arg_8 */
     ea = (uint32_t)(ebp + 0x00000010u);
     eax = M32(ea);
     /* 00726b96  mov ecx, dword ptr [eax] */
     ea = (uint32_t)(eax);
     ecx = M32(ea);
-    /* 00726b98  mov dword ptr [ebp - 0x14], ecx */
+    /* 00726b98  mov dword ptr [ebp - 0x14], ecx  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = ecx;
     /* 00726b9b  mov edi, dword ptr [esi + 4] */
@@ -1615,7 +1659,7 @@ L_00726ba6:
         eax = r;
     }
 L_00726bae:
-    /* 00726bae  mov edx, dword ptr [ebp + 0xc] */
+    /* 00726bae  mov edx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     edx = M32(ea);
     /* 00726bb1  test edx, edx */
@@ -1672,7 +1716,7 @@ L_00726bc9:
     if (!cf) goto L_00726bdb;
     /* 00726bd4  mov ecx, esi */
     ecx = esi;
-    /* 00726bd6  call 0xa894e0 */
+    /* 00726bd6  call 0xa894e0  ; std::vector::_Xlen */
     t = 0x00a894e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726b70_1;
@@ -1860,14 +1904,14 @@ L_00726c32:
         F_SZP(32, r); af = 0;
         eax = r;
     }
-    /* 00726c35  mov dword ptr [ebp - 0x20], eax */
+    /* 00726c35  mov dword ptr [ebp - 0x20], eax  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = eax;
     /* 00726c38  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00726c39  call 0x403610 */
+    /* 00726c39  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726b70_2;
@@ -1882,17 +1926,17 @@ R_2:
     esp = r;
     /* 00726c41  mov edi, eax */
     edi = eax;
-    /* 00726c43  mov dword ptr [ebp - 0x24], edi */
+    /* 00726c43  mov dword ptr [ebp - 0x24], edi  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = edi;
-    /* 00726c46  mov dword ptr [ebp - 4], 0 */
+    /* 00726c46  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
     /* 00726c4d  push edi */
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00726c4e  mov ebx, dword ptr [ebp + 8] */
+    /* 00726c4e  mov ebx, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     ebx = M32(ea);
     /* 00726c51  push ebx */
@@ -1908,23 +1952,23 @@ R_2:
     M32(esp) = t;
     /* 00726c56  mov ecx, esi */
     ecx = esi;
-    /* 00726c58  call 0xa6ad10 */
+    /* 00726c58  call 0xa6ad10  ; bfv_vector_copy */
     t = 0x00a6ad10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726b70_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 00726c5d  mov dword ptr [ebp - 0x1c], eax */
+    /* 00726c5d  mov dword ptr [ebp - 0x1c], eax  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = eax;
-    /* 00726c60  lea ecx, [ebp - 0x14] */
+    /* 00726c60  lea ecx, [ebp - 0x14]  ; &var_18 */
     ecx = (uint32_t)(ebp + 0xffffffecu);
     /* 00726c63  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00726c64  mov edx, dword ptr [ebp + 0xc] */
+    /* 00726c64  mov edx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     edx = M32(ea);
     /* 00726c67  push edx */
@@ -1937,14 +1981,14 @@ R_3:
     M32(esp) = t;
     /* 00726c69  mov ecx, esi */
     ecx = esi;
-    /* 00726c6b  call 0x4ef090 */
+    /* 00726c6b  call 0x4ef090  ; bfv_vector_fill */
     t = 0x004ef090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726b70_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 00726c70  mov dword ptr [ebp - 0x1c], eax */
+    /* 00726c70  mov dword ptr [ebp - 0x1c], eax  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = eax;
     /* 00726c73  push eax */
@@ -1964,14 +2008,14 @@ R_4:
     M32(esp) = t;
     /* 00726c79  mov ecx, esi */
     ecx = esi;
-    /* 00726c7b  call 0xa6ad10 */
+    /* 00726c7b  call 0xa6ad10  ; bfv_vector_copy */
     t = 0x00a6ad10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726b70_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 00726c80  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 00726c80  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 00726c87  mov ecx, dword ptr [esi + 4] */
@@ -2009,7 +2053,7 @@ L_00726c92:
         eax = r;
     }
 L_00726c9a:
-    /* 00726c9a  mov ebx, dword ptr [ebp + 0xc] */
+    /* 00726c9a  mov ebx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     ebx = M32(ea);
     /* 00726c9d  add ebx, eax */
@@ -2027,7 +2071,7 @@ L_00726c9a:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00726ca4  call 0x403680 */
+    /* 00726ca4  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726b70_6;
@@ -2041,7 +2085,7 @@ R_6:
     F_ADD(32, a, b, r);
     esp = r;
 L_00726cac:
-    /* 00726cac  mov ecx, dword ptr [ebp - 0x20] */
+    /* 00726cac  mov ecx, dword ptr [ebp - 0x20]  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     ecx = M32(ea);
     /* 00726caf  add ecx, edi */
@@ -2061,7 +2105,7 @@ L_00726cac:
     /* 00726cba  mov dword ptr [esi + 4], edi */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = edi;
-    /* 00726cbd  mov ecx, dword ptr [ebp - 0xc] */
+    /* 00726cbd  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 00726cc0  mov dword ptr fs:[0], ecx */
@@ -2096,7 +2140,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00726cd0  (between same file) */
+/* 00726cd0  std::vector_ptr::_Insert_n_00726b70_catch_00726cd0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726cd0, bfv_client_l1_body_00726cd0);
 BFV_L1_RESUME(bfv_client_l1r_00726cd0_1, bfv_client_l1_body_00726cd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00726cd0_2, bfv_client_l1_body_00726cd0, 2);
@@ -2129,7 +2174,7 @@ void bfv_client_l1_body_00726cd0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00726cd4  call 0x403680 */
+    /* 00726cd4  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726cd0_1;
@@ -2150,7 +2195,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00726ce0  call 0x7c1fae */
+    /* 00726ce0  call 0x7c1fae  ; _CxxThrowException */
     t = 0x007c1faeu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726cd0_2;
@@ -2213,7 +2258,7 @@ R_2:
     M32(esp) = t;
     /* 00726d05  mov ecx, esi */
     ecx = esi;
-    /* 00726d07  call 0xa6ad10 */
+    /* 00726d07  call 0xa6ad10  ; bfv_vector_copy */
     t = 0x00a6ad10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726cd0_3;
@@ -2269,7 +2314,7 @@ R_3:
     M32(esp) = t;
     /* 00726d28  mov ecx, esi */
     ecx = esi;
-    /* 00726d2a  call 0x4ef090 */
+    /* 00726d2a  call 0x4ef090  ; bfv_vector_fill */
     t = 0x004ef090u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726cd0_4;
@@ -2343,7 +2388,7 @@ L_00726d4d:
     M32(esp) = t;
     /* 00726d61  mov ecx, esi */
     ecx = esi;
-    /* 00726d63  call 0xa6ad10 */
+    /* 00726d63  call 0xa6ad10  ; bfv_vector_copy */
     t = 0x00a6ad10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726cd0_5;
@@ -2362,7 +2407,7 @@ R_5:
     edx = M32(ea);
     /* 00726d6f  mov ecx, edi */
     ecx = edi;
-    /* 00726d71  call 0xa03770 */
+    /* 00726d71  call 0xa03770  ; bfv_vector_shift */
     t = 0x00a03770u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726cd0_6;
@@ -2383,7 +2428,7 @@ R_6:
 L_00726d80:
     /* 00726d80  mov ecx, edi */
     ecx = edi;
-    /* 00726d82  call 0x6f7000 */
+    /* 00726d82  call 0x6f7000  ; bfv_vector_fill_range */
     t = 0x006f7000u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726cd0_7;
@@ -2425,7 +2470,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726da0  (between same file) */
+/* 00726da0  StandardMeshRenderer::StandardMeshRenderer  (vtable store)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726da0, bfv_client_l1_body_00726da0);
 void bfv_client_l1_body_00726da0(struct bfv_cpu *c)
 {
@@ -2436,10 +2483,10 @@ void bfv_client_l1_body_00726da0(struct bfv_cpu *c)
     uint32_t t, r, ea;
     /* 00726da0  mov eax, ecx */
     eax = ecx;
-    /* 00726da2  mov dword ptr [eax + 4], 0xbaa518 */
+    /* 00726da2  mov dword ptr [eax + 4], 0xbaa518  ; vtable IFileChangeListener */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0xbaa518u;
-    /* 00726da9  mov dword ptr [eax], 0xbaa57c */
+    /* 00726da9  mov dword ptr [eax], 0xbaa57c  ; vtable StandardMeshRenderer */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbaa57cu;
     /* 00726daf  mov dword ptr [eax + 4], 0xbaa564 */
@@ -2469,10 +2516,10 @@ void bfv_client_l1_body_00726da0(struct bfv_cpu *c)
     /* 00726dcc  mov dword ptr [eax + 0x2c], edx */
     ea = (uint32_t)(eax + 0x0000002cu);
     M32(ea) = edx;
-    /* 00726dcf  mov dword ptr [eax + 0x3c], 0x45fa0000 */
+    /* 00726dcf  mov dword ptr [eax + 0x3c], 0x45fa0000  ; 8000.0f */
     ea = (uint32_t)(eax + 0x0000003cu);
     M32(ea) = 0x45fa0000u;
-    /* 00726dd6  mov dword ptr [eax + 0x40], 0x461c4000 */
+    /* 00726dd6  mov dword ptr [eax + 0x40], 0x461c4000  ; 10000.0f */
     ea = (uint32_t)(eax + 0x00000040u);
     M32(ea) = 0x461c4000u;
     /* 00726ddd  mov dword ptr [eax + 0x48], ecx */
@@ -2508,7 +2555,7 @@ void bfv_client_l1_body_00726da0(struct bfv_cpu *c)
     /* 00726dfb  mov dword ptr [eax + 0x68], ecx */
     ea = (uint32_t)(eax + 0x00000068u);
     M32(ea) = ecx;
-    /* 00726dfe  mov dword ptr [eax + 0x70], 0x42200000 */
+    /* 00726dfe  mov dword ptr [eax + 0x70], 0x42200000  ; 40.0f */
     ea = (uint32_t)(eax + 0x00000070u);
     M32(ea) = 0x42200000u;
     /* 00726e05  mov dword ptr [eax + 0x74], edx */
@@ -2547,7 +2594,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00726e30  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726e30  StandardMeshRenderer::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726e30, bfv_client_l1_body_00726e30);
 void bfv_client_l1_body_00726e30(struct bfv_cpu *c)
 {
@@ -2556,12 +2606,12 @@ void bfv_client_l1_body_00726e30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00726e30  mov edx, dword ptr [0xb42718] */
+    /* 00726e30  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00726e36  mov eax, ecx */
     eax = ecx;
-    /* 00726e38  mov ecx, dword ptr [esp + 4] */
+    /* 00726e38  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00726e3c  cmp ecx, edx */
@@ -2571,7 +2621,7 @@ void bfv_client_l1_body_00726e30(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00726e3e  je 0x726e5c */
     if (zf) goto L_00726e5c;
-    /* 00726e40  cmp ecx, dword ptr [0xba5a8c] */
+    /* 00726e40  cmp ecx, dword ptr [0xba5a8c]  ; interfaceID(StandardMeshRenderer) */
     ea = (uint32_t)(0x00ba5a8cu);
     a = ecx;
     b = M32(ea);
@@ -2579,7 +2629,7 @@ void bfv_client_l1_body_00726e30(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00726e46  je 0x726e5c */
     if (zf) goto L_00726e5c;
-    /* 00726e48  cmp ecx, dword ptr [0xbdb048] */
+    /* 00726e48  cmp ecx, dword ptr [0xbdb048]  ; interfaceID(StandardMeshRenderer|ShaderHandler|TextureManager) */
     ea = (uint32_t)(0x00bdb048u);
     a = ecx;
     b = M32(ea);
@@ -2619,7 +2669,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726e60  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726e60  StandardMeshRenderer::get_78h  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726e60, bfv_client_l1_body_00726e60);
 void bfv_client_l1_body_00726e60(struct bfv_cpu *c)
 {
@@ -2642,7 +2694,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726e70  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726e70  StandardMeshRenderer::vf35  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726e70, bfv_client_l1_body_00726e70);
 void bfv_client_l1_body_00726e70(struct bfv_cpu *c)
 {
@@ -2665,7 +2719,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726f50  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726f50  StandardMeshRenderer::vf7  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726f50, bfv_client_l1_body_00726f50);
 BFV_L1_RESUME(bfv_client_l1r_00726f50_1, bfv_client_l1_body_00726f50, 1);
 void bfv_client_l1_body_00726f50(struct bfv_cpu *c)
@@ -2758,7 +2814,7 @@ L_00726f67:
     /* 00726f77  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 00726f7a  mov edx, dword ptr [esp + 8] */
+    /* 00726f7a  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00726f7e  mov dword ptr [eax], edx */
@@ -2785,7 +2841,7 @@ L_00726f8a:
     /* 00726f8a  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 00726f8d  lea edx, [esp + 8] */
+    /* 00726f8d  lea edx, [esp + 8]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 00726f91  push edx */
     t = edx;
@@ -2799,7 +2855,7 @@ L_00726f8a:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00726f95  call 0x726b70 */
+    /* 00726f95  call 0x726b70  ; std::vector_ptr::_Insert_n_00726b70 */
     t = 0x00726b70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726f50_1;
@@ -2821,7 +2877,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00726fa0  dice::ref2::geom::StandardMeshRenderer  (virtual method) */
+/* 00726fa0  StandardMeshRenderer::vf9  (virtual method)
+ * class: dice::ref2::geom::StandardMeshRenderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726fa0, bfv_client_l1_body_00726fa0);
 BFV_L1_RESUME(bfv_client_l1r_00726fa0_1, bfv_client_l1_body_00726fa0, 1);
 void bfv_client_l1_body_00726fa0(struct bfv_cpu *c)
@@ -2914,7 +2972,7 @@ L_00726fb7:
     /* 00726fc7  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 00726fca  mov edx, dword ptr [esp + 8] */
+    /* 00726fca  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00726fce  mov dword ptr [eax], edx */
@@ -2941,7 +2999,7 @@ L_00726fda:
     /* 00726fda  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 00726fdd  lea edx, [esp + 8] */
+    /* 00726fdd  lea edx, [esp + 8]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 00726fe1  push edx */
     t = edx;
@@ -2955,7 +3013,7 @@ L_00726fda:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00726fe5  call 0x726b70 */
+    /* 00726fe5  call 0x726b70  ; std::vector_ptr::_Insert_n_00726b70 */
     t = 0x00726b70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00726fa0_1;

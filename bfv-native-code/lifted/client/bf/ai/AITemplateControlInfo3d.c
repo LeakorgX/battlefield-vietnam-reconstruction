@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009821d0  dice::bf::ai::AITemplateControlInfo3d  (vtable store) */
+/* 009821d0  AITemplateControlInfo3d::AITemplateControlInfo3d  (vtable store)
+ * class: dice::bf::ai::AITemplateControlInfo3d
+ * called by: AITemplatePlugInManager::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_009821d0, bfv_client_l1_body_009821d0);
 BFV_L1_RESUME(bfv_client_l1r_009821d0_1, bfv_client_l1_body_009821d0, 1);
 void bfv_client_l1_body_009821d0(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_client_l1_body_009821d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009821d1  mov esi, ecx */
     esi = ecx;
-    /* 009821d3  call 0x96a560 */
+    /* 009821d3  call 0x96a560  ; AITemplateControlInfo::AITemplateControlInfo */
     t = 0x0096a560u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009821d0_1;
@@ -42,7 +45,7 @@ R_1:
     /* 009821e0  mov dword ptr [esi + 0x110], eax */
     ea = (uint32_t)(esi + 0x00000110u);
     M32(ea) = eax;
-    /* 009821e6  mov dword ptr [esi], 0xbf565c */
+    /* 009821e6  mov dword ptr [esi], 0xbf565c  ; vtable AITemplateControlInfo3d */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf565cu;
     /* 009821ec  mov eax, esi */
@@ -62,7 +65,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009821f0  dice::bf::ai::AITemplateControlInfo3d  (virtual method) */
+/* 009821f0  AITemplateControlInfo3d::vf5  (virtual method)
+ * overrides: AITemplateControlInfo::vf5  (2 classes implement it)
+ * class: dice::bf::ai::AITemplateControlInfo3d
+ */
 BFV_L1_ENTRY(bfv_client_l1_009821f0, bfv_client_l1_body_009821f0);
 void bfv_client_l1_body_009821f0(struct bfv_cpu *c)
 {
@@ -164,7 +170,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00982230  dice::bf::ai::AITemplateControlInfo3d  (virtual method) */
+/* 00982230  AITemplateControlInfo3d::vf6  (virtual method)
+ * overrides: AITemplateControlInfo::vf6  (2 classes implement it)
+ * class: dice::bf::ai::AITemplateControlInfo3d
+ * also entered at 00982270: AITemplateControlInfo3d::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00982230, bfv_client_l1_body_00982230);
 void bfv_client_l1_body_00982230(struct bfv_cpu *c)
 {

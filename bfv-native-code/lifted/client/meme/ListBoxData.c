@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00569140  dice::meme::ListBoxData  (vtable store) */
+/* 00569140  ListBoxData::create  (vtable store)
+ * class: dice::meme::ListBoxData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00569140, bfv_client_l1_body_00569140);
 BFV_L1_RESUME(bfv_client_l1r_00569140_1, bfv_client_l1_body_00569140, 1);
 BFV_L1_RESUME(bfv_client_l1r_00569140_2, bfv_client_l1_body_00569140, 2);
@@ -29,7 +31,7 @@ void bfv_client_l1_body_00569140(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00569143  call 0x403610 */
+    /* 00569143  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00569140_1;
@@ -55,14 +57,14 @@ R_1:
     M32(esp) = t;
     /* 00569153  mov ecx, esi */
     ecx = esi;
-    /* 00569155  call 0x874530 */
+    /* 00569155  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00569140_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0056915a  mov dword ptr [esi], 0xb6d134 */
+    /* 0056915a  mov dword ptr [esi], 0xb6d134  ; vtable ListBoxData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6d134u;
     /* 00569160  mov dword ptr [esi + 0xc], 0 */
@@ -98,8 +100,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00569340  dice::meme::ListBoxData  (virtual method)
- * strings: "dice::meme::ListBoxData" */
+/* 00569340  ListBoxData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::ListBoxData
+ * strings: "dice::meme::ListBoxData"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00569340, bfv_client_l1_body_00569340);
 BFV_L1_RESUME(bfv_client_l1r_00569340_1, bfv_client_l1_body_00569340, 1);
 BFV_L1_RESUME(bfv_client_l1r_00569340_2, bfv_client_l1_body_00569340, 2);
@@ -130,13 +135,13 @@ void bfv_client_l1_body_00569340(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00569355  push 0xb6d3b4 */
+    /* 00569355  push 0xb6d3b4  ; "dice::meme::ListBoxData" */
     t = 0xb6d3b4u;
     esp -= 4;
     M32(esp) = t;
-    /* 0056935a  mov ecx, 0xd73770 */
+    /* 0056935a  mov ecx, 0xd73770  ; g_RuntimeClass_ListBoxData */
     ecx = 0xd73770u;
-    /* 0056935f  call 0x875490 */
+    /* 0056935f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00569340_1;
@@ -147,10 +152,10 @@ R_1:
     t = 0xb30360u;
     esp -= 4;
     M32(esp) = t;
-    /* 00569369  mov dword ptr [0xd73770], 0xb6d264 */
+    /* 00569369  mov dword ptr [0xd73770], 0xb6d264  ; g_RuntimeClass_ListBoxData */
     ea = (uint32_t)(0x00d73770u);
     M32(ea) = 0xb6d264u;
-    /* 00569373  call 0x7c2cd2 */
+    /* 00569373  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00569340_2;
@@ -164,7 +169,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0056937b:
-    /* 0056937b  mov eax, 0xd73770 */
+    /* 0056937b  mov eax, 0xd73770  ; g_RuntimeClass_ListBoxData */
     eax = 0xd73770u;
     /* 00569380  ret */
     c->eip = M32(esp);
@@ -177,7 +182,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008d0c10  dice::meme::ListBoxData  (virtual method) */
+/* 008d0c10  stub_return_0_3args_008d0c10  (virtual method)
+ * overrides: Data::vf25  (41 classes implement it)
+ * class: dice::meme::ListBoxData
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d0c10, bfv_client_l1_body_008d0c10);
 void bfv_client_l1_body_008d0c10(struct bfv_cpu *c)
 {

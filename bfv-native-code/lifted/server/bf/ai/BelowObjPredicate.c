@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007687f0  dice::bf::ai::?A0xc84e6b95::BelowObjPredicate  (virtual method) */
+/* 007687f0  BelowObjPredicate::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xc84e6b95::BelowObjPredicate
+ */
 BFV_L1_ENTRY(bfv_server_l1_007687f0, bfv_server_l1_body_007687f0);
 void bfv_server_l1_body_007687f0(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_server_l1_body_007687f0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 007687f0  mov eax, dword ptr [esp + 4] */
+    /* 007687f0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 007687f4  lea ecx, [eax + 0x24] */

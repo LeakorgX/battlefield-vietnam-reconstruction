@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00766410  (source path) */
+/* 00766410  AIConsole::ctor_dtor_helper_00766410  (source path)
+ * also entered at 00766420: EntryCarResetControls::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00766410, bfv_server_l1_body_00766410);
 void bfv_server_l1_body_00766410(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_00766410(struct bfv_cpu *c)
     uint32_t ea;
     /* 00766410  mov eax, ecx */
     eax = ecx;
-    /* 00766412  mov dword ptr [eax], 0x875dc4 */
+    /* 00766412  mov dword ptr [eax], 0x875dc4  ; vtable EntryCarResetControls */
     ea = (uint32_t)(eax);
     M32(ea) = 0x875dc4u;
     /* 00766418  ret */

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00791090  dice::bf::ai::AIScriptSubroutine  (virtual method) */
+/* 00791090  AIScriptSubroutine::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::AIScriptSubroutine
+ */
 BFV_L1_ENTRY(bfv_server_l1_00791090, bfv_server_l1_body_00791090);
 BFV_L1_RESUME(bfv_server_l1r_00791090_1, bfv_server_l1_body_00791090, 1);
 BFV_L1_RESUME(bfv_server_l1r_00791090_2, bfv_server_l1_body_00791090, 2);
@@ -27,7 +29,7 @@ void bfv_server_l1_body_00791090(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00791091  mov esi, ecx */
     esi = ecx;
-    /* 00791093  mov dword ptr [esi], 0x877b74 */
+    /* 00791093  mov dword ptr [esi], 0x877b74  ; vtable AIScriptSubroutine */
     ea = (uint32_t)(esi);
     M32(ea) = 0x877b74u;
     /* 00791099  cmp dword ptr [esi + 0x1c], 0x10 */
@@ -45,7 +47,7 @@ void bfv_server_l1_body_00791090(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007910a3  call 0x403df0 */
+    /* 007910a3  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791090_1;
@@ -72,7 +74,7 @@ L_007910ab:
     /* 007910b7  mov byte ptr [esi + 8], al */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = LO8(eax);
-    /* 007910ba  test byte ptr [esp + 8], 1 */
+    /* 007910ba  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -82,7 +84,7 @@ L_007910ab:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007910c2  call 0x403df0 */
+    /* 007910c2  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00791090_2;
@@ -113,7 +115,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007910d0  dice::bf::ai::AIScriptSubroutine  (vtable store) */
+/* 007910d0  AIScriptSubroutine::AIScriptSubroutine  (vtable store)
+ * class: dice::bf::ai::AIScriptSubroutine
+ * called by: AIScriptManager::vf15
+ */
 BFV_L1_ENTRY(bfv_server_l1_007910d0, bfv_server_l1_body_007910d0);
 BFV_L1_RESUME(bfv_server_l1r_007910d0_1, bfv_server_l1_body_007910d0, 1);
 void bfv_server_l1_body_007910d0(struct bfv_cpu *c)
@@ -139,7 +144,7 @@ void bfv_server_l1_body_007910d0(struct bfv_cpu *c)
     eax = r;
     /* 007910d5  lea ecx, [esi + 4] */
     ecx = (uint32_t)(esi + 0x00000004u);
-    /* 007910d8  mov dword ptr [esi], 0x877b74 */
+    /* 007910d8  mov dword ptr [esi], 0x877b74  ; vtable AIScriptSubroutine */
     ea = (uint32_t)(esi);
     M32(ea) = 0x877b74u;
     /* 007910de  push -1 */
@@ -159,21 +164,21 @@ void bfv_server_l1_body_007910d0(struct bfv_cpu *c)
     /* 007910eb  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 007910ee  mov eax, dword ptr [esp + 0x10] */
+    /* 007910ee  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 007910f2  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007910f3  call 0x401e20 */
+    /* 007910f3  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007910d0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007910f8  mov ecx, dword ptr [esp + 0xc] */
+    /* 007910f8  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 007910fc  mov dword ptr [esi + 0x20], ecx */

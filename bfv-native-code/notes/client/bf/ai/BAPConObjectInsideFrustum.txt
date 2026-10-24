@@ -1,0 +1,5 @@
+## file
+Plan condition: true when a target object lies inside a view frustum built from the bot's own object.
+
+## 009f70c0
+Needs a non-null bot. Resolves the target handle at this+8 and the bot's own object (bot slot 0xcc); fails if either is gone or this+0xc is nonzero. When the rebuild flag at this+0x1e4 is set it clears it and builds the frustum at this+0x10 through ref2_00a854b0 with near plane 0.01, aspect 1.0 and a field of view of 90 or 120 degrees (bit 18 of the flag word at +4 of the object from bot slot 0xb0 picks the wide one). The target position (slot 0x18) is then tested against that frustum with PatchTerrain_00721dc0.

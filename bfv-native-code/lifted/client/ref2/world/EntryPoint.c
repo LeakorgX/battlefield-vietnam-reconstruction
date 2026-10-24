@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006a7db0  dice::ref2::world::EntryPoint  (virtual method) */
+/* 006a7db0  EntryPoint::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::EntryPoint
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a7db0, bfv_client_l1_body_006a7db0);
 BFV_L1_RESUME(bfv_client_l1r_006a7db0_1, bfv_client_l1_body_006a7db0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006a7db0_2, bfv_client_l1_body_006a7db0, 2);
@@ -35,7 +38,7 @@ void bfv_client_l1_body_006a7db0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006a7dbb  jne 0x6a7dd6 */
     if (!zf) goto L_006a7dd6;
-    /* 006a7dbd  call 0x49a980 */
+    /* 006a7dbd  call 0x49a980  ; IObject_findPlayerControlObject */
     t = 0x0049a980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a7db0_1;
@@ -58,7 +61,7 @@ R_1:
     M32(esp) = t;
     /* 006a7dd1  mov ecx, esi */
     ecx = esi;
-    /* 006a7dd3  call dword ptr [eax + 0x28] */
+    /* 006a7dd3  call dword ptr [eax + 0x28]  ; -> EntryPoint::vf10 = Object::changeFlags */
     ea = (uint32_t)(eax + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -82,7 +85,102 @@ out: __attribute__((unused));
 }
 
 
-/* 006a7ed0  dice::ref2::world::EntryPoint  (virtual method) */
+/* 006a7e70  EntryPoint::EntryPoint  (vtable store)
+ * class: dice::ref2::world::EntryPoint
+ * called by: EntryPointTemplate::createObject
+ */
+BFV_L1_ENTRY(bfv_client_l1_006a7e70, bfv_client_l1_body_006a7e70);
+BFV_L1_RESUME(bfv_client_l1r_006a7e70_1, bfv_client_l1_body_006a7e70, 1);
+BFV_L1_RESUME(bfv_client_l1r_006a7e70_2, bfv_client_l1_body_006a7e70, 2);
+void bfv_client_l1_body_006a7e70(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 006a7e70  mov eax, dword ptr [esp + 4]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000004u);
+    eax = M32(ea);
+    /* 006a7e74  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006a7e75  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006a7e76  mov esi, ecx */
+    esi = ecx;
+    /* 006a7e78  call 0x66ced0  ; SimpleObject::SimpleObject */
+    t = 0x0066ced0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a7e70_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 006a7e7d  mov dword ptr [esi + 0x160], 0xb79bf0  ; vtable IEntryPointObject */
+    ea = (uint32_t)(esi + 0x00000160u);
+    M32(ea) = 0xb79bf0u;
+    /* 006a7e87  push 0 */
+    t = 0x0u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006a7e89  mov dword ptr [esi], 0xb95a2c  ; vtable EntryPoint */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0xb95a2cu;
+    /* 006a7e8f  mov dword ptr [esi + 0x84], 0xb95a14 */
+    ea = (uint32_t)(esi + 0x00000084u);
+    M32(ea) = 0xb95a14u;
+    /* 006a7e99  mov dword ptr [esi + 0x160], 0xb959f4 */
+    ea = (uint32_t)(esi + 0x00000160u);
+    M32(ea) = 0xb959f4u;
+    /* 006a7ea3  mov dword ptr [esi + 0x164], 1 */
+    ea = (uint32_t)(esi + 0x00000164u);
+    M32(ea) = 0x1u;
+    /* 006a7ead  push 0x800 */
+    t = 0x800u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006a7eb2  mov ecx, esi */
+    ecx = esi;
+    /* 006a7eb4  mov dword ptr [esi + 0x168], 0 */
+    ea = (uint32_t)(esi + 0x00000168u);
+    M32(ea) = 0x0u;
+    /* 006a7ebe  call 0x6843e0  ; Object::changeFlags */
+    t = 0x006843e0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006a7e70_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 006a7ec3  mov eax, esi */
+    eax = esi;
+    /* 006a7ec5  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 006a7ec6  ret 4 */
+    c->eip = M32(esp);
+    esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 006a7ed0  EntryPoint::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::EntryPoint
+ * also entered at 006a7f20: EntryPoint::vf56
+ */
 BFV_L1_ENTRY(bfv_client_l1_006a7ed0, bfv_client_l1_body_006a7ed0);
 void bfv_client_l1_body_006a7ed0(struct bfv_cpu *c)
 {
@@ -91,12 +189,12 @@ void bfv_client_l1_body_006a7ed0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006a7ed0  mov edx, dword ptr [0xb42718] */
+    /* 006a7ed0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 006a7ed6  mov eax, ecx */
     eax = ecx;
-    /* 006a7ed8  mov ecx, dword ptr [esp + 4] */
+    /* 006a7ed8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006a7edc  cmp ecx, edx */
@@ -106,7 +204,7 @@ void bfv_client_l1_body_006a7ed0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006a7ede  je 0x6a7f12 */
     if (zf) goto L_006a7f12;
-    /* 006a7ee0  cmp ecx, dword ptr [0xb77da0] */
+    /* 006a7ee0  cmp ecx, dword ptr [0xb77da0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00b77da0u);
     a = ecx;
     b = M32(ea);
@@ -114,7 +212,7 @@ void bfv_client_l1_body_006a7ed0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006a7ee6  je 0x6a7f12 */
     if (zf) goto L_006a7f12;
-    /* 006a7ee8  cmp ecx, dword ptr [0xb77d88] */
+    /* 006a7ee8  cmp ecx, dword ptr [0xb77d88]  ; interfaceID(EntryPoint|FreeCamera) */
     ea = (uint32_t)(0x00b77d88u);
     a = ecx;
     b = M32(ea);
@@ -138,7 +236,7 @@ void bfv_client_l1_body_006a7ed0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006a7efc:
-    /* 006a7efc  cmp ecx, dword ptr [0xbdb000] */
+    /* 006a7efc  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0078d970  dice::bf::ai::IPIMobileKnown  (virtual method) */
+/* 0078d970  IPIMobileKnown::vf8  (virtual method)
+ * class: dice::bf::ai::IPIMobileKnown
+ * called by: IPIMobileReal::vf8, IPIMobileKnown::vf2
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078d970, bfv_server_l1_body_0078d970);
 void bfv_server_l1_body_0078d970(struct bfv_cpu *c)
 {
@@ -31,7 +34,7 @@ void bfv_server_l1_body_0078d970(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_0078d97c:
-    /* 0078d97c  mov eax, dword ptr [esp + 4] */
+    /* 0078d97c  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0078d980  add ecx, 0x20 */
@@ -71,7 +74,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007be910  dice::bf::ai::IPIMobileKnown  (virtual method) */
+/* 007be910  IPIMobileKnown::vf2  (virtual method)
+ * overrides: InformationPlugIn::vf2  (10 classes implement it)
+ * class: dice::bf::ai::IPIMobileKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007be910, bfv_server_l1_body_007be910);
 BFV_L1_RESUME(bfv_server_l1r_007be910_1, bfv_server_l1_body_007be910, 1);
 BFV_L1_RESUME(bfv_server_l1r_007be910_2, bfv_server_l1_body_007be910, 2);
@@ -138,7 +144,7 @@ R_1:
     edi = eax;
     /* 007be927  mov ecx, edi */
     ecx = edi;
-    /* 007be929  call 0x78d9c0 */
+    /* 007be929  call 0x78d9c0  ; IPIMobileKnown::vf2_helper_0078d9c0 */
     t = 0x0078d9c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007be910_2;
@@ -167,7 +173,7 @@ R_2:
     M32(ea) = eax;
     /* 007be941  mov ecx, edi */
     ecx = edi;
-    /* 007be943  call 0x78d920 */
+    /* 007be943  call 0x78d920  ; IPIMobileKnown::vf2_helper_0078d920 */
     t = 0x0078d920u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007be910_3;
@@ -194,7 +200,7 @@ R_3:
     /* 007be958  mov dword ptr [ecx + 8], eax */
     ea = (uint32_t)(ecx + 0x00000008u);
     M32(ea) = eax;
-    /* 007be95b  mov ecx, dword ptr [esp + 0x10] */
+    /* 007be95b  mov ecx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 007be95f  mov dword ptr [esi + 0x30], ecx */
@@ -202,7 +208,7 @@ R_3:
     M32(ea) = ecx;
     /* 007be962  mov ecx, edi */
     ecx = edi;
-    /* 007be964  call 0x78d8d0 */
+    /* 007be964  call 0x78d8d0  ; ai_0078d8d0 */
     t = 0x0078d8d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007be910_4;
@@ -267,7 +273,7 @@ L_007be986:
 L_007be98d:
     /* 007be98d  mov ecx, edi */
     ecx = edi;
-    /* 007be98f  call 0x4b7d60 */
+    /* 007be98f  call 0x4b7d60  ; WrapperBase::vf12_get_18h */
     t = 0x004b7d60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007be910_7;
@@ -285,7 +291,7 @@ R_7:
     M32(esp) = t;
     /* 007be99b  mov ecx, edi */
     ecx = edi;
-    /* 007be99d  call 0x78d970 */
+    /* 007be99d  call 0x78d970  ; IPIMobileKnown::vf8 */
     t = 0x0078d970u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007be910_8;
@@ -318,7 +324,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007be9b0  dice::bf::ai::IPIMobileKnown  (virtual method) */
+/* 007be9b0  IPIMobileKnown::vf11  (virtual method)
+ * class: dice::bf::ai::IPIMobileKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007be9b0, bfv_server_l1_body_007be9b0);
 BFV_L1_RESUME(bfv_server_l1r_007be9b0_1, bfv_server_l1_body_007be9b0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007be9b0_2, bfv_server_l1_body_007be9b0, 2);
@@ -334,7 +342,7 @@ void bfv_server_l1_body_007be9b0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 007be9b0  mov eax, dword ptr [esp + 4] */
+    /* 007be9b0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 007be9b4  push esi */
@@ -343,7 +351,7 @@ void bfv_server_l1_body_007be9b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007be9b5  mov esi, ecx */
     esi = ecx;
-    /* 007be9b7  mov ecx, dword ptr [0xc314b0] */
+    /* 007be9b7  mov ecx, dword ptr [0xc314b0]  ; g_pIAITimer_00c314b0 */
     ea = (uint32_t)(0x00c314b0u);
     ecx = M32(ea);
     /* 007be9bd  mov edx, dword ptr [ecx] */
@@ -360,7 +368,7 @@ void bfv_server_l1_body_007be9b0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007be9c3  call dword ptr [edx + 4] */
+    /* 007be9c3  call dword ptr [edx + 4]  ; -> IAITimer::vf1 = BAPAComponentSoldierPose::get_ch (returns this+0xc) */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -374,10 +382,10 @@ R_1:
     M32(esp) = t;
     /* 007be9c7  mov ecx, esi */
     ecx = esi;
-    /* 007be9c9  fstp dword ptr [esp] */
+    /* 007be9c9  fstp dword ptr [esp]  ; var_c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007be9cc  call dword ptr [edi + 0x28] */
+    /* 007be9cc  call dword ptr [edi + 0x28]  ; -> IPIMobileKnown::vf10 */
     ea = (uint32_t)(edi + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -404,7 +412,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007be9e0  dice::bf::ai::IPIMobileKnown  (vtable store) */
+/* 007be9e0  IPIMobileKnown::IPIMobileKnown  (vtable store)
+ * class: dice::bf::ai::IPIMobileKnown
+ * called by: AIObjectMobile::createInformationPlugIn
+ */
 BFV_L1_ENTRY(bfv_server_l1_007be9e0, bfv_server_l1_body_007be9e0);
 void bfv_server_l1_body_007be9e0(struct bfv_cpu *c)
 {
@@ -417,7 +428,7 @@ void bfv_server_l1_body_007be9e0(struct bfv_cpu *c)
     eax = ecx;
     /* 007be9e2  mov ecx, 0xbf800000 */
     ecx = 0xbf800000u;
-    /* 007be9e7  mov dword ptr [eax], 0x87b73c */
+    /* 007be9e7  mov dword ptr [eax], 0x87b73c  ; vtable IPIMobileKnown */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87b73cu;
     /* 007be9ed  mov dword ptr [eax + 0x20], ecx */
@@ -429,7 +440,7 @@ void bfv_server_l1_body_007be9e0(struct bfv_cpu *c)
     /* 007be9f3  mov dword ptr [eax + 0x28], ecx */
     ea = (uint32_t)(eax + 0x00000028u);
     M32(ea) = ecx;
-    /* 007be9f6  mov ecx, dword ptr [esp + 4] */
+    /* 007be9f6  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007be9fa  mov dword ptr [eax + 4], ecx */
@@ -446,7 +457,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007bea20  dice::bf::ai::IPIMobileKnown  (virtual method) */
+/* 007bea20  IPIMobileKnown::deleting_dtor  (virtual method)
+ * overrides: InformationPlugIn::vf0  (10 classes implement it)
+ * class: dice::bf::ai::IPIMobileKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007bea20, bfv_server_l1_body_007bea20);
 BFV_L1_RESUME(bfv_server_l1r_007bea20_1, bfv_server_l1_body_007bea20, 1);
 void bfv_server_l1_body_007bea20(struct bfv_cpu *c)
@@ -460,7 +474,7 @@ void bfv_server_l1_body_007bea20(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007bea20  test byte ptr [esp + 4], 1 */
+    /* 007bea20  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -470,7 +484,7 @@ void bfv_server_l1_body_007bea20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007bea26  mov esi, ecx */
     esi = ecx;
-    /* 007bea28  mov dword ptr [esi], 0x877784 */
+    /* 007bea28  mov dword ptr [esi], 0x877784  ; vtable InformationPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0x877784u;
     /* 007bea2e  je 0x7bea3b */
@@ -479,9 +493,9 @@ void bfv_server_l1_body_007bea20(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007bea31  mov ecx, 0xc346b8 */
+    /* 007bea31  mov ecx, 0xc346b8  ; g_MemoryPoolNull_IPIMobileKnown */
     ecx = 0xc346b8u;
-    /* 007bea36  call 0x413600 */
+    /* 007bea36  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007bea20_1;
@@ -506,7 +520,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007bea50  dice::bf::ai::IPIMobileKnown  (virtual method) */
+/* 007bea50  IPIMobileKnown::vf7  (virtual method)
+ * class: dice::bf::ai::IPIMobileKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007bea50, bfv_server_l1_body_007bea50);
 void bfv_server_l1_body_007bea50(struct bfv_cpu *c)
 {
@@ -521,7 +537,7 @@ void bfv_server_l1_body_007bea50(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 007bea53  jmp 0x48c2b0 */
+    /* 007bea53  jmp 0x48c2b0  ; bfv_vector_length */
     c->eip = 0x0048c2b0u;
     goto out;
 out: __attribute__((unused));
@@ -531,7 +547,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007bea60  dice::bf::ai::IPIMobileKnown  (virtual method) */
+/* 007bea60  IPIMobileKnown::vf10  (virtual method)
+ * class: dice::bf::ai::IPIMobileKnown
+ */
 BFV_L1_ENTRY(bfv_server_l1_007bea60, bfv_server_l1_body_007bea60);
 BFV_L1_RESUME(bfv_server_l1r_007bea60_1, bfv_server_l1_body_007bea60, 1);
 BFV_L1_RESUME(bfv_server_l1r_007bea60_2, bfv_server_l1_body_007bea60, 2);
@@ -547,7 +565,7 @@ void bfv_server_l1_body_007bea60(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 007bea60  mov edx, dword ptr [esp + 4] */
+    /* 007bea60  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 007bea64  push esi */
@@ -581,27 +599,27 @@ R_1:
     /* 007bea71  fld dword ptr [edi + 0x30] */
     ea = (uint32_t)(edi + 0x00000030u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007bea74  fsub dword ptr [esp + 0xc] */
+    /* 007bea74  fsub dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007bea78  mov esi, dword ptr [esp + 0x10] */
+    /* 007bea78  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 007bea7c  fmulp st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfmulp st(1)\n\t.att_syntax prefix");
-    /* 007bea7e  fst dword ptr [esp + 0xc] */
+    /* 007bea7e  fst dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007bea82  fmul dword ptr [edi + 8] */
     ea = (uint32_t)(edi + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007bea85  fld dword ptr [esp + 0xc] */
+    /* 007bea85  fld dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007bea89  fmul dword ptr [edi + 0xc] */
     ea = (uint32_t)(edi + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007bea8c  fld dword ptr [esp + 0xc] */
+    /* 007bea8c  fld dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007bea90  fmul dword ptr [edi + 0x10] */

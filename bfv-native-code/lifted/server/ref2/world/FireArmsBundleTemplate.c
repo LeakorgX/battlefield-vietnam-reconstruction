@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005b6310  dice::ref2::world::FireArmsBundleTemplate  (vtable store) */
+/* 005b6310  FireArmsBundleTemplate::FireArmsBundleTemplate  (vtable store)
+ * class: dice::ref2::world::FireArmsBundleTemplate
+ * also entered at 005b6370: FireArmsBundleTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b6310, bfv_server_l1_body_005b6310);
 BFV_L1_RESUME(bfv_server_l1r_005b6310_1, bfv_server_l1_body_005b6310, 1);
 void bfv_server_l1_body_005b6310(struct bfv_cpu *c)
@@ -25,14 +28,14 @@ void bfv_server_l1_body_005b6310(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b6311  mov esi, ecx */
     esi = ecx;
-    /* 005b6313  call 0x5870c0 */
+    /* 005b6313  call 0x5870c0  ; BundleTemplate::BundleTemplate */
     t = 0x005870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b6310_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005b6318  mov dword ptr [esi], 0x841b0c */
+    /* 005b6318  mov dword ptr [esi], 0x841b0c  ; vtable FireArmsBundleTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x841b0cu;
     /* 005b631e  mov dword ptr [esi + 0x74], 0x841b00 */
@@ -41,19 +44,19 @@ R_1:
     /* 005b6325  mov dword ptr [esi + 0x190], 0x841ad4 */
     ea = (uint32_t)(esi + 0x00000190u);
     M32(ea) = 0x841ad4u;
-    /* 005b632f  mov dword ptr [esi + 0x1ac], 8 */
+    /* 005b632f  mov dword ptr [esi + 0x1ac], 8  ; field ObjectTemplate.inputFire */
     ea = (uint32_t)(esi + 0x000001acu);
     M32(ea) = 0x8u;
-    /* 005b6339  mov dword ptr [esi + 0x1b0], 9 */
+    /* 005b6339  mov dword ptr [esi + 0x1b0], 9  ; field ObjectTemplate.inputReload */
     ea = (uint32_t)(esi + 0x000001b0u);
     M32(ea) = 0x9u;
-    /* 005b6343  mov dword ptr [esi + 0x1b4], 0x41200000 */
+    /* 005b6343  mov dword ptr [esi + 0x1b4], 0x41200000  ; field ObjectTemplate.roundOfFire, 10.0f */
     ea = (uint32_t)(esi + 0x000001b4u);
     M32(ea) = 0x41200000u;
-    /* 005b634d  mov dword ptr [esi + 0x1b8], 0x3f800000 */
+    /* 005b634d  mov dword ptr [esi + 0x1b8], 0x3f800000  ; field ObjectTemplate.reloadTime, 1.0f */
     ea = (uint32_t)(esi + 0x000001b8u);
     M32(ea) = 0x3f800000u;
-    /* 005b6357  mov dword ptr [esi + 0x1bc], 0x40400000 */
+    /* 005b6357  mov dword ptr [esi + 0x1bc], 0x40400000  ; field ObjectTemplate.numOfMag, 3.0f */
     ea = (uint32_t)(esi + 0x000001bcu);
     M32(ea) = 0x40400000u;
     /* 005b6361  mov byte ptr [esi + 0x1c0], 0 */
@@ -76,7 +79,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b6380  dice::ref2::world::FireArmsBundleTemplate  (virtual method) */
+/* 005b6380  FireArmsBundleTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::FireArmsBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b6380, bfv_server_l1_body_005b6380);
 void bfv_server_l1_body_005b6380(struct bfv_cpu *c)
 {
@@ -85,10 +91,10 @@ void bfv_server_l1_body_005b6380(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005b6380  mov eax, dword ptr [esp + 4] */
+    /* 005b6380  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005b6384  cmp eax, dword ptr [0x8207a8] */
+    /* 005b6384  cmp eax, dword ptr [0x8207a8]  ; FireArmsBundleTemplate::classID */
     ea = (uint32_t)(0x008207a8u);
     a = eax;
     b = M32(ea);
@@ -103,10 +109,10 @@ void bfv_server_l1_body_005b6380(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005b6391:
-    /* 005b6391  mov dword ptr [esp + 4], eax */
+    /* 005b6391  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005b6395  jmp 0x586630 */
+    /* 005b6395  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -116,7 +122,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b6580  dice::ref2::world::FireArmsBundleTemplate  (virtual method) */
+/* 005b6580  FireArmsBundleTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::FireArmsBundleTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b6580, bfv_server_l1_body_005b6580);
 BFV_L1_RESUME(bfv_server_l1r_005b6580_1, bfv_server_l1_body_005b6580, 1);
 BFV_L1_RESUME(bfv_server_l1r_005b6580_2, bfv_server_l1_body_005b6580, 2);
@@ -142,7 +151,7 @@ void bfv_server_l1_body_005b6580(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b6586  mov esi, ecx */
     esi = ecx;
-    /* 005b6588  call 0x403d80 */
+    /* 005b6588  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b6580_1;
@@ -166,7 +175,7 @@ R_1:
     M32(esp) = t;
     /* 005b6595  mov ecx, eax */
     ecx = eax;
-    /* 005b6597  call 0x5b6500 */
+    /* 005b6597  call 0x5b6500  ; FireArmsBundle::FireArmsBundle */
     t = 0x005b6500u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b6580_2;

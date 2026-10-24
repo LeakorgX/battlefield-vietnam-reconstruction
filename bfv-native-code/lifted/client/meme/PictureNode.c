@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 008737e0  dice::meme::PictureNode  (virtual method)
- * strings: "Picture" */
+/* 008737e0  PictureNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::PictureNode
+ * strings: "Picture"
+ */
 BFV_L1_ENTRY(bfv_client_l1_008737e0, bfv_client_l1_body_008737e0);
 BFV_L1_RESUME(bfv_client_l1r_008737e0_1, bfv_client_l1_body_008737e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008737e0_2, bfv_client_l1_body_008737e0, 2);
@@ -26,7 +29,7 @@ void bfv_client_l1_body_008737e0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008737e1  mov ebx, dword ptr [esp + 8] */
+    /* 008737e1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 008737e5  push esi */
@@ -37,7 +40,7 @@ void bfv_client_l1_body_008737e0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008737e7  mov edi, dword ptr [esp + 0x14] */
+    /* 008737e7  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 008737eb  push edi */
@@ -50,7 +53,7 @@ void bfv_client_l1_body_008737e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008737ed  mov esi, ecx */
     esi = ecx;
-    /* 008737ef  call 0x873f50 */
+    /* 008737ef  call 0x873f50  ; Node::serialize */
     t = 0x00873f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008737e0_1;
@@ -82,11 +85,11 @@ L_008737fe:
     /* 008737fe  mov eax, dword ptr [edi] */
     ea = (uint32_t)(edi);
     eax = M32(ea);
-    /* 00873800  push 0xb6af68 */
+    /* 00873800  push 0xb6af68  ; "Picture" */
     t = 0xb6af68u;
     esp -= 4;
     M32(esp) = t;
-    /* 00873805  add esi, 0xc */
+    /* 00873805  add esi, 0xc  ; field Picture (serialized) */
     a = esi;
     b = 0xcu;
     r = (a + b) & 0xffffffffu;
@@ -138,7 +141,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00873820  (between same file) */
+/* 00873820  ClassTemplate<PictureNode,Node>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873820, bfv_client_l1_body_00873820);
 void bfv_client_l1_body_00873820(struct bfv_cpu *c)
 {
@@ -164,7 +168,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00873830  (between same file) */
+/* 00873830  ClassTemplate<PictureNode,Node>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873830, bfv_client_l1_body_00873830);
 void bfv_client_l1_body_00873830(struct bfv_cpu *c)
 {
@@ -190,7 +195,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00873850  dice::meme::PictureNode  (vtable store) */
+/* 00873850  PictureNode::PictureNode  (vtable store)
+ * class: dice::meme::PictureNode
+ * called by: sub_mouse_s2_tga_0048fef0, sub_mouse_s2_tga_00490e10
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873850, bfv_client_l1_body_00873850);
 BFV_L1_RESUME(bfv_client_l1r_00873850_1, bfv_client_l1_body_00873850, 1);
 void bfv_client_l1_body_00873850(struct bfv_cpu *c)
@@ -210,20 +218,20 @@ void bfv_client_l1_body_00873850(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00873851  mov esi, ecx */
     esi = ecx;
-    /* 00873853  call 0x873d90 */
+    /* 00873853  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00873850_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00873858  mov eax, dword ptr [esp + 8] */
+    /* 00873858  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 0087385c  mov dword ptr [esi + 0xc], eax */
+    /* 0087385c  mov dword ptr [esi + 0xc], eax  ; field Picture */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = eax;
-    /* 0087385f  mov dword ptr [esi], 0xbd654c */
+    /* 0087385f  mov dword ptr [esi], 0xbd654c  ; vtable PictureNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd654cu;
     /* 00873865  mov eax, esi */
@@ -243,7 +251,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00873870  dice::meme::PictureNode  (vtable store) */
+/* 00873870  PictureNode::create  (vtable store)
+ * class: dice::meme::PictureNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873870, bfv_client_l1_body_00873870);
 BFV_L1_RESUME(bfv_client_l1r_00873870_1, bfv_client_l1_body_00873870, 1);
 BFV_L1_RESUME(bfv_client_l1r_00873870_2, bfv_client_l1_body_00873870, 2);
@@ -267,7 +277,7 @@ void bfv_client_l1_body_00873870(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00873873  call 0x403610 */
+    /* 00873873  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00873870_1;
@@ -289,14 +299,14 @@ R_1:
     if (zf) goto L_00873899;
     /* 00873881  mov ecx, esi */
     ecx = esi;
-    /* 00873883  call 0x873d90 */
+    /* 00873883  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00873870_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00873888  mov dword ptr [esi], 0xbd654c */
+    /* 00873888  mov dword ptr [esi], 0xbd654c  ; vtable PictureNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd654cu;
     /* 0087388e  mov dword ptr [esi + 0xc], 0 */
@@ -332,8 +342,11 @@ out: __attribute__((unused));
 }
 
 
-/* 008738a0  dice::meme::PictureNode  (virtual method)
- * strings: "dice::meme::PictureNode" */
+/* 008738a0  PictureNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::PictureNode
+ * strings: "dice::meme::PictureNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_008738a0, bfv_client_l1_body_008738a0);
 BFV_L1_RESUME(bfv_client_l1r_008738a0_1, bfv_client_l1_body_008738a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008738a0_2, bfv_client_l1_body_008738a0, 2);
@@ -364,13 +377,13 @@ void bfv_client_l1_body_008738a0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 008738b5  push 0xbd661c */
+    /* 008738b5  push 0xbd661c  ; "dice::meme::PictureNode" */
     t = 0xbd661cu;
     esp -= 4;
     M32(esp) = t;
-    /* 008738ba  mov ecx, 0xdf6838 */
+    /* 008738ba  mov ecx, 0xdf6838  ; g_RuntimeClass_PictureNode */
     ecx = 0xdf6838u;
-    /* 008738bf  call 0x875490 */
+    /* 008738bf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008738a0_1;
@@ -381,10 +394,10 @@ R_1:
     t = 0xb3aed0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008738c9  mov dword ptr [0xdf6838], 0xbd6528 */
+    /* 008738c9  mov dword ptr [0xdf6838], 0xbd6528  ; g_RuntimeClass_PictureNode */
     ea = (uint32_t)(0x00df6838u);
     M32(ea) = 0xbd6528u;
-    /* 008738d3  call 0x7c2cd2 */
+    /* 008738d3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008738a0_2;
@@ -398,7 +411,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_008738db:
-    /* 008738db  mov eax, 0xdf6838 */
+    /* 008738db  mov eax, 0xdf6838  ; g_RuntimeClass_PictureNode */
     eax = 0xdf6838u;
     /* 008738e0  ret */
     c->eip = M32(esp);

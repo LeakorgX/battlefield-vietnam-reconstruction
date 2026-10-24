@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00569220  dice::meme::BfListBoxNode  (vtable store) */
+/* 00569220  BfListBoxNode::create  (vtable store)
+ * class: dice::meme::BfListBoxNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00569220, bfv_client_l1_body_00569220);
 BFV_L1_RESUME(bfv_client_l1r_00569220_1, bfv_client_l1_body_00569220, 1);
 BFV_L1_RESUME(bfv_client_l1r_00569220_2, bfv_client_l1_body_00569220, 2);
@@ -29,7 +31,7 @@ void bfv_client_l1_body_00569220(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00569223  call 0x403610 */
+    /* 00569223  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00569220_1;
@@ -51,14 +53,14 @@ R_1:
     if (zf) goto L_00569242;
     /* 00569231  mov ecx, esi */
     ecx = esi;
-    /* 00569233  call 0x873d90 */
+    /* 00569233  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00569220_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00569238  mov dword ptr [esi], 0xb6d28c */
+    /* 00569238  mov dword ptr [esi], 0xb6d28c  ; vtable BfListBoxNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb6d28cu;
     /* 0056923e  mov eax, esi */
@@ -91,8 +93,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00569250  dice::meme::BfListBoxNode  (virtual method)
- * strings: "dice::meme::BfListBoxNode" */
+/* 00569250  BfListBoxNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BfListBoxNode
+ * strings: "dice::meme::BfListBoxNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00569250, bfv_client_l1_body_00569250);
 BFV_L1_RESUME(bfv_client_l1r_00569250_1, bfv_client_l1_body_00569250, 1);
 BFV_L1_RESUME(bfv_client_l1r_00569250_2, bfv_client_l1_body_00569250, 2);
@@ -123,13 +128,13 @@ void bfv_client_l1_body_00569250(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00569265  push 0xb6d35c */
+    /* 00569265  push 0xb6d35c  ; "dice::meme::BfListBoxNode" */
     t = 0xb6d35cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0056926a  mov ecx, 0xd73734 */
+    /* 0056926a  mov ecx, 0xd73734  ; g_RuntimeClass_BfListBoxNode */
     ecx = 0xd73734u;
-    /* 0056926f  call 0x875490 */
+    /* 0056926f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00569250_1;
@@ -140,10 +145,10 @@ R_1:
     t = 0xb30330u;
     esp -= 4;
     M32(esp) = t;
-    /* 00569279  mov dword ptr [0xd73734], 0xb6d1f8 */
+    /* 00569279  mov dword ptr [0xd73734], 0xb6d1f8  ; g_RuntimeClass_BfListBoxNode */
     ea = (uint32_t)(0x00d73734u);
     M32(ea) = 0xb6d1f8u;
-    /* 00569283  call 0x7c2cd2 */
+    /* 00569283  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00569250_2;
@@ -157,7 +162,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0056928b:
-    /* 0056928b  mov eax, 0xd73734 */
+    /* 0056928b  mov eax, 0xd73734  ; g_RuntimeClass_BfListBoxNode */
     eax = 0xd73734u;
     /* 00569290  ret */
     c->eip = M32(esp);

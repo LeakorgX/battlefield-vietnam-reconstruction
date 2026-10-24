@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00593f20  (called from this file only) */
+/* 00593f20  DecalManager_helper_00593f20  (called from this file only)
+ * called by: std::list::_Buynode_12_00594100
+ */
 BFV_L1_ENTRY(bfv_server_l1_00593f20, bfv_server_l1_body_00593f20);
 BFV_L1_RESUME(bfv_server_l1r_00593f20_1, bfv_server_l1_body_00593f20, 1);
 void bfv_server_l1_body_00593f20(struct bfv_cpu *c)
@@ -19,10 +21,10 @@ void bfv_server_l1_body_00593f20(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00593f20  mov eax, dword ptr [esp + 4] */
+    /* 00593f20  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 00593f24  mov edx, dword ptr [esp + 0xc] */
+    /* 00593f24  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00593f28  push esi */
@@ -31,7 +33,7 @@ void bfv_server_l1_body_00593f20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00593f29  mov esi, ecx */
     esi = ecx;
-    /* 00593f2b  mov ecx, dword ptr [esp + 0xc] */
+    /* 00593f2b  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00593f2f  mov dword ptr [esi], eax */
@@ -80,162 +82,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00593f50  (called from this file only) */
-BFV_L1_ENTRY(bfv_server_l1_00593f50, bfv_server_l1_body_00593f50);
-BFV_L1_RESUME(bfv_server_l1r_00593f50_1, bfv_server_l1_body_00593f50, 1);
-void bfv_server_l1_body_00593f50(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    default: break;
-    }
-    /* 00593f50  push ebp */
-    t = ebp;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00593f51  mov ebp, esp */
-    ebp = esp;
-    /* 00593f53  push -1 */
-    t = 0xffffffffu;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00593f55  push 0x7e1f90 */
-    t = 0x7e1f90u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00593f5a  mov eax, dword ptr fs:[0] */
-    ea = (uint32_t)(0x00000000u);
-    eax = bfv_fs_read32(ea);
-    /* 00593f60  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00593f61  mov dword ptr fs:[0], esp */
-    ea = (uint32_t)(0x00000000u);
-    bfv_fs_write32(ea, esp);
-    /* 00593f68  sub esp, 0x1c */
-    a = esp;
-    b = 0x1cu;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    esp = r;
-    /* 00593f6b  push ebx */
-    t = ebx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00593f6c  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00593f6d  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00593f6e  mov dword ptr [ebp - 0x10], esp */
-    ea = (uint32_t)(ebp + 0xfffffff0u);
-    M32(ea) = esp;
-    /* 00593f71  push 0x70 */
-    t = 0x70u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00593f73  call 0x403d80 */
-    t = 0x00403d80u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00593f50_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 00593f78  add esp, 4 */
-    a = esp;
-    b = 0x4u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-    /* 00593f7b  mov dword ptr [ebp - 0x14], eax */
-    ea = (uint32_t)(ebp + 0xffffffecu);
-    M32(ea) = eax;
-    /* 00593f7e  mov dword ptr [ebp - 4], 0 */
-    ea = (uint32_t)(ebp + 0xfffffffcu);
-    M32(ea) = 0x0u;
-    /* 00593f85  mov dword ptr [ebp - 0x18], eax */
-    ea = (uint32_t)(ebp + 0xffffffe8u);
-    M32(ea) = eax;
-    /* 00593f88  mov dword ptr [ebp - 0x1c], eax */
-    ea = (uint32_t)(ebp + 0xffffffe4u);
-    M32(ea) = eax;
-    /* 00593f8b  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 00593f8d  je 0x593f91 */
-    if (zf) goto L_00593f91;
-    /* 00593f8f  mov dword ptr [eax], eax */
-    ea = (uint32_t)(eax);
-    M32(ea) = eax;
-L_00593f91:
-    /* 00593f91  mov dword ptr [ebp - 0x20], 1 */
-    ea = (uint32_t)(ebp + 0xffffffe0u);
-    M32(ea) = 0x1u;
-    /* 00593f98  lea ecx, [eax + 4] */
-    ecx = (uint32_t)(eax + 0x00000004u);
-    /* 00593f9b  mov dword ptr [ebp - 0x24], ecx */
-    ea = (uint32_t)(ebp + 0xffffffdcu);
-    M32(ea) = ecx;
-    /* 00593f9e  mov dword ptr [ebp - 0x28], ecx */
-    ea = (uint32_t)(ebp + 0xffffffd8u);
-    M32(ea) = ecx;
-    /* 00593fa1  test ecx, ecx */
-    r = (ecx & ecx) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 00593fa3  je 0x593fa7 */
-    if (zf) goto L_00593fa7;
-    /* 00593fa5  mov dword ptr [ecx], eax */
-    ea = (uint32_t)(ecx);
-    M32(ea) = eax;
-L_00593fa7:
-    /* 00593fa7  mov dword ptr [ebp - 4], 0xffffffff */
-    ea = (uint32_t)(ebp + 0xfffffffcu);
-    M32(ea) = 0xffffffffu;
-    /* 00593fae  mov ecx, dword ptr [ebp - 0xc] */
-    ea = (uint32_t)(ebp + 0xfffffff4u);
-    ecx = M32(ea);
-    /* 00593fb1  mov dword ptr fs:[0], ecx */
-    ea = (uint32_t)(0x00000000u);
-    bfv_fs_write32(ea, ecx);
-    /* 00593fb8  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 00593fb9  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 00593fba  pop ebx */
-    t = M32(esp);
-    esp += 4;
-    ebx = t;
-    /* 00593fbb  mov esp, ebp */
-    esp = ebp;
-    /* 00593fbd  pop ebp */
-    t = M32(esp);
-    esp += 4;
-    ebp = t;
-    /* 00593fbe  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 00593fe0  (called from this file only) */
+/* 00593fe0  std::list::_Buyheadnode_12_00593fe0  (called from this file only)
+ * called by: DecalManager::DecalManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_00593fe0, bfv_server_l1_body_00593fe0);
 BFV_L1_RESUME(bfv_server_l1r_00593fe0_1, bfv_server_l1_body_00593fe0, 1);
 void bfv_server_l1_body_00593fe0(struct bfv_cpu *c)
@@ -291,14 +140,14 @@ void bfv_server_l1_body_00593fe0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00593ffe  mov dword ptr [ebp - 0x10], esp */
+    /* 00593ffe  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 00594001  push 0xc */
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00594003  call 0x403d80 */
+    /* 00594003  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00593fe0_1;
@@ -311,16 +160,16 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 0059400b  mov dword ptr [ebp - 0x14], eax */
+    /* 0059400b  mov dword ptr [ebp - 0x14], eax  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = eax;
-    /* 0059400e  mov dword ptr [ebp - 4], 0 */
+    /* 0059400e  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
-    /* 00594015  mov dword ptr [ebp - 0x18], eax */
+    /* 00594015  mov dword ptr [ebp - 0x18], eax  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = eax;
-    /* 00594018  mov dword ptr [ebp - 0x1c], eax */
+    /* 00594018  mov dword ptr [ebp - 0x1c], eax  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = eax;
     /* 0059401b  test eax, eax */
@@ -332,15 +181,15 @@ R_1:
     ea = (uint32_t)(eax);
     M32(ea) = eax;
 L_00594021:
-    /* 00594021  mov dword ptr [ebp - 0x20], 1 */
+    /* 00594021  mov dword ptr [ebp - 0x20], 1  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = 0x1u;
     /* 00594028  lea ecx, [eax + 4] */
     ecx = (uint32_t)(eax + 0x00000004u);
-    /* 0059402b  mov dword ptr [ebp - 0x24], ecx */
+    /* 0059402b  mov dword ptr [ebp - 0x24], ecx  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = ecx;
-    /* 0059402e  mov dword ptr [ebp - 0x28], ecx */
+    /* 0059402e  mov dword ptr [ebp - 0x28], ecx  ; var_2c */
     ea = (uint32_t)(ebp + 0xffffffd8u);
     M32(ea) = ecx;
     /* 00594031  test ecx, ecx */
@@ -352,10 +201,10 @@ L_00594021:
     ea = (uint32_t)(ecx);
     M32(ea) = eax;
 L_00594037:
-    /* 00594037  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 00594037  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
-    /* 0059403e  mov ecx, dword ptr [ebp - 0xc] */
+    /* 0059403e  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 00594041  mov dword ptr fs:[0], ecx */
@@ -390,7 +239,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00594100  (called from this file only) */
+/* 00594100  std::list::_Buynode_12_00594100  (called from this file only)
+ * called by: DecalManager::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_00594100, bfv_server_l1_body_00594100);
 BFV_L1_RESUME(bfv_server_l1r_00594100_1, bfv_server_l1_body_00594100, 1);
 BFV_L1_RESUME(bfv_server_l1r_00594100_2, bfv_server_l1_body_00594100, 2);
@@ -448,14 +299,14 @@ void bfv_server_l1_body_00594100(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0059411e  mov dword ptr [ebp - 0x10], esp */
+    /* 0059411e  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 00594121  push 0xc */
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00594123  call 0x403d80 */
+    /* 00594123  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00594100_1;
@@ -470,13 +321,13 @@ R_1:
     esp = r;
     /* 0059412b  mov esi, eax */
     esi = eax;
-    /* 0059412d  mov dword ptr [ebp - 0x14], esi */
+    /* 0059412d  mov dword ptr [ebp - 0x14], esi  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = esi;
-    /* 00594130  mov dword ptr [ebp - 4], 0 */
+    /* 00594130  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
-    /* 00594137  mov dword ptr [ebp - 0x18], esi */
+    /* 00594137  mov dword ptr [ebp - 0x18], esi  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = esi;
     /* 0059413a  test esi, esi */
@@ -484,21 +335,21 @@ R_1:
     F_LOGIC(32, r);
     /* 0059413c  je 0x594151 */
     if (zf) goto L_00594151;
-    /* 0059413e  mov eax, dword ptr [ebp + 0x10] */
+    /* 0059413e  mov eax, dword ptr [ebp + 0x10]  ; arg_8 */
     ea = (uint32_t)(ebp + 0x00000010u);
     eax = M32(ea);
     /* 00594141  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00594142  mov ecx, dword ptr [ebp + 0xc] */
+    /* 00594142  mov ecx, dword ptr [ebp + 0xc]  ; arg_4 */
     ea = (uint32_t)(ebp + 0x0000000cu);
     ecx = M32(ea);
     /* 00594145  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00594146  mov edx, dword ptr [ebp + 8] */
+    /* 00594146  mov edx, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     edx = M32(ea);
     /* 00594149  push edx */
@@ -507,7 +358,7 @@ R_1:
     M32(esp) = t;
     /* 0059414a  mov ecx, esi */
     ecx = esi;
-    /* 0059414c  call 0x593f20 */
+    /* 0059414c  call 0x593f20  ; DecalManager_helper_00593f20 */
     t = 0x00593f20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00594100_2;
@@ -515,12 +366,12 @@ R_1:
     goto out;
 R_2:
 L_00594151:
-    /* 00594151  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 00594151  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 00594158  mov eax, esi */
     eax = esi;
-    /* 0059415a  mov ecx, dword ptr [ebp - 0xc] */
+    /* 0059415a  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 0059415d  mov dword ptr fs:[0], ecx */
@@ -555,7 +406,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00594190  (called from this file only) */
+/* 00594190  DecalManager::vf0_helper_00594190  (called from this file only)
+ * called by: DecalManager::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_00594190, bfv_server_l1_body_00594190);
 BFV_L1_RESUME(bfv_server_l1r_00594190_1, bfv_server_l1_body_00594190, 1);
 BFV_L1_RESUME(bfv_server_l1r_00594190_2, bfv_server_l1_body_00594190, 2);
@@ -641,7 +494,7 @@ L_005941be:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005941bf  call 0x403df0 */
+    /* 005941bf  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00594190_2;
@@ -690,90 +543,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005941e0  (called from this file only) */
-BFV_L1_ENTRY(bfv_server_l1_005941e0, bfv_server_l1_body_005941e0);
-BFV_L1_RESUME(bfv_server_l1r_005941e0_1, bfv_server_l1_body_005941e0, 1);
-void bfv_server_l1_body_005941e0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    default: break;
-    }
-    /* 005941e0  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005941e1  mov esi, ecx */
-    esi = ecx;
-    /* 005941e3  mov dword ptr [esi + 4], 0x83d1ac */
-    ea = (uint32_t)(esi + 0x00000004u);
-    M32(ea) = 0x83d1acu;
-    /* 005941ea  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 005941eb  mov dword ptr [esi], 0x83d1e4 */
-    ea = (uint32_t)(esi);
-    M32(ea) = 0x83d1e4u;
-    /* 005941f1  mov dword ptr [esi + 4], 0x83d1c8 */
-    ea = (uint32_t)(esi + 0x00000004u);
-    M32(ea) = 0x83d1c8u;
-    /* 005941f8  lea edi, [esi + 0x10] */
-    edi = (uint32_t)(esi + 0x00000010u);
-    /* 005941fb  mov dword ptr [esi + 8], 1 */
-    ea = (uint32_t)(esi + 0x00000008u);
-    M32(ea) = 0x1u;
-    /* 00594202  mov ecx, edi */
-    ecx = edi;
-    /* 00594204  mov dword ptr [esi + 0xc], 0 */
-    ea = (uint32_t)(esi + 0x0000000cu);
-    M32(ea) = 0x0u;
-    /* 0059420b  call 0x593f50 */
-    t = 0x00593f50u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005941e0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 00594210  mov dword ptr [edi + 4], eax */
-    ea = (uint32_t)(edi + 0x00000004u);
-    M32(ea) = eax;
-    /* 00594213  mov eax, dword ptr [esp + 0xc] */
-    ea = (uint32_t)(esp + 0x0000000cu);
-    eax = M32(ea);
-    /* 00594217  mov dword ptr [edi + 8], 0 */
-    ea = (uint32_t)(edi + 0x00000008u);
-    M32(ea) = 0x0u;
-    /* 0059421e  mov dword ptr [esi + 0x1c], eax */
-    ea = (uint32_t)(esi + 0x0000001cu);
-    M32(ea) = eax;
-    /* 00594221  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 00594222  mov eax, esi */
-    eax = esi;
-    /* 00594224  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 00594225  ret 4 */
-    c->eip = M32(esp);
-    esp += 8;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 00594370  dice::ref2::world::DecalManager  (vtable store) */
+/* 00594370  DecalManager::DecalManager  (vtable store)
+ * class: dice::ref2::world::DecalManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_00594370, bfv_server_l1_body_00594370);
 BFV_L1_RESUME(bfv_server_l1r_00594370_1, bfv_server_l1_body_00594370, 1);
 void bfv_server_l1_body_00594370(struct bfv_cpu *c)
@@ -799,7 +571,7 @@ void bfv_server_l1_body_00594370(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00594374  lea edi, [esi + 8] */
     edi = (uint32_t)(esi + 0x00000008u);
-    /* 00594377  mov dword ptr [esi], 0x83d204 */
+    /* 00594377  mov dword ptr [esi], 0x83d204  ; vtable DecalManager */
     ea = (uint32_t)(esi);
     M32(ea) = 0x83d204u;
     /* 0059437d  mov ecx, edi */
@@ -807,7 +579,7 @@ void bfv_server_l1_body_00594370(struct bfv_cpu *c)
     /* 0059437f  mov dword ptr [esi + 4], 1 */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = 0x1u;
-    /* 00594386  call 0x593fe0 */
+    /* 00594386  call 0x593fe0  ; std::list::_Buyheadnode_12_00593fe0 */
     t = 0x00593fe0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00594370_1;
@@ -824,7 +596,7 @@ R_1:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 00594396  mov dword ptr [0xc0dbf8], esi */
+    /* 00594396  mov dword ptr [0xc0dbf8], esi  ; g_pDecalManager_00c0dbf8 */
     ea = (uint32_t)(0x00c0dbf8u);
     M32(ea) = esi;
     /* 0059439c  mov eax, esi */
@@ -844,7 +616,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005943a0  dice::ref2::world::DecalManager  (virtual method) */
+/* 005943a0  DecalManager::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::world::DecalManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005943a0, bfv_server_l1_body_005943a0);
 void bfv_server_l1_body_005943a0(struct bfv_cpu *c)
 {
@@ -853,12 +628,12 @@ void bfv_server_l1_body_005943a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 005943a0  mov edx, dword ptr [0x807430] */
+    /* 005943a0  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 005943a6  mov eax, ecx */
     eax = ecx;
-    /* 005943a8  mov ecx, dword ptr [esp + 4] */
+    /* 005943a8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005943ac  cmp ecx, edx */
@@ -911,7 +686,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005943d0  dice::ref2::world::DecalManager  (virtual method) */
+/* 005943d0  DecalManager::vf0  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::world::DecalManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005943d0, bfv_server_l1_body_005943d0);
 BFV_L1_RESUME(bfv_server_l1r_005943d0_1, bfv_server_l1_body_005943d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005943d0_2, bfv_server_l1_body_005943d0, 2);
@@ -941,15 +719,15 @@ void bfv_server_l1_body_005943d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005943d4  lea edi, [esi + 8] */
     edi = (uint32_t)(esi + 0x00000008u);
-    /* 005943d7  mov dword ptr [esi], 0x83d204 */
+    /* 005943d7  mov dword ptr [esi], 0x83d204  ; vtable DecalManager */
     ea = (uint32_t)(esi);
     M32(ea) = 0x83d204u;
     /* 005943dd  mov ecx, edi */
     ecx = edi;
-    /* 005943df  mov dword ptr [0xc0dbf8], 0 */
+    /* 005943df  mov dword ptr [0xc0dbf8], 0  ; g_pDecalManager_00c0dbf8 */
     ea = (uint32_t)(0x00c0dbf8u);
     M32(ea) = 0x0u;
-    /* 005943e9  call 0x594190 */
+    /* 005943e9  call 0x594190  ; DecalManager::vf0_helper_00594190 */
     t = 0x00594190u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005943d0_1;
@@ -963,14 +741,14 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005943f2  call 0x403df0 */
+    /* 005943f2  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005943d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005943f7  mov al, byte ptr [esp + 0x10] */
+    /* 005943f7  mov al, byte ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     SET8L(eax, M8(ea));
     /* 005943fb  add esp, 4 */
@@ -985,7 +763,7 @@ R_2:
     /* 00594400  mov dword ptr [edi + 4], 0 */
     ea = (uint32_t)(edi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 00594407  mov dword ptr [esi], 0x807464 */
+    /* 00594407  mov dword ptr [esi], 0x807464  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0x807464u;
     /* 0059440d  je 0x594418 */
@@ -994,7 +772,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00594410  call 0x403df0 */
+    /* 00594410  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005943d0_3;
@@ -1029,7 +807,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00594670  dice::ref2::world::DecalManager  (virtual method) */
+/* 00594670  DecalManager::vf4  (virtual method)
+ * class: dice::ref2::world::DecalManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_00594670, bfv_server_l1_body_00594670);
 BFV_L1_RESUME(bfv_server_l1r_00594670_1, bfv_server_l1_body_00594670, 1);
 BFV_L1_RESUME(bfv_server_l1r_00594670_2, bfv_server_l1_body_00594670, 2);
@@ -1069,7 +849,7 @@ void bfv_server_l1_body_00594670(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00594675  mov esi, ecx */
     esi = ecx;
-    /* 00594677  call 0x403d80 */
+    /* 00594677  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00594670_1;
@@ -1093,7 +873,7 @@ R_1:
     M32(esp) = t;
     /* 00594684  mov ecx, eax */
     ecx = eax;
-    /* 00594686  call 0x5941e0 */
+    /* 00594686  call 0x5941e0  ; DecalEmitter::DecalEmitter */
     t = 0x005941e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00594670_2;
@@ -1130,7 +910,7 @@ L_00594691:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esi = r;
-    /* 0059469c  lea eax, [esp + 0x10] */
+    /* 0059469c  lea eax, [esp + 0x10]  ; &var_4 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 005946a0  push eax */
     t = eax;
@@ -1146,10 +926,10 @@ L_00594691:
     M32(esp) = t;
     /* 005946a3  mov ecx, esi */
     ecx = esi;
-    /* 005946a5  mov dword ptr [esp + 0x1c], ebp */
+    /* 005946a5  mov dword ptr [esp + 0x1c], ebp  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = ebp;
-    /* 005946a9  call 0x594100 */
+    /* 005946a9  call 0x594100  ; std::list::_Buynode_12_00594100 */
     t = 0x00594100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00594670_3;
@@ -1164,7 +944,7 @@ R_3:
     ecx = esi;
     /* 005946b2  mov ebx, eax */
     ebx = eax;
-    /* 005946b4  call 0x5c8050 */
+    /* 005946b4  call 0x5c8050  ; PortalManager_std_list_insert_005c8050 */
     t = 0x005c8050u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00594670_4;

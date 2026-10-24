@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00739330  (source path)
- * strings: "c:\bfv_code\main\battlefield\aibotbehaviourpattern\BBPGot...", "false" */
+/* 00739330  BBPGotoWaypoint::deleting_dtor  (source path)
+ * overrides: BBPPattern::vf4  (33 classes implement it)
+ * class: dice::bf::ai::BBPGotoWaypoint
+ * strings: "c:\bfv_code\main\battlefield\aibotbehaviourpattern\BBPGot...", "false"
+ */
 BFV_L1_ENTRY(bfv_server_l1_00739330, bfv_server_l1_body_00739330);
 BFV_L1_RESUME(bfv_server_l1r_00739330_1, bfv_server_l1_body_00739330, 1);
 BFV_L1_RESUME(bfv_server_l1r_00739330_2, bfv_server_l1_body_00739330, 2);
@@ -36,18 +39,18 @@ void bfv_server_l1_body_00739330(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00739333  mov esi, ecx */
     esi = ecx;
-    /* 00739335  push 0x874228 */
+    /* 00739335  push 0x874228  ; "c:\bfv_code\main\battlefield\aibotbehaviourpatt..." */
     t = 0x874228u;
     esp -= 4;
     M32(esp) = t;
-    /* 0073933a  push 0x807318 */
+    /* 0073933a  push 0x807318  ; "false" */
     t = 0x807318u;
     esp -= 4;
     M32(esp) = t;
-    /* 0073933f  mov dword ptr [esi], 0x87420c */
+    /* 0073933f  mov dword ptr [esi], 0x87420c  ; vtable BBPGotoWaypoint */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87420cu;
-    /* 00739345  call 0x7e06a2 */
+    /* 00739345  call 0x7e06a2  ; crt_Program_007e06a2 */
     t = 0x007e06a2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00739330_1;
@@ -62,7 +65,7 @@ R_1:
     esp = r;
     /* 0073934d  mov ecx, esi */
     ecx = esi;
-    /* 0073934f  call 0x7a21a0 */
+    /* 0073934f  call 0x7a21a0  ; BBPPattern::~BBPPattern */
     t = 0x007a21a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00739330_2;
@@ -71,14 +74,14 @@ R_1:
 R_2:
     /* 00739354  mov ecx, esi */
     ecx = esi;
-    /* 00739356  call 0x7a21a0 */
+    /* 00739356  call 0x7a21a0  ; BBPPattern::~BBPPattern */
     t = 0x007a21a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00739330_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 0073935b  test byte ptr [esp + 8], 1 */
+    /* 0073935b  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -88,7 +91,7 @@ R_3:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00739363  call 0x403df0 */
+    /* 00739363  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00739330_4;
@@ -119,8 +122,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007393c0  (source path)
- * strings: "c:\bfv_code\main\battlefield\aibotbehaviourpattern\BBPGot...", "false", "c:\bfv_code\main\battlefield\aibotbehaviourpattern\BBPGot..." */
+/* 007393c0  BBPGotoWaypoints_BBPGot_007393c0  (source path)
+ * strings: "c:\bfv_code\main\battlefield\aibotbehaviourpattern\BBPGot...", "false", "c:\bfv_code\main\battlefield\aibotbehaviourpattern\BBPGot..."
+ * also entered at 00739420: BBPGotoWaypointSoldier::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_007393c0, bfv_server_l1_body_007393c0);
 BFV_L1_RESUME(bfv_server_l1r_007393c0_1, bfv_server_l1_body_007393c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007393c0_2, bfv_server_l1_body_007393c0, 2);
@@ -152,18 +157,18 @@ void bfv_server_l1_body_007393c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007393c3  mov esi, ecx */
     esi = ecx;
-    /* 007393c5  push 0x874228 */
+    /* 007393c5  push 0x874228  ; "c:\bfv_code\main\battlefield\aibotbehaviourpatt..." */
     t = 0x874228u;
     esp -= 4;
     M32(esp) = t;
-    /* 007393ca  push 0x807318 */
+    /* 007393ca  push 0x807318  ; "false" */
     t = 0x807318u;
     esp -= 4;
     M32(esp) = t;
-    /* 007393cf  mov dword ptr [esi], 0x87420c */
+    /* 007393cf  mov dword ptr [esi], 0x87420c  ; vtable BBPGotoWaypoint */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87420cu;
-    /* 007393d5  call 0x7e06a2 */
+    /* 007393d5  call 0x7e06a2  ; crt_Program_007e06a2 */
     t = 0x007e06a2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007393c0_1;
@@ -178,7 +183,7 @@ R_1:
     esp = r;
     /* 007393dd  mov ecx, esi */
     ecx = esi;
-    /* 007393df  call 0x7a21a0 */
+    /* 007393df  call 0x7a21a0  ; BBPPattern::~BBPPattern */
     t = 0x007a21a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007393c0_2;
@@ -187,7 +192,7 @@ R_1:
 R_2:
     /* 007393e4  mov ecx, esi */
     ecx = esi;
-    /* 007393e6  call 0x7a21a0 */
+    /* 007393e6  call 0x7a21a0  ; BBPPattern::~BBPPattern */
     t = 0x007a21a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007393c0_3;
@@ -198,18 +203,18 @@ R_3:
     t = 0x35u;
     esp -= 4;
     M32(esp) = t;
-    /* 007393ed  push 0x874228 */
+    /* 007393ed  push 0x874228  ; "c:\bfv_code\main\battlefield\aibotbehaviourpatt..." */
     t = 0x874228u;
     esp -= 4;
     M32(esp) = t;
-    /* 007393f2  push 0x807318 */
+    /* 007393f2  push 0x807318  ; "false" */
     t = 0x807318u;
     esp -= 4;
     M32(esp) = t;
-    /* 007393f7  mov dword ptr [esi], 0x87420c */
+    /* 007393f7  mov dword ptr [esi], 0x87420c  ; vtable BBPGotoWaypoint */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87420cu;
-    /* 007393fd  call 0x7e06a2 */
+    /* 007393fd  call 0x7e06a2  ; crt_Program_007e06a2 */
     t = 0x007e06a2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007393c0_4;
@@ -224,7 +229,7 @@ R_4:
     esp = r;
     /* 00739405  mov ecx, esi */
     ecx = esi;
-    /* 00739407  call 0x7a21a0 */
+    /* 00739407  call 0x7a21a0  ; BBPPattern::~BBPPattern */
     t = 0x007a21a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007393c0_5;
@@ -237,7 +242,7 @@ R_5:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 0073940f  jmp 0x7a21a0 */
+    /* 0073940f  jmp 0x7a21a0  ; BBPPattern::~BBPPattern */
     c->eip = 0x007a21a0u;
     goto out;
 out: __attribute__((unused));

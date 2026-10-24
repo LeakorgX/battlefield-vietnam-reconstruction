@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007184d0  dice::bf::ai::StrategyCondition  (vtable store) */
+/* 007184d0  StrategyCondition::StrategyCondition  (vtable store)
+ * class: dice::bf::ai::StrategyCondition
+ * called by: SCArea::SCArea, SCConstant::SCConstant, SCHomogeneous::SCHomogeneous, SCHeterogeneous::SCHeterogeneous
+ */
 BFV_L1_ENTRY(bfv_server_l1_007184d0, bfv_server_l1_body_007184d0);
 BFV_L1_RESUME(bfv_server_l1r_007184d0_1, bfv_server_l1_body_007184d0, 1);
 void bfv_server_l1_body_007184d0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_007184d0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007184d0  mov edx, dword ptr [esp + 0xc] */
+    /* 007184d0  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 007184d4  push esi */
@@ -28,25 +31,25 @@ void bfv_server_l1_body_007184d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007184d5  mov esi, ecx */
     esi = ecx;
-    /* 007184d7  mov ecx, dword ptr [esp + 0xc] */
+    /* 007184d7  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 007184db  mov dword ptr [esi + 8], ecx */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = ecx;
-    /* 007184de  mov ecx, dword ptr [esp + 0x18] */
+    /* 007184de  mov ecx, dword ptr [esp + 0x18]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 007184e2  mov dword ptr [esi + 0xc], edx */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = edx;
-    /* 007184e5  mov edx, dword ptr [esp + 0x14] */
+    /* 007184e5  mov edx, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 007184e9  mov dword ptr [esi + 0x10], ecx */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = ecx;
-    /* 007184ec  mov ecx, dword ptr [esp + 0x1c] */
+    /* 007184ec  mov ecx, dword ptr [esp + 0x1c]  ; arg_14 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 007184f0  xor eax, eax */
@@ -56,7 +59,7 @@ void bfv_server_l1_body_007184d0(struct bfv_cpu *c)
     /* 007184f2  mov dword ptr [esi + 0x14], edx */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = edx;
-    /* 007184f5  mov edx, dword ptr [esp + 8] */
+    /* 007184f5  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007184f9  mov dword ptr [esi + 0x18], ecx */
@@ -68,7 +71,7 @@ void bfv_server_l1_body_007184d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007184fe  lea ecx, [esi + 0x20] */
     ecx = (uint32_t)(esi + 0x00000020u);
-    /* 00718501  mov dword ptr [esi], 0x871794 */
+    /* 00718501  mov dword ptr [esi], 0x871794  ; vtable StrategyCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x871794u;
     /* 00718507  mov byte ptr [esi + 4], al */
@@ -94,7 +97,7 @@ void bfv_server_l1_body_007184d0(struct bfv_cpu *c)
     /* 00718519  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 0071851c  call 0x401e20 */
+    /* 0071851c  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007184d0_1;
@@ -118,7 +121,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00718530  dice::bf::ai::StrategyCondition  (virtual method) */
+/* 00718530  StrategyCondition::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::StrategyCondition
+ */
 BFV_L1_ENTRY(bfv_server_l1_00718530, bfv_server_l1_body_00718530);
 BFV_L1_RESUME(bfv_server_l1r_00718530_1, bfv_server_l1_body_00718530, 1);
 BFV_L1_RESUME(bfv_server_l1r_00718530_2, bfv_server_l1_body_00718530, 2);
@@ -142,17 +147,17 @@ void bfv_server_l1_body_00718530(struct bfv_cpu *c)
     esi = ecx;
     /* 00718533  lea ecx, [esi + 0x20] */
     ecx = (uint32_t)(esi + 0x00000020u);
-    /* 00718536  mov dword ptr [esi], 0x871794 */
+    /* 00718536  mov dword ptr [esi], 0x871794  ; vtable StrategyCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x871794u;
-    /* 0071853c  call 0x414b80 */
+    /* 0071853c  call 0x414b80  ; std::string::_Tidy */
     t = 0x00414b80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00718530_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00718541  test byte ptr [esp + 8], 1 */
+    /* 00718541  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -162,7 +167,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00718549  call 0x403df0 */
+    /* 00718549  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00718530_2;

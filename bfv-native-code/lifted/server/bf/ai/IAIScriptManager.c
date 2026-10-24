@@ -5,85 +5,10 @@
 #include "l1.h"
 
 
-/* 007221a0  dice::bf::ai::IAIScriptManager  (vtable store) */
-BFV_L1_ENTRY(bfv_server_l1_007221a0, bfv_server_l1_body_007221a0);
-BFV_L1_RESUME(bfv_server_l1r_007221a0_1, bfv_server_l1_body_007221a0, 1);
-BFV_L1_RESUME(bfv_server_l1r_007221a0_2, bfv_server_l1_body_007221a0, 2);
-void bfv_server_l1_body_007221a0(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    default: break;
-    }
-    /* 007221a0  mov eax, dword ptr [0xc31420] */
-    ea = (uint32_t)(0x00c31420u);
-    eax = M32(ea);
-    /* 007221a5  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 007221a7  jne 0x7221c1 */
-    if (!zf) goto L_007221c1;
-    /* 007221a9  push 0x78 */
-    t = 0x78u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 007221ab  call 0x403d80 */
-    t = 0x00403d80u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007221a0_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 007221b0  add esp, 4 */
-    a = esp;
-    b = 0x4u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-    /* 007221b3  test eax, eax */
-    r = (eax & eax) & 0xffffffffu;
-    F_LOGIC(32, r);
-    /* 007221b5  je 0x7221be */
-    if (zf) goto L_007221be;
-    /* 007221b7  mov ecx, eax */
-    ecx = eax;
-    /* 007221b9  call 0x7270c0 */
-    t = 0x007270c0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007221a0_2;
-    c->eip = t;
-    goto out;
-R_2:
-L_007221be:
-    /* 007221be  mov al, 1 */
-    SET8L(eax, 0x1u);
-    /* 007221c0  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-L_007221c1:
-    /* 007221c1  xor al, al */
-    r = 0;
-    F_LOGIC(8, r);
-    SET8L(eax, r);
-    /* 007221c3  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 00722200  dice::bf::ai::IAIScriptManager  (vtable store) */
+/* 00722200  IAIScriptManager::IAIScriptManager  (vtable store)
+ * class: dice::bf::ai::IAIScriptManager
+ * called by: AIScriptManager::AIScriptManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_00722200, bfv_server_l1_body_00722200);
 void bfv_server_l1_body_00722200(struct bfv_cpu *c)
 {
@@ -94,10 +19,10 @@ void bfv_server_l1_body_00722200(struct bfv_cpu *c)
     uint32_t r, ea;
     /* 00722200  mov eax, ecx */
     eax = ecx;
-    /* 00722202  mov dword ptr [eax], 0x871fac */
+    /* 00722202  mov dword ptr [eax], 0x871fac  ; vtable IAIScriptManager */
     ea = (uint32_t)(eax);
     M32(ea) = 0x871facu;
-    /* 00722208  mov ecx, dword ptr [0xc31420] */
+    /* 00722208  mov ecx, dword ptr [0xc31420]  ; g_pIAIScriptManager_00c31420 */
     ea = (uint32_t)(0x00c31420u);
     ecx = M32(ea);
     /* 0072220e  test ecx, ecx */
@@ -105,7 +30,7 @@ void bfv_server_l1_body_00722200(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00722210  jne 0x722217 */
     if (!zf) goto L_00722217;
-    /* 00722212  mov dword ptr [0xc31420], eax */
+    /* 00722212  mov dword ptr [0xc31420], eax  ; g_pIAIScriptManager_00c31420 */
     ea = (uint32_t)(0x00c31420u);
     M32(ea) = eax;
 L_00722217:

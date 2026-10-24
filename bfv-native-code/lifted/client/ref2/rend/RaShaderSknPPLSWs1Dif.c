@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00a6d580  dice::ref2::rend::RaShaderSknPPLSWs1Dif  (virtual method) */
+/* 00a6d580  RaShaderSknPPLSWs1Dif::vf7  (virtual method)
+ * overrides: RaShader::vf7  (19 classes implement it)
+ * class: dice::ref2::rend::RaShaderSknPPLSWs1Dif
+ * called by: RaShaderSknPPLSTs1Dif::vf7
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a6d580, bfv_client_l1_body_00a6d580);
 BFV_L1_RESUME(bfv_client_l1r_00a6d580_1, bfv_client_l1_body_00a6d580, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a6d580_2, bfv_client_l1_body_00a6d580, 2);
@@ -41,7 +45,7 @@ void bfv_client_l1_body_00a6d580(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a6d586  mov edi, dword ptr [esp + 0x20] */
+    /* 00a6d586  mov edi, dword ptr [esp + 0x20]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     edi = M32(ea);
     /* 00a6d58a  mov eax, dword ptr [edi + 8] */
@@ -96,7 +100,7 @@ R_1:
     M32(esp) = t;
     /* 00a6d5b4  mov ecx, esi */
     ecx = esi;
-    /* 00a6d5b6  call 0xa4b650 */
+    /* 00a6d5b6  call 0xa4b650  ; RaShader_00a4b650 */
     t = 0x00a4b650u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6d580_2;
@@ -117,13 +121,13 @@ R_2:
     /* 00a6d5c5  fld dword ptr [eax + 0x4c] */
     ea = (uint32_t)(eax + 0x0000004cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6d5c8  mov ecx, dword ptr [0xe20b10] */
+    /* 00a6d5c8  mov ecx, dword ptr [0xe20b10]  ; g_pShaderManager */
     ea = (uint32_t)(0x00e20b10u);
     ecx = M32(ea);
     /* 00a6d5ce  fmul dword ptr [ecx + 0x124] */
     ea = (uint32_t)(ecx + 0x00000124u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6d5d4  lea edx, [esp + 0xc] */
+    /* 00a6d5d4  lea edx, [esp + 0xc]  ; &var_10 */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 00a6d5d8  push edx */
     t = edx;
@@ -148,7 +152,7 @@ R_2:
     /* 00a6d5ec  fadd dword ptr [eax + 0x68] */
     ea = (uint32_t)(eax + 0x00000068u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6d5ef  fmul dword ptr [0xb44e48] */
+    /* 00a6d5ef  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a6d5f5  fld dword ptr [eax + 0x44] */
@@ -160,7 +164,7 @@ R_2:
     /* 00a6d5fe  fadd dword ptr [eax + 0x64] */
     ea = (uint32_t)(eax + 0x00000064u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6d601  fmul dword ptr [0xb44e48] */
+    /* 00a6d601  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a6d607  fld dword ptr [eax + 0x40] */
@@ -179,19 +183,19 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a6d617  fmul dword ptr [0xb44e48] */
+    /* 00a6d617  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6d61d  fstp dword ptr [esp + 0x18] */
+    /* 00a6d61d  fstp dword ptr [esp + 0x18]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6d621  fstp dword ptr [esp + 0x1c] */
+    /* 00a6d621  fstp dword ptr [esp + 0x1c]  ; var_c */
     ea = (uint32_t)(esp + 0x0000001cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6d625  fstp dword ptr [esp + 0x20] */
+    /* 00a6d625  fstp dword ptr [esp + 0x20]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00a6d629  fstp dword ptr [esp + 0x24] */
+    /* 00a6d629  fstp dword ptr [esp + 0x24]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00a6d62d  mov ecx, dword ptr [eax] */
@@ -235,7 +239,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a6d640  dice::ref2::rend::RaShaderSknPPLSWs1Dif  (vtable store) */
+/* 00a6d640  RaShaderSknPPLSWs1Dif::RaShaderSknPPLSWs1Dif  (vtable store)
+ * class: dice::ref2::rend::RaShaderSknPPLSWs1Dif
+ * called by: RaShaderManagerBase_blending_00a3a730, RaShaderSknPPLSTs1Dif::RaShaderSknPPLSTs1Dif
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a6d640, bfv_client_l1_body_00a6d640);
 BFV_L1_RESUME(bfv_client_l1r_00a6d640_1, bfv_client_l1_body_00a6d640, 1);
 void bfv_client_l1_body_00a6d640(struct bfv_cpu *c)
@@ -249,10 +256,10 @@ void bfv_client_l1_body_00a6d640(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00a6d640  mov eax, dword ptr [esp + 0xc] */
+    /* 00a6d640  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
-    /* 00a6d644  mov edx, dword ptr [esp + 4] */
+    /* 00a6d644  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00a6d648  push esi */
@@ -261,7 +268,7 @@ void bfv_client_l1_body_00a6d640(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a6d649  mov esi, ecx */
     esi = ecx;
-    /* 00a6d64b  mov ecx, dword ptr [esp + 0xc] */
+    /* 00a6d64b  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00a6d64f  push eax */
@@ -278,14 +285,14 @@ void bfv_client_l1_body_00a6d640(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a6d652  mov ecx, esi */
     ecx = esi;
-    /* 00a6d654  call 0xa6d760 */
+    /* 00a6d654  call 0xa6d760  ; RaShaderSknPVLS1Dif::RaShaderSknPVLS1Dif */
     t = 0x00a6d760u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a6d640_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00a6d659  mov dword ptr [esi], 0xc0642c */
+    /* 00a6d659  mov dword ptr [esi], 0xc0642c  ; vtable RaShaderSknPPLSWs1Dif */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0642cu;
     /* 00a6d65f  mov eax, esi */

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007acc80  (source path) */
+/* 007acc80  BAPASendMessage::execute  (source path)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPASendMessage
+ */
 BFV_L1_ENTRY(bfv_server_l1_007acc80, bfv_server_l1_body_007acc80);
 void bfv_server_l1_body_007acc80(struct bfv_cpu *c)
 {
@@ -14,10 +17,10 @@ void bfv_server_l1_body_007acc80(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, r, ea;
-    /* 007acc80  mov eax, dword ptr [0xc1d380] */
+    /* 007acc80  mov eax, dword ptr [0xc1d380]  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     eax = M32(ea);
-    /* 007acc85  mov ecx, dword ptr [0x934448] */
+    /* 007acc85  mov ecx, dword ptr [0x934448]  ; g_traceRing_mask */
     ea = (uint32_t)(0x00934448u);
     ecx = M32(ea);
     /* 007acc8b  inc eax */
@@ -29,19 +32,19 @@ void bfv_server_l1_body_007acc80(struct bfv_cpu *c)
     r = (eax & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 007acc8e  mov ecx, dword ptr [esp + 0xc] */
+    /* 007acc8e  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 007acc92  mov dword ptr [0xc1d380], eax */
+    /* 007acc92  mov dword ptr [0xc1d380], eax  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     M32(ea) = eax;
-    /* 007acc97  mov dword ptr [eax*4 + 0xc1d360], 0x87a920 */
+    /* 007acc97  mov dword ptr [eax*4 + 0xc1d360], 0x87a920  ; g_traceRing_file */
     ea = (uint32_t)(eax * 4u + 0x00c1d360u);
     M32(ea) = 0x87a920u;
-    /* 007acca2  mov dword ptr [eax*4 + 0xc1d340], 0x34 */
+    /* 007acca2  mov dword ptr [eax*4 + 0xc1d340], 0x34  ; g_traceRing_line */
     ea = (uint32_t)(eax * 4u + 0x00c1d340u);
     M32(ea) = 0x34u;
-    /* 007accad  mov eax, dword ptr [esp + 8] */
+    /* 007accad  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007accb1  mov byte ptr [eax], 0 */
@@ -65,7 +68,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007accc0  (between same file) */
+/* 007accc0  BAPASendMessage::BAPASendMessage  (between same file)
+ * class: dice::bf::ai::BAPASendMessage
+ * called by: BBPFireInfantery_00744030
+ */
 BFV_L1_ENTRY(bfv_server_l1_007accc0, bfv_server_l1_body_007accc0);
 void bfv_server_l1_body_007accc0(struct bfv_cpu *c)
 {
@@ -83,7 +89,7 @@ void bfv_server_l1_body_007accc0(struct bfv_cpu *c)
     /* 007accc4  mov dword ptr [eax + 4], edx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = edx;
-    /* 007accc7  mov dword ptr [eax], 0x874498 */
+    /* 007accc7  mov dword ptr [eax], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(eax);
     M32(ea) = 0x874498u;
     /* 007acccd  mov dword ptr [eax + 8], edx */
@@ -92,28 +98,28 @@ void bfv_server_l1_body_007accc0(struct bfv_cpu *c)
     /* 007accd0  mov dword ptr [eax + 0xc], edx */
     ea = (uint32_t)(eax + 0x0000000cu);
     M32(ea) = edx;
-    /* 007accd3  inc dword ptr [0xc32a40] */
+    /* 007accd3  inc dword ptr [0xc32a40]  ; g_bapCreatedCount */
     ea = (uint32_t)(0x00c32a40u);
     a = M32(ea);
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     M32(ea) = r;
-    /* 007accd9  mov ecx, dword ptr [esp + 4] */
+    /* 007accd9  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 007accdd  mov dword ptr [eax + 0x18], ecx */
     ea = (uint32_t)(eax + 0x00000018u);
     M32(ea) = ecx;
-    /* 007acce0  mov ecx, dword ptr [esp + 8] */
+    /* 007acce0  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 007acce4  mov byte ptr [eax + 0x20], dl */
     ea = (uint32_t)(eax + 0x00000020u);
     M8(ea) = LO8(edx);
-    /* 007acce7  mov edx, dword ptr [esp + 0xc] */
+    /* 007acce7  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
-    /* 007acceb  mov dword ptr [eax], 0x87a968 */
+    /* 007acceb  mov dword ptr [eax], 0x87a968  ; vtable BAPASendMessage */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87a968u;
     /* 007accf1  mov dword ptr [eax + 0x1c], ecx */
@@ -136,7 +142,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007acd00  dice::bf::ai::BAPASendMessage  (virtual method) */
+/* 007acd00  BAPASendMessage::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPASendMessage
+ */
 BFV_L1_ENTRY(bfv_server_l1_007acd00, bfv_server_l1_body_007acd00);
 BFV_L1_RESUME(bfv_server_l1r_007acd00_1, bfv_server_l1_body_007acd00, 1);
 BFV_L1_RESUME(bfv_server_l1r_007acd00_2, bfv_server_l1_body_007acd00, 2);
@@ -164,7 +173,7 @@ void bfv_server_l1_body_007acd00(struct bfv_cpu *c)
     /* 007acd06  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007acd08  mov dword ptr [esi], 0x87a968 */
+    /* 007acd08  mov dword ptr [esi], 0x87a968  ; vtable BAPASendMessage */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87a968u;
     /* 007acd0e  je 0x7acd17 */
@@ -185,13 +194,13 @@ void bfv_server_l1_body_007acd00(struct bfv_cpu *c)
     goto out;
 R_1:
 L_007acd17:
-    /* 007acd17  mov al, byte ptr [esp + 8] */
+    /* 007acd17  mov al, byte ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(eax, M8(ea));
-    /* 007acd1b  mov dword ptr [esi], 0x874498 */
+    /* 007acd1b  mov dword ptr [esi], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874498u;
-    /* 007acd21  mov ecx, dword ptr [0xc32a44] */
+    /* 007acd21  mov ecx, dword ptr [0xc32a44]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     ecx = M32(ea);
     /* 007acd27  inc ecx */
@@ -202,10 +211,10 @@ L_007acd17:
     /* 007acd28  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 007acd2a  mov dword ptr [0xc32a44], ecx */
+    /* 007acd2a  mov dword ptr [0xc32a44], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     M32(ea) = ecx;
-    /* 007acd30  mov dword ptr [esi], 0x87448c */
+    /* 007acd30  mov dword ptr [esi], 0x87448c  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87448cu;
     /* 007acd36  je 0x7acd43 */
@@ -214,9 +223,9 @@ L_007acd17:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007acd39  mov ecx, 0xc330c8 */
+    /* 007acd39  mov ecx, 0xc330c8  ; g_MemoryPoolNull_BAPASendMessage */
     ecx = 0xc330c8u;
-    /* 007acd3e  call 0x413600 */
+    /* 007acd3e  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007acd00_2;
@@ -241,7 +250,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007acd50  dice::bf::ai::BAPASendMessage  (virtual method) */
+/* 007acd50  BAPASendMessage::vf5  (virtual method)
+ * overrides: BAPStatement::vf5  (54 classes implement it)
+ * class: dice::bf::ai::BAPASendMessage
+ */
 BFV_L1_ENTRY(bfv_server_l1_007acd50, bfv_server_l1_body_007acd50);
 void bfv_server_l1_body_007acd50(struct bfv_cpu *c)
 {
@@ -256,7 +268,7 @@ void bfv_server_l1_body_007acd50(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 007acd56  mov eax, dword ptr [esp + 0xac] */
+    /* 007acd56  mov eax, dword ptr [esp + 0xac]  ; arg_0 */
     ea = (uint32_t)(esp + 0x000000acu);
     eax = M32(ea);
     /* 007acd5d  push ebx */

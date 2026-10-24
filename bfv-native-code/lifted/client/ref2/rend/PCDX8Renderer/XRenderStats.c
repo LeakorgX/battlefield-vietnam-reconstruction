@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00584340  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00584340  XRenderStats::vf4  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00584340, bfv_client_l1_body_00584340);
 void bfv_client_l1_body_00584340(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_00584340(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00584340  mov al, byte ptr [esp + 4] */
+    /* 00584340  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 00584344  mov byte ptr [ecx + 8], al */
@@ -31,7 +33,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a560e0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a560e0  XRenderStats::vf10  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a560e0, bfv_client_l1_body_00a560e0);
 void bfv_client_l1_body_00a560e0(struct bfv_cpu *c)
 {
@@ -39,7 +43,7 @@ void bfv_client_l1_body_00a560e0(struct bfv_cpu *c)
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
-    /* 00a560e0  jmp 0xa77980 */
+    /* 00a560e0  jmp 0xa77980  ; bfv_client_read_global_00a77980 */
     c->eip = 0x00a77980u;
     goto out;
 out: __attribute__((unused));
@@ -49,7 +53,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a560f0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a560f0  XRenderStats::vf11  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a560f0, bfv_client_l1_body_00a560f0);
 void bfv_client_l1_body_00a560f0(struct bfv_cpu *c)
 {
@@ -57,7 +63,7 @@ void bfv_client_l1_body_00a560f0(struct bfv_cpu *c)
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
-    /* 00a560f0  jmp 0xa77970 */
+    /* 00a560f0  jmp 0xa77970  ; bfv_client_read_global_00a77970 */
     c->eip = 0x00a77970u;
     goto out;
 out: __attribute__((unused));
@@ -67,7 +73,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56100  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56100  XRenderStats::vf13  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56100, bfv_client_l1_body_00a56100);
 void bfv_client_l1_body_00a56100(struct bfv_cpu *c)
 {
@@ -76,13 +84,13 @@ void bfv_client_l1_body_00a56100(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56100  mov eax, dword ptr [0xe122c4] */
+    /* 00a56100  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56105  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5610b  jmp 0x6fc8b0 */
+    /* 00a5610b  jmp 0x6fc8b0  ; WrapperBase::vf1_get_20h */
     c->eip = 0x006fc8b0u;
     goto out;
 out: __attribute__((unused));
@@ -92,7 +100,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56110  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56110  XRenderStats::vf14  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56110, bfv_client_l1_body_00a56110);
 void bfv_client_l1_body_00a56110(struct bfv_cpu *c)
 {
@@ -101,13 +111,13 @@ void bfv_client_l1_body_00a56110(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56110  mov eax, dword ptr [0xe122c4] */
+    /* 00a56110  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56115  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5611b  jmp 0xa64cc0 */
+    /* 00a5611b  jmp 0xa64cc0  ; Envelope::vf2_get_24h */
     c->eip = 0x00a64cc0u;
     goto out;
 out: __attribute__((unused));
@@ -117,7 +127,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56120  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56120  XRenderStats::vf15  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56120, bfv_client_l1_body_00a56120);
 void bfv_client_l1_body_00a56120(struct bfv_cpu *c)
 {
@@ -126,13 +138,13 @@ void bfv_client_l1_body_00a56120(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56120  mov eax, dword ptr [0xe122c4] */
+    /* 00a56120  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56125  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5612b  jmp 0xa64d40 */
+    /* 00a5612b  jmp 0xa64d40  ; MemTexture3D::vf9_get_28h */
     c->eip = 0x00a64d40u;
     goto out;
 out: __attribute__((unused));
@@ -142,7 +154,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56130  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56130  XRenderStats::vf16  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56130, bfv_client_l1_body_00a56130);
 void bfv_client_l1_body_00a56130(struct bfv_cpu *c)
 {
@@ -151,13 +165,13 @@ void bfv_client_l1_body_00a56130(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56130  mov eax, dword ptr [0xe122c4] */
+    /* 00a56130  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56135  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5613b  jmp 0x956100 */
+    /* 00a5613b  jmp 0x956100  ; AISettings::vf13_get_2ch */
     c->eip = 0x00956100u;
     goto out;
 out: __attribute__((unused));
@@ -167,7 +181,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56140  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56140  XRenderStats::vf17  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56140, bfv_client_l1_body_00a56140);
 void bfv_client_l1_body_00a56140(struct bfv_cpu *c)
 {
@@ -176,13 +192,13 @@ void bfv_client_l1_body_00a56140(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56140  mov eax, dword ptr [0xe122c4] */
+    /* 00a56140  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56145  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5614b  jmp 0x956120 */
+    /* 00a5614b  jmp 0x956120  ; BotMain::vf53_get_30h */
     c->eip = 0x00956120u;
     goto out;
 out: __attribute__((unused));
@@ -192,7 +208,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56150  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56150  XRenderStats::vf18  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56150, bfv_client_l1_body_00a56150);
 void bfv_client_l1_body_00a56150(struct bfv_cpu *c)
 {
@@ -201,13 +219,13 @@ void bfv_client_l1_body_00a56150(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56150  mov eax, dword ptr [0xe122c4] */
+    /* 00a56150  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56155  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5615b  jmp 0xa5e2b0 */
+    /* 00a5615b  jmp 0xa5e2b0  ; MaterialManager::vf15_get_34h */
     c->eip = 0x00a5e2b0u;
     goto out;
 out: __attribute__((unused));
@@ -217,7 +235,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56160  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56160  XRenderStats::vf19  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56160, bfv_client_l1_body_00a56160);
 void bfv_client_l1_body_00a56160(struct bfv_cpu *c)
 {
@@ -226,13 +246,13 @@ void bfv_client_l1_body_00a56160(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56160  mov eax, dword ptr [0xe122c4] */
+    /* 00a56160  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56165  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5616b  jmp 0xa5e2c0 */
+    /* 00a5616b  jmp 0xa5e2c0  ; MaterialManager::vf13_get_38h */
     c->eip = 0x00a5e2c0u;
     goto out;
 out: __attribute__((unused));
@@ -242,7 +262,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56170  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56170  XRenderStats::vf20  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56170, bfv_client_l1_body_00a56170);
 void bfv_client_l1_body_00a56170(struct bfv_cpu *c)
 {
@@ -251,13 +273,13 @@ void bfv_client_l1_body_00a56170(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56170  mov eax, dword ptr [0xe122c4] */
+    /* 00a56170  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56175  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5617b  jmp 0x73eae0 */
+    /* 00a5617b  jmp 0x73eae0  ; WrapperExeception::vf2_get_3ch */
     c->eip = 0x0073eae0u;
     goto out;
 out: __attribute__((unused));
@@ -267,7 +289,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56180  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56180  XRenderStats::vf22  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56180, bfv_client_l1_body_00a56180);
 void bfv_client_l1_body_00a56180(struct bfv_cpu *c)
 {
@@ -276,13 +300,13 @@ void bfv_client_l1_body_00a56180(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56180  mov eax, dword ptr [0xe122c4] */
+    /* 00a56180  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56185  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5618b  jmp 0x6f39d0 */
+    /* 00a5618b  jmp 0x6f39d0  ; BotMain::vf56_get_4ch */
     c->eip = 0x006f39d0u;
     goto out;
 out: __attribute__((unused));
@@ -292,7 +316,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56190  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56190  XRenderStats::vf23  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56190, bfv_client_l1_body_00a56190);
 void bfv_client_l1_body_00a56190(struct bfv_cpu *c)
 {
@@ -301,13 +327,13 @@ void bfv_client_l1_body_00a56190(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56190  mov eax, dword ptr [0xe122c4] */
+    /* 00a56190  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56195  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5619b  jmp 0x59ac60 */
+    /* 00a5619b  jmp 0x59ac60  ; AIPathfinding::vf5_get_50h */
     c->eip = 0x0059ac60u;
     goto out;
 out: __attribute__((unused));
@@ -317,7 +343,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a561a0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a561a0  XRenderStats::vf24  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a561a0, bfv_client_l1_body_00a561a0);
 void bfv_client_l1_body_00a561a0(struct bfv_cpu *c)
 {
@@ -326,13 +354,13 @@ void bfv_client_l1_body_00a561a0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a561a0  mov eax, dword ptr [0xe122c4] */
+    /* 00a561a0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a561a5  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a561ab  jmp 0xa5c730 */
+    /* 00a561ab  jmp 0xa5c730  ; AIScriptManager::vf29_get_40h */
     c->eip = 0x00a5c730u;
     goto out;
 out: __attribute__((unused));
@@ -342,7 +370,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a561b0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a561b0  XRenderStats::vf25  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a561b0, bfv_client_l1_body_00a561b0);
 void bfv_client_l1_body_00a561b0(struct bfv_cpu *c)
 {
@@ -351,13 +381,13 @@ void bfv_client_l1_body_00a561b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a561b0  mov eax, dword ptr [0xe122c4] */
+    /* 00a561b0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a561b5  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a561bb  jmp 0x6ddbc0 */
+    /* 00a561bb  jmp 0x6ddbc0  ; ProximityGroup::vf5_get_44h */
     c->eip = 0x006ddbc0u;
     goto out;
 out: __attribute__((unused));
@@ -367,7 +397,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a561c0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a561c0  XRenderStats::vf26  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a561c0, bfv_client_l1_body_00a561c0);
 void bfv_client_l1_body_00a561c0(struct bfv_cpu *c)
 {
@@ -376,13 +408,13 @@ void bfv_client_l1_body_00a561c0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a561c0  mov eax, dword ptr [0xe122c4] */
+    /* 00a561c0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a561c5  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a561cb  jmp 0x6a4100 */
+    /* 00a561cb  jmp 0x6a4100  ; Tone::vf23_get_48h */
     c->eip = 0x006a4100u;
     goto out;
 out: __attribute__((unused));
@@ -392,7 +424,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a561d0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a561d0  XRenderStats::vf27  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a561d0, bfv_client_l1_body_00a561d0);
 void bfv_client_l1_body_00a561d0(struct bfv_cpu *c)
 {
@@ -401,13 +435,13 @@ void bfv_client_l1_body_00a561d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a561d0  mov eax, dword ptr [0xe122c4] */
+    /* 00a561d0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a561d5  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a561db  jmp 0x5842b0 */
+    /* 00a561db  jmp 0x5842b0  ; PlayerManager::getLocalPlayer */
     c->eip = 0x005842b0u;
     goto out;
 out: __attribute__((unused));
@@ -417,7 +451,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a561e0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a561e0  XRenderStats::vf28  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a561e0, bfv_client_l1_body_00a561e0);
 void bfv_client_l1_body_00a561e0(struct bfv_cpu *c)
 {
@@ -426,13 +462,13 @@ void bfv_client_l1_body_00a561e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a561e0  mov eax, dword ptr [0xe122c4] */
+    /* 00a561e0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a561e5  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a561eb  jmp 0xa50af0 */
+    /* 00a561eb  jmp 0xa50af0  ; OldConsole::vf26_get_58h */
     c->eip = 0x00a50af0u;
     goto out;
 out: __attribute__((unused));
@@ -442,7 +478,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a561f0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a561f0  XRenderStats::vf29  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a561f0, bfv_client_l1_body_00a561f0);
 void bfv_client_l1_body_00a561f0(struct bfv_cpu *c)
 {
@@ -451,13 +489,13 @@ void bfv_client_l1_body_00a561f0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a561f0  mov eax, dword ptr [0xe122c4] */
+    /* 00a561f0  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a561f5  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a561fb  jmp 0x59ac80 */
+    /* 00a561fb  jmp 0x59ac80  ; PatchWaterCell::vf4_get_5ch */
     c->eip = 0x0059ac80u;
     goto out;
 out: __attribute__((unused));
@@ -467,7 +505,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56200  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56200  XRenderStats::vf30  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56200, bfv_client_l1_body_00a56200);
 void bfv_client_l1_body_00a56200(struct bfv_cpu *c)
 {
@@ -476,13 +516,13 @@ void bfv_client_l1_body_00a56200(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56200  mov eax, dword ptr [0xe122c4] */
+    /* 00a56200  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56205  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5620b  jmp 0xa50980 */
+    /* 00a5620b  jmp 0xa50980  ; PatchWaterCell::vf3_get_60h */
     c->eip = 0x00a50980u;
     goto out;
 out: __attribute__((unused));
@@ -492,7 +532,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56210  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56210  XRenderStats::vf31  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56210, bfv_client_l1_body_00a56210);
 void bfv_client_l1_body_00a56210(struct bfv_cpu *c)
 {
@@ -501,13 +543,13 @@ void bfv_client_l1_body_00a56210(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a56210  mov eax, dword ptr [0xe122c4] */
+    /* 00a56210  mov eax, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     eax = M32(ea);
     /* 00a56215  mov ecx, dword ptr [eax + 0x104] */
     ea = (uint32_t)(eax + 0x00000104u);
     ecx = M32(ea);
-    /* 00a5621b  jmp 0x70a3f0 */
+    /* 00a5621b  jmp 0x70a3f0  ; StandardMeshBlockImpl::vf9_get_64h */
     c->eip = 0x0070a3f0u;
     goto out;
 out: __attribute__((unused));
@@ -517,7 +559,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56220  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56220  XRenderStats::vf32  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56220, bfv_client_l1_body_00a56220);
 BFV_L1_RESUME(bfv_client_l1r_00a56220_1, bfv_client_l1_body_00a56220, 1);
 void bfv_client_l1_body_00a56220(struct bfv_cpu *c)
@@ -560,7 +604,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a563a0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (vtable store) */
+/* 00a563a0  XRenderStats::XRenderStats  (vtable store)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ * called by: PCDX8Renderer::PCDX8Renderer
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a563a0, bfv_client_l1_body_00a563a0);
 void bfv_client_l1_body_00a563a0(struct bfv_cpu *c)
 {
@@ -571,7 +618,7 @@ void bfv_client_l1_body_00a563a0(struct bfv_cpu *c)
     uint32_t ea;
     /* 00a563a0  mov eax, ecx */
     eax = ecx;
-    /* 00a563a2  mov dword ptr [eax], 0xc02dd4 */
+    /* 00a563a2  mov dword ptr [eax], 0xc02dd4  ; vtable XRenderStats */
     ea = (uint32_t)(eax);
     M32(ea) = 0xc02dd4u;
     /* 00a563a8  mov byte ptr [eax + 8], 1 */
@@ -588,7 +635,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a563b0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a563b0  XRenderStats::addRef  (virtual method)
+ * overrides: IBase::addRef  (395 classes implement it)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a563b0, bfv_client_l1_body_00a563b0);
 void bfv_client_l1_body_00a563b0(struct bfv_cpu *c)
 {
@@ -617,7 +667,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a563c0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a563c0  XRenderStats::release  (virtual method)
+ * overrides: IBase::release  (395 classes implement it)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a563c0, bfv_client_l1_body_00a563c0);
 void bfv_client_l1_body_00a563c0(struct bfv_cpu *c)
 {
@@ -646,7 +699,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a563d0  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a563d0  XRenderStats::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a563d0, bfv_client_l1_body_00a563d0);
 void bfv_client_l1_body_00a563d0(struct bfv_cpu *c)
 {
@@ -675,7 +731,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a56d10  dice::ref2::rend::PCDX8Renderer::XRenderStats  (virtual method) */
+/* 00a56d10  XRenderStats::vf21  (virtual method)
+ * class: dice::ref2::rend::PCDX8Renderer::XRenderStats
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a56d10, bfv_client_l1_body_00a56d10);
 BFV_L1_RESUME(bfv_client_l1r_00a56d10_1, bfv_client_l1_body_00a56d10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a56d10_2, bfv_client_l1_body_00a56d10, 2);
@@ -702,7 +760,7 @@ void bfv_client_l1_body_00a56d10(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00a56d13  mov ecx, dword ptr [0xe122c4] */
+    /* 00a56d13  mov ecx, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     ecx = M32(ea);
     /* 00a56d19  mov eax, dword ptr [ecx] */
@@ -726,19 +784,19 @@ R_1:
     /* 00a56d21  mov edx, dword ptr [eax + 4] */
     ea = (uint32_t)(eax + 0x00000004u);
     edx = M32(ea);
-    /* 00a56d24  mov dword ptr [esp + 4], ecx */
+    /* 00a56d24  mov dword ptr [esp + 4], ecx  ; var_28 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = ecx;
     /* 00a56d28  mov ecx, dword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     ecx = M32(ea);
-    /* 00a56d2b  mov dword ptr [esp + 0xc], ecx */
+    /* 00a56d2b  mov dword ptr [esp + 0xc], ecx  ; var_20 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = ecx;
     /* 00a56d2f  mov cl, byte ptr [eax + 0x10] */
     ea = (uint32_t)(eax + 0x00000010u);
     SET8L(ecx, M8(ea));
-    /* 00a56d32  mov dword ptr [esp + 8], edx */
+    /* 00a56d32  mov dword ptr [esp + 8], edx  ; var_24 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = edx;
     /* 00a56d36  mov edx, dword ptr [eax + 0xc] */
@@ -750,32 +808,32 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     eax = r;
-    /* 00a56d3c  mov byte ptr [esp + 0x14], cl */
+    /* 00a56d3c  mov byte ptr [esp + 0x14], cl  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = LO8(ecx);
     /* 00a56d40  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a56d41  lea ecx, [esp + 0x1c] */
+    /* 00a56d41  lea ecx, [esp + 0x1c]  ; &var_14 */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 00a56d45  mov dword ptr [esp + 0x14], edx */
+    /* 00a56d45  mov dword ptr [esp + 0x14], edx  ; var_1c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
-    /* 00a56d49  call 0x4a5f80 */
+    /* 00a56d49  call 0x4a5f80  ; sub_004a5f80 */
     t = 0x004a5f80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a56d10_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00a56d4e  mov ecx, dword ptr [0xe122c4] */
+    /* 00a56d4e  mov ecx, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     ecx = M32(ea);
     /* 00a56d54  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 00a56d56  call dword ptr [edx + 0x184] */
+    /* 00a56d56  call dword ptr [edx + 0x184]  ; vf97 of Renderer.numBackbuffers */
     ea = (uint32_t)(edx + 0x00000184u);
     t = M32(ea);
     esp -= 4;
@@ -785,16 +843,16 @@ R_2:
 R_3:
     /* 00a56d5c  mov esi, eax */
     esi = eax;
-    /* 00a56d5e  mov eax, dword ptr [esp + 0xc] */
+    /* 00a56d5e  mov eax, dword ptr [esp + 0xc]  ; var_20 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
-    /* 00a56d62  imul eax, dword ptr [esp + 8] */
+    /* 00a56d62  imul eax, dword ptr [esp + 8]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000008u);
     p = (int64_t)(int32_t)eax * (int64_t)(int32_t)M32(ea);
     r = (uint32_t)p & 0xffffffffu;
     cf = of = p != (int64_t)(int32_t)r;
     eax = r;
-    /* 00a56d67  imul eax, dword ptr [esp + 4] */
+    /* 00a56d67  imul eax, dword ptr [esp + 4]  ; var_28 */
     ea = (uint32_t)(esp + 0x00000004u);
     p = (int64_t)(int32_t)eax * (int64_t)(int32_t)M32(ea);
     r = (uint32_t)p & 0xffffffffu;
@@ -820,7 +878,7 @@ R_3:
     r = (uint32_t)p & 0xffffffffu;
     cf = of = p != (int64_t)(int32_t)r;
     esi = r;
-    /* 00a56d73  mov eax, dword ptr [esp + 0x1c] */
+    /* 00a56d73  mov eax, dword ptr [esp + 0x1c]  ; var_10 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 00a56d77  test eax, eax */
@@ -832,7 +890,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a56d7c  call 0x403680 */
+    /* 00a56d7c  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a56d10_4;

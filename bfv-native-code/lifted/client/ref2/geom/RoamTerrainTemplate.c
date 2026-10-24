@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00753200  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00753200  RoamTerrainTemplate::vf39  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00753200, bfv_client_l1_body_00753200);
 void bfv_client_l1_body_00753200(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_00753200(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00753200  mov eax, dword ptr [esp + 4] */
+    /* 00753200  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00753204  mov edx, dword ptr [eax] */
@@ -52,7 +54,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00753220  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00753220  RoamTerrainTemplate::vf12_addressOf_6ch  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ * also entered at 00753230: PCDX8Renderer::vf15, RoamTerrainTemplate::vf26
+ * also entered at 00753240: RoamTerrainTemplate::vf42
+ */
 BFV_L1_ENTRY(bfv_client_l1_00753220, bfv_client_l1_body_00753220);
 void bfv_client_l1_body_00753220(struct bfv_cpu *c)
 {
@@ -73,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00753250  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00753250  RoamTerrainTemplate::vf27  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00753250, bfv_client_l1_body_00753250);
 BFV_L1_RESUME(bfv_client_l1r_00753250_1, bfv_client_l1_body_00753250, 1);
 void bfv_client_l1_body_00753250(struct bfv_cpu *c)
@@ -87,7 +95,7 @@ void bfv_client_l1_body_00753250(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00753250  fld dword ptr [esp + 4] */
+    /* 00753250  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00753254  push esi */
@@ -96,7 +104,7 @@ void bfv_client_l1_body_00753250(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00753255  mov esi, ecx */
     esi = ecx;
-    /* 00753257  call 0x7c2dd0 */
+    /* 00753257  call 0x7c2dd0  ; _ftol2 */
     t = 0x007c2dd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00753250_1;
@@ -121,7 +129,12 @@ out: __attribute__((unused));
 }
 
 
-/* 00753270  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00753270  RoamTerrainTemplate::vf28  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ * also entered at 00753280: RoamTerrainTemplate::vf29
+ * also entered at 00753290: Armor::vf80, RoamTerrainTemplate::vf21
+ * also entered at 007532a0: AnimatedBundle::vf25, AreaObject::vf25, Armor::vf43, BFSoldier::vf25 (+45 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00753270, bfv_client_l1_body_00753270);
 void bfv_client_l1_body_00753270(struct bfv_cpu *c)
 {
@@ -144,7 +157,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00754990  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00754990  RoamTerrainTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754990, bfv_client_l1_body_00754990);
 void bfv_client_l1_body_00754990(struct bfv_cpu *c)
 {
@@ -153,12 +169,12 @@ void bfv_client_l1_body_00754990(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 00754990  mov edx, dword ptr [0xb42718] */
+    /* 00754990  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00754996  mov eax, ecx */
     eax = ecx;
-    /* 00754998  mov ecx, dword ptr [esp + 4] */
+    /* 00754998  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0075499c  cmp ecx, edx */
@@ -168,7 +184,7 @@ void bfv_client_l1_body_00754990(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0075499e  je 0x7549cc */
     if (zf) goto L_007549cc;
-    /* 007549a0  cmp ecx, dword ptr [0xb4271c] */
+    /* 007549a0  cmp ecx, dword ptr [0xb4271c]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00b4271cu);
     a = ecx;
     b = M32(ea);
@@ -184,7 +200,7 @@ void bfv_client_l1_body_00754990(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 007549ae  je 0x7549cc */
     if (zf) goto L_007549cc;
-    /* 007549b0  cmp ecx, dword ptr [0xba5a98] */
+    /* 007549b0  cmp ecx, dword ptr [0xba5a98]  ; interfaceID(PatchTerrainTemplate|RoamTerrainTemplate) */
     ea = (uint32_t)(0x00ba5a98u);
     a = ecx;
     b = M32(ea);
@@ -192,7 +208,7 @@ void bfv_client_l1_body_00754990(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 007549b6  je 0x7549cc */
     if (zf) goto L_007549cc;
-    /* 007549b8  cmp ecx, dword ptr [0xbdb000] */
+    /* 007549b8  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);
@@ -232,7 +248,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007549d0  (between same file) */
+/* 007549d0  RoamTerrainTemplate::deleting_dtor_adjustor8_007549d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007549d0, bfv_client_l1_body_007549d0);
 void bfv_client_l1_body_007549d0(struct bfv_cpu *c)
 {
@@ -247,7 +264,7 @@ void bfv_client_l1_body_007549d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 007549d3  jmp 0x754d10 */
+    /* 007549d3  jmp 0x754d10  ; RoamTerrainTemplate::deleting_dtor */
     c->eip = 0x00754d10u;
     goto out;
 out: __attribute__((unused));
@@ -257,7 +274,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007549e0  (between same file) */
+/* 007549e0  RoamTerrainTemplate::queryInterface_adjustor8_007549e0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007549e0, bfv_client_l1_body_007549e0);
 void bfv_client_l1_body_007549e0(struct bfv_cpu *c)
 {
@@ -272,7 +290,7 @@ void bfv_client_l1_body_007549e0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 007549e3  jmp 0x754990 */
+    /* 007549e3  jmp 0x754990  ; RoamTerrainTemplate::queryInterface */
     c->eip = 0x00754990u;
     goto out;
 out: __attribute__((unused));
@@ -282,7 +300,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007549f0  (between same file) */
+/* 007549f0  RoamTerrainTemplate_007549f0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_007549f0, bfv_client_l1_body_007549f0);
 BFV_L1_RESUME(bfv_client_l1r_007549f0_1, bfv_client_l1_body_007549f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007549f0_2, bfv_client_l1_body_007549f0, 2);
@@ -304,14 +323,14 @@ void bfv_client_l1_body_007549f0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 007549f3  mov eax, dword ptr [esp + 0x48] */
+    /* 007549f3  mov eax, dword ptr [esp + 0x48]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000048u);
     eax = M32(ea);
     /* 007549f7  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 007549f8  mov ebx, dword ptr [esp + 0x50] */
+    /* 007549f8  mov ebx, dword ptr [esp + 0x50]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000050u);
     ebx = M32(ea);
     /* 007549fc  push esi */
@@ -333,95 +352,95 @@ void bfv_client_l1_body_007549f0(struct bfv_cpu *c)
     /* 00754a05  mov eax, dword ptr [eax + 8] */
     ea = (uint32_t)(eax + 0x00000008u);
     eax = M32(ea);
-    /* 00754a08  mov dword ptr [esp + 0xc], ecx */
+    /* 00754a08  mov dword ptr [esp + 0xc], ecx  ; var_3c */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = ecx;
-    /* 00754a0c  fld dword ptr [esp + 0xc] */
+    /* 00754a0c  fld dword ptr [esp + 0xc]  ; var_3c */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754a10  fadd dword ptr [ebx] */
     ea = (uint32_t)(ebx);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a12  mov dword ptr [esp + 0x10], edx */
+    /* 00754a12  mov dword ptr [esp + 0x10], edx  ; var_38 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
-    /* 00754a16  mov dword ptr [esp + 0x14], eax */
+    /* 00754a16  mov dword ptr [esp + 0x14], eax  ; var_34 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
-    /* 00754a1a  mov esi, dword ptr [esp + 0x60] */
+    /* 00754a1a  mov esi, dword ptr [esp + 0x60]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000060u);
     esi = M32(ea);
-    /* 00754a1e  fstp dword ptr [esp + 0x24] */
+    /* 00754a1e  fstp dword ptr [esp + 0x24]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a22  mov ecx, dword ptr [esp + 0x24] */
+    /* 00754a22  mov ecx, dword ptr [esp + 0x24]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000024u);
     ecx = M32(ea);
-    /* 00754a26  fld dword ptr [esp + 0x10] */
+    /* 00754a26  fld dword ptr [esp + 0x10]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a2a  mov dword ptr [esp + 0x18], ecx */
+    /* 00754a2a  mov dword ptr [esp + 0x18], ecx  ; var_30 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = ecx;
     /* 00754a2e  fadd dword ptr [ebx + 4] */
     ea = (uint32_t)(ebx + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a31  mov ecx, dword ptr [0xda21a4] */
+    /* 00754a31  mov ecx, dword ptr [0xda21a4]  ; g_pHeightMap */
     ea = (uint32_t)(0x00da21a4u);
     ecx = M32(ea);
     /* 00754a37  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00754a38  fstp dword ptr [esp + 0x2c] */
+    /* 00754a38  fstp dword ptr [esp + 0x2c]  ; var_20 */
     ea = (uint32_t)(esp + 0x0000002cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a3c  mov edx, dword ptr [esp + 0x2c] */
+    /* 00754a3c  mov edx, dword ptr [esp + 0x2c]  ; var_20 */
     ea = (uint32_t)(esp + 0x0000002cu);
     edx = M32(ea);
-    /* 00754a40  fld dword ptr [esp + 0x18] */
+    /* 00754a40  fld dword ptr [esp + 0x18]  ; var_34 */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a44  mov dword ptr [esp + 0x20], edx */
+    /* 00754a44  mov dword ptr [esp + 0x20], edx  ; var_2c */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = edx;
     /* 00754a48  fadd dword ptr [ebx + 8] */
     ea = (uint32_t)(ebx + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a4b  fstp dword ptr [esp + 0x30] */
+    /* 00754a4b  fstp dword ptr [esp + 0x30]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000030u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a4f  mov eax, dword ptr [esp + 0x30] */
+    /* 00754a4f  mov eax, dword ptr [esp + 0x30]  ; var_1c */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
     /* 00754a53  fld dword ptr [0xcfa9f0] */
     ea = (uint32_t)(0x00cfa9f0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a59  mov dword ptr [esp + 0x24], eax */
+    /* 00754a59  mov dword ptr [esp + 0x24], eax  ; var_28 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = eax;
     /* 00754a5d  fmul dword ptr [ebx] */
     ea = (uint32_t)(ebx);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a5f  lea eax, [esp + 0x28] */
+    /* 00754a5f  lea eax, [esp + 0x28]  ; &var_24 */
     eax = (uint32_t)(esp + 0x00000028u);
     /* 00754a63  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00754a64  lea eax, [esp + 0x38] */
+    /* 00754a64  lea eax, [esp + 0x38]  ; &var_18 */
     eax = (uint32_t)(esp + 0x00000038u);
-    /* 00754a68  fstp dword ptr [esp + 0x2c] */
+    /* 00754a68  fstp dword ptr [esp + 0x2c]  ; var_24 */
     ea = (uint32_t)(esp + 0x0000002cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754a6c  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00754a6d  fld dword ptr [0xb4456c] */
+    /* 00754a6d  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a73  lea eax, [esp + 0x48] */
+    /* 00754a73  lea eax, [esp + 0x48]  ; &var_c */
     eax = (uint32_t)(esp + 0x00000048u);
     /* 00754a77  fdiv dword ptr [0xcfa9b0] */
     ea = (uint32_t)(0x00cfa9b0u);
@@ -435,7 +454,7 @@ void bfv_client_l1_body_007549f0(struct bfv_cpu *c)
     /* 00754a80  fmul dword ptr [ebx + 4] */
     ea = (uint32_t)(ebx + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a83  fstp dword ptr [esp + 0x38] */
+    /* 00754a83  fstp dword ptr [esp + 0x38]  ; var_20 */
     ea = (uint32_t)(esp + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754a87  fld dword ptr [0xcfa9f0] */
@@ -444,57 +463,57 @@ void bfv_client_l1_body_007549f0(struct bfv_cpu *c)
     /* 00754a8d  fmul dword ptr [ebx + 8] */
     ea = (uint32_t)(ebx + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a90  fstp dword ptr [esp + 0x3c] */
+    /* 00754a90  fstp dword ptr [esp + 0x3c]  ; var_1c */
     ea = (uint32_t)(esp + 0x0000003cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a94  fld dword ptr [esp + 0x28] */
+    /* 00754a94  fld dword ptr [esp + 0x28]  ; var_30 */
     ea = (uint32_t)(esp + 0x00000028u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754a98  fmul dword ptr [0xcfa9f0] */
     ea = (uint32_t)(0x00cfa9f0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754a9e  fstp dword ptr [esp + 0x40] */
+    /* 00754a9e  fstp dword ptr [esp + 0x40]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000040u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754aa2  fld dword ptr [esp + 0x2c] */
+    /* 00754aa2  fld dword ptr [esp + 0x2c]  ; var_2c */
     ea = (uint32_t)(esp + 0x0000002cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754aa6  fmul st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
-    /* 00754aa8  fstp dword ptr [esp + 0x44] */
+    /* 00754aa8  fstp dword ptr [esp + 0x44]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000044u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754aac  fld dword ptr [esp + 0x30] */
+    /* 00754aac  fld dword ptr [esp + 0x30]  ; var_28 */
     ea = (uint32_t)(esp + 0x00000030u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754ab0  fmul dword ptr [0xcfa9f0] */
     ea = (uint32_t)(0x00cfa9f0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754ab6  fstp dword ptr [esp + 0x48] */
+    /* 00754ab6  fstp dword ptr [esp + 0x48]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000048u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754aba  fld dword ptr [0xcfa9f0] */
     ea = (uint32_t)(0x00cfa9f0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754ac0  fmul dword ptr [esp + 0x1c] */
+    /* 00754ac0  fmul dword ptr [esp + 0x1c]  ; var_3c */
     ea = (uint32_t)(esp + 0x0000001cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754ac4  fstp dword ptr [esp + 0x4c] */
+    /* 00754ac4  fstp dword ptr [esp + 0x4c]  ; var_c */
     ea = (uint32_t)(esp + 0x0000004cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754ac8  fmul dword ptr [esp + 0x20] */
+    /* 00754ac8  fmul dword ptr [esp + 0x20]  ; var_38 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754acc  fstp dword ptr [esp + 0x50] */
+    /* 00754acc  fstp dword ptr [esp + 0x50]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000050u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754ad0  fld dword ptr [esp + 0x24] */
+    /* 00754ad0  fld dword ptr [esp + 0x24]  ; var_34 */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754ad4  fmul dword ptr [0xcfa9f0] */
     ea = (uint32_t)(0x00cfa9f0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754ada  fstp dword ptr [esp + 0x54] */
+    /* 00754ada  fstp dword ptr [esp + 0x54]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000054u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754ade  mov edx, dword ptr [ecx] */
@@ -521,7 +540,7 @@ R_1:
     /* 00754af4  fmul dword ptr [esi] */
     ea = (uint32_t)(esi);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754af6  mov edi, dword ptr [esp + 0x5c] */
+    /* 00754af6  mov edi, dword ptr [esp + 0x5c]  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000005cu);
     edi = M32(ea);
     /* 00754afa  push edi */
@@ -574,34 +593,34 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 00754b21  fld dword ptr [esp + 0x18] */
+    /* 00754b21  fld dword ptr [esp + 0x18]  ; var_30 */
     ea = (uint32_t)(esp + 0x00000018u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754b25  fsub dword ptr [esi] */
     ea = (uint32_t)(esi);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b27  mov eax, dword ptr [esp + 0x50] */
+    /* 00754b27  mov eax, dword ptr [esp + 0x50]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000050u);
     eax = M32(ea);
-    /* 00754b2b  fld dword ptr [esp + 0x1c] */
+    /* 00754b2b  fld dword ptr [esp + 0x1c]  ; var_2c */
     ea = (uint32_t)(esp + 0x0000001cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b2f  mov ecx, dword ptr [esp + 0x6c] */
+    /* 00754b2f  mov ecx, dword ptr [esp + 0x6c]  ; arg_20 */
     ea = (uint32_t)(esp + 0x0000006cu);
     ecx = M32(ea);
     /* 00754b33  fsub dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b36  mov edx, dword ptr [esp + 0x68] */
+    /* 00754b36  mov edx, dword ptr [esp + 0x68]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000068u);
     edx = M32(ea);
-    /* 00754b3a  fld dword ptr [esp + 0x20] */
+    /* 00754b3a  fld dword ptr [esp + 0x20]  ; var_28 */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754b3e  fsub dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b41  fstp dword ptr [esp + 0x44] */
+    /* 00754b41  fstp dword ptr [esp + 0x44]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000044u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754b45  fxch st(1) */
@@ -609,25 +628,25 @@ R_2:
     /* 00754b47  fsub dword ptr [eax + 0x30] */
     ea = (uint32_t)(eax + 0x00000030u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b4a  fstp dword ptr [esp + 0x30] */
+    /* 00754b4a  fstp dword ptr [esp + 0x30]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000030u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754b4e  fsub dword ptr [eax + 0x34] */
     ea = (uint32_t)(eax + 0x00000034u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b51  fld dword ptr [esp + 0x44] */
+    /* 00754b51  fld dword ptr [esp + 0x44]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000044u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754b55  fsub dword ptr [eax + 0x38] */
     ea = (uint32_t)(eax + 0x00000038u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsub dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b58  mov eax, dword ptr [esp + 0x64] */
+    /* 00754b58  mov eax, dword ptr [esp + 0x64]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000064u);
     eax = M32(ea);
     /* 00754b5c  fmul dword ptr [edi + 8] */
     ea = (uint32_t)(edi + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b5f  fld dword ptr [esp + 0x30] */
+    /* 00754b5f  fld dword ptr [esp + 0x30]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000030u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754b63  fmul dword ptr [edi] */
@@ -677,7 +696,7 @@ R_2:
     /* 00754b8a  fstp dword ptr [eax] */
     ea = (uint32_t)(eax);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b8c  fcomp qword ptr [0xba5c30] */
+    /* 00754b8c  fcomp qword ptr [0xba5c30]  ; = -1e-05 */
     ea = (uint32_t)(0x00ba5c30u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754b92  fnstsw ax */
@@ -690,7 +709,7 @@ R_2:
     /* 00754b99  fld dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00754b9b  fcomp dword ptr [0xb44444] */
+    /* 00754b9b  fcomp dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754ba1  fnstsw ax */
@@ -759,7 +778,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00754bc0  (between same file) */
+/* 00754bc0  RoamTerrainTemplate_helper_00754bc0  (between same file)
+ * called by: geom_Dynamic_256_helper_00754c30
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754bc0, bfv_client_l1_body_00754bc0);
 BFV_L1_RESUME(bfv_client_l1r_00754bc0_1, bfv_client_l1_body_00754bc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00754bc0_2, bfv_client_l1_body_00754bc0, 2);
@@ -793,7 +814,7 @@ void bfv_client_l1_body_00754bc0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00754bcd  mov edi, dword ptr [esp + 0xc] */
+    /* 00754bcd  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 00754bd1  mov dword ptr [esi + 0x310], edi */
@@ -850,7 +871,7 @@ void bfv_client_l1_body_00754bc0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00754bf5  mov ecx, esi */
     ecx = esi;
-    /* 00754bf7  call 0x754680 */
+    /* 00754bf7  call 0x754680  ; RoamTerrainTemplate_helper_00754680 */
     t = 0x00754680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754bc0_1;
@@ -908,7 +929,7 @@ R_1:
     M32(esp) = t;
     /* 00754c19  mov ecx, esi */
     ecx = esi;
-    /* 00754c1b  call 0x754680 */
+    /* 00754c1b  call 0x754680  ; RoamTerrainTemplate_helper_00754680 */
     t = 0x00754680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754bc0_2;
@@ -935,7 +956,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00754c30  (between same file) */
+/* 00754c30  geom_Dynamic_256_helper_00754c30  (between same file)
+ * also entered at 00754d10: RoamTerrainTemplate::vf0
+ * called by: geom_Dynamic_256_00754f90
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754c30, bfv_client_l1_body_00754c30);
 BFV_L1_RESUME(bfv_client_l1r_00754c30_1, bfv_client_l1_body_00754c30, 1);
 BFV_L1_RESUME(bfv_client_l1r_00754c30_2, bfv_client_l1_body_00754c30, 2);
@@ -975,7 +999,7 @@ void bfv_client_l1_body_00754c30(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 00754c3c  jne 0x754c47 */
     if (!zf) goto L_00754c47;
-    /* 00754c3e  fld dword ptr [0xb44444] */
+    /* 00754c3e  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754c44  pop esi */
@@ -1003,14 +1027,14 @@ L_00754c47:
     M32(esp) = t;
     /* 00754c4f  lea ecx, [esi + 0xe8] */
     ecx = (uint32_t)(esi + 0x000000e8u);
-    /* 00754c55  call 0xa85d60 */
+    /* 00754c55  call 0xa85d60  ; ref2_00a85d60 */
     t = 0x00a85d60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754c30_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00754c5a  call 0x76ade0 */
+    /* 00754c5a  call 0x76ade0  ; geom_0076ade0 */
     t = 0x0076ade0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754c30_2;
@@ -1019,7 +1043,7 @@ R_1:
 R_2:
     /* 00754c5f  mov ecx, esi */
     ecx = esi;
-    /* 00754c61  call 0x76bf90 */
+    /* 00754c61  call 0x76bf90  ; RoamTerrain::sub_0076bf90 */
     t = 0x0076bf90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754c30_3;
@@ -1028,7 +1052,7 @@ R_2:
 R_3:
     /* 00754c66  mov ecx, esi */
     ecx = esi;
-    /* 00754c68  call 0x76cfa0 */
+    /* 00754c68  call 0x76cfa0  ; geom_Dynamic_256_helper_0076cfa0 */
     t = 0x0076cfa0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754c30_4;
@@ -1058,7 +1082,7 @@ L_00754c80:
     M32(esp) = t;
     /* 00754c83  mov ecx, esi */
     ecx = esi;
-    /* 00754c85  call 0x754bc0 */
+    /* 00754c85  call 0x754bc0  ; RoamTerrainTemplate_helper_00754bc0 */
     t = 0x00754bc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754c30_5;
@@ -1125,7 +1149,7 @@ L_00754c97:
     /* 00754cbc  test al, dl */
     r = (LO8(eax) & LO8(edx)) & 0xffu;
     F_LOGIC(8, r);
-    /* 00754cbe  mov dword ptr [esp + 8], ecx */
+    /* 00754cbe  mov dword ptr [esp + 8], ecx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = ecx;
     /* 00754cc2  pop edi */
@@ -1140,7 +1164,7 @@ L_00754c97:
     F_LOGIC(32, r);
     M32(ea) = r;
 L_00754ccb:
-    /* 00754ccb  fild dword ptr [esp + 4] */
+    /* 00754ccb  fild dword ptr [esp + 4]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfild dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754ccf  fmul st(1) */
@@ -1150,7 +1174,7 @@ L_00754ccb:
     __asm__ volatile(".intel_syntax noprefix\n\tfidiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754cd7  faddp st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfaddp st(1)\n\t.att_syntax prefix");
-    /* 00754cd9  fmul dword ptr [0xb44e48] */
+    /* 00754cd9  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00754cdf  fcom dword ptr [esi + 0x384] */
@@ -1197,8 +1221,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00754d30  (between same file)
- * strings: "material.map", "detailmap.tga" */
+/* 00754d30  RoamTerrainTemplate::RoamTerrainTemplate  (vtable store)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ * strings: "material.map", "detailmap.tga"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754d30, bfv_client_l1_body_00754d30);
 BFV_L1_RESUME(bfv_client_l1r_00754d30_1, bfv_client_l1_body_00754d30, 1);
 BFV_L1_RESUME(bfv_client_l1r_00754d30_2, bfv_client_l1_body_00754d30, 2);
@@ -1232,10 +1258,10 @@ void bfv_client_l1_body_00754d30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00754d33  mov esi, ecx */
     esi = ecx;
-    /* 00754d35  mov dword ptr [esi + 8], 0xb5f4ac */
+    /* 00754d35  mov dword ptr [esi + 8], 0xb5f4ac  ; vtable IConsoleSaveable */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0xb5f4acu;
-    /* 00754d3c  mov dword ptr [esi], 0xbae744 */
+    /* 00754d3c  mov dword ptr [esi], 0xbae744  ; vtable RoamTerrainTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbae744u;
     /* 00754d42  mov dword ptr [esi + 8], 0xbae728 */
@@ -1275,14 +1301,14 @@ void bfv_client_l1_body_00754d30(struct bfv_cpu *c)
     /* 00754d69  mov dword ptr [ecx + 0x14], ebx */
     ea = (uint32_t)(ecx + 0x00000014u);
     M32(ea) = ebx;
-    /* 00754d6c  push 0xbae804 */
+    /* 00754d6c  push 0xbae804  ; "material.map" */
     t = 0xbae804u;
     esp -= 4;
     M32(esp) = t;
     /* 00754d71  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 00754d74  call 0x401ae0 */
+    /* 00754d74  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754d30_1;
@@ -1302,7 +1328,7 @@ R_1:
     /* 00754d8d  mov byte ptr [esi + 0x8c], bl */
     ea = (uint32_t)(esi + 0x0000008cu);
     M8(ea) = LO8(ebx);
-    /* 00754d93  call 0x753790 */
+    /* 00754d93  call 0x753790  ; std::list::_Buyheadnode_12_00753790 */
     t = 0x00753790u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754d30_2;
@@ -1326,7 +1352,7 @@ R_2:
     /* 00754db8  mov dword ptr [esi + 0xbc], 0x1000 */
     ea = (uint32_t)(esi + 0x000000bcu);
     M32(ea) = 0x1000u;
-    /* 00754dc2  mov dword ptr [esi + 0xc0], 0x3f19999a */
+    /* 00754dc2  mov dword ptr [esi + 0xc0], 0x3f19999a  ; 0.6f */
     ea = (uint32_t)(esi + 0x000000c0u);
     M32(ea) = 0x3f19999au;
     /* 00754dcc  push 2 */
@@ -1346,7 +1372,7 @@ R_2:
     /* 00754dd9  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 00754ddc  call 0x401ae0 */
+    /* 00754ddc  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754d30_3;
@@ -1365,14 +1391,14 @@ R_3:
     /* 00754dec  mov dword ptr [ecx + 0x14], ebx */
     ea = (uint32_t)(ecx + 0x00000014u);
     M32(ea) = ebx;
-    /* 00754def  push 0xbade24 */
+    /* 00754def  push 0xbade24  ; "detailmap.tga" */
     t = 0xbade24u;
     esp -= 4;
     M32(esp) = t;
     /* 00754df4  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 00754df7  call 0x401ae0 */
+    /* 00754df7  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754d30_4;
@@ -1385,10 +1411,10 @@ R_4:
     /* 00754e02  mov dword ptr [esi + 0x104], ebx */
     ea = (uint32_t)(esi + 0x00000104u);
     M32(ea) = ebx;
-    /* 00754e08  mov dword ptr [esi + 0xfc], 0x3f000000 */
+    /* 00754e08  mov dword ptr [esi + 0xfc], 0x3f000000  ; 0.5f */
     ea = (uint32_t)(esi + 0x000000fcu);
     M32(ea) = 0x3f000000u;
-    /* 00754e12  mov dword ptr [esi + 0x108], 0x428c0000 */
+    /* 00754e12  mov dword ptr [esi + 0x108], 0x428c0000  ; 70.0f */
     ea = (uint32_t)(esi + 0x00000108u);
     M32(ea) = 0x428c0000u;
     /* 00754e1c  mov dword ptr [esi + 0x128], ebp */
@@ -1404,16 +1430,16 @@ R_4:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 00754e2f  mov dword ptr [esi + 0x12c], 0x3b83126f */
+    /* 00754e2f  mov dword ptr [esi + 0x12c], 0x3b83126f  ; 0.004f */
     ea = (uint32_t)(esi + 0x0000012cu);
     M32(ea) = 0x3b83126fu;
-    /* 00754e39  mov dword ptr [esi + 0x130], 0x3c449ba6 */
+    /* 00754e39  mov dword ptr [esi + 0x130], 0x3c449ba6  ; 0.012f */
     ea = (uint32_t)(esi + 0x00000130u);
     M32(ea) = 0x3c449ba6u;
-    /* 00754e43  mov dword ptr [esi + 0x134], 0x3c23d70a */
+    /* 00754e43  mov dword ptr [esi + 0x134], 0x3c23d70a  ; 0.01f */
     ea = (uint32_t)(esi + 0x00000134u);
     M32(ea) = 0x3c23d70au;
-    /* 00754e4d  mov dword ptr [esi + 0x138], 0x40a00000 */
+    /* 00754e4d  mov dword ptr [esi + 0x138], 0x40a00000  ; 5.0f */
     ea = (uint32_t)(esi + 0x00000138u);
     M32(ea) = 0x40a00000u;
     /* 00754e57  mov eax, esi */
@@ -1441,7 +1467,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00754e60  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00754e60  RoamTerrainTemplate::vf5  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754e60, bfv_client_l1_body_00754e60);
 BFV_L1_RESUME(bfv_client_l1r_00754e60_1, bfv_client_l1_body_00754e60, 1);
 void bfv_client_l1_body_00754e60(struct bfv_cpu *c)
@@ -1455,7 +1483,7 @@ void bfv_client_l1_body_00754e60(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00754e60  mov eax, dword ptr [esp + 4] */
+    /* 00754e60  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00754e64  push -1 */
@@ -1476,7 +1504,7 @@ void bfv_client_l1_body_00754e60(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00754e6c  call 0x4019f0 */
+    /* 00754e6c  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754e60_1;
@@ -1494,7 +1522,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00754e80  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00754e80  RoamTerrainTemplate::vf9  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754e80, bfv_client_l1_body_00754e80);
 BFV_L1_RESUME(bfv_client_l1r_00754e80_1, bfv_client_l1_body_00754e80, 1);
 void bfv_client_l1_body_00754e80(struct bfv_cpu *c)
@@ -1508,7 +1538,7 @@ void bfv_client_l1_body_00754e80(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00754e80  mov eax, dword ptr [esp + 4] */
+    /* 00754e80  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00754e84  push -1 */
@@ -1529,7 +1559,7 @@ void bfv_client_l1_body_00754e80(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00754e8f  call 0x4019f0 */
+    /* 00754e8f  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754e80_1;
@@ -1547,7 +1577,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00754ea0  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00754ea0  RoamTerrainTemplate::vf11  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754ea0, bfv_client_l1_body_00754ea0);
 BFV_L1_RESUME(bfv_client_l1r_00754ea0_1, bfv_client_l1_body_00754ea0, 1);
 void bfv_client_l1_body_00754ea0(struct bfv_cpu *c)
@@ -1561,7 +1593,7 @@ void bfv_client_l1_body_00754ea0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00754ea0  mov eax, dword ptr [esp + 4] */
+    /* 00754ea0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00754ea4  push -1 */
@@ -1582,7 +1614,7 @@ void bfv_client_l1_body_00754ea0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00754eac  call 0x4019f0 */
+    /* 00754eac  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754ea0_1;
@@ -1600,7 +1632,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00754ec0  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00754ec0  RoamTerrainTemplate::vf37  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754ec0, bfv_client_l1_body_00754ec0);
 BFV_L1_RESUME(bfv_client_l1r_00754ec0_1, bfv_client_l1_body_00754ec0, 1);
 void bfv_client_l1_body_00754ec0(struct bfv_cpu *c)
@@ -1614,7 +1648,7 @@ void bfv_client_l1_body_00754ec0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00754ec0  mov eax, dword ptr [esp + 4] */
+    /* 00754ec0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00754ec4  push -1 */
@@ -1635,7 +1669,7 @@ void bfv_client_l1_body_00754ec0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00754ecf  call 0x4019f0 */
+    /* 00754ecf  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754ec0_1;
@@ -1653,7 +1687,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00754ee0  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00754ee0  RoamTerrainTemplate::vf15  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754ee0, bfv_client_l1_body_00754ee0);
 BFV_L1_RESUME(bfv_client_l1r_00754ee0_1, bfv_client_l1_body_00754ee0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00754ee0_2, bfv_client_l1_body_00754ee0, 2);
@@ -1677,7 +1713,7 @@ void bfv_client_l1_body_00754ee0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00754ee4  lea eax, [esp + 0xc] */
+    /* 00754ee4  lea eax, [esp + 0xc]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 00754ee8  push eax */
     t = eax;
@@ -1689,14 +1725,14 @@ void bfv_client_l1_body_00754ee0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00754eef  call 0x4019f0 */
+    /* 00754eef  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754ee0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00754ef4  cmp dword ptr [esp + 0x1c], 0x10 */
+    /* 00754ef4  cmp dword ptr [esp + 0x1c], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x0000001cu);
     a = M32(ea);
     b = 0x10u;
@@ -1704,14 +1740,14 @@ R_1:
     F_SUB(32, a, b, r);
     /* 00754ef9  jb 0x754f06 */
     if (cf) goto L_00754f06;
-    /* 00754efb  mov ecx, dword ptr [esp + 8] */
+    /* 00754efb  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00754eff  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00754f00  call 0x403680 */
+    /* 00754f00  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754ee0_2;
@@ -1734,7 +1770,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00754f10  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00754f10  RoamTerrainTemplate::vf17  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00754f10, bfv_client_l1_body_00754f10);
 BFV_L1_RESUME(bfv_client_l1r_00754f10_1, bfv_client_l1_body_00754f10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00754f10_2, bfv_client_l1_body_00754f10, 2);
@@ -1758,7 +1796,7 @@ void bfv_client_l1_body_00754f10(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00754f14  lea eax, [esp + 0xc] */
+    /* 00754f14  lea eax, [esp + 0xc]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 00754f18  push eax */
     t = eax;
@@ -1770,14 +1808,14 @@ void bfv_client_l1_body_00754f10(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 00754f1f  call 0x4019f0 */
+    /* 00754f1f  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754f10_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00754f24  cmp dword ptr [esp + 0x1c], 0x10 */
+    /* 00754f24  cmp dword ptr [esp + 0x1c], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x0000001cu);
     a = M32(ea);
     b = 0x10u;
@@ -1785,14 +1823,14 @@ R_1:
     F_SUB(32, a, b, r);
     /* 00754f29  jb 0x754f36 */
     if (cf) goto L_00754f36;
-    /* 00754f2b  mov ecx, dword ptr [esp + 8] */
+    /* 00754f2b  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00754f2f  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00754f30  call 0x403680 */
+    /* 00754f30  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00754f10_2;
@@ -1815,7 +1853,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00756980  dice::ref2::geom::RoamTerrainTemplate  (virtual method) */
+/* 00756980  RoamTerrainTemplate::vf7  (virtual method)
+ * class: dice::ref2::geom::RoamTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00756980, bfv_client_l1_body_00756980);
 BFV_L1_RESUME(bfv_client_l1r_00756980_1, bfv_client_l1_body_00756980, 1);
 BFV_L1_RESUME(bfv_client_l1r_00756980_2, bfv_client_l1_body_00756980, 2);
@@ -1853,7 +1893,7 @@ void bfv_client_l1_body_00756980(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00756988  mov esi, ecx */
     esi = ecx;
-    /* 0075698a  call 0x403610 */
+    /* 0075698a  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00756980_1;
@@ -1877,7 +1917,7 @@ R_1:
     M32(esp) = t;
     /* 00756997  mov ecx, eax */
     ecx = eax;
-    /* 00756999  call 0x756780 */
+    /* 00756999  call 0x756780  ; RoamTerrain::RoamTerrain */
     t = 0x00756780u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00756980_2;
@@ -1914,7 +1954,7 @@ L_007569a4:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esi = r;
-    /* 007569b5  lea eax, [esp + 0x10] */
+    /* 007569b5  lea eax, [esp + 0x10]  ; &var_4 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 007569b9  push eax */
     t = eax;
@@ -1930,10 +1970,10 @@ L_007569a4:
     M32(esp) = t;
     /* 007569bc  mov ecx, esi */
     ecx = esi;
-    /* 007569be  mov dword ptr [esp + 0x1c], ebp */
+    /* 007569be  mov dword ptr [esp + 0x1c], ebp  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = ebp;
-    /* 007569c2  call 0x753820 */
+    /* 007569c2  call 0x753820  ; std::list::_Buynode_00753820 */
     t = 0x00753820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00756980_3;
@@ -1948,7 +1988,7 @@ R_3:
     ecx = esi;
     /* 007569cb  mov ebx, eax */
     ebx = eax;
-    /* 007569cd  call 0x489ee0 */
+    /* 007569cd  call 0x489ee0  ; std::list::_Incsize */
     t = 0x00489ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00756980_4;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007c1a2d  type_info  (vtable store) */
+/* 007c1a2d  type_info::~type_info  (vtable store)
+ * class: type_info
+ * called by: type_info::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c1a2d, bfv_client_l1_body_007c1a2d);
 BFV_L1_RESUME(bfv_client_l1r_007c1a2d_1, bfv_client_l1_body_007c1a2d, 1);
 BFV_L1_RESUME(bfv_client_l1r_007c1a2d_2, bfv_client_l1_body_007c1a2d, 2);
@@ -44,14 +47,14 @@ void bfv_client_l1_body_007c1a2d(struct bfv_cpu *c)
 R_1:
     /* 007c1a39  mov esi, ecx */
     esi = ecx;
-    /* 007c1a3b  mov dword ptr [esi], 0xbb6ff4 */
+    /* 007c1a3b  mov dword ptr [esi], 0xbb6ff4  ; vtable type_info */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbb6ff4u;
     /* 007c1a41  push 0xe */
     t = 0xeu;
     esp -= 4;
     M32(esp) = t;
-    /* 007c1a43  call 0x7c6699 */
+    /* 007c1a43  call 0x7c6699  ; _lock */
     t = 0x007c6699u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c1a2d_2;
@@ -79,7 +82,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c1a55  call 0x7c266d */
+    /* 007c1a55  call 0x7c266d  ; free */
     t = 0x007c266du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c1a2d_3;
@@ -96,14 +99,14 @@ L_007c1a5b:
     r = (M32(ea) | 0xffffffffu) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 007c1a5f  call 0x7c1a6a */
+    /* 007c1a5f  call 0x7c1a6a  ; type_info_007c1a6a */
     t = 0x007c1a6au;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c1a2d_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 007c1a64  call 0x7c720b */
+    /* 007c1a64  call 0x7c720b  ; _SEH_epilog */
     t = 0x007c720bu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c1a2d_5;
@@ -121,7 +124,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007c1a6a  (between same file) */
+/* 007c1a6a  type_info_007c1a6a  (between same file)
+ * called by: type_info::~type_info
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c1a6a, bfv_client_l1_body_007c1a6a);
 BFV_L1_RESUME(bfv_client_l1r_007c1a6a_1, bfv_client_l1_body_007c1a6a, 1);
 void bfv_client_l1_body_007c1a6a(struct bfv_cpu *c)
@@ -139,7 +144,7 @@ void bfv_client_l1_body_007c1a6a(struct bfv_cpu *c)
     t = 0xeu;
     esp -= 4;
     M32(esp) = t;
-    /* 007c1a6c  call 0x7c65e4 */
+    /* 007c1a6c  call 0x7c65e4  ; _unlock */
     t = 0x007c65e4u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c1a6a_1;
@@ -161,7 +166,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007c1a73  type_info  (virtual method) */
+/* 007c1a73  type_info::deleting_dtor  (virtual method)
+ * class: type_info
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c1a73, bfv_client_l1_body_007c1a73);
 BFV_L1_RESUME(bfv_client_l1r_007c1a73_1, bfv_client_l1_body_007c1a73, 1);
 BFV_L1_RESUME(bfv_client_l1r_007c1a73_2, bfv_client_l1_body_007c1a73, 2);
@@ -183,14 +190,14 @@ void bfv_client_l1_body_007c1a73(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007c1a74  mov esi, ecx */
     esi = ecx;
-    /* 007c1a76  call 0x7c1a2d */
+    /* 007c1a76  call 0x7c1a2d  ; type_info::~type_info */
     t = 0x007c1a2du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c1a73_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007c1a7b  test byte ptr [esp + 8], 1 */
+    /* 007c1a7b  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -200,7 +207,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c1a83  call 0x403680 */
+    /* 007c1a83  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c1a73_2;

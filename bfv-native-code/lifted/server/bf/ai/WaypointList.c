@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005d0f50  dice::bf::ai::WaypointList  (virtual method) */
+/* 005d0f50  WaypointList::vf6_get_g_00851bcc  (virtual method)
+ * class: dice::bf::ai::WaypointList
+ */
 BFV_L1_ENTRY(bfv_server_l1_005d0f50, bfv_server_l1_body_005d0f50);
 void bfv_server_l1_body_005d0f50(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_server_l1_body_005d0f50(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005d0f50  fld dword ptr [0x851bcc] */
+    /* 005d0f50  fld dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005d0f56  ret */
@@ -28,7 +30,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0075c810  dice::bf::ai::WaypointList  (virtual method) */
+/* 0075c810  WaypointList::vf4  (virtual method)
+ * class: dice::bf::ai::WaypointList
+ */
 BFV_L1_ENTRY(bfv_server_l1_0075c810, bfv_server_l1_body_0075c810);
 void bfv_server_l1_body_0075c810(struct bfv_cpu *c)
 {
@@ -37,7 +41,7 @@ void bfv_server_l1_body_0075c810(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0075c810  mov al, byte ptr [esp + 4] */
+    /* 0075c810  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 0075c814  mov byte ptr [ecx + 6], al */
@@ -54,7 +58,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0075c820  dice::bf::ai::WaypointList  (virtual method) */
+/* 0075c820  WaypointList::vf5  (virtual method)
+ * class: dice::bf::ai::WaypointList
+ * also entered at 0075c830: WPAltitudeCloseTo::vf0, WPBeachLanding::vf0, WPCloseTo::vf0, WPEmpty::vf0 (+1 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0075c820, bfv_server_l1_body_0075c820);
 void bfv_server_l1_body_0075c820(struct bfv_cpu *c)
 {

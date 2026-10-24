@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007000a0  dice::ref2::world::UnderGrowthGroup  (vtable store) */
+/* 007000a0  UnderGrowthGroup::~UnderGrowthGroup  (vtable store)
+ * class: dice::ref2::world::UnderGrowthGroup
+ * also entered at 00700140: UnderGrowthGroup::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_007000a0, bfv_client_l1_body_007000a0);
 BFV_L1_RESUME(bfv_client_l1r_007000a0_1, bfv_client_l1_body_007000a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007000a0_2, bfv_client_l1_body_007000a0, 2);
@@ -33,14 +36,14 @@ void bfv_client_l1_body_007000a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007000a2  mov esi, ecx */
     esi = ecx;
-    /* 007000a4  mov dword ptr [esi], 0xba58ec */
+    /* 007000a4  mov dword ptr [esi], 0xba58ec  ; vtable UnderGrowthGroup */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba58ecu;
     /* 007000aa  xor edi, edi */
     r = 0;
     F_LOGIC(32, r);
     edi = r;
-    /* 007000ac  lea esp, [esp] */
+    /* 007000ac  lea esp, [esp]  ; &var_8 */
     esp = (uint32_t)(esp);
 L_007000b0:
     /* 007000b0  mov ecx, dword ptr [esi + 0x4c] */
@@ -145,7 +148,7 @@ L_007000e2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007000eb  call 0x403680 */
+    /* 007000eb  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007000a0_2;
@@ -222,7 +225,7 @@ L_00700110:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00700118  call 0x403680 */
+    /* 00700118  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007000a0_3;
@@ -255,7 +258,7 @@ L_00700120:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 0070012d  jmp 0x6ffc70 */
+    /* 0070012d  jmp 0x6ffc70  ; ProximityGroup::~ProximityGroup */
     c->eip = 0x006ffc70u;
     goto out;
 out: __attribute__((unused));
@@ -265,7 +268,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00700160  dice::ref2::world::UnderGrowthGroup  (virtual method) */
+/* 00700160  UnderGrowthGroup::vf1  (virtual method)
+ * overrides: ProximityGroup::vf1  (3 classes implement it)
+ * class: dice::ref2::world::UnderGrowthGroup
+ */
 BFV_L1_ENTRY(bfv_client_l1_00700160, bfv_client_l1_body_00700160);
 BFV_L1_RESUME(bfv_client_l1r_00700160_1, bfv_client_l1_body_00700160, 1);
 BFV_L1_RESUME(bfv_client_l1r_00700160_2, bfv_client_l1_body_00700160, 2);
@@ -304,7 +310,7 @@ void bfv_client_l1_body_00700160(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00700167  call dword ptr [eax + 0x10] */
+    /* 00700167  call dword ptr [eax + 0x10]  ; -> UnderGrowthGroup::vf4 = ProximityGroup::set_44h */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -312,10 +318,10 @@ void bfv_client_l1_body_00700160(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0070016a  mov ecx, dword ptr [esp + 0xc] */
+    /* 0070016a  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 0070016e  mov edx, dword ptr [esp + 8] */
+    /* 0070016e  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00700172  push ecx */
@@ -328,7 +334,7 @@ R_1:
     M32(esp) = t;
     /* 00700174  mov ecx, esi */
     ecx = esi;
-    /* 00700176  call 0x6ffdc0 */
+    /* 00700176  call 0x6ffdc0  ; ProximityGroup::vf1 */
     t = 0x006ffdc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00700160_2;
@@ -349,7 +355,7 @@ R_2:
     M32(esp) = t;
     /* 00700182  mov ecx, esi */
     ecx = esi;
-    /* 00700184  call dword ptr [eax + 8] */
+    /* 00700184  call dword ptr [eax + 8]  ; -> UnderGrowthGroup::vf2 = ProximityGroup::vf2_addressOf_38h (returns &this+0x38) */
     ea = (uint32_t)(eax + 0x00000008u);
     t = M32(ea);
     esp -= 4;
@@ -364,7 +370,7 @@ R_3:
     ecx = esi;
     /* 0070018b  mov edi, eax */
     edi = eax;
-    /* 0070018d  call dword ptr [edx + 8] */
+    /* 0070018d  call dword ptr [edx + 8]  ; -> UnderGrowthGroup::vf2 = ProximityGroup::vf2_addressOf_38h (returns &this+0x38) */
     ea = (uint32_t)(edx + 0x00000008u);
     t = M32(ea);
     esp -= 4;
@@ -375,7 +381,7 @@ R_4:
     /* 00700190  mov edi, dword ptr [edi + 8] */
     ea = (uint32_t)(edi + 0x00000008u);
     edi = M32(ea);
-    /* 00700193  mov ecx, dword ptr [0xdc8098] */
+    /* 00700193  mov ecx, dword ptr [0xdc8098]  ; g_pUnderGrowthManager_00dc8098 */
     ea = (uint32_t)(0x00dc8098u);
     ecx = M32(ea);
     /* 00700199  mov eax, dword ptr [eax] */
@@ -392,7 +398,7 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0070019f  call dword ptr [edx + 0x20] */
+    /* 0070019f  call dword ptr [edx + 0x20]  ; -> UnderGrowthManager::vf8 = GrowthManager::vf8 */
     ea = (uint32_t)(edx + 0x00000020u);
     t = M32(ea);
     esp -= 4;
@@ -420,7 +426,7 @@ R_5:
     M32(esp) = t;
     /* 007001af  mov ecx, esi */
     ecx = esi;
-    /* 007001b1  call dword ptr [edx + 0x10] */
+    /* 007001b1  call dword ptr [edx + 0x10]  ; -> UnderGrowthGroup::vf4 = ProximityGroup::set_44h */
     ea = (uint32_t)(edx + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -438,7 +444,7 @@ L_007001b5:
     edx = M32(ea);
     /* 007001b7  mov ecx, esi */
     ecx = esi;
-    /* 007001b9  call dword ptr [edx + 0x14] */
+    /* 007001b9  call dword ptr [edx + 0x14]  ; -> UnderGrowthGroup::vf5 = ProximityGroup::vf5_get_44h (returns this+0x44) */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -470,6 +476,281 @@ R_7:
     /* 007001c3  ret 8 */
     c->eip = M32(esp);
     esp += 12;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 007001d0  UnderGrowthGroup::UnderGrowthGroup  (vtable store)
+ * class: dice::ref2::world::UnderGrowthGroup
+ * strings: "underGrowthGroup"
+ * also entered at 00700290: IProximityEffect::vf0
+ * called by: ObjectCreatorWrapper<UnderGrowthGroup>::create
+ */
+BFV_L1_ENTRY(bfv_client_l1_007001d0, bfv_client_l1_body_007001d0);
+BFV_L1_RESUME(bfv_client_l1r_007001d0_1, bfv_client_l1_body_007001d0, 1);
+BFV_L1_RESUME(bfv_client_l1r_007001d0_2, bfv_client_l1_body_007001d0, 2);
+BFV_L1_RESUME(bfv_client_l1r_007001d0_3, bfv_client_l1_body_007001d0, 3);
+BFV_L1_RESUME(bfv_client_l1r_007001d0_4, bfv_client_l1_body_007001d0, 4);
+void bfv_client_l1_body_007001d0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, n, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    case 3: goto R_3;
+    case 4: goto R_4;
+    default: break;
+    }
+    /* 007001d0  sub esp, 8 */
+    a = esp;
+    b = 0x8u;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    esp = r;
+    /* 007001d3  push ebx */
+    t = ebx;
+    esp -= 4;
+    M32(esp) = t;
+    /* 007001d4  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 007001d5  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 007001d6  mov ebx, ecx */
+    ebx = ecx;
+    /* 007001d8  call 0x6ffd20  ; ProximityGroup::ProximityGroup */
+    t = 0x006ffd20u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007001d0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 007001dd  lea esi, [ebx + 0x48] */
+    esi = (uint32_t)(ebx + 0x00000048u);
+    /* 007001e0  mov dword ptr [ebx], 0xba58ec  ; vtable UnderGrowthGroup */
+    ea = (uint32_t)(ebx);
+    M32(ea) = 0xba58ecu;
+    /* 007001e6  mov dword ptr [esi + 4], 0 */
+    ea = (uint32_t)(esi + 0x00000004u);
+    M32(ea) = 0x0u;
+    /* 007001ed  mov dword ptr [esi + 8], 0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M32(ea) = 0x0u;
+    /* 007001f4  mov dword ptr [esi + 0xc], 0 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0x0u;
+    /* 007001fb  mov dword ptr [esp + 0x10], 0x10  ; var_4 */
+    ea = (uint32_t)(esp + 0x00000010u);
+    M32(ea) = 0x10u;
+L_00700203:
+    /* 00700203  push 4 */
+    t = 0x4u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00700205  call 0x403610  ; operator_new */
+    t = 0x00403610u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007001d0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0070020a  add esp, 4 */
+    a = esp;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 0070020d  test eax, eax */
+    r = (eax & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 0070020f  je 0x70021b */
+    if (zf) goto L_0070021b;
+    /* 00700211  mov dword ptr [eax], 0 */
+    ea = (uint32_t)(eax);
+    M32(ea) = 0x0u;
+    /* 00700217  mov edi, eax */
+    edi = eax;
+    /* 00700219  jmp 0x70021d */
+    goto L_0070021d;
+L_0070021b:
+    /* 0070021b  xor edi, edi */
+    r = 0;
+    F_LOGIC(32, r);
+    edi = r;
+L_0070021d:
+    /* 0070021d  mov edx, dword ptr [esi + 4] */
+    ea = (uint32_t)(esi + 0x00000004u);
+    edx = M32(ea);
+    /* 00700220  test edx, edx */
+    r = (edx & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 00700222  mov dword ptr [esp + 0xc], edi  ; var_8 */
+    ea = (uint32_t)(esp + 0x0000000cu);
+    M32(ea) = edi;
+    /* 00700226  jne 0x70022c */
+    if (!zf) goto L_0070022c;
+    /* 00700228  xor ecx, ecx */
+    r = 0;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 0070022a  jmp 0x700234 */
+    goto L_00700234;
+L_0070022c:
+    /* 0070022c  mov ecx, dword ptr [esi + 8] */
+    ea = (uint32_t)(esi + 0x00000008u);
+    ecx = M32(ea);
+    /* 0070022f  sub ecx, edx */
+    a = ecx;
+    b = edx;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    ecx = r;
+    /* 00700231  sar ecx, 2 */
+    n = 0x2u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((int64_t)(int32_t)a >> n) & 0xffffffffu;
+        cf = (uint32_t)(((int64_t)(int32_t)a >> (n - 1)) & 1u);
+        of = 0;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+L_00700234:
+    /* 00700234  test edx, edx */
+    r = (edx & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    /* 00700236  je 0x700251 */
+    if (zf) goto L_00700251;
+    /* 00700238  mov eax, dword ptr [esi + 0xc] */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    eax = M32(ea);
+    /* 0070023b  sub eax, edx */
+    a = eax;
+    b = edx;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    eax = r;
+    /* 0070023d  sar eax, 2 */
+    n = 0x2u & 31u;
+    if (n) {
+        a = eax;
+        r = (uint32_t)((int64_t)(int32_t)a >> n) & 0xffffffffu;
+        cf = (uint32_t)(((int64_t)(int32_t)a >> (n - 1)) & 1u);
+        of = 0;
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 00700240  cmp ecx, eax */
+    a = ecx;
+    b = eax;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    /* 00700242  jae 0x700251 */
+    if (!cf) goto L_00700251;
+    /* 00700244  mov eax, dword ptr [esi + 8] */
+    ea = (uint32_t)(esi + 0x00000008u);
+    eax = M32(ea);
+    /* 00700247  mov dword ptr [eax], edi */
+    ea = (uint32_t)(eax);
+    M32(ea) = edi;
+    /* 00700249  add eax, 4 */
+    a = eax;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 0070024c  mov dword ptr [esi + 8], eax */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M32(ea) = eax;
+    /* 0070024f  jmp 0x700263 */
+    goto L_00700263;
+L_00700251:
+    /* 00700251  mov eax, dword ptr [esi + 8] */
+    ea = (uint32_t)(esi + 0x00000008u);
+    eax = M32(ea);
+    /* 00700254  lea ecx, [esp + 0xc]  ; &var_8 */
+    ecx = (uint32_t)(esp + 0x0000000cu);
+    /* 00700258  push ecx */
+    t = ecx;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00700259  push 1 */
+    t = 0x1u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0070025b  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0070025c  mov ecx, esi */
+    ecx = esi;
+    /* 0070025e  call 0x6e4920  ; sub_006e4920 */
+    t = 0x006e4920u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007001d0_3;
+    c->eip = t;
+    goto out;
+R_3:
+L_00700263:
+    /* 00700263  dec dword ptr [esp + 0x10]  ; var_4 */
+    ea = (uint32_t)(esp + 0x00000010u);
+    a = M32(ea);
+    r = (a - 1u) & 0xffffffffu;
+    F_DEC(32, a, r);
+    M32(ea) = r;
+    /* 00700267  jne 0x700203 */
+    if (!zf) goto L_00700203;
+    /* 00700269  push 0x10 */
+    t = 0x10u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0070026b  push 0xba5904  ; "underGrowthGroup" */
+    t = 0xba5904u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00700270  lea ecx, [ebx + 4] */
+    ecx = (uint32_t)(ebx + 0x00000004u);
+    /* 00700273  call 0x401ae0  ; std::string::assign_chars */
+    t = 0x00401ae0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007001d0_4;
+    c->eip = t;
+    goto out;
+R_4:
+    /* 00700278  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 00700279  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0070027a  mov eax, ebx */
+    eax = ebx;
+    /* 0070027c  pop ebx */
+    t = M32(esp);
+    esp += 4;
+    ebx = t;
+    /* 0070027d  add esp, 8 */
+    a = esp;
+    b = 0x8u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 00700280  ret */
+    c->eip = M32(esp);
+    esp += 4;
     goto out;
 out: __attribute__((unused));
     c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;

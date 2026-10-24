@@ -5,8 +5,10 @@
 #include "l1.h"
 
 
-/* 006fcb80  dice::bf::ai::?A0x10db9b01::BBCreateFunctionChangeLandingCraft  (virtual method)
- * strings: "BBPChangeLandingCraft" */
+/* 006fcb80  BBCreateFunctionChangeLandingCraft::vf0  (virtual method)
+ * class: dice::bf::ai::?A0x10db9b01::BBCreateFunctionChangeLandingCraft
+ * strings: "BBPChangeLandingCraft"
+ */
 BFV_L1_ENTRY(bfv_server_l1_006fcb80, bfv_server_l1_body_006fcb80);
 BFV_L1_RESUME(bfv_server_l1r_006fcb80_1, bfv_server_l1_body_006fcb80, 1);
 BFV_L1_RESUME(bfv_server_l1r_006fcb80_2, bfv_server_l1_body_006fcb80, 2);
@@ -38,7 +40,7 @@ void bfv_server_l1_body_006fcb80(struct bfv_cpu *c)
     case 10: goto R_10;
     default: break;
     }
-    /* 006fcb80  mov ecx, dword ptr [esp + 8] */
+    /* 006fcb80  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 006fcb84  mov eax, dword ptr [ecx + 0x14] */
@@ -60,7 +62,7 @@ void bfv_server_l1_body_006fcb80(struct bfv_cpu *c)
     t = 0x15u;
     esp -= 4;
     M32(esp) = t;
-    /* 006fcb8c  push 0x86df98 */
+    /* 006fcb8c  push 0x86df98  ; "BBPChangeLandingCraft" */
     t = 0x86df98u;
     esp -= 4;
     M32(esp) = t;
@@ -72,7 +74,7 @@ void bfv_server_l1_body_006fcb80(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 006fcb94  call 0x401220 */
+    /* 006fcb94  call 0x401220  ; std::string::compare_chars */
     t = 0x00401220u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_1;
@@ -82,7 +84,7 @@ R_1:
     /* 006fcb99  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 006fcb9b  mov edi, dword ptr [esp + 0x10] */
+    /* 006fcb9b  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 006fcb9f  jne 0x6fcbcf */
@@ -91,7 +93,7 @@ R_1:
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 006fcba3  call 0x403d80 */
+    /* 006fcba3  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_2;
@@ -115,7 +117,7 @@ R_2:
     M32(esp) = t;
     /* 006fcbb0  mov ecx, eax */
     ecx = eax;
-    /* 006fcbb2  call 0x732c70 */
+    /* 006fcbb2  call 0x732c70  ; BBPChangeLandingCraft::BBPChangeLandingCraft */
     t = 0x00732c70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_3;
@@ -124,7 +126,7 @@ R_2:
 R_3:
     /* 006fcbb7  mov ecx, eax */
     ecx = eax;
-    /* 006fcbb9  call 0x58a700 */
+    /* 006fcbb9  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_4;
@@ -142,7 +144,7 @@ L_006fcbc2:
     eax = r;
     /* 006fcbc4  mov ecx, eax */
     ecx = eax;
-    /* 006fcbc6  call 0x58a700 */
+    /* 006fcbc6  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_5;
@@ -163,7 +165,7 @@ L_006fcbd1:
     t = 0x30u;
     esp -= 4;
     M32(esp) = t;
-    /* 006fcbd3  call 0x403d80 */
+    /* 006fcbd3  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_6;
@@ -181,17 +183,17 @@ R_6:
     F_LOGIC(32, r);
     /* 006fcbdd  je 0x6fcbf9 */
     if (zf) goto L_006fcbf9;
-    /* 006fcbdf  mov ecx, dword ptr [esp + 0x2c] */
+    /* 006fcbdf  mov ecx, dword ptr [esp + 0x2c]  ; arg_1c */
     ea = (uint32_t)(esp + 0x0000002cu);
     ecx = M32(ea);
-    /* 006fcbe3  mov edx, dword ptr [esp + 0x28] */
+    /* 006fcbe3  mov edx, dword ptr [esp + 0x28]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000028u);
     edx = M32(ea);
     /* 006fcbe7  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 006fcbe8  mov ecx, dword ptr [esp + 0x1c] */
+    /* 006fcbe8  mov ecx, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 006fcbec  push edx */
@@ -212,7 +214,7 @@ R_6:
     M32(esp) = t;
     /* 006fcbf0  mov ecx, eax */
     ecx = eax;
-    /* 006fcbf2  call 0x732230 */
+    /* 006fcbf2  call 0x732230  ; BBChangeLandingCraft::BBChangeLandingCraft */
     t = 0x00732230u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_7;
@@ -229,14 +231,14 @@ L_006fcbf9:
 L_006fcbfb:
     /* 006fcbfb  mov ecx, eax */
     ecx = eax;
-    /* 006fcbfd  call 0x58a700 */
+    /* 006fcbfd  call 0x58a700  ; stub_return_this_0args_0058a700 */
     t = 0x0058a700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_8;
     c->eip = t;
     goto out;
 R_8:
-    /* 006fcc02  mov esi, dword ptr [esp + 0x20] */
+    /* 006fcc02  mov esi, dword ptr [esp + 0x20]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000020u);
     esi = M32(ea);
     /* 006fcc06  mov ebx, eax */
@@ -265,7 +267,7 @@ L_006fcc13:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006fcc16  call 0x403df0 */
+    /* 006fcc16  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_9;
@@ -292,7 +294,7 @@ L_006fcc24:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006fcc25  call 0x403df0 */
+    /* 006fcc25  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006fcb80_10;

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 008b4080  dice::ref2::io::NetworkModule  (virtual method) */
+/* 008b4080  NetworkModule::vf6  (virtual method)
+ * class: dice::ref2::io::NetworkModule
+ */
 BFV_L1_ENTRY(bfv_client_l1_008b4080, bfv_client_l1_body_008b4080);
 BFV_L1_RESUME(bfv_client_l1r_008b4080_1, bfv_client_l1_body_008b4080, 1);
 void bfv_client_l1_body_008b4080(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_008b4080(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 008b4080  call 0x8d76c0 */
+    /* 008b4080  call 0x8d76c0  ; static_init_pool_00dfa014 */
     t = 0x008d76c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008b4080_1;
@@ -39,7 +41,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008d76c0  (called from this file only) */
+/* 008d76c0  static_init_pool_00dfa014  (called from this file only)
+ * called by: NetworkModule::vf6
+ */
 BFV_L1_ENTRY(bfv_client_l1_008d76c0, bfv_client_l1_body_008d76c0);
 BFV_L1_RESUME(bfv_client_l1r_008d76c0_1, bfv_client_l1_body_008d76c0, 1);
 void bfv_client_l1_body_008d76c0(struct bfv_cpu *c)
@@ -69,7 +73,7 @@ void bfv_client_l1_body_008d76c0(struct bfv_cpu *c)
     edx = 0x34u;
     /* 008d76ce  mov ecx, 0xbe0700 */
     ecx = 0xbe0700u;
-    /* 008d76d3  call 0x4037a0 */
+    /* 008d76d3  call 0x4037a0  ; createMemoryPool */
     t = 0x004037a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008d76c0_1;

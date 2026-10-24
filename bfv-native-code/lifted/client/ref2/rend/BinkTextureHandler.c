@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00a67250  dice::ref2::rend::BinkTextureHandler  (vtable store) */
+/* 00a67250  BinkTextureHandler::BinkTextureHandler  (vtable store)
+ * class: dice::ref2::rend::BinkTextureHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a67250, bfv_client_l1_body_00a67250);
 void bfv_client_l1_body_00a67250(struct bfv_cpu *c)
 {
@@ -16,7 +18,7 @@ void bfv_client_l1_body_00a67250(struct bfv_cpu *c)
     uint32_t ea;
     /* 00a67250  mov eax, ecx */
     eax = ecx;
-    /* 00a67252  mov dword ptr [eax], 0xc05d50 */
+    /* 00a67252  mov dword ptr [eax], 0xc05d50  ; vtable BinkTextureHandler */
     ea = (uint32_t)(eax);
     M32(ea) = 0xc05d50u;
     /* 00a67258  mov dword ptr [eax + 4], 1 */
@@ -33,7 +35,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a67260  dice::ref2::rend::BinkTextureHandler  (virtual method) */
+/* 00a67260  BinkTextureHandler::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::rend::BinkTextureHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a67260, bfv_client_l1_body_00a67260);
 void bfv_client_l1_body_00a67260(struct bfv_cpu *c)
 {
@@ -42,12 +47,12 @@ void bfv_client_l1_body_00a67260(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00a67260  mov edx, dword ptr [0xb42718] */
+    /* 00a67260  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00a67266  mov eax, ecx */
     eax = ecx;
-    /* 00a67268  mov ecx, dword ptr [esp + 4] */
+    /* 00a67268  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00a6726c  cmp ecx, edx */
@@ -57,7 +62,7 @@ void bfv_client_l1_body_00a67260(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00a6726e  je 0xa67292 */
     if (zf) goto L_00a67292;
-    /* 00a67270  cmp ecx, dword ptr [0xbfe540] */
+    /* 00a67270  cmp ecx, dword ptr [0xbfe540]  ; interfaceID(BinkTextureHandler|TextureHandlerTarga) */
     ea = (uint32_t)(0x00bfe540u);
     a = ecx;
     b = M32(ea);
@@ -65,7 +70,7 @@ void bfv_client_l1_body_00a67260(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00a67276  je 0xa67292 */
     if (zf) goto L_00a67292;
-    /* 00a67278  cmp ecx, dword ptr [0xbfe544] */
+    /* 00a67278  cmp ecx, dword ptr [0xbfe544]  ; interfaceID(BinkTextureHandler) */
     ea = (uint32_t)(0x00bfe544u);
     a = ecx;
     b = M32(ea);
@@ -116,7 +121,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a677d0  dice::ref2::rend::BinkTextureHandler  (virtual method) */
+/* 00a677d0  BinkTextureHandler::vf8  (virtual method)
+ * class: dice::ref2::rend::BinkTextureHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a677d0, bfv_client_l1_body_00a677d0);
 BFV_L1_RESUME(bfv_client_l1r_00a677d0_1, bfv_client_l1_body_00a677d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a677d0_2, bfv_client_l1_body_00a677d0, 2);
@@ -188,7 +195,7 @@ void bfv_client_l1_body_00a677d0(struct bfv_cpu *c)
     /* 00a677f0  mov byte ptr [esp + 0x1c], bl */
     ea = (uint32_t)(esp + 0x0000001cu);
     M8(ea) = LO8(ebx);
-    /* 00a677f4  call 0x4019f0 */
+    /* 00a677f4  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a677d0_1;
@@ -221,7 +228,7 @@ L_00a6780e:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a67810  call dword ptr [0xb42424] */
+    /* 00a67810  call dword ptr [0xb42424]  ; BINKW32!_BinkOpen@8 */
     ea = (uint32_t)(0x00b42424u);
     t = M32(ea);
     esp -= 4;
@@ -246,7 +253,7 @@ R_2:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a67823  call 0x403680 */
+    /* 00a67823  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a677d0_3;
@@ -307,7 +314,7 @@ L_00a6784a:
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 00a6784c  call 0x403610 */
+    /* 00a6784c  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a677d0_4;
@@ -329,7 +336,7 @@ R_4:
     if (zf) goto L_00a67863;
     /* 00a67858  mov ecx, eax */
     ecx = eax;
-    /* 00a6785a  call 0xa4ae20 */
+    /* 00a6785a  call 0xa4ae20  ; Texture2DInfo::Texture2DInfo */
     t = 0x00a4ae20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a677d0_5;
@@ -371,7 +378,7 @@ L_00a67865:
     /* 00a6787e  mov dword ptr [esi + 0x14], ecx */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = ecx;
-    /* 00a67881  call dword ptr [0xb4243c] */
+    /* 00a67881  call dword ptr [0xb4243c]  ; BINKW32!_BinkClose@4 */
     ea = (uint32_t)(0x00b4243cu);
     t = M32(ea);
     esp -= 4;
@@ -410,7 +417,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a678a0  dice::ref2::rend::BinkTextureHandler  (virtual method) */
+/* 00a678a0  BinkTextureHandler::vf4  (virtual method)
+ * class: dice::ref2::rend::BinkTextureHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a678a0, bfv_client_l1_body_00a678a0);
 BFV_L1_RESUME(bfv_client_l1r_00a678a0_1, bfv_client_l1_body_00a678a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a678a0_2, bfv_client_l1_body_00a678a0, 2);
@@ -458,7 +467,7 @@ void bfv_client_l1_body_00a678a0(struct bfv_cpu *c)
     t = 0xc05e14u;
     esp -= 4;
     M32(esp) = t;
-    /* 00a678c6  mov ecx, 0xe20cc4 */
+    /* 00a678c6  mov ecx, 0xe20cc4  ; g_str_BIK */
     ecx = 0xe20cc4u;
     /* 00a678cb  mov dword ptr [0xe20cdc], 0xf */
     ea = (uint32_t)(0x00e20cdcu);
@@ -469,7 +478,7 @@ void bfv_client_l1_body_00a678a0(struct bfv_cpu *c)
     /* 00a678da  mov byte ptr [0xe20cc8], al */
     ea = (uint32_t)(0x00e20cc8u);
     M8(ea) = LO8(eax);
-    /* 00a678df  call 0x401ae0 */
+    /* 00a678df  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a678a0_1;
@@ -480,7 +489,7 @@ R_1:
     t = 0xb41830u;
     esp -= 4;
     M32(esp) = t;
-    /* 00a678e9  call 0x7c2cd2 */
+    /* 00a678e9  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a678a0_2;
@@ -494,7 +503,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00a678f1:
-    /* 00a678f1  mov eax, 0xe20cc4 */
+    /* 00a678f1  mov eax, 0xe20cc4  ; g_str_BIK */
     eax = 0xe20cc4u;
     /* 00a678f6  ret */
     c->eip = M32(esp);
@@ -507,8 +516,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a67900  (between same file)
- * strings: "music/" */
+/* 00a67900  BinkTextureHandler_music_00a67900  (between same file)
+ * strings: "music/"
+ * called by: BinkTextureHandler::vf7
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a67900, bfv_client_l1_body_00a67900);
 BFV_L1_RESUME(bfv_client_l1r_00a67900_1, bfv_client_l1_body_00a67900, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a67900_2, bfv_client_l1_body_00a67900, 2);
@@ -588,7 +599,7 @@ void bfv_client_l1_body_00a67900(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a67913  call dword ptr [0xb4243c] */
+    /* 00a67913  call dword ptr [0xb4243c]  ; BINKW32!_BinkClose@4 */
     ea = (uint32_t)(0x00b4243cu);
     t = M32(ea);
     esp -= 4;
@@ -600,7 +611,7 @@ R_1:
     ea = (uint32_t)(esi + 0x00000028u);
     M32(ea) = ebx;
 L_00a6791c:
-    /* 00a6791c  mov eax, dword ptr [esp + 0x30] */
+    /* 00a6791c  mov eax, dword ptr [esp + 0x30]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
     /* 00a67920  push -1 */
@@ -617,7 +628,7 @@ L_00a6791c:
     M32(esp) = t;
     /* 00a67924  lea ecx, [esi + 0x4c] */
     ecx = (uint32_t)(esi + 0x0000004cu);
-    /* 00a67927  call 0x4019f0 */
+    /* 00a67927  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67900_2;
@@ -632,7 +643,7 @@ R_2:
     F_SUB(8, a, b, r);
     /* 00a67932  je 0xa67986 */
     if (zf) goto L_00a67986;
-    /* 00a67934  mov eax, dword ptr [0xde59f8] */
+    /* 00a67934  mov eax, dword ptr [0xde59f8]  ; g_pDriverMiles_00de59f8 */
     ea = (uint32_t)(0x00de59f8u);
     eax = M32(ea);
     /* 00a67939  cmp eax, ebx */
@@ -645,7 +656,7 @@ R_2:
     M8(ea) = LO8(ebx);
     /* 00a67941  je 0xa67986 */
     if (zf) goto L_00a67986;
-    /* 00a67943  mov ecx, dword ptr [0xde5a14] */
+    /* 00a67943  mov ecx, dword ptr [0xde5a14]  ; g_pDriverMiles_00de5a14 */
     ea = (uint32_t)(0x00de5a14u);
     ecx = M32(ea);
     /* 00a67949  cmp ecx, ebx */
@@ -653,10 +664,10 @@ R_2:
     b = ebx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00a6794b  mov edi, dword ptr [0xb42414] */
+    /* 00a6794b  mov edi, dword ptr [0xb42414]  ; BINKW32!_BinkSetSoundSystem@8 */
     ea = (uint32_t)(0x00b42414u);
     edi = M32(ea);
-    /* 00a67951  mov ebp, dword ptr [0xb42418] */
+    /* 00a67951  mov ebp, dword ptr [0xb42418]  ; BINKW32!_BinkOpenDirectSound@4 */
     ea = (uint32_t)(0x00b42418u);
     ebp = M32(ea);
     /* 00a67957  je 0xa67961 */
@@ -665,7 +676,7 @@ R_2:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a6795a  call 0x770970 */
+    /* 00a6795a  call 0x770970  ; DriverMiles::calls__BinkSetSoundSystem_8_00770970 */
     t = 0x00770970u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67900_3;
@@ -680,7 +691,7 @@ L_00a67961:
     edx = M32(ea);
     /* 00a67963  mov ecx, eax */
     ecx = eax;
-    /* 00a67965  call dword ptr [edx + 4] */
+    /* 00a67965  call dword ptr [edx + 4]  ; -> DriverMiles::vf1 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -736,7 +747,7 @@ R_6:
     F_LOGIC(32, r);
     /* 00a6797b  jne 0xa67986 */
     if (!zf) goto L_00a67986;
-    /* 00a6797d  mov eax, dword ptr [0xb4241c] */
+    /* 00a6797d  mov eax, dword ptr [0xb4241c]  ; BINKW32!_BinkOpenWaveOut@4 */
     ea = (uint32_t)(0x00b4241cu);
     eax = M32(ea);
     /* 00a67982  push ebx */
@@ -755,7 +766,7 @@ R_6:
     goto out;
 R_7:
 L_00a67986:
-    /* 00a67986  mov edi, dword ptr [esp + 0x30] */
+    /* 00a67986  mov edi, dword ptr [esp + 0x30]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000030u);
     edi = M32(ea);
     /* 00a6798a  push 6 */
@@ -766,7 +777,7 @@ L_00a67986:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a6798d  push 0xc05e18 */
+    /* 00a6798d  push 0xc05e18  ; "music/" */
     t = 0xc05e18u;
     esp -= 4;
     M32(esp) = t;
@@ -775,7 +786,7 @@ L_00a67986:
     /* 00a67994  mov byte ptr [esi + 0x2c], bl */
     ea = (uint32_t)(esi + 0x0000002cu);
     M8(ea) = LO8(ebx);
-    /* 00a67997  call 0x423390 */
+    /* 00a67997  call 0x423390  ; std::string::find */
     t = 0x00423390u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67900_8;
@@ -815,25 +826,25 @@ L_00a679a5:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a679b7  lea ecx, [esp + 0x1c] */
+    /* 00a679b7  lea ecx, [esp + 0x1c]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 00a679bb  mov dword ptr [esp + 0x34], ebp */
+    /* 00a679bb  mov dword ptr [esp + 0x34], ebp  ; var_4 */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = ebp;
-    /* 00a679bf  mov dword ptr [esp + 0x30], ebx */
+    /* 00a679bf  mov dword ptr [esp + 0x30], ebx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = ebx;
-    /* 00a679c3  mov byte ptr [esp + 0x20], bl */
+    /* 00a679c3  mov byte ptr [esp + 0x20], bl  ; var_18 */
     ea = (uint32_t)(esp + 0x00000020u);
     M8(ea) = LO8(ebx);
-    /* 00a679c7  call 0x4019f0 */
+    /* 00a679c7  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67900_9;
     c->eip = t;
     goto out;
 R_9:
-    /* 00a679cc  mov eax, dword ptr [esp + 0x28] */
+    /* 00a679cc  mov eax, dword ptr [esp + 0x28]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     eax = M32(ea);
     /* 00a679d0  mov edi, 0x10 */
@@ -843,12 +854,12 @@ R_9:
     b = edi;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 00a679d7  mov eax, dword ptr [esp + 0x14] */
+    /* 00a679d7  mov eax, dword ptr [esp + 0x14]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00a679db  jae 0xa679e1 */
     if (!cf) goto L_00a679e1;
-    /* 00a679dd  lea eax, [esp + 0x14] */
+    /* 00a679dd  lea eax, [esp + 0x14]  ; &var_18 */
     eax = (uint32_t)(esp + 0x00000014u);
 L_00a679e1:
     /* 00a679e1  push ebx */
@@ -859,7 +870,7 @@ L_00a679e1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00a679e3  call dword ptr [0xb42424] */
+    /* 00a679e3  call dword ptr [0xb42424]  ; BINKW32!_BinkOpen@8 */
     ea = (uint32_t)(0x00b42424u);
     t = M32(ea);
     esp -= 4;
@@ -870,7 +881,7 @@ R_10:
     /* 00a679e9  mov dword ptr [esi + 0x28], eax */
     ea = (uint32_t)(esi + 0x00000028u);
     M32(ea) = eax;
-    /* 00a679ec  cmp dword ptr [esp + 0x28], edi */
+    /* 00a679ec  cmp dword ptr [esp + 0x28], edi  ; var_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     a = M32(ea);
     b = edi;
@@ -878,14 +889,14 @@ R_10:
     F_SUB(32, a, b, r);
     /* 00a679f0  jb 0xa679ff */
     if (cf) goto L_00a679ff;
-    /* 00a679f2  mov ecx, dword ptr [esp + 0x14] */
+    /* 00a679f2  mov ecx, dword ptr [esp + 0x14]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 00a679f6  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a679f7  call 0x403680 */
+    /* 00a679f7  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67900_11;
@@ -923,7 +934,7 @@ L_00a679ff:
     /* 00a67a14  mov dword ptr [esi + 0x38], eax */
     ea = (uint32_t)(esi + 0x00000038u);
     M32(ea) = eax;
-    /* 00a67a17  call 0xa67700 */
+    /* 00a67a17  call 0xa67700  ; BinkTextureHandler_music_helper_00a67700 */
     t = 0x00a67700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67900_12;
@@ -969,7 +980,7 @@ L_00a67a20:
 L_00a67a2c:
     /* 00a67a2c  mov ecx, esi */
     ecx = esi;
-    /* 00a67a2e  call 0xa67130 */
+    /* 00a67a2e  call 0xa67130  ; rend_calls__BinkPause_8_00a67130 */
     t = 0x00a67130u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67900_13;
@@ -1012,7 +1023,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a67a40  dice::ref2::rend::BinkTextureHandler  (virtual method) */
+/* 00a67a40  BinkTextureHandler::vf7  (virtual method)
+ * class: dice::ref2::rend::BinkTextureHandler
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a67a40, bfv_client_l1_body_00a67a40);
 BFV_L1_RESUME(bfv_client_l1r_00a67a40_1, bfv_client_l1_body_00a67a40, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a67a40_2, bfv_client_l1_body_00a67a40, 2);
@@ -1042,7 +1055,7 @@ void bfv_client_l1_body_00a67a40(struct bfv_cpu *c)
     t = 0x68u;
     esp -= 4;
     M32(esp) = t;
-    /* 00a67a43  call 0x403610 */
+    /* 00a67a43  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67a40_1;
@@ -1062,7 +1075,7 @@ R_1:
     if (zf) goto L_00a67a5a;
     /* 00a67a4f  mov ecx, eax */
     ecx = eax;
-    /* 00a67a51  call 0xa672a0 */
+    /* 00a67a51  call 0xa672a0  ; BinkTexture::BinkTexture */
     t = 0x00a672a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67a40_2;
@@ -1079,7 +1092,7 @@ L_00a67a5a:
     F_LOGIC(32, r);
     esi = r;
 L_00a67a5c:
-    /* 00a67a5c  mov eax, dword ptr [esp + 8] */
+    /* 00a67a5c  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00a67a60  push eax */
@@ -1088,7 +1101,7 @@ L_00a67a5c:
     M32(esp) = t;
     /* 00a67a61  mov ecx, esi */
     ecx = esi;
-    /* 00a67a63  call 0xa67900 */
+    /* 00a67a63  call 0xa67900  ; BinkTextureHandler_music_00a67900 */
     t = 0x00a67900u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a67a40_3;

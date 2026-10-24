@@ -1,0 +1,9 @@
+## file
+BAPConObjectEnemyOccupied is a bot action-plan condition: true when the object
+named by the handle at this+8 belongs to a side other than the bot's.
+
+## 009f2740
+evaluate(bot): gets the bot's side (bot slot 0xd4) and checks the handle with
+bfv_target_handle_eligible; false when that fails or the handle is stale.
+Otherwise takes the side of the object (object slot 0x2c gives an interface
+whose slot 0xd4 is the side) and returns true when it differs from the bot's.

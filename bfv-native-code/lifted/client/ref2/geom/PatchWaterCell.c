@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0059ac80  dice::ref2::geom::PatchWaterCell  (virtual method) */
+/* 0059ac80  PatchWaterCell::vf4_get_5ch  (virtual method)
+ * overrides: RaStreamData::vf4  (8 classes implement it)
+ * class: dice::ref2::geom::PatchWaterCell
+ */
 BFV_L1_ENTRY(bfv_client_l1_0059ac80, bfv_client_l1_body_0059ac80);
 void bfv_client_l1_body_0059ac80(struct bfv_cpu *c)
 {
@@ -28,7 +31,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007518c0  dice::ref2::geom::PatchWaterCell  (virtual method) */
+/* 007518c0  PatchWaterCell::vf0  (virtual method)
+ * overrides: RaStreamData::vf0  (8 classes implement it)
+ * class: dice::ref2::geom::PatchWaterCell
+ */
 BFV_L1_ENTRY(bfv_client_l1_007518c0, bfv_client_l1_body_007518c0);
 BFV_L1_RESUME(bfv_client_l1r_007518c0_1, bfv_client_l1_body_007518c0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007518c0_2, bfv_client_l1_body_007518c0, 2);
@@ -148,7 +154,7 @@ L_00751900:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00751917  call 0x403680 */
+    /* 00751917  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007518c0_1;
@@ -220,7 +226,7 @@ L_00751945:
     r = (a - 1u) & 0xffffffffu;
     F_DEC(32, a, r);
     ebx = r;
-    /* 00751946  mov dword ptr [edi], 0xba5fb8 */
+    /* 00751946  mov dword ptr [edi], 0xba5fb8  ; vtable RaStreamData */
     ea = (uint32_t)(edi);
     M32(ea) = 0xba5fb8u;
     /* 0075194c  jne 0x751900 */
@@ -241,7 +247,7 @@ L_00751956:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 0075195c  call 0x403680 */
+    /* 0075195c  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007518c0_4;
@@ -284,7 +290,7 @@ L_00751964:
 L_0075196e:
     /* 0075196e  mov ecx, esi */
     ecx = esi;
-    /* 00751970  call 0x7517f0 */
+    /* 00751970  call 0x7517f0  ; RaStreamData::ctor_dtor */
     t = 0x007517f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007518c0_5;
@@ -300,7 +306,7 @@ R_5:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0075197b  call 0x403680 */
+    /* 0075197b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007518c0_6;
@@ -339,7 +345,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00764140  dice::ref2::geom::PatchWaterCell  (vtable store) */
+/* 00764140  PatchWaterCell::PatchWaterCell  (vtable store)
+ * class: dice::ref2::geom::PatchWaterCell
+ * called by: geom_WaterGeometry1_00752ba0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00764140, bfv_client_l1_body_00764140);
 BFV_L1_RESUME(bfv_client_l1r_00764140_1, bfv_client_l1_body_00764140, 1);
 BFV_L1_RESUME(bfv_client_l1r_00764140_2, bfv_client_l1_body_00764140, 2);
@@ -365,7 +374,7 @@ void bfv_client_l1_body_00764140(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00764144  mov dword ptr [esi], 0xbaed24 */
+    /* 00764144  mov dword ptr [esi], 0xbaed24  ; vtable PatchWaterCell */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbaed24u;
     /* 0076414a  xor edi, edi */
@@ -380,7 +389,7 @@ void bfv_client_l1_body_00764140(struct bfv_cpu *c)
     /* 00764152  mov dword ptr [esi + 0x58], edi */
     ea = (uint32_t)(esi + 0x00000058u);
     M32(ea) = edi;
-    /* 00764155  call 0x731b10 */
+    /* 00764155  call 0x731b10  ; sub_00731b10 */
     t = 0x00731b10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00764140_1;
@@ -411,7 +420,7 @@ R_1:
     /* 0076417a  mov dword ptr [ecx + 0xc], edi */
     ea = (uint32_t)(ecx + 0x0000000cu);
     M32(ea) = edi;
-    /* 0076417d  call 0x723f10 */
+    /* 0076417d  call 0x723f10  ; PatchTerrain_00723f10 */
     t = 0x00723f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00764140_2;
@@ -448,7 +457,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00764190  dice::ref2::geom::PatchWaterCell  (virtual method) */
+/* 00764190  PatchWaterCell::vf5  (virtual method)
+ * overrides: RaStreamData::vf5  (8 classes implement it)
+ * class: dice::ref2::geom::PatchWaterCell
+ */
 BFV_L1_ENTRY(bfv_client_l1_00764190, bfv_client_l1_body_00764190);
 void bfv_client_l1_body_00764190(struct bfv_cpu *c)
 {
@@ -489,7 +501,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007641a0  dice::ref2::geom::PatchWaterCell  (virtual method) */
+/* 007641a0  PatchWaterCell::vf7  (virtual method)
+ * overrides: RaStreamData::vf7  (8 classes implement it)
+ * class: dice::ref2::geom::PatchWaterCell
+ */
 BFV_L1_ENTRY(bfv_client_l1_007641a0, bfv_client_l1_body_007641a0);
 void bfv_client_l1_body_007641a0(struct bfv_cpu *c)
 {
@@ -512,7 +527,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007641b0  dice::ref2::geom::PatchWaterCell  (virtual method) */
+/* 007641b0  PatchWaterCell::vf9  (virtual method)
+ * overrides: RaStreamData::vf9  (8 classes implement it)
+ * class: dice::ref2::geom::PatchWaterCell
+ */
 BFV_L1_ENTRY(bfv_client_l1_007641b0, bfv_client_l1_body_007641b0);
 BFV_L1_RESUME(bfv_client_l1r_007641b0_1, bfv_client_l1_body_007641b0, 1);
 void bfv_client_l1_body_007641b0(struct bfv_cpu *c)
@@ -533,11 +551,11 @@ void bfv_client_l1_body_007641b0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 007641b5  push 0xcfa6b8 */
+    /* 007641b5  push 0xcfa6b8  ; typeid(PCDX8VertexBlock) */
     t = 0xcfa6b8u;
     esp -= 4;
     M32(esp) = t;
-    /* 007641ba  push 0xcfa68c */
+    /* 007641ba  push 0xcfa68c  ; typeid(IVertexBlock) */
     t = 0xcfa68cu;
     esp -= 4;
     M32(esp) = t;
@@ -549,7 +567,7 @@ void bfv_client_l1_body_007641b0(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 007641c2  call 0x7c334d */
+    /* 007641c2  call 0x7c334d  ; __RTDynamicCast */
     t = 0x007c334du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007641b0_1;
@@ -578,7 +596,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007641e0  dice::ref2::geom::PatchWaterCell  (virtual method) */
+/* 007641e0  PatchWaterCell::vf8  (virtual method)
+ * overrides: RaStreamData::vf8  (8 classes implement it)
+ * class: dice::ref2::geom::PatchWaterCell
+ */
 BFV_L1_ENTRY(bfv_client_l1_007641e0, bfv_client_l1_body_007641e0);
 BFV_L1_RESUME(bfv_client_l1r_007641e0_1, bfv_client_l1_body_007641e0, 1);
 void bfv_client_l1_body_007641e0(struct bfv_cpu *c)
@@ -599,11 +620,11 @@ void bfv_client_l1_body_007641e0(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 007641e5  push 0xcfa714 */
+    /* 007641e5  push 0xcfa714  ; typeid(PCDX8IndexBlock) */
     t = 0xcfa714u;
     esp -= 4;
     M32(esp) = t;
-    /* 007641ea  push 0xcfa6e8 */
+    /* 007641ea  push 0xcfa6e8  ; typeid(IIndexBlock) */
     t = 0xcfa6e8u;
     esp -= 4;
     M32(esp) = t;
@@ -615,7 +636,7 @@ void bfv_client_l1_body_007641e0(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 007641f2  call 0x7c334d */
+    /* 007641f2  call 0x7c334d  ; __RTDynamicCast */
     t = 0x007c334du;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007641e0_1;
@@ -644,7 +665,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00a50980  dice::ref2::geom::PatchWaterCell  (virtual method) */
+/* 00a50980  PatchWaterCell::vf3_get_60h  (virtual method)
+ * overrides: RaStreamData::vf3  (8 classes implement it)
+ * class: dice::ref2::geom::PatchWaterCell
+ * called by: Cmd_RayTracer_blockSize::execute, getBotBehaviourList, getBehaviourInfo, ai_FTS_00960500
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a50980, bfv_client_l1_body_00a50980);
 void bfv_client_l1_body_00a50980(struct bfv_cpu *c)
 {

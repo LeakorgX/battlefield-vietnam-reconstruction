@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00529900  dice::WrapperBase  (virtual method) */
+/* 00529900  WrapperBase::vf7_onField_ch_callVirtual_vf5  (virtual method)
+ * overrides: Wrapper::vf7  (5 classes implement it)
+ * class: dice::WrapperBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00529900, bfv_client_l1_body_00529900);
 void bfv_client_l1_body_00529900(struct bfv_cpu *c)
 {
@@ -31,7 +34,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00529910  dice::WrapperBase  (virtual method) */
+/* 00529910  WrapperBase::vf9_onField_ch_callVirtual_vf11  (virtual method)
+ * overrides: Wrapper::vf9  (5 classes implement it)
+ * class: dice::WrapperBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00529910, bfv_client_l1_body_00529910);
 void bfv_client_l1_body_00529910(struct bfv_cpu *c)
 {
@@ -57,7 +63,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00529920  dice::WrapperBase  (virtual method) */
+/* 00529920  WrapperBase::vf8  (virtual method)
+ * overrides: Wrapper::vf8  (5 classes implement it)
+ * class: dice::WrapperBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00529920, bfv_client_l1_body_00529920);
 void bfv_client_l1_body_00529920(struct bfv_cpu *c)
 {
@@ -83,7 +92,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00529930  dice::WrapperBase  (virtual method) */
+/* 00529930  WrapperBase::vf4  (virtual method)
+ * overrides: Wrapper::vf4  (5 classes implement it)
+ * class: dice::WrapperBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00529930, bfv_client_l1_body_00529930);
 BFV_L1_RESUME(bfv_client_l1r_00529930_1, bfv_client_l1_body_00529930, 1);
 BFV_L1_RESUME(bfv_client_l1r_00529930_2, bfv_client_l1_body_00529930, 2);
@@ -138,7 +150,7 @@ void bfv_client_l1_body_00529930(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     edi = r;
-    /* 00529939  call dword ptr [eax + 8] */
+    /* 00529939  call dword ptr [eax + 8]  ; -> WrapperBase::vf2 = WrapperBase::vf2_get_1ch (returns this+0x1c) */
     ea = (uint32_t)(eax + 0x00000008u);
     t = M32(ea);
     esp -= 4;
@@ -153,7 +165,7 @@ R_1:
     ecx = esi;
     /* 00529940  mov ebx, eax */
     ebx = eax;
-    /* 00529942  call dword ptr [edx + 4] */
+    /* 00529942  call dword ptr [edx + 4]  ; -> WrapperBase::vf1 = WrapperBase::vf1_get_20h (returns this+0x20) */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -244,7 +256,7 @@ L_00529972:
     eax = M32(ea);
     /* 00529974  mov ecx, esi */
     ecx = esi;
-    /* 00529976  call dword ptr [eax + 8] */
+    /* 00529976  call dword ptr [eax + 8]  ; -> WrapperBase::vf2 = WrapperBase::vf2_get_1ch (returns this+0x1c) */
     ea = (uint32_t)(eax + 0x00000008u);
     t = M32(ea);
     esp -= 4;
@@ -267,7 +279,7 @@ L_00529980:
     edx = M32(ea);
     /* 00529982  mov ecx, esi */
     ecx = esi;
-    /* 00529984  call dword ptr [edx + 8] */
+    /* 00529984  call dword ptr [edx + 8]  ; -> WrapperBase::vf2 = WrapperBase::vf2_get_1ch (returns this+0x1c) */
     ea = (uint32_t)(edx + 0x00000008u);
     t = M32(ea);
     esp -= 4;
@@ -288,7 +300,7 @@ R_7:
     eax = M32(ea);
     /* 0052998d  mov ecx, esi */
     ecx = esi;
-    /* 0052998f  call dword ptr [eax + 4] */
+    /* 0052998f  call dword ptr [eax + 4]  ; -> WrapperBase::vf1 = WrapperBase::vf1_get_20h (returns this+0x20) */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -296,10 +308,10 @@ R_7:
     c->eip = t;
     goto out;
 R_8:
-    /* 00529992  mov ecx, dword ptr [esi + 0x14] */
+    /* 00529992  mov ecx, dword ptr [esi + 0x14]  ; field children.last */
     ea = (uint32_t)(esi + 0x00000014u);
     ecx = M32(ea);
-    /* 00529995  mov edx, dword ptr [esi + 0x10] */
+    /* 00529995  mov edx, dword ptr [esi + 0x10]  ; field children.first */
     ea = (uint32_t)(esi + 0x00000010u);
     edx = M32(ea);
     /* 00529998  add ebx, eax */
@@ -332,7 +344,7 @@ R_9:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005299a8  mov eax, dword ptr [esi + 0x10] */
+    /* 005299a8  mov eax, dword ptr [esi + 0x10]  ; field children.first */
     ea = (uint32_t)(esi + 0x00000010u);
     eax = M32(ea);
     /* 005299ab  mov ecx, dword ptr [eax + edi*4] */
@@ -356,7 +368,7 @@ R_10:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 005299b6  call dword ptr [edx + 8] */
+    /* 005299b6  call dword ptr [edx + 8]  ; -> WrapperBase::vf2 = WrapperBase::vf2_get_1ch (returns this+0x1c) */
     ea = (uint32_t)(edx + 0x00000008u);
     t = M32(ea);
     esp -= 4;
@@ -395,7 +407,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005299d0  dice::WrapperBase  (virtual method) */
+/* 005299d0  WrapperBase::vf10_onField_ch_callVirtual_vf3  (virtual method)
+ * overrides: Wrapper::vf10  (5 classes implement it)
+ * class: dice::WrapperBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_005299d0, bfv_client_l1_body_005299d0);
 void bfv_client_l1_body_005299d0(struct bfv_cpu *c)
 {
@@ -421,7 +436,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005299e0  dice::WrapperBase  (virtual method) */
+/* 005299e0  WrapperBase::vf11_onField_ch_callVirtual_vf10  (virtual method)
+ * overrides: Wrapper::vf11  (5 classes implement it)
+ * class: dice::WrapperBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_005299e0, bfv_client_l1_body_005299e0);
 void bfv_client_l1_body_005299e0(struct bfv_cpu *c)
 {
@@ -447,7 +465,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00530380  dice::WrapperBase  (virtual method) */
+/* 00530380  WrapperBase::vf3  (virtual method)
+ * overrides: Wrapper::vf3  (5 classes implement it)
+ * class: dice::WrapperBase
+ */
 BFV_L1_ENTRY(bfv_client_l1_00530380, bfv_client_l1_body_00530380);
 void bfv_client_l1_body_00530380(struct bfv_cpu *c)
 {
@@ -456,10 +477,10 @@ void bfv_client_l1_body_00530380(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00530380  mov eax, dword ptr [ecx + 0x10] */
+    /* 00530380  mov eax, dword ptr [ecx + 0x10]  ; field children.first */
     ea = (uint32_t)(ecx + 0x00000010u);
     eax = M32(ea);
-    /* 00530383  mov ecx, dword ptr [esp + 4] */
+    /* 00530383  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00530387  mov eax, dword ptr [eax + ecx*4] */
@@ -476,7 +497,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006ea120  dice::WrapperBase  (virtual method) */
+/* 006ea120  WrapperBase::vf12_get_18h  (virtual method)
+ * overrides: Wrapper::vf12  (5 classes implement it)
+ * class: dice::WrapperBase
+ * called by: BFSoldier_0065b0b0, BFSoldier::DefaultMulti_0065b400, BFSoldier::vf19, BFSoldier::sub_0065f2f0, BFSoldier::handleInput, BFSoldier::OpenParachute_00660bc0 (+12 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006ea120, bfv_client_l1_body_006ea120);
 void bfv_client_l1_body_006ea120(struct bfv_cpu *c)
 {
@@ -485,7 +510,7 @@ void bfv_client_l1_body_006ea120(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006ea120  mov eax, dword ptr [ecx + 0x18] */
+    /* 006ea120  mov eax, dword ptr [ecx + 0x18]  ; field children.end */
     ea = (uint32_t)(ecx + 0x00000018u);
     eax = M32(ea);
     /* 006ea123  ret */
@@ -499,7 +524,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc8b0  dice::WrapperBase  (virtual method) */
+/* 006fc8b0  WrapperBase::vf1_get_20h  (virtual method)
+ * overrides: Wrapper::vf1  (5 classes implement it)
+ * class: dice::WrapperBase
+ * called by: FreeDeadList, SBServerListClear, Cmd_AiStrategy_aggression::execute, Cmd_AiStrategy_timeLimit::execute, Cmd_AiStrategy_getPrerequisiteWeight::execute, Cmd_AiStrategy_setPrerequisiteWeight::execute (+14 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc8b0, bfv_client_l1_body_006fc8b0);
 void bfv_client_l1_body_006fc8b0(struct bfv_cpu *c)
 {
@@ -522,7 +551,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0095b8f0  dice::WrapperBase  (virtual method) */
+/* 0095b8f0  WrapperBase::vf2_get_1ch  (virtual method)
+ * overrides: Wrapper::vf2  (5 classes implement it)
+ * class: dice::WrapperBase
+ * called by: TerrainEditor::disable, TerrainEditor::loadNewBrush, TerrainEditor::getNoBrushes, ServerService_Edit_00789f70, Cmd_AiStrategy_getConditionStrength::execute, SAI_helper_009bd9c0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0095b8f0, bfv_client_l1_body_0095b8f0);
 void bfv_client_l1_body_0095b8f0(struct bfv_cpu *c)
 {

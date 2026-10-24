@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006bdf20  dice::ref2::world::SpringTemplate  (virtual method) */
+/* 006bdf20  SpringTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::SpringTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006bdf20, bfv_client_l1_body_006bdf20);
 BFV_L1_RESUME(bfv_client_l1r_006bdf20_1, bfv_client_l1_body_006bdf20, 1);
 BFV_L1_RESUME(bfv_client_l1r_006bdf20_2, bfv_client_l1_body_006bdf20, 2);
@@ -31,7 +34,7 @@ void bfv_client_l1_body_006bdf20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006bdf26  mov esi, ecx */
     esi = ecx;
-    /* 006bdf28  call 0x403610 */
+    /* 006bdf28  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006bdf20_1;
@@ -55,7 +58,7 @@ R_1:
     M32(esp) = t;
     /* 006bdf35  mov ecx, eax */
     ecx = eax;
-    /* 006bdf37  call 0x6fb390 */
+    /* 006bdf37  call 0x6fb390  ; Spring::Spring */
     t = 0x006fb390u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006bdf20_2;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006bdf50  dice::ref2::world::SpringTemplate  (virtual method) */
+/* 006bdf50  SpringTemplate::createPhysicsNode  (virtual method)
+ * overrides: SimpleObjectTemplate::createPhysicsNode  (44 classes implement it)
+ * class: dice::ref2::world::SpringTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006bdf50, bfv_client_l1_body_006bdf50);
 BFV_L1_RESUME(bfv_client_l1r_006bdf50_1, bfv_client_l1_body_006bdf50, 1);
 BFV_L1_RESUME(bfv_client_l1r_006bdf50_2, bfv_client_l1_body_006bdf50, 2);
@@ -151,7 +157,7 @@ R_1:
     /* 006bdf6b  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 006bdf6d  mov edi, dword ptr [esp + 0xc] */
+    /* 006bdf6d  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 006bdf71  je 0x6bdf80 */
@@ -166,7 +172,7 @@ R_1:
     M32(esp) = t;
     /* 006bdf75  mov ecx, eax */
     ecx = eax;
-    /* 006bdf77  call 0x6fb660 */
+    /* 006bdf77  call 0x6fb660  ; PhysicsSpring::PhysicsSpring */
     t = 0x006fb660u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006bdf50_2;
@@ -224,7 +230,7 @@ R_3:
     c->eip = t;
     goto out;
 R_4:
-    /* 006bdf99  mov ecx, dword ptr [0xd7d008] */
+    /* 006bdf99  mov ecx, dword ptr [0xd7d008]  ; g_pPhysicsNodeManager */
     ea = (uint32_t)(0x00d7d008u);
     ecx = M32(ea);
     /* 006bdf9f  mov edx, dword ptr [ecx] */
@@ -234,7 +240,7 @@ R_4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006bdfa2  call dword ptr [edx + 0x10] */
+    /* 006bdfa2  call dword ptr [edx + 0x10]  ; -> PhysicsNodeManager::vf4 */
     ea = (uint32_t)(edx + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -261,7 +267,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006bdfe0  dice::ref2::world::SpringTemplate  (vtable store) */
+/* 006bdfe0  SpringTemplate::SpringTemplate  (vtable store)
+ * class: dice::ref2::world::SpringTemplate
+ * also entered at 006be050: SpringTemplate::getClassID
+ * called by: ObjectCreatorWrapper<SpringTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_006bdfe0, bfv_client_l1_body_006bdfe0);
 BFV_L1_RESUME(bfv_client_l1r_006bdfe0_1, bfv_client_l1_body_006bdfe0, 1);
 void bfv_client_l1_body_006bdfe0(struct bfv_cpu *c)
@@ -281,7 +291,7 @@ void bfv_client_l1_body_006bdfe0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006bdfe1  mov esi, ecx */
     esi = ecx;
-    /* 006bdfe3  call 0x6a52c0 */
+    /* 006bdfe3  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
     t = 0x006a52c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006bdfe0_1;
@@ -292,7 +302,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 006bdfea  mov dword ptr [esi], 0xb9b7fc */
+    /* 006bdfea  mov dword ptr [esi], 0xb9b7fc  ; vtable SpringTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9b7fcu;
     /* 006bdff0  mov dword ptr [esi + 4], 0xb9b7e4 */
@@ -329,7 +339,7 @@ R_1:
     r = (M32(ea) | 0x8u) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 006be038  mov dword ptr [esi + 0x1f0], 0x3f000000 */
+    /* 006be038  mov dword ptr [esi + 0x1f0], 0x3f000000  ; 0.5f */
     ea = (uint32_t)(esi + 0x000001f0u);
     M32(ea) = 0x3f000000u;
     /* 006be042  mov dword ptr [esi + 0x1f4], ecx */
@@ -352,7 +362,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006be060  dice::ref2::world::SpringTemplate  (virtual method) */
+/* 006be060  SpringTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::SpringTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006be060, bfv_client_l1_body_006be060);
 void bfv_client_l1_body_006be060(struct bfv_cpu *c)
 {
@@ -361,10 +374,10 @@ void bfv_client_l1_body_006be060(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006be060  mov eax, dword ptr [esp + 4] */
+    /* 006be060  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006be064  cmp eax, dword ptr [0xb77ea4] */
+    /* 006be064  cmp eax, dword ptr [0xb77ea4]  ; SpringTemplate::classID */
     ea = (uint32_t)(0x00b77ea4u);
     a = eax;
     b = M32(ea);
@@ -379,10 +392,10 @@ void bfv_client_l1_body_006be060(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006be071:
-    /* 006be071  mov dword ptr [esp + 4], eax */
+    /* 006be071  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006be075  jmp 0x6a4250 */
+    /* 006be075  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));

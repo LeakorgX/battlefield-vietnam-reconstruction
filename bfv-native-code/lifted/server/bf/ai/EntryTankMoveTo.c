@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00767b40  (source path) */
+/* 00767b40  AIConsole::ctor_dtor_helper_00767b40  (source path)
+ * also entered at 00767b50: EntryTankMoveTo::execute
+ * also entered at 00767e60: Bot::vf0
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00767b40, bfv_server_l1_body_00767b40);
 void bfv_server_l1_body_00767b40(struct bfv_cpu *c)
 {
@@ -16,7 +20,7 @@ void bfv_server_l1_body_00767b40(struct bfv_cpu *c)
     uint32_t ea;
     /* 00767b40  mov eax, ecx */
     eax = ecx;
-    /* 00767b42  mov dword ptr [eax], 0x8760cc */
+    /* 00767b42  mov dword ptr [eax], 0x8760cc  ; vtable EntryTankMoveTo */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8760ccu;
     /* 00767b48  ret */

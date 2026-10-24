@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00563d50  dice::meme::BfOccupiedVehicleData  (virtual method) */
+/* 00563d50  BfOccupiedVehicleData::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::BfOccupiedVehicleData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00563d50, bfv_client_l1_body_00563d50);
 BFV_L1_RESUME(bfv_client_l1r_00563d50_1, bfv_client_l1_body_00563d50, 1);
 void bfv_client_l1_body_00563d50(struct bfv_cpu *c)
@@ -19,10 +22,10 @@ void bfv_client_l1_body_00563d50(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00563d50  mov eax, dword ptr [esp + 8] */
+    /* 00563d50  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 00563d54  mov edx, dword ptr [esp + 4] */
+    /* 00563d54  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 00563d58  push eax */
@@ -33,7 +36,7 @@ void bfv_client_l1_body_00563d50(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00563d5a  call 0xa7d100 */
+    /* 00563d5a  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00563d50_1;
@@ -56,8 +59,12 @@ out: __attribute__((unused));
 }
 
 
-/* 00563e60  dice::meme::BfOccupiedVehicleData  (virtual method)
- * strings: "dice::meme::BfOccupiedVehicleData" */
+/* 00563e60  BfOccupiedVehicleData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::BfOccupiedVehicleData
+ * strings: "dice::meme::BfOccupiedVehicleData"
+ * called by: BfOccupiedVehicleNode::serialize
+ */
 BFV_L1_ENTRY(bfv_client_l1_00563e60, bfv_client_l1_body_00563e60);
 BFV_L1_RESUME(bfv_client_l1r_00563e60_1, bfv_client_l1_body_00563e60, 1);
 BFV_L1_RESUME(bfv_client_l1r_00563e60_2, bfv_client_l1_body_00563e60, 2);
@@ -88,13 +95,13 @@ void bfv_client_l1_body_00563e60(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00563e75  push 0xb6c888 */
+    /* 00563e75  push 0xb6c888  ; "dice::meme::BfOccupiedVehicleData" */
     t = 0xb6c888u;
     esp -= 4;
     M32(esp) = t;
-    /* 00563e7a  mov ecx, 0xd73644 */
+    /* 00563e7a  mov ecx, 0xd73644  ; g_RuntimeClass_BfOccupiedVehicleData */
     ecx = 0xd73644u;
-    /* 00563e7f  call 0x875490 */
+    /* 00563e7f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00563e60_1;
@@ -105,10 +112,10 @@ R_1:
     t = 0xb302b0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00563e89  mov dword ptr [0xd73644], 0xb6c770 */
+    /* 00563e89  mov dword ptr [0xd73644], 0xb6c770  ; g_RuntimeClass_BfOccupiedVehicleData */
     ea = (uint32_t)(0x00d73644u);
     M32(ea) = 0xb6c770u;
-    /* 00563e93  call 0x7c2cd2 */
+    /* 00563e93  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00563e60_2;
@@ -122,7 +129,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00563e9b:
-    /* 00563e9b  mov eax, 0xd73644 */
+    /* 00563e9b  mov eax, 0xd73644  ; g_RuntimeClass_BfOccupiedVehicleData */
     eax = 0xd73644u;
     /* 00563ea0  ret */
     c->eip = M32(esp);
@@ -135,160 +142,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00564750  dice::meme::BfOccupiedVehicleData  (vtable store) */
-BFV_L1_ENTRY(bfv_client_l1_00564750, bfv_client_l1_body_00564750);
-BFV_L1_RESUME(bfv_client_l1r_00564750_1, bfv_client_l1_body_00564750, 1);
-BFV_L1_RESUME(bfv_client_l1r_00564750_2, bfv_client_l1_body_00564750, 2);
-void bfv_client_l1_body_00564750(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, a, b, r, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    case 2: goto R_2;
-    default: break;
-    }
-    /* 00564750  sub esp, 0x10 */
-    a = esp;
-    b = 0x10u;
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    esp = r;
-    /* 00564753  push esi */
-    t = esi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00564754  push edi */
-    t = edi;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00564755  mov esi, ecx */
-    esi = ecx;
-    /* 00564757  lea eax, [esp + 0x1c] */
-    eax = (uint32_t)(esp + 0x0000001cu);
-    /* 0056475b  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 0056475c  lea ecx, [esp + 0xc] */
-    ecx = (uint32_t)(esp + 0x0000000cu);
-    /* 00564760  lea edi, [esi + 0xc] */
-    edi = (uint32_t)(esi + 0x0000000cu);
-    /* 00564763  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00564764  mov ecx, edi */
-    ecx = edi;
-    /* 00564766  call 0x8c4890 */
-    t = 0x008c4890u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564750_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 0056476b  mov eax, dword ptr [eax] */
-    ea = (uint32_t)(eax);
-    eax = M32(ea);
-    /* 0056476d  cmp eax, dword ptr [esi + 0x10] */
-    ea = (uint32_t)(esi + 0x00000010u);
-    a = eax;
-    b = M32(ea);
-    r = (a - b) & 0xffffffffu;
-    F_SUB(32, a, b, r);
-    /* 00564770  jne 0x56479d */
-    if (!zf) goto L_0056479d;
-    /* 00564772  mov edx, dword ptr [esp + 0x1c] */
-    ea = (uint32_t)(esp + 0x0000001cu);
-    edx = M32(ea);
-    /* 00564776  mov eax, dword ptr [esp + 0x20] */
-    ea = (uint32_t)(esp + 0x00000020u);
-    eax = M32(ea);
-    /* 0056477a  lea ecx, [esp + 8] */
-    ecx = (uint32_t)(esp + 0x00000008u);
-    /* 0056477e  mov dword ptr [esp + 8], edx */
-    ea = (uint32_t)(esp + 0x00000008u);
-    M32(ea) = edx;
-    /* 00564782  push ecx */
-    t = ecx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00564783  lea edx, [esp + 0x14] */
-    edx = (uint32_t)(esp + 0x00000014u);
-    /* 00564787  push edx */
-    t = edx;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00564788  mov ecx, edi */
-    ecx = edi;
-    /* 0056478a  mov dword ptr [esp + 0x14], eax */
-    ea = (uint32_t)(esp + 0x00000014u);
-    M32(ea) = eax;
-    /* 0056478e  call 0x5642c0 */
-    t = 0x005642c0u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564750_2;
-    c->eip = t;
-    goto out;
-R_2:
-    /* 00564793  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 00564794  mov al, 1 */
-    SET8L(eax, 0x1u);
-    /* 00564796  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 00564797  add esp, 0x10 */
-    a = esp;
-    b = 0x10u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-    /* 0056479a  ret 8 */
-    c->eip = M32(esp);
-    esp += 12;
-    goto out;
-L_0056479d:
-    /* 0056479d  mov ecx, dword ptr [esp + 0x20] */
-    ea = (uint32_t)(esp + 0x00000020u);
-    ecx = M32(ea);
-    /* 005647a1  pop edi */
-    t = M32(esp);
-    esp += 4;
-    edi = t;
-    /* 005647a2  mov dword ptr [eax + 0x10], ecx */
-    ea = (uint32_t)(eax + 0x00000010u);
-    M32(ea) = ecx;
-    /* 005647a5  mov al, 1 */
-    SET8L(eax, 0x1u);
-    /* 005647a7  pop esi */
-    t = M32(esp);
-    esp += 4;
-    esi = t;
-    /* 005647a8  add esp, 0x10 */
-    a = esp;
-    b = 0x10u;
-    r = (a + b) & 0xffffffffu;
-    F_ADD(32, a, b, r);
-    esp = r;
-    /* 005647ab  ret 8 */
-    c->eip = M32(esp);
-    esp += 12;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 00564800  dice::meme::BfOccupiedVehicleData  (virtual method) */
+/* 00564800  BfOccupiedVehicleData::deleting_dtor  (virtual method)
+ * overrides: RuntimeObject::vf0  (219 classes implement it)
+ * class: dice::meme::BfOccupiedVehicleData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00564800, bfv_client_l1_body_00564800);
 BFV_L1_RESUME(bfv_client_l1r_00564800_1, bfv_client_l1_body_00564800, 1);
 BFV_L1_RESUME(bfv_client_l1r_00564800_2, bfv_client_l1_body_00564800, 2);
@@ -314,7 +171,7 @@ void bfv_client_l1_body_00564800(struct bfv_cpu *c)
     esi = ecx;
     /* 00564803  lea ecx, [esi + 0xc] */
     ecx = (uint32_t)(esi + 0x0000000cu);
-    /* 00564806  call 0x51eb30 */
+    /* 00564806  call 0x51eb30  ; std::_Tree::_Tidy_0051eb30 */
     t = 0x0051eb30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564800_1;
@@ -323,14 +180,14 @@ void bfv_client_l1_body_00564800(struct bfv_cpu *c)
 R_1:
     /* 0056480b  mov ecx, esi */
     ecx = esi;
-    /* 0056480d  call 0x874550 */
+    /* 0056480d  call 0x874550  ; Data::~Data */
     t = 0x00874550u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564800_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00564812  test byte ptr [esp + 8], 1 */
+    /* 00564812  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -340,7 +197,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0056481a  call 0x403680 */
+    /* 0056481a  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564800_3;
@@ -371,7 +228,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00564830  dice::meme::BfOccupiedVehicleData  (vtable store) */
+/* 00564830  BfOccupiedVehicleData::create  (vtable store)
+ * class: dice::meme::BfOccupiedVehicleData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00564830, bfv_client_l1_body_00564830);
 BFV_L1_RESUME(bfv_client_l1r_00564830_1, bfv_client_l1_body_00564830, 1);
 BFV_L1_RESUME(bfv_client_l1r_00564830_2, bfv_client_l1_body_00564830, 2);
@@ -397,7 +256,7 @@ void bfv_client_l1_body_00564830(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 00564833  call 0x403610 */
+    /* 00564833  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564830_1;
@@ -427,7 +286,7 @@ R_1:
     M32(esp) = t;
     /* 00564844  mov ecx, edi */
     ecx = edi;
-    /* 00564846  call 0x874530 */
+    /* 00564846  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564830_2;
@@ -438,10 +297,10 @@ R_2:
     esi = (uint32_t)(edi + 0x0000000cu);
     /* 0056484e  mov ecx, esi */
     ecx = esi;
-    /* 00564850  mov dword ptr [edi], 0xb6c8f4 */
+    /* 00564850  mov dword ptr [edi], 0xb6c8f4  ; vtable BfOccupiedVehicleData */
     ea = (uint32_t)(edi);
     M32(ea) = 0xb6c8f4u;
-    /* 00564856  call 0x563f40 */
+    /* 00564856  call 0x563f40  ; std::_Tree::_Buynode_head_24_00563f40 */
     t = 0x00563f40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00564830_3;

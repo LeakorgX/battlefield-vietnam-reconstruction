@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005dbbe0  dice::ref2::world::PhysicsWinch  (vtable store) */
+/* 005dbbe0  PhysicsWinch::PhysicsWinch  (vtable store)
+ * class: dice::ref2::world::PhysicsWinch
+ * called by: WinchTemplate::createPhysicsNode
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dbbe0, bfv_server_l1_body_005dbbe0);
 BFV_L1_RESUME(bfv_server_l1r_005dbbe0_1, bfv_server_l1_body_005dbbe0, 1);
 void bfv_server_l1_body_005dbbe0(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_server_l1_body_005dbbe0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005dbbe1  mov esi, ecx */
     esi = ecx;
-    /* 005dbbe3  call 0x5c9ab0 */
+    /* 005dbbe3  call 0x5c9ab0  ; PhysicsNode::PhysicsNode */
     t = 0x005c9ab0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005dbbe0_1;
@@ -36,7 +39,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 005dbbea  mov dword ptr [esi], 0x848404 */
+    /* 005dbbea  mov dword ptr [esi], 0x848404  ; vtable PhysicsWinch */
     ea = (uint32_t)(esi);
     M32(ea) = 0x848404u;
     /* 005dbbf0  mov dword ptr [esi + 0xa8], 1 */
@@ -68,7 +71,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005dccc0  dice::ref2::world::PhysicsWinch  (virtual method) */
+/* 005dccc0  PhysicsWinch::vf40  (virtual method)
+ * overrides: PhysicsNode::vf40  (6 classes implement it)
+ * class: dice::ref2::world::PhysicsWinch
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dccc0, bfv_server_l1_body_005dccc0);
 BFV_L1_RESUME(bfv_server_l1r_005dccc0_1, bfv_server_l1_body_005dccc0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005dccc0_2, bfv_server_l1_body_005dccc0, 2);
@@ -109,7 +115,7 @@ void bfv_server_l1_body_005dccc0(struct bfv_cpu *c)
     /* 005dccc3  mov eax, dword ptr [ebx] */
     ea = (uint32_t)(ebx);
     eax = M32(ea);
-    /* 005dccc5  call dword ptr [eax + 0xe0] */
+    /* 005dccc5  call dword ptr [eax + 0xe0]  ; -> PhysicsWinch::vf56 = PhysicsNode::vf56 */
     ea = (uint32_t)(eax + 0x000000e0u);
     t = M32(ea);
     esp -= 4;
@@ -133,11 +139,11 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005dccd8  push 0x8fabc8 */
+    /* 005dccd8  push 0x8fabc8  ; typeid(Winch) */
     t = 0x8fabc8u;
     esp -= 4;
     M32(esp) = t;
-    /* 005dccdd  push 0x8e6fcc */
+    /* 005dccdd  push 0x8e6fcc  ; typeid(IObject) */
     t = 0x8e6fccu;
     esp -= 4;
     M32(esp) = t;
@@ -147,7 +153,7 @@ R_1:
     M32(esp) = t;
     /* 005dcce4  mov ecx, ebx */
     ecx = ebx;
-    /* 005dcce6  call dword ptr [edx + 0x14] */
+    /* 005dcce6  call dword ptr [edx + 0x14]  ; -> PhysicsWinch::vf5 = BotMain::vf79_get_ch (returns this+0xc) */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -159,7 +165,7 @@ R_2:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005dccea  call 0x63cbf8 */
+    /* 005dccea  call 0x63cbf8  ; __RTDynamicCast */
     t = 0x0063cbf8u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005dccc0_3;
@@ -341,7 +347,7 @@ R_7:
     M32(esp) = t;
     /* 005dcd92  mov ecx, ebx */
     ecx = ebx;
-    /* 005dcd94  call 0x5dc2b0 */
+    /* 005dcd94  call 0x5dc2b0  ; PhysicsWinch::vf40_helper_005dc2b0 */
     t = 0x005dc2b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005dccc0_8;
@@ -371,7 +377,7 @@ L_005dcd9b:
     M32(esp) = t;
     /* 005dcda4  mov ecx, ebx */
     ecx = ebx;
-    /* 005dcda6  call 0x5dc070 */
+    /* 005dcda6  call 0x5dc070  ; PhysicsWinch::vf40_helper_005dc070 */
     t = 0x005dc070u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005dccc0_9;
@@ -418,7 +424,7 @@ L_005dcdab:
     M32(esp) = t;
     /* 005dcdc8  mov ecx, ebx */
     ecx = ebx;
-    /* 005dcdca  call 0x5dc490 */
+    /* 005dcdca  call 0x5dc490  ; PhysicsWinch::vf40_helper_005dc490 */
     t = 0x005dc490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005dccc0_10;

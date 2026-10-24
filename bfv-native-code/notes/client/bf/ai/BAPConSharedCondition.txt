@@ -1,0 +1,9 @@
+## file
+BAPConSharedCondition lets several plan parts read one condition result. The
+bool it shares lives at the address in this+8; the condition at this+0xc, when
+there is one, refreshes it.
+
+## 009f78c0
+evaluate(bot): without a condition at this+0xc returns the shared bool at
+[this+8]. With one, evaluates it, stores the result into the shared bool and
+returns it.

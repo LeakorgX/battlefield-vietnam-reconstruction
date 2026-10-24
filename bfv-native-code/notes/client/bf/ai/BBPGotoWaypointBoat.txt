@@ -1,0 +1,5 @@
+## file
+Plan builder for boats following waypoints.
+
+## 00990080
+buildPlan: reads the bot's position (control 5) and its waypoint; the arrival radius is the vehicle size times 4. Clears the current plan and dispatches on the waypoint type through a jump table at 00990d2c to build the move plan.

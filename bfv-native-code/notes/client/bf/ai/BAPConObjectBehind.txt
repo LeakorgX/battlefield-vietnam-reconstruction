@@ -1,0 +1,5 @@
+## file
+Plan condition: compares the horizontal direction between the bot's object and a target with the bot's facing.
+
+## 009f2110
+Target handle at this+8; a stale target gives true. Target point is the target position (slot 0x18), or its +0x2c interface point when this+0x10 is set and the interface exists. Both target and own positions are flattened to x/z. The own object's matrix (vf9, slot 0x24) row at +0x20 gives the forward axis, also flattened and normalized. The direction own minus target is normalized, and the result is true when its dot product with the forward axis is at most this+0xc (a cosine threshold).

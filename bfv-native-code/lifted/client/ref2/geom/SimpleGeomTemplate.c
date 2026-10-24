@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0073ee50  dice::ref2::geom::SimpleGeomTemplate  (virtual method) */
+/* 0073ee50  SimpleGeomTemplate::vf15  (virtual method)
+ * class: dice::ref2::geom::SimpleGeomTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0073ee50, bfv_client_l1_body_0073ee50);
 BFV_L1_RESUME(bfv_client_l1r_0073ee50_1, bfv_client_l1_body_0073ee50, 1);
 void bfv_client_l1_body_0073ee50(struct bfv_cpu *c)
@@ -23,7 +25,7 @@ void bfv_client_l1_body_0073ee50(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0073ee51  mov ebx, dword ptr [esp + 8] */
+    /* 0073ee51  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 0073ee55  mov eax, dword ptr [ebx] */
@@ -117,7 +119,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0073ee90  dice::ref2::geom::SimpleGeomTemplate  (virtual method) */
+/* 0073ee90  SimpleGeomTemplate::vf17  (virtual method)
+ * class: dice::ref2::geom::SimpleGeomTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0073ee90, bfv_client_l1_body_0073ee90);
 BFV_L1_RESUME(bfv_client_l1r_0073ee90_1, bfv_client_l1_body_0073ee90, 1);
 void bfv_client_l1_body_0073ee90(struct bfv_cpu *c)
@@ -202,7 +206,147 @@ out: __attribute__((unused));
 }
 
 
-/* 0073f440  dice::ref2::geom::SimpleGeomTemplate  (virtual method) */
+/* 0073f3c0  SimpleGeomTemplate::SimpleGeomTemplate  (vtable store)
+ * class: dice::ref2::geom::SimpleGeomTemplate
+ */
+BFV_L1_ENTRY(bfv_client_l1_0073f3c0, bfv_client_l1_body_0073f3c0);
+BFV_L1_RESUME(bfv_client_l1r_0073f3c0_1, bfv_client_l1_body_0073f3c0, 1);
+void bfv_client_l1_body_0073f3c0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    default: break;
+    }
+    /* 0073f3c0  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0073f3c1  mov esi, ecx */
+    esi = ecx;
+    /* 0073f3c3  mov dword ptr [esi + 8], 0xba6004  ; vtable IScaleable */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M32(ea) = 0xba6004u;
+    /* 0073f3ca  mov dword ptr [esi + 0xc], 0xb5f4ac  ; vtable IConsoleSaveable */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0xb5f4acu;
+    /* 0073f3d1  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 0073f3d2  lea edi, [esi + 0x14] */
+    edi = (uint32_t)(esi + 0x00000014u);
+    /* 0073f3d5  mov dword ptr [esi], 0xbacfbc  ; vtable SimpleGeomTemplate */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0xbacfbcu;
+    /* 0073f3db  mov dword ptr [esi + 8], 0xbacfa0 */
+    ea = (uint32_t)(esi + 0x00000008u);
+    M32(ea) = 0xbacfa0u;
+    /* 0073f3e2  mov dword ptr [esi + 0xc], 0xbacf88 */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = 0xbacf88u;
+    /* 0073f3e9  mov ecx, edi */
+    ecx = edi;
+    /* 0073f3eb  mov dword ptr [esi + 0x10], 1 */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = 0x1u;
+    /* 0073f3f2  call 0x73ecd0  ; std::list::_Buyheadnode_12_0073ecd0 */
+    t = 0x0073ecd0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0073f3c0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0073f3f7  mov dword ptr [edi + 4], eax */
+    ea = (uint32_t)(edi + 0x00000004u);
+    M32(ea) = eax;
+    /* 0073f3fa  xor ecx, ecx */
+    r = 0;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 0073f3fc  mov dword ptr [edi + 8], ecx */
+    ea = (uint32_t)(edi + 0x00000008u);
+    M32(ea) = ecx;
+    /* 0073f3ff  mov dword ptr [esi + 0x34], ecx */
+    ea = (uint32_t)(esi + 0x00000034u);
+    M32(ea) = ecx;
+    /* 0073f402  mov eax, 0x3f800000 */
+    eax = 0x3f800000u;
+    /* 0073f407  mov edx, 0xf */
+    edx = 0xfu;
+    /* 0073f40c  mov dword ptr [esi + 0x38], edx */
+    ea = (uint32_t)(esi + 0x00000038u);
+    M32(ea) = edx;
+    /* 0073f40f  mov byte ptr [esi + 0x24], cl */
+    ea = (uint32_t)(esi + 0x00000024u);
+    M8(ea) = LO8(ecx);
+    /* 0073f412  mov dword ptr [esi + 0x3c], ecx */
+    ea = (uint32_t)(esi + 0x0000003cu);
+    M32(ea) = ecx;
+    /* 0073f415  mov dword ptr [esi + 0x40], eax */
+    ea = (uint32_t)(esi + 0x00000040u);
+    M32(ea) = eax;
+    /* 0073f418  mov dword ptr [esi + 0x44], eax */
+    ea = (uint32_t)(esi + 0x00000044u);
+    M32(ea) = eax;
+    /* 0073f41b  mov dword ptr [esi + 0x48], eax */
+    ea = (uint32_t)(esi + 0x00000048u);
+    M32(ea) = eax;
+    /* 0073f41e  mov dword ptr [esi + 0x4c], eax */
+    ea = (uint32_t)(esi + 0x0000004cu);
+    M32(ea) = eax;
+    /* 0073f421  mov dword ptr [esi + 0x50], eax */
+    ea = (uint32_t)(esi + 0x00000050u);
+    M32(ea) = eax;
+    /* 0073f424  mov dword ptr [esi + 0x54], eax */
+    ea = (uint32_t)(esi + 0x00000054u);
+    M32(ea) = eax;
+    /* 0073f427  mov dword ptr [esi + 0x70], edx */
+    ea = (uint32_t)(esi + 0x00000070u);
+    M32(ea) = edx;
+    /* 0073f42a  mov dword ptr [esi + 0x6c], ecx */
+    ea = (uint32_t)(esi + 0x0000006cu);
+    M32(ea) = ecx;
+    /* 0073f42d  mov eax, 0x28 */
+    eax = 0x28u;
+    /* 0073f432  mov byte ptr [esi + 0x5c], cl */
+    ea = (uint32_t)(esi + 0x0000005cu);
+    M8(ea) = LO8(ecx);
+    /* 0073f435  mov dword ptr [esi + 0x74], eax */
+    ea = (uint32_t)(esi + 0x00000074u);
+    M32(ea) = eax;
+    /* 0073f438  mov dword ptr [esi + 0x78], eax */
+    ea = (uint32_t)(esi + 0x00000078u);
+    M32(ea) = eax;
+    /* 0073f43b  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 0073f43c  mov eax, esi */
+    eax = esi;
+    /* 0073f43e  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 0073f43f  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0073f440  SimpleGeomTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::geom::SimpleGeomTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0073f440, bfv_client_l1_body_0073f440);
 void bfv_client_l1_body_0073f440(struct bfv_cpu *c)
 {
@@ -211,12 +355,12 @@ void bfv_client_l1_body_0073f440(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0073f440  mov edx, dword ptr [0xb42718] */
+    /* 0073f440  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 0073f446  mov eax, ecx */
     eax = ecx;
-    /* 0073f448  mov ecx, dword ptr [esp + 4] */
+    /* 0073f448  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0073f44c  cmp ecx, edx */
@@ -226,7 +370,7 @@ void bfv_client_l1_body_0073f440(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0073f44e  je 0x73f48e */
     if (zf) goto L_0073f48e;
-    /* 0073f450  cmp ecx, dword ptr [0xb4271c] */
+    /* 0073f450  cmp ecx, dword ptr [0xb4271c]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00b4271cu);
     a = ecx;
     b = M32(ea);
@@ -242,7 +386,7 @@ void bfv_client_l1_body_0073f440(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0073f45e  je 0x73f48e */
     if (zf) goto L_0073f48e;
-    /* 0073f460  cmp ecx, dword ptr [0xba5abc] */
+    /* 0073f460  cmp ecx, dword ptr [0xba5abc]  ; interfaceID(SimpleGeomTemplate) */
     ea = (uint32_t)(0x00ba5abcu);
     a = ecx;
     b = M32(ea);
@@ -250,7 +394,7 @@ void bfv_client_l1_body_0073f440(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0073f466  je 0x73f48e */
     if (zf) goto L_0073f48e;
-    /* 0073f468  cmp ecx, dword ptr [0xba5ab0] */
+    /* 0073f468  cmp ecx, dword ptr [0xba5ab0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00ba5ab0u);
     a = ecx;
     b = M32(ea);
@@ -274,7 +418,7 @@ void bfv_client_l1_body_0073f440(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_0073f47a:
-    /* 0073f47a  cmp ecx, dword ptr [0xbdb000] */
+    /* 0073f47a  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);
@@ -314,7 +458,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0073f600  dice::ref2::geom::SimpleGeomTemplate  (virtual method) */
+/* 0073f600  SimpleGeomTemplate::vf5  (virtual method)
+ * class: dice::ref2::geom::SimpleGeomTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0073f600, bfv_client_l1_body_0073f600);
 BFV_L1_RESUME(bfv_client_l1r_0073f600_1, bfv_client_l1_body_0073f600, 1);
 void bfv_client_l1_body_0073f600(struct bfv_cpu *c)
@@ -328,7 +474,7 @@ void bfv_client_l1_body_0073f600(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0073f600  mov eax, dword ptr [esp + 4] */
+    /* 0073f600  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0073f604  push -1 */
@@ -349,7 +495,7 @@ void bfv_client_l1_body_0073f600(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0073f60c  call 0x4019f0 */
+    /* 0073f60c  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0073f600_1;
@@ -367,7 +513,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007409d0  dice::ref2::geom::SimpleGeomTemplate  (virtual method) */
+/* 007409d0  SimpleGeomTemplate::vf7  (virtual method)
+ * class: dice::ref2::geom::SimpleGeomTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_007409d0, bfv_client_l1_body_007409d0);
 BFV_L1_RESUME(bfv_client_l1r_007409d0_1, bfv_client_l1_body_007409d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007409d0_2, bfv_client_l1_body_007409d0, 2);
@@ -413,7 +561,7 @@ void bfv_client_l1_body_007409d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007409da  mov esi, ecx */
     esi = ecx;
-    /* 007409dc  call 0x403610 */
+    /* 007409dc  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007409d0_1;
@@ -437,7 +585,7 @@ R_1:
     M32(esp) = t;
     /* 007409e9  mov ecx, eax */
     ecx = eax;
-    /* 007409eb  call 0x7408a0 */
+    /* 007409eb  call 0x7408a0  ; SimpleGeom::SimpleGeom */
     t = 0x007408a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007409d0_2;
@@ -466,7 +614,7 @@ L_007409f6:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esi = r;
-    /* 007409ff  lea eax, [esp + 0x10] */
+    /* 007409ff  lea eax, [esp + 0x10]  ; &var_4 */
     eax = (uint32_t)(esp + 0x00000010u);
     /* 00740a03  push eax */
     t = eax;
@@ -482,10 +630,10 @@ L_007409f6:
     M32(esp) = t;
     /* 00740a06  mov ecx, esi */
     ecx = esi;
-    /* 00740a08  mov dword ptr [esp + 0x1c], ebp */
+    /* 00740a08  mov dword ptr [esp + 0x1c], ebp  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = ebp;
-    /* 00740a0c  call 0x73ed60 */
+    /* 00740a0c  call 0x73ed60  ; std::list::_Buynode_0073ed60 */
     t = 0x0073ed60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007409d0_3;
@@ -500,7 +648,7 @@ R_3:
     ecx = esi;
     /* 00740a15  mov ebx, eax */
     ebx = eax;
-    /* 00740a17  call 0x489ee0 */
+    /* 00740a17  call 0x489ee0  ; std::list::_Incsize */
     t = 0x00489ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007409d0_4;

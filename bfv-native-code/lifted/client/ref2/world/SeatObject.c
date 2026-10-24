@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006d6890  dice::ref2::world::SeatObject  (virtual method) */
+/* 006d6890  SeatObject::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::SeatObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d6890, bfv_client_l1_body_006d6890);
 void bfv_client_l1_body_006d6890(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_006d6890(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006d6890  mov edx, dword ptr [0xb42718] */
+    /* 006d6890  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 006d6896  mov eax, ecx */
     eax = ecx;
-    /* 006d6898  mov ecx, dword ptr [esp + 4] */
+    /* 006d6898  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006d689c  cmp ecx, edx */
@@ -29,7 +32,7 @@ void bfv_client_l1_body_006d6890(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006d689e  je 0x6d68d2 */
     if (zf) goto L_006d68d2;
-    /* 006d68a0  cmp ecx, dword ptr [0xb77da0] */
+    /* 006d68a0  cmp ecx, dword ptr [0xb77da0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00b77da0u);
     a = ecx;
     b = M32(ea);
@@ -37,7 +40,7 @@ void bfv_client_l1_body_006d6890(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006d68a6  je 0x6d68d2 */
     if (zf) goto L_006d68d2;
-    /* 006d68a8  cmp ecx, dword ptr [0xbdb000] */
+    /* 006d68a8  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);
@@ -61,7 +64,7 @@ void bfv_client_l1_body_006d6890(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006d68bc:
-    /* 006d68bc  cmp ecx, dword ptr [0xb81024] */
+    /* 006d68bc  cmp ecx, dword ptr [0xb81024]  ; interfaceID(SeatObject) */
     ea = (uint32_t)(0x00b81024u);
     a = ecx;
     b = M32(ea);

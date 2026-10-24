@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006b45d0  dice::ref2::world::LightTemplate  (vtable store) */
+/* 006b45d0  LightTemplate::LightTemplate  (vtable store)
+ * class: dice::ref2::world::LightTemplate
+ * also entered at 006b4610: LightTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b45d0, bfv_client_l1_body_006b45d0);
 BFV_L1_RESUME(bfv_client_l1r_006b45d0_1, bfv_client_l1_body_006b45d0, 1);
 void bfv_client_l1_body_006b45d0(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_client_l1_body_006b45d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006b45d1  mov esi, ecx */
     esi = ecx;
-    /* 006b45d3  call 0x696290 */
+    /* 006b45d3  call 0x696290  ; SimpleObjectTemplate::SimpleObjectTemplate */
     t = 0x00696290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b45d0_1;
@@ -34,7 +37,7 @@ void bfv_client_l1_body_006b45d0(struct bfv_cpu *c)
 R_1:
     /* 006b45d8  mov eax, 0x3e800000 */
     eax = 0x3e800000u;
-    /* 006b45dd  mov dword ptr [esi], 0xb99304 */
+    /* 006b45dd  mov dword ptr [esi], 0xb99304  ; vtable LightTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb99304u;
     /* 006b45e3  mov dword ptr [esi + 4], 0xb992ec */
@@ -69,7 +72,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4620  dice::ref2::world::LightTemplate  (virtual method) */
+/* 006b4620  LightTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::LightTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4620, bfv_client_l1_body_006b4620);
 void bfv_client_l1_body_006b4620(struct bfv_cpu *c)
 {
@@ -78,12 +84,12 @@ void bfv_client_l1_body_006b4620(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 006b4620  mov edx, dword ptr [0xb77e94] */
+    /* 006b4620  mov edx, dword ptr [0xb77e94]  ; LightTemplate::classID */
     ea = (uint32_t)(0x00b77e94u);
     edx = M32(ea);
     /* 006b4626  mov eax, ecx */
     eax = ecx;
-    /* 006b4628  mov ecx, dword ptr [esp + 4] */
+    /* 006b4628  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006b462c  cmp ecx, edx */
@@ -93,7 +99,7 @@ void bfv_client_l1_body_006b4620(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 006b462e  je 0x6b464a */
     if (zf) goto L_006b464a;
-    /* 006b4630  cmp ecx, dword ptr [0xb77ea0] */
+    /* 006b4630  cmp ecx, dword ptr [0xb77ea0]  ; SimpleObjectTemplate::classID */
     ea = (uint32_t)(0x00b77ea0u);
     a = ecx;
     b = M32(ea);
@@ -105,7 +111,7 @@ void bfv_client_l1_body_006b4620(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006b4639  mov esi, dword ptr [0xb77e68] */
+    /* 006b4639  mov esi, dword ptr [0xb77e68]  ; ObjectTemplate::classID */
     ea = (uint32_t)(0x00b77e68u);
     esi = M32(ea);
     /* 006b463f  xor edx, edx */
@@ -144,7 +150,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006b4650  dice::ref2::world::LightTemplate  (virtual method) */
+/* 006b4650  LightTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::LightTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006b4650, bfv_client_l1_body_006b4650);
 BFV_L1_RESUME(bfv_client_l1r_006b4650_1, bfv_client_l1_body_006b4650, 1);
 BFV_L1_RESUME(bfv_client_l1r_006b4650_2, bfv_client_l1_body_006b4650, 2);
@@ -174,7 +183,7 @@ void bfv_client_l1_body_006b4650(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006b4657  mov edi, ecx */
     edi = ecx;
-    /* 006b4659  call 0x403610 */
+    /* 006b4659  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4650_1;
@@ -200,7 +209,7 @@ R_1:
     M32(esp) = t;
     /* 006b4668  mov ecx, esi */
     ecx = esi;
-    /* 006b466a  call 0x66ced0 */
+    /* 006b466a  call 0x66ced0  ; SimpleObject::SimpleObject */
     t = 0x0066ced0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006b4650_2;
@@ -211,7 +220,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 006b4670  mov dword ptr [esi], 0xb991fc */
+    /* 006b4670  mov dword ptr [esi], 0xb991fc  ; vtable Light */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb991fcu;
     /* 006b4676  mov dword ptr [esi + 0x84], 0xb991e4 */

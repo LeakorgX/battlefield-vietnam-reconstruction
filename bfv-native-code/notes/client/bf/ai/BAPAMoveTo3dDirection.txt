@@ -1,0 +1,8 @@
+## file
+3D move action that flies in a direction: the goal is placed a fixed distance ahead of the vehicle.
+
+## 009f93a0
+Runs its setup once, when this+0x88 is set (and then clears it). Takes the bot's own object, its +0x20 interface (slot 0x14) and that object's transform (slot 0x3c). The goal point at this+0x28..+0x30 is the transform translation (+0x30..+0x38) plus the given direction times the distance at this+0x84; the y of the goal is replaced by this+0x24. The direction flattened to x/z and normalized is stored at this+0x34. Always reports flag = 0 and done = 1 and returns 0.
+
+## 009f9610
+Destructor: releases the owned object at this+0x64, restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set. The tail at 009f9660 is shared by many vf3 slots.

@@ -1,0 +1,8 @@
+## file
+Plan action that makes the bot refresh its vehicle state.
+
+## 009eeee0
+Destructor: restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.
+
+## 009eef20
+Calls bot vf54 (slot 0xd8), then BotMain_set_58h_to_1_00970860 on the bot (sets its +0x58 to 1). Finishes at once: flag = 1, done = 1, returns 1.

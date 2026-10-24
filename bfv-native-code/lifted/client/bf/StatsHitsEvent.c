@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005adc60  dice::bf::StatsHitsEvent  (vtable store) */
+/* 005adc60  StatsHitsEvent::create  (vtable store)
+ * class: dice::bf::StatsHitsEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005adc60, bfv_client_l1_body_005adc60);
 BFV_L1_RESUME(bfv_client_l1r_005adc60_1, bfv_client_l1_body_005adc60, 1);
 void bfv_client_l1_body_005adc60(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_005adc60(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005adc60  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005adc60  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005adc66  mov eax, dword ptr [ecx] */
@@ -53,7 +55,7 @@ R_1:
     /* 005adc78  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005adc7f  mov dword ptr [eax], 0xb7611c */
+    /* 005adc7f  mov dword ptr [eax], 0xb7611c  ; vtable StatsHitsEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb7611cu;
     /* 005adc85  ret */
@@ -76,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005adc90  dice::bf::StatsHitsEvent  (vtable store) */
+/* 005adc90  StatsHitsEvent::create  (vtable store)
+ * class: dice::bf::StatsHitsEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005adc90, bfv_client_l1_body_005adc90);
 BFV_L1_RESUME(bfv_client_l1r_005adc90_1, bfv_client_l1_body_005adc90, 1);
 void bfv_client_l1_body_005adc90(struct bfv_cpu *c)
@@ -90,7 +94,7 @@ void bfv_client_l1_body_005adc90(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005adc90  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005adc90  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005adc96  mov eax, dword ptr [ecx] */
@@ -124,7 +128,7 @@ R_1:
     /* 005adca8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005adcaf  mov dword ptr [eax], 0xb7611c */
+    /* 005adcaf  mov dword ptr [eax], 0xb7611c  ; vtable StatsHitsEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb7611cu;
     /* 005adcb5  jmp 0x5adcb9 */
@@ -139,7 +143,7 @@ L_005adcb9:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005adcba  mov esi, dword ptr [esp + 8] */
+    /* 005adcba  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 005adcbe  push edi */

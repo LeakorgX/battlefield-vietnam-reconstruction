@@ -5,7 +5,35 @@
 #include "l1.h"
 
 
-/* 0063abf9  bad_typeid  (virtual method) */
+/* 0063ab86  bad_typeid::~bad_typeid  (vtable store)
+ * class: bad_typeid
+ * called by: bad_typeid::deleting_dtor
+ */
+BFV_L1_ENTRY(bfv_server_l1_0063ab86, bfv_server_l1_body_0063ab86);
+void bfv_server_l1_body_0063ab86(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t ea;
+    /* 0063ab86  mov dword ptr [ecx], 0x85166c  ; vtable bad_typeid */
+    ea = (uint32_t)(ecx);
+    M32(ea) = 0x85166cu;
+    /* 0063ab8c  jmp 0x63aaf6  ; exception::~exception */
+    c->eip = 0x0063aaf6u;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0063abf9  bad_typeid::deleting_dtor  (virtual method)
+ * overrides: exception::vf0  (9 classes implement it)
+ * class: bad_typeid
+ */
 BFV_L1_ENTRY(bfv_server_l1_0063abf9, bfv_server_l1_body_0063abf9);
 BFV_L1_RESUME(bfv_server_l1r_0063abf9_1, bfv_server_l1_body_0063abf9, 1);
 BFV_L1_RESUME(bfv_server_l1r_0063abf9_2, bfv_server_l1_body_0063abf9, 2);
@@ -27,14 +55,14 @@ void bfv_server_l1_body_0063abf9(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0063abfa  mov esi, ecx */
     esi = ecx;
-    /* 0063abfc  call 0x63ab86 */
+    /* 0063abfc  call 0x63ab86  ; bad_typeid::~bad_typeid */
     t = 0x0063ab86u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063abf9_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0063ac01  test byte ptr [esp + 8], 1 */
+    /* 0063ac01  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -44,7 +72,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0063ac09  call 0x403df0 */
+    /* 0063ac09  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063abf9_2;

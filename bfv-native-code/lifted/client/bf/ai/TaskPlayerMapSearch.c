@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 009de300  dice::bf::ai::TaskPlayerMapSearch  (virtual method)
- * strings: "TaskAStarLocalSearch" */
+/* 009de300  TaskPlayerMapSearch::execute  (virtual method)
+ * overrides: Task::execute  (8 classes implement it)
+ * class: dice::bf::ai::TaskPlayerMapSearch
+ * strings: "TaskAStarLocalSearch"
+ */
 BFV_L1_ENTRY(bfv_client_l1_009de300, bfv_client_l1_body_009de300);
 BFV_L1_RESUME(bfv_client_l1r_009de300_1, bfv_client_l1_body_009de300, 1);
 BFV_L1_RESUME(bfv_client_l1r_009de300_2, bfv_client_l1_body_009de300, 2);
@@ -48,7 +51,7 @@ void bfv_client_l1_body_009de300(struct bfv_cpu *c)
     /* 009de30c  mov ecx, dword ptr [esi + 0x50] */
     ea = (uint32_t)(esi + 0x00000050u);
     ecx = M32(ea);
-    /* 009de30f  push 0xbf800000 */
+    /* 009de30f  push 0xbf800000  ; -1.0f */
     t = 0xbf800000u;
     esp -= 4;
     M32(esp) = t;
@@ -76,7 +79,7 @@ void bfv_client_l1_body_009de300(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009de324  mov ecx, edi */
     ecx = edi;
-    /* 009de326  call 0x9e55d0 */
+    /* 009de326  call 0x9e55d0  ; AStarLocalSearch_009e55d0 */
     t = 0x009e55d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009de300_1;
@@ -100,14 +103,14 @@ R_1:
     M32(esp) = t;
     /* 009de331  mov ecx, edi */
     ecx = edi;
-    /* 009de333  call 0x9e61e0 */
+    /* 009de333  call 0x9e61e0  ; AStarLocalSearch_009e61e0 */
     t = 0x009e61e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009de300_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009de338  fld qword ptr [0xb426c0] */
+    /* 009de338  fld qword ptr [0xb426c0]  ; = 0.0 */
     ea = (uint32_t)(0x00b426c0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009de33e  mov ecx, dword ptr [esi + 0x16c] */
@@ -138,7 +141,7 @@ R_2:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 009de35c  fstp qword ptr [esp] */
+    /* 009de35c  fstp qword ptr [esp]  ; var_1c */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009de35f  mov byte ptr [eax + 0x38], cl */
@@ -153,7 +156,7 @@ R_2:
     M32(esp) = t;
     /* 009de366  mov ecx, esi */
     ecx = esi;
-    /* 009de368  mov dword ptr [eax + 0x10], 0xbf97dc */
+    /* 009de368  mov dword ptr [eax + 0x10], 0xbf97dc  ; "TaskAStarLocalSearch" */
     ea = (uint32_t)(eax + 0x00000010u);
     M32(ea) = 0xbf97dcu;
     /* 009de36f  mov dword ptr [eax + 0x3c], edi */
@@ -168,7 +171,7 @@ R_2:
     /* 009de378  mov dword ptr [eax + 0x34], 2 */
     ea = (uint32_t)(eax + 0x00000034u);
     M32(ea) = 0x2u;
-    /* 009de37f  call 0x9de030 */
+    /* 009de37f  call 0x9de030  ; Task_009de030 */
     t = 0x009de030u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009de300_3;

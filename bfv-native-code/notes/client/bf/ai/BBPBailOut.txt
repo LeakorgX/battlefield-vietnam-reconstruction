@@ -1,0 +1,5 @@
+## file
+Plan builder for bailing out of a vehicle.
+
+## 00984d90
+buildPlan: when the bot is in a vehicle (slot 0x50 and its +0xc) it clears the current plan, releases its control locks (BotMain_sub_00973470 with 1, 1, 1) and builds a serial plan of a BAPATrigger on control 10 (mask 0x400, runs until a BAPConTrue condition) followed by a BAPAUpdateVehicle. Otherwise it only clears the current plan.

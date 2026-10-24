@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00963980  dice::bf::ai::IAIPathfindingSetup  (virtual method) */
+/* 00963980  IAIPathfindingSetup::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAIPathfindingSetup
+ */
 BFV_L1_ENTRY(bfv_client_l1_00963980, bfv_client_l1_body_00963980);
 BFV_L1_RESUME(bfv_client_l1r_00963980_1, bfv_client_l1_body_00963980, 1);
 void bfv_client_l1_body_00963980(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_00963980(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00963980  test byte ptr [esp + 4], 1 */
+    /* 00963980  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,10 +31,10 @@ void bfv_client_l1_body_00963980(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00963986  mov esi, ecx */
     esi = ecx;
-    /* 00963988  mov dword ptr [esi], 0xbf325c */
+    /* 00963988  mov dword ptr [esi], 0xbf325c  ; vtable IAIPathfindingSetup */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf325cu;
-    /* 0096398e  mov dword ptr [0xe0ee0c], 0 */
+    /* 0096398e  mov dword ptr [0xe0ee0c], 0  ; g_pIAIPathfindingSetup_00e0ee0c */
     ea = (uint32_t)(0x00e0ee0cu);
     M32(ea) = 0x0u;
     /* 00963998  je 0x9639a3 */
@@ -41,7 +43,7 @@ void bfv_client_l1_body_00963980(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0096399b  call 0x403680 */
+    /* 0096399b  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00963980_1;
@@ -64,6 +66,37 @@ L_009639a3:
     /* 009639a6  ret 4 */
     c->eip = M32(esp);
     esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 009639b0  IAIPathfindingSetup::IAIPathfindingSetup  (vtable store)
+ * class: dice::bf::ai::IAIPathfindingSetup
+ * called by: AIPathfinding::AIPathfinding
+ */
+BFV_L1_ENTRY(bfv_client_l1_009639b0, bfv_client_l1_body_009639b0);
+void bfv_client_l1_body_009639b0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t ea;
+    /* 009639b0  mov eax, ecx */
+    eax = ecx;
+    /* 009639b2  mov dword ptr [eax], 0xbf325c  ; vtable IAIPathfindingSetup */
+    ea = (uint32_t)(eax);
+    M32(ea) = 0xbf325cu;
+    /* 009639b8  mov dword ptr [0xe0ee0c], eax  ; g_pIAIPathfindingSetup_00e0ee0c */
+    ea = (uint32_t)(0x00e0ee0cu);
+    M32(ea) = eax;
+    /* 009639bd  ret */
+    c->eip = M32(esp);
+    esp += 4;
     goto out;
 out: __attribute__((unused));
     c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;

@@ -1,0 +1,8 @@
+## file
+Plan action that keeps a control pressed. Owns three parts at this+0x1c, this+0x20 and this+0x24.
+
+## 009f4a70
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.
+
+## 009f4b20
+Destructor: releases the parts at this+0x1c, this+0x20 and this+0x24, restores the base vtables, counts the destruction and returns the object to its memory pool when bit 0 of the flag argument is set.

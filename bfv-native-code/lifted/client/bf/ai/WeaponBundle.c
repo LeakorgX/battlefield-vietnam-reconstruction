@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 006d5480  (called from this file only) */
+/* 006d5480  WeaponBundle::vf7_helper_006d5480  (called from this file only)
+ * called by: WeaponBundle::vf7
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5480, bfv_client_l1_body_006d5480);
 BFV_L1_RESUME(bfv_client_l1r_006d5480_1, bfv_client_l1_body_006d5480, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d5480_2, bfv_client_l1_body_006d5480, 2);
@@ -49,7 +51,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006d548d  mov edi, dword ptr [esp + 0xc] */
+    /* 006d548d  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
 L_006d5491:
@@ -67,7 +69,7 @@ L_006d5491:
     c->eip = t;
     goto out;
 R_2:
-    /* 006d5499  cmp eax, dword ptr [0xb77edc] */
+    /* 006d5499  cmp eax, dword ptr [0xb77edc]  ; FireArmsTemplate::classID */
     ea = (uint32_t)(0x00b77edcu);
     a = eax;
     b = M32(ea);
@@ -81,7 +83,7 @@ R_2:
     M32(esp) = t;
     /* 006d54a2  mov ecx, esi */
     ecx = esi;
-    /* 006d54a4  call 0x680300 */
+    /* 006d54a4  call 0x680300  ; world_00680300 */
     t = 0x00680300u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d5480_3;
@@ -117,7 +119,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006d5500  (called from this file only) */
+/* 006d5500  WeaponBundle::vf30_helper_006d5500  (called from this file only)
+ * called by: WeaponBundle::vf30
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d5500, bfv_client_l1_body_006d5500);
 BFV_L1_RESUME(bfv_client_l1r_006d5500_1, bfv_client_l1_body_006d5500, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d5500_2, bfv_client_l1_body_006d5500, 2);
@@ -161,7 +165,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 006d550d  mov edi, dword ptr [esp + 0xc] */
+    /* 006d550d  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
 L_006d5511:
@@ -179,7 +183,7 @@ L_006d5511:
     c->eip = t;
     goto out;
 R_2:
-    /* 006d5519  cmp eax, dword ptr [0xb77edc] */
+    /* 006d5519  cmp eax, dword ptr [0xb77edc]  ; FireArmsTemplate::classID */
     ea = (uint32_t)(0x00b77edcu);
     a = eax;
     b = M32(ea);
@@ -193,7 +197,7 @@ R_2:
     M32(esp) = t;
     /* 006d5522  mov ecx, esi */
     ecx = esi;
-    /* 006d5524  call 0x6792f0 */
+    /* 006d5524  call 0x6792f0  ; FireArms_006792f0 */
     t = 0x006792f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d5500_3;
@@ -229,7 +233,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00980870  dice::bf::ai::WeaponBundle  (virtual method) */
+/* 00980870  WeaponBundle::vf11  (virtual method)
+ * overrides: Weapon::vf11  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundle
+ */
 BFV_L1_ENTRY(bfv_client_l1_00980870, bfv_client_l1_body_00980870);
 void bfv_client_l1_body_00980870(struct bfv_cpu *c)
 {
@@ -258,7 +265,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00980920  dice::bf::ai::WeaponBundle  (virtual method) */
+/* 00980920  WeaponBundle::vf21  (virtual method)
+ * overrides: Weapon::vf21  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundle
+ */
 BFV_L1_ENTRY(bfv_client_l1_00980920, bfv_client_l1_body_00980920);
 BFV_L1_RESUME(bfv_client_l1r_00980920_1, bfv_client_l1_body_00980920, 1);
 void bfv_client_l1_body_00980920(struct bfv_cpu *c)
@@ -276,7 +286,7 @@ void bfv_client_l1_body_00980920(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00980921  mov esi, dword ptr [esp + 8] */
+    /* 00980921  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 00980925  mov eax, dword ptr [esi] */
@@ -368,7 +378,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009eacc0  dice::bf::ai::WeaponBundle  (virtual method) */
+/* 009eacc0  WeaponBundle::vf22  (virtual method)
+ * overrides: Weapon::vf22  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundle
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eacc0, bfv_client_l1_body_009eacc0);
 void bfv_client_l1_body_009eacc0(struct bfv_cpu *c)
 {
@@ -394,7 +407,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009eace0  dice::bf::ai::WeaponBundle  (vtable store) */
+/* 009eace0  WeaponBundle::WeaponBundle  (vtable store)
+ * class: dice::bf::ai::WeaponBundle
+ * called by: WeaponBundleReal::WeaponBundleReal, WeaponBundleKnown::WeaponBundleKnown
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eace0, bfv_client_l1_body_009eace0);
 BFV_L1_RESUME(bfv_client_l1r_009eace0_1, bfv_client_l1_body_009eace0, 1);
 void bfv_client_l1_body_009eace0(struct bfv_cpu *c)
@@ -408,7 +424,7 @@ void bfv_client_l1_body_009eace0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009eace0  mov eax, dword ptr [esp + 4] */
+    /* 009eace0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 009eace4  push esi */
@@ -421,14 +437,14 @@ void bfv_client_l1_body_009eace0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009eace6  mov esi, ecx */
     esi = ecx;
-    /* 009eace8  call 0xa0a020 */
+    /* 009eace8  call 0xa0a020  ; Weapon::Weapon */
     t = 0x00a0a020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eace0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009eaced  mov ecx, dword ptr [esp + 0xc] */
+    /* 009eaced  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 009eacf1  xor eax, eax */
@@ -444,13 +460,13 @@ R_1:
     /* 009eacf9  mov byte ptr [esi + 0x20], al */
     ea = (uint32_t)(esi + 0x00000020u);
     M8(ea) = LO8(eax);
-    /* 009eacfc  mov dword ptr [esi], 0xbf99cc */
+    /* 009eacfc  mov dword ptr [esi], 0xbf99cc  ; vtable WeaponBundle */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf99ccu;
     /* 009ead02  mov dword ptr [esi + 0x14], ecx */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = ecx;
-    /* 009ead05  mov dword ptr [esi + 0x18], 0xbf800000 */
+    /* 009ead05  mov dword ptr [esi + 0x18], 0xbf800000  ; -1.0f */
     ea = (uint32_t)(esi + 0x00000018u);
     M32(ea) = 0xbf800000u;
     /* 009ead0c  mov eax, esi */
@@ -470,7 +486,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009ead20  (between same file) */
+/* 009ead20  WeaponBundle::~WeaponBundle  (between same file)
+ * class: dice::bf::ai::WeaponBundle
+ * called by: WeaponBundleReal::deleting_dtor, WeaponBundleKnown::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009ead20, bfv_client_l1_body_009ead20);
 BFV_L1_RESUME(bfv_client_l1r_009ead20_1, bfv_client_l1_body_009ead20, 1);
 void bfv_client_l1_body_009ead20(struct bfv_cpu *c)
@@ -497,10 +516,10 @@ void bfv_client_l1_body_009ead20(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009ead27  mov dword ptr [esi], 0xbf99cc */
+    /* 009ead27  mov dword ptr [esi], 0xbf99cc  ; vtable WeaponBundle */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf99ccu;
-    /* 009ead2d  call 0x403680 */
+    /* 009ead2d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ead20_1;
@@ -513,7 +532,7 @@ R_1:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     esp = r;
-    /* 009ead35  mov dword ptr [esi], 0xb4274c */
+    /* 009ead35  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 009ead3b  pop esi */
@@ -531,7 +550,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009ead40  dice::bf::ai::WeaponBundle  (virtual method) */
+/* 009ead40  WeaponBundle::vf30  (virtual method)
+ * overrides: Weapon::vf30  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundle
+ */
 BFV_L1_ENTRY(bfv_client_l1_009ead40, bfv_client_l1_body_009ead40);
 BFV_L1_RESUME(bfv_client_l1r_009ead40_1, bfv_client_l1_body_009ead40, 1);
 BFV_L1_RESUME(bfv_client_l1r_009ead40_2, bfv_client_l1_body_009ead40, 2);
@@ -547,7 +569,7 @@ void bfv_client_l1_body_009ead40(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 009ead40  mov eax, dword ptr [esp + 8] */
+    /* 009ead40  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 009ead44  push esi */
@@ -556,7 +578,7 @@ void bfv_client_l1_body_009ead40(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009ead45  mov esi, ecx */
     esi = ecx;
-    /* 009ead47  mov ecx, dword ptr [esp + 8] */
+    /* 009ead47  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 009ead4b  push eax */
@@ -569,17 +591,17 @@ void bfv_client_l1_body_009ead40(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009ead4d  mov ecx, esi */
     ecx = esi;
-    /* 009ead4f  call 0x9ea9d0 */
+    /* 009ead4f  call 0x9ea9d0  ; WeaponFireArm_009ea9d0 */
     t = 0x009ea9d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ead40_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009ead54  fld dword ptr [esp + 8] */
+    /* 009ead54  fld dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 009ead58  fmul dword ptr [0xb55584] */
+    /* 009ead58  fmul dword ptr [0xb55584]  ; = 0.75f */
     ea = (uint32_t)(0x00b55584u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009ead5e  push ecx */
@@ -589,18 +611,18 @@ R_1:
     /* 009ead5f  mov ecx, dword ptr [esi + 0x14] */
     ea = (uint32_t)(esi + 0x00000014u);
     ecx = M32(ea);
-    /* 009ead62  fsubr dword ptr [0xb4456c] */
+    /* 009ead62  fsubr dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfsubr dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 009ead68  fmul dword ptr [esp + 0x14] */
+    /* 009ead68  fmul dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009ead6c  faddp st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfaddp st(1)\n\t.att_syntax prefix");
-    /* 009ead6e  fstp dword ptr [esp] */
+    /* 009ead6e  fstp dword ptr [esp]  ; var_8 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 009ead71  call 0x6d5500 */
+    /* 009ead71  call 0x6d5500  ; WeaponBundle::vf30_helper_006d5500 */
     t = 0x006d5500u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ead40_2;
@@ -622,7 +644,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009ead80  dice::bf::ai::WeaponBundle  (virtual method) */
+/* 009ead80  WeaponBundle::vf0  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::bf::ai::WeaponBundle
+ */
 BFV_L1_ENTRY(bfv_client_l1_009ead80, bfv_client_l1_body_009ead80);
 BFV_L1_RESUME(bfv_client_l1r_009ead80_1, bfv_client_l1_body_009ead80, 1);
 BFV_L1_RESUME(bfv_client_l1r_009ead80_2, bfv_client_l1_body_009ead80, 2);
@@ -651,17 +676,17 @@ void bfv_client_l1_body_009ead80(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009ead87  mov dword ptr [esi], 0xbf99cc */
+    /* 009ead87  mov dword ptr [esi], 0xbf99cc  ; vtable WeaponBundle */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf99ccu;
-    /* 009ead8d  call 0x403680 */
+    /* 009ead8d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ead80_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009ead92  mov al, byte ptr [esp + 0xc] */
+    /* 009ead92  mov al, byte ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     SET8L(eax, M8(ea));
     /* 009ead96  add esp, 4 */
@@ -673,7 +698,7 @@ R_1:
     /* 009ead99  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 009ead9b  mov dword ptr [esi], 0xb4274c */
+    /* 009ead9b  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 009eada1  je 0x9eadac */
@@ -682,7 +707,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009eada4  call 0x403680 */
+    /* 009eada4  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ead80_2;
@@ -713,7 +738,11 @@ out: __attribute__((unused));
 }
 
 
-/* 009eadc0  dice::bf::ai::WeaponBundle  (virtual method) */
+/* 009eadc0  WeaponBundle::vf7  (virtual method)
+ * overrides: Weapon::vf7  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundle
+ * called by: WeaponBundleKnown::vf7
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eadc0, bfv_client_l1_body_009eadc0);
 BFV_L1_RESUME(bfv_client_l1r_009eadc0_1, bfv_client_l1_body_009eadc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009eadc0_2, bfv_client_l1_body_009eadc0, 2);
@@ -790,7 +819,7 @@ void bfv_client_l1_body_009eadc0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009eadc9  mov edi, ecx */
     edi = ecx;
-    /* 009eadcb  call 0x403610 */
+    /* 009eadcb  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eadc0_1;
@@ -808,7 +837,7 @@ R_1:
     F_LOGIC(32, r);
     /* 009eadd5  je 0x9eade2 */
     if (zf) goto L_009eade2;
-    /* 009eadd7  mov dword ptr [eax], 0xbf99c4 */
+    /* 009eadd7  mov dword ptr [eax], 0xbf99c4  ; vtable FireCallback */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf99c4u;
     /* 009eaddd  mov dword ptr [eax + 4], edi */
@@ -832,7 +861,7 @@ L_009eade4:
     /* 009eade8  mov dword ptr [edi + 0x10], eax */
     ea = (uint32_t)(edi + 0x00000010u);
     M32(ea) = eax;
-    /* 009eadeb  call 0x6d5480 */
+    /* 009eadeb  call 0x6d5480  ; WeaponBundle::vf7_helper_006d5480 */
     t = 0x006d5480u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eadc0_2;
@@ -881,7 +910,7 @@ L_009eae00:
     c->eip = t;
     goto out;
 R_4:
-    /* 009eae0a  cmp eax, dword ptr [0xb77edc] */
+    /* 009eae0a  cmp eax, dword ptr [0xb77edc]  ; FireArmsTemplate::classID */
     ea = (uint32_t)(0x00b77edcu);
     a = eax;
     b = M32(ea);
@@ -902,7 +931,7 @@ R_4:
     c->eip = t;
     goto out;
 R_5:
-    /* 009eae19  cmp eax, dword ptr [0xb77ee8] */
+    /* 009eae19  cmp eax, dword ptr [0xb77ee8]  ; HandFireArmsTemplate::classID */
     ea = (uint32_t)(0x00b77ee8u);
     a = eax;
     b = M32(ea);
@@ -938,7 +967,7 @@ L_009eae30:
     F_LOGIC(8, r);
     /* 009eae38  jne 0x9eaf22 */
     if (!zf) goto L_009eaf22;
-    /* 009eae3e  mov ecx, dword ptr [0xd7d018] */
+    /* 009eae3e  mov ecx, dword ptr [0xd7d018]  ; g_pObjectTemplateManager */
     ea = (uint32_t)(0x00d7d018u);
     ecx = M32(ea);
     /* 009eae44  mov edx, dword ptr [ecx] */
@@ -950,7 +979,7 @@ L_009eae30:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009eae4d  call dword ptr [edx + 0x30] */
+    /* 009eae4d  call dword ptr [edx + 0x30]  ; -> ObjectTemplateManager::vf12 = ObjectTemplateManager::getTemplate */
     ea = (uint32_t)(edx + 0x00000030u);
     t = M32(ea);
     esp -= 4;
@@ -995,7 +1024,7 @@ R_7:
 R_8:
     /* 009eae66  mov ecx, esi */
     ecx = esi;
-    /* 009eae68  call 0x6892d0 */
+    /* 009eae68  call 0x6892d0  ; world_006892d0 */
     t = 0x006892d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eadc0_9;
@@ -1050,7 +1079,7 @@ R_11:
     /* 009eae8d  jmp 0x9eae97 */
     goto L_009eae97;
 L_009eae8f:
-    /* 009eae8f  mov dword ptr [esp + 0x10], 0x3f800000 */
+    /* 009eae8f  mov dword ptr [esp + 0x10], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0x3f800000u;
 L_009eae97:
@@ -1091,7 +1120,7 @@ R_12:
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
     /* 009eaebe  fmul st(1) */
     __asm__ volatile(".intel_syntax noprefix\n\tfmul st(1)\n\t.att_syntax prefix");
-    /* 009eaec0  fmul dword ptr [0xb55530] */
+    /* 009eaec0  fmul dword ptr [0xb55530]  ; = 1.5707964f */
     ea = (uint32_t)(0x00b55530u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009eaec6  fstp dword ptr [esp + 0x14] */
@@ -1132,7 +1161,7 @@ L_009eaee4:
     /* 009eaeee  mov dword ptr [esp + 0x18], eax */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = eax;
-    /* 009eaef2  call dword ptr [edx + 0x28] */
+    /* 009eaef2  call dword ptr [edx + 0x28]  ; -> WeaponBundle::vf10 = _purecall */
     ea = (uint32_t)(edx + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -1147,7 +1176,7 @@ R_14:
     eax = M32(ea);
     /* 009eaef9  mov ecx, edi */
     ecx = edi;
-    /* 009eaefb  call dword ptr [eax + 0x24] */
+    /* 009eaefb  call dword ptr [eax + 0x24]  ; -> WeaponBundle::vf9 = _purecall */
     ea = (uint32_t)(eax + 0x00000024u);
     t = M32(ea);
     esp -= 4;
@@ -1169,7 +1198,7 @@ R_15:
     M32(esp) = t;
     /* 009eaf04  mov ecx, edi */
     ecx = edi;
-    /* 009eaf06  call dword ptr [edx + 0x24] */
+    /* 009eaf06  call dword ptr [edx + 0x24]  ; -> WeaponBundle::vf9 = _purecall */
     ea = (uint32_t)(edx + 0x00000024u);
     t = M32(ea);
     esp -= 4;
@@ -1209,7 +1238,7 @@ R_16:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 009eaf1d  call 0x93cc40 */
+    /* 009eaf1d  call 0x93cc40  ; ai_0093cc40 */
     t = 0x0093cc40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eadc0_17;
@@ -1220,7 +1249,7 @@ L_009eaf22:
     /* 009eaf22  mov ecx, dword ptr [esp + 0x1c] */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
-    /* 009eaf26  call 0x6792a0 */
+    /* 009eaf26  call 0x6792a0  ; FireArms_006792a0 */
     t = 0x006792a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009eadc0_18;
@@ -1266,7 +1295,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009eaf40  dice::bf::ai::WeaponBundle  (virtual method) */
+/* 009eaf40  WeaponBundle::vf18  (virtual method)
+ * overrides: Weapon::vf18  (7 classes implement it)
+ * class: dice::bf::ai::WeaponBundle
+ */
 BFV_L1_ENTRY(bfv_client_l1_009eaf40, bfv_client_l1_body_009eaf40);
 void bfv_client_l1_body_009eaf40(struct bfv_cpu *c)
 {

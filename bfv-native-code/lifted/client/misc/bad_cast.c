@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007c20e2  bad_cast  (vtable store) */
+/* 007c20e2  bad_cast::bad_cast  (vtable store)
+ * class: bad_cast
+ * called by: std::use_facet_num_get_00401e50, std::use_facet_num_get_00405350, std::use_facet_num_get, std::use_facet_num_get_00488920, __RTDynamicCast
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c20e2, bfv_client_l1_body_007c20e2);
 BFV_L1_RESUME(bfv_client_l1r_007c20e2_1, bfv_client_l1_body_007c20e2, 1);
 void bfv_client_l1_body_007c20e2(struct bfv_cpu *c)
@@ -23,7 +26,7 @@ void bfv_client_l1_body_007c20e2(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c20e3  lea eax, [esp + 8] */
+    /* 007c20e3  lea eax, [esp + 8]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x00000008u);
     /* 007c20e7  push eax */
     t = eax;
@@ -31,14 +34,14 @@ void bfv_client_l1_body_007c20e2(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007c20e8  mov esi, ecx */
     esi = ecx;
-    /* 007c20ea  call 0x7c2038 */
+    /* 007c20ea  call 0x7c2038  ; exception::exception */
     t = 0x007c2038u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c20e2_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007c20ef  mov dword ptr [esi], 0xbb7058 */
+    /* 007c20ef  mov dword ptr [esi], 0xbb7058  ; vtable bad_cast */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbb7058u;
     /* 007c20f5  mov eax, esi */
@@ -58,7 +61,35 @@ out: __attribute__((unused));
 }
 
 
-/* 007c21a6  bad_cast  (virtual method) */
+/* 007c2113  bad_cast::~bad_cast  (vtable store)
+ * class: bad_cast
+ * called by: bad_cast::deleting_dtor
+ */
+BFV_L1_ENTRY(bfv_client_l1_007c2113, bfv_client_l1_body_007c2113);
+void bfv_client_l1_body_007c2113(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t ea;
+    /* 007c2113  mov dword ptr [ecx], 0xbb7058  ; vtable bad_cast */
+    ea = (uint32_t)(ecx);
+    M32(ea) = 0xbb7058u;
+    /* 007c2119  jmp 0x7c20bf  ; exception::~exception */
+    c->eip = 0x007c20bfu;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 007c21a6  bad_cast::deleting_dtor  (virtual method)
+ * overrides: exception::vf0  (9 classes implement it)
+ * class: bad_cast
+ */
 BFV_L1_ENTRY(bfv_client_l1_007c21a6, bfv_client_l1_body_007c21a6);
 BFV_L1_RESUME(bfv_client_l1r_007c21a6_1, bfv_client_l1_body_007c21a6, 1);
 BFV_L1_RESUME(bfv_client_l1r_007c21a6_2, bfv_client_l1_body_007c21a6, 2);
@@ -80,14 +111,14 @@ void bfv_client_l1_body_007c21a6(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007c21a7  mov esi, ecx */
     esi = ecx;
-    /* 007c21a9  call 0x7c2113 */
+    /* 007c21a9  call 0x7c2113  ; bad_cast::~bad_cast */
     t = 0x007c2113u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c21a6_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007c21ae  test byte ptr [esp + 8], 1 */
+    /* 007c21ae  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -97,7 +128,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007c21b6  call 0x403680 */
+    /* 007c21b6  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007c21a6_2;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009339b0  dice::bf::ai::HeliMove_AimHeavy  (vtable store) */
+/* 009339b0  HeliMove_AimHeavy::HeliMove_AimHeavy  (vtable store)
+ * class: dice::bf::ai::HeliMove_AimHeavy
+ * called by: HeliMoveControlHeavy::createMoves
+ */
 BFV_L1_ENTRY(bfv_client_l1_009339b0, bfv_client_l1_body_009339b0);
 BFV_L1_RESUME(bfv_client_l1r_009339b0_1, bfv_client_l1_body_009339b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009339b0_2, bfv_client_l1_body_009339b0, 2);
@@ -23,18 +26,18 @@ void bfv_client_l1_body_009339b0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 009339b0  mov eax, dword ptr [esp + 0x20] */
+    /* 009339b0  mov eax, dword ptr [esp + 0x20]  ; arg_1c */
     ea = (uint32_t)(esp + 0x00000020u);
     eax = M32(ea);
     /* 009339b4  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009339b5  push 0xbecccccd */
+    /* 009339b5  push 0xbecccccd  ; -0.4f */
     t = 0xbecccccdu;
     esp -= 4;
     M32(esp) = t;
-    /* 009339ba  push 0x3f19999a */
+    /* 009339ba  push 0x3f19999a  ; 0.6f */
     t = 0x3f19999au;
     esp -= 4;
     M32(esp) = t;
@@ -64,7 +67,7 @@ void bfv_client_l1_body_009339b0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009339cc  lea edx, [esp + 0x38] */
+    /* 009339cc  lea edx, [esp + 0x38]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000038u);
     /* 009339d0  mov dword ptr [ecx + 0x18], 0xf */
     ea = (uint32_t)(ecx + 0x00000018u);
@@ -79,7 +82,7 @@ void bfv_client_l1_body_009339b0(struct bfv_cpu *c)
     /* 009339db  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 009339de  call 0x4019f0 */
+    /* 009339de  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009339b0_1;
@@ -88,32 +91,32 @@ void bfv_client_l1_body_009339b0(struct bfv_cpu *c)
 R_1:
     /* 009339e3  mov ecx, esi */
     ecx = esi;
-    /* 009339e5  call 0x932ee0 */
+    /* 009339e5  call 0x932ee0  ; HeliMove_Aim::HeliMove_Aim */
     t = 0x00932ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009339b0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 009339ea  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 009339ea  cmp dword ptr [esp + 0x20], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 009339ef  mov dword ptr [esi], 0xbeee5c */
+    /* 009339ef  mov dword ptr [esi], 0xbeee5c  ; vtable HeliMove_AimHeavy */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbeee5cu;
     /* 009339f5  jb 0x933a04 */
     if (cf) goto L_00933a04;
-    /* 009339f7  mov eax, dword ptr [esp + 0xc] */
+    /* 009339f7  mov eax, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 009339fb  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009339fc  call 0x403680 */
+    /* 009339fc  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009339b0_3;

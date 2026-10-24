@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005ae760  dice::bf::ReqScoutCameraEvent  (vtable store) */
+/* 005ae760  ReqScoutCameraEvent::create  (vtable store)
+ * class: dice::bf::ReqScoutCameraEvent
+ * also entered at 005ae790: ReqScoutCameraEvent::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ae760, bfv_client_l1_body_005ae760);
 BFV_L1_RESUME(bfv_client_l1r_005ae760_1, bfv_client_l1_body_005ae760, 1);
 void bfv_client_l1_body_005ae760(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_005ae760(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ae760  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ae760  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ae766  mov eax, dword ptr [ecx] */
@@ -53,7 +56,7 @@ R_1:
     /* 005ae778  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ae77f  mov dword ptr [eax], 0xb761c4 */
+    /* 005ae77f  mov dword ptr [eax], 0xb761c4  ; vtable ReqScoutCameraEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb761c4u;
     /* 005ae785  ret */
@@ -76,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ae7a0  dice::bf::ReqScoutCameraEvent  (vtable store) */
+/* 005ae7a0  ReqScoutCameraEvent::create  (vtable store)
+ * class: dice::bf::ReqScoutCameraEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ae7a0, bfv_client_l1_body_005ae7a0);
 BFV_L1_RESUME(bfv_client_l1r_005ae7a0_1, bfv_client_l1_body_005ae7a0, 1);
 void bfv_client_l1_body_005ae7a0(struct bfv_cpu *c)
@@ -90,7 +95,7 @@ void bfv_client_l1_body_005ae7a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ae7a0  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ae7a0  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ae7a6  mov eax, dword ptr [ecx] */
@@ -124,7 +129,7 @@ R_1:
     /* 005ae7b8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ae7bf  mov dword ptr [eax], 0xb761c4 */
+    /* 005ae7bf  mov dword ptr [eax], 0xb761c4  ; vtable ReqScoutCameraEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb761c4u;
     /* 005ae7c5  jmp 0x5ae7c9 */
@@ -135,7 +140,7 @@ L_005ae7c7:
     F_LOGIC(32, r);
     eax = r;
 L_005ae7c9:
-    /* 005ae7c9  mov ecx, dword ptr [esp + 4] */
+    /* 005ae7c9  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005ae7cd  push esi */

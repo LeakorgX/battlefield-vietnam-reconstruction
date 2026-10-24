@@ -1,0 +1,8 @@
+## file
+BAPConObjectValidYawAiming is a bot action-plan condition: true when the
+target can be reached within the yaw limits of the vehicle's aiming component.
+
+## 009f5570
+evaluate(bot): same as the pitch version: aim data from
+BAPConObjectValidAiming_sub_009f7320, vehicle from this+0xc (or the bot's own
+when -1), component 5 of its world object, then bfv_aim_within_limits.

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a4ad60  dice::ref2::rend::TextureCubeInfo  (vtable store) */
+/* 00a4ad60  TextureCubeInfo::ctor_dtor  (vtable store)
+ * class: dice::ref2::rend::TextureCubeInfo
+ * called by: TextureHandlerCube::vf9, TextureHandlerRTX::vf9
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4ad60, bfv_client_l1_body_00a4ad60);
 void bfv_client_l1_body_00a4ad60(struct bfv_cpu *c)
 {
@@ -14,15 +17,15 @@ void bfv_client_l1_body_00a4ad60(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a4ad60  mov edx, dword ptr [esp + 8] */
+    /* 00a4ad60  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00a4ad64  mov eax, ecx */
     eax = ecx;
-    /* 00a4ad66  mov ecx, dword ptr [esp + 4] */
+    /* 00a4ad66  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00a4ad6a  mov dword ptr [eax], 0xc02878 */
+    /* 00a4ad6a  mov dword ptr [eax], 0xc02878  ; vtable TextureCubeInfo */
     ea = (uint32_t)(eax);
     M32(ea) = 0xc02878u;
     /* 00a4ad70  mov dword ptr [eax + 4], 1 */
@@ -31,7 +34,7 @@ void bfv_client_l1_body_00a4ad60(struct bfv_cpu *c)
     /* 00a4ad77  mov dword ptr [eax + 8], ecx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = ecx;
-    /* 00a4ad7a  mov ecx, dword ptr [esp + 0xc] */
+    /* 00a4ad7a  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00a4ad7e  mov dword ptr [eax + 0xc], edx */
@@ -51,7 +54,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4ad90  dice::ref2::rend::TextureCubeInfo  (virtual method) */
+/* 00a4ad90  TextureCubeInfo::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::rend::TextureCubeInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4ad90, bfv_client_l1_body_00a4ad90);
 void bfv_client_l1_body_00a4ad90(struct bfv_cpu *c)
 {
@@ -60,12 +66,12 @@ void bfv_client_l1_body_00a4ad90(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00a4ad90  mov edx, dword ptr [0xb42718] */
+    /* 00a4ad90  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00a4ad96  mov eax, ecx */
     eax = ecx;
-    /* 00a4ad98  mov ecx, dword ptr [esp + 4] */
+    /* 00a4ad98  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00a4ad9c  cmp ecx, edx */
@@ -75,7 +81,7 @@ void bfv_client_l1_body_00a4ad90(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00a4ad9e  je 0xa4adba */
     if (zf) goto L_00a4adba;
-    /* 00a4ada0  cmp ecx, dword ptr [0xbfe550] */
+    /* 00a4ada0  cmp ecx, dword ptr [0xbfe550]  ; interfaceID(Texture2DInfo|Texture3DInfo|TextureCubeInfo) */
     ea = (uint32_t)(0x00bfe550u);
     a = ecx;
     b = M32(ea);

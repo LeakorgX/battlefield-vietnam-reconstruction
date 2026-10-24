@@ -5,7 +5,12 @@
 #include "l1.h"
 
 
-/* 0072ee30  dice::bf::ai::BBBailOut  (vtable store) */
+/* 0072ee30  BBBailOut::BBBailOut  (vtable store)
+ * class: dice::bf::ai::BBBailOut
+ * also entered at 0072eec0: BBBailOut::vf0
+ * also entered at 0072eef0: BBBailOut::evaluate
+ * called by: BBCreateFunctionBailOut::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072ee30, bfv_server_l1_body_0072ee30);
 BFV_L1_RESUME(bfv_server_l1r_0072ee30_1, bfv_server_l1_body_0072ee30, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072ee30_2, bfv_server_l1_body_0072ee30, 2);
@@ -31,7 +36,7 @@ void bfv_server_l1_body_0072ee30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0072ee31  mov esi, ecx */
     esi = ecx;
-    /* 0072ee33  mov ecx, dword ptr [0xc3117c] */
+    /* 0072ee33  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0072ee39  mov eax, dword ptr [ecx] */
@@ -41,7 +46,7 @@ void bfv_server_l1_body_0072ee30(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072ee3c  call dword ptr [eax + 4] */
+    /* 0072ee3c  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -49,10 +54,10 @@ void bfv_server_l1_body_0072ee30(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0072ee3f  mov ecx, dword ptr [esp + 0x18] */
+    /* 0072ee3f  mov ecx, dword ptr [esp + 0x18]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
-    /* 0072ee43  mov edx, dword ptr [esp + 0x1c] */
+    /* 0072ee43  mov edx, dword ptr [esp + 0x1c]  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000001cu);
     edx = M32(ea);
     /* 0072ee47  push eax */
@@ -69,23 +74,23 @@ R_1:
     M32(esp) = t;
     /* 0072ee4a  mov ecx, esi */
     ecx = esi;
-    /* 0072ee4c  call 0x7a2020 */
+    /* 0072ee4c  call 0x7a2020  ; BotBehaviour::BotBehaviour */
     t = 0x007a2020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072ee30_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0072ee51  mov al, byte ptr [esp + 0xc] */
+    /* 0072ee51  mov al, byte ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     SET8L(eax, M8(ea));
-    /* 0072ee55  mov cl, byte ptr [esp + 0x10] */
+    /* 0072ee55  mov cl, byte ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     SET8L(ecx, M8(ea));
-    /* 0072ee59  mov edx, dword ptr [esp + 0x14] */
+    /* 0072ee59  mov edx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
-    /* 0072ee5d  mov dword ptr [esi], 0x873d64 */
+    /* 0072ee5d  mov dword ptr [esi], 0x873d64  ; vtable BBBailOut */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873d64u;
     /* 0072ee63  mov byte ptr [esi + 4], al */
@@ -100,7 +105,7 @@ R_2:
     /* 0072ee6c  mov dword ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 0072ee73  mov ecx, dword ptr [0xc3117c] */
+    /* 0072ee73  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0072ee79  mov eax, dword ptr [ecx] */
@@ -110,7 +115,7 @@ R_2:
     r = 0;
     F_LOGIC(32, r);
     edi = r;
-    /* 0072ee7d  call dword ptr [eax + 4] */
+    /* 0072ee7d  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -132,7 +137,7 @@ L_0072ee90:
     /* 0072ee93  mov dword ptr [ecx + edi*4], 0 */
     ea = (uint32_t)(ecx + edi * 4u);
     M32(ea) = 0x0u;
-    /* 0072ee9a  mov ecx, dword ptr [0xc3117c] */
+    /* 0072ee9a  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0072eea0  mov edx, dword ptr [ecx] */
@@ -143,7 +148,7 @@ L_0072ee90:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 0072eea3  call dword ptr [edx + 4] */
+    /* 0072eea3  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 009b2060  dice::bf::ai::WaypointList  (virtual method) */
+/* 009b2060  WaypointList::vf4  (virtual method)
+ * class: dice::bf::ai::WaypointList
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2060, bfv_client_l1_body_009b2060);
 void bfv_client_l1_body_009b2060(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_009b2060(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 009b2060  mov al, byte ptr [esp + 4] */
+    /* 009b2060  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 009b2064  mov byte ptr [ecx + 6], al */
@@ -31,7 +33,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009b2070  dice::bf::ai::WaypointList  (virtual method) */
+/* 009b2070  WaypointList::vf5  (virtual method)
+ * class: dice::bf::ai::WaypointList
+ * also entered at 009b2080: WPAltitudeCloseTo::vf0, WPBeachLanding::vf0, WPCloseTo::vf0, WPEmpty::vf0 (+1 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_009b2070, bfv_client_l1_body_009b2070);
 void bfv_client_l1_body_009b2070(struct bfv_cpu *c)
 {

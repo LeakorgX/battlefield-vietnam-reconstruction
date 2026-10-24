@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a4acf0  dice::ref2::rend::Texture3DInfo  (vtable store) */
+/* 00a4acf0  Texture3DInfo::ctor_dtor  (vtable store)
+ * class: dice::ref2::rend::Texture3DInfo
+ * called by: TextureHandlerDDS::vf9, TextureHandlerRTX::vf9
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4acf0, bfv_client_l1_body_00a4acf0);
 void bfv_client_l1_body_00a4acf0(struct bfv_cpu *c)
 {
@@ -14,15 +17,15 @@ void bfv_client_l1_body_00a4acf0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00a4acf0  mov edx, dword ptr [esp + 8] */
+    /* 00a4acf0  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00a4acf4  mov eax, ecx */
     eax = ecx;
-    /* 00a4acf6  mov ecx, dword ptr [esp + 4] */
+    /* 00a4acf6  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 00a4acfa  mov dword ptr [eax], 0xc0284c */
+    /* 00a4acfa  mov dword ptr [eax], 0xc0284c  ; vtable Texture3DInfo */
     ea = (uint32_t)(eax);
     M32(ea) = 0xc0284cu;
     /* 00a4ad00  mov dword ptr [eax + 4], 1 */
@@ -31,19 +34,19 @@ void bfv_client_l1_body_00a4acf0(struct bfv_cpu *c)
     /* 00a4ad07  mov dword ptr [eax + 8], ecx */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = ecx;
-    /* 00a4ad0a  mov ecx, dword ptr [esp + 0xc] */
+    /* 00a4ad0a  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
     /* 00a4ad0e  mov dword ptr [eax + 0xc], edx */
     ea = (uint32_t)(eax + 0x0000000cu);
     M32(ea) = edx;
-    /* 00a4ad11  mov edx, dword ptr [esp + 0x10] */
+    /* 00a4ad11  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00a4ad15  mov dword ptr [eax + 0x10], ecx */
     ea = (uint32_t)(eax + 0x00000010u);
     M32(ea) = ecx;
-    /* 00a4ad18  mov ecx, dword ptr [esp + 0x14] */
+    /* 00a4ad18  mov ecx, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 00a4ad1c  mov dword ptr [eax + 0x14], edx */
@@ -63,7 +66,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4ad30  dice::ref2::rend::Texture3DInfo  (virtual method) */
+/* 00a4ad30  Texture3DInfo::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::rend::Texture3DInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4ad30, bfv_client_l1_body_00a4ad30);
 void bfv_client_l1_body_00a4ad30(struct bfv_cpu *c)
 {
@@ -72,12 +78,12 @@ void bfv_client_l1_body_00a4ad30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00a4ad30  mov edx, dword ptr [0xb42718] */
+    /* 00a4ad30  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 00a4ad36  mov eax, ecx */
     eax = ecx;
-    /* 00a4ad38  mov ecx, dword ptr [esp + 4] */
+    /* 00a4ad38  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00a4ad3c  cmp ecx, edx */
@@ -87,7 +93,7 @@ void bfv_client_l1_body_00a4ad30(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 00a4ad3e  je 0xa4ad5a */
     if (zf) goto L_00a4ad5a;
-    /* 00a4ad40  cmp ecx, dword ptr [0xbfe550] */
+    /* 00a4ad40  cmp ecx, dword ptr [0xbfe550]  ; interfaceID(Texture2DInfo|Texture3DInfo|TextureCubeInfo) */
     ea = (uint32_t)(0x00bfe550u);
     a = ecx;
     b = M32(ea);

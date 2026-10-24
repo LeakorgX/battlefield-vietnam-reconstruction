@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005b8d50  dice::WTypeCharPtrType  (virtual method) */
+/* 005b8d50  WTypeCharPtrType::vf4  (virtual method)
+ * overrides: WType::vf4  (5 classes implement it)
+ * class: dice::WTypeCharPtrType
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b8d50, bfv_server_l1_body_005b8d50);
 void bfv_server_l1_body_005b8d50(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_server_l1_body_005b8d50(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005b8d50  mov eax, dword ptr [esp + 4] */
+    /* 005b8d50  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005b8d54  mov edx, dword ptr [eax] */
@@ -34,7 +37,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006239d0  dice::WTypeCharPtrType  (virtual method) */
+/* 006239d0  WTypeCharPtrType::isKindOf  (virtual method)
+ * overrides: WType::vf12  (5 classes implement it)
+ * class: dice::WTypeCharPtrType
+ */
 BFV_L1_ENTRY(bfv_server_l1_006239d0, bfv_server_l1_body_006239d0);
 BFV_L1_RESUME(bfv_server_l1r_006239d0_1, bfv_server_l1_body_006239d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_006239d0_2, bfv_server_l1_body_006239d0, 2);
@@ -58,16 +64,16 @@ void bfv_server_l1_body_006239d0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006239d1  mov esi, dword ptr [esp + 8] */
+    /* 006239d1  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
-    /* 006239d5  push 0x925334 */
+    /* 006239d5  push 0x925334  ; typeid(char const*) */
     t = 0x925334u;
     esp -= 4;
     M32(esp) = t;
     /* 006239da  mov ecx, esi */
     ecx = esi;
-    /* 006239dc  call 0x63a46f */
+    /* 006239dc  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006239d0_1;
@@ -79,13 +85,13 @@ R_1:
     F_LOGIC(32, r);
     /* 006239e3  jne 0x623a19 */
     if (!zf) goto L_00623a19;
-    /* 006239e5  push 0x925334 */
+    /* 006239e5  push 0x925334  ; typeid(char const*) */
     t = 0x925334u;
     esp -= 4;
     M32(esp) = t;
     /* 006239ea  mov ecx, esi */
     ecx = esi;
-    /* 006239ec  call 0x63a46f */
+    /* 006239ec  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006239d0_2;
@@ -97,13 +103,13 @@ R_2:
     F_LOGIC(32, r);
     /* 006239f3  jne 0x623a19 */
     if (!zf) goto L_00623a19;
-    /* 006239f5  push 0x925334 */
+    /* 006239f5  push 0x925334  ; typeid(char const*) */
     t = 0x925334u;
     esp -= 4;
     M32(esp) = t;
     /* 006239fa  mov ecx, esi */
     ecx = esi;
-    /* 006239fc  call 0x63a46f */
+    /* 006239fc  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006239d0_3;
@@ -115,13 +121,13 @@ R_3:
     F_LOGIC(32, r);
     /* 00623a03  jne 0x623a19 */
     if (!zf) goto L_00623a19;
-    /* 00623a05  push 0x925334 */
+    /* 00623a05  push 0x925334  ; typeid(char const*) */
     t = 0x925334u;
     esp -= 4;
     M32(esp) = t;
     /* 00623a0a  mov ecx, esi */
     ecx = esi;
-    /* 00623a0c  call 0x63a46f */
+    /* 00623a0c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006239d0_4;
@@ -159,7 +165,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623a40  (between same file) */
+/* 00623a40  WTypeCharPtrType_00623a40  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623a40, bfv_server_l1_body_00623a40);
 void bfv_server_l1_body_00623a40(struct bfv_cpu *c)
 {
@@ -168,7 +175,7 @@ void bfv_server_l1_body_00623a40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00623a40  mov eax, dword ptr [esp + 4] */
+    /* 00623a40  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00623a44  mov dl, byte ptr [eax] */
@@ -190,7 +197,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623a60  (between same file) */
+/* 00623a60  WTypeCharPtrType_00623a60  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623a60, bfv_server_l1_body_00623a60);
 void bfv_server_l1_body_00623a60(struct bfv_cpu *c)
 {
@@ -202,7 +210,7 @@ void bfv_server_l1_body_00623a60(struct bfv_cpu *c)
     /* 00623a60  mov al, byte ptr [ecx + 4] */
     ea = (uint32_t)(ecx + 0x00000004u);
     SET8L(eax, M8(ea));
-    /* 00623a63  mov ecx, dword ptr [esp + 4] */
+    /* 00623a63  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00623a67  mov byte ptr [ecx], al */
@@ -221,7 +229,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623a80  (between same file) */
+/* 00623a80  WTypeSimple<...>::isKindOf  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623a80, bfv_server_l1_body_00623a80);
 BFV_L1_RESUME(bfv_server_l1r_00623a80_1, bfv_server_l1_body_00623a80, 1);
 BFV_L1_RESUME(bfv_server_l1r_00623a80_2, bfv_server_l1_body_00623a80, 2);
@@ -245,16 +254,16 @@ void bfv_server_l1_body_00623a80(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00623a81  mov esi, dword ptr [esp + 8] */
+    /* 00623a81  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
-    /* 00623a85  push 0x925368 */
+    /* 00623a85  push 0x925368  ; typeid(signed char) */
     t = 0x925368u;
     esp -= 4;
     M32(esp) = t;
     /* 00623a8a  mov ecx, esi */
     ecx = esi;
-    /* 00623a8c  call 0x63a46f */
+    /* 00623a8c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623a80_1;
@@ -266,13 +275,13 @@ R_1:
     F_LOGIC(32, r);
     /* 00623a93  jne 0x623ac9 */
     if (!zf) goto L_00623ac9;
-    /* 00623a95  push 0x925368 */
+    /* 00623a95  push 0x925368  ; typeid(signed char) */
     t = 0x925368u;
     esp -= 4;
     M32(esp) = t;
     /* 00623a9a  mov ecx, esi */
     ecx = esi;
-    /* 00623a9c  call 0x63a46f */
+    /* 00623a9c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623a80_2;
@@ -284,13 +293,13 @@ R_2:
     F_LOGIC(32, r);
     /* 00623aa3  jne 0x623ac9 */
     if (!zf) goto L_00623ac9;
-    /* 00623aa5  push 0x925368 */
+    /* 00623aa5  push 0x925368  ; typeid(signed char) */
     t = 0x925368u;
     esp -= 4;
     M32(esp) = t;
     /* 00623aaa  mov ecx, esi */
     ecx = esi;
-    /* 00623aac  call 0x63a46f */
+    /* 00623aac  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623a80_3;
@@ -302,13 +311,13 @@ R_3:
     F_LOGIC(32, r);
     /* 00623ab3  jne 0x623ac9 */
     if (!zf) goto L_00623ac9;
-    /* 00623ab5  push 0x925368 */
+    /* 00623ab5  push 0x925368  ; typeid(signed char) */
     t = 0x925368u;
     esp -= 4;
     M32(esp) = t;
     /* 00623aba  mov ecx, esi */
     ecx = esi;
-    /* 00623abc  call 0x63a46f */
+    /* 00623abc  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623a80_4;
@@ -346,7 +355,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623af0  (between same file) */
+/* 00623af0  WTypeSimple<...>::isKindOf  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623af0, bfv_server_l1_body_00623af0);
 BFV_L1_RESUME(bfv_server_l1r_00623af0_1, bfv_server_l1_body_00623af0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00623af0_2, bfv_server_l1_body_00623af0, 2);
@@ -370,16 +380,16 @@ void bfv_server_l1_body_00623af0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00623af1  mov esi, dword ptr [esp + 8] */
+    /* 00623af1  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
-    /* 00623af5  push 0x925398 */
+    /* 00623af5  push 0x925398  ; typeid(unsigned char) */
     t = 0x925398u;
     esp -= 4;
     M32(esp) = t;
     /* 00623afa  mov ecx, esi */
     ecx = esi;
-    /* 00623afc  call 0x63a46f */
+    /* 00623afc  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623af0_1;
@@ -391,13 +401,13 @@ R_1:
     F_LOGIC(32, r);
     /* 00623b03  jne 0x623b39 */
     if (!zf) goto L_00623b39;
-    /* 00623b05  push 0x925398 */
+    /* 00623b05  push 0x925398  ; typeid(unsigned char) */
     t = 0x925398u;
     esp -= 4;
     M32(esp) = t;
     /* 00623b0a  mov ecx, esi */
     ecx = esi;
-    /* 00623b0c  call 0x63a46f */
+    /* 00623b0c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623af0_2;
@@ -409,13 +419,13 @@ R_2:
     F_LOGIC(32, r);
     /* 00623b13  jne 0x623b39 */
     if (!zf) goto L_00623b39;
-    /* 00623b15  push 0x925398 */
+    /* 00623b15  push 0x925398  ; typeid(unsigned char) */
     t = 0x925398u;
     esp -= 4;
     M32(esp) = t;
     /* 00623b1a  mov ecx, esi */
     ecx = esi;
-    /* 00623b1c  call 0x63a46f */
+    /* 00623b1c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623af0_3;
@@ -427,13 +437,13 @@ R_3:
     F_LOGIC(32, r);
     /* 00623b23  jne 0x623b39 */
     if (!zf) goto L_00623b39;
-    /* 00623b25  push 0x925398 */
+    /* 00623b25  push 0x925398  ; typeid(unsigned char) */
     t = 0x925398u;
     esp -= 4;
     M32(esp) = t;
     /* 00623b2a  mov ecx, esi */
     ecx = esi;
-    /* 00623b2c  call 0x63a46f */
+    /* 00623b2c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623af0_4;
@@ -471,7 +481,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623b50  (between same file) */
+/* 00623b50  WTypeSimple<...>::vf4  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623b50, bfv_server_l1_body_00623b50);
 void bfv_server_l1_body_00623b50(struct bfv_cpu *c)
 {
@@ -480,7 +491,7 @@ void bfv_server_l1_body_00623b50(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00623b50  mov eax, dword ptr [esp + 4] */
+    /* 00623b50  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00623b54  mov dx, word ptr [eax] */
@@ -500,7 +511,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623b70  (between same file) */
+/* 00623b70  WTypeSimple<...>::isKindOf  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623b70, bfv_server_l1_body_00623b70);
 BFV_L1_RESUME(bfv_server_l1r_00623b70_1, bfv_server_l1_body_00623b70, 1);
 BFV_L1_RESUME(bfv_server_l1r_00623b70_2, bfv_server_l1_body_00623b70, 2);
@@ -524,16 +536,16 @@ void bfv_server_l1_body_00623b70(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00623b71  mov esi, dword ptr [esp + 8] */
+    /* 00623b71  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
-    /* 00623b75  push 0x9253c8 */
+    /* 00623b75  push 0x9253c8  ; typeid(short) */
     t = 0x9253c8u;
     esp -= 4;
     M32(esp) = t;
     /* 00623b7a  mov ecx, esi */
     ecx = esi;
-    /* 00623b7c  call 0x63a46f */
+    /* 00623b7c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623b70_1;
@@ -545,13 +557,13 @@ R_1:
     F_LOGIC(32, r);
     /* 00623b83  jne 0x623bb9 */
     if (!zf) goto L_00623bb9;
-    /* 00623b85  push 0x9253c8 */
+    /* 00623b85  push 0x9253c8  ; typeid(short) */
     t = 0x9253c8u;
     esp -= 4;
     M32(esp) = t;
     /* 00623b8a  mov ecx, esi */
     ecx = esi;
-    /* 00623b8c  call 0x63a46f */
+    /* 00623b8c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623b70_2;
@@ -563,13 +575,13 @@ R_2:
     F_LOGIC(32, r);
     /* 00623b93  jne 0x623bb9 */
     if (!zf) goto L_00623bb9;
-    /* 00623b95  push 0x9253c8 */
+    /* 00623b95  push 0x9253c8  ; typeid(short) */
     t = 0x9253c8u;
     esp -= 4;
     M32(esp) = t;
     /* 00623b9a  mov ecx, esi */
     ecx = esi;
-    /* 00623b9c  call 0x63a46f */
+    /* 00623b9c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623b70_3;
@@ -581,13 +593,13 @@ R_3:
     F_LOGIC(32, r);
     /* 00623ba3  jne 0x623bb9 */
     if (!zf) goto L_00623bb9;
-    /* 00623ba5  push 0x9253c8 */
+    /* 00623ba5  push 0x9253c8  ; typeid(short) */
     t = 0x9253c8u;
     esp -= 4;
     M32(esp) = t;
     /* 00623baa  mov ecx, esi */
     ecx = esi;
-    /* 00623bac  call 0x63a46f */
+    /* 00623bac  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623b70_4;
@@ -625,7 +637,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623be0  (between same file) */
+/* 00623be0  WTypeSimple<...>::vf13  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623be0, bfv_server_l1_body_00623be0);
 void bfv_server_l1_body_00623be0(struct bfv_cpu *c)
 {
@@ -634,7 +647,7 @@ void bfv_server_l1_body_00623be0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00623be0  mov eax, dword ptr [esp + 4] */
+    /* 00623be0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00623be4  mov dx, word ptr [eax] */
@@ -656,7 +669,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623c00  (between same file) */
+/* 00623c00  WTypeSimple<...>::vf14  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623c00, bfv_server_l1_body_00623c00);
 void bfv_server_l1_body_00623c00(struct bfv_cpu *c)
 {
@@ -668,7 +682,7 @@ void bfv_server_l1_body_00623c00(struct bfv_cpu *c)
     /* 00623c00  mov ax, word ptr [ecx + 4] */
     ea = (uint32_t)(ecx + 0x00000004u);
     SET16(eax, M16(ea));
-    /* 00623c04  mov ecx, dword ptr [esp + 4] */
+    /* 00623c04  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00623c08  mov word ptr [ecx], ax */
@@ -687,7 +701,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623c20  (between same file) */
+/* 00623c20  WTypeSimple<...>::isKindOf  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623c20, bfv_server_l1_body_00623c20);
 BFV_L1_RESUME(bfv_server_l1r_00623c20_1, bfv_server_l1_body_00623c20, 1);
 BFV_L1_RESUME(bfv_server_l1r_00623c20_2, bfv_server_l1_body_00623c20, 2);
@@ -711,16 +726,16 @@ void bfv_server_l1_body_00623c20(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00623c21  mov esi, dword ptr [esp + 8] */
+    /* 00623c21  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
-    /* 00623c25  push 0x9253f8 */
+    /* 00623c25  push 0x9253f8  ; typeid(unsigned short) */
     t = 0x9253f8u;
     esp -= 4;
     M32(esp) = t;
     /* 00623c2a  mov ecx, esi */
     ecx = esi;
-    /* 00623c2c  call 0x63a46f */
+    /* 00623c2c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623c20_1;
@@ -732,13 +747,13 @@ R_1:
     F_LOGIC(32, r);
     /* 00623c33  jne 0x623c69 */
     if (!zf) goto L_00623c69;
-    /* 00623c35  push 0x9253f8 */
+    /* 00623c35  push 0x9253f8  ; typeid(unsigned short) */
     t = 0x9253f8u;
     esp -= 4;
     M32(esp) = t;
     /* 00623c3a  mov ecx, esi */
     ecx = esi;
-    /* 00623c3c  call 0x63a46f */
+    /* 00623c3c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623c20_2;
@@ -750,13 +765,13 @@ R_2:
     F_LOGIC(32, r);
     /* 00623c43  jne 0x623c69 */
     if (!zf) goto L_00623c69;
-    /* 00623c45  push 0x9253f8 */
+    /* 00623c45  push 0x9253f8  ; typeid(unsigned short) */
     t = 0x9253f8u;
     esp -= 4;
     M32(esp) = t;
     /* 00623c4a  mov ecx, esi */
     ecx = esi;
-    /* 00623c4c  call 0x63a46f */
+    /* 00623c4c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623c20_3;
@@ -768,13 +783,13 @@ R_3:
     F_LOGIC(32, r);
     /* 00623c53  jne 0x623c69 */
     if (!zf) goto L_00623c69;
-    /* 00623c55  push 0x9253f8 */
+    /* 00623c55  push 0x9253f8  ; typeid(unsigned short) */
     t = 0x9253f8u;
     esp -= 4;
     M32(esp) = t;
     /* 00623c5a  mov ecx, esi */
     ecx = esi;
-    /* 00623c5c  call 0x63a46f */
+    /* 00623c5c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623c20_4;
@@ -812,7 +827,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623c90  (between same file) */
+/* 00623c90  WTypeSimple<...>::vf13  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623c90, bfv_server_l1_body_00623c90);
 void bfv_server_l1_body_00623c90(struct bfv_cpu *c)
 {
@@ -821,7 +837,7 @@ void bfv_server_l1_body_00623c90(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00623c90  mov eax, dword ptr [esp + 4] */
+    /* 00623c90  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00623c94  mov edx, dword ptr [eax] */
@@ -849,7 +865,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623cb0  (between same file) */
+/* 00623cb0  WTypeSimple<...>::vf14  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623cb0, bfv_server_l1_body_00623cb0);
 void bfv_server_l1_body_00623cb0(struct bfv_cpu *c)
 {
@@ -861,7 +878,7 @@ void bfv_server_l1_body_00623cb0(struct bfv_cpu *c)
     /* 00623cb0  mov edx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     edx = M32(ea);
-    /* 00623cb3  mov eax, dword ptr [esp + 4] */
+    /* 00623cb3  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00623cb7  mov dword ptr [eax], edx */
@@ -886,7 +903,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623cd0  (between same file) */
+/* 00623cd0  WTypeSimple<...>::isKindOf  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623cd0, bfv_server_l1_body_00623cd0);
 BFV_L1_RESUME(bfv_server_l1r_00623cd0_1, bfv_server_l1_body_00623cd0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00623cd0_2, bfv_server_l1_body_00623cd0, 2);
@@ -910,16 +928,16 @@ void bfv_server_l1_body_00623cd0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00623cd1  mov esi, dword ptr [esp + 8] */
+    /* 00623cd1  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
-    /* 00623cd5  push 0x925428 */
+    /* 00623cd5  push 0x925428  ; typeid(__int64) */
     t = 0x925428u;
     esp -= 4;
     M32(esp) = t;
     /* 00623cda  mov ecx, esi */
     ecx = esi;
-    /* 00623cdc  call 0x63a46f */
+    /* 00623cdc  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623cd0_1;
@@ -931,13 +949,13 @@ R_1:
     F_LOGIC(32, r);
     /* 00623ce3  jne 0x623d19 */
     if (!zf) goto L_00623d19;
-    /* 00623ce5  push 0x925428 */
+    /* 00623ce5  push 0x925428  ; typeid(__int64) */
     t = 0x925428u;
     esp -= 4;
     M32(esp) = t;
     /* 00623cea  mov ecx, esi */
     ecx = esi;
-    /* 00623cec  call 0x63a46f */
+    /* 00623cec  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623cd0_2;
@@ -949,13 +967,13 @@ R_2:
     F_LOGIC(32, r);
     /* 00623cf3  jne 0x623d19 */
     if (!zf) goto L_00623d19;
-    /* 00623cf5  push 0x925428 */
+    /* 00623cf5  push 0x925428  ; typeid(__int64) */
     t = 0x925428u;
     esp -= 4;
     M32(esp) = t;
     /* 00623cfa  mov ecx, esi */
     ecx = esi;
-    /* 00623cfc  call 0x63a46f */
+    /* 00623cfc  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623cd0_3;
@@ -967,13 +985,13 @@ R_3:
     F_LOGIC(32, r);
     /* 00623d03  jne 0x623d19 */
     if (!zf) goto L_00623d19;
-    /* 00623d05  push 0x925428 */
+    /* 00623d05  push 0x925428  ; typeid(__int64) */
     t = 0x925428u;
     esp -= 4;
     M32(esp) = t;
     /* 00623d0a  mov ecx, esi */
     ecx = esi;
-    /* 00623d0c  call 0x63a46f */
+    /* 00623d0c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623cd0_4;
@@ -1011,7 +1029,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00623d40  (between same file) */
+/* 00623d40  WTypeSimple<...>::isKindOf  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623d40, bfv_server_l1_body_00623d40);
 BFV_L1_RESUME(bfv_server_l1r_00623d40_1, bfv_server_l1_body_00623d40, 1);
 BFV_L1_RESUME(bfv_server_l1r_00623d40_2, bfv_server_l1_body_00623d40, 2);
@@ -1035,16 +1054,16 @@ void bfv_server_l1_body_00623d40(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00623d41  mov esi, dword ptr [esp + 8] */
+    /* 00623d41  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
-    /* 00623d45  push 0x925458 */
+    /* 00623d45  push 0x925458  ; typeid(unsigned __int64) */
     t = 0x925458u;
     esp -= 4;
     M32(esp) = t;
     /* 00623d4a  mov ecx, esi */
     ecx = esi;
-    /* 00623d4c  call 0x63a46f */
+    /* 00623d4c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623d40_1;
@@ -1056,13 +1075,13 @@ R_1:
     F_LOGIC(32, r);
     /* 00623d53  jne 0x623d89 */
     if (!zf) goto L_00623d89;
-    /* 00623d55  push 0x925458 */
+    /* 00623d55  push 0x925458  ; typeid(unsigned __int64) */
     t = 0x925458u;
     esp -= 4;
     M32(esp) = t;
     /* 00623d5a  mov ecx, esi */
     ecx = esi;
-    /* 00623d5c  call 0x63a46f */
+    /* 00623d5c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623d40_2;
@@ -1074,13 +1093,13 @@ R_2:
     F_LOGIC(32, r);
     /* 00623d63  jne 0x623d89 */
     if (!zf) goto L_00623d89;
-    /* 00623d65  push 0x925458 */
+    /* 00623d65  push 0x925458  ; typeid(unsigned __int64) */
     t = 0x925458u;
     esp -= 4;
     M32(esp) = t;
     /* 00623d6a  mov ecx, esi */
     ecx = esi;
-    /* 00623d6c  call 0x63a46f */
+    /* 00623d6c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623d40_3;
@@ -1092,13 +1111,13 @@ R_3:
     F_LOGIC(32, r);
     /* 00623d73  jne 0x623d89 */
     if (!zf) goto L_00623d89;
-    /* 00623d75  push 0x925458 */
+    /* 00623d75  push 0x925458  ; typeid(unsigned __int64) */
     t = 0x925458u;
     esp -= 4;
     M32(esp) = t;
     /* 00623d7a  mov ecx, esi */
     ecx = esi;
-    /* 00623d7c  call 0x63a46f */
+    /* 00623d7c  call 0x63a46f  ; type_info::operator_eq */
     t = 0x0063a46fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623d40_4;
@@ -1136,7 +1155,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00623da0  dice::WTypeCharPtrType  (virtual method) */
+/* 00623da0  WTypeCharPtrType::vf2  (virtual method)
+ * overrides: WType::vf2  (5 classes implement it)
+ * class: dice::WTypeCharPtrType
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623da0, bfv_server_l1_body_00623da0);
 void bfv_server_l1_body_00623da0(struct bfv_cpu *c)
 {
@@ -1159,7 +1181,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00623db0  dice::WTypeCharPtrType  (virtual method) */
+/* 00623db0  WTypeCharPtrType::vf14  (virtual method)
+ * overrides: WType::vf14  (5 classes implement it)
+ * class: dice::WTypeCharPtrType
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623db0, bfv_server_l1_body_00623db0);
 void bfv_server_l1_body_00623db0(struct bfv_cpu *c)
 {
@@ -1175,7 +1200,7 @@ void bfv_server_l1_body_00623db0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00623db4  mov esi, dword ptr [esp + 8] */
+    /* 00623db4  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
 L_00623db8:
@@ -1209,7 +1234,7 @@ L_00623db8:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 00623dc9  lea esp, [esp] */
+    /* 00623dc9  lea esp, [esp]  ; &retaddr */
     esp = (uint32_t)(esp);
 L_00623dd0:
     /* 00623dd0  mov cl, byte ptr [eax] */
@@ -1247,8 +1272,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00623de0  dice::WTypeCharPtrType  (virtual method)
- * strings: "const_char_ptr" */
+/* 00623de0  WTypeCharPtrType::vf6  (virtual method)
+ * overrides: WType::vf6  (5 classes implement it)
+ * class: dice::WTypeCharPtrType
+ * strings: "const_char_ptr"
+ */
 BFV_L1_ENTRY(bfv_server_l1_00623de0, bfv_server_l1_body_00623de0);
 BFV_L1_RESUME(bfv_server_l1r_00623de0_1, bfv_server_l1_body_00623de0, 1);
 void bfv_server_l1_body_00623de0(struct bfv_cpu *c)
@@ -1266,7 +1294,7 @@ void bfv_server_l1_body_00623de0(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00623de2  call 0x403d80 */
+    /* 00623de2  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00623de0_1;
@@ -1284,10 +1312,10 @@ R_1:
     F_LOGIC(32, r);
     /* 00623dec  je 0x623dfc */
     if (zf) goto L_00623dfc;
-    /* 00623dee  mov dword ptr [eax + 8], 0x84f810 */
+    /* 00623dee  mov dword ptr [eax + 8], 0x84f810  ; "const_char_ptr" */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x84f810u;
-    /* 00623df5  mov dword ptr [eax], 0x84f7d4 */
+    /* 00623df5  mov dword ptr [eax], 0x84f7d4  ; vtable WTypeCharPtrType */
     ea = (uint32_t)(eax);
     M32(ea) = 0x84f7d4u;
     /* 00623dfb  ret */
@@ -1310,7 +1338,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00625430  dice::WTypeCharPtrType  (virtual method) */
+/* 00625430  WTypeCharPtrType::valueToString  (virtual method)
+ * overrides: WType::vf7  (5 classes implement it)
+ * class: dice::WTypeCharPtrType
+ */
 BFV_L1_ENTRY(bfv_server_l1_00625430, bfv_server_l1_body_00625430);
 BFV_L1_RESUME(bfv_server_l1r_00625430_1, bfv_server_l1_body_00625430, 1);
 void bfv_server_l1_body_00625430(struct bfv_cpu *c)
@@ -1331,7 +1362,7 @@ void bfv_server_l1_body_00625430(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00625434  mov esi, dword ptr [esp + 8] */
+    /* 00625434  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 00625438  mov eax, ecx */
@@ -1381,7 +1412,7 @@ L_00625450:
     M32(esp) = t;
     /* 0062545b  mov ecx, esi */
     ecx = esi;
-    /* 0062545d  call 0x402020 */
+    /* 0062545d  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00625430_1;

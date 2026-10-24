@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005f2510  dice::bf::?A0xdec6dbf1::ExplosionPredicator  (virtual method) */
+/* 005f2510  ExplosionPredicator::vf0  (virtual method)
+ * class: dice::bf::?A0xdec6dbf1::ExplosionPredicator
+ */
 BFV_L1_ENTRY(bfv_client_l1_005f2510, bfv_client_l1_body_005f2510);
 BFV_L1_RESUME(bfv_client_l1r_005f2510_1, bfv_client_l1_body_005f2510, 1);
 BFV_L1_RESUME(bfv_client_l1r_005f2510_2, bfv_client_l1_body_005f2510, 2);
@@ -25,7 +27,7 @@ void bfv_client_l1_body_005f2510(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005f2511  mov esi, dword ptr [esp + 8] */
+    /* 005f2511  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 005f2515  push edi */
@@ -36,7 +38,7 @@ void bfv_client_l1_body_005f2510(struct bfv_cpu *c)
     edi = ecx;
     /* 005f2518  mov ecx, esi */
     ecx = esi;
-    /* 005f251a  call 0x66b190 */
+    /* 005f251a  call 0x66b190  ; world::Object::getRoot */
     t = 0x0066b190u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005f2510_1;
@@ -75,7 +77,7 @@ R_1:
     c->eip = t;
     goto out;
 R_2:
-    /* 005f2534  cmp eax, dword ptr [0xb77ed8] */
+    /* 005f2534  cmp eax, dword ptr [0xb77ed8]  ; BFSoldierTemplate::classID */
     ea = (uint32_t)(0x00b77ed8u);
     a = eax;
     b = M32(ea);

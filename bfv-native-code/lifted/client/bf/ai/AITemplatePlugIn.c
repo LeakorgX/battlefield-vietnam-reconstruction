@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0096a370  dice::bf::ai::AITemplatePlugIn  (vtable store) */
+/* 0096a370  AITemplatePlugIn::~AITemplatePlugIn  (vtable store)
+ * class: dice::bf::ai::AITemplatePlugIn
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096a370, bfv_client_l1_body_0096a370);
 void bfv_client_l1_body_0096a370(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_0096a370(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0096a370  mov dword ptr [ecx], 0xbf35bc */
+    /* 0096a370  mov dword ptr [ecx], 0xbf35bc  ; vtable AITemplatePlugIn */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbf35bcu;
     /* 0096a376  ret */

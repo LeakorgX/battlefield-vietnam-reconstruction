@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005896d0  dice::ref2::world::EntryPoint  (virtual method) */
+/* 005896d0  EntryPoint::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::EntryPoint
+ */
 BFV_L1_ENTRY(bfv_server_l1_005896d0, bfv_server_l1_body_005896d0);
 BFV_L1_RESUME(bfv_server_l1r_005896d0_1, bfv_server_l1_body_005896d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005896d0_2, bfv_server_l1_body_005896d0, 2);
@@ -35,7 +38,7 @@ void bfv_server_l1_body_005896d0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 005896db  jne 0x5896f6 */
     if (!zf) goto L_005896f6;
-    /* 005896dd  call 0x437e80 */
+    /* 005896dd  call 0x437e80  ; IObject_findPlayerControlObject */
     t = 0x00437e80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005896d0_1;
@@ -58,7 +61,7 @@ R_1:
     M32(esp) = t;
     /* 005896f1  mov ecx, esi */
     ecx = esi;
-    /* 005896f3  call dword ptr [eax + 0x28] */
+    /* 005896f3  call dword ptr [eax + 0x28]  ; -> EntryPoint::vf10 = Object::changeFlags */
     ea = (uint32_t)(eax + 0x00000028u);
     t = M32(ea);
     esp -= 4;
@@ -82,7 +85,99 @@ out: __attribute__((unused));
 }
 
 
-/* 005897e0  dice::ref2::world::EntryPoint  (virtual method) */
+/* 00589790  EntryPoint::EntryPoint  (vtable store)
+ * class: dice::ref2::world::EntryPoint
+ * called by: EntryPointTemplate::createObject
+ */
+BFV_L1_ENTRY(bfv_server_l1_00589790, bfv_server_l1_body_00589790);
+BFV_L1_RESUME(bfv_server_l1r_00589790_1, bfv_server_l1_body_00589790, 1);
+BFV_L1_RESUME(bfv_server_l1r_00589790_2, bfv_server_l1_body_00589790, 2);
+void bfv_server_l1_body_00589790(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 00589790  mov eax, dword ptr [esp + 4]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000004u);
+    eax = M32(ea);
+    /* 00589794  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00589795  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00589796  mov esi, ecx */
+    esi = ecx;
+    /* 00589798  call 0x57e330  ; SimpleObject::SimpleObject */
+    t = 0x0057e330u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00589790_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0058979d  mov dword ptr [esi + 0x158], 0x821fc0  ; vtable IEntryPointObject */
+    ea = (uint32_t)(esi + 0x00000158u);
+    M32(ea) = 0x821fc0u;
+    /* 005897a7  push 0 */
+    t = 0x0u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005897a9  mov dword ptr [esi], 0x839ce4  ; vtable EntryPoint */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0x839ce4u;
+    /* 005897af  mov dword ptr [esi + 0x158], 0x839cc4 */
+    ea = (uint32_t)(esi + 0x00000158u);
+    M32(ea) = 0x839cc4u;
+    /* 005897b9  mov dword ptr [esi + 0x15c], 1 */
+    ea = (uint32_t)(esi + 0x0000015cu);
+    M32(ea) = 0x1u;
+    /* 005897c3  push 0x800 */
+    t = 0x800u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 005897c8  mov ecx, esi */
+    ecx = esi;
+    /* 005897ca  mov dword ptr [esi + 0x160], 0 */
+    ea = (uint32_t)(esi + 0x00000160u);
+    M32(ea) = 0x0u;
+    /* 005897d4  call 0x57c210  ; Object::changeFlags */
+    t = 0x0057c210u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00589790_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 005897d9  mov eax, esi */
+    eax = esi;
+    /* 005897db  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 005897dc  ret 4 */
+    c->eip = M32(esp);
+    esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 005897e0  EntryPoint::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::world::EntryPoint
+ * also entered at 00589820: EntryPoint::vf55
+ */
 BFV_L1_ENTRY(bfv_server_l1_005897e0, bfv_server_l1_body_005897e0);
 void bfv_server_l1_body_005897e0(struct bfv_cpu *c)
 {
@@ -91,12 +186,12 @@ void bfv_server_l1_body_005897e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005897e0  mov edx, dword ptr [0x807430] */
+    /* 005897e0  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 005897e6  mov eax, ecx */
     eax = ecx;
-    /* 005897e8  mov ecx, dword ptr [esp + 4] */
+    /* 005897e8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005897ec  cmp ecx, edx */
@@ -106,7 +201,7 @@ void bfv_server_l1_body_005897e0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005897ee  je 0x58980e */
     if (zf) goto L_0058980e;
-    /* 005897f0  cmp ecx, dword ptr [0x820658] */
+    /* 005897f0  cmp ecx, dword ptr [0x820658]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00820658u);
     a = ecx;
     b = M32(ea);
@@ -114,7 +209,7 @@ void bfv_server_l1_body_005897e0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005897f6  je 0x58980e */
     if (zf) goto L_0058980e;
-    /* 005897f8  cmp ecx, dword ptr [0x820640] */
+    /* 005897f8  cmp ecx, dword ptr [0x820640]  ; interfaceID(EntryPoint|FreeCamera) */
     ea = (uint32_t)(0x00820640u);
     a = ecx;
     b = M32(ea);

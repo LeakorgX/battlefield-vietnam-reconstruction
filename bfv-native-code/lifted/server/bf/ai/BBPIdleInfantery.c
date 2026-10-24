@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0072e4f0  dice::bf::ai::BBPIdleInfantery  (vtable store) */
+/* 0072e4f0  BBPIdleInfantery::BBPIdleInfantery  (vtable store)
+ * class: dice::bf::ai::BBPIdleInfantery
+ * called by: BBCreateFunctionIdle::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072e4f0, bfv_server_l1_body_0072e4f0);
 BFV_L1_RESUME(bfv_server_l1r_0072e4f0_1, bfv_server_l1_body_0072e4f0, 1);
 void bfv_server_l1_body_0072e4f0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_0072e4f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0072e4f0  mov eax, dword ptr [esp + 4] */
+    /* 0072e4f0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0072e4f4  push esi */
@@ -32,14 +35,14 @@ void bfv_server_l1_body_0072e4f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0072e4f6  mov esi, ecx */
     esi = ecx;
-    /* 0072e4f8  call 0x7a2580 */
+    /* 0072e4f8  call 0x7a2580  ; BBPIdle::BBPIdle */
     t = 0x007a2580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e4f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0072e4fd  mov dword ptr [esi], 0x873c94 */
+    /* 0072e4fd  mov dword ptr [esi], 0x873c94  ; vtable BBPIdleInfantery */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c94u;
     /* 0072e503  mov eax, esi */
@@ -59,7 +62,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072e530  dice::bf::ai::BBPIdleInfantery  (virtual method) */
+/* 0072e530  BBPIdleInfantery::deleting_dtor  (virtual method)
+ * overrides: BBPPattern::vf4  (33 classes implement it)
+ * class: dice::bf::ai::BBPIdleInfantery
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072e530, bfv_server_l1_body_0072e530);
 BFV_L1_RESUME(bfv_server_l1r_0072e530_1, bfv_server_l1_body_0072e530, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072e530_2, bfv_server_l1_body_0072e530, 2);
@@ -83,10 +89,10 @@ void bfv_server_l1_body_0072e530(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0072e531  mov esi, ecx */
     esi = ecx;
-    /* 0072e533  mov dword ptr [esi], 0x873c94 */
+    /* 0072e533  mov dword ptr [esi], 0x873c94  ; vtable BBPIdleInfantery */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c94u;
-    /* 0072e539  call 0x7a25a0 */
+    /* 0072e539  call 0x7a25a0  ; BBPIdle::~BBPIdle */
     t = 0x007a25a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e530_1;
@@ -95,14 +101,14 @@ void bfv_server_l1_body_0072e530(struct bfv_cpu *c)
 R_1:
     /* 0072e53e  mov ecx, esi */
     ecx = esi;
-    /* 0072e540  call 0x7a25a0 */
+    /* 0072e540  call 0x7a25a0  ; BBPIdle::~BBPIdle */
     t = 0x007a25a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e530_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0072e545  test byte ptr [esp + 8], 1 */
+    /* 0072e545  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -112,7 +118,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072e54d  call 0x403df0 */
+    /* 0072e54d  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e530_3;
@@ -143,7 +149,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0072e560  (between same file) */
+/* 0072e560  BBPIdleInfantery_0072e560  (between same file)
+ * called by: BBPGotoWaypointSoldier::buildPlan, BBPGotoWaypoint2d::buildPlan, BBPFireInfantery_00744030
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072e560, bfv_server_l1_body_0072e560);
 void bfv_server_l1_body_0072e560(struct bfv_cpu *c)
 {
@@ -160,7 +168,7 @@ void bfv_server_l1_body_0072e560(struct bfv_cpu *c)
     /* 0072e564  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0072e566  mov dword ptr [esp + 4], 1 */
+    /* 0072e566  mov dword ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = 0x1u;
     /* 0072e56e  jmp dword ptr [eax + 4] */
@@ -179,7 +187,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0072e580  dice::bf::ai::BBPIdleInfantery  (virtual method) */
+/* 0072e580  BBPIdleInfantery::buildPlan  (virtual method)
+ * overrides: BBPPattern::buildPlan  (33 classes implement it)
+ * class: dice::bf::ai::BBPIdleInfantery
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072e580, bfv_server_l1_body_0072e580);
 BFV_L1_RESUME(bfv_server_l1r_0072e580_1, bfv_server_l1_body_0072e580, 1);
 BFV_L1_RESUME(bfv_server_l1r_0072e580_2, bfv_server_l1_body_0072e580, 2);
@@ -255,7 +266,7 @@ void bfv_server_l1_body_0072e580(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072e581  mov esi, dword ptr [esp + 8] */
+    /* 0072e581  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 0072e585  mov eax, dword ptr [esi] */
@@ -361,7 +372,7 @@ L_0072e5c8:
 R_6:
     /* 0072e5d2  mov ecx, eax */
     ecx = eax;
-    /* 0072e5d4  call 0x7a2670 */
+    /* 0072e5d4  call 0x7a2670  ; std::list_ptr::deleteAllAndClear */
     t = 0x007a2670u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e580_7;
@@ -537,9 +548,9 @@ L_0072e631:
     t = 0x28u;
     esp -= 4;
     M32(esp) = t;
-    /* 0072e63b  mov ecx, 0xc320c0 */
+    /* 0072e63b  mov ecx, 0xc320c0  ; g_MemoryPoolNull_BAPFlowCWhile */
     ecx = 0xc320c0u;
-    /* 0072e640  call 0x404290 */
+    /* 0072e640  call 0x404290  ; MemoryPool::alloc_debug */
     t = 0x00404290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e580_16;
@@ -565,9 +576,9 @@ R_16:
     t = 0x20u;
     esp -= 4;
     M32(esp) = t;
-    /* 0072e658  mov ecx, 0xc32040 */
+    /* 0072e658  mov ecx, 0xc32040  ; g_MemoryPoolNull_BAPAResetControls */
     ecx = 0xc32040u;
-    /* 0072e65d  call 0x404290 */
+    /* 0072e65d  call 0x404290  ; MemoryPool::alloc_debug */
     t = 0x00404290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e580_17;
@@ -600,7 +611,7 @@ R_17:
     M32(esp) = t;
     /* 0072e670  mov ecx, eax */
     ecx = eax;
-    /* 0072e672  call 0x7a2240 */
+    /* 0072e672  call 0x7a2240  ; BAPAResetControls::BAPAResetControls */
     t = 0x007a2240u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e580_18;
@@ -629,9 +640,9 @@ L_0072e67d:
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 0072e686  mov ecx, 0xc32080 */
+    /* 0072e686  mov ecx, 0xc32080  ; g_MemoryPoolNull_00c32080 */
     ecx = 0xc32080u;
-    /* 0072e68b  call 0x404290 */
+    /* 0072e68b  call 0x404290  ; MemoryPool::alloc_debug */
     t = 0x00404290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e580_19;
@@ -646,7 +657,7 @@ R_19:
     /* 0072e694  mov dword ptr [eax + 4], 0 */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 0072e69b  mov dword ptr [eax], 0x873c84 */
+    /* 0072e69b  mov dword ptr [eax], 0x873c84  ; vtable BAPConTrue */
     ea = (uint32_t)(eax);
     M32(ea) = 0x873c84u;
     /* 0072e6a1  mov ecx, dword ptr [edi + 8] */
@@ -666,7 +677,7 @@ R_19:
     M32(esp) = t;
     /* 0072e6a7  mov ecx, ebx */
     ecx = ebx;
-    /* 0072e6a9  call 0x7a23b0 */
+    /* 0072e6a9  call 0x7a23b0  ; BAPFlowCWhile::BAPFlowCWhile */
     t = 0x007a23b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e580_20;
@@ -714,7 +725,7 @@ L_0072e6b7:
     M32(esp) = t;
     /* 0072e6bf  mov ecx, ebx */
     ecx = ebx;
-    /* 0072e6c1  call 0x7a23b0 */
+    /* 0072e6c1  call 0x7a23b0  ; BAPFlowCWhile::BAPFlowCWhile */
     t = 0x007a23b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e580_21;
@@ -820,7 +831,7 @@ L_0072e6f5:
 R_25:
     /* 0072e6ff  mov ecx, eax */
     ecx = eax;
-    /* 0072e701  call 0x7a2670 */
+    /* 0072e701  call 0x7a2670  ; std::list_ptr::deleteAllAndClear */
     t = 0x007a2670u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e580_26;

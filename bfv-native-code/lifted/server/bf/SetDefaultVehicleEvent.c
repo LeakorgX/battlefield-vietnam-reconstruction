@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 004c0d60  dice::bf::SetDefaultVehicleEvent  (vtable store) */
+/* 004c0d60  SetDefaultVehicleEvent::create  (vtable store)
+ * class: dice::bf::SetDefaultVehicleEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c0d60, bfv_server_l1_body_004c0d60);
 BFV_L1_RESUME(bfv_server_l1r_004c0d60_1, bfv_server_l1_body_004c0d60, 1);
 void bfv_server_l1_body_004c0d60(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_server_l1_body_004c0d60(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c0d60  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c0d60  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c0d66  mov eax, dword ptr [ecx] */
@@ -53,7 +55,7 @@ R_1:
     /* 004c0d78  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c0d7f  mov dword ptr [eax], 0x81f660 */
+    /* 004c0d7f  mov dword ptr [eax], 0x81f660  ; vtable SetDefaultVehicleEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f660u;
     /* 004c0d85  ret */
@@ -76,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 004c0d90  dice::bf::SetDefaultVehicleEvent  (vtable store) */
+/* 004c0d90  SetDefaultVehicleEvent::create  (vtable store)
+ * class: dice::bf::SetDefaultVehicleEvent
+ */
 BFV_L1_ENTRY(bfv_server_l1_004c0d90, bfv_server_l1_body_004c0d90);
 BFV_L1_RESUME(bfv_server_l1r_004c0d90_1, bfv_server_l1_body_004c0d90, 1);
 void bfv_server_l1_body_004c0d90(struct bfv_cpu *c)
@@ -90,7 +94,7 @@ void bfv_server_l1_body_004c0d90(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 004c0d90  mov ecx, dword ptr [0xbec0c0] */
+    /* 004c0d90  mov ecx, dword ptr [0xbec0c0]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00bec0c0u);
     ecx = M32(ea);
     /* 004c0d96  mov eax, dword ptr [ecx] */
@@ -124,7 +128,7 @@ R_1:
     /* 004c0da8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 004c0daf  mov dword ptr [eax], 0x81f660 */
+    /* 004c0daf  mov dword ptr [eax], 0x81f660  ; vtable SetDefaultVehicleEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0x81f660u;
     /* 004c0db5  jmp 0x4c0db9 */
@@ -135,7 +139,7 @@ L_004c0db7:
     F_LOGIC(32, r);
     eax = r;
 L_004c0db9:
-    /* 004c0db9  mov ecx, dword ptr [esp + 4] */
+    /* 004c0db9  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 004c0dbd  push esi */

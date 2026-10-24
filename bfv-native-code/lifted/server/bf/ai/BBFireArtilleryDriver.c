@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0074bb30  dice::bf::ai::BBFireArtilleryDriver  (virtual method) */
+/* 0074bb30  BBFireArtilleryDriver::deleting_dtor  (virtual method)
+ * overrides: UrgencyGenerator::vf0  (24 classes implement it)
+ * class: dice::bf::ai::BBFireArtilleryDriver
+ * also entered at 0074bb80: BBFireArtilleryDriver::evaluate
+ */
 BFV_L1_ENTRY(bfv_server_l1_0074bb30, bfv_server_l1_body_0074bb30);
 BFV_L1_RESUME(bfv_server_l1r_0074bb30_1, bfv_server_l1_body_0074bb30, 1);
 BFV_L1_RESUME(bfv_server_l1r_0074bb30_2, bfv_server_l1_body_0074bb30, 2);
@@ -40,10 +44,10 @@ void bfv_server_l1_body_0074bb30(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0074bb37  mov dword ptr [esi], 0x874754 */
+    /* 0074bb37  mov dword ptr [esi], 0x874754  ; vtable BBFireArtilleryDriver */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874754u;
-    /* 0074bb3d  call 0x403df0 */
+    /* 0074bb3d  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bb30_1;
@@ -106,7 +110,7 @@ R_3:
 L_0074bb5f:
     /* 0074bb5f  mov ecx, esi */
     ecx = esi;
-    /* 0074bb61  call 0x7a1fa0 */
+    /* 0074bb61  call 0x7a1fa0  ; BotBehaviour::~BotBehaviour */
     t = 0x007a1fa0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bb30_4;
@@ -123,7 +127,7 @@ R_4:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0074bb6e  call 0x403df0 */
+    /* 0074bb6e  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bb30_5;
@@ -154,7 +158,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0074bce0  dice::bf::ai::BBFireArtilleryDriver  (vtable store) */
+/* 0074bce0  BBFireArtilleryDriver::BBFireArtilleryDriver  (vtable store)
+ * class: dice::bf::ai::BBFireArtilleryDriver
+ * called by: BBCreateFunctionFireDriver::vf0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0074bce0, bfv_server_l1_body_0074bce0);
 BFV_L1_RESUME(bfv_server_l1r_0074bce0_1, bfv_server_l1_body_0074bce0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0074bce0_2, bfv_server_l1_body_0074bce0, 2);
@@ -212,7 +219,7 @@ void bfv_server_l1_body_0074bce0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0074bce3  mov esi, ecx */
     esi = ecx;
-    /* 0074bce5  mov ecx, dword ptr [0xc3117c] */
+    /* 0074bce5  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0074bceb  mov eax, dword ptr [ecx] */
@@ -222,7 +229,7 @@ void bfv_server_l1_body_0074bce0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0074bcee  call dword ptr [eax + 4] */
+    /* 0074bcee  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -250,7 +257,7 @@ R_1:
     M32(esp) = t;
     /* 0074bcfc  mov ecx, esi */
     ecx = esi;
-    /* 0074bcfe  call 0x7a2020 */
+    /* 0074bcfe  call 0x7a2020  ; BotBehaviour::BotBehaviour */
     t = 0x007a2020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_2;
@@ -261,10 +268,10 @@ R_2:
     t = 0x34u;
     esp -= 4;
     M32(esp) = t;
-    /* 0074bd05  mov dword ptr [esi], 0x874754 */
+    /* 0074bd05  mov dword ptr [esi], 0x874754  ; vtable BBFireArtilleryDriver */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874754u;
-    /* 0074bd0b  call 0x403d80 */
+    /* 0074bd0b  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_3;
@@ -298,7 +305,7 @@ R_3:
     M32(esp) = t;
     /* 0074bd21  mov ecx, eax */
     ecx = eax;
-    /* 0074bd23  call 0x72d580 */
+    /* 0074bd23  call 0x72d580  ; BBFireUnarmed::BBFireUnarmed */
     t = 0x0072d580u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_4;
@@ -320,7 +327,7 @@ L_0074bd2c:
     /* 0074bd2e  mov dword ptr [esi + 0x30], eax */
     ea = (uint32_t)(esi + 0x00000030u);
     M32(ea) = eax;
-    /* 0074bd31  call 0x403d80 */
+    /* 0074bd31  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_5;
@@ -366,7 +373,7 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0074bd4d  call 0x6fd2a0 */
+    /* 0074bd4d  call 0x6fd2a0  ; ai_006fd2a0 */
     t = 0x006fd2a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_6;
@@ -396,7 +403,7 @@ R_6:
     M32(esp) = t;
     /* 0074bd61  mov ecx, edi */
     ecx = edi;
-    /* 0074bd63  call 0x7498f0 */
+    /* 0074bd63  call 0x7498f0  ; BBFireLargeBore::BBFireLargeBore */
     t = 0x007498f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_7;
@@ -458,7 +465,7 @@ L_0074bd80:
     M32(ea) = ecx;
     /* 0074bd96  lea ecx, [esi + 0x10] */
     ecx = (uint32_t)(esi + 0x00000010u);
-    /* 0074bd99  call 0x735e50 */
+    /* 0074bd99  call 0x735e50  ; ai_00735e50 */
     t = 0x00735e50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_8;
@@ -473,7 +480,7 @@ R_8:
     ecx = (uint32_t)(esi + 0x00000010u);
     /* 0074bda3  mov ebx, eax */
     ebx = eax;
-    /* 0074bda5  call 0x736170 */
+    /* 0074bda5  call 0x736170  ; BBAvoid_std_list_insert_00736170 */
     t = 0x00736170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_9;
@@ -523,13 +530,13 @@ L_0074bdbe:
     /* 0074bdd0  mov dword ptr [esi + 0xc], ebp */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = ebp;
-    /* 0074bdd3  mov ecx, dword ptr [0xc3117c] */
+    /* 0074bdd3  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0074bdd9  mov edx, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     edx = M32(ea);
-    /* 0074bddb  call dword ptr [edx + 4] */
+    /* 0074bddb  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -551,7 +558,7 @@ R_10:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0074bde2  call 0x403d80 */
+    /* 0074bde2  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_11;
@@ -561,7 +568,7 @@ R_11:
     /* 0074bde7  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 0074bdea  mov ecx, dword ptr [0xc3117c] */
+    /* 0074bdea  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0074bdf0  mov eax, dword ptr [ecx] */
@@ -577,7 +584,7 @@ R_11:
     r = 0;
     F_LOGIC(32, r);
     edi = r;
-    /* 0074bdf7  call dword ptr [eax + 4] */
+    /* 0074bdf7  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -605,7 +612,7 @@ L_0074be00:
     /* 0074be0d  mov dword ptr [edx + edi*4], 0xffffffff */
     ea = (uint32_t)(edx + edi * 4u);
     M32(ea) = 0xffffffffu;
-    /* 0074be14  mov ecx, dword ptr [0xc3117c] */
+    /* 0074be14  mov ecx, dword ptr [0xc3117c]  ; g_pIAISettings_00c3117c */
     ea = (uint32_t)(0x00c3117cu);
     ecx = M32(ea);
     /* 0074be1a  mov eax, dword ptr [ecx] */
@@ -616,7 +623,7 @@ L_0074be00:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     edi = r;
-    /* 0074be1d  call dword ptr [eax + 4] */
+    /* 0074be1d  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -638,7 +645,7 @@ L_0074be24:
     M32(esp) = t;
     /* 0074be25  mov ecx, ebp */
     ecx = ebp;
-    /* 0074be27  call 0x7a99a0 */
+    /* 0074be27  call 0x7a99a0  ; BAPAComponentSoldierPose::set_18h */
     t = 0x007a99a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_14;
@@ -669,7 +676,7 @@ L_0074be37:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0074be3a  call 0x403df0 */
+    /* 0074be3a  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_15;
@@ -696,7 +703,7 @@ L_0074be48:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0074be49  call 0x403df0 */
+    /* 0074be49  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0074bce0_16;

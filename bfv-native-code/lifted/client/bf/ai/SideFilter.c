@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00972e40  dice::bf::ai::?A0xc84e6b95::SideFilter  (virtual method) */
+/* 00972e40  SideFilter::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xc84e6b95::SideFilter
+ */
 BFV_L1_ENTRY(bfv_client_l1_00972e40, bfv_client_l1_body_00972e40);
 BFV_L1_RESUME(bfv_client_l1r_00972e40_1, bfv_client_l1_body_00972e40, 1);
 BFV_L1_RESUME(bfv_client_l1r_00972e40_2, bfv_client_l1_body_00972e40, 2);
@@ -33,7 +35,7 @@ void bfv_client_l1_body_00972e40(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00972e41  mov esi, dword ptr [esp + 8] */
+    /* 00972e41  mov esi, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     esi = M32(ea);
     /* 00972e45  mov eax, dword ptr [esi] */

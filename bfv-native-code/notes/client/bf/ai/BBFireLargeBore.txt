@@ -1,0 +1,8 @@
+## file
+Behaviour that scores firing an artillery or other large-bore gun.
+
+## 0099eb00
+vf13: depending on the bot's vehicle (bot slot 0x18 call) it either forwards to BBPFire2d_sub_0099d310 with the bot's per-bot index or forwards the request to the stored plan builder (slot 0x14).
+
+## 009a12f0
+evaluate: gets the bot's vehicle (bot slot 0xcc) and returns bfv_artillery_evaluate for it with the three arguments.

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006d7230  dice::ref2::world::Obstacle  (virtual method) */
+/* 006d7230  Obstacle::onHit  (virtual method)
+ * overrides: Object::onHit  (47 classes implement it)
+ * class: dice::ref2::world::Obstacle
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d7230, bfv_client_l1_body_006d7230);
 BFV_L1_RESUME(bfv_client_l1r_006d7230_1, bfv_client_l1_body_006d7230, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d7230_2, bfv_client_l1_body_006d7230, 2);
@@ -21,7 +24,7 @@ void bfv_client_l1_body_006d7230(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 006d7230  mov eax, dword ptr [esp + 4] */
+    /* 006d7230  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006d7234  test eax, eax */
@@ -54,7 +57,7 @@ void bfv_client_l1_body_006d7230(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 006d7247  cmp eax, dword ptr [0xb77ed8] */
+    /* 006d7247  cmp eax, dword ptr [0xb77ed8]  ; BFSoldierTemplate::classID */
     ea = (uint32_t)(0x00b77ed8u);
     a = eax;
     b = M32(ea);
@@ -86,7 +89,7 @@ L_006d7255:
     M32(esp) = t;
     /* 006d725b  mov ecx, esi */
     ecx = esi;
-    /* 006d725d  call dword ptr [edx + 0xa0] */
+    /* 006d725d  call dword ptr [edx + 0xa0]  ; -> Obstacle::vf40 = Bundle::handleEvent */
     ea = (uint32_t)(edx + 0x000000a0u);
     t = M32(ea);
     esp -= 4;

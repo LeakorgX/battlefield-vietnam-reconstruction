@@ -1,0 +1,5 @@
+## file
+Plan builder for taking cover.
+
+## 009aa650
+buildPlan: runs only when the per-bot flag (BBPPattern vf1) is set. When the bot already has a plan for the same cover object it keeps it while the bot is still near its goal (squared distance below 1) and the cover point has not moved more than 3 units (squared 9). Otherwise it clears the plan, resolves the threat and the cover object and stores the new cover point (3 floats) for the bot before building the move plan.

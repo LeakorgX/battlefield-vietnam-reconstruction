@@ -5,84 +5,362 @@
 #include "l1.h"
 
 
-/* 00403b60  (called from this folder only) */
-BFV_L1_ENTRY(bfv_server_l1_00403b60, bfv_server_l1_body_00403b60);
-BFV_L1_RESUME(bfv_server_l1r_00403b60_1, bfv_server_l1_body_00403b60, 1);
-BFV_L1_RESUME(bfv_server_l1r_00403b60_2, bfv_server_l1_body_00403b60, 2);
-void bfv_server_l1_body_00403b60(struct bfv_cpu *c)
+/* 006396f3  std::ios_base::_Init  (between same folder)
+ * identified: same code as client 0x007c0ad0: new locale at +0x24, flags 0x201 (skipws|dec), precision 6, width 0, clear(0)
+ * called by: std::basic_ios::init, Cmd_Profiler_reportFile::parseArg, Cmd_Profiler_reportFile::parseArg, Cmd_Profiler_runAutoReport::parseArg, Cmd_Profiler_enableVTune::parseArg, Cmd_Profiler_enableTimer::parseArg (+633 more)
+ */
+BFV_L1_ENTRY(bfv_server_l1_006396f3, bfv_server_l1_body_006396f3);
+BFV_L1_RESUME(bfv_server_l1r_006396f3_1, bfv_server_l1_body_006396f3, 1);
+BFV_L1_RESUME(bfv_server_l1r_006396f3_2, bfv_server_l1_body_006396f3, 2);
+BFV_L1_RESUME(bfv_server_l1r_006396f3_3, bfv_server_l1_body_006396f3, 3);
+void bfv_server_l1_body_006396f3(struct bfv_cpu *c)
 {
     uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
     uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
-    uint32_t t, r, ea;
+    uint32_t t, a, b, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    case 3: goto R_3;
+    default: break;
+    }
+    /* 006396f3  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006396f4  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006396f5  push 4 */
+    t = 0x4u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006396f7  mov esi, ecx */
+    esi = ecx;
+    /* 006396f9  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006396f3_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 006396fe  xor edi, edi */
+    r = 0;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 00639700  cmp eax, edi */
+    a = eax;
+    b = edi;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    /* 00639702  pop ecx */
+    t = M32(esp);
+    esp += 4;
+    ecx = t;
+    /* 00639703  je 0x63970e */
+    if (zf) goto L_0063970e;
+    /* 00639705  mov ecx, eax */
+    ecx = eax;
+    /* 00639707  call 0x63941a  ; std::locale::locale */
+    t = 0x0063941au;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006396f3_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 0063970c  jmp 0x639710 */
+    goto L_00639710;
+L_0063970e:
+    /* 0063970e  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+L_00639710:
+    /* 00639710  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00639711  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00639712  mov ecx, esi */
+    ecx = esi;
+    /* 00639714  mov dword ptr [esi + 0x24], eax */
+    ea = (uint32_t)(esi + 0x00000024u);
+    M32(ea) = eax;
+    /* 00639717  mov dword ptr [esi + 0xc], edi */
+    ea = (uint32_t)(esi + 0x0000000cu);
+    M32(ea) = edi;
+    /* 0063971a  mov dword ptr [esi + 0x10], 0x201 */
+    ea = (uint32_t)(esi + 0x00000010u);
+    M32(ea) = 0x201u;
+    /* 00639721  mov dword ptr [esi + 0x14], 6 */
+    ea = (uint32_t)(esi + 0x00000014u);
+    M32(ea) = 0x6u;
+    /* 00639728  mov dword ptr [esi + 0x18], edi */
+    ea = (uint32_t)(esi + 0x00000018u);
+    M32(ea) = edi;
+    /* 0063972b  mov dword ptr [esi + 0x1c], edi */
+    ea = (uint32_t)(esi + 0x0000001cu);
+    M32(ea) = edi;
+    /* 0063972e  mov dword ptr [esi + 0x20], edi */
+    ea = (uint32_t)(esi + 0x00000020u);
+    M32(ea) = edi;
+    /* 00639731  call 0x6395d2  ; std::ios_base::clear */
+    t = 0x006395d2u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006396f3_3;
+    c->eip = t;
+    goto out;
+R_3:
+    /* 00639736  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 00639737  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 00639738  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00639739  std::_Mutex::_Mutex  (between same folder)
+ * identified: same code as client 0x007c0b16: operator_new(0x18) critical section, InitializeCriticalSection
+ * called by: basic_streambuf<char>::basic_streambuf, std::basic_stringbuf::ctor, ref2_allocations_00411300, Game::n_00417c50, Game::showPorts, Setup_maplist_con_helper_0042a670 (+73 more)
+ */
+BFV_L1_ENTRY(bfv_server_l1_00639739, bfv_server_l1_body_00639739);
+BFV_L1_RESUME(bfv_server_l1r_00639739_1, bfv_server_l1_body_00639739, 1);
+BFV_L1_RESUME(bfv_server_l1r_00639739_2, bfv_server_l1_body_00639739, 2);
+void bfv_server_l1_body_00639739(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, ea;
     switch (c->eip) { /* 0: entry; k: return from the k-th call */
     case 1: goto R_1;
     case 2: goto R_2;
     default: break;
     }
-    /* 00403b60  push esi */
+    /* 00639739  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00403b61  mov esi, ecx */
-    esi = ecx;
-    /* 00403b63  call 0x63aa5e */
-    t = 0x0063aa5eu;
+    /* 0063973a  push 0x18 */
+    t = 0x18u;
     esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00403b60_1;
+    M32(esp) = t;
+    /* 0063973c  mov esi, ecx */
+    esi = ecx;
+    /* 0063973e  call 0x403d80  ; operator_new */
+    t = 0x00403d80u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639739_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00403b68  xor eax, eax */
-    r = 0;
-    F_LOGIC(32, r);
-    eax = r;
-    /* 00403b6a  lea ecx, [esi + 0xc] */
-    ecx = (uint32_t)(esi + 0x0000000cu);
-    /* 00403b6d  mov dword ptr [esi], 0x80737c */
+    /* 00639743  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00639744  mov dword ptr [esi], eax */
     ea = (uint32_t)(esi);
-    M32(ea) = 0x80737cu;
-    /* 00403b73  push -1 */
-    t = 0xffffffffu;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00403b75  mov dword ptr [ecx + 0x14], eax */
-    ea = (uint32_t)(ecx + 0x00000014u);
     M32(ea) = eax;
-    /* 00403b78  mov dword ptr [ecx + 0x18], 0xf */
-    ea = (uint32_t)(ecx + 0x00000018u);
-    M32(ea) = 0xfu;
-    /* 00403b7f  push eax */
-    t = eax;
+    /* 00639746  call 0x639e91  ; sub_calls_InitializeCriticalSection_00639e91 */
+    t = 0x00639e91u;
     esp -= 4;
-    M32(esp) = t;
-    /* 00403b80  mov byte ptr [ecx + 4], al */
-    ea = (uint32_t)(ecx + 0x00000004u);
-    M8(ea) = LO8(eax);
-    /* 00403b83  mov eax, dword ptr [esp + 0x10] */
-    ea = (uint32_t)(esp + 0x00000010u);
-    eax = M32(ea);
-    /* 00403b87  push eax */
-    t = eax;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00403b88  call 0x401e20 */
-    t = 0x00401e20u;
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00403b60_2;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639739_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00403b8d  mov eax, esi */
+    /* 0063974b  pop ecx */
+    t = M32(esp);
+    esp += 4;
+    ecx = t;
+    /* 0063974c  pop ecx */
+    t = M32(esp);
+    esp += 4;
+    ecx = t;
+    /* 0063974d  mov eax, esi */
     eax = esi;
-    /* 00403b8f  pop esi */
+    /* 0063974f  pop esi */
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 00403b90  ret 4 */
+    /* 00639750  ret */
     c->eip = M32(esp);
-    esp += 8;
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00639751  std::_Mutex::~_Mutex  (between same folder)
+ * identified: same code as client 0x007c0b2e: called last by the stream buffer destructor on its mutex at +4
+ * called by: basic_streambuf<...>::deleting_dtor, Game::n_00417c50, GameServer_roundstats_timestamp_0046cdf0, OldConsole::listVariables, OldConsole::listConstants, AIStrategicArea::saveAll (+2 more)
+ */
+BFV_L1_ENTRY(bfv_server_l1_00639751, bfv_server_l1_body_00639751);
+BFV_L1_RESUME(bfv_server_l1r_00639751_1, bfv_server_l1_body_00639751, 1);
+BFV_L1_RESUME(bfv_server_l1r_00639751_2, bfv_server_l1_body_00639751, 2);
+void bfv_server_l1_body_00639751(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 00639751  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 00639752  mov esi, ecx */
+    esi = ecx;
+    /* 00639754  push dword ptr [esi] */
+    ea = (uint32_t)(esi);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = t;
+    /* 00639756  call 0x639e9c  ; sub_calls_DeleteCriticalSection_00639e9c */
+    t = 0x00639e9cu;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639751_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0063975b  push dword ptr [esi] */
+    ea = (uint32_t)(esi);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = t;
+    /* 0063975d  call 0x403df0  ; operator_delete */
+    t = 0x00403df0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639751_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 00639762  pop ecx */
+    t = M32(esp);
+    esp += 4;
+    ecx = t;
+    /* 00639763  pop ecx */
+    t = M32(esp);
+    esp += 4;
+    ecx = t;
+    /* 00639764  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 00639765  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00639766  std_00639766  (between same folder)
+ * called by: std::ostream::sentry::sentry, std::istream::sentry::sentry, std::operator_write_string, std::ostream::operator_write_uint, Module_0043f030, ObjTemplFxModule_004fd8d0 (+5 more)
+ */
+BFV_L1_ENTRY(bfv_server_l1_00639766, bfv_server_l1_body_00639766);
+BFV_L1_RESUME(bfv_server_l1r_00639766_1, bfv_server_l1_body_00639766, 1);
+void bfv_server_l1_body_00639766(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    default: break;
+    }
+    /* 00639766  push dword ptr [ecx] */
+    ea = (uint32_t)(ecx);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = t;
+    /* 00639768  call 0x639ea7  ; sub_calls_EnterCriticalSection_00639ea7 */
+    t = 0x00639ea7u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00639766_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 0063976d  pop ecx */
+    t = M32(esp);
+    esp += 4;
+    ecx = t;
+    /* 0063976e  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 0063976f  std_0063976f  (between same folder)
+ * called by: facet_00401b09, facet_00401da7, ref2_00409933, ref2_0040f76e, sub_00414e9e, sub_0041501e (+10 more)
+ */
+BFV_L1_ENTRY(bfv_server_l1_0063976f, bfv_server_l1_body_0063976f);
+BFV_L1_RESUME(bfv_server_l1r_0063976f_1, bfv_server_l1_body_0063976f, 1);
+void bfv_server_l1_body_0063976f(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    default: break;
+    }
+    /* 0063976f  push dword ptr [ecx] */
+    ea = (uint32_t)(ecx);
+    t = M32(ea);
+    esp -= 4;
+    M32(esp) = t;
+    /* 00639771  call 0x639eb2  ; sub_calls_LeaveCriticalSection_00639eb2 */
+    t = 0x00639eb2u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0063976f_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 00639776  pop ecx */
+    t = M32(esp);
+    esp += 4;
+    ecx = t;
+    /* 00639777  ret */
+    c->eip = M32(esp);
+    esp += 4;
     goto out;
 out: __attribute__((unused));
     c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00ac4360  dice::meme::NavigateTree  (virtual method) */
+/* 00ac4360  NavigateTree::vf17  (virtual method)
+ * overrides: Tree::vf17  (2 classes implement it)
+ * class: dice::meme::NavigateTree
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac4360, bfv_client_l1_body_00ac4360);
 BFV_L1_RESUME(bfv_client_l1r_00ac4360_1, bfv_client_l1_body_00ac4360, 1);
 void bfv_client_l1_body_00ac4360(struct bfv_cpu *c)
@@ -19,13 +22,13 @@ void bfv_client_l1_body_00ac4360(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00ac4360  mov eax, dword ptr [esp + 8] */
+    /* 00ac4360  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00ac4364  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00ac4366  mov edx, dword ptr [esp + 0xc] */
+    /* 00ac4366  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00ac436a  mov byte ptr [edx], 0 */
@@ -51,7 +54,7 @@ L_00ac4376:
     esp += 20;
     goto out;
 L_00ac437b:
-    /* 00ac437b  mov eax, dword ptr [esp + 0x10] */
+    /* 00ac437b  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00ac437f  push eax */
@@ -62,14 +65,14 @@ L_00ac437b:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac4381  mov edx, dword ptr [esp + 0xc] */
+    /* 00ac4381  mov edx, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 00ac4385  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac4386  call 0x8746c0 */
+    /* 00ac4386  call 0x8746c0  ; Data_008746c0 */
     t = 0x008746c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac4360_1;
@@ -87,7 +90,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac4390  dice::meme::NavigateTree  (virtual method) */
+/* 00ac4390  NavigateTree::vf14  (virtual method)
+ * overrides: Object::vf14  (205 classes implement it)
+ * class: dice::meme::NavigateTree
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac4390, bfv_client_l1_body_00ac4390);
 BFV_L1_RESUME(bfv_client_l1r_00ac4390_1, bfv_client_l1_body_00ac4390, 1);
 void bfv_client_l1_body_00ac4390(struct bfv_cpu *c)
@@ -101,7 +107,7 @@ void bfv_client_l1_body_00ac4390(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00ac4390  mov eax, dword ptr [esp + 8] */
+    /* 00ac4390  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00ac4394  push esi */
@@ -110,7 +116,7 @@ void bfv_client_l1_body_00ac4390(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00ac4395  mov esi, ecx */
     esi = ecx;
-    /* 00ac4397  mov ecx, dword ptr [esp + 8] */
+    /* 00ac4397  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00ac439b  push eax */
@@ -123,7 +129,7 @@ void bfv_client_l1_body_00ac4390(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00ac439d  mov ecx, esi */
     ecx = esi;
-    /* 00ac439f  call 0x87b190 */
+    /* 00ac439f  call 0x87b190  ; Tree::vf14 */
     t = 0x0087b190u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac4390_1;
@@ -167,7 +173,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac4430  dice::meme::NavigateTree  (vtable store) */
+/* 00ac4430  NavigateTree::create  (vtable store)
+ * class: dice::meme::NavigateTree
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac4430, bfv_client_l1_body_00ac4430);
 BFV_L1_RESUME(bfv_client_l1r_00ac4430_1, bfv_client_l1_body_00ac4430, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac4430_2, bfv_client_l1_body_00ac4430, 2);
@@ -191,7 +199,7 @@ void bfv_client_l1_body_00ac4430(struct bfv_cpu *c)
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac4433  call 0x403610 */
+    /* 00ac4433  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac4430_1;
@@ -213,14 +221,14 @@ R_1:
     if (zf) goto L_00ac4459;
     /* 00ac4441  mov ecx, esi */
     ecx = esi;
-    /* 00ac4443  call 0x87a800 */
+    /* 00ac4443  call 0x87a800  ; Tree::Tree */
     t = 0x0087a800u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac4430_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac4448  mov dword ptr [esi], 0xc110e4 */
+    /* 00ac4448  mov dword ptr [esi], 0xc110e4  ; vtable NavigateTree */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc110e4u;
     /* 00ac444e  mov dword ptr [esi + 0x10], 0 */
@@ -256,7 +264,68 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac44e0  dice::meme::NavigateTree  (virtual method) */
+/* 00ac4460  ClassTemplate<NavigateTree,Tree>::incInstanceCount  (between same file)
+ */
+BFV_L1_ENTRY(bfv_client_l1_00ac4460, bfv_client_l1_body_00ac4460);
+void bfv_client_l1_body_00ac4460(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t a, r, ea;
+    /* 00ac4460  inc dword ptr [0xe2181c] */
+    ea = (uint32_t)(0x00e2181cu);
+    a = M32(ea);
+    r = (a + 1u) & 0xffffffffu;
+    F_INC(32, a, r);
+    M32(ea) = r;
+    /* 00ac4466  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00ac4470  ClassTemplate<NavigateTree,Tree>::decInstanceCount  (between same file)
+ * also entered at 00ac4490: AndData::vf2, BAPALook::vf3, BAPALookAhead::vf3, BAPALookAtObject::vf3 (+28 more)
+ * also entered at 00ac44a0: RuntimeClass::vf0
+ * also entered at 00ac44c0: NavigateTree::vf0
+ */
+BFV_L1_ENTRY(bfv_client_l1_00ac4470, bfv_client_l1_body_00ac4470);
+void bfv_client_l1_body_00ac4470(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t a, r, ea;
+    /* 00ac4470  dec dword ptr [0xe2181c] */
+    ea = (uint32_t)(0x00e2181cu);
+    a = M32(ea);
+    r = (a - 1u) & 0xffffffffu;
+    F_DEC(32, a, r);
+    M32(ea) = r;
+    /* 00ac4476  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 00ac44e0  NavigateTree::createTreeObject  (virtual method)
+ * overrides: Tree::vf18  (2 classes implement it)
+ * class: dice::meme::NavigateTree
+ * also entered at 00ac4530: NavigateTreeObject::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac44e0, bfv_client_l1_body_00ac44e0);
 BFV_L1_RESUME(bfv_client_l1r_00ac44e0_1, bfv_client_l1_body_00ac44e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac44e0_2, bfv_client_l1_body_00ac44e0, 2);
@@ -280,7 +349,7 @@ void bfv_client_l1_body_00ac44e0(struct bfv_cpu *c)
     t = 0x20u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac44e3  call 0x403610 */
+    /* 00ac44e3  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac44e0_1;
@@ -300,20 +369,20 @@ R_1:
     F_LOGIC(32, r);
     /* 00ac44ef  je 0xac4526 */
     if (zf) goto L_00ac4526;
-    /* 00ac44f1  mov eax, dword ptr [esp + 0x18] */
+    /* 00ac44f1  mov eax, dword ptr [esp + 0x18]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
-    /* 00ac44f5  mov ecx, dword ptr [esp + 0x14] */
+    /* 00ac44f5  mov ecx, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
-    /* 00ac44f9  mov edx, dword ptr [esp + 0x10] */
+    /* 00ac44f9  mov edx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00ac44fd  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac44fe  mov eax, dword ptr [esp + 0x10] */
+    /* 00ac44fe  mov eax, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 00ac4502  push ecx */
@@ -330,14 +399,14 @@ R_1:
     M32(esp) = t;
     /* 00ac4505  mov ecx, esi */
     ecx = esi;
-    /* 00ac4507  call 0x87a910 */
+    /* 00ac4507  call 0x87a910  ; TreeObject::TreeObject */
     t = 0x0087a910u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac44e0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac450c  mov dword ptr [esi], 0xc1106c */
+    /* 00ac450c  mov dword ptr [esi], 0xc1106c  ; vtable NavigateTreeObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc1106cu;
     /* 00ac4512  mov dword ptr [esi + 0x18], 0 */
@@ -376,8 +445,12 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac4560  dice::meme::NavigateTree  (virtual method)
- * strings: "dice::meme::NavigateTree" */
+/* 00ac4560  NavigateTree::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::NavigateTree
+ * strings: "dice::meme::NavigateTree"
+ * called by: NavigateViewNode::serialize
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac4560, bfv_client_l1_body_00ac4560);
 BFV_L1_RESUME(bfv_client_l1r_00ac4560_1, bfv_client_l1_body_00ac4560, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac4560_2, bfv_client_l1_body_00ac4560, 2);
@@ -408,27 +481,27 @@ void bfv_client_l1_body_00ac4560(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac4575  push 0xc11134 */
+    /* 00ac4575  push 0xc11134  ; "dice::meme::NavigateTree" */
     t = 0xc11134u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac457a  mov ecx, 0xe21820 */
+    /* 00ac457a  mov ecx, 0xe21820  ; g_RuntimeClass_NavigateTree */
     ecx = 0xe21820u;
-    /* 00ac457f  call 0x875490 */
+    /* 00ac457f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac4560_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac4584  push 0xb41d80 */
+    /* 00ac4584  push 0xb41d80  ; bfv_client_global_store_00b41d80 */
     t = 0xb41d80u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac4589  mov dword ptr [0xe21820], 0xc110c0 */
+    /* 00ac4589  mov dword ptr [0xe21820], 0xc110c0  ; g_RuntimeClass_NavigateTree */
     ea = (uint32_t)(0x00e21820u);
     M32(ea) = 0xc110c0u;
-    /* 00ac4593  call 0x7c2cd2 */
+    /* 00ac4593  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac4560_2;
@@ -442,7 +515,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac459b:
-    /* 00ac459b  mov eax, 0xe21820 */
+    /* 00ac459b  mov eax, 0xe21820  ; g_RuntimeClass_NavigateTree */
     eax = 0xe21820u;
     /* 00ac45a0  ret */
     c->eip = M32(esp);

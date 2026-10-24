@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00781bf0  dice::bf::ai::?A0xdaa11c90::ICollisionPredicate  (virtual method) */
+/* 00781bf0  ICollisionPredicate::vf0  (virtual method)
+ * class: dice::bf::ai::?A0xdaa11c90::ICollisionPredicate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00781bf0, bfv_server_l1_body_00781bf0);
 BFV_L1_RESUME(bfv_server_l1r_00781bf0_1, bfv_server_l1_body_00781bf0, 1);
 BFV_L1_RESUME(bfv_server_l1r_00781bf0_2, bfv_server_l1_body_00781bf0, 2);
@@ -21,10 +23,10 @@ void bfv_server_l1_body_00781bf0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 00781bf0  mov edx, dword ptr [0x8488d8] */
+    /* 00781bf0  mov edx, dword ptr [0x8488d8]  ; interfaceID(AnimatedMesh|SimpleCollisionMesh|StandardMesh) */
     ea = (uint32_t)(0x008488d8u);
     edx = M32(ea);
-    /* 00781bf6  mov ecx, dword ptr [esp + 4] */
+    /* 00781bf6  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00781bfa  mov eax, dword ptr [ecx] */
@@ -34,7 +36,7 @@ void bfv_server_l1_body_00781bf0(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00781bfd  mov edx, dword ptr [0x8488c0] */
+    /* 00781bfd  mov edx, dword ptr [0x8488c0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x008488c0u);
     edx = M32(ea);
     /* 00781c03  push edx */

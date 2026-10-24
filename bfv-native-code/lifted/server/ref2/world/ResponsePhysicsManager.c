@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005cfe80  dice::ref2::world::ResponsePhysicsManager  (virtual method) */
+/* 005cfe80  ResponsePhysicsManager::vf8_set_1ch_to_1  (virtual method)
+ * class: dice::ref2::world::ResponsePhysicsManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cfe80, bfv_server_l1_body_005cfe80);
 void bfv_server_l1_body_005cfe80(struct bfv_cpu *c)
 {
@@ -28,7 +30,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005cfe90  dice::ref2::world::ResponsePhysicsManager  (virtual method) */
+/* 005cfe90  ResponsePhysicsManager::vf7  (virtual method)
+ * class: dice::ref2::world::ResponsePhysicsManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cfe90, bfv_server_l1_body_005cfe90);
 void bfv_server_l1_body_005cfe90(struct bfv_cpu *c)
 {
@@ -54,7 +58,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005cfea0  dice::ref2::world::ResponsePhysicsManager  (vtable store) */
+/* 005cfea0  ResponsePhysicsManager::ResponsePhysicsManager  (vtable store)
+ * class: dice::ref2::world::ResponsePhysicsManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cfea0, bfv_server_l1_body_005cfea0);
 void bfv_server_l1_body_005cfea0(struct bfv_cpu *c)
 {
@@ -65,7 +71,7 @@ void bfv_server_l1_body_005cfea0(struct bfv_cpu *c)
     uint32_t r, ea;
     /* 005cfea0  mov eax, ecx */
     eax = ecx;
-    /* 005cfea2  mov dword ptr [eax], 0x846cec */
+    /* 005cfea2  mov dword ptr [eax], 0x846cec  ; vtable ResponsePhysicsManager */
     ea = (uint32_t)(eax);
     M32(ea) = 0x846cecu;
     /* 005cfea8  xor ecx, ecx */
@@ -101,7 +107,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005cfed0  dice::ref2::world::ResponsePhysicsManager  (virtual method) */
+/* 005cfed0  ResponsePhysicsManager::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::world::ResponsePhysicsManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cfed0, bfv_server_l1_body_005cfed0);
 void bfv_server_l1_body_005cfed0(struct bfv_cpu *c)
 {
@@ -110,12 +119,12 @@ void bfv_server_l1_body_005cfed0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 005cfed0  mov edx, dword ptr [0x807430] */
+    /* 005cfed0  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 005cfed6  mov eax, ecx */
     eax = ecx;
-    /* 005cfed8  mov ecx, dword ptr [esp + 4] */
+    /* 005cfed8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005cfedc  cmp ecx, edx */
@@ -168,7 +177,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005cff00  dice::ref2::world::ResponsePhysicsManager  (virtual method) */
+/* 005cff00  ResponsePhysicsManager::vf9  (virtual method)
+ * class: dice::ref2::world::ResponsePhysicsManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005cff00, bfv_server_l1_body_005cff00);
 BFV_L1_RESUME(bfv_server_l1r_005cff00_1, bfv_server_l1_body_005cff00, 1);
 void bfv_server_l1_body_005cff00(struct bfv_cpu *c)
@@ -182,7 +193,7 @@ void bfv_server_l1_body_005cff00(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005cff00  mov eax, dword ptr [0xc0f118] */
+    /* 005cff00  mov eax, dword ptr [0xc0f118]  ; g_pTerrain */
     ea = (uint32_t)(0x00c0f118u);
     eax = M32(ea);
     /* 005cff05  push esi */
@@ -193,11 +204,11 @@ void bfv_server_l1_body_005cff00(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005cff08  push 0x91d124 */
+    /* 005cff08  push 0x91d124  ; typeid(IVectorCollider) */
     t = 0x91d124u;
     esp -= 4;
     M32(esp) = t;
-    /* 005cff0d  push 0x91d0fc */
+    /* 005cff0d  push 0x91d0fc  ; typeid(ITerrain) */
     t = 0x91d0fcu;
     esp -= 4;
     M32(esp) = t;
@@ -211,7 +222,7 @@ void bfv_server_l1_body_005cff00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005cff15  mov esi, ecx */
     esi = ecx;
-    /* 005cff17  call 0x63cbf8 */
+    /* 005cff17  call 0x63cbf8  ; __RTDynamicCast */
     t = 0x0063cbf8u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005cff00_1;
@@ -242,7 +253,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005d0020  dice::ref2::world::ResponsePhysicsManager  (virtual method) */
+/* 005d0020  ResponsePhysicsManager::vf4  (virtual method)
+ * class: dice::ref2::world::ResponsePhysicsManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005d0020, bfv_server_l1_body_005d0020);
 BFV_L1_RESUME(bfv_server_l1r_005d0020_1, bfv_server_l1_body_005d0020, 1);
 BFV_L1_RESUME(bfv_server_l1r_005d0020_2, bfv_server_l1_body_005d0020, 2);
@@ -264,7 +277,7 @@ void bfv_server_l1_body_005d0020(struct bfv_cpu *c)
     case 5: goto R_5;
     default: break;
     }
-    /* 005d0020  mov eax, dword ptr [esp + 4] */
+    /* 005d0020  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005d0024  push esi */
@@ -298,7 +311,7 @@ void bfv_server_l1_body_005d0020(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 005d0036  cmp eax, dword ptr [0x8206a8] */
+    /* 005d0036  cmp eax, dword ptr [0x8206a8]  ; ResponsePhysics::classID */
     ea = (uint32_t)(0x008206a8u);
     a = eax;
     b = M32(ea);
@@ -318,7 +331,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005d0044  call 0x5ded00 */
+    /* 005d0044  call 0x5ded00  ; ResponsePhysicsManager::vf4_helper_005ded00 */
     t = 0x005ded00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d0020_2;
@@ -349,7 +362,7 @@ L_005d004e:
     c->eip = t;
     goto out;
 R_3:
-    /* 005d0053  cmp eax, dword ptr [0x8206ac] */
+    /* 005d0053  cmp eax, dword ptr [0x8206ac]  ; PointResponsePhysics::classID */
     ea = (uint32_t)(0x008206acu);
     a = eax;
     b = M32(ea);
@@ -369,7 +382,7 @@ R_3:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005d0061  call 0x5ded00 */
+    /* 005d0061  call 0x5ded00  ; ResponsePhysicsManager::vf4_helper_005ded00 */
     t = 0x005ded00u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d0020_4;
@@ -420,7 +433,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005d0080  dice::ref2::world::ResponsePhysicsManager  (virtual method) */
+/* 005d0080  ResponsePhysicsManager::vf5  (virtual method)
+ * class: dice::ref2::world::ResponsePhysicsManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005d0080, bfv_server_l1_body_005d0080);
 BFV_L1_RESUME(bfv_server_l1r_005d0080_1, bfv_server_l1_body_005d0080, 1);
 BFV_L1_RESUME(bfv_server_l1r_005d0080_2, bfv_server_l1_body_005d0080, 2);
@@ -442,7 +457,7 @@ void bfv_server_l1_body_005d0080(struct bfv_cpu *c)
     case 5: goto R_5;
     default: break;
     }
-    /* 005d0080  mov eax, dword ptr [esp + 4] */
+    /* 005d0080  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005d0084  push esi */
@@ -476,7 +491,7 @@ void bfv_server_l1_body_005d0080(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 005d0096  cmp eax, dword ptr [0x8206a8] */
+    /* 005d0096  cmp eax, dword ptr [0x8206a8]  ; ResponsePhysics::classID */
     ea = (uint32_t)(0x008206a8u);
     a = eax;
     b = M32(ea);
@@ -496,7 +511,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005d00a4  call 0x5dec60 */
+    /* 005d00a4  call 0x5dec60  ; ResponsePhysicsManager::vf5_helper_005dec60 */
     t = 0x005dec60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d0080_2;
@@ -527,7 +542,7 @@ L_005d00ae:
     c->eip = t;
     goto out;
 R_3:
-    /* 005d00b3  cmp eax, dword ptr [0x8206ac] */
+    /* 005d00b3  cmp eax, dword ptr [0x8206ac]  ; PointResponsePhysics::classID */
     ea = (uint32_t)(0x008206acu);
     a = eax;
     b = M32(ea);
@@ -547,7 +562,7 @@ R_3:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005d00c1  call 0x5dec60 */
+    /* 005d00c1  call 0x5dec60  ; ResponsePhysicsManager::vf5_helper_005dec60 */
     t = 0x005dec60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d0080_4;
@@ -598,7 +613,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005d0860  dice::ref2::world::ResponsePhysicsManager  (virtual method) */
+/* 005d0860  ResponsePhysicsManager::vf6  (virtual method)
+ * class: dice::ref2::world::ResponsePhysicsManager
+ */
 BFV_L1_ENTRY(bfv_server_l1_005d0860, bfv_server_l1_body_005d0860);
 BFV_L1_RESUME(bfv_server_l1r_005d0860_1, bfv_server_l1_body_005d0860, 1);
 BFV_L1_RESUME(bfv_server_l1r_005d0860_2, bfv_server_l1_body_005d0860, 2);
@@ -816,7 +833,7 @@ R_3:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 005d08ca  call 0x5d0350 */
+    /* 005d08ca  call 0x5d0350  ; ResponsePhysicsManager::vf6_helper_005d0350 */
     t = 0x005d0350u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d0860_4;
@@ -875,19 +892,19 @@ R_6:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d08e9  push 0x40000000 */
+    /* 005d08e9  push 0x40000000  ; 2.0f */
     t = 0x40000000u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d08ee  push 0x3ee66666 */
+    /* 005d08ee  push 0x3ee66666  ; 0.45f */
     t = 0x3ee66666u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d08f3  push 0x3f666666 */
+    /* 005d08f3  push 0x3f666666  ; 0.9f */
     t = 0x3f666666u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d08f8  push 0x3ee66666 */
+    /* 005d08f8  push 0x3ee66666  ; 0.45f */
     t = 0x3ee66666u;
     esp -= 4;
     M32(esp) = t;
@@ -1050,7 +1067,7 @@ R_11:
     M32(esp) = t;
     /* 005d095a  mov ecx, edi */
     ecx = edi;
-    /* 005d095c  call 0x5d0350 */
+    /* 005d095c  call 0x5d0350  ; ResponsePhysicsManager::vf6_helper_005d0350 */
     t = 0x005d0350u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d0860_12;
@@ -1278,7 +1295,7 @@ R_21:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 005d0a06  call 0x5d0350 */
+    /* 005d0a06  call 0x5d0350  ; ResponsePhysicsManager::vf6_helper_005d0350 */
     t = 0x005d0350u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005d0860_22;
@@ -1581,19 +1598,19 @@ R_32:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d0ad9  push 0x40000000 */
+    /* 005d0ad9  push 0x40000000  ; 2.0f */
     t = 0x40000000u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d0ade  push 0x3ee66666 */
+    /* 005d0ade  push 0x3ee66666  ; 0.45f */
     t = 0x3ee66666u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d0ae3  push 0x3f666666 */
+    /* 005d0ae3  push 0x3f666666  ; 0.9f */
     t = 0x3f666666u;
     esp -= 4;
     M32(esp) = t;
-    /* 005d0ae8  push 0x3ee66666 */
+    /* 005d0ae8  push 0x3ee66666  ; 0.45f */
     t = 0x3ee66666u;
     esp -= 4;
     M32(esp) = t;
@@ -1648,7 +1665,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005dec60  (called from this file only) */
+/* 005dec60  ResponsePhysicsManager::vf5_helper_005dec60  (called from this file only)
+ * called by: ResponsePhysicsManager::vf5
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dec60, bfv_server_l1_body_005dec60);
 void bfv_server_l1_body_005dec60(struct bfv_cpu *c)
 {
@@ -1657,7 +1676,7 @@ void bfv_server_l1_body_005dec60(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 005dec60  mov edx, dword ptr [esp + 4] */
+    /* 005dec60  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 005dec64  push ebx */
@@ -1913,7 +1932,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ded00  (called from this file only) */
+/* 005ded00  ResponsePhysicsManager::vf4_helper_005ded00  (called from this file only)
+ * called by: ResponsePhysicsManager::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005ded00, bfv_server_l1_body_005ded00);
 void bfv_server_l1_body_005ded00(struct bfv_cpu *c)
 {
@@ -1948,7 +1969,7 @@ void bfv_server_l1_body_005ded00(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 005ded0d  jne 0x5ded3a */
     if (!zf) goto L_005ded3a;
-    /* 005ded0f  mov eax, dword ptr [esp + 8] */
+    /* 005ded0f  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 005ded13  cmp dword ptr [eax], esi */

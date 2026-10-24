@@ -1,0 +1,17 @@
+## file
+Move action that goes straight to a point without path finding; the goal point is kept at this+0x68.
+
+## 009f3b10
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.
+
+## 009f3b50
+vf6: returns the address of the goal point at this+0x68.
+
+## 009f3b80
+vf8: writes the byte at this+0x54 to the output and returns the address of the goal point at this+0x68.
+
+## 009f3bc0
+vf9: returns the constant 0.1 (from g_00b55534).
+
+## 009f3bd0
+vf7: resolves the bot's own object and its movement interface (+0x2c), reads the control info for control 2 (slot 0xa0) and asks IAIPathfinding::vf14 to fill a direct path from the given start to the goal at this+0x68.

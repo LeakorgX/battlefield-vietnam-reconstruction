@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0086de00  dice::meme::ColorEffect  (vtable store) */
+/* 0086de00  ColorEffect::ColorEffect  (vtable store)
+ * class: dice::meme::ColorEffect
+ * called by: BfTextNode::BfTextNode, BfMultiplyColorEffect::create, BfMultiplyColorEffect2::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086de00, bfv_client_l1_body_0086de00);
 BFV_L1_RESUME(bfv_client_l1r_0086de00_1, bfv_client_l1_body_0086de00, 1);
 void bfv_client_l1_body_0086de00(struct bfv_cpu *c)
@@ -25,29 +28,29 @@ void bfv_client_l1_body_0086de00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086de01  mov esi, ecx */
     esi = ecx;
-    /* 0086de03  call 0x874870 */
+    /* 0086de03  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086de00_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0086de08  mov eax, dword ptr [esp + 8] */
+    /* 0086de08  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 0086de0c  mov ecx, dword ptr [esp + 0xc] */
+    /* 0086de0c  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 0086de10  mov edx, dword ptr [esp + 0x10] */
+    /* 0086de10  mov edx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
-    /* 0086de14  mov dword ptr [esi], 0xbd4284 */
+    /* 0086de14  mov dword ptr [esi], 0xbd4284  ; vtable ColorEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd4284u;
     /* 0086de1a  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 0086de1d  mov eax, dword ptr [esp + 0x14] */
+    /* 0086de1d  mov eax, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 0086de21  mov dword ptr [esi + 0x14], eax */
@@ -76,7 +79,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086de30  dice::meme::ColorEffect  (virtual method) */
+/* 0086de30  ColorEffect::vf18  (virtual method)
+ * overrides: Effect::vf18  (18 classes implement it)
+ * class: dice::meme::ColorEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086de30, bfv_client_l1_body_0086de30);
 void bfv_client_l1_body_0086de30(struct bfv_cpu *c)
 {
@@ -88,7 +94,7 @@ void bfv_client_l1_body_0086de30(struct bfv_cpu *c)
     /* 0086de30  mov edx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     edx = M32(ea);
-    /* 0086de33  mov eax, dword ptr [esp + 0x14] */
+    /* 0086de33  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 0086de37  mov dword ptr [eax + 0x28], edx */
@@ -184,10 +190,10 @@ void bfv_client_l1_body_0086de30(struct bfv_cpu *c)
     /* 0086de97  mov dword ptr [eax + 0x88], edx */
     ea = (uint32_t)(eax + 0x00000088u);
     M32(ea) = edx;
-    /* 0086de9d  mov dword ptr [esp + 0x14], eax */
+    /* 0086de9d  mov dword ptr [esp + 0x14], eax  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = eax;
-    /* 0086dea1  jmp 0x875660 */
+    /* 0086dea1  jmp 0x875660  ; Effect::vf18 */
     c->eip = 0x00875660u;
     goto out;
 out: __attribute__((unused));
@@ -197,7 +203,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086deb0  dice::meme::ColorEffect  (virtual method) */
+/* 0086deb0  ColorEffect::vf19  (virtual method)
+ * overrides: Effect::vf19  (18 classes implement it)
+ * class: dice::meme::ColorEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086deb0, bfv_client_l1_body_0086deb0);
 void bfv_client_l1_body_0086deb0(struct bfv_cpu *c)
 {
@@ -209,7 +218,7 @@ void bfv_client_l1_body_0086deb0(struct bfv_cpu *c)
     /* 0086deb0  mov edx, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     edx = M32(ea);
-    /* 0086deb3  mov eax, dword ptr [esp + 0xc] */
+    /* 0086deb3  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0086deb7  mov dword ptr [eax + 0x28], edx */
@@ -305,10 +314,10 @@ void bfv_client_l1_body_0086deb0(struct bfv_cpu *c)
     /* 0086df17  mov dword ptr [eax + 0x88], edx */
     ea = (uint32_t)(eax + 0x00000088u);
     M32(ea) = edx;
-    /* 0086df1d  mov dword ptr [esp + 0xc], eax */
+    /* 0086df1d  mov dword ptr [esp + 0xc], eax  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = eax;
-    /* 0086df21  jmp 0x875690 */
+    /* 0086df21  jmp 0x875690  ; Effect::vf19 */
     c->eip = 0x00875690u;
     goto out;
 out: __attribute__((unused));
@@ -318,7 +327,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0086df30  dice::meme::ColorEffect  (virtual method) */
+/* 0086df30  ColorEffect::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::ColorEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086df30, bfv_client_l1_body_0086df30);
 BFV_L1_RESUME(bfv_client_l1r_0086df30_1, bfv_client_l1_body_0086df30, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086df30_2, bfv_client_l1_body_0086df30, 2);
@@ -334,7 +346,7 @@ void bfv_client_l1_body_0086df30(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 0086df30  mov eax, dword ptr [esp + 4] */
+    /* 0086df30  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0086df34  push esi */
@@ -345,7 +357,7 @@ void bfv_client_l1_body_0086df30(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 0086df36  mov edi, dword ptr [esp + 0x10] */
+    /* 0086df36  mov edi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 0086df3a  push edi */
@@ -358,7 +370,7 @@ void bfv_client_l1_body_0086df30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0086df3c  mov esi, ecx */
     esi = ecx;
-    /* 0086df3e  call 0xa7d100 */
+    /* 0086df3e  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086df30_1;
@@ -389,7 +401,7 @@ L_0086df4c:
     M32(esp) = t;
     /* 0086df4d  lea ecx, [esi + 8] */
     ecx = (uint32_t)(esi + 0x00000008u);
-    /* 0086df50  call 0x875730 */
+    /* 0086df50  call 0x875730  ; meme_Green_00875730 */
     t = 0x00875730u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086df30_2;
@@ -420,7 +432,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0086e540  dice::meme::ColorEffect  (vtable store) */
+/* 0086e540  ColorEffect::create  (vtable store)
+ * class: dice::meme::ColorEffect
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e540, bfv_client_l1_body_0086e540);
 BFV_L1_RESUME(bfv_client_l1r_0086e540_1, bfv_client_l1_body_0086e540, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086e540_2, bfv_client_l1_body_0086e540, 2);
@@ -444,7 +458,7 @@ void bfv_client_l1_body_0086e540(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086e543  call 0x403610 */
+    /* 0086e543  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e540_1;
@@ -466,7 +480,7 @@ R_1:
     if (zf) goto L_0086e573;
     /* 0086e551  mov ecx, esi */
     ecx = esi;
-    /* 0086e553  call 0x874870 */
+    /* 0086e553  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e540_2;
@@ -475,7 +489,7 @@ R_1:
 R_2:
     /* 0086e558  mov eax, 0x3f800000 */
     eax = 0x3f800000u;
-    /* 0086e55d  mov dword ptr [esi], 0xbd4284 */
+    /* 0086e55d  mov dword ptr [esi], 0xbd4284  ; vtable ColorEffect */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd4284u;
     /* 0086e563  mov dword ptr [esi + 8], eax */
@@ -520,8 +534,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0086e760  dice::meme::ColorEffect  (virtual method)
- * strings: "dice::meme::ColorEffect" */
+/* 0086e760  ColorEffect::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::ColorEffect
+ * strings: "dice::meme::ColorEffect"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0086e760, bfv_client_l1_body_0086e760);
 BFV_L1_RESUME(bfv_client_l1r_0086e760_1, bfv_client_l1_body_0086e760, 1);
 BFV_L1_RESUME(bfv_client_l1r_0086e760_2, bfv_client_l1_body_0086e760, 2);
@@ -552,13 +569,13 @@ void bfv_client_l1_body_0086e760(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 0086e775  push 0xbd45ac */
+    /* 0086e775  push 0xbd45ac  ; "dice::meme::ColorEffect" */
     t = 0xbd45acu;
     esp -= 4;
     M32(esp) = t;
-    /* 0086e77a  mov ecx, 0xdf6458 */
+    /* 0086e77a  mov ecx, 0xdf6458  ; g_RuntimeClass_ColorEffect */
     ecx = 0xdf6458u;
-    /* 0086e77f  call 0x875490 */
+    /* 0086e77f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e760_1;
@@ -569,10 +586,10 @@ R_1:
     t = 0xb3ac90u;
     esp -= 4;
     M32(esp) = t;
-    /* 0086e789  mov dword ptr [0xdf6458], 0xbd444c */
+    /* 0086e789  mov dword ptr [0xdf6458], 0xbd444c  ; g_RuntimeClass_ColorEffect */
     ea = (uint32_t)(0x00df6458u);
     M32(ea) = 0xbd444cu;
-    /* 0086e793  call 0x7c2cd2 */
+    /* 0086e793  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0086e760_2;
@@ -586,7 +603,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0086e79b:
-    /* 0086e79b  mov eax, 0xdf6458 */
+    /* 0086e79b  mov eax, 0xdf6458  ; g_RuntimeClass_ColorEffect */
     eax = 0xdf6458u;
     /* 0086e7a0  ret */
     c->eip = M32(esp);

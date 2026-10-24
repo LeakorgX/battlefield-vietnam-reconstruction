@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 0070a320  dice::ref2::geom::RaStreamDataEditable  (virtual method) */
+/* 0070a320  RaStreamDataEditable::vf7  (virtual method)
+ * overrides: RaStreamData::vf7  (8 classes implement it)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ * called by: StandardMeshTemplate::vf41
+ */
 BFV_L1_ENTRY(bfv_client_l1_0070a320, bfv_client_l1_body_0070a320);
 void bfv_client_l1_body_0070a320(struct bfv_cpu *c)
 {
@@ -28,7 +32,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0071e310  dice::ref2::geom::RaStreamDataEditable  (virtual method) */
+/* 0071e310  RaStreamDataEditable::vf5  (virtual method)
+ * overrides: RaStreamData::vf5  (8 classes implement it)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ */
 BFV_L1_ENTRY(bfv_client_l1_0071e310, bfv_client_l1_body_0071e310);
 void bfv_client_l1_body_0071e310(struct bfv_cpu *c)
 {
@@ -77,7 +84,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4c000  dice::ref2::geom::RaStreamDataEditable  (virtual method) */
+/* 00a4c000  RaStreamDataEditable::vf16  (virtual method)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4c000, bfv_client_l1_body_00a4c000);
 BFV_L1_RESUME(bfv_client_l1r_00a4c000_1, bfv_client_l1_body_00a4c000, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a4c000_2, bfv_client_l1_body_00a4c000, 2);
@@ -164,7 +173,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4c030  dice::ref2::geom::RaStreamDataEditable  (virtual method) */
+/* 00a4c030  RaStreamDataEditable::vf14  (virtual method)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ * called by: StandardMeshTemplate::vf41, BStandardMeshTemplate<IStandardMeshTemplate,AnimatedMesh>::vf41
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4c030, bfv_client_l1_body_00a4c030);
 BFV_L1_RESUME(bfv_client_l1r_00a4c030_1, bfv_client_l1_body_00a4c030, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a4c030_2, bfv_client_l1_body_00a4c030, 2);
@@ -266,7 +278,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4c070  dice::ref2::geom::RaStreamDataEditable  (virtual method) */
+/* 00a4c070  RaStreamDataEditable::vf17  (virtual method)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4c070, bfv_client_l1_body_00a4c070);
 void bfv_client_l1_body_00a4c070(struct bfv_cpu *c)
 {
@@ -296,7 +310,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4c080  dice::ref2::geom::RaStreamDataEditable  (virtual method) */
+/* 00a4c080  RaStreamDataEditable::vf12  (virtual method)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ * called by: RaStreamDataEditable::RaStreamDataEditable
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4c080, bfv_client_l1_body_00a4c080);
 BFV_L1_RESUME(bfv_client_l1r_00a4c080_1, bfv_client_l1_body_00a4c080, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a4c080_2, bfv_client_l1_body_00a4c080, 2);
@@ -325,7 +342,7 @@ void bfv_client_l1_body_00a4c080(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a4c081  mov esi, ecx */
     esi = ecx;
-    /* 00a4c083  call 0xa3fd30 */
+    /* 00a4c083  call 0xa3fd30  ; bfv_client_read_global_00a3fd30 */
     t = 0x00a3fd30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c080_1;
@@ -337,7 +354,7 @@ R_1:
     F_LOGIC(32, r);
     /* 00a4c08a  je 0xa4c0d6 */
     if (zf) goto L_00a4c0d6;
-    /* 00a4c08c  call 0xa3fd30 */
+    /* 00a4c08c  call 0xa3fd30  ; bfv_client_read_global_00a3fd30 */
     t = 0x00a3fd30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c080_2;
@@ -394,7 +411,7 @@ R_2:
     c->eip = t;
     goto out;
 R_3:
-    /* 00a4c0b1  call 0xa3fd30 */
+    /* 00a4c0b1  call 0xa3fd30  ; bfv_client_read_global_00a3fd30 */
     t = 0x00a3fd30u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c080_4;
@@ -467,7 +484,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4c0e0  dice::ref2::geom::RaStreamDataEditable  (virtual method) */
+/* 00a4c0e0  RaStreamDataEditable::vf13  (virtual method)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ * called by: StandardMeshTemplate::vf41, BStandardMeshTemplate<IStandardMeshTemplate,AnimatedMesh>::vf41
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4c0e0, bfv_client_l1_body_00a4c0e0);
 BFV_L1_RESUME(bfv_client_l1r_00a4c0e0_1, bfv_client_l1_body_00a4c0e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a4c0e0_2, bfv_client_l1_body_00a4c0e0, 2);
@@ -603,7 +623,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4c140  dice::ref2::geom::RaStreamDataEditable  (virtual method) */
+/* 00a4c140  RaStreamDataEditable::vf15  (virtual method)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ * called by: StandardMeshTemplate::vf41, sub_0071e410, geom_0071fa90, BStandardMeshTemplate<IStandardMeshTemplate,AnimatedMesh>::vf41
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4c140, bfv_client_l1_body_00a4c140);
 void bfv_client_l1_body_00a4c140(struct bfv_cpu *c)
 {
@@ -613,7 +636,7 @@ void bfv_client_l1_body_00a4c140(struct bfv_cpu *c)
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, n, ea;
     int64_t p;
-    /* 00a4c140  mov edx, dword ptr [esp + 0x14] */
+    /* 00a4c140  mov edx, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 00a4c144  mov eax, ecx */
@@ -652,7 +675,7 @@ void bfv_client_l1_body_00a4c140(struct bfv_cpu *c)
     /* 00a4c15f  mov edi, dword ptr [eax + 0x180] */
     ea = (uint32_t)(eax + 0x00000180u);
     edi = M32(ea);
-    /* 00a4c165  mov ebp, dword ptr [esp + 0x18] */
+    /* 00a4c165  mov ebp, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     ebp = M32(ea);
     /* 00a4c169  mov esi, dword ptr [eax + 0x184] */
@@ -683,14 +706,14 @@ void bfv_client_l1_body_00a4c140(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00a4c186  je 0xa4c1e8 */
     if (zf) goto L_00a4c1e8;
-    /* 00a4c188  mov esi, dword ptr [esp + 0x10] */
+    /* 00a4c188  mov esi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00a4c18c  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a4c18d  mov ebx, dword ptr [esp + 0x18] */
+    /* 00a4c18d  mov ebx, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     ebx = M32(ea);
     /* 00a4c191  imul edi, ebx */
@@ -755,10 +778,10 @@ void bfv_client_l1_body_00a4c140(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00a4c1b3  jle 0xa4c1e7 */
     if ((zf | (sf != of))) goto L_00a4c1e7;
-    /* 00a4c1b5  mov esi, dword ptr [esp + 0x20] */
+    /* 00a4c1b5  mov esi, dword ptr [esp + 0x20]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000020u);
     esi = M32(ea);
-    /* 00a4c1b9  lea esp, [esp] */
+    /* 00a4c1b9  lea esp, [esp]  ; &var_10 */
     esp = (uint32_t)(esp);
 L_00a4c1c0:
     /* 00a4c1c0  mov di, word ptr [esi + ecx*2] */
@@ -798,7 +821,7 @@ L_00a4c1c0:
     M16(ea) = LO16(edi);
     /* 00a4c1e1  jl 0xa4c1c0 */
     if ((sf != of)) goto L_00a4c1c0;
-    /* 00a4c1e3  mov ebp, dword ptr [esp + 0x1c] */
+    /* 00a4c1e3  mov ebp, dword ptr [esp + 0x1c]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ebp = M32(ea);
 L_00a4c1e7:
@@ -877,7 +900,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4c220  dice::ref2::geom::RaStreamDataEditable  (vtable store) */
+/* 00a4c220  RaStreamDataEditable::RaStreamDataEditable  (vtable store)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ * called by: StandardMeshTemplate::vf41, OverGrowthPatch::OverGrowthPatch, UnderGrowthPatch::UnderGrowthPatch, BStandardMeshTemplate<IStandardMeshTemplate,AnimatedMesh>::vf41
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4c220, bfv_client_l1_body_00a4c220);
 BFV_L1_RESUME(bfv_client_l1r_00a4c220_1, bfv_client_l1_body_00a4c220, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a4c220_2, bfv_client_l1_body_00a4c220, 2);
@@ -919,7 +945,7 @@ void bfv_client_l1_body_00a4c220(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a4c227  lea ecx, [esi + 0x20] */
     ecx = (uint32_t)(esi + 0x00000020u);
-    /* 00a4c22a  mov dword ptr [esi], 0xc02ad4 */
+    /* 00a4c22a  mov dword ptr [esi], 0xc02ad4  ; vtable RaStreamDataEditable */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc02ad4u;
     /* 00a4c230  mov dword ptr [esi + 4], ebx */
@@ -928,7 +954,7 @@ void bfv_client_l1_body_00a4c220(struct bfv_cpu *c)
     /* 00a4c233  mov dword ptr [esi + 8], ebx */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = ebx;
-    /* 00a4c236  call 0x731b10 */
+    /* 00a4c236  call 0x731b10  ; sub_00731b10 */
     t = 0x00731b10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c220_1;
@@ -961,20 +987,20 @@ R_1:
     /* 00a4c261  mov dword ptr [ecx + 0xc], ebx */
     ea = (uint32_t)(ecx + 0x0000000cu);
     M32(ea) = ebx;
-    /* 00a4c264  call 0x723f10 */
+    /* 00a4c264  call 0x723f10  ; PatchTerrain_00723f10 */
     t = 0x00723f10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c220_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00a4c269  mov eax, dword ptr [esp + 0x18] */
+    /* 00a4c269  mov eax, dword ptr [esp + 0x18]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
-    /* 00a4c26d  mov ecx, dword ptr [esp + 0x10] */
+    /* 00a4c26d  mov ecx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
-    /* 00a4c271  mov edx, dword ptr [esp + 0x14] */
+    /* 00a4c271  mov edx, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 00a4c275  mov byte ptr [esi + 0x168], bl */
@@ -1004,7 +1030,7 @@ R_2:
     /* 00a4c2a9  mov dword ptr [esi + 0x188], edx */
     ea = (uint32_t)(esi + 0x00000188u);
     M32(ea) = edx;
-    /* 00a4c2af  call 0x425320 */
+    /* 00a4c2af  call 0x425320  ; Matrix4::identity */
     t = 0x00425320u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c220_3;
@@ -1035,7 +1061,7 @@ R_3:
     M32(esp) = t;
     /* 00a4c2c1  mov ecx, edi */
     ecx = edi;
-    /* 00a4c2c3  call 0x686a40 */
+    /* 00a4c2c3  call 0x686a40  ; Projectile_00686a40 */
     t = 0x00686a40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c220_4;
@@ -1044,7 +1070,7 @@ R_3:
 R_4:
     /* 00a4c2c8  mov ecx, esi */
     ecx = esi;
-    /* 00a4c2ca  call 0xa4c080 */
+    /* 00a4c2ca  call 0xa4c080  ; RaStreamDataEditable::vf12 */
     t = 0x00a4c080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c220_5;
@@ -1076,7 +1102,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a4c2e0  dice::ref2::geom::RaStreamDataEditable  (virtual method) */
+/* 00a4c2e0  RaStreamDataEditable::deleting_dtor  (virtual method)
+ * overrides: RaStreamData::vf0  (8 classes implement it)
+ * class: dice::ref2::geom::RaStreamDataEditable
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a4c2e0, bfv_client_l1_body_00a4c2e0);
 BFV_L1_RESUME(bfv_client_l1r_00a4c2e0_1, bfv_client_l1_body_00a4c2e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a4c2e0_2, bfv_client_l1_body_00a4c2e0, 2);
@@ -1100,18 +1129,18 @@ void bfv_client_l1_body_00a4c2e0(struct bfv_cpu *c)
     esi = ecx;
     /* 00a4c2e3  lea ecx, [esi + 0xcc] */
     ecx = (uint32_t)(esi + 0x000000ccu);
-    /* 00a4c2e9  call 0x71c9a0 */
+    /* 00a4c2e9  call 0x71c9a0  ; RaStreamDataEditable::deleting_dtor_helper_0071c9a0 */
     t = 0x0071c9a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c2e0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00a4c2ee  test byte ptr [esp + 8], 1 */
+    /* 00a4c2ee  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 00a4c2f3  mov dword ptr [esi], 0xba5fb8 */
+    /* 00a4c2f3  mov dword ptr [esi], 0xba5fb8  ; vtable RaStreamData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba5fb8u;
     /* 00a4c2f9  je 0xa4c304 */
@@ -1120,7 +1149,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a4c2fc  call 0x403680 */
+    /* 00a4c2fc  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a4c2e0_2;

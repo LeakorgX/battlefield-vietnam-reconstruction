@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005ae390  dice::bf::ChangeKitEvent  (vtable store) */
+/* 005ae390  ChangeKitEvent::create  (vtable store)
+ * class: dice::bf::ChangeKitEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ae390, bfv_client_l1_body_005ae390);
 BFV_L1_RESUME(bfv_client_l1r_005ae390_1, bfv_client_l1_body_005ae390, 1);
 void bfv_client_l1_body_005ae390(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_005ae390(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ae390  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ae390  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ae396  mov eax, dword ptr [ecx] */
@@ -53,7 +55,7 @@ R_1:
     /* 005ae3a8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ae3af  mov dword ptr [eax], 0xb61dc0 */
+    /* 005ae3af  mov dword ptr [eax], 0xb61dc0  ; vtable ChangeKitEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb61dc0u;
     /* 005ae3b5  ret */
@@ -76,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ae3c0  dice::bf::ChangeKitEvent  (vtable store) */
+/* 005ae3c0  ChangeKitEvent::create  (vtable store)
+ * class: dice::bf::ChangeKitEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ae3c0, bfv_client_l1_body_005ae3c0);
 BFV_L1_RESUME(bfv_client_l1r_005ae3c0_1, bfv_client_l1_body_005ae3c0, 1);
 void bfv_client_l1_body_005ae3c0(struct bfv_cpu *c)
@@ -90,7 +94,7 @@ void bfv_client_l1_body_005ae3c0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ae3c0  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ae3c0  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ae3c6  mov eax, dword ptr [ecx] */
@@ -124,7 +128,7 @@ R_1:
     /* 005ae3d8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ae3df  mov dword ptr [eax], 0xb61dc0 */
+    /* 005ae3df  mov dword ptr [eax], 0xb61dc0  ; vtable ChangeKitEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb61dc0u;
     /* 005ae3e5  jmp 0x5ae3e9 */
@@ -135,7 +139,7 @@ L_005ae3e7:
     F_LOGIC(32, r);
     eax = r;
 L_005ae3e9:
-    /* 005ae3e9  mov ecx, dword ptr [esp + 4] */
+    /* 005ae3e9  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005ae3ed  push esi */

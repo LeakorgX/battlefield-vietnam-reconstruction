@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00741f20  dice::ref2::geom::StandardMeshShader  (virtual method) */
+/* 00741f20  StandardMeshShader::addRef  (virtual method)
+ * overrides: IBase::addRef  (395 classes implement it)
+ * class: dice::ref2::geom::StandardMeshShader
+ */
 BFV_L1_ENTRY(bfv_client_l1_00741f20, bfv_client_l1_body_00741f20);
 void bfv_client_l1_body_00741f20(struct bfv_cpu *c)
 {
@@ -36,7 +39,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00741f30  dice::ref2::geom::StandardMeshShader  (virtual method) */
+/* 00741f30  StandardMeshShader::release  (virtual method)
+ * overrides: IBase::release  (395 classes implement it)
+ * class: dice::ref2::geom::StandardMeshShader
+ */
 BFV_L1_ENTRY(bfv_client_l1_00741f30, bfv_client_l1_body_00741f30);
 BFV_L1_RESUME(bfv_client_l1r_00741f30_1, bfv_client_l1_body_00741f30, 1);
 void bfv_client_l1_body_00741f30(struct bfv_cpu *c)
@@ -81,7 +87,7 @@ void bfv_client_l1_body_00741f30(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 00741f4a  call dword ptr [eax] */
+    /* 00741f4a  call dword ptr [eax]  ; -> StandardMeshShader::vf0 = StandardMeshShader::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;
@@ -107,7 +113,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0095b910  dice::ref2::geom::StandardMeshShader  (virtual method) */
+/* 0095b910  StandardMeshShader::vf7  (virtual method)
+ * overrides: IShader::vf7  (4 classes implement it)
+ * class: dice::ref2::geom::StandardMeshShader
+ * called by: Cmd_AiStrategy_isAbortCondition::execute, Cmd_WeaponTemplate_healing::execute, BBMedicAssist::vf12, BBMedicAssist::evaluate, SAI_helper_009bd9c0, AIObjectArmament::vf3 (+2 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0095b910, bfv_client_l1_body_0095b910);
 void bfv_client_l1_body_0095b910(struct bfv_cpu *c)
 {

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009bc0f0  dice::bf::ai::EntryCarMoveTo  (vtable store) */
+/* 009bc0f0  EntryCarMoveTo::EntryCarMoveTo  (vtable store)
+ * class: dice::bf::ai::EntryCarMoveTo
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bc0f0, bfv_client_l1_body_009bc0f0);
 void bfv_client_l1_body_009bc0f0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_009bc0f0(struct bfv_cpu *c)
     uint32_t ea;
     /* 009bc0f0  mov eax, ecx */
     eax = ecx;
-    /* 009bc0f2  mov dword ptr [eax], 0xbf7aa4 */
+    /* 009bc0f2  mov dword ptr [eax], 0xbf7aa4  ; vtable EntryCarMoveTo */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf7aa4u;
     /* 009bc0f8  ret */
@@ -30,7 +33,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009bc100  dice::bf::ai::EntryCarMoveTo  (virtual method) */
+/* 009bc100  EntryCarMoveTo::execute  (virtual method)
+ * overrides: BAPEntry::execute  (46 classes implement it)
+ * class: dice::bf::ai::EntryCarMoveTo
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bc100, bfv_client_l1_body_009bc100);
 BFV_L1_RESUME(bfv_client_l1r_009bc100_1, bfv_client_l1_body_009bc100, 1);
 BFV_L1_RESUME(bfv_client_l1r_009bc100_2, bfv_client_l1_body_009bc100, 2);
@@ -95,7 +101,7 @@ void bfv_client_l1_body_009bc100(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009bc109  mov ecx, ebp */
     ecx = ebp;
-    /* 009bc10b  call 0x59ac60 */
+    /* 009bc10b  call 0x59ac60  ; AIPathfinding::vf5_get_50h */
     t = 0x0059ac60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bc100_1;
@@ -195,7 +201,7 @@ R_3:
     ecx = r;
     /* 009bc152  je 0x9bc16f */
     if (zf) goto L_009bc16f;
-    /* 009bc154  mov edx, dword ptr [0xe0cd58] */
+    /* 009bc154  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 009bc15a  mov edx, dword ptr [edx] */
@@ -290,7 +296,7 @@ R_4:
     ebx = eax;
     /* 009bc194  mov ecx, ebx */
     ecx = ebx;
-    /* 009bc196  call 0x97cdc0 */
+    /* 009bc196  call 0x97cdc0  ; AIObjectPhysical_0097cdc0 */
     t = 0x0097cdc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bc100_5;
@@ -321,7 +327,7 @@ R_6:
     M32(esp) = t;
     /* 009bc1a7  mov ecx, ebx */
     ecx = ebx;
-    /* 009bc1a9  call 0x97cd80 */
+    /* 009bc1a9  call 0x97cd80  ; AIObjectPhysical_0097cd80 */
     t = 0x0097cd80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bc100_7;
@@ -640,7 +646,7 @@ R_12:
     M32(esp) = t;
     /* 009bc2b6  mov dl, 1 */
     SET8L(edx, 0x1u);
-    /* 009bc2b8  call 0xa005e0 */
+    /* 009bc2b8  call 0xa005e0  ; ai_00a005e0 */
     t = 0x00a005e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bc100_13;
@@ -698,7 +704,7 @@ R_14:
     esp += 20;
     goto out;
 L_009bc2db:
-    /* 009bc2db  fld dword ptr [0xb4456c] */
+    /* 009bc2db  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009bc2e1  lea edx, [esp + 0x14] */
@@ -754,7 +760,7 @@ L_009bc2db:
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 009bc312  fstp st(0) */
     __asm__ volatile(".intel_syntax noprefix\n\tfstp st(0)\n\t.att_syntax prefix");
-    /* 009bc314  call 0xa00b20 */
+    /* 009bc314  call 0xa00b20  ; sub_00a00b20 */
     t = 0x00a00b20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bc100_15;
@@ -798,7 +804,7 @@ R_15:
     M32(esp) = t;
     /* 009bc335  mov ecx, ebp */
     ecx = ebp;
-    /* 009bc337  call 0x970550 */
+    /* 009bc337  call 0x970550  ; bfv_component_event2_scalar */
     t = 0x00970550u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bc100_16;
@@ -838,7 +844,7 @@ R_16:
     M32(esp) = t;
     /* 009bc350  mov ecx, esi */
     ecx = esi;
-    /* 009bc352  call 0x9ffc40 */
+    /* 009bc352  call 0x9ffc40  ; ai_009ffc40 */
     t = 0x009ffc40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bc100_17;

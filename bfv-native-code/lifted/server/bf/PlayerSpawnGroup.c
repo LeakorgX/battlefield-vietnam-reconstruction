@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0049d5d0  dice::bf::PlayerSpawnGroup  (vtable store) */
+/* 0049d5d0  PlayerSpawnGroup::create  (vtable store)
+ * class: dice::bf::PlayerSpawnGroup
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049d5d0, bfv_server_l1_body_0049d5d0);
 BFV_L1_RESUME(bfv_server_l1r_0049d5d0_1, bfv_server_l1_body_0049d5d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0049d5d0_2, bfv_server_l1_body_0049d5d0, 2);
@@ -37,7 +39,7 @@ void bfv_server_l1_body_0049d5d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0049d5d4  mov edi, ecx */
     edi = ecx;
-    /* 0049d5d6  call 0x403d80 */
+    /* 0049d5d6  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d5d0_1;
@@ -63,14 +65,14 @@ R_1:
     M32(esp) = t;
     /* 0049d5e6  mov ecx, esi */
     ecx = esi;
-    /* 0049d5e8  call 0x4d9170 */
+    /* 0049d5e8  call 0x4d9170  ; SubChallenge::SubChallenge */
     t = 0x004d9170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d5d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0049d5ed  mov dword ptr [esi], 0x81ad48 */
+    /* 0049d5ed  mov dword ptr [esi], 0x81ad48  ; vtable PlayerSpawnGroup */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81ad48u;
     /* 0049d5f3  jmp 0x49d5f7 */
@@ -81,7 +83,7 @@ L_0049d5f5:
     F_LOGIC(32, r);
     esi = r;
 L_0049d5f7:
-    /* 0049d5f7  mov ecx, dword ptr [esp + 0x14] */
+    /* 0049d5f7  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0049d5fb  test ecx, ecx */
@@ -99,7 +101,7 @@ L_0049d5f7:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0049d606  call 0x402690 */
+    /* 0049d606  call 0x402690  ; std::string::assign_cstr */
     t = 0x00402690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d5d0_3;
@@ -126,7 +128,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004dd590  dice::bf::PlayerSpawnGroup  (virtual method) */
+/* 004dd590  PlayerSpawnGroup::apply  (virtual method)
+ * overrides: SubChallenge::apply  (23 classes implement it)
+ * class: dice::bf::PlayerSpawnGroup
+ */
 BFV_L1_ENTRY(bfv_server_l1_004dd590, bfv_server_l1_body_004dd590);
 BFV_L1_RESUME(bfv_server_l1r_004dd590_1, bfv_server_l1_body_004dd590, 1);
 BFV_L1_RESUME(bfv_server_l1r_004dd590_2, bfv_server_l1_body_004dd590, 2);
@@ -157,7 +162,7 @@ void bfv_server_l1_body_004dd590(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004dd597  call 0x4ba840 */
+    /* 004dd597  call 0x4ba840  ; bfv_server_read_global_004ba840 */
     t = 0x004ba840u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dd590_1;
@@ -166,7 +171,7 @@ void bfv_server_l1_body_004dd590(struct bfv_cpu *c)
 R_1:
     /* 004dd59c  mov ecx, eax */
     ecx = eax;
-    /* 004dd59e  call 0x4bb210 */
+    /* 004dd59e  call 0x4bb210  ; bf_004bb210 */
     t = 0x004bb210u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dd590_2;
@@ -189,7 +194,7 @@ R_2:
     /* 004dd5aa  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 004dd5ad  call 0x4dd470 */
+    /* 004dd5ad  call 0x4dd470  ; bf_004dd470 */
     t = 0x004dd470u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dd590_3;

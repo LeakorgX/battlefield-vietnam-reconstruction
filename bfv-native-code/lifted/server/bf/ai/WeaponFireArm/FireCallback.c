@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0079e960  dice::bf::ai::WeaponFireArm::FireCallback  (virtual method) */
+/* 0079e960  FireCallback::vf0  (virtual method)
+ * class: dice::bf::ai::WeaponFireArm::FireCallback
+ */
 BFV_L1_ENTRY(bfv_server_l1_0079e960, bfv_server_l1_body_0079e960);
 void bfv_server_l1_body_0079e960(struct bfv_cpu *c)
 {

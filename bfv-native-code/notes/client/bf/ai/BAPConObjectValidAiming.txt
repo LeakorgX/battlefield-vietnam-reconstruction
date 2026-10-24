@@ -1,0 +1,8 @@
+## file
+Plan condition: true when the bot can produce a valid aim solution at an object and the aim lies inside the vehicle control limits.
+
+## 009f7320
+Aim solver shared by evaluate. If cached results are present (this+0x90 and this+0x94) it copies the cached vector and flag. Otherwise it resolves the bot's own object and its weapon interface, the target handle at this+8, and repeats the BAPWrapperAiming computation (projectile speed = muzzle speed * IAIEnvironment::vf56 * 0.9, relative position and velocity, Aimer_00a02a70 then Aimer_00a02db0 with lead time AI time + 0.1). Writes the aim vector to the output and returns whether a solution exists.
+
+## 009f7660
+Gets an aim vector from 009f7320; false when there is none. The object for the limit check is the one in this+0xc, or the bot's own object when this+0xc is -1. It reads the control info of that object (slot 0xa0, control 5) and returns AIObjectControlInfo_009be6f0 for the aim vector.

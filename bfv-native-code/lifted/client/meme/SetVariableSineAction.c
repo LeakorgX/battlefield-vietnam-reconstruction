@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00871750  dice::meme::SetVariableSineAction  (virtual method)
- * strings: "Speed", "Braking distance" */
+/* 00871750  SetVariableSineAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::SetVariableSineAction
+ * strings: "Speed", "Braking distance"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871750, bfv_client_l1_body_00871750);
 BFV_L1_RESUME(bfv_client_l1r_00871750_1, bfv_client_l1_body_00871750, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871750_2, bfv_client_l1_body_00871750, 2);
@@ -24,14 +27,14 @@ void bfv_client_l1_body_00871750(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00871750  mov eax, dword ptr [esp + 4] */
+    /* 00871750  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00871754  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00871755  mov esi, dword ptr [esp + 0xc] */
+    /* 00871755  mov esi, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 00871759  push edi */
@@ -48,7 +51,7 @@ void bfv_client_l1_body_00871750(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0087175c  mov edi, ecx */
     edi = ecx;
-    /* 0087175e  call 0x8713f0 */
+    /* 0087175e  call 0x8713f0  ; SetStringAction::serialize */
     t = 0x008713f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871750_1;
@@ -63,11 +66,11 @@ R_1:
     /* 00871767  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00871769  push 0xb7751c */
+    /* 00871769  push 0xb7751c  ; "Speed" */
     t = 0xb7751cu;
     esp -= 4;
     M32(esp) = t;
-    /* 0087176e  lea eax, [edi + 0x10] */
+    /* 0087176e  lea eax, [edi + 0x10]  ; field Speed (serialized) */
     eax = (uint32_t)(edi + 0x00000010u);
     /* 00871771  push eax */
     t = eax;
@@ -109,7 +112,7 @@ L_00871782:
     /* 00871782  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00871784  push 0xbd5a50 */
+    /* 00871784  push 0xbd5a50  ; "Braking distance" */
     t = 0xbd5a50u;
     esp -= 4;
     M32(esp) = t;
@@ -157,7 +160,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008717a0  dice::meme::SetVariableSineAction  (virtual method) */
+/* 008717a0  SetVariableSineAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::SetVariableSineAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_008717a0, bfv_client_l1_body_008717a0);
 BFV_L1_RESUME(bfv_client_l1r_008717a0_1, bfv_client_l1_body_008717a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008717a0_2, bfv_client_l1_body_008717a0, 2);
@@ -294,15 +300,15 @@ R_2:
     /* 00871806  fdiv dword ptr [esi + 0x14] */
     ea = (uint32_t)(esi + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00871809  fmul dword ptr [0xbd5a64] */
+    /* 00871809  fmul dword ptr [0xbd5a64]  ; = 1.57075f */
     ea = (uint32_t)(0x00bd5a64u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0087180f  fsubr dword ptr [0xbd5a64] */
+    /* 0087180f  fsubr dword ptr [0xbd5a64]  ; = 1.57075f */
     ea = (uint32_t)(0x00bd5a64u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsubr dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00871815  fcos */
     __asm__ volatile(".intel_syntax noprefix\n\tfcos\n\t.att_syntax prefix");
-    /* 00871817  fmul dword ptr [esi + 0x10] */
+    /* 00871817  fmul dword ptr [esi + 0x10]  ; field Speed */
     ea = (uint32_t)(esi + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0087181a  fmul dword ptr [esp + 8] */
@@ -316,7 +322,7 @@ L_00871820:
     /* 00871822  fld dword ptr [esp + 8] */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00871826  fmul dword ptr [esi + 0x10] */
+    /* 00871826  fmul dword ptr [esi + 0x10]  ; field Speed */
     ea = (uint32_t)(esi + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_00871829:
@@ -412,15 +418,15 @@ L_00871852:
     /* 0087186b  fdiv dword ptr [esi + 0x14] */
     ea = (uint32_t)(esi + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0087186e  fmul dword ptr [0xbd5a64] */
+    /* 0087186e  fmul dword ptr [0xbd5a64]  ; = 1.57075f */
     ea = (uint32_t)(0x00bd5a64u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00871874  fsubr dword ptr [0xbd5a64] */
+    /* 00871874  fsubr dword ptr [0xbd5a64]  ; = 1.57075f */
     ea = (uint32_t)(0x00bd5a64u);
     __asm__ volatile(".intel_syntax noprefix\n\tfsubr dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0087187a  fcos */
     __asm__ volatile(".intel_syntax noprefix\n\tfcos\n\t.att_syntax prefix");
-    /* 0087187c  fmul dword ptr [esi + 0x10] */
+    /* 0087187c  fmul dword ptr [esi + 0x10]  ; field Speed */
     ea = (uint32_t)(esi + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0087187f  fmul dword ptr [esp + 8] */
@@ -434,7 +440,7 @@ L_00871885:
     /* 00871887  fld dword ptr [esp + 8] */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0087188b  fmul dword ptr [esi + 0x10] */
+    /* 0087188b  fmul dword ptr [esi + 0x10]  ; field Speed */
     ea = (uint32_t)(esi + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_0087188e:
@@ -490,7 +496,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00871be0  dice::meme::SetVariableSineAction  (vtable store) */
+/* 00871be0  SetVariableSineAction::SetVariableSineAction  (vtable store)
+ * class: dice::meme::SetVariableSineAction
+ * called by: SetVariableSinusAction::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871be0, bfv_client_l1_body_00871be0);
 BFV_L1_RESUME(bfv_client_l1r_00871be0_1, bfv_client_l1_body_00871be0, 1);
 void bfv_client_l1_body_00871be0(struct bfv_cpu *c)
@@ -510,7 +519,7 @@ void bfv_client_l1_body_00871be0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00871be1  mov esi, ecx */
     esi = ecx;
-    /* 00871be3  call 0x874870 */
+    /* 00871be3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871be0_1;
@@ -530,10 +539,10 @@ R_1:
     /* 00871bf0  mov dword ptr [esi + 0x14], eax */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = eax;
-    /* 00871bf3  mov dword ptr [esi + 0x10], 0x42c80000 */
+    /* 00871bf3  mov dword ptr [esi + 0x10], 0x42c80000  ; field Speed, 100.0f */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = 0x42c80000u;
-    /* 00871bfa  mov dword ptr [esi], 0xbd5c94 */
+    /* 00871bfa  mov dword ptr [esi], 0xbd5c94  ; vtable SetVariableSineAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd5c94u;
     /* 00871c00  mov eax, esi */
@@ -553,7 +562,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00871c90  dice::meme::SetVariableSineAction  (vtable store) */
+/* 00871c90  SetVariableSineAction::create  (vtable store)
+ * class: dice::meme::SetVariableSineAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871c90, bfv_client_l1_body_00871c90);
 BFV_L1_RESUME(bfv_client_l1r_00871c90_1, bfv_client_l1_body_00871c90, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871c90_2, bfv_client_l1_body_00871c90, 2);
@@ -577,7 +588,7 @@ void bfv_client_l1_body_00871c90(struct bfv_cpu *c)
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871c93  call 0x403610 */
+    /* 00871c93  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871c90_1;
@@ -599,7 +610,7 @@ R_1:
     if (zf) goto L_00871cce;
     /* 00871ca1  mov ecx, esi */
     ecx = esi;
-    /* 00871ca3  call 0x874870 */
+    /* 00871ca3  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871c90_2;
@@ -612,10 +623,10 @@ R_2:
     /* 00871caf  mov dword ptr [esi + 0xc], 0 */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = 0x0u;
-    /* 00871cb6  mov dword ptr [esi + 0x10], 0x42c80000 */
+    /* 00871cb6  mov dword ptr [esi + 0x10], 0x42c80000  ; 100.0f */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = 0x42c80000u;
-    /* 00871cbd  mov dword ptr [esi], 0xbd5c94 */
+    /* 00871cbd  mov dword ptr [esi], 0xbd5c94  ; vtable SetVariableSineAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd5c94u;
     /* 00871cc3  mov dword ptr [esi + 0x14], 0 */
@@ -651,8 +662,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00871eb0  dice::meme::SetVariableSineAction  (virtual method)
- * strings: "dice::meme::SetVariableSineAction" */
+/* 00871eb0  SetVariableSineAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::SetVariableSineAction
+ * strings: "dice::meme::SetVariableSineAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871eb0, bfv_client_l1_body_00871eb0);
 BFV_L1_RESUME(bfv_client_l1r_00871eb0_1, bfv_client_l1_body_00871eb0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871eb0_2, bfv_client_l1_body_00871eb0, 2);
@@ -683,13 +697,13 @@ void bfv_client_l1_body_00871eb0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00871ec5  push 0xbd5dd4 */
+    /* 00871ec5  push 0xbd5dd4  ; "dice::meme::SetVariableSineAction" */
     t = 0xbd5dd4u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871eca  mov ecx, 0xdf6730 */
+    /* 00871eca  mov ecx, 0xdf6730  ; g_RuntimeClass_SetVariableSineAction */
     ecx = 0xdf6730u;
-    /* 00871ecf  call 0x875490 */
+    /* 00871ecf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871eb0_1;
@@ -700,10 +714,10 @@ R_1:
     t = 0xb3ae40u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871ed9  mov dword ptr [0xdf6730], 0xbd5b84 */
+    /* 00871ed9  mov dword ptr [0xdf6730], 0xbd5b84  ; g_RuntimeClass_SetVariableSineAction */
     ea = (uint32_t)(0x00df6730u);
     M32(ea) = 0xbd5b84u;
-    /* 00871ee3  call 0x7c2cd2 */
+    /* 00871ee3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871eb0_2;
@@ -717,7 +731,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00871eeb:
-    /* 00871eeb  mov eax, 0xdf6730 */
+    /* 00871eeb  mov eax, 0xdf6730  ; g_RuntimeClass_SetVariableSineAction */
     eax = 0xdf6730u;
     /* 00871ef0  ret */
     c->eip = M32(esp);

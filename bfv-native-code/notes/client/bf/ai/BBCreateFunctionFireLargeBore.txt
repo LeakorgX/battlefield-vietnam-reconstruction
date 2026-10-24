@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBFireLargeBore behaviour (large-calibre guns).
+
+## 00940bb0
+vf0: picks the parameter object by type name: "BBPFire2d" (0x20 bytes) or "BBPFireInfantery" (0x24 bytes); null when neither matches. Allocates a 0x48-byte BBFireLargeBore with a copy of the passed-in list, then frees the passed-in list.

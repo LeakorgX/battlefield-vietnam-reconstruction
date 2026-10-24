@@ -1,0 +1,8 @@
+## file
+Plan action that adds a value to a counter in the bot's info entry for an object.
+
+## 009f6d00
+Destructor: restores the base vtables, counts the destruction in g_bapaDestroyedCount and returns the object to its memory pool when bit 0 of the flag argument is set.
+
+## 009f6d40
+When this+0x18 is 0: looks up the bot's info entry (slot 0x88) for the handle held in the object at this+0x20 (+8) and adds the value held in the object at this+0x1c (+8) to the entry's +0x2c. Always finishes at once: flag = 1, done = 1, returns 1.

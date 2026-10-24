@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 00589720  dice::ref2::world::EntryPointTemplate  (vtable store) */
+/* 00589720  EntryPointTemplate::EntryPointTemplate  (vtable store)
+ * class: dice::ref2::world::EntryPointTemplate
+ * also entered at 00589750: EntryPointTemplate::vf4
+ * called by: ObjectCreatorWrapper<EntryPointTemplate>::create
+ */
 BFV_L1_ENTRY(bfv_server_l1_00589720, bfv_server_l1_body_00589720);
 BFV_L1_RESUME(bfv_server_l1r_00589720_1, bfv_server_l1_body_00589720, 1);
 void bfv_server_l1_body_00589720(struct bfv_cpu *c)
@@ -25,20 +29,20 @@ void bfv_server_l1_body_00589720(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00589721  mov esi, ecx */
     esi = ecx;
-    /* 00589723  call 0x56aae0 */
+    /* 00589723  call 0x56aae0  ; SimpleObjectTemplate::SimpleObjectTemplate */
     t = 0x0056aae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00589720_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00589728  mov dword ptr [esi], 0x839c44 */
+    /* 00589728  mov dword ptr [esi], 0x839c44  ; vtable EntryPointTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x839c44u;
     /* 0058972e  mov dword ptr [esi + 0x74], 0x839c34 */
     ea = (uint32_t)(esi + 0x00000074u);
     M32(ea) = 0x839c34u;
-    /* 00589735  mov dword ptr [esi + 0x190], 0x40400000 */
+    /* 00589735  mov dword ptr [esi + 0x190], 0x40400000  ; field ObjectTemplate.setEntryRadius, 3.0f */
     ea = (uint32_t)(esi + 0x00000190u);
     M32(ea) = 0x40400000u;
     /* 0058973f  mov eax, esi */
@@ -58,7 +62,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00589760  dice::ref2::world::EntryPointTemplate  (virtual method) */
+/* 00589760  EntryPointTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::EntryPointTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00589760, bfv_server_l1_body_00589760);
 void bfv_server_l1_body_00589760(struct bfv_cpu *c)
 {
@@ -67,12 +74,12 @@ void bfv_server_l1_body_00589760(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 00589760  mov edx, dword ptr [0x820740] */
+    /* 00589760  mov edx, dword ptr [0x820740]  ; EntryPointTemplate::classID */
     ea = (uint32_t)(0x00820740u);
     edx = M32(ea);
     /* 00589766  mov eax, ecx */
     eax = ecx;
-    /* 00589768  mov ecx, dword ptr [esp + 4] */
+    /* 00589768  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0058976c  cmp ecx, edx */
@@ -82,7 +89,7 @@ void bfv_server_l1_body_00589760(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0058976e  je 0x58978a */
     if (zf) goto L_0058978a;
-    /* 00589770  cmp ecx, dword ptr [0x820758] */
+    /* 00589770  cmp ecx, dword ptr [0x820758]  ; SimpleObjectTemplate::classID */
     ea = (uint32_t)(0x00820758u);
     a = ecx;
     b = M32(ea);
@@ -94,7 +101,7 @@ void bfv_server_l1_body_00589760(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00589779  mov esi, dword ptr [0x820720] */
+    /* 00589779  mov esi, dword ptr [0x820720]  ; ObjectTemplate::classID */
     ea = (uint32_t)(0x00820720u);
     esi = M32(ea);
     /* 0058977f  xor edx, edx */
@@ -133,7 +140,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00589870  dice::ref2::world::EntryPointTemplate  (virtual method) */
+/* 00589870  EntryPointTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::EntryPointTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_00589870, bfv_server_l1_body_00589870);
 BFV_L1_RESUME(bfv_server_l1r_00589870_1, bfv_server_l1_body_00589870, 1);
 BFV_L1_RESUME(bfv_server_l1r_00589870_2, bfv_server_l1_body_00589870, 2);
@@ -159,7 +169,7 @@ void bfv_server_l1_body_00589870(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00589876  mov esi, ecx */
     esi = ecx;
-    /* 00589878  call 0x403d80 */
+    /* 00589878  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00589870_1;
@@ -183,7 +193,7 @@ R_1:
     M32(esp) = t;
     /* 00589885  mov ecx, eax */
     ecx = eax;
-    /* 00589887  call 0x589790 */
+    /* 00589887  call 0x589790  ; EntryPoint::EntryPoint */
     t = 0x00589790u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00589870_2;

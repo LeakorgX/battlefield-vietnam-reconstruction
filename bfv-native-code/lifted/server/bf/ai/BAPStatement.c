@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0073e290  dice::bf::ai::BAPStatement  (virtual method) */
+/* 0073e290  BAPStatement::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPStatement
+ */
 BFV_L1_ENTRY(bfv_server_l1_0073e290, bfv_server_l1_body_0073e290);
 BFV_L1_RESUME(bfv_server_l1r_0073e290_1, bfv_server_l1_body_0073e290, 1);
 void bfv_server_l1_body_0073e290(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_0073e290(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0073e290  mov al, byte ptr [esp + 4] */
+    /* 0073e290  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 0073e294  push esi */
@@ -28,10 +31,10 @@ void bfv_server_l1_body_0073e290(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0073e295  mov esi, ecx */
     esi = ecx;
-    /* 0073e297  mov dword ptr [esi], 0x874498 */
+    /* 0073e297  mov dword ptr [esi], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874498u;
-    /* 0073e29d  mov ecx, dword ptr [0xc32a44] */
+    /* 0073e29d  mov ecx, dword ptr [0xc32a44]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     ecx = M32(ea);
     /* 0073e2a3  inc ecx */
@@ -42,10 +45,10 @@ void bfv_server_l1_body_0073e290(struct bfv_cpu *c)
     /* 0073e2a4  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 0073e2a6  mov dword ptr [0xc32a44], ecx */
+    /* 0073e2a6  mov dword ptr [0xc32a44], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     M32(ea) = ecx;
-    /* 0073e2ac  mov dword ptr [esi], 0x87448c */
+    /* 0073e2ac  mov dword ptr [esi], 0x87448c  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87448cu;
     /* 0073e2b2  je 0x73e2bd */
@@ -54,7 +57,7 @@ void bfv_server_l1_body_0073e290(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0073e2b5  call 0x403df0 */
+    /* 0073e2b5  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0073e290_1;
@@ -85,7 +88,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007a2290  dice::bf::ai::BAPStatement  (virtual method) */
+/* 007a2290  BAPStatement::vf2  (virtual method)
+ * class: dice::bf::ai::BAPStatement
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a2290, bfv_server_l1_body_007a2290);
 void bfv_server_l1_body_007a2290(struct bfv_cpu *c)
 {
@@ -111,7 +116,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007a9000  dice::bf::ai::BAPStatement  (virtual method) */
+/* 007a9000  BAPStatement::vf5  (virtual method)
+ * class: dice::bf::ai::BAPStatement
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9000, bfv_server_l1_body_007a9000);
 BFV_L1_RESUME(bfv_server_l1r_007a9000_1, bfv_server_l1_body_007a9000, 1);
 void bfv_server_l1_body_007a9000(struct bfv_cpu *c)
@@ -125,7 +132,7 @@ void bfv_server_l1_body_007a9000(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a9000  mov ecx, dword ptr [esp + 8] */
+    /* 007a9000  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 007a9004  push 0xf */
@@ -136,7 +143,7 @@ void bfv_server_l1_body_007a9000(struct bfv_cpu *c)
     t = 0x879db0u;
     esp -= 4;
     M32(esp) = t;
-    /* 007a900b  call 0x402020 */
+    /* 007a900b  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9000_1;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00982950  dice::bf::ai::AITemplateCover  (vtable store) */
+/* 00982950  AITemplateCover::AITemplateCover  (vtable store)
+ * class: dice::bf::ai::AITemplateCover
+ * called by: AITemplatePlugInManager::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_00982950, bfv_client_l1_body_00982950);
 void bfv_client_l1_body_00982950(struct bfv_cpu *c)
 {
@@ -20,13 +23,13 @@ void bfv_client_l1_body_00982950(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 00982954  mov dword ptr [eax], 0xbf574c */
+    /* 00982954  mov dword ptr [eax], 0xbf574c  ; vtable AITemplateCover */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf574cu;
     /* 0098295a  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 0098295d  mov dword ptr [eax + 8], 0x3f800000 */
+    /* 0098295d  mov dword ptr [eax + 8], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x3f800000u;
     /* 00982964  mov dword ptr [eax + 0xc], ecx */
@@ -58,7 +61,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00982980  (between same file) */
+/* 00982980  AITemplateCover::~AITemplateCover  (between same file)
+ * class: dice::bf::ai::AITemplateCover
+ * also entered at 009829f0: AITemplateCover::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00982980, bfv_client_l1_body_00982980);
 BFV_L1_RESUME(bfv_client_l1r_00982980_1, bfv_client_l1_body_00982980, 1);
 BFV_L1_RESUME(bfv_client_l1r_00982980_2, bfv_client_l1_body_00982980, 2);
@@ -102,14 +108,14 @@ void bfv_client_l1_body_00982980(struct bfv_cpu *c)
     /* 00982987  test edi, edi */
     r = (edi & edi) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 00982989  mov dword ptr [esi], 0xbf574c */
+    /* 00982989  mov dword ptr [esi], 0xbf574c  ; vtable AITemplateCover */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf574cu;
     /* 0098298f  je 0x9829a1 */
     if (zf) goto L_009829a1;
     /* 00982991  mov ecx, edi */
     ecx = edi;
-    /* 00982993  call 0x9ed520 */
+    /* 00982993  call 0x9ed520  ; std::vector::_Tidy */
     t = 0x009ed520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982980_1;
@@ -120,7 +126,7 @@ R_1:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00982999  call 0x403680 */
+    /* 00982999  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982980_2;
@@ -149,7 +155,7 @@ L_009829a1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009829ab  call 0x403680 */
+    /* 009829ab  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982980_3;
@@ -163,7 +169,7 @@ R_3:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009829b4  call 0x403680 */
+    /* 009829b4  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982980_4;
@@ -177,7 +183,7 @@ R_4:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 009829bd  call 0x403680 */
+    /* 009829bd  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982980_5;
@@ -191,7 +197,7 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009829c6  call 0x403680 */
+    /* 009829c6  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982980_6;
@@ -202,7 +208,7 @@ R_6:
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 009829cc  call 0x403680 */
+    /* 009829cc  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982980_7;
@@ -228,7 +234,7 @@ L_009829d4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009829dc  call 0x403680 */
+    /* 009829dc  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982980_8;
@@ -246,7 +252,7 @@ L_009829e4:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 009829e5  mov dword ptr [esi], 0xbf35bc */
+    /* 009829e5  mov dword ptr [esi], 0xbf35bc  ; vtable AITemplatePlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf35bcu;
     /* 009829eb  pop esi */
@@ -264,7 +270,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00982a10  (between same file) */
+/* 00982a10  AITemplateCover_00982a10  (between same file)
+ * called by: ai_a1_aim_00982aa0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00982a10, bfv_client_l1_body_00982a10);
 BFV_L1_RESUME(bfv_client_l1r_00982a10_1, bfv_client_l1_body_00982a10, 1);
 BFV_L1_RESUME(bfv_client_l1r_00982a10_2, bfv_client_l1_body_00982a10, 2);
@@ -296,7 +304,7 @@ void bfv_client_l1_body_00982a10(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00982a13  mov edi, dword ptr [esp + 0x10] */
+    /* 00982a13  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 00982a17  lea ebx, [edi*4] */
@@ -307,7 +315,7 @@ void bfv_client_l1_body_00982a10(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00982a1f  mov esi, ecx */
     esi = ecx;
-    /* 00982a21  call 0x403610 */
+    /* 00982a21  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982a10_1;
@@ -321,7 +329,7 @@ R_1:
     /* 00982a27  mov dword ptr [esi], eax */
     ea = (uint32_t)(esi);
     M32(ea) = eax;
-    /* 00982a29  call 0x403610 */
+    /* 00982a29  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982a10_2;
@@ -347,7 +355,7 @@ R_2:
     /* 00982a35  mov dword ptr [esi + 4], eax */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = eax;
-    /* 00982a38  call 0x403610 */
+    /* 00982a38  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982a10_3;
@@ -361,7 +369,7 @@ R_3:
     /* 00982a3e  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 00982a41  call 0x403610 */
+    /* 00982a41  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982a10_4;
@@ -402,7 +410,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00982a60  dice::bf::ai::AITemplateCover  (virtual method) */
+/* 00982a60  AITemplateCover::createObjectPlugIn  (virtual method)
+ * overrides: AITemplatePlugIn::createObjectPlugIn  (8 classes implement it)
+ * class: dice::bf::ai::AITemplateCover
+ */
 BFV_L1_ENTRY(bfv_client_l1_00982a60, bfv_client_l1_body_00982a60);
 BFV_L1_RESUME(bfv_client_l1r_00982a60_1, bfv_client_l1_body_00982a60, 1);
 BFV_L1_RESUME(bfv_client_l1r_00982a60_2, bfv_client_l1_body_00982a60, 2);
@@ -436,9 +447,9 @@ void bfv_client_l1_body_00982a60(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00982a6c  mov ecx, 0xe0fc38 */
+    /* 00982a6c  mov ecx, 0xe0fc38  ; g_MemoryPoolNull_AIObjectCover */
     ecx = 0xe0fc38u;
-    /* 00982a71  call 0x412ee0 */
+    /* 00982a71  call 0x412ee0  ; MemoryPool::alloc_debug */
     t = 0x00412ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982a60_1;
@@ -450,7 +461,7 @@ R_1:
     F_LOGIC(32, r);
     /* 00982a78  je 0x982a8b */
     if (zf) goto L_00982a8b;
-    /* 00982a7a  mov ecx, dword ptr [esp + 8] */
+    /* 00982a7a  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00982a7e  push esi */
@@ -463,7 +474,7 @@ R_1:
     M32(esp) = t;
     /* 00982a80  mov ecx, eax */
     ecx = eax;
-    /* 00982a82  call 0x9ed380 */
+    /* 00982a82  call 0x9ed380  ; AIObjectCover::AIObjectCover */
     t = 0x009ed380u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00982a60_2;

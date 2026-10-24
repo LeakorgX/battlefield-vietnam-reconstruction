@@ -1,0 +1,5 @@
+## file
+Behaviour that scores moving to a fixed point.
+
+## 00983320
+evaluate: when usable it builds a weight as (row 0x5d + 1) * (1 - row 0x58) * (1 - row 0x52) from the AISettings grid for this bot, multiplies it by a value from the target's control info and stores it per bot. When the result is 0 or less it clears the per-bot flag and returns 0. Otherwise it records the flag and the target. Always ends by calling bot slot 0x15c and returning 0.

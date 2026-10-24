@@ -1,0 +1,11 @@
+## file
+Behaviour that scores a medic going to help another soldier.
+
+## 00989d20
+vf12: walks a list (from slot 0x1c of the argument) calling StandardMeshShader_vf7 on each entry; returns early on a hit.
+
+## 00989e00
+Copy constructor for a vector of 4-byte entries: allocates the same capacity (std_vector__Xlen when too large) and copies the entries.
+
+## 00989f80
+evaluate: when the behaviour is not usable, or the bot's current target is gone, clears the per-bot state and returns the stored weight. Reads an IAISettings value and the bot's vehicle and position. When the IAIEnvironment vf44 value minus the vf38 value is above 0.75 it marks the bot, resets its handle to -1 and returns 0. Otherwise it reads control 2, copies the list of soldiers (00989e00) and scores each one, using the squared value at +0x2c of the entry as a range.

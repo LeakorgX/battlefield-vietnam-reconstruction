@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006ff4d0  dice::bf::ai::DummyObject  (virtual method) */
+/* 006ff4d0  DummyObject::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::bf::ai::DummyObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_006ff4d0, bfv_client_l1_body_006ff4d0);
 void bfv_client_l1_body_006ff4d0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_006ff4d0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 006ff4d0  mov edx, dword ptr [0xb42718] */
+    /* 006ff4d0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 006ff4d6  mov eax, ecx */
     eax = ecx;
-    /* 006ff4d8  mov ecx, dword ptr [esp + 4] */
+    /* 006ff4d8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006ff4dc  cmp ecx, edx */
@@ -33,7 +36,7 @@ void bfv_client_l1_body_006ff4d0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006ff4e1  mov esi, dword ptr [0xb77da0] */
+    /* 006ff4e1  mov esi, dword ptr [0xb77da0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00b77da0u);
     esi = M32(ea);
     /* 006ff4e7  xor edx, edx */

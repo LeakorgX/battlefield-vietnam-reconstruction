@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0049d450  dice::bf::PlayerControlPoint  (vtable store) */
+/* 0049d450  PlayerControlPoint::create  (vtable store)
+ * class: dice::bf::PlayerControlPoint
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049d450, bfv_server_l1_body_0049d450);
 BFV_L1_RESUME(bfv_server_l1r_0049d450_1, bfv_server_l1_body_0049d450, 1);
 BFV_L1_RESUME(bfv_server_l1r_0049d450_2, bfv_server_l1_body_0049d450, 2);
@@ -37,7 +39,7 @@ void bfv_server_l1_body_0049d450(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0049d454  mov edi, ecx */
     edi = ecx;
-    /* 0049d456  call 0x403d80 */
+    /* 0049d456  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d450_1;
@@ -59,14 +61,14 @@ R_1:
     if (zf) goto L_0049d473;
     /* 0049d464  mov ecx, esi */
     ecx = esi;
-    /* 0049d466  call 0x49d490 */
+    /* 0049d466  call 0x49d490  ; TSubChallenge<string>::TSubChallenge */
     t = 0x0049d490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d450_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0049d46b  mov dword ptr [esi], 0x81ace4 */
+    /* 0049d46b  mov dword ptr [esi], 0x81ace4  ; vtable PlayerControlPoint */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81ace4u;
     /* 0049d471  jmp 0x49d475 */
@@ -77,7 +79,7 @@ L_0049d473:
     F_LOGIC(32, r);
     esi = r;
 L_0049d475:
-    /* 0049d475  mov ecx, dword ptr [esp + 0x14] */
+    /* 0049d475  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0049d479  test ecx, ecx */
@@ -95,7 +97,7 @@ L_0049d475:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0049d484  call 0x402690 */
+    /* 0049d484  call 0x402690  ; std::string::assign_cstr */
     t = 0x00402690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d450_3;
@@ -122,7 +124,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0049d490  (between same file) */
+/* 0049d490  TSubChallenge<string>::TSubChallenge  (between same file)
+ * called by: PlayerControlPoint::create, NoVehicleRespawning::create, BotControlPoint::create, ControlPointCapture::create, ControlPointPossession::create, MinWeaponKill::create (+5 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049d490, bfv_server_l1_body_0049d490);
 BFV_L1_RESUME(bfv_server_l1r_0049d490_1, bfv_server_l1_body_0049d490, 1);
 void bfv_server_l1_body_0049d490(struct bfv_cpu *c)
@@ -146,7 +150,7 @@ void bfv_server_l1_body_0049d490(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0049d493  mov esi, ecx */
     esi = ecx;
-    /* 0049d495  call 0x4d9170 */
+    /* 0049d495  call 0x4d9170  ; SubChallenge::SubChallenge */
     t = 0x004d9170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d490_1;
@@ -182,7 +186,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0049d4c0  dice::bf::PlayerControlPoint  (virtual method) */
+/* 0049d4c0  PlayerControlPoint::deleting_dtor  (virtual method)
+ * overrides: SubChallenge::vf0  (23 classes implement it)
+ * class: dice::bf::PlayerControlPoint
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049d4c0, bfv_server_l1_body_0049d4c0);
 BFV_L1_RESUME(bfv_server_l1r_0049d4c0_1, bfv_server_l1_body_0049d4c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0049d4c0_2, bfv_server_l1_body_0049d4c0, 2);
@@ -208,7 +215,7 @@ void bfv_server_l1_body_0049d4c0(struct bfv_cpu *c)
     esi = ecx;
     /* 0049d4c3  lea ecx, [esi + 0x48] */
     ecx = (uint32_t)(esi + 0x00000048u);
-    /* 0049d4c6  call 0x414b80 */
+    /* 0049d4c6  call 0x414b80  ; std::string::_Tidy */
     t = 0x00414b80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d4c0_1;
@@ -217,14 +224,14 @@ void bfv_server_l1_body_0049d4c0(struct bfv_cpu *c)
 R_1:
     /* 0049d4cb  mov ecx, esi */
     ecx = esi;
-    /* 0049d4cd  call 0x49d330 */
+    /* 0049d4cd  call 0x49d330  ; SubChallenge::~SubChallenge */
     t = 0x0049d330u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d4c0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0049d4d2  test byte ptr [esp + 8], 1 */
+    /* 0049d4d2  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -234,7 +241,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0049d4da  call 0x403df0 */
+    /* 0049d4da  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d4c0_3;
@@ -265,7 +272,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004dd550  dice::bf::PlayerControlPoint  (virtual method) */
+/* 004dd550  PlayerControlPoint::apply  (virtual method)
+ * overrides: SubChallenge::apply  (23 classes implement it)
+ * class: dice::bf::PlayerControlPoint
+ */
 BFV_L1_ENTRY(bfv_server_l1_004dd550, bfv_server_l1_body_004dd550);
 BFV_L1_RESUME(bfv_server_l1r_004dd550_1, bfv_server_l1_body_004dd550, 1);
 BFV_L1_RESUME(bfv_server_l1r_004dd550_2, bfv_server_l1_body_004dd550, 2);
@@ -293,7 +303,7 @@ void bfv_server_l1_body_004dd550(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004dd557  call 0x4dd0f0 */
+    /* 004dd557  call 0x4dd0f0  ; bf_004dd0f0 */
     t = 0x004dd0f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dd550_1;
@@ -316,7 +326,7 @@ R_1:
     /* 004dd563  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 004dd566  call 0x4dd470 */
+    /* 004dd566  call 0x4dd470  ; bf_004dd470 */
     t = 0x004dd470u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dd550_2;

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 007bcd60  dice::ref2::tool::ExistenceModifier  (virtual method) */
+/* 007bcd60  ExistenceModifier::vf5  (virtual method)
+ * class: dice::ref2::tool::ExistenceModifier
+ */
 BFV_L1_ENTRY(bfv_client_l1_007bcd60, bfv_client_l1_body_007bcd60);
 BFV_L1_RESUME(bfv_client_l1r_007bcd60_1, bfv_client_l1_body_007bcd60, 1);
 BFV_L1_RESUME(bfv_client_l1r_007bcd60_2, bfv_client_l1_body_007bcd60, 2);
@@ -113,7 +115,7 @@ R_1:
     M32(esp) = t;
     /* 007bcda5  lea ecx, [esp + 0x24] */
     ecx = (uint32_t)(esp + 0x00000024u);
-    /* 007bcda9  call 0x4a9520 */
+    /* 007bcda9  call 0x4a9520  ; Matrix4::setInverseRigid */
     t = 0x004a9520u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007bcd60_2;
@@ -153,7 +155,7 @@ R_2:
     edx = ebx;
     /* 007bcdc9  lea ecx, [esp + 0x78] */
     ecx = (uint32_t)(esp + 0x00000078u);
-    /* 007bcdcd  fmul dword ptr [0xb44444] */
+    /* 007bcdcd  fmul dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007bcdd3  fadd dword ptr [esp + 0x5c] */
@@ -171,7 +173,7 @@ R_2:
     /* 007bcde3  fadd dword ptr [esp + 0x30] */
     ea = (uint32_t)(esp + 0x00000030u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007bcde7  fmul dword ptr [0xb44444] */
+    /* 007bcde7  fmul dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007bcded  fadd dword ptr [esp + 0x60] */
@@ -189,7 +191,7 @@ R_2:
     /* 007bcdfd  fadd dword ptr [esp + 0x34] */
     ea = (uint32_t)(esp + 0x00000034u);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007bce01  fmul dword ptr [0xb44444] */
+    /* 007bce01  fmul dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007bce07  fadd dword ptr [esp + 0x64] */
@@ -198,7 +200,7 @@ R_2:
     /* 007bce0b  fstp dword ptr [esp + 0x28] */
     ea = (uint32_t)(esp + 0x00000028u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007bce0f  call 0x7b9320 */
+    /* 007bce0f  call 0x7b9320  ; tool_007b9320 */
     t = 0x007b9320u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007bcd60_3;
@@ -211,7 +213,7 @@ R_3:
     M32(esp) = t;
     /* 007bce15  lea ecx, [esp + 0x28] */
     ecx = (uint32_t)(esp + 0x00000028u);
-    /* 007bce19  call 0x49b340 */
+    /* 007bce19  call 0x49b340  ; bfv_transform_point */
     t = 0x0049b340u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007bcd60_4;
@@ -226,7 +228,7 @@ R_4:
     edx = (uint32_t)(esp + 0x00000064u);
     /* 007bce23  lea ecx, [esp + 0x18] */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 007bce27  call 0x7b7100 */
+    /* 007bce27  call 0x7b7100  ; tool_007b7100 */
     t = 0x007b7100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007bcd60_5;
@@ -252,7 +254,7 @@ R_5:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 007bce42  call 0x7b7550 */
+    /* 007bce42  call 0x7b7550  ; tool_007b7550 */
     t = 0x007b7550u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_007bcd60_6;

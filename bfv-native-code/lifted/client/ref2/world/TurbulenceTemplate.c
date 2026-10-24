@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006dbf60  dice::ref2::world::TurbulenceTemplate  (virtual method) */
+/* 006dbf60  TurbulenceTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::TurbulenceTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006dbf60, bfv_client_l1_body_006dbf60);
 void bfv_client_l1_body_006dbf60(struct bfv_cpu *c)
 {
@@ -14,10 +17,10 @@ void bfv_client_l1_body_006dbf60(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006dbf60  mov eax, dword ptr [esp + 4] */
+    /* 006dbf60  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006dbf64  cmp eax, dword ptr [0xb77f64] */
+    /* 006dbf64  cmp eax, dword ptr [0xb77f64]  ; TurbulenceTemplate::classID */
     ea = (uint32_t)(0x00b77f64u);
     a = eax;
     b = M32(ea);
@@ -32,10 +35,10 @@ void bfv_client_l1_body_006dbf60(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006dbf71:
-    /* 006dbf71  mov dword ptr [esp + 4], eax */
+    /* 006dbf71  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006dbf75  jmp 0x6a4250 */
+    /* 006dbf75  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));
@@ -45,7 +48,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006dbf80  dice::ref2::world::TurbulenceTemplate  (virtual method) */
+/* 006dbf80  TurbulenceTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::TurbulenceTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006dbf80, bfv_client_l1_body_006dbf80);
 BFV_L1_RESUME(bfv_client_l1r_006dbf80_1, bfv_client_l1_body_006dbf80, 1);
 BFV_L1_RESUME(bfv_client_l1r_006dbf80_2, bfv_client_l1_body_006dbf80, 2);
@@ -71,7 +77,7 @@ void bfv_client_l1_body_006dbf80(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006dbf86  mov esi, ecx */
     esi = ecx;
-    /* 006dbf88  call 0x403610 */
+    /* 006dbf88  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006dbf80_1;
@@ -95,7 +101,7 @@ R_1:
     M32(esp) = t;
     /* 006dbf95  mov ecx, eax */
     ecx = eax;
-    /* 006dbf97  call 0x6ff950 */
+    /* 006dbf97  call 0x6ff950  ; Turbulence::Turbulence */
     t = 0x006ff950u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006dbf80_2;
@@ -130,7 +136,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006dc000  dice::ref2::world::TurbulenceTemplate  (vtable store) */
+/* 006dc000  TurbulenceTemplate::TurbulenceTemplate  (vtable store)
+ * class: dice::ref2::world::TurbulenceTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006dc000, bfv_client_l1_body_006dc000);
 BFV_L1_RESUME(bfv_client_l1r_006dc000_1, bfv_client_l1_body_006dc000, 1);
 void bfv_client_l1_body_006dc000(struct bfv_cpu *c)
@@ -150,7 +158,7 @@ void bfv_client_l1_body_006dc000(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006dc001  mov esi, ecx */
     esi = ecx;
-    /* 006dc003  call 0x6a52c0 */
+    /* 006dc003  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
     t = 0x006a52c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006dc000_1;
@@ -163,7 +171,7 @@ R_1:
     eax = r;
     /* 006dc00a  mov ecx, 1 */
     ecx = 0x1u;
-    /* 006dc00f  mov dword ptr [esi], 0xba01b4 */
+    /* 006dc00f  mov dword ptr [esi], 0xba01b4  ; vtable TurbulenceTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba01b4u;
     /* 006dc015  mov dword ptr [esi + 4], 0xba019c */
@@ -213,7 +221,11 @@ out: __attribute__((unused));
 }
 
 
-/* 006dc060  dice::ref2::world::TurbulenceTemplate  (virtual method) */
+/* 006dc060  TurbulenceTemplate::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::TurbulenceTemplate
+ * also entered at 006dc0a0: FlagTemplate::vf34, ItemTemplate::vf34, KitTemplate::vf34
+ */
 BFV_L1_ENTRY(bfv_client_l1_006dc060, bfv_client_l1_body_006dc060);
 BFV_L1_RESUME(bfv_client_l1r_006dc060_1, bfv_client_l1_body_006dc060, 1);
 BFV_L1_RESUME(bfv_client_l1r_006dc060_2, bfv_client_l1_body_006dc060, 2);
@@ -235,7 +247,7 @@ void bfv_client_l1_body_006dc060(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006dc061  mov esi, ecx */
     esi = ecx;
-    /* 006dc063  mov dword ptr [esi], 0xba01b4 */
+    /* 006dc063  mov dword ptr [esi], 0xba01b4  ; vtable TurbulenceTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xba01b4u;
     /* 006dc069  mov dword ptr [esi + 4], 0xba019c */
@@ -247,14 +259,14 @@ void bfv_client_l1_body_006dc060(struct bfv_cpu *c)
     /* 006dc077  mov dword ptr [esi + 0x1bc], 0xba0164 */
     ea = (uint32_t)(esi + 0x000001bcu);
     M32(ea) = 0xba0164u;
-    /* 006dc081  call 0x6a4480 */
+    /* 006dc081  call 0x6a4480  ; BundleTemplate::~BundleTemplate */
     t = 0x006a4480u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006dc060_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006dc086  test byte ptr [esp + 8], 1 */
+    /* 006dc086  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -264,7 +276,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006dc08e  call 0x403680 */
+    /* 006dc08e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006dc060_2;

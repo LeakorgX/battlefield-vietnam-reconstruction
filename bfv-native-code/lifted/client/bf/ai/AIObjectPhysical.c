@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0097ccb0  dice::bf::ai::AIObjectPhysical  (vtable store) */
+/* 0097ccb0  AIObjectPhysical::AIObjectPhysical  (vtable store)
+ * class: dice::bf::ai::AIObjectPhysical
+ * called by: AITemplatePhysical::createObjectPlugIn
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097ccb0, bfv_client_l1_body_0097ccb0);
 void bfv_client_l1_body_0097ccb0(struct bfv_cpu *c)
 {
@@ -14,18 +17,18 @@ void bfv_client_l1_body_0097ccb0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0097ccb0  mov edx, dword ptr [esp + 8] */
+    /* 0097ccb0  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 0097ccb4  mov eax, ecx */
     eax = ecx;
-    /* 0097ccb6  mov ecx, dword ptr [esp + 4] */
+    /* 0097ccb6  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0097ccba  mov dword ptr [eax + 4], ecx */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = ecx;
-    /* 0097ccbd  mov dword ptr [eax], 0xbf4bc0 */
+    /* 0097ccbd  mov dword ptr [eax], 0xbf4bc0  ; vtable AIObjectPhysical */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbf4bc0u;
     /* 0097ccc3  mov dword ptr [eax + 8], edx */
@@ -42,7 +45,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0097ccd0  (between same file) */
+/* 0097ccd0  AIObjectPhysical_0097ccd0  (between same file)
+ * called by: IPIPhysicalKnown::vf2, IPIPhysicalReal::vf2, IPIPhysicalReal::vf4
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097ccd0, bfv_client_l1_body_0097ccd0);
 BFV_L1_RESUME(bfv_client_l1r_0097ccd0_1, bfv_client_l1_body_0097ccd0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097ccd0_2, bfv_client_l1_body_0097ccd0, 2);
@@ -108,7 +113,7 @@ R_2:
     c->eip = M32(ea);
     goto out;
 L_0097ccf4:
-    /* 0097ccf4  fld dword ptr [0xb44444] */
+    /* 0097ccf4  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0097ccfa  ret */
@@ -122,7 +127,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0097cd00  (between same file) */
+/* 0097cd00  AIObjectPhysical_0097cd00  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097cd00, bfv_client_l1_body_0097cd00);
 BFV_L1_RESUME(bfv_client_l1r_0097cd00_1, bfv_client_l1_body_0097cd00, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097cd00_2, bfv_client_l1_body_0097cd00, 2);
@@ -148,7 +154,7 @@ void bfv_client_l1_body_0097cd00(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0097cd06  mov esi, dword ptr [0xe0ef54] */
+    /* 0097cd06  mov esi, dword ptr [0xe0ef54]  ; g_pIAIEnvironment_00e0ef54 */
     ea = (uint32_t)(0x00e0ef54u);
     esi = M32(ea);
     /* 0097cd0c  push edi */
@@ -172,7 +178,7 @@ R_1:
     M32(esp) = t;
     /* 0097cd13  mov ecx, esi */
     ecx = esi;
-    /* 0097cd15  call dword ptr [edi + 0xec] */
+    /* 0097cd15  call dword ptr [edi + 0xec]  ; -> IAIEnvironment::vf59 = BFEnvironment::vf59 */
     ea = (uint32_t)(edi + 0x000000ecu);
     t = M32(ea);
     esp -= 4;
@@ -204,7 +210,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0097cd40  (between same file) */
+/* 0097cd40  AIObjectPhysical_0097cd40  (between same file)
+ * called by: AILODManager::sub_0092c270, BotMain::vf11, EntryMoveToObjectMediumSoldier::execute, EntryMoveToMediumSoldier::execute, EntryMoveToLightSoldier::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097cd40, bfv_client_l1_body_0097cd40);
 BFV_L1_RESUME(bfv_client_l1r_0097cd40_1, bfv_client_l1_body_0097cd40, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097cd40_2, bfv_client_l1_body_0097cd40, 2);
@@ -242,7 +250,7 @@ void bfv_client_l1_body_0097cd40(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0097cd4b  cmp dword ptr [esp + 8], eax */
+    /* 0097cd4b  cmp dword ptr [esp + 8], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     a = M32(ea);
     b = eax;
@@ -317,7 +325,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0097cd80  (between same file) */
+/* 0097cd80  AIObjectPhysical_0097cd80  (between same file)
+ * called by: AILODManager::sub_0092c270, BotMain::vf11, EntryCarMoveToObject::execute, EntryCarMoveTo::execute, BotManager::vf10
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097cd80, bfv_client_l1_body_0097cd80);
 BFV_L1_RESUME(bfv_client_l1r_0097cd80_1, bfv_client_l1_body_0097cd80, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097cd80_2, bfv_client_l1_body_0097cd80, 2);
@@ -355,7 +365,7 @@ void bfv_client_l1_body_0097cd80(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0097cd8b  cmp dword ptr [esp + 8], eax */
+    /* 0097cd8b  cmp dword ptr [esp + 8], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     a = M32(ea);
     b = eax;
@@ -426,7 +436,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0097cdc0  (between same file) */
+/* 0097cdc0  AIObjectPhysical_0097cdc0  (between same file)
+ * called by: AILODManager::sub_0092c270, AIMain_LodLevel_0095d560, ai_FTS_00960500, BotMain::vf11, EntryMoveToObjectMediumSoldier::execute, EntryMoveToMediumSoldier::execute (+3 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097cdc0, bfv_client_l1_body_0097cdc0);
 BFV_L1_RESUME(bfv_client_l1r_0097cdc0_1, bfv_client_l1_body_0097cdc0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097cdc0_2, bfv_client_l1_body_0097cdc0, 2);
@@ -512,7 +524,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0097cde0  (between same file) */
+/* 0097cde0  AIObjectPhysical::~AIObjectPhysical  (between same file)
+ * class: dice::bf::ai::AIObjectPhysical
+ * called by: AIObjectPhysical::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097cde0, bfv_client_l1_body_0097cde0);
 BFV_L1_RESUME(bfv_client_l1r_0097cde0_1, bfv_client_l1_body_0097cde0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097cde0_2, bfv_client_l1_body_0097cde0, 2);
@@ -545,7 +560,7 @@ void bfv_client_l1_body_0097cde0(struct bfv_cpu *c)
     /* 0097cde3  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0097cde6  mov dword ptr [esi], 0xbf4bc0 */
+    /* 0097cde6  mov dword ptr [esi], 0xbf4bc0  ; vtable AIObjectPhysical */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf4bc0u;
     /* 0097cdec  mov eax, dword ptr [ecx] */
@@ -677,7 +692,7 @@ R_5:
     goto out;
 R_6:
 L_0097ce37:
-    /* 0097ce37  mov dword ptr [esi], 0xbf4ba4 */
+    /* 0097ce37  mov dword ptr [esi], 0xbf4ba4  ; vtable AIObjectPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf4ba4u;
     /* 0097ce3d  pop esi */
@@ -695,7 +710,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0097ce40  dice::bf::ai::AIObjectPhysical  (virtual method) */
+/* 0097ce40  AIObjectPhysical::deleting_dtor  (virtual method)
+ * overrides: AIObjectPlugIn::vf0  (7 classes implement it)
+ * class: dice::bf::ai::AIObjectPhysical
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097ce40, bfv_client_l1_body_0097ce40);
 BFV_L1_RESUME(bfv_client_l1r_0097ce40_1, bfv_client_l1_body_0097ce40, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097ce40_2, bfv_client_l1_body_0097ce40, 2);
@@ -717,14 +735,14 @@ void bfv_client_l1_body_0097ce40(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0097ce41  mov esi, ecx */
     esi = ecx;
-    /* 0097ce43  call 0x97cde0 */
+    /* 0097ce43  call 0x97cde0  ; AIObjectPhysical::~AIObjectPhysical */
     t = 0x0097cde0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097ce40_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0097ce48  test byte ptr [esp + 8], 1 */
+    /* 0097ce48  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -734,9 +752,9 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0097ce50  mov ecx, 0xe0ef08 */
+    /* 0097ce50  mov ecx, 0xe0ef08  ; g_MemoryPool_AIObjectPhysical */
     ecx = 0xe0ef08u;
-    /* 0097ce55  call 0x412fc0 */
+    /* 0097ce55  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097ce40_2;
@@ -761,7 +779,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0097ce60  (between same file) */
+/* 0097ce60  AIObjectPhysical_0097ce60  (between same file)
+ * called by: IPIPhysicalKnown::vf2, IPIPhysicalReal::vf18
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097ce60, bfv_client_l1_body_0097ce60);
 BFV_L1_RESUME(bfv_client_l1r_0097ce60_1, bfv_client_l1_body_0097ce60, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097ce60_2, bfv_client_l1_body_0097ce60, 2);
@@ -868,7 +888,7 @@ R_3:
     /* 0097ce8d  mov ecx, dword ptr [eax + 0x68] */
     ea = (uint32_t)(eax + 0x00000068u);
     ecx = M32(ea);
-    /* 0097ce90  mov eax, dword ptr [esp + 0x10] */
+    /* 0097ce90  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 0097ce94  mov edx, dword ptr [ecx] */
@@ -938,11 +958,11 @@ R_5:
     c->eip = t;
     goto out;
 R_6:
-    /* 0097ceba  lea edx, [esp + 4] */
+    /* 0097ceba  lea edx, [esp + 4]  ; &var_8 */
     edx = (uint32_t)(esp + 0x00000004u);
     /* 0097cebe  mov ecx, eax */
     ecx = eax;
-    /* 0097cec0  call 0x97f070 */
+    /* 0097cec0  call 0x97f070  ; bfv_point_xz */
     t = 0x0097f070u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097ce60_7;
@@ -973,7 +993,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0097ced0  (between same file) */
+/* 0097ced0  IPIPhysicalKnown::vf10_helper_0097ced0  (between same file)
+ * called by: IPIPhysicalKnown::vf10
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097ced0, bfv_client_l1_body_0097ced0);
 BFV_L1_RESUME(bfv_client_l1r_0097ced0_1, bfv_client_l1_body_0097ced0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097ced0_2, bfv_client_l1_body_0097ced0, 2);
@@ -1003,7 +1025,7 @@ void bfv_client_l1_body_0097ced0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0097ced6  mov esi, dword ptr [0xe0ef54] */
+    /* 0097ced6  mov esi, dword ptr [0xe0ef54]  ; g_pIAIEnvironment_00e0ef54 */
     ea = (uint32_t)(0x00e0ef54u);
     esi = M32(ea);
     /* 0097cedc  push edi */
@@ -1027,7 +1049,7 @@ R_1:
     M32(esp) = t;
     /* 0097cee3  mov ecx, esi */
     ecx = esi;
-    /* 0097cee5  call dword ptr [edi + 0xec] */
+    /* 0097cee5  call dword ptr [edi + 0xec]  ; -> IAIEnvironment::vf59 = BFEnvironment::vf59 */
     ea = (uint32_t)(edi + 0x000000ecu);
     t = M32(ea);
     esp -= 4;
@@ -1057,7 +1079,7 @@ R_2:
 R_3:
     /* 0097cef7  mov ecx, eax */
     ecx = eax;
-    /* 0097cef9  call 0x6849d0 */
+    /* 0097cef9  call 0x6849d0  ; Object_006849d0 */
     t = 0x006849d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097ced0_4;
@@ -1085,7 +1107,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0097cf10  dice::bf::ai::AIObjectPhysical  (virtual method) */
+/* 0097cf10  AIObjectPhysical::vf3  (virtual method)
+ * overrides: AIObjectPlugIn::vf3  (7 classes implement it)
+ * class: dice::bf::ai::AIObjectPhysical
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097cf10, bfv_client_l1_body_0097cf10);
 BFV_L1_RESUME(bfv_client_l1r_0097cf10_1, bfv_client_l1_body_0097cf10, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097cf10_2, bfv_client_l1_body_0097cf10, 2);
@@ -1137,7 +1162,7 @@ void bfv_client_l1_body_0097cf10(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0097cf28  call 0x982850 */
+    /* 0097cf28  call 0x982850  ; AIObjectPhysical::vf3_helper_00982850 */
     t = 0x00982850u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097cf10_1;
@@ -1148,7 +1173,7 @@ L_0097cf2d:
     /* 0097cf2d  mov ecx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     ecx = M32(ea);
-    /* 0097cf30  mov edi, dword ptr [0xe0ef54] */
+    /* 0097cf30  mov edi, dword ptr [0xe0ef54]  ; g_pIAIEnvironment_00e0ef54 */
     ea = (uint32_t)(0x00e0ef54u);
     edi = M32(ea);
     /* 0097cf36  mov eax, dword ptr [ecx] */
@@ -1171,7 +1196,7 @@ R_2:
     M32(esp) = t;
     /* 0097cf3e  mov ecx, edi */
     ecx = edi;
-    /* 0097cf40  call dword ptr [esi + 0xec] */
+    /* 0097cf40  call dword ptr [esi + 0xec]  ; -> IAIEnvironment::vf59 = BFEnvironment::vf59 */
     ea = (uint32_t)(esi + 0x000000ecu);
     t = M32(ea);
     esp -= 4;
@@ -1198,7 +1223,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0097cf50  dice::bf::ai::AIObjectPhysical  (virtual method) */
+/* 0097cf50  AIObjectPhysical::createInformationPlugIn  (virtual method)
+ * overrides: AIObjectPlugIn::createInformationPlugIn  (7 classes implement it)
+ * class: dice::bf::ai::AIObjectPhysical
+ */
 BFV_L1_ENTRY(bfv_client_l1_0097cf50, bfv_client_l1_body_0097cf50);
 BFV_L1_RESUME(bfv_client_l1r_0097cf50_1, bfv_client_l1_body_0097cf50, 1);
 BFV_L1_RESUME(bfv_client_l1r_0097cf50_2, bfv_client_l1_body_0097cf50, 2);
@@ -1218,7 +1246,7 @@ void bfv_client_l1_body_0097cf50(struct bfv_cpu *c)
     case 4: goto R_4;
     default: break;
     }
-    /* 0097cf50  mov eax, dword ptr [esp + 4] */
+    /* 0097cf50  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0097cf54  mov ecx, eax */
@@ -1233,7 +1261,7 @@ void bfv_client_l1_body_0097cf50(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0097cf5d  je 0x97cf78 */
     if (zf) goto L_0097cf78;
-    /* 0097cf5f  mov edx, dword ptr [0xe0cd58] */
+    /* 0097cf5f  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 0097cf65  mov edx, dword ptr [edx] */
@@ -1270,7 +1298,7 @@ L_0097cf78:
     F_LOGIC(32, r);
     esi = r;
 L_0097cf7a:
-    /* 0097cf7a  mov al, byte ptr [esp + 0xc] */
+    /* 0097cf7a  mov al, byte ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     SET8L(eax, M8(ea));
     /* 0097cf7e  test al, al */
@@ -1290,9 +1318,9 @@ L_0097cf7a:
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 0097cf8b  mov ecx, 0xe0f940 */
+    /* 0097cf8b  mov ecx, 0xe0f940  ; g_MemoryPoolNull_IPIPhysicalReal */
     ecx = 0xe0f940u;
-    /* 0097cf90  call 0x412ee0 */
+    /* 0097cf90  call 0x412ee0  ; MemoryPool::alloc_debug */
     t = 0x00412ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097cf50_1;
@@ -1310,7 +1338,7 @@ R_1:
     M32(esp) = t;
     /* 0097cf9a  mov ecx, eax */
     ecx = eax;
-    /* 0097cf9c  call 0x9dd7d0 */
+    /* 0097cf9c  call 0x9dd7d0  ; IPIPhysicalReal::IPIPhysicalReal */
     t = 0x009dd7d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097cf50_2;
@@ -1330,9 +1358,9 @@ L_0097cfa5:
     t = 0x20u;
     esp -= 4;
     M32(esp) = t;
-    /* 0097cfa7  mov ecx, 0xe0f900 */
+    /* 0097cfa7  mov ecx, 0xe0f900  ; g_MemoryPoolNull_IPIPhysicalKnown */
     ecx = 0xe0f900u;
-    /* 0097cfac  call 0x412ee0 */
+    /* 0097cfac  call 0x412ee0  ; MemoryPool::alloc_debug */
     t = 0x00412ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097cf50_3;
@@ -1350,7 +1378,7 @@ R_3:
     M32(esp) = t;
     /* 0097cfb6  mov ecx, eax */
     ecx = eax;
-    /* 0097cfb8  call 0x9dd5a0 */
+    /* 0097cfb8  call 0x9dd5a0  ; IPIPhysicalKnown::IPIPhysicalKnown */
     t = 0x009dd5a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0097cf50_4;

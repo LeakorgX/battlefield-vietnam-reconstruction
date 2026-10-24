@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00ac1c00  dice::meme::NavigateChildAction  (virtual method) */
+/* 00ac1c00  NavigateChildAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::NavigateChildAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac1c00, bfv_client_l1_body_00ac1c00);
 BFV_L1_RESUME(bfv_client_l1r_00ac1c00_1, bfv_client_l1_body_00ac1c00, 1);
 void bfv_client_l1_body_00ac1c00(struct bfv_cpu *c)
@@ -27,7 +30,7 @@ void bfv_client_l1_body_00ac1c00(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00ac1c05  je 0xac1c0c */
     if (zf) goto L_00ac1c0c;
-    /* 00ac1c07  call 0xac41d0 */
+    /* 00ac1c07  call 0xac41d0  ; meme_00ac41d0 */
     t = 0x00ac41d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac1c00_1;
@@ -50,8 +53,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2130  dice::meme::NavigateChildAction  (virtual method)
- * strings: "dice::meme::NavigateChildAction" */
+/* 00ac2130  NavigateChildAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::NavigateChildAction
+ * strings: "dice::meme::NavigateChildAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2130, bfv_client_l1_body_00ac2130);
 BFV_L1_RESUME(bfv_client_l1r_00ac2130_1, bfv_client_l1_body_00ac2130, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2130_2, bfv_client_l1_body_00ac2130, 2);
@@ -82,27 +88,27 @@ void bfv_client_l1_body_00ac2130(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac2145  push 0xc10310 */
+    /* 00ac2145  push 0xc10310  ; "dice::meme::NavigateChildAction" */
     t = 0xc10310u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac214a  mov ecx, 0xe21618 */
+    /* 00ac214a  mov ecx, 0xe21618  ; g_RuntimeClass_NavigateChildAction */
     ecx = 0xe21618u;
-    /* 00ac214f  call 0x875490 */
+    /* 00ac214f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2130_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac2154  push 0xb41c50 */
+    /* 00ac2154  push 0xb41c50  ; bfv_client_global_store_00b41c50 */
     t = 0xb41c50u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2159  mov dword ptr [0xe21618], 0xc100c4 */
+    /* 00ac2159  mov dword ptr [0xe21618], 0xc100c4  ; g_RuntimeClass_NavigateChildAction */
     ea = (uint32_t)(0x00e21618u);
     M32(ea) = 0xc100c4u;
-    /* 00ac2163  call 0x7c2cd2 */
+    /* 00ac2163  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2130_2;
@@ -116,7 +122,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac216b:
-    /* 00ac216b  mov eax, 0xe21618 */
+    /* 00ac216b  mov eax, 0xe21618  ; g_RuntimeClass_NavigateChildAction */
     eax = 0xe21618u;
     /* 00ac2170  ret */
     c->eip = M32(esp);
@@ -129,7 +135,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2440  dice::meme::NavigateChildAction  (vtable store) */
+/* 00ac2440  NavigateChildAction::create  (vtable store)
+ * class: dice::meme::NavigateChildAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2440, bfv_client_l1_body_00ac2440);
 BFV_L1_RESUME(bfv_client_l1r_00ac2440_1, bfv_client_l1_body_00ac2440, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2440_2, bfv_client_l1_body_00ac2440, 2);
@@ -153,7 +161,7 @@ void bfv_client_l1_body_00ac2440(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2443  call 0x403610 */
+    /* 00ac2443  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2440_1;
@@ -175,7 +183,7 @@ R_1:
     if (zf) goto L_00ac2469;
     /* 00ac2451  mov ecx, esi */
     ecx = esi;
-    /* 00ac2453  call 0x874870 */
+    /* 00ac2453  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2440_2;
@@ -185,7 +193,7 @@ R_2:
     /* 00ac2458  mov dword ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 00ac245f  mov dword ptr [esi], 0xc10534 */
+    /* 00ac245f  mov dword ptr [esi], 0xc10534  ; vtable NavigateChildAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc10534u;
     /* 00ac2465  mov eax, esi */

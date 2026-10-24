@@ -1,0 +1,5 @@
+## file
+Plan builder for aircraft following waypoints.
+
+## 0098fc30
+buildPlan: clears the current plan and reads the waypoint. For a waypoint point it builds a BAPConPosition (the arrival radius is the vehicle size times 4, plus a setting) and a 0x78-byte BAPAMoveTo3d towards it; for a waypoint object it builds a 0x80-byte BAPAMoveTo3dObject with a BAPConFalse condition.

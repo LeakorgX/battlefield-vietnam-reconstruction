@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006d7270  dice::ref2::world::ObstacleTemplate  (vtable store) */
+/* 006d7270  ObstacleTemplate::ObstacleTemplate  (vtable store)
+ * class: dice::ref2::world::ObstacleTemplate
+ * also entered at 006d72b0: ObstacleTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d7270, bfv_client_l1_body_006d7270);
 BFV_L1_RESUME(bfv_client_l1r_006d7270_1, bfv_client_l1_body_006d7270, 1);
 void bfv_client_l1_body_006d7270(struct bfv_cpu *c)
@@ -25,14 +28,14 @@ void bfv_client_l1_body_006d7270(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006d7271  mov esi, ecx */
     esi = ecx;
-    /* 006d7273  call 0x6a52c0 */
+    /* 006d7273  call 0x6a52c0  ; BundleTemplate::BundleTemplate */
     t = 0x006a52c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d7270_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006d7278  mov dword ptr [esi], 0xb9e89c */
+    /* 006d7278  mov dword ptr [esi], 0xb9e89c  ; vtable ObstacleTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9e89cu;
     /* 006d727e  mov dword ptr [esi + 4], 0xb9e880 */
@@ -44,7 +47,7 @@ R_1:
     /* 006d728c  mov dword ptr [esi + 0x1bc], 0xb9e848 */
     ea = (uint32_t)(esi + 0x000001bcu);
     M32(ea) = 0xb9e848u;
-    /* 006d7296  mov dword ptr [esi + 0x1d8], 0x40a00000 */
+    /* 006d7296  mov dword ptr [esi + 0x1d8], 0x40a00000  ; field ObjectTemplate.damage, 5.0f */
     ea = (uint32_t)(esi + 0x000001d8u);
     M32(ea) = 0x40a00000u;
     /* 006d72a0  mov eax, esi */
@@ -64,7 +67,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d72c0  dice::ref2::world::ObstacleTemplate  (virtual method) */
+/* 006d72c0  ObstacleTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::ObstacleTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d72c0, bfv_client_l1_body_006d72c0);
 void bfv_client_l1_body_006d72c0(struct bfv_cpu *c)
 {
@@ -73,10 +79,10 @@ void bfv_client_l1_body_006d72c0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 006d72c0  mov eax, dword ptr [esp + 4] */
+    /* 006d72c0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 006d72c4  cmp eax, dword ptr [0xb77f3c] */
+    /* 006d72c4  cmp eax, dword ptr [0xb77f3c]  ; ObstacleTemplate::classID */
     ea = (uint32_t)(0x00b77f3cu);
     a = eax;
     b = M32(ea);
@@ -91,10 +97,10 @@ void bfv_client_l1_body_006d72c0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006d72d1:
-    /* 006d72d1  mov dword ptr [esp + 4], eax */
+    /* 006d72d1  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 006d72d5  jmp 0x6a4250 */
+    /* 006d72d5  jmp 0x6a4250  ; BundleTemplate::castTo */
     c->eip = 0x006a4250u;
     goto out;
 out: __attribute__((unused));
@@ -104,7 +110,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d72e0  dice::ref2::world::ObstacleTemplate  (virtual method) */
+/* 006d72e0  ObstacleTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::ObstacleTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d72e0, bfv_client_l1_body_006d72e0);
 BFV_L1_RESUME(bfv_client_l1r_006d72e0_1, bfv_client_l1_body_006d72e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d72e0_2, bfv_client_l1_body_006d72e0, 2);
@@ -134,7 +143,7 @@ void bfv_client_l1_body_006d72e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006d72e7  mov edi, ecx */
     edi = ecx;
-    /* 006d72e9  call 0x403610 */
+    /* 006d72e9  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d72e0_1;
@@ -160,7 +169,7 @@ R_1:
     M32(esp) = t;
     /* 006d72f8  mov ecx, esi */
     ecx = esi;
-    /* 006d72fa  call 0x69fb50 */
+    /* 006d72fa  call 0x69fb50  ; Bundle::Bundle */
     t = 0x0069fb50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d72e0_2;
@@ -171,7 +180,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 006d7300  mov dword ptr [esi], 0xb9e93c */
+    /* 006d7300  mov dword ptr [esi], 0xb9e93c  ; vtable Obstacle */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb9e93cu;
     /* 006d7306  mov dword ptr [esi + 0x84], 0xb9e924 */

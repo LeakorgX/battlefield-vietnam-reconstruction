@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008735e0  dice::meme::SplitNode  (virtual method) */
+/* 008735e0  SplitNode::vf21  (virtual method)
+ * overrides: Node::vf21  (83 classes implement it)
+ * class: dice::meme::SplitNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_008735e0, bfv_client_l1_body_008735e0);
 BFV_L1_RESUME(bfv_client_l1r_008735e0_1, bfv_client_l1_body_008735e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008735e0_2, bfv_client_l1_body_008735e0, 2);
@@ -21,28 +24,28 @@ void bfv_client_l1_body_008735e0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 008735e0  mov edx, dword ptr [esp + 4] */
+    /* 008735e0  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 008735e4  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008735e5  mov ebx, dword ptr [esp + 0xc] */
+    /* 008735e5  mov ebx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ebx = M32(ea);
     /* 008735e9  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 008735ea  mov ebp, dword ptr [esp + 0x14] */
+    /* 008735ea  mov ebp, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ebp = M32(ea);
     /* 008735ee  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008735ef  mov esi, dword ptr [esp + 0x1c] */
+    /* 008735ef  mov esi, dword ptr [esp + 0x1c]  ; arg_c */
     ea = (uint32_t)(esp + 0x0000001cu);
     esi = M32(ea);
     /* 008735f3  mov eax, dword ptr [esi] */
@@ -82,7 +85,7 @@ void bfv_client_l1_body_008735e0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 00873604  mov ecx, dword ptr [esp + 0x14] */
+    /* 00873604  mov ecx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 00873608  mov eax, dword ptr [esi] */
@@ -147,7 +150,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00873620  dice::meme::SplitNode  (virtual method) */
+/* 00873620  SplitNode::traverse  (virtual method)
+ * overrides: Node::traverse  (83 classes implement it)
+ * class: dice::meme::SplitNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873620, bfv_client_l1_body_00873620);
 BFV_L1_RESUME(bfv_client_l1r_00873620_1, bfv_client_l1_body_00873620, 1);
 BFV_L1_RESUME(bfv_client_l1r_00873620_2, bfv_client_l1_body_00873620, 2);
@@ -167,14 +173,14 @@ void bfv_client_l1_body_00873620(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00873621  mov ebx, dword ptr [esp + 0x14] */
+    /* 00873621  mov ebx, dword ptr [esp + 0x14]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000014u);
     ebx = M32(ea);
     /* 00873625  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 00873626  mov ebp, dword ptr [esp + 0x14] */
+    /* 00873626  mov ebp, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ebp = M32(ea);
     /* 0087362a  push esi */
@@ -193,12 +199,12 @@ void bfv_client_l1_body_00873620(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00873633  mov edi, dword ptr [esp + 0x24] */
+    /* 00873633  mov edi, dword ptr [esp + 0x24]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     edi = M32(ea);
     /* 00873637  je 0x87364d */
     if (zf) goto L_0087364d;
-    /* 00873639  mov edx, dword ptr [esp + 0x18] */
+    /* 00873639  mov edx, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     edx = M32(ea);
     /* 0087363d  push edi */
@@ -217,7 +223,7 @@ void bfv_client_l1_body_00873620(struct bfv_cpu *c)
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00873641  mov edx, dword ptr [esp + 0x24] */
+    /* 00873641  mov edx, dword ptr [esp + 0x24]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000024u);
     edx = M32(ea);
     /* 00873645  mov ecx, eax */
@@ -238,10 +244,10 @@ void bfv_client_l1_body_00873620(struct bfv_cpu *c)
     goto out;
 R_1:
 L_0087364d:
-    /* 0087364d  mov eax, dword ptr [esp + 0x18] */
+    /* 0087364d  mov eax, dword ptr [esp + 0x18]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
-    /* 00873651  mov ecx, dword ptr [esp + 0x14] */
+    /* 00873651  mov ecx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 00873655  push edi */
@@ -266,7 +272,7 @@ L_0087364d:
     M32(esp) = t;
     /* 0087365a  mov ecx, esi */
     ecx = esi;
-    /* 0087365c  call 0x873df0 */
+    /* 0087365c  call 0x873df0  ; Node::traverse */
     t = 0x00873df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00873620_2;
@@ -300,7 +306,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00873670  dice::meme::SplitNode  (virtual method) */
+/* 00873670  SplitNode::updateTree  (virtual method)
+ * overrides: Node::updateTree  (83 classes implement it)
+ * class: dice::meme::SplitNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873670, bfv_client_l1_body_00873670);
 BFV_L1_RESUME(bfv_client_l1r_00873670_1, bfv_client_l1_body_00873670, 1);
 BFV_L1_RESUME(bfv_client_l1r_00873670_2, bfv_client_l1_body_00873670, 2);
@@ -320,14 +329,14 @@ void bfv_client_l1_body_00873670(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00873671  mov ebx, dword ptr [esp + 0x10] */
+    /* 00873671  mov ebx, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
     /* 00873675  push ebp */
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 00873676  mov ebp, dword ptr [esp + 0x10] */
+    /* 00873676  mov ebp, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebp = M32(ea);
     /* 0087367a  push esi */
@@ -346,12 +355,12 @@ void bfv_client_l1_body_00873670(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00873683  mov edi, dword ptr [esp + 0x20] */
+    /* 00873683  mov edi, dword ptr [esp + 0x20]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000020u);
     edi = M32(ea);
     /* 00873687  je 0x8736a3 */
     if (zf) goto L_008736a3;
-    /* 00873689  mov edx, dword ptr [esp + 0x14] */
+    /* 00873689  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 0087368d  push edi */
@@ -409,7 +418,7 @@ R_1:
     esp += 20;
     goto out;
 L_008736a3:
-    /* 008736a3  mov eax, dword ptr [esp + 0x14] */
+    /* 008736a3  mov eax, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 008736a7  push edi */
@@ -430,7 +439,7 @@ L_008736a3:
     M32(esp) = t;
     /* 008736ab  mov ecx, esi */
     ecx = esi;
-    /* 008736ad  call 0x873e40 */
+    /* 008736ad  call 0x873e40  ; Node::updateTree */
     t = 0x00873e40u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00873670_2;
@@ -464,8 +473,11 @@ out: __attribute__((unused));
 }
 
 
-/* 008736f0  dice::meme::SplitNode  (virtual method)
- * strings: "Split node" */
+/* 008736f0  SplitNode::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::SplitNode
+ * strings: "Split node"
+ */
 BFV_L1_ENTRY(bfv_client_l1_008736f0, bfv_client_l1_body_008736f0);
 BFV_L1_RESUME(bfv_client_l1r_008736f0_1, bfv_client_l1_body_008736f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008736f0_2, bfv_client_l1_body_008736f0, 2);
@@ -485,7 +497,7 @@ void bfv_client_l1_body_008736f0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008736f1  mov ebx, dword ptr [esp + 8] */
+    /* 008736f1  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 008736f5  push esi */
@@ -496,7 +508,7 @@ void bfv_client_l1_body_008736f0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008736f7  mov edi, dword ptr [esp + 0x14] */
+    /* 008736f7  mov edi, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     edi = M32(ea);
     /* 008736fb  push edi */
@@ -509,7 +521,7 @@ void bfv_client_l1_body_008736f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008736fd  mov esi, ecx */
     esi = ecx;
-    /* 008736ff  call 0x873f50 */
+    /* 008736ff  call 0x873f50  ; Node::serialize */
     t = 0x00873f50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008736f0_1;
@@ -545,7 +557,7 @@ L_0087370e:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00873712  push 0xbd6404 */
+    /* 00873712  push 0xbd6404  ; "Split node" */
     t = 0xbd6404u;
     esp -= 4;
     M32(esp) = t;
@@ -601,7 +613,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00873730  (between same file) */
+/* 00873730  ClassTemplate<SplitNode,Node>::incInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873730, bfv_client_l1_body_00873730);
 void bfv_client_l1_body_00873730(struct bfv_cpu *c)
 {
@@ -627,7 +640,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00873740  (between same file) */
+/* 00873740  ClassTemplate<SplitNode,Node>::decInstanceCount  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873740, bfv_client_l1_body_00873740);
 void bfv_client_l1_body_00873740(struct bfv_cpu *c)
 {
@@ -653,7 +667,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00873760  dice::meme::SplitNode  (vtable store) */
+/* 00873760  SplitNode::create  (vtable store)
+ * class: dice::meme::SplitNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873760, bfv_client_l1_body_00873760);
 BFV_L1_RESUME(bfv_client_l1r_00873760_1, bfv_client_l1_body_00873760, 1);
 BFV_L1_RESUME(bfv_client_l1r_00873760_2, bfv_client_l1_body_00873760, 2);
@@ -677,7 +693,7 @@ void bfv_client_l1_body_00873760(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00873763  call 0x403610 */
+    /* 00873763  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00873760_1;
@@ -699,14 +715,14 @@ R_1:
     if (zf) goto L_00873789;
     /* 00873771  mov ecx, esi */
     ecx = esi;
-    /* 00873773  call 0x873d90 */
+    /* 00873773  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00873760_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00873778  mov dword ptr [esi], 0xbd643c */
+    /* 00873778  mov dword ptr [esi], 0xbd643c  ; vtable SplitNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd643cu;
     /* 0087377e  mov dword ptr [esi + 0xc], 0 */
@@ -742,8 +758,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00873790  dice::meme::SplitNode  (virtual method)
- * strings: "dice::meme::SplitNode" */
+/* 00873790  SplitNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::SplitNode
+ * strings: "dice::meme::SplitNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00873790, bfv_client_l1_body_00873790);
 BFV_L1_RESUME(bfv_client_l1r_00873790_1, bfv_client_l1_body_00873790, 1);
 BFV_L1_RESUME(bfv_client_l1r_00873790_2, bfv_client_l1_body_00873790, 2);
@@ -774,13 +793,13 @@ void bfv_client_l1_body_00873790(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 008737a5  push 0xbd650c */
+    /* 008737a5  push 0xbd650c  ; "dice::meme::SplitNode" */
     t = 0xbd650cu;
     esp -= 4;
     M32(esp) = t;
-    /* 008737aa  mov ecx, 0xdf681c */
+    /* 008737aa  mov ecx, 0xdf681c  ; g_RuntimeClass_SplitNode */
     ecx = 0xdf681cu;
-    /* 008737af  call 0x875490 */
+    /* 008737af  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00873790_1;
@@ -791,10 +810,10 @@ R_1:
     t = 0xb3aec0u;
     esp -= 4;
     M32(esp) = t;
-    /* 008737b9  mov dword ptr [0xdf681c], 0xbd6414 */
+    /* 008737b9  mov dword ptr [0xdf681c], 0xbd6414  ; g_RuntimeClass_SplitNode */
     ea = (uint32_t)(0x00df681cu);
     M32(ea) = 0xbd6414u;
-    /* 008737c3  call 0x7c2cd2 */
+    /* 008737c3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00873790_2;
@@ -808,7 +827,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_008737cb:
-    /* 008737cb  mov eax, 0xdf681c */
+    /* 008737cb  mov eax, 0xdf681c  ; g_RuntimeClass_SplitNode */
     eax = 0xdf681cu;
     /* 008737d0  ret */
     c->eip = M32(esp);

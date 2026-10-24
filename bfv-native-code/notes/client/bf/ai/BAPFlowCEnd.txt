@@ -1,0 +1,14 @@
+## file
+BAPFlowCEnd is the plan statement that ends a block, optionally on a condition
+(this+0x18). The mode at this+0x20 picks how the condition maps to the flags.
+
+## 009f7d50
+execute(bot, &flag, &done): mode 0: without a condition done = 1, flag = 0;
+with one, a true condition gives done = 1, flag = 0 and a false one done = 0,
+flag = 1. Mode 1: without a condition done = 1, flag = 0, else done =
+condition, flag = 1. Mode 2: without a condition done = flag = 0, else done =
+not condition, flag = 1. Other modes change nothing.
+
+## 009f7e50
+destroy: deletes the condition (slot 8), counts the destroyed statement and
+frees it to its pool when asked.

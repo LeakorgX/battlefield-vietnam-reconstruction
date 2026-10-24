@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 007a22c0  (source path)
- * strings: "c:\bfv_code\main\battlefield\AIBotActionPlan\BAPAResetCon..." */
+/* 007a22c0  BAPAResetControls::execute  (source path)
+ * overrides: BotScript::execute  (55 classes implement it)
+ * class: dice::bf::ai::BAPAResetControls
+ * strings: "c:\bfv_code\main\battlefield\AIBotActionPlan\BAPAResetCon..."
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a22c0, bfv_server_l1_body_007a22c0);
 void bfv_server_l1_body_007a22c0(struct bfv_cpu *c)
 {
@@ -15,10 +18,10 @@ void bfv_server_l1_body_007a22c0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, r, ea;
-    /* 007a22c0  mov eax, dword ptr [0xc1d380] */
+    /* 007a22c0  mov eax, dword ptr [0xc1d380]  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     eax = M32(ea);
-    /* 007a22c5  mov ecx, dword ptr [0x934448] */
+    /* 007a22c5  mov ecx, dword ptr [0x934448]  ; g_traceRing_mask */
     ea = (uint32_t)(0x00934448u);
     ecx = M32(ea);
     /* 007a22cb  inc eax */
@@ -30,19 +33,19 @@ void bfv_server_l1_body_007a22c0(struct bfv_cpu *c)
     r = (eax & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 007a22ce  mov ecx, dword ptr [esp + 0xc] */
+    /* 007a22ce  mov ecx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 007a22d2  mov dword ptr [0xc1d380], eax */
+    /* 007a22d2  mov dword ptr [0xc1d380], eax  ; g_traceRing_index */
     ea = (uint32_t)(0x00c1d380u);
     M32(ea) = eax;
-    /* 007a22d7  mov dword ptr [eax*4 + 0xc1d360], 0x878678 */
+    /* 007a22d7  mov dword ptr [eax*4 + 0xc1d360], 0x878678  ; g_traceRing_file, "c:\bfv_code\main\battlefield\AIBotActionPlan\BA..." */
     ea = (uint32_t)(eax * 4u + 0x00c1d360u);
     M32(ea) = 0x878678u;
-    /* 007a22e2  mov dword ptr [eax*4 + 0xc1d340], 0x65 */
+    /* 007a22e2  mov dword ptr [eax*4 + 0xc1d340], 0x65  ; g_traceRing_line */
     ea = (uint32_t)(eax * 4u + 0x00c1d340u);
     M32(ea) = 0x65u;
-    /* 007a22ed  mov eax, dword ptr [esp + 8] */
+    /* 007a22ed  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007a22f1  mov byte ptr [eax], 1 */
@@ -64,7 +67,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a2300  dice::bf::ai::BAPAResetControls  (virtual method) */
+/* 007a2300  BAPAResetControls::destroy  (virtual method)
+ * overrides: BotScript::destroy  (55 classes implement it)
+ * class: dice::bf::ai::BAPAResetControls
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a2300, bfv_server_l1_body_007a2300);
 BFV_L1_RESUME(bfv_server_l1r_007a2300_1, bfv_server_l1_body_007a2300, 1);
 void bfv_server_l1_body_007a2300(struct bfv_cpu *c)
@@ -78,7 +84,7 @@ void bfv_server_l1_body_007a2300(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a2300  mov al, byte ptr [esp + 4] */
+    /* 007a2300  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 007a2304  push esi */
@@ -87,10 +93,10 @@ void bfv_server_l1_body_007a2300(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a2305  mov esi, ecx */
     esi = ecx;
-    /* 007a2307  mov dword ptr [esi], 0x874498 */
+    /* 007a2307  mov dword ptr [esi], 0x874498  ; vtable BAPStatement */
     ea = (uint32_t)(esi);
     M32(ea) = 0x874498u;
-    /* 007a230d  mov ecx, dword ptr [0xc32a44] */
+    /* 007a230d  mov ecx, dword ptr [0xc32a44]  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     ecx = M32(ea);
     /* 007a2313  inc ecx */
@@ -101,10 +107,10 @@ void bfv_server_l1_body_007a2300(struct bfv_cpu *c)
     /* 007a2314  test al, 1 */
     r = (LO8(eax) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 007a2316  mov dword ptr [0xc32a44], ecx */
+    /* 007a2316  mov dword ptr [0xc32a44], ecx  ; g_bapaDestroyedCount */
     ea = (uint32_t)(0x00c32a44u);
     M32(ea) = ecx;
-    /* 007a231c  mov dword ptr [esi], 0x87448c */
+    /* 007a231c  mov dword ptr [esi], 0x87448c  ; vtable BotScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87448cu;
     /* 007a2322  je 0x7a232f */
@@ -113,9 +119,9 @@ void bfv_server_l1_body_007a2300(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a2325  mov ecx, 0xc32040 */
+    /* 007a2325  mov ecx, 0xc32040  ; g_MemoryPoolNull_BAPAResetControls */
     ecx = 0xc32040u;
-    /* 007a232a  call 0x413600 */
+    /* 007a232a  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a2300_1;

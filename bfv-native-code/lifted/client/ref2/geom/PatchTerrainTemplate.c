@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 004f9e50  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 004f9e50  PatchTerrainTemplate::vf17  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ * called by: GameServer::vf99
+ */
 BFV_L1_ENTRY(bfv_client_l1_004f9e50, bfv_client_l1_body_004f9e50);
 BFV_L1_RESUME(bfv_client_l1r_004f9e50_1, bfv_client_l1_body_004f9e50, 1);
 BFV_L1_RESUME(bfv_client_l1r_004f9e50_2, bfv_client_l1_body_004f9e50, 2);
@@ -29,7 +32,7 @@ void bfv_client_l1_body_004f9e50(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 004f9e54  lea eax, [esp + 0xc] */
+    /* 004f9e54  lea eax, [esp + 0xc]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 004f9e58  push eax */
     t = eax;
@@ -41,14 +44,14 @@ void bfv_client_l1_body_004f9e50(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 004f9e5f  call 0x4019f0 */
+    /* 004f9e5f  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004f9e50_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 004f9e64  cmp dword ptr [esp + 0x1c], 0x10 */
+    /* 004f9e64  cmp dword ptr [esp + 0x1c], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x0000001cu);
     a = M32(ea);
     b = 0x10u;
@@ -56,14 +59,14 @@ R_1:
     F_SUB(32, a, b, r);
     /* 004f9e69  jb 0x4f9e76 */
     if (cf) goto L_004f9e76;
-    /* 004f9e6b  mov ecx, dword ptr [esp + 8] */
+    /* 004f9e6b  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 004f9e6f  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 004f9e70  call 0x403680 */
+    /* 004f9e70  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_004f9e50_2;
@@ -86,7 +89,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005f4b90  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 005f4b90  PatchTerrainTemplate::vf45_setByte_108h  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_005f4b90, bfv_client_l1_body_005f4b90);
 void bfv_client_l1_body_005f4b90(struct bfv_cpu *c)
 {
@@ -95,7 +100,7 @@ void bfv_client_l1_body_005f4b90(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 005f4b90  mov al, byte ptr [esp + 4] */
+    /* 005f4b90  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 005f4b94  mov byte ptr [ecx + 0x108], al */
@@ -112,7 +117,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00699de0  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 00699de0  PatchTerrainTemplate::vf48_setByte_f4h  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00699de0, bfv_client_l1_body_00699de0);
 void bfv_client_l1_body_00699de0(struct bfv_cpu *c)
 {
@@ -121,7 +128,7 @@ void bfv_client_l1_body_00699de0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00699de0  mov al, byte ptr [esp + 4] */
+    /* 00699de0  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 00699de4  mov byte ptr [ecx + 0xf4], al */
@@ -138,7 +145,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006e88b0  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 006e88b0  PatchTerrainTemplate::vf11  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_006e88b0, bfv_client_l1_body_006e88b0);
 BFV_L1_RESUME(bfv_client_l1r_006e88b0_1, bfv_client_l1_body_006e88b0, 1);
 void bfv_client_l1_body_006e88b0(struct bfv_cpu *c)
@@ -152,7 +161,7 @@ void bfv_client_l1_body_006e88b0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 006e88b0  mov eax, dword ptr [esp + 4] */
+    /* 006e88b0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006e88b4  push -1 */
@@ -173,7 +182,7 @@ void bfv_client_l1_body_006e88b0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 006e88bc  call 0x4019f0 */
+    /* 006e88bc  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006e88b0_1;
@@ -191,7 +200,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0073a1f0  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0073a1f0  PatchTerrainTemplate::vf9  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0073a1f0, bfv_client_l1_body_0073a1f0);
 BFV_L1_RESUME(bfv_client_l1r_0073a1f0_1, bfv_client_l1_body_0073a1f0, 1);
 void bfv_client_l1_body_0073a1f0(struct bfv_cpu *c)
@@ -205,7 +216,7 @@ void bfv_client_l1_body_0073a1f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0073a1f0  mov eax, dword ptr [esp + 4] */
+    /* 0073a1f0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0073a1f4  push -1 */
@@ -226,7 +237,7 @@ void bfv_client_l1_body_0073a1f0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0073a1fc  call 0x4019f0 */
+    /* 0073a1fc  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0073a1f0_1;
@@ -244,7 +255,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d200  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0074d200  PatchTerrainTemplate::vf47  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d200, bfv_client_l1_body_0074d200);
 BFV_L1_RESUME(bfv_client_l1r_0074d200_1, bfv_client_l1_body_0074d200, 1);
 BFV_L1_RESUME(bfv_client_l1r_0074d200_2, bfv_client_l1_body_0074d200, 2);
@@ -280,7 +293,7 @@ void bfv_client_l1_body_0074d200(struct bfv_cpu *c)
     t = 0x40u;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d20c  call 0x403610 */
+    /* 0074d20c  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d200_1;
@@ -307,7 +320,7 @@ R_1:
     M32(esp) = t;
     /* 0074d21f  mov ecx, eax */
     ecx = eax;
-    /* 0074d221  call 0x766690 */
+    /* 0074d221  call 0x766690  ; PatchTerrainLightSampling::PatchTerrainLightSampling */
     t = 0x00766690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d200_2;
@@ -324,10 +337,10 @@ L_0074d22a:
     F_LOGIC(32, r);
     esi = r;
 L_0074d22c:
-    /* 0074d22c  mov edx, dword ptr [esp + 0xc] */
+    /* 0074d22c  mov edx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
-    /* 0074d230  mov eax, dword ptr [esp + 8] */
+    /* 0074d230  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0074d234  push edx */
@@ -340,7 +353,7 @@ L_0074d22c:
     M32(esp) = t;
     /* 0074d236  mov ecx, esi */
     ecx = esi;
-    /* 0074d238  call 0x765be0 */
+    /* 0074d238  call 0x765be0  ; PatchTerrainLightSampling_TerrainPalette_00765be0 */
     t = 0x00765be0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d200_3;
@@ -376,7 +389,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d2b0  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0074d2b0  PatchTerrainTemplate::vf39  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ * also entered at 0074d2d0: PatchTerrainTemplate::vf41
+ * also entered at 0074d2e0: PatchTerrainTemplate::getClassID
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d2b0, bfv_client_l1_body_0074d2b0);
 void bfv_client_l1_body_0074d2b0(struct bfv_cpu *c)
 {
@@ -385,7 +402,7 @@ void bfv_client_l1_body_0074d2b0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0074d2b0  mov eax, dword ptr [esp + 4] */
+    /* 0074d2b0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0074d2b4  mov edx, dword ptr [eax] */
@@ -423,7 +440,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d300  (between same file) */
+/* 0074d300  PatchTerrainTemplate::~PatchTerrainTemplate  (between same file)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d300, bfv_client_l1_body_0074d300);
 BFV_L1_RESUME(bfv_client_l1r_0074d300_1, bfv_client_l1_body_0074d300, 1);
 BFV_L1_RESUME(bfv_client_l1r_0074d300_2, bfv_client_l1_body_0074d300, 2);
@@ -459,7 +478,7 @@ void bfv_client_l1_body_0074d300(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0074d302  mov esi, ecx */
     esi = ecx;
-    /* 0074d304  mov dword ptr [esi], 0xbadd4c */
+    /* 0074d304  mov dword ptr [esi], 0xbadd4c  ; vtable PatchTerrainTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbadd4cu;
     /* 0074d30a  mov dword ptr [esi + 8], 0xbadd34 */
@@ -521,7 +540,7 @@ L_0074d329:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d340  call 0x403680 */
+    /* 0074d340  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d300_2;
@@ -561,7 +580,7 @@ L_0074d348:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d36e  call 0x403680 */
+    /* 0074d36e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d300_3;
@@ -599,7 +618,7 @@ L_0074d376:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d394  call 0x403680 */
+    /* 0074d394  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d300_4;
@@ -637,7 +656,7 @@ L_0074d39c:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d3b1  call 0x403680 */
+    /* 0074d3b1  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d300_5;
@@ -675,7 +694,7 @@ L_0074d3b9:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d3cb  call 0x403680 */
+    /* 0074d3cb  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d300_6;
@@ -717,7 +736,7 @@ L_0074d3d3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d3e6  call 0x403680 */
+    /* 0074d3e6  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d300_7;
@@ -740,14 +759,14 @@ L_0074d3ee:
     /* 0074d3f4  mov byte ptr [esi + 0x14], bl */
     ea = (uint32_t)(esi + 0x00000014u);
     M8(ea) = LO8(ebx);
-    /* 0074d3f7  mov dword ptr [esi + 8], 0xb4274c */
+    /* 0074d3f7  mov dword ptr [esi + 8], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0xb4274cu;
     /* 0074d3fe  pop edi */
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 0074d3ff  mov dword ptr [esi], 0xb4274c */
+    /* 0074d3ff  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 0074d405  pop esi */
@@ -769,7 +788,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d410  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0074d410  PatchTerrainTemplate::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d410, bfv_client_l1_body_0074d410);
 void bfv_client_l1_body_0074d410(struct bfv_cpu *c)
 {
@@ -778,12 +800,12 @@ void bfv_client_l1_body_0074d410(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0074d410  mov edx, dword ptr [0xb42718] */
+    /* 0074d410  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 0074d416  mov eax, ecx */
     eax = ecx;
-    /* 0074d418  mov ecx, dword ptr [esp + 4] */
+    /* 0074d418  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0074d41c  cmp ecx, edx */
@@ -801,7 +823,7 @@ void bfv_client_l1_body_0074d410(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0074d426  je 0x74d444 */
     if (zf) goto L_0074d444;
-    /* 0074d428  cmp ecx, dword ptr [0xba5a98] */
+    /* 0074d428  cmp ecx, dword ptr [0xba5a98]  ; interfaceID(PatchTerrainTemplate|RoamTerrainTemplate) */
     ea = (uint32_t)(0x00ba5a98u);
     a = ecx;
     b = M32(ea);
@@ -809,7 +831,7 @@ void bfv_client_l1_body_0074d410(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0074d42e  je 0x74d444 */
     if (zf) goto L_0074d444;
-    /* 0074d430  cmp ecx, dword ptr [0xbdb000] */
+    /* 0074d430  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);
@@ -849,7 +871,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d450  (between same file) */
+/* 0074d450  PatchTerrainTemplate::deleting_dtor_adjustor8_0074d450  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d450, bfv_client_l1_body_0074d450);
 void bfv_client_l1_body_0074d450(struct bfv_cpu *c)
 {
@@ -864,7 +887,7 @@ void bfv_client_l1_body_0074d450(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0074d453  jmp 0x74d470 */
+    /* 0074d453  jmp 0x74d470  ; PatchTerrainTemplate::deleting_dtor */
     c->eip = 0x0074d470u;
     goto out;
 out: __attribute__((unused));
@@ -874,7 +897,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d460  (between same file) */
+/* 0074d460  PatchTerrainTemplate::queryInterface_adjustor8_0074d460  (between same file)
+ * also entered at 0074d470: PatchTerrainTemplate::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d460, bfv_client_l1_body_0074d460);
 void bfv_client_l1_body_0074d460(struct bfv_cpu *c)
 {
@@ -889,7 +914,7 @@ void bfv_client_l1_body_0074d460(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0074d463  jmp 0x74d410 */
+    /* 0074d463  jmp 0x74d410  ; PatchTerrainTemplate::queryInterface */
     c->eip = 0x0074d410u;
     goto out;
 out: __attribute__((unused));
@@ -899,8 +924,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d490  (between same file)
- * strings: "materialmap", "detailmap.tga", "Texture/Water" */
+/* 0074d490  PatchTerrainTemplate::PatchTerrainTemplate  (vtable store)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ * strings: "materialmap", "detailmap.tga", "Texture/Water"
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d490, bfv_client_l1_body_0074d490);
 BFV_L1_RESUME(bfv_client_l1r_0074d490_1, bfv_client_l1_body_0074d490, 1);
 BFV_L1_RESUME(bfv_client_l1r_0074d490_2, bfv_client_l1_body_0074d490, 2);
@@ -930,10 +957,10 @@ void bfv_client_l1_body_0074d490(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0074d492  mov esi, ecx */
     esi = ecx;
-    /* 0074d494  mov dword ptr [esi + 8], 0xb5f4ac */
+    /* 0074d494  mov dword ptr [esi + 8], 0xb5f4ac  ; vtable IConsoleSaveable */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0xb5f4acu;
-    /* 0074d49b  mov dword ptr [esi], 0xbadd4c */
+    /* 0074d49b  mov dword ptr [esi], 0xbadd4c  ; vtable PatchTerrainTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbadd4cu;
     /* 0074d4a1  mov dword ptr [esi + 8], 0xbadd34 */
@@ -982,14 +1009,14 @@ void bfv_client_l1_body_0074d490(struct bfv_cpu *c)
     /* 0074d4d1  mov dword ptr [ecx + 0x14], ebx */
     ea = (uint32_t)(ecx + 0x00000014u);
     M32(ea) = ebx;
-    /* 0074d4d4  push 0xbade38 */
+    /* 0074d4d4  push 0xbade38  ; "materialmap" */
     t = 0xbade38u;
     esp -= 4;
     M32(esp) = t;
     /* 0074d4d9  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 0074d4dc  call 0x401ae0 */
+    /* 0074d4dc  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d490_1;
@@ -1018,7 +1045,7 @@ R_1:
     /* 0074d4f8  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 0074d4fb  call 0x401ae0 */
+    /* 0074d4fb  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d490_2;
@@ -1037,14 +1064,14 @@ R_2:
     /* 0074d50b  mov dword ptr [ecx + 0x14], ebx */
     ea = (uint32_t)(ecx + 0x00000014u);
     M32(ea) = ebx;
-    /* 0074d50e  push 0xbade24 */
+    /* 0074d50e  push 0xbade24  ; "detailmap.tga" */
     t = 0xbade24u;
     esp -= 4;
     M32(esp) = t;
     /* 0074d513  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 0074d516  call 0x401ae0 */
+    /* 0074d516  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d490_3;
@@ -1055,7 +1082,7 @@ R_3:
     eax = 0x4u;
     /* 0074d520  lea ecx, [esi + 0xc4] */
     ecx = (uint32_t)(esi + 0x000000c4u);
-    /* 0074d526  mov dword ptr [esi + 0xa0], 0x3f000000 */
+    /* 0074d526  mov dword ptr [esi + 0xa0], 0x3f000000  ; 0.5f */
     ea = (uint32_t)(esi + 0x000000a0u);
     M32(ea) = 0x3f000000u;
     /* 0074d530  mov dword ptr [esi + 0xa4], eax */
@@ -1067,16 +1094,16 @@ R_3:
     /* 0074d53c  mov dword ptr [esi + 0xac], 0x1388 */
     ea = (uint32_t)(esi + 0x000000acu);
     M32(ea) = 0x1388u;
-    /* 0074d546  mov dword ptr [esi + 0xb0], 0x45800000 */
+    /* 0074d546  mov dword ptr [esi + 0xb0], 0x45800000  ; 4096.0f */
     ea = (uint32_t)(esi + 0x000000b0u);
     M32(ea) = 0x45800000u;
-    /* 0074d550  mov dword ptr [esi + 0xb4], 0x3f19999a */
+    /* 0074d550  mov dword ptr [esi + 0xb4], 0x3f19999a  ; 0.6f */
     ea = (uint32_t)(esi + 0x000000b4u);
     M32(ea) = 0x3f19999au;
-    /* 0074d55a  mov dword ptr [esi + 0xb8], 0x428c0000 */
+    /* 0074d55a  mov dword ptr [esi + 0xb8], 0x428c0000  ; 70.0f */
     ea = (uint32_t)(esi + 0x000000b8u);
     M32(ea) = 0x428c0000u;
-    /* 0074d564  mov dword ptr [esi + 0xbc], 0xc28c0000 */
+    /* 0074d564  mov dword ptr [esi + 0xbc], 0xc28c0000  ; -70.0f */
     ea = (uint32_t)(esi + 0x000000bcu);
     M32(ea) = 0xc28c0000u;
     /* 0074d56e  mov dword ptr [esi + 0xc0], ebx */
@@ -1092,42 +1119,42 @@ R_3:
     /* 0074d579  mov dword ptr [ecx + 0x14], ebx */
     ea = (uint32_t)(ecx + 0x00000014u);
     M32(ea) = ebx;
-    /* 0074d57c  push 0xbade14 */
+    /* 0074d57c  push 0xbade14  ; "Texture/Water" */
     t = 0xbade14u;
     esp -= 4;
     M32(esp) = t;
     /* 0074d581  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 0074d584  call 0x401ae0 */
+    /* 0074d584  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d490_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 0074d589  mov dword ptr [esi + 0xe0], 0x3b83126f */
+    /* 0074d589  mov dword ptr [esi + 0xe0], 0x3b83126f  ; 0.004f */
     ea = (uint32_t)(esi + 0x000000e0u);
     M32(ea) = 0x3b83126fu;
-    /* 0074d593  mov dword ptr [esi + 0xe4], 0x3c449ba6 */
+    /* 0074d593  mov dword ptr [esi + 0xe4], 0x3c449ba6  ; 0.012f */
     ea = (uint32_t)(esi + 0x000000e4u);
     M32(ea) = 0x3c449ba6u;
-    /* 0074d59d  mov dword ptr [esi + 0xe8], 0x3c23d70a */
+    /* 0074d59d  mov dword ptr [esi + 0xe8], 0x3c23d70a  ; 0.01f */
     ea = (uint32_t)(esi + 0x000000e8u);
     M32(ea) = 0x3c23d70au;
     /* 0074d5a7  mov byte ptr [esi + 0x108], bl */
     ea = (uint32_t)(esi + 0x00000108u);
     M8(ea) = LO8(ebx);
-    /* 0074d5ad  mov dword ptr [esi + 0xec], 0x40a00000 */
+    /* 0074d5ad  mov dword ptr [esi + 0xec], 0x40a00000  ; 5.0f */
     ea = (uint32_t)(esi + 0x000000ecu);
     M32(ea) = 0x40a00000u;
-    /* 0074d5b7  mov dword ptr [esi + 0xf0], 0x40800000 */
+    /* 0074d5b7  mov dword ptr [esi + 0xf0], 0x40800000  ; 4.0f */
     ea = (uint32_t)(esi + 0x000000f0u);
     M32(ea) = 0x40800000u;
     /* 0074d5c1  mov byte ptr [esi + 0xf4], 1 */
     ea = (uint32_t)(esi + 0x000000f4u);
     M8(ea) = 0x1u;
-    /* 0074d5c8  mov dword ptr [esi + 0xf8], 0x43e10000 */
+    /* 0074d5c8  mov dword ptr [esi + 0xf8], 0x43e10000  ; 450.0f */
     ea = (uint32_t)(esi + 0x000000f8u);
     M32(ea) = 0x43e10000u;
     /* 0074d5d2  mov dword ptr [esi + 0xfc], 3 */
@@ -1170,7 +1197,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d610  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0074d610  PatchTerrainTemplate::vf8  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d610, bfv_client_l1_body_0074d610);
 BFV_L1_RESUME(bfv_client_l1r_0074d610_1, bfv_client_l1_body_0074d610, 1);
 BFV_L1_RESUME(bfv_client_l1r_0074d610_2, bfv_client_l1_body_0074d610, 2);
@@ -1245,40 +1274,40 @@ L_0074d627:
     t = 0xb45c88u;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d62f  lea ecx, [esp + 0x10] */
+    /* 0074d62f  lea ecx, [esp + 0x10]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000010u);
     /* 0074d633  mov byte ptr [esi + 0x110], 1 */
     ea = (uint32_t)(esi + 0x00000110u);
     M8(ea) = 0x1u;
-    /* 0074d63a  mov dword ptr [esp + 0x28], 0xf */
+    /* 0074d63a  mov dword ptr [esp + 0x28], 0xf  ; var_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0xfu;
-    /* 0074d642  mov dword ptr [esp + 0x24], 0 */
+    /* 0074d642  mov dword ptr [esp + 0x24], 0  ; var_8 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = 0x0u;
-    /* 0074d64a  mov byte ptr [esp + 0x14], 0 */
+    /* 0074d64a  mov byte ptr [esp + 0x14], 0  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = 0x0u;
-    /* 0074d64f  call 0x401ae0 */
+    /* 0074d64f  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d610_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0074d654  mov ecx, dword ptr [0xe122cc] */
+    /* 0074d654  mov ecx, dword ptr [0xe122cc]  ; g_pShaderManager */
     ea = (uint32_t)(0x00e122ccu);
     ecx = M32(ea);
     /* 0074d65a  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0074d65c  lea edx, [esp + 8] */
+    /* 0074d65c  lea edx, [esp + 8]  ; &var_1c */
     edx = (uint32_t)(esp + 0x00000008u);
     /* 0074d660  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d661  call dword ptr [eax + 0x2c] */
+    /* 0074d661  call dword ptr [eax + 0x2c]  ; -> ShaderManager::vf11 */
     ea = (uint32_t)(eax + 0x0000002cu);
     t = M32(ea);
     esp -= 4;
@@ -1316,7 +1345,7 @@ L_0074d67f:
     F_LOGIC(32, r);
     /* 0074d681  je 0x74d696 */
     if (zf) goto L_0074d696;
-    /* 0074d683  mov eax, dword ptr [0xba5af4] */
+    /* 0074d683  mov eax, dword ptr [0xba5af4]  ; classID(dice.ref2.rend.SubShaderBuilder.Patch) */
     ea = (uint32_t)(0x00ba5af4u);
     eax = M32(ea);
     /* 0074d688  mov edx, dword ptr [edi] */
@@ -1340,7 +1369,7 @@ R_4:
     ea = (uint32_t)(esi + 0x0000010cu);
     M32(ea) = eax;
 L_0074d696:
-    /* 0074d696  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 0074d696  cmp dword ptr [esp + 0x20], 0x10  ; var_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
@@ -1352,14 +1381,14 @@ L_0074d696:
     edi = t;
     /* 0074d69c  jb 0x74d6ab */
     if (cf) goto L_0074d6ab;
-    /* 0074d69e  mov ecx, dword ptr [esp + 8] */
+    /* 0074d69e  mov ecx, dword ptr [esp + 8]  ; var_18 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 0074d6a2  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d6a3  call 0x403680 */
+    /* 0074d6a3  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d610_5;
@@ -1416,7 +1445,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d6d0  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0074d6d0  PatchTerrainTemplate::vf7  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d6d0, bfv_client_l1_body_0074d6d0);
 BFV_L1_RESUME(bfv_client_l1r_0074d6d0_1, bfv_client_l1_body_0074d6d0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0074d6d0_2, bfv_client_l1_body_0074d6d0, 2);
@@ -1452,7 +1483,7 @@ void bfv_client_l1_body_0074d6d0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0074d6d7  mov edi, ecx */
     edi = ecx;
-    /* 0074d6d9  call 0x403610 */
+    /* 0074d6d9  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d6d0_1;
@@ -1476,7 +1507,7 @@ R_1:
     M32(esp) = t;
     /* 0074d6e6  mov ecx, eax */
     ecx = eax;
-    /* 0074d6e8  call 0x725cf0 */
+    /* 0074d6e8  call 0x725cf0  ; PatchTerrain::PatchTerrain */
     t = 0x00725cf0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d6d0_2;
@@ -1493,7 +1524,7 @@ L_0074d6f1:
     F_LOGIC(32, r);
     esi = r;
 L_0074d6f3:
-    /* 0074d6f3  call 0xa55d90 */
+    /* 0074d6f3  call 0xa55d90  ; PatchTerrainTemplate::vf7_helper_00a55d90 */
     t = 0x00a55d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d6d0_3;
@@ -1536,7 +1567,7 @@ L_0074d710:
     /* 0074d712  mov byte ptr [edi + 0xf4], al */
     ea = (uint32_t)(edi + 0x000000f4u);
     M8(ea) = LO8(eax);
-    /* 0074d718  call 0x7232b0 */
+    /* 0074d718  call 0x7232b0  ; PatchTerrain_HeightMap_007232b0 */
     t = 0x007232b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d6d0_4;
@@ -1617,7 +1648,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d750  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0074d750  PatchTerrainTemplate::vf5  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d750, bfv_client_l1_body_0074d750);
 BFV_L1_RESUME(bfv_client_l1r_0074d750_1, bfv_client_l1_body_0074d750, 1);
 void bfv_client_l1_body_0074d750(struct bfv_cpu *c)
@@ -1631,7 +1664,7 @@ void bfv_client_l1_body_0074d750(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0074d750  mov eax, dword ptr [esp + 4] */
+    /* 0074d750  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0074d754  push -1 */
@@ -1652,7 +1685,7 @@ void bfv_client_l1_body_0074d750(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0074d75c  call 0x4019f0 */
+    /* 0074d75c  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d750_1;
@@ -1670,7 +1703,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d770  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0074d770  PatchTerrainTemplate::vf15  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d770, bfv_client_l1_body_0074d770);
 BFV_L1_RESUME(bfv_client_l1r_0074d770_1, bfv_client_l1_body_0074d770, 1);
 BFV_L1_RESUME(bfv_client_l1r_0074d770_2, bfv_client_l1_body_0074d770, 2);
@@ -1694,7 +1729,7 @@ void bfv_client_l1_body_0074d770(struct bfv_cpu *c)
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d774  lea eax, [esp + 0xc] */
+    /* 0074d774  lea eax, [esp + 0xc]  ; &arg_0 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 0074d778  push eax */
     t = eax;
@@ -1706,14 +1741,14 @@ void bfv_client_l1_body_0074d770(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0074d77c  call 0x4019f0 */
+    /* 0074d77c  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d770_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0074d781  cmp dword ptr [esp + 0x1c], 0x10 */
+    /* 0074d781  cmp dword ptr [esp + 0x1c], 0x10  ; arg_18 */
     ea = (uint32_t)(esp + 0x0000001cu);
     a = M32(ea);
     b = 0x10u;
@@ -1721,14 +1756,14 @@ R_1:
     F_SUB(32, a, b, r);
     /* 0074d786  jb 0x74d793 */
     if (cf) goto L_0074d793;
-    /* 0074d788  mov ecx, dword ptr [esp + 8] */
+    /* 0074d788  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 0074d78c  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0074d78d  call 0x403680 */
+    /* 0074d78d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d770_2;
@@ -1751,7 +1786,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0074d7a0  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0074d7a0  PatchTerrainTemplate::vf37  (virtual method)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0074d7a0, bfv_client_l1_body_0074d7a0);
 BFV_L1_RESUME(bfv_client_l1r_0074d7a0_1, bfv_client_l1_body_0074d7a0, 1);
 void bfv_client_l1_body_0074d7a0(struct bfv_cpu *c)
@@ -1765,7 +1802,7 @@ void bfv_client_l1_body_0074d7a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0074d7a0  mov eax, dword ptr [esp + 4] */
+    /* 0074d7a0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0074d7a4  push -1 */
@@ -1786,7 +1823,7 @@ void bfv_client_l1_body_0074d7a0(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0074d7af  call 0x4019f0 */
+    /* 0074d7af  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0074d7a0_1;
@@ -1804,7 +1841,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0075c2c0  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0075c2c0  PatchTerrainTemplate::addRef  (virtual method)
+ * overrides: IBase::addRef  (395 classes implement it)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0075c2c0, bfv_client_l1_body_0075c2c0);
 void bfv_client_l1_body_0075c2c0(struct bfv_cpu *c)
 {
@@ -1835,7 +1875,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0075c2d0  dice::ref2::geom::PatchTerrainTemplate  (virtual method) */
+/* 0075c2d0  PatchTerrainTemplate::release  (virtual method)
+ * overrides: IBase::release  (395 classes implement it)
+ * class: dice::ref2::geom::PatchTerrainTemplate
+ */
 BFV_L1_ENTRY(bfv_client_l1_0075c2d0, bfv_client_l1_body_0075c2d0);
 BFV_L1_RESUME(bfv_client_l1r_0075c2d0_1, bfv_client_l1_body_0075c2d0, 1);
 void bfv_client_l1_body_0075c2d0(struct bfv_cpu *c)
@@ -1880,7 +1923,7 @@ void bfv_client_l1_body_0075c2d0(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 0075c2e4  call dword ptr [eax] */
+    /* 0075c2e4  call dword ptr [eax]  ; -> PatchTerrainTemplate::vf0 = PatchTerrainTemplate::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;

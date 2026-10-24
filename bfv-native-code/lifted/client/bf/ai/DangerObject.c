@@ -5,59 +5,9 @@
 #include "l1.h"
 
 
-/* 00991c40  dice::bf::ai::DangerObject  (vtable store) */
-BFV_L1_ENTRY(bfv_client_l1_00991c40, bfv_client_l1_body_00991c40);
-BFV_L1_RESUME(bfv_client_l1r_00991c40_1, bfv_client_l1_body_00991c40, 1);
-void bfv_client_l1_body_00991c40(struct bfv_cpu *c)
-{
-    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
-    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
-    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
-    FLAGS_LOAD(eflags_rest);
-    uint32_t t, ea;
-    switch (c->eip) { /* 0: entry; k: return from the k-th call */
-    case 1: goto R_1;
-    default: break;
-    }
-    /* 00991c40  mov eax, dword ptr [ecx + 4] */
-    ea = (uint32_t)(ecx + 0x00000004u);
-    eax = M32(ea);
-    /* 00991c43  mov ecx, dword ptr [eax + 0x20] */
-    ea = (uint32_t)(eax + 0x00000020u);
-    ecx = M32(ea);
-    /* 00991c46  mov edx, dword ptr [ecx] */
-    ea = (uint32_t)(ecx);
-    edx = M32(ea);
-    /* 00991c48  push 2 */
-    t = 0x2u;
-    esp -= 4;
-    M32(esp) = t;
-    /* 00991c4a  call dword ptr [edx + 0xa0] */
-    ea = (uint32_t)(edx + 0x000000a0u);
-    t = M32(ea);
-    esp -= 4;
-    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00991c40_1;
-    c->eip = t;
-    goto out;
-R_1:
-    /* 00991c50  mov eax, dword ptr [eax + 0x14] */
-    ea = (uint32_t)(eax + 0x00000014u);
-    eax = M32(ea);
-    /* 00991c53  mov al, byte ptr [eax + 0x38] */
-    ea = (uint32_t)(eax + 0x00000038u);
-    SET8L(eax, M8(ea));
-    /* 00991c56  ret */
-    c->eip = M32(esp);
-    esp += 4;
-    goto out;
-out: __attribute__((unused));
-    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
-    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
-    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
-}
-
-
-/* 00991c80  dice::bf::ai::DangerObject  (virtual method) */
+/* 00991c80  DangerObject::vf5  (virtual method)
+ * class: dice::bf::ai::DangerObject
+ */
 BFV_L1_ENTRY(bfv_client_l1_00991c80, bfv_client_l1_body_00991c80);
 BFV_L1_RESUME(bfv_client_l1r_00991c80_1, bfv_client_l1_body_00991c80, 1);
 BFV_L1_RESUME(bfv_client_l1r_00991c80_2, bfv_client_l1_body_00991c80, 2);
@@ -96,7 +46,7 @@ void bfv_client_l1_body_00991c80(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00991c86  call dword ptr [eax + 8] */
+    /* 00991c86  call dword ptr [eax + 8]  ; -> DangerObject::vf2 = _purecall */
     ea = (uint32_t)(eax + 0x00000008u);
     t = M32(ea);
     esp -= 4;
@@ -107,7 +57,7 @@ R_1:
     /* 00991c89  test al, al */
     r = (LO8(eax) & LO8(eax)) & 0xffu;
     F_LOGIC(8, r);
-    /* 00991c8b  mov edi, dword ptr [esp + 0xc] */
+    /* 00991c8b  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edi = M32(ea);
     /* 00991c8f  je 0x991c9c */
@@ -136,7 +86,7 @@ L_00991c9c:
     eax = M32(ea);
     /* 00991c9e  mov ecx, esi */
     ecx = esi;
-    /* 00991ca0  call dword ptr [eax + 4] */
+    /* 00991ca0  call dword ptr [eax + 4]  ; -> DangerObject::vf1 = _purecall */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -190,7 +140,7 @@ L_00991cb9:
     eax = M32(ea);
     /* 00991cbb  mov ecx, esi */
     ecx = esi;
-    /* 00991cbd  call dword ptr [eax + 0x10] */
+    /* 00991cbd  call dword ptr [eax + 0x10]  ; -> DangerObject::vf4 = _purecall */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;
@@ -223,7 +173,7 @@ R_6:
     eax = M32(ea);
     /* 00991ccf  mov ecx, esi */
     ecx = esi;
-    /* 00991cd1  call dword ptr [eax + 0x10] */
+    /* 00991cd1  call dword ptr [eax + 0x10]  ; -> DangerObject::vf4 = _purecall */
     ea = (uint32_t)(eax + 0x00000010u);
     t = M32(ea);
     esp -= 4;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0052f710  dice::bf::SubChallenge  (vtable store) */
+/* 0052f710  SubChallenge::~SubChallenge  (vtable store)
+ * class: dice::bf::SubChallenge
+ * called by: PlayerControlPoint::deleting_dtor, BotTeamControlPoint::deleting_dtor, MinVehicleDestroyedWithWeapon::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_0052f710, bfv_client_l1_body_0052f710);
 BFV_L1_RESUME(bfv_client_l1r_0052f710_1, bfv_client_l1_body_0052f710, 1);
 BFV_L1_RESUME(bfv_client_l1r_0052f710_2, bfv_client_l1_body_0052f710, 2);
@@ -37,10 +40,10 @@ void bfv_client_l1_body_0052f710(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0052f717  lea ecx, [esi + 0x2c] */
     ecx = (uint32_t)(esi + 0x0000002cu);
-    /* 0052f71a  mov dword ptr [esi], 0xb64b5c */
+    /* 0052f71a  mov dword ptr [esi], 0xb64b5c  ; vtable SubChallenge */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb64b5cu;
-    /* 0052f720  call 0x423cc0 */
+    /* 0052f720  call 0x423cc0  ; sub_00423cc0 */
     t = 0x00423cc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f710_1;
@@ -57,7 +60,7 @@ R_1:
     M32(esp) = t;
     /* 0052f729  lea ecx, [esi + 0x10] */
     ecx = (uint32_t)(esi + 0x00000010u);
-    /* 0052f72c  call 0x423cc0 */
+    /* 0052f72c  call 0x423cc0  ; sub_00423cc0 */
     t = 0x00423cc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f710_2;
@@ -79,7 +82,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0052f740  dice::bf::SubChallenge  (virtual method) */
+/* 0052f740  SubChallenge::deleting_dtor  (virtual method)
+ * class: dice::bf::SubChallenge
+ */
 BFV_L1_ENTRY(bfv_client_l1_0052f740, bfv_client_l1_body_0052f740);
 BFV_L1_RESUME(bfv_client_l1r_0052f740_1, bfv_client_l1_body_0052f740, 1);
 BFV_L1_RESUME(bfv_client_l1r_0052f740_2, bfv_client_l1_body_0052f740, 2);
@@ -105,10 +110,10 @@ void bfv_client_l1_body_0052f740(struct bfv_cpu *c)
     esi = ecx;
     /* 0052f743  lea ecx, [esi + 0x2c] */
     ecx = (uint32_t)(esi + 0x0000002cu);
-    /* 0052f746  mov dword ptr [esi], 0xb64b5c */
+    /* 0052f746  mov dword ptr [esi], 0xb64b5c  ; vtable SubChallenge */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb64b5cu;
-    /* 0052f74c  call 0x424d10 */
+    /* 0052f74c  call 0x424d10  ; std::wstring::_Tidy */
     t = 0x00424d10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f740_1;
@@ -117,14 +122,14 @@ void bfv_client_l1_body_0052f740(struct bfv_cpu *c)
 R_1:
     /* 0052f751  lea ecx, [esi + 0x10] */
     ecx = (uint32_t)(esi + 0x00000010u);
-    /* 0052f754  call 0x424d10 */
+    /* 0052f754  call 0x424d10  ; std::wstring::_Tidy */
     t = 0x00424d10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f740_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0052f759  test byte ptr [esp + 8], 1 */
+    /* 0052f759  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -134,7 +139,7 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0052f761  call 0x403680 */
+    /* 0052f761  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0052f740_3;
@@ -165,8 +170,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005c9950  dice::bf::SubChallenge  (vtable store)
- * strings: "no_failure" */
+/* 005c9950  SubChallenge::SubChallenge  (vtable store)
+ * class: dice::bf::SubChallenge
+ * strings: "no_failure"
+ * called by: AIDifficulty::create, NbrOfPlayersPerTeam::create, NoBotRespawningForTeam::create, TimeLimit::create, TSubChallenge<string>::TSubChallenge, TSubChallenge2<int,string>::TSubChallenge2 (+5 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_005c9950, bfv_client_l1_body_005c9950);
 BFV_L1_RESUME(bfv_client_l1r_005c9950_1, bfv_client_l1_body_005c9950, 1);
 BFV_L1_RESUME(bfv_client_l1r_005c9950_2, bfv_client_l1_body_005c9950, 2);
@@ -196,7 +204,7 @@ void bfv_client_l1_body_005c9950(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 005c9953  mov al, byte ptr [esp + 0x20] */
+    /* 005c9953  mov al, byte ptr [esp + 0x20]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000020u);
     SET8L(eax, M8(ea));
     /* 005c9957  push ebx */
@@ -217,13 +225,13 @@ void bfv_client_l1_body_005c9950(struct bfv_cpu *c)
     t = 0xau;
     esp -= 4;
     M32(esp) = t;
-    /* 005c995f  push 0xb76b24 */
+    /* 005c995f  push 0xb76b24  ; "no_failure" */
     t = 0xb76b24u;
     esp -= 4;
     M32(esp) = t;
-    /* 005c9964  lea ecx, [esp + 0x10] */
+    /* 005c9964  lea ecx, [esp + 0x10]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 005c9968  mov dword ptr [esi], 0xb64b5c */
+    /* 005c9968  mov dword ptr [esi], 0xb64b5c  ; vtable SubChallenge */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb64b5cu;
     /* 005c996e  mov byte ptr [esi + 4], bl */
@@ -235,29 +243,29 @@ void bfv_client_l1_body_005c9950(struct bfv_cpu *c)
     /* 005c9974  mov byte ptr [esi + 0xc], al */
     ea = (uint32_t)(esi + 0x0000000cu);
     M8(ea) = LO8(eax);
-    /* 005c9977  mov dword ptr [esp + 0x28], 0xf */
+    /* 005c9977  mov dword ptr [esp + 0x28], 0xf  ; var_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0xfu;
-    /* 005c997f  mov dword ptr [esp + 0x24], ebx */
+    /* 005c997f  mov dword ptr [esp + 0x24], ebx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = ebx;
-    /* 005c9983  mov byte ptr [esp + 0x14], bl */
+    /* 005c9983  mov byte ptr [esp + 0x14], bl  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = LO8(ebx);
-    /* 005c9987  call 0x401ae0 */
+    /* 005c9987  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c9950_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005c998c  lea ecx, [esp + 8] */
+    /* 005c998c  lea ecx, [esp + 8]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000008u);
     /* 005c9990  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c9991  mov ecx, dword ptr [0xd444c4] */
+    /* 005c9991  mov ecx, dword ptr [0xd444c4]  ; g_setup */
     ea = (uint32_t)(0x00d444c4u);
     ecx = M32(ea);
     /* 005c9997  lea edx, [esi + 0x10] */
@@ -266,14 +274,14 @@ R_1:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c999b  call 0x427cc0 */
+    /* 005c999b  call 0x427cc0  ; ServerService_00427cc0 */
     t = 0x00427cc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c9950_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 005c99a0  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 005c99a0  cmp dword ptr [esp + 0x20], 0x10  ; var_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
@@ -281,14 +289,14 @@ R_2:
     F_SUB(32, a, b, r);
     /* 005c99a5  jb 0x5c99b4 */
     if (cf) goto L_005c99b4;
-    /* 005c99a7  mov eax, dword ptr [esp + 0xc] */
+    /* 005c99a7  mov eax, dword ptr [esp + 0xc]  ; var_18 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 005c99ab  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c99ac  call 0x403680 */
+    /* 005c99ac  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c9950_3;
@@ -310,31 +318,31 @@ L_005c99b4:
     t = 0xb76b14u;
     esp -= 4;
     M32(esp) = t;
-    /* 005c99bb  lea ecx, [esp + 0x10] */
+    /* 005c99bb  lea ecx, [esp + 0x10]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000010u);
-    /* 005c99bf  mov dword ptr [esp + 0x28], 0xf */
+    /* 005c99bf  mov dword ptr [esp + 0x28], 0xf  ; var_4 */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = 0xfu;
-    /* 005c99c7  mov dword ptr [esp + 0x24], ebx */
+    /* 005c99c7  mov dword ptr [esp + 0x24], ebx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = ebx;
-    /* 005c99cb  mov byte ptr [esp + 0x14], bl */
+    /* 005c99cb  mov byte ptr [esp + 0x14], bl  ; var_18 */
     ea = (uint32_t)(esp + 0x00000014u);
     M8(ea) = LO8(ebx);
-    /* 005c99cf  call 0x401ae0 */
+    /* 005c99cf  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c9950_4;
     c->eip = t;
     goto out;
 R_4:
-    /* 005c99d4  lea ecx, [esp + 8] */
+    /* 005c99d4  lea ecx, [esp + 8]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000008u);
     /* 005c99d8  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c99d9  mov ecx, dword ptr [0xd444c4] */
+    /* 005c99d9  mov ecx, dword ptr [0xd444c4]  ; g_setup */
     ea = (uint32_t)(0x00d444c4u);
     ecx = M32(ea);
     /* 005c99df  lea edx, [esi + 0x2c] */
@@ -343,14 +351,14 @@ R_4:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 005c99e3  call 0x427cc0 */
+    /* 005c99e3  call 0x427cc0  ; ServerService_00427cc0 */
     t = 0x00427cc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c9950_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 005c99e8  cmp dword ptr [esp + 0x20], 0x10 */
+    /* 005c99e8  cmp dword ptr [esp + 0x20], 0x10  ; var_4 */
     ea = (uint32_t)(esp + 0x00000020u);
     a = M32(ea);
     b = 0x10u;
@@ -358,14 +366,14 @@ R_5:
     F_SUB(32, a, b, r);
     /* 005c99ed  jb 0x5c99fc */
     if (cf) goto L_005c99fc;
-    /* 005c99ef  mov eax, dword ptr [esp + 0xc] */
+    /* 005c99ef  mov eax, dword ptr [esp + 0xc]  ; var_18 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 005c99f3  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005c99f4  call 0x403680 */
+    /* 005c99f4  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c9950_6;
@@ -406,7 +414,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0064e7d0  dice::bf::SubChallenge  (virtual method) */
+/* 0064e7d0  stub_return_true_0args_0064e7d0  (virtual method)
+ * class: dice::bf::SubChallenge
+ * called by: MathModule::vf6
+ */
 BFV_L1_ENTRY(bfv_client_l1_0064e7d0, bfv_client_l1_body_0064e7d0);
 void bfv_client_l1_body_0064e7d0(struct bfv_cpu *c)
 {
@@ -427,7 +438,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00726570  dice::bf::SubChallenge  (virtual method) */
+/* 00726570  stub_noop_0args_00726570  (virtual method)
+ * class: dice::bf::SubChallenge
+ * called by: Cmd_Game_createBillboards::execute, Emitter::handleEvent, ObjTemplBaseModule::vf6, BFSoldier::~BFSoldier, AnimatedBundle::~AnimatedBundle, Engine::Engine (+16 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00726570, bfv_client_l1_body_00726570);
 void bfv_client_l1_body_00726570(struct bfv_cpu *c)
 {

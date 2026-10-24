@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 006395ab  std::ios_base::failure  (virtual method) */
+/* 006395ab  failure::deleting_dtor  (virtual method)
+ * overrides: exception::vf0  (9 classes implement it)
+ * class: std::ios_base::failure
+ */
 BFV_L1_ENTRY(bfv_server_l1_006395ab, bfv_server_l1_body_006395ab);
 BFV_L1_RESUME(bfv_server_l1r_006395ab_1, bfv_server_l1_body_006395ab, 1);
 BFV_L1_RESUME(bfv_server_l1r_006395ab_2, bfv_server_l1_body_006395ab, 2);
@@ -27,14 +30,14 @@ void bfv_server_l1_body_006395ab(struct bfv_cpu *c)
     M32(esp) = t;
     /* 006395ac  mov esi, ecx */
     esi = ecx;
-    /* 006395ae  call 0x6395c7 */
+    /* 006395ae  call 0x6395c7  ; failure::~failure */
     t = 0x006395c7u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006395ab_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006395b3  test byte ptr [esp + 8], 1 */
+    /* 006395b3  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -44,7 +47,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006395bb  call 0x403df0 */
+    /* 006395bb  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006395ab_2;
@@ -73,7 +76,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006395c7  std::ios_base::failure  (vtable store) */
+/* 006395c7  failure::~failure  (vtable store)
+ * class: std::ios_base::failure
+ * called by: failure::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_006395c7, bfv_server_l1_body_006395c7);
 void bfv_server_l1_body_006395c7(struct bfv_cpu *c)
 {
@@ -82,10 +88,10 @@ void bfv_server_l1_body_006395c7(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006395c7  mov dword ptr [ecx], 0x851450 */
+    /* 006395c7  mov dword ptr [ecx], 0x851450  ; vtable failure */
     ea = (uint32_t)(ecx);
     M32(ea) = 0x851450u;
-    /* 006395cd  jmp 0x639528 */
+    /* 006395cd  jmp 0x639528  ; runtime_error::~runtime_error */
     c->eip = 0x00639528u;
     goto out;
 out: __attribute__((unused));
@@ -95,8 +101,12 @@ out: __attribute__((unused));
 }
 
 
-/* 006395d2  std::ios_base::failure  (vtable store)
- * strings: "ios_base::badbit set", "ios_base::failbit set", "ios_base::eofbit set" */
+/* 006395d2  std::ios_base::clear  (vtable store)
+ * identified: same code as client 0x007c09af: (iostate, bool reraise); called as clear(0) by _Init and clear(state|badbit) by init; throws failure
+ * class: std::ios_base::failure
+ * strings: "ios_base::badbit set", "ios_base::failbit set", "ios_base::eofbit set"
+ * called by: std::ostream::flush, std::operator_write_cstr_catch_00401ade, facet_00401b09, std::ostream::operator_write_int_catch_00401d79, facet_00401da7, sub_004054e0_catch_004055f6 (+700 more)
+ */
 BFV_L1_ENTRY(bfv_server_l1_006395d2, bfv_server_l1_body_006395d2);
 BFV_L1_RESUME(bfv_server_l1r_006395d2_1, bfv_server_l1_body_006395d2, 1);
 BFV_L1_RESUME(bfv_server_l1r_006395d2_2, bfv_server_l1_body_006395d2, 2);
@@ -124,7 +134,7 @@ void bfv_server_l1_body_006395d2(struct bfv_cpu *c)
     }
     /* 006395d2  mov eax, 0x7e2e06 */
     eax = 0x7e2e06u;
-    /* 006395d7  call 0x64003c */
+    /* 006395d7  call 0x64003c  ; _EH_prolog */
     t = 0x0064003cu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006395d2_1;
@@ -184,13 +194,13 @@ L_00639604:
     F_LOGIC(8, r);
     /* 00639607  je 0x639636 */
     if (zf) goto L_00639636;
-    /* 00639609  push 0x851488 */
+    /* 00639609  push 0x851488  ; "ios_base::badbit set" */
     t = 0x851488u;
     esp -= 4;
     M32(esp) = t;
     /* 0063960e  lea ecx, [ebp - 0x50] */
     ecx = (uint32_t)(ebp + 0xffffffb0u);
-    /* 00639611  call 0x402650 */
+    /* 00639611  call 0x402650  ; std::string::string_cstr */
     t = 0x00402650u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006395d2_2;
@@ -209,14 +219,14 @@ L_00639619:
     M32(esp) = t;
     /* 0063961d  lea ecx, [ebp - 0x34] */
     ecx = (uint32_t)(ebp + 0xffffffccu);
-    /* 00639620  call 0x63956f */
+    /* 00639620  call 0x63956f  ; runtime_error::runtime_error */
     t = 0x0063956fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006395d2_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 00639625  mov dword ptr [ebp - 0x34], 0x851450 */
+    /* 00639625  mov dword ptr [ebp - 0x34], 0x851450  ; vtable failure */
     ea = (uint32_t)(ebp + 0xffffffccu);
     M32(ea) = 0x851450u;
     /* 0063962c  push 0x8da4f8 */
@@ -241,13 +251,13 @@ L_00639636:
     F_LOGIC(8, r);
     /* 0063963b  je 0x639653 */
     if (zf) goto L_00639653;
-    /* 0063963d  push 0x851470 */
+    /* 0063963d  push 0x851470  ; "ios_base::failbit set" */
     t = 0x851470u;
     esp -= 4;
     M32(esp) = t;
     /* 00639642  lea ecx, [ebp - 0x50] */
     ecx = (uint32_t)(ebp + 0xffffffb0u);
-    /* 00639645  call 0x402650 */
+    /* 00639645  call 0x402650  ; std::string::string_cstr */
     t = 0x00402650u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006395d2_4;
@@ -260,13 +270,13 @@ R_4:
     /* 00639651  jmp 0x639619 */
     goto L_00639619;
 L_00639653:
-    /* 00639653  push 0x851458 */
+    /* 00639653  push 0x851458  ; "ios_base::eofbit set" */
     t = 0x851458u;
     esp -= 4;
     M32(esp) = t;
     /* 00639658  lea ecx, [ebp - 0x94] */
     ecx = (uint32_t)(ebp + 0xffffff6cu);
-    /* 0063965e  call 0x402650 */
+    /* 0063965e  call 0x402650  ; std::string::string_cstr */
     t = 0x00402650u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006395d2_5;
@@ -284,14 +294,14 @@ R_5:
     /* 0063966d  mov dword ptr [ebp - 4], ebx */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = ebx;
-    /* 00639670  call 0x63956f */
+    /* 00639670  call 0x63956f  ; runtime_error::runtime_error */
     t = 0x0063956fu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006395d2_6;
     c->eip = t;
     goto out;
 R_6:
-    /* 00639675  mov dword ptr [ebp - 0x78], 0x851450 */
+    /* 00639675  mov dword ptr [ebp - 0x78], 0x851450  ; vtable failure */
     ea = (uint32_t)(ebp + 0xffffff88u);
     M32(ea) = 0x851450u;
     /* 0063967c  push 0x8da4f8 */
@@ -306,7 +316,7 @@ L_00639684:
     esp -= 4;
     M32(esp) = t;
 L_00639685:
-    /* 00639685  call 0x63a98e */
+    /* 00639685  call 0x63a98e  ; _CxxThrowException */
     t = 0x0063a98eu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_006395d2_7;

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00868be0  dice::meme::OutputIStream  (vtable store) */
+/* 00868be0  OutputIStream::create  (vtable store)
+ * class: dice::meme::OutputIStream
+ * called by: ClearStream::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_client_l1_00868be0, bfv_client_l1_body_00868be0);
 BFV_L1_RESUME(bfv_client_l1r_00868be0_1, bfv_client_l1_body_00868be0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00868be0_2, bfv_client_l1_body_00868be0, 2);
@@ -49,7 +52,7 @@ void bfv_client_l1_body_00868be0(struct bfv_cpu *c)
     t = 0x14u;
     esp -= 4;
     M32(esp) = t;
-    /* 00868bed  call 0x403610 */
+    /* 00868bed  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00868be0_1;
@@ -81,7 +84,7 @@ R_1:
     M32(esp) = t;
     /* 00868c02  mov ecx, edi */
     ecx = edi;
-    /* 00868c04  call dword ptr [eax + 0x60] */
+    /* 00868c04  call dword ptr [eax + 0x60]  ; -> OutputIStream::vf24 = ProxyIStream::vf24 */
     ea = (uint32_t)(eax + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -102,7 +105,7 @@ R_2:
     M32(esp) = t;
     /* 00868c0d  mov ecx, esi */
     ecx = esi;
-    /* 00868c0f  call 0x878910 */
+    /* 00868c0f  call 0x878910  ; ProxyIStream::ProxyIStream */
     t = 0x00878910u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00868be0_3;
@@ -112,7 +115,7 @@ R_3:
     /* 00868c14  mov dword ptr [esi + 0x10], edi */
     ea = (uint32_t)(esi + 0x00000010u);
     M32(ea) = edi;
-    /* 00868c17  mov dword ptr [esi], 0xbd1e14 */
+    /* 00868c17  mov dword ptr [esi], 0xbd1e14  ; vtable OutputIStream */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd1e14u;
     /* 00868c1d  mov eax, esi */
@@ -159,7 +162,7 @@ L_00868c2b:
     t = 0x18u;
     esp -= 4;
     M32(esp) = t;
-    /* 00868c34  call 0x403610 */
+    /* 00868c34  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00868be0_4;
@@ -189,7 +192,7 @@ R_4:
     M32(ea) = edx;
     /* 00868c48  mov ecx, eax */
     ecx = eax;
-    /* 00868c4a  jmp 0x8789d0 */
+    /* 00868c4a  jmp 0x8789d0  ; CachedIStream::CachedIStream */
     c->eip = 0x008789d0u;
     goto out;
 L_00868c4f:
@@ -218,7 +221,7 @@ L_00868c55:
     M32(esp) = t;
     /* 00868c5c  mov ecx, edi */
     ecx = edi;
-    /* 00868c5e  call dword ptr [eax + 0x60] */
+    /* 00868c5e  call dword ptr [eax + 0x60]  ; -> OutputIStream::vf24 = ProxyIStream::vf24 */
     ea = (uint32_t)(eax + 0x00000060u);
     t = M32(ea);
     esp -= 4;
@@ -241,7 +244,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00878990  dice::meme::OutputIStream  (vtable store) */
+/* 00878990  OutputIStream::~OutputIStream  (vtable store)
+ * class: dice::meme::OutputIStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_00878990, bfv_client_l1_body_00878990);
 void bfv_client_l1_body_00878990(struct bfv_cpu *c)
 {
@@ -250,10 +255,10 @@ void bfv_client_l1_body_00878990(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00878990  mov dword ptr [ecx], 0xbd1e14 */
+    /* 00878990  mov dword ptr [ecx], 0xbd1e14  ; vtable OutputIStream */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbd1e14u;
-    /* 00878996  jmp 0x878760 */
+    /* 00878996  jmp 0x878760  ; ProxyIStream::~ProxyIStream */
     c->eip = 0x00878760u;
     goto out;
 out: __attribute__((unused));
@@ -263,7 +268,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008789a0  dice::meme::OutputIStream  (virtual method) */
+/* 008789a0  OutputIStream::read  (virtual method)
+ * overrides: IStream::read  (6 classes implement it)
+ * class: dice::meme::OutputIStream
+ */
 BFV_L1_ENTRY(bfv_client_l1_008789a0, bfv_client_l1_body_008789a0);
 BFV_L1_RESUME(bfv_client_l1r_008789a0_1, bfv_client_l1_body_008789a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_008789a0_2, bfv_client_l1_body_008789a0, 2);
@@ -279,14 +287,14 @@ void bfv_client_l1_body_008789a0(struct bfv_cpu *c)
     case 2: goto R_2;
     default: break;
     }
-    /* 008789a0  mov eax, dword ptr [esp + 8] */
+    /* 008789a0  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 008789a4  push ebx */
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 008789a5  mov ebx, dword ptr [esp + 8] */
+    /* 008789a5  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 008789a9  push esi */
@@ -307,7 +315,7 @@ void bfv_client_l1_body_008789a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008789ad  mov esi, ecx */
     esi = ecx;
-    /* 008789af  call 0x8787c0 */
+    /* 008789af  call 0x8787c0  ; ProxyIStream::read */
     t = 0x008787c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008789a0_1;

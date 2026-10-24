@@ -1,0 +1,11 @@
+## file
+Plan action that sets the soldier pose. Holds a BAPAComponentSoldierPose at this+0x18 and two owned parts at this+0x3c and this+0x40.
+
+## 009f3d80
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.
+
+## 009f3e40
+Adjustor thunk: enters destroy from the secondary base.
+
+## 009f3f80
+Destructor: releases the parts at this+0x3c and this+0x40, tears down the pose component at this+0x18 and returns the object to its memory pool when bit 0 of the flag argument is set.

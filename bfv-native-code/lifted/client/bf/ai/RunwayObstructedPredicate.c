@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00985050  dice::bf::ai::?A0x1b46f355::RunwayObstructedPredicate  (virtual method) */
+/* 00985050  RunwayObstructedPredicate::vf0  (virtual method)
+ * class: dice::bf::ai::?A0x1b46f355::RunwayObstructedPredicate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00985050, bfv_client_l1_body_00985050);
 void bfv_client_l1_body_00985050(struct bfv_cpu *c)
 {
@@ -14,7 +16,7 @@ void bfv_client_l1_body_00985050(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, n, ea;
-    /* 00985050  mov eax, dword ptr [esp + 4] */
+    /* 00985050  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 00985054  cmp dword ptr [ecx + 4], eax */
@@ -99,7 +101,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00985570  dice::bf::ai::?A0x1b46f355::RunwayObstructedPredicate  (vtable store) */
+/* 00985570  RunwayObstructedPredicate::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::?A0x1b46f355::RunwayObstructedPredicate
+ * called by: BBChange::evaluate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00985570, bfv_client_l1_body_00985570);
 BFV_L1_RESUME(bfv_client_l1r_00985570_1, bfv_client_l1_body_00985570, 1);
 BFV_L1_RESUME(bfv_client_l1r_00985570_2, bfv_client_l1_body_00985570, 2);
@@ -311,7 +316,7 @@ R_3:
     /* 009855f2  mov dword ptr [esp + 0x50], 0 */
     ea = (uint32_t)(esp + 0x00000050u);
     M32(ea) = 0x0u;
-    /* 009855fa  call 0x4f98c0 */
+    /* 009855fa  call 0x4f98c0  ; Game_004f98c0 */
     t = 0x004f98c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00985570_4;
@@ -329,7 +334,7 @@ R_4:
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00985606  lea ecx, [esp + 0x74] */
     ecx = (uint32_t)(esp + 0x00000074u);
-    /* 0098560a  fmul dword ptr [0xb6d680] */
+    /* 0098560a  fmul dword ptr [0xb6d680]  ; = 12.0f */
     ea = (uint32_t)(0x00b6d680u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00985610  fstp dword ptr [esp + 0xc] */
@@ -338,7 +343,7 @@ R_4:
     /* 00985614  fld dword ptr [esp + 0x20] */
     ea = (uint32_t)(esp + 0x00000020u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00985618  fmul dword ptr [0xbf5acc] */
+    /* 00985618  fmul dword ptr [0xbf5acc]  ; = -0.6f */
     ea = (uint32_t)(0x00bf5accu);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0098561e  fstp dword ptr [esp + 8] */
@@ -347,7 +352,7 @@ R_4:
     /* 00985622  fld dword ptr [esp + 0x28] */
     ea = (uint32_t)(esp + 0x00000028u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00985626  fmul dword ptr [0xbf5ac8] */
+    /* 00985626  fmul dword ptr [0xbf5ac8]  ; = 1.3f */
     ea = (uint32_t)(0x00bf5ac8u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0098562c  fstp dword ptr [esp + 4] */
@@ -356,13 +361,13 @@ R_4:
     /* 00985630  fld dword ptr [esp + 0x24] */
     ea = (uint32_t)(esp + 0x00000024u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00985634  fmul dword ptr [0xb5d484] */
+    /* 00985634  fmul dword ptr [0xb5d484]  ; = 1.5f */
     ea = (uint32_t)(0x00b5d484u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0098563a  fstp dword ptr [esp] */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0098563d  call 0xa85920 */
+    /* 0098563d  call 0xa85920  ; ref2_00a85920 */
     t = 0x00a85920u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00985570_5;
@@ -377,7 +382,7 @@ R_5:
     M32(esp) = t;
     /* 00985647  lea ecx, [esp + 0x68] */
     ecx = (uint32_t)(esp + 0x00000068u);
-    /* 0098564b  call 0xa85d60 */
+    /* 0098564b  call 0xa85d60  ; ref2_00a85d60 */
     t = 0x00a85d60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00985570_6;
@@ -386,14 +391,14 @@ R_5:
 R_6:
     /* 00985650  lea ecx, [esp + 0x64] */
     ecx = (uint32_t)(esp + 0x00000064u);
-    /* 00985654  call 0xa85ad0 */
+    /* 00985654  call 0xa85ad0  ; ref2_00a85ad0 */
     t = 0x00a85ad0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00985570_7;
     c->eip = t;
     goto out;
 R_7:
-    /* 00985659  mov eax, dword ptr [0xdfa8cc] */
+    /* 00985659  mov eax, dword ptr [0xdfa8cc]  ; g_pIAIMain_00dfa8cc */
     ea = (uint32_t)(0x00dfa8ccu);
     eax = M32(ea);
     /* 0098565e  test eax, eax */
@@ -441,14 +446,14 @@ R_8:
     M32(esp) = t;
     /* 00985678  mov ecx, esi */
     ecx = esi;
-    /* 0098567a  call 0x95de90 */
+    /* 0098567a  call 0x95de90  ; RunwayObstructedPredicate::ctor_dtor_helper_0095de90 */
     t = 0x0095de90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00985570_9;
     c->eip = t;
     goto out;
 R_9:
-    /* 0098567f  mov edi, dword ptr [0xe0ef54] */
+    /* 0098567f  mov edi, dword ptr [0xe0ef54]  ; g_pIAIEnvironment_00e0ef54 */
     ea = (uint32_t)(0x00e0ef54u);
     edi = M32(ea);
     /* 00985685  push 0 */
@@ -463,7 +468,7 @@ R_9:
     M32(esp) = t;
     /* 0098568c  mov ecx, esi */
     ecx = esi;
-    /* 0098568e  call 0x4c9770 */
+    /* 0098568e  call 0x4c9770  ; std::vector_ptr::resize_004c9770 */
     t = 0x004c9770u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00985570_10;
@@ -493,7 +498,7 @@ R_10:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009856a7  mov dword ptr [esp + 0x2c], 0xbf5a8c */
+    /* 009856a7  mov dword ptr [esp + 0x2c], 0xbf5a8c  ; vtable RunwayObstructedPredicate */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = 0xbf5a8cu;
     /* 009856af  mov dword ptr [esp + 0x30], ebx */
@@ -508,7 +513,7 @@ R_10:
     M32(esp) = t;
     /* 009856b6  mov ecx, edi */
     ecx = edi;
-    /* 009856b8  call dword ptr [eax + 0x48] */
+    /* 009856b8  call dword ptr [eax + 0x48]  ; -> IAIEnvironment::vf18 = BFEnvironment::vf18 */
     ea = (uint32_t)(eax + 0x00000048u);
     t = M32(ea);
     esp -= 4;

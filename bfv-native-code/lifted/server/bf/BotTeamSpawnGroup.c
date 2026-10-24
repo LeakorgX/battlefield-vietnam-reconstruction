@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0049d610  dice::bf::BotTeamSpawnGroup  (vtable store) */
+/* 0049d610  BotTeamSpawnGroup::create  (vtable store)
+ * class: dice::bf::BotTeamSpawnGroup
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049d610, bfv_server_l1_body_0049d610);
 BFV_L1_RESUME(bfv_server_l1r_0049d610_1, bfv_server_l1_body_0049d610, 1);
 BFV_L1_RESUME(bfv_server_l1r_0049d610_2, bfv_server_l1_body_0049d610, 2);
@@ -37,7 +39,7 @@ void bfv_server_l1_body_0049d610(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0049d614  mov edi, ecx */
     edi = ecx;
-    /* 0049d616  call 0x403d80 */
+    /* 0049d616  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d610_1;
@@ -63,14 +65,14 @@ R_1:
     M32(esp) = t;
     /* 0049d626  mov ecx, esi */
     ecx = esi;
-    /* 0049d628  call 0x4d9170 */
+    /* 0049d628  call 0x4d9170  ; SubChallenge::SubChallenge */
     t = 0x004d9170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d610_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0049d62d  mov dword ptr [esi], 0x81ad5c */
+    /* 0049d62d  mov dword ptr [esi], 0x81ad5c  ; vtable BotTeamSpawnGroup */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81ad5cu;
     /* 0049d633  jmp 0x49d637 */
@@ -81,7 +83,7 @@ L_0049d635:
     F_LOGIC(32, r);
     esi = r;
 L_0049d637:
-    /* 0049d637  mov ecx, dword ptr [esp + 0x14] */
+    /* 0049d637  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0049d63b  test ecx, ecx */
@@ -99,7 +101,7 @@ L_0049d637:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0049d646  call 0x402690 */
+    /* 0049d646  call 0x402690  ; std::string::assign_cstr */
     t = 0x00402690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d610_3;
@@ -126,7 +128,10 @@ out: __attribute__((unused));
 }
 
 
-/* 004dd5c0  dice::bf::BotTeamSpawnGroup  (virtual method) */
+/* 004dd5c0  BotTeamSpawnGroup::apply  (virtual method)
+ * overrides: SubChallenge::apply  (23 classes implement it)
+ * class: dice::bf::BotTeamSpawnGroup
+ */
 BFV_L1_ENTRY(bfv_server_l1_004dd5c0, bfv_server_l1_body_004dd5c0);
 BFV_L1_RESUME(bfv_server_l1r_004dd5c0_1, bfv_server_l1_body_004dd5c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_004dd5c0_2, bfv_server_l1_body_004dd5c0, 2);
@@ -157,7 +162,7 @@ void bfv_server_l1_body_004dd5c0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 004dd5c7  call 0x4ba840 */
+    /* 004dd5c7  call 0x4ba840  ; bfv_server_read_global_004ba840 */
     t = 0x004ba840u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dd5c0_1;
@@ -166,7 +171,7 @@ void bfv_server_l1_body_004dd5c0(struct bfv_cpu *c)
 R_1:
     /* 004dd5cc  mov ecx, eax */
     ecx = eax;
-    /* 004dd5ce  call 0x4bb210 */
+    /* 004dd5ce  call 0x4bb210  ; bf_004bb210 */
     t = 0x004bb210u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dd5c0_2;
@@ -189,7 +194,7 @@ R_2:
     /* 004dd5da  mov eax, dword ptr [esi + 0x48] */
     ea = (uint32_t)(esi + 0x00000048u);
     eax = M32(ea);
-    /* 004dd5dd  call 0x4dd470 */
+    /* 004dd5dd  call 0x4dd470  ; bf_004dd470 */
     t = 0x004dd470u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_004dd5c0_3;

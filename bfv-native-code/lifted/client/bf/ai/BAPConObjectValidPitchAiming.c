@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 009f76f0  dice::bf::ai::BAPConObjectValidPitchAiming  (vtable store) */
+/* 009f76f0  BAPConObjectValidPitchAiming::BAPConObjectValidPitchAiming  (vtable store)
+ * class: dice::bf::ai::BAPConObjectValidPitchAiming
+ * also entered at 009f7720: BAPConObjectValidAiming::vf1, BAPConObjectValidPitchAiming::vf1, BAPConObjectValidYawAiming::vf1, BAPICScout::vf3 (+1 more)
+ * called by: BBPFireInfantery::buildPlan_helper_00999880, BBPFire2dDriver::buildPlan
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f76f0, bfv_client_l1_body_009f76f0);
 BFV_L1_RESUME(bfv_client_l1r_009f76f0_1, bfv_client_l1_body_009f76f0, 1);
 void bfv_client_l1_body_009f76f0(struct bfv_cpu *c)
@@ -19,10 +23,10 @@ void bfv_client_l1_body_009f76f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009f76f0  mov eax, dword ptr [esp + 0x10] */
+    /* 009f76f0  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 009f76f4  mov edx, dword ptr [esp + 8] */
+    /* 009f76f4  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 009f76f8  push esi */
@@ -33,12 +37,12 @@ void bfv_client_l1_body_009f76f0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009f76fa  mov eax, dword ptr [esp + 0xc] */
+    /* 009f76fa  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 009f76fe  mov esi, ecx */
     esi = ecx;
-    /* 009f7700  mov ecx, dword ptr [esp + 0x14] */
+    /* 009f7700  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 009f7704  push ecx */
@@ -55,14 +59,14 @@ void bfv_client_l1_body_009f76f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f7707  mov ecx, esi */
     ecx = esi;
-    /* 009f7709  call 0x9f72b0 */
+    /* 009f7709  call 0x9f72b0  ; BAPConObjectValidAiming::BAPConObjectValidAiming */
     t = 0x009f72b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f76f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009f770e  mov dword ptr [esi], 0xbfbdcc */
+    /* 009f770e  mov dword ptr [esi], 0xbfbdcc  ; vtable BAPConObjectValidPitchAiming */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbfbdccu;
     /* 009f7714  mov eax, esi */
@@ -82,7 +86,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f7730  dice::bf::ai::BAPConObjectValidPitchAiming  (virtual method) */
+/* 009f7730  BAPConObjectValidPitchAiming::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectValidPitchAiming
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f7730, bfv_client_l1_body_009f7730);
 BFV_L1_RESUME(bfv_client_l1r_009f7730_1, bfv_client_l1_body_009f7730, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f7730_2, bfv_client_l1_body_009f7730, 2);
@@ -104,14 +111,14 @@ void bfv_client_l1_body_009f7730(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f7731  mov esi, ecx */
     esi = ecx;
-    /* 009f7733  call 0x9f54d0 */
+    /* 009f7733  call 0x9f54d0  ; BAPCondition::~BAPCondition */
     t = 0x009f54d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f7730_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009f7738  test byte ptr [esp + 8], 1 */
+    /* 009f7738  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -121,9 +128,9 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009f7740  mov ecx, 0xe109c0 */
+    /* 009f7740  mov ecx, 0xe109c0  ; g_MemoryPoolNull_BAPConObjectValidPitchAiming */
     ecx = 0xe109c0u;
-    /* 009f7745  call 0x412fc0 */
+    /* 009f7745  call 0x412fc0  ; MemoryPool::free */
     t = 0x00412fc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f7730_2;
@@ -148,7 +155,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009f7750  dice::bf::ai::BAPConObjectValidPitchAiming  (virtual method) */
+/* 009f7750  BAPConObjectValidPitchAiming::evaluate  (virtual method)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConObjectValidPitchAiming
+ */
 BFV_L1_ENTRY(bfv_client_l1_009f7750, bfv_client_l1_body_009f7750);
 BFV_L1_RESUME(bfv_client_l1r_009f7750_1, bfv_client_l1_body_009f7750, 1);
 BFV_L1_RESUME(bfv_client_l1r_009f7750_2, bfv_client_l1_body_009f7750, 2);
@@ -197,7 +207,7 @@ void bfv_client_l1_body_009f7750(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009f775f  mov esi, ecx */
     esi = ecx;
-    /* 009f7761  call 0x9f7320 */
+    /* 009f7761  call 0x9f7320  ; BAPConObjectValidAiming::sub_009f7320 */
     t = 0x009f7320u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f7750_1;
@@ -260,7 +270,7 @@ L_009f7784:
     ecx = r;
     /* 009f778c  je 0x9f77a7 */
     if (zf) goto L_009f77a7;
-    /* 009f778e  mov edx, dword ptr [0xe0cd58] */
+    /* 009f778e  mov edx, dword ptr [0xe0cd58]  ; g_pAIHandles */
     ea = (uint32_t)(0x00e0cd58u);
     edx = M32(ea);
     /* 009f7794  mov edx, dword ptr [edx] */
@@ -344,7 +354,7 @@ L_009f77b7:
 R_3:
     /* 009f77cc  mov ecx, eax */
     ecx = eax;
-    /* 009f77ce  call 0x9be9a0 */
+    /* 009f77ce  call 0x9be9a0  ; BAPConObjectValidPitchAiming::evaluate_helper_009be9a0 */
     t = 0x009be9a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009f7750_4;

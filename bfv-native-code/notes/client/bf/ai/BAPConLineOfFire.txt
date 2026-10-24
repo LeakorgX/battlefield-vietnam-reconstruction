@@ -1,0 +1,5 @@
+## file
+Plan condition: true when the line from the bot's firing point to its target is clear.
+
+## 009f85d0
+Calls bot vf54 (slot 0xd8) first, then resolves the bot's own object (slot 0xcc); a stale object gives false. Start point: when this+0x14 is set, the translation (+0x30..+0x38) of the transform from the component at bot slot 0xb0; otherwise the local point that the object's +0x20 interface returns (slot 0xb0, argument this+0x18) moved into world space by the object matrix (vf9). The object's +0x20 value is added to an ignore list (bfv_query_vector_append), then IAIEnvironment::vf20 casts the ray. Result is true only when that call returns 0, meaning nothing blocked the ray. The temporary ignore list is freed before returning.

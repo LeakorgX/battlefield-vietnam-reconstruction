@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007721f0  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 007721f0  StreamingBuffer2dMiles::releaseHandle  (virtual method)
+ * overrides: IBuffer::releaseHandle  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007721f0, bfv_client_l1_body_007721f0);
 BFV_L1_RESUME(bfv_client_l1r_007721f0_1, bfv_client_l1_body_007721f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_007721f0_2, bfv_client_l1_body_007721f0, 2);
@@ -64,7 +67,7 @@ void bfv_client_l1_body_007721f0(struct bfv_cpu *c)
     /* 00772207  mov dword ptr [esp + 0x18], 0 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x0u;
-    /* 0077220f  call dword ptr [0xb42548] */
+    /* 0077220f  call dword ptr [0xb42548]  ; MSS32!_AIL_stream_info@20 */
     ea = (uint32_t)(0x00b42548u);
     t = M32(ea);
     esp -= 4;
@@ -94,7 +97,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00772229  call dword ptr [0xb42544] */
+    /* 00772229  call dword ptr [0xb42544]  ; MSS32!_AIL_close_stream@4 */
     ea = (uint32_t)(0x00b42544u);
     t = M32(ea);
     esp -= 4;
@@ -127,7 +130,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00772240  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 00772240  StreamingBuffer2dMiles::vf4  (virtual method)
+ * overrides: IBuffer::vf4  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772240, bfv_client_l1_body_00772240);
 BFV_L1_RESUME(bfv_client_l1r_00772240_1, bfv_client_l1_body_00772240, 1);
 void bfv_client_l1_body_00772240(struct bfv_cpu *c)
@@ -144,7 +150,7 @@ void bfv_client_l1_body_00772240(struct bfv_cpu *c)
     /* 00772240  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 00772242  call dword ptr [eax + 8] */
+    /* 00772242  call dword ptr [eax + 8]  ; -> StreamingBuffer2dMiles::vf2 = StreamingBuffer2dMiles::play */
     ea = (uint32_t)(eax + 0x00000008u);
     t = M32(ea);
     esp -= 4;
@@ -163,7 +169,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00772250  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 00772250  StreamingBuffer2dMiles::stop  (virtual method)
+ * overrides: IBuffer::stop  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772250, bfv_client_l1_body_00772250);
 BFV_L1_RESUME(bfv_client_l1r_00772250_1, bfv_client_l1_body_00772250, 1);
 BFV_L1_RESUME(bfv_client_l1r_00772250_2, bfv_client_l1_body_00772250, 2);
@@ -193,7 +202,7 @@ void bfv_client_l1_body_00772250(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00772258  je 0x772281 */
     if (zf) goto L_00772281;
-    /* 0077225a  mov cl, byte ptr [esp + 8] */
+    /* 0077225a  mov cl, byte ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET8L(ecx, M8(ea));
     /* 0077225e  test cl, cl */
@@ -212,7 +221,7 @@ L_00772266:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00772267  call dword ptr [0xb42590] */
+    /* 00772267  call dword ptr [0xb42590]  ; MSS32!_AIL_stream_position@4 */
     ea = (uint32_t)(0x00b42590u);
     t = M32(ea);
     esp -= 4;
@@ -231,7 +240,7 @@ L_0077226d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00772274  call dword ptr [0xb42544] */
+    /* 00772274  call dword ptr [0xb42544]  ; MSS32!_AIL_close_stream@4 */
     ea = (uint32_t)(0x00b42544u);
     t = M32(ea);
     esp -= 4;
@@ -260,7 +269,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00772290  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 00772290  StreamingBuffer2dMiles::isPlaying  (virtual method)
+ * overrides: IBuffer::isPlaying  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772290, bfv_client_l1_body_00772290);
 BFV_L1_RESUME(bfv_client_l1r_00772290_1, bfv_client_l1_body_00772290, 1);
 void bfv_client_l1_body_00772290(struct bfv_cpu *c)
@@ -304,7 +316,7 @@ L_0077229f:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007722a0  call dword ptr [0xb42594] */
+    /* 007722a0  call dword ptr [0xb42594]  ; MSS32!_AIL_stream_status@4 */
     ea = (uint32_t)(0x00b42594u);
     t = M32(ea);
     esp -= 4;
@@ -355,7 +367,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007722c0  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 007722c0  StreamingBuffer2dMiles::isLooping  (virtual method)
+ * overrides: IBuffer::isLooping  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007722c0, bfv_client_l1_body_007722c0);
 BFV_L1_RESUME(bfv_client_l1r_007722c0_1, bfv_client_l1_body_007722c0, 1);
 void bfv_client_l1_body_007722c0(struct bfv_cpu *c)
@@ -381,7 +396,7 @@ void bfv_client_l1_body_007722c0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007722c8  call dword ptr [0xb42598] */
+    /* 007722c8  call dword ptr [0xb42598]  ; MSS32!_AIL_stream_loop_count@4 */
     ea = (uint32_t)(0x00b42598u);
     t = M32(ea);
     esp -= 4;
@@ -418,7 +433,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007722e0  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 007722e0  StreamingBuffer2dMiles::getPlaybackRate  (virtual method)
+ * overrides: IBuffer::getPlaybackRate  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007722e0, bfv_client_l1_body_007722e0);
 BFV_L1_RESUME(bfv_client_l1r_007722e0_1, bfv_client_l1_body_007722e0, 1);
 void bfv_client_l1_body_007722e0(struct bfv_cpu *c)
@@ -439,7 +457,7 @@ void bfv_client_l1_body_007722e0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007722e4  call dword ptr [0xb425a0] */
+    /* 007722e4  call dword ptr [0xb425a0]  ; MSS32!_AIL_stream_playback_rate@4 */
     ea = (uint32_t)(0x00b425a0u);
     t = M32(ea);
     esp -= 4;
@@ -458,7 +476,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007722f0  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 007722f0  StreamingBuffer2dMiles::setPosition  (virtual method)
+ * overrides: IBuffer::setPosition  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007722f0, bfv_client_l1_body_007722f0);
 BFV_L1_RESUME(bfv_client_l1r_007722f0_1, bfv_client_l1_body_007722f0, 1);
 void bfv_client_l1_body_007722f0(struct bfv_cpu *c)
@@ -472,7 +493,7 @@ void bfv_client_l1_body_007722f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007722f0  mov eax, dword ptr [esp + 4] */
+    /* 007722f0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 007722f4  mov ecx, dword ptr [ecx + 0x1c] */
@@ -486,7 +507,7 @@ void bfv_client_l1_body_007722f0(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 007722f9  call dword ptr [0xb425a4] */
+    /* 007722f9  call dword ptr [0xb425a4]  ; MSS32!_AIL_set_stream_position@8 */
     ea = (uint32_t)(0x00b425a4u);
     t = M32(ea);
     esp -= 4;
@@ -509,7 +530,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00772310  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 00772310  StreamingBuffer2dMiles::getPosition  (virtual method)
+ * overrides: IBuffer::getPosition  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772310, bfv_client_l1_body_00772310);
 BFV_L1_RESUME(bfv_client_l1r_00772310_1, bfv_client_l1_body_00772310, 1);
 void bfv_client_l1_body_00772310(struct bfv_cpu *c)
@@ -530,7 +554,7 @@ void bfv_client_l1_body_00772310(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00772314  call dword ptr [0xb42590] */
+    /* 00772314  call dword ptr [0xb42590]  ; MSS32!_AIL_stream_position@4 */
     ea = (uint32_t)(0x00b42590u);
     t = M32(ea);
     esp -= 4;
@@ -549,7 +573,8 @@ out: __attribute__((unused));
 }
 
 
-/* 00772320  (between same file) */
+/* 00772320  StreamingBuffer2dMiles_calls__AIL_service_stream_8_00772320  (between same file)
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772320, bfv_client_l1_body_00772320);
 BFV_L1_RESUME(bfv_client_l1r_00772320_1, bfv_client_l1_body_00772320, 1);
 void bfv_client_l1_body_00772320(struct bfv_cpu *c)
@@ -563,7 +588,7 @@ void bfv_client_l1_body_00772320(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00772320  mov eax, dword ptr [0xde5a14] */
+    /* 00772320  mov eax, dword ptr [0xde5a14]  ; g_pDriverMiles_00de5a14 */
     ea = (uint32_t)(0x00de5a14u);
     eax = M32(ea);
     /* 00772325  mov dl, byte ptr [eax + 0x4e] */
@@ -590,7 +615,7 @@ void bfv_client_l1_body_00772320(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00772336  call dword ptr [0xb425a8] */
+    /* 00772336  call dword ptr [0xb425a8]  ; MSS32!_AIL_service_stream@8 */
     ea = (uint32_t)(0x00b425a8u);
     t = M32(ea);
     esp -= 4;
@@ -610,7 +635,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00772340  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 00772340  StreamingBuffer2dMiles::setVolume  (virtual method)
+ * overrides: IBuffer::setVolume  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772340, bfv_client_l1_body_00772340);
 BFV_L1_RESUME(bfv_client_l1r_00772340_1, bfv_client_l1_body_00772340, 1);
 void bfv_client_l1_body_00772340(struct bfv_cpu *c)
@@ -624,10 +652,10 @@ void bfv_client_l1_body_00772340(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00772340  fld dword ptr [0xb44444] */
+    /* 00772340  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00772346  fcomp dword ptr [esp + 4] */
+    /* 00772346  fcomp dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0077234a  fnstsw ax */
@@ -637,16 +665,16 @@ void bfv_client_l1_body_00772340(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 0077234f  jne 0x772359 */
     if (!zf) goto L_00772359;
-    /* 00772351  fld dword ptr [0xb44444] */
+    /* 00772351  fld dword ptr [0xb44444]  ; = 0.0f */
     ea = (uint32_t)(0x00b44444u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00772357  jmp 0x772376 */
     goto L_00772376;
 L_00772359:
-    /* 00772359  fld dword ptr [0xb4456c] */
+    /* 00772359  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0077235f  fcomp dword ptr [esp + 4] */
+    /* 0077235f  fcomp dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00772363  fnstsw ax */
@@ -656,17 +684,17 @@ L_00772359:
     F_LOGIC(8, r);
     /* 00772368  jp 0x772372 */
     if (pf) goto L_00772372;
-    /* 0077236a  fld dword ptr [0xb4456c] */
+    /* 0077236a  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00772370  jmp 0x772376 */
     goto L_00772376;
 L_00772372:
-    /* 00772372  fld dword ptr [esp + 4] */
+    /* 00772372  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_00772376:
-    /* 00772376  fst dword ptr [esp + 4] */
+    /* 00772376  fst dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0077237a  push ecx */
@@ -676,7 +704,7 @@ L_00772376:
     /* 0077237b  fld dword ptr [ecx + 0x10] */
     ea = (uint32_t)(ecx + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0077237e  mov eax, dword ptr [esp + 8] */
+    /* 0077237e  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 00772382  fxch st(1) */
@@ -687,13 +715,13 @@ L_00772376:
     /* 00772387  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 0077238a  fadd dword ptr [0xb4456c] */
+    /* 0077238a  fadd dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00772390  fmul dword ptr [0xb44e48] */
+    /* 00772390  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00772396  fstp dword ptr [esp] */
+    /* 00772396  fstp dword ptr [esp]  ; var_4 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00772399  push eax */
@@ -704,7 +732,7 @@ L_00772376:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0077239b  call dword ptr [0xb4259c] */
+    /* 0077239b  call dword ptr [0xb4259c]  ; MSS32!_AIL_set_stream_volume_pan@12 */
     ea = (uint32_t)(0x00b4259cu);
     t = M32(ea);
     esp -= 4;
@@ -723,7 +751,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007723b0  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 007723b0  StreamingBuffer2dMiles::vf21  (virtual method)
+ * overrides: IStreamingBuffer2d::vf21  (3 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007723b0, bfv_client_l1_body_007723b0);
 BFV_L1_RESUME(bfv_client_l1r_007723b0_1, bfv_client_l1_body_007723b0, 1);
 void bfv_client_l1_body_007723b0(struct bfv_cpu *c)
@@ -737,10 +768,10 @@ void bfv_client_l1_body_007723b0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007723b0  fld dword ptr [0xb5456c] */
+    /* 007723b0  fld dword ptr [0xb5456c]  ; = -1.0f */
     ea = (uint32_t)(0x00b5456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007723b6  fcomp dword ptr [esp + 4] */
+    /* 007723b6  fcomp dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007723ba  fnstsw ax */
@@ -750,16 +781,16 @@ void bfv_client_l1_body_007723b0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 007723bf  jne 0x7723c9 */
     if (!zf) goto L_007723c9;
-    /* 007723c1  fld dword ptr [0xb5456c] */
+    /* 007723c1  fld dword ptr [0xb5456c]  ; = -1.0f */
     ea = (uint32_t)(0x00b5456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007723c7  jmp 0x7723e6 */
     goto L_007723e6;
 L_007723c9:
-    /* 007723c9  fld dword ptr [0xb4456c] */
+    /* 007723c9  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007723cf  fcomp dword ptr [esp + 4] */
+    /* 007723cf  fcomp dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007723d3  fnstsw ax */
@@ -769,13 +800,13 @@ L_007723c9:
     F_LOGIC(8, r);
     /* 007723d8  jp 0x7723e2 */
     if (pf) goto L_007723e2;
-    /* 007723da  fld dword ptr [0xb4456c] */
+    /* 007723da  fld dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007723e0  jmp 0x7723e6 */
     goto L_007723e6;
 L_007723e2:
-    /* 007723e2  fld dword ptr [esp + 4] */
+    /* 007723e2  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_007723e6:
@@ -785,7 +816,7 @@ L_007723e6:
     /* 007723e9  fst dword ptr [ecx + 0x10] */
     ea = (uint32_t)(ecx + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007723ec  fadd dword ptr [0xb4456c] */
+    /* 007723ec  fadd dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007723f2  push ecx */
@@ -795,10 +826,10 @@ L_007723e6:
     /* 007723f3  mov ecx, dword ptr [ecx + 0x1c] */
     ea = (uint32_t)(ecx + 0x0000001cu);
     ecx = M32(ea);
-    /* 007723f6  fmul dword ptr [0xb44e48] */
+    /* 007723f6  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 007723fc  fstp dword ptr [esp] */
+    /* 007723fc  fstp dword ptr [esp]  ; var_4 */
     ea = (uint32_t)(esp);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007723ff  push eax */
@@ -809,7 +840,7 @@ L_007723e6:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00772401  call dword ptr [0xb4259c] */
+    /* 00772401  call dword ptr [0xb4259c]  ; MSS32!_AIL_set_stream_volume_pan@12 */
     ea = (uint32_t)(0x00b4259cu);
     t = M32(ea);
     esp -= 4;
@@ -828,7 +859,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00772410  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 00772410  StreamingBuffer2dMiles::setPitch  (virtual method)
+ * overrides: IBuffer::setPitch  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772410, bfv_client_l1_body_00772410);
 BFV_L1_RESUME(bfv_client_l1r_00772410_1, bfv_client_l1_body_00772410, 1);
 BFV_L1_RESUME(bfv_client_l1r_00772410_2, bfv_client_l1_body_00772410, 2);
@@ -846,7 +880,7 @@ void bfv_client_l1_body_00772410(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 00772410  fld dword ptr [esp + 4] */
+    /* 00772410  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00772414  sub esp, 8 */
@@ -855,7 +889,7 @@ void bfv_client_l1_body_00772410(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 00772417  fcomp dword ptr [0xb556dc] */
+    /* 00772417  fcomp dword ptr [0xb556dc]  ; = 0.001f */
     ea = (uint32_t)(0x00b556dcu);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0077241d  push esi */
@@ -875,20 +909,20 @@ void bfv_client_l1_body_00772410(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 00772426  jp 0x772430 */
     if (pf) goto L_00772430;
-    /* 00772428  mov dword ptr [esp + 0x14], 0x3a83126f */
+    /* 00772428  mov dword ptr [esp + 0x14], 0x3a83126f  ; arg_0, 0.001f */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = 0x3a83126fu;
 L_00772430:
-    /* 00772430  fld qword ptr [0xb76558] */
+    /* 00772430  fld qword ptr [0xb76558]  ; = 2.0 */
     ea = (uint32_t)(0x00b76558u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00772436  mov eax, dword ptr [edi + 0x24] */
     ea = (uint32_t)(edi + 0x00000024u);
     eax = M32(ea);
-    /* 00772439  fld dword ptr [esp + 0x14] */
+    /* 00772439  fld dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0077243d  mov dword ptr [esp + 0xc], eax */
+    /* 0077243d  mov dword ptr [esp + 0xc], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = eax;
     /* 00772441  fldln2 */
@@ -899,23 +933,23 @@ L_00772430:
     __asm__ volatile(".intel_syntax noprefix\n\tfxch st(1)\n\t.att_syntax prefix");
     /* 00772448  fyl2x */
     __asm__ volatile(".intel_syntax noprefix\n\tfyl2x\n\t.att_syntax prefix");
-    /* 0077244a  fst dword ptr [esp + 8] */
+    /* 0077244a  fst dword ptr [esp + 8]  ; var_8 */
     ea = (uint32_t)(esp + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfst dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0077244e  fmul dword ptr [0xbaf3d0] */
+    /* 0077244e  fmul dword ptr [0xbaf3d0]  ; = 1.442695f */
     ea = (uint32_t)(0x00baf3d0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00772454  call 0x7c4f90 */
+    /* 00772454  call 0x7c4f90  ; crt_007c4f90 */
     t = 0x007c4f90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00772410_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00772459  fimul dword ptr [esp + 0xc] */
+    /* 00772459  fimul dword ptr [esp + 0xc]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfimul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0077245d  call 0x7c2dd0 */
+    /* 0077245d  call 0x7c2dd0  ; _ftol2 */
     t = 0x007c2dd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00772410_2;
@@ -955,7 +989,7 @@ L_00772470:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00772475  call dword ptr [0xb425ac] */
+    /* 00772475  call dword ptr [0xb425ac]  ; MSS32!_AIL_set_stream_playback_rate@8 */
     ea = (uint32_t)(0x00b425acu);
     t = M32(ea);
     esp -= 4;
@@ -963,7 +997,7 @@ L_00772470:
     c->eip = t;
     goto out;
 R_3:
-    /* 0077247b  mov ecx, dword ptr [esp + 0x14] */
+    /* 0077247b  mov ecx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0077247f  mov dword ptr [edi + 0x14], ecx */
@@ -994,7 +1028,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00772490  (between same file) */
+/* 00772490  StreamingBuffer2dMiles::StreamingBuffer2dMiles  (vtable store)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772490, bfv_client_l1_body_00772490);
 void bfv_client_l1_body_00772490(struct bfv_cpu *c)
 {
@@ -1005,7 +1041,7 @@ void bfv_client_l1_body_00772490(struct bfv_cpu *c)
     uint32_t r, ea;
     /* 00772490  mov eax, ecx */
     eax = ecx;
-    /* 00772492  mov dword ptr [eax + 4], 0xbaf3cc */
+    /* 00772492  mov dword ptr [eax + 4], 0xbaf3cc  ; vtable IStreamingBuffer */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0xbaf3ccu;
     /* 00772499  xor ecx, ecx */
@@ -1014,7 +1050,7 @@ void bfv_client_l1_body_00772490(struct bfv_cpu *c)
     ecx = r;
     /* 0077249b  mov edx, 0x3f800000 */
     edx = 0x3f800000u;
-    /* 007724a0  mov dword ptr [eax], 0xbaf44c */
+    /* 007724a0  mov dword ptr [eax], 0xbaf44c  ; vtable StreamingBuffer2dMiles */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbaf44cu;
     /* 007724a6  mov dword ptr [eax + 4], 0xbaf444 */
@@ -1067,7 +1103,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007724e0  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 007724e0  StreamingBuffer2dMiles::vf17  (virtual method)
+ * overrides: IBuffer::vf17  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_007724e0, bfv_client_l1_body_007724e0);
 void bfv_client_l1_body_007724e0(struct bfv_cpu *c)
 {
@@ -1079,12 +1118,12 @@ void bfv_client_l1_body_007724e0(struct bfv_cpu *c)
     /* 007724e0  mov eax, dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     eax = M32(ea);
-    /* 007724e3  or eax, dword ptr [esp + 4] */
+    /* 007724e3  or eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (eax | M32(ea)) & 0xffffffffu;
     F_LOGIC(32, r);
     eax = r;
-    /* 007724e7  mov edx, dword ptr [esp + 8] */
+    /* 007724e7  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 007724eb  not edx */
@@ -1108,7 +1147,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00772500  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 00772500  StreamingBuffer2dMiles::vf19  (virtual method)
+ * overrides: IBuffer::vf19  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772500, bfv_client_l1_body_00772500);
 void bfv_client_l1_body_00772500(struct bfv_cpu *c)
 {
@@ -1131,7 +1173,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00772510  (between same file) */
+/* 00772510  StreamingBuffer2dMiles::~StreamingBuffer2dMiles  (between same file)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772510, bfv_client_l1_body_00772510);
 BFV_L1_RESUME(bfv_client_l1r_00772510_1, bfv_client_l1_body_00772510, 1);
 BFV_L1_RESUME(bfv_client_l1r_00772510_2, bfv_client_l1_body_00772510, 2);
@@ -1175,7 +1219,7 @@ void bfv_client_l1_body_00772510(struct bfv_cpu *c)
     b = ebx;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 0077251c  mov dword ptr [esi], 0xbaf44c */
+    /* 0077251c  mov dword ptr [esi], 0xbaf44c  ; vtable StreamingBuffer2dMiles */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbaf44cu;
     /* 00772522  mov dword ptr [esi + 4], 0xbaf444 */
@@ -1208,7 +1252,7 @@ void bfv_client_l1_body_00772510(struct bfv_cpu *c)
     /* 00772534  mov dword ptr [esp + 0x1c], ebx */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = ebx;
-    /* 00772538  call dword ptr [0xb42548] */
+    /* 00772538  call dword ptr [0xb42548]  ; MSS32!_AIL_stream_info@20 */
     ea = (uint32_t)(0x00b42548u);
     t = M32(ea);
     esp -= 4;
@@ -1238,7 +1282,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00772552  call dword ptr [0xb42544] */
+    /* 00772552  call dword ptr [0xb42544]  ; MSS32!_AIL_close_stream@4 */
     ea = (uint32_t)(0x00b42544u);
     t = M32(ea);
     esp -= 4;
@@ -1265,7 +1309,7 @@ L_0077255b:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00772565  call 0x403680 */
+    /* 00772565  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00772510_3;
@@ -1288,7 +1332,7 @@ L_0077256d:
     /* 00772577  mov byte ptr [esi + 0x34], bl */
     ea = (uint32_t)(esi + 0x00000034u);
     M8(ea) = LO8(ebx);
-    /* 0077257a  mov dword ptr [esi], 0xbaf374 */
+    /* 0077257a  mov dword ptr [esi], 0xbaf374  ; vtable IBuffer */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbaf374u;
     /* 00772580  pop esi */
@@ -1314,8 +1358,12 @@ out: __attribute__((unused));
 }
 
 
-/* 00772590  dice::mills::pc::StreamingBuffer2dMiles  (virtual method)
- * strings: "Stream 2D:" */
+/* 00772590  StreamingBuffer2dMiles::vf20  (virtual method)
+ * overrides: IBuffer::vf20  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ * strings: "Stream 2D:"
+ * also entered at 00772640: StreamingBuffer2dMiles::vf0
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772590, bfv_client_l1_body_00772590);
 BFV_L1_RESUME(bfv_client_l1r_00772590_1, bfv_client_l1_body_00772590, 1);
 BFV_L1_RESUME(bfv_client_l1r_00772590_2, bfv_client_l1_body_00772590, 2);
@@ -1337,7 +1385,7 @@ void bfv_client_l1_body_00772590(struct bfv_cpu *c)
     case 5: goto R_5;
     default: break;
     }
-    /* 00772590  mov eax, dword ptr [0xd3de68] */
+    /* 00772590  mov eax, dword ptr [0xd3de68]  ; g_pDebugRenderer */
     ea = (uint32_t)(0x00d3de68u);
     eax = M32(ea);
     /* 00772595  sub esp, 0x1c */
@@ -1368,7 +1416,7 @@ void bfv_client_l1_body_00772590(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 007725ad  je 0x7725d6 */
     if (zf) goto L_007725d6;
-    /* 007725af  push 0xbaf4ac */
+    /* 007725af  push 0xbaf4ac  ; "Stream 2D:" */
     t = 0xbaf4acu;
     esp -= 4;
     M32(esp) = t;
@@ -1401,7 +1449,7 @@ void bfv_client_l1_body_00772590(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 007725ce  mov eax, dword ptr [0xd3de68] */
+    /* 007725ce  mov eax, dword ptr [0xd3de68]  ; g_pDebugRenderer */
     ea = (uint32_t)(0x00d3de68u);
     eax = M32(ea);
     /* 007725d3  add esp, 0x10 */
@@ -1416,7 +1464,7 @@ L_007725d6:
     F_LOGIC(32, r);
     /* 007725d8  je 0x772638 */
     if (zf) goto L_00772638;
-    /* 007725da  mov edx, dword ptr [0xde5a14] */
+    /* 007725da  mov edx, dword ptr [0xde5a14]  ; g_pDriverMiles_00de5a14 */
     ea = (uint32_t)(0x00de5a14u);
     edx = M32(ea);
     /* 007725e0  mov al, byte ptr [edx + 0x20] */
@@ -1432,7 +1480,7 @@ L_007725d6:
     eax = M32(ea);
     /* 007725e9  mov ecx, edi */
     ecx = edi;
-    /* 007725eb  call dword ptr [eax + 0x18] */
+    /* 007725eb  call dword ptr [eax + 0x18]  ; -> StreamingBuffer2dMiles::vf6 = StreamingBuffer2dMiles::isPlaying */
     ea = (uint32_t)(eax + 0x00000018u);
     t = M32(ea);
     esp -= 4;
@@ -1466,7 +1514,7 @@ R_2:
     /* 00772603  mov dword ptr [0xde5a1c], eax */
     ea = (uint32_t)(0x00de5a1cu);
     M32(ea) = eax;
-    /* 00772608  call 0x41f980 */
+    /* 00772608  call 0x41f980  ; sub_0041f980 */
     t = 0x0041f980u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00772590_3;
@@ -1494,7 +1542,7 @@ L_00772618:
     F_ADD(32, a, b, r);
     eax = r;
 L_0077261b:
-    /* 0077261b  mov ecx, dword ptr [0xd3de68] */
+    /* 0077261b  mov ecx, dword ptr [0xd3de68]  ; g_pDebugRenderer */
     ea = (uint32_t)(0x00d3de68u);
     ecx = M32(ea);
     /* 00772621  mov edx, dword ptr [ecx] */
@@ -1532,7 +1580,7 @@ R_4:
     esp = r;
     /* 0077262e  lea ecx, [esp + 8] */
     ecx = (uint32_t)(esp + 0x00000008u);
-    /* 00772632  call 0x5a7c60 */
+    /* 00772632  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00772590_5;
@@ -1565,7 +1613,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00772660  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 00772660  StreamingBuffer2dMiles::load  (virtual method)
+ * overrides: IBuffer::load  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772660, bfv_client_l1_body_00772660);
 BFV_L1_RESUME(bfv_client_l1r_00772660_1, bfv_client_l1_body_00772660, 1);
 BFV_L1_RESUME(bfv_client_l1r_00772660_2, bfv_client_l1_body_00772660, 2);
@@ -1602,7 +1653,7 @@ void bfv_client_l1_body_00772660(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00772664  mov ebx, dword ptr [esp + 0x30] */
+    /* 00772664  mov ebx, dword ptr [esp + 0x30]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000030u);
     ebx = M32(ea);
     /* 00772668  push esi */
@@ -1631,14 +1682,14 @@ void bfv_client_l1_body_00772660(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00772674  mov ecx, edi */
     ecx = edi;
-    /* 00772676  call 0x4019f0 */
+    /* 00772676  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00772660_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0077267b  mov ecx, dword ptr [0xdf7148] */
+    /* 0077267b  mov ecx, dword ptr [0xdf7148]  ; g_pFileManager */
     ea = (uint32_t)(0x00df7148u);
     ecx = M32(ea);
     /* 00772681  mov eax, dword ptr [ecx] */
@@ -1648,7 +1699,7 @@ R_1:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00772684  call dword ptr [eax + 0x14] */
+    /* 00772684  call dword ptr [eax + 0x14]  ; vf5 of FileManager.fileExists, -> FileManager::vf5 = FileManager::fileExists */
     ea = (uint32_t)(eax + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -1668,37 +1719,37 @@ R_2:
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 0077268f  mov dword ptr [esp + 0xc], ecx */
+    /* 0077268f  mov dword ptr [esp + 0xc], ecx  ; var_28 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = ecx;
-    /* 00772693  mov dword ptr [esp + 0x10], ecx */
+    /* 00772693  mov dword ptr [esp + 0x10], ecx  ; var_24 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ecx;
-    /* 00772697  mov dword ptr [esp + 0x14], ecx */
+    /* 00772697  mov dword ptr [esp + 0x14], ecx  ; var_20 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = ecx;
-    /* 0077269b  mov dword ptr [esp + 0x18], ecx */
+    /* 0077269b  mov dword ptr [esp + 0x18], ecx  ; var_1c */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = ecx;
-    /* 0077269f  mov dword ptr [esp + 0x1c], ecx */
+    /* 0077269f  mov dword ptr [esp + 0x1c], ecx  ; var_18 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = ecx;
-    /* 007726a3  mov dword ptr [esp + 0x20], ecx */
+    /* 007726a3  mov dword ptr [esp + 0x20], ecx  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = ecx;
-    /* 007726a7  mov dword ptr [esp + 0x24], ecx */
+    /* 007726a7  mov dword ptr [esp + 0x24], ecx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = ecx;
-    /* 007726ab  mov dword ptr [esp + 0x28], ecx */
+    /* 007726ab  mov dword ptr [esp + 0x28], ecx  ; var_c */
     ea = (uint32_t)(esp + 0x00000028u);
     M32(ea) = ecx;
-    /* 007726af  mov dword ptr [esp + 0x2c], ecx */
+    /* 007726af  mov dword ptr [esp + 0x2c], ecx  ; var_8 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = ecx;
-    /* 007726b3  mov dword ptr [esp + 0x30], ecx */
+    /* 007726b3  mov dword ptr [esp + 0x30], ecx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000030u);
     M32(ea) = ecx;
-    /* 007726b7  mov dword ptr [esp + 0x2c], 0xffffffff */
+    /* 007726b7  mov dword ptr [esp + 0x2c], 0xffffffff  ; var_8 */
     ea = (uint32_t)(esp + 0x0000002cu);
     M32(ea) = 0xffffffffu;
     /* 007726bf  jb 0x7726c6 */
@@ -1712,7 +1763,7 @@ L_007726c6:
     /* 007726c6  lea ecx, [edi + 4] */
     ecx = (uint32_t)(edi + 0x00000004u);
 L_007726c9:
-    /* 007726c9  mov edx, dword ptr [0xde5a14] */
+    /* 007726c9  mov edx, dword ptr [0xde5a14]  ; g_pDriverMiles_00de5a14 */
     ea = (uint32_t)(0x00de5a14u);
     edx = M32(ea);
     /* 007726cf  mov eax, dword ptr [edx + 0x124] */
@@ -1730,7 +1781,7 @@ L_007726c9:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007726d9  call dword ptr [0xb425b4] */
+    /* 007726d9  call dword ptr [0xb425b4]  ; MSS32!_AIL_open_stream@12 */
     ea = (uint32_t)(0x00b425b4u);
     t = M32(ea);
     esp -= 4;
@@ -1750,7 +1801,7 @@ R_3:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007726e7  call dword ptr [0xb42544] */
+    /* 007726e7  call dword ptr [0xb42544]  ; MSS32!_AIL_close_stream@4 */
     ea = (uint32_t)(0x00b42544u);
     t = M32(ea);
     esp -= 4;
@@ -1758,14 +1809,14 @@ R_3:
     c->eip = t;
     goto out;
 R_4:
-    /* 007726ed  lea edx, [esp + 0xc] */
+    /* 007726ed  lea edx, [esp + 0xc]  ; &var_28 */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 007726f1  mov ecx, edi */
     ecx = edi;
     /* 007726f3  mov dword ptr [esi + 0x1c], 0 */
     ea = (uint32_t)(esi + 0x0000001cu);
     M32(ea) = 0x0u;
-    /* 007726fa  call 0x772e80 */
+    /* 007726fa  call 0x772e80  ; pc_00772e80 */
     t = 0x00772e80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00772660_5;
@@ -1805,16 +1856,16 @@ L_00772703:
     esp += 8;
     goto out;
 L_0077270e:
-    /* 0077270e  mov eax, dword ptr [esp + 0x24] */
+    /* 0077270e  mov eax, dword ptr [esp + 0x24]  ; var_10 */
     ea = (uint32_t)(esp + 0x00000024u);
     eax = M32(ea);
-    /* 00772712  imul eax, dword ptr [esp + 0x1c] */
+    /* 00772712  imul eax, dword ptr [esp + 0x1c]  ; var_18 */
     ea = (uint32_t)(esp + 0x0000001cu);
     p = (int64_t)(int32_t)eax * (int64_t)(int32_t)M32(ea);
     r = (uint32_t)p & 0xffffffffu;
     cf = of = p != (int64_t)(int32_t)r;
     eax = r;
-    /* 00772717  mov ecx, dword ptr [esp + 0x28] */
+    /* 00772717  mov ecx, dword ptr [esp + 0x28]  ; var_c */
     ea = (uint32_t)(esp + 0x00000028u);
     ecx = M32(ea);
     /* 0077271b  cdq */
@@ -1829,7 +1880,7 @@ L_0077270e:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     eax = r;
-    /* 00772721  mov edx, dword ptr [esp + 0x2c] */
+    /* 00772721  mov edx, dword ptr [esp + 0x2c]  ; var_8 */
     ea = (uint32_t)(esp + 0x0000002cu);
     edx = M32(ea);
     /* 00772725  sar eax, 3 */
@@ -1852,19 +1903,19 @@ L_0077270e:
     r = (uint32_t)p & 0xffffffffu;
     cf = of = p != (int64_t)(int32_t)r;
     edx = r;
-    /* 0077272e  mov eax, dword ptr [esp + 0x30] */
+    /* 0077272e  mov eax, dword ptr [esp + 0x30]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
     /* 00772732  mov dword ptr [esi + 0x28], ecx */
     ea = (uint32_t)(esi + 0x00000028u);
     M32(ea) = ecx;
-    /* 00772735  mov ecx, dword ptr [esp + 0x20] */
+    /* 00772735  mov ecx, dword ptr [esp + 0x20]  ; var_14 */
     ea = (uint32_t)(esp + 0x00000020u);
     ecx = M32(ea);
     /* 00772739  mov dword ptr [esi + 0x2c], edx */
     ea = (uint32_t)(esi + 0x0000002cu);
     M32(ea) = edx;
-    /* 0077273c  mov edx, dword ptr [0xde5a14] */
+    /* 0077273c  mov edx, dword ptr [0xde5a14]  ; g_pDriverMiles_00de5a14 */
     ea = (uint32_t)(0x00de5a14u);
     edx = M32(ea);
     /* 00772742  push eax */
@@ -1882,7 +1933,7 @@ L_0077270e:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0077274b  call dword ptr [0xb425b0] */
+    /* 0077274b  call dword ptr [0xb425b0]  ; MSS32!_AIL_minimum_sample_buffer_size@12 */
     ea = (uint32_t)(0x00b425b0u);
     t = M32(ea);
     esp -= 4;
@@ -1890,7 +1941,7 @@ L_0077270e:
     c->eip = t;
     goto out;
 R_6:
-    /* 00772751  mov ecx, dword ptr [0xdf7148] */
+    /* 00772751  mov ecx, dword ptr [0xdf7148]  ; g_pFileManager */
     ea = (uint32_t)(0x00df7148u);
     ecx = M32(ea);
     /* 00772757  mov edx, dword ptr [ecx] */
@@ -1900,7 +1951,7 @@ R_6:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0077275a  call dword ptr [edx + 0x14] */
+    /* 0077275a  call dword ptr [edx + 0x14]  ; vf5 of FileManager.fileExists, -> FileManager::vf5 = FileManager::fileExists */
     ea = (uint32_t)(edx + 0x00000014u);
     t = M32(ea);
     esp -= 4;
@@ -1937,7 +1988,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00772770  dice::mills::pc::StreamingBuffer2dMiles  (virtual method) */
+/* 00772770  StreamingBuffer2dMiles::play  (virtual method)
+ * overrides: IBuffer::play  (8 classes implement it)
+ * class: dice::mills::pc::StreamingBuffer2dMiles
+ */
 BFV_L1_ENTRY(bfv_client_l1_00772770, bfv_client_l1_body_00772770);
 BFV_L1_RESUME(bfv_client_l1r_00772770_1, bfv_client_l1_body_00772770, 1);
 BFV_L1_RESUME(bfv_client_l1r_00772770_2, bfv_client_l1_body_00772770, 2);
@@ -2011,7 +2065,7 @@ L_0077278a:
     /* 0077278a  lea ecx, [esi + 0x34] */
     ecx = (uint32_t)(esi + 0x00000034u);
 L_0077278d:
-    /* 0077278d  mov eax, dword ptr [0xde5a14] */
+    /* 0077278d  mov eax, dword ptr [0xde5a14]  ; g_pDriverMiles_00de5a14 */
     ea = (uint32_t)(0x00de5a14u);
     eax = M32(ea);
     /* 00772792  mov eax, dword ptr [eax + 0x124] */
@@ -2029,7 +2083,7 @@ L_0077278d:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0077279c  call dword ptr [0xb425b4] */
+    /* 0077279c  call dword ptr [0xb425b4]  ; MSS32!_AIL_open_stream@12 */
     ea = (uint32_t)(0x00b425b4u);
     t = M32(ea);
     esp -= 4;
@@ -2040,7 +2094,7 @@ R_1:
     /* 007727a2  mov dword ptr [esi + 0x1c], eax */
     ea = (uint32_t)(esi + 0x0000001cu);
     M32(ea) = eax;
-    /* 007727a5  mov ecx, dword ptr [0xde5a14] */
+    /* 007727a5  mov ecx, dword ptr [0xde5a14]  ; g_pDriverMiles_00de5a14 */
     ea = (uint32_t)(0x00de5a14u);
     ecx = M32(ea);
     /* 007727ab  movzx edx, byte ptr [ecx + 0x4e] */
@@ -2054,7 +2108,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007727b1  call dword ptr [0xb425cc] */
+    /* 007727b1  call dword ptr [0xb425cc]  ; MSS32!_AIL_auto_service_stream@8 */
     ea = (uint32_t)(0x00b425ccu);
     t = M32(ea);
     esp -= 4;
@@ -2115,7 +2169,7 @@ L_007727c3:
     /* 007727d1  mov dword ptr [esp + 0x18], 0 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = 0x0u;
-    /* 007727d9  call dword ptr [0xb42548] */
+    /* 007727d9  call dword ptr [0xb42548]  ; MSS32!_AIL_stream_info@20 */
     ea = (uint32_t)(0x00b42548u);
     t = M32(ea);
     esp -= 4;
@@ -2143,7 +2197,7 @@ R_3:
     edx = M32(ea);
     /* 007727f3  mov ecx, esi */
     ecx = esi;
-    /* 007727f5  call dword ptr [edx + 0x48] */
+    /* 007727f5  call dword ptr [edx + 0x48]  ; -> StreamingBuffer2dMiles::vf18 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000048u);
     t = M32(ea);
     esp -= 4;
@@ -2177,7 +2231,7 @@ R_4:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00772808  call dword ptr [0xb425c8] */
+    /* 00772808  call dword ptr [0xb425c8]  ; MSS32!_AIL_set_stream_loop_block@12 */
     ea = (uint32_t)(0x00b425c8u);
     t = M32(ea);
     esp -= 4;
@@ -2214,7 +2268,7 @@ L_00772816:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0077281e  call dword ptr [0xb425c8] */
+    /* 0077281e  call dword ptr [0xb425c8]  ; MSS32!_AIL_set_stream_loop_block@12 */
     ea = (uint32_t)(0x00b425c8u);
     t = M32(ea);
     esp -= 4;
@@ -2234,7 +2288,7 @@ R_6:
     esp -= 4;
     M32(esp) = t;
 L_0077282a:
-    /* 0077282a  call dword ptr [0xb425c4] */
+    /* 0077282a  call dword ptr [0xb425c4]  ; MSS32!_AIL_set_stream_loop_count@8 */
     ea = (uint32_t)(0x00b425c4u);
     t = M32(ea);
     esp -= 4;
@@ -2245,7 +2299,7 @@ R_7:
     /* 00772830  fld dword ptr [esi + 0x10] */
     ea = (uint32_t)(esi + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 00772833  fadd dword ptr [0xb4456c] */
+    /* 00772833  fadd dword ptr [0xb4456c]  ; = 1.0f */
     ea = (uint32_t)(0x00b4456cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfadd dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00772839  mov eax, dword ptr [esi + 0xc] */
@@ -2258,7 +2312,7 @@ R_7:
     /* 0077283d  mov ecx, dword ptr [esi + 0x1c] */
     ea = (uint32_t)(esi + 0x0000001cu);
     ecx = M32(ea);
-    /* 00772840  fmul dword ptr [0xb44e48] */
+    /* 00772840  fmul dword ptr [0xb44e48]  ; = 0.5f */
     ea = (uint32_t)(0x00b44e48u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 00772846  fstp dword ptr [esp] */
@@ -2272,7 +2326,7 @@ R_7:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0077284b  call dword ptr [0xb4259c] */
+    /* 0077284b  call dword ptr [0xb4259c]  ; MSS32!_AIL_set_stream_volume_pan@12 */
     ea = (uint32_t)(0x00b4259cu);
     t = M32(ea);
     esp -= 4;
@@ -2287,7 +2341,7 @@ R_8:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00772855  call dword ptr [0xb42594] */
+    /* 00772855  call dword ptr [0xb42594]  ; MSS32!_AIL_stream_status@4 */
     ea = (uint32_t)(0x00b42594u);
     t = M32(ea);
     esp -= 4;
@@ -2314,7 +2368,7 @@ R_9:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00772867  call dword ptr [0xb425c0] */
+    /* 00772867  call dword ptr [0xb425c0]  ; MSS32!_AIL_set_stream_ms_position@8 */
     ea = (uint32_t)(0x00b425c0u);
     t = M32(ea);
     esp -= 4;
@@ -2333,7 +2387,7 @@ R_10:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00772873  call dword ptr [0xb425bc] */
+    /* 00772873  call dword ptr [0xb425bc]  ; MSS32!_AIL_pause_stream@8 */
     ea = (uint32_t)(0x00b425bcu);
     t = M32(ea);
     esp -= 4;
@@ -2363,7 +2417,7 @@ L_0077287e:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00772882  call dword ptr [0xb425b8] */
+    /* 00772882  call dword ptr [0xb425b8]  ; MSS32!_AIL_start_stream@4 */
     ea = (uint32_t)(0x00b425b8u);
     t = M32(ea);
     esp -= 4;

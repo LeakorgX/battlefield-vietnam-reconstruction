@@ -1,0 +1,26 @@
+## file
+BAPDebugger is the BotScriptDebugger used for bot action plans. It keeps two
+maps of watched statements (this+4 and this+0x10) and a list at this+0x1c, and
+passes a statement's debug text on at a level chosen per watch entry.
+
+## 009dcbc0
+vf2: clears the debugger's state (BAPDebugger_vf2_helper_009dcb60) and the list
+at this+0x1c.
+
+## 009dcbe0
+Removes the first element of the list at this (head this+4, count this+8).
+
+## 009dcc10
+Removes the statement passed in from the list at this+0x1c (head this+0x20,
+count this+0x24): returns 1 when it was found and removed, else 0.
+
+## 009dcc90
+Looks the statement up in the map passed in (std__Tree_find_009dcab0). When it
+has an entry whose filter (+0x14) is -1 or matches the argument, takes the
+smallest of the entry's level (+0x10), the argument level and this+0x28, gets
+the statement's text through its slot 0x14 and dispatches on that level (0..3)
+through the jump table at 0x9dcd58.
+
+## 009dce30
+vf1(statement, ..., kind, ...): kind 0 uses the map at this+4, kind 1 the map
+at this+0x10; other kinds do nothing. Then calls the lookup above.

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00766e60  (source path) */
+/* 00766e60  AIConsole::ctor_dtor_helper_00766e60  (source path)
+ * also entered at 00766e70: EntryTankMoveToDirection::execute
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_00766e60, bfv_server_l1_body_00766e60);
 void bfv_server_l1_body_00766e60(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_00766e60(struct bfv_cpu *c)
     uint32_t ea;
     /* 00766e60  mov eax, ecx */
     eax = ecx;
-    /* 00766e62  mov dword ptr [eax], 0x875fcc */
+    /* 00766e62  mov dword ptr [eax], 0x875fcc  ; vtable EntryTankMoveToDirection */
     ea = (uint32_t)(eax);
     M32(ea) = 0x875fccu;
     /* 00766e68  ret */

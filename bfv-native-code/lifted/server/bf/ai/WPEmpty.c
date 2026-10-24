@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007b6d40  dice::bf::ai::WPEmpty  (vtable store) */
+/* 007b6d40  WPEmpty::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::WPEmpty
+ * called by: BotMain::vf12, BotManager_Idle_00776ea0
+ */
 BFV_L1_ENTRY(bfv_server_l1_007b6d40, bfv_server_l1_body_007b6d40);
 void bfv_server_l1_body_007b6d40(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_server_l1_body_007b6d40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, r, ea;
-    /* 007b6d40  mov edx, dword ptr [esp + 4] */
+    /* 007b6d40  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 007b6d44  mov eax, ecx */
@@ -39,7 +42,7 @@ void bfv_server_l1_body_007b6d40(struct bfv_cpu *c)
     /* 007b6d52  mov byte ptr [eax + 4], 1 */
     ea = (uint32_t)(eax + 0x00000004u);
     M8(ea) = 0x1u;
-    /* 007b6d56  mov dword ptr [eax], 0x87b404 */
+    /* 007b6d56  mov dword ptr [eax], 0x87b404  ; vtable WPEmpty */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87b404u;
     /* 007b6d5c  mov esi, dword ptr [edx] */
@@ -77,7 +80,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007b6d80  dice::bf::ai::WPEmpty  (virtual method) */
+/* 007b6d80  WPEmpty::update  (virtual method)
+ * overrides: WaypointList::update  (10 classes implement it)
+ * class: dice::bf::ai::WPEmpty
+ */
 BFV_L1_ENTRY(bfv_server_l1_007b6d80, bfv_server_l1_body_007b6d80);
 void bfv_server_l1_body_007b6d80(struct bfv_cpu *c)
 {
@@ -86,10 +92,10 @@ void bfv_server_l1_body_007b6d80(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 007b6d80  mov eax, dword ptr [esp + 4] */
+    /* 007b6d80  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 007b6d84  fld dword ptr [0x851bcc] */
+    /* 007b6d84  fld dword ptr [0x851bcc]  ; = 0.0f */
     ea = (uint32_t)(0x00851bccu);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 007b6d8a  mov byte ptr [ecx + 4], 1 */
@@ -130,7 +136,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007b6db0  dice::bf::ai::WPEmpty  (virtual method) */
+/* 007b6db0  WPEmpty::getTarget  (virtual method)
+ * overrides: WaypointList::getTarget  (10 classes implement it)
+ * class: dice::bf::ai::WPEmpty
+ */
 BFV_L1_ENTRY(bfv_server_l1_007b6db0, bfv_server_l1_body_007b6db0);
 void bfv_server_l1_body_007b6db0(struct bfv_cpu *c)
 {
@@ -139,7 +148,7 @@ void bfv_server_l1_body_007b6db0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 007b6db0  mov eax, dword ptr [esp + 4] */
+    /* 007b6db0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 007b6db4  add ecx, 8 */

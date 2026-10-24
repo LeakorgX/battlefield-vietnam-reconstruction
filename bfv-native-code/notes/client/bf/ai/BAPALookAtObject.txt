@@ -1,0 +1,5 @@
+## file
+Look action that looks at another object (handle at this+0x3c) from the bot (this+0x38).
+
+## 009f31e0
+vf6: when the target handle at this+0x3c is stale it reports not valid and returns the direction (1, 0, 0). Otherwise it returns target position minus the bot object's position (both slot 0x18), not normalized.

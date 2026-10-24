@@ -1,0 +1,8 @@
+## file
+Behaviour that scores taking cover.
+
+## 009a8d30
+vf8 (also entered at 009a8d90 as vf0): runs BotBehaviour_vf8, calls a callback with 1 when the bot has an active request, and clears its weight.
+
+## 009a8f00
+evaluate: when not usable it clears the per-bot state and returns the stored weight. Reads the bot's seat, vehicle, threat value (slot 0x84) and the IAIEnvironment vf1 value. In one early case it marks the flag and returns 0. Otherwise it sets up 8 cover slots, reads the bot's position and the cover objects and scores each one.

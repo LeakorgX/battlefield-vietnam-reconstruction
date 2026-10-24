@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0068cdf0  dice::ref2::world::Item  (virtual method) */
+/* 0068cdf0  Item::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::Item
+ */
 BFV_L1_ENTRY(bfv_client_l1_0068cdf0, bfv_client_l1_body_0068cdf0);
 void bfv_client_l1_body_0068cdf0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_client_l1_body_0068cdf0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0068cdf0  mov edx, dword ptr [0xb42718] */
+    /* 0068cdf0  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 0068cdf6  mov eax, ecx */
     eax = ecx;
-    /* 0068cdf8  mov ecx, dword ptr [esp + 4] */
+    /* 0068cdf8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0068cdfc  cmp ecx, edx */
@@ -29,7 +32,7 @@ void bfv_client_l1_body_0068cdf0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0068cdfe  je 0x68ce32 */
     if (zf) goto L_0068ce32;
-    /* 0068ce00  cmp ecx, dword ptr [0xb77da0] */
+    /* 0068ce00  cmp ecx, dword ptr [0xb77da0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00b77da0u);
     a = ecx;
     b = M32(ea);
@@ -37,7 +40,7 @@ void bfv_client_l1_body_0068cdf0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0068ce06  je 0x68ce32 */
     if (zf) goto L_0068ce32;
-    /* 0068ce08  cmp ecx, dword ptr [0xbdb000] */
+    /* 0068ce08  cmp ecx, dword ptr [0xbdb000]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00bdb000u);
     a = ecx;
     b = M32(ea);
@@ -61,7 +64,7 @@ void bfv_client_l1_body_0068cdf0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_0068ce1c:
-    /* 0068ce1c  cmp ecx, dword ptr [0xb77e24] */
+    /* 0068ce1c  cmp ecx, dword ptr [0xb77e24]  ; interfaceID(HandFireArms|Item) */
     ea = (uint32_t)(0x00b77e24u);
     a = ecx;
     b = M32(ea);
@@ -101,7 +104,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0068ce40  dice::ref2::world::Item  (virtual method) */
+/* 0068ce40  Item::vf56_getByte_170h  (virtual method)
+ * class: dice::ref2::world::Item
+ * also entered at 0068ce50: Flag::vf58, Item::vf58, Kit::vf58
+ */
 BFV_L1_ENTRY(bfv_client_l1_0068ce40, bfv_client_l1_body_0068ce40);
 void bfv_client_l1_body_0068ce40(struct bfv_cpu *c)
 {
@@ -124,7 +130,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006d0720  dice::ref2::world::Item  (virtual method) */
+/* 006d0720  Item::vf57  (virtual method)
+ * class: dice::ref2::world::Item
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d0720, bfv_client_l1_body_006d0720);
 void bfv_client_l1_body_006d0720(struct bfv_cpu *c)
 {
@@ -136,7 +144,7 @@ void bfv_client_l1_body_006d0720(struct bfv_cpu *c)
     /* 006d0720  mov eax, dword ptr [ecx + 0x4c] */
     ea = (uint32_t)(ecx + 0x0000004cu);
     eax = M32(ea);
-    /* 006d0723  cmp byte ptr [eax + 0x1f0], 1 */
+    /* 006d0723  cmp byte ptr [eax + 0x1f0], 1  ; field ItemTemplate.teamChange */
     ea = (uint32_t)(eax + 0x000001f0u);
     a = M8(ea);
     b = 0x1u;
@@ -144,7 +152,7 @@ void bfv_client_l1_body_006d0720(struct bfv_cpu *c)
     F_SUB(8, a, b, r);
     /* 006d072a  jne 0x6d0736 */
     if (!zf) goto L_006d0736;
-    /* 006d072c  mov edx, dword ptr [esp + 4] */
+    /* 006d072c  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 006d0730  mov dword ptr [ecx + 0x174], edx */
@@ -162,7 +170,169 @@ out: __attribute__((unused));
 }
 
 
-/* 006d0950  dice::ref2::world::Item  (virtual method) */
+/* 006d0740  Item_006d0740  (between same file)
+ */
+BFV_L1_ENTRY(bfv_client_l1_006d0740, bfv_client_l1_body_006d0740);
+void bfv_client_l1_body_006d0740(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t ea;
+    /* 006d0740  mov eax, dword ptr [ecx - 0x114] */
+    ea = (uint32_t)(ecx + 0xfffffeecu);
+    eax = M32(ea);
+    /* 006d0746  mov eax, dword ptr [eax + 0x1e4] */
+    ea = (uint32_t)(eax + 0x000001e4u);
+    eax = M32(ea);
+    /* 006d074c  ret */
+    c->eip = M32(esp);
+    esp += 4;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 006d0750  Item::Item  (vtable store)
+ * class: dice::ref2::world::Item
+ * called by: Kit::ctor_dtor, ItemTemplate::createObject, Flag::Flag
+ */
+BFV_L1_ENTRY(bfv_client_l1_006d0750, bfv_client_l1_body_006d0750);
+BFV_L1_RESUME(bfv_client_l1r_006d0750_1, bfv_client_l1_body_006d0750, 1);
+BFV_L1_RESUME(bfv_client_l1r_006d0750_2, bfv_client_l1_body_006d0750, 2);
+void bfv_client_l1_body_006d0750(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, r, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 006d0750  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006d0751  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006d0752  mov edi, dword ptr [esp + 0xc]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x0000000cu);
+    edi = M32(ea);
+    /* 006d0756  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006d0757  mov esi, ecx */
+    esi = ecx;
+    /* 006d0759  call 0x69fb50  ; Bundle::Bundle */
+    t = 0x0069fb50u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d0750_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 006d075e  mov dword ptr [esi + 0x160], 0xb9d334  ; vtable IItemObject */
+    ea = (uint32_t)(esi + 0x00000160u);
+    M32(ea) = 0xb9d334u;
+    /* 006d0768  mov dword ptr [esi], 0xb9d3ec  ; vtable Item */
+    ea = (uint32_t)(esi);
+    M32(ea) = 0xb9d3ecu;
+    /* 006d076e  mov dword ptr [esi + 0x84], 0xb9d3d0 */
+    ea = (uint32_t)(esi + 0x00000084u);
+    M32(ea) = 0xb9d3d0u;
+    /* 006d0778  mov dword ptr [esi + 0x160], 0xb9d394 */
+    ea = (uint32_t)(esi + 0x00000160u);
+    M32(ea) = 0xb9d394u;
+    /* 006d0782  mov eax, 1 */
+    eax = 0x1u;
+    /* 006d0787  mov dword ptr [esi + 0x164], eax */
+    ea = (uint32_t)(esi + 0x00000164u);
+    M32(ea) = eax;
+    /* 006d078d  mov dword ptr [esi + 0x168], 0xffffffff */
+    ea = (uint32_t)(esi + 0x00000168u);
+    M32(ea) = 0xffffffffu;
+    /* 006d0797  mov ecx, dword ptr [edi + 0x1e8] */
+    ea = (uint32_t)(edi + 0x000001e8u);
+    ecx = M32(ea);
+    /* 006d079d  mov byte ptr [esi + 0x170], al */
+    ea = (uint32_t)(esi + 0x00000170u);
+    M8(ea) = LO8(eax);
+    /* 006d07a3  mov dword ptr [esi + 0x16c], ecx */
+    ea = (uint32_t)(esi + 0x0000016cu);
+    M32(ea) = ecx;
+    /* 006d07a9  mov edx, dword ptr [edi + 0x1ec] */
+    ea = (uint32_t)(edi + 0x000001ecu);
+    edx = M32(ea);
+    /* 006d07af  mov dword ptr [esi + 0x174], edx */
+    ea = (uint32_t)(esi + 0x00000174u);
+    M32(ea) = edx;
+    /* 006d07b5  fld dword ptr [edi + 0x1e0] */
+    ea = (uint32_t)(edi + 0x000001e0u);
+    __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
+    /* 006d07bb  fld qword ptr [0xb426c0]  ; = 0.0 */
+    ea = (uint32_t)(0x00b426c0u);
+    __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
+    /* 006d07c1  fucompp */
+    __asm__ volatile(".intel_syntax noprefix\n\tfucompp\n\t.att_syntax prefix");
+    /* 006d07c3  fnstsw ax */
+    __asm__ volatile(".intel_syntax noprefix\n\tfnstsw %w0\n\t.att_syntax prefix" : "+a"(eax) :  : "cc");
+    /* 006d07c5  test ah, 0x44 */
+    r = (HI8(eax) & 0x44u) & 0xffu;
+    F_LOGIC(8, r);
+    /* 006d07c8  jnp 0x6d07d8 */
+    if (!pf) goto L_006d07d8;
+    /* 006d07ca  push 0 */
+    t = 0x0u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006d07cc  push 0x800 */
+    t = 0x800u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 006d07d1  mov ecx, esi */
+    ecx = esi;
+    /* 006d07d3  call 0x6843e0  ; Object::changeFlags */
+    t = 0x006843e0u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d0750_2;
+    c->eip = t;
+    goto out;
+R_2:
+L_006d07d8:
+    /* 006d07d8  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 006d07d9  mov eax, esi */
+    eax = esi;
+    /* 006d07db  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 006d07dc  ret 4 */
+    c->eip = M32(esp);
+    esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 006d0950  Item::createNetworkable  (virtual method)
+ * overrides: Object::createNetworkable  (47 classes implement it)
+ * class: dice::ref2::world::Item
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d0950, bfv_client_l1_body_006d0950);
 BFV_L1_RESUME(bfv_client_l1r_006d0950_1, bfv_client_l1_body_006d0950, 1);
 BFV_L1_RESUME(bfv_client_l1r_006d0950_2, bfv_client_l1_body_006d0950, 2);
@@ -195,7 +365,7 @@ void bfv_client_l1_body_006d0950(struct bfv_cpu *c)
     /* 006d095a  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 006d095c  call dword ptr [eax + 0x50] */
+    /* 006d095c  call dword ptr [eax + 0x50]  ; -> ItemTemplate::vf20 = ObjectTemplateManager::vf27_addressOf_24h (returns &this+0x24) */
     ea = (uint32_t)(eax + 0x00000050u);
     t = M32(ea);
     esp -= 4;
@@ -224,7 +394,7 @@ R_1:
     M32(esp) = t;
     /* 006d096c  mov ecx, eax */
     ecx = eax;
-    /* 006d096e  call 0x4038f0 */
+    /* 006d096e  call 0x4038f0  ; std::string::compare_chars */
     t = 0x004038f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d0950_2;
@@ -245,7 +415,7 @@ R_2:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 006d0980  jmp 0x69faa0 */
+    /* 006d0980  jmp 0x69faa0  ; Object::attachNetworkable */
     c->eip = 0x0069faa0u;
     goto out;
 L_006d0985:
@@ -264,7 +434,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006d0990  dice::ref2::world::Item  (virtual method) */
+/* 006d0990  Item::update  (virtual method)
+ * overrides: Object::update  (47 classes implement it)
+ * class: dice::ref2::world::Item
+ */
 BFV_L1_ENTRY(bfv_client_l1_006d0990, bfv_client_l1_body_006d0990);
 BFV_L1_RESUME(bfv_client_l1r_006d0990_1, bfv_client_l1_body_006d0990, 1);
 void bfv_client_l1_body_006d0990(struct bfv_cpu *c)
@@ -281,10 +454,10 @@ void bfv_client_l1_body_006d0990(struct bfv_cpu *c)
     /* 006d0990  mov edx, dword ptr [ecx + 0x4c] */
     ea = (uint32_t)(ecx + 0x0000004cu);
     edx = M32(ea);
-    /* 006d0993  fld dword ptr [edx + 0x1e0] */
+    /* 006d0993  fld dword ptr [edx + 0x1e0]  ; field ObjectTemplate.yawSpeed */
     ea = (uint32_t)(edx + 0x000001e0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006d0999  fld qword ptr [0xb426c0] */
+    /* 006d0999  fld qword ptr [0xb426c0]  ; = 0.0 */
     ea = (uint32_t)(0x00b426c0u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld qword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006d099f  fucompp */
@@ -296,7 +469,7 @@ void bfv_client_l1_body_006d0990(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 006d09a6  jnp 0x6d09c2 */
     if (!pf) goto L_006d09c2;
-    /* 006d09a8  test byte ptr [esp + 8], 4 */
+    /* 006d09a8  test byte ptr [esp + 8], 4  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x4u) & 0xffu;
     F_LOGIC(8, r);
@@ -310,14 +483,14 @@ void bfv_client_l1_body_006d0990(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 006d09b4  jne 0x6d09c2 */
     if (!zf) goto L_006d09c2;
-    /* 006d09b6  mov eax, dword ptr [edx + 0x1e0] */
+    /* 006d09b6  mov eax, dword ptr [edx + 0x1e0]  ; field ObjectTemplate.yawSpeed */
     ea = (uint32_t)(edx + 0x000001e0u);
     eax = M32(ea);
     /* 006d09bc  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 006d09bd  call 0x5f35d0 */
+    /* 006d09bd  call 0x5f35d0  ; Item::sub_005f35d0 */
     t = 0x005f35d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006d0990_1;

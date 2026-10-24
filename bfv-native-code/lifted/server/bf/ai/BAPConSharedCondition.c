@@ -5,7 +5,11 @@
 #include "l1.h"
 
 
-/* 007abe50  dice::bf::ai::BAPConSharedCondition  (virtual method) */
+/* 007abe50  BAPConSharedCondition::evaluate  (virtual method)
+ * overrides: BAPCondition::evaluate  (36 classes implement it)
+ * class: dice::bf::ai::BAPConSharedCondition
+ * also entered at 007abe80: BAPConSharedCondition::vf1
+ */
 BFV_L1_ENTRY(bfv_server_l1_007abe50, bfv_server_l1_body_007abe50);
 BFV_L1_RESUME(bfv_server_l1r_007abe50_1, bfv_server_l1_body_007abe50, 1);
 void bfv_server_l1_body_007abe50(struct bfv_cpu *c)
@@ -51,7 +55,7 @@ L_007abe63:
     /* 007abe63  mov ecx, dword ptr [esi + 0xc] */
     ea = (uint32_t)(esi + 0x0000000cu);
     ecx = M32(ea);
-    /* 007abe66  mov eax, dword ptr [esp + 8] */
+    /* 007abe66  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007abe6a  mov edx, dword ptr [ecx] */
@@ -96,7 +100,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007abe90  dice::bf::ai::BAPConSharedCondition  (vtable store) */
+/* 007abe90  BAPConSharedCondition::BAPConSharedCondition  (vtable store)
+ * class: dice::bf::ai::BAPConSharedCondition
+ * called by: BBPFireInfantery_helper_00742d40, BBPFireInfantery_00744030
+ */
 BFV_L1_ENTRY(bfv_server_l1_007abe90, bfv_server_l1_body_007abe90);
 BFV_L1_RESUME(bfv_server_l1r_007abe90_1, bfv_server_l1_body_007abe90, 1);
 void bfv_server_l1_body_007abe90(struct bfv_cpu *c)
@@ -123,10 +130,10 @@ void bfv_server_l1_body_007abe90(struct bfv_cpu *c)
     /* 007abe95  mov dword ptr [esi + 4], 0 */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 007abe9c  mov dword ptr [esi], 0x87a68c */
+    /* 007abe9c  mov dword ptr [esi], 0x87a68c  ; vtable BAPConSharedCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87a68cu;
-    /* 007abea2  call 0x403d80 */
+    /* 007abea2  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007abe90_1;
@@ -153,7 +160,7 @@ R_1:
     /* 007abeb8  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 007abebb  mov eax, dword ptr [esp + 8] */
+    /* 007abebb  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007abebf  mov dword ptr [esi + 0xc], eax */
@@ -180,7 +187,7 @@ L_007abecb:
     /* 007abecd  mov dword ptr [esi + 8], eax */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = eax;
-    /* 007abed0  mov eax, dword ptr [esp + 8] */
+    /* 007abed0  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007abed4  mov dword ptr [esi + 0xc], eax */
@@ -206,7 +213,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007abee0  dice::bf::ai::BAPConSharedCondition  (vtable store) */
+/* 007abee0  BAPConSharedCondition::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::BAPConSharedCondition
+ * called by: BBPFireInfantery_helper_00742d40, BBPFireInfantery_00744030
+ */
 BFV_L1_ENTRY(bfv_server_l1_007abee0, bfv_server_l1_body_007abee0);
 BFV_L1_RESUME(bfv_server_l1r_007abee0_1, bfv_server_l1_body_007abee0, 1);
 void bfv_server_l1_body_007abee0(struct bfv_cpu *c)
@@ -238,9 +248,9 @@ void bfv_server_l1_body_007abee0(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 007abeec  mov ecx, 0xc32f08 */
+    /* 007abeec  mov ecx, 0xc32f08  ; g_MemoryPoolNull_BAPConSharedCondition */
     ecx = 0xc32f08u;
-    /* 007abef1  call 0x404290 */
+    /* 007abef1  call 0x404290  ; MemoryPool::alloc_debug */
     t = 0x00404290u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007abee0_1;
@@ -255,7 +265,7 @@ R_1:
     /* 007abefa  mov dword ptr [eax + 4], 0 */
     ea = (uint32_t)(eax + 0x00000004u);
     M32(ea) = 0x0u;
-    /* 007abf01  mov dword ptr [eax], 0x87a68c */
+    /* 007abf01  mov dword ptr [eax], 0x87a68c  ; vtable BAPConSharedCondition */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87a68cu;
     /* 007abf07  mov ecx, dword ptr [esi + 8] */
@@ -301,7 +311,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007abf20  dice::bf::ai::BAPConSharedCondition  (virtual method) */
+/* 007abf20  BAPConSharedCondition::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConSharedCondition
+ */
 BFV_L1_ENTRY(bfv_server_l1_007abf20, bfv_server_l1_body_007abf20);
 BFV_L1_RESUME(bfv_server_l1r_007abf20_1, bfv_server_l1_body_007abf20, 1);
 BFV_L1_RESUME(bfv_server_l1r_007abf20_2, bfv_server_l1_body_007abf20, 2);
@@ -331,7 +344,7 @@ void bfv_server_l1_body_007abf20(struct bfv_cpu *c)
     /* 007abf26  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007abf28  mov dword ptr [esi], 0x87a68c */
+    /* 007abf28  mov dword ptr [esi], 0x87a68c  ; vtable BAPConSharedCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87a68cu;
     /* 007abf2e  je 0x7abf37 */
@@ -367,7 +380,7 @@ L_007abf37:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007abf40  call 0x403df0 */
+    /* 007abf40  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007abf20_2;
@@ -381,11 +394,11 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_007abf48:
-    /* 007abf48  test byte ptr [esp + 8], 1 */
+    /* 007abf48  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 007abf4d  mov dword ptr [esi], 0x873c74 */
+    /* 007abf4d  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 007abf53  je 0x7abf60 */
@@ -394,9 +407,9 @@ L_007abf48:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007abf56  mov ecx, 0xc32f08 */
+    /* 007abf56  mov ecx, 0xc32f08  ; g_MemoryPoolNull_BAPConSharedCondition */
     ecx = 0xc32f08u;
-    /* 007abf5b  call 0x413600 */
+    /* 007abf5b  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007abf20_3;

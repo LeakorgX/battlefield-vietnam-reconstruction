@@ -5,8 +5,11 @@
 #include "l1.h"
 
 
-/* 00ac0760  dice::meme::VolumedSoundAction  (virtual method)
- * strings: "Sound", "Volume (0-1)" */
+/* 00ac0760  VolumedSoundAction::serialize  (virtual method)
+ * overrides: Object::serialize  (205 classes implement it)
+ * class: dice::meme::VolumedSoundAction
+ * strings: "Sound", "Volume (0-1)"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac0760, bfv_client_l1_body_00ac0760);
 BFV_L1_RESUME(bfv_client_l1r_00ac0760_1, bfv_client_l1_body_00ac0760, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac0760_2, bfv_client_l1_body_00ac0760, 2);
@@ -28,14 +31,14 @@ void bfv_client_l1_body_00ac0760(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac0761  mov ebx, dword ptr [esp + 8] */
+    /* 00ac0761  mov ebx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ebx = M32(ea);
     /* 00ac0765  push esi */
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac0766  mov esi, dword ptr [esp + 0x10] */
+    /* 00ac0766  mov esi, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00ac076a  push edi */
@@ -52,7 +55,7 @@ void bfv_client_l1_body_00ac0760(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00ac076d  mov edi, ecx */
     edi = ecx;
-    /* 00ac076f  call 0xa7d100 */
+    /* 00ac076f  call 0xa7d100  ; stub_return_true_2args_00a7d100 */
     t = 0x00a7d100u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0760_1;
@@ -67,11 +70,11 @@ R_1:
     /* 00ac0778  mov eax, dword ptr [esi] */
     ea = (uint32_t)(esi);
     eax = M32(ea);
-    /* 00ac077a  push 0xb53e70 */
+    /* 00ac077a  push 0xb53e70  ; "Sound" */
     t = 0xb53e70u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac077f  lea ecx, [edi + 8] */
+    /* 00ac077f  lea ecx, [edi + 8]  ; field Sound (serialized) */
     ecx = (uint32_t)(edi + 0x00000008u);
     /* 00ac0782  push ecx */
     t = ecx;
@@ -121,7 +124,7 @@ L_00ac0795:
     /* 00ac0795  mov edx, dword ptr [esi] */
     ea = (uint32_t)(esi);
     edx = M32(ea);
-    /* 00ac0797  push 0xc0fb74 */
+    /* 00ac0797  push 0xc0fb74  ; "Volume (0-1)" */
     t = 0xc0fb74u;
     esp -= 4;
     M32(esp) = t;
@@ -173,7 +176,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac07b0  dice::meme::VolumedSoundAction  (virtual method) */
+/* 00ac07b0  VolumedSoundAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::VolumedSoundAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac07b0, bfv_client_l1_body_00ac07b0);
 BFV_L1_RESUME(bfv_client_l1r_00ac07b0_1, bfv_client_l1_body_00ac07b0, 1);
 void bfv_client_l1_body_00ac07b0(struct bfv_cpu *c)
@@ -189,7 +195,7 @@ void bfv_client_l1_body_00ac07b0(struct bfv_cpu *c)
     }
     /* 00ac07b0  mov eax, ecx */
     eax = ecx;
-    /* 00ac07b2  mov edx, dword ptr [eax + 8] */
+    /* 00ac07b2  mov edx, dword ptr [eax + 8]  ; field Sound */
     ea = (uint32_t)(eax + 0x00000008u);
     edx = M32(ea);
     /* 00ac07b5  test edx, edx */
@@ -200,7 +206,7 @@ void bfv_client_l1_body_00ac07b0(struct bfv_cpu *c)
     /* 00ac07b9  mov eax, dword ptr [eax + 0xc] */
     ea = (uint32_t)(eax + 0x0000000cu);
     eax = M32(ea);
-    /* 00ac07bc  mov ecx, dword ptr [esp + 4] */
+    /* 00ac07bc  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 00ac07c0  push esi */
@@ -246,7 +252,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac0870  dice::meme::VolumedSoundAction  (vtable store) */
+/* 00ac0870  VolumedSoundAction::create  (vtable store)
+ * class: dice::meme::VolumedSoundAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac0870, bfv_client_l1_body_00ac0870);
 BFV_L1_RESUME(bfv_client_l1r_00ac0870_1, bfv_client_l1_body_00ac0870, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac0870_2, bfv_client_l1_body_00ac0870, 2);
@@ -270,7 +278,7 @@ void bfv_client_l1_body_00ac0870(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac0873  call 0x403610 */
+    /* 00ac0873  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0870_1;
@@ -292,7 +300,7 @@ R_1:
     if (zf) goto L_00ac08a0;
     /* 00ac0881  mov ecx, esi */
     ecx = esi;
-    /* 00ac0883  call 0x874870 */
+    /* 00ac0883  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0870_2;
@@ -302,10 +310,10 @@ R_2:
     /* 00ac0888  mov dword ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 00ac088f  mov dword ptr [esi], 0xc0fc24 */
+    /* 00ac088f  mov dword ptr [esi], 0xc0fc24  ; vtable VolumedSoundAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0fc24u;
-    /* 00ac0895  mov dword ptr [esi + 0xc], 0x3f800000 */
+    /* 00ac0895  mov dword ptr [esi + 0xc], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = 0x3f800000u;
     /* 00ac089c  mov eax, esi */
@@ -338,8 +346,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac0900  dice::meme::VolumedSoundAction  (virtual method)
- * strings: "dice::meme::VolumedSoundAction" */
+/* 00ac0900  VolumedSoundAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::VolumedSoundAction
+ * strings: "dice::meme::VolumedSoundAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac0900, bfv_client_l1_body_00ac0900);
 BFV_L1_RESUME(bfv_client_l1r_00ac0900_1, bfv_client_l1_body_00ac0900, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac0900_2, bfv_client_l1_body_00ac0900, 2);
@@ -370,27 +381,27 @@ void bfv_client_l1_body_00ac0900(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac0915  push 0xc0fc84 */
+    /* 00ac0915  push 0xc0fc84  ; "dice::meme::VolumedSoundAction" */
     t = 0xc0fc84u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac091a  mov ecx, 0xe2150c */
+    /* 00ac091a  mov ecx, 0xe2150c  ; g_RuntimeClass_VolumedSoundAction */
     ecx = 0xe2150cu;
-    /* 00ac091f  call 0x875490 */
+    /* 00ac091f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0900_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac0924  push 0xb41bc0 */
+    /* 00ac0924  push 0xb41bc0  ; bfv_client_global_store_00b41bc0 */
     t = 0xb41bc0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac0929  mov dword ptr [0xe2150c], 0xc0fbac */
+    /* 00ac0929  mov dword ptr [0xe2150c], 0xc0fbac  ; g_RuntimeClass_VolumedSoundAction */
     ea = (uint32_t)(0x00e2150cu);
     M32(ea) = 0xc0fbacu;
-    /* 00ac0933  call 0x7c2cd2 */
+    /* 00ac0933  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0900_2;
@@ -404,7 +415,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac093b:
-    /* 00ac093b  mov eax, 0xe2150c */
+    /* 00ac093b  mov eax, 0xe2150c  ; g_RuntimeClass_VolumedSoundAction */
     eax = 0xe2150cu;
     /* 00ac0940  ret */
     c->eip = M32(esp);

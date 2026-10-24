@@ -1,0 +1,12 @@
+## file
+BAPStatement is the base class of the bot action-plan statements (BotScript
+nodes). Every construction counts in g_bapCreatedCount and every destruction
+in g_bapaDestroyedCount.
+
+## 009f4ed0
+vf5: writes the statement's debug description (a 15-character default text
+at 0xbfb608) into the string passed in.
+
+## 00a0ab10
+destroy: counts the destroyed statement and frees it when bit 0 of the
+argument is set.

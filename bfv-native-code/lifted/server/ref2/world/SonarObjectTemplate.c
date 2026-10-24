@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005b78f0  dice::ref2::world::SonarObjectTemplate  (vtable store) */
+/* 005b78f0  SonarObjectTemplate::SonarObjectTemplate  (vtable store)
+ * class: dice::ref2::world::SonarObjectTemplate
+ * also entered at 005b7930: SonarObjectTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b78f0, bfv_server_l1_body_005b78f0);
 BFV_L1_RESUME(bfv_server_l1r_005b78f0_1, bfv_server_l1_body_005b78f0, 1);
 void bfv_server_l1_body_005b78f0(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_server_l1_body_005b78f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b78f1  mov esi, ecx */
     esi = ecx;
-    /* 005b78f3  call 0x5870c0 */
+    /* 005b78f3  call 0x5870c0  ; BundleTemplate::BundleTemplate */
     t = 0x005870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b78f0_1;
@@ -42,7 +45,7 @@ R_1:
     /* 005b7900  mov byte ptr [esi + 0x1b1], al */
     ea = (uint32_t)(esi + 0x000001b1u);
     M8(ea) = LO8(eax);
-    /* 005b7906  mov dword ptr [esi], 0x8424fc */
+    /* 005b7906  mov dword ptr [esi], 0x8424fc  ; vtable SonarObjectTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8424fcu;
     /* 005b790c  mov dword ptr [esi + 0x74], 0x8424f0 */
@@ -51,7 +54,7 @@ R_1:
     /* 005b7913  mov dword ptr [esi + 0x190], 0x8424c4 */
     ea = (uint32_t)(esi + 0x00000190u);
     M32(ea) = 0x8424c4u;
-    /* 005b791d  mov dword ptr [esi + 0x1ac], 0x42480000 */
+    /* 005b791d  mov dword ptr [esi + 0x1ac], 0x42480000  ; 50.0f */
     ea = (uint32_t)(esi + 0x000001acu);
     M32(ea) = 0x42480000u;
     /* 005b7927  mov eax, esi */
@@ -71,7 +74,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b7940  dice::ref2::world::SonarObjectTemplate  (virtual method) */
+/* 005b7940  SonarObjectTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::SonarObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7940, bfv_server_l1_body_005b7940);
 void bfv_server_l1_body_005b7940(struct bfv_cpu *c)
 {
@@ -80,10 +86,10 @@ void bfv_server_l1_body_005b7940(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005b7940  mov eax, dword ptr [esp + 4] */
+    /* 005b7940  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005b7944  cmp eax, dword ptr [0x829160] */
+    /* 005b7944  cmp eax, dword ptr [0x829160]  ; SonarObjectTemplate::classID */
     ea = (uint32_t)(0x00829160u);
     a = eax;
     b = M32(ea);
@@ -98,10 +104,10 @@ void bfv_server_l1_body_005b7940(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005b7951:
-    /* 005b7951  mov dword ptr [esp + 4], eax */
+    /* 005b7951  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005b7955  jmp 0x586630 */
+    /* 005b7955  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -111,7 +117,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b7960  dice::ref2::world::SonarObjectTemplate  (virtual method) */
+/* 005b7960  SonarObjectTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::SonarObjectTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005b7960, bfv_server_l1_body_005b7960);
 BFV_L1_RESUME(bfv_server_l1r_005b7960_1, bfv_server_l1_body_005b7960, 1);
 BFV_L1_RESUME(bfv_server_l1r_005b7960_2, bfv_server_l1_body_005b7960, 2);
@@ -143,7 +152,7 @@ void bfv_server_l1_body_005b7960(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b7967  mov edi, ecx */
     edi = ecx;
-    /* 005b7969  call 0x403d80 */
+    /* 005b7969  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b7960_1;
@@ -169,7 +178,7 @@ R_1:
     M32(esp) = t;
     /* 005b7978  mov ecx, esi */
     ecx = esi;
-    /* 005b797a  call 0x581fb0 */
+    /* 005b797a  call 0x581fb0  ; Bundle::Bundle */
     t = 0x00581fb0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b7960_2;
@@ -186,7 +195,7 @@ R_2:
     M32(esp) = t;
     /* 005b7986  mov ecx, esi */
     ecx = esi;
-    /* 005b7988  mov dword ptr [esi], 0x842584 */
+    /* 005b7988  mov dword ptr [esi], 0x842584  ; vtable SonarObject */
     ea = (uint32_t)(esi);
     M32(ea) = 0x842584u;
     /* 005b798e  mov dword ptr [esi + 0x158], edi */
@@ -198,7 +207,7 @@ R_2:
     /* 005b799e  mov dword ptr [esi + 0x160], 0 */
     ea = (uint32_t)(esi + 0x00000160u);
     M32(ea) = 0x0u;
-    /* 005b79a8  call 0x57c210 */
+    /* 005b79a8  call 0x57c210  ; Object::changeFlags */
     t = 0x0057c210u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005b7960_3;

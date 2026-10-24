@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005bca60  dice::ref2::world::WinchTemplate  (virtual method) */
+/* 005bca60  WinchTemplate::createObject  (virtual method)
+ * overrides: ObjectTemplate::createObject  (47 classes implement it)
+ * class: dice::ref2::world::WinchTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bca60, bfv_server_l1_body_005bca60);
 BFV_L1_RESUME(bfv_server_l1r_005bca60_1, bfv_server_l1_body_005bca60, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bca60_2, bfv_server_l1_body_005bca60, 2);
@@ -31,7 +34,7 @@ void bfv_server_l1_body_005bca60(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bca66  mov esi, ecx */
     esi = ecx;
-    /* 005bca68  call 0x403d80 */
+    /* 005bca68  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bca60_1;
@@ -55,7 +58,7 @@ R_1:
     M32(esp) = t;
     /* 005bca75  mov ecx, eax */
     ecx = eax;
-    /* 005bca77  call 0x5db050 */
+    /* 005bca77  call 0x5db050  ; Winch::Winch */
     t = 0x005db050u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bca60_2;
@@ -90,7 +93,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005bca90  dice::ref2::world::WinchTemplate  (virtual method) */
+/* 005bca90  WinchTemplate::createPhysicsNode  (virtual method)
+ * overrides: SimpleObjectTemplate::createPhysicsNode  (44 classes implement it)
+ * class: dice::ref2::world::WinchTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bca90, bfv_server_l1_body_005bca90);
 BFV_L1_RESUME(bfv_server_l1r_005bca90_1, bfv_server_l1_body_005bca90, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bca90_2, bfv_server_l1_body_005bca90, 2);
@@ -157,7 +163,7 @@ R_1:
     /* 005bcaac  test eax, eax */
     r = (eax & eax) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 005bcaae  mov edi, dword ptr [esp + 0x10] */
+    /* 005bcaae  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 005bcab2  je 0x5bcac0 */
@@ -168,7 +174,7 @@ R_1:
     M32(esp) = t;
     /* 005bcab5  mov ecx, eax */
     ecx = eax;
-    /* 005bcab7  call 0x5dbbe0 */
+    /* 005bcab7  call 0x5dbbe0  ; PhysicsWinch::PhysicsWinch */
     t = 0x005dbbe0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bca90_2;
@@ -191,7 +197,7 @@ L_005bcac2:
     M32(esp) = t;
     /* 005bcac3  mov ecx, esi */
     ecx = esi;
-    /* 005bcac5  call 0x5dbbc0 */
+    /* 005bcac5  call 0x5dbbc0  ; WinchTemplate::createPhysicsNode_helper_005dbbc0 */
     t = 0x005dbbc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bca90_3;
@@ -280,7 +286,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005bcb00  dice::ref2::world::WinchTemplate  (vtable store) */
+/* 005bcb00  WinchTemplate::~WinchTemplate  (vtable store)
+ * class: dice::ref2::world::WinchTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bcb00, bfv_server_l1_body_005bcb00);
 BFV_L1_RESUME(bfv_server_l1r_005bcb00_1, bfv_server_l1_body_005bcb00, 1);
 void bfv_server_l1_body_005bcb00(struct bfv_cpu *c)
@@ -300,7 +308,7 @@ void bfv_server_l1_body_005bcb00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bcb01  mov esi, ecx */
     esi = ecx;
-    /* 005bcb03  mov dword ptr [esi], 0x843d7c */
+    /* 005bcb03  mov dword ptr [esi], 0x843d7c  ; vtable WinchTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x843d7cu;
     /* 005bcb09  mov dword ptr [esi + 0x74], 0x843d70 */
@@ -324,7 +332,7 @@ void bfv_server_l1_body_005bcb00(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005bcb2a  call 0x403df0 */
+    /* 005bcb2a  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bcb00_1;
@@ -357,7 +365,7 @@ L_005bcb32:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 005bcb4d  jmp 0x586880 */
+    /* 005bcb4d  jmp 0x586880  ; BundleTemplate::~BundleTemplate */
     c->eip = 0x00586880u;
     goto out;
 out: __attribute__((unused));
@@ -367,7 +375,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005bcbb0  dice::ref2::world::WinchTemplate  (virtual method) */
+/* 005bcbb0  WinchTemplate::castTo  (virtual method)
+ * overrides: ObjectTemplate::vf11  (47 classes implement it)
+ * class: dice::ref2::world::WinchTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bcbb0, bfv_server_l1_body_005bcbb0);
 void bfv_server_l1_body_005bcbb0(struct bfv_cpu *c)
 {
@@ -376,10 +387,10 @@ void bfv_server_l1_body_005bcbb0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 005bcbb0  mov eax, dword ptr [esp + 4] */
+    /* 005bcbb0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 005bcbb4  cmp eax, dword ptr [0x82080c] */
+    /* 005bcbb4  cmp eax, dword ptr [0x82080c]  ; WinchTemplate::classID */
     ea = (uint32_t)(0x0082080cu);
     a = eax;
     b = M32(ea);
@@ -394,10 +405,10 @@ void bfv_server_l1_body_005bcbb0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_005bcbc1:
-    /* 005bcbc1  mov dword ptr [esp + 4], eax */
+    /* 005bcbc1  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
-    /* 005bcbc5  jmp 0x586630 */
+    /* 005bcbc5  jmp 0x586630  ; BundleTemplate::castTo */
     c->eip = 0x00586630u;
     goto out;
 out: __attribute__((unused));
@@ -407,7 +418,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005bcc20  dice::ref2::world::WinchTemplate  (vtable store) */
+/* 005bcc20  WinchTemplate::WinchTemplate  (vtable store)
+ * class: dice::ref2::world::WinchTemplate
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bcc20, bfv_server_l1_body_005bcc20);
 BFV_L1_RESUME(bfv_server_l1r_005bcc20_1, bfv_server_l1_body_005bcc20, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bcc20_2, bfv_server_l1_body_005bcc20, 2);
@@ -433,14 +446,14 @@ void bfv_server_l1_body_005bcc20(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bcc22  mov esi, ecx */
     esi = ecx;
-    /* 005bcc24  call 0x5870c0 */
+    /* 005bcc24  call 0x5870c0  ; BundleTemplate::BundleTemplate */
     t = 0x005870c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bcc20_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005bcc29  mov dword ptr [esi], 0x843d7c */
+    /* 005bcc29  mov dword ptr [esi], 0x843d7c  ; vtable WinchTemplate */
     ea = (uint32_t)(esi);
     M32(ea) = 0x843d7cu;
     /* 005bcc2f  mov dword ptr [esi + 0x74], 0x843d70 */
@@ -474,7 +487,7 @@ R_1:
     eax = 0xfu;
     /* 005bcc6e  lea ecx, [esi + 0x1d4] */
     ecx = (uint32_t)(esi + 0x000001d4u);
-    /* 005bcc74  mov dword ptr [esi + 0x1c0], 0x461c4000 */
+    /* 005bcc74  mov dword ptr [esi + 0x1c0], 0x461c4000  ; 10000.0f */
     ea = (uint32_t)(esi + 0x000001c0u);
     M32(ea) = 0x461c4000u;
     /* 005bcc7e  mov dword ptr [esi + 0x1c4], ebx */
@@ -506,7 +519,7 @@ R_1:
     /* 005bccaa  mov byte ptr [ecx + 4], bl */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(ebx);
-    /* 005bccad  call 0x402020 */
+    /* 005bccad  call 0x402020  ; std::string::assign_chars */
     t = 0x00402020u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bcc20_2;
@@ -549,7 +562,11 @@ out: __attribute__((unused));
 }
 
 
-/* 005bcce0  dice::ref2::world::WinchTemplate  (virtual method) */
+/* 005bcce0  WinchTemplate::postLoad  (virtual method)
+ * overrides: ObjectTemplate::postLoad  (47 classes implement it)
+ * class: dice::ref2::world::WinchTemplate
+ * also entered at 005bcd20: HookTemplate::vf4
+ */
 BFV_L1_ENTRY(bfv_server_l1_005bcce0, bfv_server_l1_body_005bcce0);
 BFV_L1_RESUME(bfv_server_l1r_005bcce0_1, bfv_server_l1_body_005bcce0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005bcce0_2, bfv_server_l1_body_005bcce0, 2);
@@ -573,7 +590,7 @@ void bfv_server_l1_body_005bcce0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005bcce1  mov esi, ecx */
     esi = ecx;
-    /* 005bcce3  call 0x586af0 */
+    /* 005bcce3  call 0x586af0  ; BundleTemplate::postLoad */
     t = 0x00586af0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005bcce0_1;

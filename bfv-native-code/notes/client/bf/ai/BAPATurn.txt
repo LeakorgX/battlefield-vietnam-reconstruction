@@ -1,0 +1,5 @@
+## file
+Base plan action for turning towards a direction given by vf6 of the subclass.
+
+## 00a0aa80
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.

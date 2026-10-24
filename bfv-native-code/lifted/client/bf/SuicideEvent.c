@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00522fc0  dice::bf::SuicideEvent  (vtable store) */
+/* 00522fc0  SuicideEvent::SuicideEvent  (vtable store)
+ * class: dice::bf::SuicideEvent
+ * called by: DatabaseCompleteAckEvent::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_00522fc0, bfv_client_l1_body_00522fc0);
 void bfv_client_l1_body_00522fc0(struct bfv_cpu *c)
 {
@@ -19,7 +22,7 @@ void bfv_client_l1_body_00522fc0(struct bfv_cpu *c)
     /* 00522fc2  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 00522fc9  mov dword ptr [eax], 0xb61da4 */
+    /* 00522fc9  mov dword ptr [eax], 0xb61da4  ; vtable SuicideEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb61da4u;
     /* 00522fcf  ret */
@@ -33,7 +36,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005adcd0  dice::bf::SuicideEvent  (vtable store) */
+/* 005adcd0  SuicideEvent::create  (vtable store)
+ * class: dice::bf::SuicideEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005adcd0, bfv_client_l1_body_005adcd0);
 BFV_L1_RESUME(bfv_client_l1r_005adcd0_1, bfv_client_l1_body_005adcd0, 1);
 void bfv_client_l1_body_005adcd0(struct bfv_cpu *c)
@@ -47,7 +52,7 @@ void bfv_client_l1_body_005adcd0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005adcd0  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005adcd0  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005adcd6  mov eax, dword ptr [ecx] */
@@ -81,7 +86,7 @@ R_1:
     /* 005adce8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005adcef  mov dword ptr [eax], 0xb61da4 */
+    /* 005adcef  mov dword ptr [eax], 0xb61da4  ; vtable SuicideEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb61da4u;
     /* 005adcf5  ret */
@@ -104,7 +109,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005add00  dice::bf::SuicideEvent  (vtable store) */
+/* 005add00  SuicideEvent::create  (vtable store)
+ * class: dice::bf::SuicideEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005add00, bfv_client_l1_body_005add00);
 BFV_L1_RESUME(bfv_client_l1r_005add00_1, bfv_client_l1_body_005add00, 1);
 void bfv_client_l1_body_005add00(struct bfv_cpu *c)
@@ -118,7 +125,7 @@ void bfv_client_l1_body_005add00(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005add00  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005add00  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005add06  mov eax, dword ptr [ecx] */
@@ -152,7 +159,7 @@ R_1:
     /* 005add18  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005add1f  mov dword ptr [eax], 0xb61da4 */
+    /* 005add1f  mov dword ptr [eax], 0xb61da4  ; vtable SuicideEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb61da4u;
     /* 005add25  jmp 0x5add29 */
@@ -163,7 +170,7 @@ L_005add27:
     F_LOGIC(32, r);
     eax = r;
 L_005add29:
-    /* 005add29  mov ecx, dword ptr [esp + 4] */
+    /* 005add29  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005add2d  push esi */
@@ -205,7 +212,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005b05f0  dice::bf::SuicideEvent  (virtual method) */
+/* 005b05f0  SuicideEvent::writeToStream  (virtual method)
+ * class: dice::bf::SuicideEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005b05f0, bfv_client_l1_body_005b05f0);
 BFV_L1_RESUME(bfv_client_l1r_005b05f0_1, bfv_client_l1_body_005b05f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005b05f0_2, bfv_client_l1_body_005b05f0, 2);
@@ -272,7 +281,7 @@ L_005b05f6:
     edx = M32(ea);
     /* 005b0608  mov ecx, eax */
     ecx = eax;
-    /* 005b060a  call dword ptr [edx] */
+    /* 005b060a  call dword ptr [edx]  ; -> SuicideEvent::vf0 = RelativeRotationModifier::vf10 */
     ea = (uint32_t)(edx);
     t = M32(ea);
     esp -= 4;
@@ -298,7 +307,7 @@ R_1:
     M32(esp) = t;
     /* 005b061a  mov ecx, esi */
     ecx = esi;
-    /* 005b061c  call 0x500c50 */
+    /* 005b061c  call 0x500c50  ; BitStream::writeBits */
     t = 0x00500c50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005b05f0_2;
@@ -357,7 +366,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005c68d0  dice::bf::SuicideEvent  (vtable store) */
+/* 005c68d0  GameClient::suicide  (vtable store)
+ * class: dice::bf::SuicideEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005c68d0, bfv_client_l1_body_005c68d0);
 BFV_L1_RESUME(bfv_client_l1r_005c68d0_1, bfv_client_l1_body_005c68d0, 1);
 void bfv_client_l1_body_005c68d0(struct bfv_cpu *c)
@@ -385,12 +396,12 @@ void bfv_client_l1_body_005c68d0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 005c68d8  je 0x5c68f5 */
     if (zf) goto L_005c68f5;
-    /* 005c68da  lea ecx, [esp] */
+    /* 005c68da  lea ecx, [esp]  ; &var_c */
     ecx = (uint32_t)(esp);
-    /* 005c68dd  mov dword ptr [esp + 8], 0 */
+    /* 005c68dd  mov dword ptr [esp + 8], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005c68e5  mov dword ptr [esp], 0xb61da4 */
+    /* 005c68e5  mov dword ptr [esp], 0xb61da4  ; var_c, vtable SuicideEvent */
     ea = (uint32_t)(esp);
     M32(ea) = 0xb61da4u;
     /* 005c68ec  push ecx */
@@ -400,7 +411,7 @@ void bfv_client_l1_body_005c68d0(struct bfv_cpu *c)
     /* 005c68ed  mov ecx, dword ptr [eax + 0x24] */
     ea = (uint32_t)(eax + 0x00000024u);
     ecx = M32(ea);
-    /* 005c68f0  call 0x5b36c0 */
+    /* 005c68f0  call 0x5b36c0  ; EventQueue::queueEvent */
     t = 0x005b36c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005c68d0_1;

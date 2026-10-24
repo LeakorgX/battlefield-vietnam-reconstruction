@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008705a0  dice::meme::TransitionalHideEffectNode  (virtual method) */
+/* 008705a0  TransitionalHideEffectNode::traverse  (virtual method)
+ * overrides: Node::traverse  (83 classes implement it)
+ * class: dice::meme::TransitionalHideEffectNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_008705a0, bfv_client_l1_body_008705a0);
 BFV_L1_RESUME(bfv_client_l1r_008705a0_1, bfv_client_l1_body_008705a0, 1);
 void bfv_client_l1_body_008705a0(struct bfv_cpu *c)
@@ -19,10 +22,10 @@ void bfv_client_l1_body_008705a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 008705a0  mov edx, dword ptr [ecx + 0xc] */
+    /* 008705a0  mov edx, dword ptr [ecx + 0xc]  ; field Effect */
     ea = (uint32_t)(ecx + 0x0000000cu);
     edx = M32(ea);
-    /* 008705a3  mov eax, dword ptr [esp + 0x14] */
+    /* 008705a3  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 008705a7  sub esp, 0x1c */
@@ -58,41 +61,41 @@ void bfv_client_l1_body_008705a0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 008705c1  jne 0x8705f4 */
     if (!zf) goto L_008705f4;
-    /* 008705c3  mov dword ptr [esp + 8], edx */
+    /* 008705c3  mov dword ptr [esp + 8], edx  ; var_18 */
     ea = (uint32_t)(esp + 0x00000008u);
     M32(ea) = edx;
     /* 008705c7  mov edx, esi */
     edx = esi;
-    /* 008705c9  mov dword ptr [esp + 0xc], edx */
+    /* 008705c9  mov dword ptr [esp + 0xc], edx  ; var_14 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = edx;
     /* 008705cd  mov edx, dword ptr [eax + 0xc] */
     ea = (uint32_t)(eax + 0x0000000cu);
     edx = M32(ea);
-    /* 008705d0  mov dword ptr [esp + 0x10], edx */
+    /* 008705d0  mov dword ptr [esp + 0x10], edx  ; var_10 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
     /* 008705d4  mov edx, dword ptr [eax + 0x10] */
     ea = (uint32_t)(eax + 0x00000010u);
     edx = M32(ea);
-    /* 008705d7  mov dword ptr [esp + 0x14], edx */
+    /* 008705d7  mov dword ptr [esp + 0x14], edx  ; var_c */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
     /* 008705db  mov edx, dword ptr [eax + 0x14] */
     ea = (uint32_t)(eax + 0x00000014u);
     edx = M32(ea);
-    /* 008705de  mov dword ptr [esp + 4], eax */
+    /* 008705de  mov dword ptr [esp + 4], eax  ; var_1c */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
     /* 008705e2  mov eax, dword ptr [eax + 0xc] */
     ea = (uint32_t)(eax + 0x0000000cu);
     eax = M32(ea);
-    /* 008705e5  mov dword ptr [esp + 0x18], edx */
+    /* 008705e5  mov dword ptr [esp + 0x18], edx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = edx;
-    /* 008705e9  lea edx, [esp + 4] */
+    /* 008705e9  lea edx, [esp + 4]  ; &var_1c */
     edx = (uint32_t)(esp + 0x00000004u);
-    /* 008705ed  mov dword ptr [esp + 0x1c], eax */
+    /* 008705ed  mov dword ptr [esp + 0x1c], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x0000001cu);
     M32(ea) = eax;
     /* 008705f1  push edx */
@@ -107,24 +110,24 @@ L_008705f4:
     esp -= 4;
     M32(esp) = t;
 L_008705f5:
-    /* 008705f5  mov eax, dword ptr [esp + 0x34] */
+    /* 008705f5  mov eax, dword ptr [esp + 0x34]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000034u);
     eax = M32(ea);
-    /* 008705f9  mov edx, dword ptr [esp + 0x30] */
+    /* 008705f9  mov edx, dword ptr [esp + 0x30]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000030u);
     edx = M32(ea);
     /* 008705fd  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008705fe  mov eax, dword ptr [esp + 0x30] */
+    /* 008705fe  mov eax, dword ptr [esp + 0x30]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000030u);
     eax = M32(ea);
     /* 00870602  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00870603  mov edx, dword ptr [esp + 0x30] */
+    /* 00870603  mov edx, dword ptr [esp + 0x30]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000030u);
     edx = M32(ea);
     /* 00870607  push eax */
@@ -135,7 +138,7 @@ L_008705f5:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00870609  call 0x873df0 */
+    /* 00870609  call 0x873df0  ; Node::traverse */
     t = 0x00873df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008705a0_1;
@@ -163,7 +166,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00870e50  dice::meme::TransitionalHideEffectNode  (vtable store) */
+/* 00870e50  TransitionalHideEffectNode::create  (vtable store)
+ * class: dice::meme::TransitionalHideEffectNode
+ */
 BFV_L1_ENTRY(bfv_client_l1_00870e50, bfv_client_l1_body_00870e50);
 BFV_L1_RESUME(bfv_client_l1r_00870e50_1, bfv_client_l1_body_00870e50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00870e50_2, bfv_client_l1_body_00870e50, 2);
@@ -187,7 +192,7 @@ void bfv_client_l1_body_00870e50(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 00870e53  call 0x403610 */
+    /* 00870e53  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870e50_1;
@@ -209,7 +214,7 @@ R_1:
     if (zf) goto L_00870e79;
     /* 00870e61  mov ecx, esi */
     ecx = esi;
-    /* 00870e63  call 0x873d90 */
+    /* 00870e63  call 0x873d90  ; Node::Node */
     t = 0x00873d90u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00870e50_2;
@@ -219,7 +224,7 @@ R_2:
     /* 00870e68  mov dword ptr [esi + 0xc], 0 */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = 0x0u;
-    /* 00870e6f  mov dword ptr [esi], 0xbd50e4 */
+    /* 00870e6f  mov dword ptr [esi], 0xbd50e4  ; vtable TransitionalHideEffectNode */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd50e4u;
     /* 00870e75  mov eax, esi */
@@ -252,8 +257,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00871100  dice::meme::TransitionalHideEffectNode  (virtual method)
- * strings: "dice::meme::TransitionalHideEffectNode" */
+/* 00871100  TransitionalHideEffectNode::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::TransitionalHideEffectNode
+ * strings: "dice::meme::TransitionalHideEffectNode"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00871100, bfv_client_l1_body_00871100);
 BFV_L1_RESUME(bfv_client_l1r_00871100_1, bfv_client_l1_body_00871100, 1);
 BFV_L1_RESUME(bfv_client_l1r_00871100_2, bfv_client_l1_body_00871100, 2);
@@ -284,13 +292,13 @@ void bfv_client_l1_body_00871100(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00871115  push 0xbd5764 */
+    /* 00871115  push 0xbd5764  ; "dice::meme::TransitionalHideEffectNode" */
     t = 0xbd5764u;
     esp -= 4;
     M32(esp) = t;
-    /* 0087111a  mov ecx, 0xdf65f0 */
+    /* 0087111a  mov ecx, 0xdf65f0  ; g_RuntimeClass_TransitionalHideEffectNode */
     ecx = 0xdf65f0u;
-    /* 0087111f  call 0x875490 */
+    /* 0087111f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871100_1;
@@ -301,10 +309,10 @@ R_1:
     t = 0xb3ad80u;
     esp -= 4;
     M32(esp) = t;
-    /* 00871129  mov dword ptr [0xdf65f0], 0xbd4d60 */
+    /* 00871129  mov dword ptr [0xdf65f0], 0xbd4d60  ; g_RuntimeClass_TransitionalHideEffectNode */
     ea = (uint32_t)(0x00df65f0u);
     M32(ea) = 0xbd4d60u;
-    /* 00871133  call 0x7c2cd2 */
+    /* 00871133  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00871100_2;
@@ -318,7 +326,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_0087113b:
-    /* 0087113b  mov eax, 0xdf65f0 */
+    /* 0087113b  mov eax, 0xdf65f0  ; g_RuntimeClass_TransitionalHideEffectNode */
     eax = 0xdf65f0u;
     /* 00871140  ret */
     c->eip = M32(esp);

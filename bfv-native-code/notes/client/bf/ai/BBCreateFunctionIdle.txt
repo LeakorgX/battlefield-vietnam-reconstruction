@@ -1,0 +1,5 @@
+## file
+Factory that builds the BBIdle behaviour.
+
+## 0093f990
+vf0: picks the parameter object by type name: "BBPIdle2d", "BBPIdle3d" or "BBPIdleInfantery" (0xc bytes each); null when none matches. Allocates a 0x30-byte BBIdle and returns it, then frees the passed-in list.

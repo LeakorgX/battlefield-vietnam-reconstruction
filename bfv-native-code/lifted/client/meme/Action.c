@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00879e20  dice::meme::Action  (vtable store) */
+/* 00879e20  Action::create  (vtable store)
+ * class: dice::meme::Action
+ */
 BFV_L1_ENTRY(bfv_client_l1_00879e20, bfv_client_l1_body_00879e20);
 BFV_L1_RESUME(bfv_client_l1r_00879e20_1, bfv_client_l1_body_00879e20, 1);
 BFV_L1_RESUME(bfv_client_l1r_00879e20_2, bfv_client_l1_body_00879e20, 2);
@@ -29,7 +31,7 @@ void bfv_client_l1_body_00879e20(struct bfv_cpu *c)
     t = 0x8u;
     esp -= 4;
     M32(esp) = t;
-    /* 00879e23  call 0x403610 */
+    /* 00879e23  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00879e20_1;
@@ -51,14 +53,14 @@ R_1:
     if (zf) goto L_00879e42;
     /* 00879e31  mov ecx, esi */
     ecx = esi;
-    /* 00879e33  call 0x874870 */
+    /* 00879e33  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00879e20_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00879e38  mov dword ptr [esi], 0xbd3d64 */
+    /* 00879e38  mov dword ptr [esi], 0xbd3d64  ; vtable Action */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbd3d64u;
     /* 00879e3e  mov eax, esi */
@@ -91,8 +93,12 @@ out: __attribute__((unused));
 }
 
 
-/* 00879e50  dice::meme::Action  (virtual method)
- * strings: "dice::meme::Action" */
+/* 00879e50  Action::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::Action
+ * strings: "dice::meme::Action"
+ * called by: ClearStream::vf26, ActionListAction::create
+ */
 BFV_L1_ENTRY(bfv_client_l1_00879e50, bfv_client_l1_body_00879e50);
 BFV_L1_RESUME(bfv_client_l1r_00879e50_1, bfv_client_l1_body_00879e50, 1);
 BFV_L1_RESUME(bfv_client_l1r_00879e50_2, bfv_client_l1_body_00879e50, 2);
@@ -123,13 +129,13 @@ void bfv_client_l1_body_00879e50(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00879e65  push 0xbd7678 */
+    /* 00879e65  push 0xbd7678  ; "dice::meme::Action" */
     t = 0xbd7678u;
     esp -= 4;
     M32(esp) = t;
-    /* 00879e6a  mov ecx, 0xdf69a8 */
+    /* 00879e6a  mov ecx, 0xdf69a8  ; g_RuntimeClass_Action */
     ecx = 0xdf69a8u;
-    /* 00879e6f  call 0x875490 */
+    /* 00879e6f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00879e50_1;
@@ -140,10 +146,10 @@ R_1:
     t = 0xb3afa0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00879e79  mov dword ptr [0xdf69a8], 0xbd7658 */
+    /* 00879e79  mov dword ptr [0xdf69a8], 0xbd7658  ; g_RuntimeClass_Action */
     ea = (uint32_t)(0x00df69a8u);
     M32(ea) = 0xbd7658u;
-    /* 00879e83  call 0x7c2cd2 */
+    /* 00879e83  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00879e50_2;
@@ -157,7 +163,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00879e8b:
-    /* 00879e8b  mov eax, 0xdf69a8 */
+    /* 00879e8b  mov eax, 0xdf69a8  ; g_RuntimeClass_Action */
     eax = 0xdf69a8u;
     /* 00879e90  ret */
     c->eip = M32(esp);

@@ -1,0 +1,8 @@
+## file
+BAPConObjectExists is a bot action-plan condition: true while the AI handle at
+this+8 still names a live object.
+
+## 009f3630
+evaluate: resolves the handle at this+8 in the AI handle table (low 16 bits
+the slot, high 16 bits the generation) and returns whether it gives a non-null
+object.

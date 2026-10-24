@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00983240  dice::bf::ai::BBPPattern  (virtual method) */
+/* 00983240  BBPPattern::vf2  (virtual method)
+ * class: dice::bf::ai::BBPPattern
+ */
 BFV_L1_ENTRY(bfv_client_l1_00983240, bfv_client_l1_body_00983240);
 BFV_L1_RESUME(bfv_client_l1r_00983240_1, bfv_client_l1_body_00983240, 1);
 void bfv_client_l1_body_00983240(struct bfv_cpu *c)
@@ -25,7 +27,7 @@ void bfv_client_l1_body_00983240(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00983241  mov esi, ecx */
     esi = ecx;
-    /* 00983243  mov ecx, dword ptr [esp + 8] */
+    /* 00983243  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00983247  mov eax, dword ptr [ecx] */
@@ -60,7 +62,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00983260  dice::bf::ai::BBPPattern  (virtual method) */
+/* 00983260  BBPPattern::vf1  (virtual method)
+ * class: dice::bf::ai::BBPPattern
+ */
 BFV_L1_ENTRY(bfv_client_l1_00983260, bfv_client_l1_body_00983260);
 BFV_L1_RESUME(bfv_client_l1r_00983260_1, bfv_client_l1_body_00983260, 1);
 void bfv_client_l1_body_00983260(struct bfv_cpu *c)
@@ -80,7 +84,7 @@ void bfv_client_l1_body_00983260(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00983261  mov esi, ecx */
     esi = ecx;
-    /* 00983263  mov ecx, dword ptr [esp + 8] */
+    /* 00983263  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00983267  mov eax, dword ptr [ecx] */
@@ -115,7 +119,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00983280  dice::bf::ai::BBPPattern  (virtual method) */
+/* 00983280  BBPPattern::vf3  (virtual method)
+ * class: dice::bf::ai::BBPPattern
+ * called by: BBIdle::evaluate, BBTakeCover3d::evaluate
+ */
 BFV_L1_ENTRY(bfv_client_l1_00983280, bfv_client_l1_body_00983280);
 BFV_L1_RESUME(bfv_client_l1r_00983280_1, bfv_client_l1_body_00983280, 1);
 void bfv_client_l1_body_00983280(struct bfv_cpu *c)
@@ -135,7 +142,7 @@ void bfv_client_l1_body_00983280(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00983281  mov esi, ecx */
     esi = ecx;
-    /* 00983283  mov ecx, dword ptr [esp + 8] */
+    /* 00983283  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 00983287  mov eax, dword ptr [ecx] */
@@ -170,7 +177,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009ee450  dice::bf::ai::BBPPattern  (vtable store) */
+/* 009ee450  BBPPattern::~BBPPattern  (vtable store)
+ * class: dice::bf::ai::BBPPattern
+ * called by: BBPIdle3d::deleting_dtor, BBPChange::deleting_dtor, BBPChangeLandingCraft::deleting_dtor, BBPChangeTeleport::deleting_dtor, BBPMedicAssist::deleting_dtor, BBPGotoWaypoint::deleting_dtor (+9 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_009ee450, bfv_client_l1_body_009ee450);
 BFV_L1_RESUME(bfv_client_l1r_009ee450_1, bfv_client_l1_body_009ee450, 1);
 void bfv_client_l1_body_009ee450(struct bfv_cpu *c)
@@ -191,10 +201,10 @@ void bfv_client_l1_body_009ee450(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009ee454  mov dword ptr [ecx], 0xbf9fa4 */
+    /* 009ee454  mov dword ptr [ecx], 0xbf9fa4  ; vtable BBPPattern */
     ea = (uint32_t)(ecx);
     M32(ea) = 0xbf9fa4u;
-    /* 009ee45a  call 0x403680 */
+    /* 009ee45a  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ee450_1;
@@ -216,7 +226,9 @@ out: __attribute__((unused));
 }
 
 
-/* 009ee470  dice::bf::ai::BBPPattern  (virtual method) */
+/* 009ee470  BBPPattern::vf4  (virtual method)
+ * class: dice::bf::ai::BBPPattern
+ */
 BFV_L1_ENTRY(bfv_client_l1_009ee470, bfv_client_l1_body_009ee470);
 BFV_L1_RESUME(bfv_client_l1r_009ee470_1, bfv_client_l1_body_009ee470, 1);
 BFV_L1_RESUME(bfv_client_l1r_009ee470_2, bfv_client_l1_body_009ee470, 2);
@@ -245,17 +257,17 @@ void bfv_client_l1_body_009ee470(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009ee477  mov dword ptr [esi], 0xbf9fa4 */
+    /* 009ee477  mov dword ptr [esi], 0xbf9fa4  ; vtable BBPPattern */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf9fa4u;
-    /* 009ee47d  call 0x403680 */
+    /* 009ee47d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ee470_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009ee482  mov al, byte ptr [esp + 0xc] */
+    /* 009ee482  mov al, byte ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     SET8L(eax, M8(ea));
     /* 009ee486  add esp, 4 */
@@ -273,7 +285,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 009ee48e  call 0x403680 */
+    /* 009ee48e  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ee470_2;
@@ -304,7 +316,10 @@ out: __attribute__((unused));
 }
 
 
-/* 009ee4a0  dice::bf::ai::BBPPattern  (vtable store) */
+/* 009ee4a0  BBPPattern::BBPPattern  (vtable store)
+ * class: dice::bf::ai::BBPPattern
+ * called by: BBPAirLift::BBPAirLift, BBPBailOut::BBPBailOut, BBPChange::BBPChange, BBPChangeLandingCraft::BBPChangeLandingCraft, BBPChangeTeleport::BBPChangeTeleport, BBPMedicAssist::BBPMedicAssist (+12 more)
+ */
 BFV_L1_ENTRY(bfv_client_l1_009ee4a0, bfv_client_l1_body_009ee4a0);
 BFV_L1_RESUME(bfv_client_l1r_009ee4a0_1, bfv_client_l1_body_009ee4a0, 1);
 BFV_L1_RESUME(bfv_client_l1r_009ee4a0_2, bfv_client_l1_body_009ee4a0, 2);
@@ -334,16 +349,16 @@ void bfv_client_l1_body_009ee4a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009ee4a2  mov edi, ecx */
     edi = ecx;
-    /* 009ee4a4  mov dword ptr [edi], 0xbf9fa4 */
+    /* 009ee4a4  mov dword ptr [edi], 0xbf9fa4  ; vtable BBPPattern */
     ea = (uint32_t)(edi);
     M32(ea) = 0xbf9fa4u;
-    /* 009ee4aa  mov ecx, dword ptr [0xe0eb20] */
+    /* 009ee4aa  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 009ee4b0  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 009ee4b2  call dword ptr [eax + 4] */
+    /* 009ee4b2  call dword ptr [eax + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(eax + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -355,7 +370,7 @@ R_1:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009ee4b6  call 0x403610 */
+    /* 009ee4b6  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009ee4a0_2;
@@ -365,7 +380,7 @@ R_2:
     /* 009ee4bb  mov dword ptr [edi + 4], eax */
     ea = (uint32_t)(edi + 0x00000004u);
     M32(ea) = eax;
-    /* 009ee4be  mov ecx, dword ptr [0xe0eb20] */
+    /* 009ee4be  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 009ee4c4  mov edx, dword ptr [ecx] */
@@ -381,7 +396,7 @@ R_2:
     r = 0;
     F_LOGIC(32, r);
     esi = r;
-    /* 009ee4cb  call dword ptr [edx + 4] */
+    /* 009ee4cb  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;
@@ -401,7 +416,7 @@ L_009ee4d2:
     /* 009ee4d5  mov byte ptr [esi + eax], 0 */
     ea = (uint32_t)(esi + eax);
     M8(ea) = 0x0u;
-    /* 009ee4d9  mov ecx, dword ptr [0xe0eb20] */
+    /* 009ee4d9  mov ecx, dword ptr [0xe0eb20]  ; g_pIAISettings_00e0eb20 */
     ea = (uint32_t)(0x00e0eb20u);
     ecx = M32(ea);
     /* 009ee4df  mov edx, dword ptr [ecx] */
@@ -412,7 +427,7 @@ L_009ee4d2:
     r = (a + 1u) & 0xffffffffu;
     F_INC(32, a, r);
     esi = r;
-    /* 009ee4e2  call dword ptr [edx + 4] */
+    /* 009ee4e2  call dword ptr [edx + 4]  ; -> IAISettings::vf1 = Bot::vf80 */
     ea = (uint32_t)(edx + 0x00000004u);
     t = M32(ea);
     esp -= 4;

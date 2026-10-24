@@ -5,7 +5,12 @@
 #include "l1.h"
 
 
-/* 00774be0  dice::bf::ai::SCHomogeneous  (vtable store) */
+/* 00774be0  SCHomogeneous::SCHomogeneous  (vtable store)
+ * class: dice::bf::ai::SCHomogeneous
+ * also entered at 00774c20: AIObjectPhysical::vf1, AITemplateControlInfo3d::vf3, AITemplatePhysical::vf2, AStarLocalSearch::vf5 (+28 more)
+ * also entered at 00774c30: SCHomogeneous::vf2
+ * called by: AiStrategy::createHomogenousCondition
+ */
 BFV_L1_ENTRY(bfv_server_l1_00774be0, bfv_server_l1_body_00774be0);
 BFV_L1_RESUME(bfv_server_l1r_00774be0_1, bfv_server_l1_body_00774be0, 1);
 void bfv_server_l1_body_00774be0(struct bfv_cpu *c)
@@ -19,10 +24,10 @@ void bfv_server_l1_body_00774be0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00774be0  mov eax, dword ptr [esp + 0x14] */
+    /* 00774be0  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
-    /* 00774be4  mov edx, dword ptr [esp + 0x10] */
+    /* 00774be4  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 00774be8  push esi */
@@ -33,26 +38,26 @@ void bfv_server_l1_body_00774be0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 00774bea  mov eax, dword ptr [esp + 0x14] */
+    /* 00774bea  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 00774bee  mov esi, ecx */
     esi = ecx;
-    /* 00774bf0  mov ecx, dword ptr [esp + 0x10] */
+    /* 00774bf0  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 00774bf4  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00774bf5  mov ecx, dword ptr [esp + 0x24] */
+    /* 00774bf5  mov ecx, dword ptr [esp + 0x24]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000024u);
     ecx = M32(ea);
     /* 00774bf9  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00774bfa  mov edx, dword ptr [esp + 0x14] */
+    /* 00774bfa  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 00774bfe  push eax */
@@ -69,14 +74,14 @@ void bfv_server_l1_body_00774be0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00774c01  mov ecx, esi */
     ecx = esi;
-    /* 00774c03  call 0x7184d0 */
+    /* 00774c03  call 0x7184d0  ; StrategyCondition::StrategyCondition */
     t = 0x007184d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00774be0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00774c08  mov dword ptr [esi], 0x8767ac */
+    /* 00774c08  mov dword ptr [esi], 0x8767ac  ; vtable SCHomogeneous */
     ea = (uint32_t)(esi);
     M32(ea) = 0x8767acu;
     /* 00774c0e  mov eax, esi */

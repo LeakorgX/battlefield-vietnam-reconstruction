@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0078df30  dice::bf::ai::IPIControlInfo  (virtual method) */
+/* 0078df30  IPIControlInfo::deleting_dtor  (virtual method)
+ * overrides: InformationPlugIn::vf0  (10 classes implement it)
+ * class: dice::bf::ai::IPIControlInfo
+ */
 BFV_L1_ENTRY(bfv_server_l1_0078df30, bfv_server_l1_body_0078df30);
 BFV_L1_RESUME(bfv_server_l1r_0078df30_1, bfv_server_l1_body_0078df30, 1);
 void bfv_server_l1_body_0078df30(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_0078df30(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0078df30  test byte ptr [esp + 4], 1 */
+    /* 0078df30  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,7 +32,7 @@ void bfv_server_l1_body_0078df30(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0078df36  mov esi, ecx */
     esi = ecx;
-    /* 0078df38  mov dword ptr [esi], 0x877784 */
+    /* 0078df38  mov dword ptr [esi], 0x877784  ; vtable InformationPlugIn */
     ea = (uint32_t)(esi);
     M32(ea) = 0x877784u;
     /* 0078df3e  je 0x78df4b */
@@ -38,9 +41,9 @@ void bfv_server_l1_body_0078df30(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0078df41  mov ecx, 0xc346f8 */
+    /* 0078df41  mov ecx, 0xc346f8  ; g_MemoryPool_00c346f8 */
     ecx = 0xc346f8u;
-    /* 0078df46  call 0x413600 */
+    /* 0078df46  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0078df30_1;

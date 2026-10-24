@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 005fda70  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 005fda70  StandardMesh::vf6  (virtual method)
+ * overrides: IGeometry::vf6  (7 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fda70, bfv_server_l1_body_005fda70);
 BFV_L1_RESUME(bfv_server_l1r_005fda70_1, bfv_server_l1_body_005fda70, 1);
 void bfv_server_l1_body_005fda70(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_005fda70(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005fda70  mov ecx, dword ptr [esp + 4] */
+    /* 005fda70  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005fda74  test ecx, ecx */
@@ -64,7 +67,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005fda90  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 005fda90  StandardMesh::vf15_onField_2ch_callVirtual_vf14  (virtual method)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fda90, bfv_server_l1_body_005fda90);
 void bfv_server_l1_body_005fda90(struct bfv_cpu *c)
 {
@@ -90,7 +95,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005fdaa0  (between same file) */
+/* 005fdaa0  StandardMesh_005fdaa0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fdaa0, bfv_server_l1_body_005fdaa0);
 void bfv_server_l1_body_005fdaa0(struct bfv_cpu *c)
 {
@@ -116,7 +122,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005fdab0  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 005fdab0  StandardMesh::vf18  (virtual method)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fdab0, bfv_server_l1_body_005fdab0);
 void bfv_server_l1_body_005fdab0(struct bfv_cpu *c)
 {
@@ -150,7 +158,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005fdad0  (between same file) */
+/* 005fdad0  bfv_server_deleting_destructor_adjustor4_005fdad0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fdad0, bfv_server_l1_body_005fdad0);
 void bfv_server_l1_body_005fdad0(struct bfv_cpu *c)
 {
@@ -165,7 +174,7 @@ void bfv_server_l1_body_005fdad0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005fdad3  jmp 0x5fddd0 */
+    /* 005fdad3  jmp 0x5fddd0  ; bfv_server_deleting_destructor_005fddd0 */
     c->eip = 0x005fddd0u;
     goto out;
 out: __attribute__((unused));
@@ -175,7 +184,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005fdae0  (between same file) */
+/* 005fdae0  bfv_server_deleting_destructor_adjustor8_005fdae0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fdae0, bfv_server_l1_body_005fdae0);
 void bfv_server_l1_body_005fdae0(struct bfv_cpu *c)
 {
@@ -190,7 +200,7 @@ void bfv_server_l1_body_005fdae0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005fdae3  jmp 0x5fddd0 */
+    /* 005fdae3  jmp 0x5fddd0  ; bfv_server_deleting_destructor_005fddd0 */
     c->eip = 0x005fddd0u;
     goto out;
 out: __attribute__((unused));
@@ -200,7 +210,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005fdaf0  (between same file) */
+/* 005fdaf0  bfv_server_deleting_destructor_adjustor12_005fdaf0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fdaf0, bfv_server_l1_body_005fdaf0);
 void bfv_server_l1_body_005fdaf0(struct bfv_cpu *c)
 {
@@ -215,7 +226,7 @@ void bfv_server_l1_body_005fdaf0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005fdaf3  jmp 0x5fddd0 */
+    /* 005fdaf3  jmp 0x5fddd0  ; bfv_server_deleting_destructor_005fddd0 */
     c->eip = 0x005fddd0u;
     goto out;
 out: __attribute__((unused));
@@ -225,7 +236,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005fdb00  (between same file) */
+/* 005fdb00  bfv_server_deleting_destructor_adjustor16_005fdb00  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fdb00, bfv_server_l1_body_005fdb00);
 void bfv_server_l1_body_005fdb00(struct bfv_cpu *c)
 {
@@ -240,7 +252,7 @@ void bfv_server_l1_body_005fdb00(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005fdb03  jmp 0x5fddd0 */
+    /* 005fdb03  jmp 0x5fddd0  ; bfv_server_deleting_destructor_005fddd0 */
     c->eip = 0x005fddd0u;
     goto out;
 out: __attribute__((unused));
@@ -250,7 +262,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005fdb10  (between same file) */
+/* 005fdb10  bfv_server_deleting_destructor_adjustor20_005fdb10  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fdb10, bfv_server_l1_body_005fdb10);
 void bfv_server_l1_body_005fdb10(struct bfv_cpu *c)
 {
@@ -265,7 +278,7 @@ void bfv_server_l1_body_005fdb10(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005fdb13  jmp 0x5fddd0 */
+    /* 005fdb13  jmp 0x5fddd0  ; bfv_server_deleting_destructor_005fddd0 */
     c->eip = 0x005fddd0u;
     goto out;
 out: __attribute__((unused));
@@ -275,7 +288,8 @@ out: __attribute__((unused));
 }
 
 
-/* 005fdb20  (between same file) */
+/* 005fdb20  bfv_server_deleting_destructor_adjustor24_005fdb20  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fdb20, bfv_server_l1_body_005fdb20);
 void bfv_server_l1_body_005fdb20(struct bfv_cpu *c)
 {
@@ -290,7 +304,7 @@ void bfv_server_l1_body_005fdb20(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 005fdb23  jmp 0x5fddd0 */
+    /* 005fdb23  jmp 0x5fddd0  ; bfv_server_deleting_destructor_005fddd0 */
     c->eip = 0x005fddd0u;
     goto out;
 out: __attribute__((unused));
@@ -300,7 +314,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005fdb30  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 005fdb30  StandardMesh::vf16  (virtual method)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_005fdb30, bfv_server_l1_body_005fdb30);
 void bfv_server_l1_body_005fdb30(struct bfv_cpu *c)
 {
@@ -309,7 +325,7 @@ void bfv_server_l1_body_005fdb30(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 005fdb30  fld dword ptr [esp + 4] */
+    /* 005fdb30  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005fdb34  fld dword ptr [ecx + 0x64] */
@@ -324,7 +340,7 @@ void bfv_server_l1_body_005fdb30(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 005fdb3e  jnp 0x5fdb47 */
     if (!pf) goto L_005fdb47;
-    /* 005fdb40  mov eax, dword ptr [esp + 4] */
+    /* 005fdb40  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 005fdb44  mov dword ptr [ecx + 0x64], eax */
@@ -342,7 +358,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060ccf0  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060ccf0  StandardMesh::vf5  (virtual method)
+ * overrides: IGeometry::vf5  (7 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060ccf0, bfv_server_l1_body_0060ccf0);
 void bfv_server_l1_body_0060ccf0(struct bfv_cpu *c)
 {
@@ -368,7 +387,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cd00  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060cd00  StandardMesh::vf8_addressOf_30h  (virtual method)
+ * overrides: IGeometry::vf8  (7 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cd00, bfv_server_l1_body_0060cd00);
 void bfv_server_l1_body_0060cd00(struct bfv_cpu *c)
 {
@@ -389,7 +411,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cd10  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060cd10  StandardMesh::get_54h  (virtual method)
+ * overrides: IGeometry::vf9  (7 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cd10, bfv_server_l1_body_0060cd10);
 void bfv_server_l1_body_0060cd10(struct bfv_cpu *c)
 {
@@ -412,7 +437,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cd20  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060cd20  StandardMesh::vf12  (virtual method)
+ * overrides: IGeometry::vf12  (7 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cd20, bfv_server_l1_body_0060cd20);
 BFV_L1_RESUME(bfv_server_l1r_0060cd20_1, bfv_server_l1_body_0060cd20, 1);
 void bfv_server_l1_body_0060cd20(struct bfv_cpu *c)
@@ -437,12 +465,12 @@ void bfv_server_l1_body_0060cd20(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0060cd26  fmul dword ptr [0x81ef90] */
+    /* 0060cd26  fmul dword ptr [0x81ef90]  ; = 0.003921569f */
     ea = (uint32_t)(0x0081ef90u);
     __asm__ volatile(".intel_syntax noprefix\n\tfmul dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0060cd2c  mov esi, ecx */
     esi = ecx;
-    /* 0060cd2e  mov ecx, dword ptr [0xc0f118] */
+    /* 0060cd2e  mov ecx, dword ptr [0xc0f118]  ; g_pTerrain */
     ea = (uint32_t)(0x00c0f118u);
     ecx = M32(ea);
     /* 0060cd34  mov eax, dword ptr [ecx] */
@@ -482,10 +510,10 @@ R_1:
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = ecx;
 L_0060cd58:
-    /* 0060cd58  fld dword ptr [0x809264] */
+    /* 0060cd58  fld dword ptr [0x809264]  ; = 1.0f */
     ea = (uint32_t)(0x00809264u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0060cd5e  fld dword ptr [0x817648] */
+    /* 0060cd5e  fld dword ptr [0x817648]  ; = -1.0f */
     ea = (uint32_t)(0x00817648u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0060cd64  fld dword ptr [esp + 0x10] */
@@ -509,7 +537,7 @@ L_0060cd58:
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfdiv dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
 L_0060cd7b:
-    /* 0060cd7b  fld dword ptr [0x809264] */
+    /* 0060cd7b  fld dword ptr [0x809264]  ; = 1.0f */
     ea = (uint32_t)(0x00809264u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0060cd81  fsub st(1) */
@@ -549,7 +577,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cdb0  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060cdb0  StandardMesh::get_64h  (virtual method)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cdb0, bfv_server_l1_body_0060cdb0);
 void bfv_server_l1_body_0060cdb0(struct bfv_cpu *c)
 {
@@ -572,7 +602,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cdc0  (between same file) */
+/* 0060cdc0  StandardMesh_0060cdc0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cdc0, bfv_server_l1_body_0060cdc0);
 BFV_L1_RESUME(bfv_server_l1r_0060cdc0_1, bfv_server_l1_body_0060cdc0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0060cdc0_2, bfv_server_l1_body_0060cdc0, 2);
@@ -590,13 +621,13 @@ void bfv_server_l1_body_0060cdc0(struct bfv_cpu *c)
     case 3: goto R_3;
     default: break;
     }
-    /* 0060cdc0  fld dword ptr [0x817648] */
+    /* 0060cdc0  fld dword ptr [0x817648]  ; = -1.0f */
     ea = (uint32_t)(0x00817648u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0060cdc6  mov eax, dword ptr [esp + 4] */
+    /* 0060cdc6  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 0060cdca  fld dword ptr [esp + 4] */
+    /* 0060cdca  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0060cdce  push edi */
@@ -635,7 +666,7 @@ void bfv_server_l1_body_0060cdc0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0060cdec  fstp dword ptr [esp + 0xc] */
+    /* 0060cdec  fstp dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0060cdf0  mov ecx, dword ptr [0xc34894] */
@@ -681,7 +712,7 @@ R_3:
     edi = r;
     /* 0060ce13  mov esi, eax */
     esi = eax;
-    /* 0060ce15  mov eax, dword ptr [esp + 0xc] */
+    /* 0060ce15  mov eax, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0060ce19  mov ecx, 0x10 */
@@ -707,7 +738,7 @@ R_3:
     t = M32(esp);
     esp += 4;
     edi = t;
-    /* 0060ce2a  mov dword ptr [esp + 4], eax */
+    /* 0060ce2a  mov dword ptr [esp + 4], eax  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = eax;
     /* 0060ce2e  jmp dword ptr [edx + 0x18] */
@@ -730,7 +761,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060ce40  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060ce40  StandardMesh::vf14  (virtual method)
+ * overrides: IGeometry::vf14  (7 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060ce40, bfv_server_l1_body_0060ce40);
 void bfv_server_l1_body_0060ce40(struct bfv_cpu *c)
 {
@@ -739,10 +773,10 @@ void bfv_server_l1_body_0060ce40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0060ce40  mov eax, dword ptr [esp + 8] */
+    /* 0060ce40  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 0060ce44  mov edx, dword ptr [esp + 4] */
+    /* 0060ce44  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 0060ce48  mov dword ptr [ecx + 0x1c], eax */
@@ -783,7 +817,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060ce70  (between same file) */
+/* 0060ce70  bfv_server_deleting_destructor_adjustor4_0060ce70  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060ce70, bfv_server_l1_body_0060ce70);
 void bfv_server_l1_body_0060ce70(struct bfv_cpu *c)
 {
@@ -798,7 +833,7 @@ void bfv_server_l1_body_0060ce70(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060ce73  jmp 0x60cfb0 */
+    /* 0060ce73  jmp 0x60cfb0  ; bfv_server_deleting_destructor_0060cfb0 */
     c->eip = 0x0060cfb0u;
     goto out;
 out: __attribute__((unused));
@@ -808,7 +843,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060ce80  (between same file) */
+/* 0060ce80  bfv_server_deleting_destructor_adjustor8_0060ce80  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060ce80, bfv_server_l1_body_0060ce80);
 void bfv_server_l1_body_0060ce80(struct bfv_cpu *c)
 {
@@ -823,7 +859,7 @@ void bfv_server_l1_body_0060ce80(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060ce83  jmp 0x60cfb0 */
+    /* 0060ce83  jmp 0x60cfb0  ; bfv_server_deleting_destructor_0060cfb0 */
     c->eip = 0x0060cfb0u;
     goto out;
 out: __attribute__((unused));
@@ -833,7 +869,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060ce90  (between same file) */
+/* 0060ce90  bfv_server_deleting_destructor_adjustor12_0060ce90  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060ce90, bfv_server_l1_body_0060ce90);
 void bfv_server_l1_body_0060ce90(struct bfv_cpu *c)
 {
@@ -848,7 +885,7 @@ void bfv_server_l1_body_0060ce90(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060ce93  jmp 0x60cfb0 */
+    /* 0060ce93  jmp 0x60cfb0  ; bfv_server_deleting_destructor_0060cfb0 */
     c->eip = 0x0060cfb0u;
     goto out;
 out: __attribute__((unused));
@@ -858,7 +895,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cea0  (between same file) */
+/* 0060cea0  bfv_server_deleting_destructor_adjustor16_0060cea0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cea0, bfv_server_l1_body_0060cea0);
 void bfv_server_l1_body_0060cea0(struct bfv_cpu *c)
 {
@@ -873,7 +911,7 @@ void bfv_server_l1_body_0060cea0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060cea3  jmp 0x60cfb0 */
+    /* 0060cea3  jmp 0x60cfb0  ; bfv_server_deleting_destructor_0060cfb0 */
     c->eip = 0x0060cfb0u;
     goto out;
 out: __attribute__((unused));
@@ -883,7 +921,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060ceb0  (between same file) */
+/* 0060ceb0  bfv_server_deleting_destructor_adjustor20_0060ceb0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060ceb0, bfv_server_l1_body_0060ceb0);
 void bfv_server_l1_body_0060ceb0(struct bfv_cpu *c)
 {
@@ -898,7 +937,7 @@ void bfv_server_l1_body_0060ceb0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060ceb3  jmp 0x60cfb0 */
+    /* 0060ceb3  jmp 0x60cfb0  ; bfv_server_deleting_destructor_0060cfb0 */
     c->eip = 0x0060cfb0u;
     goto out;
 out: __attribute__((unused));
@@ -908,7 +947,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cec0  (between same file) */
+/* 0060cec0  bfv_server_deleting_destructor_adjustor24_0060cec0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cec0, bfv_server_l1_body_0060cec0);
 void bfv_server_l1_body_0060cec0(struct bfv_cpu *c)
 {
@@ -923,7 +963,7 @@ void bfv_server_l1_body_0060cec0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060cec3  jmp 0x60cfb0 */
+    /* 0060cec3  jmp 0x60cfb0  ; bfv_server_deleting_destructor_0060cfb0 */
     c->eip = 0x0060cfb0u;
     goto out;
 out: __attribute__((unused));
@@ -933,7 +973,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060ced0  (between same file) */
+/* 0060ced0  StandardMesh_0060ced0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060ced0, bfv_server_l1_body_0060ced0);
 void bfv_server_l1_body_0060ced0(struct bfv_cpu *c)
 {
@@ -976,7 +1017,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cef0  (between same file) */
+/* 0060cef0  StandardMesh_0060cef0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cef0, bfv_server_l1_body_0060cef0);
 void bfv_server_l1_body_0060cef0(struct bfv_cpu *c)
 {
@@ -1082,7 +1124,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cf50  (between same file) */
+/* 0060cf50  StandardMesh_0060cf50  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cf50, bfv_server_l1_body_0060cf50);
 void bfv_server_l1_body_0060cf50(struct bfv_cpu *c)
 {
@@ -1188,7 +1231,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0060cfd0  (between same file) */
+/* 0060cfd0  StandardMesh_0060cfd0  (between same file)
+ * called by: StandardMesh::vf10, StandardMesh_helper_0060d460
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060cfd0, bfv_server_l1_body_0060cfd0);
 BFV_L1_RESUME(bfv_server_l1r_0060cfd0_1, bfv_server_l1_body_0060cfd0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0060cfd0_2, bfv_server_l1_body_0060cfd0, 2);
@@ -1214,7 +1259,7 @@ void bfv_server_l1_body_0060cfd0(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 0060cfd7  mov ebx, dword ptr [esp + 0x88] */
+    /* 0060cfd7  mov ebx, dword ptr [esp + 0x88]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000088u);
     ebx = M32(ea);
     /* 0060cfde  push esi */
@@ -1229,7 +1274,7 @@ void bfv_server_l1_body_0060cfd0(struct bfv_cpu *c)
     ecx = 0x10u;
     /* 0060cfe5  mov esi, ebx */
     esi = ebx;
-    /* 0060cfe7  lea edi, [esp + 0xc] */
+    /* 0060cfe7  lea edi, [esp + 0xc]  ; &var_80 */
     edi = (uint32_t)(esp + 0x0000000cu);
     /* 0060cfeb  rep movsd dword ptr es:[edi], dword ptr [esi] */
     while (ecx) {
@@ -1246,13 +1291,13 @@ void bfv_server_l1_body_0060cfd0(struct bfv_cpu *c)
     /* 0060cff8  test al, cl */
     r = (LO8(eax) & LO8(ecx)) & 0xffu;
     F_LOGIC(8, r);
-    /* 0060cffa  mov dword ptr [esp + 0x3c], 0 */
+    /* 0060cffa  mov dword ptr [esp + 0x3c], 0  ; var_50 */
     ea = (uint32_t)(esp + 0x0000003cu);
     M32(ea) = 0x0u;
-    /* 0060d002  mov dword ptr [esp + 0x40], 0 */
+    /* 0060d002  mov dword ptr [esp + 0x40], 0  ; var_4c */
     ea = (uint32_t)(esp + 0x00000040u);
     M32(ea) = 0x0u;
-    /* 0060d00a  mov dword ptr [esp + 0x44], 0 */
+    /* 0060d00a  mov dword ptr [esp + 0x44], 0  ; var_48 */
     ea = (uint32_t)(esp + 0x00000044u);
     M32(ea) = 0x0u;
     /* 0060d012  jne 0x60d01a */
@@ -1263,7 +1308,7 @@ void bfv_server_l1_body_0060cfd0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     M32(ea) = r;
 L_0060d01a:
-    /* 0060d01a  mov eax, dword ptr [esp + 0x94] */
+    /* 0060d01a  mov eax, dword ptr [esp + 0x94]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000094u);
     eax = M32(ea);
     /* 0060d021  push eax */
@@ -1272,7 +1317,7 @@ L_0060d01a:
     M32(esp) = t;
     /* 0060d022  mov ecx, 0xc13e10 */
     ecx = 0xc13e10u;
-    /* 0060d027  mov dword ptr [0xc13e10], 0x3f800000 */
+    /* 0060d027  mov dword ptr [0xc13e10], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(0x00c13e10u);
     M32(ea) = 0x3f800000u;
     /* 0060d031  mov dword ptr [0xc13e14], 0 */
@@ -1287,7 +1332,7 @@ L_0060d01a:
     /* 0060d04f  mov dword ptr [0xc13e20], 0 */
     ea = (uint32_t)(0x00c13e20u);
     M32(ea) = 0x0u;
-    /* 0060d059  mov dword ptr [0xc13e24], 0x3f800000 */
+    /* 0060d059  mov dword ptr [0xc13e24], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(0x00c13e24u);
     M32(ea) = 0x3f800000u;
     /* 0060d063  mov dword ptr [0xc13e28], 0 */
@@ -1302,7 +1347,7 @@ L_0060d01a:
     /* 0060d081  mov dword ptr [0xc13e34], 0 */
     ea = (uint32_t)(0x00c13e34u);
     M32(ea) = 0x0u;
-    /* 0060d08b  mov dword ptr [0xc13e38], 0x3f800000 */
+    /* 0060d08b  mov dword ptr [0xc13e38], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(0x00c13e38u);
     M32(ea) = 0x3f800000u;
     /* 0060d095  mov dword ptr [0xc13e3c], 0 */
@@ -1317,10 +1362,10 @@ L_0060d01a:
     /* 0060d0b3  mov dword ptr [0xc13e48], 0 */
     ea = (uint32_t)(0x00c13e48u);
     M32(ea) = 0x0u;
-    /* 0060d0bd  mov dword ptr [0xc13e4c], 0x3f800000 */
+    /* 0060d0bd  mov dword ptr [0xc13e4c], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(0x00c13e4cu);
     M32(ea) = 0x3f800000u;
-    /* 0060d0c7  call 0x5fd6f0 */
+    /* 0060d0c7  call 0x5fd6f0  ; geom_005fd6f0 */
     t = 0x005fd6f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060cfd0_1;
@@ -1331,7 +1376,7 @@ R_1:
     ecx = 0x10u;
     /* 0060d0d1  mov esi, 0xc13e10 */
     esi = 0xc13e10u;
-    /* 0060d0d6  lea edi, [esp + 0x4c] */
+    /* 0060d0d6  lea edi, [esp + 0x4c]  ; &var_40 */
     edi = (uint32_t)(esp + 0x0000004cu);
     /* 0060d0da  rep movsd dword ptr es:[edi], dword ptr [esi] */
     while (ecx) {
@@ -1340,13 +1385,13 @@ R_1:
         edi += (df ? -4u : 4u);
         ecx--;
     }
-    /* 0060d0dc  lea ecx, [esp + 0xc] */
+    /* 0060d0dc  lea ecx, [esp + 0xc]  ; &var_80 */
     ecx = (uint32_t)(esp + 0x0000000cu);
     /* 0060d0e0  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0060d0e1  lea edx, [esp + 0x50] */
+    /* 0060d0e1  lea edx, [esp + 0x50]  ; &var_40 */
     edx = (uint32_t)(esp + 0x00000050u);
     /* 0060d0e5  push edx */
     t = edx;
@@ -1354,7 +1399,7 @@ R_1:
     M32(esp) = t;
     /* 0060d0e6  mov ecx, 0xc13e10 */
     ecx = 0xc13e10u;
-    /* 0060d0eb  call 0x438590 */
+    /* 0060d0eb  call 0x438590  ; bfv_affine_compose */
     t = 0x00438590u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060cfd0_2;
@@ -1416,8 +1461,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d120  dice::ref2::geom::StandardMesh  (vtable store)
- * strings: "StandardMesh", "StandardMeshTemplate" */
+/* 0060d120  StandardMesh::~StandardMesh  (vtable store)
+ * class: dice::ref2::geom::StandardMesh
+ * strings: "StandardMesh", "StandardMeshTemplate"
+ * called by: StandardMesh::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d120, bfv_server_l1_body_0060d120);
 BFV_L1_RESUME(bfv_server_l1r_0060d120_1, bfv_server_l1_body_0060d120, 1);
 BFV_L1_RESUME(bfv_server_l1r_0060d120_2, bfv_server_l1_body_0060d120, 2);
@@ -1462,11 +1510,11 @@ void bfv_server_l1_body_0060d120(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0060d131  mov edx, 0x84984c */
+    /* 0060d131  mov edx, 0x84984c  ; "StandardMesh" */
     edx = 0x84984cu;
-    /* 0060d136  mov ecx, 0x8495b8 */
+    /* 0060d136  mov ecx, 0x8495b8  ; "StandardMeshTemplate" */
     ecx = 0x8495b8u;
-    /* 0060d13b  mov dword ptr [esi], 0x84eabc */
+    /* 0060d13b  mov dword ptr [esi], 0x84eabc  ; vtable StandardMesh */
     ea = (uint32_t)(esi);
     M32(ea) = 0x84eabcu;
     /* 0060d141  mov dword ptr [esi + 4], 0x84eaa0 */
@@ -1487,7 +1535,7 @@ void bfv_server_l1_body_0060d120(struct bfv_cpu *c)
     /* 0060d164  mov dword ptr [esi + 0x18], 0x84e9fc */
     ea = (uint32_t)(esi + 0x00000018u);
     M32(ea) = 0x84e9fcu;
-    /* 0060d16b  call 0x41f170 */
+    /* 0060d16b  call 0x41f170  ; sub_0041f170 */
     t = 0x0041f170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d120_1;
@@ -1532,7 +1580,7 @@ R_3:
     t = M32(esp);
     esp += 4;
     esi = t;
-    /* 0060d187  jmp 0x60cc70 */
+    /* 0060d187  jmp 0x60cc70  ; IBase::ctor_dtor */
     c->eip = 0x0060cc70u;
     goto out;
 out: __attribute__((unused));
@@ -1542,7 +1590,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d190  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060d190  StandardMesh::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d190, bfv_server_l1_body_0060d190);
 BFV_L1_RESUME(bfv_server_l1r_0060d190_1, bfv_server_l1_body_0060d190, 1);
 void bfv_server_l1_body_0060d190(struct bfv_cpu *c)
@@ -1556,12 +1607,12 @@ void bfv_server_l1_body_0060d190(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0060d190  mov edx, dword ptr [0x807430] */
+    /* 0060d190  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 0060d196  mov eax, ecx */
     eax = ecx;
-    /* 0060d198  mov ecx, dword ptr [esp + 4] */
+    /* 0060d198  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0060d19c  cmp ecx, edx */
@@ -1571,7 +1622,7 @@ void bfv_server_l1_body_0060d190(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0060d19e  je 0x60d25c */
     if (zf) goto L_0060d25c;
-    /* 0060d1a4  cmp ecx, dword ptr [0x8488d0] */
+    /* 0060d1a4  cmp ecx, dword ptr [0x8488d0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x008488d0u);
     a = ecx;
     b = M32(ea);
@@ -1579,7 +1630,7 @@ void bfv_server_l1_body_0060d190(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0060d1aa  je 0x60d25c */
     if (zf) goto L_0060d25c;
-    /* 0060d1b0  cmp ecx, dword ptr [0x8488c0] */
+    /* 0060d1b0  cmp ecx, dword ptr [0x8488c0]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x008488c0u);
     a = ecx;
     b = M32(ea);
@@ -1587,7 +1638,7 @@ void bfv_server_l1_body_0060d190(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0060d1b6  je 0x60d25c */
     if (zf) goto L_0060d25c;
-    /* 0060d1bc  cmp ecx, dword ptr [0x8488dc] */
+    /* 0060d1bc  cmp ecx, dword ptr [0x8488dc]  ; interfaceID(AnimatedMesh|StandardMesh) */
     ea = (uint32_t)(0x008488dcu);
     a = ecx;
     b = M32(ea);
@@ -1595,7 +1646,7 @@ void bfv_server_l1_body_0060d190(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0060d1c2  je 0x60d25c */
     if (zf) goto L_0060d25c;
-    /* 0060d1c8  cmp ecx, dword ptr [0x848900] */
+    /* 0060d1c8  cmp ecx, dword ptr [0x848900]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x00848900u);
     a = ecx;
     b = M32(ea);
@@ -1619,7 +1670,7 @@ void bfv_server_l1_body_0060d190(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_0060d1de:
-    /* 0060d1de  cmp ecx, dword ptr [0x8488d4] */
+    /* 0060d1de  cmp ecx, dword ptr [0x8488d4]  ; interfaceID(IBase) */
     ea = (uint32_t)(0x008488d4u);
     a = ecx;
     b = M32(ea);
@@ -1643,7 +1694,7 @@ L_0060d1de:
     esp += 8;
     goto out;
 L_0060d1f0:
-    /* 0060d1f0  cmp ecx, dword ptr [0x8488d8] */
+    /* 0060d1f0  cmp ecx, dword ptr [0x8488d8]  ; interfaceID(AnimatedMesh|SimpleCollisionMesh|StandardMesh) */
     ea = (uint32_t)(0x008488d8u);
     a = ecx;
     b = M32(ea);
@@ -1667,7 +1718,7 @@ L_0060d1f0:
     esp += 8;
     goto out;
 L_0060d202:
-    /* 0060d202  cmp ecx, dword ptr [0x84893c] */
+    /* 0060d202  cmp ecx, dword ptr [0x84893c]  ; interfaceID(PortalMesh|StandardMesh) */
     ea = (uint32_t)(0x0084893cu);
     a = ecx;
     b = M32(ea);
@@ -1691,7 +1742,7 @@ L_0060d202:
     esp += 8;
     goto out;
 L_0060d214:
-    /* 0060d214  cmp ecx, dword ptr [0x848940] */
+    /* 0060d214  cmp ecx, dword ptr [0x848940]  ; interfaceID(PortalMesh|StandardMesh) */
     ea = (uint32_t)(0x00848940u);
     a = ecx;
     b = M32(ea);
@@ -1715,7 +1766,7 @@ L_0060d214:
     esp += 8;
     goto out;
 L_0060d226:
-    /* 0060d226  cmp ecx, dword ptr [0x848928] */
+    /* 0060d226  cmp ecx, dword ptr [0x848928]  ; interfaceID(AnimatedMesh|StandardMesh) */
     ea = (uint32_t)(0x00848928u);
     a = ecx;
     b = M32(ea);
@@ -1739,7 +1790,7 @@ L_0060d226:
     esp += 8;
     goto out;
 L_0060d238:
-    /* 0060d238  cmp ecx, dword ptr [0x8488f4] */
+    /* 0060d238  cmp ecx, dword ptr [0x8488f4]  ; interfaceID(StandardMesh) */
     ea = (uint32_t)(0x008488f4u);
     a = ecx;
     b = M32(ea);
@@ -1751,11 +1802,11 @@ L_0060d238:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 0060d242  push 0x923904 */
+    /* 0060d242  push 0x923904  ; typeid(ILightSampleable2) */
     t = 0x923904u;
     esp -= 4;
     M32(esp) = t;
-    /* 0060d247  push 0x9238d8 */
+    /* 0060d247  push 0x9238d8  ; typeid(StandardMesh) */
     t = 0x9238d8u;
     esp -= 4;
     M32(esp) = t;
@@ -1767,7 +1818,7 @@ L_0060d238:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0060d24f  call 0x63cbf8 */
+    /* 0060d24f  call 0x63cbf8  ; __RTDynamicCast */
     t = 0x0063cbf8u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d190_1;
@@ -1801,7 +1852,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d260  (between same file) */
+/* 0060d260  StandardMesh::deleting_dtor_adjustor4_0060d260  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d260, bfv_server_l1_body_0060d260);
 void bfv_server_l1_body_0060d260(struct bfv_cpu *c)
 {
@@ -1816,7 +1868,7 @@ void bfv_server_l1_body_0060d260(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d263  jmp 0x60d4c0 */
+    /* 0060d263  jmp 0x60d4c0  ; StandardMesh::deleting_dtor */
     c->eip = 0x0060d4c0u;
     goto out;
 out: __attribute__((unused));
@@ -1826,7 +1878,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d270  (between same file) */
+/* 0060d270  StandardMesh::queryInterface_adjustor4_0060d270  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d270, bfv_server_l1_body_0060d270);
 void bfv_server_l1_body_0060d270(struct bfv_cpu *c)
 {
@@ -1841,7 +1894,7 @@ void bfv_server_l1_body_0060d270(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d273  jmp 0x60d190 */
+    /* 0060d273  jmp 0x60d190  ; StandardMesh::queryInterface */
     c->eip = 0x0060d190u;
     goto out;
 out: __attribute__((unused));
@@ -1851,7 +1904,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d280  (between same file) */
+/* 0060d280  StandardMesh::deleting_dtor_adjustor8_0060d280  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d280, bfv_server_l1_body_0060d280);
 void bfv_server_l1_body_0060d280(struct bfv_cpu *c)
 {
@@ -1866,7 +1920,7 @@ void bfv_server_l1_body_0060d280(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d283  jmp 0x60d4c0 */
+    /* 0060d283  jmp 0x60d4c0  ; StandardMesh::deleting_dtor */
     c->eip = 0x0060d4c0u;
     goto out;
 out: __attribute__((unused));
@@ -1876,7 +1930,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d290  (between same file) */
+/* 0060d290  StandardMesh::queryInterface_adjustor8_0060d290  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d290, bfv_server_l1_body_0060d290);
 void bfv_server_l1_body_0060d290(struct bfv_cpu *c)
 {
@@ -1891,7 +1946,7 @@ void bfv_server_l1_body_0060d290(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d293  jmp 0x60d190 */
+    /* 0060d293  jmp 0x60d190  ; StandardMesh::queryInterface */
     c->eip = 0x0060d190u;
     goto out;
 out: __attribute__((unused));
@@ -1901,7 +1956,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d2a0  (between same file) */
+/* 0060d2a0  StandardMesh::deleting_dtor_adjustor12_0060d2a0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d2a0, bfv_server_l1_body_0060d2a0);
 void bfv_server_l1_body_0060d2a0(struct bfv_cpu *c)
 {
@@ -1916,7 +1972,7 @@ void bfv_server_l1_body_0060d2a0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d2a3  jmp 0x60d4c0 */
+    /* 0060d2a3  jmp 0x60d4c0  ; StandardMesh::deleting_dtor */
     c->eip = 0x0060d4c0u;
     goto out;
 out: __attribute__((unused));
@@ -1926,7 +1982,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d2b0  (between same file) */
+/* 0060d2b0  StandardMesh::queryInterface_adjustor12_0060d2b0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d2b0, bfv_server_l1_body_0060d2b0);
 void bfv_server_l1_body_0060d2b0(struct bfv_cpu *c)
 {
@@ -1941,7 +1998,7 @@ void bfv_server_l1_body_0060d2b0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d2b3  jmp 0x60d190 */
+    /* 0060d2b3  jmp 0x60d190  ; StandardMesh::queryInterface */
     c->eip = 0x0060d190u;
     goto out;
 out: __attribute__((unused));
@@ -1951,7 +2008,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d2c0  (between same file) */
+/* 0060d2c0  StandardMesh::deleting_dtor_adjustor16_0060d2c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d2c0, bfv_server_l1_body_0060d2c0);
 void bfv_server_l1_body_0060d2c0(struct bfv_cpu *c)
 {
@@ -1966,7 +2024,7 @@ void bfv_server_l1_body_0060d2c0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d2c3  jmp 0x60d4c0 */
+    /* 0060d2c3  jmp 0x60d4c0  ; StandardMesh::deleting_dtor */
     c->eip = 0x0060d4c0u;
     goto out;
 out: __attribute__((unused));
@@ -1976,7 +2034,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d2d0  (between same file) */
+/* 0060d2d0  StandardMesh::queryInterface_adjustor16_0060d2d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d2d0, bfv_server_l1_body_0060d2d0);
 void bfv_server_l1_body_0060d2d0(struct bfv_cpu *c)
 {
@@ -1991,7 +2050,7 @@ void bfv_server_l1_body_0060d2d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d2d3  jmp 0x60d190 */
+    /* 0060d2d3  jmp 0x60d190  ; StandardMesh::queryInterface */
     c->eip = 0x0060d190u;
     goto out;
 out: __attribute__((unused));
@@ -2001,7 +2060,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d2e0  (between same file) */
+/* 0060d2e0  StandardMesh::deleting_dtor_adjustor20_0060d2e0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d2e0, bfv_server_l1_body_0060d2e0);
 void bfv_server_l1_body_0060d2e0(struct bfv_cpu *c)
 {
@@ -2016,7 +2076,7 @@ void bfv_server_l1_body_0060d2e0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d2e3  jmp 0x60d4c0 */
+    /* 0060d2e3  jmp 0x60d4c0  ; StandardMesh::deleting_dtor */
     c->eip = 0x0060d4c0u;
     goto out;
 out: __attribute__((unused));
@@ -2026,7 +2086,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d2f0  (between same file) */
+/* 0060d2f0  StandardMesh::queryInterface_adjustor20_0060d2f0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d2f0, bfv_server_l1_body_0060d2f0);
 void bfv_server_l1_body_0060d2f0(struct bfv_cpu *c)
 {
@@ -2041,7 +2102,7 @@ void bfv_server_l1_body_0060d2f0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d2f3  jmp 0x60d190 */
+    /* 0060d2f3  jmp 0x60d190  ; StandardMesh::queryInterface */
     c->eip = 0x0060d190u;
     goto out;
 out: __attribute__((unused));
@@ -2051,7 +2112,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d300  (between same file) */
+/* 0060d300  StandardMesh::deleting_dtor_adjustor24_0060d300  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d300, bfv_server_l1_body_0060d300);
 void bfv_server_l1_body_0060d300(struct bfv_cpu *c)
 {
@@ -2066,7 +2128,7 @@ void bfv_server_l1_body_0060d300(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d303  jmp 0x60d4c0 */
+    /* 0060d303  jmp 0x60d4c0  ; StandardMesh::deleting_dtor */
     c->eip = 0x0060d4c0u;
     goto out;
 out: __attribute__((unused));
@@ -2076,7 +2138,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d310  (between same file) */
+/* 0060d310  StandardMesh::queryInterface_adjustor24_0060d310  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d310, bfv_server_l1_body_0060d310);
 void bfv_server_l1_body_0060d310(struct bfv_cpu *c)
 {
@@ -2091,7 +2154,7 @@ void bfv_server_l1_body_0060d310(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d313  jmp 0x60d190 */
+    /* 0060d313  jmp 0x60d190  ; StandardMesh::queryInterface */
     c->eip = 0x0060d190u;
     goto out;
 out: __attribute__((unused));
@@ -2101,7 +2164,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d320  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060d320  StandardMesh::addRef  (virtual method)
+ * overrides: IBase::addRef  (301 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d320, bfv_server_l1_body_0060d320);
 void bfv_server_l1_body_0060d320(struct bfv_cpu *c)
 {
@@ -2132,7 +2198,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d330  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060d330  StandardMesh::release  (virtual method)
+ * overrides: IBase::release  (301 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d330, bfv_server_l1_body_0060d330);
 BFV_L1_RESUME(bfv_server_l1r_0060d330_1, bfv_server_l1_body_0060d330, 1);
 void bfv_server_l1_body_0060d330(struct bfv_cpu *c)
@@ -2177,7 +2246,7 @@ void bfv_server_l1_body_0060d330(struct bfv_cpu *c)
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 0060d34a  call dword ptr [eax] */
+    /* 0060d34a  call dword ptr [eax]  ; -> StandardMesh::vf0 = StandardMesh::deleting_dtor */
     ea = (uint32_t)(eax);
     t = M32(ea);
     esp -= 4;
@@ -2203,7 +2272,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d350  (between same file) */
+/* 0060d350  StandardMesh::addRef_adjustor4_0060d350  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d350, bfv_server_l1_body_0060d350);
 void bfv_server_l1_body_0060d350(struct bfv_cpu *c)
 {
@@ -2218,7 +2288,7 @@ void bfv_server_l1_body_0060d350(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d353  jmp 0x60d320 */
+    /* 0060d353  jmp 0x60d320  ; StandardMesh::addRef */
     c->eip = 0x0060d320u;
     goto out;
 out: __attribute__((unused));
@@ -2228,7 +2298,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d360  (between same file) */
+/* 0060d360  StandardMesh::release_adjustor4_0060d360  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d360, bfv_server_l1_body_0060d360);
 void bfv_server_l1_body_0060d360(struct bfv_cpu *c)
 {
@@ -2243,7 +2314,7 @@ void bfv_server_l1_body_0060d360(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d363  jmp 0x60d330 */
+    /* 0060d363  jmp 0x60d330  ; StandardMesh::release */
     c->eip = 0x0060d330u;
     goto out;
 out: __attribute__((unused));
@@ -2253,7 +2324,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d370  (between same file) */
+/* 0060d370  StandardMesh::addRef_adjustor8_0060d370  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d370, bfv_server_l1_body_0060d370);
 void bfv_server_l1_body_0060d370(struct bfv_cpu *c)
 {
@@ -2268,7 +2340,7 @@ void bfv_server_l1_body_0060d370(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d373  jmp 0x60d320 */
+    /* 0060d373  jmp 0x60d320  ; StandardMesh::addRef */
     c->eip = 0x0060d320u;
     goto out;
 out: __attribute__((unused));
@@ -2278,7 +2350,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d380  (between same file) */
+/* 0060d380  StandardMesh::release_adjustor8_0060d380  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d380, bfv_server_l1_body_0060d380);
 void bfv_server_l1_body_0060d380(struct bfv_cpu *c)
 {
@@ -2293,7 +2366,7 @@ void bfv_server_l1_body_0060d380(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d383  jmp 0x60d330 */
+    /* 0060d383  jmp 0x60d330  ; StandardMesh::release */
     c->eip = 0x0060d330u;
     goto out;
 out: __attribute__((unused));
@@ -2303,7 +2376,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d390  (between same file) */
+/* 0060d390  StandardMesh::addRef_adjustor12_0060d390  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d390, bfv_server_l1_body_0060d390);
 void bfv_server_l1_body_0060d390(struct bfv_cpu *c)
 {
@@ -2318,7 +2392,7 @@ void bfv_server_l1_body_0060d390(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d393  jmp 0x60d320 */
+    /* 0060d393  jmp 0x60d320  ; StandardMesh::addRef */
     c->eip = 0x0060d320u;
     goto out;
 out: __attribute__((unused));
@@ -2328,7 +2402,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d3a0  (between same file) */
+/* 0060d3a0  StandardMesh::release_adjustor12_0060d3a0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d3a0, bfv_server_l1_body_0060d3a0);
 void bfv_server_l1_body_0060d3a0(struct bfv_cpu *c)
 {
@@ -2343,7 +2418,7 @@ void bfv_server_l1_body_0060d3a0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d3a3  jmp 0x60d330 */
+    /* 0060d3a3  jmp 0x60d330  ; StandardMesh::release */
     c->eip = 0x0060d330u;
     goto out;
 out: __attribute__((unused));
@@ -2353,7 +2428,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d3b0  (between same file) */
+/* 0060d3b0  StandardMesh::addRef_adjustor16_0060d3b0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d3b0, bfv_server_l1_body_0060d3b0);
 void bfv_server_l1_body_0060d3b0(struct bfv_cpu *c)
 {
@@ -2368,7 +2444,7 @@ void bfv_server_l1_body_0060d3b0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d3b3  jmp 0x60d320 */
+    /* 0060d3b3  jmp 0x60d320  ; StandardMesh::addRef */
     c->eip = 0x0060d320u;
     goto out;
 out: __attribute__((unused));
@@ -2378,7 +2454,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d3c0  (between same file) */
+/* 0060d3c0  StandardMesh::release_adjustor16_0060d3c0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d3c0, bfv_server_l1_body_0060d3c0);
 void bfv_server_l1_body_0060d3c0(struct bfv_cpu *c)
 {
@@ -2393,7 +2470,7 @@ void bfv_server_l1_body_0060d3c0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d3c3  jmp 0x60d330 */
+    /* 0060d3c3  jmp 0x60d330  ; StandardMesh::release */
     c->eip = 0x0060d330u;
     goto out;
 out: __attribute__((unused));
@@ -2403,7 +2480,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d3d0  (between same file) */
+/* 0060d3d0  StandardMesh::addRef_adjustor20_0060d3d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d3d0, bfv_server_l1_body_0060d3d0);
 void bfv_server_l1_body_0060d3d0(struct bfv_cpu *c)
 {
@@ -2418,7 +2496,7 @@ void bfv_server_l1_body_0060d3d0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d3d3  jmp 0x60d320 */
+    /* 0060d3d3  jmp 0x60d320  ; StandardMesh::addRef */
     c->eip = 0x0060d320u;
     goto out;
 out: __attribute__((unused));
@@ -2428,7 +2506,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d3e0  (between same file) */
+/* 0060d3e0  StandardMesh::release_adjustor20_0060d3e0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d3e0, bfv_server_l1_body_0060d3e0);
 void bfv_server_l1_body_0060d3e0(struct bfv_cpu *c)
 {
@@ -2443,7 +2522,7 @@ void bfv_server_l1_body_0060d3e0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d3e3  jmp 0x60d330 */
+    /* 0060d3e3  jmp 0x60d330  ; StandardMesh::release */
     c->eip = 0x0060d330u;
     goto out;
 out: __attribute__((unused));
@@ -2453,7 +2532,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d3f0  (between same file) */
+/* 0060d3f0  StandardMesh::addRef_adjustor24_0060d3f0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d3f0, bfv_server_l1_body_0060d3f0);
 void bfv_server_l1_body_0060d3f0(struct bfv_cpu *c)
 {
@@ -2468,7 +2548,7 @@ void bfv_server_l1_body_0060d3f0(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d3f3  jmp 0x60d320 */
+    /* 0060d3f3  jmp 0x60d320  ; StandardMesh::addRef */
     c->eip = 0x0060d320u;
     goto out;
 out: __attribute__((unused));
@@ -2478,7 +2558,8 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d400  (between same file) */
+/* 0060d400  StandardMesh::release_adjustor24_0060d400  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d400, bfv_server_l1_body_0060d400);
 void bfv_server_l1_body_0060d400(struct bfv_cpu *c)
 {
@@ -2493,7 +2574,7 @@ void bfv_server_l1_body_0060d400(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     ecx = r;
-    /* 0060d403  jmp 0x60d330 */
+    /* 0060d403  jmp 0x60d330  ; StandardMesh::release */
     c->eip = 0x0060d330u;
     goto out;
 out: __attribute__((unused));
@@ -2503,7 +2584,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d410  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060d410  StandardMesh::vf10  (virtual method)
+ * overrides: IGeometry::vf10  (7 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d410, bfv_server_l1_body_0060d410);
 BFV_L1_RESUME(bfv_server_l1r_0060d410_1, bfv_server_l1_body_0060d410, 1);
 void bfv_server_l1_body_0060d410(struct bfv_cpu *c)
@@ -2541,7 +2625,7 @@ void bfv_server_l1_body_0060d410(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0060d423  mov esi, dword ptr [esp + 0xc] */
+    /* 0060d423  mov esi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 0060d427  push edi */
@@ -2563,7 +2647,7 @@ void bfv_server_l1_body_0060d410(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0060d435  call 0x60cfd0 */
+    /* 0060d435  call 0x60cfd0  ; StandardMesh_0060cfd0 */
     t = 0x0060cfd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d410_1;
@@ -2621,7 +2705,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d460  (between same file) */
+/* 0060d460  StandardMesh_helper_0060d460  (between same file)
+ * called by: BStandardMesh<IStandardMesh,StandardMeshTemplate>::BStandardMesh_helper_0060d4f0
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d460, bfv_server_l1_body_0060d460);
 BFV_L1_RESUME(bfv_server_l1r_0060d460_1, bfv_server_l1_body_0060d460, 1);
 void bfv_server_l1_body_0060d460(struct bfv_cpu *c)
@@ -2703,7 +2789,7 @@ L_0060d486:
     M32(esp) = t;
     /* 0060d491  mov ecx, ebx */
     ecx = ebx;
-    /* 0060d493  call 0x60cfd0 */
+    /* 0060d493  call 0x60cfd0  ; StandardMesh_0060cfd0 */
     t = 0x0060cfd0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d460_1;
@@ -2759,7 +2845,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d4c0  dice::ref2::geom::StandardMesh  (virtual method) */
+/* 0060d4c0  StandardMesh::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (301 classes implement it)
+ * class: dice::ref2::geom::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d4c0, bfv_server_l1_body_0060d4c0);
 BFV_L1_RESUME(bfv_server_l1r_0060d4c0_1, bfv_server_l1_body_0060d4c0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0060d4c0_2, bfv_server_l1_body_0060d4c0, 2);
@@ -2781,14 +2870,14 @@ void bfv_server_l1_body_0060d4c0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0060d4c1  mov esi, ecx */
     esi = ecx;
-    /* 0060d4c3  call 0x60d120 */
+    /* 0060d4c3  call 0x60d120  ; StandardMesh::~StandardMesh */
     t = 0x0060d120u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d4c0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0060d4c8  test byte ptr [esp + 8], 1 */
+    /* 0060d4c8  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -2796,7 +2885,7 @@ R_1:
     if (zf) goto L_0060d4d6;
     /* 0060d4cf  mov ecx, esi */
     ecx = esi;
-    /* 0060d4d1  call 0x60d4e0 */
+    /* 0060d4d1  call 0x60d4e0  ; StandardMesh::deleting_dtor_helper_0060d4e0 */
     t = 0x0060d4e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d4c0_2;
@@ -2821,7 +2910,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d4e0  (between same file) */
+/* 0060d4e0  StandardMesh::deleting_dtor_helper_0060d4e0  (between same file)
+ * class: dice::ref2::geom::StandardMesh
+ * called by: StandardMesh::deleting_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d4e0, bfv_server_l1_body_0060d4e0);
 BFV_L1_RESUME(bfv_server_l1r_0060d4e0_1, bfv_server_l1_body_0060d4e0, 1);
 void bfv_server_l1_body_0060d4e0(struct bfv_cpu *c)
@@ -2837,7 +2929,7 @@ void bfv_server_l1_body_0060d4e0(struct bfv_cpu *c)
     }
     /* 0060d4e0  mov eax, ecx */
     eax = ecx;
-    /* 0060d4e2  mov ecx, dword ptr [0xc13dc8] */
+    /* 0060d4e2  mov ecx, dword ptr [0xc13dc8]  ; g_pool_StandardMesh */
     ea = (uint32_t)(0x00c13dc8u);
     ecx = M32(ea);
     /* 0060d4e8  mov edx, dword ptr [ecx] */
@@ -2866,7 +2958,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d4f0  (between same file) */
+/* 0060d4f0  BStandardMesh<IStandardMesh,StandardMeshTemplate>::BStandardMesh_helper_0060d4f0  (between same file)
+ * called by: BStandardMesh<IStandardMesh,StandardMeshTemplate>::BStandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d4f0, bfv_server_l1_body_0060d4f0);
 BFV_L1_RESUME(bfv_server_l1r_0060d4f0_1, bfv_server_l1_body_0060d4f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0060d4f0_2, bfv_server_l1_body_0060d4f0, 2);
@@ -2906,10 +3000,10 @@ void bfv_server_l1_body_0060d4f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0060d4f5  mov edx, ecx */
     edx = ecx;
-    /* 0060d4f7  mov dword ptr [esp + 0x10], edx */
+    /* 0060d4f7  mov dword ptr [esp + 0x10], edx  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
-    /* 0060d4fb  mov eax, dword ptr [esp + 0x18] */
+    /* 0060d4fb  mov eax, dword ptr [esp + 0x18]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
     /* 0060d4ff  lea ebx, [edx + 0x54] */
@@ -3023,14 +3117,14 @@ void bfv_server_l1_body_0060d4f0(struct bfv_cpu *c)
     if (zf) goto L_0060d570;
     /* 0060d565  mov ecx, ebp */
     ecx = ebp;
-    /* 0060d567  call 0x57d140 */
+    /* 0060d567  call 0x57d140  ; Object_0057d140 */
     t = 0x0057d140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d4f0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0060d56c  mov edx, dword ptr [esp + 0x10] */
+    /* 0060d56c  mov edx, dword ptr [esp + 0x10]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
 L_0060d570:
@@ -3116,7 +3210,7 @@ L_0060d59e:
     /* 0060d5b6  mov byte ptr [edx + 0xb4], 0 */
     ea = (uint32_t)(edx + 0x000000b4u);
     M8(ea) = 0x0u;
-    /* 0060d5bd  call 0x60d460 */
+    /* 0060d5bd  call 0x60d460  ; StandardMesh_helper_0060d460 */
     t = 0x0060d460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d4f0_2;
@@ -3153,7 +3247,7 @@ L_0060d5ca:
     /* 0060d5cd  mov byte ptr [edx + 0xb4], 1 */
     ea = (uint32_t)(edx + 0x000000b4u);
     M8(ea) = 0x1u;
-    /* 0060d5d4  call 0x60d460 */
+    /* 0060d5d4  call 0x60d460  ; StandardMesh_helper_0060d460 */
     t = 0x0060d460u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d4f0_3;
@@ -3191,8 +3285,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d5f0  (between same file)
- * strings: "StandardMesh", "StandardMeshTemplate" */
+/* 0060d5f0  BStandardMesh<IStandardMesh,StandardMeshTemplate>::BStandardMesh  (between same file)
+ * class: dice::ref2::geom::StandardMesh
+ * strings: "StandardMesh", "StandardMeshTemplate"
+ * called by: StandardMesh::StandardMesh
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d5f0, bfv_server_l1_body_0060d5f0);
 BFV_L1_RESUME(bfv_server_l1r_0060d5f0_1, bfv_server_l1_body_0060d5f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0060d5f0_2, bfv_server_l1_body_0060d5f0, 2);
@@ -3216,7 +3313,7 @@ void bfv_server_l1_body_0060d5f0(struct bfv_cpu *c)
     case 6: goto R_6;
     default: break;
     }
-    /* 0060d5f0  mov eax, dword ptr [esp + 4] */
+    /* 0060d5f0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0060d5f4  push ebx */
@@ -3229,22 +3326,22 @@ void bfv_server_l1_body_0060d5f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0060d5f6  mov ebp, ecx */
     ebp = ecx;
-    /* 0060d5f8  mov dword ptr [ebp + 4], 0x848d80 */
+    /* 0060d5f8  mov dword ptr [ebp + 4], 0x848d80  ; vtable IScaleable */
     ea = (uint32_t)(ebp + 0x00000004u);
     M32(ea) = 0x848d80u;
-    /* 0060d5ff  mov dword ptr [ebp + 8], 0x84898c */
+    /* 0060d5ff  mov dword ptr [ebp + 8], 0x84898c  ; vtable IVectorCollider */
     ea = (uint32_t)(ebp + 0x00000008u);
     M32(ea) = 0x84898cu;
-    /* 0060d606  mov dword ptr [ebp + 0xc], 0x84aa84 */
+    /* 0060d606  mov dword ptr [ebp + 0xc], 0x84aa84  ; vtable ICollisionMesh */
     ea = (uint32_t)(ebp + 0x0000000cu);
     M32(ea) = 0x84aa84u;
-    /* 0060d60d  mov dword ptr [ebp + 0x10], 0x84c404 */
+    /* 0060d60d  mov dword ptr [ebp + 0x10], 0x84c404  ; vtable IPortalMesh */
     ea = (uint32_t)(ebp + 0x00000010u);
     M32(ea) = 0x84c404u;
-    /* 0060d614  mov dword ptr [ebp + 0x14], 0x84c428 */
+    /* 0060d614  mov dword ptr [ebp + 0x14], 0x84c428  ; vtable IPortalCollider */
     ea = (uint32_t)(ebp + 0x00000014u);
     M32(ea) = 0x84c428u;
-    /* 0060d61b  mov dword ptr [ebp + 0x18], 0x84c440 */
+    /* 0060d61b  mov dword ptr [ebp + 0x18], 0x84c440  ; vtable IViewModifier */
     ea = (uint32_t)(ebp + 0x00000018u);
     M32(ea) = 0x84c440u;
     /* 0060d622  mov dword ptr [ebp + 0x2c], eax */
@@ -3325,7 +3422,7 @@ void bfv_server_l1_body_0060d5f0(struct bfv_cpu *c)
     /* 0060d67d  mov byte ptr [ebp + 0x70], bl */
     ea = (uint32_t)(ebp + 0x00000070u);
     M8(ea) = LO8(ebx);
-    /* 0060d680  mov dword ptr [ebp + 0xfc], 0xbf800000 */
+    /* 0060d680  mov dword ptr [ebp + 0xfc], 0xbf800000  ; -1.0f */
     ea = (uint32_t)(ebp + 0x000000fcu);
     M32(ea) = 0xbf800000u;
     /* 0060d68a  mov dword ptr [ebp + 0x140], 0xffffffff */
@@ -3369,7 +3466,7 @@ void bfv_server_l1_body_0060d5f0(struct bfv_cpu *c)
     /* 0060d6cb  mov dword ptr [ecx + 0xc], ebx */
     ea = (uint32_t)(ecx + 0x0000000cu);
     M32(ea) = ebx;
-    /* 0060d6ce  call 0x5fe440 */
+    /* 0060d6ce  call 0x5fe440  ; AnimatedMesh_005fe440 */
     t = 0x005fe440u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d5f0_1;
@@ -3397,11 +3494,11 @@ R_1:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 0060d6e1  mov edx, 0x84984c */
+    /* 0060d6e1  mov edx, 0x84984c  ; "StandardMesh" */
     edx = 0x84984cu;
-    /* 0060d6e6  mov ecx, 0x8495b8 */
+    /* 0060d6e6  mov ecx, 0x8495b8  ; "StandardMeshTemplate" */
     ecx = 0x8495b8u;
-    /* 0060d6eb  call 0x41f140 */
+    /* 0060d6eb  call 0x41f140  ; memUsage_track */
     t = 0x0041f140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d5f0_2;
@@ -3422,7 +3519,7 @@ R_2:
     if (zf) goto L_0060d701;
     /* 0060d6fa  mov ecx, edi */
     ecx = edi;
-    /* 0060d6fc  call 0x57d140 */
+    /* 0060d6fc  call 0x57d140  ; Object_0057d140 */
     t = 0x0057d140u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d5f0_3;
@@ -3450,7 +3547,7 @@ L_0060d701:
     c->eip = t;
     goto out;
 R_4:
-    /* 0060d70f  call 0x4018c0 */
+    /* 0060d70f  call 0x4018c0  ; Matrix4::identity */
     t = 0x004018c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d5f0_5;
@@ -3523,7 +3620,7 @@ R_5:
     M32(esp) = t;
     /* 0060d781  lea ecx, [ebp + 4] */
     ecx = (uint32_t)(ebp + 0x00000004u);
-    /* 0060d784  call 0x60d4f0 */
+    /* 0060d784  call 0x60d4f0  ; BStandardMesh<IStandardMesh,StandardMeshTemplate>::BStandardMesh_helper_0060d4f0 */
     t = 0x0060d4f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d5f0_6;
@@ -3559,7 +3656,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0060d7a0  dice::ref2::geom::StandardMesh  (vtable store) */
+/* 0060d7a0  StandardMesh::StandardMesh  (vtable store)
+ * class: dice::ref2::geom::StandardMesh
+ * called by: StandardMeshTemplate::vf43, AIMeshLoader::vf1
+ */
 BFV_L1_ENTRY(bfv_server_l1_0060d7a0, bfv_server_l1_body_0060d7a0);
 BFV_L1_RESUME(bfv_server_l1r_0060d7a0_1, bfv_server_l1_body_0060d7a0, 1);
 void bfv_server_l1_body_0060d7a0(struct bfv_cpu *c)
@@ -3573,7 +3673,7 @@ void bfv_server_l1_body_0060d7a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0060d7a0  mov eax, dword ptr [esp + 4] */
+    /* 0060d7a0  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0060d7a4  push esi */
@@ -3586,14 +3686,14 @@ void bfv_server_l1_body_0060d7a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0060d7a6  mov esi, ecx */
     esi = ecx;
-    /* 0060d7a8  call 0x60d5f0 */
+    /* 0060d7a8  call 0x60d5f0  ; BStandardMesh<IStandardMesh,StandardMeshTemplate>::BStandardMesh */
     t = 0x0060d5f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0060d7a0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 0060d7ad  mov dword ptr [esi], 0x84eabc */
+    /* 0060d7ad  mov dword ptr [esi], 0x84eabc  ; vtable StandardMesh */
     ea = (uint32_t)(esi);
     M32(ea) = 0x84eabcu;
     /* 0060d7b3  mov dword ptr [esi + 4], 0x84eaa0 */

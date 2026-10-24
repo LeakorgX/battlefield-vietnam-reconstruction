@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00a7f1b0  dice::ref2::rend::DefaultShader  (virtual method) */
+/* 00a7f1b0  DefaultShader::vf6  (virtual method)
+ * overrides: IShader::vf6  (4 classes implement it)
+ * class: dice::ref2::rend::DefaultShader
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7f1b0, bfv_client_l1_body_00a7f1b0);
 BFV_L1_RESUME(bfv_client_l1r_00a7f1b0_1, bfv_client_l1_body_00a7f1b0, 1);
 void bfv_client_l1_body_00a7f1b0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_client_l1_body_00a7f1b0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 00a7f1b0  call 0xa401b0 */
+    /* 00a7f1b0  call 0xa401b0  ; renderList_end */
     t = 0x00a401b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7f1b0_1;
@@ -37,7 +40,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7f1c0  dice::ref2::rend::DefaultShader  (vtable store) */
+/* 00a7f1c0  DefaultShader::DefaultShader  (vtable store)
+ * class: dice::ref2::rend::DefaultShader
+ * called by: ShaderManager::setDefaultShaderSolidColor, ShaderManager::vf4
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7f1c0, bfv_client_l1_body_00a7f1c0);
 void bfv_client_l1_body_00a7f1c0(struct bfv_cpu *c)
 {
@@ -48,7 +54,7 @@ void bfv_client_l1_body_00a7f1c0(struct bfv_cpu *c)
     uint32_t ea;
     /* 00a7f1c0  mov eax, ecx */
     eax = ecx;
-    /* 00a7f1c2  mov dword ptr [eax], 0xc07094 */
+    /* 00a7f1c2  mov dword ptr [eax], 0xc07094  ; vtable DefaultShader */
     ea = (uint32_t)(eax);
     M32(ea) = 0xc07094u;
     /* 00a7f1c8  mov dword ptr [eax + 4], 1 */
@@ -68,7 +74,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7f1e0  dice::ref2::rend::DefaultShader  (virtual method) */
+/* 00a7f1e0  DefaultShader::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::rend::DefaultShader
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7f1e0, bfv_client_l1_body_00a7f1e0);
 BFV_L1_RESUME(bfv_client_l1r_00a7f1e0_1, bfv_client_l1_body_00a7f1e0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a7f1e0_2, bfv_client_l1_body_00a7f1e0, 2);
@@ -90,7 +99,7 @@ void bfv_client_l1_body_00a7f1e0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a7f1e1  mov esi, ecx */
     esi = ecx;
-    /* 00a7f1e3  mov dword ptr [esi], 0xc07094 */
+    /* 00a7f1e3  mov dword ptr [esi], 0xc07094  ; vtable DefaultShader */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc07094u;
     /* 00a7f1e9  mov ecx, dword ptr [esi + 8] */
@@ -113,11 +122,11 @@ void bfv_client_l1_body_00a7f1e0(struct bfv_cpu *c)
     goto out;
 R_1:
 L_00a7f1f5:
-    /* 00a7f1f5  test byte ptr [esp + 8], 1 */
+    /* 00a7f1f5  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 00a7f1fa  mov dword ptr [esi], 0xb4274c */
+    /* 00a7f1fa  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 00a7f200  je 0xa7f20b */
@@ -126,7 +135,7 @@ L_00a7f1f5:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a7f203  call 0x403680 */
+    /* 00a7f203  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7f1e0_2;
@@ -157,7 +166,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7f220  dice::ref2::rend::DefaultShader  (virtual method) */
+/* 00a7f220  DefaultShader::vf8  (virtual method)
+ * class: dice::ref2::rend::DefaultShader
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7f220, bfv_client_l1_body_00a7f220);
 BFV_L1_RESUME(bfv_client_l1r_00a7f220_1, bfv_client_l1_body_00a7f220, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a7f220_2, bfv_client_l1_body_00a7f220, 2);
@@ -213,7 +224,7 @@ void bfv_client_l1_body_00a7f220(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 00a7f22f  mov dword ptr [esp + 0xc], esi */
+    /* 00a7f22f  mov dword ptr [esp + 0xc], esi  ; var_28 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = esi;
     /* 00a7f233  jne 0xa7f29f */
@@ -226,25 +237,25 @@ void bfv_client_l1_body_00a7f220(struct bfv_cpu *c)
     t = 0xb44284u;
     esp -= 4;
     M32(esp) = t;
-    /* 00a7f23b  lea ecx, [esp + 0x20] */
+    /* 00a7f23b  lea ecx, [esp + 0x20]  ; &var_1c */
     ecx = (uint32_t)(esp + 0x00000020u);
-    /* 00a7f23f  mov dword ptr [esp + 0x38], 0xf */
+    /* 00a7f23f  mov dword ptr [esp + 0x38], 0xf  ; var_4 */
     ea = (uint32_t)(esp + 0x00000038u);
     M32(ea) = 0xfu;
-    /* 00a7f247  mov dword ptr [esp + 0x34], ebx */
+    /* 00a7f247  mov dword ptr [esp + 0x34], ebx  ; var_8 */
     ea = (uint32_t)(esp + 0x00000034u);
     M32(ea) = ebx;
-    /* 00a7f24b  mov byte ptr [esp + 0x24], bl */
+    /* 00a7f24b  mov byte ptr [esp + 0x24], bl  ; var_18 */
     ea = (uint32_t)(esp + 0x00000024u);
     M8(ea) = LO8(ebx);
-    /* 00a7f24f  call 0x401ae0 */
+    /* 00a7f24f  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7f220_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00a7f254  mov ecx, dword ptr [0xe122c4] */
+    /* 00a7f254  mov ecx, dword ptr [0xe122c4]  ; g_pRenderer */
     ea = (uint32_t)(0x00e122c4u);
     ecx = M32(ea);
     /* 00a7f25a  mov eax, dword ptr [ecx] */
@@ -254,7 +265,7 @@ R_1:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a7f25d  lea edx, [esp + 0x1c] */
+    /* 00a7f25d  lea edx, [esp + 0x1c]  ; &var_1c */
     edx = (uint32_t)(esp + 0x0000001cu);
     /* 00a7f261  push edx */
     t = edx;
@@ -315,7 +326,7 @@ R_3:
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = ebx;
 L_00a7f288:
-    /* 00a7f288  cmp dword ptr [esp + 0x30], 0x10 */
+    /* 00a7f288  cmp dword ptr [esp + 0x30], 0x10  ; var_4 */
     ea = (uint32_t)(esp + 0x00000030u);
     a = M32(ea);
     b = 0x10u;
@@ -326,14 +337,14 @@ L_00a7f288:
     M32(ea) = edi;
     /* 00a7f290  jb 0xa7f29f */
     if (cf) goto L_00a7f29f;
-    /* 00a7f292  mov ecx, dword ptr [esp + 0x1c] */
+    /* 00a7f292  mov ecx, dword ptr [esp + 0x1c]  ; var_18 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 00a7f296  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a7f297  call 0x403680 */
+    /* 00a7f297  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7f220_4;
@@ -361,7 +372,7 @@ L_00a7f29f:
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 00a7f2a7  lea eax, [esp + 0x14] */
+    /* 00a7f2a7  lea eax, [esp + 0x14]  ; &var_24 */
     eax = (uint32_t)(esp + 0x00000014u);
     /* 00a7f2ab  push eax */
     t = eax;
@@ -375,10 +386,10 @@ L_00a7f29f:
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 00a7f2af  mov dword ptr [esp + 0x20], ebx */
+    /* 00a7f2af  mov dword ptr [esp + 0x20], ebx  ; var_24 */
     ea = (uint32_t)(esp + 0x00000020u);
     M32(ea) = ebx;
-    /* 00a7f2b3  mov dword ptr [esp + 0x24], ebx */
+    /* 00a7f2b3  mov dword ptr [esp + 0x24], ebx  ; var_20 */
     ea = (uint32_t)(esp + 0x00000024u);
     M32(ea) = ebx;
     /* 00a7f2b7  mov edx, dword ptr [ecx] */
@@ -429,7 +440,7 @@ L_00a7f2c1:
     esp += 8;
     goto out;
 L_00a7f2cc:
-    /* 00a7f2cc  mov edi, dword ptr [esp + 0x10] */
+    /* 00a7f2cc  mov edi, dword ptr [esp + 0x10]  ; var_24 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 00a7f2d0  xor eax, eax */
@@ -450,7 +461,7 @@ L_00a7f2cc:
         edi += (df ? -4u : 4u);
         ecx--;
     }
-    /* 00a7f2dc  mov ecx, dword ptr [esp + 0x3c] */
+    /* 00a7f2dc  mov ecx, dword ptr [esp + 0x3c]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000003cu);
     ecx = M32(ea);
     /* 00a7f2e0  cmp ecx, ebx */
@@ -574,7 +585,7 @@ L_00a7f326:
     F_SUB(32, a, b, r);
     /* 00a7f333  jb 0xa7f2e6 */
     if (cf) goto L_00a7f2e6;
-    /* 00a7f335  mov esi, dword ptr [esp + 0x10] */
+    /* 00a7f335  mov esi, dword ptr [esp + 0x10]  ; var_28 */
     ea = (uint32_t)(esp + 0x00000010u);
     esi = M32(ea);
     /* 00a7f339  xor ebx, ebx */
@@ -674,7 +685,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00a7f370  dice::ref2::rend::DefaultShader  (virtual method) */
+/* 00a7f370  DefaultShader::vf5  (virtual method)
+ * overrides: IShader::vf5  (4 classes implement it)
+ * class: dice::ref2::rend::DefaultShader
+ */
 BFV_L1_ENTRY(bfv_client_l1_00a7f370, bfv_client_l1_body_00a7f370);
 BFV_L1_RESUME(bfv_client_l1r_00a7f370_1, bfv_client_l1_body_00a7f370, 1);
 BFV_L1_RESUME(bfv_client_l1r_00a7f370_2, bfv_client_l1_body_00a7f370, 2);
@@ -702,7 +716,7 @@ void bfv_client_l1_body_00a7f370(struct bfv_cpu *c)
     M32(esp) = t;
     /* 00a7f371  mov esi, ecx */
     esi = ecx;
-    /* 00a7f373  call 0xa40170 */
+    /* 00a7f373  call 0xa40170  ; renderList_begin */
     t = 0x00a40170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7f370_1;
@@ -713,7 +727,7 @@ R_1:
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 00a7f37a  call 0xa40490 */
+    /* 00a7f37a  call 0xa40490  ; sub_00a40490 */
     t = 0x00a40490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7f370_2;
@@ -722,7 +736,7 @@ R_1:
 R_2:
     /* 00a7f37f  mov ecx, 1 */
     ecx = 0x1u;
-    /* 00a7f384  call 0x74e700 */
+    /* 00a7f384  call 0x74e700  ; PatchShaderBuilder_0074e700 */
     t = 0x0074e700u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7f370_3;
@@ -736,7 +750,7 @@ R_3:
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 00a7f38e  call 0xa403f0 */
+    /* 00a7f38e  call 0xa403f0  ; sub_00a403f0 */
     t = 0x00a403f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7f370_4;
@@ -757,7 +771,7 @@ R_4:
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 00a7f39e  call 0x49d940 */
+    /* 00a7f39e  call 0x49d940  ; d3d_setTextureColorOp */
     t = 0x0049d940u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00a7f370_5;

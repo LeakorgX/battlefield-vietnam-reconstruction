@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0072e7a0  dice::bf::ai::BAPConFalse  (virtual method) */
+/* 0072e7a0  BAPConFalse::deleting_dtor  (virtual method)
+ * overrides: BAPCondition::vf2  (36 classes implement it)
+ * class: dice::bf::ai::BAPConFalse
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072e7a0, bfv_server_l1_body_0072e7a0);
 BFV_L1_RESUME(bfv_server_l1r_0072e7a0_1, bfv_server_l1_body_0072e7a0, 1);
 void bfv_server_l1_body_0072e7a0(struct bfv_cpu *c)
@@ -19,7 +22,7 @@ void bfv_server_l1_body_0072e7a0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0072e7a0  test byte ptr [esp + 4], 1 */
+    /* 0072e7a0  test byte ptr [esp + 4], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -29,7 +32,7 @@ void bfv_server_l1_body_0072e7a0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0072e7a6  mov esi, ecx */
     esi = ecx;
-    /* 0072e7a8  mov dword ptr [esi], 0x873c74 */
+    /* 0072e7a8  mov dword ptr [esi], 0x873c74  ; vtable BAPCondition */
     ea = (uint32_t)(esi);
     M32(ea) = 0x873c74u;
     /* 0072e7ae  je 0x72e7bb */
@@ -38,9 +41,9 @@ void bfv_server_l1_body_0072e7a0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072e7b1  mov ecx, 0xc32180 */
+    /* 0072e7b1  mov ecx, 0xc32180  ; g_MemoryPoolNull_00c32180 */
     ecx = 0xc32180u;
-    /* 0072e7b6  call 0x413600 */
+    /* 0072e7b6  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0072e7a0_1;

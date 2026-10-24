@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007bead0  dice::bf::ai::IAIScript  (vtable store) */
+/* 007bead0  IAIScript::ctor_dtor  (vtable store)
+ * class: dice::bf::ai::IAIScript
+ * called by: AIScript::~AIScript
+ */
 BFV_L1_ENTRY(bfv_server_l1_007bead0, bfv_server_l1_body_007bead0);
 BFV_L1_RESUME(bfv_server_l1r_007bead0_1, bfv_server_l1_body_007bead0, 1);
 void bfv_server_l1_body_007bead0(struct bfv_cpu *c)
@@ -25,7 +28,7 @@ void bfv_server_l1_body_007bead0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007bead1  mov esi, ecx */
     esi = ecx;
-    /* 007bead3  mov dword ptr [esi], 0x87b7bc */
+    /* 007bead3  mov dword ptr [esi], 0x87b7bc  ; vtable IAIScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87b7bcu;
     /* 007bead9  cmp dword ptr [esi + 0x1c], 0x10 */
@@ -43,7 +46,7 @@ void bfv_server_l1_body_007bead0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007beae3  call 0x403df0 */
+    /* 007beae3  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007bead0_1;
@@ -85,7 +88,9 @@ out: __attribute__((unused));
 }
 
 
-/* 007beb00  dice::bf::ai::IAIScript  (virtual method) */
+/* 007beb00  IAIScript::deleting_dtor  (virtual method)
+ * class: dice::bf::ai::IAIScript
+ */
 BFV_L1_ENTRY(bfv_server_l1_007beb00, bfv_server_l1_body_007beb00);
 BFV_L1_RESUME(bfv_server_l1r_007beb00_1, bfv_server_l1_body_007beb00, 1);
 BFV_L1_RESUME(bfv_server_l1r_007beb00_2, bfv_server_l1_body_007beb00, 2);
@@ -107,7 +112,7 @@ void bfv_server_l1_body_007beb00(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007beb01  mov esi, ecx */
     esi = ecx;
-    /* 007beb03  mov dword ptr [esi], 0x87b7bc */
+    /* 007beb03  mov dword ptr [esi], 0x87b7bc  ; vtable IAIScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87b7bcu;
     /* 007beb09  cmp dword ptr [esi + 0x1c], 0x10 */
@@ -125,7 +130,7 @@ void bfv_server_l1_body_007beb00(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007beb13  call 0x403df0 */
+    /* 007beb13  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007beb00_1;
@@ -152,7 +157,7 @@ L_007beb1b:
     /* 007beb27  mov byte ptr [esi + 8], al */
     ea = (uint32_t)(esi + 0x00000008u);
     M8(ea) = LO8(eax);
-    /* 007beb2a  test byte ptr [esp + 8], 1 */
+    /* 007beb2a  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -162,7 +167,7 @@ L_007beb1b:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007beb32  call 0x403df0 */
+    /* 007beb32  call 0x403df0  ; operator_delete */
     t = 0x00403df0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007beb00_2;
@@ -193,7 +198,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007beb40  dice::bf::ai::IAIScript  (vtable store) */
+/* 007beb40  IAIScript::IAIScript  (vtable store)
+ * class: dice::bf::ai::IAIScript
+ * called by: AIScript::AIScript
+ */
 BFV_L1_ENTRY(bfv_server_l1_007beb40, bfv_server_l1_body_007beb40);
 BFV_L1_RESUME(bfv_server_l1r_007beb40_1, bfv_server_l1_body_007beb40, 1);
 void bfv_server_l1_body_007beb40(struct bfv_cpu *c)
@@ -219,7 +227,7 @@ void bfv_server_l1_body_007beb40(struct bfv_cpu *c)
     eax = r;
     /* 007beb45  lea ecx, [esi + 4] */
     ecx = (uint32_t)(esi + 0x00000004u);
-    /* 007beb48  mov dword ptr [esi], 0x87b7bc */
+    /* 007beb48  mov dword ptr [esi], 0x87b7bc  ; vtable IAIScript */
     ea = (uint32_t)(esi);
     M32(ea) = 0x87b7bcu;
     /* 007beb4e  push -1 */
@@ -239,14 +247,14 @@ void bfv_server_l1_body_007beb40(struct bfv_cpu *c)
     /* 007beb5b  mov byte ptr [ecx + 4], al */
     ea = (uint32_t)(ecx + 0x00000004u);
     M8(ea) = LO8(eax);
-    /* 007beb5e  mov eax, dword ptr [esp + 0x10] */
+    /* 007beb5e  mov eax, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
     /* 007beb62  push eax */
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007beb63  call 0x401e20 */
+    /* 007beb63  call 0x401e20  ; std::string::assign_substr */
     t = 0x00401e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007beb40_1;

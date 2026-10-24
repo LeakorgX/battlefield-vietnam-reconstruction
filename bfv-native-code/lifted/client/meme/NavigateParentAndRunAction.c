@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00ac1ca0  dice::meme::NavigateParentAndRunAction  (virtual method) */
+/* 00ac1ca0  NavigateParentAndRunAction::execute  (virtual method)
+ * overrides: Action::execute  (35 classes implement it)
+ * class: dice::meme::NavigateParentAndRunAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac1ca0, bfv_client_l1_body_00ac1ca0);
 BFV_L1_RESUME(bfv_client_l1r_00ac1ca0_1, bfv_client_l1_body_00ac1ca0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac1ca0_2, bfv_client_l1_body_00ac1ca0, 2);
@@ -35,7 +38,7 @@ void bfv_client_l1_body_00ac1ca0(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 00ac1ca8  je 0xac1cca */
     if (zf) goto L_00ac1cca;
-    /* 00ac1caa  call 0xac41b0 */
+    /* 00ac1caa  call 0xac41b0  ; meme_00ac41b0 */
     t = 0x00ac41b0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac1ca0_1;
@@ -47,13 +50,13 @@ R_1:
     F_LOGIC(8, r);
     /* 00ac1cb1  je 0xac1cca */
     if (zf) goto L_00ac1cca;
-    /* 00ac1cb3  mov eax, dword ptr [esp + 0x10] */
+    /* 00ac1cb3  mov eax, dword ptr [esp + 0x10]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 00ac1cb7  mov ecx, dword ptr [esp + 0xc] */
+    /* 00ac1cb7  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     ecx = M32(ea);
-    /* 00ac1cbb  mov edx, dword ptr [esp + 8] */
+    /* 00ac1cbb  mov edx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
     /* 00ac1cbf  push eax */
@@ -71,7 +74,7 @@ R_1:
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac1cc5  call 0xac4300 */
+    /* 00ac1cc5  call 0xac4300  ; meme_00ac4300 */
     t = 0x00ac4300u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac1ca0_2;
@@ -98,8 +101,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2270  dice::meme::NavigateParentAndRunAction  (virtual method)
- * strings: "dice::meme::NavigateParentAndRunAction" */
+/* 00ac2270  NavigateParentAndRunAction::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::NavigateParentAndRunAction
+ * strings: "dice::meme::NavigateParentAndRunAction"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2270, bfv_client_l1_body_00ac2270);
 BFV_L1_RESUME(bfv_client_l1r_00ac2270_1, bfv_client_l1_body_00ac2270, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2270_2, bfv_client_l1_body_00ac2270, 2);
@@ -130,27 +136,27 @@ void bfv_client_l1_body_00ac2270(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac2285  push 0xc103a0 */
+    /* 00ac2285  push 0xc103a0  ; "dice::meme::NavigateParentAndRunAction" */
     t = 0xc103a0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac228a  mov ecx, 0xe21668 */
+    /* 00ac228a  mov ecx, 0xe21668  ; g_RuntimeClass_NavigateParentAndRunAction */
     ecx = 0xe21668u;
-    /* 00ac228f  call 0x875490 */
+    /* 00ac228f  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2270_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac2294  push 0xb41c90 */
+    /* 00ac2294  push 0xb41c90  ; bfv_client_global_store_00b41c90 */
     t = 0xb41c90u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2299  mov dword ptr [0xe21668], 0xc10154 */
+    /* 00ac2299  mov dword ptr [0xe21668], 0xc10154  ; g_RuntimeClass_NavigateParentAndRunAction */
     ea = (uint32_t)(0x00e21668u);
     M32(ea) = 0xc10154u;
-    /* 00ac22a3  call 0x7c2cd2 */
+    /* 00ac22a3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2270_2;
@@ -164,7 +170,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac22ab:
-    /* 00ac22ab  mov eax, 0xe21668 */
+    /* 00ac22ab  mov eax, 0xe21668  ; g_RuntimeClass_NavigateParentAndRunAction */
     eax = 0xe21668u;
     /* 00ac22b0  ret */
     c->eip = M32(esp);
@@ -177,7 +183,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac2550  dice::meme::NavigateParentAndRunAction  (vtable store) */
+/* 00ac2550  NavigateParentAndRunAction::create  (vtable store)
+ * class: dice::meme::NavigateParentAndRunAction
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac2550, bfv_client_l1_body_00ac2550);
 BFV_L1_RESUME(bfv_client_l1r_00ac2550_1, bfv_client_l1_body_00ac2550, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac2550_2, bfv_client_l1_body_00ac2550, 2);
@@ -201,7 +209,7 @@ void bfv_client_l1_body_00ac2550(struct bfv_cpu *c)
     t = 0xcu;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac2553  call 0x403610 */
+    /* 00ac2553  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2550_1;
@@ -223,7 +231,7 @@ R_1:
     if (zf) goto L_00ac2579;
     /* 00ac2561  mov ecx, esi */
     ecx = esi;
-    /* 00ac2563  call 0x874870 */
+    /* 00ac2563  call 0x874870  ; Object::Object */
     t = 0x00874870u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac2550_2;
@@ -233,7 +241,7 @@ R_2:
     /* 00ac2568  mov dword ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 00ac256f  mov dword ptr [esi], 0xc10674 */
+    /* 00ac256f  mov dword ptr [esi], 0xc10674  ; vtable NavigateParentAndRunAction */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc10674u;
     /* 00ac2575  mov eax, esi */

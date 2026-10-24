@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005ad1c0  dice::bf::DestroyObjectEvent  (vtable store) */
+/* 005ad1c0  DestroyObjectEvent::create  (vtable store)
+ * class: dice::bf::DestroyObjectEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ad1c0, bfv_client_l1_body_005ad1c0);
 BFV_L1_RESUME(bfv_client_l1r_005ad1c0_1, bfv_client_l1_body_005ad1c0, 1);
 void bfv_client_l1_body_005ad1c0(struct bfv_cpu *c)
@@ -19,7 +21,7 @@ void bfv_client_l1_body_005ad1c0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ad1c0  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ad1c0  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ad1c6  mov eax, dword ptr [ecx] */
@@ -53,7 +55,7 @@ R_1:
     /* 005ad1d8  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ad1df  mov dword ptr [eax], 0xb75fb0 */
+    /* 005ad1df  mov dword ptr [eax], 0xb75fb0  ; vtable DestroyObjectEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb75fb0u;
     /* 005ad1e5  ret */
@@ -76,7 +78,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ad1f0  dice::bf::DestroyObjectEvent  (vtable store) */
+/* 005ad1f0  DestroyObjectEvent::create  (vtable store)
+ * class: dice::bf::DestroyObjectEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005ad1f0, bfv_client_l1_body_005ad1f0);
 BFV_L1_RESUME(bfv_client_l1r_005ad1f0_1, bfv_client_l1_body_005ad1f0, 1);
 void bfv_client_l1_body_005ad1f0(struct bfv_cpu *c)
@@ -90,7 +94,7 @@ void bfv_client_l1_body_005ad1f0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 005ad1f0  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005ad1f0  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005ad1f6  mov eax, dword ptr [ecx] */
@@ -124,7 +128,7 @@ R_1:
     /* 005ad208  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005ad20f  mov dword ptr [eax], 0xb75fb0 */
+    /* 005ad20f  mov dword ptr [eax], 0xb75fb0  ; vtable DestroyObjectEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb75fb0u;
     /* 005ad215  jmp 0x5ad219 */
@@ -135,7 +139,7 @@ L_005ad217:
     F_LOGIC(32, r);
     eax = r;
 L_005ad219:
-    /* 005ad219  mov ecx, dword ptr [esp + 4] */
+    /* 005ad219  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 005ad21d  push esi */
@@ -183,7 +187,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005af6b0  dice::bf::DestroyObjectEvent  (virtual method) */
+/* 005af6b0  DestroyObjectEvent::readFromStream  (virtual method)
+ * class: dice::bf::DestroyObjectEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005af6b0, bfv_client_l1_body_005af6b0);
 BFV_L1_RESUME(bfv_client_l1r_005af6b0_1, bfv_client_l1_body_005af6b0, 1);
 void bfv_client_l1_body_005af6b0(struct bfv_cpu *c)
@@ -205,7 +211,7 @@ void bfv_client_l1_body_005af6b0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 005af6b2  mov esi, dword ptr [esp + 0xc] */
+    /* 005af6b2  mov esi, dword ptr [esp + 0xc]  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     esi = M32(ea);
     /* 005af6b6  push edi */
@@ -216,7 +222,7 @@ void bfv_client_l1_body_005af6b0(struct bfv_cpu *c)
     t = 0x10u;
     esp -= 4;
     M32(esp) = t;
-    /* 005af6b9  lea eax, [esp + 0xc] */
+    /* 005af6b9  lea eax, [esp + 0xc]  ; &var_4 */
     eax = (uint32_t)(esp + 0x0000000cu);
     /* 005af6bd  mov edi, ecx */
     edi = ecx;
@@ -226,17 +232,17 @@ void bfv_client_l1_body_005af6b0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005af6c0  mov ecx, esi */
     ecx = esi;
-    /* 005af6c2  mov dword ptr [esp + 0x10], 0 */
+    /* 005af6c2  mov dword ptr [esp + 0x10], 0  ; var_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = 0x0u;
-    /* 005af6ca  call 0x500b70 */
+    /* 005af6ca  call 0x500b70  ; BitStream::readBits */
     t = 0x00500b70u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005af6b0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005af6cf  mov cx, word ptr [esp + 8] */
+    /* 005af6cf  mov cx, word ptr [esp + 8]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET16(ecx, M16(ea));
     /* 005af6d4  mov word ptr [edi + 0xc], cx */
@@ -302,7 +308,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005afbf0  dice::bf::DestroyObjectEvent  (virtual method) */
+/* 005afbf0  DestroyObjectEvent::writeToStream  (virtual method)
+ * class: dice::bf::DestroyObjectEvent
+ */
 BFV_L1_ENTRY(bfv_client_l1_005afbf0, bfv_client_l1_body_005afbf0);
 BFV_L1_RESUME(bfv_client_l1r_005afbf0_1, bfv_client_l1_body_005afbf0, 1);
 BFV_L1_RESUME(bfv_client_l1r_005afbf0_2, bfv_client_l1_body_005afbf0, 2);
@@ -375,7 +383,7 @@ L_005afbf7:
     edx = M32(ea);
     /* 005afc09  mov ecx, edi */
     ecx = edi;
-    /* 005afc0b  call dword ptr [edx] */
+    /* 005afc0b  call dword ptr [edx]  ; -> DestroyObjectEvent::vf0 = BAPConFalse::vf1 */
     ea = (uint32_t)(edx);
     t = M32(ea);
     esp -= 4;
@@ -401,7 +409,7 @@ R_1:
     M32(esp) = t;
     /* 005afc1b  mov ecx, esi */
     ecx = esi;
-    /* 005afc1d  call 0x500c50 */
+    /* 005afc1d  call 0x500c50  ; BitStream::writeBits */
     t = 0x00500c50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005afbf0_2;
@@ -426,7 +434,7 @@ R_2:
     M32(esp) = t;
     /* 005afc31  mov ecx, esi */
     ecx = esi;
-    /* 005afc33  call 0x500c50 */
+    /* 005afc33  call 0x500c50  ; BitStream::writeBits */
     t = 0x00500c50u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005afbf0_3;
@@ -493,7 +501,10 @@ out: __attribute__((unused));
 }
 
 
-/* 005b3520  dice::bf::DestroyObjectEvent  (vtable store) */
+/* 005b3520  DestroyObjectEvent::create  (vtable store)
+ * class: dice::bf::DestroyObjectEvent
+ * called by: GameServer::vf22
+ */
 BFV_L1_ENTRY(bfv_client_l1_005b3520, bfv_client_l1_body_005b3520);
 BFV_L1_RESUME(bfv_client_l1r_005b3520_1, bfv_client_l1_body_005b3520, 1);
 void bfv_client_l1_body_005b3520(struct bfv_cpu *c)
@@ -517,7 +528,7 @@ void bfv_client_l1_body_005b3520(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005b3523  mov esi, ecx */
     esi = ecx;
-    /* 005b3525  mov ecx, dword ptr [0xd7b2ac] */
+    /* 005b3525  mov ecx, dword ptr [0xd7b2ac]  ; g_pGameEventPool */
     ea = (uint32_t)(0x00d7b2acu);
     ecx = M32(ea);
     /* 005b352b  mov eax, dword ptr [ecx] */
@@ -547,7 +558,7 @@ R_1:
     /* 005b353b  mov dword ptr [eax + 8], 0 */
     ea = (uint32_t)(eax + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 005b3542  mov dword ptr [eax], 0xb75fb0 */
+    /* 005b3542  mov dword ptr [eax], 0xb75fb0  ; vtable DestroyObjectEvent */
     ea = (uint32_t)(eax);
     M32(ea) = 0xb75fb0u;
     /* 005b3548  jmp 0x5b354c */
@@ -558,7 +569,7 @@ L_005b354a:
     F_LOGIC(32, r);
     eax = r;
 L_005b354c:
-    /* 005b354c  mov cx, word ptr [esp + 8] */
+    /* 005b354c  mov cx, word ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     SET16(ecx, M16(ea));
     /* 005b3551  mov word ptr [eax + 0xc], cx */

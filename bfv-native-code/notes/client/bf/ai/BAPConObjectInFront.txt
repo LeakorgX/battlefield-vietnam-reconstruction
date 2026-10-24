@@ -1,0 +1,5 @@
+## file
+Plan condition: true when a target object is in front of a point placed ahead of the bot's object.
+
+## 009f90d0
+Resolves the target handle at this+8 and the bot's own object; false if either is gone. Forward axis is the own matrix (vf9) row at +0x20. A reference point is own position + forward * this+0xc (this+0xc is a distance along the facing). True when dot(target position - reference point, forward) is greater than 0.

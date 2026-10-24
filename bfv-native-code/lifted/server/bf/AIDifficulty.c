@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0049d2f0  dice::bf::AIDifficulty  (vtable store) */
+/* 0049d2f0  AIDifficulty::create  (vtable store)
+ * class: dice::bf::AIDifficulty
+ */
 BFV_L1_ENTRY(bfv_server_l1_0049d2f0, bfv_server_l1_body_0049d2f0);
 BFV_L1_RESUME(bfv_server_l1r_0049d2f0_1, bfv_server_l1_body_0049d2f0, 1);
 BFV_L1_RESUME(bfv_server_l1r_0049d2f0_2, bfv_server_l1_body_0049d2f0, 2);
@@ -37,7 +39,7 @@ void bfv_server_l1_body_0049d2f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0049d2f4  mov edi, ecx */
     edi = ecx;
-    /* 0049d2f6  call 0x403d80 */
+    /* 0049d2f6  call 0x403d80  ; operator_new */
     t = 0x00403d80u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d2f0_1;
@@ -63,14 +65,14 @@ R_1:
     M32(esp) = t;
     /* 0049d306  mov ecx, esi */
     ecx = esi;
-    /* 0049d308  call 0x4d9170 */
+    /* 0049d308  call 0x4d9170  ; SubChallenge::SubChallenge */
     t = 0x004d9170u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d2f0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0049d30d  mov dword ptr [esi], 0x81ac80 */
+    /* 0049d30d  mov dword ptr [esi], 0x81ac80  ; vtable AIDifficulty */
     ea = (uint32_t)(esi);
     M32(ea) = 0x81ac80u;
     /* 0049d313  jmp 0x49d317 */
@@ -81,7 +83,7 @@ L_0049d315:
     F_LOGIC(32, r);
     esi = r;
 L_0049d317:
-    /* 0049d317  mov ecx, dword ptr [esp + 0x14] */
+    /* 0049d317  mov ecx, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0049d31b  test ecx, ecx */
@@ -99,7 +101,7 @@ L_0049d317:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 0049d326  call 0x402690 */
+    /* 0049d326  call 0x402690  ; std::string::assign_cstr */
     t = 0x00402690u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_0049d2f0_3;

@@ -1,0 +1,12 @@
+## file
+BAPConWeaponMagAmmo is a bot action-plan condition on the ammunition in the
+weapon's magazine (weapon object at this+8, its +8). The limit is at +8 of the
+plan variable at this+0x10; the flag at this+0xc picks the test.
+
+## 009f37f0
+evaluate: with this+0xc set: when the weapon's magazine count (slot 0x28) is 0
+returns limit != 0; a negative count gives false; otherwise returns whether
+the rounds in the magazine (slot 0x30 gives the magazine, its +4 points to the
+count) differ from the limit. With this+0xc clear: a negative count gives
+false, a count of 0 gives true, a negative round count gives false, otherwise
+true when rounds <= limit.

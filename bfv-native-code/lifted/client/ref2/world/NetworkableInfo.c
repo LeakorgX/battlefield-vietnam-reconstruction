@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00504a40  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 00504a40  NetworkableInfo::vf12_setByte_10h  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ * called by: Cmd_Game_setLightmaps::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_00504a40, bfv_client_l1_body_00504a40);
 void bfv_client_l1_body_00504a40(struct bfv_cpu *c)
 {
@@ -14,7 +17,7 @@ void bfv_client_l1_body_00504a40(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 00504a40  mov al, byte ptr [esp + 4] */
+    /* 00504a40  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 00504a44  mov byte ptr [ecx + 0x10], al */
@@ -31,7 +34,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0059ef80  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 0059ef80  NetworkableInfo::vf4  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_0059ef80, bfv_client_l1_body_0059ef80);
 BFV_L1_RESUME(bfv_client_l1r_0059ef80_1, bfv_client_l1_body_0059ef80, 1);
 void bfv_client_l1_body_0059ef80(struct bfv_cpu *c)
@@ -45,7 +50,7 @@ void bfv_client_l1_body_0059ef80(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 0059ef80  mov eax, dword ptr [esp + 4] */
+    /* 0059ef80  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0059ef84  push -1 */
@@ -66,7 +71,7 @@ void bfv_client_l1_body_0059ef80(struct bfv_cpu *c)
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ecx = r;
-    /* 0059ef8c  call 0x4019f0 */
+    /* 0059ef8c  call 0x4019f0  ; std::string::assign_substr */
     t = 0x004019f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0059ef80_1;
@@ -84,7 +89,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc830  dice::ref2::world::NetworkableInfo  (vtable store) */
+/* 006fc830  NetworkableInfo::NetworkableInfo  (vtable store)
+ * class: dice::ref2::world::NetworkableInfo
+ * called by: NetworkableInfoManager::createNewInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc830, bfv_client_l1_body_006fc830);
 void bfv_client_l1_body_006fc830(struct bfv_cpu *c)
 {
@@ -99,7 +107,7 @@ void bfv_client_l1_body_006fc830(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 006fc834  mov dword ptr [eax], 0xba532c */
+    /* 006fc834  mov dword ptr [eax], 0xba532c  ; vtable NetworkableInfo */
     ea = (uint32_t)(eax);
     M32(ea) = 0xba532cu;
     /* 006fc83a  mov dword ptr [eax + 8], 1 */
@@ -120,7 +128,7 @@ void bfv_client_l1_body_006fc830(struct bfv_cpu *c)
     /* 006fc84d  mov byte ptr [eax + 0x10], cl */
     ea = (uint32_t)(eax + 0x00000010u);
     M8(ea) = LO8(ecx);
-    /* 006fc850  mov dword ptr [eax + 0x14], 0x3f800000 */
+    /* 006fc850  mov dword ptr [eax + 0x14], 0x3f800000  ; 1.0f */
     ea = (uint32_t)(eax + 0x00000014u);
     M32(ea) = 0x3f800000u;
     /* 006fc857  mov byte ptr [eax + 0x18], cl */
@@ -149,7 +157,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc870  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc870  NetworkableInfo::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (395 classes implement it)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc870, bfv_client_l1_body_006fc870);
 void bfv_client_l1_body_006fc870(struct bfv_cpu *c)
 {
@@ -158,12 +169,12 @@ void bfv_client_l1_body_006fc870(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 006fc870  mov edx, dword ptr [0xb42718] */
+    /* 006fc870  mov edx, dword ptr [0xb42718]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00b42718u);
     edx = M32(ea);
     /* 006fc876  mov eax, ecx */
     eax = ecx;
-    /* 006fc878  mov ecx, dword ptr [esp + 4] */
+    /* 006fc878  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 006fc87c  cmp ecx, edx */
@@ -216,7 +227,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc8c0  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc8c0  NetworkableInfo::vf10  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc8c0, bfv_client_l1_body_006fc8c0);
 void bfv_client_l1_body_006fc8c0(struct bfv_cpu *c)
 {
@@ -225,10 +238,10 @@ void bfv_client_l1_body_006fc8c0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t r, ea;
-    /* 006fc8c0  fld dword ptr [esp + 4] */
+    /* 006fc8c0  fld dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 006fc8c4  fcomp dword ptr [0xba5324] */
+    /* 006fc8c4  fcomp dword ptr [0xba5324]  ; = 255.0f */
     ea = (uint32_t)(0x00ba5324u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 006fc8ca  fnstsw ax */
@@ -238,7 +251,7 @@ void bfv_client_l1_body_006fc8c0(struct bfv_cpu *c)
     F_LOGIC(8, r);
     /* 006fc8cf  jne 0x6fc8db */
     if (!zf) goto L_006fc8db;
-    /* 006fc8d1  mov dword ptr [ecx + 0x14], 0x437f0000 */
+    /* 006fc8d1  mov dword ptr [ecx + 0x14], 0x437f0000  ; 255.0f */
     ea = (uint32_t)(ecx + 0x00000014u);
     M32(ea) = 0x437f0000u;
     /* 006fc8d8  ret 4 */
@@ -246,7 +259,7 @@ void bfv_client_l1_body_006fc8c0(struct bfv_cpu *c)
     esp += 8;
     goto out;
 L_006fc8db:
-    /* 006fc8db  mov eax, dword ptr [esp + 4] */
+    /* 006fc8db  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 006fc8df  mov dword ptr [ecx + 0x14], eax */
@@ -263,7 +276,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc900  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc900  NetworkableInfo::vf18_getByte_dh  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc900, bfv_client_l1_body_006fc900);
 void bfv_client_l1_body_006fc900(struct bfv_cpu *c)
 {
@@ -286,7 +301,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc910  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc910  NetworkableInfo::vf19_getByte_eh  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc910, bfv_client_l1_body_006fc910);
 void bfv_client_l1_body_006fc910(struct bfv_cpu *c)
 {
@@ -309,7 +326,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc920  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc920  NetworkableInfo::vf20_getByte_fh  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc920, bfv_client_l1_body_006fc920);
 void bfv_client_l1_body_006fc920(struct bfv_cpu *c)
 {
@@ -332,7 +351,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc930  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc930  NetworkableInfo::vf21_setByte_dh  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc930, bfv_client_l1_body_006fc930);
 void bfv_client_l1_body_006fc930(struct bfv_cpu *c)
 {
@@ -341,7 +362,7 @@ void bfv_client_l1_body_006fc930(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006fc930  mov al, byte ptr [esp + 4] */
+    /* 006fc930  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 006fc934  mov byte ptr [ecx + 0xd], al */
@@ -358,7 +379,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc940  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc940  NetworkableInfo::vf22_setByte_eh  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc940, bfv_client_l1_body_006fc940);
 void bfv_client_l1_body_006fc940(struct bfv_cpu *c)
 {
@@ -367,7 +390,7 @@ void bfv_client_l1_body_006fc940(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006fc940  mov al, byte ptr [esp + 4] */
+    /* 006fc940  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 006fc944  mov byte ptr [ecx + 0xe], al */
@@ -384,7 +407,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc950  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc950  NetworkableInfo::vf23_setByte_fh  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc950, bfv_client_l1_body_006fc950);
 void bfv_client_l1_body_006fc950(struct bfv_cpu *c)
 {
@@ -393,7 +418,7 @@ void bfv_client_l1_body_006fc950(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 006fc950  mov al, byte ptr [esp + 4] */
+    /* 006fc950  mov al, byte ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     SET8L(eax, M8(ea));
     /* 006fc954  mov byte ptr [ecx + 0xf], al */
@@ -410,7 +435,9 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc970  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc970  NetworkableInfo::vf15_getByte_18h  (virtual method)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc970, bfv_client_l1_body_006fc970);
 void bfv_client_l1_body_006fc970(struct bfv_cpu *c)
 {
@@ -433,7 +460,10 @@ out: __attribute__((unused));
 }
 
 
-/* 006fc980  dice::ref2::world::NetworkableInfo  (virtual method) */
+/* 006fc980  NetworkableInfo::deleting_dtor  (virtual method)
+ * overrides: IBase::vf0  (395 classes implement it)
+ * class: dice::ref2::world::NetworkableInfo
+ */
 BFV_L1_ENTRY(bfv_client_l1_006fc980, bfv_client_l1_body_006fc980);
 BFV_L1_RESUME(bfv_client_l1r_006fc980_1, bfv_client_l1_body_006fc980, 1);
 BFV_L1_RESUME(bfv_client_l1r_006fc980_2, bfv_client_l1_body_006fc980, 2);
@@ -457,18 +487,18 @@ void bfv_client_l1_body_006fc980(struct bfv_cpu *c)
     esi = ecx;
     /* 006fc983  lea ecx, [esi + 0x24] */
     ecx = (uint32_t)(esi + 0x00000024u);
-    /* 006fc986  call 0x5a7c60 */
+    /* 006fc986  call 0x5a7c60  ; std::string::_Tidy */
     t = 0x005a7c60u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fc980_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 006fc98b  test byte ptr [esp + 8], 1 */
+    /* 006fc98b  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
-    /* 006fc990  mov dword ptr [esi], 0xb4274c */
+    /* 006fc990  mov dword ptr [esi], 0xb4274c  ; vtable IBase */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb4274cu;
     /* 006fc996  je 0x6fc9a1 */
@@ -477,7 +507,7 @@ R_1:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 006fc999  call 0x403680 */
+    /* 006fc999  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_006fc980_2;

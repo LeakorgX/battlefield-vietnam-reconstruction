@@ -1,0 +1,8 @@
+## file
+Base plan action for aiming in 2D (yaw/pitch controls). Subclasses BAPAAimAtObject and BAPAAimAtPoint supply the target; an Aimer helper object is embedded at this+0x98.
+
+## 009f5c40
+Destructor: tears down the embedded Aimer at this+0x98, restores the base vtables, counts the destruction in g_bapaDestroyedCount and frees the object when bit 0 of the flag argument is set.
+
+## 00a0ab50
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0. Subclasses override it.

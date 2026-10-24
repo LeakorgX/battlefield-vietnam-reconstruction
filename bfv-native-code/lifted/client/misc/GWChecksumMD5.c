@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008df080  GWChecksumMD5  (vtable store) */
+/* 008df080  GWChecksumMD5::ctor_dtor  (vtable store)
+ * class: GWChecksumMD5
+ * called by: SecureBlowfish::vf23_helper_008de270, SecureBlowfish::vf23_helper_008de370
+ */
 BFV_L1_ENTRY(bfv_client_l1_008df080, bfv_client_l1_body_008df080);
 void bfv_client_l1_body_008df080(struct bfv_cpu *c)
 {
@@ -20,7 +23,7 @@ void bfv_client_l1_body_008df080(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008df081  mov edi, ecx */
     edi = ecx;
-    /* 008df083  mov dword ptr [edi], 0xbe117c */
+    /* 008df083  mov dword ptr [edi], 0xbe117c  ; vtable GWChecksumMD5 */
     ea = (uint32_t)(edi);
     M32(ea) = 0xbe117cu;
     /* 008df089  mov ecx, 0x17 */
@@ -50,7 +53,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008df0a0  (between same file) */
+/* 008df0a0  GWChecksumMD5_008df0a0  (between same file)
+ * called by: SecureBlowfish::vf23_helper_008de270, SecureBlowfish::vf23_helper_008de370
+ */
 BFV_L1_ENTRY(bfv_client_l1_008df0a0, bfv_client_l1_body_008df0a0);
 void bfv_client_l1_body_008df0a0(struct bfv_cpu *c)
 {
@@ -92,7 +97,10 @@ out: __attribute__((unused));
 }
 
 
-/* 008df0d0  GWChecksumMD5  (vtable store) */
+/* 008df0d0  GWChecksumMD5::GWChecksumMD5  (vtable store)
+ * class: GWChecksumMD5
+ * called by: SecureBlowfish::vf23_helper_008de270, SecureBlowfish::vf23_helper_008de370
+ */
 BFV_L1_ENTRY(bfv_client_l1_008df0d0, bfv_client_l1_body_008df0d0);
 void bfv_client_l1_body_008df0d0(struct bfv_cpu *c)
 {
@@ -107,7 +115,7 @@ void bfv_client_l1_body_008df0d0(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 008df0d4  mov dword ptr [eax], 0xbe117c */
+    /* 008df0d4  mov dword ptr [eax], 0xbe117c  ; vtable GWChecksumMD5 */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbe117cu;
     /* 008df0da  mov dword ptr [eax + 0x18], ecx */
@@ -139,7 +147,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008df100  GWChecksumMD5  (virtual method) */
+/* 008df100  GWChecksumMD5::deleting_dtor  (virtual method)
+ * class: GWChecksumMD5
+ */
 BFV_L1_ENTRY(bfv_client_l1_008df100, bfv_client_l1_body_008df100);
 BFV_L1_RESUME(bfv_client_l1r_008df100_1, bfv_client_l1_body_008df100, 1);
 void bfv_client_l1_body_008df100(struct bfv_cpu *c)
@@ -171,7 +181,7 @@ void bfv_client_l1_body_008df100(struct bfv_cpu *c)
     ecx = 0x17u;
     /* 008df10b  mov edi, esi */
     edi = esi;
-    /* 008df10d  mov dword ptr [esi], 0xbe117c */
+    /* 008df10d  mov dword ptr [esi], 0xbe117c  ; vtable GWChecksumMD5 */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe117cu;
     /* 008df113  rep stosd dword ptr es:[edi], eax */
@@ -180,7 +190,7 @@ void bfv_client_l1_body_008df100(struct bfv_cpu *c)
         edi += (df ? -4u : 4u);
         ecx--;
     }
-    /* 008df115  test byte ptr [esp + 0xc], 1 */
+    /* 008df115  test byte ptr [esp + 0xc], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -190,7 +200,7 @@ void bfv_client_l1_body_008df100(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008df11d  call 0x403680 */
+    /* 008df11d  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008df100_1;

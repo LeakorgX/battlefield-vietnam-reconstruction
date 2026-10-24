@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 00ac0200  dice::meme::ConcatenateListData  (vtable store) */
+/* 00ac0200  ConcatenateListData::create  (vtable store)
+ * class: dice::meme::ConcatenateListData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac0200, bfv_client_l1_body_00ac0200);
 BFV_L1_RESUME(bfv_client_l1r_00ac0200_1, bfv_client_l1_body_00ac0200, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac0200_2, bfv_client_l1_body_00ac0200, 2);
@@ -33,7 +35,7 @@ void bfv_client_l1_body_00ac0200(struct bfv_cpu *c)
     t = 0x20u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac0203  call 0x403610 */
+    /* 00ac0203  call 0x403610  ; operator_new */
     t = 0x00403610u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0200_1;
@@ -59,17 +61,17 @@ R_1:
     M32(esp) = t;
     /* 00ac0213  mov ecx, esi */
     ecx = esi;
-    /* 00ac0215  call 0x874530 */
+    /* 00ac0215  call 0x874530  ; Data::Data */
     t = 0x00874530u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0200_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 00ac021a  mov dword ptr [esi], 0xc0fa8c */
+    /* 00ac021a  mov dword ptr [esi], 0xc0fa8c  ; vtable ConcatenateListData */
     ea = (uint32_t)(esi);
     M32(ea) = 0xc0fa8cu;
-    /* 00ac0220  call 0x874820 */
+    /* 00ac0220  call 0x874820  ; Data::getRuntimeClass */
     t = 0x00874820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0200_3;
@@ -82,7 +84,7 @@ R_3:
     M32(esp) = t;
     /* 00ac0226  lea ecx, [esi + 0xc] */
     ecx = (uint32_t)(esi + 0x0000000cu);
-    /* 00ac0229  call 0xac3e20 */
+    /* 00ac0229  call 0xac3e20  ; ObjectList::ObjectList */
     t = 0x00ac3e20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0200_4;
@@ -119,7 +121,10 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac0520  dice::meme::ConcatenateListData  (virtual method) */
+/* 00ac0520  ConcatenateListData::getChar  (virtual method)
+ * overrides: Data::getChar  (41 classes implement it)
+ * class: dice::meme::ConcatenateListData
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac0520, bfv_client_l1_body_00ac0520);
 BFV_L1_RESUME(bfv_client_l1r_00ac0520_1, bfv_client_l1_body_00ac0520, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac0520_2, bfv_client_l1_body_00ac0520, 2);
@@ -218,7 +223,7 @@ R_2:
     F_LOGIC(32, r);
     /* 00ac0544  je 0xac0571 */
     if (zf) goto L_00ac0571;
-    /* 00ac0546  call 0x874820 */
+    /* 00ac0546  call 0x874820  ; Data::getRuntimeClass */
     t = 0x00874820u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0520_3;
@@ -314,7 +319,7 @@ L_00ac057b:
     M32(esp) = t;
     /* 00ac0580  mov ecx, esi */
     ecx = esi;
-    /* 00ac0582  call 0x874760 */
+    /* 00ac0582  call 0x874760  ; Data_00874760 */
     t = 0x00874760u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac0520_6;
@@ -449,8 +454,11 @@ out: __attribute__((unused));
 }
 
 
-/* 00ac06b0  dice::meme::ConcatenateListData  (virtual method)
- * strings: "dice::meme::ConcatenateListData" */
+/* 00ac06b0  ConcatenateListData::getRuntimeClass  (virtual method)
+ * overrides: RuntimeObject::getRuntimeClass  (219 classes implement it)
+ * class: dice::meme::ConcatenateListData
+ * strings: "dice::meme::ConcatenateListData"
+ */
 BFV_L1_ENTRY(bfv_client_l1_00ac06b0, bfv_client_l1_body_00ac06b0);
 BFV_L1_RESUME(bfv_client_l1r_00ac06b0_1, bfv_client_l1_body_00ac06b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_00ac06b0_2, bfv_client_l1_body_00ac06b0, 2);
@@ -481,27 +489,27 @@ void bfv_client_l1_body_00ac06b0(struct bfv_cpu *c)
     r = (M32(ea) | eax) & 0xffffffffu;
     F_LOGIC(32, r);
     M32(ea) = r;
-    /* 00ac06c5  push 0xc0fb54 */
+    /* 00ac06c5  push 0xc0fb54  ; "dice::meme::ConcatenateListData" */
     t = 0xc0fb54u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac06ca  mov ecx, 0xe214cc */
+    /* 00ac06ca  mov ecx, 0xe214cc  ; g_RuntimeClass_ConcatenateListData */
     ecx = 0xe214ccu;
-    /* 00ac06cf  call 0x875490 */
+    /* 00ac06cf  call 0x875490  ; RuntimeClass::RuntimeClass */
     t = 0x00875490u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac06b0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 00ac06d4  push 0xb41ba0 */
+    /* 00ac06d4  push 0xb41ba0  ; bfv_client_global_store_00b41ba0 */
     t = 0xb41ba0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00ac06d9  mov dword ptr [0xe214cc], 0xc0fa68 */
+    /* 00ac06d9  mov dword ptr [0xe214cc], 0xc0fa68  ; g_RuntimeClass_ConcatenateListData */
     ea = (uint32_t)(0x00e214ccu);
     M32(ea) = 0xc0fa68u;
-    /* 00ac06e3  call 0x7c2cd2 */
+    /* 00ac06e3  call 0x7c2cd2  ; atexit */
     t = 0x007c2cd2u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_00ac06b0_2;
@@ -515,7 +523,7 @@ R_2:
     F_ADD(32, a, b, r);
     esp = r;
 L_00ac06eb:
-    /* 00ac06eb  mov eax, 0xe214cc */
+    /* 00ac06eb  mov eax, 0xe214cc  ; g_RuntimeClass_ConcatenateListData */
     eax = 0xe214ccu;
     /* 00ac06f0  ret */
     c->eip = M32(esp);

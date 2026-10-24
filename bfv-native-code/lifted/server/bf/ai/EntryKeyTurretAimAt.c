@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007612c0  dice::bf::ai::EntryKeyTurretAimAt  (vtable store) */
+/* 007612c0  EntryKeyTurretAimAt::EntryKeyTurretAimAt  (vtable store)
+ * class: dice::bf::ai::EntryKeyTurretAimAt
+ * called by: AIConsole::ctor_dtor
+ */
 BFV_L1_ENTRY(bfv_server_l1_007612c0, bfv_server_l1_body_007612c0);
 void bfv_server_l1_body_007612c0(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_server_l1_body_007612c0(struct bfv_cpu *c)
     uint32_t ea;
     /* 007612c0  mov eax, ecx */
     eax = ecx;
-    /* 007612c2  mov dword ptr [eax], 0x8752fc */
+    /* 007612c2  mov dword ptr [eax], 0x8752fc  ; vtable EntryKeyTurretAimAt */
     ea = (uint32_t)(eax);
     M32(ea) = 0x8752fcu;
     /* 007612c8  ret */
@@ -30,7 +33,8 @@ out: __attribute__((unused));
 }
 
 
-/* 007612d0  (between same file) */
+/* 007612d0  EntryKeyTurretAimAt_007612d0  (between same file)
+ */
 BFV_L1_ENTRY(bfv_server_l1_007612d0, bfv_server_l1_body_007612d0);
 BFV_L1_RESUME(bfv_server_l1r_007612d0_1, bfv_server_l1_body_007612d0, 1);
 BFV_L1_RESUME(bfv_server_l1r_007612d0_2, bfv_server_l1_body_007612d0, 2);
@@ -88,15 +92,15 @@ void bfv_server_l1_body_007612d0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 007612ee  mov dword ptr [ebp - 0x10], esp */
+    /* 007612ee  mov dword ptr [ebp - 0x10], esp  ; var_14 */
     ea = (uint32_t)(ebp + 0xfffffff0u);
     M32(ea) = esp;
     /* 007612f1  mov esi, ecx */
     esi = ecx;
-    /* 007612f3  mov dword ptr [ebp - 0x14], esi */
+    /* 007612f3  mov dword ptr [ebp - 0x14], esi  ; var_18 */
     ea = (uint32_t)(ebp + 0xffffffecu);
     M32(ea) = esi;
-    /* 007612f6  call 0x48c760 */
+    /* 007612f6  call 0x48c760  ; std::list::_Buyheadnode_20_0048c760 */
     t = 0x0048c760u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007612d0_1;
@@ -109,10 +113,10 @@ R_1:
     /* 007612fe  mov dword ptr [esi + 8], 0 */
     ea = (uint32_t)(esi + 0x00000008u);
     M32(ea) = 0x0u;
-    /* 00761305  mov dword ptr [ebp - 4], 0 */
+    /* 00761305  mov dword ptr [ebp - 4], 0  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0x0u;
-    /* 0076130c  mov eax, dword ptr [ebp + 8] */
+    /* 0076130c  mov eax, dword ptr [ebp + 8]  ; arg_0 */
     ea = (uint32_t)(ebp + 0x00000008u);
     eax = M32(ea);
     /* 0076130f  mov eax, dword ptr [eax + 4] */
@@ -120,37 +124,37 @@ R_1:
     eax = M32(ea);
     /* 00761312  mov ecx, eax */
     ecx = eax;
-    /* 00761314  mov dword ptr [ebp - 0x18], ecx */
+    /* 00761314  mov dword ptr [ebp - 0x18], ecx  ; var_1c */
     ea = (uint32_t)(ebp + 0xffffffe8u);
     M32(ea) = ecx;
-    /* 00761317  mov dword ptr [ebp - 0x1c], ecx */
+    /* 00761317  mov dword ptr [ebp - 0x1c], ecx  ; var_20 */
     ea = (uint32_t)(ebp + 0xffffffe4u);
     M32(ea) = ecx;
-    /* 0076131a  mov dword ptr [ebp - 0x20], eax */
+    /* 0076131a  mov dword ptr [ebp - 0x20], eax  ; var_24 */
     ea = (uint32_t)(ebp + 0xffffffe0u);
     M32(ea) = eax;
     /* 0076131d  mov eax, dword ptr [eax] */
     ea = (uint32_t)(eax);
     eax = M32(ea);
-    /* 0076131f  mov dword ptr [ebp - 0x24], eax */
+    /* 0076131f  mov dword ptr [ebp - 0x24], eax  ; var_28 */
     ea = (uint32_t)(ebp + 0xffffffdcu);
     M32(ea) = eax;
-    /* 00761322  mov dword ptr [ebp - 0x28], eax */
+    /* 00761322  mov dword ptr [ebp - 0x28], eax  ; var_2c */
     ea = (uint32_t)(ebp + 0xffffffd8u);
     M32(ea) = eax;
     /* 00761325  mov edx, dword ptr [esi + 4] */
     ea = (uint32_t)(esi + 0x00000004u);
     edx = M32(ea);
-    /* 00761328  mov dword ptr [ebp - 0x2c], edx */
+    /* 00761328  mov dword ptr [ebp - 0x2c], edx  ; var_30 */
     ea = (uint32_t)(ebp + 0xffffffd4u);
     M32(ea) = edx;
     /* 0076132b  mov edx, dword ptr [edx] */
     ea = (uint32_t)(edx);
     edx = M32(ea);
-    /* 0076132d  mov dword ptr [ebp - 0x30], edx */
+    /* 0076132d  mov dword ptr [ebp - 0x30], edx  ; var_34 */
     ea = (uint32_t)(ebp + 0xffffffd0u);
     M32(ea) = edx;
-    /* 00761330  mov dword ptr [ebp - 0x34], edx */
+    /* 00761330  mov dword ptr [ebp - 0x34], edx  ; var_38 */
     ea = (uint32_t)(ebp + 0xffffffccu);
     M32(ea) = edx;
     /* 00761333  push ecx */
@@ -167,19 +171,19 @@ R_1:
     M32(esp) = t;
     /* 00761336  mov ecx, esi */
     ecx = esi;
-    /* 00761338  call 0x75d0f0 */
+    /* 00761338  call 0x75d0f0  ; EntryKeyTurretAimAt_helper_0075d0f0 */
     t = 0x0075d0f0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007612d0_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 0076133d  mov dword ptr [ebp - 4], 0xffffffff */
+    /* 0076133d  mov dword ptr [ebp - 4], 0xffffffff  ; var_8 */
     ea = (uint32_t)(ebp + 0xfffffffcu);
     M32(ea) = 0xffffffffu;
     /* 00761344  mov eax, esi */
     eax = esi;
-    /* 00761346  mov ecx, dword ptr [ebp - 0xc] */
+    /* 00761346  mov ecx, dword ptr [ebp - 0xc]  ; var_10 */
     ea = (uint32_t)(ebp + 0xfffffff4u);
     ecx = M32(ea);
     /* 00761349  mov dword ptr fs:[0], ecx */
@@ -214,7 +218,9 @@ out: __attribute__((unused));
 }
 
 
-/* 00761359  (source path) */
+/* 00761359  EntryKeyTurretAimAt_007612d0_catch_00761359  (source path)
+ * also entered at 00761370: EntryKeyTurretAimAt::execute
+ */
 BFV_L1_ENTRY(bfv_server_l1_00761359, bfv_server_l1_body_00761359);
 BFV_L1_RESUME(bfv_server_l1r_00761359_1, bfv_server_l1_body_00761359, 1);
 BFV_L1_RESUME(bfv_server_l1r_00761359_2, bfv_server_l1_body_00761359, 2);
@@ -233,7 +239,7 @@ void bfv_server_l1_body_00761359(struct bfv_cpu *c)
     /* 00761359  mov ecx, dword ptr [ebp - 0x14] */
     ea = (uint32_t)(ebp + 0xffffffecu);
     ecx = M32(ea);
-    /* 0076135c  call 0x737110 */
+    /* 0076135c  call 0x737110  ; BBPAvoidCollisionInfantery_00737110 */
     t = 0x00737110u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00761359_1;
@@ -248,7 +254,7 @@ R_1:
     t = 0x0u;
     esp -= 4;
     M32(esp) = t;
-    /* 00761365  call 0x63a98e */
+    /* 00761365  call 0x63a98e  ; _CxxThrowException */
     t = 0x0063a98eu;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_00761359_2;

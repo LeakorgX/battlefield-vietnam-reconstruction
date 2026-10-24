@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 005dde60  dice::ref2::world::CompareLodSelector  (virtual method) */
+/* 005dde60  CompareLodSelector::vf8  (virtual method)
+ * class: dice::ref2::world::CompareLodSelector
+ */
 BFV_L1_ENTRY(bfv_server_l1_005dde60, bfv_server_l1_body_005dde60);
 BFV_L1_RESUME(bfv_server_l1r_005dde60_1, bfv_server_l1_body_005dde60, 1);
 void bfv_server_l1_body_005dde60(struct bfv_cpu *c)
@@ -57,16 +59,16 @@ void bfv_server_l1_body_005dde60(struct bfv_cpu *c)
     t = ebx;
     esp -= 4;
     M32(esp) = t;
-    /* 005dde73  lea ecx, [esp + 0x18] */
+    /* 005dde73  lea ecx, [esp + 0x18]  ; &var_4 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 005dde77  call 0x5c5dc0 */
+    /* 005dde77  call 0x5c5dc0  ; DistLodSelectorTemplate_005c5dc0 */
     t = 0x005c5dc0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005dde60_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 005dde7c  mov eax, dword ptr [esp + 0xc] */
+    /* 005dde7c  mov eax, dword ptr [esp + 0xc]  ; var_4 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 005dde80  cmp eax, edi */
@@ -191,7 +193,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005ddeb0  dice::ref2::world::CompareLodSelector  (virtual method) */
+/* 005ddeb0  CompareLodSelector::vf10  (virtual method)
+ * class: dice::ref2::world::CompareLodSelector
+ */
 BFV_L1_ENTRY(bfv_server_l1_005ddeb0, bfv_server_l1_body_005ddeb0);
 BFV_L1_RESUME(bfv_server_l1r_005ddeb0_1, bfv_server_l1_body_005ddeb0, 1);
 BFV_L1_RESUME(bfv_server_l1r_005ddeb0_2, bfv_server_l1_body_005ddeb0, 2);
@@ -225,7 +229,7 @@ void bfv_server_l1_body_005ddeb0(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 005ddeb3  mov edi, dword ptr [esp + 0x10] */
+    /* 005ddeb3  mov edi, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     edi = M32(ea);
     /* 005ddeb7  mov esi, ecx */
@@ -237,7 +241,7 @@ void bfv_server_l1_body_005ddeb0(struct bfv_cpu *c)
     /* 005ddeba  mov dword ptr [esi + 0x38], 0 */
     ea = (uint32_t)(esi + 0x00000038u);
     M32(ea) = 0x0u;
-    /* 005ddec1  call 0x5dd9a0 */
+    /* 005ddec1  call 0x5dd9a0  ; DistLodSelector::vf9 */
     t = 0x005dd9a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005ddeb0_1;
@@ -302,7 +306,7 @@ R_3:
     /* 005ddee4  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 005ddee6  fstp dword ptr [esp + 0x10] */
+    /* 005ddee6  fstp dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfstp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 005ddeea  fstp st(0) */
@@ -370,7 +374,7 @@ L_005ddefa:
     /* 005ddf0a  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 005ddf0d  mov ecx, dword ptr [esp + 0x10] */
+    /* 005ddf0d  mov ecx, dword ptr [esp + 0x10]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 005ddf11  mov dword ptr [eax], ecx */
@@ -391,7 +395,7 @@ L_005ddf1b:
     /* 005ddf1b  mov eax, dword ptr [esi + 8] */
     ea = (uint32_t)(esi + 0x00000008u);
     eax = M32(ea);
-    /* 005ddf1e  lea edx, [esp + 0x10] */
+    /* 005ddf1e  lea edx, [esp + 0x10]  ; &arg_0 */
     edx = (uint32_t)(esp + 0x00000010u);
     /* 005ddf22  push edx */
     t = edx;
@@ -407,7 +411,7 @@ L_005ddf1b:
     M32(esp) = t;
     /* 005ddf26  mov ecx, esi */
     ecx = esi;
-    /* 005ddf28  call 0x4297c0 */
+    /* 005ddf28  call 0x4297c0  ; bfv_vector_insert */
     t = 0x004297c0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_005ddeb0_4;

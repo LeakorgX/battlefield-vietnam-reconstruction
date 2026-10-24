@@ -1,0 +1,11 @@
+## file
+BAPConObjectValidPitchAiming is a bot action-plan condition: true when the
+target can be reached within the pitch limits of the vehicle's aiming
+component.
+
+## 009f7750
+evaluate(bot): gets the aim data from BAPConObjectValidAiming_sub_009f7320
+(returns false when that fails). Takes the vehicle handle at this+0xc, or the
+bot's own vehicle (bot slot 0xcc) when it is -1, gets component 5 of its world
+object (interface object+0x38, +4, +0x20, slot 0xa0) and returns the pitch
+test BAPConObjectValidPitchAiming_evaluate_helper_009be9a0 for it.

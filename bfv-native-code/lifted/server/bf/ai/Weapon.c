@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 0072a5e0  dice::bf::ai::Weapon  (virtual method) */
+/* 0072a5e0  Weapon::queryInterface  (virtual method)
+ * overrides: IBase::queryInterface  (301 classes implement it)
+ * class: dice::bf::ai::Weapon
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a5e0, bfv_server_l1_body_0072a5e0);
 void bfv_server_l1_body_0072a5e0(struct bfv_cpu *c)
 {
@@ -14,12 +17,12 @@ void bfv_server_l1_body_0072a5e0(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 0072a5e0  mov edx, dword ptr [0x807430] */
+    /* 0072a5e0  mov edx, dword ptr [0x807430]  ; g_interfaceID_IBase */
     ea = (uint32_t)(0x00807430u);
     edx = M32(ea);
     /* 0072a5e6  mov eax, ecx */
     eax = ecx;
-    /* 0072a5e8  mov ecx, dword ptr [esp + 4] */
+    /* 0072a5e8  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
     /* 0072a5ec  cmp ecx, edx */
@@ -29,7 +32,7 @@ void bfv_server_l1_body_0072a5e0(struct bfv_cpu *c)
     F_SUB(32, a, b, r);
     /* 0072a5ee  je 0x72a60a */
     if (zf) goto L_0072a60a;
-    /* 0072a5f0  cmp ecx, dword ptr [0x860518] */
+    /* 0072a5f0  cmp ecx, dword ptr [0x860518]  ; interfaceID(Weapon) */
     ea = (uint32_t)(0x00860518u);
     a = ecx;
     b = M32(ea);
@@ -41,7 +44,7 @@ void bfv_server_l1_body_0072a5e0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0072a5f9  mov esi, dword ptr [0x820660] */
+    /* 0072a5f9  mov esi, dword ptr [0x820660]  ; interfaceID(DecalEmitter) */
     ea = (uint32_t)(0x00820660u);
     esi = M32(ea);
     /* 0072a5ff  xor edx, edx */
@@ -80,7 +83,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a610  dice::bf::ai::Weapon  (virtual method) */
+/* 0072a610  Weapon::vf15_get_ch_3ch  (virtual method)
+ * class: dice::bf::ai::Weapon
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a610, bfv_server_l1_body_0072a610);
 void bfv_server_l1_body_0072a610(struct bfv_cpu *c)
 {
@@ -106,7 +111,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0072a620  dice::bf::ai::Weapon  (virtual method) */
+/* 0072a620  Weapon::vf16_get_ch_38h  (virtual method)
+ * class: dice::bf::ai::Weapon
+ */
 BFV_L1_ENTRY(bfv_server_l1_0072a620, bfv_server_l1_body_0072a620);
 void bfv_server_l1_body_0072a620(struct bfv_cpu *c)
 {
@@ -132,7 +139,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007bfd00  dice::bf::ai::Weapon  (vtable store) */
+/* 007bfd00  Weapon::Weapon  (vtable store)
+ * class: dice::bf::ai::Weapon
+ * called by: WeaponFireArm::WeaponFireArm, WeaponBundle::WeaponBundle
+ */
 BFV_L1_ENTRY(bfv_server_l1_007bfd00, bfv_server_l1_body_007bfd00);
 void bfv_server_l1_body_007bfd00(struct bfv_cpu *c)
 {
@@ -143,10 +153,10 @@ void bfv_server_l1_body_007bfd00(struct bfv_cpu *c)
     uint32_t ea;
     /* 007bfd00  mov eax, ecx */
     eax = ecx;
-    /* 007bfd02  mov ecx, dword ptr [esp + 4] */
+    /* 007bfd02  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 007bfd06  mov dword ptr [eax], 0x87b894 */
+    /* 007bfd06  mov dword ptr [eax], 0x87b894  ; vtable Weapon */
     ea = (uint32_t)(eax);
     M32(ea) = 0x87b894u;
     /* 007bfd0c  mov dword ptr [eax + 4], 1 */

@@ -1,0 +1,5 @@
+## file
+Look action that looks along the direction given by another object (handle at this+0x38).
+
+## 009f4950
+vf6: resolves the handle at this+0x38. Sets the valid flag to whether it still exists; if not the direction is zero. Otherwise the direction comes from slot 0x28 of that object.

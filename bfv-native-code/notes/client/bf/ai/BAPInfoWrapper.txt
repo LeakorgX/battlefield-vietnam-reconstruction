@@ -1,0 +1,13 @@
+## file
+BAPInfoWrapper is a plan statement that wraps one child statement (this+0x18)
+and runs it through the bot's statement runner.
+
+## 009eee50
+vf2: forwards to the child statement's vf2 (its control-lock masks).
+
+## 00a0a730
+execute(bot, &flag, &done): calls bot slot 0xd8, then runs the child statement
+through the bot's runner (bot+0xa8, its slot 4) with the same flags.
+
+## 00a0a6f0
+Destructor: restores the base vtables, counts the destruction in g_bapaDestroyedCount and returns the object to g_MemoryPool_BAPInfoWrapper when bit 0 of the flag argument is set.

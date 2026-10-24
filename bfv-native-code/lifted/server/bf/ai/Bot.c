@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 00597550  dice::bf::ai::Bot  (virtual method) */
+/* 00597550  Bot::vf80  (virtual method)
+ * class: dice::bf::ai::Bot
+ * called by: GameServer::vf11_helper_004d8420, Cmd_AiStrategy_numberOfAttacks::execute, SAI_helper_0077ed40, SAI::distributeAttack
+ */
 BFV_L1_ENTRY(bfv_server_l1_00597550, bfv_server_l1_body_00597550);
 void bfv_server_l1_body_00597550(struct bfv_cpu *c)
 {

@@ -5,8 +5,10 @@
 #include "l1.h"
 
 
-/* 005f5110  dice::ref2::world::?A0x3206b536::ConsoleClass61  (vtable store)
- * strings: "refreshTerrainSampling", "void" */
+/* 005f5110  Cmd_Terrain_refreshTerrainSampling::Cmd_Terrain_refreshTerrainSampling  (vtable store)
+ * class: dice::ref2::world::?A0x3206b536::ConsoleClass61  (console command "Terrain.refreshTerrainSampling")
+ * strings: "refreshTerrainSampling", "void"
+ */
 BFV_L1_ENTRY(bfv_client_l1_005f5110, bfv_client_l1_body_005f5110);
 BFV_L1_RESUME(bfv_client_l1r_005f5110_1, bfv_client_l1_body_005f5110, 1);
 BFV_L1_RESUME(bfv_client_l1r_005f5110_2, bfv_client_l1_body_005f5110, 2);
@@ -26,7 +28,7 @@ void bfv_client_l1_body_005f5110(struct bfv_cpu *c)
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 005f5111  mov eax, dword ptr [0xd442bc] */
+    /* 005f5111  mov eax, dword ptr [0xd442bc]  ; g_consoleCategory */
     ea = (uint32_t)(0x00d442bcu);
     eax = M32(ea);
     /* 005f5116  push ebx */
@@ -46,10 +48,10 @@ void bfv_client_l1_body_005f5110(struct bfv_cpu *c)
     r = 0;
     F_LOGIC(32, r);
     eax = r;
-    /* 005f511f  mov dword ptr [esi + 0xc], 0xb7a004 */
+    /* 005f511f  mov dword ptr [esi + 0xc], 0xb7a004  ; "refreshTerrainSampling" */
     ea = (uint32_t)(esi + 0x0000000cu);
     M32(ea) = 0xb7a004u;
-    /* 005f5126  mov dword ptr [esi], 0xb79fa4 */
+    /* 005f5126  mov dword ptr [esi], 0xb79fa4  ; vtable Cmd_Terrain_refreshTerrainSampling */
     ea = (uint32_t)(esi);
     M32(ea) = 0xb79fa4u;
     /* 005f512c  mov byte ptr [esi + 0xa1], 1 */
@@ -58,7 +60,7 @@ void bfv_client_l1_body_005f5110(struct bfv_cpu *c)
     /* 005f5133  mov dword ptr [esi + 4], eax */
     ea = (uint32_t)(esi + 0x00000004u);
     M32(ea) = eax;
-    /* 005f5136  mov ecx, dword ptr [0xd442c0] */
+    /* 005f5136  mov ecx, dword ptr [0xd442c0]  ; g_consoleCategoryFlags */
     ea = (uint32_t)(0x00d442c0u);
     ecx = M32(ea);
     /* 005f513c  mov dword ptr [esi + 0x10], ecx */
@@ -70,13 +72,13 @@ void bfv_client_l1_body_005f5110(struct bfv_cpu *c)
     /* 005f5142  mov dword ptr [esi + 0x18], eax */
     ea = (uint32_t)(esi + 0x00000018u);
     M32(ea) = eax;
-    /* 005f5145  mov dword ptr [esi + 0x4c], 0xb42840 */
+    /* 005f5145  mov dword ptr [esi + 0x4c], 0xb42840  ; "void" */
     ea = (uint32_t)(esi + 0x0000004cu);
     M32(ea) = 0xb42840u;
     /* 005f514c  mov byte ptr [esi + 0xa0], al */
     ea = (uint32_t)(esi + 0x000000a0u);
     M8(ea) = LO8(eax);
-    /* 005f5152  mov eax, dword ptr [0xd7f098] */
+    /* 005f5152  mov eax, dword ptr [0xd7f098]  ; g_consoleCommands_Terrain_head */
     ea = (uint32_t)(0x00d7f098u);
     eax = M32(ea);
     /* 005f5157  mov ecx, dword ptr [eax + 4] */
@@ -88,7 +90,7 @@ void bfv_client_l1_body_005f5110(struct bfv_cpu *c)
     M32(esp) = t;
     /* 005f515b  lea ebx, [eax + 4] */
     ebx = (uint32_t)(eax + 0x00000004u);
-    /* 005f515e  lea edx, [esp + 0xc] */
+    /* 005f515e  lea edx, [esp + 0xc]  ; &var_4 */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 005f5162  push edx */
     t = edx;
@@ -102,12 +104,12 @@ void bfv_client_l1_body_005f5110(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 005f5165  mov ecx, 0xd7f094 */
+    /* 005f5165  mov ecx, 0xd7f094  ; g_consoleCommands_Terrain */
     ecx = 0xd7f094u;
-    /* 005f516a  mov dword ptr [esp + 0x18], esi */
+    /* 005f516a  mov dword ptr [esp + 0x18], esi  ; var_4 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = esi;
-    /* 005f516e  call 0x403af0 */
+    /* 005f516e  call 0x403af0  ; std::list::_Buynode */
     t = 0x00403af0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005f5110_1;
@@ -118,11 +120,11 @@ R_1:
     t = 0x1u;
     esp -= 4;
     M32(esp) = t;
-    /* 005f5175  mov ecx, 0xd7f094 */
+    /* 005f5175  mov ecx, 0xd7f094  ; g_consoleCommands_Terrain */
     ecx = 0xd7f094u;
     /* 005f517a  mov edi, eax */
     edi = eax;
-    /* 005f517c  call 0x489ee0 */
+    /* 005f517c  call 0x489ee0  ; std::list::_Incsize */
     t = 0x00489ee0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_005f5110_2;
@@ -167,7 +169,9 @@ out: __attribute__((unused));
 }
 
 
-/* 005f5190  dice::ref2::world::?A0x3206b536::ConsoleClass61  (virtual method) */
+/* 005f5190  Cmd_Terrain_refreshTerrainSampling::execute  (virtual method)
+ * class: dice::ref2::world::?A0x3206b536::ConsoleClass61  (console command "Terrain.refreshTerrainSampling")
+ */
 BFV_L1_ENTRY(bfv_client_l1_005f5190, bfv_client_l1_body_005f5190);
 BFV_L1_RESUME(bfv_client_l1r_005f5190_1, bfv_client_l1_body_005f5190, 1);
 void bfv_client_l1_body_005f5190(struct bfv_cpu *c)
@@ -192,13 +196,13 @@ void bfv_client_l1_body_005f5190(struct bfv_cpu *c)
     /* 005f5197  mov byte ptr [ecx + 0xa0], 0 */
     ea = (uint32_t)(ecx + 0x000000a0u);
     M8(ea) = 0x0u;
-    /* 005f519e  mov ecx, dword ptr [0xd7d014] */
+    /* 005f519e  mov ecx, dword ptr [0xd7d014]  ; g_pObjectManager */
     ea = (uint32_t)(0x00d7d014u);
     ecx = M32(ea);
     /* 005f51a4  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 005f51a6  call dword ptr [eax + 0x68] */
+    /* 005f51a6  call dword ptr [eax + 0x68]  ; vf26 of Terrain.refreshTerrainSampling, -> ObjectManager::vf26 = ObjectManager::refreshTerrainSampling */
     ea = (uint32_t)(eax + 0x00000068u);
     t = M32(ea);
     esp -= 4;

@@ -24,7 +24,7 @@ from pathlib import Path
 import pefile
 from capstone import Cs,CS_ARCH_X86,CS_MODE_32,CS_OP_REG,CS_OP_IMM,CS_OP_MEM
 from capstone import x86_const as X
-from build import PROJECT,GAME,TARGETS
+from build import PROJECT,GAME,TARGETS,code_sha256,edited as is_edited
 
 REPORTS=PROJECT.parent/'reports'
 GAP=0x400;STACK_LIMIT=GAP-0x80;DEEP_LIMIT=0xe00;SHARD=500  # deeper bodies use their own gap (BFV_L1_ENTRY_DEEP)
@@ -458,7 +458,13 @@ def stack_depth(insns,inside,restarts=None):
             base=ops[1].mem.base and i.reg_name(ops[1].mem.base)
             if base=='esp':sp+=ops[1].mem.disp  # `lea esp, [esp]` is alignment padding
             elif base=='ebp' and bp is not None:sp=bp+ops[1].mem.disp
-            elif base=='ebp' and restarts is not None:restarts.add(i.address);sp=0
+            elif base=='ebp' and restarts is not None:
+                # `lea esp, [ebp+4]; mov ebp, [ebp]` reads the saved EBP at ESP-4,
+                # where the resume trampoline leaves its continuation word: the
+                # body leaves after the load instead
+                nxt=index.get(i.address+i.size)
+                late=ops[1].mem.disp==4 and nxt is not None and nxt.mnemonic=='mov' and nxt.op_str=='ebp, dword ptr [ebp]'
+                restarts.add(nxt.address if late else i.address);sp=0
             else:return None
         elif m=='and' and reg(0)=='esp' and ops[1].type==CS_OP_IMM and (ops[1].imm&0xffffffff)>=0xfffff000:
             sp-=(~ops[1].imm)&0xfff  # stack alignment lowers ESP by at most this much
@@ -600,7 +606,7 @@ def main():
         if (out/'catalog.json').exists() and not args.force:  # never overwrite mods silently
             import sort_lifted
             old_catalog=json.loads((out/'catalog.json').read_text());texts=sort_lifted.split_texts(out)
-            edited=[e['address'] for e in old_catalog['entries'] if hashlib.sha256(texts.get(e['symbol'],'').encode()).hexdigest()!=e['c_sha256']]
+            edited=[e['address'] for e in old_catalog['entries'] if is_edited(e,texts.get(e['symbol'],''))]
             if edited:raise SystemExit(f'{target}: {len(edited)} lifted functions were edited ({", ".join(edited[:5])}); '
                 'commit or save them, then rerun with --force to overwrite')
     for target in ['client','server'] if args.target=='both' else [args.target]:
@@ -625,7 +631,7 @@ def main():
                     reason='unhandled';unhandled[str(error)]+=1
             if reason:rejected[reason]+=1;continue
             span=insns[-1].address+insns[-1].size-a;code=pe.get_data(a-base,span)
-            entries.append(dict(address=f'{a:08x}',symbol=stub,c_sha256=hashlib.sha256(text.encode()).hexdigest(),bytes=span,instructions=len(insns),stack_depth=d,
+            entries.append(dict(address=f'{a:08x}',symbol=stub,c_sha256=hashlib.sha256(text.encode()).hexdigest(),code_sha256=code_sha256(text),bytes=span,instructions=len(insns),stack_depth=d,
                 resumes=resumes,exits=[f'{t:08x}' for t in exits(insns)],
                 ranges=ranges(insns),guarded_prefix=pe.get_data(a-base,5).hex(),native_body=code.hex()));sources.append(text)
             if args.limit and len(entries)>=args.limit:break

@@ -1,0 +1,29 @@
+## file
+Base plan action for aiming in 3D (aircraft and helicopters). Holds a lead solver (Aimer) at this+0x10c and a weapon offset at this+0xf4..+0xfc that is added to every point it returns.
+
+## 009f9670
+vf11: copies the vector at this+0xac to the output and returns the valid flag at this+0x108.
+
+## 009f96a0
+vf13: copies the vector at this+0xb8 to the output and returns the valid flag at this+0x108.
+
+## 009f96d0
+vf14: writes the float at this+0x104 to the output and returns the valid flag at this+0x108.
+
+## 009f96f0
+Destructor: tears down the embedded Aimer at this+0x10c, restores the base vtables, counts the destruction in g_bapaDestroyedCount and frees the object when bit 0 of the flag argument is set.
+
+## 00a032f0
+Lead solver for a gravity-free intercept. From the target's relative position and velocity (this+0x48..+0x5c) and the projectile speed it builds the coefficients of a fourth-order polynomial in time, solves it with sub_0076ed10, and keeps the non-negative root whose predicted point (Aimer_00a02c30) is closest to the target path. Writes the best time and aim point to the outputs and returns whether any root was usable.
+
+## 00a0ae80
+Base execute: does nothing, sets flag = 0 and done = 1 and returns 0.
+
+## 00a0aec0
+vf15: target point at a given time from Aimer_00a02c30, shifted by the weapon offset at this+0xf4..+0xfc.
+
+## 00a0af30
+vf16: runs the intercept solver 00a032f0 on the Aimer at this+0x10c and adds the weapon offset at this+0xf4..+0xfc to the resulting aim point.
+
+## 00a0afa0
+vf12: predicted target point at (current AI time + the given delay) from Aimer_00a02bc0, shifted by the weapon offset at this+0xf4..+0xfc.

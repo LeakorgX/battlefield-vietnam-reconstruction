@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 009bdde0  dice::bf::ai::SCHeterogeneous  (vtable store) */
+/* 009bdde0  SCHeterogeneous::SCHeterogeneous  (vtable store)
+ * class: dice::bf::ai::SCHeterogeneous
+ * called by: AiStrategy::createHeterogeneousCondition
+ */
 BFV_L1_ENTRY(bfv_client_l1_009bdde0, bfv_client_l1_body_009bdde0);
 BFV_L1_RESUME(bfv_client_l1r_009bdde0_1, bfv_client_l1_body_009bdde0, 1);
 void bfv_client_l1_body_009bdde0(struct bfv_cpu *c)
@@ -19,10 +22,10 @@ void bfv_client_l1_body_009bdde0(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 009bdde0  mov eax, dword ptr [esp + 0x14] */
+    /* 009bdde0  mov eax, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
-    /* 009bdde4  mov edx, dword ptr [esp + 0x10] */
+    /* 009bdde4  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 009bdde8  push esi */
@@ -33,26 +36,26 @@ void bfv_client_l1_body_009bdde0(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 009bddea  mov eax, dword ptr [esp + 0x14] */
+    /* 009bddea  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 009bddee  mov esi, ecx */
     esi = ecx;
-    /* 009bddf0  mov ecx, dword ptr [esp + 0x10] */
+    /* 009bddf0  mov ecx, dword ptr [esp + 0x10]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000010u);
     ecx = M32(ea);
     /* 009bddf4  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 009bddf5  mov ecx, dword ptr [esp + 0x28] */
+    /* 009bddf5  mov ecx, dword ptr [esp + 0x28]  ; arg_18 */
     ea = (uint32_t)(esp + 0x00000028u);
     ecx = M32(ea);
     /* 009bddf9  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 009bddfa  mov edx, dword ptr [esp + 0x14] */
+    /* 009bddfa  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000014u);
     edx = M32(ea);
     /* 009bddfe  push eax */
@@ -69,20 +72,20 @@ void bfv_client_l1_body_009bdde0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 009bde01  mov ecx, esi */
     ecx = esi;
-    /* 009bde03  call 0x95b920 */
+    /* 009bde03  call 0x95b920  ; StrategyCondition::StrategyCondition */
     t = 0x0095b920u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_009bdde0_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 009bde08  mov eax, dword ptr [esp + 0x1c] */
+    /* 009bde08  mov eax, dword ptr [esp + 0x1c]  ; arg_14 */
     ea = (uint32_t)(esp + 0x0000001cu);
     eax = M32(ea);
     /* 009bde0c  mov dword ptr [esi + 0x3c], eax */
     ea = (uint32_t)(esi + 0x0000003cu);
     M32(ea) = eax;
-    /* 009bde0f  mov dword ptr [esi], 0xbf7df4 */
+    /* 009bde0f  mov dword ptr [esi], 0xbf7df4  ; vtable SCHeterogeneous */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf7df4u;
     /* 009bde15  mov eax, esi */

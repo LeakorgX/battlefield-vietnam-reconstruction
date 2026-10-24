@@ -1,0 +1,8 @@
+## file
+Plan builder for a ground vehicle roaming to a point.
+
+## 009a8a40
+vf4 (shared entry at 009a8a90): records a roam point for this bot: sets the per-bot flag to 1 and stores the 3-float point in the per-bot array at this+0xc.
+
+## 009a8ac0
+buildPlan: clears the current plan, reads the bot position (control 5) and its size times 4 as the arrival radius, then builds a BAPConPosition at the stored point and a 0xa8-byte BAPAMoveToFinding towards it.

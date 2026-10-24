@@ -1,0 +1,5 @@
+## file
+Plan condition: aim precision check for a weapon component, with a quick pass when the weapon already points close to the target.
+
+## 009f7a60
+Uses the aiming component at this+0x10; false unless its vf10 reports ready and the target handle at this+8 resolves. When the bot's own object exposes a weapon with a ready flag (+5 of its +0xc data), it compares the target direction with the weapon matrix forward row: a dot product of at least 0.7 counts as a hit, stamps the AI time and returns true. Otherwise it compares the component's aim point (slot 0x30) with the predicted target point (slot 0x38 at lead time minus AI time). Without this+0x18: true when the squared distance is below this+0xc. With this+0x18 it tracks the smallest squared error in this+0x14 (reset to FLT_MAX) the same way as BAPCConPrecision3d. Successes stamp the AI time with bfv_client_set_word_00970ce0.

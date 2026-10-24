@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 008de240  dice::network::crypto::RsaRandom  (vtable store) */
+/* 008de240  RsaRandom::RsaRandom  (vtable store)
+ * class: dice::network::crypto::RsaRandom
+ * called by: SecureBlowfish::SecureBlowfish
+ */
 BFV_L1_ENTRY(bfv_client_l1_008de240, bfv_client_l1_body_008de240);
 void bfv_client_l1_body_008de240(struct bfv_cpu *c)
 {
@@ -16,7 +19,7 @@ void bfv_client_l1_body_008de240(struct bfv_cpu *c)
     uint32_t ea;
     /* 008de240  mov eax, ecx */
     eax = ecx;
-    /* 008de242  mov dword ptr [eax], 0xbe116c */
+    /* 008de242  mov dword ptr [eax], 0xbe116c  ; vtable RsaRandom */
     ea = (uint32_t)(eax);
     M32(ea) = 0xbe116cu;
     /* 008de248  ret */
@@ -30,7 +33,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008de250  (between same file) */
+/* 008de250  SecureBlowfish::vf23_helper_008de250  (between same file)
+ * called by: SecureBlowfish::vf23
+ */
 BFV_L1_ENTRY(bfv_client_l1_008de250, bfv_client_l1_body_008de250);
 void bfv_client_l1_body_008de250(struct bfv_cpu *c)
 {
@@ -74,7 +79,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008de270  (between same file) */
+/* 008de270  SecureBlowfish::vf23_helper_008de270  (between same file)
+ * called by: SecureBlowfish::vf23
+ */
 BFV_L1_ENTRY(bfv_client_l1_008de270, bfv_client_l1_body_008de270);
 BFV_L1_RESUME(bfv_client_l1r_008de270_1, bfv_client_l1_body_008de270, 1);
 BFV_L1_RESUME(bfv_client_l1r_008de270_2, bfv_client_l1_body_008de270, 2);
@@ -104,7 +111,7 @@ void bfv_client_l1_body_008de270(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 008de273  mov eax, dword ptr [0xcff7cc] */
+    /* 008de273  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 008de278  push ebx */
@@ -121,31 +128,31 @@ void bfv_client_l1_body_008de270(struct bfv_cpu *c)
     t = edi;
     esp -= 4;
     M32(esp) = t;
-    /* 008de27d  lea ecx, [esp + 0x1c] */
+    /* 008de27d  lea ecx, [esp + 0x1c]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 008de281  mov dword ptr [esp + 0x78], eax */
+    /* 008de281  mov dword ptr [esp + 0x78], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000078u);
     M32(ea) = eax;
-    /* 008de285  call 0x8df0d0 */
+    /* 008de285  call 0x8df0d0  ; GWChecksumMD5::GWChecksumMD5 */
     t = 0x008df0d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de270_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 008de28a  lea ecx, [esp + 0x1c] */
+    /* 008de28a  lea ecx, [esp + 0x1c]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 008de28e  call 0x8df0a0 */
+    /* 008de28e  call 0x8df0a0  ; GWChecksumMD5_008df0a0 */
     t = 0x008df0a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de270_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 008de293  mov eax, dword ptr [esp + 0x84] */
+    /* 008de293  mov eax, dword ptr [esp + 0x84]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000084u);
     eax = M32(ea);
-    /* 008de29a  mov ecx, dword ptr [esp + 0x80] */
+    /* 008de29a  mov ecx, dword ptr [esp + 0x80]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000080u);
     ecx = M32(ea);
     /* 008de2a1  push eax */
@@ -156,24 +163,24 @@ R_2:
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 008de2a3  lea ecx, [esp + 0x24] */
+    /* 008de2a3  lea ecx, [esp + 0x24]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x00000024u);
-    /* 008de2a7  call 0x8dfa20 */
+    /* 008de2a7  call 0x8dfa20  ; RsaRandom_008dfa20 */
     t = 0x008dfa20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de270_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 008de2ac  lea edx, [esp + 0xc] */
+    /* 008de2ac  lea edx, [esp + 0xc]  ; &var_70 */
     edx = (uint32_t)(esp + 0x0000000cu);
     /* 008de2b0  push edx */
     t = edx;
     esp -= 4;
     M32(esp) = t;
-    /* 008de2b1  lea ecx, [esp + 0x20] */
+    /* 008de2b1  lea ecx, [esp + 0x20]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x00000020u);
-    /* 008de2b5  call 0x8dfae0 */
+    /* 008de2b5  call 0x8dfae0  ; RsaRandom_008dfae0 */
     t = 0x008dfae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de270_4;
@@ -184,7 +191,7 @@ R_4:
     r = 0;
     F_LOGIC(32, r);
     ecx = r;
-    /* 008de2bc  lea esi, [esp + 0x1a] */
+    /* 008de2bc  lea esi, [esp + 0x1a]  ; &var_62 */
     esi = (uint32_t)(esp + 0x0000001au);
     /* 008de2c0  lea eax, [ebx + 0x16] */
     eax = (uint32_t)(ebx + 0x00000016u);
@@ -194,7 +201,7 @@ R_4:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 008de2c9  lea esp, [esp] */
+    /* 008de2c9  lea esp, [esp]  ; &var_80 */
     esp = (uint32_t)(esp);
 L_008de2d0:
     /* 008de2d0  movzx ebp, byte ptr [eax + 1] */
@@ -341,7 +348,7 @@ L_008de2d0:
     /* 008de321  mov eax, dword ptr [ebx + 4] */
     ea = (uint32_t)(ebx + 0x00000004u);
     eax = M32(ea);
-    /* 008de324  mov ecx, dword ptr [esp + 0x88] */
+    /* 008de324  mov ecx, dword ptr [esp + 0x88]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000088u);
     ecx = M32(ea);
     /* 008de32b  cmp eax, ecx */
@@ -375,28 +382,28 @@ L_008de33e:
     r = 0;
     F_LOGIC(32, r);
     edx = r;
-    /* 008de340  mov dword ptr [esp + 0xc], edx */
+    /* 008de340  mov dword ptr [esp + 0xc], edx  ; var_70 */
     ea = (uint32_t)(esp + 0x0000000cu);
     M32(ea) = edx;
-    /* 008de344  mov dword ptr [esp + 0x10], edx */
+    /* 008de344  mov dword ptr [esp + 0x10], edx  ; var_6c */
     ea = (uint32_t)(esp + 0x00000010u);
     M32(ea) = edx;
-    /* 008de348  mov dword ptr [esp + 0x14], edx */
+    /* 008de348  mov dword ptr [esp + 0x14], edx  ; var_68 */
     ea = (uint32_t)(esp + 0x00000014u);
     M32(ea) = edx;
-    /* 008de34c  lea ecx, [esp + 0x1c] */
+    /* 008de34c  lea ecx, [esp + 0x1c]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 008de350  mov dword ptr [esp + 0x18], edx */
+    /* 008de350  mov dword ptr [esp + 0x18], edx  ; var_64 */
     ea = (uint32_t)(esp + 0x00000018u);
     M32(ea) = edx;
-    /* 008de354  call 0x8df080 */
+    /* 008de354  call 0x8df080  ; GWChecksumMD5::ctor_dtor */
     t = 0x008df080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de270_5;
     c->eip = t;
     goto out;
 R_5:
-    /* 008de359  mov ecx, dword ptr [esp + 0x78] */
+    /* 008de359  mov ecx, dword ptr [esp + 0x78]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000078u);
     ecx = M32(ea);
     /* 008de35d  pop edi */
@@ -411,7 +418,7 @@ R_5:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 008de360  call 0x7c2019 */
+    /* 008de360  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de270_6;
@@ -435,7 +442,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008de370  dice::network::crypto::RsaRandom  (vtable store) */
+/* 008de370  SecureBlowfish::vf23_helper_008de370  (between same file)
+ * called by: SecureBlowfish::vf23_helper_008dc430
+ */
 BFV_L1_ENTRY(bfv_client_l1_008de370, bfv_client_l1_body_008de370);
 BFV_L1_RESUME(bfv_client_l1r_008de370_1, bfv_client_l1_body_008de370, 1);
 BFV_L1_RESUME(bfv_client_l1r_008de370_2, bfv_client_l1_body_008de370, 2);
@@ -469,7 +478,7 @@ void bfv_client_l1_body_008de370(struct bfv_cpu *c)
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     esp = r;
-    /* 008de373  mov eax, dword ptr [0xcff7cc] */
+    /* 008de373  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
     ea = (uint32_t)(0x00cff7ccu);
     eax = M32(ea);
     /* 008de378  push ebx */
@@ -478,15 +487,15 @@ void bfv_client_l1_body_008de370(struct bfv_cpu *c)
     M32(esp) = t;
     /* 008de379  mov ebx, ecx */
     ebx = ecx;
-    /* 008de37b  lea ecx, [esp + 8] */
+    /* 008de37b  lea ecx, [esp + 8]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x00000008u);
-    /* 008de37f  mov dword ptr [esp + 0x64], eax */
+    /* 008de37f  mov dword ptr [esp + 0x64], eax  ; var_4 */
     ea = (uint32_t)(esp + 0x00000064u);
     M32(ea) = eax;
-    /* 008de383  mov dword ptr [esp + 4], ebx */
+    /* 008de383  mov dword ptr [esp + 4], ebx  ; var_64 */
     ea = (uint32_t)(esp + 0x00000004u);
     M32(ea) = ebx;
-    /* 008de387  call 0x8df0d0 */
+    /* 008de387  call 0x8df0d0  ; GWChecksumMD5::GWChecksumMD5 */
     t = 0x008df0d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de370_1;
@@ -501,9 +510,9 @@ R_1:
     F_LOGIC(32, r);
     /* 008de391  je 0x8de3ae */
     if (zf) goto L_008de3ae;
-    /* 008de393  lea ecx, [esp + 8] */
+    /* 008de393  lea ecx, [esp + 8]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x00000008u);
-    /* 008de397  call 0x8df080 */
+    /* 008de397  call 0x8df080  ; GWChecksumMD5::ctor_dtor */
     t = 0x008df080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de370_2;
@@ -518,10 +527,10 @@ R_2:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 008de39f  mov ecx, dword ptr [esp + 0x60] */
+    /* 008de39f  mov ecx, dword ptr [esp + 0x60]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000060u);
     ecx = M32(ea);
-    /* 008de3a3  call 0x7c2019 */
+    /* 008de3a3  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de370_3;
@@ -542,7 +551,7 @@ L_008de3ae:
     /* 008de3ae  mov edx, dword ptr [ebx + 0x18] */
     ea = (uint32_t)(ebx + 0x00000018u);
     edx = M32(ea);
-    /* 008de3b1  mov eax, dword ptr [esp + 0x70] */
+    /* 008de3b1  mov eax, dword ptr [esp + 0x70]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000070u);
     eax = M32(ea);
     /* 008de3b5  cmp eax, edx */
@@ -554,7 +563,7 @@ L_008de3ae:
     t = ebp;
     esp -= 4;
     M32(esp) = t;
-    /* 008de3b8  mov ebp, dword ptr [esp + 0x70] */
+    /* 008de3b8  mov ebp, dword ptr [esp + 0x70]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000070u);
     ebp = M32(ea);
     /* 008de3bc  push esi */
@@ -618,7 +627,7 @@ L_008de3c4:
         edi += (df ? -1u : 1u);
         ecx--;
     }
-    /* 008de3dd  mov edi, dword ptr [esp + 0x7c] */
+    /* 008de3dd  mov edi, dword ptr [esp + 0x7c]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000007cu);
     edi = M32(ea);
     /* 008de3e1  sub edi, edx */
@@ -627,7 +636,7 @@ L_008de3c4:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     edi = r;
-    /* 008de3e3  lea ecx, [esp + 0x14] */
+    /* 008de3e3  lea ecx, [esp + 0x14]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 008de3e7  add ebp, edx */
     a = ebp;
@@ -635,10 +644,10 @@ L_008de3c4:
     r = (a + b) & 0xffffffffu;
     F_ADD(32, a, b, r);
     ebp = r;
-    /* 008de3e9  mov dword ptr [esp + 0x7c], edi */
+    /* 008de3e9  mov dword ptr [esp + 0x7c], edi  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000007cu);
     M32(ea) = edi;
-    /* 008de3ed  call 0x8df0a0 */
+    /* 008de3ed  call 0x8df0a0  ; GWChecksumMD5_008df0a0 */
     t = 0x008df0a0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de370_4;
@@ -655,9 +664,9 @@ R_4:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008de3f8  lea ecx, [esp + 0x1c] */
+    /* 008de3f8  lea ecx, [esp + 0x1c]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x0000001cu);
-    /* 008de3fc  call 0x8dfa20 */
+    /* 008de3fc  call 0x8dfa20  ; RsaRandom_008dfa20 */
     t = 0x008dfa20u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de370_5;
@@ -670,9 +679,9 @@ R_5:
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 008de405  lea ecx, [esp + 0x18] */
+    /* 008de405  lea ecx, [esp + 0x18]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x00000018u);
-    /* 008de409  call 0x8dfae0 */
+    /* 008de409  call 0x8dfae0  ; RsaRandom_008dfae0 */
     t = 0x008dfae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de370_6;
@@ -780,7 +789,7 @@ L_008de418:
     /* 008de457  jb 0x8de418 */
     if (cf) goto L_008de418;
 L_008de459:
-    /* 008de459  mov eax, dword ptr [esp + 0x7c] */
+    /* 008de459  mov eax, dword ptr [esp + 0x7c]  ; arg_4 */
     ea = (uint32_t)(esp + 0x0000007cu);
     eax = M32(ea);
     /* 008de45d  cmp eax, 0x10 */
@@ -788,7 +797,7 @@ L_008de459:
     b = 0x10u;
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
-    /* 008de460  mov ebx, dword ptr [esp + 0x10] */
+    /* 008de460  mov ebx, dword ptr [esp + 0x10]  ; var_64 */
     ea = (uint32_t)(esp + 0x00000010u);
     ebx = M32(ea);
     /* 008de464  ja 0x8de3c4 */
@@ -850,19 +859,19 @@ L_008de46a:
     r = (a - b) & 0xffffffffu;
     F_SUB(32, a, b, r);
     edx = r;
-    /* 008de485  lea ecx, [esp + 0x14] */
+    /* 008de485  lea ecx, [esp + 0x14]  ; &var_60 */
     ecx = (uint32_t)(esp + 0x00000014u);
     /* 008de489  mov dword ptr [ebx + 0x18], edx */
     ea = (uint32_t)(ebx + 0x00000018u);
     M32(ea) = edx;
-    /* 008de48c  call 0x8df080 */
+    /* 008de48c  call 0x8df080  ; GWChecksumMD5::ctor_dtor */
     t = 0x008df080u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de370_7;
     c->eip = t;
     goto out;
 R_7:
-    /* 008de491  mov ecx, dword ptr [esp + 0x70] */
+    /* 008de491  mov ecx, dword ptr [esp + 0x70]  ; var_4 */
     ea = (uint32_t)(esp + 0x00000070u);
     ecx = M32(ea);
     /* 008de495  pop edi */
@@ -883,7 +892,7 @@ R_7:
     t = M32(esp);
     esp += 4;
     ebx = t;
-    /* 008de49b  call 0x7c2019 */
+    /* 008de49b  call 0x7c2019  ; __security_check_cookie */
     t = 0x007c2019u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de370_8;
@@ -907,7 +916,9 @@ out: __attribute__((unused));
 }
 
 
-/* 008de4d0  dice::network::crypto::RsaRandom  (virtual method) */
+/* 008de4d0  RsaRandom::deleting_dtor  (virtual method)
+ * class: dice::network::crypto::RsaRandom
+ */
 BFV_L1_ENTRY(bfv_client_l1_008de4d0, bfv_client_l1_body_008de4d0);
 BFV_L1_RESUME(bfv_client_l1r_008de4d0_1, bfv_client_l1_body_008de4d0, 1);
 void bfv_client_l1_body_008de4d0(struct bfv_cpu *c)
@@ -939,7 +950,7 @@ void bfv_client_l1_body_008de4d0(struct bfv_cpu *c)
     ecx = 0xbu;
     /* 008de4db  mov edi, esi */
     edi = esi;
-    /* 008de4dd  mov dword ptr [esi], 0xbe116c */
+    /* 008de4dd  mov dword ptr [esi], 0xbe116c  ; vtable RsaRandom */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbe116cu;
     /* 008de4e3  rep stosd dword ptr es:[edi], eax */
@@ -948,7 +959,7 @@ void bfv_client_l1_body_008de4d0(struct bfv_cpu *c)
         edi += (df ? -4u : 4u);
         ecx--;
     }
-    /* 008de4e5  test byte ptr [esp + 0xc], 1 */
+    /* 008de4e5  test byte ptr [esp + 0xc], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x0000000cu);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -958,7 +969,7 @@ void bfv_client_l1_body_008de4d0(struct bfv_cpu *c)
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 008de4ed  call 0x403680 */
+    /* 008de4ed  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008de4d0_1;
@@ -983,6 +994,4445 @@ L_008de4f5:
     esp += 4;
     esi = t;
     /* 008de4f9  ret 4 */
+    c->eip = M32(esp);
+    esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 008df130  RsaRandom_helper_008df130  (called from this file only)
+ * called by: RsaRandom_008dfa20
+ */
+BFV_L1_ENTRY(bfv_client_l1_008df130, bfv_client_l1_body_008df130);
+void bfv_client_l1_body_008df130(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, n, ea;
+    /* 008df130  sub esp, 0x44 */
+    a = esp;
+    b = 0x44u;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    esp = r;
+    /* 008df133  mov eax, dword ptr [esp + 0x48]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000048u);
+    eax = M32(ea);
+    /* 008df137  push ebx */
+    t = ebx;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008df138  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008df139  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008df13a  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008df13b  mov dword ptr [esp + 0x10], ecx  ; var_44 */
+    ea = (uint32_t)(esp + 0x00000010u);
+    M32(ea) = ecx;
+    /* 008df13f  add eax, 2 */
+    a = eax;
+    b = 0x2u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df142  lea esi, [esp + 0x14]  ; &var_40 */
+    esi = (uint32_t)(esp + 0x00000014u);
+    /* 008df146  mov edi, 0x10 */
+    edi = 0x10u;
+    /* 008df14b  jmp 0x8df150 */
+    goto L_008df150;
+L_008df150:
+    /* 008df150  movzx ebx, byte ptr [eax - 1] */
+    ea = (uint32_t)(eax + 0xffffffffu);
+    ebx = M8(ea);
+    /* 008df154  xor edx, edx */
+    r = 0;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df156  mov dh, byte ptr [eax + 1] */
+    ea = (uint32_t)(eax + 0x00000001u);
+    SET8H(edx, M8(ea));
+    /* 008df159  add esi, 4 */
+    a = esi;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df15c  add eax, 4 */
+    a = eax;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df15f  mov dl, byte ptr [eax - 4] */
+    ea = (uint32_t)(eax + 0xfffffffcu);
+    SET8L(edx, M8(ea));
+    /* 008df162  shl edx, 8 */
+    n = 0x8u & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df165  or edx, ebx */
+    r = (edx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df167  movzx ebx, byte ptr [eax - 6] */
+    ea = (uint32_t)(eax + 0xfffffffau);
+    ebx = M8(ea);
+    /* 008df16b  shl edx, 8 */
+    n = 0x8u & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df16e  or edx, ebx */
+    r = (edx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df170  dec edi */
+    a = edi;
+    r = (a - 1u) & 0xffffffffu;
+    F_DEC(32, a, r);
+    edi = r;
+    /* 008df171  mov dword ptr [esi - 4], edx */
+    ea = (uint32_t)(esi + 0xfffffffcu);
+    M32(ea) = edx;
+    /* 008df174  jne 0x8df150 */
+    if (!zf) goto L_008df150;
+    /* 008df176  mov edi, dword ptr [ecx + 8] */
+    ea = (uint32_t)(ecx + 0x00000008u);
+    edi = M32(ea);
+    /* 008df179  mov esi, dword ptr [ecx + 0xc] */
+    ea = (uint32_t)(ecx + 0x0000000cu);
+    esi = M32(ea);
+    /* 008df17c  mov edx, dword ptr [ecx + 0x10] */
+    ea = (uint32_t)(ecx + 0x00000010u);
+    edx = M32(ea);
+    /* 008df17f  mov ecx, dword ptr [ecx + 4] */
+    ea = (uint32_t)(ecx + 0x00000004u);
+    ecx = M32(ea);
+    /* 008df182  mov ebp, dword ptr [esp + 0x14]  ; var_40 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    ebp = M32(ea);
+    /* 008df186  mov eax, edi */
+    eax = edi;
+    /* 008df188  not eax */
+    a = eax;
+    eax = ~a & 0xffffffffu;
+    /* 008df18a  and eax, edx */
+    r = (eax & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df18c  mov ebx, esi */
+    ebx = esi;
+    /* 008df18e  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df190  or eax, ebx */
+    r = (eax | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df192  add eax, ebp */
+    a = eax;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df194  lea ecx, [ecx + eax - 0x28955b88] */
+    ecx = (uint32_t)(ecx + eax + 0xd76aa478u);
+    /* 008df19b  mov eax, ecx */
+    eax = ecx;
+    /* 008df19d  shl ecx, 7 */
+    n = 0x7u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df1a0  mov ebp, dword ptr [esp + 0x18]  ; var_3c */
+    ea = (uint32_t)(esp + 0x00000018u);
+    ebp = M32(ea);
+    /* 008df1a4  shr eax, 0x19 */
+    n = 0x19u & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df1a7  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df1a9  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df1ab  mov ecx, eax */
+    ecx = eax;
+    /* 008df1ad  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df1af  and ecx, esi */
+    r = (ecx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df1b1  mov ebx, edi */
+    ebx = edi;
+    /* 008df1b3  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df1b5  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df1b7  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df1b9  lea ecx, [edx + ecx - 0x173848aa] */
+    ecx = (uint32_t)(edx + ecx + 0xe8c7b756u);
+    /* 008df1c0  mov edx, ecx */
+    edx = ecx;
+    /* 008df1c2  shl ecx, 0xc */
+    n = 0xcu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df1c5  mov ebp, dword ptr [esp + 0x1c]  ; var_38 */
+    ea = (uint32_t)(esp + 0x0000001cu);
+    ebp = M32(ea);
+    /* 008df1c9  shr edx, 0x14 */
+    n = 0x14u & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df1cc  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df1ce  add edx, eax */
+    a = edx;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df1d0  mov ecx, edx */
+    ecx = edx;
+    /* 008df1d2  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df1d4  and ecx, edi */
+    r = (ecx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df1d6  mov ebx, edx */
+    ebx = edx;
+    /* 008df1d8  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df1da  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df1dc  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df1de  lea ecx, [esi + ecx + 0x242070db] */
+    ecx = (uint32_t)(esi + ecx + 0x242070dbu);
+    /* 008df1e5  mov esi, ecx */
+    esi = ecx;
+    /* 008df1e7  mov ebp, dword ptr [esp + 0x20]  ; var_34 */
+    ea = (uint32_t)(esp + 0x00000020u);
+    ebp = M32(ea);
+    /* 008df1eb  shl ecx, 0x11 */
+    n = 0x11u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df1ee  shr esi, 0xf */
+    n = 0xfu & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df1f1  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df1f3  add esi, edx */
+    a = esi;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df1f5  mov ecx, esi */
+    ecx = esi;
+    /* 008df1f7  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df1f9  and ecx, eax */
+    r = (ecx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df1fb  mov ebx, edx */
+    ebx = edx;
+    /* 008df1fd  and ebx, esi */
+    r = (ebx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df1ff  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df201  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df203  mov ebp, dword ptr [esp + 0x24]  ; var_30 */
+    ea = (uint32_t)(esp + 0x00000024u);
+    ebp = M32(ea);
+    /* 008df207  lea ecx, [edi + ecx - 0x3e423112] */
+    ecx = (uint32_t)(edi + ecx + 0xc1bdceeeu);
+    /* 008df20e  mov edi, ecx */
+    edi = ecx;
+    /* 008df210  shr ecx, 0xa */
+    n = 0xau & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df213  shl edi, 0x16 */
+    n = 0x16u & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df216  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df218  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df21a  mov ecx, edi */
+    ecx = edi;
+    /* 008df21c  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df21e  and ecx, edx */
+    r = (ecx & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df220  mov ebx, esi */
+    ebx = esi;
+    /* 008df222  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df224  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df226  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df228  mov ebp, dword ptr [esp + 0x28]  ; var_2c */
+    ea = (uint32_t)(esp + 0x00000028u);
+    ebp = M32(ea);
+    /* 008df22c  lea ecx, [eax + ecx - 0xa83f051] */
+    ecx = (uint32_t)(eax + ecx + 0xf57c0fafu);
+    /* 008df233  mov eax, ecx */
+    eax = ecx;
+    /* 008df235  shl ecx, 7 */
+    n = 0x7u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df238  shr eax, 0x19 */
+    n = 0x19u & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df23b  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df23d  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df23f  mov ecx, eax */
+    ecx = eax;
+    /* 008df241  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df243  mov ebx, edi */
+    ebx = edi;
+    /* 008df245  and ecx, esi */
+    r = (ecx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df247  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df249  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df24b  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df24d  lea ecx, [edx + ecx + 0x4787c62a] */
+    ecx = (uint32_t)(edx + ecx + 0x4787c62au);
+    /* 008df254  mov edx, ecx */
+    edx = ecx;
+    /* 008df256  shl ecx, 0xc */
+    n = 0xcu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df259  mov ebp, dword ptr [esp + 0x2c]  ; var_28 */
+    ea = (uint32_t)(esp + 0x0000002cu);
+    ebp = M32(ea);
+    /* 008df25d  shr edx, 0x14 */
+    n = 0x14u & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df260  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df262  add edx, eax */
+    a = edx;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df264  mov ecx, edx */
+    ecx = edx;
+    /* 008df266  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df268  and ecx, edi */
+    r = (ecx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df26a  mov ebx, edx */
+    ebx = edx;
+    /* 008df26c  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df26e  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df270  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df272  lea ecx, [esi + ecx - 0x57cfb9ed] */
+    ecx = (uint32_t)(esi + ecx + 0xa8304613u);
+    /* 008df279  mov esi, ecx */
+    esi = ecx;
+    /* 008df27b  shl ecx, 0x11 */
+    n = 0x11u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df27e  mov ebp, dword ptr [esp + 0x30]  ; var_24 */
+    ea = (uint32_t)(esp + 0x00000030u);
+    ebp = M32(ea);
+    /* 008df282  shr esi, 0xf */
+    n = 0xfu & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df285  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df287  add esi, edx */
+    a = esi;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df289  mov ecx, esi */
+    ecx = esi;
+    /* 008df28b  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df28d  and ecx, eax */
+    r = (ecx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df28f  mov ebx, edx */
+    ebx = edx;
+    /* 008df291  and ebx, esi */
+    r = (ebx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df293  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df295  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df297  lea ecx, [edi + ecx - 0x2b96aff] */
+    ecx = (uint32_t)(edi + ecx + 0xfd469501u);
+    /* 008df29e  mov edi, ecx */
+    edi = ecx;
+    /* 008df2a0  shr ecx, 0xa */
+    n = 0xau & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df2a3  mov ebp, dword ptr [esp + 0x34]  ; var_20 */
+    ea = (uint32_t)(esp + 0x00000034u);
+    ebp = M32(ea);
+    /* 008df2a7  shl edi, 0x16 */
+    n = 0x16u & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df2aa  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df2ac  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df2ae  mov ebx, esi */
+    ebx = esi;
+    /* 008df2b0  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df2b2  mov ecx, edi */
+    ecx = edi;
+    /* 008df2b4  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df2b6  and ecx, edx */
+    r = (ecx & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df2b8  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df2ba  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df2bc  lea ecx, [eax + ecx + 0x698098d8] */
+    ecx = (uint32_t)(eax + ecx + 0x698098d8u);
+    /* 008df2c3  mov ebp, dword ptr [esp + 0x38]  ; var_1c */
+    ea = (uint32_t)(esp + 0x00000038u);
+    ebp = M32(ea);
+    /* 008df2c7  mov eax, ecx */
+    eax = ecx;
+    /* 008df2c9  shl ecx, 7 */
+    n = 0x7u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df2cc  shr eax, 0x19 */
+    n = 0x19u & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df2cf  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df2d1  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df2d3  mov ecx, eax */
+    ecx = eax;
+    /* 008df2d5  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df2d7  and ecx, esi */
+    r = (ecx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df2d9  mov ebx, edi */
+    ebx = edi;
+    /* 008df2db  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df2dd  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df2df  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df2e1  mov ebp, dword ptr [esp + 0x3c]  ; var_18 */
+    ea = (uint32_t)(esp + 0x0000003cu);
+    ebp = M32(ea);
+    /* 008df2e5  lea ecx, [edx + ecx - 0x74bb0851] */
+    ecx = (uint32_t)(edx + ecx + 0x8b44f7afu);
+    /* 008df2ec  mov edx, ecx */
+    edx = ecx;
+    /* 008df2ee  shl ecx, 0xc */
+    n = 0xcu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df2f1  shr edx, 0x14 */
+    n = 0x14u & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df2f4  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df2f6  add edx, eax */
+    a = edx;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df2f8  mov ecx, edx */
+    ecx = edx;
+    /* 008df2fa  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df2fc  and ecx, edi */
+    r = (ecx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df2fe  mov ebx, edx */
+    ebx = edx;
+    /* 008df300  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df302  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df304  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df306  lea ecx, [esi + ecx - 0xa44f] */
+    ecx = (uint32_t)(esi + ecx + 0xffff5bb1u);
+    /* 008df30d  mov esi, ecx */
+    esi = ecx;
+    /* 008df30f  shl ecx, 0x11 */
+    n = 0x11u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df312  shr esi, 0xf */
+    n = 0xfu & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df315  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df317  add esi, edx */
+    a = esi;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df319  mov ecx, esi */
+    ecx = esi;
+    /* 008df31b  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df31d  and ecx, eax */
+    r = (ecx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df31f  mov ebx, edx */
+    ebx = edx;
+    /* 008df321  mov ebp, dword ptr [esp + 0x40]  ; var_14 */
+    ea = (uint32_t)(esp + 0x00000040u);
+    ebp = M32(ea);
+    /* 008df325  and ebx, esi */
+    r = (ebx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df327  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df329  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df32b  lea ecx, [edi + ecx - 0x76a32842] */
+    ecx = (uint32_t)(edi + ecx + 0x895cd7beu);
+    /* 008df332  mov edi, ecx */
+    edi = ecx;
+    /* 008df334  shr ecx, 0xa */
+    n = 0xau & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df337  mov ebp, dword ptr [esp + 0x44]  ; var_10 */
+    ea = (uint32_t)(esp + 0x00000044u);
+    ebp = M32(ea);
+    /* 008df33b  shl edi, 0x16 */
+    n = 0x16u & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df33e  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df340  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df342  mov ecx, edi */
+    ecx = edi;
+    /* 008df344  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df346  and ecx, edx */
+    r = (ecx & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df348  mov ebx, esi */
+    ebx = esi;
+    /* 008df34a  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df34c  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df34e  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df350  lea ecx, [eax + ecx + 0x6b901122] */
+    ecx = (uint32_t)(eax + ecx + 0x6b901122u);
+    /* 008df357  mov eax, ecx */
+    eax = ecx;
+    /* 008df359  shl ecx, 7 */
+    n = 0x7u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df35c  shr eax, 0x19 */
+    n = 0x19u & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df35f  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df361  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df363  mov ecx, eax */
+    ecx = eax;
+    /* 008df365  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df367  and ecx, esi */
+    r = (ecx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df369  mov ebx, edi */
+    ebx = edi;
+    /* 008df36b  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df36d  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df36f  add ecx, dword ptr [esp + 0x48]  ; var_c */
+    ea = (uint32_t)(esp + 0x00000048u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df373  lea ecx, [edx + ecx - 0x2678e6d] */
+    ecx = (uint32_t)(edx + ecx + 0xfd987193u);
+    /* 008df37a  mov edx, ecx */
+    edx = ecx;
+    /* 008df37c  shl ecx, 0xc */
+    n = 0xcu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df37f  shr edx, 0x14 */
+    n = 0x14u & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df382  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df384  add edx, eax */
+    a = edx;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df386  mov ebx, edx */
+    ebx = edx;
+    /* 008df388  not ebx */
+    a = ebx;
+    ebx = ~a & 0xffffffffu;
+    /* 008df38a  mov ecx, ebx */
+    ecx = ebx;
+    /* 008df38c  and ecx, edi */
+    r = (ecx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df38e  mov ebp, edx */
+    ebp = edx;
+    /* 008df390  and ebp, eax */
+    r = (ebp & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebp = r;
+    /* 008df392  or ecx, ebp */
+    r = (ecx | ebp) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df394  add ecx, dword ptr [esp + 0x4c]  ; var_8 */
+    ea = (uint32_t)(esp + 0x0000004cu);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df398  lea ecx, [esi + ecx - 0x5986bc72] */
+    ecx = (uint32_t)(esi + ecx + 0xa679438eu);
+    /* 008df39f  mov esi, ecx */
+    esi = ecx;
+    /* 008df3a1  shl ecx, 0x11 */
+    n = 0x11u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df3a4  shr esi, 0xf */
+    n = 0xfu & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df3a7  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df3a9  add esi, edx */
+    a = esi;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df3ab  mov ecx, esi */
+    ecx = esi;
+    /* 008df3ad  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df3af  mov dword ptr [esp + 0x58], ecx  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000058u);
+    M32(ea) = ecx;
+    /* 008df3b3  and ecx, eax */
+    r = (ecx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df3b5  mov ebp, edx */
+    ebp = edx;
+    /* 008df3b7  and ebp, esi */
+    r = (ebp & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebp = r;
+    /* 008df3b9  or ecx, ebp */
+    r = (ecx | ebp) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df3bb  mov ebp, dword ptr [esp + 0x50]  ; var_4 */
+    ea = (uint32_t)(esp + 0x00000050u);
+    ebp = M32(ea);
+    /* 008df3bf  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df3c1  lea ecx, [edi + ecx + 0x49b40821] */
+    ecx = (uint32_t)(edi + ecx + 0x49b40821u);
+    /* 008df3c8  mov edi, ecx */
+    edi = ecx;
+    /* 008df3ca  shr ecx, 0xa */
+    n = 0xau & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df3cd  shl edi, 0x16 */
+    n = 0x16u & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df3d0  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df3d2  and ebx, esi */
+    r = (ebx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df3d4  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df3d6  mov ecx, edx */
+    ecx = edx;
+    /* 008df3d8  and ecx, edi */
+    r = (ecx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df3da  or ebx, ecx */
+    r = (ebx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df3dc  add ebx, dword ptr [esp + 0x18]  ; var_3c */
+    ea = (uint32_t)(esp + 0x00000018u);
+    a = ebx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ebx = r;
+    /* 008df3e0  mov ecx, dword ptr [esp + 0x58]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000058u);
+    ecx = M32(ea);
+    /* 008df3e4  lea ebx, [eax + ebx - 0x9e1da9e] */
+    ebx = (uint32_t)(eax + ebx + 0xf61e2562u);
+    /* 008df3eb  mov eax, ebx */
+    eax = ebx;
+    /* 008df3ed  shr eax, 0x1b */
+    n = 0x1bu & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df3f0  shl ebx, 5 */
+    n = 0x5u & 31u;
+    if (n) {
+        a = ebx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ebx = r;
+    }
+    /* 008df3f3  or eax, ebx */
+    r = (eax | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df3f5  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df3f7  and ecx, edi */
+    r = (ecx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df3f9  mov ebx, esi */
+    ebx = esi;
+    /* 008df3fb  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df3fd  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df3ff  add ecx, dword ptr [esp + 0x2c]  ; var_28 */
+    ea = (uint32_t)(esp + 0x0000002cu);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df403  lea ecx, [edx + ecx - 0x3fbf4cc0] */
+    ecx = (uint32_t)(edx + ecx + 0xc040b340u);
+    /* 008df40a  mov edx, ecx */
+    edx = ecx;
+    /* 008df40c  shl ecx, 9 */
+    n = 0x9u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df40f  shr edx, 0x17 */
+    n = 0x17u & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df412  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df414  add edx, eax */
+    a = edx;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df416  mov ecx, edi */
+    ecx = edi;
+    /* 008df418  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df41a  and ecx, eax */
+    r = (ecx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df41c  mov ebx, edx */
+    ebx = edx;
+    /* 008df41e  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df420  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df422  add ecx, dword ptr [esp + 0x40]  ; var_14 */
+    ea = (uint32_t)(esp + 0x00000040u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df426  lea ecx, [esi + ecx + 0x265e5a51] */
+    ecx = (uint32_t)(esi + ecx + 0x265e5a51u);
+    /* 008df42d  mov esi, ecx */
+    esi = ecx;
+    /* 008df42f  shl ecx, 0xe */
+    n = 0xeu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df432  shr esi, 0x12 */
+    n = 0x12u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df435  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df437  add esi, edx */
+    a = esi;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df439  mov ecx, eax */
+    ecx = eax;
+    /* 008df43b  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df43d  and ecx, edx */
+    r = (ecx & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df43f  mov ebx, esi */
+    ebx = esi;
+    /* 008df441  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df443  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df445  add ecx, dword ptr [esp + 0x14]  ; var_40 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df449  lea ecx, [edi + ecx - 0x16493856] */
+    ecx = (uint32_t)(edi + ecx + 0xe9b6c7aau);
+    /* 008df450  mov edi, ecx */
+    edi = ecx;
+    /* 008df452  shr ecx, 0xc */
+    n = 0xcu & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df455  shl edi, 0x14 */
+    n = 0x14u & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df458  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df45a  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df45c  mov ecx, edx */
+    ecx = edx;
+    /* 008df45e  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df460  and ecx, esi */
+    r = (ecx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df462  mov ebx, edx */
+    ebx = edx;
+    /* 008df464  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df466  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df468  add ecx, dword ptr [esp + 0x28]  ; var_2c */
+    ea = (uint32_t)(esp + 0x00000028u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df46c  lea ecx, [eax + ecx - 0x29d0efa3] */
+    ecx = (uint32_t)(eax + ecx + 0xd62f105du);
+    /* 008df473  mov eax, ecx */
+    eax = ecx;
+    /* 008df475  shl ecx, 5 */
+    n = 0x5u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df478  shr eax, 0x1b */
+    n = 0x1bu & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df47b  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df47d  mov ecx, esi */
+    ecx = esi;
+    /* 008df47f  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df481  and ecx, edi */
+    r = (ecx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df483  mov ebx, esi */
+    ebx = esi;
+    /* 008df485  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df487  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df489  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df48b  add ecx, dword ptr [esp + 0x3c]  ; var_18 */
+    ea = (uint32_t)(esp + 0x0000003cu);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df48f  lea ecx, [edx + ecx + 0x2441453] */
+    ecx = (uint32_t)(edx + ecx + 0x02441453u);
+    /* 008df496  mov edx, ecx */
+    edx = ecx;
+    /* 008df498  shl ecx, 9 */
+    n = 0x9u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df49b  shr edx, 0x17 */
+    n = 0x17u & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df49e  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df4a0  add edx, eax */
+    a = edx;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df4a2  mov ecx, edi */
+    ecx = edi;
+    /* 008df4a4  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df4a6  and ecx, eax */
+    r = (ecx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df4a8  mov ebx, edx */
+    ebx = edx;
+    /* 008df4aa  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df4ac  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df4ae  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df4b0  lea ecx, [esi + ecx - 0x275e197f] */
+    ecx = (uint32_t)(esi + ecx + 0xd8a1e681u);
+    /* 008df4b7  mov esi, ecx */
+    esi = ecx;
+    /* 008df4b9  shr esi, 0x12 */
+    n = 0x12u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df4bc  shl ecx, 0xe */
+    n = 0xeu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df4bf  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df4c1  add esi, edx */
+    a = esi;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df4c3  mov ecx, eax */
+    ecx = eax;
+    /* 008df4c5  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df4c7  and ecx, edx */
+    r = (ecx & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df4c9  mov ebx, esi */
+    ebx = esi;
+    /* 008df4cb  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df4cd  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df4cf  add ecx, dword ptr [esp + 0x24]  ; var_30 */
+    ea = (uint32_t)(esp + 0x00000024u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df4d3  lea ecx, [edi + ecx - 0x182c0438] */
+    ecx = (uint32_t)(edi + ecx + 0xe7d3fbc8u);
+    /* 008df4da  mov edi, ecx */
+    edi = ecx;
+    /* 008df4dc  shr ecx, 0xc */
+    n = 0xcu & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df4df  shl edi, 0x14 */
+    n = 0x14u & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df4e2  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df4e4  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df4e6  mov ecx, edx */
+    ecx = edx;
+    /* 008df4e8  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df4ea  and ecx, esi */
+    r = (ecx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df4ec  mov ebx, edx */
+    ebx = edx;
+    /* 008df4ee  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df4f0  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df4f2  add ecx, dword ptr [esp + 0x38]  ; var_1c */
+    ea = (uint32_t)(esp + 0x00000038u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df4f6  lea ecx, [eax + ecx + 0x21e1cde6] */
+    ecx = (uint32_t)(eax + ecx + 0x21e1cde6u);
+    /* 008df4fd  mov eax, ecx */
+    eax = ecx;
+    /* 008df4ff  shl ecx, 5 */
+    n = 0x5u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df502  shr eax, 0x1b */
+    n = 0x1bu & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df505  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df507  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df509  mov ecx, esi */
+    ecx = esi;
+    /* 008df50b  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df50d  and ecx, edi */
+    r = (ecx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df50f  mov ebx, esi */
+    ebx = esi;
+    /* 008df511  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df513  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df515  add ecx, dword ptr [esp + 0x4c]  ; var_8 */
+    ea = (uint32_t)(esp + 0x0000004cu);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df519  lea ecx, [edx + ecx - 0x3cc8f82a] */
+    ecx = (uint32_t)(edx + ecx + 0xc33707d6u);
+    /* 008df520  mov edx, ecx */
+    edx = ecx;
+    /* 008df522  shl ecx, 9 */
+    n = 0x9u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df525  shr edx, 0x17 */
+    n = 0x17u & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df528  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df52a  add edx, eax */
+    a = edx;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df52c  mov ecx, edi */
+    ecx = edi;
+    /* 008df52e  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df530  and ecx, eax */
+    r = (ecx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df532  mov ebx, edx */
+    ebx = edx;
+    /* 008df534  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df536  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df538  add ecx, dword ptr [esp + 0x20]  ; var_34 */
+    ea = (uint32_t)(esp + 0x00000020u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df53c  lea ecx, [esi + ecx - 0xb2af279] */
+    ecx = (uint32_t)(esi + ecx + 0xf4d50d87u);
+    /* 008df543  mov esi, ecx */
+    esi = ecx;
+    /* 008df545  shl ecx, 0xe */
+    n = 0xeu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df548  shr esi, 0x12 */
+    n = 0x12u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df54b  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df54d  add esi, edx */
+    a = esi;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df54f  mov ecx, eax */
+    ecx = eax;
+    /* 008df551  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df553  and ecx, edx */
+    r = (ecx & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df555  mov ebx, esi */
+    ebx = esi;
+    /* 008df557  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df559  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df55b  add ecx, dword ptr [esp + 0x34]  ; var_20 */
+    ea = (uint32_t)(esp + 0x00000034u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df55f  lea ecx, [edi + ecx + 0x455a14ed] */
+    ecx = (uint32_t)(edi + ecx + 0x455a14edu);
+    /* 008df566  mov edi, ecx */
+    edi = ecx;
+    /* 008df568  shr ecx, 0xc */
+    n = 0xcu & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df56b  shl edi, 0x14 */
+    n = 0x14u & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df56e  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df570  mov ecx, edx */
+    ecx = edx;
+    /* 008df572  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df574  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df576  and ecx, esi */
+    r = (ecx & esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df578  mov ebx, edx */
+    ebx = edx;
+    /* 008df57a  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df57c  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df57e  add ecx, dword ptr [esp + 0x48]  ; var_c */
+    ea = (uint32_t)(esp + 0x00000048u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df582  lea ecx, [eax + ecx - 0x561c16fb] */
+    ecx = (uint32_t)(eax + ecx + 0xa9e3e905u);
+    /* 008df589  mov eax, ecx */
+    eax = ecx;
+    /* 008df58b  shr eax, 0x1b */
+    n = 0x1bu & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df58e  shl ecx, 5 */
+    n = 0x5u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df591  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df593  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df595  mov ecx, esi */
+    ecx = esi;
+    /* 008df597  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df599  and ecx, edi */
+    r = (ecx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df59b  mov ebx, esi */
+    ebx = esi;
+    /* 008df59d  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df59f  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df5a1  add ecx, dword ptr [esp + 0x1c]  ; var_38 */
+    ea = (uint32_t)(esp + 0x0000001cu);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df5a5  lea ecx, [edx + ecx - 0x3105c08] */
+    ecx = (uint32_t)(edx + ecx + 0xfcefa3f8u);
+    /* 008df5ac  mov edx, ecx */
+    edx = ecx;
+    /* 008df5ae  shl ecx, 9 */
+    n = 0x9u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df5b1  shr edx, 0x17 */
+    n = 0x17u & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df5b4  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df5b6  add edx, eax */
+    a = edx;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df5b8  mov ebx, edx */
+    ebx = edx;
+    /* 008df5ba  and ebx, edi */
+    r = (ebx & edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df5bc  mov ecx, edi */
+    ecx = edi;
+    /* 008df5be  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df5c0  and ecx, eax */
+    r = (ecx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df5c2  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df5c4  add ecx, dword ptr [esp + 0x30]  ; var_24 */
+    ea = (uint32_t)(esp + 0x00000030u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df5c8  lea ecx, [esi + ecx + 0x676f02d9] */
+    ecx = (uint32_t)(esi + ecx + 0x676f02d9u);
+    /* 008df5cf  mov esi, ecx */
+    esi = ecx;
+    /* 008df5d1  shl ecx, 0xe */
+    n = 0xeu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df5d4  shr esi, 0x12 */
+    n = 0x12u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df5d7  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df5d9  add esi, edx */
+    a = esi;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df5db  mov ecx, eax */
+    ecx = eax;
+    /* 008df5dd  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df5df  and ecx, edx */
+    r = (ecx & edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df5e1  mov ebx, esi */
+    ebx = esi;
+    /* 008df5e3  and ebx, eax */
+    r = (ebx & eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df5e5  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df5e7  add ecx, dword ptr [esp + 0x44]  ; var_10 */
+    ea = (uint32_t)(esp + 0x00000044u);
+    a = ecx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df5eb  mov ebx, dword ptr [esp + 0x28]  ; var_2c */
+    ea = (uint32_t)(esp + 0x00000028u);
+    ebx = M32(ea);
+    /* 008df5ef  lea ecx, [edi + ecx - 0x72d5b376] */
+    ecx = (uint32_t)(edi + ecx + 0x8d2a4c8au);
+    /* 008df5f6  mov edi, ecx */
+    edi = ecx;
+    /* 008df5f8  shr ecx, 0xc */
+    n = 0xcu & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df5fb  shl edi, 0x14 */
+    n = 0x14u & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df5fe  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df600  mov ecx, edx */
+    ecx = edx;
+    /* 008df602  xor ecx, esi */
+    r = (ecx ^ esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df604  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df606  xor ecx, edi */
+    r = (ecx ^ edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df608  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df60a  mov ebx, dword ptr [esp + 0x34]  ; var_20 */
+    ea = (uint32_t)(esp + 0x00000034u);
+    ebx = M32(ea);
+    /* 008df60e  lea ecx, [eax + ecx - 0x5c6be] */
+    ecx = (uint32_t)(eax + ecx + 0xfffa3942u);
+    /* 008df615  mov eax, ecx */
+    eax = ecx;
+    /* 008df617  shl ecx, 4 */
+    n = 0x4u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df61a  shr eax, 0x1c */
+    n = 0x1cu & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df61d  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df61f  mov ecx, esi */
+    ecx = esi;
+    /* 008df621  xor ecx, edi */
+    r = (ecx ^ edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df623  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df625  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df627  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df629  lea edx, [edx + ecx - 0x788e097f] */
+    edx = (uint32_t)(edx + ecx + 0x8771f681u);
+    /* 008df630  mov ecx, dword ptr [esp + 0x40]  ; var_14 */
+    ea = (uint32_t)(esp + 0x00000040u);
+    ecx = M32(ea);
+    /* 008df634  mov ebx, edx */
+    ebx = edx;
+    /* 008df636  shl edx, 0xb */
+    n = 0xbu & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df639  shr ebx, 0x15 */
+    n = 0x15u & 31u;
+    if (n) {
+        a = ebx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ebx = r;
+    }
+    /* 008df63c  or ebx, edx */
+    r = (ebx | edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df63e  add ebx, eax */
+    a = ebx;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ebx = r;
+    /* 008df640  mov edx, ebx */
+    edx = ebx;
+    /* 008df642  xor edx, edi */
+    r = (edx ^ edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df644  xor edx, eax */
+    r = (edx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df646  add edx, ecx */
+    a = edx;
+    b = ecx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df648  lea ecx, [esi + edx + 0x6d9d6122] */
+    ecx = (uint32_t)(esi + edx + 0x6d9d6122u);
+    /* 008df64f  mov esi, ecx */
+    esi = ecx;
+    /* 008df651  shr esi, 0x10 */
+    n = 0x10u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df654  shl ecx, 0x10 */
+    n = 0x10u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df657  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df659  add esi, ebx */
+    a = esi;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df65b  mov ecx, ebx */
+    ecx = ebx;
+    /* 008df65d  xor ecx, esi */
+    r = (ecx ^ esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df65f  mov edx, ecx */
+    edx = ecx;
+    /* 008df661  xor edx, eax */
+    r = (edx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df663  add edx, dword ptr [esp + 0x4c]  ; var_8 */
+    ea = (uint32_t)(esp + 0x0000004cu);
+    a = edx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df667  lea edi, [edi + edx - 0x21ac7f4] */
+    edi = (uint32_t)(edi + edx + 0xfde5380cu);
+    /* 008df66e  mov edx, edi */
+    edx = edi;
+    /* 008df670  shr edi, 9 */
+    n = 0x9u & 31u;
+    if (n) {
+        a = edi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df673  shl edx, 0x17 */
+    n = 0x17u & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df676  or edx, edi */
+    r = (edx | edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df678  mov edi, dword ptr [esp + 0x18]  ; var_3c */
+    ea = (uint32_t)(esp + 0x00000018u);
+    edi = M32(ea);
+    /* 008df67c  add edx, esi */
+    a = edx;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df67e  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df680  add ecx, edi */
+    a = ecx;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df682  lea ecx, [eax + ecx - 0x5b4115bc] */
+    ecx = (uint32_t)(eax + ecx + 0xa4beea44u);
+    /* 008df689  mov eax, ecx */
+    eax = ecx;
+    /* 008df68b  shl ecx, 4 */
+    n = 0x4u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df68e  mov edi, dword ptr [esp + 0x24]  ; var_30 */
+    ea = (uint32_t)(esp + 0x00000024u);
+    edi = M32(ea);
+    /* 008df692  shr eax, 0x1c */
+    n = 0x1cu & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df695  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df697  add eax, edx */
+    a = eax;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df699  mov ecx, esi */
+    ecx = esi;
+    /* 008df69b  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df69d  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df69f  add ecx, edi */
+    a = ecx;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df6a1  lea ebx, [ebx + ecx + 0x4bdecfa9] */
+    ebx = (uint32_t)(ebx + ecx + 0x4bdecfa9u);
+    /* 008df6a8  mov edi, ebx */
+    edi = ebx;
+    /* 008df6aa  shl ebx, 0xb */
+    n = 0xbu & 31u;
+    if (n) {
+        a = ebx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ebx = r;
+    }
+    /* 008df6ad  shr edi, 0x15 */
+    n = 0x15u & 31u;
+    if (n) {
+        a = edi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df6b0  or edi, ebx */
+    r = (edi | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df6b2  mov ebx, dword ptr [esp + 0x30]  ; var_24 */
+    ea = (uint32_t)(esp + 0x00000030u);
+    ebx = M32(ea);
+    /* 008df6b6  add edi, eax */
+    a = edi;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df6b8  mov ecx, edi */
+    ecx = edi;
+    /* 008df6ba  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df6bc  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df6be  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df6c0  lea ecx, [esi + ecx - 0x944b4a0] */
+    ecx = (uint32_t)(esi + ecx + 0xf6bb4b60u);
+    /* 008df6c7  mov esi, ecx */
+    esi = ecx;
+    /* 008df6c9  shl ecx, 0x10 */
+    n = 0x10u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df6cc  shr esi, 0x10 */
+    n = 0x10u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df6cf  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df6d1  add esi, edi */
+    a = esi;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df6d3  mov ecx, edi */
+    ecx = edi;
+    /* 008df6d5  xor ecx, esi */
+    r = (ecx ^ esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df6d7  mov ebx, ecx */
+    ebx = ecx;
+    /* 008df6d9  xor ebx, eax */
+    r = (ebx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df6db  add ebx, dword ptr [esp + 0x3c]  ; var_18 */
+    ea = (uint32_t)(esp + 0x0000003cu);
+    a = ebx;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ebx = r;
+    /* 008df6df  lea ebx, [edx + ebx - 0x41404390] */
+    ebx = (uint32_t)(edx + ebx + 0xbebfbc70u);
+    /* 008df6e6  mov edx, ebx */
+    edx = ebx;
+    /* 008df6e8  shr ebx, 9 */
+    n = 0x9u & 31u;
+    if (n) {
+        a = ebx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ebx = r;
+    }
+    /* 008df6eb  shl edx, 0x17 */
+    n = 0x17u & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df6ee  or edx, ebx */
+    r = (edx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df6f0  mov ebx, dword ptr [esp + 0x48]  ; var_c */
+    ea = (uint32_t)(esp + 0x00000048u);
+    ebx = M32(ea);
+    /* 008df6f4  add edx, esi */
+    a = edx;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df6f6  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df6f8  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df6fa  mov ebx, dword ptr [esp + 0x14]  ; var_40 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    ebx = M32(ea);
+    /* 008df6fe  lea ecx, [eax + ecx + 0x289b7ec6] */
+    ecx = (uint32_t)(eax + ecx + 0x289b7ec6u);
+    /* 008df705  mov eax, ecx */
+    eax = ecx;
+    /* 008df707  shl ecx, 4 */
+    n = 0x4u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df70a  shr eax, 0x1c */
+    n = 0x1cu & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df70d  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df70f  mov ecx, esi */
+    ecx = esi;
+    /* 008df711  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df713  add eax, edx */
+    a = eax;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df715  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df717  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df719  mov ebx, dword ptr [esp + 0x20]  ; var_34 */
+    ea = (uint32_t)(esp + 0x00000020u);
+    ebx = M32(ea);
+    /* 008df71d  lea ecx, [edi + ecx - 0x155ed806] */
+    ecx = (uint32_t)(edi + ecx + 0xeaa127fau);
+    /* 008df724  mov edi, ecx */
+    edi = ecx;
+    /* 008df726  shl ecx, 0xb */
+    n = 0xbu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df729  shr edi, 0x15 */
+    n = 0x15u & 31u;
+    if (n) {
+        a = edi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df72c  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df72e  add edi, eax */
+    a = edi;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df730  mov ecx, edi */
+    ecx = edi;
+    /* 008df732  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df734  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df736  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df738  lea esi, [esi + ecx - 0x2b10cf7b] */
+    esi = (uint32_t)(esi + ecx + 0xd4ef3085u);
+    /* 008df73f  mov ebx, esi */
+    ebx = esi;
+    /* 008df741  shr ebx, 0x10 */
+    n = 0x10u & 31u;
+    if (n) {
+        a = ebx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ebx = r;
+    }
+    /* 008df744  shl esi, 0x10 */
+    n = 0x10u & 31u;
+    if (n) {
+        a = esi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df747  or ebx, esi */
+    r = (ebx | esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df749  add ebx, edi */
+    a = ebx;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ebx = r;
+    /* 008df74b  mov ecx, edi */
+    ecx = edi;
+    /* 008df74d  xor ecx, ebx */
+    r = (ecx ^ ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df74f  mov esi, ecx */
+    esi = ecx;
+    /* 008df751  xor esi, eax */
+    r = (esi ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df753  add esi, dword ptr [esp + 0x2c]  ; var_28 */
+    ea = (uint32_t)(esp + 0x0000002cu);
+    a = esi;
+    b = M32(ea);
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df757  lea esi, [edx + esi + 0x4881d05] */
+    esi = (uint32_t)(edx + esi + 0x04881d05u);
+    /* 008df75e  mov edx, esi */
+    edx = esi;
+    /* 008df760  shr esi, 9 */
+    n = 0x9u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df763  shl edx, 0x17 */
+    n = 0x17u & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df766  or edx, esi */
+    r = (edx | esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df768  mov esi, dword ptr [esp + 0x38]  ; var_1c */
+    ea = (uint32_t)(esp + 0x00000038u);
+    esi = M32(ea);
+    /* 008df76c  add edx, ebx */
+    a = edx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df76e  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df770  add ecx, esi */
+    a = ecx;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df772  lea ecx, [eax + ecx - 0x262b2fc7] */
+    ecx = (uint32_t)(eax + ecx + 0xd9d4d039u);
+    /* 008df779  mov eax, ecx */
+    eax = ecx;
+    /* 008df77b  shl ecx, 4 */
+    n = 0x4u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df77e  mov esi, dword ptr [esp + 0x44]  ; var_10 */
+    ea = (uint32_t)(esp + 0x00000044u);
+    esi = M32(ea);
+    /* 008df782  shr eax, 0x1c */
+    n = 0x1cu & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df785  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df787  add eax, edx */
+    a = eax;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df789  mov ecx, ebx */
+    ecx = ebx;
+    /* 008df78b  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df78d  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df78f  add ecx, esi */
+    a = ecx;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df791  lea edi, [edi + ecx - 0x1924661b] */
+    edi = (uint32_t)(edi + ecx + 0xe6db99e5u);
+    /* 008df798  mov esi, edi */
+    esi = edi;
+    /* 008df79a  shr esi, 0x15 */
+    n = 0x15u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df79d  shl edi, 0xb */
+    n = 0xbu & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df7a0  or esi, edi */
+    r = (esi | edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df7a2  add esi, eax */
+    a = esi;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df7a4  mov ecx, esi */
+    ecx = esi;
+    /* 008df7a6  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df7a8  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df7aa  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df7ac  lea ebx, [ebx + ecx + 0x1fa27cf8] */
+    ebx = (uint32_t)(ebx + ecx + 0x1fa27cf8u);
+    /* 008df7b3  mov edi, ebx */
+    edi = ebx;
+    /* 008df7b5  shl ebx, 0x10 */
+    n = 0x10u & 31u;
+    if (n) {
+        a = ebx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ebx = r;
+    }
+    /* 008df7b8  shr edi, 0x10 */
+    n = 0x10u & 31u;
+    if (n) {
+        a = edi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df7bb  or edi, ebx */
+    r = (edi | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df7bd  mov ebx, dword ptr [esp + 0x1c]  ; var_38 */
+    ea = (uint32_t)(esp + 0x0000001cu);
+    ebx = M32(ea);
+    /* 008df7c1  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df7c3  mov ecx, esi */
+    ecx = esi;
+    /* 008df7c5  xor ecx, edi */
+    r = (ecx ^ edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df7c7  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df7c9  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df7cb  lea ecx, [edx + ecx - 0x3b53a99b] */
+    ecx = (uint32_t)(edx + ecx + 0xc4ac5665u);
+    /* 008df7d2  mov ebx, dword ptr [esp + 0x14]  ; var_40 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    ebx = M32(ea);
+    /* 008df7d6  mov edx, ecx */
+    edx = ecx;
+    /* 008df7d8  shr ecx, 9 */
+    n = 0x9u & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df7db  shl edx, 0x17 */
+    n = 0x17u & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df7de  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df7e0  mov ecx, esi */
+    ecx = esi;
+    /* 008df7e2  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df7e4  add edx, edi */
+    a = edx;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df7e6  or ecx, edx */
+    r = (ecx | edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df7e8  xor ecx, edi */
+    r = (ecx ^ edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df7ea  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df7ec  mov ebx, dword ptr [esp + 0x30]  ; var_24 */
+    ea = (uint32_t)(esp + 0x00000030u);
+    ebx = M32(ea);
+    /* 008df7f0  lea ecx, [eax + ecx - 0xbd6ddbc] */
+    ecx = (uint32_t)(eax + ecx + 0xf4292244u);
+    /* 008df7f7  mov eax, ecx */
+    eax = ecx;
+    /* 008df7f9  shl ecx, 6 */
+    n = 0x6u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df7fc  shr eax, 0x1a */
+    n = 0x1au & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df7ff  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df801  add eax, edx */
+    a = eax;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df803  mov ecx, edi */
+    ecx = edi;
+    /* 008df805  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df807  or ecx, eax */
+    r = (ecx | eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df809  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df80b  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df80d  mov ebx, dword ptr [esp + 0x4c]  ; var_8 */
+    ea = (uint32_t)(esp + 0x0000004cu);
+    ebx = M32(ea);
+    /* 008df811  lea ecx, [esi + ecx + 0x432aff97] */
+    ecx = (uint32_t)(esi + ecx + 0x432aff97u);
+    /* 008df818  mov esi, ecx */
+    esi = ecx;
+    /* 008df81a  shl ecx, 0xa */
+    n = 0xau & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df81d  shr esi, 0x16 */
+    n = 0x16u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df820  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df822  mov ecx, edx */
+    ecx = edx;
+    /* 008df824  add esi, eax */
+    a = esi;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df826  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df828  or ecx, esi */
+    r = (ecx | esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df82a  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df82c  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df82e  lea ecx, [edi + ecx - 0x546bdc59] */
+    ecx = (uint32_t)(edi + ecx + 0xab9423a7u);
+    /* 008df835  mov edi, ecx */
+    edi = ecx;
+    /* 008df837  shl ecx, 0xf */
+    n = 0xfu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df83a  mov ebx, dword ptr [esp + 0x28]  ; var_2c */
+    ea = (uint32_t)(esp + 0x00000028u);
+    ebx = M32(ea);
+    /* 008df83e  shr edi, 0x11 */
+    n = 0x11u & 31u;
+    if (n) {
+        a = edi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df841  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df843  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df845  mov ecx, eax */
+    ecx = eax;
+    /* 008df847  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df849  or ecx, edi */
+    r = (ecx | edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df84b  xor ecx, esi */
+    r = (ecx ^ esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df84d  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df84f  lea ecx, [edx + ecx - 0x36c5fc7] */
+    ecx = (uint32_t)(edx + ecx + 0xfc93a039u);
+    /* 008df856  mov edx, ecx */
+    edx = ecx;
+    /* 008df858  shr ecx, 0xb */
+    n = 0xbu & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df85b  mov ebx, dword ptr [esp + 0x44]  ; var_10 */
+    ea = (uint32_t)(esp + 0x00000044u);
+    ebx = M32(ea);
+    /* 008df85f  shl edx, 0x15 */
+    n = 0x15u & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df862  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df864  add edx, edi */
+    a = edx;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df866  mov ecx, esi */
+    ecx = esi;
+    /* 008df868  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df86a  or ecx, edx */
+    r = (ecx | edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df86c  xor ecx, edi */
+    r = (ecx ^ edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df86e  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df870  lea ecx, [eax + ecx + 0x655b59c3] */
+    ecx = (uint32_t)(eax + ecx + 0x655b59c3u);
+    /* 008df877  mov eax, ecx */
+    eax = ecx;
+    /* 008df879  shl ecx, 6 */
+    n = 0x6u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df87c  mov ebx, dword ptr [esp + 0x20]  ; var_34 */
+    ea = (uint32_t)(esp + 0x00000020u);
+    ebx = M32(ea);
+    /* 008df880  shr eax, 0x1a */
+    n = 0x1au & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df883  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df885  add eax, edx */
+    a = eax;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df887  mov ecx, edi */
+    ecx = edi;
+    /* 008df889  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df88b  or ecx, eax */
+    r = (ecx | eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df88d  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df88f  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df891  lea ecx, [esi + ecx - 0x70f3336e] */
+    ecx = (uint32_t)(esi + ecx + 0x8f0ccc92u);
+    /* 008df898  mov esi, ecx */
+    esi = ecx;
+    /* 008df89a  shl ecx, 0xa */
+    n = 0xau & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df89d  mov ebx, dword ptr [esp + 0x3c]  ; var_18 */
+    ea = (uint32_t)(esp + 0x0000003cu);
+    ebx = M32(ea);
+    /* 008df8a1  shr esi, 0x16 */
+    n = 0x16u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df8a4  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df8a6  add esi, eax */
+    a = esi;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df8a8  mov ecx, edx */
+    ecx = edx;
+    /* 008df8aa  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df8ac  or ecx, esi */
+    r = (ecx | esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df8ae  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df8b0  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df8b2  lea ecx, [edi + ecx - 0x100b83] */
+    ecx = (uint32_t)(edi + ecx + 0xffeff47du);
+    /* 008df8b9  mov ebx, dword ptr [esp + 0x18]  ; var_3c */
+    ea = (uint32_t)(esp + 0x00000018u);
+    ebx = M32(ea);
+    /* 008df8bd  mov edi, ecx */
+    edi = ecx;
+    /* 008df8bf  shl ecx, 0xf */
+    n = 0xfu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df8c2  shr edi, 0x11 */
+    n = 0x11u & 31u;
+    if (n) {
+        a = edi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df8c5  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df8c7  mov ecx, eax */
+    ecx = eax;
+    /* 008df8c9  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df8cb  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df8cd  or ecx, edi */
+    r = (ecx | edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df8cf  xor ecx, esi */
+    r = (ecx ^ esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df8d1  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df8d3  mov ebx, dword ptr [esp + 0x34]  ; var_20 */
+    ea = (uint32_t)(esp + 0x00000034u);
+    ebx = M32(ea);
+    /* 008df8d7  lea ecx, [edx + ecx - 0x7a7ba22f] */
+    ecx = (uint32_t)(edx + ecx + 0x85845dd1u);
+    /* 008df8de  mov edx, ecx */
+    edx = ecx;
+    /* 008df8e0  shr ecx, 0xb */
+    n = 0xbu & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df8e3  shl edx, 0x15 */
+    n = 0x15u & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df8e6  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df8e8  mov ecx, esi */
+    ecx = esi;
+    /* 008df8ea  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df8ec  add edx, edi */
+    a = edx;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df8ee  or ecx, edx */
+    r = (ecx | edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df8f0  xor ecx, edi */
+    r = (ecx ^ edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df8f2  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df8f4  lea ecx, [eax + ecx + 0x6fa87e4f] */
+    ecx = (uint32_t)(eax + ecx + 0x6fa87e4fu);
+    /* 008df8fb  mov eax, ecx */
+    eax = ecx;
+    /* 008df8fd  shl ecx, 6 */
+    n = 0x6u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df900  shr eax, 0x1a */
+    n = 0x1au & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df903  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df905  mov ecx, edi */
+    ecx = edi;
+    /* 008df907  add eax, edx */
+    a = eax;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df909  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df90b  or ecx, eax */
+    r = (ecx | eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df90d  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df90f  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df911  lea ecx, [esi + ecx - 0x1d31920] */
+    ecx = (uint32_t)(esi + ecx + 0xfe2ce6e0u);
+    /* 008df918  mov esi, ecx */
+    esi = ecx;
+    /* 008df91a  shl ecx, 0xa */
+    n = 0xau & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df91d  mov ebp, dword ptr [esp + 0x2c]  ; var_28 */
+    ea = (uint32_t)(esp + 0x0000002cu);
+    ebp = M32(ea);
+    /* 008df921  shr esi, 0x16 */
+    n = 0x16u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df924  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df926  add esi, eax */
+    a = esi;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df928  mov ecx, edx */
+    ecx = edx;
+    /* 008df92a  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df92c  or ecx, esi */
+    r = (ecx | esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df92e  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df930  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df932  lea ecx, [edi + ecx - 0x5cfebcec] */
+    ecx = (uint32_t)(edi + ecx + 0xa3014314u);
+    /* 008df939  mov edi, ecx */
+    edi = ecx;
+    /* 008df93b  shl ecx, 0xf */
+    n = 0xfu & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df93e  mov ebp, dword ptr [esp + 0x48]  ; var_c */
+    ea = (uint32_t)(esp + 0x00000048u);
+    ebp = M32(ea);
+    /* 008df942  shr edi, 0x11 */
+    n = 0x11u & 31u;
+    if (n) {
+        a = edi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df945  or edi, ecx */
+    r = (edi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edi = r;
+    /* 008df947  add edi, esi */
+    a = edi;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df949  mov ecx, eax */
+    ecx = eax;
+    /* 008df94b  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df94d  or ecx, edi */
+    r = (ecx | edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df94f  xor ecx, esi */
+    r = (ecx ^ esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df951  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df953  lea ecx, [edx + ecx + 0x4e0811a1] */
+    ecx = (uint32_t)(edx + ecx + 0x4e0811a1u);
+    /* 008df95a  mov edx, ecx */
+    edx = ecx;
+    /* 008df95c  shr ecx, 0xb */
+    n = 0xbu & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df95f  mov ebp, dword ptr [esp + 0x24]  ; var_30 */
+    ea = (uint32_t)(esp + 0x00000024u);
+    ebp = M32(ea);
+    /* 008df963  shl edx, 0x15 */
+    n = 0x15u & 31u;
+    if (n) {
+        a = edx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df966  or edx, ecx */
+    r = (edx | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    edx = r;
+    /* 008df968  add edx, edi */
+    a = edx;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edx = r;
+    /* 008df96a  mov ecx, esi */
+    ecx = esi;
+    /* 008df96c  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df96e  or ecx, edx */
+    r = (ecx | edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df970  xor ecx, edi */
+    r = (ecx ^ edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df972  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df974  lea ecx, [eax + ecx - 0x8ac817e] */
+    ecx = (uint32_t)(eax + ecx + 0xf7537e82u);
+    /* 008df97b  mov ebp, dword ptr [esp + 0x40]  ; var_14 */
+    ea = (uint32_t)(esp + 0x00000040u);
+    ebp = M32(ea);
+    /* 008df97f  mov eax, ecx */
+    eax = ecx;
+    /* 008df981  shl ecx, 6 */
+    n = 0x6u & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df984  mov ebx, dword ptr [esp + 0x1c]  ; var_38 */
+    ea = (uint32_t)(esp + 0x0000001cu);
+    ebx = M32(ea);
+    /* 008df988  shr eax, 0x1a */
+    n = 0x1au & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df98b  or eax, ecx */
+    r = (eax | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df98d  mov ecx, edi */
+    ecx = edi;
+    /* 008df98f  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df991  add eax, edx */
+    a = eax;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df993  or ecx, eax */
+    r = (ecx | eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df995  xor ecx, edx */
+    r = (ecx ^ edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df997  add ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df999  lea ecx, [esi + ecx - 0x42c50dcb] */
+    ecx = (uint32_t)(esi + ecx + 0xbd3af235u);
+    /* 008df9a0  mov esi, ecx */
+    esi = ecx;
+    /* 008df9a2  shl ecx, 0xa */
+    n = 0xau & 31u;
+    if (n) {
+        a = ecx;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008df9a5  shr esi, 0x16 */
+    n = 0x16u & 31u;
+    if (n) {
+        a = esi;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        esi = r;
+    }
+    /* 008df9a8  or esi, ecx */
+    r = (esi | ecx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    esi = r;
+    /* 008df9aa  add esi, eax */
+    a = esi;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008df9ac  mov ecx, edx */
+    ecx = edx;
+    /* 008df9ae  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df9b0  or ecx, esi */
+    r = (ecx | esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df9b2  xor ecx, eax */
+    r = (ecx ^ eax) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df9b4  add ecx, ebx */
+    a = ecx;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df9b6  lea edi, [edi + ecx + 0x2ad7d2bb] */
+    edi = (uint32_t)(edi + ecx + 0x2ad7d2bbu);
+    /* 008df9bd  mov ebx, edi */
+    ebx = edi;
+    /* 008df9bf  shl edi, 0xf */
+    n = 0xfu & 31u;
+    if (n) {
+        a = edi;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        edi = r;
+    }
+    /* 008df9c2  shr ebx, 0x11 */
+    n = 0x11u & 31u;
+    if (n) {
+        a = ebx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ebx = r;
+    }
+    /* 008df9c5  or ebx, edi */
+    r = (ebx | edi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ebx = r;
+    /* 008df9c7  mov edi, dword ptr [esp + 0x38]  ; var_1c */
+    ea = (uint32_t)(esp + 0x00000038u);
+    edi = M32(ea);
+    /* 008df9cb  mov ecx, eax */
+    ecx = eax;
+    /* 008df9cd  not ecx */
+    a = ecx;
+    ecx = ~a & 0xffffffffu;
+    /* 008df9cf  add ebx, esi */
+    a = ebx;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ebx = r;
+    /* 008df9d1  or ecx, ebx */
+    r = (ecx | ebx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df9d3  xor ecx, esi */
+    r = (ecx ^ esi) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008df9d5  add ecx, edi */
+    a = ecx;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008df9d7  lea edx, [edx + ecx - 0x14792c6f] */
+    edx = (uint32_t)(edx + ecx + 0xeb86d391u);
+    /* 008df9de  mov ecx, dword ptr [esp + 0x10]  ; var_44 */
+    ea = (uint32_t)(esp + 0x00000010u);
+    ecx = M32(ea);
+    /* 008df9e2  mov edi, dword ptr [ecx + 4] */
+    ea = (uint32_t)(ecx + 0x00000004u);
+    edi = M32(ea);
+    /* 008df9e5  add edi, eax */
+    a = edi;
+    b = eax;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008df9e7  mov dword ptr [ecx + 4], edi */
+    ea = (uint32_t)(ecx + 0x00000004u);
+    M32(ea) = edi;
+    /* 008df9ea  mov eax, edx */
+    eax = edx;
+    /* 008df9ec  mov edi, dword ptr [ecx + 8] */
+    ea = (uint32_t)(ecx + 0x00000008u);
+    edi = M32(ea);
+    /* 008df9ef  shl eax, 0x15 */
+    n = 0x15u & 31u;
+    if (n) {
+        a = eax;
+        r = (uint32_t)((uint64_t)a << n) & 0xffffffffu;
+        cf = n <= 32 ? (uint32_t)(((uint64_t)a >> (32 - n)) & 1u) : 0u;
+        of = SIGN(32, r) ^ cf;
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008df9f2  shr edx, 0xb */
+    n = 0xbu & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008df9f5  or eax, edx */
+    r = (eax | edx) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008df9f7  add eax, edi */
+    a = eax;
+    b = edi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df9f9  add eax, ebx */
+    a = eax;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008df9fb  mov dword ptr [ecx + 8], eax */
+    ea = (uint32_t)(ecx + 0x00000008u);
+    M32(ea) = eax;
+    /* 008df9fe  mov eax, dword ptr [ecx + 0xc] */
+    ea = (uint32_t)(ecx + 0x0000000cu);
+    eax = M32(ea);
+    /* 008dfa01  add eax, ebx */
+    a = eax;
+    b = ebx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008dfa03  mov dword ptr [ecx + 0xc], eax */
+    ea = (uint32_t)(ecx + 0x0000000cu);
+    M32(ea) = eax;
+    /* 008dfa06  mov eax, dword ptr [ecx + 0x10] */
+    ea = (uint32_t)(ecx + 0x00000010u);
+    eax = M32(ea);
+    /* 008dfa09  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 008dfa0a  add eax, esi */
+    a = eax;
+    b = esi;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008dfa0c  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 008dfa0d  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 008dfa0e  mov dword ptr [ecx + 0x10], eax */
+    ea = (uint32_t)(ecx + 0x00000010u);
+    M32(ea) = eax;
+    /* 008dfa11  pop ebx */
+    t = M32(esp);
+    esp += 4;
+    ebx = t;
+    /* 008dfa12  add esp, 0x44 */
+    a = esp;
+    b = 0x44u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 008dfa15  ret 4 */
+    c->eip = M32(esp);
+    esp += 8;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 008dfa20  RsaRandom_008dfa20  (called from this file only)
+ * called by: SecureBlowfish::vf23_helper_008de270, SecureBlowfish::vf23_helper_008de370, RsaRandom_008dfae0
+ */
+BFV_L1_ENTRY(bfv_client_l1_008dfa20, bfv_client_l1_body_008dfa20);
+BFV_L1_RESUME(bfv_client_l1r_008dfa20_1, bfv_client_l1_body_008dfa20, 1);
+BFV_L1_RESUME(bfv_client_l1r_008dfa20_2, bfv_client_l1_body_008dfa20, 2);
+void bfv_client_l1_body_008dfa20(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, n, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    default: break;
+    }
+    /* 008dfa20  push ebx */
+    t = ebx;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfa21  mov ebx, ecx */
+    ebx = ecx;
+    /* 008dfa23  mov edx, dword ptr [ebx + 0x14] */
+    ea = (uint32_t)(ebx + 0x00000014u);
+    edx = M32(ea);
+    /* 008dfa26  mov ecx, dword ptr [esp + 0xc]  ; arg_4 */
+    ea = (uint32_t)(esp + 0x0000000cu);
+    ecx = M32(ea);
+    /* 008dfa2a  push ebp */
+    t = ebp;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfa2b  mov eax, edx */
+    eax = edx;
+    /* 008dfa2d  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfa2e  shr eax, 3 */
+    n = 0x3u & 31u;
+    if (n) {
+        a = eax;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        eax = r;
+    }
+    /* 008dfa31  lea edx, [edx + ecx*8] */
+    edx = (uint32_t)(edx + ecx * 8u);
+    /* 008dfa34  lea esi, [ecx*8] */
+    esi = (uint32_t)(ecx * 8u);
+    /* 008dfa3b  and eax, 0x3f */
+    r = (eax & 0x3fu) & 0xffffffffu;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008dfa3e  cmp edx, esi */
+    a = edx;
+    b = esi;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    /* 008dfa40  push edi */
+    t = edi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfa41  mov dword ptr [ebx + 0x14], edx */
+    ea = (uint32_t)(ebx + 0x00000014u);
+    M32(ea) = edx;
+    /* 008dfa44  jae 0x8dfa49 */
+    if (!cf) goto L_008dfa49;
+    /* 008dfa46  inc dword ptr [ebx + 0x18] */
+    ea = (uint32_t)(ebx + 0x00000018u);
+    a = M32(ea);
+    r = (a + 1u) & 0xffffffffu;
+    F_INC(32, a, r);
+    M32(ea) = r;
+L_008dfa49:
+    /* 008dfa49  mov edi, dword ptr [ebx + 0x18] */
+    ea = (uint32_t)(ebx + 0x00000018u);
+    edi = M32(ea);
+    /* 008dfa4c  mov edx, ecx */
+    edx = ecx;
+    /* 008dfa4e  shr edx, 0x1d */
+    n = 0x1du & 31u;
+    if (n) {
+        a = edx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        edx = r;
+    }
+    /* 008dfa51  mov ebp, 0x40 */
+    ebp = 0x40u;
+    /* 008dfa56  add edi, edx */
+    a = edi;
+    b = edx;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008dfa58  sub ebp, eax */
+    a = ebp;
+    b = eax;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    ebp = r;
+    /* 008dfa5a  cmp ecx, ebp */
+    a = ecx;
+    b = ebp;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    /* 008dfa5c  mov dword ptr [ebx + 0x18], edi */
+    ea = (uint32_t)(ebx + 0x00000018u);
+    M32(ea) = edi;
+    /* 008dfa5f  jb 0x8dfab3 */
+    if (cf) goto L_008dfab3;
+    /* 008dfa61  mov esi, dword ptr [esp + 0x14]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    esi = M32(ea);
+    /* 008dfa65  lea edi, [eax + ebx + 0x1c] */
+    edi = (uint32_t)(eax + ebx + 0x0000001cu);
+    /* 008dfa69  mov ecx, ebp */
+    ecx = ebp;
+    /* 008dfa6b  mov eax, ecx */
+    eax = ecx;
+    /* 008dfa6d  shr ecx, 2 */
+    n = 0x2u & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008dfa70  rep movsd dword ptr es:[edi], dword ptr [esi] */
+    while (ecx) {
+        M32(edi) = M32(esi);
+        esi += (df ? -4u : 4u);
+        edi += (df ? -4u : 4u);
+        ecx--;
+    }
+    /* 008dfa72  mov ecx, eax */
+    ecx = eax;
+    /* 008dfa74  and ecx, 3 */
+    r = (ecx & 0x3u) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008dfa77  rep movsb byte ptr es:[edi], byte ptr [esi] */
+    while (ecx) {
+        M8(edi) = M8(esi);
+        esi += (df ? -1u : 1u);
+        edi += (df ? -1u : 1u);
+        ecx--;
+    }
+    /* 008dfa79  lea ecx, [ebx + 0x1c] */
+    ecx = (uint32_t)(ebx + 0x0000001cu);
+    /* 008dfa7c  push ecx */
+    t = ecx;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfa7d  mov ecx, ebx */
+    ecx = ebx;
+    /* 008dfa7f  call 0x8df130  ; RsaRandom_helper_008df130 */
+    t = 0x008df130u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfa20_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 008dfa84  lea esi, [ebp + 0x3f] */
+    esi = (uint32_t)(ebp + 0x0000003fu);
+    /* 008dfa87  mov edi, ebp */
+    edi = ebp;
+    /* 008dfa89  mov ebp, dword ptr [esp + 0x18]  ; arg_4 */
+    ea = (uint32_t)(esp + 0x00000018u);
+    ebp = M32(ea);
+    /* 008dfa8d  cmp esi, ebp */
+    a = esi;
+    b = ebp;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    /* 008dfa8f  jae 0x8dfaab */
+    if (!cf) goto L_008dfaab;
+L_008dfa91:
+    /* 008dfa91  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    edx = M32(ea);
+    /* 008dfa95  lea eax, [edx + esi - 0x3f] */
+    eax = (uint32_t)(edx + esi + 0xffffffc1u);
+    /* 008dfa99  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfa9a  mov ecx, ebx */
+    ecx = ebx;
+    /* 008dfa9c  call 0x8df130  ; RsaRandom_helper_008df130 */
+    t = 0x008df130u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfa20_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 008dfaa1  add esi, 0x40 */
+    a = esi;
+    b = 0x40u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esi = r;
+    /* 008dfaa4  add edi, 0x40 */
+    a = edi;
+    b = 0x40u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    edi = r;
+    /* 008dfaa7  cmp esi, ebp */
+    a = esi;
+    b = ebp;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    /* 008dfaa9  jb 0x8dfa91 */
+    if (cf) goto L_008dfa91;
+L_008dfaab:
+    /* 008dfaab  mov ecx, dword ptr [esp + 0x18]  ; arg_4 */
+    ea = (uint32_t)(esp + 0x00000018u);
+    ecx = M32(ea);
+    /* 008dfaaf  xor eax, eax */
+    r = 0;
+    F_LOGIC(32, r);
+    eax = r;
+    /* 008dfab1  jmp 0x8dfab5 */
+    goto L_008dfab5;
+L_008dfab3:
+    /* 008dfab3  xor edi, edi */
+    r = 0;
+    F_LOGIC(32, r);
+    edi = r;
+L_008dfab5:
+    /* 008dfab5  mov edx, dword ptr [esp + 0x14]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    edx = M32(ea);
+    /* 008dfab9  sub ecx, edi */
+    a = ecx;
+    b = edi;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    ecx = r;
+    /* 008dfabb  lea esi, [edi + edx] */
+    esi = (uint32_t)(edi + edx);
+    /* 008dfabe  lea edi, [eax + ebx + 0x1c] */
+    edi = (uint32_t)(eax + ebx + 0x0000001cu);
+    /* 008dfac2  mov eax, ecx */
+    eax = ecx;
+    /* 008dfac4  shr ecx, 2 */
+    n = 0x2u & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008dfac7  rep movsd dword ptr es:[edi], dword ptr [esi] */
+    while (ecx) {
+        M32(edi) = M32(esi);
+        esi += (df ? -4u : 4u);
+        edi += (df ? -4u : 4u);
+        ecx--;
+    }
+    /* 008dfac9  mov ecx, eax */
+    ecx = eax;
+    /* 008dfacb  and ecx, 3 */
+    r = (ecx & 0x3u) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008dface  rep movsb byte ptr es:[edi], byte ptr [esi] */
+    while (ecx) {
+        M8(edi) = M8(esi);
+        esi += (df ? -1u : 1u);
+        edi += (df ? -1u : 1u);
+        ecx--;
+    }
+    /* 008dfad0  pop edi */
+    t = M32(esp);
+    esp += 4;
+    edi = t;
+    /* 008dfad1  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 008dfad2  pop ebp */
+    t = M32(esp);
+    esp += 4;
+    ebp = t;
+    /* 008dfad3  pop ebx */
+    t = M32(esp);
+    esp += 4;
+    ebx = t;
+    /* 008dfad4  ret 8 */
+    c->eip = M32(esp);
+    esp += 12;
+    goto out;
+out: __attribute__((unused));
+    c->eax = eax; c->ecx = ecx; c->edx = edx; c->ebx = ebx;
+    c->esp = esp; c->ebp = ebp; c->esi = esi; c->edi = edi;
+    c->eflags = (eflags_rest & ~FLAG_MASK) | FLAGS_WORD();
+}
+
+
+/* 008dfae0  RsaRandom_008dfae0  (called from this file only)
+ * called by: SecureBlowfish::vf23_helper_008de270, SecureBlowfish::vf23_helper_008de370
+ */
+BFV_L1_ENTRY(bfv_client_l1_008dfae0, bfv_client_l1_body_008dfae0);
+BFV_L1_RESUME(bfv_client_l1r_008dfae0_1, bfv_client_l1_body_008dfae0, 1);
+BFV_L1_RESUME(bfv_client_l1r_008dfae0_2, bfv_client_l1_body_008dfae0, 2);
+BFV_L1_RESUME(bfv_client_l1r_008dfae0_3, bfv_client_l1_body_008dfae0, 3);
+void bfv_client_l1_body_008dfae0(struct bfv_cpu *c)
+{
+    uint32_t eax = c->eax, ecx = c->ecx, edx = c->edx, ebx = c->ebx;
+    uint32_t esp = c->esp, ebp = c->ebp, esi = c->esi, edi = c->edi;
+    uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
+    FLAGS_LOAD(eflags_rest);
+    uint32_t t, a, b, r, n, ea;
+    switch (c->eip) { /* 0: entry; k: return from the k-th call */
+    case 1: goto R_1;
+    case 2: goto R_2;
+    case 3: goto R_3;
+    default: break;
+    }
+    /* 008dfae0  sub esp, 0xc */
+    a = esp;
+    b = 0xcu;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    esp = r;
+    /* 008dfae3  mov eax, dword ptr [0xcff7cc]  ; __security_cookie */
+    ea = (uint32_t)(0x00cff7ccu);
+    eax = M32(ea);
+    /* 008dfae8  push esi */
+    t = esi;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfae9  mov esi, ecx */
+    esi = ecx;
+    /* 008dfaeb  mov dword ptr [esp + 0xc], eax  ; var_4 */
+    ea = (uint32_t)(esp + 0x0000000cu);
+    M32(ea) = eax;
+    /* 008dfaef  xor ecx, ecx */
+    r = 0;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008dfaf1  lea eax, [esi + 0x16] */
+    eax = (uint32_t)(esi + 0x00000016u);
+L_008dfaf4:
+    /* 008dfaf4  mov dl, byte ptr [eax - 2] */
+    ea = (uint32_t)(eax + 0xfffffffeu);
+    SET8L(edx, M8(ea));
+    /* 008dfaf7  mov byte ptr [esp + ecx + 4], dl */
+    ea = (uint32_t)(esp + ecx + 0x00000004u);
+    M8(ea) = LO8(edx);
+    /* 008dfafb  mov dl, byte ptr [eax - 1] */
+    ea = (uint32_t)(eax + 0xffffffffu);
+    SET8L(edx, M8(ea));
+    /* 008dfafe  mov byte ptr [esp + ecx + 5], dl */
+    ea = (uint32_t)(esp + ecx + 0x00000005u);
+    M8(ea) = LO8(edx);
+    /* 008dfb02  mov dl, byte ptr [eax] */
+    ea = (uint32_t)(eax);
+    SET8L(edx, M8(ea));
+    /* 008dfb04  mov byte ptr [esp + ecx + 6], dl */
+    ea = (uint32_t)(esp + ecx + 0x00000006u);
+    M8(ea) = LO8(edx);
+    /* 008dfb08  mov dl, byte ptr [eax + 1] */
+    ea = (uint32_t)(eax + 0x00000001u);
+    SET8L(edx, M8(ea));
+    /* 008dfb0b  mov byte ptr [esp + ecx + 7], dl */
+    ea = (uint32_t)(esp + ecx + 0x00000007u);
+    M8(ea) = LO8(edx);
+    /* 008dfb0f  add ecx, 4 */
+    a = ecx;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008dfb12  add eax, 4 */
+    a = eax;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008dfb15  cmp ecx, 8 */
+    a = ecx;
+    b = 0x8u;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    /* 008dfb18  jb 0x8dfaf4 */
+    if (cf) goto L_008dfaf4;
+    /* 008dfb1a  mov ecx, dword ptr [esi + 0x14] */
+    ea = (uint32_t)(esi + 0x00000014u);
+    ecx = M32(ea);
+    /* 008dfb1d  shr ecx, 3 */
+    n = 0x3u & 31u;
+    if (n) {
+        a = ecx;
+        r = n < 32 ? a >> n : 0u;
+        cf = (uint32_t)(((uint64_t)a >> (n - 1)) & 1u);
+        of = SIGN(32, a);
+        F_SZP(32, r); af = 0;
+        ecx = r;
+    }
+    /* 008dfb20  and ecx, 0x3f */
+    r = (ecx & 0x3fu) & 0xffffffffu;
+    F_LOGIC(32, r);
+    ecx = r;
+    /* 008dfb23  cmp ecx, 0x38 */
+    a = ecx;
+    b = 0x38u;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    /* 008dfb26  mov eax, 0x38 */
+    eax = 0x38u;
+    /* 008dfb2b  jb 0x8dfb32 */
+    if (cf) goto L_008dfb32;
+    /* 008dfb2d  mov eax, 0x78 */
+    eax = 0x78u;
+L_008dfb32:
+    /* 008dfb32  sub eax, ecx */
+    a = eax;
+    b = ecx;
+    r = (a - b) & 0xffffffffu;
+    F_SUB(32, a, b, r);
+    eax = r;
+    /* 008dfb34  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfb35  push 0xd13928 */
+    t = 0xd13928u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfb3a  mov ecx, esi */
+    ecx = esi;
+    /* 008dfb3c  call 0x8dfa20  ; RsaRandom_008dfa20 */
+    t = 0x008dfa20u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfae0_1;
+    c->eip = t;
+    goto out;
+R_1:
+    /* 008dfb41  push 8 */
+    t = 0x8u;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfb43  lea eax, [esp + 8]  ; &var_c */
+    eax = (uint32_t)(esp + 0x00000008u);
+    /* 008dfb47  push eax */
+    t = eax;
+    esp -= 4;
+    M32(esp) = t;
+    /* 008dfb48  mov ecx, esi */
+    ecx = esi;
+    /* 008dfb4a  call 0x8dfa20  ; RsaRandom_008dfa20 */
+    t = 0x008dfa20u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfae0_2;
+    c->eip = t;
+    goto out;
+R_2:
+    /* 008dfb4f  mov ecx, dword ptr [esp + 0x14]  ; arg_0 */
+    ea = (uint32_t)(esp + 0x00000014u);
+    ecx = M32(ea);
+    /* 008dfb53  lea eax, [esi + 6] */
+    eax = (uint32_t)(esi + 0x00000006u);
+    /* 008dfb56  inc ecx */
+    a = ecx;
+    r = (a + 1u) & 0xffffffffu;
+    F_INC(32, a, r);
+    ecx = r;
+    /* 008dfb57  mov esi, 4 */
+    esi = 0x4u;
+    /* 008dfb5c  lea esp, [esp]  ; &var_10 */
+    esp = (uint32_t)(esp);
+L_008dfb60:
+    /* 008dfb60  mov dl, byte ptr [eax - 2] */
+    ea = (uint32_t)(eax + 0xfffffffeu);
+    SET8L(edx, M8(ea));
+    /* 008dfb63  mov byte ptr [ecx - 1], dl */
+    ea = (uint32_t)(ecx + 0xffffffffu);
+    M8(ea) = LO8(edx);
+    /* 008dfb66  mov dl, byte ptr [eax - 1] */
+    ea = (uint32_t)(eax + 0xffffffffu);
+    SET8L(edx, M8(ea));
+    /* 008dfb69  mov byte ptr [ecx], dl */
+    ea = (uint32_t)(ecx);
+    M8(ea) = LO8(edx);
+    /* 008dfb6b  mov dl, byte ptr [eax] */
+    ea = (uint32_t)(eax);
+    SET8L(edx, M8(ea));
+    /* 008dfb6d  mov byte ptr [ecx + 1], dl */
+    ea = (uint32_t)(ecx + 0x00000001u);
+    M8(ea) = LO8(edx);
+    /* 008dfb70  mov dl, byte ptr [eax + 1] */
+    ea = (uint32_t)(eax + 0x00000001u);
+    SET8L(edx, M8(ea));
+    /* 008dfb73  mov byte ptr [ecx + 2], dl */
+    ea = (uint32_t)(ecx + 0x00000002u);
+    M8(ea) = LO8(edx);
+    /* 008dfb76  add eax, 4 */
+    a = eax;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    eax = r;
+    /* 008dfb79  add ecx, 4 */
+    a = ecx;
+    b = 0x4u;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    ecx = r;
+    /* 008dfb7c  dec esi */
+    a = esi;
+    r = (a - 1u) & 0xffffffffu;
+    F_DEC(32, a, r);
+    esi = r;
+    /* 008dfb7d  jne 0x8dfb60 */
+    if (!zf) goto L_008dfb60;
+    /* 008dfb7f  mov ecx, dword ptr [esp + 0xc]  ; var_4 */
+    ea = (uint32_t)(esp + 0x0000000cu);
+    ecx = M32(ea);
+    /* 008dfb83  pop esi */
+    t = M32(esp);
+    esp += 4;
+    esi = t;
+    /* 008dfb84  call 0x7c2019  ; __security_check_cookie */
+    t = 0x007c2019u;
+    esp -= 4;
+    M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_008dfae0_3;
+    c->eip = t;
+    goto out;
+R_3:
+    /* 008dfb89  add esp, 0xc */
+    a = esp;
+    b = 0xcu;
+    r = (a + b) & 0xffffffffu;
+    F_ADD(32, a, b, r);
+    esp = r;
+    /* 008dfb8c  ret 4 */
     c->eip = M32(esp);
     esp += 8;
     goto out;

@@ -5,7 +5,9 @@
 #include "l1.h"
 
 
-/* 0096f890  dice::bf::ai::SFIf  (vtable store) */
+/* 0096f890  SFIf::SFIf  (vtable store)
+ * class: dice::bf::ai::SFIf
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f890, bfv_client_l1_body_0096f890);
 BFV_L1_RESUME(bfv_client_l1r_0096f890_1, bfv_client_l1_body_0096f890, 1);
 void bfv_client_l1_body_0096f890(struct bfv_cpu *c)
@@ -25,7 +27,7 @@ void bfv_client_l1_body_0096f890(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0096f891  mov esi, ecx */
     esi = ecx;
-    /* 0096f893  call 0x96aa10 */
+    /* 0096f893  call 0x96aa10  ; IAIScriptFlow::IAIScriptFlow */
     t = 0x0096aa10u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096f890_1;
@@ -45,7 +47,7 @@ R_1:
     /* 0096f8a0  mov dword ptr [esi + 0x14], eax */
     ea = (uint32_t)(esi + 0x00000014u);
     M32(ea) = eax;
-    /* 0096f8a3  mov dword ptr [esi], 0xbf42f4 */
+    /* 0096f8a3  mov dword ptr [esi], 0xbf42f4  ; vtable SFIf */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf42f4u;
     /* 0096f8a9  mov eax, esi */
@@ -65,7 +67,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f8b0  dice::bf::ai::SFIf  (virtual method) */
+/* 0096f8b0  SFIf::isValid  (virtual method)
+ * overrides: IAIScriptStatement::isValid  (17 classes implement it)
+ * class: dice::bf::ai::SFIf
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f8b0, bfv_client_l1_body_0096f8b0);
 void bfv_client_l1_body_0096f8b0(struct bfv_cpu *c)
 {
@@ -121,7 +126,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f8d0  dice::bf::ai::SFIf  (virtual method) */
+/* 0096f8d0  SFIf::isValid  (virtual method)
+ * overrides: IAIScriptStatement::vf3  (17 classes implement it)
+ * class: dice::bf::ai::SFIf
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f8d0, bfv_client_l1_body_0096f8d0);
 void bfv_client_l1_body_0096f8d0(struct bfv_cpu *c)
 {
@@ -176,7 +184,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f8f0  dice::bf::ai::SFIf  (virtual method) */
+/* 0096f8f0  SFIf::isValid  (virtual method)
+ * overrides: IAIScriptStatement::vf4  (17 classes implement it)
+ * class: dice::bf::ai::SFIf
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f8f0, bfv_client_l1_body_0096f8f0);
 void bfv_client_l1_body_0096f8f0(struct bfv_cpu *c)
 {
@@ -223,7 +234,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f910  dice::bf::ai::SFIf  (virtual method) */
+/* 0096f910  SFIf::addChild  (virtual method)
+ * overrides: IAIScriptStatement::addChild  (17 classes implement it)
+ * class: dice::bf::ai::SFIf
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f910, bfv_client_l1_body_0096f910);
 void bfv_client_l1_body_0096f910(struct bfv_cpu *c)
 {
@@ -240,7 +254,7 @@ void bfv_client_l1_body_0096f910(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 0096f915  jne 0x96f923 */
     if (!zf) goto L_0096f923;
-    /* 0096f917  mov eax, dword ptr [esp + 4] */
+    /* 0096f917  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0096f91b  mov dword ptr [ecx + 0xc], eax */
@@ -261,7 +275,7 @@ L_0096f923:
     F_LOGIC(32, r);
     /* 0096f928  jne 0x96f936 */
     if (!zf) goto L_0096f936;
-    /* 0096f92a  mov edx, dword ptr [esp + 4] */
+    /* 0096f92a  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 0096f92e  mov dword ptr [ecx + 0x10], edx */
@@ -289,7 +303,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f940  (between same file) */
+/* 0096f940  AiScript::negate  (between same file)
+ * called by: Cmd_AiScript_negate::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f940, bfv_client_l1_body_0096f940);
 void bfv_client_l1_body_0096f940(struct bfv_cpu *c)
 {
@@ -321,7 +337,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f950  dice::bf::ai::SFIf  (virtual method) */
+/* 0096f950  SFIf::getChild  (virtual method)
+ * overrides: IAIScriptStatement::getChild  (17 classes implement it)
+ * class: dice::bf::ai::SFIf
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f950, bfv_client_l1_body_0096f950);
 void bfv_client_l1_body_0096f950(struct bfv_cpu *c)
 {
@@ -330,7 +349,7 @@ void bfv_client_l1_body_0096f950(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0096f950  mov eax, dword ptr [esp + 4] */
+    /* 0096f950  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0096f954  test eax, eax */
@@ -376,7 +395,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f970  dice::bf::ai::SFIf  (virtual method) */
+/* 0096f970  SFIf::vf9  (virtual method)
+ * overrides: IAIScriptStatement::vf9  (17 classes implement it)
+ * class: dice::bf::ai::SFIf
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f970, bfv_client_l1_body_0096f970);
 void bfv_client_l1_body_0096f970(struct bfv_cpu *c)
 {
@@ -385,7 +407,7 @@ void bfv_client_l1_body_0096f970(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t ea;
-    /* 0096f970  mov eax, dword ptr [esp + 4] */
+    /* 0096f970  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0096f974  mov dword ptr [eax], 1 */
@@ -405,7 +427,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f980  dice::bf::ai::SFIf  (virtual method) */
+/* 0096f980  SFIf::vf10  (virtual method)
+ * overrides: IAIScriptStatement::vf10  (17 classes implement it)
+ * class: dice::bf::ai::SFIf
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f980, bfv_client_l1_body_0096f980);
 void bfv_client_l1_body_0096f980(struct bfv_cpu *c)
 {
@@ -414,7 +439,7 @@ void bfv_client_l1_body_0096f980(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t a, b, r, ea;
-    /* 0096f980  mov eax, dword ptr [esp + 4] */
+    /* 0096f980  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 0096f984  mov edx, dword ptr [eax] */
@@ -469,7 +494,10 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f9b0  dice::bf::ai::SFIf  (virtual method) */
+/* 0096f9b0  SFIf::deleting_dtor  (virtual method)
+ * overrides: IAIScriptStatement::vf0  (17 classes implement it)
+ * class: dice::bf::ai::SFIf
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f9b0, bfv_client_l1_body_0096f9b0);
 BFV_L1_RESUME(bfv_client_l1r_0096f9b0_1, bfv_client_l1_body_0096f9b0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0096f9b0_2, bfv_client_l1_body_0096f9b0, 2);
@@ -501,7 +529,7 @@ void bfv_client_l1_body_0096f9b0(struct bfv_cpu *c)
     /* 0096f9b6  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 0096f9b8  mov dword ptr [esi], 0xbf42f4 */
+    /* 0096f9b8  mov dword ptr [esi], 0xbf42f4  ; vtable SFIf */
     ea = (uint32_t)(esi);
     M32(ea) = 0xbf42f4u;
     /* 0096f9be  je 0x96f9c6 */
@@ -548,14 +576,14 @@ R_2:
 L_0096f9d3:
     /* 0096f9d3  mov ecx, esi */
     ecx = esi;
-    /* 0096f9d5  call 0x96a9d0 */
+    /* 0096f9d5  call 0x96a9d0  ; IAIScriptFlow::~IAIScriptFlow */
     t = 0x0096a9d0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096f9b0_3;
     c->eip = t;
     goto out;
 R_3:
-    /* 0096f9da  test byte ptr [esp + 8], 1 */
+    /* 0096f9da  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -565,7 +593,7 @@ R_3:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 0096f9e2  call 0x403680 */
+    /* 0096f9e2  call 0x403680  ; operator_delete */
     t = 0x00403680u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096f9b0_4;
@@ -596,7 +624,9 @@ out: __attribute__((unused));
 }
 
 
-/* 0096f9f0  (between same file) */
+/* 0096f9f0  SFIf_0096f9f0  (between same file)
+ * called by: Cmd_AiScript_setConditional::execute, Cmd_AiScript_setConditional::execute
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096f9f0, bfv_client_l1_body_0096f9f0);
 BFV_L1_RESUME(bfv_client_l1r_0096f9f0_1, bfv_client_l1_body_0096f9f0, 1);
 BFV_L1_RESUME(bfv_client_l1r_0096f9f0_2, bfv_client_l1_body_0096f9f0, 2);
@@ -618,13 +648,13 @@ void bfv_client_l1_body_0096f9f0(struct bfv_cpu *c)
     M32(esp) = t;
     /* 0096f9f1  mov esi, ecx */
     esi = ecx;
-    /* 0096f9f3  mov ecx, dword ptr [0xe0ee58] */
+    /* 0096f9f3  mov ecx, dword ptr [0xe0ee58]  ; g_pIAIScriptManager_00e0ee58 */
     ea = (uint32_t)(0x00e0ee58u);
     ecx = M32(ea);
     /* 0096f9f9  mov eax, dword ptr [ecx] */
     ea = (uint32_t)(ecx);
     eax = M32(ea);
-    /* 0096f9fb  call dword ptr [eax + 0x74] */
+    /* 0096f9fb  call dword ptr [eax + 0x74]  ; -> IAIScriptManager::vf29 = AIScriptManager::vf29_get_40h (returns this+0x40) */
     ea = (uint32_t)(eax + 0x00000074u);
     t = M32(ea);
     esp -= 4;
@@ -632,7 +662,7 @@ void bfv_client_l1_body_0096f9f0(struct bfv_cpu *c)
     c->eip = t;
     goto out;
 R_1:
-    /* 0096f9fe  mov ecx, dword ptr [esp + 8] */
+    /* 0096f9fe  mov ecx, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
     /* 0096fa02  mov edx, dword ptr [eax] */
@@ -670,8 +700,11 @@ out: __attribute__((unused));
 }
 
 
-/* 0096fa20  dice::bf::ai::SFIf  (virtual method)
- * strings: "If statement lacks conditional." */
+/* 0096fa20  SFIf::execute  (virtual method)
+ * overrides: IAIScriptStatement::execute  (17 classes implement it)
+ * class: dice::bf::ai::SFIf
+ * strings: "If statement lacks conditional."
+ */
 BFV_L1_ENTRY(bfv_client_l1_0096fa20, bfv_client_l1_body_0096fa20);
 BFV_L1_RESUME(bfv_client_l1r_0096fa20_1, bfv_client_l1_body_0096fa20, 1);
 void bfv_client_l1_body_0096fa20(struct bfv_cpu *c)
@@ -693,13 +726,13 @@ void bfv_client_l1_body_0096fa20(struct bfv_cpu *c)
     F_LOGIC(32, r);
     /* 0096fa25  jne 0x96fa4f */
     if (!zf) goto L_0096fa4f;
-    /* 0096fa27  mov eax, dword ptr [esp + 4] */
+    /* 0096fa27  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
-    /* 0096fa2b  mov ecx, dword ptr [esp + 8] */
+    /* 0096fa2b  mov ecx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     ecx = M32(ea);
-    /* 0096fa2f  mov edx, dword ptr [esp + 0xc] */
+    /* 0096fa2f  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 0096fa33  mov byte ptr [eax], 1 */
@@ -708,21 +741,21 @@ void bfv_client_l1_body_0096fa20(struct bfv_cpu *c)
     /* 0096fa36  mov byte ptr [ecx], 1 */
     ea = (uint32_t)(ecx);
     M8(ea) = 0x1u;
-    /* 0096fa39  mov ecx, dword ptr [esp + 0x18] */
+    /* 0096fa39  mov ecx, dword ptr [esp + 0x18]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     ecx = M32(ea);
     /* 0096fa3d  push 0x1f */
     t = 0x1fu;
     esp -= 4;
     M32(esp) = t;
-    /* 0096fa3f  push 0xbf4324 */
+    /* 0096fa3f  push 0xbf4324  ; "If statement lacks conditional." */
     t = 0xbf4324u;
     esp -= 4;
     M32(esp) = t;
     /* 0096fa44  mov byte ptr [edx], 0 */
     ea = (uint32_t)(edx);
     M8(ea) = 0x0u;
-    /* 0096fa47  call 0x401ae0 */
+    /* 0096fa47  call 0x401ae0  ; std::string::assign_chars */
     t = 0x00401ae0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_client_l1r_0096fa20_1;
@@ -737,7 +770,7 @@ L_0096fa4f:
     /* 0096fa4f  fld dword ptr [ecx + 8] */
     ea = (uint32_t)(ecx + 0x00000008u);
     __asm__ volatile(".intel_syntax noprefix\n\tfld dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
-    /* 0096fa52  fcomp dword ptr [esp + 0x10] */
+    /* 0096fa52  fcomp dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     __asm__ volatile(".intel_syntax noprefix\n\tfcomp dword ptr [%k0]\n\t.att_syntax prefix" :  : "r"(ea) : "memory", "cc");
     /* 0096fa56  fnstsw ax */
@@ -747,10 +780,10 @@ L_0096fa4f:
     F_LOGIC(8, r);
     /* 0096fa5b  jp 0x96fab2 */
     if (pf) goto L_0096fab2;
-    /* 0096fa5d  mov eax, dword ptr [esp + 0x10] */
+    /* 0096fa5d  mov eax, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     eax = M32(ea);
-    /* 0096fa61  mov edx, dword ptr [esp + 0xc] */
+    /* 0096fa61  mov edx, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     edx = M32(ea);
     /* 0096fa65  mov dword ptr [ecx + 8], eax */
@@ -786,13 +819,13 @@ L_0096fa7c:
     /* 0096fa7f  mov eax, 1 */
     eax = 0x1u;
 L_0096fa84:
-    /* 0096fa84  mov edx, dword ptr [esp + 4] */
+    /* 0096fa84  mov edx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     edx = M32(ea);
     /* 0096fa88  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 0096fa8a  mov ecx, dword ptr [esp + 0x14] */
+    /* 0096fa8a  mov ecx, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0096fa8e  je 0x96fa9f */
@@ -800,7 +833,7 @@ L_0096fa84:
     /* 0096fa90  mov dword ptr [ecx], eax */
     ea = (uint32_t)(ecx);
     M32(ea) = eax;
-    /* 0096fa92  mov eax, dword ptr [esp + 8] */
+    /* 0096fa92  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0096fa96  mov byte ptr [edx], 0 */
@@ -814,7 +847,7 @@ L_0096fa84:
     esp += 28;
     goto out;
 L_0096fa9f:
-    /* 0096fa9f  mov eax, dword ptr [esp + 8] */
+    /* 0096fa9f  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 0096faa3  mov dword ptr [ecx], 0xffffffff */
@@ -831,19 +864,19 @@ L_0096fa9f:
     esp += 28;
     goto out;
 L_0096fab2:
-    /* 0096fab2  mov ecx, dword ptr [esp + 4] */
+    /* 0096fab2  mov ecx, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     ecx = M32(ea);
-    /* 0096fab6  mov edx, dword ptr [esp + 8] */
+    /* 0096fab6  mov edx, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     edx = M32(ea);
-    /* 0096faba  mov eax, dword ptr [esp + 0xc] */
+    /* 0096faba  mov eax, dword ptr [esp + 0xc]  ; arg_8 */
     ea = (uint32_t)(esp + 0x0000000cu);
     eax = M32(ea);
     /* 0096fabe  mov byte ptr [ecx], 1 */
     ea = (uint32_t)(ecx);
     M8(ea) = 0x1u;
-    /* 0096fac1  mov ecx, dword ptr [esp + 0x14] */
+    /* 0096fac1  mov ecx, dword ptr [esp + 0x14]  ; arg_10 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 0096fac5  mov byte ptr [edx], 1 */

@@ -5,7 +5,10 @@
 #include "l1.h"
 
 
-/* 007a9020  dice::bf::ai::BAPALookInDir  (vtable store) */
+/* 007a9020  BAPALookInDir::BAPALookInDir  (vtable store)
+ * class: dice::bf::ai::BAPALookInDir
+ * called by: BBPScoutInfantery::buildPlan, BBPScout::buildPlan, BBPTakeCover::buildPlan, BBPTakeCoverInfantry::buildPlan
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9020, bfv_server_l1_body_007a9020);
 BFV_L1_RESUME(bfv_server_l1r_007a9020_1, bfv_server_l1_body_007a9020, 1);
 void bfv_server_l1_body_007a9020(struct bfv_cpu *c)
@@ -19,10 +22,10 @@ void bfv_server_l1_body_007a9020(struct bfv_cpu *c)
     case 1: goto R_1;
     default: break;
     }
-    /* 007a9020  mov eax, dword ptr [esp + 0x18] */
+    /* 007a9020  mov eax, dword ptr [esp + 0x18]  ; arg_14 */
     ea = (uint32_t)(esp + 0x00000018u);
     eax = M32(ea);
-    /* 007a9024  mov edx, dword ptr [esp + 0x10] */
+    /* 007a9024  mov edx, dword ptr [esp + 0x10]  ; arg_c */
     ea = (uint32_t)(esp + 0x00000010u);
     edx = M32(ea);
     /* 007a9028  push esi */
@@ -33,19 +36,19 @@ void bfv_server_l1_body_007a9020(struct bfv_cpu *c)
     t = eax;
     esp -= 4;
     M32(esp) = t;
-    /* 007a902a  mov eax, dword ptr [esp + 0x14] */
+    /* 007a902a  mov eax, dword ptr [esp + 0x14]  ; arg_8 */
     ea = (uint32_t)(esp + 0x00000014u);
     eax = M32(ea);
     /* 007a902e  mov esi, ecx */
     esi = ecx;
-    /* 007a9030  mov ecx, dword ptr [esp + 0x1c] */
+    /* 007a9030  mov ecx, dword ptr [esp + 0x1c]  ; arg_10 */
     ea = (uint32_t)(esp + 0x0000001cu);
     ecx = M32(ea);
     /* 007a9034  push ecx */
     t = ecx;
     esp -= 4;
     M32(esp) = t;
-    /* 007a9035  mov ecx, dword ptr [esp + 0x14] */
+    /* 007a9035  mov ecx, dword ptr [esp + 0x14]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000014u);
     ecx = M32(ea);
     /* 007a9039  push edx */
@@ -62,17 +65,17 @@ void bfv_server_l1_body_007a9020(struct bfv_cpu *c)
     M32(esp) = t;
     /* 007a903c  mov ecx, esi */
     ecx = esi;
-    /* 007a903e  call 0x7c0740 */
+    /* 007a903e  call 0x7c0740  ; BAPALook::BAPALook */
     t = 0x007c0740u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9020_1;
     c->eip = t;
     goto out;
 R_1:
-    /* 007a9043  mov eax, dword ptr [esp + 8] */
+    /* 007a9043  mov eax, dword ptr [esp + 8]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
-    /* 007a9047  mov dword ptr [esi], 0x879de4 */
+    /* 007a9047  mov dword ptr [esi], 0x879de4  ; vtable BAPALookInDir */
     ea = (uint32_t)(esi);
     M32(ea) = 0x879de4u;
     /* 007a904d  mov ecx, dword ptr [eax] */
@@ -118,7 +121,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a9070  dice::bf::ai::BAPALookInDir  (virtual method) */
+/* 007a9070  BAPALookInDir::deleting_dtor  (virtual method)
+ * overrides: BotScript::vf1  (55 classes implement it)
+ * class: dice::bf::ai::BAPALookInDir
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9070, bfv_server_l1_body_007a9070);
 BFV_L1_RESUME(bfv_server_l1r_007a9070_1, bfv_server_l1_body_007a9070, 1);
 BFV_L1_RESUME(bfv_server_l1r_007a9070_2, bfv_server_l1_body_007a9070, 2);
@@ -148,7 +154,7 @@ void bfv_server_l1_body_007a9070(struct bfv_cpu *c)
     /* 007a9076  test ecx, ecx */
     r = (ecx & ecx) & 0xffffffffu;
     F_LOGIC(32, r);
-    /* 007a9078  mov dword ptr [esi], 0x879de4 */
+    /* 007a9078  mov dword ptr [esi], 0x879de4  ; vtable BAPALookInDir */
     ea = (uint32_t)(esi);
     M32(ea) = 0x879de4u;
     /* 007a907e  je 0x7a9087 */
@@ -171,14 +177,14 @@ R_1:
 L_007a9087:
     /* 007a9087  mov ecx, esi */
     ecx = esi;
-    /* 007a9089  call 0x7c03e0 */
+    /* 007a9089  call 0x7c03e0  ; BAPStatement::~BAPStatement */
     t = 0x007c03e0u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9070_2;
     c->eip = t;
     goto out;
 R_2:
-    /* 007a908e  test byte ptr [esp + 8], 1 */
+    /* 007a908e  test byte ptr [esp + 8], 1  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000008u);
     r = (M8(ea) & 0x1u) & 0xffu;
     F_LOGIC(8, r);
@@ -188,9 +194,9 @@ R_2:
     t = esi;
     esp -= 4;
     M32(esp) = t;
-    /* 007a9096  mov ecx, 0xc32a48 */
+    /* 007a9096  mov ecx, 0xc32a48  ; g_MemoryPoolNull_BAPALookInDir */
     ecx = 0xc32a48u;
-    /* 007a909b  call 0x413600 */
+    /* 007a909b  call 0x413600  ; MemoryPool::free */
     t = 0x00413600u;
     esp -= 4;
     M32(esp) = (uint32_t)(uintptr_t)bfv_server_l1r_007a9070_3;
@@ -215,7 +221,10 @@ out: __attribute__((unused));
 }
 
 
-/* 007a9530  dice::bf::ai::BAPALookInDir  (virtual method) */
+/* 007a9530  BAPALookInDir::vf6  (virtual method)
+ * overrides: BAPALook::vf6  (4 classes implement it)
+ * class: dice::bf::ai::BAPALookInDir
+ */
 BFV_L1_ENTRY(bfv_server_l1_007a9530, bfv_server_l1_body_007a9530);
 void bfv_server_l1_body_007a9530(struct bfv_cpu *c)
 {
@@ -224,13 +233,13 @@ void bfv_server_l1_body_007a9530(struct bfv_cpu *c)
     uint32_t eflags_rest = c->eflags, cf, pf, af, zf, sf, df, of;
     FLAGS_LOAD(eflags_rest);
     uint32_t t, a, b, r, ea;
-    /* 007a9530  mov eax, dword ptr [esp + 8] */
+    /* 007a9530  mov eax, dword ptr [esp + 8]  ; arg_4 */
     ea = (uint32_t)(esp + 0x00000008u);
     eax = M32(ea);
     /* 007a9534  mov byte ptr [eax], 1 */
     ea = (uint32_t)(eax);
     M8(ea) = 0x1u;
-    /* 007a9537  mov eax, dword ptr [esp + 4] */
+    /* 007a9537  mov eax, dword ptr [esp + 4]  ; arg_0 */
     ea = (uint32_t)(esp + 0x00000004u);
     eax = M32(ea);
     /* 007a953b  add ecx, 0x38 */

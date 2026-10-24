@@ -81,6 +81,35 @@ TARGETS = {
         transform_point=0x49b340, vector_difference=0x49b490, aim_world_position=0x9be440, component_position=0x994a80,
         artillery_weapons=0x99f8d7, artillery_weapons_accept=0x99fa61, artillery_weapon_bias=0xb5b7e4,
         tree_previous=0x68ee10, tree_rotate_left=0x996f10, tree_rotate_right=0x66b6c0, tree_construct=0x517c10, history_insert_node=0x99ed10, tree_allocate_node=0x99ebe0, tree_string_assign=0x401ae0, tree_string_copy=0x4019f0, tree_exception_construct=0x7c2027, tree_logic_error_vtable=0xb427dc, tree_length_error_vtable=0xb427f4, tree_length_throw_info=0xc836a4, tree_length_message=0xb44270,
+        aimer_track=0xa02a70, aimer_predict=0xa02bc0, aimer_projectile_offset=0xa02c30, aimer_solve=0xa02db0,
+        aimer_trace_source=0xbfcb70, aimer_time_epsilon=0xb556dc, math_zero=0xb44444, math_half=0xb44e48,
+        aimer_high_arc_angle=0xbfcbb0, aimer_step_scale=0xb7628c, aimer_step_bias=0xb5bdf8, aimer_pi=0xbfcb60,
+        aimer_iteration_scale=0xb76560, aimer_iteration_bias=0xb555ac, aimer_angle_limit=0xb444bc,
+        aimer_negative_angle_limit=0xb551ec, aimer_upper_angle=0xbfcbac, aimer_lower_angle=0xbfcba8,
+        aimer_upper_angle_double=0xbfcbc0, aimer_lower_angle_double=0xbfcbb8, aimer_minimum_length_squared=0xb69400,
+        strategic_same_cell=0x9cf470, strategic_cell_point=0x9d1330, strategic_link_z=0x9de9c0, strategic_link_x=0x9dea10, strategic_link_back_z=0x9dea60, strategic_link_back_x=0x9deaf0,
+        astar_strategic_start=0x9de950, astar_strategic_goal=0x9de970, astar_strategic_estimate=0x9de990, astar_strategic_reached=0x9deb80, astar_strategic_within=0x9debd0, astar_strategic_step=0x9decf0, astar_strategic_expand=0x9deed0,
+        strategic_x_mask=0xe0ed3c, strategic_z_mask=0xe0ed2c, ai_indexed_object=0x980120,
+        astar_strategic_run=0x9cf5c0, search_notify_begin=0x9def90, search_notify_end=0x9defd0, search_notify_finish=0x9df220, astar_engine=0x9e4620, unsigned_bias=0xb42f8c,
+        astar_strategic_setup=0x9dec20, bitset_init=0x9ceda0, strategic_point_query=0xa07350, astar_reach_scale=0xb5bdf8,
+        task_sleep=0x9de050, task_tree_remove=0xa09e90, scheduler_time_left=0xa09f50, scheduler_add=0xa09f70, scheduler_remove=0xa0a000,
+        task_minus_one=0xb55068, get_time_seconds=0x894540,
+        task_local_search_execute=0x9de160, task_strategic_search_execute=0x9de230, local_search_current=0xe0f9cc, strategic_search_current=0xe0f9d0,
+        local_searcher=0xe10f98, strategic_searcher=0xe11860, searcher_step=0xa09340, searcher_run=0xa09880, search_unlimited_time=0xbfccf0, searcher_deliver=0xa098b0, path_deque_push_back=0xa09010, path_deque_destroy=0x554100,
+        astar_local_estimate=0x9e5180, astar_local_reached=0x9e63f0, astar_local_set_start=0x9e5da0, astar_local_set_goal=0x9e5e10, round_to_int=0x522cf0, local_layer_at=0x9e57f0, local_terrain=0xda21a0, astar_local_add_cell=0x9e6ee0, astar_local_add_cell_avoiding=0x9e7200, astar_local_successors=0x9e7b80, local_world_mask_x=0xe0ed3c, local_world_mask_z=0xe0ed2c, searcher_path=0xa08ad0, task_zero=0xb426c0,
+        task_unschedule=0x9de020, task_queue=0x9de030, task_player_map_execute=0x9de300, task_strategic_player_map_execute=0x9de390,
+        local_search_prepare=0x9e55d0, local_search_finish=0x9e61e0, strategic_map_prepare=0x9e56e0,
+        local_search_task_name=0xbf97dc, strategic_search_task_name=0xbf97f4,
+        cell_query_task_name=0xbf97c0, strategic_player_map_task_name=0xbf9810,
+        task_strategic_search_run=0x9de410, cell_query_init=0x9de100, strategic_reach_limit=0xb90220,
+        task_cell_query_execute=0x9de710, strategic_layer_point=0x9d1330, strategic_ground_height=0x9e58b0,
+        strategic_cell_distance=0x9de5c0, player_map_search_init=0x9de670,
+        search_timer=0xe0ef50, search_log=0xe0ee08, searcher_reset=0xa09190, searcher_alloc=0xa092c0,
+        searcher_heap_push=0xa09090, searcher_heap_pop=0xa08a60, searcher_heap_update=0xa08e70, searcher_unclose=0xa089e0,
+        searcher_sift_down=0xa08870, searcher_push_back=0xa08fc0, search_random=0x4e0990, search_random_state=0xd30c00,
+        search_tie_scale=0xb5d414, search_tie_half=0xb44e48, searcher_node_pool=0xe11820, searcher_pool_free=0x412fc0, searcher_resize=0xa08de0,
+        path_ring_extend=0xa08440, searcher_path_to_ring=0xa08b50, searcher_closed_points=0xa08c60,
+        ftol2=0x7c2dd0, finite=0x7c51fb,
         aim_direction=0x99eae0, aim_within_limits=0x9be880, aim_compose=0x49acd0,
         aim_inverse_sine=0x516f80, aim_negative_one=0xb5456c, aim_pi=0xbf7e90,
         float_minimum=0x422f30, float_maximum=0x422f90, float_clamp=0x4a94a0,
@@ -172,6 +201,35 @@ TARGETS = {
         transform_point=0x5b25f0, vector_difference=0x48d160, aim_world_position=0x78df90, component_position=0x73f1e0,
         artillery_weapons=0x74a0b7, artillery_weapons_accept=0x74a241, artillery_weapon_bias=0x81fac4,
         tree_previous=0x73f240, tree_rotate_left=0x5c7460, tree_rotate_right=0x55c080, tree_construct=0x7686e0, history_insert_node=0x7494f0, tree_allocate_node=0x7493c0, tree_string_assign=0x402020, tree_string_copy=0x401e20, tree_exception_construct=0x63aa5e, tree_logic_error_vtable=0x80737c, tree_length_error_vtable=0x807388, tree_length_throw_info=0x8ce900, tree_length_message=0x808f70,
+        aimer_track=0x7b7090, aimer_predict=0x7b71e0, aimer_projectile_offset=0x7b7250, aimer_solve=0x7b73d0,
+        aimer_trace_source=0x87b4b0, aimer_time_epsilon=0x817cf4, math_zero=0x851bcc, math_half=0x8148e0,
+        aimer_high_arc_angle=0x87b4f0, aimer_step_scale=0x81e9cc, aimer_step_bias=0x8220c8, aimer_pi=0x87b4a0,
+        aimer_iteration_scale=0x81facc, aimer_iteration_bias=0x81fac8, aimer_angle_limit=0x8091b4,
+        aimer_negative_angle_limit=0x80b660, aimer_upper_angle=0x87b4ec, aimer_lower_angle=0x87b4e8,
+        aimer_upper_angle_double=0x87b500, aimer_lower_angle_double=0x87b4f8, aimer_minimum_length_squared=0x8377b4,
+        strategic_same_cell=0x784e60, strategic_cell_point=0x786b30, strategic_link_z=0x792620, strategic_link_x=0x792670, strategic_link_back_z=0x7926c0, strategic_link_back_x=0x792750,
+        astar_strategic_start=0x7925b0, astar_strategic_goal=0x7925d0, astar_strategic_estimate=0x7925f0, astar_strategic_reached=0x7927e0, astar_strategic_within=0x792830, astar_strategic_step=0x792950, astar_strategic_expand=0x792b30,
+        strategic_x_mask=0xc314d0, strategic_z_mask=0xc314c0, ai_indexed_object=0x72a080,
+        astar_strategic_run=0x784fb0, search_notify_begin=0x792bf0, search_notify_end=0x792c30, search_notify_finish=0x792e80, astar_engine=0x798280, unsigned_bias=0x807c7c,
+        astar_strategic_setup=0x792880, bitset_init=0x784590, strategic_point_query=0x7bb930, astar_reach_scale=0x8220c8,
+        task_sleep=0x791cb0, task_tree_remove=0x7bebd0, scheduler_time_left=0x7bec90, scheduler_add=0x7becb0, scheduler_remove=0x7bed40,
+        task_minus_one=0x814ac8, get_time_seconds=0x6634b0,
+        task_local_search_execute=0x791dc0, task_strategic_search_execute=0x791e90, local_search_current=0xc31d98, strategic_search_current=0xc31d9c,
+        local_searcher=0xc334e0, strategic_searcher=0xc33da8, searcher_step=0x7bd990, searcher_run=0x7bded0, search_unlimited_time=0x87b668, searcher_deliver=0x7bdf00, path_deque_push_back=0x68b240, path_deque_destroy=0x768f00,
+        astar_local_estimate=0x798e10, astar_local_reached=0x79a080, astar_local_set_start=0x799a30, astar_local_set_goal=0x799aa0, round_to_int=0x4d8260, local_layer_at=0x799480, local_terrain=0xc0f118, astar_local_add_cell=0x79ab70, astar_local_add_cell_avoiding=0x79ae90, astar_local_successors=0x79b810, local_world_mask_x=0xc314d0, local_world_mask_z=0xc314c0, searcher_path=0x7bd040, task_zero=0x807350,
+        task_unschedule=0x791c80, task_queue=0x791c90, task_player_map_execute=0x791f60, task_strategic_player_map_execute=0x791ff0,
+        local_search_prepare=0x799260, local_search_finish=0x799e70, strategic_map_prepare=0x799370,
+        local_search_task_name=0x877e3c, strategic_search_task_name=0x877e54,
+        cell_query_task_name=0x877e20, strategic_player_map_task_name=0x877e70,
+        task_strategic_search_run=0x792070, cell_query_init=0x791d60, strategic_reach_limit=0x836acc,
+        task_cell_query_execute=0x792370, strategic_layer_point=0x786b30, strategic_ground_height=0x799540,
+        strategic_cell_distance=0x792220, player_map_search_init=0x7922d0,
+        search_timer=0xc314b0, search_log=0xc313d0, searcher_reset=0x7bd7e0, searcher_alloc=0x7bd910,
+        searcher_heap_push=0x7bd6e0, searcher_heap_pop=0x7bcfd0, searcher_heap_update=0x7bd540, searcher_unclose=0x7bcf50,
+        searcher_sift_down=0x7bcde0, searcher_push_back=0x7bd690, search_random=0x4b1fd0, search_random_state=0x9436a0,
+        search_tie_scale=0x81df34, search_tie_half=0x8148e0, searcher_node_pool=0xc33d68, searcher_pool_free=0x413600, searcher_resize=0x7bd350,
+        path_ring_extend=0x7bca20, searcher_path_to_ring=0x7bd0c0, searcher_closed_points=0x7bd1d0,
+        ftol2=0x63c530, finite=0x63db18,
         aim_direction=0x7492c0, aim_within_limits=0x78e3d0, aim_compose=0x438590,
         aim_inverse_sine=0x48b570, aim_negative_one=0x817648, aim_pi=0x877770,
         float_minimum=0x5a3340, float_maximum=0x4ac530, float_clamp=0x6f0470,
@@ -207,12 +265,37 @@ def run(args, cwd):
     return result.stdout
 
 
+# the hand-written modules (src/*.c); tools/linkmode.py compiles them the same way
+SRC_FLAGS=['-m32','-std=c11','-O2','-Wall','-Wextra','-Werror','-ffreestanding','-fno-builtin','-frounding-math',
+           '-fno-stack-protector','-fno-asynchronous-unwind-tables','-fno-unwind-tables']
 LIFTED_FLAGS=['-m32','-std=c11','-O2','-Wall','-Wextra','-Werror','-Wno-array-bounds','-ffreestanding','-fno-builtin',
     '-frounding-math','-fno-delete-null-pointer-checks','-fno-stack-protector','-fno-asynchronous-unwind-tables','-fno-unwind-tables','-mgeneral-regs-only']
 
+# The lifted tree the build detours into: lifted/ (L1) or readable/ (L2, the
+# same functions and symbols written as readable C; tools/lift_l2.py).
+TREE='lifted'
+MODS_ONLY=False  # --mods-only: only the functions mods hook run as C
+
+def tree_runtime():
+    """Runtime files hashed by verify_lifted.runtime_sha256, in its order."""
+    runtime=PROJECT/TREE/'runtime'
+    return [h for h in (runtime/'l1.h',runtime/'l2.h',runtime/'symbols_client.h',runtime/'symbols_server.h')
+            if h.name=='l1.h' or h.exists()]+[runtime/'l1_runtime.c']
+
 def lifted_sources(target):
-    lifted=PROJECT/'lifted'
+    lifted=PROJECT/TREE
     return [lifted/'runtime/l1_runtime.c',*sorted((lifted/target).rglob('*.c'))]
+
+def code_sha256(text):
+    """Hash of a lifted function's code without comments or layout: names and
+    notes in comments (sort_lifted.py) are not edits."""
+    import re
+    return hashlib.sha256(' '.join(re.sub(r'/\*.*?\*/',' ',text,flags=re.S).split()).encode()).hexdigest()
+
+def edited(entry,text):
+    """True when a lifted function's code differs from what lift_c.py generated."""
+    if 'code_sha256' in entry:return code_sha256(text)!=entry['code_sha256']
+    return hashlib.sha256(text.encode()).hexdigest()!=entry['c_sha256']
 
 def response(path,files):
     """@file argument listing files (the lifted objects exceed the Windows command-line limit)."""
@@ -220,14 +303,36 @@ def response(path,files):
     return '@'+str(path)
 
 def compile_lifted(target,work):
-    """Compile the L1 lifted C (all of it; only verified entries get detoured)."""
+    """Compile the lifted C tree (all of it; only verified entries get detoured).
+
+    Objects are kept in build/<target>/l1|l2 (shared by --output builds) next to
+    a .key file: the hash of the compiler, flags, every runtime file and the
+    source. A source whose key is unchanged is not compiled again."""
     from concurrent.futures import ThreadPoolExecutor
     sources=lifted_sources(target)
-    objects=[work/'l1'/(s.relative_to(PROJECT/'lifted').with_suffix('.o')) for s in sources]
+    store=PROJECT/'build'/target/('l1' if TREE=='lifted' else 'l2')
+    objects=[store/(s.relative_to(PROJECT/TREE).with_suffix('.o')) for s in sources]
     for o in objects:o.parent.mkdir(parents=True,exist_ok=True)
-    with ThreadPoolExecutor(6) as pool:
-        list(pool.map(lambda so:run([COMPILERS/'gcc.exe',*LIFTED_FLAGS,'-I',PROJECT/'lifted/runtime','-c',so[0],'-o',so[1]],work),zip(sources,objects)))
+    common=hashlib.sha256(str([str(COMPILERS/'gcc.exe'),*LIFTED_FLAGS]).encode())
+    for f in sorted((PROJECT/TREE/'runtime').iterdir()):
+        if f.is_file():common.update(f.name.encode()+bytes(1)+f.read_bytes())
+    def build_one(so):
+        source,o=so
+        h=common.copy();h.update(source.read_bytes());key=h.hexdigest()
+        stamp=o.with_suffix('.key')
+        if o.exists() and stamp.exists() and stamp.read_text()==key:return 0
+        partial=o.with_suffix(f'.{os.getpid()}.tmp')
+        run([COMPILERS/'gcc.exe',*LIFTED_FLAGS,'-I',PROJECT/TREE/'runtime','-c',source,'-o',partial],work)
+        os.replace(partial,o);stamp.write_text(key)
+        return 1
+    with ThreadPoolExecutor(max(6,os.cpu_count() or 6)) as pool:
+        compiled=sum(pool.map(build_one,zip(sources,objects)))
+    print(f'  {target}: lifted C {compiled} of {len(sources)} file(s) compiled ({len(sources)-compiled} unchanged)')
     return objects
+
+def array_words(data):
+    from array import array
+    return array('I',data[:len(data)//4*4])
 
 def lifted_entries(target,spec,pe,original,hand_entries):
     """Detours for lifted functions that passed verify_lifted.py on exactly these sources.
@@ -238,11 +343,11 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     when anything may enter its first five bytes other than at the entry (a
     labelled branch target, an image dword pointing there, or another lifted
     function's exit), or when its detour would overlap another patch."""
-    lifted=PROJECT/'lifted'/target
+    lifted=PROJECT/TREE/target
     if not (lifted/'catalog.json').exists():return [],{}
     # The full verifier report stays in build/; verified.json is its committed
     # summary (passed functions only), so a fresh clone builds the same detours.
-    report_path=PROJECT/'build'/target/'lifted-verification.json'
+    report_path=PROJECT/'build'/target/f'{TREE}-verification.json'
     summary_path=lifted/'verified.json'
     catalog=json.loads((lifted/'catalog.json').read_text())
     if report_path.exists():
@@ -258,7 +363,7 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     if catalog['original_sha256']!=spec['sha'] or report['original_sha256']!=spec['sha']:
         raise RuntimeError('Lifted catalog or verification hash differs from the ABI target')
     runtime=hashlib.sha256()  # same hash as verify_lifted.runtime_sha256
-    for f in [PROJECT/'lifted/runtime/l1.h',PROJECT/'lifted/runtime/l1_runtime.c']:runtime.update(f.name.encode()+bytes(1)+f.read_bytes())
+    for f in tree_runtime():runtime.update(f.name.encode()+bytes(1)+f.read_bytes())
     if report.get('runtime_sha256')!=runtime.hexdigest():
         raise RuntimeError(f'{target}: lifted runtime changed since verify_lifted.py; rerun it (or remove lifted-verification.json)')
     # only functions whose current text is exactly the verified text
@@ -269,13 +374,16 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     from sort_lifted import split_texts
     texts=split_texts(lifted);ok={e['address'] for e in entries}
     for e in catalog['entries']:
-        if hashlib.sha256(texts.get(e['symbol'],'').encode()).hexdigest()!=e['c_sha256']:
+        if edited(e,texts.get(e['symbol'],'')):
             print(f'  {target}: edited lifted function {e["address"]}'+('' if e['address'] in ok else ' (never verified: stays native)'))
     interior={}
     for e in entries:
         a=int(e['address'],16)
         for x in range(a+1,a+5):interior[x]=e
-    blocked=set()
+    blocked=set();first_hit={}  # entry -> lowest interior offset something enters
+    def block_at(e,x):
+        blocked.add(e['address'])
+        first_hit[e['address']]=min(first_hit.get(e['address'],5),x-int(e['address'],16))
     from capstone import Cs,CS_ARCH_X86,CS_MODE_32  # same linear sweep as static_recomp.TextEmitter.plan
     text=next(x for x in pe.sections if x.Name.rstrip(b'\0')==b'.text')
     code=text.get_data()[:text.Misc_VirtualSize]
@@ -284,7 +392,7 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     # instruction, a 4-aligned .text dword next to another .text address (jump
     # table), or any 4-aligned dword of another section. Other byte windows that
     # happen to spell an interior address are not pointers.
-    starts=set();offset=0;md=Cs(CS_ARCH_X86,CS_MODE_32);md.detail=True
+    starts=set();sizes={};offset=0;md=Cs(CS_ARCH_X86,CS_MODE_32);md.detail=True
     sources={}  # direct branch target -> source addresses
     # Code pointers land on instruction starts: a pointer-like dword hits an
     # entry only when it names one of the instructions inside its first five
@@ -295,12 +403,14 @@ def lifted_entries(target,spec,pe,original,hand_entries):
         for i in md.disasm(pe.get_data(a-pe.OPTIONAL_HEADER.ImageBase,20),a):
             if i.address>=a+5:break
             if i.address>a:pointed[i.address]=e
+    code_refs=set()
     def hit(v):
-        if v in pointed:blocked.add(pointed[v]['address'])
+        code_refs.add(v)
+        if v in pointed:block_at(pointed[v],v)
     while offset<len(code):
         last=offset
         for i in md.disasm(code[offset:],base+offset):
-            starts.add(i.address);last=i.address-base+i.size
+            starts.add(i.address);sizes[i.address]=i.size;last=i.address-base+i.size
             branch=(i.group(1) or i.group(2)) and i.op_str.startswith('0x') and ',' not in i.op_str and ':' not in i.op_str  # direct jump, jcc, loop or call
             if branch:
                 sources.setdefault(int(i.op_str,16),[]).append(i.address)
@@ -316,10 +426,22 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     def indexed(x):
         k=bisect.bisect_right(span_starts,x)-1
         return k>=0 and spans[k][0]<=x<spans[k][1]
+    # Or when a vtable slot or a data dword points at it and the sweep instruction
+    # covering it lies in no indexed function (jump-table data decoded as code).
+    # A covering instruction inside another function means the index entry is
+    # not a function start (server 0x757063 inside 0x7559f0's `lea`).
+    vtable_targets={int(r.split('\t')[2],16) for r in (PROJECT/'lifted'/target/'VTABLES.tsv').read_text().splitlines()[1:]} \
+        if (PROJECT/'lifted'/target/'VTABLES.tsv').exists() else set()
+    data_words=set()
+    for section in pe.sections:
+        if section is not text:data_words.update(array_words(section.get_data()))
     def real_entry(e):
         a=int(e['address'],16);own=[tuple(int(y,16) for y in r.split('-')) for r in e['ranges']]
         if any(p in sources for p in range(a-15,a) if p in starts):return False
-        return any(indexed(s) and not any(lo<=s<hi for lo,hi in own) for s in sources.get(a,()))
+        if any(indexed(s) and not any(lo<=s<hi for lo,hi in own) for s in sources.get(a,())):return True
+        cover=[p for p in range(a-15,a) if p in sizes and p+sizes[p]>a]
+        return bool(cover) and (a in vtable_targets or a in data_words) and \
+            not any(indexed(p) and not any(lo<=p<hi for lo,hi in own) for p in cover)
     misaligned={e['address'] for e in entries if int(e['address'],16) not in starts and not real_entry(e)}
     stats_misaligned_entries=sum(1 for e in entries if int(e['address'],16) not in starts)-len(misaligned)
     blocked|=misaligned
@@ -343,17 +465,18 @@ def lifted_entries(target,spec,pe,original,hand_entries):
         return True
     labels_file=PROJECT/'build'/f'{target}-recomp'/'text.s'
     if not labels_file.exists():raise RuntimeError(f'{target}: run recomp.ps1 once first (branch labels are needed for the detour audit)')
+    labels=set()
     with labels_file.open(encoding='utf-8') as f:
         for line in f:
             if line[:4] in ('loc_','sub_') and line.rstrip().endswith(':'):
-                x=int(line[4:12],16)
-                if x in interior and not own(interior[x],x):blocked.add(interior[x]['address'])
+                x=int(line[4:12],16);labels.add(x)
+                if x in interior and not own(interior[x],x):block_at(interior[x],x)
     for x,e in interior.items():
-        if x in sources and not own(e,x):blocked.add(e['address'])
+        if x in sources and not own(e,x):block_at(e,x)
     for e in catalog['entries']:
         for t in e['exits']:
             x=int(t,16)
-            if x in interior:blocked.add(interior[x]['address'])
+            if x in interior:block_at(interior[x],x)
     stats=dict(passed=len(entries),misaligned=len(misaligned),resynced=stats_misaligned_entries,interior_target=len(blocked-misaligned))
     # verify_live_exceptions.py patches the call in the original vector-insert catch
     # funclet, so that funclet stays native
@@ -364,18 +487,52 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     # hand-written C wins: skip lifted functions that contain any of its patches
     hand=sorted(location for location,_,_ in hand_entries)
     import bisect
+    # An entry that is entered only at +2..+4 takes a two-byte `jmp short` to a
+    # five-byte jump placed in int3 padding within 127 bytes. The padding must lie
+    # outside every indexed function, be referenced by nothing (branch, label,
+    # operand or data dword) and overlap no other patch; the original bytes from
+    # +2 on stay as they were for the native paths that enter there.
+    fspans=[]
+    for row in (PROJECT.parent/'reports'/target/'all-functions.tsv').read_text(encoding='utf-8').splitlines()[1:]:
+        f=row.split('\t');fspans.append((int(f[0],16),int(f[0],16)+int(f[2])))
+    fspans=sorted(fspans+spans);fstarts=[lo for lo,_ in fspans];fends=[]
+    for lo,hi in fspans:fends.append(max(hi,fends[-1]) if fends else hi)  # running maximum end
+    def in_function(x):
+        k=bisect.bisect_right(fstarts,x)-1
+        return k>=0 and fends[k]>x
+    used=set()
+    for location,expected,_ in hand_entries:used.update(range(location,location+len(expected)))
+    for e in entries:
+        if e['address'] not in blocked:
+            a=int(e['address'],16);used.update(range(a,a+len(bytes.fromhex(e['guarded_prefix']))))
+    referenced=set(sources)|labels|code_refs|data_words
+    def padding(a):
+        for t in sorted(range(a+2-128,a+2+124),key=lambda t:abs(t-a)):
+            run=range(t,t+5)
+            if not all(base<=x<base+len(code) and code[x-base]==0xcc for x in run):continue
+            if any(x in used or x in referenced or in_function(x) for x in run):continue
+            return t
+    trampolines={}
+    for e in entries:
+        x=e['address']
+        if x not in blocked or x in misaligned or x in instrumented or first_hit.get(x,0)<2:continue
+        a=int(x,16);t=padding(a)
+        if t is None:continue
+        trampolines[a]=t;used.update(range(t,t+5));blocked.discard(x)
     result=[];skipped_taken=0
     for e in entries:
         a=int(e['address'],16)
         if e['address'] in blocked:continue
         spans=[tuple(int(x,16) for x in r.split('-')) for r in e['ranges']]
-        if any(bisect.bisect_left(hand,lo-15)<bisect.bisect_left(hand,hi) for lo,hi in spans):skipped_taken+=1;continue
+        if any(bisect.bisect_left(hand,lo-15)<bisect.bisect_left(hand,hi) for lo,hi in spans):
+            skipped_taken+=1;trampolines.pop(a,None);continue
         prefix=bytes.fromhex(e['guarded_prefix'])
+        if a in trampolines:prefix=prefix[:2]
         result.append((a,prefix,e['symbol']))
-    stats.update(hand_written=skipped_taken,detoured=len(result))
-    return result,stats
+    stats.update(hand_written=skipped_taken,short_detours=len(trampolines),detoured=len(result))
+    return result,stats,trampolines
 
-def build(target,lifted=True):
+def build(target,lifted=True,output_path=None):
     spec = TARGETS[target]
     original = (GAME / spec['file']).read_bytes()
     if hashlib.sha256(original).hexdigest() != spec['sha']:
@@ -383,7 +540,8 @@ def build(target,lifted=True):
     pe = pefile.PE(data=original)
     if pe.OPTIONAL_HEADER.ImageBase != 0x400000 or pe.OPTIONAL_HEADER.DllCharacteristics & 0x40:
         raise RuntimeError('Only the inspected fixed-base executable layout is supported')
-    work = PROJECT / 'build' / target
+    # another output (tests) gets its own work folder, so build/<target> keeps describing the game build
+    work = PROJECT / 'build' / (target if output_path is None else target+'-custom')
     work.mkdir(parents=True, exist_ok=True)
     constants = {('OBJECT_POOL' if key == 'pool' else key.upper()): value
         for key, value in spec.items() if isinstance(value, int)}
@@ -395,17 +553,40 @@ def build(target,lifted=True):
     objects = []
     for source_path in sources:
         source = source_path.stem
-        run([COMPILERS/'gcc.exe','-m32','-std=c11','-O2','-Wall','-Wextra','-Werror',
-             '-ffreestanding','-fno-builtin','-frounding-math','-fno-stack-protector','-fno-asynchronous-unwind-tables',
-             '-fno-unwind-tables','-I',work,'-c',source_path,'-o',work/f'{source}.o'], work)
+        run([COMPILERS/'gcc.exe',*SRC_FLAGS,'-I',work,'-c',source_path,'-o',work/f'{source}.o'], work)
         objects.append(work/f'{source}.o')
-    if lifted and (PROJECT/'lifted'/target/'catalog.json').exists():objects+=compile_lifted(target,work)
+    archives=[]
+    if lifted and (PROJECT/TREE/target/'catalog.json').exists():
+        lifted_objects=compile_lifted(target,work)
+        if MODS_ONLY:
+            # The lifted C goes in an archive: the linker takes only the files
+            # the hooked functions are in (and the runtime).
+            archive=work/'lifted.a'
+            archive.unlink(missing_ok=True)
+            run([COMPILERS/'ar.exe','rcs',archive,response(work/'archive.rsp',lifted_objects[1:])],work)
+            objects.append(lifted_objects[0]);archives.append(archive)
+        else:objects+=lifted_objects
+    # mods/<target>/*.c: hooks around lifted functions (tools/mods.py)
+    import mods
+    mod_stubs,mod_files={},[]
+    if mods.sources(target) and TREE!='readable':
+        # The mod runtime calls game code through the L2 runtime (bfv_call, shadow
+        # stack in readable/runtime/l1.h); lifted/runtime has neither.
+        print(f'  {target}: mods left out: they need --tree readable',flush=True)
+    elif MODS_ONLY and not mods.sources(target):raise RuntimeError(f'{target}: --mods-only but no mods')
+    elif mods.sources(target):
+        if not (lifted and (PROJECT/TREE/target/'catalog.json').exists()):raise RuntimeError(f'{target}: mods need the lifted C (drop --no-lifted)')
+        mod_stubs,mod_files=mods.generate(target,work,PROJECT/TREE,pe,json.loads((PROJECT/TREE/target/'catalog.json').read_text()))
+        if mod_files:objects+=mods.compile(target,work,PROJECT/TREE,mod_files,run,COMPILERS/'gcc.exe')
+    objects+=archives  # after the mods, whose references pull files from it
+    libgcc=[run([COMPILERS/'gcc.exe','-print-libgcc-file-name'],work).strip()] if mod_files else []
     rva = align(pe.OPTIONAL_HEADER.SizeOfImage, pe.OPTIONAL_HEADER.SectionAlignment)
     address = pe.OPTIONAL_HEADER.ImageBase + rva
-    (work/'payload.ld').write_text(f'SECTIONS {{ . = 0x{address:x}; .payload : {{ *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) }} /DISCARD/ : {{ *(.eh_frame*) *(.comment*) *(.drectve*) }} }}')
+    (work/'payload.ld').write_text(f'SECTIONS {{ . = 0x{address:x}; .payload : {{ *(.text*) *(.rdata*) *(.data*) *(.bss*) BYTE(0) }} .bfvshadow ALIGN(4096) (NOLOAD) : {{ *(.bfvshadow) }} /DISCARD/ : {{ *(.eh_frame*) *(.comment*) *(.drectve*) }} }}')
     run([COMPILERS/'ld.exe','-T',work/'payload.ld','--image-base','0x400000',
          '--entry','_bfv_interpret','--disable-dynamicbase','--disable-reloc-section',
-         '-Map',work/'payload.map','-o',work/'payload.exe',response(work/'objects.rsp',objects)],work)
+         '-Map',work/'payload.map','-o',work/'payload.exe',response(work/'objects.rsp',objects),*libgcc],work)
+    for archive in archives:archive.unlink()  # 80 MB copy of the objects, only needed by the link
     run([COMPILERS/'objcopy.exe','-O','binary','--only-section','.payload',
          work/'payload.exe',work/'payload.bin'],work)
     # The map retains final virtual addresses even with a raw binary output.
@@ -415,6 +596,8 @@ def build(target,lifted=True):
         match = re.match(r'\s*(0x[0-9a-fA-F]+)\s+[_@]?(bfv_[A-Za-z0-9_]+)(?:@\d+)?\s*$',line)
         if match: symbols[match[2]] = int(match[1],16)
     payload = (work/'payload.bin').read_bytes()
+    # the thread shadow stacks (readable runtime) are zero-initialized memory after the payload
+    virtual_size = max(len(payload), symbols.get('bfv_shadow_end', address) - address)
     linked = pefile.PE(str(work/'payload.exe'))
     linked_section = next(s for s in linked.sections if s.Name.rstrip(b'\0') == b'.payload')
     if linked.OPTIONAL_HEADER.ImageBase + linked_section.VirtualAddress != address:
@@ -428,10 +611,10 @@ def build(target,lifted=True):
     output.extend(payload)
     raw_size = align(len(payload),pe.OPTIONAL_HEADER.FileAlignment)
     output.extend(b'\0'*(raw_size-len(payload)))
-    section_header = struct.pack('<8sIIIIIIHHI',b'.bfvmod\0',len(payload),rva,raw_size,raw,0,0,0,0,0xe0000060)
+    section_header = struct.pack('<8sIIIIIIHHI',b'.bfvmod\0',virtual_size,rva,raw_size,raw,0,0,0,0,0xe0000060)
     output[header_offset:header_offset+40] = section_header
     struct.pack_into('<H',output,pe.FILE_HEADER.get_field_absolute_offset('NumberOfSections'),len(pe.sections)+1)
-    struct.pack_into('<I',output,pe.OPTIONAL_HEADER.get_field_absolute_offset('SizeOfImage'),align(rva+len(payload),pe.OPTIONAL_HEADER.SectionAlignment))
+    struct.pack_into('<I',output,pe.OPTIONAL_HEADER.get_field_absolute_offset('SizeOfImage'),align(rva+virtual_size,pe.OPTIONAL_HEADER.SectionAlignment))
     struct.pack_into('<I',output,pe.OPTIONAL_HEADER.get_field_absolute_offset('CheckSum'),0)
     patches=[]
     extra = json.loads((PROJECT/'extra-patches.json').read_text()).get(target, [])
@@ -442,7 +625,7 @@ def build(target,lifted=True):
         if actual != expected: raise RuntimeError(f'Vtable guard failed at {location:x}')
         struct.pack_into('<I',output,offset,symbols[name])
         patches.append(dict(vtable_slot=f'{location:08x}',original=f'{expected:08x}',replacement=f'{symbols[name]:08x}',source=name))
-    entry_patches=[]
+    entry_patches=[];entry_trampolines=[]
     constant_catalog=json.loads((PROJECT/'constant-returns.json').read_text())['targets'][target]
     if constant_catalog['original_sha256']!=spec['sha']:raise RuntimeError('Constant catalog hash differs from the ABI target')
     constant_entries=[(int(e['address'],16),bytes.fromhex(e['guarded_prefix']),e['symbol']) for e in constant_catalog['entries']]
@@ -539,44 +722,131 @@ def build(target,lifted=True):
         (spec['aim_direction'],bytes.fromhex('8b41048b542404'),'bfv_aim_direction'),
         (spec['aim_within_limits'],bytes.fromhex('83ec405657'),'bfv_aim_within_limits'),
         (spec['aim_compose'],bytes.fromhex('8b54240856'),'bfv_affine_compose'),
+        (spec['aimer_track'],bytes.fromhex('a1')+struct.pack('<I',spec['trace_index']),'bfv_aimer_track'),
+        (spec['aimer_predict'],bytes.fromhex('83ec0ca1')+struct.pack('<I',spec['trace_index']),'bfv_aimer_predict'),
+        (spec['aimer_projectile_offset'],bytes.fromhex('83ec1cd905')+struct.pack('<I',spec['math_zero']),'bfv_aimer_projectile_offset'),
+        (spec['aimer_solve'],bytes.fromhex('558bec83e4f8'),'bfv_aimer_solve'),
+        (spec['strategic_same_cell'],bytes.fromhex('538bc18b4828'),'bfv_strategic_same_cell'),
+        (spec['strategic_cell_point'],bytes.fromhex('538b5c240c'),'bfv_strategic_cell_point'),
+        (spec['strategic_link_z'],bytes.fromhex('8b5424048bc1'),'bfv_strategic_link_z'),
+        (spec['strategic_link_x'],bytes.fromhex('8b5424048bc1'),'bfv_strategic_link_x'),
+        (spec['strategic_link_back_z'],bytes.fromhex('8b44240c8b542404'),'bfv_strategic_link_back_z'),
+        (spec['strategic_link_back_x'],bytes.fromhex('8b542404a1')+struct.pack('<I',spec['strategic_x_mask']),'bfv_strategic_link_back_x'),
+        (spec['astar_strategic_start'],bytes.fromhex('8b44240483c134'),'bfv_astar_strategic_start'),
+        (spec['astar_strategic_goal'],bytes.fromhex('8b44240483c140'),'bfv_astar_strategic_goal'),
+        (spec['astar_strategic_estimate'],bytes.fromhex('8b5148568b742408'),'bfv_astar_strategic_estimate'),
+        (spec['astar_strategic_reached'],bytes.fromhex('538b5c240856'),'bfv_astar_strategic_reached'),
+        (spec['astar_strategic_within'],bytes.fromhex('538b19568b742410'),'bfv_astar_strategic_within'),
+        (spec['astar_local_estimate'],bytes.fromhex('5153568bf18b462c'),'bfv_astar_local_estimate'),
+        (spec['astar_local_reached'],bytes.fromhex('53568bf18b869c00'),'bfv_astar_local_reached'),
+        (spec['astar_local_set_start'],bytes.fromhex('51568bf18b464c85'),'bfv_astar_local_set_start'),
+        (spec['astar_local_set_goal'],bytes.fromhex('51568bf18b465085'),'bfv_astar_local_set_goal'),
+        (spec['astar_local_add_cell'],bytes.fromhex('83ec508b54245853'),'bfv_astar_local_add_cell'),
+        (spec['astar_local_add_cell_avoiding'],bytes.fromhex('83ec508b54245853'),'bfv_astar_local_add_cell_avoiding'),
+        (spec['astar_local_successors'],bytes.fromhex('8b44240881ec5801'),'bfv_astar_local_successors'),
+        (spec['astar_strategic_step'],bytes.fromhex('83ec14538b5c241c'),'bfv_astar_strategic_step'),
+        (spec['astar_strategic_expand'],bytes.fromhex('5153558b6c2418'),'bfv_astar_strategic_expand'),
+        (spec['astar_strategic_setup'],bytes.fromhex('83ec1853568bf1'),'bfv_astar_strategic_setup'),
+        (spec['bitset_init'],bytes.fromhex('8b442404568bf1'),'bfv_bitset_init'),
+        (spec['astar_strategic_run'],bytes.fromhex('83ec2053558be9'),'bfv_astar_strategic_run'),
+        (spec['task_sleep'],bytes.fromhex('dd05')+struct.pack('<I',spec['task_minus_one']),'bfv_task_sleep'),
+        (spec['task_tree_remove'],bytes.fromhex('8b442404535556'),'bfv_task_tree_remove'),
+        (spec['scheduler_time_left'],bytes.fromhex('83ec08dd4110'),'bfv_scheduler_time_left'),
+        (spec['scheduler_add'],bytes.fromhex('dd05')+struct.pack('<I',spec['task_minus_one'])+bytes.fromhex('53'),'bfv_scheduler_add'),
+        (spec['scheduler_remove'],bytes.fromhex('8b4424048b116a00'),'bfv_scheduler_remove'),
+        (spec['task_local_search_execute'],bytes.fromhex('83ec0c568bf1'),'bfv_task_local_search_execute'),
+        (spec['task_strategic_search_execute'],bytes.fromhex('83ec0c568bf1'),'bfv_task_strategic_search_execute'),
+        (spec['task_unschedule'],bytes.fromhex('8bc18b4814'),'bfv_task_unschedule'),
+        (spec['task_queue'],bytes.fromhex('8b442410dd442408'),'bfv_task_queue'),
+        (spec['task_player_map_execute'],bytes.fromhex('535556578bf1'),'bfv_task_player_map_execute'),
+        (spec['task_strategic_player_map_execute'],bytes.fromhex('53568bf157'),'bfv_task_strategic_player_map_execute'),
+        (spec['task_strategic_search_run'],bytes.fromhex('558bec83e4f8'),'bfv_task_strategic_search_run'),
+        (spec['task_cell_query_execute'],bytes.fromhex('83ec2c535556'),'bfv_task_cell_query_execute'),
+        (spec['strategic_cell_distance'],bytes.fromhex('538b5c240856'),'bfv_strategic_cell_distance'),
+        (spec['searcher_step'],bytes.fromhex('83ec1c538b5c242c'),'bfv_searcher_step'),
+        (spec['searcher_sift_down'],bytes.fromhex('5153568bf18b4604'),'bfv_searcher_sift_down'),
+        (spec['searcher_heap_pop'],bytes.fromhex('568bf18b460483c0'),'bfv_searcher_heap_pop'),
+        (spec['searcher_unclose'],bytes.fromhex('568b7424088b4608'),'bfv_searcher_unclose'),
+        (spec['searcher_heap_update'],bytes.fromhex('558b6c2408568b75'),'bfv_searcher_heap_update'),
+        (spec['searcher_heap_push'],bytes.fromhex('51535556578b7c24'),'bfv_searcher_heap_push'),
+        (spec['searcher_reset'],bytes.fromhex('53568bf18b4e14'),'bfv_searcher_reset'),
+        (spec['searcher_alloc'],bytes.fromhex('515355578bf98b4f'),'bfv_searcher_alloc'),
+        (spec['searcher_path'],bytes.fromhex('8b49608bd133c0'),'bfv_searcher_path'),
+        (spec['path_ring_extend'],bytes.fromhex('8b51048b41082bc2'),'bfv_path_ring_extend'),
+        (spec['searcher_path_to_ring'],bytes.fromhex('8b51608bc233c9'),'bfv_searcher_path_to_ring'),
+        (spec['searcher_closed_points'],bytes.fromhex('518b512853555633'),'bfv_searcher_closed_points'),
+        (spec['searcher_run'],bytes.fromhex('83ec08dd05'),'bfv_searcher_run'),
+        (spec['searcher_deliver'],bytes.fromhex('83ec2c568b7160'),'bfv_searcher_deliver'),
+        (spec['cell_query_init'],bytes.fromhex('8b542408c741'),'bfv_cell_query_init'),
+        (spec['player_map_search_init'],bytes.fromhex('8b4424048941'),'bfv_player_map_search_init'),
         (spec['vector_divide'],b'\xd9\x05'+struct.pack('<I',spec['math_one']),'bfv_vector_divide'),
         *constant_entries,*getter_entries,*accessor_entries,*init_entries,*deleting_entries,*construct_entries,*cast_entries,*clone_entries,*store_entries]
-    lifted_patch_entries,lifted_stats=lifted_entries(target,spec,pe,original,hand_entries) if lifted else ([],{})
+    lifted_patch_entries,lifted_stats,trampolines=lifted_entries(target,spec,pe,original,hand_entries) if lifted else ([],{},{})
+    if mod_stubs:
+        detoured={a for a,_,_ in lifted_patch_entries}
+        missing=[f'{a:08x}' for a in mod_stubs if a not in detoured]
+        if missing:raise RuntimeError(f'{target}: mods hook functions that do not run as C (not verified or not detourable): {", ".join(missing)}')
+        lifted_patch_entries=[(a,p,mod_stubs.get(a,n)) for a,p,n in lifted_patch_entries if not MODS_ONLY or a in mod_stubs]
+        lifted_stats=dict(lifted_stats,hooked=len(mod_stubs))
+        print(f'  {target}: mods hook {len(mod_stubs)} function(s): {", ".join(f"{a:08x}" for a in sorted(mod_stubs))}')
     for location,expected,name in [*hand_entries,*lifted_patch_entries]:
         offset=pe.get_offset_from_rva(location-pe.OPTIONAL_HEADER.ImageBase)
         if original[offset:offset+len(expected)]!=expected:raise RuntimeError(f'Entry guard failed at {location:x}')
         replacement=symbols[name]
-        jump=b'\xe9'+struct.pack('<I',(replacement-location-5)&0xffffffff)+b'\x90'*(len(expected)-5)
+        if location in trampolines:
+            via=trampolines[location];at=pe.get_offset_from_rva(via-pe.OPTIONAL_HEADER.ImageBase)
+            if original[at:at+5]!=b'\xcc'*5:raise RuntimeError(f'Trampoline guard failed at {via:x}')
+            jump=b'\xeb'+struct.pack('<b',via-location-2)
+            far=b'\xe9'+struct.pack('<I',(replacement-via-5)&0xffffffff)
+            output[at:at+5]=far
+            entry_trampolines.append(dict(entry=f'{via:08x}',original='cc'*5,patched=far.hex(),
+                                          replacement=f'{replacement:08x}',source=name,short_from=f'{location:08x}'))
+        else:jump=b'\xe9'+struct.pack('<I',(replacement-location-5)&0xffffffff)+b'\x90'*(len(expected)-5)
         output[offset:offset+len(expected)]=jump
         entry_patches.append(dict(entry=f'{location:08x}',original=expected.hex(),patched=jump.hex(),
-                                  replacement=f'{replacement:08x}',source=name))
+                                  replacement=f'{replacement:08x}',source=name,**({'via':f'{trampolines[location]:08x}'} if location in trampolines else {})))
     new_pe = pefile.PE(data=bytes(output))
     struct.pack_into('<I',output,pe.OPTIONAL_HEADER.get_field_absolute_offset('CheckSum'),new_pe.generate_checksum())
-    destination=GAME/spec['output']
+    destination=GAME/spec['output'] if output_path is None else Path(output_path).resolve()
     try:
         destination.write_bytes(output)
     except PermissionError as error:
         raise RuntimeError(f'Close {destination.name} before rebuilding: Windows locks running executable files') from error
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
-        payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,entry_patches=entry_patches,lifted=lifted_stats,
+        payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,entry_patches=entry_patches,entry_trampolines=entry_trampolines,lifted=lifted_stats,
         scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup/insertion and red-black balancing, and first-pass candidate filter/weapon selection; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; audited constant-return functions, object-word getters, field/global accessors, C++ static-object initializers (with and without constructor arguments) scalar deleting destructors, dynamic_cast wrappers, virtual clones and constant global stores; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded vtable replacements and {len(entry_patches)} guarded function entries'
-          +(f' ({len(lifted_patch_entries)} of them L1 lifted C; {lifted_stats})' if lifted_stats else ''))
+          +(f' ({len(lifted_patch_entries)} of them {"L1 lifted" if TREE=="lifted" else "L2 readable"} C; {lifted_stats})' if lifted_stats else ''))
 
 
 def main():
-    global GAME, COMPILERS
+    global GAME, COMPILERS, TREE, MODS_ONLY
     parser=argparse.ArgumentParser()
     parser.add_argument('--target',choices=('client','server','both'),default='both')
     parser.add_argument('--game-dir',type=Path,default=GAME)
     parser.add_argument('--compiler-bin',type=Path,default=COMPILERS)
-    parser.add_argument('--no-lifted',action='store_true',help='leave out the L1 lifted C')
+    parser.add_argument('--no-lifted',action='store_true',help='leave out the lifted C')
+    parser.add_argument('--output',type=Path,help='write the executable here instead of the game folder (one target)')
+    parser.add_argument('--tree',choices=('lifted','readable'),default='lifted',
+                        help='lifted C to detour into: lifted/ (L1) or readable/ (L2)')
+    parser.add_argument('--mods-only',action='store_true',
+                        help='run only the functions mods hook as C; the rest of the game stays original code (needs --tree readable)')
+    parser.add_argument('--mods',help='build only these mods (file names without .c, comma-separated)')
     args=parser.parse_args()
+    if args.mods_only and args.tree!='readable':parser.error('--mods-only needs --tree readable')
+    MODS_ONLY=args.mods_only
+    if args.mods is not None:
+        import mods
+        mods.ONLY=set(args.mods.split(','))
+        missing=[n for n in mods.ONLY if not any((mods.SOURCES/d/f'{n}.c').is_file() for d in ('client','server','shared'))]
+        if missing:parser.error(f'--mods: no mod file {", ".join(missing)}')
+    if args.output and args.target=='both':parser.error('--output needs --target client or server')
+    TREE=args.tree
     GAME=args.game_dir.resolve()
     COMPILERS=args.compiler_bin.resolve()
-    for target in ('client','server') if args.target=='both' else (args.target,): build(target,not args.no_lifted)
+    for target in ('client','server') if args.target=='both' else (args.target,): build(target,not args.no_lifted,args.output)
 
 
 if __name__=='__main__': main()
