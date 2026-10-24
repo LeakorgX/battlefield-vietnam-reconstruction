@@ -9,8 +9,8 @@ You need your own copy of the game. This repo has **no game assets or original E
 
 | Stage | What it means | Client | Server |
 | --- | --- | ---: | ---: |
-| **L1: lifted C** | Every function translated to C mechanically and checked against the original. Works, but looks like assembly. | **98.3%** | **98.7%** |
-| **L2: readable C** | Same functions as compact C: conditions as `if`, dead flag code removed, nested `if`/`else`/`while` with `break`/`continue` ([READABLE-C](docs/READABLE-C.md)) | 33,613 of 33,731 verified | 20,423 of 20,473 verified |
+| **L1: lifted C** | Every function translated to C mechanically and checked against the original. Works, but looks like assembly. | **99.0%** | **98.6%** |
+| **L2: readable C** | Same functions as compact C: conditions as `if`, dead flag code removed, nested `if`/`else`/`while` with `break`/`continue` ([READABLE-C](docs/READABLE-C.md)) | 33,697 of 33,731 verified | 20,458 of 20,473 verified |
 | **L2b: named C** | Values, stack slots, addresses and known fields named (values survive calls; a call returns into the C body); calls written with their arguments, typed where the callee ABI is known (`r = THISCALL(...)`); `this->field` for known class layouts | 187,281 variables, all other register values named; 18,977 address names; 57,255 named stack slots; 1,095 fields; 93,652 calls with arguments (41,686 typed); 100 class members | 104,613 variables; 11,192 address names; 32,812 named stack slots; 665 fields; 51,917 calls with arguments (24,238 typed); 66 class members |
 | **L3: readable C/C++** | Named classes, fields and functions | 8,121 functions | (shared count) |
 

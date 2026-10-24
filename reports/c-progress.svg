@@ -1,24 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="556" height="196" role="img" aria-label="Code converted to C">
-<rect width="556" height="196" rx="10" fill="#111827"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="556" height="268" role="img" aria-label="Code converted to C">
+<rect width="556" height="268" rx="10" fill="#111827"/>
 <text x="16" y="20" fill="#f9fafb" font-family="Arial,sans-serif" font-size="13" font-weight="bold">CODE RUNNING AS VERIFIED C (share of original code bytes)</text>
 <text x="16" y="44" fill="#d1d5db" font-family="Arial,sans-serif" font-size="12">Client: runs as C</text>
 <rect x="150" y="32" width="320" height="14" rx="7" fill="#374151"/>
-<rect x="150" y="32" width="315" height="14" rx="7" fill="#60a5fa"/>
-<text x="540" y="44" text-anchor="end" fill="#60a5fa" font-family="Arial,sans-serif" font-size="13" font-weight="bold">98.32%</text>
-<text x="150" y="59" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">38,409 of 38,657 functions (33,519 lifted L1 C)</text>
-<text x="16" y="80" fill="#d1d5db" font-family="Arial,sans-serif" font-size="12">Client: readable C</text>
+<rect x="150" y="32" width="317" height="14" rx="7" fill="#60a5fa"/>
+<text x="540" y="44" text-anchor="end" fill="#60a5fa" font-family="Arial,sans-serif" font-size="13" font-weight="bold">98.98%</text>
+<text x="150" y="59" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">38,488 of 38,657 functions (33,598 lifted L1 C)</text>
+<text x="16" y="80" fill="#d1d5db" font-family="Arial,sans-serif" font-size="12">Client: readable L2</text>
 <rect x="150" y="68" width="320" height="14" rx="7" fill="#374151"/>
-<rect x="150" y="68" width="5" height="14" rx="7" fill="#34d399"/>
-<text x="540" y="80" text-anchor="end" fill="#34d399" font-family="Arial,sans-serif" font-size="13" font-weight="bold">1.53%</text>
-<text x="150" y="95" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">4,890 hand-written functions</text>
-<text x="16" y="124" fill="#d1d5db" font-family="Arial,sans-serif" font-size="12">Server: runs as C</text>
-<rect x="150" y="112" width="320" height="14" rx="7" fill="#374151"/>
-<rect x="150" y="112" width="316" height="14" rx="7" fill="#60a5fa"/>
-<text x="540" y="124" text-anchor="end" fill="#60a5fa" font-family="Arial,sans-serif" font-size="13" font-weight="bold">98.74%</text>
-<text x="150" y="139" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">23,877 of 23,986 functions (20,381 lifted L1 C)</text>
-<text x="16" y="160" fill="#d1d5db" font-family="Arial,sans-serif" font-size="12">Server: readable C</text>
+<rect x="150" y="68" width="313" height="14" rx="7" fill="#a78bfa"/>
+<text x="540" y="80" text-anchor="end" fill="#a78bfa" font-family="Arial,sans-serif" font-size="13" font-weight="bold">97.95%</text>
+<text x="150" y="95" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">33,697 functions verified as readable C</text>
+<text x="16" y="116" fill="#d1d5db" font-family="Arial,sans-serif" font-size="12">Client: hand-written</text>
+<rect x="150" y="104" width="320" height="14" rx="7" fill="#374151"/>
+<rect x="150" y="104" width="5" height="14" rx="7" fill="#34d399"/>
+<text x="540" y="116" text-anchor="end" fill="#34d399" font-family="Arial,sans-serif" font-size="13" font-weight="bold">1.53%</text>
+<text x="150" y="131" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">4,890 hand-written functions (L3)</text>
+<text x="16" y="160" fill="#d1d5db" font-family="Arial,sans-serif" font-size="12">Server: runs as C</text>
 <rect x="150" y="148" width="320" height="14" rx="7" fill="#374151"/>
-<rect x="150" y="148" width="7" height="14" rx="7" fill="#34d399"/>
-<text x="540" y="160" text-anchor="end" fill="#34d399" font-family="Arial,sans-serif" font-size="13" font-weight="bold">2.13%</text>
-<text x="150" y="175" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">3,496 hand-written functions</text>
+<rect x="150" y="148" width="315" height="14" rx="7" fill="#60a5fa"/>
+<text x="540" y="160" text-anchor="end" fill="#60a5fa" font-family="Arial,sans-serif" font-size="13" font-weight="bold">98.59%</text>
+<text x="150" y="175" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">23,874 of 23,986 functions (20,378 lifted L1 C)</text>
+<text x="16" y="196" fill="#d1d5db" font-family="Arial,sans-serif" font-size="12">Server: readable L2</text>
+<rect x="150" y="184" width="320" height="14" rx="7" fill="#374151"/>
+<rect x="150" y="184" width="311" height="14" rx="7" fill="#a78bfa"/>
+<text x="540" y="196" text-anchor="end" fill="#a78bfa" font-family="Arial,sans-serif" font-size="13" font-weight="bold">97.34%</text>
+<text x="150" y="211" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">20,458 functions verified as readable C</text>
+<text x="16" y="232" fill="#d1d5db" font-family="Arial,sans-serif" font-size="12">Server: hand-written</text>
+<rect x="150" y="220" width="320" height="14" rx="7" fill="#374151"/>
+<rect x="150" y="220" width="7" height="14" rx="7" fill="#34d399"/>
+<text x="540" y="232" text-anchor="end" fill="#34d399" font-family="Arial,sans-serif" font-size="13" font-weight="bold">2.13%</text>
+<text x="150" y="247" fill="#9ca3af" font-family="Arial,sans-serif" font-size="10">3,496 hand-written functions (L3)</text>
 </svg>

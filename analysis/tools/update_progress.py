@@ -39,9 +39,11 @@ def c_progress_svg(targets):
     for name,t in targets.items():
         rows.append(bar(y,f'{name.title()}: runs as C',running_share(t),'#60a5fa',
             f"{t['running_c_functions']:,} of {t['indexed_functions']:,} functions ({t['lifted_functions']:,} lifted L1 C)"))
-        rows.append(bar(y+36,f'{name.title()}: readable C',c_share(t),'#34d399',
-            f"{t['reconstructed_functions']:,} hand-written functions"))
-        y+=80
+        rows.append(bar(y+36,f'{name.title()}: readable L2',100*t['l2_verified_bytes']/t['indexed_bytes'],'#a78bfa',
+            f"{t['l2_verified_functions']:,} functions verified as readable C"))
+        rows.append(bar(y+72,f'{name.title()}: hand-written',c_share(t),'#34d399',
+            f"{t['reconstructed_functions']:,} hand-written functions (L3)"))
+        y+=116
     body=chr(10).join(rows)
     height=y-8
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="556" height="{height}" role="img" aria-label="Code converted to C">
@@ -77,9 +79,12 @@ def generate():
             for patch in json.loads(manifest.read_text(encoding='utf-8'))['entry_patches']:
                 if f'bfv_{target}_l1_' in patch['source'] and patch['entry'] in inventory:lifted.add(patch['entry'])
         running=complete|lifted
+        # L2 readable C that passed verification (bfv-native-code/readable/<target>/verified.json)
+        l2=set(json.loads((ROOT/'bfv-native-code/readable'/target/'verified.json').read_text(encoding='utf-8'))['passed'])&inventory
         targets[target]=dict(indexed_functions=len(inventory),reconstructed_functions=len(complete),
             lifted_functions=len(lifted-complete),running_c_functions=len(running),
             running_c_bytes=sum(sizes[a] for a in running),
+            l2_verified_functions=len(l2),l2_verified_bytes=sum(sizes[a] for a in l2),
             partial_functions=len(incomplete),indexed_bytes=sum(sizes.values()),
             reconstructed_bytes=sum(sizes[a] for a in complete),inventory_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
         total+=len(inventory);recovered+=len(complete);partial+=len(incomplete)
@@ -118,5 +123,6 @@ if __name__=='__main__':
     report=generate()
     for name,t in report['source_inventory']['targets'].items():
         print(f"{name:7} runs as C   {text_bar(running_share(t))} {running_share(t):6.2f}%  ({t['running_c_functions']}/{t['indexed_functions']} functions, {t['lifted_functions']} lifted)")
+        print(f"{name:7} readable L2 {text_bar(100*t['l2_verified_bytes']/t['indexed_bytes'])} {100*t['l2_verified_bytes']/t['indexed_bytes']:6.2f}%  ({t['l2_verified_functions']} functions)")
         print(f"{name:7} readable C  {text_bar(c_share(t))} {c_share(t):6.2f}%  ({t['reconstructed_functions']}/{t['indexed_functions']} functions)")
     print(f"Whole-game completion: {report['display_percent']} ({report['completed_milestones']}/{report['total_milestones']} acceptance milestones)")
