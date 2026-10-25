@@ -13,24 +13,27 @@
 enum { FF_IN_POSITION, FF_IN_NORMAL, FF_IN_COLOR0, FF_IN_COLOR1, FF_IN_PSIZE, FF_IN_BLENDWEIGHT, FF_IN_TEXCOORD };
 
 /* Vertex constants (vec4 index). Matrices are stored transposed (column per
- * register), so dp4 against consecutive registers is a row-vector multiply. */
-#define FF_VS_WORLDVIEW 0      /* 4 x 4: world(i) * view, i = blend matrix */
-#define FF_VS_NORMAL 16        /* 4 x 4: inverse transpose of worldview(i), 3 used */
-#define FF_VS_PROJ 32          /* 4 */
-#define FF_VS_TEXTURE 36       /* 8 x 4: D3DTS_TEXTURE0..7 */
-#define FF_VS_LIGHT 68         /* 8 x 8, see FF_LIGHT_* */
-#define FF_VS_MAT_DIFFUSE 132
-#define FF_VS_MAT_AMBIENT 133
-#define FF_VS_MAT_SPECULAR 134
-#define FF_VS_MAT_EMISSIVE 135
-#define FF_VS_MAT_POWER 136    /* x */
-#define FF_VS_AMBIENT 137      /* D3DRS_AMBIENT */
-#define FF_VS_FOG 138          /* start, end, 1 / (end - start), density */
-#define FF_VS_POINT 139        /* size, min, max, viewport height */
-#define FF_VS_POINT_SCALE 140  /* A, B, C, 0 */
-#define FF_VS_VIEWPORT_SCALE 141   /* window -> NDC for XYZRHW */
-#define FF_VS_VIEWPORT_OFFSET 142
-#define FF_VS_CONSTS 143
+ * register), so dp4 against consecutive registers is a row-vector multiply.
+ * A draw uploads registers up to the highest one its shader reads, so the
+ * small ones every variant uses come first: XYZRHW reads two registers, an
+ * unlit transform twenty. */
+#define FF_VS_VIEWPORT_SCALE 0     /* window -> NDC for XYZRHW */
+#define FF_VS_VIEWPORT_OFFSET 1
+#define FF_VS_FOG 2            /* start, end, 1 / (end - start), density */
+#define FF_VS_POINT 3          /* size, min, max, viewport height */
+#define FF_VS_POINT_SCALE 4    /* A, B, C, 0 */
+#define FF_VS_AMBIENT 5        /* D3DRS_AMBIENT */
+#define FF_VS_MAT_DIFFUSE 6
+#define FF_VS_MAT_AMBIENT 7
+#define FF_VS_MAT_SPECULAR 8
+#define FF_VS_MAT_EMISSIVE 9
+#define FF_VS_MAT_POWER 10     /* x */
+#define FF_VS_PROJ 12          /* 4 */
+#define FF_VS_WORLDVIEW 16     /* 4 x 4: world(i) * view, i = blend matrix */
+#define FF_VS_NORMAL 32        /* 4 x 4: inverse transpose of worldview(i), 3 used */
+#define FF_VS_LIGHT 48         /* 8 x 8, see FF_LIGHT_* */
+#define FF_VS_TEXTURE 112      /* 8 x 4: D3DTS_TEXTURE0..7 */
+#define FF_VS_CONSTS 144
 
 /* per light: */
 #define FF_LIGHT_DIFFUSE 0

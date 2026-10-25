@@ -84,17 +84,22 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL validation_message(VkDebugUtilsMessageSeve
     VkDebugUtilsMessageTypeFlagsEXT type, const VkDebugUtilsMessengerCallbackDataEXT *data, void *user)
 {
     (void)type; (void)user;
+    /* The loader warns about every layer VK_LOADER_LAYERS_DISABLE filters out:
+     * that describes the machine, not the application, so it is only logged. */
+    int loader = data->pMessageIdName && vkp_streq(data->pMessageIdName, "Loader Message");
     if (severity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT) vkd.validation_errors++;
-    if (severity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) vkd.validation_warnings++;
+    if ((severity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) && !loader) vkd.validation_warnings++;
     vkp_log("vulkan validation: %s", data->pMessage);
     return VK_FALSE;
 }
 
+static int gpu_state;           /* 0 untried, 1 ok, -1 failed */
+static LONG gpu_users;          /* live IDirect3D9 objects */
+
 int vkd_gpu_init(void)
 {
-    static int state;   /* 0 untried, 1 ok, -1 failed */
-    if (state) return state > 0;
-    state = -1;
+    if (gpu_state) return gpu_state > 0;
+    gpu_state = -1;
     if (!vkd_w32_init()) return 0;
     vkGetInstanceProcAddr = (PFN_vkGetInstanceProcAddr)vkp_proc("vulkan-1.dll", "vkGetInstanceProcAddr");
     if (!vkGetInstanceProcAddr) { vkp_log("vulkan: vulkan-1.dll not found"); return 0; }
@@ -138,6 +143,7 @@ int vkd_gpu_init(void)
         if (!create_debug || create_debug(vkd.instance, &debug, 0, &vkd.debug_messenger) != VK_SUCCESS) {
             vkp_log("vulkan: validation messenger creation failed"); return 0;
         }
+        vkd.validation = 1;
     }
 
     uint32_t n = 0;
@@ -179,8 +185,11 @@ int vkd_gpu_init(void)
         vkp_free(ext);
         return 0;
     }
-    int x_eds3 = has_ext(ext, next, VK_EXT_EXTENDED_DYNAMIC_STATE_3_EXTENSION_NAME);
-    int x_vi = has_ext(ext, next, VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME);
+    /* vulkan.eds3 = 0 / vulkan.vertexInput = 0 force the pipeline-state fallbacks
+     * of devices without these extensions (the GPU harness tests both paths). */
+    int x_eds3 = has_ext(ext, next, VK_EXT_EXTENDED_DYNAMIC_STATE_3_EXTENSION_NAME) && vkp_option_int("vulkan.eds3", 1);
+    int x_vi = has_ext(ext, next, VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME) &&
+               vkp_option_int("vulkan.vertexInput", 1);
     int x_border = has_ext(ext, next, VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME);
     int x_div = has_ext(ext, next, VK_EXT_VERTEX_ATTRIBUTE_DIVISOR_EXTENSION_NAME);
     vkp_free(ext);
@@ -318,11 +327,9 @@ int vkd_gpu_init(void)
     vkd.format_4444 = !!(fp.optimalTilingFeatures & VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT);
     vkp_log("vulkan: eds3 %d, vertex input %d, border %d, divisor %d, d24s8 %d", vkd.eds3_blend, vkd.vi_dynamic,
             vkd.custom_border, vkd.divisor, vkd.d24s8);
-    state = 1;
+    gpu_state = 1;
     return 1;
 }
-
-/* ---- memory ---- */
 
 struct vkd_range { VkDeviceSize off, size; struct vkd_range *next; };
 struct vkd_block {
@@ -335,6 +342,37 @@ struct vkd_block {
     struct vkd_range *free;
     struct vkd_block *next;
 };
+
+void vkd_gpu_addref(void) { InterlockedIncrement(&gpu_users); }
+
+/* The last IDirect3D9 is gone, so no device is left (each holds one): destroy
+ * the Vulkan device and instance. Layers then stop their threads here; left
+ * for process exit, a validation layer built on winpthreads hangs in its
+ * static destructors. The next Direct3DCreate9 initializes again. */
+void vkd_gpu_release(void)
+{
+    if (InterlockedDecrement(&gpu_users) > 0 || gpu_state <= 0) return;
+    vkDeviceWaitIdle(vkd.dev);
+    while (vkd.blocks) {
+        struct vkd_block *b = vkd.blocks;
+        vkd.blocks = b->next;
+        if (b->buffer) vkDestroyBuffer(vkd.dev, b->buffer, 0);
+        vkFreeMemory(vkd.dev, b->mem, 0);
+        while (b->free) { struct vkd_range *r = b->free; b->free = r->next; vkp_free(r); }
+        vkp_free(b);
+    }
+    vkDestroyDevice(vkd.dev, 0);
+    if (vkd.debug_messenger) {
+        PFN_vkDestroyDebugUtilsMessengerEXT destroy_debug =
+            (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(vkd.instance, "vkDestroyDebugUtilsMessengerEXT");
+        if (destroy_debug) destroy_debug(vkd.instance, vkd.debug_messenger, 0);
+    }
+    vkDestroyInstance(vkd.instance, 0);
+    vkd.dev = 0; vkd.queue = 0; vkd.phys = 0; vkd.instance = 0; vkd.debug_messenger = 0;
+    gpu_state = 0;
+}
+
+/* ---- memory ---- */
 
 uint32_t vkd_memory_type(uint32_t bits, VkMemoryPropertyFlags want, VkMemoryPropertyFlags avoid)
 {
@@ -904,12 +942,18 @@ void vkd_defer(struct vkd_device *d, const struct vkd_garbage *g)
 
 int vkd_ring(struct vkd_device *d, VkDeviceSize size, VkDeviceSize align, struct vkd_buf *out)
 {
+    return vkd_ring_span(d, size, size, align, out);
+}
+
+int vkd_ring_span(struct vkd_device *d, VkDeviceSize size, VkDeviceSize span, VkDeviceSize align, struct vkd_buf *out)
+{
     struct vkd_context *c = &d->ctx[d->cur];
     if (align < 16) align = 16;
+    VkDeviceSize need = VKP_MAX(size, span);
     struct vkd_chunk *k = c->chunks;
     if (k) {
         VkDeviceSize off = (k->used + align - 1) / align * align;
-        if (off + size <= k->mem.size) {
+        if (off + need <= k->mem.size) {
             out->buf = k->mem.buffer; out->off = k->mem.offset + off; out->map = k->mem.map + off;
             out->mem.mem = 0; out->use_seq = 0;
             k->used = off + size;
@@ -918,14 +962,14 @@ int vkd_ring(struct vkd_device *d, VkDeviceSize size, VkDeviceSize align, struct
     }
     /* another chunk */
     struct vkd_chunk **pk = &d->free_chunks;
-    while (*pk && (*pk)->mem.size < size) pk = &(*pk)->next;
+    while (*pk && (*pk)->mem.size < need) pk = &(*pk)->next;
     if (*pk) {
         k = *pk;
         *pk = k->next;
     } else {
         k = vkp_alloc(sizeof *k);
         if (!k) return 0;
-        VkDeviceSize csize = VKP_MAX((VkDeviceSize)4 << 20, (size + 0xffff) & ~(VkDeviceSize)0xffff);
+        VkDeviceSize csize = VKP_MAX((VkDeviceSize)4 << 20, (need + 0xffff) & ~(VkDeviceSize)0xffff);
         if (!vkd_alloc_buffer(csize, VKD_MEM_UPLOAD, &k->mem) || !k->mem.map) { vkp_free(k); return 0; }
         k->mem.size = csize;
     }

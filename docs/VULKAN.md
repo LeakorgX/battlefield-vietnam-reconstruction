@@ -6,21 +6,37 @@ the build puts a native implementation of the Direct3D 9 interfaces they call
 (`bfv-native-code/vk/`). The engine draws exactly as before. Neither d3d9.dll
 nor DXVK is used.
 
-**Status 2026-10-25: GPU bring-up works; game integration is unfinished.**
-The standalone harness runs on the RTX 3060: exact native-D3D9 clear/readback
-parity, state-block comparisons, textured Present, gamma and windowed Reset.
-The x64 run has zero validation errors/warnings; the x86 run passes without
-validation (no x86 validation layer installed). Device draw calls are still
-missing. The game still renders through system d3d9; no Vulkan mod is installed.
-The sections below describe the target design where not explicitly tested.
+**Status 2026-10-25 (second bring-up, RTX 4060 Laptop): the device is complete
+and every harness gate passes; game integration is untested.** All 119
+`IDirect3DDevice9` slots are filled. The GPU harness draws the same scenes
+through system d3d9 and `vk/` and compares the pixels (61 passing checks):
+fixed-function geometry with
+all four draw calls, shader models 1-3 and a D3DX effect, copies, render to
+texture, lighting, MSAA 0-8, blending, a sixteen-draw state-change pass, clears,
+state blocks, Present, gamma and Reset. x86 and x64 pass under the Khronos
+validation layer with zero errors and warnings, x86 also with the
+fixed-function fallback paths (`vulkan.eds3 = 0`, `vulkan.vertexInput = 0`) and
+with the production `platform.c`. The `vulkan` mod and the build wiring exist,
+but no client has been built or run with them: that needs the supported client
+EXE. The game still renders through system d3d9.
+
+This backend is a translation layer. [VULKAN-NATIVE-PLAN.md](VULKAN-NATIVE-PLAN.md)
+plans the move to native Vulkan rendering, one subsystem at a time on top of it.
+
+**First in-game run (2026-10-25): the backend loads, then the engine hangs in
+its Reset retry loop.** See "First in-game run" under Remaining work.
 
 ## How it is wired
 
 - The game's only Direct3D import is `Direct3DCreate9`: thunk `0086791a`,
-  IAT slot `00b42444`. It is called once, from `00439ee8` in the renderer
-  setup.
-- The `vulkan` mod (`mods/client/vulkan.c`) hooks that setup function. Before
-  it runs, the mod writes `vk_Direct3DCreate9` into the IAT slot.
+  IAT slot `00b42444`. Four functions call the thunk: `Setup_Profiles_00439260`
+  (at `00439ee8`), `PCDX8Renderer::PCDX8RendererInit` `00a5f700` (at
+  `00a5f70e`), `Setup_Profiles_helper_00427c00` and the driver check
+  `sub_BAD_DRIVERS_POST_00491e10`.
+- The `vulkan` mod (`mods/client/vulkan.c`) hooks `00439260` and `00a5f700`.
+  Before either runs, it writes `vk_Direct3DCreate9` into the IAT slot, which
+  stays patched. The other two callers get the Vulkan IDirect3D9 only if they
+  run after one of those; check the order in `vulkan.log` during step 5.
 - Lifted code leaves C for any address outside its catalogue. A call through
   a COM vtable therefore jumps straight into the payload's `__stdcall`
   methods, as it did into d3d9.dll. Mods that call the device
@@ -60,6 +76,16 @@ The sections below describe the target design where not explicitly tested.
   Partial writes to busy resources are copied in-stream.
 - **Dynamic buffers** live in host-visible memory. `D3DLOCK_DISCARD` renames,
   `D3DLOCK_NOOVERWRITE` writes in place.
+- **Per draw**, command buffer state (pipeline, vertex input and buffers,
+  dynamic state, push descriptors, push constants) is recorded only when it
+  differs from what the previous draw of the same submission set. Constant
+  blocks are written to the upload ring only when their inputs changed, and
+  only registers `[0, floats_read)` that `dxso_scan` finds the shader reading
+  (all with relative addressing), plus the integer/Boolean/bump tail when read.
+  The descriptor still covers the whole block; its unread rest belongs to later
+  ring allocations. The fixed-function register layout (`ff.h`) puts the small
+  common registers first, so XYZRHW draws upload two registers and unlit
+  transforms twenty. This keeps the ring small in a 32-bit address space.
 - **Readback** (GetRenderTargetData, GetFrontBufferData, queries) submits and
   waits only when the result is needed.
 - **Present** draws the back buffer into the swap chain image, scaled to the
@@ -98,46 +124,84 @@ use `-NoValidation` explicitly when the matching validation layer is absent.
 `-Architecture x64` runs the same sources as a 64-bit validation check. This
 does not replace the required 32-bit validation gate for the game.
 
-Current GPU tests: 4096 exact upload/readback pixels; native-D3D9 versus Vulkan
-clear pixels with viewport and rectangle clipping; custom/pixel state blocks,
-including recording isolation and constant bounds; 12 textured presents with
-pipeline-cache reuse; gamma pipeline; implicit back-buffer references; Reset
-rejection with a held back buffer; successful Reset and clear; Reset to another
-window (surface replacement). Present's final displayed pixels are not compared
-yet. No DrawPrimitive/DrawIndexedPrimitive or fixed-function scene is tested.
+Scenes compared with system d3d9 (per-channel limit 2 unless noted): 40
+fixed-function geometry scenes (DrawPrimitive, DrawIndexedPrimitive and both
+`*UP` calls x modulate/add/subtract, blending, alpha test, fog, vertex colour,
+depth, stencil, occlusion and event queries); vs/ps 1.1, 2.0 and 3.0 pairs and a
+D3DX effect; UpdateSurface/ColorFill/StretchRect (exact); render to texture;
+directional lighting; an X8R8G8B8 target with destination-alpha and
+BOTH(INV)SRCALPHA blends; sixteen draws in one pass, each after a different
+state change (`churn_scene`: it catches stale constant blocks, images, dynamic
+state and fixed-function constants); render targets with MSAA 0/2/4/8; clears
+with viewport and rectangle clipping (exact); state blocks. Then: 4096 exact
+upload/readback pixels, 12 textured presents with pipeline-cache reuse, gamma,
+implicit back-buffer references, Reset rejection and Reset, Reset to another
+window, an additional swap chain on the device window, and resource lifetime.
+Present's displayed pixels are not compared. The last IDirect3D9 release
+destroys the Vulkan device and instance, so the validation layer also reports
+leaked objects.
+
+Switches: `-Fullscreen` runs the fullscreen scene (display mode change, focus
+loss, DEVICELOST/NOTRESET, Reset), which is skipped by default. `-Bench` prints
+the per-draw CPU cost of a fixed-function loop on both devices
+(`BFV_VK_BENCH=d3d9|vulkan` for one). `vulkan.eds3 = 0` and
+`vulkan.vertexInput = 0` (environment or `dxvk.conf`) force the pipeline-state
+fallbacks of devices without those extensions. `run_gpu.ps1` works in Windows
+PowerShell 5.1 and PowerShell 7.
 
 `vk/test/run_dxso.sh` passes 61 shader translations and `spirv-val` reports zero
 invalid modules. Logs/binaries are under `bfv-native-code/build/vulkan-test-*`.
-The current machine's private x64 validation layer is outside the repository at
+
+Validation layers: x64 from MSYS2 (`mingw-w64-x86_64-vulkan-validation-layers`,
+`-ValidationLayerPath C:\msys64\mingw64\bin`). x86 from the LunarG SDK
+1.3.296.0, the last one with 32-bit layers (1.4.304.0 removed them), installed
+with its "SDK 32-bit Core Components" (`-ValidationLayerPath
+C:\VulkanSDK\1.3.296.0\Bin32`). The first machine used a private x64 layer in
 `../bfv-reference-local/vulkan-validation/layers64`. Elevated Windows processes
-ignore `VK_LAYER_PATH`: the test used a temporary explicit-layer registry entry,
-restored afterward, and disabled the unrelated ReShade/RTSS implicit layers for
-that process. No validation layer or registry entry was installed permanently.
+ignore `VK_LAYER_PATH`: the script then adds a temporary explicit-layer registry
+entry and restores it. It disables all implicit layers while validating; the
+loader's notices about that are logged but not counted as warnings.
+
+Machine notes: the MSYS2 layer (winpthreads) waits forever in a static
+destructor at process exit if the Vulkan instance is still alive, which is why
+the harness ends a failed run with TerminateProcess and the backend destroys
+the instance on the last release. RivaTuner Statistics Server injects
+RTSSHooks.dll into the harness; after the Vulkan benchmark its window hook threw
+a C++ exception out of a later CreateWindow (STATUS_FATAL_USER_CALLBACK_EXCEPTION),
+so the Vulkan benchmark runs after the last window is created. On a hybrid
+laptop the backend picks the discrete GPU; AMD's switchable-graphics implicit
+layer can hide it, so non-validated runs there should also set
+`VK_LOADER_LAYERS_DISABLE=~implicit~`.
+
+Per-draw CPU cost (`-Bench`, 2000 fixed-function draws per frame with a texture
+and world matrix change each, x86, RTX 4060 Laptop for Vulkan and the Radeon
+890M for system d3d9): d3d9 1.70 us/draw, Vulkan 2.32 us/draw (4.86 before the
+state tracking above). A 32-bit harness without large-address awareness ran out
+of address space with full 8.5 KB constant uploads per draw.
 
 ## Remaining work
 
-State on 2026-10-25:
+State on 2026-10-25, second bring-up:
 
-| Piece | Lines | State |
-|---|---|---|
-| `spirv.c`, `dxso.c`, `ff.c` | 2442 | Written. `vk/test/run_dxso.sh` translates a corpus and runs `spirv-val`. |
-| `vk_core.c` | | Runs: context/device, allocations, upload/readback, submissions; optional validation callback. |
-| `d3d9_main.c`, `d3d9_resource.c`, `d3d9_shader.c` | | Exercised by the GPU harness; broader resource/shader coverage remains. |
-| `d3d9_device.c` | | **Partial.** Creation, layout, lifetime, clear/readback/present, windowed reset, state setters/constants/blocks. Vtable is incomplete; no device draw path. |
-| `platform.c` | 0 | **Missing.** Only the harness version (`test/harness_platform.c`) exists. |
-| `mods/client/vulkan.c` | 0 | **Missing.** Nothing installs `vk_Direct3DCreate9`. |
-| Build wiring | | **Missing.** `tools/mods.py` only compiles `mods/<target>/*.c`; nothing compiles `vk/` or puts the Vulkan headers on the include path. |
-| Comparison harness | | **Partial.** Clear pixels and a state-block subset match native D3D9. Full scene suite remains. |
+| Piece | State |
+|---|---|
+| `spirv.c`, `dxso.c`, `ff.c` | Written. `vk/test/run_dxso.sh` translates a corpus and runs `spirv-val`. |
+| `vk_core.c` | Runs: context/device, allocations, upload ring, readback, submissions, validation callback, teardown on the last IDirect3D9 release. |
+| `d3d9_main.c`, `d3d9_resource.c`, `d3d9_shader.c` | Exercised by the GPU harness. |
+| `d3d9_device.c` (+ `device_methods.inc`, `device_draw.inc`, `device_window.inc`) | **Complete vtable.** Draw path with per-submission state tracking. Patches, ProcessVertices, palettes, hardware cursor and dialog-box mode return D3DERR_INVALIDCALL and log. |
+| `platform.c` | Written. The harness passes linked against it (`-ProductionPlatform`). Its two bootstrap IAT slots match `imp_GetProcAddress`/`imp_LoadLibraryA` in `symbols_client.h`. |
+| `mods/client/vulkan.c` | Written: hooks `00439260` and `00a5f700` and writes `vk_Direct3DCreate9` into IAT slot `00b42444` (`imp_Direct3DCreate9`). **Never built or run.** |
+| Build wiring | Written: `--mods vulkan` compiles `vk/*.c` into the client and requires `--output`. `vk/*.c` compiles with the mod flags without warnings; the only external symbols are `memcpy`/`memset`/`memcmp` (mod runtime) and libgcc helpers. MinGW needs `mingw-w64-i686-vulkan-headers`. **Not built against the client.** |
+| Comparison harness | 61 scenes and checks pass on x86 and x64 under validation (see Testing). |
 
-The next implementation target is the device draw path (shader/FF selection,
-constants/descriptors, pipelines/dynamic state and vertex/index inputs) and the
-remaining COM slots. Do not install the backend in the game while vtable slots
-are empty. The first GPU execution gate is now covered; the complete device
-and scene-comparison gates below have not passed.
+The next step is step 4's gate on a machine with the supported client
+(`79655e9c...`, see SETUP.md), then step 5.
 
 ### Plan
 
-Each step has a gate. A step that fails its gate is not built on.
+Each step has a gate. A step that fails its gate is not built on. Steps 1-3
+passed their gates on 2026-10-25; step 4 is written but its gate needs the
+supported client; steps 5 and 6 remain.
 
 1. **`d3d9_device.c`** (largest piece, about 2,500–3,500 lines). All 119
    `IDirect3DDevice9` methods, in vtable order: reference counting,
@@ -168,7 +232,7 @@ Each step has a gate. A step that fails its gate is not built on.
 4. **Build wiring and the `vulkan` mod**. Teach `tools/mods.py` /
    `tools/build.py` to compile `vk/*.c` (except the harness) into the client
    when the `vulkan` mod is selected, with the MinGW Vulkan headers on the
-   include path. `mods/client/vulkan.c` hooks `00439ee8` and writes
+   include path. `mods/client/vulkan.c` hooks `00439260` and `00a5f700` and writes
    `vk_Direct3DCreate9` into IAT slot `00b42444` before it runs. Gate: a
    `--mods-only` client builds; without the `vulkan` mod it is still
    byte-identical to the current mods-only build.
@@ -183,8 +247,19 @@ Each step has a gate. A step that fails its gate is not built on.
 
 ### Rules `d3d9_device.c` must follow
 
-Read from the other `vk/` files on 2026-10-25. Step 1 is partly implemented;
-the following ownership/layout requirements still apply to new methods.
+Read from the other `vk/` files on 2026-10-25. They apply to every change to
+the device methods.
+
+- A method that changes state a draw reads must set the matching `DIRTY_*` bit
+  (`vkd3d9.h`) when it is not recording. Within a submission, draws record the
+  pipeline, vertex input, dynamic state, descriptors, push constants and
+  constant blocks again only when their inputs are dirty; SetRenderState sets
+  `DIRTY_ALL`. Resource contents need no bit: vertex buffer handles (renamed on
+  DISCARD) are compared per draw and autogen mipmaps are checked per draw.
+  `churn_scene` in the harness must keep passing.
+- Fixed-function registers are named only through the `FF_VS_*`/`FF_PS_*`
+  macros, and a shader's constant reads must stay visible to `dxso_scan`
+  (`floats_read`, `tail_read`): the upload is cut to what it reports.
 
 - `vkd_create_surface/texture/buffer`, `vkd_create_vdecl`, `vkd_create_shader`
   and `vkd_create_query` do not AddRef the device, but their destroy paths
@@ -222,12 +297,70 @@ the following ownership/layout requirements still apply to new methods.
 - Reset saves the old HWND before replacing it, so changing windows actually
   destroys the old Vulkan surface. The two-window reset test covers this.
 
+### Fixed during the second bring-up (2026-10-25, RTX 4060 Laptop + Radeon 890M)
+
+- CreateAdditionalSwapChain on the device window failed with
+  VK_ERROR_NATIVE_WINDOW_IN_USE_KHR (Vulkan allows one swap chain per window).
+  Additional swap chains create their Vulkan swap chain at the first Present,
+  and the swap chain that presents takes the window over from another one of
+  the device (the last Present wins, as on D3D9).
+- The process-wide Vulkan device and instance were never destroyed; with the
+  MSYS2 validation layer every harness process then hung forever in
+  LdrShutdownProcess. They are destroyed when the last IDirect3D9 is released
+  and created again by the next Direct3DCreate9.
+- X8R8G8B8 targets blended with the stored alpha instead of 1 (`no_alpha` was
+  unused); D3DBLEND_BOTH(INV)SRCALPHA did not set the destination factor; blend
+  ops were not range-checked. `blend_scene` covers them.
+- Every draw uploaded both full constant blocks (8.5 KB) and recorded all
+  command buffer state: 4.86 us/draw, and the 32-bit harness ran out of address
+  space for the upload ring. See "Per draw" above.
+- UpdateSurface's invalid calls returned through the "unsupported DeletePatch"
+  log line; they now return D3DERR_INVALIDCALL.
+- The loader's notices about layers disabled by VK_LOADER_LAYERS_DISABLE
+  counted as validation warnings; run_gpu.ps1 failed in Windows PowerShell 5.1
+  on the harness's first stderr line.
+
+### First in-game run (2026-10-25)
+
+Client `32aec85d...` (the newer patched build, branch `client-exe-port`) built
+with `--mods-only --mods vulkan`, so only the backend, the two hooked
+functions and the hand-written C are new; fullscreen, validation on,
+implicit layers disabled, launched from a shell.
+
+- Both hooks install `vk_Direct3DCreate9`. The backend picks the RTX 4060
+  Laptop (Vulkan 1.4), creates the profile-probe device (800x600 swap chain)
+  and then the renderer's IDirect3D9. No validation errors.
+- The game's setup rewrote `Mods/BfVietnam/settings/VideoDefault.con`
+  (`renderer.FullScreen 1` became `0`) and restarted itself.
+- In the restarted process the menu music plays, but the window stops
+  responding. The main thread sleeps in `PCDX8Renderer_00a5fbca`, called
+  from `PCDX8Renderer::vf33`: its `IDirect3DDevice9::Reset` failed, and
+  after any failed Reset (except one `D3DERR_NOTAVAILABLE` case) the engine
+  loops `SleepEx(300)` and `TestCooperativeLevel` until
+  `D3DERR_DEVICENOTRESET`, without pumping messages. The device was not lost,
+  so `TestCooperativeLevel` returned `D3D_OK` and the loop never ends.
+- `Reset` does not log why it fails, so the failing check is not known yet:
+  a still-referenced default-pool resource or back buffer
+  (`D3DERR_INVALIDCALL`), or the fullscreen mode test (`D3DERR_NOTAVAILABLE`;
+  the profile asks for 3840x2400 at 60 Hz).
+- `BFVWeather.dll`, which the client's entry stub loads, stands down when the
+  EXE is not named `BfVietnam.exe`, so it did not interfere.
+
+Next: log every failing `Reset`/`CreateDevice` check with its parameters;
+make `TestCooperativeLevel` follow the window's actual foreground state as
+D3D9 does (lost and not-reset are now driven only by focus messages, which
+this loop never pumps); run with `vulkan.windowed=1` first, launched from the
+desktop rather than a background shell.
+
 ### Known issues and unimplemented paths
 
-- The device vtable is incomplete and fullscreen creation/reset is explicitly
-  rejected. Lost-focus behavior, complete default-pool reset validation, draws,
-  resource creation/binding/copies, transforms/lights and remaining state need
-  implementation. The GPU harness uses only populated methods.
+- Not run in the game yet (steps 4-5). The fullscreen scene (display mode
+  change, focus loss, Reset) was not run on the second machine.
+- Patches (DrawRectPatch/DrawTriPatch), ProcessVertices, palettes (P8 is not
+  offered), the hardware cursor (CursorCaps 0) and SetDialogBoxMode fail with
+  D3DERR_INVALIDCALL and a log line.
+- D3DBLEND_SRCCOLOR2/INVSRCCOLOR2 need dual-source blending, which is not
+  enabled; SRCALPHASAT on an X8 target uses the stored alpha.
 - A resource released while still bound keeps a device reference until
   it is unbound.
 - `vkd_submit` ends the pass, then `vkd_queries_pass_end` ends it again. This

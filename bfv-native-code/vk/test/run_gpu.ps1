@@ -1,5 +1,5 @@
 param([ValidateSet('x86','x64')][string]$Architecture = 'x86', [switch]$NoValidation,
-    [switch]$ProductionPlatform, [string]$ValidationLayerPath)
+    [switch]$ProductionPlatform, [string]$ValidationLayerPath, [switch]$Fullscreen, [switch]$Bench)
 $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path "$PSScriptRoot/../..").Path
 $out = Join-Path $root "build/vulkan-test-$Architecture"
@@ -66,8 +66,18 @@ try {
         }
     }
     [Environment]::SetEnvironmentVariable('vulkan.validation', $(if ($NoValidation) { '0' } else { '1' }), 'Process')
-    & "$out/test_gpu.exe" 2>&1 | Tee-Object -FilePath "$out/gpu.log"
-    if ($LASTEXITCODE) { throw "GPU harness failed: $LASTEXITCODE" }
+    $env:BFV_VK_FULLSCREEN = if ($Fullscreen) { '1' } else { $null }
+    $env:BFV_VK_BENCH = if ($Bench) { '1' } else { $null }
+    # Windows PowerShell 5.1 turns native stderr lines into error records, which
+    # 'Stop' makes fatal; keep them as plain log text and check the exit code.
+    $ErrorActionPreference = 'Continue'
+    # -ProductionPlatform writes vulkan.log to the working directory.
+    Push-Location $out
+    & "$out/test_gpu.exe" 2>&1 | ForEach-Object { "$_" } | Tee-Object -FilePath "$out/gpu.log"
+    $exitCode = $LASTEXITCODE
+    Pop-Location
+    $ErrorActionPreference = 'Stop'
+    if ($exitCode) { throw "GPU harness failed: $exitCode" }
 } finally {
     if ($registry) {
         if ($ownsRegistryValue) {
@@ -80,5 +90,7 @@ try {
     $env:VK_LOADER_LAYERS_DISABLE = $oldDisabled
     $env:DISABLE_RTSS_LAYER = $oldRTSS
     $env:DISABLE_VK_LAYER_reshade_1 = $oldReshade
+    $env:BFV_VK_FULLSCREEN = $null
+    $env:BFV_VK_BENCH = $null
     [Environment]::SetEnvironmentVariable('vulkan.validation', $previous, 'Process')
 }

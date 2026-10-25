@@ -1287,6 +1287,20 @@ static UINT sc_interval(struct vkd_swapchain *sc)
     return 1;
 }
 
+/* Vulkan allows one swap chain per window, D3D9 lets swap chains of a device
+ * share one. The swap chain that presents takes the window over, as the last
+ * Present wins on D3D9; the other one recreates when it presents again. */
+static void sc_claim_window(struct vkd_swapchain *sc)
+{
+    struct vkd_device *d = sc->dev;
+    for (uint32_t i = 0; i <= d->nextra_sc; i++) {
+        struct vkd_swapchain *o = i ? d->extra_sc[i - 1] : d->swapchain;
+        if (!o || o == sc || o->hwnd != sc->hwnd || !o->swapchain) continue;
+        sc_free_vk(o, 0);
+        o->recreate = 1;
+    }
+}
+
 /* (re)create the Vulkan swap chain for the window's current size; 0 if it cannot be shown now */
 static int sc_create_vk(struct vkd_swapchain *sc)
 {
@@ -1359,6 +1373,7 @@ static int sc_create_vk(struct vkd_swapchain *sc)
             if (caps.supportedCompositeAlpha & b) { ci.compositeAlpha = (VkCompositeAlphaFlagBitsKHR)b; break; }
     ci.presentMode = mode;
     ci.clipped = VK_TRUE;
+    sc_claim_window(sc);
     VkSwapchainKHR old = sc->swapchain;
     sc_free_vk(sc, 1);
     ci.oldSwapchain = old;
@@ -1477,7 +1492,9 @@ HRESULT vkd_swapchain_create(struct vkd_device *d, D3DPRESENT_PARAMETERS *pp, in
     if (FAILED(hr)) { vkp_free(sc); return hr; }
     for (int i = 0; i < 256; i++)
         sc->ramp.red[i] = sc->ramp.green[i] = sc->ramp.blue[i] = (WORD)(i * 257);
-    if (!w32.IsIconic(sc->hwnd) && !sc_create_vk(sc)) {
+    /* Additional swap chains often share the device window, which the implicit
+     * one already presents to; they get their Vulkan swap chain at first Present. */
+    if (implicit && !w32.IsIconic(sc->hwnd) && !sc_create_vk(sc)) {
         vkd_swapchain_destroy(sc);
         return D3DERR_NOTAVAILABLE;
     }

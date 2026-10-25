@@ -16,6 +16,15 @@ static void map_drop(void *value, void *context)
     if (value == context) ++*count;
 }
 
+/* A failed CHECK returns from main with the Vulkan instance alive. Process exit
+ * then runs the layers' DLL detach, where a validation layer built on
+ * winpthreads waits forever in a static destructor, so end without detach. */
+static int device_live, exit_code = 1;
+static void skip_detach(void)
+{
+    if (device_live) TerminateProcess(GetCurrentProcess(), (UINT)exit_code);
+}
+
 static void pump(void)
 {
     MSG m;
@@ -77,6 +86,7 @@ static int state_scene(IDirect3DDevice9 *dev)
 
 int main(void)
 {
+    setvbuf(stdout, 0, _IONBF, 0);  /* keep PASS lines in order with stderr in the piped log */
     struct vkd_map map = {0};
     unsigned key = 71, dropped = 0;
     vkd_map_put(&map, &key, sizeof key, &key);
@@ -110,6 +120,8 @@ int main(void)
     CHECK(SUCCEEDED(IDirect3D9_CreateDevice(api, 0, D3DDEVTYPE_HAL, hwnd,
         D3DCREATE_SOFTWARE_VERTEXPROCESSING | D3DCREATE_FPU_PRESERVE, &pp, &dev)));
     struct vkd_device *d = (struct vkd_device *)dev;
+    device_live = 1;
+    atexit(skip_detach);
     VkFormatProperties vertex_color_props;
     vkGetPhysicalDeviceFormatProperties(vkd.phys, VK_FORMAT_B8G8R8A8_UNORM, &vertex_color_props);
     printf("D3DCOLOR B8G8R8A8 bufferFeatures=%08x vertex support=%u\n", vertex_color_props.bufferFeatures,
@@ -148,6 +160,7 @@ int main(void)
     if (getenv("BFV_NATIVE_ONLY")) {
         CHECK(!IDirect3DDevice9_Release(native));
         puts("PASS native final device release with externally released bound texture");
+        exit_code = 0;
         return 0;
     }
     CHECK(SUCCEEDED(IDirect3DDevice9_SetTexture(native, 0, 0)));
@@ -172,12 +185,18 @@ int main(void)
     scene_failures+=compare_pixels("render-to-texture then sampled fullscreen",pixels,readback,2);
     CHECK(!lighting_scene(native,readback)); CHECK(!lighting_scene(dev,pixels));
     scene_failures+=compare_pixels("directional lighting + identity transforms",pixels,readback,2);
+    CHECK(!blend_scene(native,readback)); CHECK(!blend_scene(dev,pixels));
+    scene_failures+=compare_pixels("X8R8G8B8 destination alpha, BOTH(INV)SRCALPHA blends",pixels,readback,2);
+    CHECK(!churn_scene(native,readback)); CHECK(!churn_scene(dev,pixels));
+    scene_failures+=compare_pixels("16 draws, one state change each, in one pass",pixels,readback,2);
     for (unsigned samples=0;samples<=8;samples=samples ? samples*2 : 2) {
         char name[80]; snprintf(name,sizeof name,"render target with MSAA %u",samples);
         CHECK(!target_scene(native,(D3DMULTISAMPLE_TYPE)samples,readback));
         CHECK(!target_scene(dev,(D3DMULTISAMPLE_TYPE)samples,pixels));
         scene_failures+=compare_pixels(name,pixels,readback,2);
     }
+    const char *bench = getenv("BFV_VK_BENCH");  /* 1: both, d3d9 or vulkan: one */
+    if (bench && strcmp(bench, "vulkan")) CHECK(!bench_scene(native,"D3D9"));
     CHECK(!swapchain_lifetime_scene(native,hwnd)); CHECK(!swapchain_lifetime_scene(dev,hwnd));
     CHECK(!clear_scene(dev, pixels));
     CHECK(!IDirect3DDevice9_Release(native));
@@ -219,13 +238,22 @@ int main(void)
     CHECK(SUCCEEDED(IDirect3DDevice9_Present(dev, 0, 0, 0, 0)));
     CHECK(d->swapchain->surface && d->swapchain->hwnd == other);
     printf("PASS Reset to another window: Vulkan surface replaced\n");
-    CHECK(!fullscreen_scene(dev,api,other));
+    /* Fullscreen changes the desktop display mode, so it only runs on request. */
+    if (getenv("BFV_VK_FULLSCREEN")) CHECK(!fullscreen_scene(dev,api,other));
+    else puts("SKIP fullscreen scene: it changes the display mode (run_gpu.ps1 -Fullscreen runs it)");
+    /* After the last CreateWindow: RTSS's injected RTSSHooks.dll once threw a C++
+     * exception out of its window hook in a CreateWindow that followed this loop. */
+    if (bench && strcmp(bench, "d3d9")) CHECK(!bench_scene(dev,"Vulkan"));
     CHECK(!lifetime_scene(dev));
     CHECK(!IDirect3DDevice9_Release(dev));
     CHECK(!IDirect3D9_Release(api));
+    device_live = 0;
     DestroyWindow(other);
     DestroyWindow(hwnd);
-    printf("Validation %s: %u errors, %u warnings\n", vkd.debug_messenger ? "enabled" : "DISABLED",
+    /* The last IDirect3D9 release destroyed the Vulkan device and instance, so
+     * leaked objects were already reported. */
+    CHECK(!vkd.dev && !vkd.instance);
+    printf("Validation %s: %u errors, %u warnings\n", vkd.validation ? "enabled" : "DISABLED",
            vkd.validation_errors, vkd.validation_warnings);
     CHECK(!vkd.validation_errors);
     CHECK(!vkd.validation_warnings);

@@ -83,6 +83,8 @@ struct dxso_info {
     uint32_t tex_proj_used;     /* ps 1.x: stages sampled from texcoords (projection applies) */
     int writes_depth;
     int writes_psize;
+    uint32_t floats_read;       /* float constants [0, n) read from the constant block (all with relative addressing) */
+    int tail_read;              /* reads the integer, Boolean or bump environment constants after them */
     uint32_t words;             /* bytecode length including END */
 };
 
