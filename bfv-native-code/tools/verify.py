@@ -94,8 +94,10 @@ def verify(target,work_name=None):
     def focused(keys,compare,*args,partial=False,**options):
         hit=sorted(native.intersection(keys))
         if not hit:return compare(*args,**options)
-        skipped[compare.__name__]=dict(native=hit,cases='some' if partial else 'all')
-        print(f'{target}: {compare.__name__}: {"cases of " if partial else ""}{", ".join(hit)} kept native, skipped',flush=True)
+        # several modules name their check plain `compare`; name those by module
+        name=compare.__name__ if compare.__name__!='compare' else compare.__module__.replace('verify_','compare_',1)
+        skipped[name]=dict(native=hit,cases='some' if partial else 'all')
+        print(f'{target}: {name}: {"cases of " if partial else ""}{", ".join(hit)} kept native, skipped',flush=True)
         return compare(*args,native=set(hit),**options) if partial else []
     native_addresses={k:spec[k] for k in ('pool','interpreter','context_begin','context_end','context_record')}
     compiled_addresses={**native_addresses,'interpreter':symbols['bfv_interpret']}

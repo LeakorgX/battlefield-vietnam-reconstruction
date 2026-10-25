@@ -20,11 +20,11 @@ unverified / 42 native, L1 33,528 / 133 / 28 / 42. 168 of the 174 readable
 functions that passed in the previous summary also fail on the reference image
 with this toolchain; 6 fail only on the new image (see VERIFICATION.md).
 `build.ps1`: 38,314 guarded entries, 33,387 of them readable C, 24 mod hooks.
-Focused checks on a `--no-lifted` build: 110,436 passed; the evaluator/solve
-checks are skipped and listed. Two problems predate the port and are open:
-`compare_astar_local_cells` case 4045 faults in the original code on both
-images, and `verify.py` cannot run on readable-tree builds (no TEB in
-`native_oracle`, see VERIFICATION.md).
+`verify.py` on that readable build: 116,436 passed; the evaluator/solve
+checks are skipped and listed. It runs on readable builds after three
+harness fixes for older problems (a TEB for `native_oracle`'s machines, the
+SEH chain in `vector_oracle`, two A* successor-case inputs; see
+VERIFICATION.md).
 `recomp.ps1` (regenerated and `-AssembleOnly`) and `--symbolic` byte-identical,
 0 diffs (`--symbolic` needed far branches masked during convergence, see
 STATIC-RECOMP.md).

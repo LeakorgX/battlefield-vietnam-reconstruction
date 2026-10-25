@@ -29,19 +29,21 @@ where rerun here. Rerun on the new image (one machine: MSYS2 GCC, verifier 24,
   Aimer solve `00a02db0` stay native (the patches change constants inside
   both functions). `verify.py` skips their checks, or runs a check without
   their cases, and lists them under `skipped` in `verification.json`.
-- Focused checks on a build without the lifted C (`--no-lifted`): 110,436
-  comparisons passed; 27 checks skipped and 6 run without their native cases
-  (all of them artillery-evaluator or Aimer-solve entries). One check fails, and it
-  fails the same way on the reference image: `compare_astar_local_cells`
-  case 4045 (`astar_local_successors`, seed 420323298) reads unmapped memory
-  in the original code. The run continued past it with a diagnostic driver,
-  so these counts come from `verification-diagnostic.json`, not a clean
-  `verify.py` pass.
-- `verify.py` does not run on a readable-tree build: `native_oracle`'s
-  machines have no TEB, and an edited run that reaches a readable-C detour
-  faults in the runtime's entry (`fs:[4]`), first in `compare_aim_limits`
-  through `0x516f80`. Both problems predate this port; the last full
-  `verify.py` pass (2026-10-10) predates lifted detours.
+- `verify.py` on the readable build (the default game build, 33,387
+  readable-C detours): 116,436 comparisons passed; 27 checks skipped and 6
+  run without their native cases, all of them artillery-evaluator or
+  Aimer-solve entries.
+- That needed three harness fixes, for problems older than this port (the
+  last full `verify.py` pass, 2026-10-10, predates lifted detours):
+  `native_oracle.load_machine` gives its machines a TEB, an `fs` selector
+  and a flat stack segment, as `verify_aimer.load_machine` already did
+  (an edited run that reached a readable-C detour faulted in the runtime's
+  `fs:[4]` read, first in `compare_aim_limits` through `0x516f80`);
+  `vector_oracle` keeps its simulated SEH chain head at `fs:[0]`, in that
+  TEB; and the A* successor cases point the keep-out vector at their
+  generated areas and keep the owner's default layer at or below the node's
+  layer, as the cell cases always did (cases 4045 and 4171 made the
+  original code read unmapped memory on both images).
 
 
 ## Three distinct sets of evidence

@@ -109,11 +109,6 @@ writes `rebase.json`. Then replace the reference hash with the new one in
 `TARGETS` (`tools/build.py`) and in each catalog's `original_sha256` (the nine
 `bfv-native-code/*.json` catalogs and `lifted|readable/<target>/catalog.json`),
 rerun `verify_lifted.py` for both trees, build, `verify.ps1` and `recomp.ps1`.
-Run `verify.py` on a build without the lifted C (`build.py --no-lifted --output
-...`, then `verify.py --work client-custom`): its machines (`native_oracle`)
-have no TEB, and an edited run that reaches a readable-C detour faults in the
-readable runtime's entry (it reads `fs:[4]`), for example `compare_aim_limits`
-through `0x516f80`. Lifted C is checked by `verify_lifted.py`.
 The build keeps native every lifted entry whose ranges touch a changed run, and
 every hand-written or catalogued entry and vtable patch inside an indexed
 function with changed bytes. `verify_lifted.py` reports those lifted entries as

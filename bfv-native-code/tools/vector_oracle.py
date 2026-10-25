@@ -5,7 +5,7 @@ import itertools
 import struct
 from unicorn import UC_HOOK_CODE
 from unicorn.x86_const import *
-from native_oracle import load_machine, ARENA, STACK
+from native_oracle import load_machine, ARENA, STACK, TEB
 
 
 def function_info(m,handler):
@@ -26,7 +26,8 @@ def function_info(m,handler):
 
 def install_vector_runtime(m,spec,base):
     """Fresh emulated FS chain and controlled allocator/memmove for integration."""
-    m.mem_map(0,0x1000);m.mem_write(0,struct.pack('<I',0x12345678))
+    # fs:[0], the head of the SEH chain, is the first word of the machine's TEB
+    m.mem_map(0,0x1000);m.mem_write(TEB,struct.pack('<I',0x12345678))
     m.mem_write(spec['vector_allocator'],b'\xc3')
     m.mem_write(spec['vector_free'],b'\xc3')
     m.mem_write(spec['vector_memmove'],b'\x8b\x44\x24\x04\xc3')
@@ -47,7 +48,7 @@ def install_vector_runtime(m,spec,base):
 def run_vector(image,pe,entry,spec,case,symbols=None):
     m=load_machine(image,pe);obj,storage,value,allocated=[ARENA+x for x in (0x100,0x1000,0x2000,0x4000)]
     initial_chain,stop=0x12345678,ARENA+0x7000
-    m.mem_map(0,0x1000);m.mem_write(0,struct.pack('<I',initial_chain))
+    m.mem_map(0,0x1000);m.mem_write(TEB,struct.pack('<I',initial_chain))  # fs:[0], the SEH chain head
     def r32(p):return struct.unpack('<I',m.mem_read(p,4))[0]
     def w32(p,v):m.mem_write(p,struct.pack('<I',v&0xffffffff))
     size,capacity,count,position=case['size'],case['capacity'],case['count'],case['position']
@@ -69,7 +70,7 @@ def run_vector(image,pe,entry,spec,case,symbols=None):
     trace=[];returned=[];fault=[];calls={};infos=[];throws=[]
     def hook(uc,a,instruction_size,data):
         if a==stop:returned.append(True);uc.emu_stop();return
-        sp=uc.reg_read(UC_X86_REG_ESP);frame=r32(0)
+        sp=uc.reg_read(UC_X86_REG_ESP);frame=r32(TEB)
         if frame==initial_chain:return
         state=r32(frame+8)
         if a==spec['vector_allocator']:
@@ -95,11 +96,11 @@ def run_vector(image,pe,entry,spec,case,symbols=None):
             throws.append(list(struct.unpack('<2I',uc.mem_read(sp+4,8))));uc.emu_stop()
     m.hook_add(UC_HOOK_CODE,hook);m.emu_start(entry,stop+1,timeout=1_000_000,count=30000)
     if returned:
-        assert m.reg_read(UC_X86_REG_ESP)==esp+16 and r32(0)==initial_chain
+        assert m.reg_read(UC_X86_REG_ESP)==esp+16 and r32(TEB)==initial_chain
         assert all(m.reg_read(reg)==v for reg,v in saved.items())
     else:
         assert fault
-        frame=r32(0);info,catches,_=function_info(m,r32(frame+4));infos.append(info)
+        frame=r32(TEB);info,catches,_=function_info(m,r32(frame+4));infos.append(info)
         state=r32(frame+8)
         if fault[-1]!='length':
             applicable=[c for c in catches if c['low']<=state<=c['high']]
