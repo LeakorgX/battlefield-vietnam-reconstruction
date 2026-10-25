@@ -2,7 +2,7 @@
   "scope": "Complete thiscall EAX-word field getters. Object ownership and semantic field types remain unresolved.",
   "targets": {
     "client": {
-      "original_sha256": "79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5",
+      "original_sha256": "32aec85d35049b8f4ecbd4dd9fa7f580a62c4a20cb42ab70e3656744fc15c0ea",
       "audit_sha256": "c3466624aa9d1cc3a6f93501ba81ca34aa47456b681c0041bee7d15ae2b04858",
       "entries": [
         {

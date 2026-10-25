@@ -2,9 +2,11 @@
 
 Every section is re-produced by the assembler from emitted source: .text from
 disassembled instruction text (with byte-authoritative fallback where GAS would
-re-encode differently), data sections from byte streams with patched vtable
-slots as symbol references, and the reconstructed-C payload placed at its
-manifest address. The gate is byte-identity with the installed editable build.
+re-encode differently), the other code sections (patch code in the .tls slack,
+.ctfsnd and the client's patch sections) the same way, data sections from byte
+streams with patched vtable slots as symbol references, and the reconstructed-C
+payload placed at its manifest address. The gate is byte-identity with the
+installed editable build.
 """
 import argparse
 import bisect
@@ -164,9 +166,13 @@ class TextEmitter:
     instructions with no assembler spelling for their exact bytes fall back to
     .byte, and those keep the disassembly as a comment."""
 
-    def __init__(self, data, va, labels, detours, symbols, names=None, tables=None, refs=None):
+    def __init__(self, data, va, labels, detours, symbols, names=None, tables=None, refs=None, section='.text'):
         self.data = data
         self.va = va
+        # another code section (patch code: .ctfsnd, .tls slack, the client's
+        # patch sections) is emitted the same way into its own object
+        self.section = section
+        self.stem = section[1:]
         self.seeds = set(labels)
         self.detours = detours
         self.symbols = symbols
@@ -385,7 +391,8 @@ class TextEmitter:
                     holdouts.append(f'{self.va + offset:08x}\t{key[1].hex()}\t{text}\n')
                     unmatched += 1
         # the instructions no spelling reproduces, for review (holdouts.tsv)
-        (work / 'holdouts.tsv').write_text('va\tbytes\ttext\n' + ''.join(sorted(holdouts)))
+        (work / ('holdouts.tsv' if self.section == '.text' else f'holdouts-{self.stem}.tsv')).write_text(
+            'va\tbytes\ttext\n' + ''.join(sorted(holdouts)))
         log.append(f'instruction spellings: {exact} exact, {unmatched} byte-encoded')
 
     def assemble_isolated(self, work, texts):
@@ -435,9 +442,9 @@ class TextEmitter:
         return b'\xe9' + struct.pack('<i', target - (entry + 5)) + b'\x90' * (len(guard) - 5), source
 
     def emit(self, path):
-        lines = ['.intel_syntax noprefix', '.text',
-                 f'/* .text of the original image, virtual address 0x{self.va:08x} */',
-                 '__text_base:']
+        lines = ['.intel_syntax noprefix', '.text' if self.section == '.text' else f'.section {self.section},"x"',
+                 f'/* {self.section} of the original image, virtual address 0x{self.va:08x} */',
+                 f'__{self.stem}_base:']
         self.line_map = {}
         self.masked = set()
         defined = set()
@@ -485,6 +492,8 @@ class TextEmitter:
                 mnemonic, target, form = text
                 prefix = '{disp32} ' if form == 'near' and mnemonic != 'call' else ''
                 lines.append(f'  {prefix}{mnemonic} {self.far_targets.get(target) or self.targets[target]}')
+                if target in self.far_targets:  # rel32 into another section: resolved by the link
+                    self.masked.update(range(offset + size - 4, offset + size))
             elif kind == 'table' and text == 'jump':
                 for entry in range(0, size, 4):
                     target = struct.unpack_from('<I', raw, entry)[0]
@@ -529,7 +538,7 @@ class TextEmitter:
                 if at >= 0 and target < self.va + len(self.data):
                     lines.append(f'.set {name}, {anchors[at][1]} + 0x{target - anchors[at][0]:x}')
                 else:
-                    lines.append(f'.set {name}, __text_base + 0x{target - self.va:x}')
+                    lines.append(f'.set {name}, __{self.stem}_base + 0x{target - self.va:x}')
         for source in sorted({s for _, _, k, s, _ in self.instructions if k == 'detour'}):
             if self.c_linked:  # the C payload's function, linked with the image
                 lines.append(f'.set {source}, "{self.decorated[source]}"')
@@ -537,7 +546,7 @@ class TextEmitter:
             if self.symbolic:  # the reconstructed C sits at a fixed address
                 lines.append(f'.set {source}, 0x{self.symbols[source]:x}')
             else:
-                lines.append(f'.set {source}, __text_base + 0x{self.symbols[source] - self.va:x}')
+                lines.append(f'.set {source}, __{self.stem}_base + 0x{self.symbols[source] - self.va:x}')
         for name, expression in self.extra_sets:
             lines.append(f'.globl {name}')
             lines.append(f'.set {name}, {expression}')
@@ -626,7 +635,7 @@ class TextEmitter:
                 log.append(f'pass {attempt}: byte-encoded {len(indices)} erroring lines')
                 self.suppress(indices)
                 continue
-            got = object_bytes(work / f'{name}.o', '.text')[:len(expected)]
+            got = object_bytes(work / f'{name}.o', self.section)[:len(expected)]
             if self.masked and len(got) == len(expected):
                 # symbolic fields hold relocation addends until linked; the link is gated separately
                 got = bytearray(got)
@@ -1345,6 +1354,16 @@ def build_recomp(target, game_dir, assemble_only=False, install=False, symbolic=
         emitter.plan()
         emitter.converge(work, 'text', log)
     outputs = {'.text': object_bytes(work / 'text.o', '.text')}
+    # Entries into the other code sections (sub_ labels there): the image entry
+    # point and branches from .text (byte-encoded there: they cross sections)
+    # or from another code section.
+    entered = {base + pe.OPTIONAL_HEADER.AddressOfEntryPoint}
+    branches = build.code_branches(build.added_code(pe))
+    if not symbolic and not assemble_only:
+        for _, _, kind, spelled, _ in emitter.instructions:
+            parts = spelled.split() if kind in ('insn', 'bytes') and isinstance(spelled, str) else []
+            if len(parts) == 2 and parts[0] in BRANCH_MNEMONICS and HEX_TARGET.match(parts[1]):
+                entered.add(int(parts[1], 16))
 
     for section in pe.sections:
         name = section.Name.rstrip(b'\0').decode()
@@ -1354,6 +1373,21 @@ def build_recomp(target, game_dir, assemble_only=False, install=False, symbolic=
         refs = {rva: f'"{decorated[vtables[rva]]}"' if link_c else symbols[vtables[rva]] for rva in vtables
                 if section.VirtualAddress + base <= rva
                 < section.VirtualAddress + base + section.SizeOfRawData}
+        if not assemble_only and not symbolic and section.Characteristics & 0x20000000 and not refs:
+            # Patch code in another section (.tls slack, .ctfsnd, the client's
+            # patch sections) is code like .text: instructions and labels. In
+            # --symbolic mode it stays a byte stream with the d_ labels other
+            # sections refer to.
+            start = base + section.VirtualAddress
+            inside = lambda x: start <= x < start + len(data)
+            seeds = {start} | {t for t in entered if inside(t)} | \
+                {t for t, sources in branches.items() if inside(t) and not all(map(inside, sources))}
+            code = TextEmitter(data, start, seeds, {}, symbols, section=name)
+            code.plan()
+            log.append(f'{name} as code:')
+            code.converge(work, name[1:], log)
+            outputs[name] = object_bytes(work / f'{name[1:]}.o', name)
+            continue
         if not assemble_only:
             start = base + section.VirtualAddress
             emit_data_section(data, start, work / f'{name[1:]}.s', refs,

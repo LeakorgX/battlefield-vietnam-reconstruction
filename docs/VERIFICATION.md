@@ -9,6 +9,40 @@ Client and server both reassemble byte-identically (details and counts in
 complete, faithful listing of the build. It is not a behavioral test: the
 evidence below is what checks that reconstructed C matches the original.
 
+## Newer client build (2026-10-25)
+
+The supported client is now the patched build `32aec85d...15c0ea`, which is
+the reference client `79655e9c...17a06a5` plus patch code (see SETUP.md and
+`bfv-native-code/rebase.json`). The counts in the rest of this file were
+gathered on the reference image and are not evidence for this build, except
+where rerun here. Rerun on the new image (one machine: MSYS2 GCC, verifier 24,
+8 states):
+
+- `verify_lifted.py`: readable 33,484 passed, 177 failed, 28 unverified, 42
+  native; L1 33,528 / 133 / 28 / 42. The 42 native functions are the lifted
+  entries the patches changed; they run native code and are not checked.
+  Of the 174 readable functions that passed in the previous summary and
+  fail now, 168 fail the same way on the reference image with this toolchain
+  (layout-dependent reads through random pointers and return addresses, as in
+  HANDOFF.md), and 6 fail only on the new image. All of them stay native.
+- Hand-written C: the 37 bridges of the artillery evaluator `0099f2a0` and the
+  Aimer solve `00a02db0` stay native (the patches change constants inside
+  both functions). `verify.py` skips their checks, or runs a check without
+  their cases, and lists them under `skipped` in `verification.json`.
+- Focused checks on a build without the lifted C (`--no-lifted`): 110,436
+  comparisons passed; 27 checks skipped and 6 run without their native cases
+  (all of them artillery-evaluator or Aimer-solve entries). One check fails, and it
+  fails the same way on the reference image: `compare_astar_local_cells`
+  case 4045 (`astar_local_successors`, seed 420323298) reads unmapped memory
+  in the original code. The run continued past it with a diagnostic driver,
+  so these counts come from `verification-diagnostic.json`, not a clean
+  `verify.py` pass.
+- `verify.py` does not run on a readable-tree build: `native_oracle`'s
+  machines have no TEB, and an edited run that reaches a readable-C detour
+  faults in the runtime's entry (`fs:[4]`), first in `compare_aim_limits`
+  through `0x516f80`. Both problems predate this port; the last full
+  `verify.py` pass (2026-10-10) predates lifted detours.
+
 
 ## Three distinct sets of evidence
 

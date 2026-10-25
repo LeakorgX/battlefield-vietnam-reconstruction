@@ -18,7 +18,8 @@ PBR shader. Battlefield 1 is a visual direction, not a claim of renderer parity.
 
 ## Engine evidence and integration
 
-In the supported original client (`79655e9c...17a06a5`), frame routine
+In the reference client (`79655e9c...17a06a5`) and the supported newer build
+(`32aec85d...15c0ea`, unchanged here), frame routine
 `004a8af0` calls `renderList_end` (`00a401b0`) at `004a8c9d`, after the world
 and first-person drawing path. It then calls `004a04d0` (HUD icons) and
 `00490e10` (menu drawing). See the lifted/readable
