@@ -12,6 +12,9 @@ Required tools:
 - 32-bit MinGW GCC/binutils. The tested directory is
   `C:/msys64/mingw32/bin`, targeting `i686-w64-mingw32`.
 - PowerShell.
+- For the Vulkan renderer (`--mods vulkan`): `mingw-w64-i686-vulkan-headers`.
+  Its GPU tests also use the x64 compiler, `mingw-w64-x86_64-spirv-tools` and
+  validation layers; see [VULKAN.md](VULKAN.md), Testing.
 
 The project does not install these tools or change registry/firewall settings.
 Provide a different toolchain directory with `build.ps1 -CompilerBin ...` if

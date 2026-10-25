@@ -271,7 +271,7 @@ static ULONG STDMETHODCALLTYPE d3d_AddRef(IDirect3D9 *self) { return (ULONG)Inte
 static ULONG STDMETHODCALLTYPE d3d_Release(IDirect3D9 *self)
 {
     LONG r = InterlockedDecrement(&D3D(self)->ref);
-    if (!r) vkp_free(self);
+    if (!r) { vkp_free(self); vkd_gpu_release(); }
     return (ULONG)r;
 }
 
@@ -453,6 +453,7 @@ IDirect3D9 *WINAPI vk_Direct3DCreate9(UINT sdk)
     }
     struct vkd_d3d9 *d = vkp_alloc(sizeof *d);
     if (!d) return 0;
+    vkd_gpu_addref();
     d->vtbl = &d3d_vtbl;
     d->ref = 1;
     vkp_log("vulkan: Direct3DCreate9(%u)", sdk);

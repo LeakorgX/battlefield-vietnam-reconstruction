@@ -1,35 +1,6 @@
 # Handoff
 
-2026-10-25 client port to the newer `BfVietnam.exe` (branch `client-exe-port`).
-The client target builds against `32aec85d...15c0ea`: the reference client
-`79655e9c...17a06a5` plus patch code in six new sections (`.rofcap`, `.altfire`,
-`.thrfire`, `.vzoom`, `.seats10`, `.fcam`), a 0x2000-byte `.ctfsnd`, an entry
-stub at `00b41d8b` in the raw slack after `.text`, two redirected vtable slots
-and in-place changes to 44 indexed functions. The C, the catalogs and the
-function index stay those of the reference image. `tools/rebase.py` writes
-`bfv-native-code/rebase.json` (147 changed byte runs), and the build keeps
-native what they touch: 42 lifted/readable entries and 38 hand-written entries
-(the 37 bridges of the artillery evaluator `0099f2a0`, whose scale constants
-and second-pass radius the patches change, and the Aimer solve `00a02db0`). See
-SETUP.md "Rebasing onto a newer build". Hashes are updated in `TARGETS` and the
-eleven catalogs. Patch code outside `.text` counts in the detour audit (on this
-image it blocks nothing more; entries outside `.text` stay native as before),
-and `static_recomp` emits every code section as instructions. Results (one
-machine, MSYS2 GCC): `verify_lifted` readable 33,484 passed / 177 failed / 28
-unverified / 42 native, L1 33,528 / 133 / 28 / 42. 168 of the 174 readable
-functions that passed in the previous summary also fail on the reference image
-with this toolchain; 6 fail only on the new image (see VERIFICATION.md).
-`build.ps1`: 38,314 guarded entries, 33,387 of them readable C, 24 mod hooks.
-`verify.py` on that readable build: 116,436 passed; the evaluator/solve
-checks are skipped and listed. It runs on readable builds after three
-harness fixes for older problems (a TEB for `native_oracle`'s machines, the
-SEH chain in `vector_oracle`, two A* successor-case inputs; see
-VERIFICATION.md).
-`recomp.ps1` (regenerated and `-AssembleOnly`) and `--symbolic` byte-identical,
-0 diffs (`--symbolic` needed far branches masked during convergence, see
-STATIC-RECOMP.md).
-Not run in the game. Reports made from the reference image (Ghidra exports,
-`live-exceptions.json`) are not evidence for this build.
+
 
 2026-10-25 Vulkan resume: first GPU bring-up passes on RTX 3060; port still
 unfinished. `vk/d3d9_device.c` now exists with a partial COM vtable: creation,

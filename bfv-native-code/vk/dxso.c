@@ -205,8 +205,24 @@ int dxso_scan(const uint32_t *code, uint32_t max_words, struct dxso_info *info)
     uint32_t pos = 1;
     struct ins in;
     int err = 0;
+    /* float constants read from the block: def'd ones are literals */
+    uint8_t cread[256] = {0}, cdef[256] = {0};
+    int crel = 0;
     while (decode(code, max_words, &pos, info->major, info->ps, &in, &err)) {
         const struct param *d = &in.dst;
+        if (in.op == OP_DEF && d->type == R_CONST && d->num < 256) cdef[d->num] = 1;
+        for (int i = 0; i < in.nsrc; i++) {
+            const struct param *p = &in.src[i];
+            /* the matrix macros read consecutive registers from their second source */
+            uint32_t rows = i != 1 ? 1 : in.op == OP_M4x4 || in.op == OP_M3x4 ? 4
+                          : in.op == OP_M4x3 || in.op == OP_M3x3 ? 3 : in.op == OP_M3x2 ? 2 : 1;
+            if (p->type == R_CONST && p->rel) crel = 1;
+            else if (p->type == R_CONST)
+                for (uint32_t k = 0; k < rows; k++)
+                    if (p->num + k < 256) cread[p->num + k] = 1;
+            if (p->type == R_CONSTINT || p->type == R_CONSTBOOL) info->tail_read = 1;
+        }
+        if (in.op == OP_TEXBEM || in.op == OP_TEXBEML || in.op == OP_BEM) info->tail_read = 1;
         if (in.op == OP_DCL) {
             if (d->type == R_SAMPLER) {
                 uint32_t tt = (in.dcl >> 27) & 15;
@@ -273,6 +289,11 @@ int dxso_scan(const uint32_t *code, uint32_t max_words, struct dxso_info *info)
         }
     }
     if (err) return 0;
+    uint32_t nfloats = info->ps ? DXSO_PS_FLOATS : DXSO_VS_FLOATS;
+    if (crel) info->floats_read = nfloats;
+    else
+        for (uint32_t n = nfloats; n && !info->floats_read; n--)
+            if (cread[n - 1] && !cdef[n - 1]) info->floats_read = n;
     if (info->ps && info->major < 3) info->slots_read |= 1u << DXSO_SLOT_FOG;
     if (!info->ps) info->slots_written |= 0;
     info->words = pos;
