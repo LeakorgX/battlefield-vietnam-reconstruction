@@ -115,9 +115,14 @@ States and isolation:
   running the lifted body.
 - Only the code sections are executable, so random pointers into data fault
   instead of executing it. Code sections are every section marked executable:
-  `.text`, the client's `.ctfsnd`, and the 1.21 patch code in the raw slack of
-  the 9-byte `.tls` section (0xe23018..0xe231a0), which the loader maps with
-  its page. The whole scratch code page is reset before every run.
+  `.text`, the client's `.ctfsnd` and patch sections (`.rofcap`, `.altfire`,
+  `.thrfire`, `.vzoom`, `.seats10`, `.fcam`), and the raw slack the loader
+  maps with a section's last page: the 1.21 patch code after the 9-byte `.tls`
+  section (0xe23018..0xe231a0) and the client's entry stub after `.text`
+  (0xb41d8b). The whole scratch code page is reset before every run.
+- A catalogued function whose bytes the executable's own patches changed since
+  the image it was lifted from (`rebase.json`, see SETUP.md) is not run: its
+  result is `native`, and build.py keeps it native.
 - Every indirect call the function makes into `.text` is opaque on both
   machines (recorded with target, registers and arguments, then it returns a
   fixed value), like the stubbed direct callees. Real code reached through a

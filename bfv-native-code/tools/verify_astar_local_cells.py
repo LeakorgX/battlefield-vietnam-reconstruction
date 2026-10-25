@@ -137,6 +137,9 @@ def successor_cases(count=2000):
         coarse=rng.choice([layer,layer+1,layer+2,layer+3,layer+5,rng.randrange(0,34),0])&0xffffffff
         depth=rng.choice([0,0,1,2,3])
         default_layer=(layer-min(depth,layer)) if rng.random()<0.9 else rng.choice([layer,layer+1])
+        # As in the cell cases: splits stop at the owner's default layer, so no
+        # node lies below it (the native split would index the cell table below 0).
+        default_layer=min(default_layer,layer)
         friendly=rng.random()<0.5
         world=0xffffffff if friendly else rng.choice([(1<<k)-1 for k in (8,12,16)]+[0xffffffff,rng.getrandbits(32)])
         def coordinate():
@@ -159,6 +162,10 @@ def successor_cases(count=2000):
         for _ in range(rng.choice([0,0,1,2,4])):
             areas+=[(from_node[0]+rng.randrange(-80,80))&0xffffffff,(from_node[2]+rng.randrange(-80,80))&0xffffffff,
                     rng.choice([0,1,8,40,300,0x7fffffff,rng.getrandbits(32)]),rng.choice([0,1,16,80,600,0x7fffffff,rng.getrandbits(32)])]
+        # The keep-out vector (begin +0xb8, end +0xbc) holds these areas, as in
+        # the cell cases; random words there are no object the game builds, and
+        # the native code reads through them once a case reaches the keep-out test.
+        search[46]=AVOID;search[47]=AVOID+4*len(areas)
         # The node: separate, or the first, second or third output node (written first).
         from_at=rng.choice([FROM,FROM,FROM,FROM,NODES,NODES+0x20,NODES+0x40])
         cases.append(dict(name='astar_local_successors',search=search,areas=areas,from_node=from_node,from_at=from_at,

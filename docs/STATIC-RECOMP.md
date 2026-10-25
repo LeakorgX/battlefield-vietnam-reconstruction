@@ -11,7 +11,13 @@ server executables from source. Run it through `bfv-native-code/recomp.ps1`.
    vtable slot that points into C.
 2. `static_recomp.py` checks the original EXE's SHA-256, then:
    - disassembles `.text` with Capstone and emits `build/<target>-recomp/text.s`
-     (GNU as, Intel syntax);
+     (GNU as, Intel syntax), including code in its raw slack (the client's
+     entry stub);
+   - emits the other code sections the same way, one `.s` each: the 1.21
+     patch's `.tls`, `.ctfsnd` and the client's patch sections. A branch
+     between sections stays bytes with its disassembly as the comment (the
+     sections are assembled apart); `--symbolic` writes these sections as
+     byte streams with their `d_` labels;
    - emits every other section (`.rdata`, `.data`, `.rsrc`, ...) as `.byte`
      streams, with patched vtable slots written as `.long`;
    - assembles everything with MinGW `as`, places the C payload in a new
@@ -262,7 +268,11 @@ Symbolic builds spell more instructions as text than the default mode:
 - **Segment prefixes.** A redundant segment override is written as its
   mnemonic (`ds mov eax, ...`), which GAS emits as given.
 - **Branches out of `.text`.** A near `jmp`/`call` into another section (the
-  client's `.ctfsnd`) branches to that section's `d_` symbol.
+  client's `.ctfsnd` and patch sections) branches to that section's `d_`
+  symbol. Its displacement is a relocation until the link, so the convergence
+  passes mask it like a detour and the linked image is checked instead (the
+  newer client has about 60 such branches; one pass per branch would exceed
+  the pass limit).
 - **Short detours** are written as `.byte 0xeb` followed by
   `.byte sym - . - 1`, so they follow their target when code moves.
 

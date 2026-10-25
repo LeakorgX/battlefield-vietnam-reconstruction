@@ -34,7 +34,8 @@ themselves). A native run that still runs out of budget or leaves the function
 is skipped without running the lifted body; when that leaves a function with no
 completed state and some ran out of budget, the states are drawn again with a
 native budget of BIG_BUDGET instructions. Only the code sections are executable
-(.text and the patch code in the .tls slack and .ctfsnd), and an
+(.text and the patch code in section slack and other sections: the .tls slack,
+.ctfsnd, the client's patch sections and entry stub), and an
 indirect call made by the function into code is opaque on both machines too
 (real code reached through a random pointer may read its return address). The
 frame below the entry stub (the default gap, or the body's own gap for
@@ -75,7 +76,7 @@ from unicorn import Uc,UcError,UC_ARCH_X86,UC_MODE_32,UC_HOOK_CODE,UC_HOOK_BLOCK
 from unicorn import UC_HOOK_MEM_READ_UNMAPPED,UC_HOOK_MEM_WRITE_UNMAPPED,UC_PROT_READ,UC_PROT_WRITE,UC_PROT_ALL
 from unicorn import UC_ERR_FETCH_UNMAPPED,UC_ERR_FETCH_PROT
 from unicorn import x86_const as U
-from build import PROJECT,GAME,TARGETS,COMPILERS,run,response
+from build import PROJECT,GAME,TARGETS,COMPILERS,run,response,rebase,changed_runs,overlaps
 from native_oracle import ARENA,STACK
 
 BLOB=0x20000000
@@ -458,7 +459,8 @@ def lazy_page(seed,page):
 
 def code_ranges(pe):
     """Executable sections, .text first. The 1.21 patch put code in the raw
-    slack of the 9-byte .tls section, which the loader maps with its page."""
+    slack of the 9-byte .tls section, which the loader maps with its page; the
+    newer client build has its entry stub in the raw slack after .text."""
     return [(pe.OPTIONAL_HEADER.ImageBase+s.VirtualAddress,pe.OPTIONAL_HEADER.ImageBase+s.VirtualAddress+
              max(s.Misc_VirtualSize,min(s.SizeOfRawData,(s.Misc_VirtualSize+0xfff)&~0xfff)))
             for s in pe.sections if s.Characteristics&0x20000000]
@@ -663,6 +665,15 @@ def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'l
     native.starts=lifted.starts=call_targets(target,pe);native.code=lifted.code=code_ranges(pe)
     results=[];started=time.time()
     entries=[e for e in catalog['entries'] if not only or e['address'] in only]
+    # Functions the executable's own patches changed since the reference image
+    # (rebase.json) were lifted from code this image no longer has. They are
+    # reported as native, not run, and build.py keeps them native.
+    record=rebase(target);touches=overlaps(changed_runs(record))
+    changed={e['address'] for e in entries if any(touches(*(int(x,16) for x in r.split('-'))) for r in e['ranges'])}
+    if record and not only and sorted(changed)!=record['native_lifted'].get(report_name(lifted_dir)):
+        raise RuntimeError(f'{target}: rebase.json native_lifted differs from the catalog; rerun tools/rebase.py')
+    native_results=[dict(address=e['address'],c_sha256=e.get('c_sha256'),status='native') for e in entries if e['address'] in changed]
+    entries=[e for e in entries if e['address'] not in changed]
     if limit:entries=entries[:limit]
     # Results of an earlier report stay valid for byte-identical function text,
     # the same runtime and the same states.
@@ -684,7 +695,7 @@ def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'l
         print(f'  {target}: reusing {len(reused)} earlier results, checking {len(entries)}',flush=True)
     if part:
         entries=entries[part[0]::part[1]]
-        if part[0]:reused=[]  # part 0 carries the reused results into the merge
+        if part[0]:reused=native_results=[]  # part 0 carries the reused and native results into the merge
     if engine=='cpp':
         results=verify_cpp(target,work,entries,pe,disasm,native,symbols,states,seed,threads)
         entries=[]
@@ -761,9 +772,8 @@ def verify(target,game_dir,states,only=None,limit=0,seed=1,lifted_dir=PROJECT/'l
                             **({'failure':failure} if failure else {})))
         if (index+1)%250==0:
             print(f'  {target}: {index+1}/{len(entries)} checked, {time.time()-started:.0f}s',flush=True)
-    counts={s:sum(r['status']==s for r in results) for s in ('passed','failed','unverified')}
-    results=sorted(results+reused,key=lambda r:int(r['address'],16))
-    counts={s:sum(r['status']==s for r in results) for s in ('passed','failed','unverified')}
+    results=sorted(results+reused+native_results,key=lambda r:int(r['address'],16))
+    counts={s:sum(r['status']==s for r in results) for s in ('passed','failed','unverified','native')}
     report=dict(target=target,lifted_dir=str(lifted_dir),original_sha256=spec['sha'],sources_sha256=sources_sha256(target,lifted_dir),
                 runtime_sha256=runtime_sha256(lifted_dir),verifier=VERIFIER,states_per_function=states,seed=seed,counts=counts,results=results)
     (PROJECT/'build'/target).mkdir(parents=True,exist_ok=True)
@@ -829,7 +839,7 @@ if __name__=='__main__':
             parts=[json.loads((PROJECT/'build'/t/f'{stem}.part{k}of{a.merge}.json').read_text()) for k in range(a.merge)]
             assert len({(r['lifted_dir'],r['original_sha256'],r['sources_sha256'],r.get('runtime_sha256'),r['states_per_function'],r['seed']) for r in parts})==1
             results=sorted((r for q in parts for r in q['results']),key=lambda r:int(r['address'],16))
-            counts={s:sum(r['status']==s for r in results) for s in ('passed','failed','unverified')}
+            counts={s:sum(r['status']==s for r in results) for s in ('passed','failed','unverified','native')}
             report={**parts[0],'counts':counts,'results':results}
             (PROJECT/'build'/t/f'{stem}.json').write_text(json.dumps(report,indent=1))
             print(f'{t}: merged {len(results)} results {counts}')

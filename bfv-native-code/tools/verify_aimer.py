@@ -135,14 +135,17 @@ class Runner:
         if case['name'] in ['aimer_track','aimer_solve']:result['accepted']=m.reg_read(UC_X86_REG_EAX)&0xff
         return result
 
-def compare_aimer(original,original_pe,edited,edited_pe,spec,symbols):
+def compare_aimer(original,original_pe,edited,edited_pe,spec,symbols,native=()):
+    # native: entries the build kept native (verify.py); their cases are left out
     for name in ARGUMENT_BYTES:
+        if name in native:continue
         jump=edited_pe.get_data(spec[name]-0x400000,5)
         assert jump[0]==0xe9
         assert spec[name]+5+struct.unpack('<i',jump[1:])[0]==symbols['bfv_'+name]
     old_runner=Runner(original,original_pe,spec);new_runner=Runner(edited,edited_pe,spec)
     results=[]
     for case in aimer_cases():
+        if case['name'] in native:continue
         try:
             old=old_runner.run(case);new=new_runner.run(case)
             assert old==new,(old,new)

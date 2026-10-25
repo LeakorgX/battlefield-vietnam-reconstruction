@@ -1,35 +1,6 @@
 # Handoff
 
-2026-10-25 Vulkan, first in-game run and native plan. A `--mods-only --mods
-vulkan` client of the newer patched EXE (`32aec85d...`, branch
-`client-exe-port`) loads the backend on the RTX 4060 and creates both
-Direct3D objects without validation errors, then hangs: the engine's Reset
-retry loop waits for `D3DERR_DEVICENOTRESET` after a Reset that failed for a
-reason the backend does not log yet. Details and next steps in
-[VULKAN.md](VULKAN.md) "First in-game run". The backend is a D3D9
-translation layer; [VULKAN-NATIVE-PLAN.md](VULKAN-NATIVE-PLAN.md) plans the
-staged move to native Vulkan rendering. No game files other than the test
-EXE and logs were written; the game itself rewrote `VideoDefault.con`.
 
-2026-10-25 Vulkan, second bring-up (another machine: RTX 4060 Laptop + Radeon
-890M, MSYS2 GCC 16.2): **the device is complete and every harness gate passes;
-nothing has run in the game.** The entry below predates commit 4455456, which
-added the draw path, `platform.c`, the `vulkan` mod and the build wiring.
-Fixed: additional swap chains on the device window (NATIVE_WINDOW_IN_USE);
-Vulkan device/instance teardown on the last IDirect3D9 release (the MSYS2
-validation layer hung every harness process at exit); X8R8G8B8 destination
-alpha and BOTH(INV)SRCALPHA blends; per-draw state tracking and constant
-ranges (4.86 to 2.32 us/draw against d3d9's 1.70; the 32-bit harness had run
-out of address space); UpdateSurface errors; run_gpu.ps1 in PowerShell 5.1.
-New in the harness: `blend_scene`, `churn_scene` (four cache mutants all fail
-it), `-Bench`, `-Fullscreen` (now opt-in, not run here), `vulkan.eds3 = 0` /
-`vulkan.vertexInput = 0` fallbacks. Gates: `run_dxso.sh` 61 shaders, 0 invalid;
-`run_gpu.ps1` 61 checks on x86 (LunarG SDK 1.3.296.0 32-bit layer) and x64
-(MSYS2 layer), zero errors/warnings, also with the fallbacks and
-`-ProductionPlatform`; `vk/*.c` compiles with the mod flags, externals only
-mem* and libgcc. Next: step 4's gate, then step 5, which need the supported
-client EXE (`79655e9c...`, not on this machine). See [VULKAN.md](VULKAN.md).
-No commit/push.
 
 2026-10-25 Vulkan resume: first GPU bring-up passes on RTX 3060; port still
 unfinished. `vk/d3d9_device.c` now exists with a partial COM vtable: creation,

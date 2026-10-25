@@ -81,12 +81,46 @@ are intentionally not copied into public documentation.
 
 | Executable | SHA256 |
 | --- | --- |
-| BfVietnam.exe | `79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5` |
+| BfVietnam.exe | `32aec85d35049b8f4ecbd4dd9fa7f580a62c4a20cb42ab70e3656744fc15c0ea` |
 | bfvietnam_w32ded.exe | `86cb31cd206e337d79009ee53c896895e72e6dad357351fb82f57ba39220ad6d` |
 
 These identify the inspected binaries. The existing runtime tests used an
 installation with modified assets and a custom map; pristine vanilla equivalence
 has not yet been validated.
+
+The client is a newer patched build of the reference client
+`79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5`, from which
+the C, the catalogs and `reports/client/all-functions.tsv` were made. It keeps
+the reference layout and adds code: the patch sections `.rofcap`, `.altfire`,
+`.thrfire`, `.vzoom`, `.seats10` and `.fcam`, a larger `.ctfsnd`, an entry stub
+in the raw slack after `.text`, and in-place changes to 44 indexed functions.
+`bfv-native-code/rebase.json` lists every differing byte run and what the build
+keeps native because of it (see below). Reports and audits made from the
+reference image (Ghidra exports, `live-exceptions.json`) remain evidence for
+that image only.
+
+### Rebasing onto a newer build
+
+A later build with the same section layout is supported without re-lifting:
+
+```powershell
+uv run --with pefile python .\bfv-native-code\tools\rebase.py --target client `
+  --reference <reference BfVietnam.exe> --exe <new BfVietnam.exe>
+```
+
+writes `rebase.json`. Then replace the reference hash with the new one in
+`TARGETS` (`tools/build.py`) and in each catalog's `original_sha256` (the nine
+`bfv-native-code/*.json` catalogs and `lifted|readable/<target>/catalog.json`),
+rerun `verify_lifted.py` for both trees, build, `verify.ps1` and `recomp.ps1`.
+The build keeps native every lifted entry whose ranges touch a changed run, and
+every hand-written or catalogued entry and vtable patch inside an indexed
+function with changed bytes. `verify_lifted.py` reports those lifted entries as
+`native`, and `verify.py` skips (or runs without those cases) the checks of the
+hand-written entries kept native. `build.py` and `verify_lifted.py` recompute
+the lists from `changed`, so a stale `rebase.json` stops them. Patch code
+outside `.text` counts in the detour audit: its branches and address fields
+block lifted detours like those of `.text`, and a jump into the guard of a
+hand-written entry stops the build.
 
 ## Complete known-function export pipeline
 

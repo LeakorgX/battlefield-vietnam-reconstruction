@@ -14,7 +14,8 @@ import struct
 
 import pefile
 from unicorn import Uc, UC_ARCH_X86, UC_MODE_32, UC_HOOK_CODE
-from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_ECX, UC_X86_REG_EIP, UC_X86_REG_ESP, UC_X86_REG_FPCW, UC_X86_REG_FPTAG
+from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_ECX, UC_X86_REG_EIP, UC_X86_REG_ESP, UC_X86_REG_FPCW, UC_X86_REG_FPTAG, \
+    UC_X86_REG_FS, UC_X86_REG_GDTR, UC_X86_REG_SS
 
 PROJECT = Path(__file__).resolve().parents[1]
 BINARIES = {
@@ -26,6 +27,12 @@ BINARIES = {
 # Above the edited images, which grow past 0x02000000 with the lifted C payload.
 ARENA = 0x60000000
 STACK = 0x61000000
+# The thread's TEB (fs) and the GDT holding its selector and a flat stack
+# segment (with a GDT loaded, SS must be one so pushes use ESP).
+TEB = 0x62000000
+GDT = TEB + 0x1000
+FS_SELECTOR = 3*8 | 3
+SS_SELECTOR = 4*8
 
 
 def load_machine(image: bytes, pe):
@@ -38,6 +45,16 @@ def load_machine(image: bytes, pe):
         machine.mem_write(base+section.VirtualAddress, section.get_data())
     machine.mem_map(ARENA, 0x10000)
     machine.mem_map(STACK, 0x10000)
+    # The readable runtime's entry finds the thread's shadow stack by its stack
+    # base (fs:[4]): an edited run that reaches a readable-C detour needs a TEB,
+    # as in verify_aimer.load_machine (no SEH frame, the stack's bounds, self).
+    machine.mem_map(TEB, 0x2000)
+    machine.mem_write(TEB, struct.pack('<III', 0xffffffff, STACK+0x10000, STACK) + bytes(12) + struct.pack('<I', TEB))
+    machine.mem_write(GDT + (FS_SELECTOR & ~7), struct.pack('<HHBBBB', 0xfff, TEB & 0xffff, (TEB >> 16) & 0xff, 0xf3, 0x40, TEB >> 24))
+    machine.mem_write(GDT + SS_SELECTOR, struct.pack('<HHBBBB', 0xffff, 0, 0, 0x93, 0xcf, 0))
+    machine.reg_write(UC_X86_REG_GDTR, (0, GDT, 0x1000, 0))
+    machine.reg_write(UC_X86_REG_SS, SS_SELECTOR)
+    machine.reg_write(UC_X86_REG_FS, FS_SELECTOR)
     # Unicorn defaults to zero-valued occupied x87 registers. Native calls need
     # an empty stack, as after hardware initialization, to expose stack leaks.
     machine.reg_write(UC_X86_REG_FPTAG, 0xffff)

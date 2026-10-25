@@ -205,13 +205,16 @@ def gate_cases():
     return cases
 
 
-def compare_aim_geometry(original,original_pe,edited,edited_pe,spec,symbols):
+def compare_aim_geometry(original,original_pe,edited,edited_pe,spec,symbols,native=()):
+    # native: entries the build kept native (verify.py); their cases are left out
     for key in ['transform_point','vector_difference','aim_world_position','component_position','artillery_aim_gate']:
+        if key in native:continue
         entry=spec[key];jump=edited_pe.get_data(entry-0x400000,5)
         symbol='bfv_'+key+('_bridge' if key=='artillery_aim_gate' else '')
         assert jump[0]==0xe9 and entry+5+struct.unpack('<i',jump[1:])[0]==symbols[symbol]
     results=[]
     for group,runner,cases in [('geometry',run_geometry,geometry_cases()),('gate',run_gate,gate_cases())]:
+        if group=='gate' and 'artillery_aim_gate' in native:continue
         for index,case in enumerate(cases):
             try:
                 old=runner(original,original_pe,spec,case);new=runner(edited,edited_pe,spec,case)

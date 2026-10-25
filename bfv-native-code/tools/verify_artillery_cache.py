@@ -126,12 +126,15 @@ def run_cache(image, pe, entry, spec, allowed, target_state, recompute,
           for name in ['ratings','alt_ratings','flags','alt_flags']})
 
 
-def compare_artillery_cache(original, original_pe, edited, edited_pe, spec, symbols):
+def compare_artillery_cache(original, original_pe, edited, edited_pe, spec, symbols, native=()):
     entry=spec['artillery_score'];guard=bytes.fromhex('81ecd8010000')
     assert original_pe.get_data(entry-original_pe.OPTIONAL_HEADER.ImageBase,len(guard))==guard
+    # native: entries the build kept native (verify.py). Without the entry
+    # bridge, the C cache path the driver calls is still compared directly.
+    bridged='artillery_score' not in native
     patch=edited_pe.get_data(entry-edited_pe.OPTIONAL_HEADER.ImageBase,len(guard))
-    assert patch[0]==0xe9 and patch[5]==0x90
-    assert entry+5+struct.unpack('<i',patch[1:5])[0]==symbols['bfv_artillery_entry_bridge']
+    assert not bridged or patch[0]==0xe9 and patch[5]==0x90
+    assert not bridged or entry+5+struct.unpack('<i',patch[1:5])[0]==symbols['bfv_artillery_entry_bridge']
     inputs=[(*args,0x37f,False) for args in itertools.product((0,1,256,257),
         ('valid','stale','empty','null','invalid'),(0,256),
         (0,0x80000000,0x7f812345,0x7f800000),(False,True),(False,True))]
@@ -147,14 +150,14 @@ def compare_artillery_cache(original, original_pe, edited, edited_pe, spec, symb
             assert old==new,(args,old,new)
         except Exception as error:raise RuntimeError(f'artillery evaluator inputs {args}') from error
         cases.append(dict(inputs=args,**old))
-    bridge_inputs=[args for args in inputs if not args[-1]]
+    bridge_inputs=[args for args in inputs if not args[-1]] if bridged else []
     for args in bridge_inputs:
         old=run_cache(original,original_pe,spec['artillery_score'],spec,*args)
         new=run_cache(edited,edited_pe,spec['artillery_score'],spec,*args)
         assert old==new,("entry bridge",args,old,new)
         cases.append(dict(entry_bridge=True,inputs=args,**old))
     for recompute,cw,depth in itertools.product([1,257,0xffffffff,0x80000001],
-        [0x37f,0x7f,0x67f,0xf7f],[0,2]):
+        [0x37f,0x7f,0x67f,0xf7f],[0,2]) if bridged else ():
         old=run_search_entry(original,original_pe,spec,recompute,cw,depth)
         new=run_search_entry(edited,edited_pe,spec,recompute,cw,depth)
         assert old==new,('search entry frame',recompute,cw,depth)

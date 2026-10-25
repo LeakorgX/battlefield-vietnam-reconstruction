@@ -13,7 +13,7 @@ GAME = Path(os.environ.get('BFV_GAME_DIR', PROJECT.parent)).resolve()
 COMPILERS = Path(os.environ.get('MINGW32_BIN', 'C:/msys64/mingw32/bin'))
 TARGETS = {
     'client': dict(file='BfVietnam.exe', output='BfVietnam-editable.exe',
-        sha='79655e9c2bb92fb24f6daef05566b25633da8cad19d2c95165218a01e17a06a5',
+        sha='32aec85d35049b8f4ecbd4dd9fa7f580a62c4a20cb42ab70e3656744fc15c0ea',
         list_find_word=0x9bf7c0,
         artillery_category_score=0x9a007a,
         artillery_category_alternate=0x9a01f9,
@@ -334,6 +334,64 @@ def array_words(data):
     from array import array
     return array('I',data[:len(data)//4*4])
 
+def rebase(target):
+    """rebase.json's record for the target (tools/rebase.py), or None.
+
+    It describes the image the target builds against (TARGETS sha) next to the
+    reference image the C, the catalogs and the function index were made from:
+    the byte runs that differ, and what stays native because of them."""
+    path=PROJECT/'rebase.json'
+    record=json.loads(path.read_text()).get('targets',{}).get(target) if path.exists() else None
+    if record is not None and record['sha256']!=TARGETS[target]['sha']:
+        raise RuntimeError(f'{target}: rebase.json describes another image than TARGETS; rerun tools/rebase.py')
+    return record
+
+def changed_runs(record):
+    return sorted(tuple(int(x,16) for x in r.split('-')) for r in record['changed']) if record else []
+
+def overlaps(runs):
+    """touches(lo, hi): does [lo, hi) overlap one of the sorted, disjoint (lo, hi) runs?"""
+    import bisect
+    starts=[lo for lo,_ in runs]
+    def touches(lo,hi):
+        k=bisect.bisect_right(starts,hi-1)-1
+        return k>=0 and runs[k][1]>lo
+    return touches
+
+def function_index(target):
+    """reports/<target>/all-functions.tsv: sorted (start, end, name)."""
+    rows=(PROJECT.parent/'reports'/target/'all-functions.tsv').read_text(encoding='utf-8').splitlines()[1:]
+    return sorted((int(f[0],16),int(f[0],16)+int(f[2]),f[1]) for f in (r.split('\t') for r in rows))
+
+def added_code(pe):
+    """Executable bytes outside .text's VirtualSize, [(address, bytes)]: the other
+    code sections and the raw slack the loader maps with a section's last page
+    (the 1.21 patch's .tls code, .ctfsnd, the client's patch sections and its
+    entry stub after .text). Same extent as verify_lifted.code_ranges."""
+    base=pe.OPTIONAL_HEADER.ImageBase;regions=[]
+    for s in pe.sections:
+        if not s.Characteristics&0x20000000:continue
+        size=max(s.Misc_VirtualSize,min(s.SizeOfRawData,align(s.Misc_VirtualSize,0x1000)))
+        start=s.Misc_VirtualSize if s.Name.rstrip(b'\0')==b'.text' else 0
+        if size>start:regions.append((base+s.VirtualAddress+start,s.get_data()[start:size]))
+    return regions
+
+def code_branches(regions):
+    """{target: [source, ...]} of the direct jumps, jccs, loops and calls of a
+    linear decode of each (address, bytes) region."""
+    from capstone import Cs,CS_ARCH_X86,CS_MODE_32
+    md=Cs(CS_ARCH_X86,CS_MODE_32);md.detail=True;branches={}
+    for va,data in regions:
+        offset=0
+        while offset<len(data):
+            last=offset
+            for i in md.disasm(data[offset:],va+offset):
+                last=i.address-va+i.size
+                if (i.group(1) or i.group(2)) and i.op_str.startswith('0x') and ',' not in i.op_str and ':' not in i.op_str:
+                    branches.setdefault(int(i.op_str,16),[]).append(i.address)
+            offset=last if last>offset else offset+1
+    return branches
+
 def lifted_entries(target,spec,pe,original,hand_entries):
     """Detours for lifted functions that passed verify_lifted.py on exactly these sources.
 
@@ -369,6 +427,14 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     # only functions whose current text is exactly the verified text
     passed={(r['address'],r['c_sha256']) for r in report['results'] if r['status']=='passed' and r.get('c_sha256')}
     entries=[e for e in catalog['entries'] if (e['address'],e.get('c_sha256')) in passed]
+    # A function the executable's own patches changed since the reference image
+    # was lifted from code it no longer has: it stays native (rebase.json, where
+    # verify_lifted.py reports it as native), whatever an older report says.
+    record=rebase(target);touches=overlaps(changed_runs(record))
+    native=sorted(e['address'] for e in catalog['entries'] if any(touches(*(int(x,16) for x in r.split('-'))) for r in e['ranges']))
+    if record and native!=record['native_lifted'].get(TREE):
+        raise RuntimeError(f'{target}: rebase.json native_lifted differs from {TREE}/{target}/catalog.json; rerun tools/rebase.py')
+    kept=set(native);entries=[e for e in entries if e['address'] not in kept]
     # Mods: a verified function whose text was edited still runs (as edited);
     # an edited function that never passed verification stays native.
     from sort_lifted import split_texts
@@ -392,7 +458,7 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     # instruction, a 4-aligned .text dword next to another .text address (jump
     # table), or any 4-aligned dword of another section. Other byte windows that
     # happen to spell an interior address are not pointers.
-    starts=set();sizes={};offset=0;md=Cs(CS_ARCH_X86,CS_MODE_32);md.detail=True
+    starts=set();sizes={};md=Cs(CS_ARCH_X86,CS_MODE_32);md.detail=True
     sources={}  # direct branch target -> source addresses
     # Code pointers land on instruction starts: a pointer-like dword hits an
     # entry only when it names one of the instructions inside its first five
@@ -407,17 +473,27 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     def hit(v):
         code_refs.add(v)
         if v in pointed:block_at(pointed[v],v)
-    while offset<len(code):
-        last=offset
-        for i in md.disasm(code[offset:],base+offset):
-            starts.add(i.address);sizes[i.address]=i.size;last=i.address-base+i.size
-            branch=(i.group(1) or i.group(2)) and i.op_str.startswith('0x') and ',' not in i.op_str and ':' not in i.op_str  # direct jump, jcc, loop or call
-            if branch:
-                sources.setdefault(int(i.op_str,16),[]).append(i.address)
-                continue  # its immediate is relative
-            for o in (i.disp_offset,i.imm_offset):
-                if o and o+4<=i.size:hit(int.from_bytes(i.bytes[o:o+4],'little'))
-        offset=last if last>offset else offset+1
+    def sweep(data,va,text=True):
+        offset=0
+        while offset<len(data):
+            last=offset
+            for i in md.disasm(data[offset:],va+offset):
+                if text:starts.add(i.address);sizes[i.address]=i.size
+                last=i.address-va+i.size
+                branch=(i.group(1) or i.group(2)) and i.op_str.startswith('0x') and ',' not in i.op_str and ':' not in i.op_str  # direct jump, jcc, loop or call
+                if branch:
+                    sources.setdefault(int(i.op_str,16),[]).append(i.address)
+                    continue  # its immediate is relative
+                for o in (i.disp_offset,i.imm_offset):
+                    if o and o+4<=i.size:hit(int.from_bytes(i.bytes[o:o+4],'little'))
+            offset=last if last>offset else offset+1
+    sweep(code,base)
+    # Patch code outside .text's VirtualSize (other code sections, section slack,
+    # the client's entry stub) enters .text natively as well: its branches and
+    # address fields count like those of .text. Its instructions are no detour
+    # candidates: static_recomp places detours in .text only, so lifted entries
+    # there (the 1.21 .tls code, .ctfsnd) stay native as before.
+    for va,data in added_code(pe):sweep(data,va,text=False)
     # An entry the linear sweep decodes through (usually right after a jump table)
     # is still a real entry when another indexed function calls or jumps to it
     # directly and nothing branches to the sweep instruction that covers it.
@@ -442,7 +518,10 @@ def lifted_entries(target,spec,pe,original,hand_entries):
         cover=[p for p in range(a-15,a) if p in sizes and p+sizes[p]>a]
         return bool(cover) and (a in vtable_targets or a in data_words) and \
             not any(indexed(p) and not any(lo<=p<hi for lo,hi in own) for p in cover)
-    misaligned={e['address'] for e in entries if int(e['address'],16) not in starts and not real_entry(e)}
+    # An entry outside .text's VirtualSize (the 1.21 .tls code, .ctfsnd) is never
+    # one: static_recomp places detours in .text only.
+    in_text=lambda a:base<=a<base+len(code)
+    misaligned={e['address'] for e in entries if int(e['address'],16) not in starts and not (in_text(int(e['address'],16)) and real_entry(e))}
     stats_misaligned_entries=sum(1 for e in entries if int(e['address'],16) not in starts)-len(misaligned)
     blocked|=misaligned
     from array import array
@@ -477,7 +556,7 @@ def lifted_entries(target,spec,pe,original,hand_entries):
         for t in e['exits']:
             x=int(t,16)
             if x in interior:block_at(interior[x],x)
-    stats=dict(passed=len(entries),misaligned=len(misaligned),resynced=stats_misaligned_entries,interior_target=len(blocked-misaligned))
+    stats=dict(passed=len(entries),**({'native':len(native)} if record else {}),misaligned=len(misaligned),resynced=stats_misaligned_entries,interior_target=len(blocked-misaligned))
     # verify_live_exceptions.py patches the call in the original vector-insert catch
     # funclet, so that funclet stays native
     u32=lambda a:int.from_bytes(pe.get_data(a-pe.OPTIONAL_HEADER.ImageBase,4),'little')
@@ -622,6 +701,16 @@ def build(target,lifted=True,output_path=None):
     struct.pack_into('<H',output,pe.FILE_HEADER.get_field_absolute_offset('NumberOfSections'),len(pe.sections)+1)
     struct.pack_into('<I',output,pe.OPTIONAL_HEADER.get_field_absolute_offset('SizeOfImage'),align(rva+virtual_size,pe.OPTIONAL_HEADER.SectionAlignment))
     struct.pack_into('<I',output,pe.OPTIONAL_HEADER.get_field_absolute_offset('CheckSum'),0)
+    # Code the executable's own patches changed since the reference image (the
+    # one the C, the catalogs and the function index were made from) stays
+    # native: no entry patch inside such an indexed function and no vtable
+    # patch replacing one (rebase.json, tools/rebase.py).
+    record=rebase(target);touches=overlaps(changed_runs(record))
+    native_functions=[f for f in function_index(target) if touches(f[0],f[1])] if record else []
+    if record and [f'{lo:08x}-{hi:08x} {n}' for lo,hi,n in native_functions]!=record['native_functions']:
+        raise RuntimeError(f'{target}: rebase.json native_functions differ from the function index; rerun tools/rebase.py')
+    native_at=lambda x:any(lo<=x<hi for lo,hi,_ in native_functions)
+    native_entries={};native_vtables=[]
     patches=[]
     extra = json.loads((PROJECT/'extra-patches.json').read_text()).get(target, [])
     added_patches = [(int(p['vtable_slot'],16),int(p['expected_function'],16),p['replacement']) for p in extra]
@@ -629,6 +718,8 @@ def build(target,lifted=True,output_path=None):
         offset = pe.get_offset_from_rva(location-pe.OPTIONAL_HEADER.ImageBase)
         actual = struct.unpack_from('<I', original, offset)[0]
         if actual != expected: raise RuntimeError(f'Vtable guard failed at {location:x}')
+        if native_at(expected):
+            native_vtables.append(dict(vtable_slot=f'{location:08x}',original=f'{expected:08x}',source=name));continue
         struct.pack_into('<I',output,offset,symbols[name])
         patches.append(dict(vtable_slot=f'{location:08x}',original=f'{expected:08x}',replacement=f'{symbols[name]:08x}',source=name))
     entry_patches=[];entry_trampolines=[]
@@ -787,6 +878,17 @@ def build(target,lifted=True,output_path=None):
         (spec['player_map_search_init'],bytes.fromhex('8b4424048941'),'bfv_player_map_search_init'),
         (spec['vector_divide'],b'\xd9\x05'+struct.pack('<I',spec['math_one']),'bfv_vector_divide'),
         *constant_entries,*getter_entries,*accessor_entries,*init_entries,*deleting_entries,*construct_entries,*cast_entries,*clone_entries,*store_entries]
+    native_entries={name:f'{location:08x}' for location,_,name in hand_entries if native_at(location)}
+    hand_entries=[h for h in hand_entries if not native_at(h[0])]
+    if native_entries or native_vtables:
+        print(f'  {target}: {len(native_entries)} hand-written entries and {len(native_vtables)} vtable patches stay native '
+              f'(changed since the reference image): {", ".join(sorted(native_entries))}')
+    # Patch code outside .text may jump back into the game anywhere, but never
+    # past the first byte of a guard this build overwrites.
+    entered=code_branches(added_code(pe))
+    for location,expected,name in hand_entries:
+        inside=[x for x in range(location+1,location+len(expected)) if x in entered]
+        if inside:raise RuntimeError(f'{name}: code outside .text ({entered[inside[0]][0]:x}) jumps into its guard at {inside[0]:x}')
     lifted_patch_entries,lifted_stats,trampolines=lifted_entries(target,spec,pe,original,hand_entries) if lifted else ([],{},{})
     if mod_stubs:
         detoured={a for a,_,_ in lifted_patch_entries}
@@ -821,6 +923,8 @@ def build(target,lifted=True,output_path=None):
     manifest=dict(target=target,input_sha256=spec['sha'],output=str(destination),
         output_sha256=hashlib.sha256(output).hexdigest(),payload_address=f'{address:08x}',
         payload_bytes=len(payload),symbols={k:f'{v:08x}' for k,v in symbols.items()},patches=patches,entry_patches=entry_patches,entry_trampolines=entry_trampolines,lifted=lifted_stats,
+        **(dict(reference_sha256=record['reference_sha256'],native_functions=record['native_functions'],
+                native_entries=native_entries,native_vtables=native_vtables) if record else {}),
         scope='Reconstructed AI interpreter, bailout logic/math, collision callback/dispatcher and distance geometry, event construction, object/interface lookups and word-vector insertion/exception bridge; artillery driver/cache validation, target-history lookup/insertion and red-black balancing, and first-pass candidate filter/weapon selection; shared scalar selectors and vector length/division, direction aiming-limit predicate/event wrapper and affine matrix composition; audited constant-return functions, object-word getters, field/global accessors, C++ static-object initializers (with and without constructor arguments) scalar deleting destructors, dynamic_cast wrappers, virtual clones and constant global stores; remaining engine code/services are retained from the original image')
     (work/'manifest.json').write_text(json.dumps(manifest,indent=2))
     print(f'Compiled {destination.name}: {len(payload)} native payload bytes, {len(patches)} guarded vtable replacements and {len(entry_patches)} guarded function entries'
