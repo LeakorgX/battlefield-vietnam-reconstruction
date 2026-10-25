@@ -807,7 +807,7 @@ static HRESULT STDMETHODCALLTYPE dev_UpdateSurface(IDirect3DDevice9 *self, IDire
 
     if (!s || !t || s->r.dev != d || t->r.dev != d || s->r.pool != D3DPOOL_SYSTEMMEM || t->r.pool != D3DPOOL_DEFAULT ||
         s->r.format != t->r.format || s->locked || t->locked || s->ms || t->ms)
-        return device_unsupported("DeletePatch");
+        return D3DERR_INVALIDCALL;
 
     RECT r = rect ? *rect : (RECT){0, 0, s->w, s->h};
     POINT p = point ? *point : (POINT){0, 0};
@@ -815,11 +815,11 @@ static HRESULT STDMETHODCALLTYPE dev_UpdateSurface(IDirect3DDevice9 *self, IDire
     if (r.left < 0 || r.top < 0 || r.right < r.left || r.bottom < r.top || r.right > (LONG)s->w ||
         r.bottom > (LONG)s->h || p.x < 0 || p.y < 0 || p.x + r.right - r.left > (LONG)t->w ||
         p.y + r.bottom - r.top > (LONG)t->h)
-        return device_unsupported("DeletePatch");
+        return D3DERR_INVALIDCALL;
 
     const struct vkd_format *f = vkd_format(s->r.format);
     if (r.left % f->block || r.top % f->block || p.x % f->block || p.y % f->block)
-        return device_unsupported("DeletePatch");
+        return D3DERR_INVALIDCALL;
 
     VKD_LOCK(d);
     UINT pitch;
@@ -833,7 +833,7 @@ static HRESULT STDMETHODCALLTYPE dev_UpdateSurface(IDirect3DDevice9 *self, IDire
     struct vkd_image *img = vkd_surface_image(t);
     if (!img) {
         VKD_UNLOCK(d);
-        return device_unsupported("DeletePatch");
+        return D3DERR_INVALIDCALL;
     }
     vkd_image_write(d, img, t->level, t->layer, p.x, p.y, 0, r.right - r.left, r.bottom - r.top, 1, cpu, pitch, 0);
 

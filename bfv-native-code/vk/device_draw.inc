@@ -136,12 +136,12 @@ static struct vkd_shader *ff_shader(struct vkd_device *d, const void *key, UINT 
     }
     return s;
 }
-static void ff_constants(struct vkd_device *d)
+/* Fixed-function constants, recomputed when their render states change. */
+static void ff_vs_constants(struct vkd_device *d)
 {
     struct vkd_state *s = &d->st;
 
-    memset(&d->ffvs, 0, sizeof d->ffvs);
-    memset(&d->ffps, 0, sizeof d->ffps);
+    memset(d->ffvs.f, 0, FF_VS_CONSTS * sizeof d->ffvs.f[0]);
 
     for (UINT i = 0; i < 4; i++) {
         D3DMATRIX wv;
@@ -244,6 +244,12 @@ static void ff_constants(struct vkd_device *d)
         p[1] = delta ? 1.0f / delta : 1e20f;
         p[2] = l->Falloff;
     }
+}
+static void ff_ps_constants(struct vkd_device *d)
+{
+    struct vkd_state *s = &d->st;
+
+    memset(d->ffps.f, 0, FF_PS_CONSTS * sizeof d->ffps.f[0]);
     color_float(d->ffps.f[FF_PS_TFACTOR], s->rs[D3DRS_TEXTUREFACTOR]);
 
     for (UINT i = 0; i < 8; i++) {
@@ -424,6 +430,47 @@ static VkBlendFactor blend_factor(DWORD f)
 
     return f < sizeof b / sizeof b[0] ? b[f] : VK_BLEND_FACTOR_ONE;
 }
+static VkBlendOp blend_op(DWORD op)
+{
+    return op >= D3DBLENDOP_ADD && op <= D3DBLENDOP_MAX ? (VkBlendOp)(op - 1) : VK_BLEND_OP_ADD;
+}
+/* One attachment's blend equation from the render states. BOTH(INV)SRCALPHA
+ * also sets the destination factor, and a target without alpha (X8R8G8B8)
+ * blends with destination alpha 1. */
+static void blend_equation(const DWORD *rs, int no_alpha, VkColorBlendEquationEXT *eq)
+{
+    int separate = !!rs[D3DRS_SEPARATEALPHABLENDENABLE];
+    VkBlendFactor *factors[2][2] = {{&eq->srcColorBlendFactor, &eq->dstColorBlendFactor},
+                                    {&eq->srcAlphaBlendFactor, &eq->dstAlphaBlendFactor}};
+    for (UINT a = 0; a < 2; a++) {
+        DWORD src = rs[a && separate ? D3DRS_SRCBLENDALPHA : D3DRS_SRCBLEND];
+        DWORD dst = rs[a && separate ? D3DRS_DESTBLENDALPHA : D3DRS_DESTBLEND];
+        VkBlendFactor *s = factors[a][0], *d = factors[a][1];
+        *s = blend_factor(src);
+        *d = blend_factor(dst);
+        if (src == D3DBLEND_BOTHSRCALPHA) {
+            *s = VK_BLEND_FACTOR_SRC_ALPHA;
+            *d = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
+        } else if (src == D3DBLEND_BOTHINVSRCALPHA) {
+            *s = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
+            *d = VK_BLEND_FACTOR_SRC_ALPHA;
+        }
+        if (no_alpha)
+            for (UINT k = 0; k < 2; k++) {
+                VkBlendFactor *f = factors[a][k];
+                if (*f == VK_BLEND_FACTOR_DST_ALPHA)
+                    *f = VK_BLEND_FACTOR_ONE;
+                else if (*f == VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA)
+                    *f = VK_BLEND_FACTOR_ZERO;
+            }
+    }
+    eq->colorBlendOp = blend_op(rs[D3DRS_BLENDOP]);
+    eq->alphaBlendOp = blend_op(rs[separate ? D3DRS_BLENDOPALPHA : D3DRS_BLENDOP]);
+}
+static int target_no_alpha(struct vkd_device *d, UINT i)
+{
+    return d->rt[i] && vkd_format(d->rt[i]->r.format)->no_alpha;
+}
 static VkPrimitiveTopology draw_topology(D3DPRIMITIVETYPE t)
 {
     static const VkPrimitiveTopology p[] = {VK_PRIMITIVE_TOPOLOGY_POINT_LIST,    VK_PRIMITIVE_TOPOLOGY_POINT_LIST,
@@ -506,9 +553,14 @@ static VkPipeline draw_pipeline(struct vkd_device *d, const struct dxso_info *vi
         key.fallback[11] = rs[D3DRS_COLORWRITEENABLE1];
         key.fallback[12] = rs[D3DRS_COLORWRITEENABLE2];
         key.fallback[13] = rs[D3DRS_COLORWRITEENABLE3];
+        /* A8R8G8B8 and X8R8G8B8 share a Vulkan format but not their blend factors. */
+        for (UINT i = 0; i < 4; i++)
+            key.fallback[14] |= (DWORD)target_no_alpha(d, i) << i;
     }
 
-    struct vkd_pipeline *cached = vkd_map_get(&d->pipelines, &key, sizeof key);
+    /* with dynamic vertex input the binding arrays stay zero and are not hashed */
+    uint32_t key_size = vkd.vi_dynamic ? (uint32_t)offsetof(struct draw_pipeline_key, binding) : (uint32_t)sizeof key;
+    struct vkd_pipeline *cached = vkd_map_get(&d->pipelines, &key, key_size);
     if (cached && cached->pipe)
         return cached->pipe;
 
@@ -557,19 +609,15 @@ static VkPipeline draw_pipeline(struct vkd_device *d, const struct dxso_info *vi
     memset(blend, 0, sizeof blend);
 
     for (UINT i = 0; i < key.ncolor; i++) {
+        VkColorBlendEquationEXT eq;
+        blend_equation(rs, target_no_alpha(d, i), &eq);
         blend[i].blendEnable = !!rs[D3DRS_ALPHABLENDENABLE];
-        blend[i].srcColorBlendFactor = blend_factor(rs[D3DRS_SRCBLEND]);
-        blend[i].dstColorBlendFactor = blend_factor(rs[D3DRS_DESTBLEND]);
-
-        blend[i].colorBlendOp = rs[D3DRS_BLENDOP] >= 1 && rs[D3DRS_BLENDOP] <= 5 ? rs[D3DRS_BLENDOP] - 1 : 0;
-
-        blend[i].srcAlphaBlendFactor =
-            rs[D3DRS_SEPARATEALPHABLENDENABLE] ? blend_factor(rs[D3DRS_SRCBLENDALPHA]) : blend[i].srcColorBlendFactor;
-
-        blend[i].dstAlphaBlendFactor =
-            rs[D3DRS_SEPARATEALPHABLENDENABLE] ? blend_factor(rs[D3DRS_DESTBLENDALPHA]) : blend[i].dstColorBlendFactor;
-
-        blend[i].alphaBlendOp = rs[D3DRS_SEPARATEALPHABLENDENABLE] ? rs[D3DRS_BLENDOPALPHA] - 1 : blend[i].colorBlendOp;
+        blend[i].srcColorBlendFactor = eq.srcColorBlendFactor;
+        blend[i].dstColorBlendFactor = eq.dstColorBlendFactor;
+        blend[i].colorBlendOp = eq.colorBlendOp;
+        blend[i].srcAlphaBlendFactor = eq.srcAlphaBlendFactor;
+        blend[i].dstAlphaBlendFactor = eq.dstAlphaBlendFactor;
+        blend[i].alphaBlendOp = eq.alphaBlendOp;
         DWORD masks[] = {D3DRS_COLORWRITEENABLE, D3DRS_COLORWRITEENABLE1, D3DRS_COLORWRITEENABLE2,
                          D3DRS_COLORWRITEENABLE3};
         blend[i].colorWriteMask = rs[masks[i]];
@@ -653,9 +701,9 @@ static VkPipeline draw_pipeline(struct vkd_device *d, const struct dxso_info *vi
     p->vs_id = vs_id;
     p->ps_id = ps_id;
 
-    vkd_map_put(&d->pipelines, &key, sizeof key, p);
+    vkd_map_put(&d->pipelines, &key, key_size, p);
 
-    if (vkd_map_get(&d->pipelines, &key, sizeof key) != p) {
+    if (vkd_map_get(&d->pipelines, &key, key_size) != p) {
         vkDestroyPipeline(vkd.dev, pipe, 0);
         vkp_free(p);
         return 0;
@@ -753,17 +801,7 @@ static void draw_dynamic(struct vkd_device *d, D3DPRIMITIVETYPE topology)
         for (UINT i = 0; i < 4; i++) {
             enable[i] = !!s[D3DRS_ALPHABLENDENABLE];
             mask[i] = s[cm[i]];
-
-            eq[i].srcColorBlendFactor = blend_factor(s[D3DRS_SRCBLEND]);
-            eq[i].dstColorBlendFactor = blend_factor(s[D3DRS_DESTBLEND]);
-            eq[i].colorBlendOp = s[D3DRS_BLENDOP] - 1;
-
-            eq[i].srcAlphaBlendFactor =
-                blend_factor(s[s[D3DRS_SEPARATEALPHABLENDENABLE] ? D3DRS_SRCBLENDALPHA : D3DRS_SRCBLEND]);
-
-            eq[i].dstAlphaBlendFactor =
-                blend_factor(s[s[D3DRS_SEPARATEALPHABLENDENABLE] ? D3DRS_DESTBLENDALPHA : D3DRS_DESTBLEND]);
-            eq[i].alphaBlendOp = s[s[D3DRS_SEPARATEALPHABLENDENABLE] ? D3DRS_BLENDOPALPHA : D3DRS_BLENDOP] - 1;
+            blend_equation(s, target_no_alpha(d, i), &eq[i]);
         }
         UINT n = 0;
         for (UINT i = 0; i < 4; i++)
@@ -836,6 +874,78 @@ static int draw_begin(struct vkd_device *d)
     vkd_queries_pass_begin(d);
     return 1;
 }
+/* Source of a constant block: fixed-function constants, application constants,
+ * or application constants clamped to [-1, 1] for ps 1.x. */
+enum { UBO_FF = 1, UBO_APP, UBO_APP_PS1 };
+
+/* The block written earlier in this submission still holds what the shader reads. */
+static int ubo_current(struct vkd_device *d, const struct vkd_ubo *u, const struct dxso_info *info, int src,
+                       uint32_t inputs)
+{
+    return u->seq == d->seq && u->src == src && u->floats >= info->floats_read && u->tail >= info->tail_read &&
+           !(d->dirty & inputs);
+}
+/* A constant block in the upload ring. The descriptor covers the whole block,
+ * but only registers [0, floats_read) and, when read, the tail are written, so
+ * the rest of the block belongs to later allocations. Mapped memory is
+ * write-combined: values are built locally and written once. */
+static int draw_vs_constants(struct vkd_device *d, const struct vkd_shader *vs, int src, VkDeviceSize align)
+{
+    struct vkd_state *s = &d->st;
+    uint32_t floats = vs->info.floats_read;
+    int tail = vs->info.tail_read;
+    struct vkd_buf b;
+    VkDeviceSize size = tail ? sizeof(struct dxso_vs_consts) : VKP_MAX(16, floats * 16);
+
+    if (!vkd_ring_span(d, size, sizeof(struct dxso_vs_consts), align, &b))
+        return 0;
+    struct dxso_vs_consts *c = (struct dxso_vs_consts *)b.map;
+    memcpy(c->f, src == UBO_FF ? d->ffvs.f : s->vsf, floats * 16);
+    if (tail) {
+        uint32_t bits[4] = {0};
+        for (UINT i = 0; src != UBO_FF && i < 16; i++)
+            bits[0] |= (uint32_t)!!s->vsb[i] << i;
+        memcpy(c->i, src == UBO_FF ? d->ffvs.i : s->vsi, sizeof c->i);
+        memcpy(c->b, bits, sizeof bits);
+    }
+    d->vs_ubo = (struct vkd_ubo){b.buf, b.off, d->seq, floats, tail, src};
+    return 1;
+}
+static int draw_ps_constants(struct vkd_device *d, const struct vkd_shader *ps, int src, VkDeviceSize align)
+{
+    struct vkd_state *s = &d->st;
+    uint32_t floats = ps->info.floats_read;
+    int tail = ps->info.tail_read;
+    struct vkd_buf b;
+    VkDeviceSize size = tail ? sizeof(struct dxso_ps_consts) : VKP_MAX(16, floats * 16);
+
+    if (!vkd_ring_span(d, size, sizeof(struct dxso_ps_consts), align, &b))
+        return 0;
+    struct dxso_ps_consts *c = (struct dxso_ps_consts *)b.map;
+    const float(*f)[4] = src == UBO_FF ? d->ffps.f : s->psf;
+    if (src == UBO_APP_PS1)
+        for (UINT i = 0; i < floats; i++) {
+            float v[4];
+            for (UINT j = 0; j < 4; j++)
+                v[j] = VKP_MAX(-1.0f, VKP_MIN(1.0f, f[i][j]));
+            memcpy(c->f[i], v, sizeof v);
+        }
+    else
+        memcpy(c->f, f, floats * 16);
+    if (tail) {
+        uint32_t bits[4] = {0};
+        for (UINT i = 0; src != UBO_FF && i < 16; i++)
+            bits[0] |= (uint32_t)!!s->psb[i] << i;
+        memcpy(c->i, src == UBO_FF ? d->ffps.i : s->psi, sizeof c->i);
+        memcpy(c->b, bits, sizeof bits);
+        for (UINT i = 0; i < 8; i++) {
+            memcpy(c->bump[i], d->ffps.f[FF_PS_BUMP + i], 16);
+            memcpy(c->lum[i], d->ffps.f[FF_PS_LUM + i], 16);
+        }
+    }
+    d->ps_ubo = (struct vkd_ubo){b.buf, b.off, d->seq, floats, tail, src};
+    return 1;
+}
 static int draw_prepare(struct vkd_device *d, D3DPRIMITIVETYPE topology, const struct vkd_buf *up, UINT up_stride)
 {
     struct vkd_state *s = &d->st;
@@ -852,12 +962,17 @@ static int draw_prepare(struct vkd_device *d, D3DPRIMITIVETYPE topology, const s
     if (!s->decl)
         return 0;
 
-    struct ff_vs_key fv;
-    struct ff_ps_key fp;
-    ff_keys(d, &fv, &fp);
-
-    struct vkd_shader *vs = s->vs ? s->vs : ff_shader(d, &fv, sizeof fv, 0),
-                      *ps = s->ps ? s->ps : ff_shader(d, &fp, sizeof fp, 1);
+    /* Fixed-function shaders are looked up again only when fixed-function state
+     * changed, also while shaders are bound, so they are current whenever
+     * SetVertexShader(0) or SetPixelShader(0) returns to them. */
+    if (!d->ff_vs_cur || !d->ff_ps_cur || (d->dirty & (DIRTY_FF_VS | DIRTY_FF_PS))) {
+        struct ff_vs_key fv;
+        struct ff_ps_key fp;
+        ff_keys(d, &fv, &fp);
+        d->ff_vs_cur = ff_shader(d, &fv, sizeof fv, 0);
+        d->ff_ps_cur = ff_shader(d, &fp, sizeof fp, 1);
+    }
+    struct vkd_shader *vs = s->vs ? s->vs : d->ff_vs_cur, *ps = s->ps ? s->ps : d->ff_ps_cur;
 
     if (!vs || !ps)
         return 0;
@@ -888,63 +1003,35 @@ static int draw_prepare(struct vkd_device *d, D3DPRIMITIVETYPE topology, const s
     if (!vmod || !pmod)
         return 0;
 
-    ff_constants(d);
-    struct dxso_vs_consts vc = d->ffvs;
-    struct dxso_ps_consts pc = d->ffps;
-
-    if (s->vs) {
-        memcpy(vc.f, s->vsf, sizeof vc.f);
-        memcpy(vc.i, s->vsi, sizeof vc.i);
-        for (UINT i = 0; i < 16; i++)
-            if (s->vsb[i])
-                vc.b[0] |= 1u << i;
-    }
-    if (s->ps) {
-        memcpy(pc.f, s->psf, sizeof pc.f);
-        memcpy(pc.i, s->psi, sizeof pc.i);
-        for (UINT i = 0; i < 16; i++)
-            if (s->psb[i])
-                pc.b[0] |= 1u << i;
-
-        if (ps->info.major == 1)
-            for (UINT i = 0; i < 8; i++)
-                for (UINT j = 0; j < 4; j++)
-                    pc.f[i][j] = VKP_MAX(-1.0f, VKP_MIN(1.0f, pc.f[i][j]));
-    }
-    for (UINT i = 0; i < 8; i++) {
-        memcpy(pc.bump[i], d->ffps.f[FF_PS_BUMP + i], 16);
-        memcpy(pc.lum[i], d->ffps.f[FF_PS_LUM + i], 16);
-    }
-    struct vkd_buf vu, pu;
+    /* Constant blocks are written again only when their inputs changed in this
+     * submission, and then only with the registers their shaders read. */
+    if (d->dirty & DIRTY_FF_VS_CONST)
+        ff_vs_constants(d);
+    if (d->dirty & DIRTY_FF_PS_CONST)
+        ff_ps_constants(d);
     VkDeviceSize alignment = VKP_MAX(16, vkd.props.limits.minUniformBufferOffsetAlignment);
 
-    if (!vkd_ring(d, sizeof vc, alignment, &vu) || !vkd_ring(d, sizeof pc, alignment, &pu))
+    int vsrc = s->vs ? UBO_APP : UBO_FF;
+    if (!ubo_current(d, &d->vs_ubo, &vs->info, vsrc, s->vs ? DIRTY_VS_CONST : DIRTY_FF_VS_CONST) &&
+        !draw_vs_constants(d, vs, vsrc, alignment))
         return 0;
+    int psrc = !s->ps ? UBO_FF : ps->info.major == 1 ? UBO_APP_PS1 : UBO_APP;
+    if (!ubo_current(d, &d->ps_ubo, &ps->info, psrc, s->ps ? DIRTY_PS_CONST : DIRTY_FF_PS_CONST) &&
+        !draw_ps_constants(d, ps, psrc, alignment))
+        return 0;
+    VkDescriptorBufferInfo buffers[2] = {{d->vs_ubo.buf, d->vs_ubo.off, sizeof(struct dxso_vs_consts)},
+                                         {d->ps_ubo.buf, d->ps_ubo.off, sizeof(struct dxso_ps_consts)}};
 
-    memcpy(vu.map, &vc, sizeof vc);
-    memcpy(pu.map, &pc, sizeof pc);
-
-    VkDescriptorBufferInfo buffers[2] = {{vu.buf, vu.off, sizeof vc}, {pu.buf, pu.off, sizeof pc}};
-
-    VkDescriptorImageInfo images[20];
-    VkWriteDescriptorSet writes[22];
-    memset(writes, 0, sizeof writes);
-    memset(images, 0, sizeof images);
-
-    for (UINT i = 0; i < 22; i++) {
-        writes[i].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
-        writes[i].dstBinding = i;
-        writes[i].descriptorCount = 1;
-
-        writes[i].descriptorType =
-            i < 2 ? VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER : VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-        if (i < 2)
-            writes[i].pBufferInfo = &buffers[i];
-        else
-            writes[i].pImageInfo = &images[i - 2];
-    }
+    /* Sampled images, again only when bindings, sampler states or shaders changed. */
+    int images_changed = d->images_seq != d->seq || (d->dirty & (DIRTY_SAMPLERS | DIRTY_SHADERS));
     for (UINT i = 0; i < 20; i++) {
         struct vkd_texture *t = vkd_res_texture(s->tex[i]);
+        if (!images_changed) {
+            /* Lock/Unlock of a bound texture changes no device state */
+            if (t && t->autogen_dirty)
+                vkd_texture_genmips(t);
+            continue;
+        }
         UINT si = i < 16 ? i : i - 16;
 
         UINT declared = (i < 16 ? ps : vs)->info.sampler_dcl[si];
@@ -954,24 +1041,28 @@ static int draw_prepare(struct vkd_device *d, D3DPRIMITIVETYPE topology, const s
             return 0;
         int cmp = t && t->fmt->depth && !t->fmt->sample_depth;
 
-        images[i].sampler = draw_sampler(d, i, cmp);
-        images[i].imageLayout = VK_IMAGE_LAYOUT_GENERAL;
+        VkDescriptorImageInfo *image = &d->images[i];
+        image->sampler = draw_sampler(d, i, cmp);
+        image->imageLayout = VK_IMAGE_LAYOUT_GENERAL;
 
         if (t && texture_kind(t) == kind) {
             if (t->autogen_dirty)
                 vkd_texture_genmips(t);
-            images[i].imageView = vkd_texture_view(t, !!s->ss[i][D3DSAMP_SRGBTEXTURE]);
+            image->imageView = vkd_texture_view(t, !!s->ss[i][D3DSAMP_SRGBTEXTURE]);
             t->img->use_seq = d->seq;
         } else {
             struct vkd_image *img = draw_dummy(d, kind, i < 16 && !s->ps);
             if (!img)
                 return 0;
-            images[i].imageView = img->view;
+            image->imageView = img->view;
             img->use_seq = d->seq;
         }
-        if (!images[i].sampler || !images[i].imageView)
+        if (!image->sampler || !image->imageView)
             return 0;
     }
+    if (images_changed)
+        d->images_seq = d->seq;
+    int push_descriptors = images_changed || d->desc_seq != d->seq || memcmp(buffers, d->desc_buffers, sizeof buffers);
     VkVertexInputBindingDescription bindings[17];
     VkVertexInputAttributeDescription attrs[16];
     UINT nb = 0, na = 0;
@@ -1048,15 +1139,20 @@ static int draw_prepare(struct vkd_device *d, D3DPRIMITIVETYPE topology, const s
         return 0;
     VkCommandBuffer cmd = vkd_cmd(d);
 
-    vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pipe);
-    d->bound_pipe = pipe;
-
+    /* Command buffer state below lasts for the submission (d->seq): it is
+     * recorded again only when it differs from what the last draw set. */
+    if (pipe != d->bound_pipe) {
+        vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pipe);
+        d->bound_pipe = pipe;
+    }
     if (vkd.vi_dynamic) {
         VkVertexInputBindingDescription2EXT bd[17];
         VkVertexInputAttributeDescription2EXT ad[16];
+        memset(bd, 0, nb * sizeof *bd);
+        memset(ad, 0, na * sizeof *ad);
 
         for (UINT i = 0; i < nb; i++) {
-            bd[i] = (VkVertexInputBindingDescription2EXT){VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT};
+            bd[i].sType = VK_STRUCTURE_TYPE_VERTEX_INPUT_BINDING_DESCRIPTION_2_EXT;
             bd[i].binding = bindings[i].binding;
             bd[i].stride = bindings[i].stride;
             bd[i].inputRate = bindings[i].inputRate;
@@ -1067,25 +1163,63 @@ static int draw_prepare(struct vkd_device *d, D3DPRIMITIVETYPE topology, const s
                 bd[i].divisor = s->vb_freq[stream] & 0x3fffffffu;
         }
         for (UINT i = 0; i < na; i++) {
-            ad[i] = (VkVertexInputAttributeDescription2EXT){VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT};
+            ad[i].sType = VK_STRUCTURE_TYPE_VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT;
             ad[i].location = attrs[i].location;
             ad[i].binding = attrs[i].binding;
             ad[i].format = attrs[i].format;
             ad[i].offset = attrs[i].offset;
         }
-        vkCmdSetVertexInputEXT(cmd, nb, bd, na, ad);
+        if (d->vi_seq != d->seq || nb != d->vi_nbind || na != d->vi_nattr ||
+            memcmp(bd, d->vi_bind, nb * sizeof *bd) || memcmp(ad, d->vi_attr, na * sizeof *ad)) {
+            vkCmdSetVertexInputEXT(cmd, nb, bd, na, ad);
+            memcpy(d->vi_bind, bd, nb * sizeof *bd);
+            memcpy(d->vi_attr, ad, na * sizeof *ad);
+            d->vi_nbind = nb;
+            d->vi_nattr = na;
+            d->vi_seq = d->seq;
+        }
     }
-    for (UINT i = 0; i < nb; i++)
-        vkCmdBindVertexBuffers2(cmd, bindings[i].binding, 1, &vb[i], &offsets[i], 0, 0);
-
-    draw_dynamic(d, topology);
-    if (vkd.eds3_mask) {
-        VkSampleMask mask = s->rs[D3DRS_MULTISAMPLEMASK];
-        VkSampleCountFlagBits samples = vkd_surface_image(d->rt[0])->samples;
-        vkCmdSetSampleMaskEXT(cmd, samples, &mask);
+    if (d->vb_seq != d->seq) {
+        memset(d->vb_bound, 0, sizeof d->vb_bound);
+        d->vb_seq = d->seq;
     }
-
-    vkCmdPushDescriptorSetKHR(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, d->layout, 0, 22, writes);
+    for (UINT i = 0; i < nb; i++) {
+        UINT bi = bindings[i].binding;
+        if (d->vb_bound[bi] == vb[i] && d->vb_bound_off[bi] == offsets[i])
+            continue;
+        vkCmdBindVertexBuffers2(cmd, bi, 1, &vb[i], &offsets[i], 0, 0);
+        d->vb_bound[bi] = vb[i];
+        d->vb_bound_off[bi] = offsets[i];
+    }
+    if (d->dyn_seq != d->seq || d->dyn_topology != topology ||
+        (d->dirty & (DIRTY_VIEWPORT | DIRTY_RASTER | DIRTY_DEPTH | DIRTY_STENCIL | DIRTY_BLEND))) {
+        draw_dynamic(d, topology);
+        if (vkd.eds3_mask) {
+            VkSampleMask mask = s->rs[D3DRS_MULTISAMPLEMASK];
+            VkSampleCountFlagBits samples = vkd_surface_image(d->rt[0])->samples;
+            vkCmdSetSampleMaskEXT(cmd, samples, &mask);
+        }
+        d->dyn_seq = d->seq;
+        d->dyn_topology = topology;
+    }
+    if (push_descriptors) {
+        VkWriteDescriptorSet writes[22];
+        memset(writes, 0, sizeof writes);
+        for (UINT i = 0; i < 22; i++) {
+            writes[i].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+            writes[i].dstBinding = i;
+            writes[i].descriptorCount = 1;
+            writes[i].descriptorType =
+                i < 2 ? VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER : VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
+            if (i < 2)
+                writes[i].pBufferInfo = &buffers[i];
+            else
+                writes[i].pImageInfo = &d->images[i - 2];
+        }
+        vkCmdPushDescriptorSetKHR(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, d->layout, 0, 22, writes);
+        memcpy(d->desc_buffers, buffers, sizeof buffers);
+        d->desc_seq = d->seq;
+    }
 
     struct dxso_push push;
     memset(&push, 0, sizeof push);
@@ -1112,8 +1246,12 @@ static int draw_prepare(struct vkd_device *d, D3DPRIMITIVETYPE topology, const s
     push.clip_mask = s->rs[D3DRS_CLIPPLANEENABLE];
     memcpy(push.clip, s->clip, sizeof push.clip);
 
-    vkCmdPushConstants(cmd, d->layout, VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof push,
-                       &push);
+    if (d->push_seq != d->seq || memcmp(&push, &d->push, sizeof push)) {
+        vkCmdPushConstants(cmd, d->layout, VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof push,
+                           &push);
+        memcpy(&d->push, &push, sizeof push);
+        d->push_seq = d->seq;
+    }
 
     d->dirty = 0;
     return 1;

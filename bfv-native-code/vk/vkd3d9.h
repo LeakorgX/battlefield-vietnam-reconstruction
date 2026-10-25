@@ -127,11 +127,14 @@ struct vkd_gpu {
     struct vkd_block *blocks;
     void *lock;
     VkDebugUtilsMessengerEXT debug_messenger;
+    int validation;             /* the messenger ran (kept after vkd_gpu_release) */
     uint32_t validation_errors, validation_warnings;
 };
 extern struct vkd_gpu vkd;
 
 int vkd_gpu_init(void);         /* idempotent; 0 on failure */
+void vkd_gpu_addref(void);      /* an IDirect3D9 holds the instance and device */
+void vkd_gpu_release(void);     /* the last one destroys them */
 uint32_t vkd_memory_type(uint32_t bits, VkMemoryPropertyFlags want, VkMemoryPropertyFlags avoid);
 enum { VKD_MEM_DEVICE, VKD_MEM_UPLOAD, VKD_MEM_READBACK };
 int vkd_alloc_image_memory(VkImage img, int kind, struct vkd_mem *out);
@@ -487,14 +490,22 @@ struct vkd_device {
     uint32_t occ_slot;
     uint32_t next_variant_id;
 
-    /* derived per draw */
+    /* derived per draw; command buffer state is tracked for the submission d->seq
+     * and recorded again only when its inputs change */
     struct dxso_vs_consts ffvs;
     struct dxso_ps_consts ffps;
-    uint32_t ff_vs_used, ff_ps_used;
-    VkShaderModule cur_vs, cur_ps;
+    struct vkd_shader *ff_vs_cur, *ff_ps_cur;   /* fixed-function shaders of the current state */
+    struct vkd_ubo { VkBuffer buf; VkDeviceSize off; uint64_t seq; uint32_t floats; int tail, src; } vs_ubo, ps_ubo;
+    VkDescriptorImageInfo images[VKD_SAMPLERS];
+    VkDescriptorBufferInfo desc_buffers[2];
+    uint64_t images_seq, desc_seq, dyn_seq, push_seq, vi_seq, vb_seq;
+    D3DPRIMITIVETYPE dyn_topology;
     struct dxso_push push;
-    VkDeviceSize vs_ubo_off, ps_ubo_off;
-    VkBuffer vs_ubo, ps_ubo;
+    VkVertexInputBindingDescription2EXT vi_bind[17];
+    VkVertexInputAttributeDescription2EXT vi_attr[16];
+    UINT vi_nbind, vi_nattr;
+    VkBuffer vb_bound[17];
+    VkDeviceSize vb_bound_off[17];
 
     int fpu_preserve;
     WNDPROC old_wndproc;
@@ -535,6 +546,10 @@ void vkd_flush_wait(struct vkd_device *d);              /* submit and wait for e
 void vkd_defer(struct vkd_device *d, const struct vkd_garbage *g);
 /* upload ring: host-visible scratch valid for the open submission */
 int vkd_ring(struct vkd_device *d, VkDeviceSize size, VkDeviceSize align, struct vkd_buf *out);
+/* size bytes, with span bytes of the same buffer addressable from the offset (a constant
+ * block whose unread tail later allocations reuse) */
+int vkd_ring_span(struct vkd_device *d, VkDeviceSize size, VkDeviceSize span, VkDeviceSize align,
+                  struct vkd_buf *out);
 void vkd_barrier(VkCommandBuffer cmd, VkPipelineStageFlags2 src, VkAccessFlags2 srca, VkPipelineStageFlags2 dst,
                  VkAccessFlags2 dsta);
 void vkd_barrier_all(VkCommandBuffer cmd);
