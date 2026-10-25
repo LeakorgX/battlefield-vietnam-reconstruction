@@ -176,14 +176,12 @@ static DWORD decl_to_fvf(const struct vkd_vdecl *v)
 
 static void vdecl_destroy(struct vkd_vdecl *v)
 {
-    struct vkd_device *d = v->dev;
     vkp_free(v);
-    IDirect3DDevice9_Release((IDirect3DDevice9 *)d);
 }
 
 static void vdecl_maybe_destroy(struct vkd_vdecl *v)
 {
-    if (!v->ref && !v->bind) vdecl_destroy(v);
+    if (!v->ref && !v->bind && !v->cached) vdecl_destroy(v);
 }
 
 void vkd_vdecl_free(struct vkd_vdecl *v) { vkp_free(v); }
@@ -222,7 +220,10 @@ struct vkd_vdecl *vkd_fvf_decl(struct vkd_device *d, DWORD fvf)
     el[n] = end;
     if (FAILED(vkd_create_vdecl(d, el, &v))) return 0;
     v->fvf = fvf;
+    v->ref = 0;
+    v->cached = 1;
     vkd_map_put(&d->fvf_decls, &fvf, sizeof fvf, v);
+    if (vkd_map_get(&d->fvf_decls, &fvf, sizeof fvf) != v) { vkp_free(v); return 0; }
     return v;
 }
 
@@ -239,7 +240,10 @@ static HRESULT STDMETHODCALLTYPE vdecl_QueryInterface(IDirect3DVertexDeclaration
 }
 static ULONG STDMETHODCALLTYPE vdecl_AddRef(IDirect3DVertexDeclaration9 *self)
 {
-    return (ULONG)InterlockedIncrement(&((struct vkd_vdecl *)self)->ref);
+    struct vkd_vdecl *v = (struct vkd_vdecl *)self;
+    LONG n = InterlockedIncrement(&v->ref);
+    if (n == 1) IDirect3DDevice9_AddRef((IDirect3DDevice9 *)v->dev);
+    return (ULONG)n;
 }
 static ULONG STDMETHODCALLTYPE vdecl_Release(IDirect3DVertexDeclaration9 *self)
 {
@@ -247,12 +251,11 @@ static ULONG STDMETHODCALLTYPE vdecl_Release(IDirect3DVertexDeclaration9 *self)
     LONG n = InterlockedDecrement(&v->ref);
     if (n < 0) { v->ref = 0; n = 0; }
     if (!n) {
-        VKD_LOCK(v->dev);
         struct vkd_device *d = v->dev;
-        int destroy = !v->bind;
-        if (destroy) vdecl_destroy(v);
-        (void)d;
+        VKD_LOCK(d);
+        vdecl_maybe_destroy(v);
         VKD_UNLOCK(d);
+        IDirect3DDevice9_Release((IDirect3DDevice9 *)d);
     }
     return (ULONG)n;
 }
@@ -308,9 +311,7 @@ void vkd_shader_free(struct vkd_shader *s)
 static void shader_maybe_destroy(struct vkd_shader *s)
 {
     if (s->ref || s->bind) return;
-    struct vkd_device *d = s->dev;
     vkd_shader_free(s);
-    IDirect3DDevice9_Release((IDirect3DDevice9 *)d);
 }
 
 HRESULT vkd_create_shader(struct vkd_device *d, const DWORD *code, int ps, struct vkd_shader **out)
@@ -361,13 +362,20 @@ VkShaderModule vkd_shader_module(struct vkd_shader *s, const struct dxso_key *ke
     return mod;
 }
 
+static ULONG shader_addref(struct vkd_shader *s)
+{
+    LONG n = InterlockedIncrement(&s->ref);
+    if (n == 1) IDirect3DDevice9_AddRef((IDirect3DDevice9 *)s->dev);
+    return (ULONG)n;
+}
+
 #define SHADER_METHODS(pfx, I, IID)                                                                                \
     static HRESULT STDMETHODCALLTYPE pfx##_QueryInterface(I *self, REFIID riid, void **out)                        \
     {                                                                                                              \
         if (!out) return E_POINTER;                                                                                \
         if (vkd_guid_eq(riid, &IID_IUnknown) || vkd_guid_eq(riid, &IID)) {                                         \
             *out = self;                                                                                           \
-            InterlockedIncrement(&((struct vkd_shader *)self)->ref);                                               \
+            shader_addref((struct vkd_shader *)self);                                                              \
             return S_OK;                                                                                           \
         }                                                                                                          \
         *out = 0;                                                                                                  \
@@ -375,7 +383,7 @@ VkShaderModule vkd_shader_module(struct vkd_shader *s, const struct dxso_key *ke
     }                                                                                                              \
     static ULONG STDMETHODCALLTYPE pfx##_AddRef(I *self)                                                           \
     {                                                                                                              \
-        return (ULONG)InterlockedIncrement(&((struct vkd_shader *)self)->ref);                                     \
+        return shader_addref((struct vkd_shader *)self);                                                           \
     }                                                                                                              \
     static ULONG STDMETHODCALLTYPE pfx##_Release(I *self)                                                          \
     {                                                                                                              \
@@ -387,6 +395,7 @@ VkShaderModule vkd_shader_module(struct vkd_shader *s, const struct dxso_key *ke
             VKD_LOCK(d);                                                                                           \
             shader_maybe_destroy(s);                                                                               \
             VKD_UNLOCK(d);                                                                                         \
+            IDirect3DDevice9_Release((IDirect3DDevice9 *)d);                                                         \
         }                                                                                                          \
         return (ULONG)n;                                                                                           \
     }                                                                                                              \
@@ -844,8 +853,10 @@ static void mask_for_type(struct vkd_device *d, struct vkd_mask *m, D3DSTATEBLOC
         if (vertex) m->ss[i] |= 1u << D3DSAMP_DMAPOFFSET;
     }
     for (int i = 0; i < 8; i++) {
-        uint32_t vbits = 1u << D3DTSS_TEXCOORDINDEX | 1u << D3DTSS_TEXTURETRANSFORMFLAGS;
-        if (pixel) m->tss[i] |= 0x1fffffffeu & ~vbits;
+        uint64_t vbits = UINT64_C(1) << D3DTSS_TEXCOORDINDEX | UINT64_C(1) << D3DTSS_TEXTURETRANSFORMFLAGS;
+        /* Native D3D9 excludes CONSTANT from PIXELSTATE; custom blocks and
+         * ALL still need its bit 32 (test_gpu.c compares the native runtime). */
+        if (pixel) m->tss[i] |= (all ? UINT64_C(0x1fffffffe) : UINT64_C(0xfffffffe)) & ~vbits;
         if (vertex) m->tss[i] |= vbits;
     }
     if (pixel) {
@@ -1173,7 +1184,12 @@ static int present_init(struct vkd_device *d)
     return 1;
 }
 
-static void drop_pipe(void *val, void *ctx) { vkDestroyPipeline(vkd.dev, (VkPipeline)(uintptr_t)val, 0); (void)ctx; }
+static void drop_pipe(void *val, void *ctx)
+{
+    VkPipeline *pipe = val;
+    if (pipe) { vkDestroyPipeline(vkd.dev, *pipe, 0); vkp_free(pipe); }
+    (void)ctx;
+}
 
 void vkd_present_free(struct vkd_device *d)
 {
@@ -1190,8 +1206,8 @@ void vkd_present_free(struct vkd_device *d)
 static VkPipeline present_pipeline(struct vkd_device *d, VkFormat fmt, int gamma)
 {
     struct { VkFormat f; int g; } key = {fmt, gamma};
-    void *p = vkd_map_get(&d->present_pipes, &key, sizeof key);
-    if (p) return (VkPipeline)(uintptr_t)p;
+    VkPipeline *p = vkd_map_get(&d->present_pipes, &key, sizeof key);
+    if (p) return *p;
     VkPipelineShaderStageCreateInfo st[2] = {{VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO},
                                              {VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO}};
     st[0].stage = VK_SHADER_STAGE_VERTEX_BIT; st[0].module = d->present_vs; st[0].pName = "main";
@@ -1230,7 +1246,13 @@ static VkPipeline present_pipeline(struct vkd_device *d, VkFormat fmt, int gamma
     ci.layout = d->layout;
     VkPipeline pipe = 0;
     if (vkCreateGraphicsPipelines(vkd.dev, d->pcache, 1, &ci, 0, &pipe) != VK_SUCCESS) return 0;
-    vkd_map_put(&d->present_pipes, &key, sizeof key, (void *)(uintptr_t)pipe);
+    p = vkp_alloc(sizeof *p);
+    if (!p) { vkDestroyPipeline(vkd.dev, pipe, 0); return 0; }
+    *p = pipe;
+    vkd_map_put(&d->present_pipes, &key, sizeof key, p);
+    if (vkd_map_get(&d->present_pipes, &key, sizeof key) != p) {
+        vkp_free(p); vkDestroyPipeline(vkd.dev, pipe, 0); return 0;
+    }
     return pipe;
 }
 
@@ -1278,7 +1300,7 @@ static int sc_create_vk(struct vkd_swapchain *sc)
         }
         VkBool32 ok = 0;
         vkGetPhysicalDeviceSurfaceSupportKHR(vkd.phys, vkd.queue_family, sc->surface, &ok);
-        if (!ok) vkp_log("vulkan: queue cannot present to the window");
+        if (!ok) { vkp_log("vulkan: queue cannot present to the window"); return 0; }
     }
     VkSurfaceCapabilitiesKHR caps;
     if (vkGetPhysicalDeviceSurfaceCapabilitiesKHR(vkd.phys, sc->surface, &caps) != VK_SUCCESS) return 0;
@@ -1363,14 +1385,14 @@ static int sc_create_vk(struct vkd_swapchain *sc)
         vi.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
         vi.subresourceRange.levelCount = 1;
         vi.subresourceRange.layerCount = 1;
-        vkCreateImageView(vkd.dev, &vi, 0, &sc->views[i]);
+        if (vkCreateImageView(vkd.dev, &vi, 0, &sc->views[i]) != VK_SUCCESS) return 0;
         VkSemaphoreCreateInfo si = {VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO};
-        vkCreateSemaphore(vkd.dev, &si, 0, &sc->done[i]);
+        if (vkCreateSemaphore(vkd.dev, &si, 0, &sc->done[i]) != VK_SUCCESS) return 0;
     }
     for (int i = 0; i < VKD_CONTEXTS; i++)
         if (!sc->acquire[i]) {
             VkSemaphoreCreateInfo si = {VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO};
-            vkCreateSemaphore(vkd.dev, &si, 0, &sc->acquire[i]);
+            if (vkCreateSemaphore(vkd.dev, &si, 0, &sc->acquire[i]) != VK_SUCCESS) return 0;
         }
     sc->recreate = 0;
     vkp_log("vulkan: swap chain %ux%u, %u images, mode %d", ext.width, ext.height, sc->nimages, mode);
@@ -1455,18 +1477,21 @@ HRESULT vkd_swapchain_create(struct vkd_device *d, D3DPRESENT_PARAMETERS *pp, in
     if (FAILED(hr)) { vkp_free(sc); return hr; }
     for (int i = 0; i < 256; i++)
         sc->ramp.red[i] = sc->ramp.green[i] = sc->ramp.blue[i] = (WORD)(i * 257);
-    sc_create_vk(sc);
+    if (!w32.IsIconic(sc->hwnd) && !sc_create_vk(sc)) {
+        vkd_swapchain_destroy(sc);
+        return D3DERR_NOTAVAILABLE;
+    }
     *out = sc;
     return D3D_OK;
 }
 
 HRESULT vkd_swapchain_reset(struct vkd_swapchain *sc, D3DPRESENT_PARAMETERS *pp)
 {
+    HWND old = sc->hwnd;
     if (pp->hDeviceWindow) sc->hwnd = pp->hDeviceWindow;
     HRESULT hr = sc_fix_params(sc, pp);
-    if (FAILED(hr)) return hr;
+    if (FAILED(hr)) { sc->hwnd = old; return hr; }
     sc_free_buffers(sc);
-    HWND old = sc->surface ? sc->hwnd : 0;
     sc->pp = *pp;
     hr = sc_create_buffers(sc);
     if (FAILED(hr)) return hr;
@@ -1566,14 +1591,15 @@ HRESULT vkd_swapchain_present(struct vkd_swapchain *sc, const RECT *src, const R
         sc->recreate = 1;
     }
     struct vkd_surface *bb = sc->back[0];
-    int shown = !w32.IsIconic(sc->hwnd) && present_init(d);
+    int shown = !w32.IsIconic(sc->hwnd);
+    if (shown && !present_init(d)) return D3DERR_DRIVERINTERNALERROR;
     if (shown) {
         RECT cr;
         w32.GetClientRect(sc->hwnd, &cr);
         UINT cw = (UINT)(cr.right - cr.left), ch = (UINT)(cr.bottom - cr.top);
         if (!cw || !ch) shown = 0;
         else if (sc->recreate || !sc->swapchain || cw != sc->extent.width || ch != sc->extent.height)
-            shown = sc_create_vk(sc);
+            if (!sc_create_vk(sc)) return D3DERR_DRIVERINTERNALERROR;
     }
     uint32_t index = 0;
     VkSemaphore acq = 0;
@@ -1583,7 +1609,10 @@ HRESULT vkd_swapchain_present(struct vkd_swapchain *sc, const RECT *src, const R
         if (r == VK_ERROR_OUT_OF_DATE_KHR) {
             if (sc_create_vk(sc)) r = vkAcquireNextImageKHR(vkd.dev, sc->swapchain, UINT64_MAX, acq, 0, &index);
         }
-        if (r != VK_SUCCESS && r != VK_SUBOPTIMAL_KHR) shown = 0;
+        if (r != VK_SUCCESS && r != VK_SUBOPTIMAL_KHR) {
+            vkp_log("vulkan: swap chain acquire failed (%d)", r);
+            return D3DERR_DEVICELOST;
+        }
         else sc->acquire_index = (sc->acquire_index + 1) % VKD_CONTEXTS;
     }
     if (!shown) {
@@ -1650,7 +1679,7 @@ HRESULT vkd_swapchain_present(struct vkd_swapchain *sc, const RECT *src, const R
             VkDescriptorBufferInfo ub[2] = {{d->zero_vb.buf, d->zero_vb.off, sizeof(struct dxso_vs_consts)},
                                             {d->zero_vb.buf, d->zero_vb.off, sizeof(struct dxso_ps_consts)}};
             VkDescriptorImageInfo ii[2] = {{d->present_sampler, img->view, VK_IMAGE_LAYOUT_GENERAL},
-                                           {d->lut_sampler, gamma ? sc->gamma->view : 0, VK_IMAGE_LAYOUT_GENERAL}};
+                                           {d->lut_sampler, gamma ? sc->gamma->view : img->view, VK_IMAGE_LAYOUT_GENERAL}};
             VkWriteDescriptorSet w[4] = {{VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET}, {VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET},
                                          {VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET}, {VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET}};
             for (int i = 0; i < 4; i++) {
@@ -1659,7 +1688,7 @@ HRESULT vkd_swapchain_present(struct vkd_swapchain *sc, const RECT *src, const R
                 if (i < 2) { w[i].descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER; w[i].pBufferInfo = &ub[i]; }
                 else { w[i].descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER; w[i].pImageInfo = &ii[i - 2]; }
             }
-            vkCmdPushDescriptorSetKHR(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, d->layout, 0, gamma ? 4 : 3, w);
+            vkCmdPushDescriptorSetKHR(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, d->layout, 0, 4, w);
             struct dxso_push push;
             memset(&push, 0, sizeof push);
             push.alpha_func = D3DCMP_ALWAYS;
@@ -1685,7 +1714,10 @@ HRESULT vkd_swapchain_present(struct vkd_swapchain *sc, const RECT *src, const R
     pi.pImageIndices = &index;
     VkResult r = vkQueuePresentKHR(vkd.queue, &pi);
     if (r == VK_ERROR_OUT_OF_DATE_KHR || r == VK_SUBOPTIMAL_KHR) sc->recreate = 1;
-    else if (r != VK_SUCCESS) vkp_log("vulkan: vkQueuePresentKHR failed (%d)", r);
+    else if (r != VK_SUCCESS) {
+        vkp_log("vulkan: vkQueuePresentKHR failed (%d)", r);
+        return D3DERR_DEVICELOST;
+    }
 
     /* frame latency */
     sc->frame_seq[sc->present_count % 16] = d->seq - 1;

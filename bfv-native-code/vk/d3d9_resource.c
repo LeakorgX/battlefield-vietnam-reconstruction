@@ -82,7 +82,15 @@ static struct vkd_res *owner(struct vkd_res *r)
     return r;
 }
 
-void vkd_res_addref(struct vkd_res *r) { InterlockedIncrement(&owner(r)->ref); }
+void vkd_res_addref(struct vkd_res *r)
+{
+    r = owner(r);
+    if (InterlockedIncrement(&r->ref) == 1) {
+        struct vkd_swapchain *sc = r->type == D3DRTYPE_SURFACE ? SURF(r)->swapchain : 0;
+        if (sc && !sc->implicit) IDirect3DSwapChain9_AddRef((IDirect3DSwapChain9 *)sc);
+        else IDirect3DDevice9_AddRef((IDirect3DDevice9 *)r->dev);
+    }
+}
 
 static void maybe_destroy(struct vkd_res *r)
 {
@@ -94,7 +102,15 @@ ULONG vkd_res_release(struct vkd_res *r)
     r = owner(r);
     LONG n = InterlockedDecrement(&r->ref);
     if (n < 0) { r->ref = 0; n = 0; }
-    if (!n) maybe_destroy(r);
+    if (!n) {
+        struct vkd_device *d = r->dev;
+        struct vkd_swapchain *sc = r->type == D3DRTYPE_SURFACE ? SURF(r)->swapchain : 0;
+        if (sc && !sc->implicit) IDirect3DSwapChain9_Release((IDirect3DSwapChain9 *)sc);
+        else {
+            maybe_destroy(r);
+            IDirect3DDevice9_Release((IDirect3DDevice9 *)d);
+        }
+    }
     return (ULONG)n;
 }
 
@@ -108,6 +124,37 @@ void vkd_res_unbind(struct vkd_res *r)
         r->bind = 0;
         maybe_destroy(r);
     }
+}
+
+static void track_resource(struct vkd_res *r)
+{
+    r->next = r->dev->resources;
+    if (r->next) r->next->prev = r;
+    r->dev->resources = r;
+}
+
+static void untrack_resource(struct vkd_res *r)
+{
+    if (r->prev) r->prev->next = r->next;
+    else if (r->dev->resources == r) r->dev->resources = r->next;
+    if (r->next) r->next->prev = r->prev;
+}
+
+int vkd_reset_resources_busy(struct vkd_device *d)
+{
+    if (d->nextra_sc) return 1;
+    for (struct vkd_res *r = d->resources; r; r = r->next) {
+        if (r->implicit || r->pool != D3DPOOL_DEFAULT) continue;
+        if (r->ref) return 1;
+        LONG live = 0;
+        for (UINT i = 0; i < VKD_SAMPLERS; i++) if (d->st.tex[i] && owner(d->st.tex[i]) == r) live++;
+        for (UINT i = 0; i < 16; i++) if (d->st.vb[i] && owner(&d->st.vb[i]->r) == r) live++;
+        if (d->st.ib && owner(&d->st.ib->r) == r) live++;
+        for (UINT i = 0; i < 4; i++) if (d->rt[i] && owner(&d->rt[i]->r) == r) live++;
+        if (d->ds && owner(&d->ds->r) == r) live++;
+        if (r->bind > live) return 1; /* state blocks retain a resource outside device state */
+    }
+    return 0;
 }
 
 struct vkd_texture *vkd_res_texture(struct vkd_res *r)
@@ -563,6 +610,7 @@ static void surface_free_views(struct vkd_surface *s)
 
 static void surface_destroy(struct vkd_res *r)
 {
+    untrack_resource(r);
     struct vkd_surface *s = SURF(r);
     struct vkd_device *d = r->dev;
     if (s->dc) { w32.SelectObject(s->dc, s->oldbmp); w32.DeleteObject(s->bmp); w32.DeleteDC(s->dc); }
@@ -570,9 +618,7 @@ static void surface_destroy(struct vkd_res *r)
     if (s->img) vkd_image_destroy(d, s->img);
     vkp_free(s->shadow);
     priv_clear(&r->priv);
-    int implicit = r->implicit;
     vkp_free(s);
-    if (!implicit) IDirect3DDevice9_Release((IDirect3DDevice9 *)d);
 }
 
 /* Device-owned surfaces (back buffers, auto depth stencil) are freed here. */
@@ -609,6 +655,7 @@ HRESULT vkd_create_surface(struct vkd_device *d, UINT w, UINT h, D3DFORMAT forma
         s->img = vkd_image_create(d, f, VK_IMAGE_TYPE_2D, w, h, 1, 1, 1, vkd_samples(ms, msq), 0, attach);
         if (!s->img) { vkp_free(s); return D3DERR_OUTOFVIDEOMEMORY; }
     }
+    track_resource(&s->r);
     *out = s;
     return D3D_OK;
 }
@@ -686,6 +733,7 @@ const IDirect3DVolume9Vtbl vkd_volume_vtbl = {
 
 static void texture_destroy(struct vkd_res *r)
 {
+    untrack_resource(r);
     struct vkd_texture *t = TEX(r);
     struct vkd_device *d = r->dev;
     for (uint32_t i = 0; i < t->nsub; i++) {
@@ -705,7 +753,6 @@ static void texture_destroy(struct vkd_res *r)
     vkp_free(t->shadow);
     priv_clear(&r->priv);
     vkp_free(t);
-    IDirect3DDevice9_Release((IDirect3DDevice9 *)d);
 }
 
 HRESULT vkd_create_texture(struct vkd_device *d, D3DRESOURCETYPE type, UINT w, UINT h, UINT depth, UINT levels,
@@ -793,6 +840,7 @@ HRESULT vkd_create_texture(struct vkd_device *d, D3DRESOURCETYPE type, UINT w, U
         t->shadow = vkp_alloc(total ? total : 16);
         if (!t->shadow) goto oom;
     }
+    track_resource(&t->r);
     *out = t;
     return D3D_OK;
 oom:
@@ -1177,6 +1225,7 @@ static HRESULT buffer_unlock(struct vkd_buffer *b)
 
 static void buffer_destroy(struct vkd_res *r)
 {
+    untrack_resource(r);
     struct vkd_buffer *b = BUF(r);
     struct vkd_device *d = r->dev;
     vkd_buf_free(d, &b->cur);
@@ -1185,7 +1234,6 @@ static void buffer_destroy(struct vkd_res *r)
     vkp_free(b->shadow);
     priv_clear(&r->priv);
     vkp_free(b);
-    IDirect3DDevice9_Release((IDirect3DDevice9 *)d);
 }
 
 HRESULT vkd_create_buffer(struct vkd_device *d, UINT size, DWORD usage, DWORD fvf, D3DFORMAT f, D3DPOOL pool,
@@ -1217,6 +1265,7 @@ HRESULT vkd_create_buffer(struct vkd_device *d, UINT size, DWORD usage, DWORD fv
         b->dirty_lo = 0; b->dirty_hi = size;
         vkd_buffer_flush(b);
     }
+    track_resource(&b->r);
     *out = b;
     return D3D_OK;
 }

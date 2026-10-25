@@ -30,7 +30,7 @@ ONLY = None  # build.py --mods: build only these mod files (names without .c)
 def sources(target):
     """mods/<target>/*.c, then mods/shared/*.c (built into both executables)."""
     return [p for d in (target, 'shared') if (SOURCES / d).is_dir() for p in sorted((SOURCES / d).glob('*.c'))
-            if ONLY is None or p.stem in ONLY]
+            if (ONLY is None and p.stem != 'vulkan') or (ONLY is not None and p.stem in ONLY)]
 
 
 def strip_comments(text):
@@ -122,7 +122,8 @@ def generate(target, work, tree, pe, catalog):
                   f'    bfv_mod_run(c, 0x{address:08x}u, {pops}, {body}, before, after);', '}', '']
         stubs[address] = stub
     (work / 'mod_hooks.c').write_text('\n'.join(lines), newline='\n')
-    return stubs, [MODS / 'runtime' / 'mod_runtime.c', *sources(target), work / 'mod_hooks.c']
+    backend = sorted((PROJECT / 'vk').glob('*.c')) if target == 'client' and ONLY is not None and 'vulkan' in ONLY else []
+    return stubs, [MODS / 'runtime' / 'mod_runtime.c', *sources(target), work / 'mod_hooks.c', *backend]
 
 
 FIELD = re.compile(r'^#define (\w+) (0x[0-9a-f]+)  /\* field offset \*/$', re.M)

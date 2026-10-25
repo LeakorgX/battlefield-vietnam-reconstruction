@@ -1,11 +1,21 @@
 # Handoff
 
-2026-10-25 Vulkan port: not finished. [VULKAN.md](VULKAN.md) "Remaining work"
-has the six-step plan. Step 1, `vk/d3d9_device.c`, is next and the file does not
-exist yet. Before writing it, read "Rules `d3d9_device.c` must follow" and
-"Known issues in the written files" in VULKAN.md. The `vk/` sources were
-committed in c4318d6. `vk/test/out/` is ignored because it holds generated
-SPIR-V.
+2026-10-25 Vulkan resume: first GPU bring-up passes on RTX 3060; port still
+unfinished. `vk/d3d9_device.c` now exists with a partial COM vtable: creation,
+clear/readback/Present, windowed Reset, state/constants/blocks and shared layout
+helpers. **Next: device draw path and remaining vtable slots. Do not wire this
+incomplete backend into the game.** See [VULKAN.md](VULKAN.md) for exact coverage
+and remaining ownership rules. `vk/test/run_gpu.ps1 -NoValidation` passes x86;
+`-Architecture x64` passes with validation: zero errors/warnings. Clear pixels
+and a state-block subset match system D3D9; Present/gamma/reset execute but
+displayed pixels are not compared. x86 validation layers are still absent.
+`run_dxso.sh`: 61 shaders pass, zero invalid SPIR-V. Fixed pipeline handle
+truncation, bit-32 capture for custom blocks (native PIXELSTATE excludes it),
+implicit back-buffer device refs, gamma-off descriptor, and Reset window
+replacement. Logs/binaries: `bfv-native-code/build/vulkan-test-*`; private x64
+validation layer: `../bfv-reference-local/vulkan-validation/layers64`. Temporary
+registry entry used for validation was restored. No game files changed, no
+commit/push. Earlier `vk/` sources are in c4318d6; `vk/test/out/` is ignored.
 
 2026-10-24 world renderer correction: the owner rejected the colour-only
 cinematic pass as insufficient. [WORLD-RENDER.md](WORLD-RENDER.md) describes

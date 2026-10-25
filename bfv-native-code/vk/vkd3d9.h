@@ -89,7 +89,7 @@ extern PFN_vkGetInstanceProcAddr vkGetInstanceProcAddr;
     X(user32, ClientToScreen) X(user32, GetSystemMetrics) X(user32, GetForegroundWindow) X(user32, MonitorFromPoint) \
     X(user32, PostMessageA) \
     X(gdi32, CreateCompatibleDC) X(gdi32, CreateDIBSection) X(gdi32, SelectObject) X(gdi32, DeleteObject) \
-    X(gdi32, DeleteDC) X(gdi32, GdiFlush) \
+    X(gdi32, DeleteDC) X(gdi32, GdiFlush) X(gdi32, BitBlt) \
     X(kernel32, GetModuleHandleA) \
     VKD_WNDLONG(X)
 struct vkd_w32 {
@@ -126,6 +126,8 @@ struct vkd_gpu {
     VkFormat ds24;              /* D24S8 or D32S8 fallback */
     struct vkd_block *blocks;
     void *lock;
+    VkDebugUtilsMessengerEXT debug_messenger;
+    uint32_t validation_errors, validation_warnings;
 };
 extern struct vkd_gpu vkd;
 
@@ -226,6 +228,7 @@ struct vkd_res {
     struct vkd_priv *priv;
     void (*destroy)(struct vkd_res *r);
     int implicit;               /* back buffer, auto depth stencil: owned by the device */
+    struct vkd_res *next, *prev; /* canonical live resources for Reset validation */
 };
 
 struct vkd_texture;
@@ -290,6 +293,7 @@ struct vkd_vdecl {
     LONG ref;
     struct vkd_device *dev;
     LONG bind;
+    int cached;                 /* FVF declaration retained by the device cache */
     D3DVERTEXELEMENT9 el[MAXD3DDECLLENGTH + 1];
     UINT n;
     DWORD fvf;                  /* converted from (0 = created from elements) */
@@ -387,7 +391,7 @@ struct vkd_state {
 struct vkd_mask {
     uint32_t rs[VKD_MAX_RS / 32];
     uint32_t ss[VKD_SAMPLERS];  /* bit per sampler state */
-    uint32_t tss[8];            /* bit per stage state */
+    uint64_t tss[8];            /* bit per stage state, including D3DTSS_CONSTANT (32) */
     uint32_t tex;               /* bit per sampler */
     uint32_t vb, vb_freq;       /* bit per stream */
     uint32_t vsf[8], psf[7];    /* bit per float constant */
@@ -427,6 +431,11 @@ struct vkd_d3d9 {
     int ex;
 };
 
+struct vkd_pipeline {
+    VkPipeline pipe;
+    uint32_t vs_id, ps_id;
+};
+
 struct vkd_device {
     const void *vtbl;
     LONG ref;
@@ -460,6 +469,7 @@ struct vkd_device {
     struct vkd_stateblock *recording;
     uint32_t active_lights[8], nactive;
     struct vkd_surface *rt[4], *ds;
+    struct vkd_res *resources;
     uint32_t dirty;
     int in_scene;
     int lost, not_reset;
@@ -508,6 +518,7 @@ struct vkd_device {
 #define VKD_UNLOCK(d) do { if ((d)->lock) vkp_unlock((d)->lock); } while (0)
 
 /* d3d9_main.c */
+IDirect3D9 *WINAPI vk_Direct3DCreate9(UINT sdk);
 void vkd_fill_caps(D3DCAPS9 *caps);
 HRESULT vkd_check_format(D3DFORMAT adapter, DWORD usage, D3DRESOURCETYPE type, D3DFORMAT f);
 void vkd_desktop_mode(D3DDISPLAYMODE *m);
@@ -551,6 +562,7 @@ struct vkd_image *vkd_surface_image(struct vkd_surface *s);
 VkImageView vkd_surface_rtv(struct vkd_surface *s, int srgb);
 struct vkd_texture *vkd_res_texture(struct vkd_res *r);
 void vkd_res_bind(struct vkd_res *r);
+int vkd_reset_resources_busy(struct vkd_device *d);
 void vkd_res_unbind(struct vkd_res *r);
 void vkd_res_addref(struct vkd_res *r);
 ULONG vkd_res_release(struct vkd_res *r);
@@ -616,6 +628,9 @@ extern const IDirect3DStateBlock9Vtbl vkd_sb_vtbl;
 extern const IDirect3DSwapChain9Vtbl vkd_sc_vtbl;
 
 /* d3d9_device.c */
+int vkd_device_layout_init(struct vkd_device *d);
+void vkd_device_layout_free(struct vkd_device *d);
+void vkd_present_free(struct vkd_device *d);
 HRESULT vkd_device_create(struct vkd_d3d9 *d3d, UINT adapter, D3DDEVTYPE type, HWND focus, DWORD flags,
                           D3DPRESENT_PARAMETERS *pp, IDirect3DDevice9 **out);
 void vkd_end_rendering(struct vkd_device *d);

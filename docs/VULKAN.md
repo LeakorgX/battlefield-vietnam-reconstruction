@@ -6,9 +6,13 @@ the build puts a native implementation of the Direct3D 9 interfaces they call
 (`bfv-native-code/vk/`). The engine draws exactly as before. Neither d3d9.dll
 nor DXVK is used.
 
-**Status 2026-10-24: not finished, not in any build.** The game still renders
-through the system d3d9. See [Remaining work](#remaining-work) below; the
-sections in between describe the design, not a running renderer.
+**Status 2026-10-25: GPU bring-up works; game integration is unfinished.**
+The standalone harness runs on the RTX 3060: exact native-D3D9 clear/readback
+parity, state-block comparisons, textured Present, gamma and windowed Reset.
+The x64 run has zero validation errors/warnings; the x86 run passes without
+validation (no x86 validation layer installed). Device draw calls are still
+missing. The game still renders through system d3d9; no Vulkan mod is installed.
+The sections below describe the target design where not explicitly tested.
 
 ## How it is wired
 
@@ -88,29 +92,48 @@ sections in between describe the design, not a running renderer.
 
 ## Testing
 
-`vk/test/` holds a 32-bit harness. It renders the same scenes through the
-system d3d9 and through this implementation, under the validation layers,
-and compares the read-back pixels. Every generated SPIR-V module is checked
-with `spirv-val`.
+`vk/test/run_gpu.ps1` builds the standalone GPU harness with warnings treated
+as errors (unused COM parameters excluded). Validation is required by default;
+use `-NoValidation` explicitly when the matching validation layer is absent.
+`-Architecture x64` runs the same sources as a 64-bit validation check. This
+does not replace the required 32-bit validation gate for the game.
+
+Current GPU tests: 4096 exact upload/readback pixels; native-D3D9 versus Vulkan
+clear pixels with viewport and rectangle clipping; custom/pixel state blocks,
+including recording isolation and constant bounds; 12 textured presents with
+pipeline-cache reuse; gamma pipeline; implicit back-buffer references; Reset
+rejection with a held back buffer; successful Reset and clear; Reset to another
+window (surface replacement). Present's final displayed pixels are not compared
+yet. No DrawPrimitive/DrawIndexedPrimitive or fixed-function scene is tested.
+
+`vk/test/run_dxso.sh` passes 61 shader translations and `spirv-val` reports zero
+invalid modules. Logs/binaries are under `bfv-native-code/build/vulkan-test-*`.
+The current machine's private x64 validation layer is outside the repository at
+`../bfv-reference-local/vulkan-validation/layers64`. Elevated Windows processes
+ignore `VK_LAYER_PATH`: the test used a temporary explicit-layer registry entry,
+restored afterward, and disabled the unrelated ReShade/RTSS implicit layers for
+that process. No validation layer or registry entry was installed permanently.
 
 ## Remaining work
 
-State on 2026-10-24, read from the files:
+State on 2026-10-25:
 
 | Piece | Lines | State |
 |---|---|---|
 | `spirv.c`, `dxso.c`, `ff.c` | 2442 | Written. `vk/test/run_dxso.sh` translates a corpus and runs `spirv-val`. |
-| `vk_core.c` | 1040 | Written, compiles. Never run. |
-| `d3d9_main.c`, `d3d9_resource.c`, `d3d9_shader.c` | 3595 | Written, compile. Never run. |
-| `d3d9_device.c` | 0 | **Missing.** Declared in `vkd3d9.h` (`vkd_device_create`, `vkd_device_vtbl`, state and pipeline helpers). |
+| `vk_core.c` | | Runs: context/device, allocations, upload/readback, submissions; optional validation callback. |
+| `d3d9_main.c`, `d3d9_resource.c`, `d3d9_shader.c` | | Exercised by the GPU harness; broader resource/shader coverage remains. |
+| `d3d9_device.c` | | **Partial.** Creation, layout, lifetime, clear/readback/present, windowed reset, state setters/constants/blocks. Vtable is incomplete; no device draw path. |
 | `platform.c` | 0 | **Missing.** Only the harness version (`test/harness_platform.c`) exists. |
 | `mods/client/vulkan.c` | 0 | **Missing.** Nothing installs `vk_Direct3DCreate9`. |
 | Build wiring | | **Missing.** `tools/mods.py` only compiles `mods/<target>/*.c`; nothing compiles `vk/` or puts the Vulkan headers on the include path. |
-| Comparison harness | | **Missing.** Only the shader translator is tested; no scene is drawn through both d3d9 and `vk/`. |
+| Comparison harness | | **Partial.** Clear pixels and a state-block subset match native D3D9. Full scene suite remains. |
 
-About 7,000 of an estimated 10,500–11,500 lines exist. Most of the remaining
-code is `d3d9_device.c`. Most of the remaining effort is bring-up: none of the
-Vulkan side has executed yet.
+The next implementation target is the device draw path (shader/FF selection,
+constants/descriptors, pipelines/dynamic state and vertex/index inputs) and the
+remaining COM slots. Do not install the backend in the game while vtable slots
+are empty. The first GPU execution gate is now covered; the complete device
+and scene-comparison gates below have not passed.
 
 ### Plan
 
@@ -160,8 +183,8 @@ Each step has a gate. A step that fails its gate is not built on.
 
 ### Rules `d3d9_device.c` must follow
 
-Read from the other `vk/` files on 2026-10-25. Step 1 had not started writing
-the file when work stopped.
+Read from the other `vk/` files on 2026-10-25. Step 1 is partly implemented;
+the following ownership/layout requirements still apply to new methods.
 
 - `vkd_create_surface/texture/buffer`, `vkd_create_vdecl`, `vkd_create_shader`
   and `vkd_create_query` do not AddRef the device, but their destroy paths
@@ -187,14 +210,24 @@ the file when work stopped.
 - `vkd_create_query` only supports EVENT and OCCLUSION. Occlusion restart
   needs `d->rendering`.
 
-### Known issues in the written files (not fixed)
+### Fixed during first GPU bring-up (2026-10-25)
 
-- `present_pipes` and `drop_pipe` (`d3d9_shader.c`) store a `VkPipeline` in a
-  `void*`. On 32-bit builds the 64-bit handle is truncated.
-- `mask_for_type` uses `0x1fffffffe` in a `uint32_t`, so stage state 32 is
-  never captured in pixel state blocks.
-- AddRef on an implicit back buffer does not AddRef the device.
-- With gamma off, Present pushes 3 descriptors and skips binding 3.
+- Present's pipeline map now stores heap-allocated 64-bit handles, not truncated
+  `void*` values. Allocation/map-insertion failure destroys the uncached pipeline.
+- Texture-stage capture masks are 64-bit. Native comparison showed that
+  PIXELSTATE excludes D3DTSS_CONSTANT; custom recordings retain bit 32. ALL
+  retains bit 32 too, but its full Apply path is not tested yet.
+- Implicit back-buffer AddRef from zero holds the device until the final Release.
+- Present writes a valid fallback descriptor at binding 3 when gamma is disabled.
+- Reset saves the old HWND before replacing it, so changing windows actually
+  destroys the old Vulkan surface. The two-window reset test covers this.
+
+### Known issues and unimplemented paths
+
+- The device vtable is incomplete and fullscreen creation/reset is explicitly
+  rejected. Lost-focus behavior, complete default-pool reset validation, draws,
+  resource creation/binding/copies, transforms/lights and remaining state need
+  implementation. The GPU harness uses only populated methods.
 - A resource released while still bound keeps a device reference until
   it is unbound.
 - `vkd_submit` ends the pass, then `vkd_queries_pass_end` ends it again. This

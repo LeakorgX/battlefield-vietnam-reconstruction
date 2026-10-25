@@ -80,6 +80,16 @@ static int has_ext(const VkExtensionProperties *e, uint32_t n, const char *name)
     return 0;
 }
 
+static VKAPI_ATTR VkBool32 VKAPI_CALL validation_message(VkDebugUtilsMessageSeverityFlagBitsEXT severity,
+    VkDebugUtilsMessageTypeFlagsEXT type, const VkDebugUtilsMessengerCallbackDataEXT *data, void *user)
+{
+    (void)type; (void)user;
+    if (severity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT) vkd.validation_errors++;
+    if (severity & VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) vkd.validation_warnings++;
+    vkp_log("vulkan validation: %s", data->pMessage);
+    return VK_FALSE;
+}
+
 int vkd_gpu_init(void)
 {
     static int state;   /* 0 untried, 1 ok, -1 failed */
@@ -99,16 +109,36 @@ int vkd_gpu_init(void)
     app.pApplicationName = "BfVietnam";
     app.pEngineName = "bfv-vkd3d9";
     app.apiVersion = VK_API_VERSION_1_3;
-    const char *iext[] = {VK_KHR_SURFACE_EXTENSION_NAME, VK_KHR_WIN32_SURFACE_EXTENSION_NAME};
+    const char *iext[] = {VK_KHR_SURFACE_EXTENSION_NAME, VK_KHR_WIN32_SURFACE_EXTENSION_NAME,
+                          VK_EXT_DEBUG_UTILS_EXTENSION_NAME};
+    const char *layer = "VK_LAYER_KHRONOS_validation";
+    int validation = vkp_option_int("vulkan.validation", 0);
+    VkDebugUtilsMessengerCreateInfoEXT debug = {VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT};
+    debug.messageSeverity = VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT;
+    debug.messageType = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT |
+                        VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT;
+    debug.pfnUserCallback = validation_message;
     VkInstanceCreateInfo ici = {VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO};
     ici.pApplicationInfo = &app;
-    ici.enabledExtensionCount = 2;
+    ici.enabledExtensionCount = validation ? 3 : 2;
     ici.ppEnabledExtensionNames = iext;
+    if (validation) {
+        ici.enabledLayerCount = 1;
+        ici.ppEnabledLayerNames = &layer;
+        ici.pNext = &debug;
+    }
     VkResult r = vkCreateInstance(&ici, 0, &vkd.instance);
     if (r != VK_SUCCESS) { vkp_log("vulkan: vkCreateInstance failed (%d)", r); return 0; }
 #define VKD_LOAD_I(f) f = (PFN_##f)vkGetInstanceProcAddr(vkd.instance, #f);
     VKD_INSTANCE_FUNCS(VKD_LOAD_I)
 #undef VKD_LOAD_I
+    if (validation) {
+        PFN_vkCreateDebugUtilsMessengerEXT create_debug =
+            (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(vkd.instance, "vkCreateDebugUtilsMessengerEXT");
+        if (!create_debug || create_debug(vkd.instance, &debug, 0, &vkd.debug_messenger) != VK_SUCCESS) {
+            vkp_log("vulkan: validation messenger creation failed"); return 0;
+        }
+    }
 
     uint32_t n = 0;
     vkEnumeratePhysicalDevices(vkd.instance, &n, 0);
@@ -621,6 +651,15 @@ void *vkd_map_get(struct vkd_map *m, const void *key, uint32_t n)
 
 void vkd_map_put(struct vkd_map *m, const void *key, uint32_t n, void *val)
 {
+    uint32_t h = vkd_hash(key, n);
+    if (m->cap) {
+        for (uint32_t i = h & (m->cap - 1); m->e[i].hash; i = (i + 1) & (m->cap - 1)) {
+            if (m->e[i].hash == h && m->e[i].size == n && !memcmp(m->e[i].key, key, n)) {
+                m->e[i].val = val;
+                return;
+            }
+        }
+    }
     if ((m->count + 1) * 2 > m->cap) {
         uint32_t cap = m->cap ? m->cap * 2 : 64;
         struct vkd_map_entry *e = vkp_alloc(cap * sizeof *e);
@@ -634,7 +673,6 @@ void vkd_map_put(struct vkd_map *m, const void *key, uint32_t n, void *val)
         vkp_free(m->e);
         m->e = e; m->cap = cap;
     }
-    uint32_t h = vkd_hash(key, n);
     uint32_t i = h & (m->cap - 1);
     while (m->e[i].hash) i = (i + 1) & (m->cap - 1);
     void *k = vkp_alloc(n);

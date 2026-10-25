@@ -533,6 +533,12 @@ def lifted_entries(target,spec,pe,original,hand_entries):
     return result,stats,trampolines
 
 def build(target,lifted=True,output_path=None):
+    import mods
+    if mods.ONLY is not None and 'vulkan' in mods.ONLY:
+        if target != 'client': raise RuntimeError('vulkan is a client-only backend')
+        if output_path is None: raise RuntimeError('vulkan requires --output BfVietnam-Vulkan.exe to preserve the original')
+        if output_path.resolve() == (GAME / TARGETS[target]['file']).resolve():
+            raise RuntimeError('vulkan output must not replace the original client')
     spec = TARGETS[target]
     original = (GAME / spec['file']).read_bytes()
     if hashlib.sha256(original).hexdigest() != spec['sha']:
