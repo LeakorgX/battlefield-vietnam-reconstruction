@@ -1,5 +1,16 @@
 # Handoff
 
+2026-10-25 Vulkan, first in-game run and native plan. A `--mods-only --mods
+vulkan` client of the newer patched EXE (`32aec85d...`, branch
+`client-exe-port`) loads the backend on the RTX 4060 and creates both
+Direct3D objects without validation errors, then hangs: the engine's Reset
+retry loop waits for `D3DERR_DEVICENOTRESET` after a Reset that failed for a
+reason the backend does not log yet. Details and next steps in
+[VULKAN.md](VULKAN.md) "First in-game run". The backend is a D3D9
+translation layer; [VULKAN-NATIVE-PLAN.md](VULKAN-NATIVE-PLAN.md) plans the
+staged move to native Vulkan rendering. No game files other than the test
+EXE and logs were written; the game itself rewrote `VideoDefault.con`.
+
 2026-10-25 Vulkan, second bring-up (another machine: RTX 4060 Laptop + Radeon
 890M, MSYS2 GCC 16.2): **the device is complete and every harness gate passes;
 nothing has run in the game.** The entry below predates commit 4455456, which

@@ -20,6 +20,12 @@ with the production `platform.c`. The `vulkan` mod and the build wiring exist,
 but no client has been built or run with them: that needs the supported client
 EXE. The game still renders through system d3d9.
 
+This backend is a translation layer. [VULKAN-NATIVE-PLAN.md](VULKAN-NATIVE-PLAN.md)
+plans the move to native Vulkan rendering, one subsystem at a time on top of it.
+
+**First in-game run (2026-10-25): the backend loads, then the engine hangs in
+its Reset retry loop.** See "First in-game run" under Remaining work.
+
 ## How it is wired
 
 - The game's only Direct3D import is `Direct3DCreate9`: thunk `0086791a`,
@@ -313,6 +319,38 @@ the device methods.
 - The loader's notices about layers disabled by VK_LOADER_LAYERS_DISABLE
   counted as validation warnings; run_gpu.ps1 failed in Windows PowerShell 5.1
   on the harness's first stderr line.
+
+### First in-game run (2026-10-25)
+
+Client `32aec85d...` (the newer patched build, branch `client-exe-port`) built
+with `--mods-only --mods vulkan`, so only the backend, the two hooked
+functions and the hand-written C are new; fullscreen, validation on,
+implicit layers disabled, launched from a shell.
+
+- Both hooks install `vk_Direct3DCreate9`. The backend picks the RTX 4060
+  Laptop (Vulkan 1.4), creates the profile-probe device (800x600 swap chain)
+  and then the renderer's IDirect3D9. No validation errors.
+- The game's setup rewrote `Mods/BfVietnam/settings/VideoDefault.con`
+  (`renderer.FullScreen 1` became `0`) and restarted itself.
+- In the restarted process the menu music plays, but the window stops
+  responding. The main thread sleeps in `PCDX8Renderer_00a5fbca`, called
+  from `PCDX8Renderer::vf33`: its `IDirect3DDevice9::Reset` failed, and
+  after any failed Reset (except one `D3DERR_NOTAVAILABLE` case) the engine
+  loops `SleepEx(300)` and `TestCooperativeLevel` until
+  `D3DERR_DEVICENOTRESET`, without pumping messages. The device was not lost,
+  so `TestCooperativeLevel` returned `D3D_OK` and the loop never ends.
+- `Reset` does not log why it fails, so the failing check is not known yet:
+  a still-referenced default-pool resource or back buffer
+  (`D3DERR_INVALIDCALL`), or the fullscreen mode test (`D3DERR_NOTAVAILABLE`;
+  the profile asks for 3840x2400 at 60 Hz).
+- `BFVWeather.dll`, which the client's entry stub loads, stands down when the
+  EXE is not named `BfVietnam.exe`, so it did not interfere.
+
+Next: log every failing `Reset`/`CreateDevice` check with its parameters;
+make `TestCooperativeLevel` follow the window's actual foreground state as
+D3D9 does (lost and not-reset are now driven only by focus messages, which
+this loop never pumps); run with `vulkan.windowed=1` first, launched from the
+desktop rather than a background shell.
 
 ### Known issues and unimplemented paths
 
